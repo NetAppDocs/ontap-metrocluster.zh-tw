@@ -1,0 +1,5165 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head class="at-element-marker">
+  <title>自動指派磁碟機和ONTAP ADP系統的考量事項、位於更新版本的更新版本</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="自動指派磁碟機和ONTAP ADP系統的考量事項、位於更新版本的更新版本" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/zh-tw/ontap-metrocluster/install-ip/concept_considerations_drive_assignment.html" />
+	<meta property="og:description" content="從推出《支援使用ADP的更新系統》（進階磁碟分割）的《支援更新安裝的支援範例ONTAP 》（《支援使用MetroCluster ADP的更新AFF 系統》、《支援更新的安裝程序》、" />
+  <meta property="og:image" content="https://docs.netapp.com/zh-tw/ontap-metrocluster/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="從推出《支援使用ADP的更新系統》（進階磁碟分割）的《支援更新安裝的支援範例ONTAP 》（《支援使用MetroCluster ADP的更新AFF 系統》、《支援更新的安裝程序》、">
+  <meta name="keywords" content=" drive auto-assignment, drive, adp, advanced disk partitioning, root disk, unmirrored root, data partition, root partition, shelf-by-shelf, AFF A320, AFF A220, AFF A250, AFF A300, AFF A400, AFF A700, AFF A800, FAS2750, FAS8200, FAS500f, FAS9000"><!-- Icons -->
+  <link rel="icon" href="/zh-tw/ontap-metrocluster/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+  <!-- Elastic Search -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
+
+  <!-- Controls AsciiDoctor Admonition Blocks -->
+  <link rel="stylesheet" type="text/css" href="/zh-tw/ontap-metrocluster/css/font-awesome.min.css">
+
+  <!-- Controls the shadow effect for search dropdown menu -->
+  <link rel="stylesheet" href="/zh-tw/ontap-metrocluster/css/boxshadowproperties.css">
+
+  <!-- NetApp CSS controls the technical content -->
+  <link rel="stylesheet" type="text/css" href="/zh-tw/ontap-metrocluster/css/netapp.css">
+
+  <!-- WWW CSS Content -->
+  <link rel="stylesheet" type="text/css" href="/zh-tw/ontap-metrocluster/css/www-luci-dotcom.min.css">
+  <link rel="stylesheet" type="text/css" href="/zh-tw/ontap-metrocluster/css/www-netapp-dotcom.css">
+  <link rel="stylesheet" href="/zh-tw/ontap-metrocluster/css/www-netapp-library-critical.min.css" media="all" >
+  <link rel="stylesheet" href="/zh-tw/ontap-metrocluster/css/www-netapp-library-non-critical.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="/zh-tw/ontap-metrocluster/css/www-netapp-library-global-header-footer.min.css">
+
+  <!-- NetApp IE Customizations -->
+  <link rel="stylesheet" href='/zh-tw/ontap-metrocluster/css/na-utility.css' type='text/css'>
+  <link rel="stylesheet" href='/zh-tw/ontap-metrocluster/css/na-sidebar.css' type='text/css'>
+  <link rel='stylesheet' href='/zh-tw/ontap-metrocluster/css/clouddocs.css' type='text/css'>
+  <link rel='stylesheet' href='/zh-tw/ontap-metrocluster/css/custom-dropdown.css' type='text/css'>
+  <link rel='stylesheet' href='/zh-tw/ontap-metrocluster/css/na-pagenav.css' type='text/css'>
+
+  
+  <link rel="stylesheet" href="/zh-tw/ontap-metrocluster/css/landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/zh-tw/ontap-metrocluster/css/tabbed-blocks.css" type="text/css">
+  <!-- Canonical url -->
+  <link rel='stylesheet' href='/zh-tw/ontap-metrocluster/css/na-feature.css' type='text/css'><!-- Top level site integrations --><script>
+    if (document.location.hostname === "docs.netapp.com") {
+      var head = document.getElementsByTagName('head')[0];
+      var onetrustConsent = document.createElement("script");
+      onetrustConsent.type = "text/javascript";
+      onetrustConsent.src = "https://cdn.cookielaw.org/consent/72570c5c-fe30-465f-b0e0-b77f7fb4ae34/OtAutoBlock.js";
+      head.appendChild(onetrustConsent);
+
+      var onetrustScript = document.createElement("script");
+      onetrustScript.type = "text/javascript";
+      onetrustScript.src = "https://cdn.cookielaw.org/scripttemplates/otSDKStub.js";
+      onetrustScript.charset = "UTF-8";
+      onetrustScript.dataset.documentLanguage = "true";
+      onetrustScript.dataset.domainScript = "72570c5c-fe30-465f-b0e0-b77f7fb4ae34";
+      head.appendChild(onetrustScript);
+    }
+
+    function OptanonWrapper() { }
+
+    if (document.location.hostname === "docs.netapp.com") {
+      var adobe = document.createElement("script");
+      adobe.type = "text/plain";
+      adobe.className = "optanon-category-C0002";
+      adobe.src = "//assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js";
+      head.appendChild(adobe);
+
+      var google = document.createElement("script");
+      google.type = "text/plain";
+      google.className = "optanon-category-C0002";
+      google.src = "https://www.googletagmanager.com/gtag/js?id=UA-81697994-3";
+      head.appendChild(google);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-81697994-3');
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+  <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/zh-tw/ontap-metrocluster/js/na-search.js'></script><script src='/zh-tw/ontap-metrocluster/js/na-pagenav.js'></script><link rel='stylesheet' href='/zh-tw/ontap-metrocluster/css/prism.css' type='text/css'>
+  <link rel='stylesheet' href='/zh-tw/ontap-metrocluster/css/prism-netapp.css' type='text/css'>
+
+
+  <script src='/zh-tw/ontap-metrocluster/js/na-utility.js'></script>
+  <script src='/zh-tw/ontap-metrocluster/js/clouddocs.js'></script>
+  <script src='/zh-tw/ontap-metrocluster/js/jquery.navgoco.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src='/zh-tw/ontap-metrocluster/js/toc.js'></script>
+  <script src='/zh-tw/ontap-metrocluster/js/customscripts.js'></script><script>
+      $(document).ready(function() {
+          
+          var collapseOnInit = true;
+          
+
+          var navSettings = {
+              "caretHtml": '',
+              "accordion": collapseOnInit,
+              "openClass": 'active', // open
+              "save": false, // leave false or nav highlighting doesn't work right
+              "cookie": {
+                  "name": 'navgoco',
+                  "expires": false,
+                  "path": '/'
+              },
+              "slide": {
+                  "duration": 400,
+                  "easing": 'swing'
+              }
+          };
+
+          // Initialize navgoco with default options
+          $("#mysidebar").navgoco(navSettings);
+          
+
+          $("#collapseAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', false);
+          });
+
+          $("#expandAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', true);
+          });
+
+      });
+
+  </script>
+  <script>
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+  </script>
+  <script src='/zh-tw/ontap-metrocluster/js/custom-dropdown.js'></script>
+  <script src='/zh-tw/ontap-metrocluster/js/FileSaver.min.js'></script>
+  <script src='/zh-tw/ontap-metrocluster/js/jszip-utils.min.js'></script>
+  <script src='/zh-tw/ontap-metrocluster/js/jszip.min.js'></script>
+  <script src='/zh-tw/ontap-metrocluster/js/pdf-ux.js'></script>
+</head>
+
+
+  <body class role="document" data-flavor="">
+    <div id="page" class="n-off-canvas-menu">
+      <div class="n-off-canvas-menu__menu"><!--TODO: Add offcanvas code --></div>
+      <div class="n-off-canvas-menu__content-wrap">
+        <header class="site-header" id="banner">
+  
+  <!-- Start Page Toolbar -->
+  
+  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/ontap-metrocluster/issues/new?body=Page%3A%20[自動指派磁碟機和ONTAP ADP系統的考量事項、位於更新版本的更新版本](https://docs.netapp.com/zh-tw/ontap-metrocluster/install-ip/concept_considerations_drive_assignment.html)" class="page-nav-contribute-link" role="button"><img src="/zh-tw/ontap-metrocluster/images/discuss-sm.svg" class="github-icon" />要求變更文件</a><a target="_blank" href="https://github.com/NetAppDocs/ontap-metrocluster/blob/main/install-ip/concept_considerations_drive_assignment.adoc" class="page-nav-contribute-link" role="button"><img src="/zh-tw/ontap-metrocluster/images/edit-sm.svg" class="github-icon" />編輯此頁面</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/zh-tw/ontap-metrocluster/images/article-sm.svg" class="github-icon" />瞭解如何作出貢獻</a></div>
+    <div class="page-nav-container">
+      <nav class="page-nav-fixed">
+        <div class="page-nav-title">在此頁面上</div>
+        <div class="page-nav-links">
+          <ul class="page-nav-inner" id="page-menu"></ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  
+  
+  <!-- Start top_hat -->
+  <div class="n-top-hat">
+    <div class="n-container">
+      <div class="n-top-hat__cross-property-nav">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/products-a-z/" class="n-top-hat__link">產品與解決方案</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/support-and-training/netapp-university/" class="n-top-hat__link">支援與訓練</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://cloud.netapp.com" class="n-top-hat__link">Cloud Central</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://community.netapp.com/" class="n-top-hat__link">社群</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://blog.netapp.com/" class="n-top-hat__link">部落格</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://customers.netapp.com/en/" class="n-top-hat__link">客戶成功案例</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">聯絡人</a>
+          </li>
+        </ul>
+      </div>
+      <div class="n-top-hat__utils">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">聯絡人</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- End top_hat -->
+
+  <!-- Start property bar -->
+  <style>
+    .n-property-navigation-bar__menus--desktop-experience .n-menu--mega__default-content__heading span {
+    color: #34B0FF;
+    }
+  </style>
+  <div class="n-property-bar " data-ntap-ui="sticky-nav">
+    <div class="n-property-bar__inner-wrap">
+      <div class="n-property-bar__menu-toggle">
+        <a href="#" class="n-property-bar__menu-toggle-link">
+          <span class="n-property-bar__menu-toggle-text">Menu</span>
+          <svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
+            <title>bars</title>
+            <use xlink:href="/zh-tw/ontap-metrocluster/common/svg/sprite.svg#bars"></use>
+          </svg>
+        </a>
+      </div>
+      <div class="n-property-bar__property-mark ">
+        <a href="https://www.netapp.com" class="n-property-bar__property-link">
+          <div class="n-property-bar__logo">
+            <svg class="n-icon-netapp-mark n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
+              <title>netapp-mark</title>
+              <use xlink:href="/zh-tw/ontap-metrocluster/common/svg/sprite.svg#netapp-mark"></use>
+            </svg>
+            <svg class="n-icon-netapp-logo n-property-bar__logo-svg" aria-labelledby="title">
+              <title>netapp-logo</title>
+              <use xlink:href="/zh-tw/ontap-metrocluster/common/svg/sprite.svg#netapp-logo"></use>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+      
+      <div class="search-property-bar">
+        <div id="search-demo-container" class="searchbox n-property-bar__search">
+          <div id="react-search" 
+          data-search-html="/zh-tw/ontap-metrocluster/search.html"
+          data-type="widget" 
+          data-placeholder="搜尋文件" 
+          data-no-results-found="找不到符合 {query} 的相關結果。" 
+          data-did-you-mean="搜尋 {suggestion}。" 
+          data-no-results-found-did-you-mean="找不到符合 {query} 的相關結果。您是否要找的是{suggestion}？" 
+          data-results-found="找到 {hitCount} 筆結果"  
+          data-sk-es-pf-indexes=""
+          data-flavor=""></div>
+          <button class="n-property-bar__search-toggle-button" type="button">
+            <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
+              <title>search</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-tw/ontap-metrocluster/common/svg/sprite.svg#search"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="n-property-bar__toolbar">
+    <!-- Start Language Selector --><div id="ie-i18n" class="n-property-bar__lang-selector">
+      <div id="ie-i18n-menu">
+      <span class="ie-i18n-lang">繁體中文</span>
+        <button class="ie-i18n-icon-container" type="button">
+          <svg class="n-globe__icon" aria-labelledby="title">
+            <title>globe</title>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-tw/ontap-metrocluster/common/svg/sprite.svg#globe"></use>
+          </svg>
+        </button>
+      </div>
+      <div id="n-property-navigation-bar__menu--language-selector" class="ie-i18n-results-container n-menu n-menu--v3 n-menu--is-active" style="display: none;">
+        <div class="n-language-selector-menu">
+          <ul class="n-menu__list">
+            <li class="n-menu__list-column">
+              <ul class="n-menu__list"><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/concept_considerations_drive_assignment.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/ja-jp/ontap-metrocluster/install-ip/concept_considerations_drive_assignment.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/ko-kr/ontap-metrocluster/install-ip/concept_considerations_drive_assignment.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/zh-cn/ontap-metrocluster/install-ip/concept_considerations_drive_assignment.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/zh-tw/ontap-metrocluster/install-ip/concept_considerations_drive_assignment.html" class="n-menu__header-text"><span translate="no" class="notranslate">繁體中文</span></a>
+                </li></ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- End Language Selector -->
+
+    <div class="n-property-bar__cta"></div>
+  </div>
+  <script>
+    $(function(){
+        var currentLocalization = $('html').attr('lang');
+
+        var localizationsDictionary = {
+            "en-CA" : "https://www.netapp.com/search/index.aspx?for_cr=canada&",
+            "en-IN" : "https://www.netapp.com/search/index.aspx?for_cr=india&",
+            "nl-NL" : "https://www.netapp.com/search/index.aspx?for_cr=netherlands&",
+            "ru-RU" : "https://www.netapp.com/search/index.aspx?for_cr=russia&",
+            "sv-SE" : "https://www.netapp.com/search/index.aspx?for_cr=sweden&",
+            "it-IT" : "https://www.netapp.com/search/index.aspx?for_cr=italy&",
+            "he-IL" : "https://www.netapp.com/search/index.aspx?for_cr=israel&",
+            "ko-KR" : "https://www.netapp.com/search/index.aspx?for_cr=korea&",
+            "zh-TW" : "https://www.netapp.com/search/index.aspx?for_cr=taiwan&",
+            "en-GB" : "https://www.netapp.com/search/index.aspx?for_cr=unitedkingdom&",
+            "en-SG" : "https://www.netapp.com/search/index.aspx?for_cr=asean&",
+            "en-AU" : "https://www.netapp.com/search/index.aspx?for_cr=australia&",
+            "pt-BR" : "https://www.netapp.com/search/index.aspx?for_cr=brasil&",
+            "de-CH" : "https://www.netapp.com/search/index.aspx?for_cr=switzerland&",
+            "es-MX" : "https://www.netapp.com/search/index.aspx?for_cr=mexico&"
+        };
+
+        if($('html').hasClass('ntap-whitelisted') && localizationsDictionary.hasOwnProperty(currentLocalization)) {
+            $('.n-property-bar__property-link').attr('href', '/');
+        }
+    });
+  </script>
+  <!-- End property bar -->
+</header>
+
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+  <!-- Sidebar Column -->
+  
+  <div class="col-md-3" id="sidebar-height">
+      <div class="n-pdf-header">
+  <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+    <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>可用的 PDF<span>
+    </span>
+  </a>
+</div>
+<div class="n-pdf-body-container">
+  <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+        
+        
+        
+        <a target="_blank" href="/zh-tw/ontap-metrocluster/pdfs/fullsite-sidebar/資訊文件MetroCluster.pdf" >
+          <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>此文件網站（PDF 格式）</a>
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/安裝以網路為基礎MetroCluster_的功能.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            安裝以網路為基礎MetroCluster 的功能
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/準備MetroCluster_進行安裝.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            準備MetroCluster 進行安裝
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/纜線A連接架構MetroCluster_的不全配置.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            纜線A連接架構MetroCluster 的不全配置
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/部分的Fabric_MetroCluster_架構不整組態.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            部分的Fabric MetroCluster 架構不整組態
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/安裝MetroCluster_和連接線的元件.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            安裝MetroCluster 和連接線的元件
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/FC交換器的連接埠指派_使用AFF_Arfe_A900系統時_.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            FC交換器的連接埠指派（使用AFF Arfe A900系統時）
+          </a>
+          
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/設定FC交換器.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            設定FC交換器
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/使用RCF檔案設定Brocade_FC交換器.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            使用RCF檔案設定Brocade FC交換器
+          </a>
+          
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/使用RCF檔案設定Cisco_FC交換器.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            使用RCF檔案設定Cisco FC交換器
+          </a>
+          
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/設定硬體_以便在轉換期間共用Brocade_6510_FC架構.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            設定硬體、以便在轉換期間共用Brocade 6510 FC架構
+          </a>
+          
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/在7_Mode和叢集MetroCluster_式的VMware交換器架構組態之間設定交換器架構共享.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            在7-Mode和叢集MetroCluster 式的VMware交換器架構組態之間設定交換器架構共享
+          </a>
+          
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/規劃並安裝MetroCluster_含有陣列LUN的不實組態.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            規劃並安裝MetroCluster 含有陣列LUN的不實組態
+          </a>
+          
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/使用MetroCluster_陣列LUN在組態中安裝及連接不需使用的元件.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            使用MetroCluster 陣列LUN在組態中安裝及連接不需使用的元件
+          </a>
+          
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/使用MetroCluster_陣列LUN連接至以不含資訊的組態設定中的FC_VI和HBA連接埠.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            使用MetroCluster 陣列LUN連接至以不含資訊的組態設定中的FC-VI和HBA連接埠
+          </a>
+          
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/將儲存陣列纜線連接MetroCluster_至採用不完整組態的FC交換器.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            將儲存陣列纜線連接MetroCluster 至採用不完整組態的FC交換器
+          </a>
+          
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/以採用陣列LUN的功能進行交換器分區MetroCluster.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            以採用陣列LUN的功能進行交換器分區MetroCluster
+          </a>
+          
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/使用ONTAP_陣列LUN在MetroCluster_一個不含資訊的組態中設定.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            使用ONTAP 陣列LUN在MetroCluster 一個不含資訊的組態中設定
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/實作MetroCluster_包含磁碟和陣列LUN的支援組態.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            實作MetroCluster 包含磁碟和陣列LUN的支援組態
+          </a>
+          
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/如何使用Active_IQ_Unified_Manager_功能不全的系統ONTAP_管理程式來進一步設定及監控.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            如何使用Active IQ Unified Manager 功能不全的系統ONTAP 管理程式來進一步設定及監控
+          </a>
+          
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/安裝MetroCluster_一套靜態IP組態.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            安裝MetroCluster 一套靜態IP組態
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/準備MetroCluster_進行安裝.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            準備MetroCluster 進行安裝
+          </a>
+          
+
+
+
+
+
+
+    <ul class="subfolders" style="display:none;"><li class="active pdf-hide">
+  <a target="_blank" href="/zh-tw/ontap-metrocluster/pdfs/pages/install-ip/concept_considerations_drive_assignment.pdf" >
+    <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+    PDF of this page
+  </a>
+</li>
+
+</ul>
+  
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/如何使用第3層廣域網路.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            如何使用第3層廣域網路
+          </a>
+          
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/設定MetroCluster_靜態硬體元件.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            設定MetroCluster 靜態硬體元件
+          </a>
+          
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/連接MetroCluster_至靜態IP交換器.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            連接MetroCluster 至靜態IP交換器
+          </a>
+          
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/設定MetroCluster_靜態IP交換器.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            設定MetroCluster 靜態IP交換器
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/設定Cisco_IP交換器.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            設定Cisco IP交換器
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/在MetroCluster_不提供的情況下設定此功能ONTAP.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            在MetroCluster 不提供的情況下設定此功能ONTAP
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/針對ONTAP_非計畫性自動切換設定_功能_服務.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            針對ONTAP 非計畫性自動切換設定「功能」服務
+          </a>
+          
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/安裝彈性MetroCluster_的版本.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            安裝彈性MetroCluster 的版本
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/準備MetroCluster_進行安裝.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            準備MetroCluster 進行安裝
+          </a>
+          
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/連接雙節點SAS附加的Stretch_MetroCluster_Setch組態.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            連接雙節點SAS附加的Stretch MetroCluster Setch組態
+          </a>
+          
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/安裝MetroCluster_及連接纜線的不二節點SAS延伸組態元件.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            安裝MetroCluster 及連接纜線的不二節點SAS延伸組態元件
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/連接連接雙節點橋接器的Stretch_MetroCluster_功能區組態.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            連接連接雙節點橋接器的Stretch MetroCluster 功能區組態
+          </a>
+          
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/安裝MetroCluster_和連接線的元件.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            安裝MetroCluster 和連接線的元件
+          </a>
+          
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/以擴充MetroCluster_的等位組態與陣列LUN進行連線.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            以擴充MetroCluster 的等位組態與陣列LUN進行連線
+          </a>
+          
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/如何使用Active_IQ_Unified_Manager_功能不全的系統ONTAP_管理程式來進一步設定及監控.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            如何使用Active IQ Unified Manager 功能不全的系統ONTAP 管理程式來進一步設定及監控
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/安裝及設定MetroCluster_資訊斷路器.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            安裝及設定MetroCluster 資訊斷路器
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/瞭MetroCluster_解資料保護與災難恢復.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            瞭MetroCluster 解資料保護與災難恢復
+          </a>
+          
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/執行切換_修復及切換.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            執行切換、修復及切換
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/執行切換以進行測試或維護.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            執行切換以進行測試或維護
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/修復組態.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            修復組態
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/修復MetroCluster_以不修復FC組態的組態.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            修復MetroCluster 以不修復FC組態的組態
+          </a>
+          
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/維護MetroCluster_這些元件.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            維護MetroCluster 這些元件
+          </a>
+          
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/FC至SAS橋接器維護.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            FC至SAS橋接器維護
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/FC交換器維護與更換.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            FC交換器維護與更換
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/IP交換器維護與更換.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            IP交換器維護與更換
+          </a>
+          
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/將儲存熱新增至MetroCluster_功能不集區的FC組態.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            將儲存熱新增至MetroCluster 功能不集區的FC組態
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/熱新增SAS儲存設備至連接橋接MetroCluster_的SFC組態.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            熱新增SAS儲存設備至連接橋接MetroCluster 的SFC組態
+          </a>
+          
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/熱新增SAS磁碟櫃至SAS磁碟櫃堆疊.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            熱新增SAS磁碟櫃至SAS磁碟櫃堆疊
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/FC交換器的連接埠指派.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            FC交換器的連接埠指派
+          </a>
+          
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/從MetroCluster_靜態FC移轉至MetroCluster_靜態IP.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            從MetroCluster 靜態FC移轉至MetroCluster 靜態IP
+          </a>
+          
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/不中斷營運地從MetroCluster_一個不中斷的FC移轉至MetroCluster_一個支援功能的IP組態ONTAP__版本號_9_8及更新版本_.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            不中斷營運地從MetroCluster 一個不中斷的FC移轉至MetroCluster 一個支援功能的IP組態ONTAP （版本號：9.8及更新版本）
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/準備從MetroCluster_功能不完善的FC移轉至MetroCluster_功能不完善的IP組態.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            準備從MetroCluster 功能不完善的FC移轉至MetroCluster 功能不完善的IP組態
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/從MetroCluster_功能不完整的FC移轉至MetroCluster_功能不完整的IP組態.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            從MetroCluster 功能不完整的FC移轉至MetroCluster 功能不完整的IP組態
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/不中斷地從雙節點MetroCluster_的不間斷地轉換為四節點MetroCluster_的不間斷地執行的不間斷運作的不間斷運作的不間斷運作的不間斷運作_ONTAP_更新版本_.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            不中斷地從雙節點MetroCluster 的不間斷地轉換為四節點MetroCluster 的不間斷地執行的不間斷運作的不間斷運作的不間斷運作的不間斷運作（ONTAP 更新版本：
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/升級或擴充MetroCluster_此功能.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            升級或擴充MetroCluster 此功能
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/將雙節點MetroCluster_的不含功能的FC組態擴充為四節點組態.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            將雙節點MetroCluster 的不含功能的FC組態擴充為四節點組態
+          </a>
+          
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/將新的控制器模組新增至每個叢集.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            將新的控制器模組新增至每個叢集
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/安裝並連接新的控制器模組.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            安裝並連接新的控制器模組
+          </a>
+          
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/設定叢集間LIF.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            設定叢集間LIF
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/將四節點MetroCluster_的不含任何功能的FC組態擴充為八節點組態.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            將四節點MetroCluster 的不含任何功能的FC組態擴充為八節點組態
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/可重新分區新節點的交換器架構.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            可重新分區新節點的交換器架構
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/在ONTAP_新的控制器上設定.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            在ONTAP 新的控制器上設定
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/將叢集設定為MetroCluster_一個靜態組態.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            將叢集設定為MetroCluster 一個靜態組態
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/設定叢集間LIF.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            設定叢集間LIF
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/從災難中恢復.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            從災難中恢復
+          </a>
+          
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/從多控制器或儲存設備故障中恢復.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            從多控制器或儲存設備故障中恢復
+          </a>
+          
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/準備MetroCluster_在不還原IP組態中進行切換.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            準備MetroCluster 在不還原IP組態中進行切換
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/zh-tw/ontap-metrocluster/pdfs/sidebar/準備MetroCluster_以不還原FC組態進行切換.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+            準備MetroCluster 以不還原FC組態進行切換
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+</li></ul>
+  <div class="zip-pdf-link-container" style="display: none;">   
+    <a href="#" id="zipPdf">
+      <img src="/zh-tw/ontap-metrocluster/images/pdf-zip.png" width="16" height="16"/>
+      <pre>個別 PDF 文件的集合<span class="zip-size"></span></pre>
+    </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+</div>
+<script>
+  $("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+  $("#toggleButtonPdf").click(function () {
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+  });
+</script><div class="sidebar-nav-container">
+  <ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/index.html">
+        MetroCluster
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/releasenotes.html">
+        版本資訊
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 安裝以網路為基礎MetroCluster 的功能</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/index.html">
+        總覽
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 準備MetroCluster 進行安裝</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_considerations_differences.html">
+        各個不相同的地方ONTAP MetroCluster
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_considerations_peering.html">
+        叢集對等
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_considerations_array_luns.html">
+        使用原生磁碟櫃或陣列LUN進行的不完整組態考量MetroCluster
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_considerations_7mt.html">
+        從7-Mode轉換ONTAP 至VMware時的考量
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_considerations_isls_mcfc.html">
+        ISL的考量
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_tdm_wdm.html">
+        使用TDM/WDM設備搭配架構附加MetroCluster 的功能的考量
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_considerations_8510.html">
+        使用Brocade DCX 8510-8交換器的需求
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_considerations_unmirrored_aggrs.html">
+        使用無鏡射Aggregate時的考量
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_considerations_firewalls.html">
+        在景點使用防火牆MetroCluster
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_choosing_the_correct_installation_procedure_for_your_configuration_mcc_install.html">
+        針對您的組態選擇正確的安裝程序
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 纜線A連接架構MetroCluster 的不全配置</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_configure_the_mcc_hardware_components_fabric.html">
+        總覽
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 部分的Fabric MetroCluster 架構不整組態</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_parts_of_a_fabric_mcc_configuration.html">
+        總覽
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_illustration_of_the_local_ha_pairs_in_a_mcc_configuration.html">
+        以架構組態顯示本機HA配對的圖例MetroCluster
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_illustration_of_redundant_fc_to_sas_bridges.html">
+        備援FC對SAS橋接器的圖例
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_redundant_fc_switch_fabrics.html">
+        備援FC交換器架構
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_cluster_peering_network_mcc.html">
+        叢集對等網路的圖例
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_required_mcc_components_and_naming_conventions_fabric_mcc.html">
+        所需MetroCluster 的功能部件和命名慣例
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/reference_configuration_gathering_worksheet_for_fc_switches_and_fc_to_sas_bridges.html">
+        FC交換器和FC對SAS橋接器的組態工作表
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 安裝MetroCluster 和連接線的元件</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_rack_the_hardware_components_mcc_fabric_and_ip.html">
+        安裝硬體元件
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_cable_the_controller_module_s_fc_vi_hba_ports_to_the_fc_switches_controller_to_fc_sw.html">
+        將新控制器模組的FC-VI和HBA連接埠連接至FC交換器
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_cable_the_isl_between_the_mcc_sites_fabric_config.html">
+        在MetroCluster 各個不景點之間連接ISL
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_port_assignments_for_systems_using_two_initiator_ports.html">
+        使用兩個啟動器連接埠的系統連接埠指派
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_port_assignments_for_fc_switches_when_using_ontap_9_0.html">
+        FC交換器的連接埠指派（使用ONTAP 功能）9.0
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html">
+        FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）
+      </a></li><li class="subfolders "><a href="/zh-tw/ontap-metrocluster/install-fc/concept_AFF_A900_port_assign_fc_switches_ontap_9_1.html">
+        <div class="na-navbar-padding"> FC交換器的連接埠指派（使用AFF Arfe A900系統時）</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_AFF_A900_brocade_port_config.html">
+        適用於執行版本更新版本的控制器的VA900 Brocade連接埠使用量AFF ONTAP
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_AFF_A900_brocade_port_ISLs.html">
+        適用於執行版本更新版本的ISL的VA900 Brocade連接埠使用量AFF ONTAP
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_AFF_A900_cisco_port_config.html">
+        執行不含更新版本的32個Cisco連接埠使用控制器AFF ONTAP
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_AFF_A900_cisco_ISLs.html">
+        適用於執行版本更新版本的ISL的Cisco連接埠使用率AFF ONTAP
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_cable_the_cluster_interconnect_in_four_node_configurations.html">
+        使用八節點或四節點組態來連接叢集互連
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_cable_the_cluster_peering_connections.html">
+        連接叢集對等連線
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_cable_the_ha_interconnect.html">
+        視需要連接HA互連線
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_cable_the_management_and_data_connections.html">
+        連接管理與資料連線
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 設定FC交換器</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 使用RCF檔案設定Brocade FC交換器</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_reset_the_brocade_fc_switch_to_factory_defaults.html">
+        將Brocade FC交換器重設為原廠預設值
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_download_the_brocade_fc_rcf_switch_software.html">
+        下載Brocade FC交換器RCF檔案
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_install_the_brocade_fc_switch_rcf_file.html">
+        安裝Brocade FC交換器RCF檔案
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 使用RCF檔案設定Cisco FC交換器</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_reset_the_cisco_fc_switch_to_factory_defaults.html">
+        將Cisco FC交換器重設為原廠預設值
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_download_and_install_the_cisco_fc_switch_software.html">
+        下載並安裝Cisco FC交換器NX-OS軟體
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_download_and_install_the_cisco_fc_switch_rcf_files.html">
+        下載並安裝Cisco FC RCF檔案
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_fcsw_brocade_configure_the_brocade_fc_switches_supertask.html">
+        手動設定Brocade FC交換器
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_fcsw_cisco_configure_a_cisco_switch_supertask.html">
+        手動設定Cisco FC交換器
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_fb_new_install.html">
+        安裝FC至SAS橋接器和SAS磁碟櫃
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 設定硬體、以便在轉換期間共用Brocade 6510 FC架構</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_fmc_mcc_transition_configure_the_mcc_hardware_for_share_a_7_mode_brocade_6510_fc_fabric_dure_transition.html">
+        總覽
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_fcsw_brocade_reviewing_brocade_license_requirements.html">
+        檢閱Brocade授權要求
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_rack_the_hardware_components_mcc_fabric_and_ip.html">
+        安裝硬體元件
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_fmc_mcc_transition_cable_the_new_mcc_controllers_to_the_exist_fc_fabrics.html">
+        將新MetroCluster 的架構控制器連接至現有的FC架構
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 在7-Mode和叢集MetroCluster 式的VMware交換器架構組態之間設定交換器架構共享</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_fmc_mcc_transition_disable_one_of_the_switch_fabrics.html">
+        停用其中一個交換器架構
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_fmc_mcc_transition_configure_zone_and_qos.html">
+        刪除TI分區並設定IOD設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_fmc_mcc_transition_ensure_isls_are_in_the_same_port_group_and_configure_zon.html">
+        確保ISL位於相同的連接埠群組中、並設定分區
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_fmc_mcc_transition_reenable_the_switch_fabric_and_verify_operation.html">
+        重新啟用交換器架構並驗證作業
+      </a></li></ul></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_configure_the_mcc_software_in_ontap.html">
+        在MetroCluster 不提供的情況下設定此功能ONTAP
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_considerations_for_using_virtual_ip_and_border_gateway_protocol_with_a_mcc_configuration.html">
+        使用虛擬IP和邊界閘道傳輸協定搭配MetroCluster 使用的考量事項
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_test_the_mcc_configuration.html">
+        測試MetroCluster 該組態
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_considerations_when_removing_mcc_configurations.html">
+        移除MetroCluster 不完整組態時的考量事項
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 規劃並安裝MetroCluster 含有陣列LUN的不實組態</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_planning_for_a_mcc_configuration_with_array_luns.html">
+        規劃MetroCluster 採用陣列LUN的不實組態
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/reference_supported_mcc_configuration_with_array_luns.html">
+        支援MetroCluster 使用陣列LUN的支援功能
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/reference_requirements_for_a_mcc_configuration_with_array_luns_reference.html">
+        使用陣列LUN進行動態組態的需求MetroCluster
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 使用MetroCluster 陣列LUN在組態中安裝及連接不需使用的元件</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_rack_the_hardware_components_in_a_mcc_configuration_with_array_luns.html">
+        使用MetroCluster 陣列LUN、以一套不含資源的組態來架裝硬體元件
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_prepare_a_storage_array_for_use_with_ontap_systems.html">
+        準備儲存陣列以搭配ONTAP 使用
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_switch_ports_required_for_a_eight_node_mcc_configuration_with_array_luns.html">
+        使用陣列LUN進行不必要的交換器連接埠MetroCluster 以進行不必要的組態設定
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 使用MetroCluster 陣列LUN連接至以不含資訊的組態設定中的FC-VI和HBA連接埠</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_cable_the_fc_vi_and_hba_ports_to_switches_in_a_two_node_fabric_attached_mcc_configuration_with_array_luns.html">
+        使用MetroCluster 陣列LUN連接雙節點架構附加的功能區塊組態中的FC-VI和HBA連接埠
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_cable_the_fc_vi_and_hba_ports_to_switches_in_a_four_node_fabric_attached_mcc_configuration_with_array_luns.html">
+        使用MetroCluster 陣列LUN連接四節點架構附加的功能區、將FC-VI和HBA連接埠連接至陣列LUN
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_cable_the_fc_vi_and_hba_ports_to_switches_in_an_eight_node_fabric_attached_mcc_configuration_with_array_luns.html">
+        使用MetroCluster 陣列LUN連接八節點架構附加的功能區塊組態中的FC-VI和HBA連接埠
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_cable_the_isls_in_a_mcc_configuration_with_array_luns.html">
+        使用MetroCluster 陣列LUN連接整個ISL以進行不整組態
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_cable_the_cluster_interconnect_in_four_node_configurations.html">
+        以八節點或四節點組態連接叢集互連
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_cable_the_cluster_peering_connections.html">
+        連接叢集對等連線
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_cable_the_ha_interconnect.html">
+        視需要連接HA互連線
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_cable_the_management_and_data_connections.html">
+        連接管理與資料連線
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 將儲存陣列纜線連接MetroCluster 至採用不完整組態的FC交換器</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_cable_storage_arrays_to_fc_switches_in_a_mcc_configuration.html">
+        總覽
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/reference_example_of_cabling_array_luns_to_fc_switches_in_a_two_node_mcc_configuration.html">
+        將儲存陣列連接埠連接至雙節點MetroCluster 的FC交換器之纜線配置範例
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/reference_example_of_cabling_array_luns_to_fc_switches_in_a_four_node_mcc_configuration.html">
+        將儲存陣列連接埠佈線至FC交換器的四節點MetroCluster 堆線範例
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/reference_example_of_cabling_array_luns_to_fc_switches_in_an_eight_node_mcc_configuration.html">
+        將儲存陣列連接埠連接至FC交換器的八節點MetroCluster 堆線範例
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 以採用陣列LUN的功能進行交換器分區MetroCluster</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/reference_requirements_for_switch_zoning_in_a_mcc_configuration_with_array_luns.html">
+        以採用陣列LUN的架構進行交換器分區的需求MetroCluster
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_example_of_switch_zoning_in_a_two_node_mcc_configuration_with_array_luns.html">
+        以陣列LUN進行雙節點MetroCluster 列舉的交換器分區範例
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_example_of_switch_zoning_in_a_four_node_mcc_configuration_with_array_luns.html">
+        以陣列LUN為例、在四節點MetroCluster 的列舉架構中使用交換器分區
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_example_of_switch_zoning_in_an_eight_node_mcc_configuration_with_array_luns.html">
+        以MetroCluster 陣列LUN進行八節點的列舉之交換器分區的範例
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 使用ONTAP 陣列LUN在MetroCluster 一個不含資訊的組態中設定</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_verify_the_ha_state_of_components_is_mcc_or_mcc_2n_in_maintenance_mode.html">
+        在維護模式中驗證及設定元件的HA狀態
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_configure_ontap_on_a_system_that_uses_only_array_luns.html">
+        在ONTAP 僅使用陣列LUN的系統上設定功能
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_setting_up_the_cluster.html">
+        設定叢集
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_install_the_license_for_us_array_luns_in_a_mcc_configuration.html">
+        安裝使用MetroCluster 以供在整個功能組態中使用陣列LUN的授權
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_configure_fc_vi_ports_on_a_x1132a_r6_quad_port_card.html">
+        在FAS8020系統上的X1132A-R6四埠卡上設定FC-VI連接埠
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_assign_ownership_of_array_luns.html">
+        指派陣列LUN的擁有權
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_peer_the_clusters_mcc_with_array_luns.html">
+        對等建立叢集
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_mirror_the_root_aggregates_mcc_with_array_luns.html">
+        鏡射根Aggregate
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_create_data_aggregates_and_implement_the_configuration_mcc_with_array_luns.html">
+        建立MetroCluster 資料集合體、實作及驗證等功能組態
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 實作MetroCluster 包含磁碟和陣列LUN的支援組態</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_implementing_a_mcc_configuration_with_both_disks_and_array_luns.html">
+        總覽
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_considerations_for_implementing_a_mcc_configuration_with_disks_and_array_luns.html">
+        在MetroCluster 磁碟和陣列LUN上實作不實組態時的考量
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/reference_example_of_a_two_node_fabric_attached_mcc_configuration_with_disks_and_array_luns.html">
+        雙節點架構附加MetroCluster 的支援磁碟和陣列LUN的功能區組態範例
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_example_of_a_four_node_mcc_configuration_with_disks_and_array_luns.html">
+        使用磁碟和陣列LUN進行四節點MetroCluster 的實體化組態範例
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 如何使用Active IQ Unified Manager 功能不全的系統ONTAP 管理程式來進一步設定及監控</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/task_synchronize_the_system_time_us_ntp.html">
+        使用 NTP 同步系統時間
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/concept_considerations_when_using_ontap_in_a_mcc_configuration.html">
+        在一個邊的組態中使用ONTAP 邊的考量MetroCluster
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-fc/reference_where_to_find_additional_information_icg.html">
+        何處可找到其他資訊
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 安裝MetroCluster 一套靜態IP組態</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/index.html">
+        總覽
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 準備MetroCluster 進行安裝</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/concept_considerations_differences.html">
+        各個不相同的地方ONTAP MetroCluster
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/concept_considerations_mediator.html">
+        決定ONTAP 使用哪一種功能MetroCluster
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/concept_considerations_mcip.html">
+        關於靜態IP組態的考量MetroCluster
+      </a></li><li class="  active "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/concept_considerations_drive_assignment.html">
+        自動指派磁碟機、以及ONTAP 更新版本的ADP系統
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/concept_considerations_peering.html">
+        叢集對等
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/concept_considerations_isls.html">
+        ISL需求
+      </a></li><li class="subfolders "><a href="/zh-tw/ontap-metrocluster/install-ip/concept_considerations_layer_3.html">
+        <div class="na-navbar-padding"> 如何使用第3層廣域網路</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/task_modify_ip_netmask_gateway_properties.html">
+        修改MetroCluster 位址、網路遮罩和閘道、使其位於一個靜態IP中
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/concept_considerations_layer_2.html">
+        共享私有第2層網路
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/concept_considerations_mc_compliant_switches.html">
+        如何使用符合MetroCluster的交換器
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/concept_considerations_tdm_encryption.html">
+        如何使用TDM/xWDM和加密設備搭配MetroCluster 使用不完整的IP組態
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/concept_considerations_unmirrored_aggrs.html">
+        不鏡射的Aggregate、採用MetroCluster 一套不鏡射的IP組態
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/concept_considerations_firewalls.html">
+        在景點使用防火牆MetroCluster
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/concept_considerations_for_using_virtual_ip_and_border_gateway_protocol_with_a_mcc_configuration.html">
+        使用虛擬IP和邊界閘道傳輸協定搭配MetroCluster 使用的考量事項
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 設定MetroCluster 靜態硬體元件</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/concept_parts_of_an_ip_mcc_configuration_mcc_ip.html">
+        部分的靜態IP組態MetroCluster
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/concept_required_mcc_ip_components_and_naming_guidelines_mcc_ip.html">
+        必要MetroCluster 的知識、包括知識、知識、知識、知識、知識、知識
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/task_rack_hw_components.html">
+        安裝硬體元件
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 連接MetroCluster 至靜態IP交換器</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/using_rcf_generator.html">
+        如何將連接埠表格與RcfFileGeneratorR工具或多MetroCluster 個支援功能組態搭配使用
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/port_usage_3132q.html">
+        Cisco 3132Q-V交換器的平台連接埠指派
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/port_usage_3232c_9336c.html">
+        Cisco 3232C或Cisco 9336C交換器的平台連接埠指派
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/port_usage_bes53248.html">
+        適用於Broadcom支援的BG-53248 IP交換器的平台連接埠指派
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/task_cable_other_connections.html">
+        連接控制器資料和管理連接埠
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 設定MetroCluster 靜態IP交換器</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/task_switch_config_broadcom.html">
+        設定Broadcom IP交換器
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 設定Cisco IP交換器</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/task_switch_config_cisco.html">
+        設定基本設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/task_switch_config_cisco_macsec.html">
+        在Cisco 9336C交換器上設定Macsec加密
+      </a></li></ul></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 在MetroCluster 不提供的情況下設定此功能ONTAP</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/concept_configure_the_mcc_software_in_ontap.html">
+        總覽
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/task_sw_config_8n.html">
+        如何設定八節點組態
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/task_sw_config_gather_info.html">
+        收集必要資訊
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/task_sw_config_differences.html">
+        標準叢集MetroCluster 組態與不完整組態之間的相似性與差異
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/task_sw_config_verify_haconfig.html">
+        驗證元件的ha-config狀態
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/task_sw_config_restore_defaults.html">
+        還原控制器模組的系統預設值
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/task_sw_config_assign_pool0.html">
+        手動指派磁碟機至集區0
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/task_sw_config_setup_ontap.html">
+        設定ONTAP 功能
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/task_sw_config_configure_clusters.html">
+        將叢集設定為MetroCluster 一個靜態組態
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/task_sw_config_verify_switchover.html">
+        驗證切換、修復及切換
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/task_sw_config_configure_mediator.html">
+        設定MetroCluster 「斷器」或ONTAP 「資訊安全」軟體
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/task_sw_config_protect_backup.html">
+        保護組態備份檔案
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 針對ONTAP 非計畫性自動切換設定「功能」服務</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/concept_mediator_requirements.html">
+        準備安裝ONTAP 《不知道如何安裝》服務
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/task_configuring_the_ontap_mediator_service_from_a_metrocluster_ip_configuration.html">
+        從ONTAP 一套不實的IP組態設定「不實不作」MetroCluster 服務
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/task_connecting_mcc_to_different_mediator_instance.html">
+        將MetroCluster 一個組態連接到另ONTAP 一個不相同的「位向器」執行個體
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/task_test_the_mcc_configuration.html">
+        測試MetroCluster 此功能組態
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/concept_considerations_when_removing_mcc_configurations.html">
+        移除MetroCluster 不完整組態時的考量事項
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/concept_considerations_when_using_ontap_in_a_mcc_configuration.html">
+        在一個邊的組態中使用ONTAP 邊的考量MetroCluster
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/reference_where_to_find_additional_information_mccip_icg.html">
+        何處可找到其他資訊
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 安裝彈性MetroCluster 的版本</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/index.html">
+        總覽
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 準備MetroCluster 進行安裝</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/concept_considerations_differences.html">
+        不一樣的地方ONTAP MetroCluster
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/concept_considerations_peering.html">
+        叢集對等
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/concept_considerations_unmirrored_aggrs.html">
+        使用無鏡射Aggregate時的考量
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/concept_considerations_firewalls.html">
+        在景點使用防火牆MetroCluster
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/concept_choosing_the_correct_installation_procedure_for_your_configuration_mcc_install.html">
+        針對您的組態選擇正確的安裝程序
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 連接雙節點SAS附加的Stretch MetroCluster Setch組態</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/task_configure_the_mcc_hardware_components_2_node_stretch_sas.html">
+        總覽
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/concept_parts_of_a_two_node_sas_attached_stretch_mcc_configuration.html">
+        雙節點SAS附加的Stretch MetroCluster Sof組態的一部分
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/concept_required_mcc_components_and_example_names_for_two_node_sas_attached_stretch_configurations_mcc.html">
+        雙MetroCluster 節點SAS附加延伸組態所需的零件和命名準則
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 安裝MetroCluster 及連接纜線的不二節點SAS延伸組態元件</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/reference_sas_optical_mc_configuring_a_stretch_mcc_system_with_sas_disk_shelves_and_sas_optical_cables.html">
+        總覽
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/task_rack_the_hardware_components_2_node_stretch_sas.html">
+        安裝硬體元件
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/task_cable_the_controllers_to_each_other_and_the_storage_shelves.html">
+        將控制器連接至彼此和儲存櫃
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/task_cable_the_cluster_peering_connections.html">
+        連接叢集對等連線
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/task_cable_the_management_and_data_connections.html">
+        連接管理與資料連線
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 連接連接雙節點橋接器的Stretch MetroCluster 功能區組態</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/task_configure_the_mcc_hardware_components_2_node_stretch_atto.html">
+        總覽
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/concept_parts_of_a_two_node_mcc_configuration_using_fc_to_sas_bridges.html">
+        雙節點橋接式延伸MetroCluster 功能的部分組態
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/concept_required_mcc_components_and_naming_conventions_for_two_node_bridge_attached_stretch_configurations_mcc.html">
+        雙節點橋接延伸組態所需MetroCluster 的零件和命名慣例
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/reference_information_gathering_worksheet_for_fc_to_sas_bridges_2_node_atto.html">
+        FC至SAS橋接器的資訊收集工作表
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 安裝MetroCluster 和連接線的元件</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/task_rack_the_hardware_components_mcc_2_node_stretch_atto.html">
+        安裝硬體元件
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/task_cable_the_fc_vi_adapters_to_the_partner_controller_2_node_stretch_atto.html">
+        將控制器彼此連接
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/task_cable_the_cluster_peering_connections.html">
+        連接叢集對等連線
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/task_cable_the_management_and_data_connections.html">
+        連接管理與資料連線
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/task_fb_new_install.html">
+        安裝FC至SAS橋接器和SAS磁碟櫃
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/concept_configuring_the_mcc_software_in_ontap.html">
+        在MetroCluster 不提供的情況下設定此功能ONTAP
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/concept_considerations_for_using_virtual_ip_and_border_gateway_protocol_with_a_mcc_configuration.html">
+        使用虛擬IP和邊界閘道傳輸協定搭配MetroCluster 使用的考量事項
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/task_test_the_mcc_configuration.html">
+        測試MetroCluster 該組態
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 以擴充MetroCluster 的等位組態與陣列LUN進行連線</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/concept_stretch_mcc_configuration_with_array_luns.html">
+        總覽
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/reference_example_of_a_stretch_mcc_configuration_with_array_luns.html">
+        以陣列LUN為MetroCluster 例的延伸功能性樣例
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/reference_examples_of_two_node_stretch_mcc_configurations_with_disks_and_array_luns.html">
+        雙節點Stretch MetroCluster 的實體組態範例、包括磁碟和陣列LUN
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/reference_example_of_a_stretch_mcc_configuration_with_e_series_storage_arrays.html">
+        E系列儲存陣列的彈性MetroCluster 支援範例
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/concept_considerations_when_removing_mcc_configurations.html">
+        移除MetroCluster 不完整組態時的考量事項
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 如何使用Active IQ Unified Manager 功能不全的系統ONTAP 管理程式來進一步設定及監控</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/concept_using_the_oncommand_management_tools_for_further_configuration_and_monitoring.html">
+        總覽
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/task_synchronize_the_system_time_us_ntp.html">
+        使用NTP同步系統時間
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/concept_considerations_when_using_ontap_in_a_mcc_configuration.html">
+        在一個邊的組態中使用ONTAP 邊的考量MetroCluster
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/task_upgrade_the_configuration_to_fabric_attached_mcc.html">
+        從彈性轉換成以網路為基礎MetroCluster 的功能性的不全配置
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-stretch/reference_where_to_find_additional_information_icg.html">
+        何處可找到其他資訊
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 安裝及設定MetroCluster 資訊斷路器</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/tiebreaker/concept_overview_of_the_tiebreaker_software.html">
+        Tiebreaker軟體總覽
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/tiebreaker/task_install_the_tiebreaker_software.html">
+        安裝Tiebreaker軟體
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/tiebreaker/concept_configuring_the_tiebreaker_software.html">
+        設定Tiebreaker軟體
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/tiebreaker/task_configure_snmp_setts_for_tiebreaker_software.html">
+        設定Tiebreaker軟體的SNMP設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/tiebreaker/concept_monitoring_the_mcc_configuration.html">
+        監控MetroCluster 此功能的組態
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/tiebreaker/concept_risks_and_limitation_of_using_mcc_tiebreaker_in_active_mode.html">
+        在MetroCluster 作用中模式中使用ESITirepreaker的風險和限制
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/tiebreaker/reference_firewall_requirements_for_mcc_tiebreaker.html">
+        防火牆要求MetroCluster
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/tiebreaker/reference_where_to_find_additional_information_tb_icg.html">
+        何處可找到其他資訊
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 瞭MetroCluster 解資料保護與災難恢復</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/manage/concept_understanding_mcc_data_protection_and_disaster_recovery.html">
+        如何保護資料並提供災難恢復MetroCluster
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 執行切換、修復及切換</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 執行切換以進行測試或維護</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/manage/task_perform_switchover_for_tests_or_maintenance.html">
+        總覽
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/manage/task_verifiy_that_your_system_is_ready_for_a_switchover.html">
+        確認系統已準備好進行切換
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/manage/task_send_a_custom_autosupport_message_prior_to_negotiated_switchover.html">
+        在協商切換之前傳送自訂AutoSupport 的消息
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/manage/task_perform_a_negotiated_switchover.html">
+        執行協商切換
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/manage/concept_output_for_storage_aggregate_plex_show_after_a_mcc_switchover.html">
+        儲存Aggregate plex show命令的輸出在MetroCluster 執行完功能介紹後仍不確定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/manage/task_confirm_that_dr_partners_have_come_online.html">
+        確認DR合作夥伴已上線
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 修復組態</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 修復MetroCluster 以不修復FC組態的組態</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/manage/task_heal_the_configuration_in_a_mcc_fc_configuration_supertask.html">
+        總覽
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/manage/task_heal_the_data_aggregates_after_negotiated_switchover.html">
+        協調切換後修復資料集合體
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/manage/task_heal_the_root_aggregates_after_negotiated_switchover.html">
+        協調切換後修復根集合體
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/manage/task_heal_the_configuration_in_a_mcc_ip_configuration_ontap_9_4_and_earlier.html">
+        恢復MetroCluster 使用不含更新版本的IP組態（ONTAP 僅限版本號為2、9.4及更早版本）
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/manage/task_perform_a_switchback.html">
+        執行切換
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/manage/task_verify_a_successful_switchback.html">
+        驗證是否成功切換
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/manage/reference_commands_for_switchover_healing_and_switchback.html">
+        切換、修復及切換的命令
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/manage/concept_monitoring_the_mcc_configuration.html">
+        監控MetroCluster 此功能的組態
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/manage/concept_monitoring_and_protecting_database_validity_by_using_nvfail.html">
+        使用NVFIL監控及保護檔案系統一致性
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/manage/reference_where_to_find_additional_information_dr_guide.html">
+        何處可找到其他資訊
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 維護MetroCluster 這些元件</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/concept_where_to_find_procedures_for_mcc_maintenance_tasks.html">
+        哪裡可以找MetroCluster 到執行維護工作的程序
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/reference_mcc_failure_scenarios.html">
+        故障與恢復案例MetroCluster
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/concept_remove_mediator_or_tiebreaker_when_performing_maintenance_tasks.html">
+        在ONTAP 執行維護工作之前、請先移除「協調器」或「斷路器監控」
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> FC至SAS橋接器維護</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/concept_using_fibrebridge_7600n_bridges_in_mcc_configurations.html">
+        支援MetroCluster 採用支援的FIBreBridge 7600N橋接器、採用各種不完整的組態
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/concept_using_fibrebridge_7500n_bridges_in_mcc_configurations.html">
+        支援MetroCluster 採用支援的FIBreBridge 7500N橋接器、採用各種不完整的組態
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_enable_ip_port_access_on_the_fibrebridge_7600n_bridge_guides.html">
+        如有必要、請在光纖橋接器7600N上啟用IP連接埠存取
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_update_firmware_on_a_fibrebridge_bridge_parent_topic.html">
+        更新光纖橋接器上的韌體
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_replace_a_sle_fc_to_sas_bridge.html">
+        更換單一FC對SAS橋接器
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_fb_consolidate_replace_a_pair_of_fibrebridge_6500n_bridges_with_7500n_bridges.html">
+        將一對採用7600N或7500N橋接器的FibreBridge 6500N橋接器更換
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/reference_requirements_for_using_other_interfaces_to_configure_and_manage_fibrebridge_bridges.html">
+        使用其他介面來設定及管理光纖橋接器的需求
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/reference_fb_replace_a_power_supply.html">
+        熱更換故障的電源供應器模組
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/concept_in_band_management_of_the_fc_to_sas_bridges.html">
+        FC至SAS橋接器的頻內管理
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_secur_or_unsecur_a_fibrebridge_bridge.html">
+        保護或取消保護光纖橋接器
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> FC交換器維護與更換</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_upgrade_or_downgrad_the_firmware_on_a_brocade_fc_switch_mcc.html">
+        升級或降級Brocade FC交換器上的韌體
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_upgrade_or_downgrad_the_firmware_on_a_cisco_fc_switch_mcc.html">
+        升級或降級Cisco FC交換器上的韌體
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_upgrade_to_new_brocade_switches.html">
+        升級至新的Brocade FC交換器
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_replace_a_brocade_fc_switch_mcc.html">
+        更換Brocade FC交換器
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_rename_a_brocade_fc_switch.html">
+        重新命名Brocade FC交換器
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_disable_encryption_on_brocade_fc_switches.html">
+        在Brocade FC交換器上停用加密
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_change_isl_properties_isl_ports_or_the_iod_ood_configuration_on_a_brocade_switch.html">
+        變更Brocade交換器上的ISL內容、ISL連接埠或IOD/ood組態
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_replace_a_cisco_fc_switch_mcc.html">
+        更換Cisco FC交換器
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_change_speed_of_isl_ports_on_a_cisco_fc_switch.html">
+        變更Cisco FC交換器上ISL連接埠的速度
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_add_lsls_to_a_cisco_fc_switch.html">
+        將lSLs新增至Cisco交換器
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> IP交換器維護與更換</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_replace_an_ip_switch.html">
+        更換IP交換器
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_upgrade_firmware_on_mcc_ip_switches.html">
+        升級MetroCluster 韌體至靜態IP交換器
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_upgrade_rcf_files_on_mcc_ip_switches.html">
+        升級MetroCluster 不只是在靜態IP交換器上的RCF檔案
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_rename_a_cisco_ip_switch.html">
+        重新命名Cisco IP交換器
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_add_remove_or_change_isl_ports_nondisruptively.html">
+        在不中斷營運的情況下新增、移除或變更ISL連接埠
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/concept_identifying_storage_in_a_mcc_ip_configuration.html">
+        如何在MetroCluster 一個不確定IP組態中識別儲存設備
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_add_shelves_using_shared_storage.html">
+        使用共享儲存設備/ MetroCluster交換器、將機櫃新增MetroCluster 至架構
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 將儲存熱新增至MetroCluster 功能不集區的FC組態</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_hot_add_a_sas_disk_shelf_in_a_direct_attached_mcc_configuration_us_sas_optical_cables.html">
+        使用MetroCluster SAS光纖纜線、在直接附加的SFC組態中熱新增SAS磁碟櫃
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 熱新增SAS儲存設備至連接橋接MetroCluster 的SFC組態</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_hot_add_a_stack_to_exist_7500n_pair.html">
+        熱新增SAS磁碟櫃堆疊至現有的一對光纖橋接器7500N
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_fb_hot_add_stack_of_shelves_and_bridges.html">
+        熱新增一堆SAS磁碟櫃、並將橋接器連接MetroCluster 至一套系統
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 熱新增SAS磁碟櫃至SAS磁碟櫃堆疊</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_fb_hot_add_shelf_prepare_7500n.html">
+        準備熱新增SAS磁碟櫃
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_fb_hot_add_a_disk_shelf_install_7500n.html">
+        熱新增磁碟櫃
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_hot_add_an_iom12_disk_shelf_to_a_stack_of_iom6_disk_shelves.html">
+        熱新增IOM12磁碟櫃至IOM6磁碟櫃堆疊、採用連接橋MetroCluster 接的功能
+      </a></li></ul></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_hot_remove_storage_from_a_mcc_fc_configuration.html">
+        將儲存設備熱移除MetroCluster 至不受需求的FC組態
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_replace_a_shelf_nondisruptively_in_a_stretch_mcc_configuration.html">
+        以延伸MetroCluster 的功能型態、在不中斷營運的情況下更換機櫃
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_replace_a_shelf_nondisruptively_in_a_mcc_fc_configuration.html">
+        以架構附加MetroCluster 的功能不中斷的方式更換機櫃
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/concept_migrating_root_volumes_to_a_new_destination.html">
+        何時將根磁碟區移轉至新目的地
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_move_a_metadata_volume_in_mcc_configurations.html">
+        在MetroCluster 不完整的組態中移動中繼資料磁碟區
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_rename_the_cluster_for_mcc_configuration.html">
+        在MetroCluster 不完整的組態中重新命名叢集
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_power_on_and_power_off_a_data_center.html">
+        關閉資料中心電源並開啟電源
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_power_off_an_entire_mcc_ip_configuration.html">
+        關閉MetroCluster 整個支援IP組態的電源
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_power_off_an_entire_mcc_fc_configuration.html">
+        關閉MetroCluster 整個支援功能
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/task_do_not_use_for_9_8_and_later_reconfigure_the_fc_switch_layout_for_ontap_9_1_or_later.html">
+        重新設定ONTAP 以不使用整套功能的FC交換器配置
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> FC交換器的連接埠指派</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/concept_port_assignments_for_systems_using_two_initiator_ports.html">
+        使用兩個啟動器連接埠的系統連接埠指派
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/concept_port_assignments_for_fc_switches_when_using_ontap_9_0.html">
+        FC交換器的連接埠指派（使用ONTAP 功能）9.0
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html">
+        FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/concept_using_the_interoperability_matrix_tool_to_find_mcc_information.html">
+        如何使用互通性對照表工具來尋找MetroCluster 各種資訊
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/maintain/reference_where_to_find_additional_information_mcc_service_guide.html">
+        何處可找到其他資訊
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 從MetroCluster 靜態FC移轉至MetroCluster 靜態IP</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/transition/concept_choosing_your_transition_procedure_mcc_transition.html">
+        請選擇您的轉換程序
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/transition/concept_supported_platforms_for_transition.html">
+        支援不中斷營運的平台移轉
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 不中斷營運地從MetroCluster 一個不中斷的FC移轉至MetroCluster 一個支援功能的IP組態ONTAP （版本號：9.8及更新版本）</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/transition/concept_nondisruptively_transitioning_from_a_four_node_mcc_fc_to_a_mcc_ip_configuration.html">
+        總覽
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 準備從MetroCluster 功能不完善的FC移轉至MetroCluster 功能不完善的IP組態</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/transition/concept_requirements_for_fc_to_ip_transition_mcc.html">
+        不中斷營運的FC對IP轉換需求
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/transition/concept_how_transition_impacts_the_mcc_hardware_components.html">
+        移轉作業如何影響MetroCluster 到非同步硬體元件
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/transition/concept_transition_workflow_fc_to_ip_transition.html">
+        不中斷MetroCluster 營運的流程無法進行不中斷的移轉
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/transition/concept_considerations_for_using_existing_ip_switches.html">
+        IP交換器的考量
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/transition/concept_switchover_and_switchback_operations_during_transition.html">
+        在不中斷營運的轉換期間進行切換、修復及切換作業
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/transition/concept_mcc_operation_during_transition.html">
+        轉換期間的警示訊息和工具支援
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/transition/concept_example_naming_in_this_procedure_mcc_ip_transition.html">
+        此程序中的命名範例
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 從MetroCluster 功能不完整的FC移轉至MetroCluster 功能不完整的IP組態</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/transition/task_verify_mcc_health_fc_to_ip.html">
+        驗MetroCluster 證整個過程的效能狀況
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/transition/task_remove_tiebreaker_4n_transition.html">
+        從斷路器或其他監控軟體移除現有組態
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/transition/task_apply_rcfs.html">
+        產生RCFs並將其套用至新的IP交換器
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/transition/task_move_cluster_connections.html">
+        移動本機叢集連線
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/transition/task_prepare_ip_controllers_4n_transition.html">
+        準備MetroCluster 好用作不需要的IP控制器
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/transition/task_configure_transition.html">
+        設定MetroCluster 要移轉的功能
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/transition/task_move_data_to_new_drive_shelves.html">
+        將資料移至新的磁碟機櫃
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/transition/task_remove_mc_fc_controllers.html">
+        移除MetroCluster 不需使用的FC控制器
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/transition/task_complete_transition.html">
+        完成轉換
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/transition/task_send_a_custom_autosupport_message_after_maintenance_4n_nondisruptive_mcc_transition.html">
+        維護後傳送自訂AutoSupport 的資訊
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/transition/task_restore_tiebreaker_monitor_4n_nondisruptive_mcc_transition.html">
+        還原斷路器或中保監控
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 不中斷地從雙節點MetroCluster 的不間斷地轉換為四節點MetroCluster 的不間斷地執行的不間斷運作的不間斷運作的不間斷運作的不間斷運作（ONTAP 更新版本：</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/transition/task_disruptively_transition_from_a_two_node_mcc_fc_to_a_four_node_mcc_ip_configuration.html">
+        總覽
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/transition/concept_example_naming_in_this_procedure_2n_mcc_transition_disruptive.html">
+        此程序中的命名範例
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/transition/concept_requirements_for_fc_to_ip_transition_2n_mcc_transition.html">
+        準備好進行顛覆性的FC對IP轉換
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/transition/task_transition_the_mcc_fc_nodes_2n_mcc_transition_supertask.html">
+        移轉MetroCluster 功能不只是功能不一的FC節點
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/transition/task_connect_the_mcc_ip_controller_modules_2n_mcc_transition_supertask.html">
+        連接MetroCluster 不需記憶的IP控制器模組
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/transition/task_configure_the_new_nodes_and_complete_transition.html">
+        設定新節點並完成轉換
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/transition/task_return_the_system_to_normal_operation_2n_mcc_transition_supertask.html">
+        讓系統恢復正常運作
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/transition/task_disruptively_transition_while_move_volumes_from_old_shelves_to_new_shelves.html">
+        淘汰儲存櫃時、會中斷從MetroCluster 靜態FC移轉至MetroCluster 靜態IP ONTAP （適用於更新版本的版本號）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/transition/task_disruptively_transition_when_exist_shelves_are_not_supported_on_new_controllers.html">
+        不支援新控制器上的現有磁碟櫃時、會中斷轉換作業（ONTAP 版本號：NetApp 9.8及更新版本）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/transition/task_move_an_fc_san_workload_from_mcc_fc_to_mcc_ip_nodes.html">
+        將FC SAN工作負載從MetroCluster 支援功能的FC移至MetroCluster 支援功能的IP節點
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/transition/task_move_linux_iscsi_hosts_from_mcc_fc_to_mcc_ip_nodes.html">
+        將Linux iSCSI主機從MetroCluster 支援功能的FC移至MetroCluster 支援功能的IP節點
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/transition/reference_where_to_find_additional_information_mcc_ug.html">
+        何處可找到其他資訊
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 升級或擴充MetroCluster 此功能</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html">
+        選擇您的升級或重新整理方法
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_upgrade_controllers_in_a_four_node_fc_mcc_us_switchover_and_switchback_mcc_fc_4n_cu.html">
+        使用MetroCluster 切換和切換功能升級採用SFC組態的控制器
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_upgrade_A700_to_A900_in_a_four_node_mcc_fc_us_switchover_and_switchback.html">
+        使用交換器和切換功能、將控制器從AFF 功能不實的2700升級AFF 至功能不實的SFC MetroCluster 組態（ONTAP 版本號：32、10.1及更新版本）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_upgrade_controllers_system_control_commands_in_a_four_node_mcc_fc.html">
+        使用MetroCluster 切換功能升級四節點的SFC組態中的控制器、並以「系統控制器更換」命令（ONTAP 版本號：E59.10.1及更新版本）進行切換。
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_upgrade_controllers_in_a_four_node_ip_mcc_us_switchover_and_switchback_mcc_ip.html">
+        使用MetroCluster 切換和切換功能升級採用S還原IP組態的控制器（ONTAP 版本號：9.8及更新版本）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_upgrade_A700_to_A900_in_a_four_node_mcc_ip_us_switchover_and_switchback.html">
+        使用交換器和切換功能、將控制器從AFF 功能性的2700升級至AFF 功能性的S還原MetroCluster IP組態（ONTAP 版本號：32、10.1及更新版本）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_refresh_4n_mcc_fc.html">
+        重新整理四節點MetroCluster 的不含功能的FC組態
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_refresh_4n_mcc_ip.html">
+        重新整理四節點MetroCluster 的靜態IP組態（ONTAP 不含更新版本的更新版本）
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 將雙節點MetroCluster 的不含功能的FC組態擴充為四節點組態</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_expand_a_two_node_mcc_fc_configuration_to_a_four_node_fc_configuration_supertask.html">
+        總覽
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_verify_the_state_of_the_mcc_configuration_mcc_expansion.html">
+        驗MetroCluster 證不實組態的狀態
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_send_a_custom_autosupport_message_before_add_nodes_to_the_mcc_configuration_2_node_to_4_node.html">
+        在AutoSupport 將節點新增MetroCluster 至該組態之前、請先傳送自訂的功能資訊
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_zone_for_the_new_controller_ports_in_a_fabric_attached_mcc_configuration_four_node_expansion.html">
+        新控制器連接埠的區域、當在光纖附加MetroCluster 的功能區組態中新增控制器模組時
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 將新的控制器模組新增至每個叢集</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_add_a_new_controller_to_each_cluster_mcc_expansion.html">
+        總覽
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_prepare_for_the_upgrade_add_2nd_controller_to_create_ha_pair.html">
+        準備升級
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_clear_the_configuration_on_a_controller_module_mcc.html">
+        清除控制器模組上的組態
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_prepare_cluster_ports_on_the_exist_controller.html">
+        準備現有控制器模組上的叢集連接埠
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_prepare_the_netboot_server_cluster_mode.html">
+        準備netboot伺服器以下載映像
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_enable_the_ha_mode_on_the_exist_controller_mcc_when_add_a_2nd_controller.html">
+        在現有的控制器模組上設定HA模式
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_shut_down_the_exist_controller_when_add_a_2nd_controller_in_c_mode.html">
+        關閉現有的控制器模組
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 安裝並連接新的控制器模組</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_install_and_cable_the_new_controller.html">
+        先決條件與安裝
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_cable_the_controller_module_s_fc_vi_hba_ports_to_the_fc_switches_controller_to_fc_sw.html">
+        將新控制器模組的FC-VI和HBA連接埠連接至FC交換器
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_cable_the_cluster_peering_connections.html">
+        新控制器模組的叢集對等連線纜線
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_power_up_both_controller_modules_and_display_the_loader_prompt_2_node_mcc_expansion.html">
+        開啟兩個控制器模組的電源、並顯示載入器提示
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_change_the_ha_config_setts_mcc_add_a_2nd_controller.html">
+        變更現有和新控制器模組的ha-config設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_set_the_partner_system_id_for_both_controller_modules.html">
+        設定兩個控制器模組的合作夥伴系統ID
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_boot_the_exist_controller_module.html">
+        啟動現有的控制器模組
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_assign_disks_to_the_new_controller_mcc_expansion.html">
+        將磁碟指派給新的控制器模組
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_netboot_and_set_up_ontap_on_the_new_controller_module_mcc.html">
+        在ONTAP 新的控制器模組上進行NETboot和設定
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_mirror_the_root_aggregates_mcc_expansion_procedure.html">
+        鏡射新控制器上的根Aggregate
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 設定叢集間LIF</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_configure_intercluster_lifs_to_use_dedicated_intercluster_ports.html">
+        在專用連接埠上設定叢集間LIF
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_configure_intercluster_lifs_to_share_data_ports.html">
+        在共享的資料連接埠上設定叢集間LIF
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_create_a_mirrored_data_aggregate_on_each_node_mcc.html">
+        在每個節點上建立鏡射資料Aggregate
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_install_licenses_on_the_new_controller_module_cluster_mode.html">
+        安裝新控制器模組的授權
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_create_unmirrored_data_aggregates_mcc.html">
+        建立無鏡射的資料集合體
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_install_firmware_after_add_a_controller_module.html">
+        新增控制器模組之後、請安裝韌體
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_refresh_the_mcc_configuration_mcc_configure_refresh.html">
+        使用MetroCluster 新的控制器重新整理此功能
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_enable_storage_failover_both_controller_modules_and_set_cluster_ha.html">
+        在控制器模組和enabl叢集HA上啟用儲存容錯移轉
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_restart_the_svms.html">
+        重新啟動SVM
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 將四節點MetroCluster 的不含任何功能的FC組態擴充為八節點組態</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_expand_a_four_node_mcc_fc_configuration_to_an_eight_node_configuration.html">
+        總覽
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_determin_the_new_cable_layout_mcc_expansion.html">
+        判斷新的纜線配置
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_rack_the_new_equipment_mcc_expansion.html">
+        裝上新設備
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_verify_the_health_of_the_mcc_configuration.html">
+        驗MetroCluster 證整個過程的效能狀況
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_check_for_mcc_configuration_errors_with_config_advisor.html">
+        使用MetroCluster 資訊功能檢查是否有任何不實的組態錯誤Config Advisor
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_send_a_custom_autosupport_message_before_add_nodes_to_the_mcc_configuration.html">
+        在AutoSupport 將節點新增MetroCluster 至「版本資訊」組態之前、請先傳送自訂的版本資訊
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 可重新分區新節點的交換器架構</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_disconnect_the_exist_dr_group_mcc_expansion.html">
+        從網路中斷開現有DR群組的連線
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_apply_the_rcf_files_and_recable_the_switches.html">
+        套用RCF檔案並重新執行交換器
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 在ONTAP 新的控制器上設定</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_clear_the_configuration_on_a_controller_module_mcc.html">
+        清除控制器模組上的組態
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_assign_disk_ownership_in_aff_systems_mcc.html">
+        在AFF 不可靠的系統中指派磁碟擁有權
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_assign_disk_ownership_to_non_aff_systems_mcc.html">
+        在非AFF系統中指派磁碟擁有權
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_verify_that_the_ha_state_of_components_is_mcc_dr_smok_crater_or_mcc_expansion.html">
+        驗證元件的ha-config狀態
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_boot_the_new_controllers_and_join_them_to_the_cluster.html">
+        啟動新控制器並將其加入叢集
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 將叢集設定為MetroCluster 一個靜態組態</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 設定叢集間LIF</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_configure_intercluster_lifs_to_use_dedicated_intercluster_ports.html">
+        在專用連接埠上設定叢集間LIF
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_configure_intercluster_lifs_to_share_data_ports.html">
+        在共享的資料連接埠上設定叢集間LIF
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_mirror_the_root_aggregates_mcc.html">
+        鏡射根Aggregate
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_implement_the_mcc_configuration_mcc_refresh_mcc_expansion.html">
+        實作MetroCluster 這個組態
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_create_a_mirrored_data_aggregate_on_each_node_mcc.html">
+        在每個節點上建立鏡射資料Aggregate
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_configure_the_fc_to_sas_bridges_for_health_monitor.html">
+        設定FC至SAS橋接器以進行健全狀況監控
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_move_a_metadata_volume_in_mcc_configurations.html">
+        在MetroCluster 不完整的組態中移動中繼資料磁碟區
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_check_the_mcc_configuration.html">
+        檢查MetroCluster 該組態
+      </a></li></ul></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_check_for_mcc_configuration_errors_with_config_advisor.html">
+        使用MetroCluster 資訊功能檢查是否有任何不實的組態錯誤Config Advisor
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_send_a_custom_autosupport_message_after_add_nodes_to_the_mcc_configuration.html">
+        之後傳送自訂AutoSupport 的動態訊息、將節點新增MetroCluster 至「動態影像」組態
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_verify_switchover_heal_and_switchback.html">
+        驗證切換、修復及切換
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_expand_a_four_node_mcc_ip_configuration.html">
+        將四節點MetroCluster 的「靜態IP」組態擴充為八節點組態
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/concept_removing_a_disaster_recovery_group.html">
+        移除Disaster Recovery群組
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/reference_where_to_find_additional_information_mcc_ug.html">
+        何處可找到其他資訊
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 從災難中恢復</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/disaster-recovery/concept_dr_workflow.html">
+        災難恢復工作流程
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/disaster-recovery/task_perform_a_forced_switchover_after_a_disaster.html">
+        在發生災難後執行強制切換
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/disaster-recovery/concept_choosing_the_correct_recovery_procedure_parent_concept.html">
+        選擇正確的恢復程序
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 從多控制器或儲存設備故障中恢復</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/disaster-recovery/task_recover_from_a_multi_controller_and_or_storage_failure.html">
+        開始之前
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/disaster-recovery/task_replace_hardware_and_boot_new_controllers.html">
+        更換硬體並啟動新的控制器
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 準備MetroCluster 在不還原IP組態中進行切換</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/disaster-recovery/task_prepare_for_switchback_in_a_mcc_ip_configuration_supertask.html">
+        總覽
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/disaster-recovery/task_set_env_mcip.html">
+        在MetroCluster 不完整的IP組態中設定所需的環境變數
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/disaster-recovery/task_power_on_mcip.html">
+        在災難現場開啟設備電源（MetroCluster 不支援IP組態）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/disaster-recovery/task_config_switches_mcip.html">
+        設定IP交換器（MetroCluster 不含IP組態）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/disaster-recovery/task_verify_connectivity_mcip.html">
+        驗證遠端站台的儲存設備連線能力（MetroCluster 知識產權組態）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/disaster-recovery/task_reassign_pool1_disastersite_mcip.html">
+        重新指派災難站台上集區1磁碟的磁碟擁有權（MetroCluster 知識IP組態）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/disaster-recovery/task_boot_ontap_mcip.html">
+        以ONTAP 靜態IP組態開機至更換的控制器模組MetroCluster
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/disaster-recovery/task_restore_connectivity_mcip.html">
+        從正常運作的節點還原至災難站台的連線能力MetroCluster （支援各種IP組態）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/disaster-recovery/task_verify_assignment_mcip.html">
+        驗證自動指派或手動指派Pool 0磁碟機
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/disaster-recovery/task_assign_pool1_survivingsite_mcip.html">
+        在存續站台上指派集區1磁碟機（MetroCluster 不支援的IP組態）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/disaster-recovery/task_delete_plexes_mcip.html">
+        刪除存續站台擁有的失敗叢集（MetroCluster 不適用的IP組態）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/disaster-recovery/task_heal_restore_mcip.html">
+        執行Aggregate修復與還原鏡像（MetroCluster 知識IP組態）
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 準備MetroCluster 以不還原FC組態進行切換</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/disaster-recovery/task_verify_port_mcfc.html">
+        驗證連接埠組態（MetroCluster 僅限FFC組態）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/disaster-recovery/task_cfg_bridges_mcfc.html">
+        設定FC對SAS橋接器（MetroCluster 僅限不含功能的FC組態）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/disaster-recovery/task_cfg_switches_mcfc.html">
+        設定FC交換器（MetroCluster 僅限不含FFC組態）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/disaster-recovery/task_verify_storage_mcfc.html">
+        驗證儲存組態
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/disaster-recovery/task_power_on_mcfc.html">
+        開啟災難現場的設備電源
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/disaster-recovery/task_assign_ownership_mcfc.html">
+        指派更換磁碟機的擁有權
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/disaster-recovery/task_heal_restore_mcfc.html">
+        執行Aggregate修復與還原鏡像（MetroCluster 不含FC組態）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/disaster-recovery/task_reassign_roots_mcfc.html">
+        將根Aggregate的磁碟擁有權重新指派給更換的控制器模組（MetroCluster 不含FFC組態）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/disaster-recovery/task_boot_new_mcfc.html">
+        開機新的控制器模組（MetroCluster 不含FC組態）
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/disaster-recovery/task_prepare_the_nodes_for_switchback_in_a_mixed_configuration.html">
+        在混合式組態中準備節點以進行切換（轉換期間的還原）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/disaster-recovery/task_complete_recovery.html">
+        完整恢復
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/disaster-recovery/task_recover_from_a_non_controller_failure_mcc_dr.html">
+        從非控制器故障中恢復
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/reference_legal_notices.html">
+        法律聲明
+      </a></li></ul>
+</div>
+<script>
+  window.onscroll = () => {
+    const value = -40 - (document.body.scrollHeight - (window.innerHeight + document.scrollingElement.scrollTop));
+    
+    document.getElementById("sidebar-height").style.bottom = Math.max(0,value) + "px";
+};
+</script>
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+
+  </div>
+  
+
+  <div class="ie-content-pane n-doc__component-detail-content n-doc__component-detail-content--show-code">
+    <!-- Begin of page container --><article class="page-content">
+      <div class="ie-utility">
+  <div class="ie-menu">
+    <div class="n-breadcrumb">
+      <ul class="n-breadcrumb__list">
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com">docs.netapp.com</a>
+        </li>
+        
+
+        
+
+        <li class="n-breadcrumb__list-item">
+          <a href="/zh-tw/ontap-metrocluster/">ONTAP&nbsp;MetroCluster</a>
+        </li>
+
+      </ul>
+    </div>
+    <div style="clear: both"></div><!-- Main needs to have height -->
+  </div>
+</div>
+
+      <div class="ie-nmt-disclaimer">
+  <span>
+    <div class="ie-nmt-disclaimer-container">
+      <div class="ie-nmt-disclaimer-icon">
+        <svg class="luci-icon" aria-hidden="true">
+          <use xlink:href="/zh-tw/ontap-metrocluster/common/svg/sprite.svg#circle-info">
+        </svg>
+      </div>
+      <div class="ie-nmt-disclaimer-content">
+        <span> 本繁體中文版使用機器翻譯，譯文僅供參考，若與英文版本牴觸，應以英文版本為準。 </span>
+      </div>
+      <div style="clear:both;"></div>
+    </div>
+  </span>
+</div><div class="n-doc__component-detail-heading-wrap">
+  <h1 class="n-doc__component-detail-heading">自動指派磁碟機和ONTAP ADP系統的考量事項、位於更新版本的更新版本</h1>
+</div>
+
+
+<p class="page-details">
+  
+    
+    <time datetime="2022-05-03 08:11:44 +0000">05/03/2022</time>
+    
+  
+
+
+</p>
+
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph lead">
+<p>從推出《支援使用ADP的更新系統》（進階磁碟分割）的《支援更新安裝的支援範例ONTAP 》（《支援使用MetroCluster ADP的更新AFF 系統》、《支援更新的安裝程序》、在大多數的組態中、分割區和磁碟指派會在MetroCluster 初始設定的站台期間自動執行。</p>
+</div>
+<div class="paragraph">
+<p>適用於ADP支援的下列變更包含在更新版本中：ONTAP</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>資源池0磁碟指派在原廠完成。</p>
+</li>
+<li>
+<p>無鏡射根目錄是在原廠建立。</p>
+</li>
+<li>
+<p>資料分割區指派是在客戶站台的設定程序期間完成。</p>
+</li>
+<li>
+<p>在大多數情況下、磁碟機指派和分割會在設定程序期間自動完成。</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-metrocluster/images/note.svg" alt="附註">
+</td>
+<td class="content">
+從ONTAP S得9.4升級至9.5時、系統會辨識現有的磁碟指派。
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="自動分割">自動分割</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>ADP會在平台初始組態期間自動執行。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-metrocluster/images/note.svg" alt="附註">
+</td>
+<td class="content">
+從ONTAP 功能更新9.5開始、磁碟的自動指派必須使用命令「shorage disk option modify -autodassign on」來啟用。
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>安裝期間最多可自動分割96個磁碟機。您可以在初始安裝之後新增額外的磁碟機。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="機櫃自動指派的運作方式">機櫃自動指派的運作方式</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>如果每個站台有四個外部磁碟櫃、則每個磁碟櫃都會指派給不同的節點和不同的資源池、如下列範例所示：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>此時會自動將site_A-balle_1上的所有磁碟指派給node_a_1的Pool 0</p>
+</li>
+<li>
+<p>此時會自動將site_A-balle_3上的所有磁碟指派給node_a_2的資源池0</p>
+</li>
+<li>
+<p>此時會自動將site_B-b櫃_1上的所有磁碟指派給node_B_1的Pool 0</p>
+</li>
+<li>
+<p>此時會自動將site_B-b櫃_3上的所有磁碟指派給node_B_2的資源池0</p>
+</li>
+<li>
+<p>此時會自動將site_B-b櫃_2上的所有磁碟指派給node_a_1的資源池1</p>
+</li>
+<li>
+<p>此時會自動將site_B-b櫃_4上的所有磁碟指派給node_a_2的集區1</p>
+</li>
+<li>
+<p>此時會自動將site_A-bally_2上的所有磁碟指派給node_B_1的集區1</p>
+</li>
+<li>
+<p>此時會自動將site_A-bally_4上的所有磁碟指派給node_B_2的集區1</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="如何填入部分已滿的磁碟櫃">如何填入部分已滿的磁碟櫃</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>如果您的組態使用的磁碟櫃未完全填滿（有空的磁碟機支架）、則必須根據磁碟指派原則、將磁碟平均分配到整個磁碟櫃。磁碟指派原則取決於每MetroCluster 個站台有多少磁碟櫃。</p>
+</div>
+<div class="paragraph">
+<p>如果您在每個站台使用單一磁碟櫃（或AFF 只使用內部磁碟櫃、位於一個E800*系統上）、則會使用一個磁碟櫃原則來指派磁碟。如果磁碟櫃未完全裝滿、請將磁碟機平均安裝在所有季度。</p>
+</div>
+<div class="paragraph">
+<p>下表顯示如何將24個磁碟放入48個磁碟機內部磁碟櫃的範例。也會顯示磁碟機的擁有權。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">48個磁碟機支架分為四季：</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">每季在前六個磁碟槽中安裝六個磁碟機&#8230;&#8203;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>第1季：Bay 0-11</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>托架0-5</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>第2季：Bay 12-23</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>磁碟槽12-17</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>第3季：Bay 24-035</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>托架24至29個</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>第4季：Bay 36-48</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>托架36-41</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>如果您在每個站台使用兩個磁碟櫃、則會使用半磁碟櫃原則來指派磁碟。如果磁碟櫃未完全裝滿、請從磁碟櫃任一端平均安裝磁碟機。</p>
+</div>
+<div class="paragraph">
+<p>例如、如果您要在24個磁碟機櫃中安裝12個磁碟機、請在0到5和18到23個磁碟機槽中安裝磁碟機。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="手動指派磁碟機ontap-s9-5">手動指派磁碟機（ONTAP S9.5）</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>在支援S9.5的系統中ONTAP 、需要在具有下列機櫃組態的系統上手動指派磁碟機：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>每個站台有三個外部磁碟櫃。</p>
+<div class="paragraph">
+<p>兩個磁碟櫃會使用半磁碟櫃指派原則自動指派、但第三個磁碟櫃必須手動指派。</p>
+</div>
+</li>
+<li>
+<p>每個站台有四個以上的磁碟櫃、外部磁碟櫃的總數並不是四個的倍數。</p>
+<div class="paragraph">
+<p>四個磁碟機中最接近的多個磁碟櫃仍未指派、因此必須手動指派磁碟機。例如、如果站台有五個外部磁碟櫃、則必須手動指派磁碟櫃五。</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>您只需要在每個未指派的機櫃上手動指派一個磁碟機。然後會自動指派磁碟櫃上的其餘磁碟機。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="手動指派磁碟機ontap-例如9-4">手動指派磁碟機（ONTAP 例如、9.4）</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>在NetApp 9.4中ONTAP 、下列機櫃組態的系統需要手動指派磁碟機：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>每個站台不到四個外部磁碟櫃。</p>
+<div class="paragraph">
+<p>磁碟機必須手動指派、以確保磁碟機的對稱指派、每個集區的磁碟機數量必須相等。</p>
+</div>
+</li>
+<li>
+<p>每個站台有四個以上的外部磁碟櫃、外部磁碟櫃的總數則不是四個的倍數。</p>
+<div class="paragraph">
+<p>四個磁碟機中最接近的多個磁碟櫃仍未指派、因此必須手動指派磁碟機。</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>手動指派磁碟機時、您應該對稱地指派磁碟、並為每個集區指派相同數量的磁碟機。例如、如果每個站台的組態有兩個儲存磁碟櫃、您可以使用一個磁碟櫃連接本機HA配對、另一個磁碟櫃連接至遠端HA配對：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>將ssite a櫃1上的一半磁碟指派給node_a_1的資源池0。</p>
+</li>
+<li>
+<p>將s加_A-bider_1上的一半磁碟指派給node_a_2的資源池0。</p>
+</li>
+<li>
+<p>將ssite A-bider_2上的一半磁碟指派給node_B_1的集區1。</p>
+</li>
+<li>
+<p>將ssite A-bider_2上的一半磁碟指派給node_B_2的集區1。</p>
+</li>
+<li>
+<p>將ssite B-sider_1上的一半磁碟指派給node_B_1的Pool 0。</p>
+</li>
+<li>
+<p>將s加 至node_B_2的Pool 0的s加 至s加 至s加 至s加 至sente_B-sidb_1的一半磁碟。</p>
+</li>
+<li>
+<p>將s加 至node_a_1之集區1的se_b-be-bider_2上的一半磁碟指派給該集區。</p>
+</li>
+<li>
+<p>將s加 至node_a_2集區1的s加 至s站 點_B-side_2上的一半磁碟。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="新增磁碟櫃至現有組態">新增磁碟櫃至現有組態</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>自動磁碟機指派可在現有組態中對稱地新增磁碟櫃。</p>
+</div>
+<div class="paragraph">
+<p>新增磁碟櫃時、系統會將相同的指派原則套用至新增的磁碟櫃。例如、每個站台只有一個機櫃、如果新增了一個機櫃、系統就會將機櫃指派規則套用至新機櫃。</p>
+</div>
+<div class="paragraph">
+<p><a href="concept_required_mcc_ip_components_and_naming_guidelines_mcc_ip.html">"必要MetroCluster 的知識、包括知識、知識、知識、知識、知識、知識"</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html" target="_blank" rel="noopener">"磁碟與Aggregate管理"</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="adp和磁碟指派差異依系統metrocluster-而異以供搭配使用">ADP和磁碟指派差異、依系統MetroCluster 而異、以供搭配使用</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>進階磁碟分割（ADP MetroCluster ）的操作以及在各種不同的系統模式下自動指派磁碟。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-metrocluster/images/note.svg" alt="附註">
+</td>
+<td class="content">
+在使用ADP的系統中、會使用分割區來建立集合體、將每個磁碟機分割至P1、P2和P3分割區。根Aggregate是使用P3分割區建立的。
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>您必須符合MetroCluster 支援磁碟機數量上限和其他準則的要求。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://hwu.netapp.com">"NetApp Hardware Universe"</a></p>
+</div>
+<div class="sect2">
+<h3 id="adp和磁碟指派位於aff-不受保護的a320系統上">ADP和磁碟指派、位於AFF 不受保護的A320系統上</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">準則</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">每個站台的磁碟機數量</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">磁碟機指派規則</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">root分割區的ADP配置</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>建議的最低磁碟機數（每個站台）</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>48個磁碟機</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>每個外部機櫃上的磁碟機分為兩個相同的群組（一半）。每個半磁碟櫃都會自動指派給個別的資源池。</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>本機HA配對使用一個機櫃。第二個機櫃由遠端HA配對使用。</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">每個機櫃上的分割區都用於建立根Aggregate。根Aggregate中的兩個叢集都包含下列分割區</dt>
+<dd>
+<div class="openblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>八個資料分割區</p>
+</li>
+<li>
+<p>兩個同位元檢查分割區</p>
+</li>
+<li>
+<p>兩個備用磁碟分割</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</dd>
+</dl>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>支援的磁碟機下限（每個站台）</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>24個磁碟機</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>磁碟機分為四個等群組。每個季度櫃都會自動指派給個別的資源池。</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>根Aggregate中的兩個叢集分別包含下列分割區：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>三個資料分割區</p>
+</li>
+<li>
+<p>兩個同位元檢查分割區</p>
+</li>
+<li>
+<p>一個備用分割區</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="adp和磁碟指派適用於aff-solidon-a220系統">ADP和磁碟指派、適用於AFF Solidon A220系統</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">準則</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">每個站台的磁碟機數量</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">磁碟機指派規則</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">root分割區的ADP配置</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>建議的最低磁碟機數（每個站台）</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>僅限內部磁碟機</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>內部磁碟機分為四個相同群組。每個群組都會自動指派給個別的集區、而且每個集區都會指派給組態中的個別控制器。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-metrocluster/images/note.svg" alt="附註">
+</td>
+<td class="content">
+一半的內部磁碟機在MetroCluster 設定完使用功能前仍未指派。
+</td>
+</tr>
+</table>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>本地HA配對使用四分之二。其餘兩季則由遠端HA配對使用。</p>
+</div>
+<div class="paragraph">
+<p>根Aggregate在每個叢中包含下列分割區：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>三個資料分割區</p>
+</li>
+<li>
+<p>兩個同位元檢查分割區</p>
+</li>
+<li>
+<p>一個備用分割區</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>支援的磁碟機下限（每個站台）</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>16個內部磁碟機</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>磁碟機分為四個等群組。每個季度櫃都會自動指派給個別的資源池。</p>
+</div>
+<div class="paragraph">
+<p>每個機櫃上的四分之二可以有相同的集區。根據擁有該季的節點來選擇資源池：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>如果由本機節點擁有、則會使用Pool0。</p>
+</li>
+<li>
+<p>如果是由遠端節點擁有、則會使用Pool1。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>例如：第1季到第4季的機櫃可以指派下列作業：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Q1：node_a_1 Pool0</p>
+</li>
+<li>
+<p>Q2：node_a_2 Pool0</p>
+</li>
+<li>
+<p>問題3：node_B_1 Pool1</p>
+</li>
+<li>
+<p>Q4：node_B_2 Pool1</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-metrocluster/images/note.svg" alt="附註">
+</td>
+<td class="content">
+一半的內部磁碟機在MetroCluster 設定完使用功能前仍未指派。
+</td>
+</tr>
+</table>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>根Aggregate中的兩個叢集分別包含下列分割區：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>一個資料分割區</p>
+</li>
+<li>
+<p>兩個同位元檢查分割區</p>
+</li>
+<li>
+<p>一個備用分割區</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="adp和磁碟指派位於aff-solide-a250系統上">ADP和磁碟指派、位於AFF Solide A250系統上</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">準則</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">每個站台的磁碟機數量</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">磁碟機指派規則</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">root分割區的ADP配置</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>建議的最低磁碟機數（每個站台）</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>48個磁碟機</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>每個外部機櫃上的磁碟機分為兩個相同的群組（一半）。每個半磁碟櫃都會自動指派給個別的資源池。</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>本機HA配對使用一個機櫃。第二個機櫃由遠端HA配對使用。</p>
+</div>
+<div class="paragraph">
+<p>每個機櫃上的分割區都用於建立根Aggregate。根Aggregate在每個叢中包含下列分割區：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>八個資料分割區</p>
+</li>
+<li>
+<p>兩個同位元檢查分割區</p>
+</li>
+<li>
+<p>兩個備用磁碟分割</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>支援的磁碟機下限（每個站台）</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>僅限24個內部磁碟機</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>磁碟機分為四個等群組。每個季度櫃都會自動指派給個別的資源池。</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>根Aggregate中的兩個叢集分別包含下列分割區：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>三個資料分割區</p>
+</li>
+<li>
+<p>兩個同位元檢查分割區</p>
+</li>
+<li>
+<p>一個備用分割區</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="adp和磁碟指派位於aff-solida300系統上">ADP和磁碟指派、位於AFF Solida300系統上</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">準則</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">每個站台的磁碟機數量</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">磁碟機指派規則</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">root分割區的ADP配置</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>建議的最低磁碟機數（每個站台）</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>48個磁碟機</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>每個外部機櫃上的磁碟機分為兩個相同的群組（一半）。每個半磁碟櫃都會自動指派給個別的資源池。</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>本機HA配對使用一個機櫃。第二個機櫃由遠端HA配對使用。</p>
+</div>
+<div class="paragraph">
+<p>每個機櫃上的分割區都用於建立根Aggregate。根Aggregate在每個叢中包含下列分割區：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>八個資料分割區</p>
+</li>
+<li>
+<p>兩個同位元檢查分割區</p>
+</li>
+<li>
+<p>兩個備用磁碟分割</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>支援的磁碟機下限（每個站台）</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>24個磁碟機</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>磁碟機分為四個等群組。每個季度櫃都會自動指派給個別的資源池。</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>根Aggregate中的兩個叢集分別包含下列分割區：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>三個資料分割區</p>
+</li>
+<li>
+<p>兩個同位元檢查分割區</p>
+</li>
+<li>
+<p>一個備用分割區</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="adp和磁碟指派位於aff-solida400系統上">ADP和磁碟指派、位於AFF Solida400系統上</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">準則</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">每個站台的磁碟機數量</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">磁碟機指派規則</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">root分割區的ADP配置</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>建議的最低磁碟機數（每個站台）</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>96個磁碟機</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>磁碟機會依機櫃自動指派。</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>根Aggregate中的兩個叢集分別包括：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>20個資料分割區</p>
+</li>
+<li>
+<p>兩個同位元檢查分割區</p>
+</li>
+<li>
+<p>兩個備用磁碟分割</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>支援的磁碟機下限（每個站台）</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>24個磁碟機</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>磁碟機分為四個等群組（四個季度）。每個季度櫃都會自動指派給個別的資源池。</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>根Aggregate中的兩個叢集分別包括：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>三個資料分割區</p>
+</li>
+<li>
+<p>兩個同位元檢查分割區</p>
+</li>
+<li>
+<p>一個備用分割區</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="adp和磁碟指派位於aff-solida700系統上">ADP和磁碟指派、位於AFF Solida700系統上</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">準則</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">每個站台的磁碟機數量</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">磁碟機指派規則</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">root分割區的ADP配置</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>建議的最低磁碟機數（每個站台）</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>96個磁碟機</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>磁碟機會依機櫃自動指派。</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>根Aggregate中的兩個叢集分別包括：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>20個資料分割區</p>
+</li>
+<li>
+<p>兩個同位元檢查分割區</p>
+</li>
+<li>
+<p>兩個備用磁碟分割</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>支援的磁碟機下限（每個站台）</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>24個磁碟機</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>磁碟機分為四個等群組（四個季度）。每個季度櫃都會自動指派給個別的資源池。</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>根Aggregate中的兩個叢集分別包括：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>三個資料分割區</p>
+</li>
+<li>
+<p>兩個同位元檢查分割區</p>
+</li>
+<li>
+<p>一個備用分割區</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="adp和磁碟指派位於aff-solida800系統上">ADP和磁碟指派、位於AFF Solida800系統上</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">準則</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">每個站台的磁碟機數量</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">磁碟機指派規則</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">根Aggregate的ADP配置</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>建議的最低磁碟機數（每個站台）</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>內部磁碟機和96個外部磁碟機</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>內部分割區分為四個相等的群組（季度）。每一季都會自動指派給個別的資源池。外部磁碟櫃上的磁碟機會依機櫃自動指派、每個磁碟櫃上的所有磁碟機都會指派MetroCluster 到位在「還原」組態中的四個節點之一。</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>根Aggregate是以內部機櫃上的12個根分割區所建立。</p>
+</div>
+<div class="paragraph">
+<p>根Aggregate中的兩個叢集分別包括：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>八個資料分割區</p>
+</li>
+<li>
+<p>兩個同位元檢查分割區</p>
+</li>
+<li>
+<p>兩個備用磁碟分割</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>支援的磁碟機下限（每個站台）</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>僅限24個內部磁碟機</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>內部分割區分為四個相等的群組（季度）。每一季都會自動指派給個別的資源池。</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>根Aggregate是以內部機櫃上的12個根分割區所建立。</p>
+</div>
+<div class="paragraph">
+<p>根Aggregate中的兩個叢集分別包括：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>三個資料分割區</p>
+</li>
+<li>
+<p>兩個同位元檢查分割區</p>
+</li>
+<li>
+<p>一個備用磁碟分割</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="adp和磁碟指派位於aff-solidwa-900系統">ADP和磁碟指派、位於AFF SolidWa 900系統</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">準則</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">每個站台的磁碟櫃</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">磁碟機指派規則</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">root分割區的ADP配置</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>建議的最低磁碟機數（每個站台）</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>96個磁碟機</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>磁碟機會依機櫃自動指派。</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>根Aggregate中的兩個叢集分別包括：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>20個資料分割區</p>
+</li>
+<li>
+<p>兩個同位元檢查分割區</p>
+</li>
+<li>
+<p>兩個備用磁碟分割</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>支援的磁碟機下限（每個站台）</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>24個磁碟機</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>磁碟機分為四個等群組（四個季度）。每個季度櫃都會自動指派給個別的資源池。</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>根Aggregate中的兩個叢集分別包括：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>三個資料分割區</p>
+</li>
+<li>
+<p>兩個同位元檢查分割區</p>
+</li>
+<li>
+<p>一個備用分割區</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="fas2750系統上的磁碟指派">FAS2750系統上的磁碟指派</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">準則</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">每個站台的磁碟機數量</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">磁碟機指派規則</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">root分割區的ADP配置</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>建議的最低磁碟機數（每個站台）</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>24個內部磁碟機和24個外部磁碟機</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>內部與外部磁碟櫃分為兩半。每一半會自動指派給不同的資源池</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>不適用。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="fas8200系統上的磁碟指派">FAS8200系統上的磁碟指派</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">準則</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">每個站台的磁碟機數量</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">磁碟機指派規則</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">root分割區的ADP配置</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>建議的最低磁碟機數（每個站台）</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>48個磁碟機</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>外部磁碟櫃上的磁碟機分為兩個等群組（兩個半）。每個半磁碟櫃都會自動指派給個別的資源池。</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>不適用。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="fas500f系統上的磁碟指派">FAS500f系統上的磁碟指派</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">準則</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">每個站台的磁碟機數量</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">磁碟機指派規則</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">root分割區的ADP配置</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>建議的最低磁碟機數（每個站台）</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>96個磁碟機</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>磁碟機會依機櫃自動指派。</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>不適用。</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="fas9000系統上的磁碟指派">FAS9000系統上的磁碟指派</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">準則</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">每個站台的磁碟機數量</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">磁碟機指派規則</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">root分割區的ADP配置</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>建議的最低磁碟機數（每個站台）</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>96個磁碟機</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>磁碟機會依機櫃自動指派。</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>不適用。</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>支援的磁碟機下限（每個站台）</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>48個磁碟機</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>磁碟櫃上的磁碟機分為兩個等群組（兩個半）。每個半磁碟櫃都會自動指派給個別的資源池。</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>支援的磁碟機下限（每個站台）（主動/被動HA組態）</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  <div style="clear: both"></div><!-- Main needs to have height --></div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+      <div class="n-footer__bottom-left">
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/us/legal/copyright.aspx">© 2022 NetApp, Inc.</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/terms-of-use/">legal-terms</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/privacy-policy/">legal-privacy</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/cookie-policy/">legal-cookies</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a class="ot-sdk-show-settings">cookie-settings</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="n-footer__bottom-right">
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <span class="n-footer__fine-print">對我們的網站有任何意見或要求？</span>
+              <a target="_self" href="javascript:netapp_mailto()">請與我們聯絡</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://docs.netapp.com/zh-tw/announcements/">公告</a>
+            </li>
+          </ul>
+        </div>
+        <div class="n-footer__social-links">
+          <ul class="n-footer__social-link-list">
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-blog" href="https://blog.netapp.com"
+                target="_blank" title="blog" alt="blog">
+                <span class="n-footer__social-link-text">blog</span>
+                <svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+                  <title>blog@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/zh-tw/ontap-metrocluster/common/svg/sprite.svg#blog"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-community" href="https://community.netapp.com/"
+                target="_blank" title="community" alt="community">
+                <span class="n-footer__social-link-text">community</span>
+                <svg class="n-icon-community n-footer__social-link-icon" aria-labelledby="title">
+                  <title>community@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/zh-tw/ontap-metrocluster/common/svg/sprite.svg#comments"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netapp"
+                target="_blank" title="twitter" alt="twitter">
+                <span class="n-footer__social-link-text">twitter</span>
+                <svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+                  <title>twitter@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/zh-tw/ontap-metrocluster/common/svg/sprite.svg#twitter"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-facebook" href="https://www.facebook.com/NetApp"
+                target="_blank" title="facebook" alt="facebook">
+                <span class="n-footer__social-link-text">facebook</span>
+                <svg class="n-icon-facebook n-footer__social-link-icon" aria-labelledby="title">
+                  <title>facebook@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/zh-tw/ontap-metrocluster/common/svg/sprite.svg#facebook"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-linkedin"
+                href="https://www.linkedin.com/company/netapp" target="_blank" title="linkedin" alt="linkedin">
+                <span class="n-footer__social-link-text">linkedin</span>
+                <svg class="n-icon-linkedin n-footer__social-link-icon" aria-labelledby="title">
+                  <title>linkedin@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/zh-tw/ontap-metrocluster/common/svg/sprite.svg#linkedin"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-youtube"
+                href="https://www.youtube.com/user/NetAppTV" target="_blank" title="youtube" alt="youtube">
+                <span class="n-footer__social-link-text">youtube</span>
+                <svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+                  <title>youtube@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/zh-tw/ontap-metrocluster/common/svg/sprite.svg#youtube"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-slideshare"
+                href="https://www.slideshare.net/NetApp" target="_blank" title="slideshare" alt="slideshare">
+                <span class="n-footer__social-link-text">slideshare</span>
+                <svg class="n-icon-slideshare n-footer__social-link-icon" aria-labelledby="title">
+                  <title>slideshare@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/zh-tw/ontap-metrocluster/common/svg/sprite.svg#slideshare"></use>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+      </div><!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/zh-tw/ontap-metrocluster/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/zh-tw/ontap-metrocluster/js/prism.js'></script>
+      <script type="text/javascript" src='/zh-tw/ontap-metrocluster/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/zh-tw/ontap-metrocluster/js/www-ntap.js'></script>
+    <script src='/zh-tw/ontap-metrocluster/js/tabbed-blocks.js'></script>
+  </body></html>
