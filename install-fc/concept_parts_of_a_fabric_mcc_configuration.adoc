@@ -1,0 +1,118 @@
+---
+permalink: install-fc/concept_parts_of_a_fabric_mcc_configuration.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, configuration 
+summary: 規劃MetroCluster 您的需求時、您應該瞭解硬體元件及其互連方式。 
+---
+= 部分的Fabric MetroCluster 架構不整組態
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+規劃MetroCluster 您的需求時、您應該瞭解硬體元件及其互連方式。
+
+
+
+== 災難恢復（DR）群組
+
+根據MetroCluster VMware組態中的節點數量MetroCluster 、Fabric的不二組態由一或兩個DR群組組成。每個DR群組包含四個節點。
+
+* 八節點MetroCluster 的不全功能組態包含兩個DR群組。
+* 四節點MetroCluster 的不全功能組態由一個DR群組組成。
+
+
+下圖顯示八節點MetroCluster 的節點的結構描述：
+
+image::../media/mcc_dr_groups_8_node.gif[MCC DR群組8節點]
+
+下圖顯示了四節點MetroCluster 的節點的架構。
+
+image::../media/mcc_dr_groups_4_node.gif[MCC DR群組4個節點]
+
+
+
+== 關鍵硬體元素
+
+這個組態包括下列主要硬體元素：MetroCluster
+
+* 儲存控制器
++
+儲存控制器並未直接連接至儲存設備、而是連接至兩個備援FC交換器架構。
+
+* FC至SAS橋接器
++
+FC對SAS橋接器可將SAS儲存堆疊連接至FC交換器、在兩種傳輸協定之間提供橋接功能。
+
+* FC交換器
++
+FC交換器可在兩個站台之間提供遠距主幹ISL。FC交換器提供兩種儲存架構、可將資料鏡射至遠端儲存資源池。
+
+* 叢集對等網路
++
+叢集對等網路提供連線功能、可鏡射叢集組態、包括儲存虛擬機器（SVM）組態。一個叢集上所有的SVM組態都會鏡射到合作夥伴叢集。
+
+
+
+
+
+== 八節點架構MetroCluster 的結構不全組態
+
+八節點組態由兩個叢集組成、每個地理區分隔的站台各有一個叢集。叢集_A位於第一個MetroCluster 站台。叢集B位於第二MetroCluster 個站台。每個站台都有一個SAS儲存堆疊。支援其他儲存堆疊、但每個站台只會顯示一個。HA配對可設定為無交換器叢集、不需使用叢集互連交換器。支援交換式組態、但不會顯示。
+
+八節點組態包括下列連線：
+
+* 從每個控制器的HBA和FC-VI介面卡到每個FC交換器的FC連線
+* 從每個FC到SAS橋接器到FC交換器的FC連線
+* 每個SAS磁碟櫃之間的SAS連線、以及從每個堆疊的頂端和底部到FC對SAS橋接器的連線
+* 本機HA配對中每個控制器之間的HA互連
++
+如果控制器支援單一機箱HA配對、則HA互連是內部的、透過背板進行、表示不需要外部互連。
+
+* 從控制器到客戶提供的網路的乙太網路連線、用於叢集對等
++
+SVM組態會透過叢集對等網路複寫。
+
+* 本機叢集中每個控制器之間的叢集互連
+
+
+
+
+== 四節點架構MetroCluster 的結構不全組態
+
+下圖顯示四節點Fabric MetroCluster 的精簡組態檢視。對於某些連線、單一線路代表元件之間的多個備援連線。不會顯示資料與管理網路連線。
+
+image::../media/mcc_hardware_architecture_both_clusters.gif[MCC硬體架構兩個叢集]
+
+下圖顯示單MetroCluster 一支援叢集中連線能力的更詳細檢視（兩個叢集的組態相同）：
+
+image::../media/mcc_hardware_architecture_cluster_a_with_7500n.gif[MCC硬體架構叢集A、含7500n]
+
+
+
+== 雙節點架構MetroCluster 的架構不全組態
+
+下圖顯示雙節點Fabric MetroCluster 的組態簡化檢視。對於某些連線、單一線路代表元件之間的多個備援連線。不會顯示資料與管理網路連線。
+
+image::../media/mcc_hardware_architecture_both_clusters_2_node_fabric.gif[MCC硬體架構兩個叢集2節點架構]
+
+雙節點組態由兩個叢集組成、每個地理區分隔的站台各有一個叢集。叢集_A位於第一個MetroCluster 站台。叢集B位於第二MetroCluster 個站台。每個站台都有一個SAS儲存堆疊。支援其他儲存堆疊、但每個站台只會顯示一個。
+
+
+NOTE: 在雙節點組態中、節點並未設定為HA配對。
+
+下圖顯示單MetroCluster 一支援叢集中連線能力的更詳細檢視（兩個叢集的組態相同）：
+
+image::../media/mcc_hardware_architecture_cluster_a_2_node_with_7500n.gif[MCC硬體架構叢集A 2節點、含7500n]
+
+雙節點組態包括下列連線：
+
+* 每個控制器模組上的FC-VI介面卡之間的FC連線
+* 從每個控制器模組的HBA到每個SAS機櫃堆疊的FC對SAS橋接器的FC連線
+* 每個SAS磁碟櫃之間的SAS連線、以及從每個堆疊的頂端和底部到FC對SAS橋接器的連線
+* 從控制器到客戶提供的網路的乙太網路連線、用於叢集對等
++
+SVM組態會透過叢集對等網路複寫。
+
+

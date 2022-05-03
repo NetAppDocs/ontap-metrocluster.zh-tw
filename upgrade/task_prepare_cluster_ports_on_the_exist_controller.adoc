@@ -1,0 +1,185 @@
+---
+permalink: upgrade/task_prepare_cluster_ports_on_the_exist_controller.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, prepare, cluster, ports, existing, controller, module 
+summary: 在安裝新的控制器模組之前、您必須在現有的控制器模組上設定叢集連接埠、以便叢集連接埠能夠與新的控制器模組進行叢集通訊。 
+---
+= 準備現有控制器模組上的叢集連接埠
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在安裝新的控制器模組之前、您必須在現有的控制器模組上設定叢集連接埠、以便叢集連接埠能夠與新的控制器模組進行叢集通訊。
+
+如果您要建立雙節點無交換式叢集（沒有叢集網路交換器）、則必須啟用無交換式叢集網路模式。
+
+如需ONTAP 有關連接埠、LIF及網路組態的詳細資訊、請參閱 link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/home.html["網路管理"^]。
+
+.步驟
+. 確定應使用哪些連接埠作為節點的叢集連接埠。
++
+如需您平台的預設連接埠角色清單、請參閱 https://hwu.netapp.com/["Hardware Universe"^]
+
++
+NetApp支援網站上適用於您平台的_Installation and Setup Instructions（安裝與設定說明）包含叢集網路連線的連接埠相關資訊。
+
+. 針對每個叢集連接埠、識別連接埠角色：
++
+「網路連接埠展示」
+
++
+在下列範例中、連接埠「e0a」、「e0b」、「e0c」和「e0d」必須變更為叢集連接埠：
+
++
+[listing]
+----
+cluster_A::> network port show
+
+Node: controller_A_1
+Speed(Mbps) Health
+Port      IPspace      Broadcast Domain Link  MTU    Admin/Oper  Status
+--------- ------------ ---------------- ----  ----   ----------- --------
+e0M       Default      mgmt_bd_1500     up    1500   auto/1000   healthy
+e0a       Default      Default          up    1500   auto/10000  healthy
+e0b       Default      Default          up    1500   auto/10000  healthy
+e0c       Default      Default          up    1500   auto/10000  healthy
+e0d       Default      Default          up    1500   auto/10000  healthy
+e0i       Default      Default          down  1500   auto/10     -
+e0j       Default      Default          down  1500   auto/10     -
+e0k       Default      Default          down  1500   auto/10     -
+e0l       Default      Default          down  1500   auto/10     -
+e2a       Default      Default          up    1500   auto/10000  healthy
+e2b       Default      Default          up    1500   auto/10000  healthy
+e4a       Default      Default          up    1500   auto/10000  healthy
+e4b       Default      Default          up    1500   auto/10000  healthy
+13 entries were displayed.
+----
+. 對於使用叢集連接埠做為主連接埠或目前連接埠的任何資料LIF、請修改LIF以使用資料連接埠做為其主連接埠：
++
+網路介面修改
+
++
+下列範例將資料LIF的主連接埠變更為資料連接埠：
+
++
+[listing]
+----
+cluster1::> network interface modify -lif datalif1 -vserver vs1 -home-port e1b
+----
+. 針對您修改的每個LIF、將LIF還原為新的主連接埠：
++
+網路介面回復
+
++
+以下範例將LIF「datalif1」還原為新的主連接埠「'e1b'」：
+
++
+[listing]
+----
+cluster1::> network interface revert -lif datalif1 -vserver vs1
+----
+. 使用叢集連接埠做為成員連接埠來移除任何VLAN連接埠、並使用叢集連接埠做為成員連接埠來移除ifgrps。
++
+.. 刪除VLAN連接埠：+「網路連接埠VLAN刪除-node-name_-vlan-name _portID-vlanid_'
++
+例如：
+
++
+[listing]
+----
+network port vlan delete -node node1 -vlan-name e1c-80
+----
+.. 從介面群組移除實體連接埠：
++
+「網路連接埠ifgrp remove-port -node-name_-ifgrp _interface-group-name_-port _portID_」
+
++
+例如：
+
++
+[listing]
+----
+network port ifgrp remove-port -node node1 -ifgrp a1a -port e0d
+----
+.. 從廣播網域移除VLAN和介面群組連接埠：
++
+「網路連接埠廣播網域移除連接埠-IPSpace _IPspacity_-broadcast網域_broadcast網域名稱_-連接埠_nodename：連接埠名稱、節點名稱：連接埠名稱_、...」
+
+.. 根據需要修改介面群組連接埠以使用其他實體連接埠作為成員。：+"ifgrp add-port -node-name_-ifgrp _interface-group name_-port _port-id_"
+
+
+. 確認連接埠角色已變更：
++
+「網路連接埠展示」
+
++
+以下範例顯示連接埠「e0a」、「e0b」、「e0c」和「e0d」現在是叢集連接埠：
+
++
+[listing]
+----
+Node: controller_A_1
+Speed(Mbps) Health
+Port      IPspace      Broadcast Domain Link  MTU    Admin/Oper  Status
+--------- ------------ ---------------- ----  ----   ----------- --------
+e0M       Default      mgmt_bd_1500     up    1500   auto/1000   healthy
+e0a       Cluster      Cluster          up    9000   auto/10000  healthy
+e0b       Cluster      Cluster          up    9000   auto/10000  healthy
+e0c       Cluster      Cluster          up    9000   auto/10000  healthy
+e0d       Cluster      Cluster          up    9000   auto/10000  healthy
+e0i       Default      Default          down  1500   auto/10 -
+e0j       Default      Default          down  1500   auto/10 -
+e0k       Default      Default          down  1500   auto/10 -
+e0l       Default      Default          down  1500   auto/10 -
+e2a       Default      Default          up    1500   auto/10000  healthy
+e2b       Default      Default          up    1500   auto/10000  healthy
+e4a       Default      Default          up    1500   auto/10000  healthy
+e4b       Default      Default          up    1500   auto/10000  healthy
+13 entries were displayed.
+----
+. 將連接埠新增至叢集廣播網域：
++
+「broadcast網域附加連接埠-IPSpace叢集-broadcast網域叢集-port-id_、_port-id_、_port-id_...」
+
++
+例如：
+
++
+[listing]
+----
+broadcast-domain add-ports -ipspace Cluster -broadcast-domain Cluster -ports cluster1-01:e0a
+----
+. 如果您的系統是交換式叢集的一部分、請在叢集連接埠上建立叢集LIF：「網路介面建立」
++
+下列範例會在節點的其中一個叢集連接埠上建立叢集LIF。「-auto]參數會將LIF設定為使用連結本機IP位址。
+
++
+[listing]
+----
+cluster1::> network interface create -vserver Cluster -lif clus1 -role cluster -home-node node0 -home-port e1a -auto true
+----
+. 如果您要建立雙節點無交換式叢集、請啟用無交換式叢集網路模式：
++
+.. 從任一節點變更為進階權限層級：
++
+"進階權限"
+
++
+系統提示您是否要繼續進入進階模式時、您可以回應「y」。出現進階模式提示字元（「*>」）。
+
+.. 啟用無交換式叢集網路模式：
++
+「網路選項switchless叢集修改啟用true」
+
+.. 返回管理權限層級：
++
+「et -priv. admin」
+
+
+
+
+
+
+IMPORTANT: 透過新控制器模組上的netboot完成叢集設定之後、即可完成建立雙節點無交換式叢集系統中現有節點的叢集介面。

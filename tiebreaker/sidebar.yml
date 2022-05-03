@@ -1,0 +1,20 @@
+---
+section: tiebreaker
+title: 安裝及設定MetroCluster 資訊斷路器
+entries:
+- title: Tiebreaker軟體總覽
+  url: "/tiebreaker/concept_overview_of_the_tiebreaker_software.html"
+- title: 安裝Tiebreaker軟體
+  url: "/tiebreaker/task_install_the_tiebreaker_software.html"
+- title: 設定Tiebreaker軟體
+  url: "/tiebreaker/concept_configuring_the_tiebreaker_software.html"
+- title: 設定Tiebreaker軟體的SNMP設定
+  url: "/tiebreaker/task_configure_snmp_setts_for_tiebreaker_software.html"
+- title: 監控MetroCluster 此功能的組態
+  url: "/tiebreaker/concept_monitoring_the_mcc_configuration.html"
+- title: 在MetroCluster 作用中模式中使用ESITirepreaker的風險和限制
+  url: "/tiebreaker/concept_risks_and_limitation_of_using_mcc_tiebreaker_in_active_mode.html"
+- title: 防火牆要求MetroCluster
+  url: "/tiebreaker/reference_firewall_requirements_for_mcc_tiebreaker.html"
+- title: 何處可找到其他資訊
+  url: "/tiebreaker/reference_where_to_find_additional_information_tb_icg.html"

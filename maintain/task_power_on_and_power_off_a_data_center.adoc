@@ -1,0 +1,724 @@
+---
+permalink: maintain/task_power_on_and_power_off_a_data_center.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, power, off, on, data, center, relocate, reconfigure, maintenance 
+summary: 您必須知道如何關閉資料中心電源、以便進行站台維護或將站台重新定位至其他位置。 
+---
+= 關閉資料中心電源並開啟電源
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須知道如何關閉資料中心電源、以便進行站台維護或將站台重新定位至其他位置。
+
+如果站台需要重新配置和重新設定（例如、如果您需要從四節點擴充至八節點叢集）、則無法同時完成這些工作。本程序僅涵蓋執行站台維護或重新定位站台而不變更其組態所需的步驟。
+
+下圖顯示MetroCluster 一個E面的 組態。叢集A將會關閉以進行維護。
+
+
+NOTE: 此程序適用於MetroCluster 支援靜態IP和FC組態。
+
+image::power-on-off-data-center.gif[關閉資料中心電源]
+
+
+
+== 關閉MetroCluster 站台電源
+
+您必須先關閉站台和所有設備的電源、才能開始進行現場維護或重新配置。
+
+下列步驟中的所有命令都會從您要關閉電源的站台發出。
+
+.步驟
+. 開始之前、請檢查站台上的任何非鏡射Aggregate是否離線。
+. 驗證MetroCluster 下列項目中的功能：ONTAP
++
+.. 檢查系統是否具有多路徑：
++
+「節點執行節點_norme-name_ sysconfig -A」
+
+.. 檢查兩個叢集上的任何健全狀況警示：
++
+「系統健全狀況警示顯示」
+
+.. 確認MetroCluster 執行功能組態、並確認操作模式正常：
++
+《不看》MetroCluster
+
+.. 執行MetroCluster 功能不全：+ MetroCluster 「功能不全」
+.. 顯示MetroCluster 檢查結果：
++
+《不一樣的表演》MetroCluster
+
+.. 檢查交換器上是否有任何健全狀況警示（如果有）：
++
+「torage switchshow」
+
+.. 執行Config Advisor
++
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"]
+
+.. 執行Config Advisor 完功能後、請檢閱工具的輸出結果、並依照輸出中的建議來解決發現的任何問題。
+
+
+. 輸入下列命令以實作切換：
++
+《不切換》MetroCluster
+
++
+此作業可能需要數分鐘才能完成。
+
++
+====
+在SFC組態中MetroCluster 、只有在可存取Aggregate中的遠端磁碟時、才能在切換後將無鏡射的Aggregate連線。如果ISL失敗、本機節點可能無法存取無鏡射遠端磁碟中的資料。Aggregate故障可能導致本機節點重新開機。
+
+====
+. 監控並驗證切換是否完成：
++
+《不穩定營運展》MetroCluster
+
++
+[listing]
+----
+cluster_A::*> metrocluster operation show
+  Operation: Switchover
+ Start time: 10/4/2012 19:04:13
+State: in-progress
+   End time: -
+     Errors:
+
+cluster_A::*> metrocluster operation show
+  Operation: Switchover
+ Start time: 10/4/2012 19:04:13
+      State: successful
+   End time: 10/4/2012 19:04:22
+     Errors: -
+----
+. 如果MetroCluster 您有執行ONTAP 支援支援支援的支援功能、請等待災難站台上線、並自動完成修復作業。
++
+在執行舊版支援的靜態IP組態中、災難站台節點不會自動開機至靜態、而且叢集仍會離線。MetroCluster ONTAP ONTAP對於精選FC組態、所有的彈性都會維持在線上、您不需要在線上進行彈性作業。MetroCluster
+
+. 視您的組態和ONTAP 版本而定、找出並移動位於災難站台（Cluster_B）的離線受影響的叢集。
++
+[NOTE]
+====
+下列組態需要執行此步驟：
+
+** 所有MetroCluster 的精選FC組態。
+** 執行9.6版或更新版本的靜態IP組態。MetroCluster ONTAP
+
+
+====
++
+您應該離線移動下列程序：
+
++
+--
+** 位於災難站台之磁碟上的非鏡射叢集。
++
+如果您未將災難站台上的非鏡射叢進行離線移動、可能會在災難站台稍後關機時導致中斷運作。
+
+** 位於災難站台之磁碟上的鏡射叢集、用於集合鏡射。當它們離線移動之後、就無法存取叢體。
+
+
+--
++
+.. 識別受影響的叢體。
++
+在存續站台由節點擁有的叢集由Pool1磁碟組成。災難站台節點擁有的叢集由Pool0磁碟組成。
+
++
+[listing]
+----
+Cluster_A::> storage aggregate plex show -fields aggregate,status,is-online,Plex,pool
+aggregate    plex  status        is-online pool
+------------ ----- ------------- --------- ----
+Node_B_1_aggr0 plex0 normal,active true     0
+Node_B_1_aggr0 plex1 normal,active true     1
+
+Node_B_2_aggr0 plex0 normal,active true     0
+Node_B_2_aggr0 plex5 normal,active true     1
+
+Node_B_1_aggr1 plex0 normal,active true     0
+Node_B_1_aggr1 plex3 normal,active true     1
+
+Node_B_2_aggr1 plex0 normal,active true     0
+Node_B_2_aggr1 plex1 normal,active true     1
+
+Node_A_1_aggr0 plex0 normal,active true     0
+Node_A_1_aggr0 plex4 normal,active true     1
+
+Node_A_1_aggr1 plex0 normal,active true     0
+Node_A_1_aggr1 plex1 normal,active true     1
+
+Node_A_2_aggr0 plex0 normal,active true     0
+Node_A_2_aggr0 plex4 normal,active true     1
+
+Node_A_2_aggr1 plex0 normal,active true     0
+Node_A_2_aggr1 plex1 normal,active true     1
+14 entries were displayed.
+
+Cluster_A::>
+----
++
+受影響的叢集是遠端連至叢集A的叢集下表顯示相對於叢集A而言、磁碟是本機磁碟還是遠端磁碟：
+
++
+[cols="20,25,30,25"]
+|===
+
+
+| 節點 | 集區中的磁碟 | 磁碟是否應該設為離線？ | 要離線移動的plexes範例 
+
+
+ a| 
+節點_a_1和節點_a_2
+ a| 
+集區0中的磁碟
+ a| 
+不可以磁碟是叢集A的本機磁碟
+ a| 
+-
+
+
+
+ a| 
+集區1中的磁碟
+ a| 
+是的。磁碟遠端對叢集A
+ a| 
+node_a_1_aggr0/plex4
+
+node_a_1_aggr1/plex1
+
+node_a_2_aggr0/plex4
+
+node_a_2_aggr1/plex1
+
+
+
+ a| 
+節點_B_1和節點_B_2
+ a| 
+集區0中的磁碟
+ a| 
+是的。磁碟遠端對叢集A
+ a| 
+node_B_1_aggr1/plex0
+
+node_B_1_aggr0/plex0
+
+node_B_2_aggr0/plex0
+
+node_B_2_aggr1/plex0
+
+
+
+ a| 
+集區1中的磁碟
+ a| 
+不可以磁碟是叢集A的本機磁碟
+ a| 
+-
+
+|===
+.. 離線移動受影響的叢體：
++
+"離線集合體叢"
+
++
+[listing]
+----
+storage aggregate plex offline -aggregate Node_B_1_aggr0 -plex plex0
+----
++
+
+NOTE: 對所有磁碟遠端連至Cluster_A的叢集執行此動作
+
+
+
+. 根據交換器類型持續離線交換器連接埠。
++
+
+NOTE: 此步驟僅適用於MetroCluster 不完整的FC組態。如果您的組態MetroCluster 是使用FC MetroCluster 後端交換器進行的、則跳過此步驟。
+
++
+[cols="25,75"]
+|===
+
+
+| 交換器類型 | 行動 
+
+
+ a| 
+如果FC交換器是Brocade交換器...
+ a| 
+.. 使用「portcfg堅持 停用_port_」命令持續停用連接埠、如下例所示。這必須在存續站台的兩個交換器上執行。
++
+[listing]
+----
+
+ Switch_A_1:admin> portcfgpersistentdisable 14
+ Switch_A_1:admin> portcfgpersistentdisable 15
+ Switch_A_1:admin>
+----
+.. 使用以下範例所示的「show」命令來驗證連接埠是否已停用：
++
+[listing]
+----
+
+ Switch_A_1:admin> switchshow
+ switchName:	Switch_A_1
+ switchType:	109.1
+ switchState:	Online
+ switchMode:	Native
+ switchRole:	Principal
+ switchDomain:	2
+ switchId:	fffc02
+ switchWwn:	10:00:00:05:33:88:9c:68
+ zoning:		ON (T5_T6)
+ switchBeacon:	OFF
+ FC Router:	OFF
+ FC Router BB Fabric ID:	128
+ Address Mode:	0
+
+  Index Port Address Media Speed State     Proto
+  ==============================================
+   ...
+   14  14   020e00   id    16G   No_Light    FC  Disabled (Persistent)
+   15  15   020f00   id    16G   No_Light    FC  Disabled (Persistent)
+   ...
+ Switch_A_1:admin>
+----
+
+
+
+
+ a| 
+如果FC交換器是Cisco交換器...
+ a| 
+.. 使用「interface」命令持續停用連接埠。下列範例顯示連接埠14和15已停用：
++
+[listing]
+----
+
+ Switch_A_1# conf t
+ Switch_A_1(config)# interface fc1/14-15
+ Switch_A_1(config)# shut
+
+ Switch_A_1(config-if)# end
+ Switch_A_1# copy running-config startup-config
+----
+.. 使用「show interface brief」命令確認交換器連接埠已停用、如下列範例所示：
++
+[listing]
+----
+
+ Switch_A_1# show interface brief
+ Switch_A_1
+----
+
+
+|===
+. 關閉站台電源。
++
+下列設備不需依特定順序關閉：
+
++
+|===
+
+
+| 組態類型 | 要關閉的設備 
+
+
+ a| 
+在靜態IP組態中、請關閉電源... MetroCluster
+ a| 
+** IP交換器MetroCluster
+** 儲存控制器
+** 儲存櫃
+
+
+
+
+ a| 
+在不支援功能的FC組態中、請關閉電源... MetroCluster
+ a| 
+** 精選FC交換器MetroCluster
+** 儲存控制器
+** 儲存櫃
+** Atto FibreBridge（若有）
+
+
+|===
+
+
+
+
+== 重新定位MetroCluster 已關閉電源的景點
+
+[role="lead"]
+站台關機之後、您就可以開始進行維護工作。無論是將元件重新放置在同一個資料中心內、或是重新放置到不同的資料中心、程序都是一樣MetroCluster 的。
+
+* 硬體的纜線方式應與前一個站台相同。
+* 如果交換器間連結（ISL）的速度、長度或編號已變更、則所有這些都需要重新設定。
+
+
+.步驟
+. 請務必仔細記錄所有元件的纜線、以便在新位置正確重新連接。
+. 實體重新配置所有硬體、儲存控制器、FC和IP交換器、光纖橋接器和儲存機櫃。
+. 設定ISL連接埠並驗證站台間連線。
++
+.. 開啟FC和IP交換器的電源。
++
+
+NOTE: 請勿*不*啟動任何其他設備。
+
+.. 啟用連接埠。
++
+
+NOTE: 此步驟僅適用於MetroCluster 不完整的FC組態。如果您的組態MetroCluster 是指不確定的IP組態、則可以跳過此步驟。
+
++
+根據下表中正確的交換器類型啟用連接埠：
+
++
+[cols="35,65"]
+|===
+
+
+| 交換器類型 | 命令 
+
+
+ a| 
+如果FC交換器是Brocade交換器...
+ a| 
+... 使用「portcfg堅持 啟用_port number_」命令持續啟用連接埠。這必須在存續站台的兩個交換器上執行。
++
+以下範例顯示Switch_a_1上啟用的連接埠14和15。
+
++
+[listing]
+----
+switch_A_1:admin> portcfgpersistentenable 14
+switch_A_1:admin> portcfgpersistentenable 15
+switch_A_1:admin>
+----
+... 驗證是否已啟用交換器連接埠：「witchshow」
++
+下列範例顯示已啟用連接埠14和15：
+
++
+[listing]
+----
+switch_A_1:admin> switchshow
+switchName:	Switch_A_1
+switchType:	109.1
+
+switchState:	Online
+switchMode:	Native
+switchRole:	Principal
+switchDomain:	2
+switchId:	fffc02
+switchWwn:	10:00:00:05:33:88:9c:68
+zoning:		ON (T5_T6)
+switchBeacon:	OFF
+FC Router:	OFF
+FC Router BB Fabric ID:	128
+Address Mode:	0
+
+Index Port Address Media Speed State     Proto
+==============================================
+ ...
+ 14  14   020e00   id    16G   Online      FC  E-Port  10:00:00:05:33:86:89:cb "Switch_A_1"
+ 15  15   020f00   id    16G   Online      FC  E-Port  10:00:00:05:33:86:89:cb "Switch_A_1" (downstream)
+ ...
+switch_A_1:admin>
+----
+
+
+
+
+ a| 
+如果FC交換器是Cisco交換器...
+ a| 
+... 輸入「interface」命令以啟用連接埠。
++
+以下範例顯示Switch_a_1上啟用的連接埠14和15。
+
++
+[listing]
+----
+
+ switch_A_1# conf t
+ switch_A_1(config)# interface fc1/14-15
+ switch_A_1(config)# no shut
+ switch_A_1(config-if)# end
+ switch_A_1# copy running-config startup-config
+----
+... 驗證是否已啟用交換器連接埠：「How介面簡介」
++
+[listing]
+----
+
+ switch_A_1# show interface brief
+ switch_A_1#
+----
+
+
+|===
+
+
+. 使用交換器上的工具（可用時）來驗證站台間的連線能力。
++
+
+NOTE: 只有當連結設定正確且穩定時、才應繼續。
+
+. 如果發現連結穩定、請再次停用連結。
++
+根據您使用的是Brocade或Cisco交換器來停用連接埠、如下表所示：
+
++
+[cols="35,65"]
+|===
+
+
+| 交換器類型 | 命令 
+
+
+ a| 
+如果FC交換器是Brocade交換器...
+ a| 
+.. 輸入「portcfg堅持 停用_port number_」命令、持續停用連接埠。
++
+這必須在存續站台的兩個交換器上執行。以下範例顯示Switch_a_1上停用的連接埠14和15：
+
++
+[listing]
+----
+
+ switch_A_1:admin> portpersistentdisable 14
+ switch_A_1:admin> portpersistentdisable 15
+ switch_A_1:admin>
+----
+.. 確認交換器連接埠已停用：「witchshow」
++
+下列範例顯示連接埠14和15已停用：
+
++
+[listing]
+----
+switch_A_1:admin> switchshow
+switchName:	Switch_A_1
+switchType:	109.1
+switchState:	Online
+switchMode:	Native
+switchRole:	Principal
+switchDomain:	2
+switchId:	fffc02
+switchWwn:	10:00:00:05:33:88:9c:68
+zoning:		ON (T5_T6)
+switchBeacon:	OFF
+FC Router:	OFF
+FC Router BB Fabric ID:	128
+Address Mode:	0
+
+ Index Port Address Media Speed State     Proto
+ ==============================================
+  ...
+  14  14   020e00   id    16G   No_Light    FC  Disabled (Persistent)
+  15  15   020f00   id    16G   No_Light    FC  Disabled (Persistent)
+  ...
+switch_A_1:admin>
+----
+
+
+
+
+ a| 
+如果FC交換器是Cisco交換器...
+ a| 
+.. 使用「interface」命令停用連接埠。
++
+以下範例顯示交換器A_1上停用的連接埠FC1/14和FC1/15：
+
++
+[listing]
+----
+switch_A_1# conf t
+
+switch_A_1(config)# interface fc1/14-15
+switch_A_1(config)# shut
+switch_A_1(config-if)# end
+switch_A_1# copy running-config startup-config
+----
+.. 使用「show interface brief」命令確認交換器連接埠已停用。
++
+[listing]
+----
+
+  switch_A_1# show interface brief
+  switch_A_1#
+----
+
+
+|===
+
+
+
+
+== 開啟MetroCluster 支援功能、恢復正常運作
+
+[role="lead"]
+維護完成或站台搬移之後、您必須開啟站台電源、重新建立MetroCluster 該組態。
+
+下列步驟中的所有命令都會從您啟動的站台發出。
+
+.步驟
+. 開啟交換器電源。
++
+交換器應先開啟電源。如果站台重新放置、則可能在上一步中已開啟電源。
+
++
+.. 如有必要或未在重新配置時完成、請重新設定交換器間連結（ISL）。
+.. 如果隔離已完成、請啟用ISL。
+.. 驗證ISL。
+
+
+. 開啟磁碟櫃電源、讓它們有足夠的時間完全開啟電源。
+. 開啟連接橋接器的電源。
++
+
+NOTE: 如果您的組態MetroCluster 是指不確定的IP組態、則可以跳過此步驟。
+
++
+.. 在FC交換器上、確認連接橋接器的連接埠已上線。
++
+您可以使用諸如Brocade交換器的「show」和Cisco交換器的「show介面簡介」等命令。
+
+.. 確認橋接器上的磁碟櫃和磁碟清晰可見。
++
+您可以在Atto命令列介面（CLI）上使用「sastargets」之類的命令。
+
+
+
+. 在FC交換器上啟用ISL。
++
+
+NOTE: 如果您的組態MetroCluster 是指靜態IP組態、請跳過此步驟。
+
++
+根據使用的是Brocade或Cisco交換器來啟用連接埠、如下表所示：
+
++
+[cols="25,75"]
+|===
+
+
+| 交換器類型 | 命令 
+
+
+ a| 
+如果FC交換器是Brocade交換器...
+ a| 
+.. 輸入「portcfg堅持 啟用_port_」命令、以持續啟用連接埠。這必須在存續站台的兩個交換器上執行。
++
+以下範例顯示Switch_a_1上啟用的連接埠14和15：
+
++
+[listing]
+----
+
+ Switch_A_1:admin> portcfgpersistentenable 14
+ Switch_A_1:admin> portcfgpersistentenable 15
+ Switch_A_1:admin>
+----
+.. 使用+"shwitchshow"命令驗證是否已啟用交換器連接埠：
++
+[listing]
+----
+switch_A_1:admin> switchshow
+ switchName:	Switch_A_1
+ switchType:	109.1
+ switchState:	Online
+ switchMode:	Native
+ switchRole:	Principal
+ switchDomain:	2
+ switchId:	fffc02
+ switchWwn:	10:00:00:05:33:88:9c:68
+ zoning:		ON (T5_T6)
+ switchBeacon:	OFF
+ FC Router:	OFF
+ FC Router BB Fabric ID:	128
+ Address Mode:	0
+
+  Index Port Address Media Speed State     Proto
+  ==============================================
+   ...
+   14  14   020e00   id    16G   Online      FC  E-Port  10:00:00:05:33:86:89:cb "Switch_A_1"
+   15  15   020f00   id    16G   Online      FC  E-Port  10:00:00:05:33:86:89:cb "Switch_A_1" (downstream)
+   ...
+ switch_A_1:admin>
+----
+
+
+
+
+ a| 
+如果FC交換器是Cisco交換器...
+ a| 
+.. 使用「interface」命令來啟用連接埠。
++
+下列範例顯示交換器A_1上正在啟用連接埠FC1/14和FC1/15：
+
++
+[listing]
+----
+
+ switch_A_1# conf t
+ switch_A_1(config)# interface fc1/14-15
+ switch_A_1(config)# no shut
+ switch_A_1(config-if)# end
+ switch_A_1# copy running-config startup-config
+----
+.. 確認交換器連接埠已停用：
++
+[listing]
+----
+switch_A_1# show interface brief
+switch_A_1#
+----
+
+
+|===
+. 驗證現在是否可以看到儲存設備。
++
+選擇適當的方法、根據MetroCluster 您的需求來判斷儲存設備是否可見：
+
++
+[cols="35,65"]
+|===
+
+
+| 如果您的組態是... | 然後執行此步驟... 
+
+
+ a| 
+IP組態MetroCluster
+ a| 
+驗證本機儲存設備是否可從節點維護模式中看到。
+
+
+
+ a| 
+精選FC組態MetroCluster
+ a| 
+確認儲存設備可從存續的站台看到。讓離線程序恢復上線。這會重新啟動重新同步作業、並重新建立SyncMirror 該功能。
+
+|===
+. 重新建立MetroCluster 此功能組態。
++
+依照中的指示操作 link:https://docs.netapp.com/us-en/ontap-metrocluster/disaster-recovery/concept_dr_workflow.html["支援管理與災難恢復MetroCluster"] 根據MetroCluster 您的需求組態執行修復和切換作業。
+
+

@@ -1,0 +1,694 @@
+---
+permalink: install-stretch/task_test_the_mcc_configuration.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, test, configuration, verify, switchover, power, line, storage, shelf 
+summary: 您可以測試失敗案例、以確認MetroCluster 正確操作的版本。 
+---
+= 測試MetroCluster 此功能組態
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以測試失敗案例、以確認MetroCluster 正確操作的版本。
+
+
+
+== 正在驗證協調的切換
+
+您可以測試議定（計畫性）的切換作業、以確認不中斷的資料可用度。
+
+此測試會將叢集切換至第二個資料中心、以驗證資料可用度不受影響（Microsoft伺服器訊息區（SMB）和Solaris Fibre Channel傳輸協定除外）。
+
+這項測試大約需要30分鐘。
+
+此程序預期結果如下：
+
+* 「不再需要切換」命令會顯示警告提示字元。MetroCluster
++
+如果您對提示字元做出「* yes *」回應、則發出命令的網站會切換至合作夥伴網站。
+
+
+
+適用於下列各項的靜態IP組態：MetroCluster
+
+* 適用於更新版本的版本：ONTAP
++
+** 鏡射Aggregate會在協調切換後降級。
+
+
+* 適用對象：ONTAP
++
+** 如果可存取遠端儲存設備、鏡射Aggregate將維持正常狀態。
+** 如果遠端儲存設備的存取中斷、鏡射Aggregate會在協商切換後降級。
+
+
+* 適用於更新版本的更新版本：ONTAP
++
+** 如果遠端儲存設備的存取中斷、位於災難站台的無鏡射集合體將無法使用。這可能導致控制器中斷運作。
+
+
+
+
+.步驟
+. 確認所有節點均處於已設定狀態和正常模式：
++
+「不一樣的秀」MetroCluster
+
++
+[listing]
+----
+cluster_A::>  metrocluster node show
+
+Cluster                        Configuration State    Mode
+------------------------------ ---------------------- ------------------------
+ Local: cluster_A               configured             normal
+Remote: cluster_B               configured             normal
+----
+. 開始切換作業：
++
+《不切換》MetroCluster
+
++
+[listing]
+----
+cluster_A::> metrocluster switchover
+Warning: negotiated switchover is about to start. It will stop all the data Vservers on cluster "cluster_B" and
+automatically re-start them on cluster "cluster_A". It will finally gracefully shutdown cluster "cluster_B".
+----
+. 確認本機叢集處於已設定的狀態和切換模式：
++
+「不一樣的秀」MetroCluster
+
++
+[listing]
+----
+cluster_A::>  metrocluster node show
+
+Cluster                        Configuration State    Mode
+------------------------------ ---------------------- ------------------------
+Local: cluster_A                configured             switchover
+Remote: cluster_B               not-reachable          -
+              configured             normal
+----
+. 確認切換作業成功：
++
+《不穩定營運展》MetroCluster
+
++
+[listing]
+----
+cluster_A::>  metrocluster operation show
+
+cluster_A::> metrocluster operation show
+  Operation: switchover
+      State: successful
+ Start Time: 2/6/2016 13:28:50
+   End Time: 2/6/2016 13:29:41
+     Errors: -
+----
+. 使用「vserver show」和「network interface show」命令來驗證DR SVM和LIF是否已上線。
+
+
+
+
+== 驗證修復和手動切換
+
+您可以測試修復和手動切換作業、以確認資料可用度不會受到影響（SMB和Solaris FC組態除外）、方法是在協商切換後、將叢集切換回原始資料中心。
+
+這項測試大約需要30分鐘。
+
+此程序的預期結果是、服務應切換回主節點。
+
+.步驟
+. 確認修復已完成：
++
+「不一樣的秀」MetroCluster
+
++
+下列範例顯示命令成功完成：
+
++
+[listing]
+----
+cluster_A::> metrocluster node show
+DR                               Configuration  DR
+Group Cluster Node               State          Mirroring Mode
+----- ------- ------------------ -------------- --------- --------------------
+1     cluster_A
+              node_A_1         configured     enabled   heal roots completed
+      cluster_B
+              node_B_2         unreachable    -         switched over
+42 entries were displayed.metrocluster operation show
+----
+. 驗證所有的集合體是否都是「受鏡像的（mirored）：
++
+《集合體展》
+
++
+下列範例顯示所有的集合體都具有鏡射的RAID狀態：
+
++
+[listing]
+----
+cluster_A::> storage aggregate show
+cluster Aggregates:
+Aggregate Size     Available Used% State   #Vols  Nodes       RAID Status
+--------- -------- --------- ----- ------- ------ ----------- ------------
+data_cluster
+            4.19TB    4.13TB    2% online       8 node_A_1    raid_dp,
+                                                              mirrored,
+                                                              normal
+root_cluster
+           715.5GB   212.7GB   70% online       1 node_A_1    raid4,
+                                                              mirrored,
+                                                              normal
+cluster_B Switched Over Aggregates:
+Aggregate Size     Available Used% State   #Vols  Nodes       RAID Status
+--------- -------- --------- ----- ------- ------ ----------- ------------
+data_cluster_B
+            4.19TB    4.11TB    2% online       5 node_A_1    raid_dp,
+                                                              mirrored,
+                                                              normal
+root_cluster_B    -         -     - unknown      - node_A_1   -
+----
+. 從災難站台開機節點。
+. 檢查切換回復的狀態：
++
+「不一樣的秀」MetroCluster
+
++
+[listing]
+----
+cluster_A::> metrocluster node show
+DR                               Configuration  DR
+Group Cluster Node               State          Mirroring Mode
+----- ------- ------------------ -------------- --------- --------------------
+1     cluster_A
+             node_A_1            configured     enabled   heal roots completed
+      cluster_B
+             node_B_2            configured     enabled   waiting for switchback
+                                                          recovery
+2 entries were displayed.
+----
+. 執行切換：
++
+《還原》MetroCluster
+
++
+[listing]
+----
+cluster_A::> metrocluster switchback
+[Job 938] Job succeeded: Switchback is successful.Verify switchback
+----
+. 確認節點狀態：
++
+「不一樣的秀」MetroCluster
+
++
+[listing]
+----
+cluster_A::> metrocluster node show
+DR                               Configuration  DR
+Group Cluster Node               State          Mirroring Mode
+----- ------- ------------------ -------------- --------- --------------------
+1     cluster_A
+              node_A_1         configured     enabled   normal
+      cluster_B
+              node_B_2         configured     enabled   normal
+
+2 entries were displayed.
+----
+. 確認狀態：
++
+《不穩定營運展》MetroCluster
+
++
+輸出應顯示成功狀態。
+
++
+[listing]
+----
+cluster_A::> metrocluster operation show
+  Operation: switchback
+      State: successful
+ Start Time: 2/6/2016 13:54:25
+   End Time: 2/6/2016 13:56:15
+     Errors: -
+----
+
+
+
+
+== 遺失單一FC對SAS橋接器
+
+您可以測試單一FC對SAS橋接器的故障、以確保沒有單點故障。
+
+這項測試大約需要15分鐘。
+
+此程序預期結果如下：
+
+* 在橋接器關閉時應產生錯誤。
+* 不應發生容錯移轉或服務中斷。
+* 從控制器模組到橋接器後方磁碟機的路徑只有一條可用。
+
+
+
+NOTE: 從ONTAP 功能組別9.8開始、「最小橋接器」命令會改為「系統橋接器」。以下步驟顯示了「shorage bridge」命令、但ONTAP 如果您執行的是更新版本的版本、最好使用「系統橋接器」命令。
+
+.步驟
+. 關閉橋接器的電源供應器。
+. 確認橋接器監控顯示錯誤：
++
+《龍橋秀》
+
++
+[listing]
+----
+cluster_A::> storage bridge show
+
+                                                            Is        Monitor
+Bridge     Symbolic Name Vendor  Model     Bridge WWN       Monitored Status
+---------- ------------- ------- --------- ---------------- --------- -------
+ATTO_10.65.57.145
+	     bridge_A_1    Atto    FibreBridge 6500N
+                                           200000108662d46c true      error
+----
+. 確認橋接器後方的磁碟機可用單一路徑：
++
+「顯示磁碟錯誤」
+
++
+[listing]
+----
+cluster_A::> storage disk error show
+Disk             Error Type        Error Text
+---------------- ----------------- --------------------------------------------
+1.0.0            onedomain         1.0.0 (5000cca057729118): All paths to this array LUN are connected to the same fault domain. This is a single point of failure.
+1.0.1            onedomain         1.0.1 (5000cca057727364): All paths to this array LUN are connected to the same fault domain. This is a single point of failure.
+1.0.2            onedomain         1.0.2 (5000cca05772e9d4): All paths to this array LUN are connected to the same fault domain. This is a single point of failure.
+...
+1.0.23           onedomain         1.0.23 (5000cca05772e9d4): All paths to this array LUN are connected to the same fault domain. This is a single point of failure.
+----
+
+
+
+
+== 驗證電源線中斷後的作業
+
+您可以測試MetroCluster 此解決方案對PDU故障的回應。
+
+最佳實務做法是將元件中的每個電源供應器（PSU）連接至個別的電源供應器。如果兩個PSU都連接到相同的電力分配單元（PDU）、而且發生電力中斷、則站台可能會當機、而且整個機櫃可能無法使用。測試一條電源線故障、以確認纜線不相符、不會造成服務中斷。
+
+這項測試大約需要15分鐘。
+
+此測試需要關閉所有左側PDU的電源、然後在所有包含MetroCluster 該元件的機架上關閉所有右側PDU的電源。
+
+此程序預期結果如下：
+
+* 當PDU中斷連線時、應產生錯誤。
+* 不應發生容錯移轉或服務中斷。
+
+
+.步驟
+. 關閉機架左側包含MetroCluster 各種元件的PDU電源。
+. 使用「系統環境感測器show -state fault」和「儲存櫃show -errors」命令來監控主控台的結果。
++
+[listing]
+----
+cluster_A::> system environment sensors show -state fault
+
+Node Sensor 			State Value/Units Crit-Low Warn-Low Warn-Hi Crit-Hi
+---- --------------------- ------ ----------- -------- -------- ------- -------
+node_A_1
+		PSU1 			fault
+							PSU_OFF
+		PSU1 Pwr In OK 	fault
+							FAULT
+node_A_2
+		PSU1 			fault
+							PSU_OFF
+		PSU1 Pwr In OK 	fault
+							FAULT
+4 entries were displayed.
+
+cluster_A::> storage shelf show -errors
+    Shelf Name: 1.1
+     Shelf UID: 50:0a:09:80:03:6c:44:d5
+ Serial Number: SHFHU1443000059
+
+Error Type          Description
+------------------  ---------------------------
+Power               Critical condition is detected in storage shelf power supply unit "1". The unit might fail.Reconnect PSU1
+----
+. 將電源重新開啟至左側PDU。
+. 請確定ONTAP 此資訊能夠清除錯誤狀況。
+. 使用右側PDU重複上述步驟。
+
+
+
+
+== 在遺失單一儲存櫃之後驗證作業
+
+您可以測試單一儲存櫃的故障、以確認沒有單點故障。
+
+此程序預期結果如下：
+
+* 監控軟體應報告錯誤訊息。
+* 不應發生容錯移轉或服務中斷。
+* 鏡射重新同步會在硬體故障恢復後自動啟動。
+
+
+.步驟
+. 檢查儲存容錯移轉狀態：
++
+「容錯移轉顯示」
+
++
+[listing]
+----
+cluster_A::> storage failover show
+
+Node           Partner        Possible State Description
+-------------- -------------- -------- -------------------------------------
+node_A_1       node_A_2       true     Connected to node_A_2
+node_A_2       node_A_1       true     Connected to node_A_1
+2 entries were displayed.
+----
+. 檢查Aggregate狀態：
++
+《集合體展》
+
++
+[listing]
+----
+cluster_A::> storage aggregate show
+
+cluster Aggregates:
+Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
+--------- -------- --------- ----- ------- ------ ---------------- ------------
+node_A_1data01_mirrored
+            4.15TB    3.40TB   18% online       3 node_A_1       raid_dp,
+                                                                   mirrored,
+                                                                   normal
+node_A_1root
+           707.7GB   34.29GB   95% online       1 node_A_1       raid_dp,
+                                                                   mirrored,
+                                                                   normal
+node_A_2_data01_mirrored
+            4.15TB    4.12TB    1% online       2 node_A_2       raid_dp,
+                                                                   mirrored,
+                                                                   normal
+node_A_2_data02_unmirrored
+            2.18TB    2.18TB    0% online       1 node_A_2       raid_dp,
+                                                                   normal
+node_A_2_root
+           707.7GB   34.27GB   95% online       1 node_A_2       raid_dp,
+                                                                   mirrored,
+                                                                   normal
+----
+. 確認所有資料SVM和資料磁碟區都在線上、並提供資料：
++
+「vserver show -type data」
+
++
+「網路介面show -Fields is主場假報」
+
++
+「Volume show！vol0、！MDV*」
+
++
+[listing]
+----
+cluster_A::> vserver show -type data
+
+cluster_A::> vserver show -type data
+                               Admin      Operational Root
+Vserver     Type    Subtype    State      State       Volume     Aggregate
+----------- ------- ---------- ---------- ----------- ---------- ----------
+SVM1        data    sync-source           running     SVM1_root  node_A_1_data01_mirrored
+SVM2        data    sync-source	          running     SVM2_root  node_A_2_data01_mirrored
+
+cluster_A::> network interface show -fields is-home false
+There are no entries matching your query.
+
+cluster_A::> volume show !vol0,!MDV*
+Vserver   Volume       Aggregate    State      Type       Size  Available Used%
+--------- ------------ ------------ ---------- ---- ---------- ---------- -----
+SVM1
+          SVM1_root
+                       node_A_1data01_mirrored
+                                    online     RW         10GB     9.50GB    5%
+SVM1
+          SVM1_data_vol
+                       node_A_1data01_mirrored
+                                    online     RW         10GB     9.49GB    5%
+SVM2
+          SVM2_root
+                       node_A_2_data01_mirrored
+                                    online     RW         10GB     9.49GB    5%
+SVM2
+          SVM2_data_vol
+                       node_A_2_data02_unmirrored
+                                    online     RW          1GB    972.6MB    5%
+----
+. 識別資源池1中的磁碟櫃、讓節點node_a_2關閉電源以模擬突然發生的硬體故障：
++
+「torage Aggregate show -r -node-name_!* root」
+
++
+您選取的磁碟櫃必須包含鏡射資料Aggregate的一部分磁碟機。
+
++
+在下列範例中、磁碟櫃ID 31被選取為失敗。
+
++
+[listing]
+----
+cluster_A::> storage aggregate show -r -node node_A_2 !*root
+Owner Node: node_A_2
+ Aggregate: node_A_2_data01_mirrored (online, raid_dp, mirrored) (block checksums)
+  Plex: /node_A_2_data01_mirrored/plex0 (online, normal, active, pool0)
+   RAID Group /node_A_2_data01_mirrored/plex0/rg0 (normal, block checksums)
+                                                              Usable Physical
+     Position Disk                        Pool Type     RPM     Size     Size Status
+     -------- --------------------------- ---- ----- ------ -------- -------- ----------
+     dparity  2.30.3                       0   BSAS    7200  827.7GB  828.0GB (normal)
+     parity   2.30.4                       0   BSAS    7200  827.7GB  828.0GB (normal)
+     data     2.30.6                       0   BSAS    7200  827.7GB  828.0GB (normal)
+     data     2.30.8                       0   BSAS    7200  827.7GB  828.0GB (normal)
+     data     2.30.5                       0   BSAS    7200  827.7GB  828.0GB (normal)
+
+  Plex: /node_A_2_data01_mirrored/plex4 (online, normal, active, pool1)
+   RAID Group /node_A_2_data01_mirrored/plex4/rg0 (normal, block checksums)
+                                                              Usable Physical
+     Position Disk                        Pool Type     RPM     Size     Size Status
+     -------- --------------------------- ---- ----- ------ -------- -------- ----------
+     dparity  1.31.7                       1   BSAS    7200  827.7GB  828.0GB (normal)
+     parity   1.31.6                       1   BSAS    7200  827.7GB  828.0GB (normal)
+     data     1.31.3                       1   BSAS    7200  827.7GB  828.0GB (normal)
+     data     1.31.4                       1   BSAS    7200  827.7GB  828.0GB (normal)
+     data     1.31.5                       1   BSAS    7200  827.7GB  828.0GB (normal)
+
+ Aggregate: node_A_2_data02_unmirrored (online, raid_dp) (block checksums)
+  Plex: /node_A_2_data02_unmirrored/plex0 (online, normal, active, pool0)
+   RAID Group /node_A_2_data02_unmirrored/plex0/rg0 (normal, block checksums)
+                                                              Usable Physical
+     Position Disk                        Pool Type     RPM     Size     Size Status
+     -------- --------------------------- ---- ----- ------ -------- -------- ----------
+     dparity  2.30.12                      0   BSAS    7200  827.7GB  828.0GB (normal)
+     parity   2.30.22                      0   BSAS    7200  827.7GB  828.0GB (normal)
+     data     2.30.21                      0   BSAS    7200  827.7GB  828.0GB (normal)
+     data     2.30.20                      0   BSAS    7200  827.7GB  828.0GB (normal)
+     data     2.30.14                      0   BSAS    7200  827.7GB  828.0GB (normal)
+15 entries were displayed.
+----
+. 實際關閉您所選的機櫃。
+. 再次檢查Aggregate狀態：
++
+"集合體"
+
++
+「torage Aggregate show -r -node_a_2！* root」
+
++
+關機櫃上磁碟機的Aggregate應具有「降級」RAID狀態、而受影響叢上的磁碟機應具有「故障」狀態、如下列範例所示：
+
++
+[listing]
+----
+cluster_A::> storage aggregate show
+Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
+--------- -------- --------- ----- ------- ------ ---------------- ------------
+node_A_1data01_mirrored
+            4.15TB    3.40TB   18% online       3 node_A_1       raid_dp,
+                                                                   mirrored,
+                                                                   normal
+node_A_1root
+           707.7GB   34.29GB   95% online       1 node_A_1       raid_dp,
+                                                                   mirrored,
+                                                                   normal
+node_A_2_data01_mirrored
+            4.15TB    4.12TB    1% online       2 node_A_2       raid_dp,
+                                                                   mirror
+                                                                   degraded
+node_A_2_data02_unmirrored
+            2.18TB    2.18TB    0% online       1 node_A_2       raid_dp,
+                                                                   normal
+node_A_2_root
+           707.7GB   34.27GB   95% online       1 node_A_2       raid_dp,
+                                                                   mirror
+                                                                   degraded
+cluster_A::> storage aggregate show -r -node node_A_2 !*root
+Owner Node: node_A_2
+ Aggregate: node_A_2_data01_mirrored (online, raid_dp, mirror degraded) (block checksums)
+  Plex: /node_A_2_data01_mirrored/plex0 (online, normal, active, pool0)
+   RAID Group /node_A_2_data01_mirrored/plex0/rg0 (normal, block checksums)
+                                                              Usable Physical
+     Position Disk                        Pool Type     RPM     Size     Size Status
+     -------- --------------------------- ---- ----- ------ -------- -------- ----------
+     dparity  2.30.3                       0   BSAS    7200  827.7GB  828.0GB (normal)
+     parity   2.30.4                       0   BSAS    7200  827.7GB  828.0GB (normal)
+     data     2.30.6                       0   BSAS    7200  827.7GB  828.0GB (normal)
+     data     2.30.8                       0   BSAS    7200  827.7GB  828.0GB (normal)
+     data     2.30.5                       0   BSAS    7200  827.7GB  828.0GB (normal)
+
+  Plex: /node_A_2_data01_mirrored/plex4 (offline, failed, inactive, pool1)
+   RAID Group /node_A_2_data01_mirrored/plex4/rg0 (partial, none checksums)
+                                                              Usable Physical
+     Position Disk                        Pool Type     RPM     Size     Size Status
+     -------- --------------------------- ---- ----- ------ -------- -------- ----------
+     dparity  FAILED                       -   -          -  827.7GB        - (failed)
+     parity   FAILED                       -   -          -  827.7GB        - (failed)
+     data     FAILED                       -   -          -  827.7GB        - (failed)
+     data     FAILED                       -   -          -  827.7GB        - (failed)
+     data     FAILED                       -   -          -  827.7GB        - (failed)
+
+ Aggregate: node_A_2_data02_unmirrored (online, raid_dp) (block checksums)
+  Plex: /node_A_2_data02_unmirrored/plex0 (online, normal, active, pool0)
+   RAID Group /node_A_2_data02_unmirrored/plex0/rg0 (normal, block checksums)
+                                                              Usable Physical
+     Position Disk                        Pool Type     RPM     Size     Size Status
+     -------- --------------------------- ---- ----- ------ -------- -------- ----------
+     dparity  2.30.12                      0   BSAS    7200  827.7GB  828.0GB (normal)
+     parity   2.30.22                      0   BSAS    7200  827.7GB  828.0GB (normal)
+     data     2.30.21                      0   BSAS    7200  827.7GB  828.0GB (normal)
+     data     2.30.20                      0   BSAS    7200  827.7GB  828.0GB (normal)
+     data     2.30.14                      0   BSAS    7200  827.7GB  828.0GB (normal)
+15 entries were displayed.
+----
+. 驗證資料是否正在提供服務、以及所有磁碟區是否仍在線上：
++
+「vserver show -type data」
+
++
+「網路介面show -Fields is主場假報」
+
++
+「Volume show！vol0、！MDV*」
+
++
+[listing]
+----
+cluster_A::> vserver show -type data
+
+cluster_A::> vserver show -type data
+                               Admin      Operational Root
+Vserver     Type    Subtype    State      State       Volume     Aggregate
+----------- ------- ---------- ---------- ----------- ---------- ----------
+SVM1        data    sync-source           running     SVM1_root  node_A_1_data01_mirrored
+SVM2        data    sync-source	          running     SVM2_root  node_A_1_data01_mirrored
+
+cluster_A::> network interface show -fields is-home false
+There are no entries matching your query.
+
+cluster_A::> volume show !vol0,!MDV*
+Vserver   Volume       Aggregate    State      Type       Size  Available Used%
+--------- ------------ ------------ ---------- ---- ---------- ---------- -----
+SVM1
+          SVM1_root
+                       node_A_1data01_mirrored
+                                    online     RW         10GB     9.50GB    5%
+SVM1
+          SVM1_data_vol
+                       node_A_1data01_mirrored
+                                    online     RW         10GB     9.49GB    5%
+SVM2
+          SVM2_root
+                       node_A_1data01_mirrored
+                                    online     RW         10GB     9.49GB    5%
+SVM2
+          SVM2_data_vol
+                       node_A_2_data02_unmirrored
+                                    online     RW          1GB    972.6MB    5%
+----
+. 實體開啟機櫃電源。
++
+重新同步會自動啟動。
+
+. 確認已啟動重新同步：
++
+《集合體展》
+
++
+受影響的Aggregate應具有「同步」RAID狀態、如下列範例所示：
+
++
+[listing]
+----
+cluster_A::> storage aggregate show
+cluster Aggregates:
+Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
+--------- -------- --------- ----- ------- ------ ---------------- ------------
+node_A_1_data01_mirrored
+            4.15TB    3.40TB   18% online       3 node_A_1       raid_dp,
+                                                                   mirrored,
+                                                                   normal
+node_A_1_root
+           707.7GB   34.29GB   95% online       1 node_A_1       raid_dp,
+                                                                   mirrored,
+                                                                   normal
+node_A_2_data01_mirrored
+            4.15TB    4.12TB    1% online       2 node_A_2       raid_dp,
+                                                                   resyncing
+node_A_2_data02_unmirrored
+            2.18TB    2.18TB    0% online       1 node_A_2       raid_dp,
+                                                                   normal
+node_A_2_root
+           707.7GB   34.27GB   95% online       1 node_A_2       raid_dp,
+                                                                   resyncing
+----
+. 監控Aggregate以確認已完成重新同步：
++
+《集合體展》
+
++
+受影響的Aggregate應具有「正常」RAID狀態、如下列範例所示：
+
++
+[listing]
+----
+cluster_A::> storage aggregate show
+cluster Aggregates:
+Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
+--------- -------- --------- ----- ------- ------ ---------------- ------------
+node_A_1data01_mirrored
+            4.15TB    3.40TB   18% online       3 node_A_1       raid_dp,
+                                                                   mirrored,
+                                                                   normal
+node_A_1root
+           707.7GB   34.29GB   95% online       1 node_A_1       raid_dp,
+                                                                   mirrored,
+                                                                   normal
+node_A_2_data01_mirrored
+            4.15TB    4.12TB    1% online       2 node_A_2       raid_dp,
+                                                                   normal
+node_A_2_data02_unmirrored
+            2.18TB    2.18TB    0% online       1 node_A_2       raid_dp,
+                                                                   normal
+node_A_2_root
+           707.7GB   34.27GB   95% online       1 node_A_2       raid_dp,
+                                                                   resyncing
+----
+

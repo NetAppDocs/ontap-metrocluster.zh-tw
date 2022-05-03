@@ -1,0 +1,268 @@
+---
+permalink: transition/task_remove_mc_fc_controllers.html 
+sidebar: sidebar 
+keywords: Generating and applying RCFs to the new IP switches, review, requirement, preparing, prepare, transition, perform, procedure, order, completing, complete, step, task, moving, move, controller, storage, shelves, shelf, exist, configuration, direct, metrocluster, fc, ip, verify, health, removing, remove, tiebreaker, monitor, software, generating, generate, apply, rcf, switch, controller, configure, prepare, preparing 
+summary: 若要準備轉換組態、您可以將新節點新增至現有MetroCluster 的版本資訊功能組態、然後將資料移至新節點。 
+---
+= 移除MetroCluster 功能不均的FC控制器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須執行清除工作、並從MetroCluster 內存組態中移除舊的控制器模組。
+
+. 為了避免自動產生支援案例、請傳送AutoSupport 一個不全訊息來表示正在進行維護。
++
+.. 發出下列命令：「System Node AutoSupport Eflexoke -Node *-type all -most mainten=maintening-tope-inter-hours」
++
+「maintenance－window-in－hours」（維護時段）指定維護時段的長度、最長72小時。如果維護作業在時間結束之前完成、您可以叫用AutoSupport 一則消息、指出維護期間結束：「系統節點AutoSupport 不支援節點*-type all -most maint=end'」
+
+.. 在合作夥伴叢集上重複執行命令。
+
+
+. 識別MetroCluster 在需刪除的不只於此功能的基礎上託管的集合體。
++
+在此範例中、MetroCluster 下列資料集合體是由RUSING FC叢集B主控、需要刪除：agger_data_A1和agger_data_A2。
+
++
+
+NOTE: 您需要執行步驟來識別、離線及刪除兩個叢集上的資料集合體。範例僅適用於一個叢集。
+
++
+....
+cluster_B::> aggr show
+
+Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
+--------- -------- --------- ----- ------- ------ ---------------- ------------
+aggr0_node_A_1-FC
+           349.0GB   16.83GB   95% online       1 node_A_1-FC      raid_dp,
+                                                                   mirrored,
+                                                                   normal
+aggr0_node_A_2-FC
+           349.0GB   16.83GB   95% online       1 node_A_2-FC      raid_dp,
+                                                                   mirrored,
+                                                                   normal
+aggr0_node_A_3-IP
+           467.6GB   22.63GB   95% online       1 node_A_3-IP      raid_dp,
+                                                                   mirrored,
+                                                                   normal
+aggr0_node_A_3-IP
+           467.6GB   22.62GB   95% online       1 node_A_4-IP      raid_dp,
+                                                                   mirrored,
+                                                                   normal
+aggr_data_a1
+            1.02TB    1.02TB    0% online       0 node_A_1-FC      raid_dp,
+                                                                   mirrored,
+                                                                   normal
+aggr_data_a2
+            1.02TB    1.02TB    0% online       0 node_A_2-FC      raid_dp,
+                                                                   mirrored,
+                                                                   normal
+aggr_data_a3
+            1.37TB    1.35TB    1% online       3 node_A_3-IP      raid_dp,
+                                                                   mirrored,
+                                                                   normal
+aggr_data_a4
+            1.25TB    1.24TB    1% online       2 node_A_4-IP      raid_dp,
+                                                                   mirrored,
+                                                                   normal
+8 entries were displayed.
+
+cluster_B::>
+....
+. 檢查FC節點上的資料集合體是否有任何MDV_aud磁碟區、並在刪除集合體之前刪除它們。
++
+您必須刪除無法移動的MDV_aud磁碟區。
+
+. 將每個集合體離線、然後刪除：
++
+.. 使Aggregate離線：「torage gregate offline -Aggregate aggregate name」
++
+下列範例顯示正在離線的Aggregate node_B_1_aggr0：
+
++
+....
+cluster_B::> storage aggregate offline -aggregate node_B_1_aggr0
+
+Aggregate offline successful on aggregate: node_B_1_aggr0
+....
+.. 刪除Aggregate：「torage gregate delete -gregate aggregregate name」
++
+出現提示時、您可以銷毀叢。
+
++
+下列範例顯示要刪除的Aggregate node_B_1_aggr0。
+
++
+....
+cluster_B::> storage aggregate delete -aggregate node_B_1_aggr0
+Warning: Are you sure you want to destroy aggregate "node_B_1_aggr0"? {y|n}: y
+[Job 123] Job succeeded: DONE
+
+cluster_B::>
+....
+
+
+. 找出MetroCluster 需要移除的FFC DR群組。
++
+在下列範例中MetroCluster 、支援不支援的FC節點位於DR群組「1」中、這是需要移除的DR群組。
+
++
+....
+cluster_B::> metrocluster node show
+
+DR                               Configuration  DR
+Group Cluster Node               State          Mirroring Mode
+----- ------- ------------------ -------------- --------- --------------------
+1     cluster_A
+              node_A_1-FC        configured     enabled   normal
+              node_A_2-FC        configured     enabled   normal
+      cluster_B
+              node_B_1-FC        configured     enabled   normal
+              node_B_2-FC        configured     enabled   normal
+2     cluster_A
+              node_A_3-IP        configured     enabled   normal
+              node_A_4-IP        configured     enabled   normal
+      cluster_B
+              node_B_3-IP        configured     enabled   normal
+              node_B_3-IP        configured     enabled   normal
+8 entries were displayed.
+
+cluster_B::>
+....
+. 將叢集管理LIF從MetroCluster 一個SfeskFC節點移至MetroCluster 一個Sfeskip節點：「叢集B：：>網路介面移轉-vserver Svm-name -lifcluster管理-destination-node-ine-MetroCluster-ip-dr-group -destination-port可用連接埠」
+. 變更叢集管理LIF的主節點和主連接埠：「Cluster_B：：>網路介面修改-vserver Svm-name -lifcluster _mgmt -service-policy預設管理-home-node-in MetroCluster IP -dr-group -home-port lif-port'
+. 將epsilon從MetroCluster 一個不受影響的FC節點移至MetroCluster 一個不受影響的IP節點：
++
+.. 識別目前有epsilon的節點：「cluster show -Fields epsilon」
++
+....
+cluster_B::> cluster show -fields epsilon
+node             epsilon
+---------------- -------
+node_A_1-FC      true
+node_A_2-FC      false
+node_A_1-IP      false
+node_A_2-IP      false
+4 entries were displayed.
+....
+.. 在支援支援功能的FC節點（node_a_1-FC）上、將epsilon設為假：MetroCluster 「cluster modify -nodes fc-node-epsilon假」
+.. 在MetroCluster 支援支援的IP節點（node_a_1-IP）上、將epsilon設為true：「cluster modify -nodes ip-node-epsilon true」
+.. 確認epsilon已移至正確的節點：「cluster show -Fields epsilon」
++
+....
+cluster_B::> cluster show -fields epsilon
+node             epsilon
+---------------- -------
+node_A_1-FC      false
+node_A_2-FC      false
+node_A_1-IP      true
+node_A_2-IP      false
+4 entries were displayed.
+....
+
+
+. 在每個叢集上、從MetroCluster EFC組態中移除包含舊節點的DR群組。
++
+您必須在兩個叢集上執行此步驟、一次執行一個。
+
++
+....
+cluster_B::> metrocluster remove-dr-group -dr-group-id 1
+
+Warning: Nodes in the DR group that are removed from the MetroCluster
+         configuration will lose their disaster recovery protection.
+
+         Local nodes "node_A_1-FC, node_A_2-FC" will be removed from the
+         MetroCluster configuration. You must repeat the operation on the
+         partner cluster "cluster_B" to remove the remote nodes in the DR group.
+Do you want to continue? {y|n}: y
+
+Info: The following preparation steps must be completed on the local and partner
+      clusters before removing a DR group.
+
+      1. Move all data volumes to another DR group.
+      2. Move all MDV_CRS metadata volumes to another DR group.
+      3. Delete all MDV_aud metadata volumes that may exist in the DR group to
+      be removed.
+      4. Delete all data aggregates in the DR group to be removed. Root
+      aggregates are not deleted.
+      5. Migrate all data LIFs to home nodes in another DR group.
+      6. Migrate the cluster management LIF to a home node in another DR group.
+      Node management and inter-cluster LIFs are not migrated.
+      7. Transfer epsilon to a node in another DR group.
+
+      The command is vetoed ifthe preparation steps are not completed on the
+      local and partner clusters.
+Do you want to continue? {y|n}: y
+[Job 513] Job succeeded: Remove DR Group is successful.
+
+cluster_B::>
+....
+. 確認節點已準備好從叢集移除。
++
+您必須在兩個叢集上執行此步驟。
+
++
+
+NOTE: 此時、「MetroCluster flexnodes show」命令只會顯示本機MetroCluster 的flexfFC節點、而不會再顯示屬於合作夥伴叢集的節點。
+
++
+....
+cluster_B::> metrocluster node show
+
+DR                               Configuration  DR
+Group Cluster Node               State          Mirroring Mode
+----- ------- ------------------ -------------- --------- --------------------
+1     cluster_A
+              node_A_1-FC        ready to configure
+                                                -         -
+              node_A_2-FC        ready to configure
+                                                -         -
+2     cluster_A
+              node_A_3-IP        configured     enabled   normal
+              node_A_4-IP        configured     enabled   normal
+      cluster_B
+              node_B_3-IP        configured     enabled   normal
+              node_B_4-IP        configured     enabled   normal
+6 entries were displayed.
+
+cluster_B::>
+....
+. 停用MetroCluster 適用於不穩定FC節點的儲存容錯移轉。
++
+您必須在每個節點上執行此步驟。
+
++
+....
+cluster_A::> storage failover modify -node node_A_1-FC -enabled false
+cluster_A::> storage failover modify -node node_A_2-FC -enabled false
+cluster_A::>
+....
+. 從MetroCluster 叢集中取消連接不完整的FC節點：「cluster unjoin -node-name」
++
+您必須在每個節點上執行此步驟。
+
++
+....
+cluster_A::> cluster unjoin -node node_A_1-FC
+
+Warning: This command will remove node "node_A_1-FC"from the cluster. You must
+         remove the failover partner as well. After the node is removed, erase
+         its configuration and initialize all disks by usingthe "Clean
+         configuration and initialize all disks (4)" option from the boot menu.
+Do you want to continue? {y|n}: y
+[Job 553] Job is queued: Cluster remove-node of Node:node_A_1-FC with UUID:6c87de7e-ff54-11e9-8371
+[Job 553] Checking prerequisites
+[Job 553] Cleaning cluster database
+[Job 553] Job succeeded: Node remove succeeded
+If applicable, also remove the node's HA partner, and then clean its configuration and initialize all disks with the boot menu.
+Run "debug vreport show" to address remaining aggregate or volume issues.
+
+cluster_B::>
+....
+. 關閉MetroCluster 不支援的FC控制器模組和儲存櫃。
+. 拔下MetroCluster 並移除不中斷的FC控制器模組和儲存櫃。
+

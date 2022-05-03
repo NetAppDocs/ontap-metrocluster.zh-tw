@@ -1,0 +1,19 @@
+---
+permalink: manage/task_perform_switchover_for_tests_or_maintenance.html 
+sidebar: sidebar 
+keywords: test, metrocluster, functionality, plan, maintenance, negotiate, switchover, cluster, partner, configuration, perform 
+summary: 如果您要測試MetroCluster 此功能或執行規劃的維護、可以執行協調式切換、讓一個叢集可以完全切換至合作夥伴叢集。然後您可以修復並切換回組態。 
+---
+= 執行測試或維護的切換
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您要測試MetroCluster 此功能或執行規劃的維護、可以執行協調式切換、讓一個叢集可以完全切換至合作夥伴叢集。然後您可以修復並切換回組態。
+
+image::../media/workflow_performing_nso_and_switchback.gif[執行NSO和切換的工作流程]
+
+
+NOTE: 從ONTAP 功能上說起、只要使用MetroCluster NetApp System Manager、就能在不中斷運作的情況下、在不中斷運作的情況ONTAP 下、對整個流程進行切換和切換。

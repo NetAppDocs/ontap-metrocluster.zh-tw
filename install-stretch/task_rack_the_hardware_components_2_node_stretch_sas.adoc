@@ -1,0 +1,36 @@
+---
+permalink: install-stretch/task_rack_the_hardware_components_2_node_stretch_sas.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, rack, hardware, components 
+summary: 如果您尚未收到已安裝在機櫃中的設備、則必須裝入元件機架。 
+---
+= 安裝硬體元件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您尚未收到已安裝在機櫃中的設備、則必須裝入元件機架。
+
+這項工作必須在MetroCluster 兩個地方執行。
+
+.步驟
+. 規劃MetroCluster 零組件的定位。
++
+所需的機架空間量取決於儲存控制器的平台模式、交換器類型、以及組態中的磁碟櫃堆疊數量。
+
+. 使用標準的工廠實務做法來操作電氣設備、確保您已正確接地。
+. 在機架或機櫃中安裝儲存控制器。
++
+https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"]
+
+. 安裝磁碟櫃、以菊環鏈方式將磁碟櫃連接至每個堆疊、開啟磁碟櫃電源、以及設定磁碟櫃ID。
++
+如需菊環鏈式磁碟櫃和設定磁碟櫃ID的相關資訊、請參閱適用於您磁碟櫃模型的指南。
+
++
+
+NOTE: 每MetroCluster 個EDR群組（包括兩個站台）內的每個SAS磁碟櫃、機櫃ID都必須是唯一的。手動設定機櫃ID時、您必須重新啟動磁碟櫃。
+
+

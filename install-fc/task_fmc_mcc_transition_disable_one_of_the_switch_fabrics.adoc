@@ -1,0 +1,83 @@
+---
+permalink: install-fc/task_fmc_mcc_transition_disable_one_of_the_switch_fabrics.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, disable, switch, fabrics 
+summary: 您必須停用其中一個交換器架構、才能修改其組態。完成組態並重新啟用交換器架構之後、您將在其他架構上重複此程序。 
+---
+= 停用其中一個交換器架構
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須停用其中一個交換器架構、才能修改其組態。完成組態並重新啟用交換器架構之後、您將在其他架構上重複此程序。
+
+您必須在現有的7-Mode Fabric MetroCluster 支援組態上執行FMC_DC公用程式、並在開始組態程序之前解決所有問題。
+
+為了確保MetroCluster 繼續操作此功能、您不得在停用第一個Fabric時停用第二個Fabric。
+
+.步驟
+. 停用網路中的每個交換器：
++
+「witchCfgPeristentDisable」
+
++
+如果無法使用此命令、請使用「shwitchDisable」命令。
+
++
+** 以下範例顯示在FC_switch_a_1上發出的命令：
++
+[listing]
+----
+FC_switch_A_1:admin> switchCfgPersistentDisable
+----
+** 以下範例顯示在FC_switch_B_1上發出的命令：
++
+[listing]
+----
+FC_switch_B_1:admin> switchCfgPersistentDisable
+----
+
+
+. 使用MetroCluster 備援光纖確保7-Mode的支援功能正常運作：
++
+.. 確認控制器容錯移轉正常：+「cfSTATUS」
++
+[listing]
+----
+node_A> cf status
+Controller Failover enabled, node_A is up.
+VIA Interconnect is up (link 0 down, link 1 up).
+----
+.. 確認磁碟是否可見：+「shorage show disk–p」
++
+[listing]
+----
+node_A> storage show disk –p
+
+PRIMARY                     PORT  SECONDARY          PORT SHELF BAY
+--------------------------- ----  ------------------ ---- ---------
+Brocade-6510-2K0GG:5.126L27  B                              1    0
+Brocade-6510-2K0GG:5.126L28  B                              1    1
+Brocade-6510-2K0GG:5.126L29  B                              1    2
+Brocade-6510-2K0GG:5.126L30  B                              1    3
+Brocade-6510-2K0GG:5.126L31  B                              1    4
+
+.
+.
+.
+----
+.. 確認Aggregate是否正常：+「aggr狀態」
++
+[listing]
+----
+node_A> aggr status
+           Aggr State           Status              Options
+          aggr0 online          raid_dp, aggr       root, nosnap=on
+                                mirrored
+                                64-bit
+----
+
+
+

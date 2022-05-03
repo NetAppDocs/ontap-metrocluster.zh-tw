@@ -1,0 +1,25 @@
+---
+permalink: install-stretch/task_cable_the_management_and_data_connections.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, cable, management, data, connections 
+summary: 您必須將每個儲存控制器上的管理和資料連接埠纜線連接至站台網路。 
+---
+= 管理與資料連線的佈線
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須將每個儲存控制器上的管理和資料連接埠纜線連接至站台網路。
+
+這項工作必須針對MetroCluster 兩個站台的每個新控制器重複執行。
+
+您可以將控制器和叢集交換器管理連接埠連接至網路中的現有交換器。此外、您也可以將控制器連接至新的專用網路交換器、例如NetApp CN1601叢集管理交換器。
+
+.步驟
+. 將控制器的管理和資料連接埠連接至本機站台的管理和資料網路。
++
+https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"]
+
+

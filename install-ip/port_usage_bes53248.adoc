@@ -1,0 +1,63 @@
+---
+permalink: install-ip/port_usage_bes53248.html 
+sidebar: sidebar 
+keywords: cabling, cable, component, sip, isl, link, site, management, network, hardware, component, switch, cluster, connection, management, data, configuring, configure 
+summary: 連接埠在MetroCluster 一個靜態IP組態中的使用取決於交換器機型和平台類型。 
+---
+= 適用於Broadcom支援的BG-53248 IP交換器的平台連接埠指派
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+連接埠在MetroCluster 一個靜態IP組態中的使用取決於交換器機型和平台類型。
+
+交換器無法與不同速度的遠端ISL連接埠搭配使用（例如、連接至10 Gbps ISL連接埠的25 Gbps連接埠）。
+
+.下表附註：
+. 對於某些平台、您可以使用連接埠49 - 54進行MetroCluster 支援或MetroCluster 連接支援。
++
+這些連接埠需要額外授權。
+
+. 只能將使用A320系統的單MetroCluster 一四節點的資訊技術連接至交換器。
++
+此組態不支援需要交換式叢集的功能、包括MetroCluster 從FFC移轉至IP的程序和技術更新程序。
+
+. 配置Broadcom B3B-53248交換器的部分A320系統可能不支援所有功能。AFF
++
+不支援任何需要將本機叢集連線連線至交換器的組態或功能。例如、下列組態和程序不受支援：
+
++
+** 八節點MetroCluster 的不完整組態
+** 從MetroCluster 靜態FC移轉至MetroCluster 靜態IP組態
+** 重新整理四節點MetroCluster 的靜態IP組態（ONTAP 不含更新版本的更新版本）
+
+
+
+
+
+
+== 交換器連接埠的使用、適用於AFF FASA220或FAS2750系統
+
+image::../media/mcc_ip_cabling_a_aff_a220_or_fas2750_to_a_broadcom_bes_53248_switch.png[MCC IP將AFF 一個名為「a 2 220」或「fas2750」的纜線連接至Broadcom bes 53248交換器]
+
+
+
+== 交換器連接埠使用率、適用於AFF 不符合需求的A250或FAS500f系統
+
+image::../media/mcc_ip_cabling_a_aff_a250_or_fas500f_to_a_broadcom_bes_53248_switch.png[MCC IP纜線AFF 連接至Broadcom bes 53248交換器的功能是將一個3250或fas500f]
+
+
+
+== 交換器連接埠的使用情形、適用於AFF 不支援的A300或FAS8200系統
+
+image::../media/mcc_ip_cabling_a_aff_a300_or_fas8200_to_a_broadcom_bes_53248_switch.png[MCC IP將AFF 一個名為「不實」的纜線連接至Broadcom bes 53248交換器]
+
+image::../media/mcc_ip_cabling_a_aff_a320_to_a_broadcom_bes_53248_switch.png[MCC IP將AFF 一個不含A320的纜線連接至一個Broadcom bes 53248交換器]
+
+
+
+== 交換器連接埠的使用、適用於AFF FASA400、FAS8300或FAS8700系統
+
+image::../media/mcc_ip_cabling_a_fas8300_a400_or_fas8700_to_a_broadcom_bes_53248_switch.png[MCC IP將fas8300 A400或fas8700纜線連接至Broadcom bes 53248交換器]

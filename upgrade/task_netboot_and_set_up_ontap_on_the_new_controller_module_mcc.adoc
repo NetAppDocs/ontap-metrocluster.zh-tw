@@ -1,0 +1,217 @@
+---
+permalink: upgrade/task_netboot_and_set_up_ontap_on_the_new_controller_module_mcc.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, netboot, set, up, ontap, new, controller, module 
+summary: 將控制器模組新增至現有的更新組態時、您必須執行一系列特定步驟來執行netboot、並在ONTAP 新的控制器模組上安裝作業系統。MetroCluster 
+---
+= 在ONTAP 新的控制器模組上執行Netbooting和設定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+將控制器模組新增至現有的更新組態時、您必須執行一系列特定步驟來執行netboot、並在ONTAP 新的控制器模組上安裝作業系統。MetroCluster
+
+.關於這項工作
+* 此工作從新控制器模組的載入器提示開始。
+* 此工作包括初始化磁碟。
++
+初始化磁碟所需的時間取決於磁碟的大小。
+
+* 系統會自動將兩個磁碟指派給新的控制器模組。
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"]
+
+
+
+.步驟
+. 在載入程式提示下、根據DHCP可用度設定新控制器模組的IP位址：
++
+[cols="1,3"]
+|===
+
+
+| 如果DHCP是... | 然後輸入下列命令... 
+
+
+ a| 
+可用
+ a| 
+「* ifconfige0M -auto*」
+
+
+
+ a| 
+無法使用
+ a| 
+「ifconfige0M -addr=_filer_addr__-mask=_netmask__-gateway__-DNS=_DNs_addr__-domain=_DNs_domain__」
+
+「filer_addr」是儲存系統的IP位址。
+
+「網路遮罩」是儲存系統的網路遮罩。
+
+「閘道」是儲存系統的閘道。
+
+「Dns_addr」是網路上名稱伺服器的IP位址。
+
+「Dns_domain」是網域名稱系統（DNS）網域名稱。如果使用此選用參數、則不需要netboot伺服器URL中的完整網域名稱；您只需要伺服器的主機名稱。
+
+
+NOTE: 您的介面可能需要其他參數。如需詳細資訊、請在載入程式提示字元下使用「Help ifconfig」命令。
+
+|===
+. 在載入程式提示字元下、以netboot新節點：
++
+[cols="1,3"]
+|===
+
+
+| 適用於... | 發出此命令... 
+
+
+ a| 
+FAS2200、FAS2500、FAS3200、FAS6200、FAS/AFF8000系列系統
+ a| 
+“netboot http://__web_server_ip/path_to_web-accessible_directory__/netboot/kernel`[]
+
+
+
+ a| 
+所有其他系統
+ a| 
+“netboot http://__web_server_ip/path_to_web-accessible_directory__/<ontap_version>_image.tgz`[]
+
+|===
++
+「_path_to_the_web-易於 存取的目錄_」是下載的「<ontap_version」>_image.tgz」檔案的位置。
+
+. 從顯示的功能表中選取*「Install new software first*（先安裝新軟體*）」選項。
++
+此功能表選項會下載新ONTAP 的功能表映像、並將其安裝至開機裝置。
+
++
+** 當出現以下訊息時、您應該輸入「y」：HA配對不支援此程序進行不中斷升級。
+** 當警告您此程序會以ONTAP 新軟體取代現有的版本時、您應該輸入「y」。
+** 當系統提示您輸入image.tgz檔案的URL時、您應該輸入下列路徑：
++
+http://__path_to_the_web-accessible_directory__/image.tgz`
+
+
+
+. 出現有關軟體不中斷升級或更換的提示時、請輸入「y」。
+. 當系統提示輸入套件URL時、輸入image.tgz檔案的路徑。
++
+[listing]
+----
+What is the URL for the package? `http://path_to_web-accessible_directory/image.tgz`
+----
+. 當系統提示您還原備份組態時、請輸入「n」跳過備份還原。
++
+[listing]
+----
+****************************************************************
+*             Restore Backup Configuration                     *
+*  This procedure only applies to storage controllers that     *
+*  are configured as an HA pair.                               *
+*                                                              *
+*  Choose Yes to restore the "varfs" backup configuration      *
+*  from the SSH server.  Refer to the Boot Device Replacement  *
+*  guide for more details.                                     *
+*  Choose No to skip the backup recovery and return to the     *
+*  boot menu.                                                  *
+****************************************************************
+
+Do you want to restore the backup configuration
+now? {y|n} `n`
+----
+. 當系統提示立即重新開機時、請輸入「y」。
++
+[listing]
+----
+The node must be rebooted to start using the newly installed software. Do you want to
+reboot now? {y|n} `y`
+----
+. 如有必要、請選取選項*清除組態、並在節點開機後初始化所有磁碟*。
++
+由於您正在設定新的控制器模組、而且新的控制器模組磁碟是空的、因此當系統警告您這會清除所有磁碟時、您可以回應「y」。
+
++
+
+NOTE: 初始化磁碟所需的時間取決於磁碟的大小和組態。
+
+. 初始化磁碟並啟動叢集設定精靈之後、請設定節點：
++
+在主控台輸入節點管理LIF資訊。
+
+. 登入節點、輸入「cluster setup」、然後在提示加入叢集時輸入「join」。
++
+[listing]
+----
+Do you want to create a new cluster or join an existing cluster? {create, join}: `join`
+----
+. 視您的站台需要回應其餘的提示。
++
+。 link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-ssg/home.html["設定ONTAP"^] 若為ONTAP 您的版本、則包含其他詳細資料。
+
+. 如果系統處於雙節點無交換式叢集組態、請使用網路介面create命令在現有節點上建立叢集介面、以在叢集連接埠上建立叢集生命體。
++
+以下是在節點的其中一個叢集連接埠上建立叢集LIF的範例命令。自動參數會將LIF設定為使用連結本機IP位址。
+
++
+[listing]
+----
+cluster_A::> network interface create -vserver Cluster -lif clus1 -role cluster -home-node node_A_1 -home-port e1a -auto true
+----
+. 完成設定後、請確認節點正常且符合參加叢集的資格：
++
+「叢集展示」
+
++
+以下範例顯示第二個節點（cluster1-02）加入叢集之後的叢集：
+
++
+[listing]
+----
+cluster_A::> cluster show
+Node                  Health  Eligibility
+--------------------- ------- ------------
+node_A_1              true    true
+node_A_2              true    true
+----
++
+您可以使用叢集設定命令、存取叢集設定精靈、以變更您為管理儲存虛擬機器（SVM）或節點SVM所輸入的任何值。
+
+. 確認您有四個連接埠設定為叢集互連：
++
+「網路連接埠展示」
+
++
+以下範例顯示叢集A中兩個控制器模組的輸出：
+
++
+[listing]
+----
+cluster_A::> network port show
+                                                             Speed (Mbps)
+Node   Port      IPspace      Broadcast Domain Link   MTU    Admin/Oper
+------ --------- ------------ ---------------- ----- ------- ------------
+node_A_1
+       **e0a       Cluster      Cluster          up       9000  auto/1000
+       e0b       Cluster      Cluster          up       9000  auto/1000**
+       e0c       Default      Default          up       1500  auto/1000
+       e0d       Default      Default          up       1500  auto/1000
+       e0e       Default      Default          up       1500  auto/1000
+       e0f       Default      Default          up       1500  auto/1000
+       e0g       Default      Default          up       1500  auto/1000
+node_A_2
+       **e0a       Cluster      Cluster          up       9000  auto/1000
+       e0b       Cluster      Cluster          up       9000  auto/1000**
+       e0c       Default      Default          up       1500  auto/1000
+       e0d       Default      Default          up       1500  auto/1000
+       e0e       Default      Default          up       1500  auto/1000
+       e0f       Default      Default          up       1500  auto/1000
+       e0g       Default      Default          up       1500  auto/1000
+14 entries were displayed.
+----
+

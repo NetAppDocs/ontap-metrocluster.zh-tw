@@ -1,0 +1,305 @@
+---
+permalink: install-ip/concept_required_mcc_ip_components_and_naming_guidelines_mcc_ip.html 
+sidebar: sidebar 
+keywords: plan, metrocluster, ip, configuration, planning, require, hardware, software, clarity, conventions, component, documentation, naming, name, requirement, support, redundancy, switch, ontap, cluster, controller, module, gigabit, ethernet, adapter, pool, drive, drive, location, consideration, partial, populate, shelves, shelf, aff, a800, internal, iom12, iom, module, stack, four-node, raid-dp, raid4, AFF A800 internal drives 
+summary: 規劃MetroCluster 您的靜態IP組態時、您必須瞭解所需及支援的軟硬體元件。為了方便且清楚、您也應該瞭解整個文件範例中元件的命名慣例。 
+---
+= 必要MetroCluster 的知識、包括知識、知識、知識、知識、知識、知識
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+規劃MetroCluster 您的靜態IP組態時、您必須瞭解所需及支援的軟硬體元件。為了方便且清楚、您也應該瞭解整個文件範例中元件的命名慣例。
+
+
+
+== 支援的軟體與硬體
+
+硬體與軟體必須支援MetroCluster 才能進行支援。
+
+https://hwu.netapp.com["NetApp Hardware Universe"]
+
+使用AFF 不完整的系統時、MetroCluster 必須將不完整組態中的所有控制器模組設定為AFF 不完整的系統。
+
+
+
+== 硬體備援需求MetroCluster
+
+由於採用了EIP組態的硬體備援、MetroCluster 因此每個站台都有兩個元件。站台會任意指派字母A和B、而個別元件則會任意指派數字1和2。
+
+
+
+== 以整合到一個靜態IP組態中的叢集需求ONTAP MetroCluster
+
+不需要使用任何一個站台的兩組等位叢集、就能完成各種不同的知識。MetroCluster ONTAP MetroCluster
+
+命名必須在MetroCluster 整個功能區組態中是唯一的。
+
+範例名稱：
+
+* 站台A：叢集_A
+* 站台B：叢集B
+
+
+
+
+== IP交換器需求MetroCluster
+
+不需使用四台IP交換器、即可完成IP組態設定。MetroCluster這四個交換器組成兩個交換器儲存架構、可在MetroCluster 整個叢集之間提供ISL、以利實現支援。
+
+IP交換器也能在每個叢集中的控制器模組之間提供叢集內通訊。
+
+命名必須在MetroCluster 整個功能區組態中是唯一的。
+
+範例名稱：
+
+* 站台A：叢集_A
++
+** ip_switch_a_1.
+** ip_switch_a_2
+
+
+* 站台B：叢集B
++
+** IP交換器_B_1
+** IP交換器_B_2
+
+
+
+
+
+
+== 控制器模組需求、以MetroCluster 透過一套靜態IP組態
+
+不需使用四或八個控制器模組、即可完成IP組態。MetroCluster
+
+每個站台的控制器模組構成HA配對。每個控制器模組在另一個站台都有一個DR合作夥伴。
+
+每個控制器模組都必須執行相同ONTAP 的版本。支援的平台機型取決於ONTAP 支援的版本：
+
+* 更新的支援功能不支援在靜態系統上安裝。MetroCluster FAS ONTAP
++
+現有的靜態IP組態可升級至版本9.4。MetroCluster FAS ONTAP
+
+* 從推出支援更新版的支援功能到更新版的支援功能、從功能性更新到ONTAP 功能MetroCluster 性更新到功能性更新FAS 。
+* 從支援支援針對ADP設定的控制器模組、從功能9.4開始ONTAP 。
+
+
+
+
+=== 控制器機型僅限四節點組態
+
+這些機型在MetroCluster 一個不含資訊的組態中限制為四個。
+
+* VA220 AFF
+* VA250 AFF
+* FAS2750
+* FAS500f
+
+
+例如、下列組態不受支援：
+
+* 八節點組態、由八AFF 個VA250控制器組成。
+* 八節點組態、由四AFF 個FAS220控制器和四個FAS500f控制器組成。
+* 兩MetroCluster 個四節點的SendeIP組態、每個組態都由AFF EfeS250控制器和共用相同的後端交換器所組成。
+* 八節點組態、由DR群組1與AFF 支援FAS9000控制器的不支援A250控制器和DR群組2組成。
+
+
+如果第二個版本不含上述任何機型、您可以使用MetroCluster 相同的後端交換器、設定兩個獨立的四節點之靜態IP組態MetroCluster 。
+
+
+
+=== 範例名稱
+
+文件中使用下列範例名稱：
+
+* 站台A：叢集_A
++
+** 控制器_a_1.
+** 控制器_a_2.
+
+
+* 站台B：叢集B
++
+** 控制器_B_1
+** 控制器_B_2
+
+
+
+
+
+
+== Gigabit乙太網路介面卡需求、以MetroCluster 實現一套靜態IP組態
+
+透過40/100 Gbps或10/25 Gbps的乙太網路介面卡、即可將IP介面連接至用於此功能的IP交換器。MetroCluster MetroCluster
+
+|===
+
+
+| 平台模式 | 必要的Gigabit乙太網路介面卡 | 介面卡所需的插槽 | 連接埠 
+
+
+| 解答900 AFF | X91146A | 插槽5、插槽7 | e5b、e7b 
+
+
+ a| 
+以利A700和FAS9000 AFF
+ a| 
+X91146A-C
+ a| 
+插槽5
+ a| 
+e5a、e5b
+
+
+
+ a| 
+解答800 AFF
+ a| 
+X1146A /內建連接埠
+ a| 
+插槽1
+ a| 
+e0b.e1b
+
+
+
+ a| 
+FASA400和FAS8300 AFF
+ a| 
+X1146A
+ a| 
+插槽1
+ a| 
+e1a、e1b
+
+
+
+ a| 
+適用於A300和FAS8200 AFF
+ a| 
+X1116A
+ a| 
+插槽1
+ a| 
+e1a、e1b
+
+
+
+ a| 
+FASA220和FAS2750 AFF
+ a| 
+內建連接埠
+ a| 
+插槽0
+ a| 
+e0a、e0b
+
+
+
+ a| 
+FASA250和FAS500f AFF
+ a| 
+內建連接埠
+ a| 
+插槽0
+ a| 
+e0c、e0d
+
+
+
+ a| 
+解答320 AFF
+ a| 
+內建連接埠
+ a| 
+插槽0
+ a| 
+e0g、e0小時
+
+|===
+
+
+== 集區與磁碟機需求（支援的最低需求）
+
+建議使用八個SAS磁碟櫃（每個站台四個磁碟櫃）、以允許每個磁碟櫃的磁碟擁有權。
+
+四節點MetroCluster 的不靜態IP組態要求每個站台的最低組態設定：
+
+* 每個節點在站台上至少有一個本機集區和一個遠端集區。
+* 每個集區中至少有七個磁碟機。
++
+在每MetroCluster 個節點具有單一鏡射資料集合體的四節點版的不間斷組態中、最低組態需要站台24個磁碟。
+
+
+
+在支援的最低組態中、每個集區都有下列磁碟機配置：
+
+* 三個根磁碟機
+* 三個資料磁碟機
+* 一個備用磁碟機
+
+
+在最低支援組態中、每個站台至少需要一個機櫃。
+
+支援RAID-DP和RAID4的支援。MetroCluster
+
+
+
+== 磁碟機位置考量部分佔用的磁碟櫃
+
+若要在使用半滿的磁碟櫃時正確自動指派磁碟機（24個磁碟機櫃中有12個磁碟機）、磁碟機應位於插槽0-5和18-23中。
+
+在組態中、磁碟機必須平均分散在磁碟櫃的四個象限。
+
+
+
+== 磁碟機位置考量AFF 因素、適用於內部磁碟機
+
+為了正確實作ADP功能、AFF 必須將系統磁碟插槽分成四個區、而且磁碟必須對稱地放置在四區。
+
+支援一個支援48個磁碟機的系統。AFF這些托架可分為四季：
+
+* 第一季：
++
+** 托架0-5.
+** 托架24 - 29
+
+
+* 第二季：
++
+** 托架6 - 11.
+** 托架30-35
+
+
+* 第三季：
++
+** 托架12-17
+** 托架36 - 41
+
+
+* 第四季：
++
+** 托架18 - 23
+** 托架42 - 47
+
+
+
+
+如果此系統裝有16個磁碟機、則必須在四個季度之間對稱地分散這些磁碟機：
+
+* 第一季有四個磁碟機：0、1、2、3
+* 第二季有四個磁碟機：6、7、8、9
+* 第三季有四個磁碟機：12、13、14、15
+* 第四季有四個磁碟機：18、19、20、21
+
+
+
+
+== 在堆疊中混合IOM12和IOM 6模組
+
+您的ONTAP 版本必須支援機櫃混合。請參閱 https://mysupport.netapp.com/NOW/products/interoperability["NetApp互通性對照表工具IMT （不含）"] 查看ONTAP 您的版本是否支援機櫃混合。
+
+如需機櫃混合的詳細資訊、請參閱 https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-mix-hotadd/home.html["將含有IOM12模組的熱新增磁碟櫃放到具有IOM6模組的磁碟櫃堆疊中"]

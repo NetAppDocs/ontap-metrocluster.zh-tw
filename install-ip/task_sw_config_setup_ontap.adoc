@@ -1,0 +1,263 @@
+---
+permalink: install-ip/task_sw_config_setup_ontap.html 
+sidebar: sidebar 
+keywords: metrocluster, ontap, setup 
+summary: 每個節點開機後、系統會提示您執行基本節點和叢集組態。設定叢集後、您將返回ONTAP 到還原CLI以建立集合體並建立MetroCluster 該組態。 
+---
+= 設定ONTAP 功能
+:allow-uri-read: 
+
+
+[role="lead"]
+每個節點開機後、系統會提示您執行基本節點和叢集組態。設定叢集後、您將返回ONTAP 到還原CLI以建立集合體並建立MetroCluster 該組態。
+
+.開始之前
+* 您必須使用纜線連接MetroCluster 的the不可用的功能組態。
+* 您不得設定服務處理器。
+
+
+如果您需要以網路方式開機新的控制器、請參閱 link:../upgrade/task_upgrade_controllers_in_a_four_node_ip_mcc_us_switchover_and_switchback_mcc_ip.html#netbooting-the-new-controllers["Netbooting新的控制器模組"]。
+
+這項工作必須在MetroCluster 整個叢集上執行、且必須採用支援功能的組態。
+
+.步驟
+. 如果您尚未啟動本機站台上的每個節點、請將其全部開機。
++
+如果系統處於維護模式、您需要發出halt命令以結束維護模式、然後發出「boot_ontap」命令來啟動系統並進入叢集設定。
+
+. 在每個叢集中的第一個節點上、繼續執行各項提示以設定叢集。
++
+.. 請依照系統提供的指示啟用AutoSupport 「支援功能」工具。
++
+輸出應類似於下列內容：
+
++
+[listing]
+----
+Welcome to the cluster setup wizard.
+
+    You can enter the following commands at any time:
+    "help" or "?" - if you want to have a question clarified,
+    "back" - if you want to change previously answered questions, and
+    "exit" or "quit" - if you want to quit the cluster setup wizard.
+    Any changes you made before quitting will be saved.
+
+    You can return to cluster setup at any time by typing "cluster setup".
+    To accept a default or omit a question, do not enter a value.
+
+    This system will send event messages and periodic reports to NetApp Technical
+    Support. To disable this feature, enter
+    autosupport modify -support disable
+    within 24 hours.
+
+    Enabling AutoSupport can significantly speed problem determination and
+    resolution should a problem occur on your system.
+    For further information on AutoSupport, see:
+    http://support.netapp.com/autosupport/
+
+    Type yes to confirm and continue {yes}: yes
+.
+.
+.
+----
+.. 回應提示來設定節點管理介面。
++
+這些提示類似於下列內容：
+
++
+[listing]
+----
+Enter the node management interface port [e0M]:
+Enter the node management interface IP address: 172.17.8.229
+Enter the node management interface netmask: 255.255.254.0
+Enter the node management interface default gateway: 172.17.8.1
+A node management interface on port e0M with IP address 172.17.8.229 has been created.
+----
+.. 回應提示來建立叢集。
++
+這些提示類似於下列內容：
+
++
+[listing]
+----
+Do you want to create a new cluster or join an existing cluster? {create, join}:
+create
+
+
+Do you intend for this node to be used as a single node cluster? {yes, no} [no]:
+no
+
+Existing cluster interface configuration found:
+
+Port MTU IP Netmask
+e0a 1500 169.254.18.124 255.255.0.0
+e1a 1500 169.254.184.44 255.255.0.0
+
+Do you want to use this configuration? {yes, no} [yes]: no
+
+System Defaults:
+Private cluster network ports [e0a,e1a].
+Cluster port MTU values will be set to 9000.
+Cluster interface IP addresses will be automatically generated.
+
+Do you want to use these defaults? {yes, no} [yes]: no
+
+Enter the cluster administrator's (username "admin") password:
+
+Retype the password:
+
+
+Step 1 of 5: Create a Cluster
+You can type "back", "exit", or "help" at any question.
+
+List the private cluster network ports [e0a,e1a]:
+Enter the cluster ports' MTU size [9000]:
+Enter the cluster network netmask [255.255.0.0]: 255.255.254.0
+Enter the cluster interface IP address for port e0a: 172.17.10.228
+Enter the cluster interface IP address for port e1a: 172.17.10.229
+Enter the cluster name: cluster_A
+
+Creating cluster cluster_A
+
+Starting cluster support services ...
+
+Cluster cluster_A has been created.
+----
+.. 新增授權、設定叢集管理SVM、並回應提示輸入DNS資訊。
++
+這些提示類似於下列內容：
+
++
+[listing]
+----
+Step 2 of 5: Add Feature License Keys
+You can type "back", "exit", or "help" at any question.
+
+Enter an additional license key []:
+
+
+Step 3 of 5: Set Up a Vserver for Cluster Administration
+You can type "back", "exit", or "help" at any question.
+
+
+Enter the cluster management interface port [e3a]:
+Enter the cluster management interface IP address: 172.17.12.153
+Enter the cluster management interface netmask: 255.255.252.0
+Enter the cluster management interface default gateway: 172.17.12.1
+
+A cluster management interface on port e3a with IP address 172.17.12.153 has been created. You can use this address to connect to and manage the cluster.
+
+Enter the DNS domain names: lab.netapp.com
+Enter the name server IP addresses: 172.19.2.30
+DNS lookup for the admin Vserver will use the lab.netapp.com domain.
+
+Step 4 of 5: Configure Storage Failover (SFO)
+You can type "back", "exit", or "help" at any question.
+
+
+SFO will be enabled when the partner joins the cluster.
+
+
+Step 5 of 5: Set Up the Node
+You can type "back", "exit", or "help" at any question.
+
+Where is the controller located []: svl
+----
+.. 回應提示、啟用儲存容錯移轉並設定節點。
++
+這些提示類似於下列內容：
+
++
+[listing]
+----
+Step 4 of 5: Configure Storage Failover (SFO)
+You can type "back", "exit", or "help" at any question.
+
+
+SFO will be enabled when the partner joins the cluster.
+
+
+Step 5 of 5: Set Up the Node
+You can type "back", "exit", or "help" at any question.
+
+Where is the controller located []: site_A
+----
+.. 完成節點的組態、但不要建立資料集合體。
++
+您可以使用ONTAP 「靜態系統管理程式」、將網頁瀏覽器指向叢集管理IP位址 (https://172.17.12.153)[]。
+
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.onc-sm-help/GUID-DF04A607-30B0-4B98-99C8-CB065C64E670.html["使用System Manager進行叢集管理（9.0至9.6版）"]
+
++
+https://docs.netapp.com/us-en/ontap/index.html#about-ontap-system-manager["系統管理程式（9.7版及更新版本）ONTAP"]
+
+
+
+. 依照提示啟動下一個控制器並將其加入叢集。
+. 確認節點已設定為高可用度模式：
++
+「儲存容錯移轉顯示欄位模式」
+
++
+如果不是、您必須在每個節點上設定HA模式、然後重新啟動節點：
+
++
+"torage容錯移轉修改-mode ha -nodNode localhost"
+
++
+此命令會設定高可用度模式、但不會啟用儲存容錯移轉。儲存容錯移轉功能會在MetroCluster 稍後設定支援功能時自動啟用。
+
+. 確認您有四個連接埠設定為叢集互連：
++
+「網路連接埠展示」
+
++
+目前尚未設定好這個介面、且不會出現在命令輸出中。MetroCluster
+
++
+以下範例顯示node_a_1上的兩個叢集連接埠：
+
++
+[listing]
+----
+cluster_A::*> network port show -role cluster
+
+
+
+Node: node_A_1
+
+                                                                       Ignore
+
+                                                  Speed(Mbps) Health   Health
+
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+
+e4a       Cluster      Cluster          up   9000  auto/40000 healthy  false
+
+e4e       Cluster      Cluster          up   9000  auto/40000 healthy  false
+
+
+Node: node_A_2
+
+                                                                       Ignore
+
+                                                  Speed(Mbps) Health   Health
+
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status   Status
+
+--------- ------------ ---------------- ---- ---- ----------- -------- ------
+
+e4a       Cluster      Cluster          up   9000  auto/40000 healthy  false
+
+e4e       Cluster      Cluster          up   9000  auto/40000 healthy  false
+
+
+4 entries were displayed.
+----
+. 在合作夥伴叢集上重複這些步驟。
+
+
+返回ONTAP 到指令行介面、MetroCluster 執行後續的工作、完成整套的功能。

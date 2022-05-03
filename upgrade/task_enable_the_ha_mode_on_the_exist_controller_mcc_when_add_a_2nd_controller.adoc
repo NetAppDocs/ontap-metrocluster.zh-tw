@@ -1,0 +1,21 @@
+---
+permalink: upgrade/task_enable_the_ha_mode_on_the_exist_controller_mcc_when_add_a_2nd_controller.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, set, up, ha, mode, existing, controller, module 
+summary: 您必須使用儲存容錯移轉修改命令、在現有的控制器模組上設定模式。重新啟動控制器模組之後、模式值會在稍後啟用。 
+---
+= 在現有控制器模組上設定HA模式
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須使用儲存容錯移轉修改命令、在現有的控制器模組上設定模式。重新啟動控制器模組之後、模式值會在稍後啟用。
+
+.步驟
+. 將模式設為HA：
++
+"torage容錯移轉修改-mode ha -node_existing節點名稱_"
+
+

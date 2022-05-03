@@ -1,0 +1,77 @@
+---
+permalink: install-ip/concept_considerations_unmirrored_aggrs.html 
+sidebar: sidebar 
+keywords: differences, eight-node, four-node, fabric-attached, stretch, metrocluster ip, storage, bridges, fc-to-sas, atto, fibrebridge, SAS, local HA, auso, automatic unplanned switchover, array luns, mediator, tiebreaker 
+summary: 如果您的組態包含無鏡射的Aggregate、則必須注意切換作業後可能發生的存取問題。 
+---
+= 使用無鏡射Aggregate
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您的組態包含無鏡射的Aggregate、則必須注意切換作業後可能發生的存取問題。
+
+
+
+== 進行需要關機的維護時、需要考慮無鏡射的集合體
+
+如果您因為維護理由而需要全站台關機、而執行協調式切換、則應先手動將災難站台擁有的任何未鏡射集合體離線。
+
+如果您不這麼做、仍在運作中的站台節點可能會因為多磁碟出現問題而停機。如果切換式無鏡射集合體離線或因為停電或ISL遺失而失去災難站台儲存設備的連線、就可能發生這種情況。
+
+
+
+== 無鏡射集合體和階層式命名空間的考量
+
+如果您使用階層式命名空間、則應設定交會路徑、使該路徑中的所有磁碟區僅位於鏡射Aggregate上、或僅位於無鏡射Aggregate上。在交會路徑中設定混合使用無鏡射與鏡射的集合體、可能會導致在切換作業之後無法存取無鏡射的集合體。
+
+
+
+== 無鏡射集合體、CRS中繼資料磁碟區和資料SVM根磁碟區的考量
+
+組態複寫服務（CRS）中繼資料磁碟區和資料SVM根磁碟區必須位於鏡射Aggregate上。您無法將這些磁碟區移至無鏡射的Aggregate。如果它們位於無鏡射的Aggregate上、則會對協調的切換和切換回復作業加以否決。如果發生這種情況、則使用支援功能檢查命令會發出警告。MetroCluster
+
+
+
+== 無鏡射集合體和SVM的考量
+
+應該僅在鏡射Aggregate上或僅在無鏡射Aggregate上設定SVM。設定混合使用無鏡射與鏡射的集合體、可能導致切換作業超過120秒、如果無鏡射的集合體未上線、則會導致資料中斷。
+
+
+
+== 無鏡射集合體和SAN的考量
+
+在執行本版的版本之前、LUN不應位於無鏡射的Aggregate上。ONTAP在未鏡射的集合體上設定LUN、可能會導致切換作業超過120秒、並導致資料中斷。
+
+
+
+== 為無鏡射的集合體新增儲存磁碟櫃的考量
+
+
+NOTE: 如果您要新增架構、以供MetroCluster 在整個過程中用於鏡射的Aggregate、您必須執行下列動作：
+
+. 開始新增磁碟櫃的程序之前、請發出下列命令：
++
+「MetroCluster 支援無鏡射的Aggr-deployment true」
+
+. 確認自動磁碟指派已關閉：
++
+顯示「磁碟選項」
+
+. 請依照程序步驟新增機櫃。
+. 手動將新機櫃中的所有磁碟指派給擁有無鏡射Aggregate或Aggregate的節點。
+. 建立Aggregate：
++
+《torage aggregate create》
+
+. 完成此程序後、請發出下列命令：
++
+「MetroCluster 支援-無鏡射- aggr-deployment假」
+
+. 確認已啟用自動磁碟指派：
++
+顯示「磁碟選項」
+
+

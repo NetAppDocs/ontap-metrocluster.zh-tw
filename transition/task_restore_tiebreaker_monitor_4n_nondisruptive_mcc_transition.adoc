@@ -1,0 +1,38 @@
+---
+permalink: transition/task_restore_tiebreaker_monitor_4n_nondisruptive_mcc_transition.html 
+sidebar: sidebar 
+keywords: completing, complete, transition, metrocluster, configuration, resume, monitor, tiebreaker, mediator, utility, restoring, restore 
+summary: 完成完整個流程的流程轉換之後、您可以使用斷路器或調控器公用程式繼續監控。MetroCluster 
+---
+= 還原斷路器或中保監控
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+完成完整個流程的流程轉換之後、您可以使用斷路器或調控器公用程式繼續監控。MetroCluster
+
+. 請根據您的組態使用適當的程序。
++
+[cols="1,3"]
+|===
+
+
+| 如果您使用... | 請使用此程序 
+
+
+ a| 
+Tiebreaker
+ a| 
+link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#adding-metrocluster-configurations["新增MetroCluster 功能"]
+
+
+
+ a| 
+中介者
+ a| 
+連結：../install-ip/concept_mediator_requirements.html #configuring the -the ONTAP中介程序服務-from a MetroCluster-IP組態[從ONTAP 一個SectionIP組態設定此功能MetroCluster
+
+|===
+

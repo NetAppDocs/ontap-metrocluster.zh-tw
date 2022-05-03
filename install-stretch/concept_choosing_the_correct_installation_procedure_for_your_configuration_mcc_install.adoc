@@ -1,0 +1,47 @@
+---
+permalink: install-stretch/concept_choosing_the_correct_installation_procedure_for_your_configuration_mcc_install.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, correct, procedure, configuration 
+summary: 您必須根據使用FlexArray 的是哪些LUN、以及儲存控制器如何連接至儲存櫃、選擇正確的安裝程序。 
+---
+= 針對您的組態選擇正確的安裝程序
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須根據使用FlexArray 的是哪些LUN、以及儲存控制器如何連接至儲存櫃、選擇正確的安裝程序。
+
+image::../media/workflow_select_your_metrocluster_configuration_stretch.gif[工作流程選擇MetroCluster 您需要的組態延伸]
+
+|===
+
+
+| 對於此安裝類型... | 請使用下列程序... 
+
+
+ a| 
+雙節點擴充組態、含FC至SAS橋接器
+ a| 
+. link:task_configure_the_mcc_hardware_components_2_node_stretch_atto.html["連接雙節點橋接式Stretch MetroCluster 功能的纜線配置"]
+. link:concept_configuring_the_mcc_software_in_ontap.html["在MetroCluster 不提供的情況下設定功能ONTAP"]
+
+
+
+
+ a| 
+雙節點擴充組態、含直接連接的SAS纜線
+ a| 
+. link:task_configure_the_mcc_hardware_components_2_node_stretch_sas.html["連接雙節點SAS附加的Stretch MetroCluster Sing組態"]
+. link:concept_configuring_the_mcc_software_in_ontap.html["在MetroCluster 不提供的情況下設定功能ONTAP"]
+
+
+
+
+ a| 
+安裝陣列LUN
+ a| 
+link:concept_stretch_mcc_configuration_with_array_luns.html["以擴充MetroCluster 的等位組態與陣列LUN進行連線"]
+
+|===

@@ -1,0 +1,330 @@
+---
+permalink: disaster-recovery/task_heal_restore_mcip.html 
+sidebar: sidebar 
+keywords: aggregate, heal, mirror, restore 
+summary: 更換硬體並指派磁碟之後、您可以執行MetroCluster 還原作業。 
+---
+= 執行Aggregate修復及還原鏡像（MetroCluster 知識IP組態）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+更換硬體並指派磁碟之後、在執行ONTAP 《S還原9.5或更早版本的系統中、您可以執行MetroCluster 《還原作業（S還原）：在ONTAP 所有版本的支援中、您必須確認集合體已鏡射、並視需要重新啟動鏡射。
+
+從ONTAP 功能支援的9.6開始、災難站台節點開機時、系統會自動執行修復作業。不需要使用修復命令。
+
+這些步驟會在正常運作的叢集上執行。
+
+.步驟
+. 如果您使用ONTAP 的是更新版本的版本、則必須確認自動修復已成功完成：
++
+.. 確認已完成修復-恢復-自動和修復-根- agg-auto自動作業：
++
+《不穩定營運歷史》MetroCluster
+
++
+下列輸出顯示叢集A上的作業已成功完成
+
++
+[listing]
+----
+cluster_B::*> metrocluster operation history show
+Operation                     State          Start Time       End Time
+----------------------------- -------------- ---------------- ----------------
+heal-root-aggr-auto           successful      2/25/2019 06:45:58
+                                                              2/25/2019 06:46:02
+heal-aggr-auto                successful     2/25/2019 06:45:48
+                                                              2/25/2019 06:45:52
+.
+.
+.
+----
+.. 確認災難站台已準備好進行切換：
++
+「不一樣的秀」MetroCluster
+
++
+下列輸出顯示叢集A上的作業已成功完成
+
++
+[listing]
+----
+cluster_B::*> metrocluster node show
+DR                          Configuration  DR
+Group Cluster Node          State          Mirroring Mode
+----- ------- ------------- -------------- --------- --------------------
+1     cluster_A
+              node_A_1      configured     enabled   heal roots completed
+              node_A_2      configured     enabled   heal roots completed
+      cluster_B
+              node_B_1      configured     enabled   waiting for switchback recovery
+              node_B_2      configured     enabled   waiting for switchback recovery
+4 entries were displayed.
+----
+
+
+. 如果您使用ONTAP 的是版本號不超過版本的版本、則必須執行Aggregate修復：
++
+.. 驗證節點的狀態：
++
+「不一樣的秀」MetroCluster
+
++
+下列輸出顯示切換已完成、因此可以執行修復。
+
++
+[listing]
+----
+cluster_B::> metrocluster node show
+DR                               Configuration  DR
+Group Cluster Node               State          Mirroring Mode
+----- ------- ------------------ -------------- --------- --------------------
+1     cluster_B
+              node_B_1           configured     enabled   switchover completed
+              node_B_2           configured     enabled   switchover completed
+      cluster_A
+              node_A_1           configured     enabled   waiting for switchback recovery
+              node_A_2           configured     enabled   waiting for switchback recovery
+4 entries were displayed.
+
+cluster_B::>
+----
+.. 執行集合體修復階段：
++
+《修復階段集合體》MetroCluster
+
++
+下列輸出顯示典型的Aggregate修復作業。
+
++
+[listing]
+----
+cluster_B::*> metrocluster heal -phase aggregates
+[Job 647] Job succeeded: Heal Aggregates is successful.
+
+cluster_B::*> metrocluster operation show
+  Operation: heal-aggregates
+      State: successful
+ Start Time: 10/26/2017 12:01:15
+   End Time: 10/26/2017 12:01:17
+     Errors: -
+
+cluster_B::*>
+----
+.. 確認Aggregate修復已完成、且災難站台已準備好進行切換：
++
+「不一樣的秀」MetroCluster
+
++
+下列輸出顯示叢集A上的「修復集合體」階段已完成
+
++
+[listing]
+----
+cluster_B::> metrocluster node show
+DR                               Configuration  DR
+Group Cluster Node               State          Mirroring Mode
+----- ------- ------------------ -------------- --------- --------------------
+1     cluster_A
+              node_A_1           configured     enabled   heal aggregates completed
+              node_A_2           configured     enabled   heal aggregates completed
+      cluster_B
+              node_B_1           configured     enabled   waiting for switchback recovery
+              node_B_2           configured     enabled   waiting for switchback recovery
+4 entries were displayed.
+
+cluster_B::>
+----
+
+
+. 如果已更換磁碟、您必須鏡射本機與切換式集合體：
++
+.. 顯示集合體：
++
+《集合體展》
+
++
+[listing]
+----
+cluster_B::> storage aggregate show
+cluster_B Aggregates:
+Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
+--------- -------- --------- ----- ------- ------ ---------------- ------------
+node_B_1_aggr0 1.49TB  74.12GB   95% online     1 node_B_1         raid4,
+                                                                   normal
+node_B_2_aggr0 1.49TB  74.12GB   95% online     1 node_B_2         raid4,
+                                                                   normal
+node_B_1_aggr1 3.14TB  3.04TB    3% online     15 node_B_1         raid_dp,
+                                                                   normal
+node_B_1_aggr2 3.14TB  3.06TB    3% online     14 node_B_1         raid_tec,
+                                                                   normal
+node_B_1_aggr1 3.14TB  2.99TB    5% online     37 node_B_2         raid_dp,
+                                                                   normal
+node_B_1_aggr2 3.14TB  3.02TB    4% online     35 node_B_2         raid_tec,
+                                                                   normal
+
+cluster_A Switched Over Aggregates:
+Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
+--------- -------- --------- ----- ------- ------ ---------------- ------------
+node_A_1_aggr1 2.36TB  2.12TB   10% online     91 node_B_1         raid_dp,
+                                                                   normal
+node_A_1_aggr2 3.14TB  2.90TB    8% online     90 node_B_1         raid_tec,
+                                                                   normal
+node_A_2_aggr1 2.36TB  2.10TB   11% online     91 node_B_2         raid_dp,
+                                                                   normal
+node_A_2_aggr2 3.14TB  2.89TB    8% online     90 node_B_2         raid_tec,
+                                                                   normal
+12 entries were displayed.
+
+cluster_B::>
+----
+.. 鏡射Aggregate：
++
+「儲存Aggregate mirror -Aggregate Aggregate名稱」
+
++
+下列輸出顯示典型的鏡射作業。
+
++
+[listing]
+----
+cluster_B::> storage aggregate mirror -aggregate node_B_1_aggr1
+
+Info: Disks would be added to aggregate "node_B_1_aggr1" on node "node_B_1" in
+      the following manner:
+
+      Second Plex
+
+        RAID Group rg0, 6 disks (block checksum, raid_dp)
+          Position   Disk                      Type                  Size
+          ---------- ------------------------- ---------- ---------------
+          dparity    5.20.6                    SSD                      -
+          parity     5.20.14                   SSD                      -
+          data       5.21.1                    SSD                894.0GB
+          data       5.21.3                    SSD                894.0GB
+          data       5.22.3                    SSD                894.0GB
+          data       5.21.13                   SSD                894.0GB
+
+      Aggregate capacity available for volume use would be 2.99TB.
+
+Do you want to continue? {y|n}: y
+----
+.. 針對存續站台中的每個集合體重複上一步。
+.. 等待Aggregate重新同步；您可以使用「shorage Aggregate show」命令來檢查狀態。
++
+下列輸出顯示許多Aggregate正在重新同步。
+
++
+[listing]
+----
+cluster_B::> storage aggregate show
+
+cluster_B Aggregates:
+Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
+--------- -------- --------- ----- ------- ------ ---------------- ------------
+node_B_1_aggr0 1.49TB  74.12GB   95% online     1 node_B_1         raid4,
+                                                                   mirrored,
+                                                                   normal
+node_B_2_aggr0 1.49TB  74.12GB   95% online     1 node_B_2         raid4,
+                                                                   mirrored,
+                                                                   normal
+node_B_1_aggr1 2.86TB  2.76TB    4% online     15 node_B_1         raid_dp,
+                                                                   resyncing
+node_B_1_aggr2 2.89TB  2.81TB    3% online     14 node_B_1         raid_tec,
+                                                                   resyncing
+node_B_2_aggr1 2.73TB  2.58TB    6% online     37 node_B_2         raid_dp,
+                                                                   resyncing
+node_B-2_aggr2 2.83TB  2.71TB    4% online     35 node_B_2         raid_tec,
+                                                                   resyncing
+
+cluster_A Switched Over Aggregates:
+Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
+--------- -------- --------- ----- ------- ------ ---------------- ------------
+node_A_1_aggr1 1.86TB  1.62TB   13% online     91 node_B_1         raid_dp,
+                                                                   resyncing
+node_A_1_aggr2 2.58TB  2.33TB   10% online     90 node_B_1         raid_tec,
+                                                                   resyncing
+node_A_2_aggr1 1.79TB  1.53TB   14% online     91 node_B_2         raid_dp,
+                                                                   resyncing
+node_A_2_aggr2 2.64TB  2.39TB    9% online     90 node_B_2         raid_tec,
+                                                                   resyncing
+12 entries were displayed.
+----
+.. 確認所有的Aggregate均已上線、並已重新同步：
++
+「集合體展示」
+
++
+下列輸出顯示所有的Aggregate都已重新同步。
+
++
+[listing]
+----
+cluster_A::> storage aggregate plex show
+  ()
+                    Is      Is         Resyncing
+Aggregate Plex      Online  Resyncing    Percent Status
+--------- --------- ------- ---------- --------- ---------------
+node_B_1_aggr0 plex0 true    false              - normal,active
+node_B_1_aggr0 plex8 true    false              - normal,active
+node_B_2_aggr0 plex0 true    false              - normal,active
+node_B_2_aggr0 plex8 true    false              - normal,active
+node_B_1_aggr1 plex0 true    false              - normal,active
+node_B_1_aggr1 plex9 true    false              - normal,active
+node_B_1_aggr2 plex0 true    false              - normal,active
+node_B_1_aggr2 plex5 true    false              - normal,active
+node_B_2_aggr1 plex0 true    false              - normal,active
+node_B_2_aggr1 plex9 true    false              - normal,active
+node_B_2_aggr2 plex0 true    false              - normal,active
+node_B_2_aggr2 plex5 true    false              - normal,active
+node_A_1_aggr1 plex4 true    false              - normal,active
+node_A_1_aggr1 plex8 true    false              - normal,active
+node_A_1_aggr2 plex1 true    false              - normal,active
+node_A_1_aggr2 plex5 true    false              - normal,active
+node_A_2_aggr1 plex4 true    false              - normal,active
+node_A_2_aggr1 plex8 true    false              - normal,active
+node_A_2_aggr2 plex1 true    false              - normal,active
+node_A_2_aggr2 plex5 true    false              - normal,active
+20 entries were displayed.
+----
+
+
+. 在執行ONTAP 版本不超過版本的系統上、執行根集合體修復階段：
++
+「MetroCluster 修復階段根集合體」
+
++
+[listing]
+----
+cluster_B::> metrocluster heal -phase root-aggregates
+[Job 651] Job is queued: MetroCluster Heal Root Aggregates Job.Oct 26 13:05:00
+[Job 651] Job succeeded: Heal Root Aggregates is successful.
+----
+. 確認「修復根目錄」階段已完成、且災難站台已準備好進行切換：
++
+下列輸出顯示叢集A上的「修復根目錄」階段已完成
+
++
+[listing]
+----
+cluster_B::> metrocluster node show
+DR                               Configuration  DR
+Group Cluster Node               State          Mirroring Mode
+----- ------- ------------------ -------------- --------- --------------------
+1     cluster_A
+              node_A_1           configured     enabled   heal roots completed
+              node_A_2           configured     enabled   heal roots completed
+      cluster_B
+              node_B_1           configured     enabled   waiting for switchback recovery
+              node_B_2           configured     enabled   waiting for switchback recovery
+4 entries were displayed.
+
+cluster_B::>
+----
+
+
+繼續驗證替換節點上的授權。
+
+link:task_complete_recovery.html#verifying-licenses-on-the-replaced-nodes["驗證替換節點上的授權"]

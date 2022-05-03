@@ -1,0 +1,29 @@
+---
+permalink: install-stretch/reference_example_of_a_stretch_mcc_configuration_with_array_luns.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, example, stretch, configuration, array, luns, e-series, FAS9000 
+summary: 在MetroCluster 使用陣列LUN的延伸式功能區組態中、您必須連接FC-VI連接埠、以便在控制器之間直接連線。此外、您必須將每個控制器HBA連接埠纜線連接至對應FC交換器上的交換器連接埠。除了MetroCluster E系列陣列LUN（可直接連接）之外、連接至陣列LUN的纜線與連接至光纖的功能相同。 
+---
+= 以陣列LUN為MetroCluster 例的延伸功能性樣例
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在MetroCluster 使用陣列LUN的延伸式功能區組態中、您必須連接FC-VI連接埠、以便在控制器之間直接連線。此外、您必須將每個控制器HBA連接埠纜線連接至對應FC交換器上的交換器連接埠。除了MetroCluster E系列陣列LUN（可直接連接）之外、連接至陣列LUN的纜線與連接至光纖的功能相同。
+
+下圖顯示以延伸MetroCluster 的概念配置、在控制器A和B之間連接的FC-VI連接埠：
+
+image::../media/fc_vi_connections_campus.gif[FC VI連線校園]
+
+
+NOTE: FAS9000儲存系統控制器模組各使用四個FC-VI連接埠。
+
+對於E系列陣列LUN的組態、您可以直接附加E系列LUN。
+
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/Direct_Attach_support_for_Stretch_MetroCluster_Configuration_with_NetApp_E-Series_array["直接附加支援MetroCluster NetApp E系列陣列的Stretch Eetch組態"]
+
+除了連接FC-VI連接埠之外、本程序的其餘步驟是使用MetroCluster 陣列LUN設定一個不使用E系列陣列LUN的靜態組態。這需要FC交換器、其使用方式與在光纖網路附加組態中使用陣列LUN相同。
+
+https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"]

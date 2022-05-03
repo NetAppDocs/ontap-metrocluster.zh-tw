@@ -1,0 +1,389 @@
+---
+permalink: disaster-recovery/task_cfg_switches_mcfc.html 
+sidebar: sidebar 
+keywords: configure, fc, switches, metrocluster, configuration 
+summary: 如果您已更換災難站台中的FC交換器、則必須使用廠商專屬的程序來設定。 
+---
+= 設定FC交換器（MetroCluster 僅限不含FFC組態）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您已更換災難站台中的FC交換器、則必須使用廠商專屬的程序來設定。您必須設定一個交換器、確認存續站台上的儲存存取不受影響、然後設定第二個交換器。
+
+link:../install-fc/concept_port_assignments_for_fc_switches_when_using_ontap_9_0.html["使用9.0時FC交換器的連接埠指派"]
+
+link:../install-fc/concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）"]
+
+
+
+== 在站台發生災難後設定Brocade FC交換器
+
+您必須使用此Brocade專屬程序來設定替換交換器並啟用ISL連接埠。
+
+本程序的範例以下列假設為基礎：
+
+* 站台A是災難站台。
+* FC_SWIT_A_1已更換。
+* FC_SWIT_A_2已更換。
+* 站台B是存續的站台。
+* FC_SWIT_B_1正常運作。
+* FC_SWIT_B_2正常運作。
+
+
+當您連接FC交換器纜線時、必須確認您使用的是指定的連接埠指派：
+
+* link:../install-fc/concept_port_assignments_for_fc_switches_when_using_ontap_9_0.html["FC交換器的連接埠指派（使用ONTAP 功能）9.0"]
+* link:../install-fc/concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）"]
+
+
+這些範例顯示兩個FC對SAS橋接器。如果您有更多橋接器、則必須停用並隨後啟用其他連接埠。
+
+.步驟
+. 開機並預先設定新交換器：
++
+.. 開啟新交換器的電源、讓它開機。
+.. 檢查交換器的韌體版本、確認其與其他FC交換器的版本相符：
++
+《Firmwarreshow》
+
+.. 依照下列主題所述設定新交換器、跳過在交換器上設定分區的步驟。
++
+link:../install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"]
+
++
+link:../install-stretch/concept_considerations_differences.html["延伸MetroCluster 安裝與組態"]
+
+.. 持續停用交換器：
++
+「witchcfg堅持 禁用」
+
++
+重新開機或快速開機後、交換器將維持停用狀態。如果此命令不可用，則應使用"shwitchdisable"命令。
+
++
+以下範例顯示BrocadeSwitchA上的命令：
+
++
+[listing]
+----
+BrocadeSwitchA:admin> switchcfgpersistentdisable
+----
++
+以下範例顯示BrocadeSwitchB上的命令：
+
++
+[listing]
+----
+BrocadeSwitchA:admin> switchcfgpersistentdisable
+----
+
+
+. 新交換器的完整組態：
++
+.. 在存續站台上啟用ISL：
++
+「portcfg堅持 啟用連接埠號碼」
+
++
+[listing]
+----
+FC_switch_B_1:admin> portcfgpersistentenable 10
+FC_switch_B_1:admin> portcfgpersistentenable 11
+----
+.. 在替換交換器上啟用ISL：
++
+「portcfg堅持 啟用連接埠號碼」
+
++
+[listing]
+----
+FC_switch_A_1:admin> portcfgpersistentenable 10
+FC_switch_A_1:admin> portcfgpersistentenable 11
+----
+.. 在替換交換器（本例中為FC_switch_a_1）上、確認ISL已上線：
++
+「秀秀」
+
++
+[listing]
+----
+FC_switch_A_1:admin> switchshow
+switchName: FC_switch_A_1
+switchType: 71.2
+switchState:Online
+switchMode: Native
+switchRole: Principal
+switchDomain:       4
+switchId:   fffc03
+switchWwn:  10:00:00:05:33:8c:2e:9a
+zoning:             OFF
+switchBeacon:       OFF
+
+Index Port Address Media Speed State  Proto
+==============================================
+...
+10   10    030A00 id   16G     Online  FC E-Port 10:00:00:05:33:86:89:cb "FC_switch_A_1"
+11   11    030B00 id   16G     Online  FC E-Port 10:00:00:05:33:86:89:cb "FC_switch_A_1" (downstream)
+...
+----
+
+
+. 持續啟用交換器：
++
+「witchcfg堅持」
+
+. 驗證連接埠是否在線上：
++
+「秀秀」
+
+
+
+
+
+== 在站台發生災難後設定Cisco FC交換器
+
+您必須使用Cisco專屬的程序來設定替換交換器並啟用ISL連接埠。
+
+本程序的範例以下列假設為基礎：
+
+* 站台A是災難站台。
+* FC_SWIT_A_1已更換。
+* FC_SWIT_A_2已更換。
+* 站台B是存續的站台。
+* FC_SWIT_B_1正常運作。
+* FC_SWIT_B_2正常運作。
+
+
+.步驟
+. 設定交換器：
++
+.. 請參閱 link:../install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"]
+.. 請依照中的步驟設定交換器 link:../install-fc/task_reset_the_cisco_fc_switch_to_factory_defaults.html["設定Cisco FC交換器"] 第_節、除_「在Cisco FC交換器上設定分區」一節以外：
++
+此程序稍後會設定分區。
+
+
+
+. 在狀況良好的交換器（本例中為FC_switch_B_1）上、啟用ISL連接埠。
++
+下列範例顯示啟用連接埠的命令：
+
++
+[listing]
+----
+FC_switch_B_1# conf t
+FC_switch_B_1(config)# int fc1/14-15
+FC_switch_B_1(config)# no shut
+FC_switch_B_1(config)# end
+FC_switch_B_1# copy running-config startup-config
+FC_switch_B_1#
+----
+. 使用show interface brief命令檢查ISL連接埠是否正常運作。
+. 從Fabric擷取分區資訊。
++
+以下範例顯示分散分區組態的命令：
+
++
+[listing]
+----
+FC_switch_B_1(config-zone)# zoneset distribute full vsan 10
+FC_switch_B_1(config-zone)# zoneset distribute full vsan 20
+FC_switch_B_1(config-zone)# end
+----
++
+FC_switch_B_1已發佈至網路架構中「vSAN 10」和「vSAN 20」的所有其他交換器、分區資訊會從FC_switch_a_1擷取。
+
+. 在狀況良好的交換器上、確認已從合作夥伴交換器正確擷取分區資訊：
++
+「How Zone」
+
++
+[listing]
+----
+FC_switch_B_1# show zone
+zone name FC-VI_Zone_1_10 vsan 10
+  interface fc1/1 swwn 20:00:54:7f:ee:e3:86:50
+  interface fc1/2 swwn 20:00:54:7f:ee:e3:86:50
+  interface fc1/1 swwn 20:00:54:7f:ee:b8:24:c0
+  interface fc1/2 swwn 20:00:54:7f:ee:b8:24:c0
+
+zone name STOR_Zone_1_20_25A vsan 20
+  interface fc1/5 swwn 20:00:54:7f:ee:e3:86:50
+  interface fc1/8 swwn 20:00:54:7f:ee:e3:86:50
+  interface fc1/9 swwn 20:00:54:7f:ee:e3:86:50
+  interface fc1/10 swwn 20:00:54:7f:ee:e3:86:50
+  interface fc1/11 swwn 20:00:54:7f:ee:e3:86:50
+  interface fc1/8 swwn 20:00:54:7f:ee:b8:24:c0
+  interface fc1/9 swwn 20:00:54:7f:ee:b8:24:c0
+  interface fc1/10 swwn 20:00:54:7f:ee:b8:24:c0
+  interface fc1/11 swwn 20:00:54:7f:ee:b8:24:c0
+
+zone name STOR_Zone_1_20_25B vsan 20
+  interface fc1/8 swwn 20:00:54:7f:ee:e3:86:50
+  interface fc1/9 swwn 20:00:54:7f:ee:e3:86:50
+  interface fc1/10 swwn 20:00:54:7f:ee:e3:86:50
+  interface fc1/11 swwn 20:00:54:7f:ee:e3:86:50
+  interface fc1/5 swwn 20:00:54:7f:ee:b8:24:c0
+  interface fc1/8 swwn 20:00:54:7f:ee:b8:24:c0
+  interface fc1/9 swwn 20:00:54:7f:ee:b8:24:c0
+  interface fc1/10 swwn 20:00:54:7f:ee:b8:24:c0
+  interface fc1/11 swwn 20:00:54:7f:ee:b8:24:c0
+FC_switch_B_1#
+----
+. 確定交換器架構中交換器的全球名稱（WWN）。
++
+在此範例中、兩個交換器WWN如下所示：
+
++
+** FC_switch_a_1：20：00：54：7F：ee：b8：24：c0
+** FC_SWIT_B_1：20：00：54：7F：ee：C6：80：78
+
+
++
+[listing]
+----
+FC_switch_B_1# show wwn switch
+Switch WWN is 20:00:54:7f:ee:c6:80:78
+FC_switch_B_1#
+
+FC_switch_A_1# show wwn switch
+Switch WWN is 20:00:54:7f:ee:b8:24:c0
+FC_switch_A_1#
+----
+. 進入區域的組態模式、並移除不屬於兩個交換器的交換器WWN的區域成員：
++
+--
+「沒有成員介面介面- IDE Swwn WWN'
+
+在此範例中、下列成員不會與網路中任一交換器的WWN產生關聯、因此必須移除：
+
+** 區域名稱FC-VI_ZON_1_10 vSAN 10
++
+*** 介面FC1/1 swwn 20：00：54：7F：ee：3：86：50
+*** 介面FC1/2 swwn 20：00：54：7F：ee：3：86：50
+
+
+
+
+
+NOTE: 支援4個FC-VI連接埠的支援功能。AFF您必須從FC-VI區域移除所有四個連接埠。
+
+** 區域名稱STOR_ZA_1_20_25A vSAN 20
++
+*** 介面FC1/5 swwn 20：00：54：7F：ee：3：86：50
+*** 介面FC1/8 swwn 20：00：54：7F：ee：3：86：50
+*** 介面FC1/9 swwn 20：00：54：7F：ee：3：86：50
+*** 介面FC1/10 swwn 20：00：54：7F：ee：3：86：50
+*** 介面FC1/11 swwn 20：00：54：7F：ee：3：86：50
+
+
+** 區域名稱STOR_ZA_1_20_25B vSAN 20
++
+*** 介面FC1/8 swwn 20：00：54：7F：ee：3：86：50
+*** 介面FC1/9 swwn 20：00：54：7F：ee：3：86：50
+*** 介面FC1/10 swwn 20：00：54：7F：ee：3：86：50
+*** 介面FC1/11 swwn 20：00：54：7F：ee：3：86：50
+
+
+
+
+下列範例顯示移除這些介面：
+
+[listing]
+----
+
+ FC_switch_B_1# conf t
+ FC_switch_B_1(config)# zone name FC-VI_Zone_1_10 vsan 10
+ FC_switch_B_1(config-zone)# no member interface fc1/1 swwn 20:00:54:7f:ee:e3:86:50
+ FC_switch_B_1(config-zone)# no member interface fc1/2 swwn 20:00:54:7f:ee:e3:86:50
+ FC_switch_B_1(config-zone)# zone name STOR_Zone_1_20_25A vsan 20
+ FC_switch_B_1(config-zone)# no member interface fc1/5 swwn 20:00:54:7f:ee:e3:86:50
+ FC_switch_B_1(config-zone)# no member interface fc1/8 swwn 20:00:54:7f:ee:e3:86:50
+ FC_switch_B_1(config-zone)# no member interface fc1/9 swwn 20:00:54:7f:ee:e3:86:50
+ FC_switch_B_1(config-zone)# no member interface fc1/10 swwn 20:00:54:7f:ee:e3:86:50
+ FC_switch_B_1(config-zone)# no member interface fc1/11 swwn 20:00:54:7f:ee:e3:86:50
+ FC_switch_B_1(config-zone)# zone name STOR_Zone_1_20_25B vsan 20
+ FC_switch_B_1(config-zone)# no member interface fc1/8 swwn 20:00:54:7f:ee:e3:86:50
+ FC_switch_B_1(config-zone)# no member interface fc1/9 swwn 20:00:54:7f:ee:e3:86:50
+ FC_switch_B_1(config-zone)# no member interface fc1/10 swwn 20:00:54:7f:ee:e3:86:50
+ FC_switch_B_1(config-zone)# no member interface fc1/11 swwn 20:00:54:7f:ee:e3:86:50
+ FC_switch_B_1(config-zone)# save running-config startup-config
+ FC_switch_B_1(config-zone)# zoneset distribute full 10
+ FC_switch_B_1(config-zone)# zoneset distribute full 20
+ FC_switch_B_1(config-zone)# end
+ FC_switch_B_1# copy running-config startup-config
+----
+--
+
+
+. [[step8]將新交換器的連接埠新增至區域。
++
+以下範例假設替換交換器上的纜線佈線與舊交換器上的纜線相同：
+
++
+[listing]
+----
+
+ FC_switch_B_1# conf t
+ FC_switch_B_1(config)# zone name FC-VI_Zone_1_10 vsan 10
+ FC_switch_B_1(config-zone)# member interface fc1/1 swwn 20:00:54:7f:ee:c6:80:78
+ FC_switch_B_1(config-zone)# member interface fc1/2 swwn 20:00:54:7f:ee:c6:80:78
+ FC_switch_B_1(config-zone)# zone name STOR_Zone_1_20_25A vsan 20
+ FC_switch_B_1(config-zone)# member interface fc1/5 swwn 20:00:54:7f:ee:c6:80:78
+ FC_switch_B_1(config-zone)# member interface fc1/8 swwn 20:00:54:7f:ee:c6:80:78
+ FC_switch_B_1(config-zone)# member interface fc1/9 swwn 20:00:54:7f:ee:c6:80:78
+ FC_switch_B_1(config-zone)# member interface fc1/10 swwn 20:00:54:7f:ee:c6:80:78
+ FC_switch_B_1(config-zone)# member interface fc1/11 swwn 20:00:54:7f:ee:c6:80:78
+ FC_switch_B_1(config-zone)# zone name STOR_Zone_1_20_25B vsan 20
+ FC_switch_B_1(config-zone)# member interface fc1/8 swwn 20:00:54:7f:ee:c6:80:78
+ FC_switch_B_1(config-zone)# member interface fc1/9 swwn 20:00:54:7f:ee:c6:80:78
+ FC_switch_B_1(config-zone)# member interface fc1/10 swwn 20:00:54:7f:ee:c6:80:78
+ FC_switch_B_1(config-zone)# member interface fc1/11 swwn 20:00:54:7f:ee:c6:80:78
+ FC_switch_B_1(config-zone)# save running-config startup-config
+ FC_switch_B_1(config-zone)# zoneset distribute full 10
+ FC_switch_B_1(config-zone)# zoneset distribute full 20
+ FC_switch_B_1(config-zone)# end
+ FC_switch_B_1# copy running-config startup-config
+----
+. 確認分區設定正確：「How Zone（顯示分區）」
++
+下列輸出範例顯示三個區域：
+
++
+[listing]
+----
+
+ FC_switch_B_1# show zone
+   zone name FC-VI_Zone_1_10 vsan 10
+     interface fc1/1 swwn 20:00:54:7f:ee:c6:80:78
+     interface fc1/2 swwn 20:00:54:7f:ee:c6:80:78
+     interface fc1/1 swwn 20:00:54:7f:ee:b8:24:c0
+     interface fc1/2 swwn 20:00:54:7f:ee:b8:24:c0
+
+   zone name STOR_Zone_1_20_25A vsan 20
+     interface fc1/5 swwn 20:00:54:7f:ee:c6:80:78
+     interface fc1/8 swwn 20:00:54:7f:ee:c6:80:78
+     interface fc1/9 swwn 20:00:54:7f:ee:c6:80:78
+     interface fc1/10 swwn 20:00:54:7f:ee:c6:80:78
+     interface fc1/11 swwn 20:00:54:7f:ee:c6:80:78
+     interface fc1/8 swwn 20:00:54:7f:ee:b8:24:c0
+     interface fc1/9 swwn 20:00:54:7f:ee:b8:24:c0
+     interface fc1/10 swwn 20:00:54:7f:ee:b8:24:c0
+     interface fc1/11 swwn 20:00:54:7f:ee:b8:24:c0
+
+   zone name STOR_Zone_1_20_25B vsan 20
+     interface fc1/8 swwn 20:00:54:7f:ee:c6:80:78
+     interface fc1/9 swwn 20:00:54:7f:ee:c6:80:78
+     interface fc1/10 swwn 20:00:54:7f:ee:c6:80:78
+     interface fc1/11 swwn 20:00:54:7f:ee:c6:80:78
+     interface fc1/5 swwn 20:00:54:7f:ee:b8:24:c0
+     interface fc1/8 swwn 20:00:54:7f:ee:b8:24:c0
+     interface fc1/9 swwn 20:00:54:7f:ee:b8:24:c0
+     interface fc1/10 swwn 20:00:54:7f:ee:b8:24:c0
+     interface fc1/11 swwn 20:00:54:7f:ee:b8:24:c0
+ FC_switch_B_1#
+----
+

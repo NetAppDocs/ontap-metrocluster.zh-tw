@@ -1,0 +1,221 @@
+---
+permalink: install-fc/concept_required_mcc_components_and_naming_conventions_fabric_mcc.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, required, fc, components, naming, conventions 
+summary: 規劃MetroCluster 您的不支援功能的FC組態時、您必須瞭解所需及支援的硬體和軟體元件。為了方便且清楚、您也應該瞭解整個文件範例中元件的命名慣例。例如、一個站台稱為站台A、另一個站台稱為站台B 
+---
+= 所需MetroCluster 的功能部件和命名慣例
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+規劃MetroCluster 您的不支援功能的FC組態時、您必須瞭解所需及支援的硬體和軟體元件。為了方便且清楚、您也應該瞭解整個文件範例中元件的命名慣例。例如、一個站台稱為站台A、另一個站台稱為站台B
+
+
+
+== 支援的軟體與硬體
+
+硬體與軟體必須支援MetroCluster 以利支援不支援使用。
+
+https://hwu.netapp.com["NetApp Hardware Universe"]
+
+使用AFF 不完整的系統時、MetroCluster 必須將不完整組態中的所有控制器模組設定為AFF 不完整的系統。
+
+
+NOTE: 不支援MetroCluster 在不支援的情況下使用長距離SFP。如需支援的SPF表格、請參閱MetroCluster 《支援的SPF技術報告》。
+
+
+
+== 硬體備援功能MetroCluster
+
+由於採用的是硬體備援MetroCluster 功能、所以每個站台都有兩個元件。站台會任意指派字母A和B、而個別元件則會任意指派數字1和2。
+
+
+
+== 兩ONTAP 個叢集的需求
+
+Fabric附加MetroCluster 的不支援功能不只需要兩ONTAP 個支援功能的叢集、每MetroCluster 個站台都需要一個。
+
+命名必須在MetroCluster 整個功能區組態中是唯一的。
+
+範例名稱：
+
+* 站台A：叢集_A
+* 站台B：叢集B
+
+
+
+
+== 需要四個FC交換器
+
+Fabric附加MetroCluster 的不支援功能不支援使用4個FC交換器（支援的Brocade或Cisco機型）。
+
+這四個交換器組成兩個交換器儲存架構、可在MetroCluster 整個叢集之間提供ISL、以利支援使用支援。
+
+命名必須在MetroCluster 整個功能區組態中是唯一的。
+
+
+
+== 需要兩個、四個或八個控制器模組
+
+Fabric附加MetroCluster 的不支援功能、需要兩個、四個或八個控制器模組。
+
+在四節點MetroCluster 或八節點的「樣化」組態中、每個站台的控制器模組會形成一或兩個HA配對。每個控制器模組在另一個站台都有一個DR合作夥伴。
+
+控制器模組必須符合下列需求：
+
+* 命名必須在MetroCluster 整個功能區組態中是唯一的。
+* 所有採用此功能的控制器模組MetroCluster 都必須執行相同版本ONTAP 的功能。
+* DR群組中的所有控制器模組都必須為相同的機型。
++
+不過、在具有兩個DR群組的組態中、每個DR群組可由不同的控制器模組機型所組成。
+
+* DR群組中的所有控制器模組都必須使用相同的FC-VI組態。
++
+某些控制器模組支援兩種FC-VI連線選項：
+
++
+** 內建FC-VI連接埠
+** 插槽1中的FC-VI卡不支援使用內建FC-VI連接埠的控制器模組組合、以及使用附加FC-VI卡的控制器模組組合。例如、如果某個節點使用內建的FC-VI組態、則DR群組中的所有其他節點也必須使用內建的FC-VI組態。
+
+
+
+
+範例名稱：
+
+* 站台A：控制器_a_1
+* 站台B：控制器_B_1
+
+
+
+
+== 需要四個叢集互連交換器
+
+Fabric附加MetroCluster 的SFC組態需要四個叢集互連交換器（如果您不使用雙節點無交換器叢集）
+
+這些交換器可在每個叢集中的控制器模組之間提供叢集通訊。如果每個站台的控制器模組設定為雙節點無交換器叢集、則不需要交換器。
+
+
+
+== FC至SAS橋接器的需求
+
+Fabric附加MetroCluster 的SFC組態需要一對FC對SAS磁碟櫃堆疊群組的FC橋接器。
+
+
+NOTE: 在執行ONTAP 支援升級版本的組態中、不支援使用FibreBridge 6500N橋接器。
+
+* 最多可支援四個SAS堆疊的FIBreBridge 7600N或7500N橋接器。
+* FibreBridge 6500N橋接器僅支援一個SAS堆疊。
+* 每個堆疊都可以使用不同的IOM機型。
++
+同一個儲存堆疊不支援混合使用IOM12模組和IOM3模組。如果您的系統執行支援版本ONTAP 的、同一個儲存堆疊中也支援IOM12模組與IOM6模組的混合。
+
++
+支援的IOM模組取決於ONTAP 您執行的版本。
+
+* 命名必須在MetroCluster 整個功能區組態中是唯一的。
+
+
+本指南中所使用的建議名稱可識別橋接器所連接的控制器模組和堆疊、如下所示。
+
+
+
+== 集區與磁碟機需求（支援的最低需求）
+
+建議使用八個SAS磁碟櫃（每個站台四個磁碟櫃）、以允許每個磁碟櫃的磁碟擁有權。
+
+這個組態需要在每個站台進行最低組態設定：MetroCluster
+
+* 每個節點在站台上至少有一個本機集區和一個遠端集區。
++
+例如、在每MetroCluster 個站台有兩個節點的四節點的「樣例」組態中、每個站台都需要四個資源池。
+
+* 每個集區中至少有七個磁碟機。
++
+在每MetroCluster 個節點具有單一鏡射資料集合體的四節點版的不間斷組態中、最低組態需要站台24個磁碟。
+
+
+
+在支援的最低組態中、每個集區都有下列磁碟機配置：
+
+* 三個根磁碟機
+* 三個資料磁碟機
+* 一個備用磁碟機
+
+
+在最低支援組態中、每個站台至少需要一個機櫃。
+
+支援RAID-DP和RAID4的支援。MetroCluster
+
+
+
+== 磁碟機位置考量部分佔用的磁碟櫃
+
+若要在使用半滿的磁碟櫃時正確自動指派磁碟機（24個磁碟機櫃中有12個磁碟機）、磁碟機應位於插槽0-5和18-23中。
+
+在組態中、磁碟機必須平均分散在磁碟櫃的四個象限。
+
+
+
+== 在堆疊中混合IOM12和IOM 6模組
+
+您的ONTAP 版本必須支援機櫃混合。請參閱互通性對照表工具IMT （英文）、瞭解您的ONTAP 版本的支援機櫃混合。 https://mysupport.netapp.com/NOW/products/interoperability["NetApp互通性"]
+
+如需機櫃混合的詳細資訊、請參閱： https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-mix-hotadd/home.html["將含有IOM12模組的熱新增磁碟櫃放到具有IOM6模組的磁碟櫃堆疊中"]
+
+
+
+== 橋接器命名慣例
+
+橋接器使用下列命名範例：
+
+《bridge站台堆疊配對中的同一位置》
+
+|===
+
+
+| 這個部分的名稱... | 識別... | 可能值... 
+
+
+ a| 
+網站
+ a| 
+橋接器配對實體所在的站台。
+ a| 
+A或B
+
+
+
+ a| 
+堆疊群組
+ a| 
+橋接器配對所連接的堆疊群組編號。
+
+* 最多支援堆疊群組中四個堆疊的FIBreBridge 7600N或7500N橋接器。
++
+堆疊群組最多可包含10個儲存磁碟櫃。
+
+* FibreBridge 6500N橋接器僅支援堆疊群組中的單一堆疊。
+
+ a| 
+1、2等
+
+
+
+ a| 
+配對位置
+ a| 
+橋接器配對中的橋接器。一對橋接器會連接至特定堆疊群組。
+ a| 
+a或b
+
+|===
+每個站台上一個堆疊群組的橋接名稱範例：
+
+* bride_a_1a.
+* bride_a_1b
+* bride_B_1a
+* bride_b_1b.
+

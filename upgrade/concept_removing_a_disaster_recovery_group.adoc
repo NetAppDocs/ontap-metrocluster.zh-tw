@@ -1,0 +1,178 @@
+---
+permalink: upgrade/concept_removing_a_disaster_recovery_group.html 
+sidebar: sidebar 
+keywords:  
+summary: 從ONTAP 功能完善的9.8開始、您可以從八節點MetroCluster 的功能完善的組態中移除DR群組、以建立四節點MetroCluster 的功能完善的組態。 
+---
+= 移除災難恢復群組
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+從ONTAP 功能完善的9.8開始、您可以從八節點MetroCluster 的功能完善的組態中移除DR群組、以建立四節點MetroCluster 的功能完善的組態。
+
+此程序在ONTAP 支援更新版本的版本上提供支援。如需ONTAP 舊版的更新版本、請聯絡技術支援部門以移除DR群組。
+
+https://mysupport.netapp.com/site/global/dashboard["NetApp支援"]
+
+八節點組態包含八個節點、以兩個四節點DR群組形式組織。
+
+image::../media/mcc_dr_groups_8_node.gif[MCC DR群組8節點]
+
+移除DR群組後、組態中仍有四個節點。
+
+image::../media/mcc_dr_groups_4_node.gif[MCC DR群組4個節點]
+
+
+
+== 從每個叢集移除DR群組節點
+
+* 您必須在兩個叢集上執行此步驟。
+* 僅支援在支援的版本僅在支援的版本僅有支援使用「MetroCluster 支援」ONTAP 功能的指令。
++
+.. 如果您尚未移除DR群組、請做好準備。
++
+... 將所有資料磁碟區移至另一個DR群組。
+... 將所有MDV_CRS中繼資料磁碟區移至另一個DR群組。請遵循下列程序中的步驟： https://docs.netapp.com/ontap-9/topic/com.netapp.doc.hw-metrocluster-service/task_move_a_metadata_volume_in_mcc_configurations.html["在MetroCluster 不完整的組態中移動中繼資料磁碟區"]
+... 刪除要移除之DR群組中可能存在的所有MDV_aud中繼資料磁碟區。
+... 刪除DR群組中要移除的所有資料集合體、如下列範例所示：
++
+[listing]
+----
+ClusterA::> storage aggregate show -node ClusterA-01, ClusterA-02 -fields aggregate ,node
+ClusterA::> aggr delete -aggregate aggregate_name
+ClusterB::> storage aggregate show -node ClusterB-01, ClusterB-02 -fields aggregate ,node
+ClusterB::> aggr delete -aggregate aggregate_name
+----
++
+
+NOTE: 不會刪除根Aggregate。
+
+... 將所有資料LIF移轉到另一個DR群組的主節點。+「網路介面show -home-node_old_node_」
++
+「網路介面修改-vserver _svm-name_-lif_data-lif_-home-port _port-id_」
+
+... 將叢集管理LIF移轉至另一個DR群組中的主節點。
++
+「網路介面show -role叢集管理」
+
++
+「網路介面修改-vserver _svm-name_-lif_data-lif_-home-port _port-id_」
+
++
+節點管理和叢集間生命體不會移轉。
+
+... 必要時、將epsilon傳輸至另一個DR群組中的節點。
++
+[listing]
+----
+ClusterA::> set advanced
+ClusterA::*> cluster show
+Move epsilon if needed
+ClusterA::*> cluster modify -node nodename -epsilon false
+ClusterA::*> cluster modify -node nodename -epsilon true
+
+ClusterB::> set advanced
+ClusterB::*> cluster show
+ClusterB::*> cluster modify -node nodename -epsilon false
+ClusterB::*> cluster modify -node nodename -epsilon true
+ClusterB::*> set admin
+----
+
+
+.. 識別並移除DR群組。
++
+... 識別要移除的正確DR群組：
++
+「不一樣的秀」MetroCluster
+
+... 移除DR群組節點：+「MetroCluster 支援移除- DR-group -DR-group ID 1」
++
+下列範例顯示如何移除叢集A上的DR群組組態
+
++
+[listing]
+----
+cluster_A::*>
+
+Warning: Nodes in the DR group that are removed from the MetroCluster
+         configuration will lose their disaster recovery protection.
+
+         Local nodes "node_A_1-FC, node_A_2-FC"will be removed from the
+         MetroCluster configuration. You must repeat the operation on the
+         partner cluster "cluster_B"to remove the remote nodes in the DR group.
+Do you want to continue? {y|n}: y
+
+Info: The following preparation steps must be completed on the local and partner
+      clusters before removing a DR group.
+
+      1. Move all data volumes to another DR group.
+      2. Move all MDV_CRS metadata volumes to another DR group.
+      3. Delete all MDV_aud metadata volumes that may exist in the DR group to
+      be removed.
+      4. Delete all data aggregates in the DR group to be removed. Root
+      aggregates are not deleted.
+      5. Migrate all data LIFs to home nodes in another DR group.
+      6. Migrate the cluster management LIF to a home node in another DR group.
+      Node management and inter-cluster LIFs are not migrated.
+      7. Transfer epsilon to a node in another DR group.
+
+      The command is vetoed if the preparation steps are not completed on the
+      local and partner clusters.
+Do you want to continue? {y|n}: y
+[Job 513] Job succeeded: Remove DR Group is successful.
+
+cluster_A::*>
+----
+
+
+.. 在合作夥伴叢集上重複上述步驟。
+.. 如果使用MetroCluster 的是靜態IP組態、請移除MetroCluster 舊DR群組節點上的「不牢固」連線。
++
+這些命令可從任一叢集發出、並套用至橫跨兩個叢集的整個DR群組。
+
++
+... 中斷連線：
++
+「組態設定連線中斷連接_dr-group id_」MetroCluster
+
+... 刪除MetroCluster 舊DR群組節點上的介面：
++
+「刪除組態設定介面」MetroCluster
+
+... 刪除舊DR群組的組態。+ MetroCluster 「不包含組態設定的DR-group刪除」
+
+
+.. 取消加入舊DR群組中的節點。
++
+您必須在每個叢集上執行此步驟。
+
++
+... 設定進階權限層級：
++
+"進階權限"
+
+... 停用儲存容錯移轉：
++
+"torage容錯移轉修改-node-name_-enable假<---- 其他步驟
+
+... 取消加入節點：+「cluster unjoin -node-name_」
++
+對舊DR群組中的其他本機節點重複此步驟。
+
+... 設定管理員權限等級：+「Set -priv榮幸admin」
+
+
+.. 在新的DR群組中重新啟用叢集HA：
++
+"cluster ha modify -configured true"
+
++
+您必須在每個叢集上執行此步驟。
+
+.. 停止、關機及移除舊的控制器模組和儲存櫃。
+
+
+

@@ -1,0 +1,43 @@
+---
+permalink: transition/task_apply_rcfs.html 
+sidebar: sidebar 
+keywords: Generating and applying RCFs to the new IP switches, review, requirement, preparing, prepare, transition, perform, procedure, order, completing, complete, step, task, moving, move, controller, storage, shelves, shelf, exist, configuration, direct, metrocluster, fc, ip, verify, health, removing, remove, tiebreaker, monitor, software, generating, generate, apply, rcf, switch, controller, configure, prepare, preparing 
+summary: 如果您使用新的IP交換器進行MetroCluster Refing IP組態、則必須使用自訂的RCF檔案來設定交換器。 
+---
+= 產生RCFs並將其套用至新的IP交換器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您使用新的IP交換器進行MetroCluster Refing IP組態、則必須使用自訂的RCF檔案來設定交換器。
+
+如果您使用新的交換器、則必須執行此工作。
+
+如果您使用現有的交換器、請繼續執行 link:task_move_cluster_connections.html["移動本機叢集連線"]。
+
+. 安裝並安裝新的IP交換器。
+. 準備IP交換器以應用新的RCF檔案。
++
+請依照中交換器廠商的一節中的步驟操作 link:../install-ip/using_rcf_generator.html["安裝與組態MetroCluster"]
+
++
+** link:../install-ip/task_switch_config_broadcom.html["將Broadcom IP交換器重設為原廠預設值"]
+** link:../install-ip/task_switch_config_cisco.html["將Cisco IP交換器重設為原廠預設值"]
+
+
+. 如有必要、請將交換器上的韌體更新至支援的版本。
+. 使用RCF產生器工具根據交換器廠商和平台機型來建立RCF檔案、然後使用檔案來更新交換器。
++
+請依照「_SURIP MetroCluster 安裝與組態_」中有關交換器廠商的章節中的步驟進行。
+
++
+link:../install-ip/concept_considerations_differences.html["安裝與組態MetroCluster"]
+
++
+** link:../install-ip/task_switch_config_broadcom.html["下載並安裝Broadcom IP RCF檔案"]
+** link:../install-ip/task_switch_config_cisco.html["下載並安裝Cisco IP RCF檔案"]
+
+
+

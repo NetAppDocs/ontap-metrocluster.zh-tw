@@ -1,0 +1,20 @@
+---
+permalink: install-stretch/concept_using_the_oncommand_management_tools_for_further_configuration_and_monitoring.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, active, iq, unified, manager, system, configuration 
+summary: 利用此功能、即可管理叢集的GUI管理及監控組態。Active IQ Unified Manager ONTAP 
+---
+= 使用Active IQ Unified Manager 功能完善的功能和ONTAP 功能完善的系統管理程式來進一步設定和監控
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+利用此功能、即可管理叢集的GUI管理及監控組態。Active IQ Unified Manager ONTAP
+
+每個節點ONTAP 都預先安裝了「系統管理程式」。若要載入System Manager、請在可連線至節點的網頁瀏覽器中輸入叢集管理LIF位址作為URL。
+
+您也可以使用Active IQ Unified Manager 功能資訊功能來監控MetroCluster 整個功能。
+
+http://docs.netapp.com["系統管理程式文件Active IQ Unified Manager ONTAP"^]

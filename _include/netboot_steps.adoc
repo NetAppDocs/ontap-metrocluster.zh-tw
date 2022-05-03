@@ -1,0 +1,63 @@
+= 
+:allow-uri-read: 
+
+
+.步驟
+. 存取 https://mysupport.netapp.com/site/["NetApp 支援網站"^] 可下載用於執行系統netboot的文件。
+. 從ONTAP NetApp支援網站的軟體下載區段下載適當的支援軟體、並將ONTAP-VERSION _image.tgz檔案儲存在可從網路存取的目錄中。
+. 移至網路存取目錄、確認您所需的檔案可用。
++
+|===
+
+
+| 如果平台模式是... | 然後... 
+
+
+| FAS / AFF8000系列系統 | 將ONTAP-VERIN_image.tgzfile的內容解壓縮到目標目錄：tar -zxvf ontap-VERVER版本_image.tgz注意：如果您要在Windows上解壓縮內容、請使用7-Zip或WinRAR來擷取netboot映像。您的目錄清單應包含一個netboot資料夾、其中含有核心檔案：netboot/kernel 
+
+
+| 所有其他系統 | 您的目錄清單應包含一個含有核心檔案的netboot資料夾：ontap版本映像.tgz、您不需要擷取ontap版本映像.tgz檔案。 
+|===
+. 在載入程式提示下、設定管理LIF的netboot連線：
++
+** 如果IP定址為DHCP、請設定自動連線：
++
+「ifconfige0M -auto」
+
+** 如果IP定址為靜態、請設定手動連線：
++
+"ifconfige0M -addr=ip_addr -mask=netmask"'-gateway=gateway"
+
+
+
+. 執行netboot。
++
+** 如果平台是80xx系列系統、請使用下列命令：
++
+“netboot \http://web_server_ip/path_to_web-accessible_directory/netboot/kernel`
+
+** 如果平台是任何其他系統、請使用下列命令：
++
+“netboot \http://web_server_ip/path_to_web-accessible_directory/ontap-version_image.tgz`
+
+
+
+. 從開機功能表中、選取選項*（7）Install new software first*（先安裝新軟體*）、將新的軟體映像下載並安裝至開機裝置。
++
+ Disregard the following message: "This procedure is not supported for Non-Disruptive Upgrade on an HA pair". It applies to nondisruptive upgrades of software, not to upgrades of controllers.
+. 如果系統提示您繼續此程序、請輸入「y」、並在系統提示您輸入套件時、輸入映像檔的URL：「http://web_server_ip/path_to_web-accessible_directory/ontap-version_image.tgz`」
++
+....
+Enter username/password if applicable, or press Enter to continue.
+....
+. 當您看到類似下列的提示時、請務必輸入「n」以跳過備份恢復：
++
+....
+Do you want to restore the backup configuration now? {y|n}
+....
+. 當您看到類似於以下內容的提示時、輸入「y」重新開機：
++
+....
+The node must be rebooted to start using the newly installed software. Do you want to reboot now? {y|n}
+....
+

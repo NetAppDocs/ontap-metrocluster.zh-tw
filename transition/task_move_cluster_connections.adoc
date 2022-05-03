@@ -1,0 +1,472 @@
+---
+permalink: transition/task_move_cluster_connections.html 
+sidebar: sidebar 
+keywords: transition, cluster connections 
+summary: 在檢閱所有要求並準備進行轉換之後、您將執行轉換程序。您必須依序執行每項工作、完成每項工作中的所有步驟、然後再移至下一項工作。除非有指示、否則請勿將新的控制器或儲存櫃連接至現有組態。 
+---
+= 移動本機叢集連線
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須將MetroCluster 靜態FC組態的叢集介面移至IP交換器。
+
+
+
+== 將叢集連線移到MetroCluster 不含資訊的FC節點上
+
+[role="lead"]
+您必須將MetroCluster 叢集連線移至不中斷的FC節點、再移至IP交換器。這些步驟取決於您是使用現有的IP交換器、還是使用新的IP交換器。
+
+您必須在這兩MetroCluster 個站台上執行此工作。
+
+
+
+=== 要移動的連線
+
+下列工作假設控制器模組使用兩個連接埠進行叢集連線。部分控制器模組機型會使用四個以上的連接埠來進行叢集連線。在這種情況下、就本範例而言、連接埠分為兩個群組、在兩個群組之間交換連接埠
+
+下表顯示此工作中使用的連接埠範例。
+
+|===
+
+
+| 控制器模組上的叢集連線數目 | 群組A連接埠 | 群組B連接埠 
+
+
+ a| 
+二
+ a| 
+e0a
+ a| 
+e0b.
+
+
+
+ a| 
+四
+ a| 
+e0a、e0c
+ a| 
+e0b、e0d
+
+|===
+* 群組A連接埠連線至本機交換器switch_x_1-IP。
+* 群組B連接埠連接至本機交換器switch_x_2-IP。
+
+
+下表顯示FC節點所連接的交換器連接埠。對於Broadcom BG-53248交換器、連接埠的使用量取決於MetroCluster 支援的機型。
+
+|===
+
+
+| 交換器模式 | 靜態IP節點模型MetroCluster | 交換器連接埠 | 連線至 
+
+
+.2+| Cisco 3132Q-V或3232C .2+| 任何  a| 
+5.
+ a| 
+node_x_1-FC
+
+
+
+ a| 
+6.
+ a| 
+node_x_2-FC
+
+
+
+.4+| Broadcom Bes - 53248  a| 
+FAS2750/A220
+ a| 
+1、2、3
+ a| 
+node_x_1-FC
+
+
+
+ a| 
+FAS8200 / A300
+ a| 
+1、2、3、7、8、 9.
+ a| 
+node_x_1-FC
+
+
+
+ a| 
+FAS2750/A220
+ a| 
+4、5、6
+ a| 
+node_x_2-FC
+
+
+
+ a| 
+FAS8200 / A300
+ a| 
+4、5、6、10、11、 12.
+ a| 
+node_x_2-FC
+
+|===
+
+
+=== 使用新的IP交換器時移動本機叢集連線
+
+如果您使用新的IP交換器、則必須將現有MetroCluster 的叢集連線實際移至新交換器。
+
+. 將MetroCluster 叢集連線移至新的IP交換器、將該節點群組移至其中。
++
+使用中所述的連接埠 <<Which connections to move>>。
+
++
+.. 從交換器拔下所有A群組連接埠、或MetroCluster 是將其從合作夥伴節點拔下（如果是無交換器叢集）。
+.. 從node_a_1-FC和node_a_2-FC中斷A群組連接埠的連線。
+.. 將node_a_1-FC的A連接埠群組連接至switch_a_1-IP上FC節點的交換器連接埠
+.. 將node_a_2-FC的A連接埠群組連接至switch_a_1-IP上FC節點的交換器連接埠
+
+
+. 驗證所有叢集連接埠是否正常運作：
++
+「網路連接埠show -IPSpace Cluster」
+
++
+....
+cluster_A::*> network port show -ipspace Cluster
+
+Node: node_A_1-FC
+
+                                                  Speed(Mbps) Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status
+--------- ------------ ---------------- ---- ---- ----------- --------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy
+
+Node: node_A_2-FC
+
+                                                  Speed(Mbps) Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status
+--------- ------------ ---------------- ---- ---- ----------- --------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy
+
+4 entries were displayed.
+
+cluster_A::*>
+....
+. 驗證所有介面在「is Home」欄位中均顯示為真：
++
+「網路介面show -vserver cluster」
+
++
+這可能需要幾分鐘的時間才能完成。
+
++
+....
+cluster_A::*> network interface show -vserver cluster
+
+            Logical      Status     Network          Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- -----
+Cluster
+            node_A_1_FC_clus1
+                       up/up      169.254.209.69/16  node_A_1_FC   e0a     true
+            node_A_1-FC_clus2
+                       up/up      169.254.49.125/16  node_A_1-FC   e0b     true
+            node_A_2-FC_clus1
+                       up/up      169.254.47.194/16  node_A_2-FC   e0a     true
+            node_A_2-FC_clus2
+                       up/up      169.254.19.183/16  node_A_2-FC   e0b     true
+
+4 entries were displayed.
+
+cluster_A::*>
+....
+. 在兩個節點（node_a_1-FC和node_a_2-FC）上執行上述步驟、以移動叢集介面的群組B連接埠。
+. 在合作夥伴叢集「叢集B」上重複上述步驟。
+
+
+
+
+=== 重複使用現有IP交換器時、移動本機叢集連線
+
+如果您要重複使用現有的IP交換器、則必須更新韌體、以正確的參考設定檔（RCT）重新設定交換器、並一次將連線移至正確的連接埠（一台交換器）。
+
+只有當FC節點已連接至現有的IP交換器、且您正在重複使用交換器時、才需要執行此工作。
+
+. 中斷連接至switch_a_1_IP的本機叢集連線
++
+.. 從現有的IP交換器中斷A群組連接埠的連線。
+.. 拔下switch_a_1_IP上的ISL連接埠。
++
+您可以查看平台的安裝與設定指示、以瞭解叢集連接埠的使用情形。
+
++
+https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-a320-install-setup/home.html["作業系統：安裝與設定AFF"^]
+
++
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2842666["解答A220/FAS2700系統安裝與設定說明AFF"^]
+
++
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2842668["《系統安裝與設定說明》（英文）AFF"^]
+
++
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2469722["《系統安裝與設定說明》（英文）AFF"^]
+
++
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2316769["FAS8200系統安裝與設定說明"^]
+
+
+
+. 使用針對您的平台組合和轉換所產生的RCF檔案重新設定switch_a_1_IP。
++
+請依照「MetroCluster 安裝與組態_」中適用於交換器廠商的程序步驟進行：
+
++
+link:../install-ip/concept_considerations_differences.html["安裝與組態MetroCluster"]
+
++
+.. 如有需要、請下載並安裝新的交換器韌體。
++
+您應該使用MetroCluster 支援的最新韌體。
+
++
+*** link:../install-ip/task_switch_config_broadcom.html["下載並安裝Broadcom交換器EFOS軟體"]
+*** link:../install-ip/task_switch_config_cisco.html["下載並安裝Cisco交換器NX-OS軟體"]
+
+
+.. 準備IP交換器以應用新的RCF檔案。
++
+*** link:../install-ip/task_switch_config_broadcom.html["將Broadcom IP交換器重設為原廠預設值"] 。
+*** link:https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/task_switch_config_broadcom.html["將Cisco IP交換器重設為原廠預設值"]
+
+
+.. 視交換器廠商而定、下載並安裝IP RCF檔案。
++
+*** link:../install-ip/task_switch_config_broadcom.html["下載並安裝Broadcom IP RCF檔案"]
+*** link:../install-ip/task_switch_config_cisco.html["下載並安裝Cisco IP RCF檔案"]
+
+
+
+
+. 將A組連接埠重新連接至switch_a_1_IP。
++
+使用中所述的連接埠 <<Which connections to move>>。
+
+. 驗證所有叢集連接埠是否正常運作：
++
+「網路連接埠show -IPSpace叢集」
+
++
+....
+Cluster-A::*> network port show -ipspace cluster
+
+Node: node_A_1_FC
+
+                                                  Speed(Mbps) Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status
+--------- ------------ ---------------- ---- ---- ----------- --------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy
+
+Node: node_A_2_FC
+
+                                                  Speed(Mbps) Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status
+--------- ------------ ---------------- ---- ---- ----------- --------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy
+
+4 entries were displayed.
+
+Cluster-A::*>
+....
+. 確認所有介面都位於其主連接埠：
++
+「網路介面show -vserver叢集」
+
++
+....
+Cluster-A::*> network interface show -vserver Cluster
+
+            Logical      Status     Network          Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- -----
+Cluster
+            node_A_1_FC_clus1
+                       up/up      169.254.209.69/16  node_A_1_FC   e0a     true
+            node_A_1_FC_clus2
+                       up/up      169.254.49.125/16  node_A_1_FC   e0b     true
+            node_A_2_FC_clus1
+                       up/up      169.254.47.194/16  node_A_2_FC   e0a     true
+            node_A_2_FC_clus2
+                       up/up      169.254.19.183/16  node_A_2_FC   e0b     true
+
+4 entries were displayed.
+
+Cluster-A::*>
+....
+. 在switch_a_2_IP上重複上述所有步驟。
+. 重新連接本機叢集ISL連接埠。
+. 針對交換器B_1_IP和交換器B_2_IP重複上述步驟。
+. 在站台之間連接遠端ISL。
+
+
+
+
+== 驗證是否移動了叢集連線、以及叢集是否正常
+
+為了確保連線正常、並確保組態已準備好繼續進行轉換程序、您必須確認叢集連線已正確移動、叢集交換器已被辨識且叢集正常。
+
+. 確認所有叢集連接埠均已啟動並正在執行：
++
+「網路連接埠show -IPSpace Cluster」
+
++
+....
+Cluster-A::*> network port show -ipspace Cluster
+
+Node: Node-A-1-FC
+
+                                                  Speed(Mbps) Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status
+--------- ------------ ---------------- ---- ---- ----------- --------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy
+
+Node: Node-A-2-FC
+
+                                                  Speed(Mbps) Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status
+--------- ------------ ---------------- ---- ---- ----------- --------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy
+
+4 entries were displayed.
+
+Cluster-A::*>
+....
+. 確認所有介面都位於其主連接埠：
++
+「網路介面show -vserver叢集」
+
++
+這可能需要幾分鐘的時間才能完成。
+
++
+以下範例顯示「is Home」欄中的所有介面均顯示為true。
+
++
+....
+Cluster-A::*> network interface show -vserver Cluster
+
+            Logical      Status     Network          Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- -----
+Cluster
+            Node-A-1_FC_clus1
+                       up/up      169.254.209.69/16  Node-A-1_FC   e0a     true
+            Node-A-1-FC_clus2
+                       up/up      169.254.49.125/16  Node-A-1-FC   e0b     true
+            Node-A-2-FC_clus1
+                       up/up      169.254.47.194/16  Node-A-2-FC   e0a     true
+            Node-A-2-FC_clus2
+                       up/up      169.254.19.183/16  Node-A-2-FC   e0b     true
+
+4 entries were displayed.
+
+Cluster-A::*>
+....
+. 驗證節點是否同時發現兩個本機IP交換器：
++
+「network device-dDiscovery show -protocol cup」
+
++
+....
+Cluster-A::*> network device-discovery show -protocol cdp
+
+Node/       Local  Discovered
+Protocol    Port   Device (LLDP: ChassisID)  Interface         Platform
+----------- ------ ------------------------- ----------------  ----------------
+Node-A-1-FC
+           /cdp
+            e0a    Switch-A-3-IP             1/5/1             N3K-C3232C
+            e0b    Switch-A-4-IP             0/5/1             N3K-C3232C
+Node-A-2-FC
+           /cdp
+            e0a    Switch-A-3-IP             1/6/1             N3K-C3232C
+            e0b    Switch-A-4-IP             0/6/1             N3K-C3232C
+
+4 entries were displayed.
+
+Cluster-A::*>
+....
+. 在IP交換器上、確認MetroCluster 兩個本機IP交換器都發現了「支援IP」節點：
++
+「How cup neighbor」
+
++
+您必須在每個交換器上執行此步驟。
+
++
+本範例說明如何驗證在Switch-A-3-IP上探索到節點。
+
++
+....
+(Switch-A-3-IP)# show cdp neighbors
+
+Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater,
+                  V - VoIP-Phone, D - Remotely-Managed-Device,
+                  s - Supports-STP-Dispute
+
+Device-ID          Local Intrfce  Hldtme Capability  Platform      Port ID
+Node-A-1-FC         Eth1/5/1       133    H         FAS8200       e0a
+Node-A-2-FC         Eth1/6/1       133    H         FAS8200       e0a
+Switch-A-4-IP(FDO220329A4)
+                    Eth1/7         175    R S I s   N3K-C3232C    Eth1/7
+Switch-A-4-IP(FDO220329A4)
+                    Eth1/8         175    R S I s   N3K-C3232C    Eth1/8
+Switch-B-3-IP(FDO220329B3)
+                    Eth1/20        173    R S I s   N3K-C3232C    Eth1/20
+Switch-B-3-IP(FDO220329B3)
+                    Eth1/21        173    R S I s   N3K-C3232C    Eth1/21
+
+Total entries displayed: 4
+
+(Switch-A-3-IP)#
+....
++
+本範例說明如何驗證在Switch-A-4-IP上探索到節點。
+
++
+....
+(Switch-A-4-IP)# show cdp neighbors
+
+Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater,
+                  V - VoIP-Phone, D - Remotely-Managed-Device,
+                  s - Supports-STP-Dispute
+
+Device-ID          Local Intrfce  Hldtme Capability  Platform      Port ID
+Node-A-1-FC         Eth1/5/1       133    H         FAS8200       e0b
+Node-A-2-FC         Eth1/6/1       133    H         FAS8200       e0b
+Switch-A-3-IP(FDO220329A3)
+                    Eth1/7         175    R S I s   N3K-C3232C    Eth1/7
+Switch-A-3-IP(FDO220329A3)
+                    Eth1/8         175    R S I s   N3K-C3232C    Eth1/8
+Switch-B-4-IP(FDO220329B4)
+                    Eth1/20        169    R S I s   N3K-C3232C    Eth1/20
+Switch-B-4-IP(FDO220329B4)
+                    Eth1/21        169    R S I s   N3K-C3232C    Eth1/21
+
+Total entries displayed: 4
+
+(Switch-A-4-IP)#
+....
+

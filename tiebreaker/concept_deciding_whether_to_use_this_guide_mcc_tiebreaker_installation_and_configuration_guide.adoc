@@ -1,0 +1,16 @@
+---
+permalink: tiebreaker/concept_deciding_whether_to_use_this_guide_mcc_tiebreaker_installation_and_configuration_guide.html 
+sidebar: sidebar 
+keywords: install, configure, metrocluster, tiebreaker, software, deciding, decide, configuration 
+summary: 本資訊說明如何安裝及設定MetroCluster ESITiebreaker軟體。 
+---
+= 物件斷路器軟體安裝與組態MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+本資訊說明如何安裝及設定MetroCluster ESITiebreaker軟體。
+
+您應該使用此資訊來安裝MetroCluster ESITIPreaker軟體。

@@ -1,0 +1,41 @@
+---
+permalink: install-stretch/task_install_the_fc_to_sas_bridge_and_sas_shelves_fb_new_install_parent.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, install, fc, sas, bridge, shelves 
+summary: 在確保系統符合「準備安裝」一節中的所有要求之後、您就可以安裝新系統。 
+---
+= 安裝FC對SAS橋接器和SAS磁碟櫃
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在確保系統符合「準備安裝」一節中的所有要求之後、您就可以安裝新系統。
+
+* 兩個站台的磁碟和磁碟櫃組態應相同。
++
+如果使用非鏡射Aggregate、則每個站台的磁碟和機櫃組態可能會有所不同。
+
++
+
+NOTE: 災難恢復（DR）群組中的所有磁碟都必須使用相同類型的連線、而且無論用於鏡射或非鏡射Aggregate的磁碟為何、災難恢復群組中的所有節點都必須可見。
+
+* 使用50微米、多重模式光纖纜線的磁碟櫃、FC交換器和備份磁帶設備的最大距離系統連線需求、也適用於Fibre Bridge橋接器。
++
+https://hwu.netapp.com["NetApp Hardware Universe"]
+
+* 同一個儲存堆疊不支援混合使用IOM12模組和IOM3模組。如果您的系統執行支援版本ONTAP 的、同一個儲存堆疊中也支援IOM12模組與IOM6模組的混合。
+
+
+[NOTE]
+====
+支援頻內ACP、下列磁碟櫃和FibreBridge 7500N或7600N橋接器無需額外纜線：
+
+* IOM12（DS460C）位於7500N或7600N橋接器後方、ONTAP 搭配使用者為NetApp 9.2及更新版本
+* IOM12（DS212C和DS224C）位於7500N或7600N橋接器後方、ONTAP 搭配使用者為NetApp 9.1或更新版本
+
+
+====
+
+NOTE: 不支援ACP纜線的SAS架構MetroCluster 。

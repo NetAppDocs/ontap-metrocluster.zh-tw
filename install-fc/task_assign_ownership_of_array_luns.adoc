@@ -1,0 +1,52 @@
+---
+permalink: install-fc/task_assign_ownership_of_array_luns.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, assigning, ownership, array, luns 
+summary: 陣列LUN必須由節點擁有、才能將其新增至要用作儲存設備的Aggregate。 
+---
+= 指派陣列LUN的擁有權
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+陣列LUN必須由節點擁有、才能將其新增至要用作儲存設備的Aggregate。
+
+.開始之前
+* 必須ONTAP 完成後端組態測試（測試連接性和配置支援此功能的裝置）。
+* 您要指派的陣列LUN必須呈現ONTAP 給整個系統。
+
+
+您可以指派具有下列特性的陣列LUN擁有權：
+
+* 他們是無人擁有的。
+* 它們沒有儲存陣列組態錯誤、例如：
++
+** 陣列LUN小於ONTAP 或大於支援的大小。
+** LDEV只會對應到一個連接埠。
+** LDEV指派給它的LUN ID不一致。
+** LUN只能在一條路徑上使用。
+
+
+
+
+如果您嘗試指派陣列LUN的擁有權給後端組態錯誤、而這些錯誤會干擾到同時運作的整個作業系統和儲存陣列、則會發出錯誤訊息。ONTAP ONTAP您必須先修正此類錯誤、才能繼續進行陣列LUN指派。
+
+如果您嘗試指派陣列LUN時發生備援錯誤、會發出警示：例如、此陣列LUN的所有路徑都會連接到同一個控制器、或只連接到陣列LUN的一條路徑。ONTAP您可以在指派LUN擁有權之前或之後修正備援錯誤。
+
+.步驟
+. 檢視尚未指派給節點的陣列LUN：
++
+「torage disk show -conter-type未指派」
+
+. 將陣列LUN指派給此節點：
++
+'磁碟指派磁碟磁碟_disk_array_lun_name_-Owner_nodename_'
+
++
+如果您想要在磁碟指派之後修正備援錯誤、而非之前、則必須使用「-force」參數搭配儲存磁碟指派命令。
+
+
+
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.vs-irrg/home.html["介紹虛擬化安裝需求與參考資料FlexArray"]

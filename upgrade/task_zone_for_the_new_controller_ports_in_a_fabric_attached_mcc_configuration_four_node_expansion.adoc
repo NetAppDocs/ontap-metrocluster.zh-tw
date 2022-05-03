@@ -1,0 +1,16 @@
+---
+permalink: upgrade/task_zone_for_the_new_controller_ports_in_a_fabric_attached_mcc_configuration_four_node_expansion.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, zone, controller, fabric, attached, ports, add 
+summary: FC交換器分區必須容納新的控制器連線。如果您使用NetApp提供的參考組態檔（RCFs\）來設定交換器、則此分區會預先設定、您不需要進行任何變更。 
+---
+= 在Fabric附加MetroCluster 的功能介紹組態中新增控制器模組時、新控制器連接埠的分區
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+FC交換器分區必須容納新的控制器連線。如果您使用NetApp提供的參考組態檔（RCT）來設定交換器、則此分區會預先設定、您不需要進行任何變更。
+
+如果您手動設定FC交換器、則必須確保新控制器模組的啟動器連線分區正確無誤。請參閱中有關分區的章節 link:../install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"]。

@@ -1,0 +1,33 @@
+---
+permalink: install-fc/task_rack_the_hardware_components_in_a_mcc_configuration_with_array_luns.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, rack, hardware, components, array, luns 
+summary: 您必須確保MetroCluster 使用陣列LUN來設定一個整套組態所需的硬體元件已正確機架。 
+---
+= 使用MetroCluster 陣列LUN、以不含元素的組態來架構硬體元件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須確保MetroCluster 使用陣列LUN來設定一個整套組態所需的硬體元件已正確機架。
+
+您必須在MetroCluster 兩個支援中心執行此工作。
+
+.步驟
+. 規劃MetroCluster 零組件的定位。
++
+機架空間取決於儲存控制器的平台模式、交換器類型、以及組態中的磁碟櫃堆疊數量。
+
+. 請妥善接地。
+. 在機架或機櫃中安裝儲存控制器。
++
+
+NOTE: 不支援使用陣列LUN的作業系統。AFF
+
++
+https://docs.netapp.com/us-en/ontap-systems/["您的系統的安裝程序AFF FAS"]
+
+. 在機架或機櫃中安裝FC交換器。
+

@@ -1,0 +1,79 @@
+---
+section: transition
+title: 從MetroCluster 靜態FC移轉至MetroCluster 靜態IP
+entries:
+- title: 請選擇您的轉換程序
+  url: "/transition/concept_choosing_your_transition_procedure_mcc_transition.html"
+- title: 支援不中斷營運的平台移轉
+  url: "/transition/concept_supported_platforms_for_transition.html"
+- title: 不中斷營運地從MetroCluster 一個不中斷的FC移轉至MetroCluster 一個支援功能的IP組態ONTAP （版本號：9.8及更新版本）
+  entries:
+  - title: 總覽
+    url: "/transition/concept_nondisruptively_transitioning_from_a_four_node_mcc_fc_to_a_mcc_ip_configuration.html"
+  - title: 準備從MetroCluster 功能不完善的FC移轉至MetroCluster 功能不完善的IP組態
+    entries:
+    - title: 不中斷營運的FC對IP轉換需求
+      url: "/transition/concept_requirements_for_fc_to_ip_transition_mcc.html"
+    - title: 移轉作業如何影響MetroCluster 到非同步硬體元件
+      url: "/transition/concept_how_transition_impacts_the_mcc_hardware_components.html"
+    - title: 不中斷MetroCluster 營運的流程無法進行不中斷的移轉
+      url: "/transition/concept_transition_workflow_fc_to_ip_transition.html"
+    - title: IP交換器的考量
+      url: "/transition/concept_considerations_for_using_existing_ip_switches.html"
+    - title: 在不中斷營運的轉換期間進行切換、修復及切換作業
+      url: "/transition/concept_switchover_and_switchback_operations_during_transition.html"
+    - title: 轉換期間的警示訊息和工具支援
+      url: "/transition/concept_mcc_operation_during_transition.html"
+    - title: 此程序中的命名範例
+      url: "/transition/concept_example_naming_in_this_procedure_mcc_ip_transition.html"
+  - title: 從MetroCluster 功能不完整的FC移轉至MetroCluster 功能不完整的IP組態
+    entries:
+    - title: 驗MetroCluster 證整個過程的效能狀況
+      url: "/transition/task_verify_mcc_health_fc_to_ip.html"
+    - title: 從斷路器或其他監控軟體移除現有組態
+      url: "/transition/task_remove_tiebreaker_4n_transition.html"
+    - title: 產生RCFs並將其套用至新的IP交換器
+      url: "/transition/task_apply_rcfs.html"
+    - title: 移動本機叢集連線
+      url: "/transition/task_move_cluster_connections.html"
+    - title: 準備MetroCluster 好用作不需要的IP控制器
+      url: "/transition/task_prepare_ip_controllers_4n_transition.html"
+    - title: 設定MetroCluster 要移轉的功能
+      url: "/transition/task_configure_transition.html"
+    - title: 將資料移至新的磁碟機櫃
+      url: "/transition/task_move_data_to_new_drive_shelves.html"
+    - title: 移除MetroCluster 不需使用的FC控制器
+      url: "/transition/task_remove_mc_fc_controllers.html"
+    - title: 完成轉換
+      url: "/transition/task_complete_transition.html"
+  - title: 維護後傳送自訂AutoSupport 的資訊
+    url: "/transition/task_send_a_custom_autosupport_message_after_maintenance_4n_nondisruptive_mcc_transition.html"
+  - title: 還原斷路器或中保監控
+    url: "/transition/task_restore_tiebreaker_monitor_4n_nondisruptive_mcc_transition.html"
+- title: 不中斷地從雙節點MetroCluster 的不間斷地轉換為四節點MetroCluster 的不間斷地執行的不間斷運作的不間斷運作的不間斷運作的不間斷運作（ONTAP
+    更新版本：
+  entries:
+  - title: 總覽
+    url: "/transition/task_disruptively_transition_from_a_two_node_mcc_fc_to_a_four_node_mcc_ip_configuration.html"
+  - title: 此程序中的命名範例
+    url: "/transition/concept_example_naming_in_this_procedure_2n_mcc_transition_disruptive.html"
+  - title: 準備好進行顛覆性的FC對IP轉換
+    url: "/transition/concept_requirements_for_fc_to_ip_transition_2n_mcc_transition.html"
+  - title: 移轉MetroCluster 功能不只是功能不一的FC節點
+    url: "/transition/task_transition_the_mcc_fc_nodes_2n_mcc_transition_supertask.html"
+  - title: 連接MetroCluster 不需記憶的IP控制器模組
+    url: "/transition/task_connect_the_mcc_ip_controller_modules_2n_mcc_transition_supertask.html"
+  - title: 設定新節點並完成轉換
+    url: "/transition/task_configure_the_new_nodes_and_complete_transition.html"
+  - title: 讓系統恢復正常運作
+    url: "/transition/task_return_the_system_to_normal_operation_2n_mcc_transition_supertask.html"
+- title: 淘汰儲存櫃時、會中斷從MetroCluster 靜態FC移轉至MetroCluster 靜態IP ONTAP （適用於更新版本的版本號）
+  url: "/transition/task_disruptively_transition_while_move_volumes_from_old_shelves_to_new_shelves.html"
+- title: 不支援新控制器上的現有磁碟櫃時、會中斷轉換作業（ONTAP 版本號：NetApp 9.8及更新版本）
+  url: "/transition/task_disruptively_transition_when_exist_shelves_are_not_supported_on_new_controllers.html"
+- title: 將FC SAN工作負載從MetroCluster 支援功能的FC移至MetroCluster 支援功能的IP節點
+  url: "/transition/task_move_an_fc_san_workload_from_mcc_fc_to_mcc_ip_nodes.html"
+- title: 將Linux iSCSI主機從MetroCluster 支援功能的FC移至MetroCluster 支援功能的IP節點
+  url: "/transition/task_move_linux_iscsi_hosts_from_mcc_fc_to_mcc_ip_nodes.html"
+- title: 何處可找到其他資訊
+  url: "/transition/reference_where_to_find_additional_information_mcc_ug.html"

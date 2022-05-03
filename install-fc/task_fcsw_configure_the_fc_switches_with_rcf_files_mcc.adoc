@@ -1,0 +1,20 @@
+---
+permalink: install-fc/task_fcsw_configure_the_fc_switches_with_rcf_files_mcc.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, fc, switches, run, configuration, file 
+summary: 如果您想要簡化交換器的設定程序、可以下載並套用參考組態檔案、為特定組態提供完整的交換器設定。 
+---
+= 執行組態檔來設定FC交換器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您想要簡化交換器的設定程序、可以下載並套用參考組態檔案、為特定組態提供完整的交換器設定。
+
+參考組態檔（RCT）不支援使用八個ISL的組態。如果您使用八個ISL、則必須手動設定交換器。
+
+RCT適用於雙節點、四節點和八節點MetroCluster 的等位資訊組態。這些檔案預設會設定網路以供依序交付（IOD）。
+
+RCF下載頁面會指出不同交換器機型支援的節點數目。

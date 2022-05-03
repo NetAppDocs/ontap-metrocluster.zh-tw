@@ -1,0 +1,24 @@
+---
+permalink: upgrade/task_cable_the_controller_module_s_fc_vi_hba_ports_to_the_fc_switches_controller_to_fc_sw.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, cable, new, controller, module, fc, vi, hba, ports, switches, mcc 
+summary: 新控制器模組的FC-VI連接埠和HBA（主機匯流排介面卡）必須以纜線連接至站台FC交換器。 
+---
+= 將新控制器模組的FC-VI和HBA連接埠連接至FC交換器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+新控制器模組的FC-VI連接埠和HBA（主機匯流排介面卡）必須以纜線連接至站台FC交換器。
+
+.步驟
+. 使用您的組態和交換器機型表、連接FC-VI連接埠和HBA連接埠。
++
+** link:../install-fc/concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）"]
+** link:../install-fc/concept_port_assignments_for_fc_switches_when_using_ontap_9_0.html["FC交換器的連接埠指派（使用ONTAP 功能）9.0"]
+** link:../install-fc/concept_port_assignments_for_systems_using_two_initiator_ports.html["使用兩個啟動器連接埠的系統連接埠指派"]
+
+
+

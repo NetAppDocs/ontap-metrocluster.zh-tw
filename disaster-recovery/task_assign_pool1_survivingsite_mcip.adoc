@@ -1,0 +1,31 @@
+---
+permalink: disaster-recovery/task_assign_pool1_survivingsite_mcip.html 
+sidebar: sidebar 
+keywords: adp, system, assign, surviving, site 
+summary: 在存續站台、您需要手動將位於災難站台的遠端磁碟機指派給存續節點的集區1。 
+---
+= 在存續站台上指派集區1磁碟機（MetroCluster 不支援的IP組態）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果已在災難站台更換磁碟機、但系統未設定ADP、則您必須在正常運作的站台、將位於災難站台的遠端磁碟機手動指派給正常運作的節點集區1。您必須識別要指派的磁碟機數量。
+
+對於ADP系統、磁碟機會自動指派。
+
+.步驟
+. 在存續站台上、指派第一個節點的Pool 1（遠端）磁碟機：「torage disk assign -n number-of替換磁碟-p 1 0m*」
++
+此命令會在災難站台指派新增和未擁有的磁碟機。
+
++
+下列命令可指派22個磁碟機：
+
++
+[listing]
+----
+cluster_B::> storage disk assign -n 22 -p 1 0m*
+----
+

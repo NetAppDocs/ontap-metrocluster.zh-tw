@@ -1,0 +1,169 @@
+---
+permalink: disaster-recovery/task_heal_restore_mcfc.html 
+sidebar: sidebar 
+keywords: configure, fc, switches, metrocluster, configuration 
+summary: 更換硬體並指派磁碟之後、您可以執行MetroCluster 還原作業。 
+---
+= 執行Aggregate修復及還原鏡像（MetroCluster 不含FC組態）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+更換硬體並指派磁碟之後、您可以執行MetroCluster 還原作業。然後您必須確認集合體已鏡射、並視需要重新啟動鏡射。
+
+.步驟
+. 在災難站台上執行修復（集合體修復和根修復）的兩個階段：
++
+[listing]
+----
+cluster_B::> metrocluster heal -phase aggregates
+
+cluster_B::> metrocluster heal -phase root aggregates
+----
+. 監控修復並確認集合體處於重新同步或鏡射狀態：
++
+「torage Aggregate show -nodate local」
+
++
+|===
+
+
+| 如果Aggregate顯示此狀態... | 然後... 
+
+
+ a| 
+重新同步
+ a| 
+無需採取任何行動。讓Aggregate完成重新同步。
+
+
+
+ a| 
+鏡射降級
+ a| 
+請前往 <<step3_fc_aggr_healing,步驟3.>>
+
+
+
+ a| 
+鏡射、正常
+ a| 
+無需採取任何行動。
+
+
+
+ a| 
+未知、離線
+ a| 
+根Aggregate會在災難站台上的所有磁碟都被更換時顯示此狀態。
+
+|===
++
+[listing]
+----
+cluster_B::> storage aggregate show -node local
+
+ Aggregate     Size Available Used% State   #Vols  Nodes      RAID Status
+ --------- -------- --------- ----- ------- ------ ---------- ------------
+ node_B_1_aggr1
+            227.1GB   11.00GB   95% online       1 node_B_1   raid_dp,
+                                                              resyncing
+ NodeA_1_aggr2
+            430.3GB   28.02GB   93% online       2 node_B_1   raid_dp,
+                                                              mirror
+                                                              degraded
+ node_B_1_aggr3
+            812.8GB   85.37GB   89% online       5 node_B_1   raid_dp,
+                                                              mirrored,
+                                                              normal
+ 3 entries were displayed.
+
+cluster_B::>
+----
++
+在下列範例中、三個集合體各處於不同狀態：
+
++
+|===
+
+
+| 節點 | 州/省 
+
+
+ a| 
+node_B_1_aggr1
+ a| 
+重新同步
+
+
+
+ a| 
+node_B_1_aggr2
+ a| 
+鏡射降級
+
+
+
+ a| 
+node_B_1_aggr3
+ a| 
+鏡射、正常
+
+|===
+. [step3_fc_agger_reasing]如果一個或多個叢體仍離線、則需要執行其他步驟來重建鏡射。
++
+在上表中、節點_B_1_aggr2的鏡射必須重新建立。
+
++
+.. 檢視Aggregate的詳細資料、以識別任何失敗的叢體：
++
+「torage Aggregate show -r -Aggregate node_B_1_aggr2」
+
++
+在下列範例中、plex /node_B_1_aggr2/plex0處於故障狀態：
+
++
+[listing]
+----
+cluster_B::> storage aggregate show -r -aggregate node_B_1_aggr2
+
+ Owner Node: node_B_1
+  Aggregate: node_B_1_aggr2 (online, raid_dp, mirror degraded) (block checksums)
+   Plex: /node_B_1_aggr2/plex0 (offline, failed, inactive, pool0)
+    RAID Group /node_B_1_aggr2/plex0/rg0 (partial)
+                                                               Usable Physical
+      Position Disk                     Pool Type     RPM     Size     Size Status
+      -------- ------------------------ ---- ----- ------ -------- -------- ----------
+
+   Plex: /node_B_1_aggr2/plex1 (online, normal, active, pool1)
+    RAID Group /node_B_1_aggr2/plex1/rg0 (normal, block checksums)
+                                                               Usable Physical
+      Position Disk                     Pool Type     RPM     Size     Size Status
+      -------- ------------------------ ---- ----- ------ -------- -------- ----------
+      dparity  1.44.8                    1   SAS    15000  265.6GB  273.5GB (normal)
+      parity   1.41.11                   1   SAS    15000  265.6GB  273.5GB (normal)
+      data     1.42.8                    1   SAS    15000  265.6GB  273.5GB (normal)
+      data     1.43.11                   1   SAS    15000  265.6GB  273.5GB (normal)
+      data     1.44.9                    1   SAS    15000  265.6GB  273.5GB (normal)
+      data     1.43.18                   1   SAS    15000  265.6GB  273.5GB (normal)
+ 6 entries were displayed.
+
+ cluster_B::>
+----
+.. 刪除故障叢：
++
+「torage Aggregate plex刪除-Aggregate aggreg-name -plex」
+
+.. 重新建立鏡射：
++
+「儲存Aggregate mirror -Aggregate Aggregate名稱」
+
+.. 監控叢的重新同步與鏡射狀態、直到所有鏡射重新建立、且所有集合體均顯示鏡射的正常狀態：
++
+《集合體展》
+
+
+
+

@@ -1,0 +1,108 @@
+---
+permalink: install-fc/task_fmc_mcc_transition_configure_zone_and_qos.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, delete, ti, zoning, tod, settings 
+summary: 您必須刪除現有的TI分區、然後重新設定交換器架構上的訂單交付（IOD\）設定。 
+---
+= 刪除TI分區並設定IOD設定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須刪除現有的TI分區、然後重新設定交換器架構上的訂單交付（IOD）設定。
+
+.步驟
+. 識別網路上設定的TI區域：
++
+「區域-展示」
+
++
+下列範例顯示區域FCVI_TI_FAP_2。
+
++
+[listing]
+----
+Brocade-6510:admin> zone --show
+   Defined TI zone configuration:
+   TI Zone Name:   FCVI_TI_FAB_2
+   Port List:      1,0; 1,3; 2,0; 2,3
+   configured Status: Activated / Failover-Disabled
+   Enabled Status: Activated / Failover-Disabled
+----
+. 刪除TI區域：
++
+「區域-刪除_區域名稱_」
+
++
+下列範例顯示區域FCVI_TI_FAP_2的刪除。
+
++
+[listing]
+----
+Brocade-6510:admin> zone --delete FCVI_TI_FAB_2
+----
+. 確認區域已刪除：
++
+「區域-展示」
+
++
+輸出應類似於下列內容：
+
++
+[listing]
+----
+Brocade-6510:admin> zone -–show
+
+    Defined TI zone configuration:
+    no TI zone configuration defined
+----
+. 儲存組態：
++
+《cfgSAVE》
+
+. 啟用訂單交付：
++
+「iodset」
+
+. 選取進階效能調校（APT）原則1、連接埠型路由原則：
++
+《aptpolicy 1》
+
+. 停用動態負載共享（DLS）：
++
+"DlsRESET"
+
+. 驗證IOD設定：
++
+「iodshow」
+
++
+《aptpolicy》
+
++
+「Dlsshow」
+
++
+輸出應類似於下列內容：
+
++
+[listing]
+----
+Brocade-6510:admin> iodshow
+
+IOD is set
+
+Brocade-6510:admin> aptpolicy
+ Current Policy: 1
+
+ 3 : Default Policy
+ 1: Port Based Routing Policy
+ 2: Device Based Routing Policy (FICON support only)
+ 3: Exchange Based Routing Policy
+Brocade-6510:admin> dlsshow
+
+DLS is not set
+----
+

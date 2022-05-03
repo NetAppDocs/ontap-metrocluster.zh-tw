@@ -1,0 +1,14 @@
+---
+permalink: install-fc/concept_planning_for_a_mcc_configuration_with_array_luns.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, plan, array, luns 
+summary: 為MetroCluster 您的需求建立詳細的規劃、有助於瞭解MetroCluster 使用儲存陣列上LUN的獨特需求。安裝MetroCluster 一套不需更新的組態需要連接和設定許多裝置、這些裝置可能由不同的人員執行。因此、此計畫也能協助您與其他參與安裝的人員溝通。 
+---
+= 規劃MetroCluster 以陣列LUN進行的不規則組態
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+為MetroCluster 您的需求建立詳細的規劃、有助於瞭解MetroCluster 使用儲存陣列上LUN的獨特需求。安裝MetroCluster 一套不需更新的組態需要連接和設定許多裝置、這些裝置可能由不同的人員執行。因此、此計畫也能協助您與其他參與安裝的人員溝通。

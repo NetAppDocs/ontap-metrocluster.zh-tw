@@ -1,0 +1,115 @@
+---
+permalink: disaster-recovery/task_perform_a_forced_switchover_after_a_disaster.html 
+sidebar: sidebar 
+keywords: disaster, occur, perform, surviving, cluster, survive, switchover, ensure, safe, data, service, force, fence, fencing, off, site, access, volume, nvfail, state, output, storage, aggregate, plex, show, command, indeterminate, metroxluster 
+summary: 如果發生災難、您必須在切換後在災難叢集和存續的叢集上執行一些步驟、以確保安全且持續的資料服務。 
+---
+= 在發生災難後執行強制切換
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果發生災難、您必須在切換後在災難叢集和存續的叢集上執行一些步驟、以確保安全且持續的資料服務。
+
+判斷是否發生災難的方法如下：
+
+* 系統管理員
+* 如果已設定此功能、則可選擇MetroCluster 使用此功能
+* 如果已設定此功能、則為該軟體ONTAP
+
+
+
+
+== 隔離災難站台
+
+災難發生後、如果必須更換災難站台節點、您必須停止節點、以免站台恢復服務。否則、如果用戶端在更換程序完成之前開始存取節點、您就有可能發生資料毀損的風險。
+
+.步驟
+. 在災難站台停止節點、並持續關機或在載入器提示下、直到引導ONTAP 至：
++
+「系統節點停止節點災難站台節點名稱」
+
++
+如果災難站台節點已毀損或無法停止、請關閉節點的電源、直到在還原程序中指示至之前、才啟動替換節點。
+
+
+
+
+
+== 執行強制切換
+
+切換程序除了在測試與維護期間提供不中斷營運、還能讓您使用單一命令從站台故障中恢復。
+
+.開始之前
+* 在執行切換之前、至少必須先啟動並執行其中一個正常運作的站台節點。
+* 執行切換作業之前、必須先完成所有先前的組態變更。
++
+這是為了避免與議定的切換或切換作業競爭。
+
+
+
+
+NOTE: SnapMirror和SnapVault SnapMirror組態會自動刪除。
+
+「不完整切換」命令會在整個DR群組的節點上切換、以利執行整個過程。MetroCluster MetroCluster例如、在八節點MetroCluster 的「列舉」組態中、它會在兩個DR群組中的節點之間切換。
+
+.步驟
+. 實作切換：
++
+《支援災難時強制切換的真實》MetroCluster
+
++
+此作業可能需要幾分鐘的時間才能完成。
+
+. 當系統提示您繼續切換時、請回答「y」。
+. 執行MetroCluster SHYSoperation show命令、確認已成功完成切換。
++
+....
+mcc1A::> metrocluster operation show
+  Operation: switchover
+ Start time: 10/4/2012 19:04:13
+      State: in-progress
+   End time: -
+     Errors:
+
+mcc1A::> metrocluster operation show
+  Operation: switchover
+ Start time: 10/4/2012 19:04:13
+      State: successful
+   End time: 10/4/2012 19:04:22
+     Errors: -
+....
++
+如果切換被否決、您可以選擇使用MetroCluster 「-overre-etoes」選項來重新發出「Ride switchover for-forced-on－ferride true」命令。如果您使用此選用參數、系統會覆寫任何軟質的審查、以防止切換。
+
+
+
+SnapMirror關係必須在切換後重新建立。
+
+
+
+== 儲存Aggregate plex show命令的輸出在MetroCluster 執行完功能介紹後仍不確定
+
+當您在MetroCluster 執行完還原切換後執行「儲存Aggregate plex show」命令時、交換式根Aggregate的plex0狀態將會不確定、並顯示為故障。在此期間、切換根目錄不會更新。此叢的實際狀態只能在MetroCluster 還原階段之後決定。
+
+
+
+== 切換後存取NVFIL狀態的磁碟區
+
+切換後、您必須重設「volume modify」命令的「-in nvf失敗 狀態」參數、以清除NVFAIL狀態、以移除用戶端存取資料的限制。
+
+資料庫或檔案系統不得執行或嘗試存取受影響的Volume。
+
+設定「-in nvfaile-state」參數需要進階權限。
+
+.步驟
+. 使用「volume modify」命令恢復磁碟區、並將「-in nvf失敗 狀態」參數設為「假」。
+
+
+如需檢查資料庫檔案有效性的指示、請參閱特定資料庫軟體的說明文件。
+
+如果您的資料庫使用LUN、請檢閱在NVRAM故障後、讓主機存取LUN的步驟。
+
+link:../manage/concept_monitoring_and_protecting_database_validity_by_using_nvfail.html["使用NVFIL監控及保護資料庫有效性"]

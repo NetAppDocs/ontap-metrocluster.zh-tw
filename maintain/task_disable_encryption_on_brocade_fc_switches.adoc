@@ -1,0 +1,241 @@
+---
+permalink: maintain/task_disable_encryption_on_brocade_fc_switches.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, disable, encryption, brocade, fc, switch 
+summary: 您可能需要停用Brocade FC交換器的加密功能。 
+---
+= 在Brocade FC交換器上停用加密
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可能需要停用Brocade FC交換器的加密功能。
+
+.步驟
+. 從AutoSupport 兩個站台傳送一個「支援」訊息、指出維護作業開始。
++
+[listing]
+----
+cluster_A::> autosupport invoke -node * -type all -message MAINT=4h
+----
++
+[listing]
+----
+cluster_B::> autosupport invoke -node * -type all -message MAINT=4h
+----
+. 驗MetroCluster 證叢集A中的不穩定組態運作
++
+.. 確認MetroCluster 此功能的組態、並確認操作模式正常：+「* MetroCluster 」「*」「show *」
++
+[listing]
+----
+cluster_A::> metrocluster show
+----
+.. 執行MetroCluster 功能不全：+「* MetroCluster 效能不全*」
++
+[source, nolinebreak]
+----
+cluster_A::> metrocluster check run
+----
+.. 顯示MetroCluster 畫面的結果：+「* MetroCluster 畫面檢查」顯示*
++
+[source, nolinebreak]
+----
+cluster_A::> metrocluster check show
+----
+
+
+. 檢查兩個交換器的狀態：
++
+「* Fabric show*」
+
++
+[listing]
+----
+switch_A_1:admin> fabric show
+----
++
+[listing]
+----
+switch_B_1:admin> fabric show
+----
+. 停用兩個交換器：
++
+「* switchdisable*」
+
++
+[listing]
+----
+switch_A_1:admin> switchdisable
+----
++
+[listing]
+----
+switch_B_1:admin> switchdisable
+----
+. 檢查每個叢集上節點的可用路徑：
++
+《*系統管理*》
+
++
+[listing]
+----
+cluster_A::> system node run -node node-name -command sysconfig -a
+----
++
+[listing]
+----
+cluster_B::> system node run -node node-name -command sysconfig -a
+----
++
+現在交換器架構已停用、系統儲存組態應為單一路徑HA。
+
+. 檢查兩個叢集的Aggregate狀態。
++
+[listing]
+----
+cluster_A::> aggr status
+----
++
+[listing]
+----
+cluster_B::> aggr status
+----
++
+系統輸出應顯示兩個叢集的集合體均為鏡射且正常：
+
++
+[listing]
+----
+mirrored,normal
+----
+. 在兩個交換器的管理提示字元中重複下列子步驟。
++
+.. 顯示加密的連接埠：+「* portenccompshow*」
++
+[listing]
+----
+switch_A_1:admin> portenccompshow
+----
+.. 在加密連接埠上停用加密：+「* portcfgEncryption–停用_port-number_*」
++
+[listing]
+----
+switch_A_1:admin> portcfgencrypt --disable 40
+switch_A_1:admin> portcfgencrypt --disable 41
+switch_A_1:admin> portcfgencrypt --disable 42
+switch_A_1:admin> portcfgencrypt --disable 43
+----
+.. 將驗證類型設為「all（全部）」：
++
+"*authUtil --set -A all*
+
++
+[listing]
+----
+switch_A_1:admin> authUtil --set -a all
+----
+.. 在交換器上設定驗證原則。關閉：+`*authutil-policy -SW off*
++
+[listing]
+----
+switch_A_1:admin> authutil --policy -sw off
+----
+.. 將驗證Diffie-Hellman群組設為+*+：+`*authutil-set -g **'
++
+[listing]
+----
+switch_A_1:admin> authUtil --set -g *
+----
+.. 刪除機密金鑰資料庫：+「* secAuthSecret -移除-all*」
++
+[listing]
+----
+switch_A_1:admin> secAuthSecret --remove -all
+----
+.. 確認已在連接埠上停用加密：+「* portenccompshow*」
++
+[listing]
+----
+switch_A_1:admin> portenccompshow
+----
+.. 啟用交換器：+`* switchenable *
++
+[listing]
+----
+switch_A_1:admin> switchenable
+----
+.. 確認ISL的狀態：+「* isshow*」
++
+[listing]
+----
+switch_A_1:admin> islshow
+----
+
+
+. 檢查每個叢集上節點的可用路徑：
++
+《*系統管理*》
+
++
+[listing]
+----
+cluster_A::> system node run -node * -command sysconfig -a
+----
++
+[listing]
+----
+cluster_B::> system node run -node * -command sysconfig -a
+----
++
+系統輸出應指出系統儲存組態已變更回四重路徑HA。
+
+. 檢查兩個叢集的Aggregate狀態。
++
+[listing]
+----
+cluster_A::> aggr status
+----
++
+[listing]
+----
+cluster_B::> aggr status
+----
++
+系統應顯示兩個叢集的集合體均為鏡射且正常、如下列系統輸出所示：
+
++
+[listing]
+----
+mirrored,normal
+----
+. 驗MetroCluster 證叢集A中的不穩定組態運作
++
+.. 執行MetroCluster 功能不全：+「* MetroCluster 效能不全*」
++
+[listing]
+----
+cluster_A::> metrocluster check run
+----
+.. 顯示MetroCluster 畫面的結果：+「* MetroCluster 畫面檢查」顯示*
++
+[listing]
+----
+cluster_A::> metrocluster check show
+----
+
+
+. 從AutoSupport 這兩個站台傳送不完整的訊息、指出維護作業已結束。
++
+[listing]
+----
+cluster_A::> autosupport invoke -node node-name -type all -message MAINT=END
+----
++
+[listing]
+----
+cluster_B::> autosupport invoke -node node-name -type all -message MAINT=END
+----
+

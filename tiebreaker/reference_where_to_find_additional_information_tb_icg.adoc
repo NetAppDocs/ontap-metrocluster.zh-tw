@@ -1,0 +1,106 @@
+---
+permalink: tiebreaker/reference_where_to_find_additional_information_tb_icg.html 
+sidebar: sidebar 
+keywords: metrocluster, configuration, operation, netapp, documentation, additional, information, miscellaneous, guide 
+summary: 您可以深入瞭MetroCluster 解有關功能的組態設定與操作。 
+---
+= 何處可找到其他資訊
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以深入瞭MetroCluster 解有關功能的組態設定與操作。
+
+
+
+== 包含各種資訊MetroCluster
+
+|===
+
+
+| 資訊 | 主旨 
+
+
+ a| 
+link:../index.html["資訊文件MetroCluster"]
+ a| 
+* 所有MetroCluster 資訊
+
+
+
+
+ a| 
+http://www.netapp.com/us/media/tr-4375.pdf["NetApp技術報告4375：NetApp MetroCluster 的《ONTAP 關於NetApp的資訊》9.3"^]
+ a| 
+* 關於整套組態和操作的技術總覽MetroCluster 。
+* 最佳實務做法MetroCluster ：
+
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"]
+ a| 
+* 架構附加MetroCluster 的架構
+* 組態佈線
+* 設定FC對SAS橋接器
+* 設定FC交換器
+* 設定MetroCluster 功能不ONTAP 只是功能不一
+
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-metrocluster/install-stretch/concept_considerations_differences.html["延伸MetroCluster 安裝與組態"]
+ a| 
+* 延伸MetroCluster 架構
+* 組態佈線
+* 設定FC對SAS橋接器
+* 設定MetroCluster 功能不ONTAP 只是功能不一
+
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/concept_considerations_differences.html["安裝與組態MetroCluster"]
+ a| 
+* 知識產權架構MetroCluster
+* 連接MetroCluster 纜線連接整個過程
+* 設定MetroCluster 功能不ONTAP 只是功能不一
+
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-metrocluster/maintain/index.html["維護MetroCluster 這些元件"]
+ a| 
+* 關於進行支援的準則MetroCluster
+* FC至SAS橋接器和FC交換器的硬體更換或升級與韌體升級程序
+* 在光纖附加或延伸MetroCluster 的支援架構組態中熱新增磁碟櫃
+* 以光纖連接或延伸MetroCluster 的支援架構組態熱移除磁碟櫃
+* 在裝有網路或延伸MetroCluster 的支援架構配置中、更換災難現場的硬體
+* 將雙節點架構連接或延伸MetroCluster 的支援架構組態擴充至四節點MetroCluster 的支援架構組態。
+* 將四節點的Fabric附加或延伸MetroCluster 功能的支援功能組態擴充至八節點MetroCluster 的支援功能組態。
+
+
+
+
+ a| 
+本文檔Active IQ Unified Manager
+
+https://docs.netapp.com["NetApp文件：產品指南與資源"^]
+ a| 
+* 監控MetroCluster 不一致的組態和效能
+
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-7mode-transition/copy-based/index.html["複本型轉換"]
+ a| 
+* 將資料從7-Mode儲存系統移轉至叢集式儲存系統
+
+
+|===

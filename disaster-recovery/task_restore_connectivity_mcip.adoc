@@ -1,0 +1,42 @@
+---
+permalink: disaster-recovery/task_restore_connectivity_mcip.html 
+sidebar: sidebar 
+keywords: metrocluster, iscsi, connections, disaster, site, surviving, connectivity, restore 
+summary: 您必須從MetroCluster 正常運作的節點還原無法運作的iSCSI啟動器連線。 
+---
+= 將連線從正常運作的節點還原至災難站台（MetroCluster 不支援的IP組態）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+您必須從MetroCluster 正常運作的節點還原無法運作的iSCSI啟動器連線。
+
+此程序僅適用於MetroCluster 不完整的IP組態。
+
+.步驟
+. 從任一正常節點的提示字元、變更為進階權限層級：
++
+"進階權限"
+
++
+當系統提示您繼續進入進階模式時、您需要用「y」回應、並看到進階模式提示（*>）。
+
+. 將iSCSI啟動器連接到DR群組中兩個可用節點上：
++
+「儲存iSCSI啟動器連接節點存續節點-label *」
+
++
+以下範例顯示連接站台B上啟動器的命令：
+
++
+[listing]
+----
+site_B::*> storage iscsi-initiator connect -node node_B_1 -label *
+site_B::*> storage iscsi-initiator connect -node node_B_2 -label *
+----
+. 返回管理權限層級：
++
+「et -priv. admin」
+
+

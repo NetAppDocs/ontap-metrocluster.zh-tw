@@ -1,0 +1,50 @@
+---
+permalink: manage/task_heal_the_root_aggregates_after_negotiated_switchover.html 
+sidebar: sidebar 
+keywords: data, aggregate, heal, root, preparation, switchback, operation, negotiate, switchover 
+summary: 在資料集合體修復之後、您必須修復根集合體、以準備進行切換作業。 
+---
+= 協調切換後修復根集合體
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在資料集合體修復之後、您必須修復根集合體、以準備進行切換作業。
+
+必須成功完成資料集合體階段MetroCluster 的還原程序。
+
+.步驟
+. 執行MetroCluster f還原 階段根Aggregate命令、切換回鏡射Aggregate。
++
+[listing]
+----
+cluster_A::> metrocluster heal -phase root-aggregates
+[Job 137] Job succeeded: Heal Root Aggregates is successful
+----
++
+如果修復被否決、您可以選擇MetroCluster 使用--overrover-etoes參數重新發出還原指令。如果您使用此選用參數、系統將會置換任何軟質否決、以防止修復作業。
+
+. 在MetroCluster 健全的叢集上執行flexoperationshow命令、確認修復作業已完成：
++
+[listing]
+----
+
+cluster_A::> metrocluster operation show
+  Operation: heal-root-aggregates
+      State: successful
+ Start Time: 7/29/2014 20:54:41
+   End Time: 7/29/2014 20:54:42
+     Errors: -
+----
+. 請在正常站台上發出下列命令、檢查並移除屬於災難站台的任何故障磁碟：「磁碟show -disks（磁碟顯示-中斷）」
+. 開啟或開機災難站台上的每個控制器模組。
++
+如果系統顯示載入器提示、請執行「boot_ontap」命令。
+
+. 引導節點後、請確認根集合體已鏡射。
++
+如果兩個plexes都存在、則當plexes未同步時、會自動進行重新同步。如果某個叢發生故障、則必須銷毀該叢、並使用儲存Aggregate mirror -Aggregate gregate名稱命令重新建立鏡射關係。
+
+

@@ -1,0 +1,24 @@
+---
+permalink: transition/task_remove_tiebreaker_4n_transition.html 
+sidebar: sidebar 
+keywords: Transitioning from MetroCluster FC to MetroCluster IP configurations, review, requirement, preparing, prepare, transition, perform, procedure, order, completing, complete, step, task, moving, move, controller, storage, shelves, shelf, exist, configuration, direct, metrocluster, fc, ip, verify, health, removing, remove, tiebreaker, monitor, software, generating, generate, apply, rcf, switch, controller, configure, prepare, preparing 
+summary: 如果現有的組態是以MetroCluster 可啟動切換的ESITTiebreaker組態或其他協力廠商應用程式（例如ClusterLion）來監控、則MetroCluster 在轉換之前、您必須先從斷路器或其他軟體移除該組態。 
+---
+= 從斷路器或其他監控軟體移除現有組態
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果現有的組態是以MetroCluster 可啟動切換的ESITTiebreaker組態或其他協力廠商應用程式（例如ClusterLion）來監控、則MetroCluster 在轉換之前、您必須先從斷路器或其他軟體移除該組態。
+
+. 從MetroCluster Tiebreaker軟體移除現有的部分組態。
++
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.hw-metrocluster-tiebreaker/GUID-34C97A45-0BFF-46DD-B104-2AB2805A983D.html["移除MetroCluster 部分組態"]
+
+. 從MetroCluster 任何可啟動切換的第三方應用程式移除現有的功能。
++
+請參閱應用程式的文件。
+
+

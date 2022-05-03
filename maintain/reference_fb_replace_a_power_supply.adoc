@@ -1,0 +1,25 @@
+---
+permalink: maintain/reference_fb_replace_a_power_supply.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, hot, replacing, failed, power, supply, module 
+summary: 當橋接器的電源供應器模組狀態變更時、您可以移除並安裝電源供應器模組。 
+---
+= 熱更換故障的電源供應器模組
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+當橋接器的電源供應器模組狀態變更時、您可以移除並安裝電源供應器模組。
+
+您可以透過橋接器上的LED來檢視電源供應器模組狀態的變更。您也可以透過ExpressNAV GUI和橋接CLI、透過序列連接埠或透過Telnet來檢視電源供應器模組的狀態。
+
+* 此程序為nn（不中斷營運）、約需15分鐘完成。
+* 您需要管理員密碼、才能存取FTP或scp伺服器。
+
+
+
+NOTE: 適用於您的模型橋接器的_Atto FibreBridge安裝與操作手冊_有更多管理介面的相關資訊。
+
+您可以使用Atto FIBrebridge Description（Atto FIBrebridge說明）頁面上提供的連結、存取Atto網站上的此內容和其他內容。

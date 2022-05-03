@@ -1,0 +1,47 @@
+---
+permalink: upgrade/task_clear_the_configuration_on_a_controller_module_mcc.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, clear, configuration, controller, module 
+summary: 在使用全新的控制器模組MetroCluster 進行整個過程之前、您必須先清除組態。 
+---
+= 清除控制器模組上的組態
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在使用全新的控制器模組MetroCluster 進行整個過程之前、您必須先清除現有的組態。
+
+.步驟
+. 如有必要、請停止節點以顯示載入程式提示：
++
+《停止》
+
+. 在載入程式提示下、將環境變數設定為預設值：
++
+「預設值」
+
+. 儲存環境：
++
+「aveenv」
+
+. 在載入程式提示下、啟動開機功能表：
++
+Boot_ONTAP功能表
+
+. 在開機功能表提示字元中、清除組態：
++
+《無花果》
+
++
+請對確認提示回應「是」。
+
++
+節點會重新開機、並再次顯示開機功能表。
+
+. 在開機功能表中、選取選項* 5*以將系統開機至維護模式。
++
+請對確認提示回應「是」。
+
+

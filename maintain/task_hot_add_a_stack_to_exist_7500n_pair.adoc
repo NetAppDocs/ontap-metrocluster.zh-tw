@@ -1,0 +1,245 @@
+---
+permalink: maintain/task_hot_add_a_stack_to_exist_7500n_pair.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, hot, add, stack, sas, disk, shelves, existing, pair, fibrebridge, bridge 
+summary: 您可以將一堆SAS磁碟櫃熱新增至現有的一對配備可用連接埠的FibreBridge 7500N橋接器。 
+---
+= 將一堆SAS磁碟櫃熱新增至現有的一對光纖橋接器7500N
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以將一堆SAS磁碟櫃熱新增至現有的一對配備可用連接埠的FibreBridge 7500N橋接器。
+
+.開始之前
+* 您必須下載最新的磁碟和磁碟櫃韌體。
+* 所有的磁碟櫃MetroCluster （現有磁碟櫃）都必須執行相同的韌體版本。如果一或多個磁碟或磁碟櫃未執行最新的韌體版本、請在連接新磁碟或磁碟櫃之前、先更新韌體。
++
+https://mysupport.netapp.com/site/downloads/firmware/disk-drive-firmware["NetApp下載：磁碟機韌體"^]
+
++
+https://mysupport.netapp.com/site/downloads/firmware/disk-shelf-firmware["NetApp下載：磁碟櫃韌體"^]
+
+* 您必須連線至光纖橋接器7500N、並具有可用的SAS連接埠。
+
+
+此程序是假設您使用建議的橋接管理介面：Atto ExpressNAV GUI和Atto QuickNAV公用程式。
+
+您可以使用Atto ExpressNAV GUI來設定及管理橋接器、以及更新橋接器韌體。您可以使用Atto QuickNAV公用程式來設定橋接式乙太網路管理1連接埠。
+
+如有需要、您可以使用其他管理介面。這些選項包括使用序列連接埠或Telnet來設定及管理橋接器、設定乙太網路管理1連接埠、以及使用FTP更新橋接器韌體。如果您選擇任何管理介面、則必須符合中的適用要求 link:reference_requirements_for_using_other_interfaces_to_configure_and_manage_fibrebridge_bridges.html["其他橋接器管理介面"]。
+
+
+IMPORTANT: 如果您將SAS纜線插入錯誤的連接埠、從SAS連接埠拔下纜線時、必須等待至少120秒、才能將纜線插入其他SAS連接埠。如果您無法這麼做、系統將無法辨識纜線是否已移至其他連接埠。
+
+.步驟
+. 請妥善接地。
+. 從任一控制器的主控台、確認您的系統已啟用磁碟自動指派：
++
+「顯示磁碟選項」
+
++
+「自動指派」欄會指出是否已啟用磁碟自動指派。
+
++
+[listing]
+----
+
+Node        BKg. FW. Upd.  Auto Copy   Auto Assign  Auto Assign Policy
+----------  -------------  ----------  -----------  ------------------
+node_A_1             on           on           on           default
+node_A_2             on           on           on           default
+2 entries were displayed.
+----
+. 停用新堆疊的交換器連接埠。
+. 更新每個橋接器上的FibreBridge韌體。
++
+如果新橋接器的類型與合作夥伴橋接器的類型相同、請升級至與合作夥伴橋接器相同的韌體。如果新橋接器與合作夥伴橋接器的類型不同、請升級至橋接器和ONTAP 版本的更新韌體。請參閱《_ MetroCluster 資料維護指南_》中的「更新光纖橋接器上的韌體」一節。
+
+. 在配對中的每個橋接器上、啟用將連線至新堆疊的SAS連接埠：
++
+"ASPortEnable _port-letter _"
+
++
+必須在兩個橋接器上使用相同的SAS連接埠（B、C或D）。
+
+. 儲存組態並重新啟動每個橋接器：
++
+「另存組態重新啟動」
+
+. 將磁碟櫃連接至橋接器：
++
+.. 以菊環鏈方式將每個堆疊中的磁碟櫃串連在一起。
++
+磁碟櫃模型的安裝與服務指南_提供有關菊環鏈式磁碟櫃的詳細資訊。
+
+.. 對於每個磁碟櫃堆疊、將第一個磁碟櫃的IOM A纜線連接至光纖橋接器A的SAS連接埠A、然後將最後一個磁碟櫃的IOM B纜線連接至光纖橋接器B的SAS連接埠A
++
+link:../install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"]
+
++
+link:../install-stretch/concept_considerations_differences.html["延伸MetroCluster 安裝與組態"]
+
++
+每個橋接器都有一條通往磁碟櫃堆疊的路徑；橋接A透過第一個機櫃連接至堆疊的A側、而橋接B則透過最後一個機櫃連接至堆疊的B側。
+
++
+
+NOTE: 橋接器SAS連接埠B已停用。
+
+
+
+. 確認每個橋接器都能偵測到橋接器所連接的所有磁碟機和磁碟櫃。
++
+[cols="30,70"]
+|===
+
+
+| 如果您使用... | 然後... 
+
+
+ a| 
+Atto ExpressNAV GUI
+ a| 
+.. 在支援的網頁瀏覽器中、於瀏覽器方塊中輸入橋接器的IP位址。
++
+您會被帶到Atto FIBreBridge首頁、其中有一個連結。
+
+.. 按一下連結、然後輸入您在設定橋接器時所指定的使用者名稱和密碼。
++
+Atto FIBreBridge狀態頁面會出現、左側會顯示功能表。
+
+.. 按一下功能表中的*進階*。
+.. 檢視連線的裝置：
++
+「astargets」
+
+.. 按一下*提交*。
+
+
+
+
+ a| 
+序列連接埠連線
+ a| 
+檢視連線的裝置：
+
+「astargets」
+
+|===
++
+輸出顯示連接橋接器的裝置（磁碟和磁碟櫃）。輸出線會依序編號、以便您快速計算裝置數量。
+
++
+
+NOTE: 如果輸出開頭出現「回應被截掉」文字、您可以使用Telnet連線到橋接器、然後使用「傳送」命令來檢視所有輸出。
+
++
+下列輸出顯示已連接10個磁碟：
+
++
+[listing]
+----
+Tgt VendorID ProductID        Type        SerialNumber
+  0 NETAPP   X410_S15K6288A15 DISK        3QP1CLE300009940UHJV
+  1 NETAPP   X410_S15K6288A15 DISK        3QP1ELF600009940V1BV
+  2 NETAPP   X410_S15K6288A15 DISK        3QP1G3EW00009940U2M0
+  3 NETAPP   X410_S15K6288A15 DISK        3QP1EWMP00009940U1X5
+  4 NETAPP   X410_S15K6288A15 DISK        3QP1FZLE00009940G8YU
+  5 NETAPP   X410_S15K6288A15 DISK        3QP1FZLF00009940TZKZ
+  6 NETAPP   X410_S15K6288A15 DISK        3QP1CEB400009939MGXL
+  7 NETAPP   X410_S15K6288A15 DISK        3QP1G7A900009939FNTT
+  8 NETAPP   X410_S15K6288A15 DISK        3QP1FY0T00009940G8PA
+  9 NETAPP   X410_S15K6288A15 DISK        3QP1FXW600009940VERQ
+----
+. 確認命令輸出顯示橋接器已連接至堆疊中所有適當的磁碟和磁碟櫃。
++
+[cols="30,70"]
+|===
+
+
+| 如果輸出是... | 然後... 
+
+
+ a| 
+正確
+ a| 
+針對其餘的每個橋接重複上一步。
+
+
+
+ a| 
+不正確
+ a| 
+.. 重複步驟、將磁碟櫃連接至橋接器、以檢查SAS纜線是否鬆脫或修正SAS纜線。
+.. 針對其餘的每個橋接重複上一步。
+
+
+|===
+. 從系統主控台將磁碟機韌體更新為最新版本：
++
+'磁碟防火牆更新'
+
++
+您必須在兩個控制器上執行此命令。
+
++
+https://mysupport.netapp.com/site/downloads/firmware/disk-drive-firmware["NetApp下載：磁碟機韌體"^]
+
+. 使用下載韌體的指示、將磁碟櫃韌體更新至最新版本。
++
+您可以從任一控制器的系統主控台執行程序中的命令。
+
++
+https://mysupport.netapp.com/site/downloads/firmware/disk-shelf-firmware["NetApp下載：磁碟櫃韌體"^]
+
+. 如果您的系統未啟用磁碟自動指派、請指派磁碟機擁有權。
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"^]
+
++
+
+NOTE: 如果您要在多個控制器之間分割單一磁碟櫃堆疊的擁有權、則必須在指派磁碟擁有權之前、先停用磁碟自動指派（「儲存磁碟選項修改-自動指派關閉*」）； 否則、當您指派任何單一磁碟機時、其餘的磁碟機可能會自動指派給相同的控制器和集區。
+
++
+
+NOTE: 在更新磁碟機韌體和磁碟櫃韌體、並完成本工作中的驗證步驟之前、您不得將磁碟機新增至集合體或磁碟區。
+
+. 啟用新堆疊的交換器連接埠。
+. 驗證MetroCluster 下列項目中的功能：ONTAP
++
+.. 檢查系統是否具有多路徑：
++
+「節點執行節點_norme-name_ sysconfig -A」
+
+.. 檢查兩個叢集上的任何健全狀況警示：
++
+「系統健全狀況警示顯示」
+
+.. 確認MetroCluster 執行功能組態、並確認操作模式正常：
++
+《不看》MetroCluster
+
+.. 執行功能檢查：MetroCluster
++
+《不一樣的跑程》MetroCluster
+
+.. 顯示MetroCluster 檢查結果：
++
+《不一樣的表演》MetroCluster
+
+.. 檢查交換器上是否有任何健全狀況警示（如果有）：
++
+「torage switchshow」
+
+.. 執行Config Advisor
++
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"^]
+
+.. 執行Config Advisor 完功能後、請檢閱工具的輸出結果、並依照輸出中的建議來解決發現的任何問題。
+
+
+. 如果適用、請針對合作夥伴網站重複此程序。
+

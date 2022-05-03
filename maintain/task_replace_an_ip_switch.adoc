@@ -1,0 +1,122 @@
+---
+permalink: maintain/task_replace_an_ip_switch.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, replace, ip, switch 
+summary: 您可能需要更換故障的交換器、或是升級或降級交換器。當交換器故障時、新交換器可以與舊交換器相同、或者您可以變更交換器類型（升級或降級交換器）。 
+---
+= 更換IP交換器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可能需要更換故障的交換器、或是升級或降級交換器。當交換器故障時、新交換器可以與舊交換器相同、或者您可以變更交換器類型（升級或降級交換器）。
+
+如果您想要以相同類型的交換器來取代故障的交換器、您只需要更換故障的交換器。如果您想要升級或降級交換器、則需要調整同一個網路中的兩個交換器。如果兩台交換器連接至交換器間連結（ISL）、且不在同一個站台、則它們位於同一個網路中。例如、網路1包括ip_switch_a_1和ip_switch_b_1。網路2包括IP交換器_a_2和IP交換器_B_2、如下圖所示：
+
+image::../media/mcc_ip_hardware_architecture_ip_interconnect.png[MCC IP硬體架構IP互連]
+
+此程序適用於使用NetApp驗證的交換器。如果您使用的是符合MetroCluster規範的交換器、請洽詢交換器廠商。
+
+如果您升級或降級網路、則必須針對第二個網路重複此程序。
+
+.步驟
+. 檢查組態的健全狀況。
++
+.. 檢查MetroCluster 每個叢集上的「* MetroCluster 」「*」「*」「顯示*」是否已設定成正常模式
++
+[listing]
+----
+cluster_A::> metrocluster show
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+ Local: cluster_A         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain auso-on-cluster-disaster
+Remote: cluster_B         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain auso-on-cluster-disaster
+----
+.. 檢查是否在每個節點上啟用鏡射：「* MetroCluster 鏡射節點show *」
++
+[listing]
+----
+cluster_A::> metrocluster node show
+DR                           Configuration  DR
+Group Cluster Node           State          Mirroring Mode
+----- ------- -------------- -------------- --------- --------------------
+1     cluster_A
+              node_A_1       configured     enabled   normal
+      cluster_B
+              node_B_1       configured     enabled   normal
+2 entries were displayed.
+----
+.. 請檢查MetroCluster 這些元件是否健全：「* MetroCluster 《*不實檢查路跑*》
++
+[listing]
+----
+cluster_A::> metrocluster check run
+
+Last Checked On: 10/1/2014 16:03:37
+
+Component           Result
+------------------- ---------
+nodes               ok
+lifs                ok
+config-replication  ok
+aggregates          ok
+4 entries were displayed.
+
+Command completed. Use the "metrocluster check show -instance" command or sub-commands in "metrocluster check" directory for detailed results.
+To check if the nodes are ready to do a switchover or switchback operation, run "metrocluster switchover -simulate" or "metrocluster switchback -simulate", respectively.
+----
+.. 檢查是否沒有健全狀況警示：「*系統健全狀況警示顯示*」
+
+
+. 安裝前請先設定新交換器。
++
+
+NOTE: 如果要升級或降級交換器、您必須設定網路中的所有交換器。
+
++
+請依照中「設定IP交換器」一節的步驟進行 link:https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/using_rcf_generator.html["安裝與組態。MetroCluster"]
+
++
+請確定您已為交換器_a_1、_a_2、_B_1或_B_2套用正確的RCF檔案。如果新交換器與舊交換器相同、您需要套用相同的RCF檔案。
+
++
+如果您升級或降級交換器、請為新交換器套用最新支援的RCF檔案。
+
+. 執行連接埠show命令以檢視網路連接埠的相關資訊：
++
+「*網路連接埠show *」
+
+. 從連接至舊交換器的遠端交換器中斷ISL連線。
++
+您應該從連接到ip_switch_B_1的ip_switch_a_1連接埠中斷ISL連線。
+
+. 關閉交換器電源、拔下纜線、然後實際移除ip_switch_B_1。
+. 安裝新交換器。
++
+根據中的「IP交換器佈線_」一節中的步驟、先為新交換器佈線（包括ISL） link:https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/using_rcf_generator.html["安裝與組態MetroCluster"]。
+
++
+[NOTE]
+====
+如果交換器類型不同、使用的連接埠可能會與舊交換器上的連接埠不同。如果要升級或降級交換器、請*不要*連接本機ISL。只有在升級或降級第二個網路中的交換器時、以及同一個站台中的兩個交換器類型相同時、才使用本機ISL纜線。
+
+====
+. 開啟交換器或交換器的電源。
++
+如果新交換器相同、請開啟新交換器的電源。如果您要升級或降級交換器、請開啟兩個交換器的電源。組態可在每個站台使用兩個不同的交換器運作、直到第二個網路更新為止。
+
+. 重複步驟1、確認MetroCluster 支援的功能正常。
++
+如果您要升級或降級第一個網路中的交換器、可能會看到一些與本機叢集相關的警示。
+
++
+
+NOTE: 如果您升級或降級網路、請針對第二個網路重複所有步驟。
+
+

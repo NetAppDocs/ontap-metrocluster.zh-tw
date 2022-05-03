@@ -1,0 +1,12 @@
+---
+permalink: upgrade/reference_copyright_and_trademark.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, copyright, trademark, machine, translation 
+summary: 《The《The》《The VMware Upgrade、Transition and Expansion Guide》版權、商標及機器、翻譯資訊MetroCluster 。 
+---
+= 版權、商標及機器翻譯
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+

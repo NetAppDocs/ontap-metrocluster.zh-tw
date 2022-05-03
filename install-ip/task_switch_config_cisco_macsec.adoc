@@ -1,0 +1,104 @@
+---
+permalink: install-ip/task_switch_config_cisco_macsec.html 
+sidebar: sidebar 
+keywords: cisco, MACsec encryption 
+summary: 您只能在站台之間執行的WAN ISL連接埠上設定Macsec加密。套用正確的RCF檔案之後、您必須設定Macsec。 
+---
+= 在Cisco 9336C交換器上設定Macsec加密
+:allow-uri-read: 
+
+
+如果需要、您可以在站台之間執行的WAN ISL連接埠上設定Macsec加密。套用正確的RCF檔案之後、您必須設定Macsec。
+
+
+NOTE: MAC秒加密只能套用至WAN ISL連接埠。
+
+
+
+== MAC的授權要求
+
+Macsec需要安全授權。如需Cisco NX-OS授權方案的完整說明、以及如何取得及申請授權、請參閱 https://www.cisco.com/c/en/us/td/docs/switches/datacenter/sw/nx-os/licensing/guide/b_Cisco_NX-OS_Licensing_Guide/b_Cisco_NX-OS_Licensing_Guide_chapter_01.html["Cisco NX-OS授權指南"]
+
+
+
+== 啟用MetroCluster Cisco Macsec Encryption WAN ISL以利支援各種IP組態
+
+您可以在MetroCluster WAN ISL上的Cisco 9336C交換器上啟用MAC加密功能、以利執行支援。
+
+. 進入全域組態模式：「configure terminal」（設定終端機）
++
+[listing]
+----
+IP_switch_A_1# configure terminal
+IP_switch_A_1(config)#
+----
+. 在裝置上啟用Macsec和MKA：「feature Macsec」（功能MAC秒）
++
+[listing]
+----
+IP_switch_A_1(config)# feature macsec
+----
+. 將執行組態複製到啟動組態：「copy running-config startup-config」
++
+[listing]
+----
+IP_switch_A_1(config)# copy running-config startup-config
+----
+
+
+
+
+== 停用Cisco Macsec Encryption
+
+您可能需要在MetroCluster WAN ISL上針對Cisco 9336C交換器停用MAC加密、以利進行IP組態設定。
+
+
+NOTE: 如果停用加密、您也必須刪除金鑰、如XXX所述。
+
+. 進入全域組態模式：「configure terminal」（設定終端機）
++
+[listing]
+----
+IP_switch_A_1# configure terminal
+IP_switch_A_1(config)#
+----
+. 停用裝置上的Macsec組態：「Macsec shutruted」（Macsec關機）
++
+[listing]
+----
+IP_switch_A_1(config)# macsec shutdown
+----
++
+
+NOTE: 選取「否」選項可還原Macsec功能。
+
+. 選取您已使用Macsec設定的介面。
++
+您可以指定介面類型和身分識別。對於乙太網路連接埠、請使用乙太網路插槽/連接埠。
+
++
+[listing]
+----
+IP_switch_A_1(config)# interface ethernet 1/15
+switch(config-if)#
+----
+. 移除介面上設定的金鑰鏈、原則和後援金鑰鏈、以移除Macsec組態：「無Macsec金鑰鏈金鑰鏈名稱原則名稱後援金鑰鏈名稱」
++
+[listing]
+----
+IP_switch_A_1(config-if)# no macsec keychain kc2 policy abc fallback-keychain fb_kc2
+----
+. 在所有設定了Macsec的介面上重複步驟3和4。
+. 將執行組態複製到啟動組態：「copy running-config startup-config」
++
+[listing]
+----
+IP_switch_A_1(config)# copy running-config startup-config
+----
+
+
+
+
+== 設定Macsec金鑰鏈和金鑰
+
+如需設定Macsec金鑰鏈的詳細資訊、請參閱交換器的Cisco文件。

@@ -1,0 +1,318 @@
+---
+permalink: manage/concept_monitoring_the_mcc_configuration.html 
+sidebar: sidebar 
+keywords: ontap, metrocluster, command, active, iq, unified, manager, oncommand, unified, monitor, health, software, state, component, operation, check, configuration, configuration, detect, failure, netapp, tiebreaker, software 
+summary: 您可以使用ONTAP MetroCluster 功能齊全的功能表來Active IQ Unified Manager 監控各種軟體元件的健全狀況及運作狀態、例如使用功能表指令和功能表（先前稱為OnCommand 「功能表統一化管理程式」）MetroCluster 。 
+---
+= 監控MetroCluster 功能組態
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用ONTAP MetroCluster 功能齊全的功能表來Active IQ Unified Manager 監控各種軟體元件的健全狀況及運作狀態、例如使用功能表指令和功能表（先前稱為OnCommand 「功能表統一化管理程式」）MetroCluster 。
+
+
+
+== 正在檢查MetroCluster 功能組態
+
+您可以檢查MetroCluster 功能組態中的元件和關係是否正常運作。您應該在初始組態設定後、以及MetroCluster 變更任何的功能後進行檢查。您也應該在協商（計畫性）切換或切換作業之前進行檢查。
+
+如果在MetroCluster 兩個叢集上的短時間內發出兩次「支援驗證執行」命令、可能會發生衝突、而且命令可能無法收集所有資料。後續的「MetroCluster 示例檢查show」命令不會顯示預期的輸出。
+
+.步驟
+. 檢查組態：
++
+《不一樣的跑程》MetroCluster
+
++
+命令會以背景工作的形式執行、而且可能不會立即完成。
+
++
+[listing]
+----
+cluster_A::> metrocluster check run
+The operation has been started and is running in the background. Wait for
+it to complete and run "metrocluster check show" to view the results. To
+check the status of the running metrocluster check operation, use the command,
+"metrocluster operation history show -job-id 2245"
+----
+. 顯示最新MetroCluster 的「不檢流程」命令更詳細的結果：
++
+《不看集合體表演》MetroCluster
+
++
+「觀看叢集節目」MetroCluster
+
++
+《不執行組態複寫的展示》MetroCluster
+
++
+《不看利夫秀》MetroCluster
+
++
+「不需要節點顯示」MetroCluster
+
++
+「示例檢查show」命令顯示最近執行的「示例檢查run」命令的結果。MetroCluster MetroCluster在MetroCluster 使用「MetroCluster show」命令之前、請務必先執行「支援檢查執行」命令、以便顯示最新的資訊。
+
++
+以下範例顯示MetroCluster 「用作『用作檢查集合式show’命令輸出、以確保四節點MetroCluster 的效能正常運作：
+
++
+[listing]
+----
+cluster_A::> metrocluster check aggregate show
+
+Last Checked On: 8/5/2014 00:42:58
+
+Node                  Aggregate                  Check                      Result
+---------------       --------------------       ---------------------      ---------
+controller_A_1        controller_A_1_aggr0
+                                                 mirroring-status           ok
+                                                 disk-pool-allocation       ok
+                                                 ownership-state            ok
+                      controller_A_1_aggr1
+                                                 mirroring-status           ok
+                                                 disk-pool-allocation       ok
+                                                 ownership-state            ok
+                      controller_A_1_aggr2
+                                                 mirroring-status           ok
+                                                 disk-pool-allocation       ok
+                                                 ownership-state            ok
+
+
+controller_A_2        controller_A_2_aggr0
+                                                 mirroring-status           ok
+                                                 disk-pool-allocation       ok
+                                                 ownership-state            ok
+                      controller_A_2_aggr1
+                                                 mirroring-status           ok
+                                                 disk-pool-allocation       ok
+                                                 ownership-state            ok
+                      controller_A_2_aggr2
+                                                 mirroring-status           ok
+                                                 disk-pool-allocation       ok
+                                                 ownership-state            ok
+
+18 entries were displayed.
+----
++
+以下範例顯示MetroCluster 「不知道叢集show」命令輸出、可確保四節點MetroCluster 的效能正常。這表示叢集已準備好在必要時執行協調式切換。
+
++
+[listing]
+----
+Last Checked On: 9/13/2017 20:47:04
+
+Cluster               Check                           Result
+--------------------- ------------------------------- ---------
+mccint-fas9000-0102
+                      negotiated-switchover-ready     not-applicable
+                      switchback-ready                not-applicable
+                      job-schedules                   ok
+                      licenses                        ok
+                      periodic-check-enabled          ok
+mccint-fas9000-0304
+                      negotiated-switchover-ready     not-applicable
+                      switchback-ready                not-applicable
+                      job-schedules                   ok
+                      licenses                        ok
+                      periodic-check-enabled          ok
+10 entries were displayed.
+----
+
+
+
+
+== 用於檢查MetroCluster 及監控資訊功能組態的命令
+
+有特定ONTAP 的功能可用來監控MetroCluster 整個過程的不確定組態和檢查MetroCluster 功能。
+
+
+
+=== 檢查MetroCluster 功能的命令
+
+|===
+
+
+| 如果您想要... | 使用此命令... 
+
+
+ a| 
+檢查MetroCluster 各項功能。
+
+*附註：*此命令不應做為DR前作業系統驗證的唯一命令。
+ a| 
+《不一樣的跑程》MetroCluster
+
+
+
+ a| 
+檢視MetroCluster 上次檢查的結果、瞭解有關不實運作的資訊。
+ a| 
+《不看》MetroCluster
+
+
+
+ a| 
+檢視站台之間組態複寫檢查的結果。
+ a| 
+「不只是檢查組態複寫功能、還能看到組態複寫顯示符合Aggregate資格」MetroCluster MetroCluster
+
+
+
+ a| 
+檢視節點組態檢查結果。
+ a| 
+「不需要節點顯示」MetroCluster
+
+
+
+ a| 
+檢視Aggregate組態檢查結果。
+ a| 
+《不看集合體表演》MetroCluster
+
+
+
+ a| 
+在MetroCluster 整個功能區組態中檢視LIF放置失敗。
+ a| 
+《不看利夫秀》MetroCluster
+
+|===
+
+
+=== 監控MetroCluster 互連的命令
+
+|===
+
+
+| 如果您想要... | 使用此命令... 
+
+
+ a| 
+顯示MetroCluster 叢集中的各個節點的HA和DR鏡射狀態和資訊。
+ a| 
+《不互連鏡像秀》MetroCluster
+
+|===
+
+
+=== 監控MetroCluster SVM的命令
+
+|===
+
+
+| 如果您想要... | 使用此命令... 
+
+
+ a| 
+在MetroCluster 整個SVM組態中檢視兩個站台的所有SVM。
+ a| 
+《看不出》MetroCluster
+
+|===
+
+
+== 使用MetroCluster 斷電器或ONTAP 不含資料的調解器來監控組態
+
+請參閱 link:../install-ip/concept_considerations_mediator.html["不一樣的地方ONTAP MetroCluster"] 瞭解這兩種監控MetroCluster 您的需求組態和啟動自動切換的方法之間的差異。
+
+使用下列連結來安裝及設定斷路器或訊號器：
+
+* link:../tiebreaker/concept_overview_of_the_tiebreaker_software.html["安裝及設定MetroCluster ESITirepreaker軟體"]
+* 連結：../install-ip/concept_mediator_requirements.html
+
+
+
+
+== NetApp MetroCluster 斷點器軟體如何偵測故障
+
+Tiebreaker軟體位於Linux主機上。只有當您想要監控兩個叢集、以及它們之間從第三個站台的連線狀態時、才需要Tiebreaker軟體。如此一來、叢集中的每個合作夥伴就能在站台間連結中斷時、與站台故障區隔ISL故障。
+
+在Linux主機上安裝tiebreaker軟體之後、您可以將叢集設定為MetroCluster 使用支援物件組態來監控災難情況。
+
+
+
+=== Tiebreaker軟體如何偵測站台間連線故障
+
+當站台之間的所有連線中斷時、系統會發出關於這個問題的警示。MetroCluster
+
+
+
+==== 網路路徑類型
+
+視組態而定、MetroCluster 在兩個叢集之間有三種類型的網路路徑、採用一套樣的組態：
+
+* * FC網路（以架構附加MetroCluster 的功能性支援組態提供）*
++
+此類網路由兩個備援FC交換器架構組成。每個交換器架構都有兩個FC交換器、每個交換器架構的一個交換器與一個叢集共用。每個叢集都有兩個FC交換器、每個交換器架構各一個。所有節點都有FC（NV-互連和FCP啟動器）連線、可連線至每個共置IP交換器。資料會透過ISL從叢集複寫至叢集。
+
+* *叢集間對等網路*
++
+此類網路由兩個叢集之間的備援IP網路路徑所組成。叢集對等網路提供鏡射儲存虛擬機器（SVM）組態所需的連線能力。一個叢集上所有的SVM組態都會由合作夥伴叢集鏡射。
+
+* * IP網路（MetroCluster 以不完整IP組態顯示）*
++
+此類網路由兩個備援IP交換器網路組成。每個網路都有兩個IP交換器、每個交換器的一個交換器與一個叢集共用。每個叢集都有兩個IP交換器、每個交換器架構各一個。所有節點均可連線至每個共置FC交換器。資料會透過ISL從叢集複寫至叢集。
+
+
+
+
+
+==== 監控站台間連線
+
+Tiebreaker軟體會定期從節點擷取站台間連線的狀態。如果內華達互連連連中斷、而且叢集間對等連線無法回應ping、則叢集會假設站台已隔離、而Tiebreaker軟體會觸發警示「AllLinksSevered」（AllLinksSevered）。如果叢集識別出「AllLinksSevered」狀態、但無法透過網路連線至其他叢集、則Tiebreaker軟體會觸發警示為「災難」。
+
+
+
+=== Tiebreaker軟體如何偵測站台故障
+
+NetApp MetroCluster 斷續器軟體可檢查MetroCluster ESIE組態中節點的可到達性和叢集、以判斷是否發生站台故障。在某些情況下、斷路器軟體也會觸發警示。
+
+
+
+==== 由Tiebreaker軟體監控的元件
+
+Tiebreaker軟體可透過MetroCluster 多個路徑、建立冗餘連線至節點管理LIF和叢集管理LIF（兩者均裝載於IP網路上）、以監控整個ESIE組態中的每個控制器。
+
+Tiebreaker軟體監控MetroCluster 下列元件的ESITESE組態：
+
+* 透過本機節點介面建立節點
+* 透過叢集指定的介面進行叢集
+* 正常運作的叢集、評估它是否能連線至災難站台（非易失性互連、儲存設備和叢集間對等）
+
+
+當斷路器軟體與叢集內的所有節點和叢集本身之間的連線中斷時、叢集會被斷路器軟體宣告為「無法連線」。偵測連線失敗約需三到五秒。如果叢集無法從Tiebreaker軟體連線到、則仍在運作的叢集（仍可連線的叢集）必須指出、在Tiebreaker軟體觸發警示之前、所有與合作夥伴叢集的連結都會中斷。
+
+
+NOTE: 如果存續的叢集無法再透過FC（內華達互連和儲存設備）和叢集間對等、與災難站台上的叢集進行通訊、則所有連結都會中斷。
+
+
+
+==== 故障情況下、斷路器軟體會觸發警示
+
+當災難站台上的叢集（所有節點）關閉或無法連線、而存續站台上的叢集指出「AllLinksSevered」狀態時、Tiebreaker軟體會觸發警示。
+
+在下列情況下、Tiebreaker軟體不會觸發警示（或警示遭否決）：
+
+* 在八節點MetroCluster 的不全功能組態中、如果災難站台的一個HA配對中斷
+* 在災難站台上所有節點都關閉的叢集中、在存續站台上的一個HA配對會關閉、而在存續站台上的叢集則會指出「AllLinksSevered」狀態
++
+斷路器軟體會觸發警示、但ONTAP 不知該警示。在這種情況下、手動切換也會遭到否決
+
+* 在任何情況下、斷路器軟體可以到達至少一個節點或災難站台的叢集介面、或是在正常運作的站台仍可透過FC（內華達互連與儲存設備）或叢集間對等來到達災難站台的任一節點
+
+
+
+
+=== 如何支援自動非計畫性切換ONTAP
+
+《支援者》將有關「支援中心」主機上信箱的「支援中心」節點狀態資訊儲存在內。ONTAP MetroCluster此資訊可用於監控災難恢復合作夥伴的狀態、並在發生災難時實作由中保輔助的自動非計畫性切換（MAUSO）MetroCluster 。
+
+當節點偵測到需要切換的站台故障時、會採取步驟確認切換是否適當、如果是、則會執行切換。
+
+只有SyncMirror 當每個節點的非揮發性快取同時執行鏡射和DR鏡射、而且快取和鏡射在故障時同步時、才會啟動MAUSO。

@@ -1,0 +1,44 @@
+---
+permalink: transition/task_prepare_ip_controllers_4n_transition.html 
+sidebar: sidebar 
+keywords: Transitioning from MetroCluster FC to MetroCluster IP configurations, review, requirement, preparing, prepare, transition, perform, procedure, order, completing, complete, step, task, moving, move, controller, storage, shelves, shelf, exist, configuration, direct, metrocluster, fc, ip, verify, health, removing, remove, tiebreaker, monitor, software, generating, generate, apply, rcf, switch, controller, configure, prepare, preparing 
+summary: 您必須準備四MetroCluster 個全新的靜態IP節點、並安裝正確ONTAP 的版本。 
+---
+= 準備MetroCluster 好執行功能
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須準備四MetroCluster 個全新的靜態IP節點、並安裝正確ONTAP 的版本。
+
+此工作必須在每個新節點上執行：
+
+* 節點_a_1-IP
+* 節點_a_2-IP
+* 節點_B_1-IP
+* 節點_B_2-IP
+
+
+在這些步驟中、您可以清除節點上的組態、並清除新磁碟機上的信箱區域。
+
+. 安裝新的控制器以利MetroCluster 執行效能不打造IP組態。
++
+目前、該功能可繼續使用纜線連接至不含纜線的FC節點（node_a_x-FC和node_b_x-FC）MetroCluster 。
+
+. 如MetroCluster 所示、將靜態IP節點連接至IP交換器 link:../install-ip/using_rcf_generator.html["IP交換器佈線"]。
+. 請MetroCluster 使用下列區段來設定「靜態IP節點」：
++
+.. link:../install-ip/task_sw_config_gather_info.html["收集必要資訊"]
+.. link:../install-ip/task_sw_config_restore_defaults.html["清除控制器模組上的組態"]
+.. link:../install-ip/task_sw_config_verify_haconfig.html["驗證元件的ha-config狀態"]
+.. link:../install-ip/task_sw_config_assign_pool0.html["手動指派集區0的磁碟機（ONTAP 適用於更新版本的更新版本）"]
+
+
+. 在維護模式下、發出halt命令以結束維護模式、然後發出boot_ONTAP命令以啟動系統並進入叢集設定。
++
+此時請勿完成叢集精靈或節點精靈。
+
+. 在其他MetroCluster 的不含知識的IP節點上重複這些步驟。
+

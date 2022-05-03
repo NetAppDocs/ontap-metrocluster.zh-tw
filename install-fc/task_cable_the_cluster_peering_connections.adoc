@@ -1,0 +1,33 @@
+---
+permalink: install-fc/task_cable_the_cluster_peering_connections.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, cable, cluster, peering, connections 
+summary: 您必須連接用於叢集對等的控制器模組連接埠、以便它們與合作夥伴站台上的叢集建立連線。 
+---
+= 叢集對等連線纜線
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須連接用於叢集對等的控制器模組連接埠、以便它們與合作夥伴站台上的叢集建立連線。
+
+此工作必須在MetroCluster ESCSI組態中的每個控制器模組上執行。
+
+每個控制器模組上至少應使用兩個連接埠進行叢集對等處理。
+
+建議的連接埠和網路連線最低頻寬為1 GbE。
+
+.步驟
+. 識別並連接至少兩個連接埠以供叢集對等、並驗證它們是否與合作夥伴叢集具有網路連線能力。
++
+叢集對等作業可在專用連接埠或資料連接埠上執行。使用專用連接埠可為叢集對等流量提供更高的處理量。
+
+
+
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-clus-peer/home.html["叢集與SVM對等化快速組態"]
+
+每MetroCluster 個站台均設定為其合作夥伴站台的對等站台。您應該熟悉設定對等關係的先決條件和準則、以及決定要使用共用或專用連接埠來建立這些關係。
+
+link:concept_prepare_for_the_mcc_installation.html["設定叢集對等的考量"]

@@ -1,0 +1,141 @@
+---
+permalink: disaster-recovery/task_power_on_mcfc.html 
+sidebar: sidebar 
+keywords: power, sas, storage, direct, attached, configuration, fabric 
+summary: 當您準備好進行切換時、必須在MetroCluster 災難現場啟動支援功能。 
+---
+= 開啟災難現場的設備電源
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+當您準備好進行切換時、必須在MetroCluster 災難現場啟動支援功能。此外、您也必須重新連接直接附加MetroCluster 的支援功能、才能使用非交換器間連結連接埠進行光纖附加MetroCluster 的支援功能。
+
+您必須已經完全更換MetroCluster 及連接舊版的元件。
+
+link:../install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"]
+
+link:../install-stretch/concept_considerations_differences.html["延伸MetroCluster 安裝與組態"]
+
+本程序中的範例假設如下：
+
+* 站台A是災難站台。
++
+** FC_SWIT_A_1已更換。
+** FC_SWIT_A_2已更換。
+
+
+* 站台B是存續的站台。
++
+** FC_SWIT_B_1正常運作。
+** FC_SWIT_B_2正常運作。
+
+
+
+
+FC交換器僅存在於網路附加MetroCluster 的功能不全的組態中。
+
+.步驟
+. 在MetroCluster 使用SAS纜線（無FC交換器架構或FC對SAS橋接器）的延伸版的支援架構中、連接所有儲存設備、包括跨兩個站台的遠端儲存設備。
++
+災難站台上的控制器必須保持關機狀態或在載入器提示下執行。
+
+. 在存續站台上、停用磁碟自動指派：
++
+「torage disk option modify -autodassign off *」
+
++
+[listing]
+----
+cluster_B::> storage disk option modify -autoassign off *
+2 entries were modified.
+----
+. 在存續站台上、確認磁碟自動指派已關閉：
++
+「顯示磁碟選項」
+
++
+[listing]
+----
+cluster_B::> storage disk option show
+Node     BKg. FW. Upd.  Auto Copy   Auto Assign  Auto Assign Policy
+--------  -------------  -----------  -----------  ------------------
+node_B_1       on            on          off             default
+node_B_2       on            on          off             default
+2 entries were displayed.
+
+ cluster_B::>
+----
+. 開啟災難站台的磁碟櫃、並確定所有磁碟都在執行中。
+. 在連接橋接器或連接架構MetroCluster 的功能區、開啟災難站台上的所有FC對SAS橋接器。
+. 如果有任何磁碟被更換、請關閉控制器電源或在載入器提示下。
+. 在架構附加MetroCluster 的支援區組態中、啟用FC交換器上的非ISL連接埠。
++
+|===
+
+
+| 如果交換器廠商... | 然後使用下列步驟來啟用連接埠... 
+
+
+ a| 
+Brocade
+ a| 
+.. 持續啟用連接至FC至SAS橋接器的連接埠：「ports堅持 啟用連接埠編號」
++
+在下列範例中、會啟用連接埠6和7：
+
++
+[listing]
+----
+FC_switch_A_1:admin> portpersistentenable 6
+FC_switch_A_1:admin> portpersistentenable 7
+
+FC_switch_A_1:admin>
+----
+.. 持續啟用連接至HBA和FC-VI介面卡的連接埠：「連接埠持續啟用連接埠編號」
++
+在下列範例中、會啟用連接埠6和7：
+
++
+[listing]
+----
+FC_switch_A_1:admin> portpersistentenable 1
+FC_switch_A_1:admin> portpersistentenable 2
+FC_switch_A_1:admin> portpersistentenable 4
+FC_switch_A_1:admin> portpersistentenable 5
+FC_switch_A_1:admin>
+----
++
+
+NOTE: 對於Sf-A700和FAS9000系統、您必須使用switchcfg堅持 啟用命令、持續啟用所有四個FC-VI連接埠。AFF
+
+.. 對存續站台的第二個FC交換器重複執行子步驟a和b。
+
+
+
+
+ a| 
+Cisco
+ a| 
+.. 進入介面的組態模式、然後使用no shut命令啟用連接埠。
++
+在下列範例中、連接埠FC1/36已停用：
+
++
+[listing]
+----
+FC_switch_A_1# conf t
+FC_switch_A_1(config)# interface fc1/36
+FC_switch_A_1(config)# no shut
+FC_switch_A_1(config-if)# end
+FC_switch_A_1# copy running-config startup-config
+----
+.. 驗證是否已啟用交換器連接埠：「How介面簡介」
+.. 在連接到FC到SAS橋接器、HBA和FC-VI介面卡的其他連接埠上、重複執行子步驟a和b。
+.. 針對存續站台的第二個FC交換器、重複執行子步驟a、b和c。
+
+
+|===
+

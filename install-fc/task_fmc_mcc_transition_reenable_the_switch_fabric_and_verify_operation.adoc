@@ -1,0 +1,64 @@
+---
+permalink: install-fc/task_fmc_mcc_transition_reenable_the_switch_fabric_and_verify_operation.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, reenable, switch, fabric, verify, operation 
+summary: 您必須啟用FC交換器架構、並確保交換器和裝置正常運作。 
+---
+= 重新啟用交換器架構並驗證作業
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須啟用FC交換器架構、並確保交換器和裝置正常運作。
+
+.步驟
+. 啟用交換器：
++
+「witchCfgPeristentEnable」
+
++
+如果此命令不可用，則在發出「FASTBOOT」命令之後，交換器應處於啟用狀態。
+
++
+** 以下範例顯示在FC_switch_a_1上發出的命令：
++
+[listing]
+----
+FC_switch_A_1:admin> switchCfgPersistentEnable
+----
+** 以下範例顯示在FC_switch_B_1上發出的命令：
++
+[listing]
+----
+FC_switch_B_1:admin> switchCfgPersistentEnable
+----
+
+
+. 確認交換器已連線且所有裝置均已正確登入：
++
+《秀》
+
++
+以下範例顯示在FC_switch_a_1上發出的命令：
+
++
+[listing]
+----
+FC_switch_A_1:admin> switchShow
+----
++
+以下範例顯示在FC_switch_B_1上發出的命令：
+
++
+[listing]
+----
+FC_switch_B_1:admin> switchShow
+----
+. 執行FMC_DC公用程式、確保7-Mode Fabric MetroCluster 功能正常運作。
++
+您可以忽略與流量隔離（TI）分區和主幹連線相關的錯誤。
+
+. 重複執行第二個交換器架構的工作。
+

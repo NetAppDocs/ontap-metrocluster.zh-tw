@@ -1,0 +1,83 @@
+---
+permalink: transition/concept_switchover_and_switchback_operations_during_transition.html 
+sidebar: sidebar 
+keywords: stage, transition, process, metrocluster, switchover, heal, switchback, operation, fc, ip, workflow 
+summary: 根據轉換程序的階段、MetroCluster 還原切換、修復及切換作業會使用MetroCluster SFC或MetroCluster SIP工作流程。 
+---
+= 在不中斷營運的轉換期間進行切換、修復及切換作業
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+根據轉換程序的階段、MetroCluster 還原切換、修復及切換作業會使用MetroCluster SFC或MetroCluster SIP工作流程。
+
+下表顯示轉換程序不同階段所使用的工作流程。在某些階段中、不支援切換和切換。
+
+* 在SFC工作流程中MetroCluster 、切換、修復及切換步驟是MetroCluster 指由SFC組態所使用的步驟。
+* 在靜態IP工作流程中、切換、修復和切換步驟是指由整個IP組態所使用的步驟。MetroCluster MetroCluster
+* 在統一化工作流程中、設定FC和IP節點時、步驟取決於執行NSO或USO。詳細資料會顯示在表格中。
+
+
+如需MetroCluster 有關切換、修復及切換的SFC和IP工作流程資訊、請參閱 link:../manage/concept_understanding_mcc_data_protection_and_disaster_recovery.html["瞭MetroCluster 解資料保護與災難恢復"]。
+
+
+NOTE: 自動非計畫性切換在轉換程序期間無法使用。
+
+[cols="2,1,3"]
+|===
+
+
+| 移轉階段 | 協調切換使用此工作流程... | 非計畫性切換使用此工作流程... 
+
+
+ a| 
+在將靜態IP節點加入叢集之前MetroCluster
+ a| 
+FC MetroCluster
+ a| 
+FC MetroCluster
+
+
+
+ a| 
+在將靜態IP節點加入叢集之後、執行「show configure」命令之前MetroCluster MetroCluster
+ a| 
+不支援
+ a| 
+FC MetroCluster
+
+
+
+ a| 
+在發出「MetroCluster flexconfigure」命令之後。Volume可在進行中移動。
+ a| 
+統一化：所有遠端站台節點都會維持正常運作、並自動進行修復
+ a| 
+統一化：
+
+* 如果可以存取儲存設備、MetroCluster 則由SFC節點擁有的鏡射Aggregate會鏡射、而其他所有集合體則會在切換後降級。
+* 所有遠端站台節點都能開機。
+* 必須手動執行「修復Aggregate」和「修復root」命令。
+
+
+
+
+ a| 
+尚未設定該功能的FC節點。MetroCluster
+ a| 
+不支援
+ a| 
+知識產權MetroCluster
+
+
+
+ a| 
+「cluster unjoin」命令已在MetroCluster 整個叢集FC節點上執行。
+ a| 
+知識產權MetroCluster
+ a| 
+知識產權MetroCluster
+
+|===

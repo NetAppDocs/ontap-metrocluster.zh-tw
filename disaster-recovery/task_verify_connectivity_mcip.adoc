@@ -1,0 +1,45 @@
+---
+permalink: disaster-recovery/task_verify_connectivity_mcip.html 
+sidebar: sidebar 
+keywords: metrocluster, ip, configuration, verify, storage, connectivity, remote 
+summary: 您必須確認已更換的節點已連線至正常運作站台的磁碟櫃。 
+---
+= 驗證遠端站台的儲存設備連線能力（MetroCluster 知識產權組態）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須確認已更換的節點已連線至正常運作站台的磁碟櫃。
+
+此工作是在災難站台的替換節點上執行。
+
+此工作會在維護模式中執行。
+
+.步驟
+. 顯示原始系統ID所擁有的磁碟。
++
+「展示舊系統ID」
+
++
+遠端磁碟可由0m裝置辨識。0m表示磁碟是透過MetroCluster 不中斷iSCSI連線來連線。這些磁碟必須在稍後的恢復程序中重新指派。
+
++
+[listing]
+----
+*> disk show -s 4068741256
+Local System ID: 1574774970
+
+  DISK     OWNER                 POOL  SERIAL NUMBER   HOME                  DR HOME
+---------- --------------------- ----- -------------   --------------------- ----------------------
+0m.i0.0L11 node_A_2 (4068741256) Pool1 S396NA0HA02128  node_A_2 (4068741256) node_A_2  (4068741256)
+0m.i0.1L38 node_A_2 (4068741256) Pool1 S396NA0J148778  node_A_2 (4068741256) node_A_2  (4068741256)
+0m.i0.0L52 node_A_2 (4068741256) Pool1 S396NA0J148777  node_A_2 (4068741256) node_A_2  (4068741256)
+...
+...
+NOTE: Currently 49 disks are unowned. Use 'disk show -n' for additional information.
+*>
+----
+. 在其他替換節點上重複此步驟
+

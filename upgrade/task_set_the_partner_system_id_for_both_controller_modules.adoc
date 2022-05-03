@@ -1,0 +1,27 @@
+---
+permalink: upgrade/task_set_the_partner_system_id_for_both_controller_modules.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, set, up, partner, system, id, controller, module 
+summary: 您必須在兩個控制器模組上設定合作夥伴系統ID、才能形成HA配對。 
+---
+= 設定兩個控制器模組的合作夥伴系統ID
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須在兩個控制器模組上設定合作夥伴系統ID、才能形成HA配對。
+
+這項工作會在載入程式提示下、以兩個控制器模組執行。
+
+.步驟
+. 在現有的控制器模組上、將合作夥伴系統ID設定為新控制器模組的系統ID：
++
+「etenv PARTNER-sysid _sysid_of_new_控制 器_」
+
+. 在新的控制器模組上、將合作夥伴系統ID設定為現有控制器模組的系統ID：
++
+「etenv PARTNER-sysid _sysid_of_existing _控制 器_」
+
+

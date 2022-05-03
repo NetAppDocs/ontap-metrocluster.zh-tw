@@ -1,0 +1,51 @@
+---
+permalink: install-stretch/task_cable_a_fibrebridge_7600n_or_7500n_bridge_with_disk_shelves_us_iom12_modules_sas3.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, cable, fibrebridge, bridge, disk, shelves, iom12, modules 
+summary: 設定橋接器之後、您可以開始佈線系統。 
+---
+= 使用IOM12模組、將連接至磁碟櫃的FIBLBridge 7600N或7500N橋接器進行纜線連接
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+設定橋接器之後、您可以開始佈線系統。
+
+對於磁碟櫃、請插入SAS纜線連接器、拉片朝下（位於連接器底部）。
+
+.步驟
+. 菊環鏈連接每個堆疊中的磁碟櫃：
++
+.. 從堆疊中的邏輯第一個機櫃開始、將IOM A連接埠3連接到下一個機櫃的IOM A連接埠1。重複此程序、直到堆疊中的每個IOM A都已連線。
+.. 針對IOM B重複上一個子步驟
+.. 針對每個堆疊重複上述子步驟。
+
+
++
+磁碟櫃模型的安裝與服務指南_提供有關菊環鏈式磁碟櫃的詳細資訊。
+
+. 開啟磁碟櫃電源、然後設定磁碟櫃ID。
++
+** 您必須重新啟動每個磁碟櫃。
+** 每MetroCluster 個EDR群組（包括兩個站台）內的每個SAS磁碟櫃、機櫃ID都必須是唯一的。
+
+
+. 將磁碟櫃纜線連接至光纖橋接器。
++
+.. 對於第一堆磁碟櫃、請將第一個磁碟櫃的IOM A纜線連接至光纖橋接器A的SAS連接埠A將最後一個磁碟櫃的IOM B纜線連接至光纖橋接器B上的SAS連接埠A
+.. 如需其他機櫃堆疊、請使用第二個堆疊使用連接埠B、第三個堆疊使用連接埠C、第四個堆疊使用連接埠D、重複上一個步驟。
+.. 在佈線期間、只要將以IOM12和IOM3/IOM6模組為基礎的堆疊連接至個別的SAS連接埠、即可將它們連接至同一個橋接器。
++
+
+NOTE: 每個堆疊都可以使用不同的IOM機型、但堆疊內的所有磁碟櫃都必須使用相同的機型。
+
+
+
++
+下圖顯示連接至一對FibreBridge 7600N或7500N橋接器的磁碟櫃：
+
+
+
+image::../media/mcc_cabling_bridge_and_sas3_stack_with_7500n_and_multiple_stacks.gif[MCC纜線橋接器和SAS3堆疊、內含7500n和多個堆疊]

@@ -1,0 +1,53 @@
+---
+permalink: install-fc/reference_requirements_for_switch_zoning_in_a_mcc_configuration_with_array_luns.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, switch, zoning, array, luns, requirements 
+summary: 在MetroCluster 使用含有陣列LUN的交換器分區時、您必須確保符合特定的基本需求。 
+---
+= 以採用陣列LUN的架構進行交換器分區的需求MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在MetroCluster 使用含有陣列LUN的交換器分區時、您必須確保符合特定的基本需求。
+
+下列是使用陣列LUN進行交換器分區MetroCluster 的需求：
+
+* 此組態必須遵循單一啟動器至單一目標分區配置方案。MetroCluster
++
+單一啟動器對單一目標分區可將每個區域限制為單一FC啟動器連接埠和單一目標連接埠。
+
+* FC-VI連接埠必須跨網路分區端點對端點。
+* 使用單一目標連接埠共用多個啟動器連接埠可能會導致效能問題。
++
+同樣地、以單一啟動器連接埠共用多個目標連接埠、也可能導致效能問題。
+
+* 您必須已執行基本的FC交換器組態、以供MetroCluster 選擇。
++
+link:task_fcsw_configure_the_cisco_or_brocade_fc_switches_manually.html["手動設定Cisco或Brocade FC交換器"]
+
+
+
+
+
+== 共享啟動器與共享目標支援MetroCluster 、可搭配陣列LUN進行支援
+
+能夠共用指定的FC啟動器連接埠或目標連接埠、對於想要將所使用的啟動器或目標連接埠數目減至最低的組織而言、非常實用。例如、預期在FC啟動器連接埠或目標連接埠上I/O使用量較低的組織、可能會偏好共用FC啟動器連接埠或目標連接埠、而非將每個FC啟動器連接埠專用於單一目標連接埠。
+
+不過、共用啟動器或目標連接埠可能會對效能造成不良影響。
+
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/How_to_support_Shared_Initiator_and_Shared_Target_configuration_with_Array_LUNs_in_a_MetroCluster_environment["如何在MetroCluster 支援共享的啟動器和共享的目標組態中、在整個環境中使用陣列LUN"]
+
+* 交換器分區可定義連接節點之間的路徑。設定分區功能可讓您定義特定ONTAP 的哪些陣列LUN可供特定的作業系統檢視。
++
+link:concept_example_of_switch_zoning_in_a_two_node_mcc_configuration_with_array_luns.html["以陣列LUN進行雙節點MetroCluster 列舉的交換器分區範例"]
+
++
+link:concept_example_of_switch_zoning_in_a_four_node_mcc_configuration_with_array_luns.html["以陣列LUN為例、在四節點MetroCluster 的列舉架構中使用交換器分區"]
+
++
+link:concept_example_of_switch_zoning_in_an_eight_node_mcc_configuration_with_array_luns.html["以MetroCluster 陣列LUN進行八節點的列舉之交換器分區的範例"]
+
+

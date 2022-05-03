@@ -1,0 +1,45 @@
+---
+permalink: upgrade/task_restart_the_svms.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, restart, svm 
+summary: 擴充MetroCluster 完SVM組態之後、您必須重新啟動SVM。 
+---
+= 重新啟動SVM
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+擴充MetroCluster 完SVM組態之後、您必須重新啟動SVM。
+
+.步驟
+. 識別需要重新啟動的SVM：
++
+《看不出》MetroCluster
+
++
+此命令會顯示兩MetroCluster 個支援的叢集上的SVM。
+
+. 在第一個叢集上重新啟動SVM：
++
+.. 進入進階權限模式、出現提示時按「* y *」：
++
+"進階權限"
+
+.. 重新啟動SVM：
++
+「vserver start -vserver _svm_name_-force true」
+
+.. 返回管理權限模式：
++
+「et -priv. admin」
+
+
+
+. 在合作夥伴叢集上重複上述步驟。
+. 確認SVM處於健全狀態：
++
+《看不出》MetroCluster
+
+

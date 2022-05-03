@@ -1,0 +1,62 @@
+---
+permalink: manage/task_heal_the_data_aggregates_after_negotiated_switchover.html 
+sidebar: sidebar 
+keywords: heal, data, aggregate, completing, complete, maintenance, test, process, resynchronize, prepare, disaster, operation, root, negotiate, switchover 
+summary: 您必須在完成任何維護或測試之後修復資料集合體。此程序可重新同步資料集合體、並準備災難站台以進行正常作業。在修復根集合體之前、您必須先修復資料集合體。 
+---
+= 在協商切換後修復資料集合體
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須在完成任何維護或測試之後修復資料集合體。此程序可重新同步資料集合體、並準備災難站台以進行正常作業。在修復根集合體之前、您必須先修復資料集合體。
+
+遠端叢集中的所有組態更新都會成功複寫到本機叢集。您可以在災難站台上開啟儲存設備的電源、但您並不需要、也不可以開啟災難站台上的控制器模組。
+
+.步驟
+. 執行MetroCluster flexoperationshow命令、確保已完成切換。
++
+[listing]
+----
+controller_A_1::> metrocluster operation show
+  Operation: switchover
+      State: successful
+ Start Time: 7/25/2014 20:01:48
+   End Time: 7/25/2014 20:02:14
+     Errors: -
+----
+. 從MetroCluster 存續的叢集執行flex修復 階段Aggregate命令、以重新同步資料集合體。
++
+[listing]
+----
+controller_A_1::> metrocluster heal -phase aggregates
+[Job 130] Job succeeded: Heal Aggregates is successful.
+----
++
+如果修復被否決、您可以選擇MetroCluster 使用--overrover-etoes參數重新發出還原指令。如果您使用此選用參數、系統將會置換任何軟質否決、以防止修復作業。
+
+. 執行MetroCluster flexoperationshow命令、確認作業已完成。
++
+[listing]
+----
+controller_A_1::> metrocluster operation show
+    Operation: heal-aggregates
+      State: successful
+Start Time: 7/25/2014 18:45:55
+   End Time: 7/25/2014 18:45:56
+     Errors: -
+----
+. 執行儲存Aggregate show命令來檢查集合體的狀態。
++
+[listing]
+----
+controller_A_1::> storage aggregate show
+Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
+--------- -------- --------- ----- ------- ------ ---------------- ------------
+...
+aggr_b2    227.1GB   227.1GB    0% online       0 mcc1-a2          raid_dp, mirrored, normal...
+----
+. 如果已在災難站台更換儲存設備、您可能需要重新鏡射集合體。
+

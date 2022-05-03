@@ -1,0 +1,67 @@
+---
+permalink: install-ip/task_sw_config_differences.html 
+sidebar: sidebar 
+keywords: metrocluster, configuration, ontap, node-level, configuration, node, site, relationship, configuring, configure, similarities, difference, 
+summary: 在一個E叢 集組態中、每個叢集的節點組態MetroCluster 與標準叢集中的節點組態類似。 
+---
+= 標準叢集MetroCluster 組態與不完整組態之間的相似性與差異
+:allow-uri-read: 
+
+
+[role="lead"]
+在一個E叢 集組態中、每個叢集的節點組態MetroCluster 與標準叢集中的節點組態類似。
+
+此功能是以兩個標準叢集為基礎所打造。MetroCluster實體而言、組態必須對稱、每個節點都有相同的硬體組態、MetroCluster 而且所有的元件都必須以纜線連接並設定。不過MetroCluster 、在一個Sfor E組態中、節點的基本軟體組態與在標準叢集中的節點組態相同。
+
+|===
+
+
+| 組態步驟 | 標準叢集組態 | 組態MetroCluster 
+
+
+ a| 
+在每個節點上設定管理、叢集和資料生命量。
+2+| 這兩種叢集類型都相同 
+
+
+ a| 
+設定根Aggregate。
+2+| 這兩種叢集類型都相同 
+
+
+ a| 
+在叢集中的一個節點上設定叢集。
+2+| 這兩種叢集類型都相同 
+
+
+ a| 
+將另一個節點加入叢集。
+2+| 這兩種叢集類型都相同 
+
+
+ a| 
+建立鏡射根Aggregate。
+ a| 
+選用
+ a| 
+必要
+
+
+
+ a| 
+對等建立叢集。
+ a| 
+選用
+ a| 
+必要
+
+
+
+ a| 
+啟用MetroCluster 此功能組態。
+ a| 
+不適用
+ a| 
+必要
+
+|===

@@ -1,0 +1,68 @@
+---
+section: disaster-recovery
+title: 從災難中恢復
+entries:
+- title: 災難恢復工作流程
+  url: "/disaster-recovery/concept_dr_workflow.html"
+- title: 在發生災難後執行強制切換
+  url: "/disaster-recovery/task_perform_a_forced_switchover_after_a_disaster.html"
+- title: 選擇正確的恢復程序
+  url: "/disaster-recovery/concept_choosing_the_correct_recovery_procedure_parent_concept.html"
+- title: 從多控制器或儲存設備故障中恢復
+  entries:
+  - title: 開始之前
+    url: "/disaster-recovery/task_recover_from_a_multi_controller_and_or_storage_failure.html"
+  - title: 更換硬體並啟動新的控制器
+    url: "/disaster-recovery/task_replace_hardware_and_boot_new_controllers.html"
+  - title: 準備MetroCluster 在不還原IP組態中進行切換
+    entries:
+    - title: 總覽
+      url: "/disaster-recovery/task_prepare_for_switchback_in_a_mcc_ip_configuration_supertask.html"
+    - title: 在MetroCluster 不完整的IP組態中設定所需的環境變數
+      url: "/disaster-recovery/task_set_env_mcip.html"
+    - title: 在災難現場開啟設備電源（MetroCluster 不支援IP組態）
+      url: "/disaster-recovery/task_power_on_mcip.html"
+    - title: 設定IP交換器（MetroCluster 不含IP組態）
+      url: "/disaster-recovery/task_config_switches_mcip.html"
+    - title: 驗證遠端站台的儲存設備連線能力（MetroCluster 知識產權組態）
+      url: "/disaster-recovery/task_verify_connectivity_mcip.html"
+    - title: 重新指派災難站台上集區1磁碟的磁碟擁有權（MetroCluster 知識IP組態）
+      url: "/disaster-recovery/task_reassign_pool1_disastersite_mcip.html"
+    - title: 以ONTAP 靜態IP組態開機至更換的控制器模組MetroCluster
+      url: "/disaster-recovery/task_boot_ontap_mcip.html"
+    - title: 從正常運作的節點還原至災難站台的連線能力MetroCluster （支援各種IP組態）
+      url: "/disaster-recovery/task_restore_connectivity_mcip.html"
+    - title: 驗證自動指派或手動指派Pool 0磁碟機
+      url: "/disaster-recovery/task_verify_assignment_mcip.html"
+    - title: 在存續站台上指派集區1磁碟機（MetroCluster 不支援的IP組態）
+      url: "/disaster-recovery/task_assign_pool1_survivingsite_mcip.html"
+    - title: 刪除存續站台擁有的失敗叢集（MetroCluster 不適用的IP組態）
+      url: "/disaster-recovery/task_delete_plexes_mcip.html"
+    - title: 執行Aggregate修復與還原鏡像（MetroCluster 知識IP組態）
+      url: "/disaster-recovery/task_heal_restore_mcip.html"
+  - title: 準備MetroCluster 以不還原FC組態進行切換
+    entries:
+    - title: 驗證連接埠組態（MetroCluster 僅限FFC組態）
+      url: "/disaster-recovery/task_verify_port_mcfc.html"
+    - title: 設定FC對SAS橋接器（MetroCluster 僅限不含功能的FC組態）
+      url: "/disaster-recovery/task_cfg_bridges_mcfc.html"
+    - title: 設定FC交換器（MetroCluster 僅限不含FFC組態）
+      url: "/disaster-recovery/task_cfg_switches_mcfc.html"
+    - title: 驗證儲存組態
+      url: "/disaster-recovery/task_verify_storage_mcfc.html"
+    - title: 開啟災難現場的設備電源
+      url: "/disaster-recovery/task_power_on_mcfc.html"
+    - title: 指派更換磁碟機的擁有權
+      url: "/disaster-recovery/task_assign_ownership_mcfc.html"
+    - title: 執行Aggregate修復與還原鏡像（MetroCluster 不含FC組態）
+      url: "/disaster-recovery/task_heal_restore_mcfc.html"
+    - title: 將根Aggregate的磁碟擁有權重新指派給更換的控制器模組（MetroCluster 不含FFC組態）
+      url: "/disaster-recovery/task_reassign_roots_mcfc.html"
+    - title: 開機新的控制器模組（MetroCluster 不含FC組態）
+      url: "/disaster-recovery/task_boot_new_mcfc.html"
+  - title: 在混合式組態中準備節點以進行切換（轉換期間的還原）
+    url: "/disaster-recovery/task_prepare_the_nodes_for_switchback_in_a_mixed_configuration.html"
+  - title: 完整恢復
+    url: "/disaster-recovery/task_complete_recovery.html"
+- title: 從非控制器故障中恢復
+  url: "/disaster-recovery/task_recover_from_a_non_controller_failure_mcc_dr.html"

@@ -1,0 +1,61 @@
+---
+permalink: maintain/concept_using_fibrebridge_7600n_bridges_in_mcc_configurations.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, support, fibrebridge, bridges, configurations 
+summary: 支援使用FIBreBridge 7600N橋接器的ONTAP 版本可在更新版本的版本中使用、以取代連接到FIBreBridge 7500N或6500N橋接器、或是在MetroCluster 將新儲存設備新增到該功能組態時使用。橋接器FC連接埠的使用分區要求和限制與Fibre Bridge 7500N橋接器相同。 
+---
+= 支援MetroCluster 採用支援的FIBreBridge 7600N橋接器、採用各種不完整的組態
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+支援使用FIBreBridge 7600N橋接器的ONTAP 版本可在更新版本的版本中使用、以取代連接到FIBreBridge 7500N或6500N橋接器、或是在MetroCluster 將新儲存設備新增到該功能組態時使用。橋接器FC連接埠的分區需求和使用限制、與Fibre Bridge 7500N橋接器相同。
+
+https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"^]
+
+
+NOTE: 在執行ONTAP 支援升級版本的組態中、不支援使用FibreBridge 6500N橋接器。
+
+[cols="27,19,27,27"]
+|===
+
+
+| 使用案例 | 是否需要分區變更？ | 限制 | 程序 
+
+
+ a| 
+以單一的光纖橋接器7600N橋接器取代單一的光纖橋接器7500N
+ a| 
+否
+ a| 
+您必須將光纖橋接器7600N設定為與光纖橋接器7500N完全相同。
+ a| 
+link:task_replace_a_sle_fc_to_sas_bridge.html#hot-swapping-a-fibrebridge-7500n-with-a-7600n-bridge["以7600N橋接器熱交換使用FibreBridge 7500N"]
+
+
+
+ a| 
+以單一的光纖橋接器7600N橋接器取代單一的光纖橋接器6500N
+ a| 
+否
+ a| 
+您必須將光纖橋接器7600N設定為與光纖橋接器6500N完全相同。
+ a| 
+link:task_replace_a_sle_fc_to_sas_bridge.html#hot-swapping-a-fibrebridge-6500n-bridge-with-a-fibrebridge-7600n-or-7500n-bridge["使用光纖橋接器7600N或7500N橋接器熱交換光纖橋接器6500N"]
+
+
+
+ a| 
+新增一對新的FIBreBridge 7600N橋接器來新增儲存設備
+ a| 
+是的
+
+您必須為新橋接器的每個FC連接埠新增儲存區域。
+ a| 
+您必須在FC交換器架構（以架構附加MetroCluster 的功能為基礎）或儲存控制器（採用延伸MetroCluster 功能的支援組態）上有可用的連接埠。每對的Fibre Bridge 7500N或7600N橋接器最多可支援四個堆疊。
+ a| 
+link:task_fb_hot_add_stack_of_shelves_and_bridges.html["熱新增一堆SAS磁碟櫃、並將橋接器連接MetroCluster 至一套系統"]
+
+|===

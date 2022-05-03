@@ -1,0 +1,73 @@
+---
+permalink: upgrade/task_change_the_ha_config_setts_mcc_add_a_2nd_controller.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, change, ha, config, sett, existing, new, controller, modules 
+summary: 當您擴充MetroCluster 一個內存擴充組態時、必須更新現有控制器模組和新控制器模組的ha-config設定。您也必須判斷新控制器模組的系統ID。 
+---
+= 變更現有和新控制器模組的ha-config設定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+當您擴充MetroCluster 一個內存擴充組態時、必須更新現有控制器模組和新控制器模組的ha-config設定。您也必須判斷新控制器模組的系統ID。
+
+這項工作會在維護模式下、同時在現有和新的控制器模組上執行。
+
+.步驟
+. 變更現有控制器模組的ha-config設定：
++
+.. 顯示現有控制器模組和機箱的ha-config設定：
++
+《ha-config show》
+
++
+由於控制器模組是雙節點MetroCluster 的內存組態、所以所有元件的ha-config設定都是「mcc-2n」。
+
+.. 將現有控制器模組的ha-config設定變更為「mcc」：+「ha-config modify控制器MCC」
+.. 將現有機箱的ha-config設定變更為「mcc」：
++
+「ha-config modify機箱MCC」
+
+.. 擷取現有控制器模組的系統ID：
++
+"syssconfig"
+
++
+記下系統ID。在新的控制器模組上設定合作夥伴ID時、您就需要它。
+
+.. 結束維護模式以返回載入程式提示：
++
+《停止》
+
+
+
+. 變更ha-config設定並擷取新控制器模組的系統ID：
++
+.. 如果新的控制器模組尚未處於維護模式、請將其開機至維護模式：
++
+Boot_ONTAP maint
+
+.. 將新控制器模組的ha-config設定變更為「mcc」：
++
+「ha-config modify控制器MCC」
+
+.. 將新機箱的ha-config設定變更為MCC：
++
+「ha-config modify機箱MCC」
+
+.. 擷取新控制器模組的系統ID：
++
+"syssconfig"
+
++
+記下系統ID。當您設定合作夥伴ID並將磁碟指派給新的控制器模組時、就需要它。
+
+.. 結束維護模式以返回載入程式提示：
++
+《停止》
+
+
+
+

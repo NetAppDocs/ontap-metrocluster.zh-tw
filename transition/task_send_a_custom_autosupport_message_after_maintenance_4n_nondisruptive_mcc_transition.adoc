@@ -1,0 +1,22 @@
+---
+permalink: transition/task_send_a_custom_autosupport_message_after_maintenance_4n_nondisruptive_mcc_transition.html 
+sidebar: sidebar 
+keywords: complete, completing, transition, autosupport, message, indicating, indicate, maintenance, automatic, case, creation, resume, send 
+summary: 完成轉換之後、您應該傳送AutoSupport 一個不完整的訊息、指出維護作業已結束、以便繼續自動建立個案。 
+---
+= 維護後傳送自訂AutoSupport 的資訊
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+完成轉換之後、您應該傳送AutoSupport 一個不完整的訊息、指出維護作業已結束、以便繼續自動建立個案。
+
+. 若要恢復自動產生支援案例、請傳送AutoSupport 一個不完整的訊息、表示維護已完成。
++
+.. 發出下列命令：「System Node AutoSupport Eflexoke -Node *-type all -Message MAn=end」
+.. 在合作夥伴叢集上重複執行命令。
+
+
+

@@ -1,0 +1,94 @@
+---
+permalink: manage/task_verify_a_successful_switchback.html 
+sidebar: sidebar 
+keywords: perform, switchback, aggregate, storage, virtual, machine, svm, switch, back, online, verify, successful 
+summary: 執行切換後、您要確認所有的集合體和儲存虛擬機器（SVMs）都已切換回線上。 
+---
+= 驗證成功的切換
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+執行切換後、您想確認所有的集合體和儲存虛擬機器（SVM）都已切換回線上狀態。
+
+. 確認切換式資料集合體已切換回：
++
+《集合體展》
+
++
+在下列範例中、節點B2上的agger_B2已切換回：
+
++
+[listing]
+----
+node_B_1::> storage aggregate show
+Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
+--------- -------- --------- ----- ------- ------ ---------------- ------------
+...
+aggr_b2    227.1GB   227.1GB    0% online       0 node_B_2   raid_dp,
+                                                                   mirrored,
+                                                                   normal
+
+node_A_1::> aggr show
+Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
+--------- -------- --------- ----- ------- ------ ---------------- ------------
+...
+aggr_b2          -         -     - unknown      - node_A_1
+----
++
+如果災難站台包含未鏡射的集合體、而未鏡射的集合體不再存在、則集合體可能會在「shorage Aggregate show」命令的輸出中顯示「'unknown'」狀態。請聯絡技術支援部門、移除未鏡射集合體的過時項目。
+
+. 驗證在正常運作的叢集上的所有同步目的地SVM都處於休眠狀態（顯示「最新」的管理狀態）、且災難叢集上的同步來源SVM都已啟動並正在執行：
++
+「vserver show -subtype sync-source-
+
++
+[listing]
+----
+node_B_1::> vserver show -subtype sync-source
+                               Admin      Root                       Name    Name
+Vserver     Type    Subtype    State      Volume     Aggregate       Service Mapping
+----------- ------- ---------- ---------- ---------- ----------      ------- -------
+...
+vs1a        data    sync-source
+                               running    vs1a_vol   node_B_2        file    file
+                                                                     aggr_b2
+
+node_A_1::> vserver show -subtype sync-destination
+                               Admin      Root                         Name    Name
+Vserver            Type    Subtype    State      Volume     Aggregate  Service Mapping
+-----------        ------- ---------- ---------- ---------- ---------- ------- -------
+...
+cluster_A-vs1a-mc  data    sync-destination
+                                      stopped    vs1a_vol   sosb_      file    file
+                                                                       aggr_b2
+----
++
+Sync-destinate Aggregate在MetroCluster 其名稱中會自動加上「`-MC」字尾、以協助識別它們。
+
+. 使用「MetroCluster 還原作業show」命令來確認切換作業是否成功。
++
+|===
+
+
+| 如果命令輸出顯示... | 然後... 
+
+
+ a| 
+切換回復作業狀態成功。
+ a| 
+切換程序已完成、您可以繼續操作系統。
+
+
+
+ a| 
+切換回復作業或切換回復繼續代理程式作業部分成功。
+ a| 
+請執行「MetroCluster 畫面操作show」命令輸出中提供的建議修正程式。
+
+|===
+
+
+您必須重複上述各節、以相反方向執行切換。如果站台_A切換到站台_B、請讓站台_B切換站台_A

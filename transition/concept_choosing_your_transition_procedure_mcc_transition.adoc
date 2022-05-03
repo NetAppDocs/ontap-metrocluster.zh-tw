@@ -1,0 +1,69 @@
+---
+permalink: transition/concept_choosing_your_transition_procedure_mcc_transition.html 
+sidebar: sidebar 
+keywords: select, transition, procedure, depend, exist, metrocluster, fc, configuration, choosing, choose 
+summary: 您必須根據現有MetroCluster 的不規則功能（NetApp）組態、選擇轉換程序。 
+---
+= 選擇您的轉換程序
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須根據現有MetroCluster 的不規則功能（NetApp）組態、選擇轉換程序。
+
+轉換程序會以IP交換器網路取代後端FC交換器網路或FC-VI連線。確切的程序取決於您的初始組態。
+
+在轉換程序結束時、會淘汰原始平台和FC交換器（如果有）。
+
+[cols="20,20,20,40"]
+|===
+
+
+| 正在啟動組態 | 不中斷營運或不中斷營運 | 需求 | 程序 
+
+
+ a| 
+四個節點
+ a| 
+不中斷營運
+ a| 
+新平台支援新的儲存櫃。
+ a| 
+link:concept_requirements_for_fc_to_ip_transition_mcc.html["不中斷地從MetroCluster 一個不中斷的支援FC移轉至MetroCluster 一個支援功能性的IP組態ONTAP （版本號：9.8及更新版本）"]
+
+
+
+ a| 
+兩個節點
+ a| 
+顛覆性
+ a| 
+新的儲存櫃同時支援原始與新平台。
+ a| 
+link:task_disruptively_transition_from_a_two_node_mcc_fc_to_a_four_node_mcc_ip_configuration.html["顛覆性地從雙節點MetroCluster 的不間斷地轉換為四節點MetroCluster 的不間斷地執行的不間斷運作的不間斷運作的不間斷運作的不間斷運作（ONTAP 更新版本的版本）"]
+
+
+
+ a| 
+兩個節點
+ a| 
+顛覆性
+ a| 
+新的儲存櫃同時支援原始與新平台。必須淘汰舊的儲存櫃。
+ a| 
+link:task_disruptively_transition_while_move_volumes_from_old_shelves_to_new_shelves.html["淘汰儲存櫃時、會中斷從MetroCluster 靜態FC移轉MetroCluster 至靜態IP ONTAP （適用於更新版本的版本號）"]
+
+
+
+ a| 
+兩個節點
+ a| 
+顛覆性
+ a| 
+新平台不支援舊的儲存櫃。必須淘汰舊的儲存櫃。
+ a| 
+link:task_disruptively_transition_when_exist_shelves_are_not_supported_on_new_controllers.html["當新控制器不支援現有磁碟櫃時、會中斷轉換作業（ONTAP 版本號：NetApp 9.8及更新版本）"]
+
+|===

@@ -1,0 +1,1743 @@
+---
+permalink: maintain/task_fb_hot_add_stack_of_shelves_and_bridges.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, hot, add, stack, sas, disk, shelves, bridges, system 
+summary:  
+---
+= 熱新增一堆SAS磁碟櫃、並將橋接器連接MetroCluster 至一套系統
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以在MetroCluster 整個堆疊中熱新增（不中斷營運地新增）、包括橋接器、至整個系統。FC交換器上必須有可用的連接埠、您必須更新交換器分區以反映變更。
+
+.關於這項工作
+* 此程序可用於使用FibreBridge 7500N或6500N橋接器新增堆疊。
+* 此程序是假設您使用建議的橋接管理介面：Atto ExpressNAV GUI和Atto QuickNAV公用程式。
++
+** 您可以使用Atto ExpressNAV GUI來設定和管理橋接器、以及更新橋接器韌體。您可以使用Atto QuickNAV公用程式來設定橋接式乙太網路管理1連接埠。
+** 如有需要、您可以使用其他管理介面。這些選項包括使用序列連接埠或Telnet來設定及管理橋接器、設定乙太網路管理1連接埠、以及使用FTP更新橋接器韌體。如果您選擇任何管理介面、系統必須符合中的適用需求 link:reference_requirements_for_using_other_interfaces_to_configure_and_manage_fibrebridge_bridges.html["其他橋接器管理介面"]
+
+
+
+
+
+
+== 準備熱新增一堆SAS磁碟櫃和橋接器
+
+準備熱新增一堆SAS磁碟櫃和一對橋接器、包括下載文件、磁碟機和磁碟櫃韌體。
+
+.開始之前
+* 您的系統必須是支援的組態、而且必須執行支援的ONTAP 版本的支援。
++
+https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"^]
+
+* 系統中的所有磁碟機和磁碟櫃都必須執行最新的韌體版本。
++
+您可能需要在MetroCluster 整個版本的整個BIOS組態中更新磁碟和機櫃韌體、然後再新增機櫃。
+
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-ug-rdg/home.html["升級、回復或降級"^]
+
+* 每個FC交換器都必須有一個FC連接埠可供單一橋接器連接。
++
+
+NOTE: 視FC交換器相容性而定、您可能需要升級FC交換器。
+
+* 您用來設定橋接器的電腦必須執行Atto支援的網頁瀏覽器、才能使用Atto ExpressNAV GUI：Internet Explorer 8或9、或Mozilla Firefox 3。
++
+_Atto產品版本說明_提供最新的支援網頁瀏覽器清單。您可以使用步驟中的資訊來存取此文件。
+
+
+
+.步驟
+. 請從NetApp支援網站下載或檢視下列文件：
++
+** https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"^]
+** 適用於您磁碟櫃模型的_安裝與服務指南_。
+
+
+. 從Atto網站和NetApp網站下載內容：
++
+.. 前往Atto FibreBridge說明頁面。
+.. 使用Atto FIBreBridge Description（Atto FIBreBridge說明）頁面上的連結、存取Atto網站並下載下列項目：
++
+*** _適用於您的橋接機型的_Atto FibreBridge安裝與操作手冊_。
+*** Atto QuickNAV公用程式（您用來設定的電腦）。
+
+
+.. 按一下「Atto FIBreBridge Description（Atto FIBreBridge說明）」頁面結尾的* Continue（繼續）*、移至「Atto FIBreBridge韌體下載」頁面、然後執行下列動作：
++
+*** 請依照下載頁面上的指示下載橋接韌體檔案。
++
+在此步驟中、您只要完成連結中提供的下載部分。您稍後會依照中的指示更新每個橋接器上的韌體 link:task_fb_hot_add_stack_of_shelves_and_bridges.html["熱新增磁碟櫃堆疊"] 區段。
+
+*** 複製Atto FIBreBridge韌體下載頁面、並提供版本說明供日後參考。
+
+
+
+
+. 下載最新的磁碟和磁碟櫃韌體、並複製說明的安裝部分、以供日後參考。
++
+所有的磁碟櫃MetroCluster （包括新的磁碟櫃和現有磁碟櫃）都必須執行相同的韌體版本。
+
++
+
+NOTE: 在此步驟中、您只需完成連結中所提供的下載部分、並複製安裝說明。您稍後會依照中的指示更新每個磁碟和磁碟櫃上的韌體 link:task_fb_hot_add_stack_of_shelves_and_bridges.html["熱新增磁碟櫃堆疊"] 區段。
+
++
+.. 下載磁碟韌體、並複製磁碟韌體說明以供日後參考。
++
+https://mysupport.netapp.com/site/downloads/firmware/disk-drive-firmware["NetApp下載：磁碟機韌體"^]
+
+.. 下載磁碟櫃韌體、並複製磁碟櫃韌體說明以供日後參考。
++
+https://mysupport.netapp.com/site/downloads/firmware/disk-shelf-firmware["NetApp下載：磁碟櫃韌體"^]
+
+
+
+. 收集使用建議的橋接管理介面（Atto ExpressNAV GUI和Atto QuickNAV公用程式）所需的硬體和資訊：
++
+.. 取得標準乙太網路纜線、從橋接式乙太網路管理1連接埠連接至網路。
+.. 確定用於存取橋接器的非預設使用者名稱和密碼。
++
+建議您變更預設的使用者名稱和密碼。
+
+.. 取得每個橋接器上乙太網路管理1連接埠的IP位址、子網路遮罩和閘道資訊。
+.. 在您要設定的電腦上停用VPN用戶端。
++
+作用中的VPN用戶端會使橋接器的QuickNAV掃描失敗。
+
+
+
+. 為每個橋接器購買四顆螺絲、以便將橋接器的「L」支架穩固地安裝到機架正面。
++
+橋接「L」支架的開孔符合19吋（482.6公釐）機架的機架標準ETA -310-X。
+
+. 如有必要、請更新FC交換器分區、以容納新增至組態的橋接器。
++
+如果您使用NetApp提供的參考組態檔案、則所有連接埠都已建立區域、因此您不需要進行任何分區更新。每個連接到橋接器FC連接埠的交換器連接埠都必須有一個儲存區域。
+
+
+
+
+
+== 熱新增一堆SAS磁碟櫃和橋接器
+
+您可以熱新增一堆SAS磁碟櫃和橋接器、以增加橋接器的容量。
+
+系統必須符合熱新增SAS磁碟櫃和橋接器堆疊的所有需求。
+
+link:task_fb_hot_add_stack_of_shelves_and_bridges.html["準備熱新增一堆SAS磁碟櫃和橋接器"]
+
+* 如果符合所有的互通性需求、熱新增一堆SAS磁碟櫃和橋接器是不中斷營運的程序。
++
+https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"^]
+
++
+link:concept_using_the_interoperability_matrix_tool_to_find_mcc_information.html["使用互通性對照表工具來尋找MetroCluster 各種資訊"]
+
+* 多重路徑HA是MetroCluster 唯一支援使用橋接器之各種不支援的組態。
++
+兩個控制器模組都必須能夠透過橋接器存取每個堆疊中的磁碟櫃。
+
+* 您應該在每個站台熱新增相同數量的磁碟櫃。
+* 如果您要使用橋接器的頻內管理、而非IP管理、則可跳過設定乙太網路連接埠和IP設定的步驟、如相關步驟所述。
+
+
+
+NOTE: 從ONTAP 功能組別9.8開始、「最小橋接器」命令會改為「系統橋接器」。以下步驟顯示了「shorage bridge」命令、但ONTAP 如果您執行的是更新版本的版本、最好使用「系統橋接器」命令。
+
+
+IMPORTANT: 如果您將SAS纜線插入錯誤的連接埠、從SAS連接埠拔下纜線時、必須等待至少120秒、才能將纜線插入其他SAS連接埠。如果您無法這麼做、系統將無法辨識纜線是否已移至其他連接埠。
+
+.步驟
+. 請妥善接地。
+. 從任一控制器模組的主控台、檢查系統是否已啟用磁碟自動指派：
++
+「顯示磁碟選項」
+
++
+「自動指派」欄會指出是否已啟用磁碟自動指派。
+
++
+[listing]
+----
+
+Node        BKg. FW. Upd.  Auto Copy   Auto Assign  Auto Assign Policy
+----------  -------------  ----------  -----------  ------------------
+node_A_1             on           on           on           default
+node_A_2             on           on           on           default
+2 entries were displayed.
+----
+. 停用新堆疊的交換器連接埠。
+. 如果設定用於頻內管理、請將纜線從FIBRBridge的RS-232序列連接埠連接至個人電腦上的序列（COM）連接埠。
++
+序列連線將用於初始組態、然後透過ONTAP 功能區進行頻內管理、並可使用FC連接埠來監控及管理橋接器。
+
+. 如果設定IP管理、請依照橋接器機型的_Atto FibreBridge安裝與操作手冊_第2.0節中的程序、為每個橋接器設定乙太網路管理1連接埠。
++
+在執行ONTAP 版本不超過版本的系統中、頻內管理可透過FC連接埠（而非乙太網路連接埠）存取橋接器。從功能表9.8開始ONTAP 、僅支援頻內管理、且SNMP管理已過時。
+
++
+執行QuickNAV以設定乙太網路管理連接埠時、只會設定以太網路纜線所連接的乙太網路管理連接埠。例如、如果您也想要設定乙太網路管理2連接埠、則需要將乙太網路纜線連接至連接埠2並執行QuickNAV。
+
+. 設定橋接器。
++
+如果您從舊橋接器擷取組態資訊、請使用該資訊來設定新橋接器。
+
++
+請務必記下您指定的使用者名稱和密碼。
+
++
+橋接器機型的_Atto FibreBridge安裝與操作手冊_提供最新的可用命令資訊、以及如何使用這些命令。
+
++
+
+NOTE: 請勿在Atto FibreBridge 7600N或7500N上設定時間同步。Atto FIBreBridge 7600N或7500N的時間同步設定為ONTAP 叢集時間、之後橋接器被人發現。它也會每天定期同步一次。使用的時區為GMT,不可變更。
+
++
+.. 如果設定IP管理、請設定橋接器的IP設定。
++
+若要在不使用QuickNAV公用程式的情況下設定IP位址、您需要連線至FibreBridge。
+
++
+如果使用CLI、您必須執行下列命令：
+
++
+「et ipaddressMP1 _ip-address_」
+
++
+"et ipsubnetmaskMP1 _subnet-mask_"
+
++
+"et ipgateway MP1 x x x．x．x"
+
++
+停用了MP1
+
++
+「設定etethernetspeed MP1 1000」
+
+.. 設定橋接器名稱。
++
+橋接器在MetroCluster 整個支援架構中應各有一個獨特的名稱。
+
++
+每個站台上一個堆疊群組的橋接名稱範例：
+
++
+*** bride_a_1a.
+*** bride_a_1b
+*** bride_B_1a
+*** bridge _b_1b如果使用CLI、您必須執行下列命令：
++
+《以太網的方式來處理問題》
+
+
+
+.. 如果執行ONTAP 的是S得9.4或更早版本、請在橋接器上啟用SNMP：+「設為SNMP啟用」
++
+在執行ONTAP 版本不超過版本的系統中、頻內管理可透過FC連接埠（而非乙太網路連接埠）存取橋接器。從功能表9.8開始ONTAP 、僅支援頻內管理、且SNMP管理已過時。
+
+
+
+. 設定橋接FC連接埠。
++
+.. 設定橋接FC連接埠的資料速率/速度。
++
+支援的FC資料速率取決於您的機型橋接器。
+
++
+*** 最多支援32、16或8 Gbps的FibreBridge 7600橋接器。
+*** 最多支援16、8或4 Gbps的光纖橋接器。
+*** 最多支援8、4或2 Gbps的FibreBridge 6500橋接器。
++
+
+NOTE: 您選取的FCDataRate速度會限制為橋接器和橋接連接埠所連接的交換器所支援的最大速度。佈線距離不得超過SFP和其他硬體的限制。
+
++
+如果使用CLI、您必須執行下列命令：
+
++
+「et FCDataRate _port-Number port-spe__」
+
+
+
+.. 如果您要設定的是FIBreBridge 7500N或6500N橋接器、請設定連接埠用於PTP的連線模式。
++
+
+NOTE: 設定FIBreBridge 7600N橋接器時、不需要FCConnMode設定。
+
++
+如果使用CLI、您必須執行下列命令：
+
++
+「et FCConnMode _port-number_ PTP」
+
+.. 如果您要設定的是FIBreBridge 7600N或7500N橋接器、則必須設定或停用FC2連接埠。
++
+*** 如果您使用第二個連接埠、則必須針對FC2連接埠重複上述子步驟。
+*** 如果您不使用第二個連接埠、則必須停用連接埠：+「fcportDisable _port-number_」
+
+
+.. 如果您要設定的是FIBEBridge 7600N或7500N橋接器、請停用未使用的SAS連接埠：+"ASPortDisable _SAS-port_"
++
+
+NOTE: 預設會啟用SAS連接埠A到D。您必須停用未使用的SAS連接埠。如果只使用SAS連接埠A、則必須停用SAS連接埠B、C和D。
+
+
+
+. 安全存取橋接器並儲存橋接器的組態。
++
+.. 在控制器提示字元中、檢查橋接器的狀態：
++
+《龍橋秀》
+
++
+輸出顯示哪個橋接器未受到保護。
+
+.. 檢查不安全橋接器連接埠的狀態：+「資訊」
++
+輸出會顯示乙太網路連接埠MP1和MP2的狀態。
+
+.. 如果已啟用乙太網路連接埠MP1、請執行下列命令：+「Ethernet Port MP1 disabled'（乙太網路連接埠MP1已停用）」
++
+
+NOTE: 如果也啟用乙太網路連接埠MP2、請針對連接埠MP2重複上一個子步驟。
+
+.. 儲存橋接器的組態。
++
+您必須執行下列命令：
+
++
+「另存組態」
+
++
+「FirmwareRestart」
+
++
+系統會提示您重新啟動橋接器。
+
+
+
+. 更新每個橋接器上的FibreBridge韌體。
++
+如果新橋接器的類型與合作夥伴橋接器的類型相同、請升級至與合作夥伴橋接器相同的韌體。如果新橋接器與合作夥伴橋接器的類型不同、請升級至橋接器和ONTAP 版本的更新韌體。請參閱「_ESIFATE_ MetroCluster 」中的「更新連接到光纖橋接器上的韌體」一節。
+
+. [[step10-cable櫃橋接器]將磁碟櫃連接至橋接器：
++
+.. 以菊環鏈方式將每個堆疊中的磁碟櫃串連在一起。
++
+磁碟櫃模型的安裝指南_提供有關菊環鏈式磁碟櫃的詳細資訊。
+
+.. 對於每個磁碟櫃堆疊、將第一個磁碟櫃的IOM A纜線連接至光纖橋接器A的SAS連接埠A、然後將最後一個磁碟櫃的IOM B纜線連接至光纖橋接器B的SAS連接埠A
++
+link:../install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"]
+
++
+link:../install-stretch/concept_considerations_differences.html["延伸MetroCluster 安裝與組態"]
+
++
+每個橋接器都有一條通往磁碟櫃堆疊的路徑；橋接A透過第一個機櫃連接至堆疊的A側、而橋接B則透過最後一個機櫃連接至堆疊的B側。
+
++
+
+NOTE: 橋接器SAS連接埠B已停用。
+
+
+
+. [[step11-verify-each bridge detect]驗證每個橋接器是否能偵測到橋接器所連接的所有磁碟機和磁碟櫃。
++
+[cols="30,70"]
+|===
+
+
+| 如果您使用... | 然後... 
+
+
+ a| 
+Atto ExpressNAV GUI
+ a| 
+.. 在支援的網頁瀏覽器中、於瀏覽器方塊中輸入橋接器的IP位址。
++
+您會被帶到Atto FIBreBridge首頁、其中有一個連結。
+
+.. 按一下連結、然後輸入您在設定橋接器時所指定的使用者名稱和密碼。
++
+Atto FIBreBridge狀態頁面會出現、左側會顯示功能表。
+
+.. 按一下功能表中的*進階*。
+.. 檢視連線的裝置：+「最新」
+.. 按一下*提交*。
+
+
+
+
+ a| 
+序列連接埠連線
+ a| 
+檢視連線的裝置：
+
+「astargets」
+
+|===
++
+輸出顯示連接橋接器的裝置（磁碟和磁碟櫃）。輸出線會依序編號、以便您快速計算裝置數量。
+
++
+
+NOTE: 如果輸出開頭出現截短的文字回應、您可以使用Telnet連線到橋接器、然後使用「sastargets」命令檢視所有輸出。
+
++
+下列輸出顯示已連接10個磁碟：
+
++
+[listing]
+----
+Tgt VendorID ProductID        Type        SerialNumber
+  0 NETAPP   X410_S15K6288A15 DISK        3QP1CLE300009940UHJV
+  1 NETAPP   X410_S15K6288A15 DISK        3QP1ELF600009940V1BV
+  2 NETAPP   X410_S15K6288A15 DISK        3QP1G3EW00009940U2M0
+  3 NETAPP   X410_S15K6288A15 DISK        3QP1EWMP00009940U1X5
+  4 NETAPP   X410_S15K6288A15 DISK        3QP1FZLE00009940G8YU
+  5 NETAPP   X410_S15K6288A15 DISK        3QP1FZLF00009940TZKZ
+  6 NETAPP   X410_S15K6288A15 DISK        3QP1CEB400009939MGXL
+  7 NETAPP   X410_S15K6288A15 DISK        3QP1G7A900009939FNTT
+  8 NETAPP   X410_S15K6288A15 DISK        3QP1FY0T00009940G8PA
+  9 NETAPP   X410_S15K6288A15 DISK        3QP1FXW600009940VERQ
+----
+. 確認命令輸出顯示橋接器已連接至堆疊中所有適當的磁碟和磁碟櫃。
++
+[cols="30,70"]
+|===
+
+
+| 如果輸出是... | 然後... 
+
+
+ a| 
+正確
+ a| 
+重複 <<step11-verify-each-bridge-detect,步驟11.>> 每個剩餘的橋接器。
+
+
+
+ a| 
+不正確
+ a| 
+.. 檢查SAS纜線是否鬆脫、或重複修正SAS纜線 <<step10-cable-shelves-bridges,步驟10>>。
+.. 重複 <<step11-verify-each-bridge-detect,步驟11.>>。
+
+
+|===
+. 如果您要設定架構附加MetroCluster 的支援功能、請使用表中所示的佈線、將每個橋接器連接至本機FC交換器、以供您進行組態、交換器機型和FC對SAS橋接器機型：
++
+
+NOTE: Brocade和Cisco交換器使用不同的連接埠編號、如下表所示。
+
++
+** 在Brocade交換器上、第一個連接埠編號為「0」。
+** 在Cisco交換器上、第一個連接埠編號為「1」。
++
+|===
+
+
+13+| 使用光纖通道連接埠（FC1和FC2）的Fibre Bridge 7500N或7600N組態 
+
+
+13+| DR群組1 
+
+
+3+|  2+| Brocade 6505 2+| Brocade 6510、Brocade DCX 8510-8 2+| Brocade 6520 2+| Brocade G620、Brocade G620-1、Brocade G630、Brocade G630-1 2+| Brocade G720 
+
+
+2+| 元件 | 連接埠 | 交換器1 | 交換器2. | 交換器1 | 交換器2. | 交換器1 | 交換器2. | 交換器1 | 交換器2. | 交換器1 | 交換器2. 
+
+
+ a| 
+堆疊1
+ a| 
+bride_x_1a.
+ a| 
+FC1
+ a| 
+8.
+ a| 
+ a| 
+8.
+ a| 
+ a| 
+8.
+ a| 
+ a| 
+8.
+ a| 
+ a| 
+10.
+ a| 
+
+
+
+ a| 
+FC2
+ a| 
+-
+ a| 
+8.
+ a| 
+-
+ a| 
+8.
+ a| 
+-
+ a| 
+8.
+ a| 
+-
+ a| 
+8.
+ a| 
+-
+ a| 
+10.
+
+
+
+ a| 
+bride_x_1B
+ a| 
+FC1
+ a| 
+9.
+ a| 
+-
+ a| 
+9.
+ a| 
+-
+ a| 
+9.
+ a| 
+-
+ a| 
+9.
+ a| 
+-
+ a| 
+11.
+ a| 
+-
+
+
+
+ a| 
+FC2
+ a| 
+-
+ a| 
+9.
+ a| 
+-
+ a| 
+9.
+ a| 
+-
+ a| 
+9.
+ a| 
+-
+ a| 
+9.
+ a| 
+-
+ a| 
+11.
+
+
+
+ a| 
+堆疊2.
+ a| 
+bride_x_2a
+ a| 
+FC1
+ a| 
+10.
+ a| 
+-
+ a| 
+10.
+ a| 
+-
+ a| 
+10.
+ a| 
+-
+ a| 
+10.
+ a| 
+-
+ a| 
+14
+ a| 
+-
+
+
+
+ a| 
+FC2
+ a| 
+-
+ a| 
+10.
+ a| 
+-
+ a| 
+10.
+ a| 
+-
+ a| 
+10.
+ a| 
+-
+ a| 
+10.
+ a| 
+-
+ a| 
+14
+
+
+
+ a| 
+bride_x_2B
+ a| 
+FC1
+ a| 
+11.
+ a| 
+-
+ a| 
+11.
+ a| 
+-
+ a| 
+11.
+ a| 
+-
+ a| 
+11.
+ a| 
+-
+ a| 
+17
+ a| 
+-
+
+
+
+ a| 
+FC2
+ a| 
+-
+ a| 
+11.
+ a| 
+-
+ a| 
+11.
+ a| 
+-
+ a| 
+11.
+ a| 
+-
+ a| 
+11.
+ a| 
+-
+ a| 
+17
+
+
+
+ a| 
+堆疊3
+ a| 
+bride_x_3a
+ a| 
+FC1
+ a| 
+12.
+ a| 
+-
+ a| 
+12.
+ a| 
+-
+ a| 
+12.
+ a| 
+-
+ a| 
+12.
+ a| 
+-
+ a| 
+18
+ a| 
+-
+
+
+
+ a| 
+FC2
+ a| 
+-
+ a| 
+12.
+ a| 
+-
+ a| 
+12.
+ a| 
+-
+ a| 
+12.
+ a| 
+-
+ a| 
+12.
+ a| 
+-
+ a| 
+18
+
+
+
+ a| 
+bride_x_3B.
+ a| 
+FC1
+ a| 
+13.
+ a| 
+-
+ a| 
+13.
+ a| 
+-
+ a| 
+13.
+ a| 
+-
+ a| 
+13.
+ a| 
+-
+ a| 
+19
+ a| 
+-
+
+
+
+ a| 
+FC2
+ a| 
+-
+ a| 
+13.
+ a| 
+-
+ a| 
+13.
+ a| 
+-
+ a| 
+13.
+ a| 
+-
+ a| 
+13.
+ a| 
+-
+ a| 
+19
+
+
+
+ a| 
+堆疊y
+ a| 
+bride_x_ya
+ a| 
+FC1
+ a| 
+14
+ a| 
+-
+ a| 
+14
+ a| 
+-
+ a| 
+14
+ a| 
+-
+ a| 
+14
+ a| 
+-
+ a| 
+20
+ a| 
+-
+
+
+
+ a| 
+FC2
+ a| 
+-
+ a| 
+14
+ a| 
+-
+ a| 
+14
+ a| 
+-
+ a| 
+14
+ a| 
+-
+ a| 
+14
+ a| 
+-
+ a| 
+20
+
+
+
+ a| 
+bride_x_yb
+ a| 
+FC1
+ a| 
+15
+ a| 
+-
+ a| 
+15
+ a| 
+-
+ a| 
+15
+ a| 
+-
+ a| 
+15
+ a| 
+-
+ a| 
+21
+ a| 
+-
+
+
+
+ a| 
+FC2
+ a| 
+--
+
+-- a| 
+15
+ a| 
+--
+
+-- a| 
+15
+ a| 
+--
+
+-- a| 
+15
+ a| 
+-
+ a| 
+15
+ a| 
+-
+ a| 
+21
+
+
+
+ a| 
+
+NOTE: G620、G630、G620-1和G630-1交換器的連接埠16、17、20和21可連接其他橋接器。
+
+|===
++
+|===
+
+
+11+| 使用光纖通道連接埠（FC1和FC2）的Fibre Bridge 7500N或7600N組態 
+
+
+11+| DR群組2. 
+
+
+3+|  2+| Brocade G620、Brocade G620-1、Brocade G630、Brocade G630-1 2+| Brocade 6510、Brocade DCX 8510-8 2+| Brocade 6520 2+| Brocade G720 
+
+
+2+| 元件 | 連接埠 | 交換器1 | 交換器2. | 交換器1 | 交換器2. | 交換器1 | 交換器2. | 交換器1 | 交換器2. 
+
+
+ a| 
+堆疊1
+ a| 
+bride_x_51A
+ a| 
+FC1
+ a| 
+26
+ a| 
+-
+ a| 
+32
+ a| 
+-
+ a| 
+56
+ a| 
+-
+ a| 
+32
+ a| 
+-
+
+
+
+ a| 
+FC2
+ a| 
+-
+ a| 
+26
+ a| 
+-
+ a| 
+32
+ a| 
+-
+ a| 
+56
+ a| 
+-
+ a| 
+32
+
+
+
+ a| 
+bride_x_51b
+ a| 
+FC1
+ a| 
+27
+ a| 
+-
+ a| 
+33
+ a| 
+-
+ a| 
+57
+ a| 
+-
+ a| 
+33
+ a| 
+-
+
+
+
+ a| 
+FC2
+ a| 
+-
+ a| 
+27
+ a| 
+-
+ a| 
+33
+ a| 
+-
+ a| 
+57
+ a| 
+-
+ a| 
+33
+
+
+
+ a| 
+堆疊2.
+ a| 
+bride_x_52A
+ a| 
+FC1
+ a| 
+30
+ a| 
+-
+ a| 
+34
+ a| 
+-
+ a| 
+58
+ a| 
+-
+ a| 
+34
+ a| 
+-
+
+
+
+ a| 
+FC2
+ a| 
+-
+ a| 
+30
+ a| 
+-
+ a| 
+34
+ a| 
+-
+ a| 
+58
+ a| 
+-
+ a| 
+34
+
+
+
+ a| 
+bride_x_52b
+ a| 
+FC1
+ a| 
+31
+ a| 
+-
+ a| 
+35
+ a| 
+-
+ a| 
+59
+ a| 
+-
+ a| 
+35
+ a| 
+-
+
+
+
+ a| 
+FC2
+ a| 
+-
+ a| 
+31
+ a| 
+-
+ a| 
+35
+ a| 
+-
+ a| 
+59
+ a| 
+-
+ a| 
+35
+
+
+
+ a| 
+堆疊3
+ a| 
+bride_x_53A
+ a| 
+FC1
+ a| 
+32
+ a| 
+-
+ a| 
+36
+ a| 
+-
+ a| 
+60
+ a| 
+-
+ a| 
+36
+ a| 
+-
+
+
+
+ a| 
+FC2
+ a| 
+-
+ a| 
+32
+ a| 
+-
+ a| 
+36
+ a| 
+-
+ a| 
+60
+ a| 
+-
+ a| 
+36
+
+
+
+ a| 
+bride_x_53B
+ a| 
+FC1
+ a| 
+33
+ a| 
+-
+ a| 
+37
+ a| 
+-
+ a| 
+61.
+ a| 
+-
+ a| 
+37
+ a| 
+-
+
+
+
+ a| 
+FC2
+ a| 
+-
+ a| 
+33
+ a| 
+-
+ a| 
+37
+ a| 
+-
+ a| 
+61.
+ a| 
+-
+ a| 
+37
+
+
+
+ a| 
+堆疊y
+ a| 
+bride_x_5ya
+ a| 
+FC1
+ a| 
+34
+ a| 
+-
+ a| 
+38
+ a| 
+-
+ a| 
+62.
+ a| 
+-
+ a| 
+38
+ a| 
+-
+
+
+
+ a| 
+FC2
+ a| 
+-
+ a| 
+34
+ a| 
+-
+ a| 
+38
+ a| 
+-
+ a| 
+62.
+ a| 
+-
+ a| 
+38
+
+
+
+ a| 
+bride_x_5yb
+ a| 
+FC1
+ a| 
+35
+ a| 
+-
+ a| 
+39
+ a| 
+-
+ a| 
+63.
+ a| 
+-
+ a| 
+39
+ a| 
+-
+
+
+
+ a| 
+FC2
+ a| 
+-
+ a| 
+35
+ a| 
+-
+ a| 
+39
+ a| 
+-
+ a| 
+63.
+ a| 
+-
+ a| 
+39
+
+
+
+ a| 
+
+NOTE: 其他橋接器可連接至G620、G630、G620-1和G-630-1交換器的連接埠36 - 39。
+
+|===
++
+|===
+
+
+12+| 使用Fibre Bridge 6500N橋接器或使用單一FC連接埠（FC1或FC2）的Fibre Bridge 7500N或7600N的組態 
+
+
+12+| DR群組1 
+
+
+2+|  2+| Brocade 6505 2+| Brocade 6510、Brocade DCX 8510-8 2+| Brocade 6520 2+| Brocade G620、Brocade G620-1、Brocade G630、Brocade G630-1 2+| Brocade G720 
+
+
+| 元件 | 連接埠 | 交換器1 | 交換器2. | 交換器1 | 交換器2. | 交換器1 | 交換器2. | 交換器1 | 交換器2. | 交換器1 | 交換器2. 
+
+
+ a| 
+堆疊1
+ a| 
+bride_x_1a.
+ a| 
+8.
+ a| 
+ a| 
+8.
+ a| 
+ a| 
+8.
+ a| 
+ a| 
+8.
+ a| 
+ a| 
+10.
+ a| 
+
+
+
+ a| 
+bride_x_1b.
+ a| 
+-
+ a| 
+8.
+ a| 
+-
+ a| 
+8.
+ a| 
+-
+ a| 
+8.
+ a| 
+-
+ a| 
+8.
+ a| 
+-
+ a| 
+10.
+
+
+
+ a| 
+堆疊2.
+ a| 
+bride_x_2a
+ a| 
+9.
+ a| 
+-
+ a| 
+9.
+ a| 
+-
+ a| 
+9.
+ a| 
+-
+ a| 
+9.
+ a| 
+-
+ a| 
+11.
+ a| 
+-
+
+
+
+ a| 
+bride_x_2b
+ a| 
+-
+ a| 
+9.
+ a| 
+-
+ a| 
+9.
+ a| 
+-
+ a| 
+9.
+ a| 
+-
+ a| 
+9.
+ a| 
+-
+ a| 
+11.
+
+
+
+ a| 
+堆疊3
+ a| 
+bride_x_3a
+ a| 
+10.
+ a| 
+-
+ a| 
+10.
+ a| 
+-
+ a| 
+10.
+ a| 
+-
+ a| 
+10.
+ a| 
+-
+ a| 
+14
+ a| 
+-
+
+
+
+ a| 
+bride_x_4b.
+ a| 
+-
+ a| 
+10.
+ a| 
+-
+ a| 
+10.
+ a| 
+-
+ a| 
+10.
+ a| 
+-
+ a| 
+10.
+ a| 
+-
+ a| 
+14
+
+
+
+ a| 
+堆疊y
+ a| 
+bride_x_ya
+ a| 
+11.
+ a| 
+-
+ a| 
+11.
+ a| 
+-
+ a| 
+11.
+ a| 
+-
+ a| 
+11.
+ a| 
+-
+ a| 
+15
+ a| 
+-
+
+
+
+ a| 
+bride_x_yb
+ a| 
+-
+ a| 
+11.
+ a| 
+-
+ a| 
+11.
+ a| 
+-
+ a| 
+11.
+ a| 
+-
+ a| 
+11.
+ a| 
+-
+ a| 
+15
+
+
+
+ a| 
+
+NOTE: G620、G630、G620-1和G630-1交換器的連接埠12-17、20和21可連接其他橋接器。可將其他橋接器連接至連接埠16-17、20和21台G720交換器。
+
+|===
++
+|===
+
+
+10+| 使用Fibre Bridge 6500N橋接器或使用單一FC連接埠（FC1或FC2）的Fibre Bridge 7500N或7600N的組態 
+
+
+10+| DR群組2. 
+
+
+2+|  2+| Brocade G720 2+| Brocade G620、Brocade G620-1、Brocade G630、Brocade G630-1 2+| Brocade 6510、Brocade DCX 8510-8 2+| Brocade 6520 
+
+
+ a| 
+堆疊1
+ a| 
+bride_x_51A
+ a| 
+32
+ a| 
+-
+ a| 
+26
+ a| 
+-
+ a| 
+32
+ a| 
+-
+ a| 
+56
+ a| 
+-
+
+
+
+ a| 
+bride_x_51b
+ a| 
+-
+ a| 
+32
+ a| 
+-
+ a| 
+26
+ a| 
+-
+ a| 
+32
+ a| 
+-
+ a| 
+56
+
+
+
+ a| 
+堆疊2.
+ a| 
+bride_x_52A
+ a| 
+33
+ a| 
+-
+ a| 
+27
+ a| 
+-
+ a| 
+33
+ a| 
+-
+ a| 
+57
+ a| 
+-
+
+
+
+ a| 
+bride_x_52b
+ a| 
+-
+ a| 
+33
+ a| 
+-
+ a| 
+27
+ a| 
+-
+ a| 
+33
+ a| 
+-
+ a| 
+57
+
+
+
+ a| 
+堆疊3
+ a| 
+bride_x_53A
+ a| 
+34
+ a| 
+-
+ a| 
+30
+ a| 
+-
+ a| 
+34
+ a| 
+-
+ a| 
+58
+ a| 
+-
+
+
+
+ a| 
+bride_x_54b
+ a| 
+-
+ a| 
+34
+ a| 
+-
+ a| 
+30
+ a| 
+-
+ a| 
+34
+ a| 
+-
+ a| 
+58
+
+
+
+ a| 
+堆疊y
+ a| 
+bride_x_ya
+ a| 
+35
+ a| 
+-
+ a| 
+31
+ a| 
+-
+ a| 
+35
+ a| 
+-
+ a| 
+59
+ a| 
+-
+
+
+
+ a| 
+bride_x_yb
+ a| 
+-
+ a| 
+35
+ a| 
+-
+ a| 
+31
+ a| 
+-
+ a| 
+35
+ a| 
+-
+ a| 
+59
+
+
+
+ a| 
+
+NOTE: 其他橋接器可連接G620、G630、G620-1和G630-1交換器的連接埠32至39。G720交換器的連接埠36至39可連接其他橋接器。
+
+|===
+
+
+. 如果您要設定橋接式MetroCluster 的連接式功能不全系統、請將每個橋接器連接至控制器模組：
++
+.. 將橋接器的FC連接埠1纜線連接至叢集A中控制器模組上的16 GB或8 GB FC連接埠
+.. 將橋接器的FC連接埠2纜線連接至叢集A中控制器模組的相同速度FC連接埠
+.. 在其他後續橋接器上重複這些子步驟、直到所有橋接器均已連接好纜線為止。
+
+
+. 從系統主控台將磁碟機韌體更新為最新版本：
++
+'磁碟防火牆更新'
+
++
+您必須在兩個控制器模組上執行此命令。
+
++
+https://mysupport.netapp.com/site/downloads/firmware/disk-drive-firmware["NetApp下載：磁碟機韌體"^]
+
+. 使用下載韌體的指示、將磁碟櫃韌體更新至最新版本。
++
+您可以從任一控制器模組的系統主控台執行程序中的命令。
+
++
+https://mysupport.netapp.com/site/downloads/firmware/disk-shelf-firmware["NetApp下載：磁碟櫃韌體"^]
+
+. 如果您的系統未啟用磁碟自動指派、請指派磁碟機擁有權。
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"^]
+
++
+
+NOTE: 如果您要在多個控制器模組之間分割單一磁碟櫃堆疊的擁有權、則必須先停用叢集中兩個節點上的磁碟自動指派（「儲存磁碟選項修改-自動指派關閉*」）、再指派磁碟擁有權； 否則、當您指派任何單一磁碟機時、其餘的磁碟機可能會自動指派給相同的控制器模組和集區。
+
++
+
+NOTE: 在更新磁碟機韌體和磁碟櫃韌體、並完成本工作中的驗證步驟之前、您不得將磁碟機新增至集合體或磁碟區。
+
+. 啟用新堆疊的交換器連接埠。
+. 驗證MetroCluster 下列項目中的功能：ONTAP
++
+.. 檢查系統是否具有多路徑：+「節點執行-node-name_ sysconfig -A」
+.. 檢查兩個叢集上是否有任何健全狀況警示：+「系統健全狀況警示顯示」
+.. 確認MetroCluster 此功能的組態、並確認操作模式正常：+「MetroCluster show」
+.. 執行MetroCluster 功能不全：+ MetroCluster 「功能不全」
+.. 顯示MetroCluster 不實檢查的結果：+ MetroCluster 「不實檢查顯示」
+.. 檢查交換器上是否有任何健全狀況警示（如果有）：+「切換顯示」
+.. 執行Config Advisor
++
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"^]
+
+.. 執行Config Advisor 完功能後、請檢閱工具的輸出結果、並依照輸出中的建議來解決發現的任何問題。
+
+
+. 如果適用、請針對合作夥伴網站重複此程序。
+
+
+link:concept_in_band_management_of_the_fc_to_sas_bridges.html["FC至SAS橋接器的頻內管理"]

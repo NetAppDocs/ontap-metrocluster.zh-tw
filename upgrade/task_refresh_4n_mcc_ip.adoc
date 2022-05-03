@@ -1,0 +1,166 @@
+---
+permalink: upgrade/task_refresh_4n_mcc_ip.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, refresh, four, node, ip, configuration, add, autosupport 
+summary: 從功能支援的9.8開始ONTAP 、您可以將MetroCluster 組態擴充為暫時的八節點組態、然後移除舊的災難恢復（DR）群組、以四節點的靜態IP組態升級控制器和儲存設備。 
+---
+= 重新整理四節點MetroCluster 的靜態IP組態（ONTAP 不含更新版本的更新版本）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+從功能支援的9.8開始ONTAP 、您可以將MetroCluster 組態擴充為暫時的八節點組態、然後移除舊的災難恢復（DR）群組、以四節點的靜態IP組態升級控制器和儲存設備。
+
+.關於這項工作
+* 執行ONTAP 支援此程序的系統支援使用支援的版本。
+* 如果您要升級IP交換器、則在執行此更新程序之前、應該先升級這些交換器。
+* 「舊節點」指您要取代的節點。
+* 此程序不支援AFF 使用Broadcom Bes - 53248交換器的32個系統。
+
+
+.步驟
+. 從舊節點收集資訊。
++
+在此階段、四節點組態會顯示如下圖所示：
+
++
+image::../media/mcc_dr_group_a.png[MCC DR群組A]
+
+. 為了避免自動產生支援案例、請傳送AutoSupport 一個不全的訊息、指出正在進行升級。
++
+.. 發出以下命令：+"System node" AutoSupport （系統節點）"esfinvoke -node"（節點）*-type all -most -most "MAn=10h正在將_old-temo_升級至_new模式"_"（系統節點名稱不完整）
++
+下列範例指定10小時的維護時間。您可能想要根據計畫而多留一些時間。
+
++
+如果維護作業在時間結束之前完成、您可以叫用AutoSupport 指示維護期間結束的資訊消息：
+
++
+「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+
+.. 在合作夥伴叢集上重複執行命令。
+
+
+. 移除MetroCluster 可啟動切換功能的斷路器、調解器或其他軟體中現有的物件組態。
++
+[cols="2*"]
+|===
+
+
+| 如果您使用... | 使用此程序... 
+
+
+ a| 
+Tiebreaker
+ a| 
+link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#commands-for-modifying-metrocluster-tiebreaker-configurations["移除MetroCluster 部分組態"] 請參閱《_ MetroCluster 資料斷路器安裝與組態指南_》
+
+
+
+ a| 
+中介者
+ a| 
+從資訊提示字元發出下列命令ONTAP ：
+
+「取消組態設定中介程式」MetroCluster
+
+
+
+ a| 
+第三方應用程式
+ a| 
+請參閱產品文件。
+
+|===
+. 執行中的所有步驟 link:../upgrade/task_expand_a_four_node_mcc_ip_configuration.html["將四節點MetroCluster 的靜態IP組態擴充至八節點組態"] 可將新節點和儲存設備新增至組態。
++
+擴充程序完成後、組態會顯示如下圖所示：
+
++
+image::../media/mcc_dr_group_b.png[MCC DR群組b]
+
+. 移動CRS磁碟區。
++
+執行中的步驟 link:../maintain/task_move_a_metadata_volume_in_mcc_configurations.html["在MetroCluster 不完整的組態中移動中繼資料磁碟區"]。
+
+. 使用中的下列程序、將資料從舊節點移至新節點 https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-upgrade-controller/home.html["其他平台程序：控制器硬體升級快速指南"^]
++
+.. 執行中的所有步驟 http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-upgrade-controller/GUID-AFE432F6-60AD-4A79-86C0-C7D12957FA63.html["建立Aggregate並將磁碟區移至新節點"^]。
++
+
+NOTE: 您可以選擇在建立時或之後鏡射集合體。
+
+.. 執行中的所有步驟 http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-upgrade-controller/GUID-95CA9262-327D-431D-81AA-C73DEFF3DEE2.html["將非SAN資料生命期和叢集管理生命期移至新節點"]。
+
+
+. 請依照移除舊DR群組程序中的步驟進行。
++
+link:concept_removing_a_disaster_recovery_group.html["移除災難恢復群組"]
+
++
+移除舊的DR群組（DR群組1）之後、組態會顯示如下圖所示：
+
++
+image::../media/mcc_dr_group_d.png[MCC DR群組d]
+
+. 確認MetroCluster 執行功能不正常的操作模式、並執行MetroCluster 功能不實的檢查。
++
+.. 確認MetroCluster 執行功能組態、並確認操作模式正常：
++
+《不看》MetroCluster
+
+.. 確認顯示所有預期節點：
++
+「不一樣的秀」MetroCluster
+
+.. 發出下列命令：
++
+《不一樣的跑程》MetroCluster
+
+.. 顯示MetroCluster 檢查結果：
++
+《不一樣的表演》MetroCluster
+
+
+
+. 如有必要、請使用您的組態程序來還原監控功能。
++
+[cols="2*"]
+|===
+
+
+| 如果您使用... | 請使用此程序 
+
+
+ a| 
+Tiebreaker
+ a| 
+link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#adding-metrocluster-configurations["新增MetroCluster 功能"] 在_ MetroCluster 資料斷路器安裝與組態_中。
+
+
+
+ a| 
+中介者
+ a| 
+連結：/install-ip/concept_mediator_requirements.html [Configuring the ONTAP SURESTERator service from a MetroCluster SURFIP configuration ] in the _SURFIP MetroCluster Installation and Configuration（從一套靜態IP組態設定）_。
+
+
+
+ a| 
+第三方應用程式
+ a| 
+請參閱產品文件。
+
+|===
+. 若要恢復自動產生支援案例、請傳送AutoSupport 一個不完整的訊息、表示維護已完成。
++
+.. 發出下列命令：
++
+「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+
+.. 在合作夥伴叢集上重複執行命令。
+
+
+

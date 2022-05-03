@@ -1,0 +1,94 @@
+---
+permalink: maintain/reference_where_to_find_additional_information_mcc_service_guide.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, additional, information 
+summary: 您可以在MetroCluster NetApp豐富的文件中深入瞭解如何設定、操作及監控功能。 
+---
+= 何處可找到其他資訊
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以在MetroCluster NetApp豐富的文件中、深入瞭解如何設定、操作及監控功能。
+
+|===
+
+
+| 資訊 | 主旨 
+
+
+ a| 
+link:../index.html["本文檔MetroCluster"]
+ a| 
+* 所有MetroCluster 資訊
+
+
+
+
+ a| 
+https://www.netapp.com/pdf.html?item=/media/13480-tr4705.pdf["NetApp MetroCluster 解決方案架構與設計"^]
+ a| 
+* 關於整套組態和操作的技術總覽MetroCluster 。
+* 最佳實務做法MetroCluster ：
+
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"]
+ a| 
+* 架構附加MetroCluster 的架構
+* 組態佈線
+* 設定FC對SAS橋接器
+* 設定FC交換器
+* 設定MetroCluster 功能不ONTAP 只是功能不一
+
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-metrocluster/install-stretch/concept_considerations_differences.html["延伸MetroCluster 安裝與組態"]
+ a| 
+* 延伸MetroCluster 架構
+* 組態佈線
+* 設定FC對SAS橋接器
+* 設定MetroCluster 功能不ONTAP 只是功能不一
+
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/concept_considerations_differences.html["安裝與組態MetroCluster"]
+ a| 
+* 知識產權架構MetroCluster
+* 連接MetroCluster 纜線連接整個過程
+* 設定MetroCluster 功能不ONTAP 只是功能不一
+
+
+
+
+ a| 
+https://www.netapp.com/support-and-training/documentation/["NetApp文件：產品指南與資源"^]
+ a| 
+* 監控MetroCluster 不一致的組態和效能
+
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-metrocluster/tiebreaker/concept_overview_of_the_tiebreaker_software.html["物件斷路器軟體安裝與組態MetroCluster"]
+ a| 
+* 使用MetroCluster ESITiebreaker軟體監控整個系統的組態MetroCluster
+
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-7mode-transition/copy-based/index.html["複本型轉換"]
+ a| 
+* 將資料從7-Mode儲存系統移轉至叢集式儲存系統
+
+
+|===

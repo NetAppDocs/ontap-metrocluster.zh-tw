@@ -1,0 +1,339 @@
+---
+permalink: maintain/task_change_isl_properties_isl_ports_or_the_iod_ood_configuration_on_a_brocade_switch.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, change, isl, properties, isl, ports, iod, configuration, brocade, switch 
+summary: 如果您要新增或升級硬體（例如其他或更快的控制器或交換器）、可能需要將ISL新增至交換器。 
+---
+= 變更Brocade交換器上的ISL內容、ISL連接埠或IOD/ood組態
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您要新增或升級硬體（例如其他或更快的控制器或交換器）、可能需要將ISL新增至交換器。
+
+請確定系統設定正確、所有Fabric交換器均正常運作、而且沒有錯誤存在。
+
+如果ISL鏈路上的設備發生變更、而新的連結組態不再支援目前的組態（即主幹連線和訂購式傳輸）、則需要重新設定網路架構、使其符合正確的路由原則：「訂單傳送」（IOD）或「訂單外交付」（OD）。
+
+
+NOTE: 若要從ONTAP 更新軟體中變更ood、請執行下列步驟： link:../install-fc/concept_configure_the_mcc_software_in_ontap.html#configuring-in-order-delivery-or-out-of-order-delivery-of-frames-on-ontap-software#configuring-in-order-delivery-or-out-of-order-delivery-of-frames-on-ontap-software["設定以順序交付或不按順序交付以ONTAP 利在各種軟體上交付框架"]
+
+.步驟
+. 停用FCVI和儲存HBA連接埠：
++
+「portcfg堅持 停用_port number_」
+
++
+根據預設、前8個連接埠（連接埠0到7）用於FCVI和Storage HBA。連接埠必須持續停用、以便在交換器重新開機時、連接埠仍保持停用狀態。
+
++
+以下範例顯示兩台交換器上的ISL連接埠0-7均已停用：
+
++
+[listing]
+----
+
+    Switch_A_1:admin> portcfgpersistentdisable 0-7
+    Switch_B_1:admin> portcfgpersistentdisable 0-7
+----
+. 視需要變更ISL連接埠。
++
+[cols="30,70"]
+|===
+
+
+| 選項 | 步驟 
+
+
+ a| 
+若要變更ISL連接埠的速度...
+ a| 
+在Fabric上的兩個交換器上使用「portcfgspeed _port編號port spe__」命令。
+
+在下列範例中、您將ISL連接埠速度從40 Gbps變更為16 Gbps：
+
+「Brocade交換器_a_1:admin> portcfgSpeed 40 16」
+
+您可以使用「shwitchshow」命令來驗證速度是否已變更：
+
+「Brocade交換器_a_1:admin> switchshow」
+
+您應該會看到下列輸出：
+
+....
+  . . .
+   40 40  062800  id 16G  No_Sync FC Disabled
+  . . .
+....
+
+
+ a| 
+若要變更ISL連接埠的距離...
+ a| 
+在Fabric中的兩個交換器上使用「portcfglong平行 相距_連接埠號連接埠距離_」命令。
+
+
+
+ a| 
+若要移除ISL ...
+ a| 
+拔下連結（纜線）。
+
+
+
+ a| 
+若要新增ISL ...
+ a| 
+將SFP插入要新增為ISL連接埠的連接埠。請確定您MetroCluster 要新增的交換器*架構附加的支援功能安裝與組態*中已列出這些連接埠、並根據本指南進行連接。
+
+
+
+ a| 
+若要重新部署ISL ...
+ a| 
+重新部署ISL與移除然後新增ISL相同。首先、中斷連結以移除ISL、然後將SFP插入要新增為ISL連接埠的連接埠。
+
+|===
+. 重新設定訂單外交付（OD）或訂單內交付（IOD）。
++
+
+NOTE: 如果路由原則維持不變、您就不需要重新設定、而且可以忽略此步驟。這個支援需求必須符合Fabric組態。ONTAP如果Fabric已設定為ood、ONTAP 則還必須將其設定為ood。IOD也同樣適用。
+
++
+此步驟應在下列案例中執行：
+
++
+** 在變更之前、有多個ISL會形成主幹、但變更之後、將不再支援主幹連線。在這種情況下、您必須為ood設定Fabric。
+** 變更前有一個ISL、變更後有多個ISL。
+** 如果主幹形成多個ISL、請設定IOD的網路架構。如果多個ISL *無法*形成主幹、請設定網路的ood。
+** 使用「shwitchcfg堅持 停用」命令持續停用交換器、如下列範例所示：
++
+[listing]
+----
+
+Switch_A_1:admin> switchcfgpersistentdisable
+Switch_B_1:admin> switchcfgpersistentdisable
+----
++
+... 為每個ISL「portcfgtrunkport _port number_」設定主幹連線模式、如下表所示：
++
+[cols="30,70"]
+|===
+
+
+| 案例 | 步驟 
+
+
+ a| 
+設定ISL進行主幹連線（IOD\）
+ a| 
+將「portcfgTRUKport _port number_」設為1：
+
+....
+FC_switch_A_1:admin> portcfgtrunkport 20 1
+FC_switch_A_1:admin> portcfgtrunkport 21 1
+FC_switch_B_1:admin> portcfgtrunkport 20 1
+FC_switch_B_1:admin> portcfgtrunkport 21 1
+....
+
+
+ a| 
+設定ISL以進行主幹連線（ood\）
+ a| 
+將「portcfgTRUKport _port number_」設為0：
+
+....
+FC_switch_A_1:admin> portcfgtrunkport 20 0
+FC_switch_A_1:admin> portcfgtrunkport 21 0
+FC_switch_B_1:admin> portcfgtrunkport 20 0
+FC_switch_B_1:admin> portcfgtrunkport 21 0
+....
+|===
+... 視需要設定IOD或OD的網路架構。
++
+[cols="30,70"]
+|===
+
+
+| 案例 | 步驟 
+
+
+ a| 
+設定IOD的網路架構
+ a| 
+使用「iodset」、「aptpolicypolicy」和「dlsreset」命令來設定IOD、APT和DLS的三個設定、如下列範例所示：
+
+....
+Switch_A_1:admin> iodset
+Switch_A_1:admin> aptpolicy 1
+Policy updated successfully.
+Switch_A_1:admin> dlsreset
+FC_switch_A_1:admin>portcfgtrunkport 40 1
+FC_switch_A_1:admin>portcfgtrunkport 41 1
+
+Switch_B_1:admin> iodset
+Switch_B_1:admin> aptpolicy 1
+Policy updated successfully.
+Switch_B_1:admin> dlsreset
+FC_switch_B_1:admin>portcfgtrunkport 20 1
+FC_switch_B_1:admin>portcfgtrunkport 21 1
+....
+
+
+ a| 
+設定網路的ood
+ a| 
+如以下範例所示、使用「iodreset」、「aptpolicy_policy__」和「dlssets」命令來設定IOD、APT和DLS的三個設定：
+
+....
+Switch_A_1:admin> iodreset
+Switch_A_1:admin> aptpolicy 3
+Policy updated successfully.
+Switch_A_1:admin> dlsset
+FC_switch_A_1:admin> portcfgtrunkport 40 0
+FC_switch_A_1:admin> portcfgtrunkport 41 0
+
+Switch_B_1:admin> iodreset
+Switch_B_1:admin> aptpolicy 3
+Policy updated successfully.
+Switch_B_1:admin> dlsset
+FC_switch_B_1:admin> portcfgtrunkport 40 0
+FC_switch_B_1:admin> portcfgtrunkport 41 0
+....
+|===
+... 持續啟用交換器：
++
+「witchcfg堅持」
+
++
+[listing]
+----
+switch_A_1:admin>switchcfgpersistentenable
+switch_B_1:admin>switchcfgpersistentenable
+----
++
+如果此命令不存在、請使用「shwitchenable」命令、如下列範例所示：
+
++
+[listing]
+----
+brocade_switch_A_1:admin>
+switchenable
+----
+... 使用「iodshow」、「aptpolicy」和「dlsshow」命令來驗證良好設定、如下列範例所示：
++
+[listing]
+----
+switch_A_1:admin> iodshow
+IOD is not set
+
+switch_A_1:admin> aptpolicy
+
+       Current Policy: 3 0(ap)
+
+       3 0(ap) : Default Policy
+       1: Port Based Routing Policy
+       3: Exchange Based Routing Policy
+       0: AP Shared Link Policy
+       1: AP Dedicated Link Policy
+       command aptpolicy completed
+
+switch_A_1:admin> dlsshow
+DLS is set by default with current routing policy
+----
++
+
+NOTE: 您必須在兩個交換器上執行這些命令。
+
+... 使用「iodshow」、「aptpolicy」和「dlsshow」命令來驗證IOD設定、如下列範例所示：
++
+[listing]
+----
+switch_A_1:admin> iodshow
+IOD is set
+
+switch_A_1:admin> aptpolicy
+       Current Policy: 1 0(ap)
+
+       3 0(ap) : Default Policy
+       1: Port Based Routing Policy
+       3: Exchange Based Routing Policy
+       0: AP Shared Link Policy
+       1: AP Dedicated Link Policy
+       command aptpolicy completed
+
+switch_A_1:admin> dlsshow
+DLS is not set
+----
++
+
+NOTE: 您必須在兩個交換器上執行這些命令。
+
+
+
+
+
+. 使用「islshow」和「trunkshow」命令、驗證ISL是否在線上和中繼（如果連結設備支援主幹）。
++
+
+NOTE: 如果啟用FEC、則主幹群組最後一個線上連接埠的偏移值可能會顯示最多36個差異、不過纜線長度都相同。
+
++
+[cols="20,80"]
+|===
+
+
+| ISL是否為主幹？ | 您會看到下列系統輸出... 
+
+
+ a| 
+是的
+ a| 
+如果ISL是主幹的、則輸出中只會出現一個ISL、用於「isl show」命令。端口40或41可能會根據主幹主幹而出現。「trkshow」的輸出應為一條ID為「1」的主幹、列出連接埠40和41上的實體ISL。在下列範例中、連接埠40和41已設定為使用ISL：
+
+[listing]
+----
+switch_A_1:admin> islshow 1:
+40-> 40 10:00:00:05:33:88:9c:68 2 switch_B_1 sp: 16.000G bw: 32.000G TRUNK CR_RECOV FEC
+switch_A_1:admin> trunkshow
+1: 40-> 40 10:00:00:05:33:88:9c:68 2 deskew 51 MASTER
+41-> 41 10:00:00:05:33:88:9c:68 2 deskew 15
+----
+
+
+ a| 
+否
+ a| 
+如果ISL沒有中繼、則兩個ISL會分別出現在「islshow」和「中繼show」的輸出中。這兩個命令都會列出識別碼為「1」和「2」的ISL。在下列範例中、連接埠「'40'」和「'41'」已設定為使用ISL：
+
+[listing]
+----
+switch_A_1:admin> islshow
+1: 40-> 40 10:00:00:05:33:88:9c:68 2 switch_B_1 sp: 16.000G bw: 16.000G TRUNK CR_RECOV FEC
+2: 41-> 41 10:00:00:05:33:88:9c:68 2 switch_B_1 sp: 16.000G bw: 16.000G TRUNK CR_RECOV FEC
+switch_A_1:admin> trunkshow
+1: 40-> 40 10:00:00:05:33:88:9c:68 2 deskew 51 MASTER
+2: 41-> 41 10:00:00:05:33:88:9c:68 2 deskew 48 MASTER
+----
+|===
+. 在兩個交換器上執行「spinfab（）命令、確認ISL正常運作：
++
+[listing]
+----
+switch_A_1:admin> spinfab -ports 0/40 - 0/41
+----
+. 啟用步驟1中停用的連接埠：
++
+「portEnable _port number_」
+
++
+以下範例顯示已啟用ISL連接埠「'0'」到「'7'」：
+
++
+[listing]
+----
+brocade_switch_A_1:admin> portenable 0-7
+----
+

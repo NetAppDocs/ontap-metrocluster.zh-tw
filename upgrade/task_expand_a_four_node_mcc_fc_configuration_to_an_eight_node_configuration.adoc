@@ -1,0 +1,37 @@
+---
+permalink: upgrade/task_expand_a_four_node_mcc_fc_configuration_to_an_eight_node_configuration.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, expand, four, node, eight, configuration 
+summary: 將四節點MetroCluster 的EzFC組態擴充至八節點MetroCluster 的EzFC組態、包括在每個叢集新增兩個控制器、在每MetroCluster 個站台上形成第二個HA配對、然後執行MetroCluster 「EzFC組態」作業。 
+---
+= 將四節點MetroCluster 的不含資料的FC組態擴充至八節點組態
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+將四節點MetroCluster 的EzFC組態擴充至八節點MetroCluster 的EzFC組態、包括在每個叢集新增兩個控制器、在每MetroCluster 個站台上形成第二個HA配對、然後執行MetroCluster 「EzFC組態」作業。
+
+.關於這項工作
+* 節點必須以ONTAP 不含資訊的FC組態執行不符合功能的功能。MetroCluster
++
+此程序不支援ONTAP 舊版的不支援使用的功能、也不支援MetroCluster 使用支援的功能。
+
+* 現有MetroCluster 的無法正常運作的功能。
+* 您要新增的設備必須受到支援、並符合中所述的所有要求 link:../install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"]
+* 您必須有可用的FC交換器連接埠、才能容納新的控制器和任何新的橋接器。
+* 您需要管理員密碼、才能存取FTP或scp伺服器。
+* 此程序僅適用於MetroCluster 不含FFC組態的情況。
+* 此程序不中斷營運、磁碟歸零時約需一天完成（不包括機架和堆疊）。
+
+
+在執行此程序之前MetroCluster 、由四個節點組成的EFC組態、每個站台各有一個HA配對：
+
+image::../media/mcc_dr_groups_4_node.gif[MCC DR群組4個節點]
+
+在本程序結束時MetroCluster 、每個站台的EFC組態由兩個HA配對組成：
+
+image::../media/mcc_dr_groups_8_node.gif[MCC DR群組8節點]
+
+這兩個站台都必須平均擴充。不可以由數量不均的節點組成的不穩定FC組態。MetroCluster

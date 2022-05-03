@@ -1,0 +1,59 @@
+---
+permalink: maintain/concept_using_fibrebridge_7500n_bridges_in_mcc_configurations.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, support, fibrebridge, configurations 
+summary: 支援使用FibreBridge 7500N橋接器來取代FibreBridge 6500N橋接器、或將新的儲存設備新增至MetroCluster 該系統組態。受支援的組態具有分區要求、以及橋接器FC連接埠、堆疊和儲存櫃限制的使用限制。 
+---
+= 支援MetroCluster 採用支援的FIBreBridge 7500N橋接器、採用各種不完整的組態
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+支援使用FibreBridge 7500N橋接器來取代FibreBridge 6500N橋接器、或將新的儲存設備新增至MetroCluster 該系統組態。支援的組態具有分區要求、並限制橋接器的FC連接埠、堆疊和儲存櫃限制的使用。
+
+
+NOTE: 在執行ONTAP 支援升級版本的組態中、不支援使用FibreBridge 6500N橋接器。
+
+[cols="27,19,27,27"]
+|===
+| 使用案例 | 是否需要分區變更？ | 限制 | 程序 
+
+
+ a| 
+以單一的光纖橋接器7500N來取代單一的光纖橋接器6500N
+ a| 
+否
+ a| 
+您必須使用單一FC連接埠、並連接至單一堆疊、將Fibre Bridge 7500N橋接器的設定與Fibre Bridge 6500N橋接器完全相同。請勿使用Fibre Bridge 7500N上的第二個FC連接埠。
+ a| 
+link:task_replace_a_sle_fc_to_sas_bridge.html["使用光纖橋接器7600N或7500N橋接器熱交換光纖橋接器6500N"]
+
+
+
+ a| 
+整合多個堆疊、將多對的光纖橋接器6500N取代為單一的一對光纖橋接器7500N
+ a| 
+是的
+ a| 
+在這種情況下、您會將FIBEBridge 6500N橋接器退出服務、並以單一的一對FIBEBridge 7500N橋接器取代。每對FIBEBridge 7500N或7600N橋接器最多可支援四個堆疊。
+
+在程序結束時、堆疊的頂端和底部都必須連接至連接埠、位於連接埠為FibreBridge 7500N的橋接器上。
+ a| 
+link:task_fb_consolidate_replace_a_pair_of_fibrebridge_6500n_bridges_with_7500n_bridges.html["以7600N或7500N橋接器取代一對FibreBridge 6500N橋接器"]
+
+
+
+ a| 
+新增一對全新的FIBreBridge 7500N橋接器來新增儲存設備
+ a| 
+是的
+
+您必須為新橋接器的每個FC連接埠新增儲存區域。
+ a| 
+您必須在FC交換器架構（以架構附加MetroCluster 的功能為基礎）或儲存控制器（採用延伸MetroCluster 功能的支援組態）上有可用的連接埠。每對的Fibre Bridge 7500N或7600N橋接器最多可支援四個堆疊。
+ a| 
+link:task_fb_hot_add_stack_of_shelves_and_bridges.html["熱新增一堆SAS磁碟櫃、並將橋接器連接MetroCluster 至一套系統"]
+
+|===

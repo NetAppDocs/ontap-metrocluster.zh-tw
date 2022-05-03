@@ -1,0 +1,79 @@
+---
+permalink: maintain/concept_remove_mediator_or_tiebreaker_when_performing_maintenance_tasks.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, maintenance, service, tiebreaker, mediator, ontap mediator 
+summary: 使用斷路器或協調器監控軟體的組態必須在維護前先取消軟體的組態設定 
+---
+= 在ONTAP 執行維護工作之前、請先移除「協調器」或「斷路器監控」
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在執行維護工作之前、如果MetroCluster 使用斷路器或協調器公用程式來監控不正確的組態、您必須先移除監控。
+
+維護工作包括升級控制器平台、升級ONTAP 功能、以及執行議定的切換和切換。
+
+.步驟
+. 收集下列命令的輸出：
++
+「iSCSI啟動器展示」
+
+. 移除MetroCluster 可啟動切換功能的斷路器、調解器或其他軟體中現有的物件組態。
++
+|===
+
+
+| 如果您使用... | 使用此程序... 
+
+
+ a| 
+Tiebreaker
+ a| 
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.hw-metrocluster-tiebreaker/GUID-34C97A45-0BFF-46DD-B104-2AB2805A983D.html["移除MetroCluster 部分組態"] 請參閱《_ MetroCluster 資料斷路器安裝與組態指南_》
+
+
+
+ a| 
+中介者
+ a| 
+從資訊提示字元發出下列命令ONTAP ：
+
+「取消組態設定中介程式」MetroCluster
+
+
+
+ a| 
+第三方應用程式
+ a| 
+請參閱產品文件。
+
+|===
+. 完成MetroCluster 對還原組態的維護之後、您可以使用斷路器或調解器公用程式繼續監控。
++
+|===
+| 如果您使用... | 請使用此程序 
+
+
+ a| 
+Tiebreaker
+ a| 
+link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#adding-metrocluster-configurations["新增MetroCluster 功能"] 在「_Estriebreaker MetroCluster 安裝與組態」一節中。
+
+
+
+ a| 
+中介者
+ a| 
+連結：/install-ip/concept_mediator_requirements.html [Configuring the ONTAP SUREator service from a MetroCluster SURFIP configuration（從一套靜態IP組態設定）]、位於「_EYSIP MetroCluster Installation and Configuration」（_）區段。
+
+
+
+ a| 
+第三方應用程式
+ a| 
+請參閱產品文件。
+
+|===
+

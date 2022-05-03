@@ -1,0 +1,32 @@
+---
+permalink: transition/concept_requirements_for_fc_to_ip_transition_mcc.html 
+sidebar: sidebar 
+keywords: start, transition, process, configuration, requirement, nondisruptive, fc-to-ip 
+summary: 在開始轉換程序之前、您必須確定組態符合要求。 
+---
+= 不中斷營運的FC對IP轉換需求
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在開始轉換程序之前、您必須確定組態符合要求。
+
+* 它必須是四節點組態、而且所有節點都必須執行ONTAP 版本號為9、8或更新版本。
+* 現有平台和新平台必須是支援的轉換組合。
++
+link:concept_supported_platforms_for_transition.html["支援不中斷營運的平台移轉"]
+
+* 它必須支援交換式叢集組態。
++
+https://hwu.netapp.com["NetApp Hardware Universe"]
+
+* 它必須符合_ MetroCluster 《_》安裝與組態_程序中所述的所有需求和佈線要求。
++
+link:../install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"]
+
++
+link:../install-stretch/concept_considerations_differences.html["延伸MetroCluster 安裝與組態"]
+
+

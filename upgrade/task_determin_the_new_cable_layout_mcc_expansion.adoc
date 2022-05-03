@@ -1,0 +1,27 @@
+---
+permalink: upgrade/task_determin_the_new_cable_layout_mcc_expansion.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, determine, new, cabling, layout 
+summary: 您必須確定新控制器模組和新磁碟櫃與現有FC交換器之間的纜線。 
+---
+= 確定新的佈線配置
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須確定新控制器模組和新磁碟櫃與現有FC交換器之間的纜線。
+
+此工作必須在每MetroCluster 個站台執行。
+
+.步驟
+. 請使用中的程序 link:../install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"] 若要建立交換器類型的佈線配置、請使用連接埠使用方式進行八節點MetroCluster 的畫面配置。
++
+FC交換器連接埠使用量必須符合程序中所述的使用量、才能使用參考組態檔（RCFC）。
+
++
+
+NOTE: 如果您的環境無法以能夠使用RCF檔案的方式連線、您必須依照中的指示手動設定系統 link:../install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"]。如果纜線無法使用RCF檔案、請勿使用此程序。
+
+

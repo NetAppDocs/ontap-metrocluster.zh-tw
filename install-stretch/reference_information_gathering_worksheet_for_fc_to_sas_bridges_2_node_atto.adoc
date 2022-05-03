@@ -1,0 +1,139 @@
+---
+permalink: install-stretch/reference_information_gathering_worksheet_for_fc_to_sas_bridges_2_node_atto.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, worksheet, fc, sas, bridges, information 
+summary: 在開始設定MetroCluster 「不必要站台」之前、您應該先收集必要的組態資訊。 
+---
+= FC至SAS橋接器的資訊收集工作表
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在開始設定MetroCluster 「不必要站台」之前、您應該先收集必要的組態資訊。
+
+
+
+== 站台A、FC對SAS橋接器1（FC_bridge _a_1a）
+
+每個SAS堆疊至少需要兩個FC對SAS橋接器。
+
+每個橋接器都會連接到Controller（控制器）a_1_`_port-number_`s和Controller（控制器）_B_1_`_port-number__`s。
+
+|===
+
+
+| 站台A | 您的價值 
+
+
+ a| 
+bride_a_1a IP位址
+ a| 
+
+
+
+ a| 
+bride_a_1a使用者名稱
+ a| 
+
+
+
+ a| 
+bride_a_1a密碼
+ a| 
+
+|===
+
+
+== 站台A、FC對SAS橋接器2（FC_bridge _a_1b）
+
+每個SAS堆疊至少需要兩個FC對SAS橋接器。
+
+每個橋接器都會連接到Controller（控制器）a_1_`_port-number_`s和Controller（控制器）_B_1_`_port-number__`s。
+
+|===
+
+
+| 站台A | 您的價值 
+
+
+ a| 
+bridge a _1b IP位址
+ a| 
+
+
+
+ a| 
+bride_a_1b使用者名稱
+ a| 
+
+
+
+ a| 
+bride_a_1b密碼
+ a| 
+
+|===
+
+
+== 站台B、FC對SAS橋接器1（FC_bridge _B_1a）
+
+每個SAS堆疊至少需要兩個FC對SAS橋接器。
+
+每個橋接器都會連接到Controller（控制器）a_1_`_port-number__和Controller（控制器）_B_1_`_port-number__。
+
+|===
+
+
+| 站台B | 您的價值 
+
+
+ a| 
+bridge _B_1a IP位址
+ a| 
+
+
+
+ a| 
+bridge _B_1a使用者名稱
+ a| 
+
+
+
+ a| 
+bride_B_1a密碼
+ a| 
+
+|===
+
+
+== 站台B、FC對SAS橋接器2（FC_bridge _B_1b）
+
+每個SAS堆疊至少需要兩個FC對SAS橋接器。
+
+每個橋接器都會連接到Controller（控制器）a_1_`_port-number__和Controller（控制器）_B_1_`_port-number__。
+
+|===
+
+
+| 站台B | 您的價值 
+
+
+ a| 
+bridge _B_1b IP位址
+ a| 
+
+
+
+ a| 
+bridge _B_1b使用者名稱
+ a| 
+
+
+
+ a| 
+bride_b_1b密碼
+ a| 
+
+|===

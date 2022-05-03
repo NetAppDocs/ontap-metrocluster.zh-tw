@@ -1,0 +1,95 @@
+---
+permalink: maintain/task_power_off_an_entire_mcc_fc_configuration.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, power, off, entire, metrocluster, fc, configuration 
+summary: 您必須先關閉MetroCluster 整個VMware FC組態和所有設備的電源、才能開始進行現場維護或重新配置。 
+---
+= 關閉MetroCluster 整個支援功能
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須先關閉MetroCluster 整個VMware FC組態和所有設備的電源、才能開始進行現場維護或重新配置。
+
+
+NOTE: 從ONTAP Sflex9.8開始、「*儲存交換器*」命令將取代為「*系統交換器*」。下列步驟顯示「*儲存交換器*」命令、但ONTAP 如果您執行的是更新版本的資訊、則最好使用「*系統交換器*」命令。
+
+. 驗MetroCluster 證MetroCluster 以支援功能驗證的兩個站台的支援功能組態。
++
+.. 確認MetroCluster 執行功能組態、並確認操作模式正常。+"* MetroCluster 《*》節目*
+.. 在MetroCluster 任一個鏡像節點上輸入下列命令、以確認與磁碟的連線：+「*執行本機sysconfig -v*」
+.. 執行下列命令：+`*儲存橋接show *
+.. 執行下列命令：+`*儲存連接埠show *
+.. 執行下列命令：+`*儲存交換器show*
+.. 執行下列命令：+「*網路連接埠show *」
+.. 執行MetroCluster 功能不全：+「* MetroCluster 效能不全*」
+.. 顯示MetroCluster 畫面的結果：+「* MetroCluster 畫面檢查」顯示*
+
+
+. 將AUSO故障網域修改為、以停用AUSO
++
+「* auso-disabled*」
+
++
+[listing]
+----
+cluster_A_site_A::*>metrocluster modify -auto-switchover-failure-domain auso-disabled
+----
+. 使用命令驗證變更
++
+《* MetroCluster 》*《*作業系統展示*》
+
++
+[listing]
+----
+
+	cluster_A_site_A::*> metrocluster operation show
+       Operation: modify
+           State: successful
+      Start Time: 4/25/2020 20:20:36
+        End Time: 4/25/2020 20:20:36
+          Errors: -
+----
+. 使用下列命令停止節點：
++
+如果MetroCluster 是四節點或八節點的版本、請使用參數+「*禁止接管*」
+
++
++
+
++
+[listing]
+----
+system node halt -node node1_SiteA -inhibit-takeover true -ignore-quorum-warnings true
+----
++
+** 如需雙節點MetroCluster 的效能不全組態、請使用以下命令：
++
+[listing]
+----
+system node halt -node node1_SiteA -ignore-quorum-warnings true
+----
+
+
+. 在現場關閉下列設備：
++
+** 儲存控制器
+** 精選FC交換器MetroCluster
+** Atto FibreBridge
+** 儲存櫃
+
+
+. 等待30分鐘、然後開啟所有控制器的電源。
+. 在控制器開機之後、請從MetroCluster 兩個站台驗證支援功能組態。
++
+若要驗證組態、請重複步驟1。
+
+. 執行關機後再開機檢查。
++
+.. 驗證所有同步來源SVM是否都在線上：+「* vserver show*」
+.. 啟動任何不在線上的同步來源SVM：+「* vserver start*」
+
+
+

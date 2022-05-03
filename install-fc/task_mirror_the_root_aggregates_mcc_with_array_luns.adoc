@@ -1,0 +1,36 @@
+---
+permalink: install-fc/task_mirror_the_root_aggregates_mcc_with_array_luns.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, mirror, root, aggregates 
+summary: 您必須鏡射MetroCluster 整個基礎組態中的根集合體、以確保資料受到保護。 
+---
+= 鏡射根Aggregate
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須鏡射MetroCluster 整個基礎組態中的根集合體、以確保資料受到保護。
+
+您必須確保SyncMirror 滿足使用陣列LUN進行的不必要功能組態。MetroCluster請參閱link:reference_requirements_for_a_mcc_configuration_with_array_luns_reference.html["使用陣列LUN進行動態組態的需求MetroCluster"]。
+
+您必須為MetroCluster E塊 組態中的每個控制器重複此工作。
+
+.步驟
+. 鏡射無鏡射根Aggregate：
++
+"集合鏡射"
+
++
+下列命令會鏡射控制器a_1的根Aggregate：
+
++
+[listing]
+----
+controller_A_1::> storage aggregate mirror aggr0_controller_A_1
+----
++
+根Aggregate會從Pool1鏡射陣列LUN。
+
+

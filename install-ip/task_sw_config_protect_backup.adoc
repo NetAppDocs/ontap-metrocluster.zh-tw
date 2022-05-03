@@ -1,0 +1,21 @@
+---
+permalink: install-ip/task_sw_config_protect_backup.html 
+sidebar: sidebar 
+keywords: backup files, configuration backup 
+summary: 您可以指定遠端URL（HTTP或FTP）來上傳組態備份檔案、以及本機叢集中的預設位置、為叢集組態備份檔案提供額外的保護。 
+---
+= 保護組態備份檔案
+:allow-uri-read: 
+
+
+[role="lead"]
+您可以指定遠端URL（HTTP或FTP）來上傳組態備份檔案、以及本機叢集中的預設位置、為叢集組態備份檔案提供額外的保護。
+
+.步驟
+. 設定組態備份檔案的遠端目的地URL：
++
+「系統組態備份設定會修改url-of目的地」
+
+
+
+。 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sag/home.html["使用CLI進行叢集管理"] 在「管理組態備份」一節中包含其他資訊。

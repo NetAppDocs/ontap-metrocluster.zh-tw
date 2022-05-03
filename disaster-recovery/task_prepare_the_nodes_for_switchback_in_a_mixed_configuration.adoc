@@ -1,0 +1,135 @@
+---
+permalink: disaster-recovery/task_prepare_the_nodes_for_switchback_in_a_mixed_configuration.html 
+sidebar: sidebar 
+keywords: perform, certain, task, prepare, metrocluster, ip, fc, configuration, switchback, recovery, during, transition, mix 
+summary: 您必須執行某些工作、才能準備混合MetroCluster 式的靜態IP和FC組態、以利切換作業。此程序僅適用於MetroCluster 在從FFC移轉至IP期間發生故障的組態。 
+---
+= 準備在混合組態中進行切換（轉換期間進行還原）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須執行某些工作、才能準備混合MetroCluster 式的靜態IP和FC組態、以利切換作業。此程序僅適用於MetroCluster 在從FFC移轉至IP期間發生故障的組態。
+
+此程序僅適用於在發生故障時處於轉換中的系統上執行恢復時。
+
+在此案例中MetroCluster 、此功能為混合式組態：
+
+* 其中一個DR群組包含連接網路MetroCluster 的不含基礎架構的FC節點。
++
+您必須在MetroCluster 這些節點上執行「還原FC」還原步驟。
+
+* 一個DR群組由MetroCluster 不支援的IP節點組成。
++
+您必須在MetroCluster 這些節點上執行「靜態IP」還原步驟。
+
+
+
+請依照下列順序執行步驟。
+
+. 依照順序執行下列工作、準備FC節點以進行切換：
++
+.. link:task_verify_port_mcfc.html["驗證連接埠組態（MetroCluster 僅限F精選FC組態）"]
+.. link:task_cfg_bridges_mcfc.html["設定FC對SAS橋接器（MetroCluster 僅限不含FSFC組態）"]
+.. link:task_cfg_switches_mcfc.html["設定FC交換器（MetroCluster 僅限不含FFC組態）"]
+.. link:task_verify_storage_mcfc.html["驗證儲存組態"] （只能在MetroCluster 取代的磁碟機上執行上述步驟、位於不含任何功能的節點上）
+.. link:task_power_on_mcfc.html["開啟災難現場的設備電源"] （只能在MetroCluster 取代的磁碟機上執行上述步驟、位於不含任何功能的節點上）
+.. link:task_assign_ownership_mcfc.html["指派更換磁碟機的擁有權"] （只能在MetroCluster 取代的磁碟機上執行上述步驟、位於不含任何功能的節點上）
+.. 執行中的步驟 link:task_reassign_roots_mcfc.html["將根Aggregate的磁碟擁有權重新分配給更換的控制器模組（MetroCluster 不含FC組態）"]，直到發出「信箱銷毀」命令的步驟（包括在內）。
+.. 銷毀根Aggregate的本機叢（叢0）：
++
+《Aggr. destroy ple-id》
+
+.. 如果root aggr不在線上、請將其上線。
+
+
+. 開機MetroCluster 功能不只是功能不一的FC節點。
++
+您必須在MetroCluster 這兩個不支援的FC節點上執行這些步驟。
+
++
+.. 顯示開機功能表：
++
+Boot_ONTAP功能表
+
+.. 從開機功能表中、選取選項6 *從備份組態更新Flash *。
+.. 回應「y」下列提示：
++
+「這將取代所有以Flash為基礎的組態、取代上次備份到磁碟的組態。您確定要繼續嗎？：Y'
+
++
+系統會開機兩次、第二次載入新組態。
+
++
+
+NOTE: 如果您未清除已用替換控制器的NVRAM內容、您可能會看到以下訊息：「痛苦：NVRAM內容無效...」 如果發生這種情況、請重複這些子步驟、將系統開機至ONTAP 瞬間提示字元。接著您需要執行根還原。如需協助、請聯絡技術支援部門。
+
+
+
+. 鏡射叢0上的根Aggregate：
++
+您必須在MetroCluster 這兩個不支援的FC節點上執行這些步驟。
+
++
+.. 將三個Pool0磁碟指派給新的控制器模組。
+.. 鏡射根Aggregate Pool1叢：
++
+「aggr mirror root-agg-name」
+
+.. 將未擁有的磁碟指派給本機節點上的Pool0
+
+
+. 返回維護模式。
++
+您必須在MetroCluster 這兩個不支援的FC節點上執行這些步驟。
+
++
+.. 停止節點：
++
+《停止》
+
+.. 將節點開機至「維護：
++
+"mode:boot_ONTAP maint"
+
+
+
+. 刪除信箱磁碟的內容：
++
+《破壞本地的信箱》
+
++
+您必須在MetroCluster 這兩個不支援的FC節點上執行這些步驟。
+
+. 停止節點：+「halt」
+. 節點開機後、請驗證節點的狀態：
++
+「不一樣的秀」MetroCluster
+
++
+[listing]
+----
+siteA::*> metrocluster node show
+DR                               Configuration  DR
+Group Cluster Node               State          Mirroring Mode
+----- ------- ------------------ -------------- --------- --------------------
+1     siteA
+              wmc66-a1           configured     enabled   waiting for switchback recovery
+              wmc66-a2           configured     enabled   waiting for switchback recovery
+      siteB
+              wmc66-b1           configured     enabled   switchover completed
+              wmc66-b2           configured     enabled   switchover completed
+2     siteA
+              wmc55-a1           -              -         -
+              wmc55-a2           unreachable    -         -
+      siteB
+              wmc55-b1           configured     enabled   switchover completed
+              wmc55-b2           configured
+----
+. 執行MetroCluster 中的工作、準備好進行交換的靜態IP節點 link:task_prepare_for_switchback_in_a_mcc_ip_configuration_supertask.html["準備MetroCluster 在一個S還原IP組態中進行切換"] 包括 link:task_delete_plexes_mcip.html["刪除存續站台擁有的失敗叢集（MetroCluster 不適用的IP組態）"]。
+. 在不含任何功能的節點上、執行中的步驟MetroCluster link:task_heal_restore_mcfc.html["執行Aggregate修復及還原鏡像（MetroCluster 不含FC組態）"]。
+. 在靜態IP節點上、執行中的步驟MetroCluster link:task_heal_restore_mcip.html["執行Aggregate修復及還原鏡像（MetroCluster 知識IP組態）"]。
+. 從開始、繼續執行恢復程序的剩餘工作 link:task_complete_recovery.html#reestablishing-object-stores-for-fabricpool-configurations["重新建立物件存放區以供FabricPool 進行物件組態"]。
+

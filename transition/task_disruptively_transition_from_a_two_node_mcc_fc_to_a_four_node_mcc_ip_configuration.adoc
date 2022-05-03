@@ -1,0 +1,33 @@
+---
+permalink: transition/task_disruptively_transition_from_a_two_node_mcc_fc_to_a_four_node_mcc_ip_configuration.html 
+sidebar: sidebar 
+keywords: start, ontap, transition, workload, data, exist, two-node, metrocluster, fc, configuration, four-node, ip, disk, shelves, shelf, disruptive, fc 
+summary: 從ONTAP 功能性的問題9.8開始、您可以將工作負載和資料從現有的雙節點MetroCluster 版的靜態FC組態、移轉到全新的四節點MetroCluster 版的靜態IP組態。從靜態FC節點移至MetroCluster IP節點的磁碟櫃。 
+---
+= 顛覆性地從雙節點MetroCluster 的不間斷地轉換為四節點MetroCluster 的不間斷地執行的不間斷運作的不間斷運作的不間斷運作的不間斷運作（ONTAP 更新版本的版本）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+從ONTAP 功能性的問題9.8開始、您可以將工作負載和資料從現有的雙節點MetroCluster 版的靜態FC組態、移轉到全新的四節點MetroCluster 版的靜態IP組態。從靜態FC節點移至MetroCluster IP節點的磁碟櫃。
+
+下圖提供此轉換程序前後的組態簡化檢視。
+
+image::../media/transition_2n_begin_to_end.png[轉換階段2n開始結束]
+
+* 執行ONTAP 支援此程序的系統支援使用支援的版本。
+* 此程序會造成中斷。
+* 此程序僅適用於雙節點MetroCluster 的不含功能的FC組態。
++
+如果您有四節點MetroCluster 的不含功能的FC組態、請參閱 link:concept_choosing_your_transition_procedure_mcc_transition.html["選擇您的轉換程序"]。
+
+* 此MetroCluster 程序所建立的四節點不可用的靜態IP組態不支援ADP。
+* 您必須符合所有要求、並遵循程序中的所有步驟。
+* 現有的儲存櫃會移至新MetroCluster 的「更新IP」節點。
+* 如有必要、可在組態中新增額外的儲存櫃。
++
+請參閱 link:concept_requirements_for_fc_to_ip_transition_2n_mcc_transition.html["磁碟機櫃的重複使用和磁碟機需求、可中斷FC對IP的轉換"]。
+
+

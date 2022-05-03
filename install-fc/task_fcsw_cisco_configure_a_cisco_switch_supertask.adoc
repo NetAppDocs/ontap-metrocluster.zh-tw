@@ -1,0 +1,2689 @@
+---
+permalink: install-fc/task_fcsw_cisco_configure_a_cisco_switch_supertask.html 
+sidebar: sidebar 
+keywords:  
+summary: 必須針對ISL和儲存連線、適當設定每台MetroCluster 採用此功能的Cisco交換器。 
+---
+= 手動設定Cisco FC交換器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+必須針對ISL和儲存連線、適當設定每台MetroCluster 採用此功能的Cisco交換器。
+
+以下要求適用於Cisco FC交換器：
+
+* 您必須使用四個支援相同型號的Cisco交換器、以及相同的NX-OS版本和授權。
+* 這個組態需要四個交換器。MetroCluster
++
+這四台交換器必須連接至兩個交換器的架構、每個架構橫跨兩個站台。
+
+* 交換器必須支援連線至Atto FibreBridge模型。
+* 您無法在Cisco FC儲存架構中使用加密或壓縮。不支援MetroCluster 此功能。
+
+
+在中 https://mysupport.netapp.com/matrix["NetApp互通性對照表工具IMT （不含）"]、您可以使用儲存解決方案欄位來選擇MetroCluster 您的解決方案。您可以使用*元件總管*來選取元件和ONTAP 更新版本、以精簡搜尋範圍。您可以按一下「*顯示結果*」來顯示符合條件的支援組態清單。
+
+下列需求適用於交換器間連結（ISL）連線：
+
+* 所有ISL在同一個Fabric中必須具有相同的長度和相同的速度。
++
+不同的Fabric可以使用不同長度的ISL。所有Fabric都必須使用相同的速度。
+
+
+
+下列需求適用於儲存連線：
+
+* 每個儲存控制器都必須有四個啟動器連接埠、才能連線至交換器架構。
++
+每個儲存控制器必須連接兩個啟動器連接埠至每個光纖。
+
++
+[NOTE]
+====
+如果符合下列所有條件、您可以設定FAS8020、AFF8020、FAS8200和AFF E4A300系統、每個控制器都有兩個啟動器連接埠（每個架構都有一個啟動器連接埠）：
+
+** 可用的FC啟動器連接埠少於四個、無法將其他連接埠設定為FC啟動器。
+** 所有插槽均在使用中、無法新增FC啟動器卡。
+
+
+====
+
+
+https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"]
+
+
+
+== Cisco交換器授權需求
+
+Cisco交換器在Fabric附加MetroCluster 的支援功能組態中、可能需要特定的功能型授權。這些授權可讓您在交換器上使用QoS或長距離模式信用點數等功能。您必須在MetroCluster 所有四個採用的交換器上安裝所需的功能型授權、以供選擇。
+
+下列功能型授權可能需要在MetroCluster 一套功能性的組態中使用：
+
+* Enterprise_pkg
++
+此授權可讓您在Cisco交換器上使用QoS功能。
+
+* 連接埠啟動套件
++
+您可以將此授權用於Cisco 9148交換器。此授權可讓您啟動或停用交換器上的連接埠、只要在任何指定時間只有16個連接埠處於作用中狀態即可。根據預設、Cisco MDS 9148交換器會啟用16個連接埠。
+
+* fm_Server_.pkg
++
+此授權可讓您同時管理Fabric、並透過網頁瀏覽器管理交換器。
+
++
+fm_Server_pkg授權也可啟用效能管理功能、例如效能臨界值和臨界值監控。如需此授權的詳細資訊、請參閱Cisco Fabric Manager伺服器套件。
+
+
+
+您可以使用show license usage命令來驗證是否已安裝授權。如果您沒有這些授權、請在繼續安裝之前聯絡您的銷售代表。
+
+
+NOTE: Cisco MDS 9250i交換器有兩個固定的1/10 GbE IP儲存服務連接埠。這些連接埠不需要額外授權。Cisco SAN Extension over IP應用程式套件是這些交換器的標準授權、可啟用FCIP和壓縮等功能。
+
+
+
+== 將Cisco FC交換器設為原廠預設值
+
+若要確保組態成功、您必須將交換器設定為其原廠預設值。如此可確保交換器從乾淨的組態啟動。
+
+此工作必須在MetroCluster 所有採用此功能的交換器上執行。
+
+.步驟
+. 建立主控台連線、然後登入同一個網路中的兩個交換器。
+. 將交換器設回預設設定：
++
+寫擦除
+
++
+當系統提示您確認命令時、您可以回應「y」。這會清除交換器上的所有授權與組態資訊。
+
+. 重新啟動交換器：
++
+"重裝"
+
++
+當系統提示您確認命令時、您可以回應「y」。
+
+. 在另一個交換器上重複執行「write erase（寫入清除）」和「erload（重新載入）」命令。
++
+發出「reload」命令後、交換器會重新開機、然後提示設定問題。此時、請繼續下一節。
+
+
+
+以下範例顯示由FC_switch_a_1和FC_switch_B_1組成的網路架構上的程序。
+
+[listing]
+----
+FC_Switch_A_1# write erase
+    Warning: This command will erase the startup-configuration.
+    Do you wish to proceed anyway? (y/n)  [n] y
+    FC_Switch_A_1# reload
+    This command will reboot the system. (y/n)?  [n] y
+
+FC_Switch_B_1# write erase
+    Warning: This command will erase the startup-configuration.
+    Do you wish to proceed anyway? (y/n)  [n] y
+    FC_Switch_B_1# reload
+    This command will reboot the system. (y/n)?  [n] y
+----
+
+
+== 設定Cisco FC交換器的基本設定和社群字串
+
+您必須使用「Setup」命令或發出「REload」命令後、指定基本設定。
+
+.步驟
+. 如果交換器未顯示設定問題、請設定基本交換器設定：
++
+《設定》
+
+. 接受設定問題的預設回應、直到系統提示您輸入SNMP社群字串為止。
+. 將社群字串設為「'public'（全部為小寫）、以便從ONTAP 「顯示器」存取。
++
+您可以將社群字串設為「'public'」以外的值、但必須ONTAP 使用您指定的社群字串來設定「效益監視器」。
+
++
+以下範例顯示FC-switch_a_1上的命令：
+
++
+[listing]
+----
+FC_switch_A_1# setup
+    Configure read-only SNMP community string (yes/no) [n]: y
+    SNMP community string : public
+    Note:  Please set the SNMP community string to "Public" or another value of your choosing.
+    Configure default switchport interface state (shut/noshut) [shut]: noshut
+    Configure default switchport port mode F (yes/no) [n]: n
+    Configure default zone policy (permit/deny) [deny]: deny
+    Enable full zoneset distribution? (yes/no) [n]: yes
+----
++
+下列範例顯示FC-switch_B_1上的命令：
+
++
+[listing]
+----
+FC_switch_B_1# setup
+    Configure read-only SNMP community string (yes/no) [n]: y
+    SNMP community string : public
+    Note:  Please set the SNMP community string to "Public" or another value of your choosing.
+    Configure default switchport interface state (shut/noshut) [shut]: noshut
+    Configure default switchport port mode F (yes/no) [n]: n
+    Configure default zone policy (permit/deny) [deny]: deny
+    Enable full zoneset distribution? (yes/no) [n]: yes
+----
+
+
+
+
+== 取得連接埠授權
+
+您不需要在持續範圍的連接埠上使用Cisco交換器授權、而是可以取得所使用之特定連接埠的授權、並從未使用的連接埠移除授權。
+
+您應該確認交換器組態中的授權連接埠數量、並視需要將授權從一個連接埠移至另一個連接埠。
+
+.步驟
+. 顯示交換器架構的授權使用量：
++
+「如何連接埠資源模組1」
+
++
+判斷哪些連接埠需要授權。如果其中有些連接埠未經授權、請判斷您是否有額外的授權連接埠、並考慮移除這些連接埠的授權。
+
+. 進入組態模式：
++
+組態t
+
+. 從選取的連接埠移除授權：
++
+.. 選取要未經授權的連接埠：
++
+「介面_介面名稱_」
+
+.. 從連接埠移除授權：
++
+「不需取得連接埠授權」
+
+.. 結束連接埠組態介面：
++
+「退出」
+
+
+
+. 取得所選連接埠的授權：
++
+.. 選取要未經授權的連接埠：
++
+「介面_介面名稱_」
+
+.. 讓連接埠符合取得授權的資格：
++
+「連接埠授權」
+
+.. 在連接埠上取得授權：
++
+「取得連接埠授權」
+
+.. 結束連接埠組態介面：
++
+「退出」
+
+
+
+. 針對任何其他連接埠重複上述步驟。
+. 結束組態模式：
++
+「退出」
+
+
+
+
+
+=== 移除及取得連接埠上的授權
+
+此範例顯示正在從連接埠FC1/2移除授權、連接埠FC1/1符合取得授權的資格、以及正在連接埠FC1/1上取得的授權：
+
+[listing]
+----
+Switch_A_1# conf t
+    Switch_A_1(config)# interface fc1/2
+    Switch_A_1(config)# shut
+    Switch_A_1(config-if)# no port-license acquire
+    Switch_A_1(config-if)# exit
+    Switch_A_1(config)# interface fc1/1
+    Switch_A_1(config-if)# port-license
+    Switch_A_1(config-if)# port-license acquire
+    Switch_A_1(config-if)# no shut
+    Switch_A_1(config-if)# end
+    Switch_A_1# copy running-config startup-config
+
+    Switch_B_1# conf t
+    Switch_B_1(config)# interface fc1/2
+    Switch_B_1(config)# shut
+    Switch_B_1(config-if)# no port-license acquire
+    Switch_B_1(config-if)# exit
+    Switch_B_1(config)# interface fc1/1
+    Switch_B_1(config-if)# port-license
+    Switch_B_1(config-if)# port-license acquire
+    Switch_B_1(config-if)# no shut
+    Switch_B_1(config-if)# end
+    Switch_B_1# copy running-config startup-config
+----
+下列範例顯示正在驗證的連接埠授權使用量：
+
+[listing]
+----
+Switch_A_1# show port-resources module 1
+    Switch_B_1# show port-resources module 1
+----
+
+
+== 在Cisco MDS 9148或9148S交換器中啟用連接埠
+
+在Cisco MDS 9148或9148S交換器中、您必須手動啟用MetroCluster 以供選擇的連接埠。
+
+.關於這項工作
+* 您可以在Cisco MDS 9148或9148S交換器中手動啟用16個連接埠。
+* Cisco交換器可讓您將Pod授權套用至隨機連接埠、而非依序套用。
+* Cisco交換器需要使用每個連接埠群組的一個連接埠、除非您需要12個以上的連接埠。
+
+
+.步驟
+. 檢視Cisco交換器中可用的連接埠群組：
++
+「How port-Resources模組_blue_number_」
+
+. 授權並取得連接埠群組中所需的連接埠：
++
+組態t
+
++
+"interface _port_number_"
+
++
+《小屋》
+
++
+「取得連接埠授權」
+
++
+"不關機"
+
++
+例如、下列命令順序授權並取得連接埠光纖通道1/45：
+
++
+[listing]
+----
+switch# config t
+switch(config)#
+switch(config)# interface fc 1/45
+switch(config-if)#
+switch(config-if)# shut
+switch(config-if)# port-license acquire
+switch(config-if)# no shut
+switch(config-if)# end
+----
+. 儲存組態：
++
+「copy running-config startup-config」
+
+
+
+
+
+== 在Cisco FC交換器上設定F-port
+
+您必須在FC交換器上設定F-port。
+
+在不支援的組態中MetroCluster 、F連接埠是將交換器連接至HBA啟動器、FC-VI互連和FC對SAS橋接器的連接埠。
+
+每個連接埠都必須個別設定。
+
+請參閱下列各節、識別您組態的F-port（交換器對節點）：
+
+* link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）"]
+* link:concept_port_assignments_for_fc_switches_when_using_ontap_9_0.html["FC交換器的連接埠指派（使用ONTAP 功能）9.0"]
+
+
+此工作必須在MetroCluster 整個交換器上執行、且必須採用此功能。
+
+.步驟
+. 進入組態模式：
++
+組態t
+
+. 進入連接埠的介面組態模式：
++
+「介面_port-ID_」
+
+. 關閉連接埠：
++
+「關機」
+
+. 將連接埠設為F模式：
++
+'切換模式F'
+
+. 將連接埠設定為固定速度：
++
+「witchport speed _spee-value_」
+
++
+「_spee-value_」可以是「8000」或「16000」
+
+. 將交換器連接埠的速率模式設定為專用：
++
+「witchport RA率 模式Dedicated」
+
+. 重新啟動連接埠：
++
+"不關機"
+
+. 結束組態模式：
++
+《結束》
+
+
+
+以下範例顯示兩個交換器上的命令：
+
+[listing]
+----
+Switch_A_1# config  t
+FC_switch_A_1(config)# interface fc 1/1
+FC_switch_A_1(config-if)# shutdown
+FC_switch_A_1(config-if)# switchport mode F
+FC_switch_A_1(config-if)# switchport speed 8000
+FC_switch_A_1(config-if)# switchport rate-mode dedicated
+FC_switch_A_1(config-if)# no shutdown
+FC_switch_A_1(config-if)# end
+FC_switch_A_1# copy running-config startup-config
+
+FC_switch_B_1# config  t
+FC_switch_B_1(config)# interface fc 1/1
+FC_switch_B_1(config-if)# switchport mode F
+FC_switch_B_1(config-if)# switchport speed 8000
+FC_switch_B_1(config-if)# switchport rate-mode dedicated
+FC_switch_B_1(config-if)# no shutdown
+FC_switch_B_1(config-if)# end
+FC_switch_B_1# copy running-config startup-config
+----
+
+
+== 將緩衝區對緩衝區的信用額度指派給ISL所在同一個連接埠群組中的F-Port
+
+如果F連接埠與ISL位於同一個連接埠群組、則必須將緩衝區對緩衝區的信用額度指派給F連接埠。如果連接埠沒有所需的緩衝區對緩衝資源、則ISL可能無法運作。
+
+如果F連接埠與ISL連接埠不在同一個連接埠群組中、則不需要執行此工作。
+
+如果F連接埠位於包含ISL的連接埠群組中、則必須在MetroCluster 支援該組態的每個FC交換器上執行此工作。
+
+.步驟
+. 進入組態模式：
++
+組態t
+
+. 設定連接埠的介面組態模式：
++
+「介面_port-ID_」
+
+. 停用連接埠：
++
+《小屋》
+
+. 如果連接埠尚未處於F模式、請將連接埠設為F模式：
++
+'切換模式F'
+
+. 將非E連接埠的緩衝區對緩衝區信用額度設為1：
++
+《witchport fcrxbbCredit 1》
+
+. 重新啟用連接埠：
++
+"不關機"
+
+. 結束組態模式：
++
+「退出」
+
+. 將更新的組態複製到啟動組態：
++
+「copy running-config startup-config」
+
+. 驗證分配給連接埠的緩衝區對緩衝區信用額度：
++
+「如何連接埠資源模組1」
+
+. 結束組態模式：
++
+「退出」
+
+. 在網路中的另一台交換器上重複上述步驟。
+. 驗證設定：
++
+「如何連接埠資源模組1」
+
+
+
+在此範例中、連接埠FC1/40是ISL。連接埠FC1/37、FC1/38和FC1/39位於相同的連接埠群組中、必須加以設定。
+
+下列命令顯示設定FC1/37到FC1/39的連接埠範圍：
+
+[listing]
+----
+FC_switch_A_1# conf t
+FC_switch_A_1(config)# interface fc1/37-39
+FC_switch_A_1(config-if)# shut
+FC_switch_A_1(config-if)# switchport mode F
+FC_switch_A_1(config-if)# switchport fcrxbbcredit 1
+FC_switch_A_1(config-if)# no shut
+FC_switch_A_1(config-if)# exit
+FC_switch_A_1# copy running-config startup-config
+
+FC_switch_B_1# conf t
+FC_switch_B_1(config)# interface fc1/37-39
+FC_switch_B_1(config-if)# shut
+FC_switch_B_1(config-if)# switchport mode F
+FC_switch_B_1(config-if)# switchport fcrxbbcredit 1
+FC_switch_A_1(config-if)# no shut
+FC_switch_A_1(config-if)# exit
+FC_switch_B_1# copy running-config startup-config
+----
+下列命令和系統輸出顯示設定已正確套用：
+
+[listing]
+----
+FC_switch_A_1# show port-resource module 1
+...
+Port-Group 11
+ Available dedicated buffers are 93
+
+--------------------------------------------------------------------
+Interfaces in the Port-Group       B2B Credit  Bandwidth  Rate Mode
+                                      Buffers     (Gbps)
+
+--------------------------------------------------------------------
+fc1/37                                     32        8.0  dedicated
+fc1/38                                      1        8.0  dedicated
+fc1/39                                      1        8.0  dedicated
+...
+
+FC_switch_B_1# port-resource module
+...
+Port-Group 11
+ Available dedicated buffers are 93
+
+--------------------------------------------------------------------
+Interfaces in the Port-Group       B2B Credit  Bandwidth  Rate Mode
+                                     Buffers     (Gbps)
+
+--------------------------------------------------------------------
+fc1/37                                     32        8.0  dedicated
+fc1/38                                      1        8.0  dedicated
+fc1/39                                      1        8.0 dedicated
+...
+----
+
+
+== 在Cisco FC交換器上建立及設定VSAN
+
+您必須為FC-VI連接埠建立VSAN、MetroCluster 並為每個FC交換器上的儲存連接埠建立VSAN（以供支援）（以供支援）。
+
+VSAN應該有唯一的號碼和名稱。如果您使用兩個ISL來依序傳送框架、則必須執行其他組態。
+
+此工作的範例使用下列命名慣例：
+
+[cols="1,2,1"]
+|===
+
+
+| 交換器架構 | vSAN名稱 | ID號碼 
+
+
+ a| 
+1.
+ a| 
+FCVI_1_10
+ a| 
+10.
+
+
+
+ a| 
+STOR_1_20
+ a| 
+20
+
+
+
+ a| 
+2.
+ a| 
+FCVI_2_30
+ a| 
+30
+
+
+
+ a| 
+STOR_2_20
+ a| 
+40
+
+|===
+此工作必須在每個FC交換器架構上執行。
+
+.步驟
+. 設定FC-VI VSAN：
++
+.. 如果您尚未進入組態模式：
++
+組態t
+
+.. 編輯VSAN資料庫：
++
+"vSAN資料庫"
+
+.. 設定VSAN ID：
++
+「vSAN _vSAN-ID_」
+
+.. 設定VSAN名稱：
++
+「vSAN _vSAN-ID_ name _vSAN_name_」
+
+
+
+. 新增連接埠至FC-VI VSAN：
++
+.. 在VSAN中新增每個連接埠的介面：
++
+「vSAN _vSAN-ID_介面_interface_name_」
+
++
+對於FC-VI VSAN、將會新增連接本機FC-VI連接埠的連接埠。
+
+.. 結束組態模式：
++
+《結束》
+
+.. 將執行組態複製到啟動組態：
++
+「copy running-config startup-config」
+
++
+在下列範例中、連接埠為FC1/1和FC1/13：
+
++
+[listing]
+----
+FC_switch_A_1# conf t
+FC_switch_A_1(config)# vsan database
+FC_switch_A_1(config)# vsan 10 interface fc1/1
+FC_switch_A_1(config)# vsan 10 interface fc1/13
+FC_switch_A_1(config)# end
+FC_switch_A_1# copy running-config startup-config
+FC_switch_B_1# conf t
+FC_switch_B_1(config)# vsan database
+FC_switch_B_1(config)# vsan 10 interface fc1/1
+FC_switch_B_1(config)# vsan 10 interface fc1/13
+FC_switch_B_1(config)# end
+FC_switch_B_1# copy running-config startup-config
+----
+
+
+. 驗證VSAN的連接埠成員資格：
++
+「vSAN成員」
+
++
+[listing]
+----
+FC_switch_A_1# show vsan member
+FC_switch_B_1# show vsan member
+----
+. 設定VSAN以保證依序交付框架或不按順序交付框架：
++
+
+NOTE: 建議使用標準IOD設定。只有在必要時才應設定ood。
+
++
+link:concept_prepare_for_the_mcc_installation.html["使用TDM/WDM設備搭配架構附加MetroCluster 的功能的考量"]
+
++
+** 必須執行下列步驟以設定依序傳送框架：
++
+... 進入組態模式：
++
+"conft"
+
+... 為VSAN提供訂單交換保證：
++
+「訂單保證vSAN _vSAN-ID_」
+
++
+
+IMPORTANT: 對於FC-VI VSAN（FCVI_1_10和FCVI_2_30）、您必須依序啟用僅在VSAN 10上的框架和交換保證。
+
+... 啟用VSAN的負載平衡：
++
+「vSAN _vSAN-ID_負載平衡src-dst-id」
+
+... 結束組態模式：
++
+《結束》
+
+... 將執行組態複製到啟動組態：
++
+「copy running-config startup-config」
+
++
+在FC_switch_a_1上設定以順序傳送框架的命令：
+
++
+[listing]
+----
+FC_switch_A_1# config t
+FC_switch_A_1(config)# in-order-guarantee vsan 10
+FC_switch_A_1(config)# vsan database
+FC_switch_A_1(config-vsan-db)# vsan 10 loadbalancing src-dst-id
+FC_switch_A_1(config-vsan-db)# end
+FC_switch_A_1# copy running-config startup-config
+----
++
+在FC_switch_B_1上設定框架的順序傳送命令：
+
++
+[listing]
+----
+FC_switch_B_1# config t
+FC_switch_B_1(config)# in-order-guarantee vsan 10
+FC_switch_B_1(config)# vsan database
+FC_switch_B_1(config-vsan-db)# vsan 10 loadbalancing src-dst-id
+FC_switch_B_1(config-vsan-db)# end
+FC_switch_B_1# copy running-config startup-config
+----
+
+
+** 必須執行下列步驟、才能設定不按順序傳送框架：
++
+... 進入組態模式：
++
+"conft"
+
+... 停用VSAN的訂單交換保證：
++
+「沒有訂單保證vSAN _vSAN-ID_」
+
+... 啟用VSAN的負載平衡：
++
+「vSAN _vSAN-ID_負載平衡src-dst-id」
+
+... 結束組態模式：
++
+《結束》
+
+... 將執行組態複製到啟動組態：
++
+「copy running-config startup-config」
+
++
+在FC_switch_a_1上設定傳輸框架順序不正常的命令：
+
++
+[listing]
+----
+FC_switch_A_1# config t
+FC_switch_A_1(config)# no in-order-guarantee vsan 10
+FC_switch_A_1(config)# vsan database
+FC_switch_A_1(config-vsan-db)# vsan 10 loadbalancing src-dst-id
+FC_switch_A_1(config-vsan-db)# end
+FC_switch_A_1# copy running-config startup-config
+----
++
+在FC_switch_B_1上設定框架的不按順序傳送的命令：
+
++
+[listing]
+----
+FC_switch_B_1# config t
+FC_switch_B_1(config)# no in-order-guarantee vsan 10
+FC_switch_B_1(config)# vsan database
+FC_switch_B_1(config-vsan-db)# vsan 10 loadbalancing src-dst-id
+FC_switch_B_1(config-vsan-db)# end
+FC_switch_B_1# copy running-config startup-config
+----
++
+
+NOTE: 在ONTAP 控制器模組上設定功能時、必須在MetroCluster 每個控制器模組上明確設定ood、以供採用此功能。
+
++
+link:concept_configure_the_mcc_software_in_ontap.html#configuring-in-order-delivery-or-out-of-order-delivery-of-frames-on-ontap-software["設定以順序交付或不按順序交付以ONTAP 利在各種軟體上交付框架"]
+
+
+
+
+
+. 設定FC-VI VSAN的QoS原則：
++
+--
+.. 進入組態模式：
++
+"conft"
+
+.. 依序輸入下列命令、啟用QoS並建立類別對應：
++
+「QoS啟用」
+
++
+「QoS類別對應_class_name_ MATCH -any」
+
+.. 將上一步建立的類別對應新增至原則對應：
++
+"Class _class_name_"
+
+.. 設定優先順序：
++
+第一優先
+
+.. 將VSAN新增至先前在此程序中建立的原則對應：
++
+「QoS服務原則_policy_name_ vSAN _vSAN-id_」
+
+.. 將更新的組態複製到啟動組態：
++
+「copy running-config startup-config」
+
+
+
+--
++
+在FC_switch_a_1上設定QoS原則的命令：
+
++
+[listing]
+----
+FC_switch_A_1# conf t
+FC_switch_A_1(config)# qos enable
+FC_switch_A_1(config)# qos class-map FCVI_1_10_Class match-any
+FC_switch_A_1(config)# qos policy-map FCVI_1_10_Policy
+FC_switch_A_1(config-pmap)# class FCVI_1_10_Class
+FC_switch_A_1(config-pmap-c)# priority high
+FC_switch_A_1(config-pmap-c)# exit
+FC_switch_A_1(config)# exit
+FC_switch_A_1(config)# qos service policy FCVI_1_10_Policy vsan 10
+FC_switch_A_1(config)# end
+FC_switch_A_1# copy running-config startup-config
+----
++
+在FC_switch_B_1上設定QoS原則的命令：
+
++
+[listing]
+----
+FC_switch_B_1# conf t
+FC_switch_B_1(config)# qos enable
+FC_switch_B_1(config)# qos class-map FCVI_1_10_Class match-any
+FC_switch_B_1(config)# qos policy-map FCVI_1_10_Policy
+FC_switch_B_1(config-pmap)# class FCVI_1_10_Class
+FC_switch_B_1(config-pmap-c)# priority high
+FC_switch_B_1(config-pmap-c)# exit
+FC_switch_B_1(config)# exit
+FC_switch_B_1(config)# qos service policy FCVI_1_10_Policy vsan 10
+FC_switch_B_1(config)# end
+FC_switch_B_1# copy running-config startup-config
+----
+. 設定儲存VSAN：
++
+--
+.. 設定VSAN ID：
++
+「vSAN _vSAN-ID_」
+
+.. 設定VSAN名稱：
++
+「vSAN _vSAN-ID_ name _vSAN_name_」
+
+
+
+--
++
+在FC_switch_a_1上設定儲存VSAN的命令：
+
++
+[listing]
+----
+FC_switch_A_1# conf t
+FC_switch_A_1(config)# vsan database
+FC_switch_A_1(config-vsan-db)# vsan 20
+FC_switch_A_1(config-vsan-db)# vsan 20 name STOR_1_20
+FC_switch_A_1(config-vsan-db)# end
+FC_switch_A_1# copy running-config startup-config
+----
++
+在FC_switch_B_1上設定儲存VSAN的命令：
+
++
+[listing]
+----
+FC_switch_B_1# conf t
+FC_switch_B_1(config)# vsan database
+FC_switch_B_1(config-vsan-db)# vsan 20
+FC_switch_B_1(config-vsan-db)# vsan 20 name STOR_1_20
+FC_switch_B_1(config-vsan-db)# end
+FC_switch_B_1# copy running-config startup-config
+----
+. 新增連接埠至儲存VSAN。
++
+對於儲存VSAN、必須新增所有連接HBA或FC對SAS橋接器的連接埠。在此範例中、FC1/5、FC1/9、FC1/17、FC1/21。正在新增FC1/25、FC1/29、FC1/33和FC1/37。
+
++
+在FC_switch_a_1上新增連接埠至儲存VSAN的命令：
+
++
+[listing]
+----
+FC_switch_A_1# conf t
+FC_switch_A_1(config)# vsan database
+FC_switch_A_1(config)# vsan 20 interface fc1/5
+FC_switch_A_1(config)# vsan 20 interface fc1/9
+FC_switch_A_1(config)# vsan 20 interface fc1/17
+FC_switch_A_1(config)# vsan 20 interface fc1/21
+FC_switch_A_1(config)# vsan 20 interface fc1/25
+FC_switch_A_1(config)# vsan 20 interface fc1/29
+FC_switch_A_1(config)# vsan 20 interface fc1/33
+FC_switch_A_1(config)# vsan 20 interface fc1/37
+FC_switch_A_1(config)# end
+FC_switch_A_1# copy running-config startup-config
+----
++
+在FC_switch_B_1上新增連接埠至儲存VSAN的命令：
+
++
+[listing]
+----
+FC_switch_B_1# conf t
+FC_switch_B_1(config)# vsan database
+FC_switch_B_1(config)# vsan 20 interface fc1/5
+FC_switch_B_1(config)# vsan 20 interface fc1/9
+FC_switch_B_1(config)# vsan 20 interface fc1/17
+FC_switch_B_1(config)# vsan 20 interface fc1/21
+FC_switch_B_1(config)# vsan 20 interface fc1/25
+FC_switch_B_1(config)# vsan 20 interface fc1/29
+FC_switch_B_1(config)# vsan 20 interface fc1/33
+FC_switch_B_1(config)# vsan 20 interface fc1/37
+FC_switch_B_1(config)# end
+FC_switch_B_1# copy running-config startup-config
+----
+
+
+
+
+== 設定E連接埠
+
+您必須設定連接ISL的交換器連接埠（這些是E連接埠）。
+
+您使用的程序取決於您使用的交換器：
+
+* <<config-e-ports-cisco-fc,在Cisco FC交換器上設定E連接埠>>
+* <<config-fcip-ports-single-isl-cisco-9250i,在Cisco 9250i FC交換器上設定單一ISL的FCIP連接埠>>
+* <<config-fcip-ports-dual-isl-cisco-9250i,在Cisco 9250i FC交換器上設定雙ISL的FCIP連接埠>>
+
+
+
+
+=== 在Cisco FC交換器上設定E連接埠
+
+您必須設定連接交換器間連結（ISL）的FC交換器連接埠。
+
+這些是E連接埠、必須針對每個連接埠進行組態設定。若要這麼做、您必須計算緩衝區對緩衝區信用額度（BBC）的正確數量。
+
+Fabric中的所有ISL都必須設定相同的速度和距離設定。
+
+此工作必須在每個ISL連接埠上執行。
+
+.步驟
+. 請使用下表來判斷可能的連接埠速度每公里所需的調整BBC。
++
+若要判斷正確數量的BBC、您需要將調整後的BBC（由下表決定）乘以交換器之間的距離（單位為公里）。FC VI架構行為需要1.5倍的調整係數。
+
++
+|===
+
+
+| 速度（以Gbps為單位） | 每公里需要BBC | 需要調整的BBC（每公里BBC x 1.5） 
+
+
+ a| 
+1.
+ a| 
+0.5
+ a| 
+0.75
+
+
+
+ a| 
+2.
+ a| 
+1.
+ a| 
+1.5
+
+
+
+ a| 
+4.
+ a| 
+2.
+ a| 
+3.
+
+
+
+ a| 
+8.
+ a| 
+4.
+ a| 
+6.
+
+
+
+ a| 
+16
+ a| 
+8.
+ a| 
+12.
+
+|===
+
+
+例如、若要在4-Gbps連結上計算30公里距離所需的點數、請進行下列計算：
+
+* 以Gbps為單位的速率為4
+* 需要調整的BBC為3
+* 交換器之間的距離（公里）為30公里
+* 3 x 30 = 90
++
+.. 進入組態模式：
++
+組態t
+
+.. 指定您要設定的連接埠：
++
+「介面_連接埠名稱_」
+
+.. 關閉連接埠：
++
+「關機」
+
+.. 將連接埠的速率模式設定為「Dedicated（專用）」：
++
+「witchport RA率 模式Dedicated」
+
+.. 設定連接埠的速度：
++
+「witchport speed _spee-value_」
+
+.. 設定連接埠的緩衝區對緩衝區點數：
++
+'切入fcrxbbCredit _number_of_buffers _
+
+.. 將連接埠設為E模式：
++
+'交換埠模式E '
+
+.. 啟用連接埠的主幹模式：
++
+「開啟交換埠主幹模式」
+
+.. 將ISL虛擬儲存區域網路（VSAN）新增至主幹：
++
+《witchport trunk allowed vSAN 10》（允許vSAN 10）
+
++
+"交換埠主幹允許vSAN新增20個"
+
+.. 將連接埠新增至連接埠通道1：
++
+「通路群組1」
+
+.. 針對Fabric中的合作夥伴交換器上相符的ISL連接埠、重複上述步驟。
++
+下列範例顯示連接埠FC1/41設定的距離為30公里和8 Gbps：
+
++
+[listing]
+----
+FC_switch_A_1# conf t
+FC_switch_A_1# shutdown
+FC_switch_A_1# switchport rate-mode dedicated
+FC_switch_A_1# switchport speed 8000
+FC_switch_A_1# switchport fcrxbbcredit 60
+FC_switch_A_1# switchport mode E
+FC_switch_A_1# switchport trunk mode on
+FC_switch_A_1# switchport trunk allowed vsan 10
+FC_switch_A_1# switchport trunk allowed vsan add 20
+FC_switch_A_1# channel-group 1
+fc1/36 added to port-channel 1 and disabled
+
+FC_switch_B_1# conf t
+FC_switch_B_1# shutdown
+FC_switch_B_1# switchport rate-mode dedicated
+FC_switch_B_1# switchport speed 8000
+FC_switch_B_1# switchport fcrxbbcredit 60
+FC_switch_B_1# switchport mode E
+FC_switch_B_1# switchport trunk mode on
+FC_switch_B_1# switchport trunk allowed vsan 10
+FC_switch_B_1# switchport trunk allowed vsan add 20
+FC_switch_B_1# channel-group 1
+fc1/36 added to port-channel 1 and disabled
+----
+.. 在兩台交換器上發出下列命令以重新啟動連接埠：
++
+"不關機"
+
+.. 針對網路中的其他ISL連接埠、重複上述步驟。
+.. 將原生VSAN新增至同一網路中兩部交換器的連接埠通道介面：
++
+「介面連接埠通道_number_」
+
++
+"交換埠主幹允許vSAN新增_norment_san識別碼_"
+
+.. 驗證連接埠通道的組態：
++
+「How介面連接埠通道_number_」
+
++
+連接埠通道應具有下列屬性：
+
+
+
+* 連接埠通道為「主幹連線」。
+* 管理連接埠模式為E、主幹模式為開啟。
+* 「速度」會顯示所有ISL連結速度的累計值。
++
+例如、兩個以4 Gbps運作的ISL連接埠應顯示8 Gbps的速度。
+
+* 「主幹VSAN（管理員允許和作用中）」會顯示所有允許的VSAN。
+* 「主幹VSAN（UP）」顯示所有允許的VSAN。
+* 成員清單會顯示已新增至連接埠通道的所有ISL連接埠。
+* 連接埠VSAN號碼應與包含ISL的VSAN相同（通常為原生vSAN 1）。
++
+[listing]
+----
+FC_switch_A_1(config-if)# show int port-channel 1
+port-channel 1 is trunking
+    Hardware is Fibre Channel
+    Port WWN is 24:01:54:7f:ee:e2:8d:a0
+    Admin port mode is E, trunk mode is on
+    snmp link state traps are enabled
+    Port mode is TE
+    Port vsan is 1
+    Speed is 8 Gbps
+    Trunk vsans (admin allowed and active) (1,10,20)
+    Trunk vsans (up)                       (1,10,20)
+    Trunk vsans (isolated)                 ()
+    Trunk vsans (initializing)             ()
+    5 minutes input rate 1154832 bits/sec,144354 bytes/sec, 170 frames/sec
+    5 minutes output rate 1299152 bits/sec,162394 bytes/sec, 183 frames/sec
+      535724861 frames input,1069616011292 bytes
+        0 discards,0 errors
+        0 invalid CRC/FCS,0 unknown class
+        0 too long,0 too short
+      572290295 frames output,1144869385204 bytes
+        0 discards,0 errors
+      5 input OLS,11  LRR,2 NOS,0 loop inits
+      14 output OLS,5 LRR, 0 NOS, 0 loop inits
+    Member[1] : fc1/36
+    Member[2] : fc1/40
+    Interface last changed at Thu Oct 16 11:48:00 2014
+----
++
+.. 兩台交換器的結束介面組態：
++
+《結束》
+
+.. 將更新的組態複製到兩個Fabric的啟動組態：
++
+「copy running-config startup-config」
+
++
+[listing]
+----
+FC_switch_A_1(config-if)# end
+FC_switch_A_1# copy running-config startup-config
+
+FC_switch_B_1(config-if)# end
+FC_switch_B_1# copy running-config startup-config
+----
+.. 在第二個交換器架構上重複上述步驟。
+
+
+
+
+當您在使用ONTAP 更新版本的版本時、使用纜線連接FC交換器時、必須確認您使用的是指定的連接埠指派。請參閱 link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）"]
+
+
+
+=== 在Cisco 9250i FC交換器上設定單一ISL的FCIP連接埠
+
+您必須建立FCIP設定檔和介面來設定連接ISL（E連接埠）的FCIP交換器連接埠、然後將它們指派給IPStorage1/1 GbE介面。
+
+此工作僅適用於使用每個交換器架構的單一ISL組態、並在每個交換器上使用IPStorage1/1介面。
+
+此工作必須在每個FC交換器上執行。
+
+每個交換器都會建立兩個FCIP設定檔：
+
+* 網路1
++
+** FC_SWIT_A_1已設定FCIP設定檔11和111。
+** FC_SWIT_B_1已設定FCIP設定檔12和121.
+
+
+* 網路2.
++
+** FC_SWIT_A_2已設定FCIP設定檔13和131。
+** FC_SWIT_B_2已設定FCIP設定檔14和141。
+
+
+
+
+.步驟
+. 進入組態模式：
++
+組態t
+
+. 啟用FCIP：
++
+《功能FCIP》
+
+. 設定IPStorage1/1 GbE介面：
++
+--
+.. 進入組態模式：
++
+"conft"
+
+.. 指定IPStorage1/1介面：
++
+"interface IPStorage1/1"（介面IPStorage1/1）
+
+.. 指定IP位址和子網路遮罩：
++
+「介面_ip-address_子網路遮罩_」
+
+.. 指定2500的MTU大小：
++
+《witchport MTU 2500》
+
+.. 啟用連接埠：
++
+"不關機"
+
+.. 結束組態模式：
++
+「退出」
+
+
+
+--
++
+下列範例顯示IPStorage1/1連接埠的組態：
+
++
+[listing]
+----
+conf t
+interface IPStorage1/1
+  ip address 192.168.1.201 255.255.255.0
+  switchport mtu 2500
+  no shutdown
+exit
+----
+. 設定FC-VI流量的FCIP設定檔：
++
+--
+.. 設定FCIP設定檔並進入FCIP設定檔組態模式：
++
+「FCIP設定檔_FCIP設定檔名稱」
+
++
+設定檔名稱取決於要設定的交換器。
+
+.. 將IPStorage1/1介面的IP位址指派給FCIP設定檔：
++
+「IP位址_ip-address_」
+
+.. 將FCIP設定檔指派給TCP連接埠3227：
++
+連接埠3227
+
+.. 設定TCP設定：
++
+「TCP keepalive-timeout 1」
+
++
+「TCP最大重新傳輸量3」
+
++
+「最小可用頻寬為5000 Mbps、每秒4500次往返時間為3」
+
++
+「TCP最小重新傳輸時間200」
+
++
+「TCP keepalive-timeout 1」
+
++
+「TCP PMTU啟用重設逾時3、600」
+
++
+「TCP SAK-enable」（無TCP CWM）
+
+
+
+--
++
+下列範例顯示FCIP設定檔的組態：
+
++
+[listing]
+----
+conf t
+fcip profile 11
+  ip address 192.168.1.333
+  port 3227
+  tcp keepalive-timeout 1
+tcp max-retransmissions 3
+max-bandwidth-mbps 5000 min-available-bandwidth-mbps 4500 round-trip-time-ms 3
+  tcp min-retransmit-time 200
+  tcp keepalive-timeout 1
+  tcp pmtu-enable reset-timeout 3600
+  tcp sack-enable
+  no tcp cwm
+----
+. 設定儲存流量的FCIP設定檔：
++
+--
+.. 以名稱111設定FCIP設定檔、然後進入FCIP設定檔組態模式：
++
+《FCIP設定檔111》
+
+.. 將IPStorage1/1介面的IP位址指派給FCIP設定檔：
++
+「IP位址_ip-address_」
+
+.. 將FCIP設定檔指派給TCP連接埠3229：
++
+連接埠3229
+
+.. 設定TCP設定：
++
+「TCP keepalive-timeout 1」
+
++
+「TCP最大重新傳輸量3」
+
++
+「最小可用頻寬為5000 Mbps、每秒4500次往返時間為3」
+
++
+「TCP最小重新傳輸時間200」
+
++
+「TCP keepalive-timeout 1」
+
++
+「TCP PMTU啟用重設逾時3、600」
+
++
+「TCP SAK-enable」（無TCP CWM）
+
+
+
+--
++
+下列範例顯示FCIP設定檔的組態：
+
++
+[listing]
+----
+conf t
+fcip profile 111
+  ip address 192.168.1.334
+  port 3229
+  tcp keepalive-timeout 1
+tcp max-retransmissions 3
+max-bandwidth-mbps 5000 min-available-bandwidth-mbps 4500 round-trip-time-ms 3
+  tcp min-retransmit-time 200
+  tcp keepalive-timeout 1
+  tcp pmtu-enable reset-timeout 3600
+  tcp sack-enable
+  no tcp cwm
+----
+. 建立兩個FCIP介面中的第一個：
++
+介面FCIP 1
+
++
+此介面用於FC-IV流量。
+
++
+--
+.. 選取先前建立的設定檔11：
++
+「使用設定檔11」
+
+.. 在合作夥伴交換器上設定IPStorage1/1連接埠的IP位址和連接埠：
++
+「對等資訊ipaddr _aper-switch-port-ip_連接埠3227」
+
+.. 選取TCP連線2：
++
+「TCP連線2」
+
+.. 停用壓縮：
++
+「無IP壓縮」
+
+.. 啟用介面：
++
+"不關機"
+
+.. 將控制TCP連線設定為48、並將資料連線設定為26、將該差異化服務程式碼點（Dscp）值上的所有封包標記為：
++
+"QoS控制48個資料26"
+
+.. 結束介面組態模式：
++
+「退出」
+
+
+
+--
++
+下列範例顯示FCIP介面的組態：
+
++
+[listing]
+----
+interface fcip  1
+  use-profile 11
+# the port # listed in this command is the port that the remote switch is listening on
+ peer-info ipaddr 192.168.32.334   port 3227
+  tcp-connection 2
+  no ip-compression
+  no shutdown
+  qos control 48 data 26
+exit
+----
+. 建立兩個FCIP介面的第二個介面：
++
+介面FCIP 2
+
++
+此介面用於儲存流量。
+
++
+--
+.. 選取先前建立的設定檔111：
++
+「使用設定檔111」
+
+.. 在合作夥伴交換器上設定IPStorage1/1連接埠的IP位址和連接埠：
++
+「對等資訊ipaddr _aper-switch-port-ip_連接埠3229」
+
+.. 選取TCP連線2：
++
+「TCP連線5」
+
+.. 停用壓縮：
++
+「無IP壓縮」
+
+.. 啟用介面：
++
+"不關機"
+
+.. 將控制TCP連線設定為48、並將資料連線設定為26、將該差異化服務程式碼點（Dscp）值上的所有封包標記為：
++
+"QoS控制48個資料26"
+
+.. 結束介面組態模式：
++
+「退出」
+
+
+
+--
++
+下列範例顯示FCIP介面的組態：
+
++
+[listing]
+----
+interface fcip  2
+  use-profile 11
+# the port # listed in this command is the port that the remote switch is listening on
+ peer-info ipaddr 192.168.32.33e  port 3229
+  tcp-connection 5
+  no ip-compression
+  no shutdown
+  qos control 48 data 26
+exit
+----
+. 在FCIP 1介面上設定switchport設定：
++
+.. 進入組態模式：
++
+組態t
+
+.. 指定您要設定的連接埠：
++
+介面FCIP 1
+
+.. 關閉連接埠：
++
+「關機」
+
+.. 將連接埠設為E模式：
++
+'交換埠模式E '
+
+.. 啟用連接埠的主幹模式：
++
+「開啟交換埠主幹模式」
+
+.. 將允許的主幹vSAN設為10：
++
+《witchport trunk allowed vSAN 10》（允許vSAN 10）
+
+.. 設定連接埠的速度：
++
+「witchport speed _spee-value_」
+
+
+
+. 在FCIP 2介面上設定switchport設定：
++
+.. 進入組態模式：
++
+組態t
+
+.. 指定您要設定的連接埠：
++
+介面FCIP 2
+
+.. 關閉連接埠：
++
+「關機」
+
+.. 將連接埠設為E模式：
++
+'交換埠模式E '
+
+.. 啟用連接埠的主幹模式：
++
+「開啟交換埠主幹模式」
+
+.. 將允許的主幹vSAN設為20：
++
+'交換埠主幹允許vSAN 20 '
+
+.. 設定連接埠的速度：
++
+「witchport speed _spee-value_」
+
+
+
+. 在第二個交換器上重複上述步驟。
++
+唯一的差異是適當的IP位址和獨特的FCIP設定檔名稱。
+
++
+** 在設定第一個交換器架構時、FC_switch_B_1會設定FCIP設定檔12和121.
+** 設定第一個交換器架構時、FC_switch_a_2會設定FCIP設定檔13和131、而FC_switch_B_2則會設定FCIP設定檔14和141。
+
+
+. 重新啟動兩台交換器上的連接埠：
++
+"不關機"
+
+. 結束兩台交換器的介面組態：
++
+《結束》
+
+. 將更新的組態複製到兩台交換器的啟動組態：
++
+「copy running-config startup-config」
+
++
+[listing]
+----
+FC_switch_A_1(config-if)# end
+FC_switch_A_1# copy running-config startup-config
+
+FC_switch_B_1(config-if)# end
+FC_switch_B_1# copy running-config startup-config
+----
+. 在第二個交換器架構上重複上述步驟。
+
+
+
+
+=== 在Cisco 9250i FC交換器上設定雙ISL的FCIP連接埠
+
+您必須建立FCIP設定檔和介面來設定連接ISL（E連接埠）的FCIP交換器連接埠、然後將它們指派給IPStorage1/1和IPStorage1/2 GbE介面。
+
+此工作僅適用於使用每個交換器架構雙ISL的組態、使用每個交換器上的IPStorage1/1和IPStorage1/2 GbE介面。
+
+此工作必須在每個FC交換器上執行。
+
+image::../media/fcip_ports_dual_isl.gif[FCIP連接埠雙ISL]
+
+工作和範例使用下列設定檔組態表格：
+
+* <<fabric1_table>>
+* <<fabric2_table>>
+
+
+* Fabric 1設定檔組態表*
+
+|===
+
+
+| 交換器架構 | IPStorage介面 | IP位址 | 連接埠類型 | FCIP介面 | FCIP設定檔 | 連接埠 | 對等IP/連接埠 | vSAN ID 
+
+
+ a| 
+FC_SWIT_A_1
+ a| 
+IPStorage1/1.
+ a| 
+也稱為
+ a| 
+FC-VI
+ a| 
+FCIP 1.
+ a| 
+15
+ a| 
+3220
+ a| 
+c.c.c/3230
+ a| 
+10.
+
+
+
+ a| 
+儲存設備
+ a| 
+FCIP 2.
+ a| 
+20
+ a| 
+3221
+ a| 
+c.c.c/3231
+ a| 
+20
+
+
+
+ a| 
+IPStorage1/2
+ a| 
+b.b.b. b
+ a| 
+FC-VI
+ a| 
+FCIP 3.
+ a| 
+25
+ a| 
+3222
+ a| 
+d.d.d.d/322.
+ a| 
+10.
+
+
+
+ a| 
+儲存設備
+ a| 
+FCIP 4.
+ a| 
+30
+ a| 
+3223
+ a| 
+d..d.d/ 3233
+ a| 
+20
+
+
+
+ a| 
+FC_SWIT_B_1
+ a| 
+IPStorage1/1.
+ a| 
+2011年11月14日
+ a| 
+FC-VI
+ a| 
+FCIP 1.
+ a| 
+15
+ a| 
+3230
+ a| 
+A. AA/3220年
+ a| 
+10.
+
+
+
+ a| 
+儲存設備
+ a| 
+FCIP 2.
+ a| 
+20
+ a| 
+3231
+ a| 
+A. AA/3221年
+ a| 
+20
+
+
+
+ a| 
+IPStorage1/2
+ a| 
+d.d.d
+ a| 
+FC-VI
+ a| 
+FCIP 3.
+ a| 
+25
+ a| 
+3232
+ a| 
+b. bbbbb/3222
+ a| 
+10.
+
+
+
+ a| 
+儲存設備
+ a| 
+FCIP 4.
+ a| 
+30
+ a| 
+3233
+ a| 
+b. bbbbb/3223
+ a| 
+20
+
+|===
+* Fabric 2設定檔組態表*
+
+|===
+
+
+| 交換器架構 | IPStorage介面 | IP位址 | 連接埠類型 | FCIP介面 | FCIP設定檔 | 連接埠 | 對等IP/連接埠 | vSAN ID 
+
+
+ a| 
+FC_SWIT_A_2
+ a| 
+IPStorage1/1.
+ a| 
+例如
+ a| 
+FC-VI
+ a| 
+FCIP 1.
+ a| 
+15
+ a| 
+3220
+ a| 
+g.g.g.g./ 3230
+ a| 
+10.
+
+
+
+ a| 
+儲存設備
+ a| 
+FCIP 2.
+ a| 
+20
+ a| 
+3221
+ a| 
+g.g.g.g./ 3231
+ a| 
+20
+
+
+
+ a| 
+IPStorage1/2
+ a| 
+f.f.f.f.f
+ a| 
+FC-VI
+ a| 
+FCIP 3.
+ a| 
+25
+ a| 
+3222
+ a| 
+h.h/322.
+ a| 
+10.
+
+
+
+ a| 
+儲存設備
+ a| 
+FCIP 4.
+ a| 
+30
+ a| 
+3223
+ a| 
+h.h/3233
+ a| 
+20
+
+
+
+ a| 
+FC_SWIT_B_2
+ a| 
+IPStorage1/1.
+ a| 
+g.g.g.g.g
+ a| 
+FC-VI
+ a| 
+FCIP 1.
+ a| 
+15
+ a| 
+3230
+ a| 
+e.e.e.e.e /3220
+ a| 
+10.
+
+
+
+ a| 
+儲存設備
+ a| 
+FCIP 2.
+ a| 
+20
+ a| 
+3231
+ a| 
+e.e.e.e e.e /3221
+ a| 
+20
+
+
+
+ a| 
+IPStorage1/2
+ a| 
+h.h.h.h
+ a| 
+FC-VI
+ a| 
+FCIP 3.
+ a| 
+25
+ a| 
+3232
+ a| 
+f。f.f/3222
+ a| 
+10.
+
+
+
+ a| 
+儲存設備
+ a| 
+FCIP 4.
+ a| 
+30
+ a| 
+3233
+ a| 
+f.f.f/3223
+ a| 
+20
+
+|===
+.步驟
+. 進入組態模式：
++
+組態t
+
+. 啟用FCIP：
++
+《功能FCIP》
+
+. 在每個交換器上、設定兩個IPStorage介面（「IPStorage1/1'」和「IPStorage1/2'」）：
++
+.. [[subsection_a,substep 'a']輸入組態模式：
++
+"conft"
+
+.. 指定要建立的IPStorage介面：
++
+介面_ipstorage
+
++
+'_ipStorage_'參數值為「'IPStorage1/1'」或「IPStorage1/2'」。
+
+.. 指定先前指定之IPStorage介面的IP位址和子網路遮罩：
++
+「介面_ip-address_子網路遮罩_」
+
++
+
+NOTE: 在每個交換器上、IPStorage介面「'IPStorage1/1'」和「IPStorage1/2'」必須具有不同的IP位址。
+
+.. 將MTU大小指定為2500：
++
+《witchport MTU 2500》
+
+.. 啟用連接埠：
++
+"不關機"
+
+.. [Subforte_f,substep "'f']"]退出組態模式：
++
+「退出」
+
+.. 重複 <<substep_a>> 透過 <<substep_f>> 以不同的IP位址設定IPStorage1/2 GbE介面。
+
+
+. 使用設定檔組態表中指定的設定檔名稱、設定FC-VI和儲存流量的FCIP設定檔：
++
+.. 進入組態模式：
++
+"conft"
+
+.. 使用下列設定檔名稱設定FCIP設定檔：
++
+「FCIP設定檔_FCIP設定檔名稱」
+
++
+下表提供了"_FCip-profile-name_"參數的值：
+
++
+*** 15適用於IPStorage1/1上的FC-VI
+*** IPStorage1/1上的20個儲存設備
+*** 25適用於IPStorage1/2上的FC-VI
+*** 30用於IPStorage1/2上的儲存設備
+
+
+.. 根據設定檔組態表指派FCIP設定檔連接埠：
++
+"port _port_number_"
+
+.. 設定TCP設定：
++
+「TCP keepalive-timeout 1」
+
++
+「TCP最大重新傳輸量3」
+
++
+「最小可用頻寬為5000 Mbps、每秒4500次往返時間為3」
+
++
+「TCP最小重新傳輸時間200」
+
++
+「TCP keepalive-timeout 1」
+
++
+「TCP PMTU啟用重設逾時3、600」
+
++
+「TCP SACSACK啟用」
+
++
+沒有TCP WM
+
+
+
+. 建立FCIP介面：
++
+介面FCIP _FCIP_interface_
+
++
+如設定檔組態表所示、「_FCip_interface_'參數值為「1」、「2」、「3」或「4」。
+
++
+.. 將介面對應至先前建立的設定檔：
++
+「使用設定檔_profile」
+
+.. 設定對等IP位址和對等設定檔連接埠號碼：
++
+「對等資訊_Peer_IPstorage _ipaddr_連接埠_Peer_profile_port_number_」
+
+.. 選取TCP連線：
++
+「TCP-connection _connection-#_」
+
++
+FC-VI設定檔的「_connection-#_」參數值為「2」、儲存設定檔的「5」。
+
+.. 停用壓縮：
++
+「無IP壓縮」
+
+.. 啟用介面：
++
+"不關機"
+
+.. 將控制TCP連線設定為「48」、並將資料連線設定為「26」、以標示具有差異化服務程式碼點（Dscp）值的所有封包：
++
+"QoS控制48個資料26"
+
+.. 結束組態模式：
++
+「退出」
+
+
+
+. 在每個FCIP介面上設定switchport設定：
++
+.. 進入組態模式：
++
+組態t
+
+.. 指定您要設定的連接埠：
++
+介面FCIP 1
+
+.. 關閉連接埠：
++
+「關機」
+
+.. 將連接埠設為E模式：
++
+'交換埠模式E '
+
+.. 啟用連接埠的主幹模式：
++
+「開啟交換埠主幹模式」
+
+.. 指定特定VSAN上允許的主幹：
++
+"交換埠主幹允許vSAN _vSAN_id_"
+
++
+FC-VI設定檔的_vSAN_id_參數值為「'VSAN 10」、儲存設定檔的值為「'VSAN 20」。
+
+.. 設定連接埠的速度：
++
+「witchport speed _spee-value_」
+
+.. 結束組態模式：
++
+「退出」
+
+
+
+. 將更新的組態複製到兩台交換器的啟動組態：
++
+「copy running-config startup-config」
+
+
+
+下列範例顯示在Fabric 1交換器FC_switch_a_1和FC_switch_B_1中、雙ISL的FCIP連接埠組態。
+
+*若為FC_SWIT_A_1*：
+
+[listing]
+----
+FC_switch_A_1# config t
+FC_switch_A_1(config)# no in-order-guarantee vsan 10
+FC_switch_A_1(config-vsan-db)# end
+FC_switch_A_1# copy running-config startup-config
+
+# fcip settings
+
+feature  fcip
+
+conf t
+interface IPStorage1/1
+#  IP address:  a.a.a.a
+#  Mask:  y.y.y.y
+  ip address <a.a.a.a   y.y.y.y>
+  switchport mtu 2500
+  no shutdown
+exit
+conf t
+fcip profile 15
+  ip address <a.a.a.a>
+  port 3220
+  tcp keepalive-timeout 1
+tcp max-retransmissions 3
+max-bandwidth-mbps 5000 min-available-bandwidth-mbps 4500 round-trip-time-ms 3
+  tcp min-retransmit-time 200
+  tcp keepalive-timeout 1
+  tcp pmtu-enable reset-timeout 3600
+  tcp sack-enable
+  no tcp cwm
+
+conf t
+fcip profile 20
+  ip address <a.a.a.a>
+  port 3221
+  tcp keepalive-timeout 1
+tcp max-retransmissions 3
+max-bandwidth-mbps 5000 min-available-bandwidth-mbps 4500 round-trip-time-ms 3
+  tcp min-retransmit-time 200
+  tcp keepalive-timeout 1
+  tcp pmtu-enable reset-timeout 3600
+  tcp sack-enable
+  no tcp cwm
+
+conf t
+interface IPStorage1/2
+#  IP address:  b.b.b.b
+#  Mask:  y.y.y.y
+  ip address <b.b.b.b   y.y.y.y>
+  switchport mtu 2500
+  no shutdown
+exit
+
+conf t
+fcip profile 25
+  ip address <b.b.b.b>
+  port 3222
+tcp keepalive-timeout 1
+tcp max-retransmissions 3
+max-bandwidth-mbps 5000 min-available-bandwidth-mbps 4500 round-trip-time-ms 3
+  tcp min-retransmit-time 200
+  tcp keepalive-timeout 1
+  tcp pmtu-enable reset-timeout 3600
+  tcp sack-enable
+  no tcp cwm
+
+conf t
+fcip profile 30
+  ip address <b.b.b.b>
+  port 3223
+tcp keepalive-timeout 1
+tcp max-retransmissions 3
+max-bandwidth-mbps 5000 min-available-bandwidth-mbps 4500 round-trip-time-ms 3
+  tcp min-retransmit-time 200
+  tcp keepalive-timeout 1
+  tcp pmtu-enable reset-timeout 3600
+  tcp sack-enable
+  no tcp cwm
+interface fcip  1
+  use-profile 15
+# the port # listed in this command is the port that the remote switch is listening on
+ peer-info ipaddr <c.c.c.c>  port 3230
+  tcp-connection 2
+  no ip-compression
+  no shutdown
+  qos control 48 data 26
+exit
+
+interface fcip  2
+  use-profile 20
+# the port # listed in this command is the port that the remote switch is listening on
+ peer-info ipaddr <c.c.c.c>  port 3231
+  tcp-connection 5
+  no ip-compression
+  no shutdown
+  qos control 48 data 26
+exit
+
+interface fcip  3
+  use-profile 25
+# the port # listed in this command is the port that the remote switch is listening on
+ peer-info ipaddr < d.d.d.d >  port 3232
+  tcp-connection 2
+  no ip-compression
+  no shutdown
+  qos control 48 data 26
+exit
+
+interface fcip  4
+  use-profile 30
+# the port # listed in this command is the port that the remote switch is listening on
+ peer-info ipaddr < d.d.d.d >  port 3233
+  tcp-connection 5
+  no ip-compression
+  no shutdown
+  qos control 48 data 26
+exit
+
+conf t
+interface fcip  1
+shutdown
+switchport mode E
+switchport trunk mode on
+switchport trunk allowed vsan 10
+no shutdown
+exit
+
+conf t
+interface fcip  2
+shutdown
+switchport mode E
+switchport trunk mode on
+switchport trunk allowed vsan 20
+no shutdown
+exit
+
+conf t
+interface fcip  3
+shutdown
+switchport mode E
+switchport trunk mode on
+switchport trunk allowed vsan 10
+no shutdown
+exit
+
+conf t
+interface fcip  4
+shutdown
+switchport mode E
+switchport trunk mode on
+switchport trunk allowed vsan 20
+no shutdown
+exit
+----
+*若為FC_SWIT_B_1*：
+
+[listing]
+----
+
+FC_switch_A_1# config t
+FC_switch_A_1(config)# in-order-guarantee vsan 10
+FC_switch_A_1(config-vsan-db)# end
+FC_switch_A_1# copy running-config startup-config
+
+# fcip settings
+
+feature  fcip
+
+conf t
+interface IPStorage1/1
+#  IP address:  c.c.c.c
+#  Mask:  y.y.y.y
+  ip address <c.c.c.c   y.y.y.y>
+  switchport mtu 2500
+  no shutdown
+exit
+
+conf t
+fcip profile 15
+  ip address <c.c.c.c>
+  port 3230
+  tcp keepalive-timeout 1
+tcp max-retransmissions 3
+max-bandwidth-mbps 5000 min-available-bandwidth-mbps 4500 round-trip-time-ms 3
+  tcp min-retransmit-time 200
+  tcp keepalive-timeout 1
+  tcp pmtu-enable reset-timeout 3600
+  tcp sack-enable
+  no tcp cwm
+
+conf t
+fcip profile 20
+  ip address <c.c.c.c>
+  port 3231
+  tcp keepalive-timeout 1
+tcp max-retransmissions 3
+max-bandwidth-mbps 5000 min-available-bandwidth-mbps 4500 round-trip-time-ms 3
+  tcp min-retransmit-time 200
+  tcp keepalive-timeout 1
+  tcp pmtu-enable reset-timeout 3600
+  tcp sack-enable
+  no tcp cwm
+
+conf t
+interface IPStorage1/2
+#  IP address:  d.d.d.d
+#  Mask:  y.y.y.y
+  ip address <b.b.b.b   y.y.y.y>
+  switchport mtu 2500
+  no shutdown
+exit
+
+conf t
+fcip profile 25
+  ip address <d.d.d.d>
+  port 3232
+tcp keepalive-timeout 1
+tcp max-retransmissions 3
+max-bandwidth-mbps 5000 min-available-bandwidth-mbps 4500 round-trip-time-ms 3
+  tcp min-retransmit-time 200
+  tcp keepalive-timeout 1
+  tcp pmtu-enable reset-timeout 3600
+  tcp sack-enable
+  no tcp cwm
+
+conf t
+fcip profile 30
+  ip address <d.d.d.d>
+  port 3233
+tcp keepalive-timeout 1
+tcp max-retransmissions 3
+max-bandwidth-mbps 5000 min-available-bandwidth-mbps 4500 round-trip-time-ms 3
+  tcp min-retransmit-time 200
+  tcp keepalive-timeout 1
+  tcp pmtu-enable reset-timeout 3600
+  tcp sack-enable
+  no tcp cwm
+
+interface fcip  1
+  use-profile 15
+# the port # listed in this command is the port that the remote switch is listening on
+ peer-info ipaddr <a.a.a.a>  port 3220
+  tcp-connection 2
+  no ip-compression
+  no shutdown
+  qos control 48 data 26
+exit
+
+interface fcip  2
+  use-profile 20
+# the port # listed in this command is the port that the remote switch is listening on
+ peer-info ipaddr <a.a.a.a>  port 3221
+  tcp-connection 5
+  no ip-compression
+  no shutdown
+  qos control 48 data 26
+exit
+
+interface fcip  3
+  use-profile 25
+# the port # listed in this command is the port that the remote switch is listening on
+ peer-info ipaddr < b.b.b.b >  port 3222
+  tcp-connection 2
+  no ip-compression
+  no shutdown
+  qos control 48 data 26
+exit
+
+interface fcip  4
+  use-profile 30
+# the port # listed in this command is the port that the remote switch is listening on
+ peer-info ipaddr < b.b.b.b >  port 3223
+  tcp-connection 5
+  no ip-compression
+  no shutdown
+  qos control 48 data 26
+exit
+
+conf t
+interface fcip  1
+shutdown
+switchport mode E
+switchport trunk mode on
+switchport trunk allowed vsan 10
+no shutdown
+exit
+
+conf t
+interface fcip  2
+shutdown
+switchport mode E
+switchport trunk mode on
+switchport trunk allowed vsan 20
+no shutdown
+exit
+
+conf t
+interface fcip  3
+shutdown
+switchport mode E
+switchport trunk mode on
+switchport trunk allowed vsan 10
+no shutdown
+exit
+
+conf t
+interface fcip  4
+shutdown
+switchport mode E
+switchport trunk mode on
+switchport trunk allowed vsan 20
+no shutdown
+exit
+----
+
+
+== 在Cisco FC交換器上設定分區
+
+您必須將交換器連接埠指派給不同的區域、以隔離儲存設備（HBA）和控制器（FC-VI）流量。
+
+這些步驟必須在兩個FC交換器架構上執行。
+
+下列步驟使用分區一節中所述的分區功能、在四節點MetroCluster 的非功能區組態中、針對光纖橋接器7500N進行分區。請參閱 link:task_fcsw_cisco_configure_a_cisco_switch_supertask.html#configuring-fcip-ports-for-a-dual-isl-on-cisco-9250i-fc-switches["FC-VI連接埠分區"]。
+
+.步驟
+. 清除現有的區域和區域集（如果存在）。
++
+.. 確定哪些區域和區域集處於活動狀態：
++
+「如何使用區域」
+
++
+[listing]
+----
+FC_switch_A_1# show zoneset active
+
+FC_switch_B_1# show zoneset active
+----
+.. 停用上一個步驟中識別的作用中區域集：
++
+「沒有區域集啟動名稱_zoneset_name_ vSAN _vSAN_id_。
+
++
+下列範例顯示兩個區域集被停用：
+
++
+*** VSAN 10中FC_switch_a_1上的ZonSet_a
+*** VSAN 20中FC_switch_B_1上的ZonSet_B
+
+
++
+[listing]
+----
+FC_switch_A_1# no zoneset activate name ZoneSet_A vsan 10
+
+FC_switch_B_1# no zoneset activate name ZoneSet_B vsan 20
+----
+.. 停用所有區域集之後、請清除區域資料庫：
++
+「清除區域資料庫_區域名稱_」
+
++
+[listing]
+----
+FC_switch_A_1# clear zone database 10
+FC_switch_A_1# copy running-config startup-config
+
+FC_switch_B_1# clear zone database 20
+FC_switch_B_1# copy running-config startup-config
+----
+
+
+. 取得交換器全球名稱（WWN）：
++
+「如何使用WWN交換器」
+
+. 設定基本區域設定：
++
+--
+.. 將預設分區原則設為「'permit」：
++
+「沒有系統預設區域預設區域允許」
+
+.. 啟用完整的區域發佈：
++
+'系統預設分區完整分佈'
+
+.. 為每個VSAN設定預設分區原則：
++
+「沒有區域預設區域允許_vsanid_」
+
+.. 為每個VSAN設定預設的完整區域發佈：
++
+"zoneset經銷full _vsanid_"
+
+
+
+--
++
+[listing]
+----
+FC_switch_A_1# conf t
+FC_switch_A_1(config)# no system default zone default-zone permit
+FC_switch_A_1(config)# system default zone distribute full
+FC_switch_A_1(config)# no zone default-zone permit 10
+FC_switch_A_1(config)# no zone default-zone permit 20
+FC_switch_A_1(config)# zoneset distribute full vsan 10
+FC_switch_A_1(config)# zoneset distribute full vsan 20
+FC_switch_A_1(config)# end
+FC_switch_A_1# copy running-config startup-config
+
+FC_switch_B_1# conf t
+FC_switch_B_1(config)# no system default zone default-zone permit
+FC_switch_B_1(config)# system default zone distribute full
+FC_switch_B_1(config)# no zone default-zone permit 10
+FC_switch_B_1(config)# no zone default-zone permit 20
+FC_switch_B_1(config)# zoneset distribute full vsan 10
+FC_switch_B_1(config)# zoneset distribute full vsan 20
+FC_switch_B_1(config)# end
+FC_switch_B_1# copy running-config startup-config
+----
+. 建立儲存區域、並將儲存連接埠新增至儲存區域。
++
+
+NOTE: 在每個Fabric中只對一個交換器執行這些步驟。
+
++
+分區取決於您所使用的FC對SAS橋接器機型。如需詳細資料、請參閱模型橋接器的一節。範例顯示Brocade交換器連接埠、因此請相應調整連接埠。
+
++
+--
+** link:task_fcsw_brocade_configure_the_brocade_fc_switches_supertask.html["使用單一FC連接埠的Fibre Bridge 6500N橋接器或Fibre Bridge 7500N或7600N橋接器分區"]
+** link:task_fcsw_brocade_configure_the_brocade_fc_switches_supertask.html["使用兩個FC連接埠的Fibre Bridge 7500N橋接器分區"]
+
+
+--
++
+每個儲存區域都包含來自所有控制器的HBA啟動器連接埠、以及連接FC至SAS橋接器的單一連接埠。
+
++
+.. 建立儲存區域：
++
+「區域名稱_STOR-ZA-name_ vSAN _vsanid_」
+
+.. 新增儲存連接埠至區域：
++
+《十二月連接交換器WWN》
+
+.. 啟動區域集：
++
+「區域集啟動名稱_Stor-zZone名稱-setname_ vSAN _vSAN-id_」
+
+
+
++
+[listing]
+----
+FC_switch_A_1# conf t
+FC_switch_A_1(config)# zone name STOR_Zone_1_20_25 vsan 20
+FC_switch_A_1(config-zone)# member interface fc1/5 swwn 20:00:00:05:9b:24:cb:78
+FC_switch_A_1(config-zone)# member interface fc1/9 swwn 20:00:00:05:9b:24:cb:78
+FC_switch_A_1(config-zone)# member interface fc1/17 swwn 20:00:00:05:9b:24:cb:78
+FC_switch_A_1(config-zone)# member interface fc1/21 swwn 20:00:00:05:9b:24:cb:78
+FC_switch_A_1(config-zone)# member interface fc1/5 swwn 20:00:00:05:9b:24:12:99
+FC_switch_A_1(config-zone)# member interface fc1/9 swwn 20:00:00:05:9b:24:12:99
+FC_switch_A_1(config-zone)# member interface fc1/17 swwn 20:00:00:05:9b:24:12:99
+FC_switch_A_1(config-zone)# member interface fc1/21 swwn 20:00:00:05:9b:24:12:99
+FC_switch_A_1(config-zone)# member interface fc1/25 swwn 20:00:00:05:9b:24:cb:78
+FC_switch_A_1(config-zone)# end
+FC_switch_A_1# copy running-config startup-config
+----
+. 建立儲存區域集、並將儲存區域新增至新集合。
++
+
+NOTE: 僅在Fabric中的一部交換器上執行這些步驟。
+
++
+.. 建立儲存區域集：
++
+「區域集名稱_Stor-zZone -Set-name_ vSAN _vSAN-id_」
+
+.. 新增儲存區域至區域集：
++
+「成員_STOR-ZA-name_」
+
+.. 啟動區域集：
++
+「區域集」啟動名稱_Stor-zZone -Set-name_ vSAN _vsanid_
+
++
+[listing]
+----
+FC_switch_A_1# conf t
+FC_switch_A_1(config)# zoneset name STORI_Zoneset_1_20 vsan 20
+FC_switch_A_1(config-zoneset)# member STOR_Zone_1_20_25
+...
+FC_switch_A_1(config-zoneset)# exit
+FC_switch_A_1(config)# zoneset activate name STOR_ZoneSet_1_20 vsan 20
+FC_switch_A_1(config)# exit
+FC_switch_A_1# copy running-config startup-config
+----
+
+
+. 建立FCVI區域、並將FCVI連接埠新增至它們。
++
+每個FCVI區域都包含來自一個DR群組所有控制器的FCVI連接埠。
+
++
+
+NOTE: 僅在Fabric中的一部交換器上執行這些步驟。
+
++
+分區取決於您所使用的FC對SAS橋接器機型。如需詳細資料、請參閱模型橋接器的一節。範例顯示Brocade交換器連接埠、因此請相應調整連接埠。
+
++
+--
+** link:task_fcsw_brocade_configure_the_brocade_fc_switches_supertask.html["使用單一FC連接埠的Fibre Bridge 6500N橋接器或Fibre Bridge 7500N或7600N橋接器分區"]
+** link:task_fcsw_brocade_configure_the_brocade_fc_switches_supertask.html["使用兩個FC連接埠的Fibre Bridge 7500N橋接器分區"]
+
+
+--
++
+每個儲存區域都包含來自所有控制器的HBA啟動器連接埠、以及連接FC至SAS橋接器的單一連接埠。
+
++
+.. 建立FCVI區域：
++
+「區域名稱_FCVI-ZONE名稱_ vSAN _vsanid_」
+
+.. 新增FCVI連接埠至區域：
++
+「FCVI-ZONE名稱_」
+
+.. 啟動區域集：
++
+「區域集啟動名稱_FCVI-ZONE - name-Set-name_ vSAN _vsanid_」
+
+
+
++
+[listing]
+----
+FC_switch_A_1# conf t
+FC_switch_A_1(config)# zone name FCVI_Zone_1_10_25 vsan 10
+FC_switch_A_1(config-zone)# member interface fc1/1 swwn20:00:00:05:9b:24:cb:78
+FC_switch_A_1(config-zone)# member interface fc1/2 swwn20:00:00:05:9b:24:cb:78
+FC_switch_A_1(config-zone)# member interface fc1/1 swwn20:00:00:05:9b:24:12:99
+FC_switch_A_1(config-zone)# member interface fc1/2 swwn20:00:00:05:9b:24:12:99
+FC_switch_A_1(config-zone)# end
+FC_switch_A_1# copy running-config startup-config
+----
+. 建立FCVI區域集、並將FCVI區域新增至該區域：
++
+
+NOTE: 僅在Fabric中的一部交換器上執行這些步驟。
+
++
+.. 建立FCVI區域集：
++
+「區域集名稱_FCVI_ZON_SET_name_ vSAN _vSAN-id_」
+
+.. 新增FCVI區域至區域集：
++
+《FCVI_zonename_》
+
+.. 啟動區域集：
++
+「區域集」啟動名稱_FCVI_ZON_SET_name_ vSAN _vSAN-id_
+
+
+
++
+[listing]
+----
+FC_switch_A_1# conf t
+FC_switch_A_1(config)# zoneset name FCVI_Zoneset_1_10 vsan 10
+FC_switch_A_1(config-zoneset)# member FCVI_Zone_1_10_25
+FC_switch_A_1(config-zoneset)# member FCVI_Zone_1_10_29
+    ...
+FC_switch_A_1(config-zoneset)# exit
+FC_switch_A_1(config)# zoneset activate name FCVI_ZoneSet_1_10 vsan 10
+FC_switch_A_1(config)# exit
+FC_switch_A_1# copy running-config startup-config
+----
+. 驗證分區：
++
+「How Zone」
+
+. 在第二個FC交換器架構上重複上述步驟。
+
+
+
+
+== 確保FC交換器組態已儲存
+
+您必須確定FC交換器組態已儲存至所有交換器的啟動組態。
+
+在兩個FC交換器架構上發出下列命令：
+
+「copy running-config startup-config」
+
+[listing]
+----
+FC_switch_A_1# copy running-config startup-config
+
+FC_switch_B_1# copy running-config startup-config
+----

@@ -1,0 +1,41 @@
+---
+permalink: transition/concept_how_transition_impacts_the_mcc_hardware_components.html 
+sidebar: sidebar 
+keywords: complete, completing, transition, procedure, key, component, exist, metrocluster, configuration, replace, reconfigure, impact, hardware, component 
+summary: 完成轉換程序後、現有MetroCluster 的功能表組態的關鍵元件已被更換或重新設定。 
+---
+= 移轉作業如何影響MetroCluster 到非同步硬體元件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+完成轉換程序後、現有MetroCluster 的功能表組態的關鍵元件已被更換或重新設定。
+
+* *控制器模組*
++
+現有的控制器模組將由新的控制器模組取代。現有的控制器模組會在轉換程序結束時停用。
+
+* *儲存櫃*
++
+資料會從舊的磁碟櫃移至新的磁碟櫃。舊的磁碟櫃會在轉換程序結束時停用。
+
+* *《*》（後端）與叢集交換器* MetroCluster
++
+後端交換器功能已由IP交換器架構取代。如果MetroCluster 包含FC交換器和FC對SAS橋接器的SFC組態、則在本程序結束時將會停用它們。
+
++
+如果MetroCluster 使用叢集交換器來進行叢集互連、在某些情況下、可重複使用以提供後端IP交換器架構。重複使用的叢集交換器必須重新設定平台和交換器專屬的RCT。程序。
+
++
+如果MetroCluster 無法使用叢集交換器、則會新增新的IP交換器來提供後端交換器架構。
+
++
+link:concept_considerations_for_using_existing_ip_switches.html["IP交換器的考量"]
+
+* *叢集對等網路*
++
+現有客戶提供的叢集對等網路可用於全新MetroCluster 的支援IP組態。叢集對等功能是在MetroCluster 整個轉換程序中於各個環節中設定於整個過程中。
+
+

@@ -1,0 +1,70 @@
+---
+permalink: maintain/task_secur_or_unsecur_a_fibrebridge_bridge.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, secure, unsecure, fibrebridge, bridge 
+summary: 若要在橋接器上輕鬆停用可能不安全的乙太網路傳輸協定、請先從ONTAP 版本資訊9.5開始、確保橋接器安全無虞。這會停用橋接器的乙太網路連接埠。您也可以重新啟用乙太網路存取。 
+---
+= 保護或取消保護光纖橋接器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+若要在橋接器上輕鬆停用可能不安全的乙太網路傳輸協定、請先從ONTAP 版本資訊9.5開始、確保橋接器安全無虞。這會停用橋接器的乙太網路連接埠。您也可以重新啟用乙太網路存取。
+
+* 保護橋接器會停用橋接器上的Telnet及其他IP連接埠傳輸協定與服務（FTP、ExpressNAV、ICMP或QuickNAV）。
+* 本程序使用ONTAP 從ONTAP 版本資訊（從版本資訊9.5開始提供）的使用畫面提示進行頻外管理。
++
+如果不使用頻外管理、您可以從橋接CLI發出命令。
+
+* 可以使用「*unsecurebridge*」命令來重新啟用乙太網路連接埠。
+* 在NetApp 9.7及更早版本中、在Atto FibreBridge上執行「* securebridge*」命令、可能無法在合作夥伴叢集上正確更新橋接器狀態。ONTAP如果發生這種情況、請從合作夥伴叢集執行「* securebridge*」命令。
+
+
+
+NOTE: 從ONTAP Sflex9.8開始、將「*儲存橋接*」命令取代為「*系統橋接*」。以下步驟顯示了「*儲存橋接器*」命令、但ONTAP 如果您執行的是更新版本的版本、則最好使用「*系統橋接器*」命令。
+
+.步驟
+. 從包含橋接器的叢集的驗證提示字元、ONTAP 保護或取消橋接器的安全。
++
+下列命令可保護bridge _a_1：
+
++
+[listing]
+----
+cluster_A> storage bridge run-cli -bridge bridge_A_1 -command securebridge
+----
++
+下列命令會取消bridge _a_1的安全保護：
+
++
+[listing]
+----
+cluster_A> storage bridge run-cli -bridge bridge_A_1 -command unsecurebridge
+----
+. 在包含橋接器的叢集的系統提示字元中ONTAP 、儲存橋接器組態：
++
+hy*儲存橋接器執行CLI橋接器_bridge-name_-command Saveconfiguronfigurity*
+
++
+下列命令可保護bridge _a_1：
+
++
+[listing]
+----
+cluster_A> storage bridge run-cli -bridge bridge_A_1 -command saveconfiguration
+----
+. 在ONTAP 包含橋接器的叢集的畫面提示中、重新啟動橋接器的韌體：
++
+hy*儲存橋接器執行CLI橋接器_bridge-name_-command firmwarerestart*
+
++
+下列命令可保護bridge _a_1：
+
++
+[listing]
+----
+cluster_A> storage bridge run-cli -bridge bridge_A_1 -command firmwarerestart
+----
+

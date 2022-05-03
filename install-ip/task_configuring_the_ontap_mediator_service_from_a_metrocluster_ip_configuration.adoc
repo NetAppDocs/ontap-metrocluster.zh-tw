@@ -1,0 +1,90 @@
+---
+permalink: install-ip/task_configuring_the_ontap_mediator_service_from_a_metrocluster_ip_configuration.html 
+sidebar: sidebar 
+keywords: metrocluster, mediator, configure 
+summary: 必須在無法用於靜態IP組態的「節點」上設定「BMC調解器」服務。ONTAP ONTAP MetroCluster 
+---
+= 從ONTAP 一套不實的IP組態設定「不實不作」MetroCluster 服務
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+必須在無法用於靜態IP組態的「節點」上設定「BMC調解器」服務。ONTAP ONTAP MetroCluster
+
+.開始之前
+* 此功能必須已成功安裝在兩個景點都能到達的網路位置。ONTAP MetroCluster
++
+link:https://docs.netapp.com/us-en/ontap/mediator/index.html["安裝或升級ONTAP 《不知道如何使用》服務"^]
+
+* 您必須擁有執行ONTAP 《支援者》服務的主機IP位址。
+* 您必須擁有ONTAP 使用者名稱和密碼才能使用「畫面不景」服務。
+* 所有的靜態IP組態節點MetroCluster 都必須在線上。
+
+
+.關於這項工作
+* 此工作預設會啟用自動非計畫性切換。
+* 此工作可在ONTAP 任何節點的整個介面上執行MetroCluster 、以進行整個過程。
+* 單一安裝ONTAP 的「不知道如何」服務、最多可設定五MetroCluster 個「不知道」IP組態。
+
+
+.步驟
+. 將ONTAP 「這個不只是『我的『我的』服務加入ONTAP 到這個部門：
++
+「支援組態設定的中介者add -中介 者位址_ip-address-of中介者主機_」MetroCluster
+
++
+
+NOTE: 系統會提示您輸入「促成者管理」使用者帳戶的使用者名稱和密碼。
+
+. 確認已啟用自動切換功能：
++
+《不看》MetroCluster
+
+. 確認「資訊管理器」正在執行中。
++
+.. 顯示資訊管理器虛擬磁碟：
++
+「torage disk show -container型中介器」
+
++
+....
+ cluster_A::> storage disk show -container-type mediator
+                        Usable           Disk    Container   Container
+ Disk                   Size Shelf Bay Type    Type        Name      Owner
+ ---------------- ---------- ----- --- ------- ----------- --------- --------
+ NET-1.5                   -     -   - VMDISK  mediator    -         node_A_2
+ NET-1.6                   -     -   - VMDISK  mediator    -         node_B_1
+ NET-1.7                   -     -   - VMDISK  mediator    -         node_B_2
+ NET-1.8                   -     -   - VMDISK  mediator    -         node_A_1
+....
+.. 將權限模式設為進階：
++
+《進階設定》
+
++
+....
+ cluster_A::> set advanced
+....
+.. 顯示標示為「中介者」的啟動器：
++
+「儲存iSCSI啟動器顯示-標籤中介器」
+
++
+....
+ cluster_A::*> storage iscsi-initiator show -label mediator
+   (storage iscsi-initiator show)
+  +                                                                     Status
+ Node Type Label    Target Portal      Target Name                      Admin/Op
+ ---- ---- -------- ------------------ -------------------------------- --------
+ node_A_1
+      mailbox
+           mediator 1.1.1.1       iqn.2012-05.local:mailbox.target.6616cd3f-9ef1-11e9-aada-00a098ccf5d8:a05e1ffb-9ef1-11e9-8f68- 00a098cbca9e:1 up/up
+ node_A_2
+      mailbox
+           mediator 1.1.1.1       iqn.2012-05.local:mailbox.target.6616cd3f-9ef1-11e9-aada-00a098ccf5d8:a05e1ffb-9ef1-11e9-8f68-00a098cbca9e:1 up/up
+....
+
+
+

@@ -1,0 +1,227 @@
+---
+permalink: maintain/task_do_not_use_for_9_8_and_later_reconfigure_the_fc_switch_layout_for_ontap_9_1_or_later.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, reconfigure, fc, switch, layout, configured 
+summary: 如果您現有的FC交換器配置是在ONTAP 更新版9.1之前設定、則必須重新設定連接埠配置、並套用最新的參考組態檔（RCFC）。此程序僅適用於MetroCluster 不含FFC組態的情況。 
+---
+= 重新設定ONTAP 以不符合需求的9.x之前所設定的FC交換器配置
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您現有的FC交換器配置是在ONTAP 更新版9.1之前設定、則必須重新設定連接埠配置、並套用最新的參考組態檔（RCFC）。此程序僅適用於MetroCluster 不含FFC組態的情況。
+
+您必須識別網路網域中的FC交換器。
+
+您需要管理員密碼、才能存取FTP或scp伺服器。
+
+如果您現有的FC交換器配置是在ONTAP 使用者選擇之前配置、則必須執行此工作。如果您是從現有的交換器配置升級、而此配置已設定ONTAP 為使用更新版本的版本、則不需要_。
+
+此程序不中斷營運、磁碟歸零時約需四小時完成（不包括機架和堆疊）。
+
+
+
+== 在重新設定交換器之前傳送自訂AutoSupport 的功能資訊
+
+在重新設定交換器之前、您應該發出AutoSupport 一份「不知」訊息、通知NetApp技術支援人員正在進行維護。告知技術支援部門正在進行維護、可防止他們假設發生中斷、而開啟案例。
+
+此工作必須在每MetroCluster 個站台上執行。
+
+.步驟
+. 登入叢集。
+. 叫出AutoSupport 指示維護開始的消息：
++
+「系統節點AutoSupport 不支援節點*-type all -most maints=_maintening-window-in-things_*」
+
++
+「maintenance－window-in－hours」（維護時段）指定維護時段的長度、最長72小時。如果維護作業在時間結束之前完成、您可以叫用AutoSupport 指示維護期間結束的資訊消息：
+
++
+「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+
+. 在合作夥伴網站上重複這些步驟。
+
+
+
+
+== 驗MetroCluster 證資訊功能組態的健全狀況
+
+您應該檢查MetroCluster 整個過程的健全狀況、以驗證運作是否正常。
+
+.步驟
+. 驗證MetroCluster 這些元件是否正常運作：
++
+《不一樣的跑程》MetroCluster
+
++
+[listing]
+----
+cluster_A::*> metrocluster check run
+
+----
++
+此作業會在背景執行。
+
+. 完成「畫面檢查」作業後MetroCluster 、請執行「MetroCluster 畫面檢查」以檢視結果。
++
+大約五分鐘後、會顯示下列結果：
+
++
+[listing]
+----
+-----------
+cluster_A::*> metrocluster check show
+
+Last Checked On: 4/7/2019 21:15:05
+
+Component           Result
+------------------- ---------
+nodes               ok
+lifs                ok
+config-replication  ok
+aggregates          warning
+clusters            ok
+connections         not-applicable
+volumes             ok
+7 entries were displayed.
+----
+. 若要檢查執行MetroCluster 中的檢查作業狀態、請使用命令：
++
+《不穩定作業歷史》顯示-job-id 38 MetroCluster
+
+. 確認沒有健全狀況警示：
++
+「系統健全狀況警示顯示」
+
+
+
+
+
+== 正在檢查MetroCluster 不正確的組態錯誤
+
+您可以使用Config Advisor NetApp支援網站提供的「支援」工具來檢查常見的組態錯誤。
+
+此為組態驗證與健全狀況檢查工具。Config Advisor您可以在安全站台和非安全站台上部署、以供資料收集和系統分析之用。
+
+
+NOTE: 支援功能有限、僅限線上使用。Config Advisor
+
+. 下載Config Advisor 此功能。
++
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"^]
+
+. 執行Config Advisor 功能、檢閱輸出內容、並遵循其建議來解決任何問題。
+
+
+
+
+== 持續停用交換器
+
+您必須持續停用Fabric中的交換器、才能修改其組態。
+
+您可以在交換器命令列上執行命令來停用交換器、而用於此功能的命令並非ONTAP 使用指令。
+
+.步驟
+. 持續停用交換器：
++
+** 使用下列命令持續停用Brocade交換器：
++
+「FC_switch_a_1:admin> switchCfgPersistentDisable」
+
+** 使用下列命令持續停用Cisco交換器：
++
+「vSAN [vsna #] suspend」（vSAN [vsna #]暫停）
+
+
+
+
+
+
+
+== 確定新的佈線配置
+
+您必須確定新控制器模組和新磁碟櫃與現有FC交換器之間的纜線。
+
+此工作必須在每MetroCluster 個站台執行。
+
+.步驟
+. 使用 https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"^] 若要判斷交換器類型的纜線配置、請使用連接埠使用方式進行八節點MetroCluster 的邊邊架構。
++
+FC交換器連接埠使用量必須符合本指南所述的使用量、才能使用參考組態檔（RCFC）。
+
++
+
+NOTE: 如果您的環境無法以可使用RCT的方式進行纜線連接、請聯絡技術支援部門。如果纜線無法使用RCT、請勿使用此程序。
+
+
+
+
+
+== 套用RCF檔案並重新啟用交換器
+
+您必須套用適當的參考組態（RCF）檔案、才能重新設定交換器以容納新節點。套用RCF檔案之後、您就可以重新恢復交換器。
+
+FC交換器連接埠使用量必須符合中所述的使用量 https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"^] 以便能夠使用RCT。
+
+.步驟
+. 找出您組態的RCF檔案。
++
+您必須使用符合交換器機型的RCF檔案。
+
+. 請依照下載頁面上的指示套用RCF檔案、並視需要調整ISL設定。
+. 確認交換器組態已儲存。
+. 使用您在「確定新的佈線配置」一節中建立的佈線配置、將兩個FC對SAS橋接器連接至FC交換器。
+. 驗證連接埠是否在線上：
++
+** 對於Brocade交換器、請使用「shwitchshow」命令。
+** 對於Cisco交換器、請使用「show interface brief」命令。
+
+
+. 將FC-VI連接埠從控制器連接至交換器。
+. 從現有節點、確認FC-VI連接埠已上線：
++
+「顯示此介面卡的資訊」MetroCluster
+
++
+《不互連鏡像秀》MetroCluster
+
+
+
+
+
+== 持續啟用交換器
+
+您必須持續啟用網路中的交換器。
+
+.步驟
+. 持續啟用交換器：
++
+** 對於Brocade交換器、請使用「shwitchCfgPeristentenable」命令。
+** 對於Cisco交換器、請使用no「usfPEND」命令。下列命令會持續啟用Brocade交換器：
++
+[listing]
+----
+FC_switch_A_1:admin> switchCfgPersistentenable
+----
++
+下列命令可啟用Cisco交換器：
+
++
+[listing]
+----
+vsan [vsna #]no suspend
+----
+
+
+
+
+
+
+== 驗證切換、修復及切換
+
+您應該驗證MetroCluster 該組態的切換、修復及切換作業。
+
+. 請使用中所述的協調切換、修復及切換程序 https://docs.netapp.com/us-en/ontap-metrocluster/disaster-recovery/concept_dr_workflow.html["支援管理與災難恢復MetroCluster"^]。
+

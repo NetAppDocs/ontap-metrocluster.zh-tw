@@ -1,0 +1,127 @@
+---
+permalink: maintain/task_add_remove_or_change_isl_ports_nondisruptively.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, add, remove, change, isl, ports, nondisruptively 
+summary: 您可能需要新增、移除或變更ISL連接埠。您可以將專用ISL連接埠轉換成共享ISL連接埠、或變更交換器上ISL連接埠的速度。長距離行駛的ISL可能需要較低的速度來改善品質。如果您要新增或升級硬體、可能還需要提高ISL連接埠的速度、才能充分利用系統升級的優勢、並將ISL新增至Cisco IP交換器。 
+---
+= 在不中斷營運的情況下新增、移除或變更ISL連接埠
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可能需要新增、移除或變更ISL連接埠。您可以將專用ISL連接埠轉換成共享ISL連接埠、或變更交換器上ISL連接埠的速度。長距離行駛的ISL可能需要較低的速度來改善品質。如果您要新增或升級硬體、可能還需要提高ISL連接埠的速度、才能充分利用系統升級的優勢、並將ISL新增至Cisco IP交換器。
+
+如果您要將專用ISL連接埠轉換成共享ISL連接埠、請確定新的連接埠符合 link:../install-ip/concept_considerations_layer_2.html["共享ISL連接埠的需求"]。
+
+您必須完成兩台交換器上的所有步驟、以確保ISL連線能力。
+
+下列程序假設您要以兩個連接至交換器連接埠17和18的100-GB ISL取代連接至交換器連接埠eth1/24/1的10-GB ISL。
+
+.步驟
+. 在您要變更的光纖網路中、停用兩個交換器上ISL的ISL連接埠。
++
+--
+
+NOTE: 只有當您將目前的ISL連接埠移至不同的連接埠、或ISL的速度正在改變時、才需要停用這些連接埠。如果您要新增的ISL連接埠速度與現有ISL相同、請移至步驟3。
+
+--
++
+每行只能輸入一個組態命令、並在輸入所有命令後按Ctrl-Z、如下列範例所示：
+
++
+[listing]
+----
+
+switch_A_1# conf t
+switch_A_1(config)# int eth1/24/1
+switch_A_1(config-if)# shut
+switch_A_1(config-if)#
+switch_A_1#
+
+switch_B_1# conf t
+switch_B_1(config)# int eth1/24/1
+switch_B_1(config-if)# shut
+switch_B_1(config-if)#
+switch_B_1#
+----
+. 移除現有的纜線和收發器。
+. 視需要變更ISL連接埠。
++
+[cols="30,70"]
+|===
+
+
+| 選項 | 步驟 
+
+
+ a| 
+若要變更ISL連接埠的速度...
+ a| 
+根據新ISL的速度、將其連接至指定的連接埠。您必須確保交換器的這些ISL連接埠列在_EIP MetroCluster 安裝與組態_中。
+
+
+
+ a| 
+若要新增ISL ...
+ a| 
+將QFSP插入要新增為ISL連接埠的連接埠。請確定它們列在_ MetroCluster 《IP安裝與組態》_中、並依此連接纜線。
+
+|===
+. 從下列命令開始、在光纖中的兩個交換器上啟用所有ISL連接埠（如果未啟用）：
++
+「Switch_a_1#」
+
++
+每行只能輸入一個組態命令、並在輸入所有命令後按Ctrl-Z：
+
++
+[listing]
+----
+switch_A_1# conf t
+switch_A_1(config)# int eth1/17
+switch_A_1(config-if)# no shut
+switch_A_1(config-if)# int eth1/18
+switch_A_1(config-if)# no shut
+switch_A_1(config-if)#
+switch_A_1#
+switch_A_1# copy running-config startup-config
+
+switch_B_1# conf t
+switch_B_1(config)# int eth1/17
+switch_B_1(config-if)# no shut
+switch_B_1(config-if)# int eth1/18
+switch_B_1(config-if)# no shut
+switch_B_1(config-if)#
+switch_B_1#
+switch_B_1# copy running-config startup-config
+----
+. 驗證是否在兩個交換器之間建立ISL：
++
+「Switch_a_1# show int eth1/17、eth1/18 in需 簡介」
+
++
+您應該會在命令輸出中看到ISL介面、如下列範例所示：
+
++
+[listing]
+----
+switch_A_1# show int eth1/17,eth1/18 brief
+--------------------------------------------------------------------------------
+Ethernet      VLAN    Type Mode   Status  Reason                   Speed     Port
+Interface                                                                                                        Ch #
+--------------------------------------------------------------------------------
+Eth1/17       10         eth     access    up      none                       100G(D) 10
+Eth1/18       10         eth     access    up      none                       100G(D) 10
+
+switch_B_1# show int eth1/17,eth1/18 brief
+--------------------------------------------------------------------------------
+Ethernet      VLAN    Type Mode   Status  Reason                   Speed     Port
+Interface                                                                                                        Ch #
+--------------------------------------------------------------------------------
+Eth1/17       10         eth     access    up      none                       100G(D) 10
+Eth1/18       10         eth     access    up      none                       100G(D) 10
+----
+. 重複執行Fabric 2的程序。
+

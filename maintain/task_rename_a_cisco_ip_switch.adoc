@@ -1,0 +1,112 @@
+---
+permalink: maintain/task_rename_a_cisco_ip_switch.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, rename, cisco, ip, switch 
+summary: 您可能需要重新命名Cisco IP交換器、以便在整個組態中提供一致的命名。 
+---
+= 重新命名Cisco IP交換器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可能需要重新命名Cisco IP交換器、以便在整個組態中提供一致的命名。
+
+在此工作範例中、交換器名稱會從「mytswitch」變更為「ip_switch_a_1」。
+
+. 進入全域組態模式：
++
+’*組態終端機*
+
++
+下列範例顯示組態模式提示字元。兩個提示都會顯示交換器名稱「myswitch"。
+
++
+[listing]
+----
+myswitch# configure terminal
+myswitch(config)#
+----
+. 重新命名交換器：
++
+switchname new交換器名稱*
+
++
+如果您要重新命名Fabric中的兩個交換器、請在每個交換器上使用相同的命令。
+
++
+CLI提示會變更以反映新名稱：
+
++
+[listing]
+----
+myswitch(config)# switchname IP_switch_A_1
+IP_switch_A_1(config)#
+----
+. 結束組態模式：
++
+「* exit*」
+
++
+此時會顯示最上層的交換器提示：
+
++
+[listing]
+----
+IP_switch_A_1(config)# exit
+IP_switch_A_1#
+----
+. 將目前執行的組態複製到啟動組態檔：
++
+‘*複製執行組態啟動組態*’
+
+. 驗證交換器名稱的變更是否可從ONTAP 無法看見的叢集提示字元中看到。
++
+請注意、會顯示新的交換器名稱、而且不會顯示舊的交換器名稱（「mytswitch」）。
+
++
+.. 進入進階權限模式、並在出現提示時按「* y *」：+「* set -priv榮幸advance*」
+.. 顯示附加的裝置：+「*網路裝置探索秀*」
+.. 返回管理權限模式：+`* set -priv榮幸admin*
++
+以下範例顯示交換器出現新名稱「ip_switch_a_1」：
+
++
+[listing]
+----
+cluster_A::storage show> set advanced
+
+Warning: These advanced commands are potentially dangerous; use them only when directed to do so by NetApp personnel.
+Do you want to continue? {y|n}: y
+
+cluster_A::storage show*> network device-discovery show
+Node/       Local  Discovered
+Protocol    Port   Device                    Interface         Platform
+----------- ------ ------------------------- ----------------  ----------------
+node_A_2/cdp
+            e0M    LF01-410J53.mycompany.com(SAL18516DZY)
+                                             Ethernet125/1/28  N9K-C9372PX
+            e1a    IP_switch_A_1(FOC21211RBU)
+                                             Ethernet1/2       N3K-C3232C
+            e1b    IP_switch_A_1(FOC21211RBU)
+                                             Ethernet1/10      N3K-C3232C
+.
+.
+.                                             Ethernet1/18      N9K-C9372PX
+node_A_1/cdp
+            e0M    LF01-410J53.mycompany.com(SAL18516DZY)
+                                             Ethernet125/1/26  N9K-C9372PX
+            e0a    IP_switch_A_2(FOC21211RB5)
+                                             Ethernet1/1       N3K-C3232C
+            e0b    IP_switch_A_2(FOC21211RB5)
+                                             Ethernet1/9       N3K-C3232C
+            e1a    IP_switch_A_1(FOC21211RBU)
+.
+.
+.
+16 entries were displayed.
+----
+
+
+

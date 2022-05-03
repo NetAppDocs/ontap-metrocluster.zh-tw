@@ -1,0 +1,270 @@
+---
+permalink: transition/task_disruptively_transition_while_move_volumes_from_old_shelves_to_new_shelves.html 
+sidebar: sidebar 
+keywords: start, ontap, disruptive, transition, two-node, metrocluster, fc, configuration, four-node, two-node, retire, storage, shelves, shelf, procedure, exist, drive, requirement, retiring, workflow, moving, data, move, retiring, retire, migrate, migrating, root, aggregate, 
+summary: 從功能性的問題9.8開始ONTAP 、您可以中斷營運、將雙節點MetroCluster 的靜態FC組態轉換成四節點MetroCluster 的靜態IP組態、並淘汰現有的儲存櫃。此程序包括將資料從現有磁碟機櫃移至新組態、然後淘汰舊磁碟櫃的步驟。 
+---
+= 淘汰儲存櫃時、會中斷從MetroCluster 靜態FC移轉MetroCluster 至靜態IP ONTAP （適用於更新版本的版本號）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+從功能性的問題9.8開始ONTAP 、您可以中斷營運、將雙節點MetroCluster 的靜態FC組態轉換成四節點MetroCluster 的靜態IP組態、並淘汰現有的儲存櫃。此程序包括將資料從現有磁碟機櫃移至新組態、然後淘汰舊磁碟櫃的步驟。
+
+* 當您計畫淘汰現有的儲存櫃、並將所有資料移到MetroCluster 以「不實IP」組態設定的新磁碟櫃時、就會使用此程序。
+* 現有的儲存櫃模型必須受到全新MetroCluster 的支援。
+* 執行ONTAP 支援此程序的系統支援使用支援的版本。
+* 此程序會造成中斷。
+* 此程序僅適用於雙節點MetroCluster 的不含功能的FC組態。
++
+如果您有四節點MetroCluster 的不含功能的FC組態、請參閱 link:concept_choosing_your_transition_procedure_mcc_transition.html["選擇您的轉換程序"]。
+
+* 您必須符合所有要求、並遵循程序中的所有步驟。
+
+
+
+
+== 淘汰舊機櫃時的轉換需求
+
+在開始轉換程序之前、您必須確保現有MetroCluster 的SFC組態符合要求。
+
+* 它必須是雙節點架構附加或延伸MetroCluster 的支援、而且所有節點都必須執行ONTAP 更新版本的支援。
++
+全新MetroCluster 的SIP控制器模組應執行相同版本ONTAP 的S9.8。
+
+* 現有平台和新平台必須是支援的轉換組合。
++
+link:concept_supported_platforms_for_transition.html["支援不中斷營運的平台移轉"]
+
+* 它必須符合_ MetroCluster 《安裝與組態指南》_中所述的所有需求與纜線。
++
+link:../install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"]
+
+
+
+新組態也必須符合下列需求：
+
+* 全新MetroCluster 的靜態IP平台機型必須支援舊的儲存櫃機型。
++
+https://hwu.netapp.com["NetApp Hardware Universe"^]
+
+* 視現有磁碟櫃中可用的備用磁碟而定、必須新增額外的磁碟機。
++
+這可能需要額外的磁碟機櫃。
+
++
+每個控制器需要額外14至18個磁碟機：
+
++
+** 三個Pool 0磁碟機
+** 三個Pool 1磁碟機
+** 兩個備用磁碟機
+** 六到十個磁碟機用於系統磁碟區
+
+
+* 您必須確保組態（包括新節點）不會超過組態的平台限制、包括磁碟機數、根Aggregate大小容量等
++
+您可在取得每種平台模式的相關資訊 https://hwu.netapp.com["NetApp Hardware Universe"^]
+
+
+
+您必須能從MetroCluster 任何一個站台、或是依照程序的要求、對所有六個節點進行遠端主控台存取、或是規劃在站台之間的交通。
+
+
+
+== 在移動資料及汰換舊儲存櫃時、可中斷營運的工作流程
+
+您必須遵循特定的工作流程、才能確保順利轉換。
+
+準備轉換時、請規劃各地點之間的差旅。請注意、當遠端節點機架安裝並連接纜線之後、您需要對節點進行序列終端機存取。在設定節點之前、「服務處理器」存取將無法使用。
+
+image::../media/workflow_2n_transition_moving_data_to_new_shelves.png[工作流程2n將資料移至新的磁碟櫃]
+
+
+
+== 轉換組態
+
+您必須遵循詳細的轉換程序。
+
+在下列步驟中、您會被導向至其他程序。您必須依照所給的順序執行每個參考程序中的步驟。
+
+.步驟
+. 使用中的步驟規劃連接埠對應 link:../transition/concept_requirements_for_fc_to_ip_transition_2n_mcc_transition.html#mapping-ports-from-the-metrocluster-fc-nodes-to-the-metrocluster-ip-nodes["將連接埠從MetroCluster 靜態FC節點對應至MetroCluster 靜態IP節點"]。
+. 請依照中的步驟準備MetroCluster 好使用不需要的IP控制器 link:../transition/concept_requirements_for_fc_to_ip_transition_2n_mcc_transition.html#preparing-the-metrocluster-ip-controllers["準備MetroCluster 好執行功能"]。
+. 驗證MetroCluster 不健全的不健全狀況。
++
+執行中的步驟 link:../transition/concept_requirements_for_fc_to_ip_transition_2n_mcc_transition.html#verifying-the-health-of-the-metrocluster-fc-configuration["驗MetroCluster 證不完整的驗證功能"]。
+
+. 從MetroCluster F精選FC組態收集資訊。
++
+執行中的步驟 link:task_transition_the_mcc_fc_nodes_2n_mcc_transition_supertask.html#gathering-information-from-the-existing-controller-modules-before-the-transition["在轉換之前從現有的控制器模組收集資訊"]。
+
+. 必要時、請移除斷路器監控。
++
+執行中的步驟 link:../transition/concept_requirements_for_fc_to_ip_transition_2n_mcc_transition.html#verifying-the-health-of-the-metrocluster-fc-configuration["從斷路器或其他監控軟體移除現有組態"]。
+
+. 準備並移除現有MetroCluster 的不含任何資料的FC節點。
++
+執行中的步驟 link:task_transition_the_mcc_fc_nodes_2n_mcc_transition_supertask.html["轉換MetroCluster 功能不只是功能不一的FC節點"]。
+
+. 連接新MetroCluster 的靜態IP節點。
++
+執行中的步驟 link:task_connect_the_mcc_ip_controller_modules_2n_mcc_transition_supertask.html["連接MetroCluster 靜態IP控制器模組"]。
+
+. 設定新MetroCluster 的靜態IP節點並完成轉換。
++
+執行中的步驟 link:task_configure_the_new_nodes_and_complete_transition.html["設定新節點並完成轉換"]。
+
+
+
+
+
+== 移轉根Aggregate
+
+轉換完成後、將現有的根集合體從MetroCluster 整個過程中移轉到MetroCluster 以整個過程為基礎的架構上、並將剩餘的物件從整個過程中移轉到更新的架構中。
+
+此工作會將node_a_1-FC和node_B_1-FC的根Aggregate移至新MetroCluster 版的更新版IP控制器所擁有的磁碟櫃：
+
+.步驟
+. 將新本機儲存櫃上的Pool 0磁碟指派給具有要移轉根目錄的控制器（例如、如果要移轉node_a_1-FC根目錄、請將新機櫃上的Pool 0磁碟指派給node_a_1-IP）
++
+請注意、移轉_會 移除、而且不會重新建立根mirror、因此在發出移轉命令之前、不需要指派資源池1磁碟
+
+. 將權限模式設為進階：
++
+《et priv進階》
+
+. 移轉根Aggregate：
++
+「系統節點移轉根節點節點節點名稱-disklist disk-ID1、disk-ID2、diskn -RAID-type RAID-type」
+
++
+** node-name是要移轉根Aggregate的節點。
+** 磁碟ID可識別新機櫃上的Pool 0磁碟。
+** RAID類型通常與現有根Aggregate的RAID類型相同。
+** 您可以使用命令「jobshow -idjob-id-instance」來檢查移轉狀態、其中job-id是在發出migrate-root命令時提供的值。
++
+例如、如果node_a_1-FC的根Aggregate由三個具有RAID-DP的磁碟組成、則會使用下列命令將root移轉至新的機櫃11：
+
++
+[listing]
+----
+system node migrate-root -node node_A_1-IP -disklist 3.11.0,3.11.1,3.11.2 -raid-type raid_dp
+----
+
+
+. 等到移轉作業完成、節點會自動重新開機。
+. 在直接連線至遠端叢集的新機櫃上、為根Aggregate指派資源池1磁碟。
+. 鏡射移轉的根Aggregate。
+. 等待根Aggregate完成重新同步。
++
+您可以使用storage Aggregate show命令來檢查Aggregate的同步狀態。
+
+. 針對其他根Aggregate重複這些步驟。
+
+
+
+
+== 移轉資料Aggregate
+
+在新的磁碟櫃上建立資料集合體、並使用Volume Move將資料磁碟區從舊磁碟櫃傳輸到新磁碟櫃上的集合體。
+
+. 將資料磁碟區移至新控制器上的集合體、一次一個磁碟區。
++
+http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-upgrade-controller/GUID-AFE432F6-60AD-4A79-86C0-C7D12957FA63.html["建立Aggregate並將磁碟區移至新節點"^]
+
+
+
+
+
+== 淘汰從node_a_1-FC和node_a_2-FC移出的磁碟櫃
+
+您將舊的儲存櫃從原始MetroCluster 的不還原FC組態中淘汰。這些磁碟櫃原本由node_a_1-FC和node_a_2-FC擁有。
+
+. 識別叢集B上舊磁碟櫃上需要刪除的集合體。
++
+在此範例中、MetroCluster 下列資料集合體是由RUSING FC叢集B主控、需要刪除：agger_data_A1和agger_data_A2。
+
++
+
+NOTE: 您需要執行步驟來識別、離線及刪除磁碟櫃上的資料集合體。範例僅適用於一個叢集。
+
++
+[listing]
+----
+cluster_B::> aggr show
+
+Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
+--------- -------- --------- ----- ------- ------ ---------------- ------------
+aggr0_node_A_1-FC
+           349.0GB   16.83GB   95% online       1 node_A_1-IP      raid_dp,
+                                                                   mirrored,
+                                                                   normal
+aggr0_node_A_2-IP
+           349.0GB   16.83GB   95% online       1 node_A_2-IP      raid_dp,
+                                                                   mirrored,
+                                                                   normal
+...
+8 entries were displayed.
+
+cluster_B::>
+----
+. 檢查資料Aggregate是否有任何MDV_aud磁碟區、並在刪除Aggregate之前刪除這些磁碟區。
++
+您必須刪除無法移動的MDV_aud磁碟區。
+
+. 將每個集合體離線、然後刪除：
++
+.. 使Aggregate離線：
++
+「torage Aggregate offline -Aggregate aggreg-name」
+
++
+下列範例顯示正在離線的Aggregate node_B_1_aggr0：
+
++
+[listing]
+----
+cluster_B::> storage aggregate offline -aggregate node_B_1_aggr0
+
+Aggregate offline successful on aggregate: node_B_1_aggr0
+----
+.. 刪除Aggregate：
++
+「torage Aggregate刪除-Aggregate Aggregate名稱」
+
++
+出現提示時、您可以銷毀叢。
+
++
+下列範例顯示要刪除的Aggregate node_B_1_aggr0。
+
++
+[listing]
+----
+cluster_B::> storage aggregate delete -aggregate node_B_1_aggr0
+Warning: Are you sure you want to destroy aggregate "node_B_1_aggr0"? {y|n}: y
+[Job 123] Job succeeded: DONE
+
+cluster_B::>
+----
+
+
+. 刪除所有集合體後、請關閉電源、中斷連線並移除磁碟櫃。
+. 重複上述步驟以淘汰叢集層架。
+
+
+
+
+== 完成轉換
+
+移除舊的控制器模組之後、您就可以完成轉換程序。
+
+.步驟
+. 完成轉換程序。
++
+執行中的步驟 link:task_return_the_system_to_normal_operation_2n_mcc_transition_supertask.html["使系統恢復正常運作"]。
+
+

@@ -1,0 +1,18 @@
+---
+permalink: upgrade/task_rack_the_new_equipment_mcc_expansion.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, rack, new, equipment 
+summary: 您必須為新節點安裝設備。 
+---
+= 運用新設備
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須為新節點安裝設備。
+
+.步驟
+. 請使用中的程序 link:../install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"] 用於架裝新的儲存系統、磁碟櫃和FC對SAS橋接器。
+

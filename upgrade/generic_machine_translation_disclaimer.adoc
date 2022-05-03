@@ -1,0 +1,13 @@
+---
+permalink: upgrade/generic_machine_translation_disclaimer.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, machine, translation, generic 
+summary: 《VMware知識庫升級、轉換與擴充指南》的機器翻譯資訊MetroCluster 。 
+---
+= 機器翻譯
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+如需當地語系化內容的重要資訊、請參閱 https://www.netapp.com/company/legal/machine-translation/["機器翻譯免責聲明"]

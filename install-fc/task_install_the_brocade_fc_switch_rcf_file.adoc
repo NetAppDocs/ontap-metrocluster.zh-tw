@@ -1,0 +1,301 @@
+---
+permalink: install-fc/task_install_the_brocade_fc_switch_rcf_file.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, brocade, fc, switch, rcf, file 
+summary: 當您設定Brocade FC交換器時、可以安裝交換器組態檔、為特定組態提供完整的交換器設定。 
+---
+= 安裝Brocade FC交換器RCF檔案
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+當您設定Brocade FC交換器時、可以安裝交換器組態檔、為特定組態提供完整的交換器設定。
+
+這些步驟必須重複執行MetroCluster 到位在整個過程中的每個Brocade FC交換器上。
+
+.步驟
+. 啟動下載與組態程序：
++
+「configDownload」
+
++
+回應下列範例所示的提示。
+
++
+[listing]
+----
+FC_switch_A_1:admin> configDownload
+Protocol (scp, ftp, sftp, local) [ftp]:
+Server Name or IP Address [host]: <user input>
+User Name [user]:<user input>
+Path/Filename [<home dir>/config.txt]:path to configuration file
+Section (all|chassis|switch [all]): all
+.
+.
+.
+Do you want to continue [y/n]: y
+Password: <user input>
+----
++
+輸入密碼後、交換器會下載並執行組態檔。
+
+. 持續啟用交換器：
++
+「witchcfg堅持」
+
++
+範例顯示如何持續啟用FC switch_a_1。
+
++
+[listing]
+----
+FC_switch_A_1:admin> switchcfgpersistentenable
+----
+. 確認組態檔已設定交換器網域：
++
+《秀》
+
++
+根據交換器使用的組態檔、每個交換器都會被指派不同的網域號碼。
+
++
+[listing]
+----
+FC_switch_A_1:admin> switchShow
+switchName: FC_switch_A_1
+switchType: 109.1
+switchState: Online
+switchMode: Native
+switchRole: Subordinate
+switchDomain: 5
+----
+. 請確認交換器已指派正確的網域值、如下表所示。
++
+|===
+
+
+| 網路 | 交換器 | 交換器網域 
+
+
+ a| 
+1.
+ a| 
+A_1
+ a| 
+5.
+
+
+
+ a| 
+B_1
+ a| 
+7.
+
+
+
+ a| 
+2.
+ a| 
+A_2.
+ a| 
+6.
+
+
+
+ a| 
+B_2.
+ a| 
+8.
+
+|===
+. 變更連接埠速度：
++
+「portcfgSpeed」
+
++
+[listing]
+----
+FC_switch_A_1:admin> portcfgspeed port number port speed
+----
++
+根據預設、所有連接埠均設定為以16 Gbps運作。您可能會因為下列原因而變更連接埠速度：
+
++
+** 當使用8-Gbps FC-VI介面卡且交換器連接埠速度應設定為8 Gbps時、互連交換器連接埠速度應該會改變。
+** 當Atto FibreBridge 6500N使用8-Gbps HBA介面卡時、應變更交換器連接埠速度。
+** 當ISL無法以16 Gbps的速度執行時、必須變更ISL連接埠的速度。
+
+
+. 計算ISL距離。
++
+由於FC-VI的行為、您必須將距離設定為實際距離的1.5倍、最少10倍（LE）。ISL的距離計算方式如下、四捨五入至下一整公里：1.5 x實際距離=距離。
+
++
+如果距離為3公里、則1.5 x 3公里= 4.5。這低於10；因此、您必須將ISL設為LE距離等級。
+
++
+距離為20公里、然後1.5 x 20公里= 30。您必須將ISL設為LS距離等級。
+
+. 設定每個ISL連接埠的距離：
++
+"portcfglong平行 相距_port層VC_LINK_INIT_-平行 相距_距離_value_"
+
++
+VC_LINK_INIT值1預設使用檔案字"ARB"。值0使用檔案字「閒置」。所需的值可能視您使用的連結而有所不同。在此範例中、會設定預設值、並假設距離為20公里因此、設定值為「30」、VC_LINK_INIT值為「1」、ISL連接埠為「21」。
+
++
+範例：L
+
++
+[listing]
+----
+FC_switch_A_1:admin> portcfglongdistance 21 LS 1 -distance 30
+----
++
+範例：LE
+
++
+[listing]
+----
+FC_switch_A_1:admin> portcfglongdistance 21 LE 1
+----
+. 確認IP位址設定是否正確：
++
+「ipAddrshow」
+
++
+[listing]
+----
+FC_switch_A_1:admin> ipAddrshow
+----
++
+您可以視需要設定IP位址：
+
++
+"ipAddrSet"
+
+. 從交換器提示設定時區：
++
+「tstimepeZone -互動」
+
++
+您應視需要回應提示。
+
++
+[listing]
+----
+FC_switch_A_1:admin>  tstimezone --interactive
+----
+. 重新啟動交換器：
++
+"重新開機"
+
++
+範例顯示如何重新開機FC交換器_a_1。
+
++
+[listing]
+----
+FC_switch_A_1:admin> reboot
+----
+. 確認距離設定：
++
+「portbuffershow」
+
++
+LE的距離設定顯示為10公里
+
++
+[listing]
+----
+FC_Switch_A_1:admin> portbuffershow
+User Port Lx   Max/Resv Buffer Needed  Link     Remaining
+Port Type Mode Buffers  Usage  Buffers Distance Buffers
+---- ---- ---- ------- ------ ------- --------- ----------
+...
+21    E    -      8      67     67      30 km
+22    E    -      8      67     67      30 km
+...
+23    -    8      0       -      -      466
+----
+. 將ISL纜線重新連接至交換器上拔下的連接埠。
++
+當原廠設定重設為預設設定時、ISL纜線會中斷連線。
+
++
+link:task_reset_the_brocade_fc_switch_to_factory_defaults.html["將Brocade FC交換器重設為原廠預設值"]
+
+. 驗證組態。
++
+.. 驗證交換器是否形成單一網路架構：
++
+「秀秀」
+
++
+下列範例顯示在連接埠20和21上使用ISL之組態的輸出。
+
++
+[listing]
+----
+FC_switch_A_1:admin> switchshow
+switchName: FC_switch_A_1
+switchType: 109.1
+switchState:Online
+switchMode: Native
+switchRole: Subordinate
+switchDomain:       5
+switchId:   fffc01
+switchWwn:  10:00:00:05:33:86:89:cb
+zoning:             OFF
+switchBeacon:       OFF
+
+Index Port Address Media Speed State  Proto
+===========================================
+...
+20   20  010C00   id    16G  Online FC  LE E-Port  10:00:00:05:33:8c:2e:9a "FC_switch_B_1" (downstream)(trunk master)
+21   21  010D00   id    16G  Online FC  LE E-Port  (Trunk port, master is Port 20)
+...
+----
+.. 確認架構的組態：
++
+《fabricshow》
+
++
+[listing]
+----
+FC_switch_A_1:admin> fabricshow
+   Switch ID   Worldwide Name      Enet IP Addr FC IP Addr Name
+-----------------------------------------------------------------
+1: fffc01 10:00:00:05:33:86:89:cb 10.10.10.55  0.0.0.0    "FC_switch_A_1"
+3: fffc03 10:00:00:05:33:8c:2e:9a 10.10.10.65  0.0.0.0   >"FC_switch_B_1"
+----
+.. 驗證ISL是否正常運作：
++
+《島上秀》
+
++
+[listing]
+----
+FC_switch_A_1:admin> islshow
+----
+.. 確認分區已正確複寫：
++
+「cfgshow」+「區域」
+
++
+兩個輸出應顯示兩個交換器的相同組態資訊和分區資訊。
+
+.. 如果使用主幹連線、請確認主幹連線：
++
+《警示秀》
+
++
+[listing]
+----
+FC_switch_A_1:admin> trunkshow
+----
+
+
+

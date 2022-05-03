@@ -1,0 +1,204 @@
+---
+permalink: tiebreaker/concept_configuring_the_tiebreaker_software.html 
+sidebar: sidebar 
+keywords: installation, tiebreaker, software, add, modify, metrocluster, configuration, remove, configuring, configure, launch, cli, add, command, modify, removing 
+summary: 安裝了Tiebreaker軟體之後、您可以新增或修改MetroCluster 任何版本的物件組態、或是從Tiebreaker軟體中移除這些組態。 
+---
+= 設定Tiebreaker軟體
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+安裝了Tiebreaker軟體之後、您可以新增或修改MetroCluster 任何版本的物件組態、或是從Tiebreaker軟體中移除這些組態。
+
+
+
+== 啟動Tiebreaker軟體CLI
+
+安裝Tiebreaker軟體之後、您必須啟動其CLI來設定軟體。
+
+. 從安裝軟體的主機提示字元啟動CLI：
++
+《NetApp-MetroCluster-tiebreer-software-cli》
+
+
+
+
+
+== 新增MetroCluster 功能
+
+安裝完NetApp MetroCluster 斷點器軟體之後、您可以一MetroCluster 次新增更多的一套功能。
+
+您必須已在MetroCluster 一個不支援的環境中安裝了這個支援功能、ONTAP 並啟用軟體中的設定。
+
+. 使用tiebreaker命令列介面（CLI）監控器add命令來新增MetroCluster 物件組態。
++
+如果您使用的是主機名稱、則必須是完整網域名稱（FQDN）。
+
++
+下列範例顯示叢集A的組態：
+
++
+[listing]
+----
+
+NetApp MetroCluster Tiebreaker :> monitor add wizard
+Enter monitor Name: cluster_A
+Enter Cluster IP Address: 10.222.196.130
+Enter Cluster Username: admin
+Enter Cluster Password:
+Enter Peer Cluster IP Address: 10.222.196.40
+Enter Peer Cluster Username: admin
+Enter Peer Cluster Password:
+Successfully added monitor to NetApp MetroCluster Tiebreaker software.
+----
+. 使用MetroCluster tiebreaker CLI "monitorer show -STATUS"命令、確認已正確新增此功能。
++
+[listing]
+----
+
+NetApp MetroCluster Tiebreaker :> monitor show -status
+----
+. 停用斷路器軟體的觀察模式、以便在偵測到站台故障後自動啟動切換：
++
+「監控者修改-監 控名稱監控名稱-觀察者 模式錯」
+
++
+[listing]
+----
+NetApp MetroCluster Tiebreaker :> monitor modify -monitor-name 8pack -observer-mode false
+Warning: If you are turning observer-mode to false, make sure to review the 'risks and limitations'
+as described in the MetroCluster Tiebreaker installation and configuration.
+Are you sure you want to enable automatic switchover capability for monitor "8pack"? [Y/N]: y
+----
+
+
+link:concept_risks_and_limitation_of_using_mcc_tiebreaker_in_active_mode.html["在MetroCluster 作用中模式中使用ESITirepreaker的風險和限制"]
+
+
+
+== 修改MetroCluster 斷點器組態的命令
+
+您可以在MetroCluster 需要變更設定時修改此功能的組態。
+
+Tiebreaker CLI監控修改命令可搭配下列任一選項使用。您可以使用監控show -STATUS命令來確認變更。
+
+[cols="30,70"]
+|===
+
+
+| 選項 | 說明 
+
+
+ a| 
+-監 控名稱
+ a| 
+系統名稱MetroCluster
+
+
+
+ a| 
+-enable監控
+ a| 
+啟用和停用MetroCluster 監控功能
+
+
+
+ a| 
+無訊息期間
+ a| 
+在偵測到站台故障後、由斷位器軟體等待確認的期間（以秒為單位）MetroCluster
+
+
+
+ a| 
+觀察者模式
+ a| 
+觀察者模式（true）僅提供監控功能、不會在站台發生災難時觸發切換。線上模式（假）會在站台發生災難時觸發切換。
+
+* link:concept_overview_of_the_tiebreaker_software.html["Tiebreaker軟體如何偵測站台故障"]
+* link:concept_risks_and_limitation_of_using_mcc_tiebreaker_in_active_mode.html["在MetroCluster 作用中模式中使用ESITirepreaker的風險和限制"]
+
+
+|===
+下列範例會變更組態的無訊息期間。
+
+[listing]
+----
+
+NetApp MetroCluster Tiebreaker :> monitor modify -monitor-name cluster_A -silent-period 15
+Successfully modified monitor in NetApp MetroCluster Tiebreaker
+software.
+----
+tiebreaker CLI的「debug」命令可用來變更記錄模式。
+
+[cols="30,70"]
+|===
+
+
+| 命令 | 說明 
+
+
+ a| 
+偵錯狀態
+ a| 
+顯示偵錯模式的狀態
+
+
+
+ a| 
+啟用偵錯
+ a| 
+啟用記錄的偵錯模式
+
+
+
+ a| 
+停用偵錯
+ a| 
+停用記錄的偵錯模式
+
+|===
+可使用tiebreaker CLI「update-mcctb-password'」命令來更新使用者密碼。
+
+[cols="30,70"]
+|===
+
+
+| 命令 | 說明 
+
+
+ a| 
+update-mcctb-password
+ a| 
+使用者密碼已成功更新
+
+|===
+
+
+== 移除MetroCluster 部分組態
+
+當MetroCluster 您不想再監控MetroCluster 某個非重複組態時、可以移除正在由斷路器軟體監控的非重複組態。
+
+. 使用tiebreaker CLI "monitor" remove"命令來移除MetroCluster 該組態。
++
+在下列範例中、「叢集_a'」會從軟體中移除：
+
++
+[listing]
+----
+
+NetApp MetroCluster Tiebreaker :> monitor remove -monitor-name cluster_A
+Successfully removed monitor from NetApp MetroCluster Tiebreaker
+software.
+----
+. 使用tiebreaker CLI "monitorer show -STATUS"命令、確認MetroCluster 已正確移除該組態。
++
+[listing]
+----
+
+NetApp MetroCluster Tiebreaker :> monitor show -status
+----
+

@@ -1,0 +1,32 @@
+---
+permalink: install-ip/port_usage_3132q.html 
+sidebar: sidebar 
+keywords: cabling, cable, component, sip, link, site, management, network, hardware, component, switch, cluster, connection, management, data, configuring, configure 
+summary: 連接埠在MetroCluster 一個靜態IP組態中的使用取決於交換器機型和平台類型。 
+---
+= Cisco 3132Q-V交換器的平台連接埠指派
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+連接埠在MetroCluster 一個靜態IP組態中的使用取決於交換器機型和平台類型。
+
+
+
+== FAS2750或AFF __LW_A220系統和Cisco 3132Q-V交換器的連接埠使用量
+
+image::../media/mcc_ip_cabling_a_fas2750_or_a220_to_a_cisco_3132q_v_switch.png[MCC IP將fas2750或A220纜線連接至Cisco 3132q v交換器]
+
+
+
+== FAS9000、AFF __LW_A700和Cisco 3132Q-V交換器的連接埠使用量
+
+image::../media/mcc_ip_cabling_a_fas9000_or_aff_a700_to_a_cisco_3132q_v_switch.png[MCC IP將fas9000或AFF fasa700纜線連接至Cisco 3132q v交換器]
+
+
+
+== 連接埠用於AFF 連接埠、適用於__LW_A800和Cisco 3132Q-V交換器
+
+image::../media/cabling_an_aff_a800_to_a_cisco_3132q_v_switch.png[將AFF 某個__LW_A800連接至Cisco 3132q v交換器]

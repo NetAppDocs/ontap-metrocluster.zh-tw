@@ -1,0 +1,87 @@
+---
+permalink: upgrade/task_verify_the_health_of_the_mcc_configuration.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, health, verify, conofiguration 
+summary: 您應該檢查MetroCluster 整個過程的健全狀況、以驗證運作是否正常。 
+---
+= 驗MetroCluster 證資訊功能組態的健全狀況
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您應該檢查MetroCluster 整個過程的健全狀況、以驗證運作是否正常。
+
+.步驟
+. 檢查MetroCluster 每個叢集上的功能是否已設定且處於正常模式：
++
+《不看》MetroCluster
+
++
+[listing]
+----
+cluster_A::> metrocluster show
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+ Local: cluster_A         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain auso-on-cluster-disaster
+Remote: cluster_B         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain auso-on-cluster-disaster
+----
+. 檢查每個節點是否已啟用鏡射：
++
+「不一樣的秀」MetroCluster
+
++
+[listing]
+----
+cluster_A::> metrocluster node show
+DR                           Configuration  DR
+Group Cluster Node           State          Mirroring Mode
+----- ------- -------------- -------------- --------- --------------------
+1     cluster_A
+              node_A_1       configured     enabled   normal
+      cluster_B
+              node_B_1       configured     enabled   normal
+2 entries were displayed.
+----
+. 檢查MetroCluster 這些元件是否健全：
++
+《不一樣的跑程》MetroCluster
+
++
+[listing]
+----
+cluster_A::> metrocluster check run
+
+Last Checked On: 10/1/2014 16:03:37
+
+Component           Result
+------------------- ---------
+nodes               ok
+lifs                ok
+config-replication  ok
+aggregates          ok
+4 entries were displayed.
+
+Command completed. Use the "metrocluster check show -instance" command or sub-commands in "metrocluster check" directory for detailed results.
+To check if the nodes are ready to do a switchover or switchback operation, run "metrocluster switchover -simulate" or "metrocluster switchback -simulate", respectively.
+----
+. 檢查是否沒有健全狀況警示：
++
+「系統健全狀況警示顯示」
+
+. 模擬切換作業：
++
+.. 在任何節點的提示下、變更為進階權限等級：+「權限進階」
++
+當系統提示您繼續進入進階模式並查看進階模式提示字元（*>）時、您需要使用「* y*」來回應。
+
+.. 使用-Simulate參數+「MetroCluster Sof switchover -Simulate」執行切換作業
+.. 返回管理員權限等級：+「設置權限管理」
+
+
+

@@ -1,0 +1,91 @@
+---
+permalink: disaster-recovery/task_boot_new_mcfc.html 
+sidebar: sidebar 
+keywords: boot, controller, modules, fc 
+summary: 完成資料與根集合體的Aggregate修復之後、您必須在災難站台上開機節點。 
+---
+= 開機新的控制器模組（MetroCluster 不含FFC組態）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+完成資料與根集合體的Aggregate修復之後、您必須在災難站台上開機節點。
+
+此工作從顯示載入程式提示的節點開始。
+
+.步驟
+. 顯示開機功能表：
++
+Boot_ONTAP功能表
+
+. [[step2、Step 2 ]從開機功能表中選取選項6、*從備份組態*更新Flash。
+. 回應「y」下列提示：
++
+「這將取代所有以Flash為基礎的組態、取代上次備份到磁碟的組態。您確定要繼續嗎？：Y'
+
++
+系統會開機兩次、第二次載入新組態。
+
++
+
+NOTE: 如果您未清除已用替換控制器的NVRAM內容、您可能會看到以下訊息：「痛苦：NVRAM內容無效...」 如果發生這種情況、請重複執行 <<step2>> 以將系統開機至ONTAP 畫面提示字元。接著您需要執行根還原。如需協助、請聯絡技術支援部門。
+
+. 鏡射叢0上的根Aggregate：
++
+.. 將三個Pool0磁碟指派給新的控制器模組。
+.. 鏡射根Aggregate Pool1叢：
++
+「aggr mirror root-agg-name」
+
+.. 將未擁有的磁碟指派給本機節點上的Pool0
+
+
+. 如果您有四節點組態、請在災難站台的其他節點上重複上述步驟。
+. 重新整理MetroCluster 此功能的組態：
++
+.. 進入進階權限模式：
++
+"進階權限"
+
+.. 重新整理組態：
++
+《靜態組態-重新整理真實》MetroCluster
+
+.. 返回管理權限模式：
++
+「et -priv. admin」
+
+
+
+. 確認災難站台的替換節點已準備好進行切換：
++
+「不一樣的秀」MetroCluster
+
++
+替換節點應處於「waiting for switchback recovery」（正在等待切換還原）模式。如果它們處於「正常」模式、您可以重新啟動替換節點。開機之後、節點應處於「waiting for switchback recovery」（等待切換回復）模式。
+
++
+下列範例顯示替換節點已準備好進行切換：
+
++
+....
+
+cluster_B::> metrocluster node show
+DR                    Configuration  DR
+Grp Cluster Node      State          Mirroring Mode
+--- ------- --------- -------------- --------- --------------------
+1   cluster_B
+            node_B_1  configured     enabled   switchover completed
+            node_B_2  configured     enabled   switchover completed
+    cluster_A
+            node_A_1  configured     enabled   waiting for switchback recovery
+            node_A_2  configured     enabled   waiting for switchback recovery
+4 entries were displayed.
+
+cluster_B::>
+....
+
+
+請前往 link:../disaster-recovery/task_complete_recovery.html["完成災難恢復程序"]。

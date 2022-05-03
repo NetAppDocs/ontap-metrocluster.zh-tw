@@ -1,0 +1,48 @@
+---
+permalink: install-stretch/concept_parts_of_a_two_node_mcc_configuration_using_fc_to_sas_bridges.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, parts, two, node, bridge, stretch, configuration 
+summary: 規劃MetroCluster 您的不實組態時、您應該瞭解組態的各個部分、以及它們如何搭配運作。 
+---
+= 雙節點橋接式延伸MetroCluster 功能的部分組態
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+規劃MetroCluster 您的不實組態時、您應該瞭解組態的各個部分、以及它們如何搭配運作。
+
+此組態包含下列主要硬體元素：MetroCluster
+
+* 儲存控制器
++
+儲存控制器並未直接連接至儲存設備、而是連接至FC對SAS橋接器。儲存控制器是透過FC纜線在每個控制器的FC-VI介面卡之間相互連接。
+
++
+每個儲存控制器都設定為DR合作夥伴、以供合作夥伴站台上的儲存控制器使用。
+
+* FC至SAS橋接器
++
+FC對SAS橋接器可將SAS儲存堆疊連接至控制器上的FC啟動器連接埠、在兩種傳輸協定之間提供橋接。
+
+* 叢集對等網路
++
+叢集對等網路提供連線功能、可鏡射儲存虛擬機器（SVM）組態。一個叢集上所有SVM的組態都會鏡射到合作夥伴叢集。
+
+
+
+下圖顯示MetroCluster 了關於此功能的簡單介紹。對於某些連線、單一線路代表元件之間的多個備援連線。不會顯示資料與管理網路連線。
+
+image::../media/mcc_hardware_architecture_both_clusters_2_node_atto.gif[MCC硬體架構兩個叢集2節點Atto]
+
+* 組態包含兩個單節點叢集。
+* 每個站台都有一或多個SAS儲存設備堆疊。
++
+
+NOTE: ACP纜線不支援採用非核心組態的SAS磁碟櫃MetroCluster 。
+
++
+支援其他儲存堆疊、但每個站台只會顯示一個。
+
+

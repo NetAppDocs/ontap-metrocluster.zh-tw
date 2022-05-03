@@ -1,0 +1,251 @@
+---
+permalink: install-ip/concept_considerations_layer_2.html 
+sidebar: sidebar 
+keywords: differences, eight-node, four-node, fabric-attached, stretch, metrocluster ip, storage, bridges, fc-to-sas, atto, fibrebridge, SAS, local HA, auso, automatic unplanned switchover, array luns, mediator, tiebreaker 
+summary: 從ONTAP 支援MetroCluster 的Cisco交換器的支援範本支援的靜態IP組態、開始可以共享現有的ISL網路、而非使用專用MetroCluster 的功能性ISL。 
+---
+= 共享私有第2層網路的考量
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+從ONTAP 支援MetroCluster 的Cisco交換器的支援範本支援的靜態IP組態、開始可以共享現有的ISL網路、而非使用專用MetroCluster 的功能性ISL。早期ONTAP 版本需要專用ISL。
+
+不支援使用支援靜態組態的IP交換器、因此無法共享。MetroCluster MetroCluster因此MetroCluster 、一組靜態IP交換器只能連接一個MetroCluster 靜態組態。只有位於靜態IP交換器上的靜態ISL連接埠可以連接至共享交換器。MetroCluster MetroCluster
+
+
+CAUTION: 如果使用共享網路、客戶必須負責滿足MetroCluster 共享網路中的需求。
+
+
+
+== ISL需求
+
+您必須符合下列條件：
+
+* link:../install-ip/concept_considerations_isls.html#basic-metrocluster-isl-requirements["基本功能ISL需求MetroCluster"]
+* link:../install-ip/concept_considerations_isls.html#isl-requirements-in-shared-layer-2-networks["共享第2層網路的ISL需求"]
+
+
+
+
+== 中繼交換器上的必要設定
+
+在共享網路中共享ISL流量時、客戶所提供的中繼交換器組態必須確保MetroCluster 整個MetroCluster 路徑之間的整個路徑中、均符合要求的服務層級（RDMA和儲存設備）。
+
+以下是Cisco Nexus 3000交換器和IP Broadcom交換器的範例。視交換器廠商和機型而定、您必須確保中繼交換器具有相同的組態。
+
+
+
+=== Cisco Nexus交換器
+
+下圖概述當外部交換器為Cisco交換器時、所需的共用網路設定。
+
+image::../media/switch_traffic_with_cisco_switches.png[使用Cisco交換器交換流量]
+
+在此範例中、我們會針對MetroCluster 某些流量建立下列原則和地圖：
+
+* MetroCluster ip_Ingress原則會套用至連接MetroCluster 至該IP交換器的中繼交換器上的連接埠。
++
+MetroClusterIP_Ingress原則會將傳入標記的流量對應至中繼交換器上的適當佇列。標記會發生在節點連接埠上、而非ISL上。使用ISL上相同連接埠的非MetroCluster流量仍會保留在預設佇列中。
+
+* MetroCluster ip_Egress原則會套用至中繼交換器上連接到中繼交換器之間ISL的連接埠
+
+
+您必須設定中間交換器、使其在MetroCluster 整個過程中、都能在不同的路徑上、提供符合QoS存取對應、類別對應和原則對應。中繼交換器會將RDMA流量對應至COS5、並將儲存流量對應至COS4。
+
+以下範例顯示客戶提供的Cisco Nexus 3000交換器組態。如果您有Cisco交換器、您可以使用範例來設定路徑上的交換器、而不會有太大的困難。如果您沒有Cisco交換器、則必須決定並套用等效組態至中繼交換器。
+
+以下範例顯示類別對應定義：
+
+
+NOTE: 此範例適用於使用Cisco MetroCluster 列舉IP交換器的組態。無論交換器類型的MetroCluster 交換器是否含有不連接MetroCluster 到該IP交換器的資訊流量、您都可以遵循此範例。
+
+[listing]
+----
+class-map type qos match-all rdma
+   match cos 5
+class-map type qos match-all storage
+   match cos 4
+----
+下列範例顯示原則對應定義：
+
+[listing]
+----
+policy-map type qos MetroClusterIP_Ingress
+   class rdma
+      set dscp 40
+      set cos 5
+      set qos-group 5
+   class storage
+      set dscp 32
+      set cos 4
+      set qos-group 4
+policy-map type queuing MetroClusterIP_Egress
+   class type queuing c-out-8q-q7
+      priority level 1
+   class type queuing c-out-8q-q6
+      priority level 2
+   class type queuing c-out-8q-q5
+      priority level 3
+      random-detect threshold burst-optimized ecn
+   class type queuing c-out-8q-q4
+      priority level 4
+      random-detect threshold burst-optimized ecn
+   class type queuing c-out-8q-q3
+      priority level 5
+   class type queuing c-out-8q-q2
+      priority level 6
+   class type queuing c-out-8q-q1
+      priority level 7
+   class type queuing c-out-8q-q-default
+      bandwidth remaining percent 100
+      random-detect threshold burst-optimized ecn
+----
+
+
+=== IP Broadcom交換器MetroCluster
+
+下圖概述當外部交換器為IP Broadcom交換器時、所需的共用網路設定。
+
+image::../media/switch_traffic_with_broadcom_switches.png[透過Broadcom交換器交換流量]
+
+使用MetroCluster 靜態IP Broadcom交換器的組態需要額外的組態設定：
+
+* 對於外部交換器、您必須設定存取和類別地圖、以分類進入客戶網路的流量。
++
+
+NOTE: 使用MetroCluster 靜態IP交換器的組態不需要此功能。
+
++
+以下範例說明如何在連接MetroCluster ISL的第一和最後一台客戶交換器上設定存取和類別對應、以供在Broadcom的介面交換器之間進行存取。
+
+
+
+[listing]
+----
+ip access-list storage
+  10 permit tcp any eq 65200 any
+  20 permit tcp any any eq 65200
+ip access-list rdma
+  10 permit tcp any eq 10006 any
+  20 permit tcp any any eq 10006
+
+class-map type qos match-all storage
+  match access-group name storage
+class-map type qos match-all rdma
+  match access-group name rdma
+----
+* 您需要將入口原則指派給第一台客戶交換器上的ISL交換器連接埠。
++
+以下範例顯示類別對應定義：
+
++
+
+NOTE: 此範例適用於使用Cisco MetroCluster 列舉IP交換器的組態。無論交換器類型的MetroCluster 交換器是否含有不連接MetroCluster 到該IP交換器的資訊流量、您都可以遵循此範例。
+
++
+[listing]
+----
+class-map type qos match-all rdma
+   match cos 5
+class-map type qos match-all storage
+   match cos 4
+----
++
+下列範例顯示原則對應定義：
+
++
+[listing]
+----
+policy-map type qos MetroClusterIP_Ingress
+   class rdma
+      set dscp 40
+      set cos 5
+      set qos-group 5
+   class storage
+      set dscp 32
+      set cos 4
+      set qos-group 4
+policy-map type queuing MetroClusterIP_Egress
+   class type queuing c-out-8q-q7
+      priority level 1
+   class type queuing c-out-8q-q6
+      priority level 2
+   class type queuing c-out-8q-q5
+      priority level 3
+      random-detect threshold burst-optimized ecn
+   class type queuing c-out-8q-q4
+      priority level 4
+      random-detect threshold burst-optimized ecn
+   class type queuing c-out-8q-q3
+      priority level 5
+   class type queuing c-out-8q-q2
+      priority level 6
+   class type queuing c-out-8q-q1
+      priority level 7
+   class type queuing c-out-8q-q-default
+      bandwidth remaining percent 100
+      random-detect threshold burst-optimized ecn
+----
+
+
+
+
+=== 中型客戶交換器
+
+* 對於中級客戶交換器、您必須將輸出原則指派給ISL交換器連接埠。
+* 對於所有其他內部交換器、請MetroCluster 依照_ Cisco Nexus 3000交換器_一節中的類別地圖和原則地圖範例進行。
+
+
+
+
+== 例如：網路拓撲MetroCluster
+
+從使用支援支援某些共享ISL網路組態的不含支援的不含支援的不含支援。ONTAP MetroCluster
+
+
+
+=== 具有直接連結的共用網路組態
+
+在此拓撲中、有兩個不同的站台是透過直接連結連接。這些連結可以是在Wavelengthic分部多工設備（xWdm)或交換器之間。ISL的容量並不專門用於MetroCluster 不含資訊的流量、而是與其他流量共用。
+
+ISL容量必須符合最低需求。視您使用的是xWDM裝置或交換器而定、可能會套用不同的網路組態組合。
+
+image::../media/mcc_ip_networking_with_shared_isls.gif[MCC IP網路與共享ISL]
+
+
+
+=== 共享基礎架構與中繼網路
+
+在此拓撲中MetroCluster 、透過NetApp未提供的網路傳輸的是靜態IP核心交換器流量和主機流量。網路基礎架構和連結（包括租賃的直接連結）均不在MetroCluster 功能性設定範圍之內。網路可由一系列xWDM和交換器組成、但與直接ISL的共用組態不同、這些連結並非站台之間的直接連結。視站台之間的基礎架構而定、可能會有任何網路組態組合。中間基礎架構是「雲端」（站台之間可能存在多個裝置）、但仍由客戶控制。透過這種中介基礎架構的容量並非MetroCluster 專門用於非功能型流量、而是與其他流量共享。
+
+VLAN和網路xWDM或交換器組態必須符合最低需求。
+
+image::../media/mcc_ip_networking_with_intermediate_private_networks.gif[MCC IP網路與中繼私有網路]
+
+
+
+=== 共享中間網路的兩MetroCluster 種架構組態
+
+在此拓撲中、有兩MetroCluster 個獨立的Sing組態共享相同的中繼網路。在範例中MetroCluster 、Sfionone switch_a_1和MetroCluster Sfet2 switch_a_1都連接到相同的中繼交換器。
+
+此範例僅供說明之用：
+
+image::../media/mcc_ip_two_mccs_sharing_the_same_shared_network_sx.gif[MCC IP兩個MCC共用相同的共用網路SX]
+
+
+
+=== 兩MetroCluster 種可直接連線至中繼網路的架構組態
+
+此拓撲從ONTAP 支援的問題開始、以支援使用者支援。兩MetroCluster 個獨立的「版本資訊」組態共用相同的中繼網路、一個MetroCluster 「版本資訊」節點則直接連線至中繼交換器。
+
+使用NetApp驗證的交換器、即NetApp驗證的交換器、以及共享的拓撲、即可獲得解決方案的功能。MetroCluster MetroCluster ONTAP利用符合NetApp規範的交換器和NetApp 9.7、即可實現上述功能的不全配置。MetroCluster MetroCluster ONTAP
+
+
+NOTE: 中繼交換器必須符合NetApp規格。
+
+此範例僅供說明之用：
+
+image::../media/mcc_ip_unsupported_two_mccs_direct_to_shared_switches.png[MCC IP不受支援的兩個MCC直接連接至共享交換器]

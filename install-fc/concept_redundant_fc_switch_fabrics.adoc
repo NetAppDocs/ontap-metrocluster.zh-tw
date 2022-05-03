@@ -1,0 +1,22 @@
+---
+permalink: install-fc/concept_redundant_fc_switch_fabrics.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, redundant, fc, switch, fabrics 
+summary: 每個交換器架構都包含連接站台的交換器間連結（ISL）。資料會透過ISL從站台複寫到站台。每個交換器架構必須位於不同的實體路徑上、才能提供備援功能。 
+---
+= 備援FC交換器架構
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+每個交換器架構都包含連接站台的交換器間連結（ISL）。資料會透過ISL從站台複寫到站台。每個交換器架構必須位於不同的實體路徑上、才能提供備援功能。
+
+image::../media/mcc_hw_architecture_switch_fabrics.gif[MCC硬體架構交換器架構]
+
+link:concept_illustration_of_the_local_ha_pairs_in_a_mcc_configuration.html["以架構組態顯示本機HA配對的圖例MetroCluster"]
+
+link:concept_illustration_of_redundant_fc_to_sas_bridges.html["備援FC對SAS橋接器的圖例"]
+
+link:concept_cluster_peering_network_mcc.html["叢集對等網路的圖例"]

@@ -1,0 +1,132 @@
+= 
+:allow-uri-read: 
+
+
+為了確保MetroCluster 成功安裝、請重設並還原控制器模組的預設值。
+
+此工作僅適用於使用FC至SAS橋接器的延伸組態。
+
+.步驟
+. 在載入程式提示字元中、將環境變數恢復為預設設定：
++
+「預設值」
+
+. 將節點開機至維護模式、然後設定系統中任何HBA的設定：
++
+.. 開機進入維護模式：
++
+Boot_ONTAP maint
+
+.. 檢查連接埠的目前設定：
++
+「ucadmin show」
+
+.. 視需要更新連接埠設定。
+
+
++
+|===
+
+
+| 如果您有此類型的HBA和所需模式... | 使用此命令... 
+
+
+ a| 
+CNA FC
+ a| 
+「ucadmin modify -m sfc-t啟動器_adapter_name_」
+
+
+
+ a| 
+CNA乙太網路
+ a| 
+「ucadmin modify -mode cna _adapter_name_」
+
+
+
+ a| 
+FC目標
+ a| 
+「fcadmin config -t target _adapter_name_」
+
+
+
+ a| 
+FC啟動器
+ a| 
+「fcadmin config -t啟動器_adapter_name_」
+
+|===
+. 結束維護模式：
++
+《停止》
+
++
+執行命令之後、請等到節點停止在載入程式提示字元。
+
+. 將節點開機回「維護」模式、使組態變更生效：
++
+Boot_ONTAP maint
+
+. 驗證您所做的變更：
++
+|===
+
+
+| 如果您有這種HBA類型... | 使用此命令... 
+
+
+ a| 
+CNA
+ a| 
+「ucadmin show」
+
+
+
+ a| 
+FC
+ a| 
+「fcadmin show」
+
+|===
+. 結束維護模式：
++
+《停止》
+
++
+執行命令之後、請等到節點停止在載入程式提示字元。
+
+. 將節點開機至開機功能表：
++
+Boot_ONTAP功能表
+
++
+執行命令後、請等待開機功能表顯示。
+
+. 請在開機功能表提示字元中輸入「wecpionfig」、然後按Enter鍵、以清除節點組態。
++
+下列畫面顯示開機功能表提示：
+
++
+--
+....
+Please choose one of the following:
+
+     (1) Normal Boot.
+     (2) Boot without /etc/rc.
+     (3) Change password.
+     (4) Clean configuration and initialize all disks.
+     (5) Maintenance mode boot.
+     (6) Update flash from backup config.
+     (7) Install new software first.
+     (8) Reboot node.
+     (9) Configure Advanced Drive Partitioning.
+     Selection (1-9)?  wipeconfig
+ This option deletes critical system configuration, including cluster membership.
+ Warning: do not run this option on a HA node that has been taken over.
+ Are you sure you want to continue?: yes
+ Rebooting to finish wipeconfig request.
+....
+--
+

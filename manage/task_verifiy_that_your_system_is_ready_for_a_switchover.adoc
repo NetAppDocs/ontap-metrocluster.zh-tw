@@ -1,0 +1,44 @@
+---
+permalink: manage/task_verifiy_that_your_system_is_ready_for_a_switchover.html 
+sidebar: sidebar 
+keywords: simulate, option, preview, result, switchover, operation, verification, check, precondition, succesful, verify, ready, example 
+summary: 您可以使用-Simulate選項預覽切換作業的結果。驗證檢查可讓您在開始作業之前、驗證是否符合成功執行的大部分先決條件。 
+---
+= 驗證系統是否已準備好進行切換
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用「-Simulate」選項來預覽切換作業的結果。驗證檢查可讓您在開始作業之前、驗證是否符合成功執行的大部分先決條件。從站台發出這些命令、這些命令將維持正常運作：
+
+. 將權限等級設為進階：「et -priv榮幸advanc進 階」
+. 從將維持正常運作的站台、模擬切換作業：MetroCluster 「無法切換-模擬」
+. 檢閱傳回的輸出。
++
+輸出會顯示是否有任何使用過的情況會妨礙切換作業。每次執行MetroCluster 「不必要作業」時、您都必須驗證一組準則、才能順利完成作業。「驗向」是一種機制、可在不符合一或多項條件的情況下、禁止此作業。有兩種類型的否決：一種是「軟」式的否決票和一種「硬」式的否決票。您可以取代軟性的否決、但不能使用硬式的否決。例如、若要在四節點MetroCluster 的列舉中執行協調式切換、其中一個條件是所有節點都正常運作。假設某個節點停機、並由HA合作夥伴接管。切換作業將會遭到嚴格的否決、因為這是所有節點都必須正常運作的硬標準。由於這是一項硬式的否決、因此您無法撤銷該項否決。
+
++
+
+IMPORTANT: 最好不要取代任何否決。
+
+
+
+
+
+== 範例：驗證結果
+
+下列範例顯示在模擬切換作業時發生的錯誤：
+
+[listing]
+----
+cluster4::*> metrocluster switchover -simulate
+
+[Job 126] Preparing the cluster for the switchover operation...
+[Job 126] Job failed: Failed to prepare the cluster for the switchover
+operation. Use the "metrocluster operation show" command to view detailed error
+information. Resolve the errors, then try the command again.
+----
+
+NOTE: 在您更換所有故障磁碟之前、協調式切換和切換都會失敗。您可以在更換故障磁碟之後執行災難恢復。如果您想忽略故障磁碟的警告、可以針對議定的切換和切換新增軟式否決功能。

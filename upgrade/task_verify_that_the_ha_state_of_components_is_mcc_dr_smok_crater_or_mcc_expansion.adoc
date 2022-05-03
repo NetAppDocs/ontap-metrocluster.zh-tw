@@ -1,0 +1,38 @@
+---
+permalink: upgrade/task_verify_that_the_ha_state_of_components_is_mcc_dr_smok_crater_or_mcc_expansion.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, verify, ha, config, component, state 
+summary: 在不支援的組態中MetroCluster 、控制器模組和機箱元件的ha-config狀態必須設定為MCC、才能正常開機。 
+---
+= 驗證元件的ha-config狀態
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在這個組態中MetroCluster 、控制器模組和機箱元件的ha-config狀態必須設定為* mc*、才能正常開機。
+
+.關於這項工作
+* 系統必須處於維護模式。
+* 此工作必須在每個新的控制器模組上執行。
+
+
+.步驟
+. 在維護模式中、顯示控制器模組和機箱的HA狀態：
++
+《ha-config show》
+
++
+所有元件的HA狀態應為「MCC」。
+
+. 如果控制器的顯示系統狀態不正確、請設定控制器模組的HA狀態：
++
+「ha-config modify控制器MCC」
+
+. 如果機箱顯示的系統狀態不正確、請設定機箱的HA狀態：
++
+「ha-config modify機箱MCC」
+
+. 在其他替換節點上重複這些步驟。
+

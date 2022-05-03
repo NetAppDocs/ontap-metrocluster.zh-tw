@@ -1,0 +1,114 @@
+---
+permalink: transition/task_verify_mcc_health_fc_to_ip.html 
+sidebar: sidebar 
+keywords: Verifying the health of the MetroCluster configuration, review, requirement, preparing, prepare, transition, perform, procedure, order, completing, complete, step, task, moving, move, controller, storage, shelves, shelf, exist, configuration, direct, metrocluster, fc, ip, verify, health, removing, remove, tiebreaker, monitor, software, generating, generate, apply, rcf, switch, controller, configure, prepare, preparing 
+summary: 在執行轉換之前、您必須先驗證MetroCluster 整個流程的健全狀況和連線能力。 
+---
+= 驗MetroCluster 證資訊功能組態的健全狀況
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在執行轉換之前、您必須先驗證MetroCluster 整個流程的健全狀況和連線能力
+
+. 驗證MetroCluster 下列項目中的功能：ONTAP
++
+.. 檢查系統是否具有多路徑：'noderun -node-name sysconfig -A`
+.. 檢查兩個叢集上是否有任何健全狀況警示：「System health alerts show」（系統健全狀況警示顯示）
+.. 確認MetroCluster 此功能的組態、並確認操作模式正常：MetroCluster 「show」
+.. 執行MetroCluster 功能不全的檢查：MetroCluster 「執行功能不全」
+.. 顯示MetroCluster 「不MetroCluster 實檢查」的結果：「不實檢查顯示」
+.. 檢查交換器上是否有任何健全狀況警示（如果有）：「torage switchshow」（顯示切換開關）
+.. 執行Config Advisor
++
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"]
+
+.. 執行Config Advisor 完功能後、請檢閱工具的輸出結果、並依照輸出中的建議來解決發現的任何問題。
+
+
+. 驗證叢集是否正常：「叢集顯示」
++
+....
+cluster_A::> cluster show
+Node           Health  Eligibility   Epsilon
+-------------- ------  -----------   -------
+node_A_1_FC    true    true          false
+node_A_2_FC    true    true          false
+
+cluster_A::>
+....
+. 驗證所有叢集連接埠是否正常運作：「network port show -IPSpace cluster」（網路連接埠show -IPSpace叢集）
++
+....
+cluster_A::> network port show -ipspace cluster
+
+Node: node_A_1_FC
+
+                                                  Speed(Mbps) Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status
+--------- ------------ ---------------- ---- ---- ----------- --------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy
+
+Node: node_A_2_FC
+
+                                                  Speed(Mbps) Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status
+--------- ------------ ---------------- ---- ---- ----------- --------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy
+
+4 entries were displayed.
+
+cluster_A::>
+....
+. 驗證所有叢集生命體是否正常運作：「network interface show -vserver cluster」（網路介面show -vserver叢集）
++
+每個叢集LIF應針對「is Home」顯示「true」、「Status admin/Opper」顯示「up / up」。
+
++
+....
+cluster_A::> network interface show -vserver cluster
+
+            Logical      Status     Network          Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- -----
+Cluster
+            node_A-1_FC_clus1
+                       up/up      169.254.209.69/16  node_A-1_FC   e0a     true
+            node_A_1_FC_clus2
+                       up/up      169.254.49.125/16  node_A_1_FC   e0b     true
+            node_A_2_FC_clus1
+                       up/up      169.254.47.194/16  node_A_2_FC   e0a     true
+            node_A_2_FC_clus2
+                       up/up      169.254.19.183/16  node_A_2_FC   e0b     true
+
+4 entries were displayed.
+
+cluster_A::>
+....
+. 驗證是否已在所有叢集lifs上啟用自動還原：「network interface show -vserver cluster -Fields auto-Revert」
++
+....
+cluster_A::> network interface show -vserver Cluster -fields auto-revert
+
+          Logical
+Vserver   Interface     Auto-revert
+--------- ------------- ------------
+Cluster
+           node_A_1_FC_clus1
+                        true
+           node_A_1_FC_clus2
+                        true
+           node_A_2_FC_clus1
+                        true
+           node_A_2_FC_clus2
+                        true
+
+    4 entries were displayed.
+
+cluster_A::>
+....
+

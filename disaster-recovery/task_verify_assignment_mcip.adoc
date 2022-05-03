@@ -1,0 +1,90 @@
+---
+permalink: disaster-recovery/task_verify_assignment_mcip.html 
+sidebar: sidebar 
+keywords: verify, adp, verify, drives, pool, automatically, assign 
+summary: 在設定為ADP的系統上、您必須確認已自動指派集區0磁碟機。 
+---
+= 正在驗證自動指派或手動指派集區0磁碟機
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在設定為ADP的系統上、您必須確認已自動指派集區0磁碟機。在未設定ADP的系統上、您必須手動指派Pool 0磁碟機。
+
+
+
+== 驗證災難現場（MetroCluster 知識IP系統）ADP系統上的Pool 0磁碟機磁碟機指派
+
+如果已在災難站台更換磁碟機、且系統已設定為ADP、則您必須確認遠端磁碟機對節點可見且已正確指派。
+
+.步驟
+. 確認已自動指派集區0磁碟機：
++
+「尖碑秀」
+
++
+下列範例中AFF 針對沒有外部磁碟櫃的Shelfa800系統、會自動將四分之一（8個磁碟機）指派給node_a_1、並將四分之一自動指派給node_a_2。其餘磁碟機將是node_B_1和node_B_2的遠端（Pool1）磁碟機。
+
++
+[listing]
+----
+cluster_A::*> disk show
+                 Usable     Disk      Container           Container
+Disk             Size       Shelf Bay Type    Type        Name      Owner
+---------------- ---------- ----- --- ------- ----------- --------- --------
+node_A_1:0n.12   1.75TB     0     12  SSD-NVM shared      aggr0     node_A_1
+node_A_1:0n.13   1.75TB     0     13  SSD-NVM shared      aggr0     node_A_1
+node_A_1:0n.14   1.75TB     0     14  SSD-NVM shared      aggr0     node_A_1
+node_A_1:0n.15   1.75TB     0     15  SSD-NVM shared      aggr0     node_A_1
+node_A_1:0n.16   1.75TB     0     16  SSD-NVM shared      aggr0     node_A_1
+node_A_1:0n.17   1.75TB     0     17  SSD-NVM shared      aggr0     node_A_1
+node_A_1:0n.18   1.75TB     0     18  SSD-NVM shared      aggr0     node_A_1
+node_A_1:0n.19   1.75TB     0     19  SSD-NVM shared      -         node_A_1
+node_A_2:0n.0    1.75TB     0     0   SSD-NVM shared      aggr0_node_A_2_0 node_A_2
+node_A_2:0n.1    1.75TB     0     1   SSD-NVM shared      aggr0_node_A_2_0 node_A_2
+node_A_2:0n.2    1.75TB     0     2   SSD-NVM shared      aggr0_node_A_2_0 node_A_2
+node_A_2:0n.3    1.75TB     0     3   SSD-NVM shared      aggr0_node_A_2_0 node_A_2
+node_A_2:0n.4    1.75TB     0     4   SSD-NVM shared      aggr0_node_A_2_0 node_A_2
+node_A_2:0n.5    1.75TB     0     5   SSD-NVM shared      aggr0_node_A_2_0 node_A_2
+node_A_2:0n.6    1.75TB     0     6   SSD-NVM shared      aggr0_node_A_2_0 node_A_2
+node_A_2:0n.7    1.75TB     0     7   SSD-NVM shared      -         node_A_2
+node_A_2:0n.24   -          0     24  SSD-NVM unassigned  -         -
+node_A_2:0n.25   -          0     25  SSD-NVM unassigned  -         -
+node_A_2:0n.26   -          0     26  SSD-NVM unassigned  -         -
+node_A_2:0n.27   -          0     27  SSD-NVM unassigned  -         -
+node_A_2:0n.28   -          0     28  SSD-NVM unassigned  -         -
+node_A_2:0n.29   -          0     29  SSD-NVM unassigned  -         -
+node_A_2:0n.30   -          0     30  SSD-NVM unassigned  -         -
+node_A_2:0n.31   -          0     31  SSD-NVM unassigned  -         -
+node_A_2:0n.36   -          0     36  SSD-NVM unassigned  -         -
+node_A_2:0n.37   -          0     37  SSD-NVM unassigned  -         -
+node_A_2:0n.38   -          0     38  SSD-NVM unassigned  -         -
+node_A_2:0n.39   -          0     39  SSD-NVM unassigned  -         -
+node_A_2:0n.40   -          0     40  SSD-NVM unassigned  -         -
+node_A_2:0n.41   -          0     41  SSD-NVM unassigned  -         -
+node_A_2:0n.42   -          0     42  SSD-NVM unassigned  -         -
+node_A_2:0n.43   -          0     43  SSD-NVM unassigned  -         -
+32 entries were displayed.
+----
+
+
+
+
+== 在災難現場的非ADP系統上指派Pool 0磁碟機（MetroCluster 知識IP組態）
+
+如果已在災難站台更換磁碟機、但系統未設定ADP、則您需要手動將新磁碟機指派給資源池0。
+
+對於ADP系統、磁碟機會自動指派。
+
+.步驟
+. 在災難站台的其中一個替換節點上、重新指派節點的Pool 0磁碟機：
++
+「torage disk assign -n number-of替換磁碟-p 0」
+
++
+此命令會指派災難站台上新增（及未擁有）的磁碟機。您應該指派與災難發生前節點相同的磁碟機數量和大小（或更大）。"shorage disk assign"手冊頁包含有關執行更精細的磁碟指派的詳細資訊。
+
+. 在災難站台的其他替換節點上重複上述步驟。
+

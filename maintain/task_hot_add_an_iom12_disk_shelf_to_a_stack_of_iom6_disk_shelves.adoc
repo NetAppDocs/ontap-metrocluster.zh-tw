@@ -1,0 +1,16 @@
+---
+permalink: maintain/task_hot_add_an_iom12_disk_shelf_to_a_stack_of_iom6_disk_shelves.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, hot, add, iom12, stack, iom6, disk, shelves, bridge, attached 
+summary: 視ONTAP 您的版本而定、您可以將IOM12磁碟櫃熱新增至IOM6磁碟櫃堆疊的橋接MetroCluster 式功能的更新組態。 
+---
+= 將IOM12磁碟櫃熱新增至IOM6磁碟櫃堆疊、採用橋接式MetroCluster 附加的功能
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+視ONTAP 您的版本而定、您可以將IOM12磁碟櫃熱新增至IOM6磁碟櫃堆疊的橋接MetroCluster 式功能的更新組態。
+
+若要執行此程序、請參閱 https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-mix-hotadd/home.html["將含有IOM12模組的熱新增磁碟櫃放到具有IOM6模組的磁碟櫃堆疊中"]。

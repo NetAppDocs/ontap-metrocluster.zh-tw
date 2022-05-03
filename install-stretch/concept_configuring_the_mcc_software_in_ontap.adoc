@@ -1,0 +1,2325 @@
+---
+permalink: install-stretch/concept_configuring_the_mcc_software_in_ontap.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, configure, software 
+summary: 您必須在MetroCluster 不景點組態中設定每個節點ONTAP 。這包括節點層級的組態、以及將節點組態設定為兩個站台。您也必須在MetroCluster 這兩個站台之間實作「不二」關係。 
+---
+= 在MetroCluster 不提供的情況下設定功能ONTAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須在MetroCluster 不完整的功能組態中設定每個節點ONTAP 、包括節點層級組態、以及將節點組態設定為兩個站台。您也必須在MetroCluster 這兩個站台之間實作「不二」關係。
+
+image::../media/workflow_high_level_node_and_cluster_configuration_software.gif[工作流程高層節點和叢集組態軟體]
+
+.步驟
+. 開始組態程序之前、請先收集控制器模組所需的IP位址。
+. 填寫站台A的IP網路資訊工作表
+
+
+
+
+== 站台A的IP網路資訊工作表
+
+在設定系統之前、您必須MetroCluster 先向網路管理員取得第一個站台（站台A）的IP位址和其他網路資訊。
+
+
+
+=== 站台叢集建立資訊
+
+第一次建立叢集時、您需要下列資訊：
+
+|===
+
+
+| 資訊類型 | 您的價值 
+
+
+ a| 
+叢集名稱。此資訊中使用的範例：se_a
+ a| 
+
+
+
+ a| 
+DNS網域
+ a| 
+
+
+
+ a| 
+DNS名稱伺服器
+ a| 
+
+
+
+ a| 
+位置
+ a| 
+
+
+
+ a| 
+系統管理員密碼
+ a| 
+
+|===
+
+
+=== 站台A節點資訊
+
+對於叢集中的每個節點、您都需要管理IP位址、網路遮罩和預設閘道。
+
+|===
+
+
+| 節點 | 連接埠 | IP 位址 | 網路遮罩 | 預設閘道 
+
+
+ a| 
+節點1：此資訊中使用的範例：控制器a_1
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+節點2：如果使用雙節點MetroCluster 的E不到 位組態（每個站台一個節點）、則不需要。
+
+此資訊中使用的範例：控制器_a_2
+ a| 
+ a| 
+ a| 
+ a| 
+
+|===
+
+
+=== 網站A lifs和連接埠、以供叢集對等處理
+
+對於叢集中的每個節點、您需要兩個叢集間生命體的IP位址、包括網路遮罩和預設閘道。叢集間生命體用於對等叢集。
+
+|===
+
+
+| 節點 | 連接埠 | 叢集間LIF的IP位址 | 網路遮罩 | 預設閘道 
+
+
+ a| 
+節點1 IC LIF 1
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+節點1 IC LIF 2
+ a| 
+ a| 
+ a| 
+ a| 
+
+|===
+
+
+=== 站台A時間伺服器資訊
+
+您必須同步時間、這需要一或多個NTP時間伺服器。
+
+|===
+
+
+| 節點 | 主機名稱 | IP 位址 | 網路遮罩 | 預設閘道 
+
+
+ a| 
+NTP伺服器1.
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+NTP伺服器2.
+ a| 
+ a| 
+ a| 
+ a| 
+
+|===
+
+
+=== 網站A AutoSupport 資訊
+
+您必須在AutoSupport 每個節點上設定、這需要下列資訊：
+
+|===
+
+
+2+| 資訊類型 | 您的價值 
+
+
+ a| 
+寄件者電子郵件地址
+ a| 
+
+
+
+ a| 
+郵件主機
+ a| 
+IP位址或名稱
+ a| 
+
+
+
+ a| 
+傳輸傳輸傳輸協定
+ a| 
+HTTP、HTTPS或SMTP
+ a| 
+
+
+
+ a| 
+Proxy伺服器
+ a| 
+
+
+
+ a| 
+收件者電子郵件地址或通訊群組清單
+ a| 
+完整長度的訊息
+ a| 
+
+
+
+ a| 
+簡潔的訊息
+ a| 
+
+
+
+ a| 
+合作夥伴
+ a| 
+
+|===
+
+
+=== 站台A SP資訊
+
+您必須啟用每個節點的服務處理器（SP）、才能進行疑難排解和維護。這需要每個節點的下列網路資訊：
+
+|===
+
+
+| 節點 | IP 位址 | 網路遮罩 | 預設閘道 
+
+
+ a| 
+節點1
+ a| 
+ a| 
+ a| 
+
+|===
+
+
+== 站台B的IP網路資訊工作表
+
+在設定系統之前、您必須MetroCluster 先向網路管理員取得第二個站台（站台B）的IP位址和其他網路資訊。
+
+
+
+=== 站台B叢集建立資訊
+
+第一次建立叢集時、您需要下列資訊：
+
+|===
+
+
+| 資訊類型 | 您的價值 
+
+
+ a| 
+叢集名稱。此資訊中使用的範例：s加 號
+ a| 
+
+
+
+ a| 
+DNS網域
+ a| 
+
+
+
+ a| 
+DNS名稱伺服器
+ a| 
+
+
+
+ a| 
+位置
+ a| 
+
+
+
+ a| 
+系統管理員密碼
+ a| 
+
+|===
+
+
+=== 站台B節點資訊
+
+對於叢集中的每個節點、您都需要管理IP位址、網路遮罩和預設閘道。
+
+|===
+
+
+| 節點 | 連接埠 | IP 位址 | 網路遮罩 | 預設閘道 
+
+
+ a| 
+節點1：此資訊中使用的範例：Controller _B_1
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+節點2：不需要雙節點MetroCluster 的E樣 組態（每個站台一個節點）。
+
+此資訊中使用的範例：Controller _B_2
+ a| 
+ a| 
+ a| 
+ a| 
+
+|===
+
+
+=== 用於叢集對等的站台B生命與連接埠
+
+對於叢集中的每個節點、您需要兩個叢集間生命體的IP位址、包括網路遮罩和預設閘道。叢集間生命體用於對等叢集。
+
+|===
+
+
+| 節點 | 連接埠 | 叢集間LIF的IP位址 | 網路遮罩 | 預設閘道 
+
+
+ a| 
+節點1 IC LIF 1
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+節點1 IC LIF 2
+ a| 
+ a| 
+ a| 
+ a| 
+
+|===
+
+
+=== 站台B時間伺服器資訊
+
+您必須同步時間、這需要一或多個NTP時間伺服器。
+
+|===
+
+
+| 節點 | 主機名稱 | IP 位址 | 網路遮罩 | 預設閘道 
+
+
+ a| 
+NTP伺服器1.
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+NTP伺服器2.
+ a| 
+ a| 
+ a| 
+ a| 
+
+|===
+
+
+=== 站台B AutoSupport 的資訊
+
+您必須在AutoSupport 每個節點上設定、這需要下列資訊：
+
+|===
+
+
+2+| 資訊類型 | 您的價值 
+
+
+ a| 
+寄件者電子郵件地址
+ a| 
+
+
+
+ a| 
+郵件主機
+ a| 
+IP位址或名稱
+ a| 
+
+
+
+ a| 
+傳輸傳輸傳輸協定
+ a| 
+HTTP、HTTPS或SMTP
+ a| 
+
+
+
+ a| 
+Proxy伺服器
+ a| 
+
+
+
+ a| 
+收件者電子郵件地址或通訊群組清單
+ a| 
+完整長度的訊息
+ a| 
+
+
+
+ a| 
+簡潔的訊息
+ a| 
+
+
+
+ a| 
+合作夥伴
+ a| 
+
+|===
+
+
+=== 站台B SP資訊
+
+您必須啟用每個節點的服務處理器（SP）、才能進行疑難排解和維護、這需要每個節點的下列網路資訊：
+
+|===
+
+
+| 節點 | IP 位址 | 網路遮罩 | 預設閘道 
+
+
+ a| 
+節點1（控制器_B_1）
+ a| 
+ a| 
+ a| 
+
+|===
+
+
+== 標準叢集MetroCluster 組態與不完整組態之間的相似性與差異
+
+在一個E叢 集組態中、每個叢集的節點組態MetroCluster 與標準叢集中的節點組態類似。
+
+此功能是以兩個標準叢集為基礎所打造。MetroCluster實體而言、組態必須對稱、每個節點都有相同的硬體組態、MetroCluster 而且所有的元件都必須以纜線連接並設定。不過MetroCluster 、在一個Sfor E組態中、節點的基本軟體組態與在標準叢集中的節點組態相同。
+
+|===
+
+
+| 組態步驟 | 標準叢集組態 | 組態MetroCluster 
+
+
+ a| 
+在每個節點上設定管理、叢集和資料生命量。
+ a| 
+這兩種叢集類型都相同
+
+
+
+ a| 
+設定根Aggregate。
+ a| 
+這兩種叢集類型都相同
+
+
+
+ a| 
+在叢集中的一個節點上設定叢集。
+ a| 
+這兩種叢集類型都相同
+
+
+
+ a| 
+將另一個節點加入叢集。
+ a| 
+這兩種叢集類型都相同
+
+
+
+ a| 
+建立鏡射根Aggregate。
+ a| 
+選用
+ a| 
+必要
+
+
+
+ a| 
+對等建立叢集。
+ a| 
+選用
+ a| 
+必要
+
+
+
+ a| 
+啟用MetroCluster 此功能組態。
+ a| 
+不適用
+ a| 
+必要
+
+|===
+
+
+== 還原系統預設值、並在控制器模組上設定HBA類型
+
+為了確保MetroCluster 成功安裝、請重設並還原控制器模組的預設值。
+
+此工作僅適用於使用FC至SAS橋接器的延伸組態。
+
+.步驟
+. 在載入程式提示字元中、將環境變數恢復為預設設定：
++
+「預設值」
+
+. 將節點開機至維護模式、然後設定系統中任何HBA的設定：
++
+.. 開機進入維護模式：
++
+Boot_ONTAP maint
+
+.. 檢查連接埠的目前設定：
++
+「ucadmin show」
+
+.. 視需要更新連接埠設定。
+
+
++
+|===
+
+
+| 如果您有此類型的HBA和所需模式... | 使用此命令... 
+
+
+ a| 
+CNA FC
+ a| 
+「ucadmin modify -m sfc-t啟動器_adapter_name_」
+
+
+
+ a| 
+CNA乙太網路
+ a| 
+「ucadmin modify -mode cna _adapter_name_」
+
+
+
+ a| 
+FC目標
+ a| 
+「fcadmin config -t target _adapter_name_」
+
+
+
+ a| 
+FC啟動器
+ a| 
+「fcadmin config -t啟動器_adapter_name_」
+
+|===
+. 結束維護模式：
++
+《停止》
+
++
+執行命令之後、請等到節點停止在載入程式提示字元。
+
+. 將節點開機回「維護」模式、使組態變更生效：
++
+Boot_ONTAP maint
+
+. 驗證您所做的變更：
++
+|===
+
+
+| 如果您有這種HBA類型... | 使用此命令... 
+
+
+ a| 
+CNA
+ a| 
+「ucadmin show」
+
+
+
+ a| 
+FC
+ a| 
+「fcadmin show」
+
+|===
+. 結束維護模式：
++
+《停止》
+
++
+執行命令之後、請等到節點停止在載入程式提示字元。
+
+. 將節點開機至開機功能表：
++
+Boot_ONTAP功能表
+
++
+執行命令後、請等待開機功能表顯示。
+
+. 請在開機功能表提示字元中輸入「wecpionfig」、然後按Enter鍵、以清除節點組態。
++
+下列畫面顯示開機功能表提示：
+
++
+--
+....
+Please choose one of the following:
+
+     (1) Normal Boot.
+     (2) Boot without /etc/rc.
+     (3) Change password.
+     (4) Clean configuration and initialize all disks.
+     (5) Maintenance mode boot.
+     (6) Update flash from backup config.
+     (7) Install new software first.
+     (8) Reboot node.
+     (9) Configure Advanced Drive Partitioning.
+     Selection (1-9)?  wipeconfig
+ This option deletes critical system configuration, including cluster membership.
+ Warning: do not run this option on a HA node that has been taken over.
+ Are you sure you want to continue?: yes
+ Rebooting to finish wipeconfig request.
+....
+--
+
+
+
+
+== 在FAS8020系統上的X1132A-R6四埠卡上設定FC-VI連接埠
+
+如果您在FAS8020系統上使用X1132A-R6四埠卡、您可以進入維護模式、設定用於FC-VI和啟動器的1a和1b連接埠。從原廠收到的不需要此功能MetroCluster 、因為系統會根據您的組態設定適當的連接埠。
+
+此工作必須在維護模式下執行。
+
+
+NOTE: 使用ucadmin命令將FC連接埠轉換為FC-VI連接埠、僅在FAS8020和AFF 32位系統上受支援。任何其他平台均不支援將FC連接埠轉換為FCVI連接埠。
+
+.步驟
+. 停用連接埠：
++
+「停用介面卡1a」
+
++
+「停用介面卡1b」
+
++
+[listing]
+----
+*> storage disable adapter 1a
+Jun 03 02:17:57 [controller_B_1:fci.adapter.offlining:info]: Offlining Fibre Channel adapter 1a.
+Host adapter 1a disable succeeded
+Jun 03 02:17:57 [controller_B_1:fci.adapter.offline:info]: Fibre Channel adapter 1a is now offline.
+*> storage disable adapter 1b
+Jun 03 02:18:43 [controller_B_1:fci.adapter.offlining:info]: Offlining Fibre Channel adapter 1b.
+Host adapter 1b disable succeeded
+Jun 03 02:18:43 [controller_B_1:fci.adapter.offline:info]: Fibre Channel adapter 1b is now offline.
+*>
+----
+. 確認連接埠已停用：
++
+「ucadmin show」
+
++
+[listing]
+----
+*> ucadmin show
+         Current  Current    Pending  Pending    Admin
+Adapter  Mode     Type       Mode     Type       Status
+-------  -------  ---------  -------  ---------  -------
+  ...
+  1a     fc       initiator  -        -          offline
+  1b     fc       initiator  -        -          offline
+  1c     fc       initiator  -        -          online
+  1d     fc       initiator  -        -          online
+----
+. 將A和b連接埠設定為FC-VI模式：
++
+「ucadmin modify -Adapter 1a -type fcvi」
+
++
+命令會在連接埠配對中的兩個連接埠上設定模式、1a和1b（即使命令中只指定了1a）。
+
++
+[listing]
+----
+
+*> ucadmin modify -t fcvi 1a
+Jun 03 02:19:13 [controller_B_1:ucm.type.changed:info]: FC-4 type has changed to fcvi on adapter 1a. Reboot the controller for the changes to take effect.
+Jun 03 02:19:13 [controller_B_1:ucm.type.changed:info]: FC-4 type has changed to fcvi on adapter 1b. Reboot the controller for the changes to take effect.
+----
+. 確認變更為擱置中：
++
+「ucadmin show」
+
++
+[listing]
+----
+*> ucadmin show
+         Current  Current    Pending  Pending    Admin
+Adapter  Mode     Type       Mode     Type       Status
+-------  -------  ---------  -------  ---------  -------
+  ...
+  1a     fc       initiator  -        fcvi       offline
+  1b     fc       initiator  -        fcvi       offline
+  1c     fc       initiator  -        -          online
+  1d     fc       initiator  -        -          online
+----
+. 關閉控制器、然後重新開機進入維護模式。
+. 確認組態變更：
++
+「ucadmin show local」
+
++
+[listing]
+----
+
+Node           Adapter  Mode     Type       Mode     Type       Status
+------------   -------  -------  ---------  -------  ---------  -----------
+...
+controller_B_1
+               1a       fc       fcvi       -        -          online
+controller_B_1
+               1b       fc       fcvi       -        -          online
+controller_B_1
+               1c       fc       initiator  -        -          online
+controller_B_1
+               1d       fc       initiator  -        -          online
+6 entries were displayed.
+----
+
+
+
+
+== 在兩節點組態的維護模式中驗證磁碟指派
+
+在將系統完全開機至ONTAP 顯示器之前、您可以選擇性地將系統開機至維護模式、並驗證節點上的磁碟指派。應指派磁碟來建立完全對稱的組態、讓兩個站台擁有自己的磁碟櫃並提供資料、其中每個節點和每個集區都有相同數量的鏡射磁碟指派給它們。
+
+系統必須處於維護模式。
+
+全新MetroCluster 的功能系統在出貨前已完成磁碟指派。
+
+下表顯示MetroCluster 適用於整個程序集區組態的範例集區指派。磁碟會根據每個機櫃的需求指派給資源池。
+
+|===
+
+
+| 磁碟櫃（_範例名稱_）... | 現場... | 屬於... | 並指派給該節點的... 
+
+
+ a| 
+磁碟櫃1（機櫃_a_1_1）
+ a| 
+站台A
+ a| 
+節點A 1.
+ a| 
+集區0
+
+
+
+ a| 
+磁碟櫃2（機櫃_a_1_3）
+
+
+
+ a| 
+磁碟櫃3（機櫃_B_1_1）
+ a| 
+節點B 1.
+ a| 
+資源池1
+
+
+
+ a| 
+磁碟櫃4（機櫃_B_1_3）
+
+
+
+ a| 
+磁碟櫃9（機櫃_B_1_2）
+ a| 
+站台B
+ a| 
+節點B 1.
+ a| 
+集區0
+
+
+
+ a| 
+磁碟櫃10（機櫃_B_1_4）
+
+
+
+ a| 
+磁碟櫃11（機櫃_a_1_2）
+ a| 
+節點A 1.
+ a| 
+資源池1
+
+
+
+ a| 
+磁碟櫃12（機櫃_a_1_4）
+
+|===
+如果您的組態包含DS460C磁碟櫃、則應針對每個12個磁碟櫃手動指派磁碟：
+
+|===
+
+
+| 在藥櫃中指派這些磁碟... | 至此節點和集區... 
+
+
+ a| 
+1 - 6
+ a| 
+本機節點的集區0
+
+
+
+ a| 
+7-12.
+ a| 
+DR合作夥伴的資源池1
+
+|===
+此磁碟指派模式可在藥櫃離線時、將對集合體的影響降至最低。
+
+.步驟
+. 如果您的系統是從原廠收到、請確認機櫃指派：
++
+「展示–v」
+
+. 如有必要、您可以將附加磁碟櫃上的磁碟明確指派給適當的集區
++
+'磁碟指派'
+
++
+與節點位於同一站台的磁碟機櫃會指派給資源池0、而位於合作夥伴站台的磁碟機櫃則指派給資源池1。您應該為每個資源池指派相同數量的磁碟櫃。
+
++
+.. 如果您尚未啟動、請將每個系統開機至維護模式。
+.. 在站台A上的節點上、系統地將本機磁碟櫃指派給集區0、並將遠端磁碟櫃指派給集區1：+「磁碟指派-機櫃_disk_Shel_name_-p _pool」
++
+如果儲存控制器node_a_1有四個磁碟櫃、您可以發出下列命令：
+
++
+[listing]
+----
+
+
+*> disk assign -shelf shelf_A_1_1 -p 0
+*> disk assign -shelf shelf_A_1_3 -p 0
+
+*> disk assign -shelf shelf_A_1_2 -p 1
+*> disk assign -shelf shelf_A_1_4 -p 1
+----
+.. 在遠端站台（站台B）的節點上、系統地將其本機磁碟櫃指派給集區0、並將遠端磁碟櫃指派給集區1：+「磁碟指派-機櫃_disk_Shel_name_-p _Pool_」
++
+如果儲存控制器node_B_1有四個磁碟櫃、您可以發出下列命令：
+
++
+[listing]
+----
+
+
+*> disk assign -shelf shelf_B_1_2   -p 0
+*> disk assign -shelf shelf_B_1_4  -p 0
+
+*> disk assign -shelf shelf_B_1_1 -p 1
+ *> disk assign -shelf shelf_B_1_3 -p 1
+----
+.. 顯示每個磁碟的磁碟櫃ID和磁碟櫃：+「磁碟顯示–v」
+
+
+
+
+
+
+== 驗證元件的HA狀態
+
+在MetroCluster 原廠未預先設定的延伸支援組態中、您必須確認控制器和機箱元件的HA狀態已設定為「mcc-2n」、以便正常開機。對於從原廠接收的系統、此值已預先設定、您不需要驗證。
+
+系統必須處於維護模式。
+
+.步驟
+. 在維護模式中、檢視控制器模組和機箱的HA狀態：
++
+《ha-config show》
+
++
+控制器模組和機箱應顯示「mcc-2n」值。
+
+. 如果控制器的顯示系統狀態不是「mcc-2n」、請設定控制器的HA狀態：
++
+「ha-config modify控制器MCC-2n」
+
+. 如果機箱顯示的系統狀態不是「mcc-2n」、請設定機箱的HA狀態：
++
+「ha-config modify機箱MCC-2n」
+
++
+停止節點。
+
++
+等待節點回到載入程式提示字元。
+
+. 在MetroCluster 整個過程中的每個節點上重複上述步驟。
+
+
+
+
+== 在ONTAP 雙節點MetroCluster 的不全功能組態中設定功能
+
+在雙節點MetroCluster 的靜態組態中、您必須在每個叢集上開機節點、結束叢集設定精靈、然後使用「叢集設定」命令、將節點設定為單節點叢集。
+
+您不得設定服務處理器。
+
+此工作適用於MetroCluster 使用原生NetApp儲存設備的雙節點效能不整組態。
+
+全新MetroCluster 的功能已預先設定好、您不需要執行這些步驟。不過、您應該設定AutoSupport 好用的功能。
+
+這項工作必須在MetroCluster 整個叢集上執行、且必須採用支援功能的組態。
+
+如需設定ONTAP 方面的一般資訊、請參閱 link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-ssg/home.html["設定ONTAP"]
+
+.步驟
+. 開啟第一個節點的電源。
++
+
+NOTE: 您必須在災難恢復（DR）站台的節點上重複此步驟。
+
++
+節點會開機、然後從主控台啟動叢集設定精靈、通知AutoSupport 您將自動啟用功能。
+
++
+[listing]
+----
+::> Welcome to the cluster setup wizard.
+
+You can enter the following commands at any time:
+  "help" or "?" - if you want to have a question clarified,
+  "back" - if you want to change previously answered questions, and
+  "exit" or "quit" - if you want to quit the cluster setup wizard.
+     Any changes you made before quitting will be saved.
+
+You can return to cluster setup at any time by typing "cluster setup".
+To accept a default or omit a question, do not enter a value.
+
+This system will send event messages and periodic reports to NetApp Technical
+Support. To disable this feature, enter
+autosupport modify -support disable
+within 24 hours.
+
+Enabling AutoSupport can significantly speed problem determination and
+resolution, should a problem occur on your system.
+For further information on AutoSupport, see:
+http://support.netapp.com/autosupport/
+
+Type yes to confirm and continue {yes}: yes
+
+Enter the node management interface port [e0M]:
+Enter the node management interface IP address [10.101.01.01]:
+
+Enter the node management interface netmask [101.010.101.0]:
+Enter the node management interface default gateway [10.101.01.0]:
+
+
+
+Do you want to create a new cluster or join an existing cluster? {create, join}:
+----
+. 建立新叢集：
++
+《創造》
+
+. 選擇是否要將節點用作單一節點叢集。
++
+[listing]
+----
+Do you intend for this node to be used as a single node cluster? {yes, no} [yes]:
+----
+. 按Enter鍵接受系統預設的「yes」、或輸入「no」、然後按Enter鍵、輸入您自己的值。
+. 按照提示完成*叢集設定*精靈、按Enter接受預設值、或輸入您自己的值、然後按Enter。
++
+預設值會根據您的平台和網路組態自動決定。
+
+. 完成*叢集設定*精靈並結束之後、請確認叢集處於作用中狀態、且第一個節點正常運作：
++
+「叢集展示」
+
++
+以下範例顯示第一個節點（cluster1-01）健全且符合參與資格的叢集：
+
++
+[listing]
+----
+cluster1::> cluster show
+Node                  Health  Eligibility
+--------------------- ------- ------------
+cluster1-01           true    true
+----
++
+如果需要變更您為管理SVM或節點SVM所輸入的任何設定、您可以使用「叢集設定」命令來存取*叢集設定*精靈。
+
+
+
+
+
+== 將叢集設定成MetroCluster 一個不只是一個的組態
+
+您必須對等處理叢集、鏡射根Aggregate、建立鏡射資料Aggregate、然後發出命令來實作MetroCluster 該等作業系統。
+
+
+
+=== 對等連接叢集
+
+在不支援的組態中、叢集MetroCluster 必須處於對等關係中、以便彼此通訊、並執行MetroCluster 對恢復災難至關重要的資料鏡射。
+
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-clus-peer/home.html["叢集與SVM對等化快速組態"^]
+
+link:concept_considerations_peering.html#considerations-when-using-dedicated-ports["使用專用連接埠時的考量事項"]
+
+link:concept_considerations_peering.html#considerations-when-sharing-data-ports["共享資料連接埠時的考量"]
+
+
+
+==== 正在設定叢集間LIF
+
+您必須在MetroCluster 連接埠上建立叢集間的LIF、以便在各個連接埠之間進行通訊。您可以使用也有資料流量的專用連接埠或連接埠。
+
+
+
+===== 在專用連接埠上設定叢集間LIF
+
+您可以在專用連接埠上設定叢集間的LIF。這樣做通常會增加複寫流量的可用頻寬。
+
+.步驟
+. 列出叢集中的連接埠：
++
+「網路連接埠展示」
+
++
+如需完整的命令語法、請參閱手冊頁。
+
++
+以下範例顯示「'cluster01'」中的網路連接埠：
+
++
+[listing]
+----
+
+cluster01::> network port show
+                                                             Speed (Mbps)
+Node   Port      IPspace      Broadcast Domain Link   MTU    Admin/Oper
+------ --------- ------------ ---------------- ----- ------- ------------
+cluster01-01
+       e0a       Cluster      Cluster          up     1500   auto/1000
+       e0b       Cluster      Cluster          up     1500   auto/1000
+       e0c       Default      Default          up     1500   auto/1000
+       e0d       Default      Default          up     1500   auto/1000
+       e0e       Default      Default          up     1500   auto/1000
+       e0f       Default      Default          up     1500   auto/1000
+cluster01-02
+       e0a       Cluster      Cluster          up     1500   auto/1000
+       e0b       Cluster      Cluster          up     1500   auto/1000
+       e0c       Default      Default          up     1500   auto/1000
+       e0d       Default      Default          up     1500   auto/1000
+       e0e       Default      Default          up     1500   auto/1000
+       e0f       Default      Default          up     1500   auto/1000
+----
+. 判斷哪些連接埠可用於叢集間通訊：
++
+「網路介面show -field home-port、curr-port」
+
++
+如需完整的命令語法、請參閱手冊頁。
+
++
+以下範例顯示尚未指派連接埠「e0e」和「e0f」的LIF：
+
++
+[listing]
+----
+
+cluster01::> network interface show -fields home-port,curr-port
+vserver lif                  home-port curr-port
+
+Cluster cluster01-01_clus1   e0a       e0a
+Cluster cluster01-01_clus2   e0b       e0b
+Cluster cluster01-02_clus1   e0a       e0a
+Cluster cluster01-02_clus2   e0b       e0b
+cluster01
+        cluster_mgmt         e0c       e0c
+cluster01
+        cluster01-01_mgmt1   e0c       e0c
+cluster01
+        cluster01-02_mgmt1   e0c       e0c
+----
+. 為專用連接埠建立容錯移轉群組：
++
+「網路介面容錯移轉群組可建立-vserver _system_svm_-容 錯移轉群組_容 錯移轉群組_-鎖 定_forby_OR_logical_ports _」
+
++
+以下範例將連接埠「e0e」和「e0f」指派給系統SVM「'cluster01」上的容錯移轉群組「'intercluster01」：
+
++
+[listing]
+----
+cluster01::> network interface failover-groups create -vserver cluster01 -failover-group
+intercluster01 -targets
+cluster01-01:e0e,cluster01-01:e0f,cluster01-02:e0e,cluster01-02:e0f
+----
+. 確認已建立容錯移轉群組：
++
+「網路介面容錯移轉群組顯示」
+
++
+如需完整的命令語法、請參閱手冊頁。
+
++
+[listing]
+----
+cluster01::> network interface failover-groups show
+                                  Failover
+Vserver          Group            Targets
+---------------- ---------------- --------------------------------------------
+Cluster
+                 Cluster
+                                  cluster01-01:e0a, cluster01-01:e0b,
+                                  cluster01-02:e0a, cluster01-02:e0b
+cluster01
+                 Default
+                                  cluster01-01:e0c, cluster01-01:e0d,
+                                  cluster01-02:e0c, cluster01-02:e0d,
+                                  cluster01-01:e0e, cluster01-01:e0f
+                                  cluster01-02:e0e, cluster01-02:e0f
+                 intercluster01
+                                  cluster01-01:e0e, cluster01-01:e0f
+                                  cluster01-02:e0e, cluster01-02:e0f
+----
+. 在系統SVM上建立叢集間LIF、並將它們指派給容錯移轉群組。
++
+[cols="30,70"]
+|===
+
+
+| 版本ONTAP | 命令 
+
+
+ a| 
+更新版本ONTAP
+ a| 
+「網路介面create -vserver system_SVM -lIF LIF_name -service-policy default-inter-cluster -home-Node -home-port port -address port_ip -netask -容 錯移轉群組容錯移轉_group」
+
+
+
+ a| 
+不含更新版本ONTAP
+ a| 
+「網路介面create -vserver system_SVM -lIF LIF_name -role inter-cluster -home-nodes -home-port port -address port_ip -netask net遮 罩-容 錯移轉群組容錯移轉_group」
+
+|===
++
+如需完整的命令語法、請參閱手冊頁。
+
++
+以下範例會在容錯移轉群組「'intercluster01」中建立叢集間LIF「'cluster01_icl01」和「'cluster01_icl02」：
+
++
+[listing]
+----
+cluster01::> network interface create -vserver cluster01 -lif cluster01_icl01 -service-
+policy default-intercluster -home-node cluster01-01 -home-port e0e -address 192.168.1.201
+-netmask 255.255.255.0 -failover-group intercluster01
+
+cluster01::> network interface create -vserver cluster01 -lif cluster01_icl02 -service-
+policy default-intercluster -home-node cluster01-02 -home-port e0e -address 192.168.1.202
+-netmask 255.255.255.0 -failover-group intercluster01
+----
+. 驗證是否已建立叢集間的LIF：
++
+[cols="30,70"]
+|===
+
+
+| 版本ONTAP | 命令 
+
+
+ a| 
+更新版本ONTAP
+ a| 
+「網路介面show -service-policy default-intercluster」
+
+
+
+ a| 
+不含更新版本ONTAP
+ a| 
+「網路介面show -role intercluster」
+
+|===
++
+如需完整的命令語法、請參閱手冊頁。
+
++
+[listing]
+----
+cluster01::> network interface show -service-policy default-intercluster
+            Logical    Status     Network            Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- ----
+cluster01
+            cluster01_icl01
+                       up/up      192.168.1.201/24   cluster01-01  e0e     true
+            cluster01_icl02
+                       up/up      192.168.1.202/24   cluster01-02  e0f     true
+----
+. 驗證叢集間的LIF是否為備援：
++
+[cols="30,70"]
+|===
+
+
+| 版本ONTAP | 命令 
+
+
+ a| 
+更新版本ONTAP
+ a| 
+「網路介面show -service-policy default-intercluster -容 錯移轉」
+
+
+
+ a| 
+不再是本版本的更新版本ONTAP
+ a| 
+「網路介面show -role intercluster -容 錯移轉」
+
+|===
++
+如需完整的命令語法、請參閱手冊頁。
+
++
+以下範例顯示、SVM連接埠「'e0e'」上的叢集間LIF「'cluster01_icl01'」和「'cluster01_icl02'」將容錯移轉至連接埠「'e0f'」。
+
++
+[listing]
+----
+cluster01::> network interface show -service-policy default-intercluster –failover
+         Logical         Home                  Failover        Failover
+Vserver  Interface       Node:Port             Policy          Group
+-------- --------------- --------------------- --------------- --------
+cluster01
+         cluster01_icl01 cluster01-01:e0e   local-only      intercluster01
+                            Failover Targets:  cluster01-01:e0e,
+                                               cluster01-01:e0f
+         cluster01_icl02 cluster01-02:e0e   local-only      intercluster01
+                            Failover Targets:  cluster01-02:e0e,
+                                               cluster01-02:e0f
+----
+
+
+link:concept_considerations_peering.html#considerations-when-using-dedicated-ports["使用專用連接埠時的考量事項"]
+
+
+
+===== 在共享的資料連接埠上設定叢集間LIF
+
+您可以在與資料網路共用的連接埠上設定叢集間的LIF。如此可減少叢集間網路所需的連接埠數量。
+
+.步驟
+. 列出叢集中的連接埠：
++
+「網路連接埠展示」
+
++
+如需完整的命令語法、請參閱手冊頁。
+
++
+以下範例顯示「'cluster01'」中的網路連接埠：
+
++
+[listing]
+----
+
+cluster01::> network port show
+                                                             Speed (Mbps)
+Node   Port      IPspace      Broadcast Domain Link   MTU    Admin/Oper
+------ --------- ------------ ---------------- ----- ------- ------------
+cluster01-01
+       e0a       Cluster      Cluster          up     1500   auto/1000
+       e0b       Cluster      Cluster          up     1500   auto/1000
+       e0c       Default      Default          up     1500   auto/1000
+       e0d       Default      Default          up     1500   auto/1000
+cluster01-02
+       e0a       Cluster      Cluster          up     1500   auto/1000
+       e0b       Cluster      Cluster          up     1500   auto/1000
+       e0c       Default      Default          up     1500   auto/1000
+       e0d       Default      Default          up     1500   auto/1000
+----
+. 在系統SVM上建立叢集間LIF：
++
+[cols="30,70"]
+|===
+
+
+| 版本ONTAP | 命令 
+
+
+ a| 
+更新版本ONTAP
+ a| 
+「網路介面create -vserver _system_Svm_-lif_lif_name_-service-policy default-intercluster -home-nodes節點-home-port _port_-address _port_ip_-netask_netappk_`
+
+
+
+ a| 
+不含更新版本ONTAP
+ a| 
+「網路介面create -vserver _system_Svm_-lif_lif_name_-role inter-cluster -home-node_node_-home-port _port_-address_port_ip_-netask_netask_」
+
+|===
++
+如需完整的命令語法、請參閱手冊頁。
+
++
+以下範例建立叢集間LIF「'cluster01_icl01'」和「'cluster01_icl02」：
+
++
+[listing]
+----
+
+cluster01::> network interface create -vserver cluster01 -lif cluster01_icl01 -service-
+policy default-intercluster -home-node cluster01-01 -home-port e0c -address 192.168.1.201
+-netmask 255.255.255.0
+
+cluster01::> network interface create -vserver cluster01 -lif cluster01_icl02 -service-
+policy default-intercluster -home-node cluster01-02 -home-port e0c -address 192.168.1.202
+-netmask 255.255.255.0
+----
+. 驗證是否已建立叢集間的LIF：
++
+[cols="30,70"]
+|===
+
+
+| 版本ONTAP | 命令 
+
+
+ a| 
+更新版本ONTAP
+ a| 
+「網路介面show -service-policy default-intercluster」
+
+
+
+ a| 
+不含更新版本ONTAP
+ a| 
+「網路介面show -role intercluster」
+
+|===
++
+如需完整的命令語法、請參閱手冊頁。
+
++
+[listing]
+----
+cluster01::> network interface show -service-policy default-intercluster
+            Logical    Status     Network            Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- ----
+cluster01
+            cluster01_icl01
+                       up/up      192.168.1.201/24   cluster01-01  e0c     true
+            cluster01_icl02
+                       up/up      192.168.1.202/24   cluster01-02  e0c     true
+----
+. 驗證叢集間的LIF是否為備援：
++
+[cols="30,70"]
+|===
+
+
+| 版本ONTAP | 命令 
+
+
+ a| 
+更新版本ONTAP
+ a| 
+「網路介面show–service-policy default-intercluster -faulty」
+
+
+
+ a| 
+不含更新版本ONTAP
+ a| 
+「網路介面show -role intercluster -容 錯移轉」
+
+|===
++
+如需完整的命令語法、請參閱手冊頁。
+
++
+以下範例顯示、連接埠「e0c」上的叢集間LIF「'cluster01_icl01'」和「'cluster01_icl02'」將容錯移轉至連接埠「'e0d'」。
+
++
+[listing]
+----
+cluster01::> network interface show -service-policy default-intercluster –failover
+         Logical         Home                  Failover        Failover
+Vserver  Interface       Node:Port             Policy          Group
+-------- --------------- --------------------- --------------- --------
+cluster01
+         cluster01_icl01 cluster01-01:e0c   local-only      192.168.1.201/24
+                            Failover Targets: cluster01-01:e0c,
+                                              cluster01-01:e0d
+         cluster01_icl02 cluster01-02:e0c   local-only      192.168.1.201/24
+                            Failover Targets: cluster01-02:e0c,
+                                              cluster01-02:e0d
+----
+
+
+link:concept_considerations_peering.html#considerations-when-sharing-data-ports["共享資料連接埠時的考量"]
+
+
+
+==== 建立叢集對等關係
+
+您必須在MetroCluster 叢集之間建立叢集對等關係。
+
+
+
+===== 建立叢集對等關係
+
+您可以使用「叢集對等建立」命令、在本機與遠端叢集之間建立對等關係。建立對等關係之後、您可以在遠端叢集上執行「叢集對等實體建立」、將其驗證到本機叢集。
+
+.開始之前
+* 您必須在叢集中每個要處理的節點上建立叢集間生命體。
+* 叢集必須執行ONTAP 的是不含更新版本的版本。
+
+
+.步驟
+. 在目的地叢集上、建立與來源叢集的對等關係：
++
+「叢集對等端點建立-產生密碼-優惠到期日_mm/DD/YYYY hh：mm:ss_|1...7天|1...168hours-peer-addrs _Peer_Lif_ips_-IPspace _IPspace_」
+
++
+如果您同時指定「-genere-phrase」和「-peer-addrs」、則只有在「-per-addrs」中指定叢集間生命體的叢集才能使用所產生的密碼。
+
++
+如果不使用自訂IPspace、您可以忽略「-IPSpace」選項。如需完整的命令語法、請參閱手冊頁。
+
++
+下列範例會在未指定的遠端叢集上建立叢集對等關係：
+
++
+[listing]
+----
+cluster02::> cluster peer create -generate-passphrase -offer-expiration 2days
+
+                     Passphrase: UCa+6lRVICXeL/gq1WrK7ShR
+                Expiration Time: 6/7/2017 08:16:10 EST
+  Initial Allowed Vserver Peers: -
+            Intercluster LIF IP: 192.140.112.101
+              Peer Cluster Name: Clus_7ShR (temporary generated)
+
+Warning: make a note of the passphrase - it cannot be displayed again.
+----
+. 在來源叢集上、驗證來源叢集到目的地叢集的驗證：
++
+「叢集對等端點create -對等 端點addrs _Peer_LIF_IPS_-IPSpace _IPspace_」
+
++
+如需完整的命令語法、請參閱手冊頁。
+
++
+下列範例驗證本機叢集到叢集間LIF IP位址192.140.112.101和192.140.112.102的遠端叢集：
+
++
+[listing]
+----
+cluster01::> cluster peer create -peer-addrs 192.140.112.101,192.140.112.102
+
+Notice: Use a generated passphrase or choose a passphrase of 8 or more characters.
+        To ensure the authenticity of the peering relationship, use a phrase or sequence of characters that would be hard to guess.
+
+Enter the passphrase:
+Confirm the passphrase:
+
+Clusters cluster02 and cluster01 are peered.
+----
++
+出現提示時、請輸入對等關係的通關密碼。
+
+. 確認已建立叢集對等關係：
++
+「叢集對等端點顯示-instance」
+
++
+[listing]
+----
+cluster01::> cluster peer show -instance
+
+                               Peer Cluster Name: cluster02
+                   Remote Intercluster Addresses: 192.140.112.101, 192.140.112.102
+              Availability of the Remote Cluster: Available
+                             Remote Cluster Name: cluster2
+                             Active IP Addresses: 192.140.112.101, 192.140.112.102
+                           Cluster Serial Number: 1-80-123456
+                  Address Family of Relationship: ipv4
+            Authentication Status Administrative: no-authentication
+               Authentication Status Operational: absent
+                                Last Update Time: 02/05 21:05:41
+                    IPspace for the Relationship: Default
+----
+. 檢查對等關係中節點的連線能力和狀態：
++
+「叢集同儕健康展」
+
++
+[listing]
+----
+cluster01::> cluster peer health show
+Node       cluster-Name                Node-Name
+             Ping-Status               RDB-Health Cluster-Health  Avail…
+---------- --------------------------- ---------  --------------- --------
+cluster01-01
+           cluster02                   cluster02-01
+             Data: interface_reachable
+             ICMP: interface_reachable true       true            true
+                                       cluster02-02
+             Data: interface_reachable
+             ICMP: interface_reachable true       true            true
+cluster01-02
+           cluster02                   cluster02-01
+             Data: interface_reachable
+             ICMP: interface_reachable true       true            true
+                                       cluster02-02
+             Data: interface_reachable
+             ICMP: interface_reachable true       true            true
+----
+
+
+
+
+===== 建立叢集對等關係ONTAP （不含更新版本的版本）
+
+您可以使用「叢集對等點create」命令來初始化本機與遠端叢集之間對等關係的要求。在本機叢集要求對等關係之後、您可以在遠端叢集上執行「叢集對等實體建立」、以接受關係。
+
+.開始之前
+* 您必須在所處理的叢集中的每個節點上建立叢集間生命體。
+* 叢集管理員必須已同意每個叢集用來驗證自己與其他叢集之間的通關密碼。
+
+
+.步驟
+. 在資料保護目的地叢集上、建立與資料保護來源叢集的對等關係：
++
+「叢集對等端點create -對等 端點addrs _Peer_LIF_IPS_-IPSpace _IPspace_」
+
++
+如果不使用自訂IPspace、您可以忽略「-IPSpace」選項。如需完整的命令語法、請參閱手冊頁。
+
++
+下列範例會在叢集間LIF IP位址為192．168．2．201和192．192．168．2．202時、與遠端叢集建立叢集對等關係：
+
++
+[listing]
+----
+cluster02::> cluster peer create -peer-addrs 192.168.2.201,192.168.2.202
+Enter the passphrase:
+Please enter the passphrase again:
+----
++
+出現提示時、請輸入對等關係的通關密碼。
+
+. 在資料保護來源叢集上、將來源叢集驗證至目的地叢集：
++
+「叢集對等端點create -對等 端點addrs _Peer_LIF_IPS_-IPSpace _IPspace_」
+
++
+如需完整的命令語法、請參閱手冊頁。
+
++
+下列範例驗證本機叢集到叢集間LIF IP位址192.140.112.203和192.140.112.204的遠端叢集：
+
++
+[listing]
+----
+cluster01::> cluster peer create -peer-addrs 192.168.2.203,192.168.2.204
+Please confirm the passphrase:
+Please confirm the passphrase again:
+----
++
+出現提示時、請輸入對等關係的通關密碼。
+
+. 確認已建立叢集對等關係：
++
+「叢集對等端點顯示–instance」
+
++
+如需完整的命令語法、請參閱手冊頁。
+
++
+[listing]
+----
+cluster01::> cluster peer show –instance
+Peer Cluster Name: cluster01
+Remote Intercluster Addresses: 192.168.2.201,192.168.2.202
+Availability: Available
+Remote Cluster Name: cluster02
+Active IP Addresses: 192.168.2.201,192.168.2.202
+Cluster Serial Number: 1-80-000013
+----
+. 檢查對等關係中節點的連線能力和狀態：
++
+「叢集同儕健康展」
+
++
+如需完整的命令語法、請參閱手冊頁。
+
++
+[listing]
+----
+cluster01::> cluster peer health show
+Node       cluster-Name                Node-Name
+             Ping-Status               RDB-Health Cluster-Health  Avail…
+---------- --------------------------- ---------  --------------- --------
+cluster01-01
+           cluster02                   cluster02-01
+             Data: interface_reachable
+             ICMP: interface_reachable true       true            true
+                                       cluster02-02
+             Data: interface_reachable
+             ICMP: interface_reachable true       true            true
+cluster01-02
+           cluster02                   cluster02-01
+             Data: interface_reachable
+             ICMP: interface_reachable true       true            true
+                                       cluster02-02
+             Data: interface_reachable
+             ICMP: interface_reachable true       true            true
+----
+
+
+
+
+=== 鏡射根Aggregate
+
+您必須鏡射根Aggregate以提供資料保護。
+
+根據預設、根Aggregate會建立為RAID-DP類型Aggregate。您可以將根Aggregate從RAID-DP變更為RAID4類型Aggregate。下列命令會修改RAID4類型Aggregate的根Aggregate：
+
+"torage Aggregate modify–aggreg_name_-raidtype RAID4"
+
+
+NOTE: 在非ADP系統上、可在鏡射Aggregate之前或之後、將Aggregate的RAID類型從預設RAID-DP修改為RAID4。
+
+.步驟
+. 鏡射根Aggregate：
++
+"儲存Aggregate mirror _aggreg_name_"
+
++
+下列命令會鏡射「'controller _a_1'」的根Aggregate：
+
++
+[listing]
+----
+controller_A_1::> storage aggregate mirror aggr0_controller_A_1
+----
++
+這會鏡射Aggregate、因此它由位於遠端MetroCluster 站台的本機叢和遠端叢組成。
+
+. 針對MetroCluster 「資訊功能」組態中的每個節點、重複上述步驟。
+
+
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-vsmg/home.html["邏輯儲存管理"^]
+
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-concepts/home.html["概念ONTAP"^]
+
+
+
+=== 在每個節點上建立鏡射資料Aggregate
+
+您必須在DR群組中的每個節點上建立鏡射資料Aggregate。
+
+.開始之前
+* 您應該知道新的Aggregate將使用哪些磁碟機或陣列LUN。
+* 如果您的系統中有多種磁碟機類型（異質儲存設備）、您應該瞭解如何確保選取正確的磁碟機類型。
+
+
+.關於這項工作
+* 磁碟機和陣列LUN由特定節點擁有；當您建立Aggregate時、該Aggregate中的所有磁碟機都必須由同一個節點擁有、而該節點會成為該Aggregate的主節點。
+* Aggregate名稱應符合您在規劃MetroCluster 時所決定的名稱配置。
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"^]
+
+
+
+.步驟
+. 顯示可用備援磁碟機清單：
++
+「torage disk show -spare -Owner_node_name_」
+
+. 建立Aggregate：
++
+"集合體建立-鏡射真"
+
++
+如果您已登入叢集管理介面上的叢集、則可以在叢集中的任何節點上建立集合體。若要確保在特定節點上建立Aggregate、請使用「-node-」參數或指定該節點擁有的磁碟機。
+
++
+您可以指定下列選項：
+
++
+** Aggregate的主節點（也就是在正常作業中擁有Aggregate的節點）
+** 要新增至集合體的特定磁碟機或陣列LUN清單
+** 要納入的磁碟機數量
++
+
+NOTE: 在可用磁碟機數量有限的最低支援組態中、您必須使用force-min-Aggregate選項來建立三個磁碟RAID-DP Aggregate。
+
+** 用於Aggregate的Checksum樣式
+** 要使用的磁碟機類型
+** 要使用的磁碟機大小
+** 使用的磁碟機速度
+** 集合體上RAID群組的RAID類型
+** RAID群組中可包含的磁碟機或陣列LUN數目上限
+** 有關這些選項的更多信息，請參見"shorage aggregate creation"手冊頁。
++
+下列命令會建立10個磁碟的鏡射Aggregate：
+
++
+[listing]
+----
+cluster_A::> storage aggregate create aggr1_node_A_1 -diskcount 10 -node node_A_1 -mirror true
+[Job 15] Job is queued: Create aggr1_node_A_1.
+[Job 15] The job is starting.
+[Job 15] Job succeeded: DONE
+----
+
+
+. 驗證新Aggregate的RAID群組和磁碟機：
++
+「torage Aggregate show-STATUS -Aggregate _gregate名稱_」
+
+
+
+
+
+=== 建立無鏡射的資料集合體
+
+您也可以針對MetroCluster 不需要由支援的組態所提供的備援鏡像的資料、建立無鏡射的資料集合體。
+
+.開始之前
+* 您應該知道新的Aggregate將使用哪些磁碟機或陣列LUN。
+* 如果您的系統中有多種磁碟機類型（異質儲存設備）、您應該瞭解如何驗證選取的磁碟機類型是否正確。
+
+
+.關於這項工作
+====
+*注意*：MetroCluster 在不鏡射FC組態中、只有在可存取Aggregate中的遠端磁碟時、才能在切換後上線無鏡射集合體。如果ISL失敗、本機節點可能無法存取無鏡射遠端磁碟中的資料。Aggregate故障可能導致本機節點重新開機。
+
+====
+
+NOTE: 無鏡射的Aggregate必須是擁有它們的節點的本機集合體。
+
+* 磁碟機和陣列LUN由特定節點擁有；當您建立Aggregate時、該Aggregate中的所有磁碟機都必須由同一個節點擁有、而該節點會成為該Aggregate的主節點。
+* Aggregate名稱應符合您在規劃MetroCluster 時所決定的名稱配置。
+* 。 link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與集合體管理"] 包含鏡射Aggregate的詳細資訊。
+
+
+.步驟
+. 顯示可用備援磁碟機清單：
++
+「torage disk show -spare -Owner_node_name_」
+
+. 建立Aggregate：
++
+《torage aggregate create》
+
++
+如果您已登入叢集管理介面上的叢集、則可以在叢集中的任何節點上建立集合體。若要驗證是否已在特定節點上建立Aggregate、您應該使用「-node-」參數、或指定該節點擁有的磁碟機。
+
++
+您可以指定下列選項：
+
++
+** Aggregate的主節點（也就是在正常作業中擁有Aggregate的節點）
+** 要新增至集合體的特定磁碟機或陣列LUN清單
+** 要納入的磁碟機數量
+** 用於Aggregate的Checksum樣式
+** 要使用的磁碟機類型
+** 要使用的磁碟機大小
+** 使用的磁碟機速度
+** 集合體上RAID群組的RAID類型
+** RAID群組中可包含的磁碟機或陣列LUN數目上限
+** 有關這些選項的更多信息，請參見"shorage aggregate creation"手冊頁。
++
+下列命令會建立10個磁碟的無鏡射Aggregate：
+
++
+[listing]
+----
+controller_A_1::> storage aggregate create aggr1_controller_A_1 -diskcount 10 -node controller_A_1
+[Job 15] Job is queued: Create aggr1_controller_A_1.
+[Job 15] The job is starting.
+[Job 15] Job succeeded: DONE
+----
+
+
+. 驗證新Aggregate的RAID群組和磁碟機：
++
+「torage Aggregate show-STATUS -Aggregate _gregate名稱_」
+
+
+
+
+
+=== 實作MetroCluster 此功能組態
+
+您必須執行「MetroCluster flexfconfigure」命令、才能以MetroCluster 一套功能完善的功能來啟動資料保護功能。
+
+.開始之前
+* 每個叢集至少應有兩個非根鏡射資料集合體。
++
+其他資料集合體可以是鏡射或無鏡射。
+
++
+驗證Aggregate類型：
+
++
+《集合體展》
+
++
+
+NOTE: 如果您要使用單一鏡射資料Aggregate、請參閱 link:concept_configuring_the_mcc_software_in_ontap.html["在ONTAP 功能不均的情況下設定MCC軟體"] 以取得相關指示。
+
+* 控制器和機箱的ha-config狀態必須是"mcc-2n"。
+
+
+您可以在MetroCluster 任何節點上發出「flexconfigure」命令一次、以啟用MetroCluster 該組態。您不需要在每個站台或節點上發出命令、也不需要在哪個節點或站台上發出命令。
+
+.步驟
+. 設定MetroCluster 下列格式的功能：
++
+[cols="30,70"]
+|===
+
+
+| 如果MetroCluster 您的組態有... | 然後執行此動作... 
+
+
+ a| 
+多個資料集合體
+ a| 
+在任何節點的提示下、設定MetroCluster 下列項目：
+
+「靜態組態節點名稱」MetroCluster
+
+
+
+ a| 
+單一鏡射資料Aggregate
+ a| 
+.. 在任何節點的提示下、變更為進階權限層級：
++
+"進階權限"
+
++
+當系統提示您繼續進入進階模式時、您必須使用「y」回應、並看到進階模式提示（*>）。
+
+.. 使用MetroCluster 「-allow-with e-gregate true]參數設定此功能：
++
+「MetroCluster 配合單一Aggregate true_norme-name_」執行設定
+
+.. 返回管理員權限等級：+「設置權限管理」
+
+
+|===
++
+
+NOTE: 最佳實務做法是擁有多個資料集合體。如果第一個DR群組只有一個Aggregate、而您想要新增一個具有單一Aggregate的DR群組、則必須將中繼資料磁碟區從單一資料Aggregate中移出。如需此程序的詳細資訊、請參閱 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.hw-metrocluster-service/GUID-114DAE6E-F105-4908-ABB1-CE1D7B5C7048.html["在MetroCluster 不完整的組態中移動中繼資料磁碟區"^]。
+
++
+下列命令可在MetroCluster DR群組中包含「'controller _a_1'」的所有節點上啟用支援功能：
+
++
+[listing]
+----
+cluster_A::*> metrocluster configure -node-name controller_A_1
+
+[Job 121] Job succeeded: Configure is successful.
+----
+. 驗證站台A的網路狀態：
++
+「網路連接埠展示」
+
++
+下列範例顯示網路連接埠使用量：
+
++
+[listing]
+----
+cluster_A::> network port show
+                                                          Speed (Mbps)
+Node   Port      IPspace   Broadcast Domain Link   MTU    Admin/Oper
+------ --------- --------- ---------------- ----- ------- ------------
+controller_A_1
+       e0a       Cluster   Cluster          up     9000  auto/1000
+       e0b       Cluster   Cluster          up     9000  auto/1000
+       e0c       Default   Default          up     1500  auto/1000
+       e0d       Default   Default          up     1500  auto/1000
+       e0e       Default   Default          up     1500  auto/1000
+       e0f       Default   Default          up     1500  auto/1000
+       e0g       Default   Default          up     1500  auto/1000
+
+7 entries were displayed.
+----
+. 驗MetroCluster 證MetroCluster 以支援功能驗證的兩個站台的支援功能組態。
++
+.. 請從站台A：+ MetroCluster 「不顯示」確認組態
++
+[listing]
+----
+cluster_A::> metrocluster show
+
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+ Local: cluster_A         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain auso-on-cluster-disaster
+Remote: cluster_B         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain auso-on-cluster-disaster
+----
+.. 從站台B驗證組態：+ MetroCluster 「不實秀」
++
+[listing]
+----
+cluster_B::> metrocluster show
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+ Local: cluster_B         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain auso-on-cluster-disaster
+Remote: cluster_A         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain auso-on-cluster-disaster
+----
+
+
+
+
+
+
+=== 在MetroCluster 不顯示的組態中設定v3
+
+交換器和ONTAP 作業系統上的驗證和隱私權傳輸協定必須相同。
+
+目前支援AES-128和AES-256加密。ONTAP
+
+.步驟
+. 從控制器提示字元為每個交換器建立SNMP使用者：
++
+《安全登入建立》
+
++
+[listing]
+----
+Controller_A_1::> security login create -user-or-group-name snmpv3user -application snmp -authentication-method usm -role none -remote-switch-ipaddress 10.10.10.10
+----
+. 視需要在您的站台回應下列提示：
++
+[listing]
+----
+
+Enter the authoritative entity's EngineID [remote EngineID]:
+
+Which authentication protocol do you want to choose (none, md5, sha, sha2-256) [none]: sha
+
+Enter the authentication protocol password (minimum 8 characters long):
+
+Enter the authentication protocol password again:
+
+Which privacy protocol do you want to choose (none, des, aes128) [none]: aes128
+
+Enter privacy protocol password (minimum 8 characters long):
+
+Enter privacy protocol password again:
+----
++
+
+NOTE: 相同的使用者名稱可新增至具有不同IP位址的不同交換器。
+
+. 為其餘交換器建立SNMP使用者。
++
+以下範例說明如何為IP位址為10.10.10.11的交換器建立使用者名稱。
+
++
+[listing]
+----
+Controller_A_1::> security login create -user-or-group-name snmpv3user -application snmp -authentication-method usm -role none -remote-switch-ipaddress 10.
+10.10.11
+----
+. 檢查每個交換器是否有一個登入項目：
++
+「安全登入秀」
+
++
+[listing]
+----
+Controller_A_1::> security login show -user-or-group-name snmpv3user -fields remote-switch-ipaddress
+
+vserver      user-or-group-name application authentication-method remote-switch-ipaddress
+
+------------ ------------------ ----------- --------------------- -----------------------
+
+node_A_1 SVM 1 snmpv3user     snmp        usm                   10.10.10.10
+
+node_A_1 SVM 2 snmpv3user     snmp        usm                   10.10.10.11
+
+node_A_1 SVM 3 snmpv3user    snmp        usm                   10.10.10.12
+
+node_A_1 SVM 4 snmpv3user     snmp        usm                   10.10.10.13
+
+4 entries were displayed.
+----
+. 在交換器提示字元的交換器上設定v3：
++
+「nmpconfig - set v3」
+
++
+如果您需要RO存取權限、請在「User（ro）：」之後指定「nmpv3user'」、如範例所示：
+
++
+[listing]
+----
+Switch-A1:admin> snmpconfig --set snmpv3
+SNMP Informs Enabled (true, t, false, f): [false] true
+SNMPv3 user configuration(snmp user not configured in FOS user database will have physical AD and admin role as the default):
+User (rw): [snmpadmin1]
+Auth Protocol [MD5(1)/SHA(2)/noAuth(3)]: (1..3) [3]
+Priv Protocol [DES(1)/noPriv(2)/AES128(3)/AES256(4)]): (2..2) [2]
+Engine ID: [00:00:00:00:00:00:00:00:00]
+User (ro): [snmpuser2] snmpv3user
+Auth Protocol [MD5(1)/SHA(2)/noAuth(3)]: (1..3) [2]
+Priv Protocol [DES(1)/noPriv(2)/AES128(3)/AES256(4)]): (2..2) [3]
+----
++
+範例顯示如何設定唯讀使用者。您可以視需要調整RW使用者。您也應該為未使用的帳戶設定密碼、以確保密碼安全、並使用ONTAP 您的版本資訊系統所提供的最佳加密功能。
+
+. 視站台的需求、在其餘交換器使用者上設定加密和密碼。
+
+
+
+
+=== 設定FC對SAS橋接器以進行健全狀況監控
+
+在執行ONTAP 9.8版之前版本的系統中、如果您的組態包含FC到SAS橋接器、則必須執行一些特殊的組態步驟、以監控MetroCluster 以供使用者使用的SFC到SAS橋接器。
+
+* 不支援第三方SNMP監控工具用於連接光纖橋接器。
+* 從ONTAP 功能組態9.8開始、FC對SAS橋接器依預設會透過頻內連線進行監控、不需要額外的組態設定。
+
+
+
+NOTE: 從ONTAP 功能組別9.8開始、「最小橋接器」命令會改為「系統橋接器」。以下步驟顯示了「shorage bridge」命令、但ONTAP 如果您執行的是更新版本的版本、最好使用「系統橋接器」命令。
+
+.步驟
+. 從「叢集提示」中、將橋接器新增至健全狀況監控：ONTAP
++
+.. 使用適用於ONTAP 您的版本的命令來新增橋接器：
++
+[cols="30,70"]
+|===
+
+
+| 版本ONTAP | 命令 
+
+
+ a| 
+更新版本ONTAP
+ a| 
+「torage bridge add -address0.0.00.0.00.-managed by in-band -name _bridge-name_」
+
+
+
+ a| 
+更新版本ONTAP
+ a| 
+「torage bridge add -address_bridge-ip-address_-name _bridge-name_」
+
+|===
+.. 確認橋接器已新增且設定正確：
++
+《龍橋秀》
+
++
+由於輪詢時間間隔、可能需要15分鐘才能反映所有資料。如果「狀態」欄中的值為「ok」、則可聯絡及監控此橋接器、並顯示全球名稱（WWN）等其他資訊。ONTAP
+
++
+以下範例顯示已設定FC對SAS橋接器：
+
++
+[listing]
+----
+controller_A_1::> storage bridge show
+
+Bridge              Symbolic Name Is Monitored  Monitor Status  Vendor Model                Bridge WWN
+------------------  ------------- ------------  --------------  ------ -----------------    ----------
+ATTO_10.10.20.10  atto01        true          ok              Atto   FibreBridge 7500N   	20000010867038c0
+ATTO_10.10.20.11  atto02        true          ok              Atto   FibreBridge 7500N   	20000010867033c0
+ATTO_10.10.20.12  atto03        true          ok              Atto   FibreBridge 7500N   	20000010867030c0
+ATTO_10.10.20.13  atto04        true          ok              Atto   FibreBridge 7500N   	2000001086703b80
+
+4 entries were displayed
+
+ controller_A_1::>
+----
+
+
+
+
+
+
+=== 正在檢查MetroCluster 功能組態
+
+您可以檢查MetroCluster 功能組態中的元件和關係是否正常運作。您應該在初始組態設定後、以及MetroCluster 變更任何的功能後進行檢查。您也應該在協商（計畫性）切換或切換作業之前進行檢查。
+
+如果在MetroCluster 兩個叢集上的短時間內發出兩次「支援驗證執行」命令、可能會發生衝突、而且命令可能無法收集所有資料。後續的「MetroCluster 示例檢查show」命令不會顯示預期的輸出。
+
+. 檢查組態：
++
+《不一樣的跑程》MetroCluster
+
++
+命令會以背景工作的形式執行、而且可能不會立即完成。
+
++
+[listing]
+----
+cluster_A::> metrocluster check run
+The operation has been started and is running in the background. Wait for
+it to complete and run "metrocluster check show" to view the results. To
+check the status of the running metrocluster check operation, use the command,
+"metrocluster operation history show -job-id 2245"
+----
++
+[listing]
+----
+cluster_A::> metrocluster check show
+Last Checked On: 9/13/2017 20:41:37
+
+Component           Result
+------------------- ---------
+nodes               ok
+lifs                ok
+config-replication  ok
+aggregates          ok
+clusters            ok
+5 entries were displayed.
+----
+. 顯示更詳細的結果：
++
+《不一樣的跑程》MetroCluster
+
++
+《不看集合體表演》MetroCluster
+
++
+「觀看叢集節目」MetroCluster
+
++
+《不執行組態複寫的展示》MetroCluster
+
++
+《不看利夫秀》MetroCluster
+
++
+「不需要節點顯示」MetroCluster
+
++
+「示例檢查show」命令顯示最近執行的「示例檢查run」命令的結果。MetroCluster MetroCluster在MetroCluster 使用「MetroCluster show」命令之前、請務必先執行「支援檢查執行」命令、以便顯示最新的資訊。
+
++
+以下範例顯示MetroCluster 「用作『用作檢查集合式show’命令輸出、以確保四節點MetroCluster 的效能正常運作：
+
++
+[listing]
+----
+cluster_A::> metrocluster check aggregate show
+
+Last Checked On: 8/5/2014 00:42:58
+
+Node                  Aggregate                  Check                      Result
+---------------       --------------------       ---------------------      ---------
+controller_A_1        controller_A_1_aggr0
+                                                 mirroring-status           ok
+                                                 disk-pool-allocation       ok
+                                                 ownership-state            ok
+                      controller_A_1_aggr1
+                                                 mirroring-status           ok
+                                                 disk-pool-allocation       ok
+                                                 ownership-state            ok
+                      controller_A_1_aggr2
+                                                 mirroring-status           ok
+                                                 disk-pool-allocation       ok
+                                                 ownership-state            ok
+
+
+controller_A_2        controller_A_2_aggr0
+                                                 mirroring-status           ok
+                                                 disk-pool-allocation       ok
+                                                 ownership-state            ok
+                      controller_A_2_aggr1
+                                                 mirroring-status           ok
+                                                 disk-pool-allocation       ok
+                                                 ownership-state            ok
+                      controller_A_2_aggr2
+                                                 mirroring-status           ok
+                                                 disk-pool-allocation       ok
+                                                 ownership-state            ok
+
+18 entries were displayed.
+----
++
+以下範例顯示MetroCluster 「不知道叢集show」命令輸出、可確保四節點MetroCluster 的效能正常。這表示叢集已準備好在必要時執行協調式切換。
+
++
+[listing]
+----
+Last Checked On: 9/13/2017 20:47:04
+
+Cluster               Check                           Result
+--------------------- ------------------------------- ---------
+mccint-fas9000-0102
+                      negotiated-switchover-ready     not-applicable
+                      switchback-ready                not-applicable
+                      job-schedules                   ok
+                      licenses                        ok
+                      periodic-check-enabled          ok
+mccint-fas9000-0304
+                      negotiated-switchover-ready     not-applicable
+                      switchback-ready                not-applicable
+                      job-schedules                   ok
+                      licenses                        ok
+                      periodic-check-enabled          ok
+10 entries were displayed.
+----
+
+
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"^]
+
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/home.html["網路與LIF管理"^]
+
+
+
+== 使用MetroCluster 資訊功能檢查是否有不正確的組態錯誤Config Advisor
+
+您可以前往NetApp支援網站下載Config Advisor 此功能、以檢查常見的組態錯誤。
+
+此為組態驗證與健全狀況檢查工具。Config Advisor您可以在安全站台和非安全站台上部署、以供資料收集和系統分析之用。
+
+
+NOTE: 支援功能有限、僅限線上使用。Config Advisor
+
+. 前往Config Advisor 「更新」頁面並下載工具。
++
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"^]
+
+. 執行Config Advisor 功能、檢閱工具的輸出結果、並遵循輸出中的建議來解決發現的任何問題。
+
+
+
+
+== 驗證切換、修復及切換
+
+您應該驗證MetroCluster 該組態的切換、修復及切換作業。
+
+. 請使用中所述的協調切換、修復及切換程序 link:https:../manage/index.html["從災難中恢復"]。
+
+
+
+
+== 保護組態備份檔案
+
+您可以指定遠端URL（HTTP或FTP）來上傳組態備份檔案、以及本機叢集中的預設位置、為叢集組態備份檔案提供額外的保護。
+
+. 設定組態備份檔案的遠端目的地URL：
++
+「系統組態備份設定會修改url-of目的地」
+
++
+。 link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sag/home.html["使用CLI進行叢集管理"] 在「管理組態備份」一節中包含其他資訊。
+
+

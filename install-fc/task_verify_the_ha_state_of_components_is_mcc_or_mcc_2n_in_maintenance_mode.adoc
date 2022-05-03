@@ -1,0 +1,116 @@
+---
+permalink: install-fc/task_verify_the_ha_state_of_components_is_mcc_or_mcc_2n_in_maintenance_mode.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, verify, ha, state, components, maintenance, mode 
+summary: 在MetroCluster 以Esing組態設定儲存系統時、您必須確定控制器模組和機箱元件的高可用度（HA）狀態為MCC或MCC-2n、以便這些元件能夠正常開機。 
+---
+= 在維護模式中驗證及設定元件的HA狀態
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在MetroCluster 以支援功能組態設定儲存系統時、您必須確定控制器模組和機箱元件的高可用度（HA）狀態為「MCC」或「MCC-2n」、以便這些元件能夠正常開機。
+
+系統必須處於維護模式。
+
+從原廠接收的系統不需要執行此工作。
+
+.步驟
+. 在維護模式中、顯示控制器模組和機箱的HA狀態：
++
+《ha-config show》
+
++
+HA狀態是否正確取決MetroCluster 於您的使用情況組態。
+
++
+|===
+
+
+| 在整個過程中使用的控制器數量MetroCluster | 所有元件的HA狀態應為... 
+
+
+ a| 
+八節點或四節點MetroCluster 的不全功能FC組態
+ a| 
+MCC
+
+
+
+ a| 
+雙節點MetroCluster 的不含功能的FC組態
+ a| 
+MCC-2n
+
+
+
+ a| 
+IP組態MetroCluster
+ a| 
+Mccip
+
+|===
+. 如果控制器的顯示系統狀態不正確、請設定控制器模組的HA狀態：
++
+|===
+
+
+| 在整個過程中使用的控制器數量MetroCluster | 命令 
+
+
+ a| 
+八節點或四節點MetroCluster 的不全功能FC組態
+ a| 
+「ha-config modify控制器MCC」
+
+
+
+ a| 
+雙節點MetroCluster 的不含功能的FC組態
+ a| 
+「ha-config modify控制器MCC-2n」
+
+
+
+ a| 
+IP組態MetroCluster
+ a| 
+「ha-config modify控制器mccip」
+
+|===
+. 如果機箱顯示的系統狀態不正確、請設定機箱的HA狀態：
++
+|===
+
+
+| 在整個過程中使用的控制器數量MetroCluster | 命令 
+
+
+ a| 
+八節點或四節點MetroCluster 的不全功能FC組態
+ a| 
+「ha-config modify機箱MCC」
+
+
+
+ a| 
+雙節點MetroCluster 的不含功能的FC組態
+ a| 
+「ha-config modify機箱MCC-2n」
+
+
+
+ a| 
+IP組態MetroCluster
+ a| 
+「ha-config modify機箱mccip」
+
+|===
+. 將節點開機ONTAP 至以下項目：
++
+Boot_ONTAP
+
+. 在MetroCluster 整個過程中的每個節點上重複上述步驟。
+

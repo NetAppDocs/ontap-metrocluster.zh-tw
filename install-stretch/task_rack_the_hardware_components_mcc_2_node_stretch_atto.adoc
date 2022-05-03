@@ -1,0 +1,54 @@
+---
+permalink: install-stretch/task_rack_the_hardware_components_mcc_2_node_stretch_atto.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, rack, harware, components 
+summary: 如果您尚未收到已安裝在機櫃中的設備、則必須裝入元件機架。 
+---
+= 安裝硬體元件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您尚未收到已安裝在機櫃中的設備、則必須裝入元件機架。
+
+這項工作必須在MetroCluster 兩個地方執行。
+
+.步驟
+. 規劃MetroCluster 好各個環節的定位。
++
+機架空間取決於儲存控制器的平台模式、交換器類型、以及組態中的磁碟櫃堆疊數量。
+
+. 請妥善接地。
+. 在機架或機櫃中安裝儲存控制器。
++
+https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"]
+
+. 安裝磁碟櫃、開啟磁碟櫃電源、然後設定磁碟櫃ID。
++
+** 您必須重新啟動每個磁碟櫃。
+** 每MetroCluster 個EDR群組（包括兩個站台）內的每個SAS磁碟櫃、機櫃ID都必須是唯一的。
+
+
+. 安裝每個FC對SAS橋接器：
++
+.. 使用四顆螺絲將橋前面的「L」支架固定至機架正面（齊面安裝）。
++
+橋接「L」支架的開孔符合19吋（482.6公釐）機架的機架標準ETA -310-X。
+
++
+如需更多資訊及安裝圖例、請參閱橋接器機型的_Atto FibreBridge安裝與操作手冊_。
+
+.. 將每個橋接器連接至提供適當接地的電源。
+.. 開啟每個橋接器的電源。
++
+
+NOTE: 為了獲得最大恢復能力、連接至相同磁碟櫃堆疊的橋接器必須連接至不同的電源。
+
++
+橋接就緒LED可能需要30秒才能亮起、表示橋接器已完成開機自我測試程序。
+
+
+
+

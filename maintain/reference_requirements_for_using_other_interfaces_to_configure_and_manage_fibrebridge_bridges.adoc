@@ -1,0 +1,65 @@
+---
+permalink: maintain/reference_requirements_for_using_other_interfaces_to_configure_and_manage_fibrebridge_bridges.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, requirements, interfaces, fibrebridge, bridges, manage, configures 
+summary: 您可以使用序列連接埠、遠端登入和FTP的組合來管理FIBRAIBER橋接器、而非建議的管理介面。在安裝橋接器之前、您的系統必須符合適用介面的要求。 
+---
+= 使用其他介面來設定及管理光纖橋接器的需求
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用序列連接埠、遠端登入和FTP的組合來管理FIBRAIBER橋接器、而非建議的管理介面。在安裝橋接器之前、您的系統必須符合適用介面的要求。
+
+您可以使用序列連接埠或Telnet來設定橋接器和乙太網路管理1連接埠、以及管理橋接器。您可以使用FTP更新橋接器韌體。
+
+
+NOTE: 適用於您的模型橋接器的_Atto FibreBridge安裝與操作手冊_有更多管理介面的相關資訊。
+
+您可以使用Atto FIBrebridge Description（Atto FIBrebridge說明）頁面上提供的連結、在Atto網站上存取本文件。
+
+
+
+== 序列連接埠
+
+使用序列連接埠來設定及管理橋接器、以及設定乙太網路管理1連接埠時、系統必須符合下列需求：
+
+* 序列纜線（從橋接器序列連接埠連接至您用於設定之電腦上的序列（COM）連接埠）
++
+橋接序列連接埠為RJ-45、與控制器具有相同的針腳輸出。
+
+* 用於存取主控台的終端機模擬程式、例如Hyper終端 機、TeraTerme或Putty
++
+終端程式應該能夠將畫面輸出記錄到檔案中。
+
+
+
+
+
+== 遠端登入
+
+使用Telnet設定及管理橋接器時、系統必須符合下列需求：
+
+* 序列纜線（從橋接器序列連接埠連接至您用於設定之電腦上的序列（COM）連接埠）
++
+橋接序列連接埠為RJ-45、與控制器具有相同的針腳輸出。
+
+* （建議）非預設使用者名稱和密碼（用於存取橋接器）
+* 用於存取主控台的終端機模擬程式、例如Hyper終端 機、TeraTerme或Putty
++
+終端程式應該能夠將畫面輸出記錄到檔案中。
+
+* 每個橋接器上乙太網路管理1連接埠的IP位址、子網路遮罩和閘道資訊
+
+
+
+
+== FTP
+
+使用FTP更新橋接韌體時、系統必須符合下列需求：
+
+* 標準乙太網路纜線（可從橋接式乙太網路管理1連接埠連接至您的網路）
+* （建議）非預設使用者名稱和密碼（用於存取橋接器）
+

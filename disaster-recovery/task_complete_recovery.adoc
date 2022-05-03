@@ -1,0 +1,608 @@
+---
+permalink: disaster-recovery/task_complete_recovery.html 
+sidebar: sidebar 
+keywords: object, fabricpool, mirror, co-located, metrocluster, disaster, site, destroy, reestablish, store, reestablish, store, configuration, verify, license, replace, node, perform, switchback, successful, root, aggregates, replacement, health, reconfiguring, reconfigure, ontap, mediator, service, ip, configuration 
+summary: 如果FabricPool 一個物件儲存在一個鏡射中、與MetroCluster 該處的不景點共存、並被摧毀、您必須重新建立物件存放區和FabricPool 該鏡射。 
+---
+= 完成恢復
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+
+
+== 重新建立物件存放區以供FabricPool 進行物件組態
+
+如果FabricPool 一個物件儲存在一個鏡射中、與MetroCluster 該處的不景點共存、並被摧毀、您必須重新建立物件存放區和FabricPool 該鏡射。
+
+.關於這項工作
+* 如果物件存放區是遠端的、MetroCluster 且某個物件已毀損、則不需要重建物件存放區、原始物件存放區組態和冷資料內容也會保留下來。
+* 如需FabricPool 更多有關「效能」組態的資訊、請參閱 link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與集合體管理"^]。
+
+
+.步驟
+. 請遵循FabricPool 中的「在MetroCluster 不顯示的組態上更換鏡像」程序 link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與集合體管理"^]。
+
+
+
+
+== 驗證替換節點上的授權
+
+如果受損節點使用ONTAP 需要標準（節點鎖定）授權的功能、則必須為替換節點安裝新授權。對於具有標準授權的功能、叢集中的每個節點都應該擁有自己的功能金鑰。
+
+在您安裝授權金鑰之前、需要標準授權的功能將繼續提供給替換節點。但是、如果受損節點是叢集中唯一具有功能授權的節點、則不允許對功能進行組態變更。此外、在節點上使用未獲授權的功能可能會使您違反授權合約、因此您應該盡快在替換節點上安裝替換授權金鑰或金鑰。
+
+授權金鑰必須為28個字元的格式。
+
+您有90天的寬限期可以安裝授權金鑰。寬限期過後、所有舊授權都會失效。安裝有效的授權金鑰之後、您有24小時的時間可以在寬限期結束之前安裝所有金鑰。
+
+
+NOTE: 如果站台上的所有節點都已更換（雙節點MetroCluster 的雙節點版本組態為單一節點）、則在切換之前、必須先在替換節點或節點上安裝授權金鑰。
+
+.步驟
+. 識別節點上的授權：
++
+《許可證展示》
+
++
+下列範例顯示系統中授權的相關資訊：
+
++
+[listing]
+----
+cluster_B::>  license show
+         (system license show)
+
+Serial Number: 1-80-00050
+Owner: site1-01
+Package           Type       Description             Expiration
+-------          -------     -------------           -----------
+Base             license     Cluster Base License        -
+NFS              site        NFS License                 -
+CIFS             site        CIFS License                -
+iSCSI            site        iSCSI License               -
+FCP              site        FCP License                 -
+FlexClone        site        FlexClone License           -
+
+6 entries were displayed.
+----
+. 在切換後、確認授權對節點是否良好：
++
+《不檢證照秀》MetroCluster
+
++
+下列範例顯示適用於節點的授權：
+
++
+[listing]
+----
+cluster_B::> metrocluster check license show
+
+Cluster           Check                             Result
+-------           -------                           -------------
+Cluster_B         negotiated-switchover-ready       not-applicable
+NFS               switchback-ready                  not-applicable
+CIFS              job-schedules                     ok
+iSCSI             licenses                          ok
+FCP               periodic-check-enabled            ok
+----
+. 如果您需要新的授權金鑰、請在「軟體授權」下方的「我的支援」區段中、於NetApp支援網站取得替換授權金鑰。
++
+
+NOTE: 系統會自動產生您所需的新授權金鑰、並將其傳送至檔案上的電子郵件地址。如果您在30天內未收到附有授權金鑰的電子郵件、請聯絡技術支援部門。
+
+. 安裝每個授權金鑰：
++
+「系統授權新增授權碼授權金鑰、授權金鑰...+」
+
+. 視需要移除舊授權：
++
+.. 檢查未使用的授權：
++
+「使用許可清理-未使用-模擬」
+
+.. 如果清單看起來正確、請移除未使用的授權：
++
+「使用許可清理-未使用」
+
+
+
+
+
+
+
+== 還原金鑰管理
+
+如果資料磁碟區已加密、則必須還原金鑰管理。如果根磁碟區已加密、則必須恢復金鑰管理。
+
+.步驟
+. 如果資料磁碟區已加密、請使用適用於金鑰管理組態的正確命令來還原金鑰。
++
+[cols="1,2"]
+|===
+
+
+| 如果您使用... | 使用此命令... 
+
+
+ a| 
+*機載金鑰管理*
+ a| 
+「安全金鑰管理程式內建同步」
+
+如需詳細資訊、請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-E4AB2ED4-9227-4974-A311-13036EB43A3D.html["還原內建金鑰管理加密金鑰"^]。
+
+
+
+ a| 
+*外部金鑰管理*
+ a| 
+「安全金鑰管理程式金鑰查詢節點節點名稱」
+
+如需詳細資訊、請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-32DA96C3-9B04-4401-92B8-EAF323C3C863.html["還原外部金鑰管理加密金鑰"^]。
+
+|===
+. 如果根磁碟區已加密、請使用中的程序 link:../transition/task_connect_the_mcc_ip_controller_modules_2n_mcc_transition_supertask.html#recovering-key-management-if-the-root-volume-is-encrypted["如果根磁碟區已加密、則會恢復金鑰管理"]。
+
+
+
+
+== 執行切換
+
+修復MetroCluster 完這個功能後、您就可以執行MetroCluster 還原操作。此還原操作會將組態恢復至正常作業狀態、使災難站台上的同步來源儲存虛擬機器（SVM）處於作用中狀態、並從本機磁碟集區提供資料。MetroCluster
+
+.開始之前
+* 災難叢集必須已成功切換至正常運作的叢集。
+* 必須在資料和根集合體上執行修復。
+* 正常運作的叢集節點不得處於HA容錯移轉狀態（每個HA配對的所有節點都必須已啟動並執行）。
+* 災難站台控制器模組必須完全開機、而非處於HA接管模式。
+* 根Aggregate必須鏡射。
+* 交換器間連結（ISL）必須在線上。
+* 任何必要的授權都必須安裝在系統上。
+
+
+.步驟
+. 確認所有節點均處於啟用狀態：
++
+「不一樣的秀」MetroCluster
+
++
+下列範例顯示處於啟用狀態的節點：
+
++
+[listing]
+----
+cluster_B::>  metrocluster node show
+
+DR                        Configuration  DR
+Group Cluster Node        State          Mirroring Mode
+----- ------- ----------- -------------- --------- --------------------
+1     cluster_A
+              node_A_1    configured     enabled   heal roots completed
+              node_A_2    configured     enabled   heal roots completed
+      cluster_B
+              node_B_1    configured     enabled   waiting for switchback recovery
+              node_B_2    configured     enabled   waiting for switchback recovery
+4 entries were displayed.
+----
+. 確認所有SVM上的重新同步已完成：
++
+《看不出》MetroCluster
+
+. 驗證修復作業所執行的任何自動LIF移轉是否已成功完成：
++
+《不看利夫秀》MetroCluster
+
+. 從存續叢集中的任何節點執行「MetroCluster 還原」命令、以執行切換。
+. 檢查切換回復作業的進度：
++
+《不看》MetroCluster
+
++
+當輸出顯示「waiting for switchback」時、切換回復作業仍在進行中：
+
++
+[listing]
+----
+cluster_B::> metrocluster show
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+ Local: cluster_B         Configuration state configured
+                          Mode                switchover
+                          AUSO Failure Domain -
+Remote: cluster_A         Configuration state configured
+                          Mode                waiting-for-switchback
+                          AUSO Failure Domain -
+----
++
+當輸出顯示「正常」時、即完成切換作業：
+
++
+[listing]
+----
+cluster_B::> metrocluster show
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+ Local: cluster_B         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain -
+Remote: cluster_A         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain -
+----
++
+如果切換需要很長時間才能完成、您可以在進階權限層級使用下列命令來檢查進行中基準的狀態：
+
++
+「重新同步狀態顯示」MetroCluster
+
+. 重新建立任何SnapMirror或SnapVault 不完整的組態。
++
+在S還原8.3中ONTAP 、MetroCluster 您需要在執行還原操作之後、手動重新建立遺失的SnapMirror組態。在更新版本的版本中、關係會自動重新建立。ONTAP
+
+
+
+
+
+== 驗證成功的切換
+
+執行切換後、您想確認所有的集合體和儲存虛擬機器（SVM）都已切換回線上狀態。
+
+.步驟
+. 確認切換式資料集合體已切換回：
++
+《集合體展》
+
++
+在下列範例中、節點B2上的agger_B2已切換回：
+
++
+[listing]
+----
+node_B_1::> storage aggregate show
+Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
+--------- -------- --------- ----- ------- ------ ---------------- ------------
+...
+aggr_b2    227.1GB   227.1GB    0% online       0 node_B_2   raid_dp,
+                                                                   mirrored,
+                                                                   normal
+
+node_A_1::> aggr show
+Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
+--------- -------- --------- ----- ------- ------ ---------------- ------------
+...
+aggr_b2          -         -     - unknown      - node_A_1
+----
++
+如果災難站台包含未鏡射的Aggregate、而未鏡射的Aggregate不再存在、則儲存Aggregate show命令的輸出中可能會顯示「'unknown'」狀態。請聯絡技術支援部門、移除未鏡射集合體的過時項目。
+
+. 驗證在存續叢集上的所有同步目的地SVM都處於休眠狀態（顯示「最新」的管理狀態）、且災難叢集上的同步來源SVM都已啟動並執行：
++
+「vserver show -subtype sync-source-
+
++
+[listing]
+----
+node_B_1::> vserver show -subtype sync-source
+                               Admin      Root                       Name    Name
+Vserver     Type    Subtype    State      Volume     Aggregate       Service Mapping
+----------- ------- ---------- ---------- ---------- ----------      ------- -------
+...
+vs1a        data    sync-source
+                               running    vs1a_vol   node_B_2        file    file
+                                                                     aggr_b2
+
+node_A_1::> vserver show -subtype sync-destination
+                               Admin      Root                         Name    Name
+Vserver            Type    Subtype    State      Volume     Aggregate  Service Mapping
+-----------        ------- ---------- ---------- ---------- ---------- ------- -------
+...
+cluster_A-vs1a-mc  data    sync-destination
+                                      stopped    vs1a_vol   sosb_      file    file
+                                                                       aggr_b2
+----
++
+Sync-destinate Aggregate在MetroCluster 支援的支援組態中、會在名稱中自動加上「-MC」字尾、以協助識別它們。
+
+. 使用「MetroCluster 還原作業show」命令來確認切換作業是否成功。
++
+|===
+
+
+| 如果命令輸出顯示... | 然後... 
+
+
+ a| 
+切換回復作業狀態成功。
+ a| 
+切換程序已完成、您可以繼續操作系統。
+
+
+
+ a| 
+切換回復作業或切換回復繼續代理程式作業部分成功。
+ a| 
+執行MetroCluster 在輸出的festoperation show命令中提供的建議修正。
+
+|===
+
+
+您必須重複上述各節、以相反方向執行切換。如果站台_A切換到站台_B、請讓站台_B切換站台_A
+
+
+
+== 鏡射替換節點的根集合體
+
+如果更換磁碟、您必須鏡射災難站台上新節點的根集合體。
+
+.步驟
+. 在災難站台上、識別未鏡射的集合體：
++
+《集合體展》
+
++
+[listing]
+----
+cluster_A::> storage aggregate show
+
+Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
+--------- -------- --------- ----- ------- ------ ---------------- ------------
+node_A_1_aggr0
+            1.49TB   74.12GB   95% online       1 node_A_1         raid4,
+                                                                   normal
+node_A_2_aggr0
+            1.49TB   74.12GB   95% online       1 node_A_2         raid4,
+                                                                   normal
+node_A_1_aggr1
+            1.49TB   74.12GB   95% online       1 node_A_1         raid 4, normal
+                                                                   mirrored
+node_A_2_aggr1
+            1.49TB   74.12GB   95% online       1 node_A_2         raid 4, normal
+                                                                   mirrored
+4 entries were displayed.
+
+cluster_A::>
+----
+. 鏡射其中一個根Aggregate：
++
+「torage Aggregate mirror -Aggregate root-aggregate」
+
++
+下列範例顯示指令如何選取磁碟、以及在鏡射Aggregate時提示確認。
+
++
+[listing]
+----
+cluster_A::> storage aggregate mirror -aggregate node_A_2_aggr0
+
+Info: Disks would be added to aggregate "node_A_2_aggr0" on node "node_A_2" in
+      the following manner:
+
+      Second Plex
+
+        RAID Group rg0, 3 disks (block checksum, raid4)
+          Position   Disk                      Type                  Size
+          ---------- ------------------------- ---------- ---------------
+          parity     2.10.0                    SSD                      -
+          data       1.11.19                   SSD                894.0GB
+          data       2.10.2                    SSD                894.0GB
+
+      Aggregate capacity available for volume use would be 1.49TB.
+
+Do you want to continue? {y|n}: y
+
+cluster_A::>
+----
+. 驗證根Aggregate的鏡像是否完整：
++
+《集合體展》
+
++
+下列範例顯示根集合體已鏡射。
+
++
+[listing]
+----
+cluster_A::> storage aggregate show
+
+Aggregate     Size Available Used% State   #Vols  Nodes       RAID Status
+--------- -------- --------- ----- ------- ------ ----------- ------------
+node_A_1_aggr0
+            1.49TB   74.12GB   95% online       1 node_A_1    raid4,
+                                                              mirrored,
+                                                              normal
+node_A_2_aggr0
+            2.24TB   838.5GB   63% online       1 node_A_2    raid4,
+                                                              mirrored,
+                                                              normal
+node_A_1_aggr1
+            1.49TB   74.12GB   95% online       1 node_A_1    raid4,
+                                                              mirrored,
+                                                              normal
+node_A_2_aggr1
+            1.49TB   74.12GB   95% online       1 node_A_2    raid4
+                                                              mirrored,
+                                                              normal
+4 entries were displayed.
+
+cluster_A::>
+----
+. 對其他根集合體重複這些步驟。
++
+任何沒有鏡射狀態的根Aggregate都必須鏡射。
+
+
+
+
+
+== 重新設定ONTAP 「不完整的」服務（MetroCluster 不完整的IP組態）
+
+如果您有MetroCluster 使用ONTAP 「BMC中介器」服務設定的「靜態IP」組態、則必須移除並重新設定與中介器的關聯。
+
+.開始之前
+* 您必須擁有IP位址、使用者名稱和密碼才能使用ONTAP 此功能、才能使用此功能。
+* 必須在Linux主機上設定及操作此功能。ONTAP
+
+
+.步驟
+. 移除現有ONTAP 的「資訊不實器組態：
++
+「取消組態設定中介程式」MetroCluster
+
+. 重新設定ONTAP 此功能：
++
+「靜態組態設定中介器add -中介 器位址中介器IP位址」MetroCluster
+
+
+
+
+
+== 驗MetroCluster 證資訊功能組態的健全狀況
+
+您應該檢查MetroCluster 整個過程的健全狀況、以驗證運作是否正常。
+
+.步驟
+. 檢查MetroCluster 每個叢集上的功能是否已設定且處於正常模式：
++
+《不看》MetroCluster
+
++
+[listing]
+----
+cluster_A::> metrocluster show
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+ Local: cluster_A         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain auso-on-cluster-disaster
+Remote: cluster_B         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain auso-on-cluster-disaster
+----
+. 檢查每個節點是否已啟用鏡射：
++
+「不一樣的秀」MetroCluster
+
++
+[listing]
+----
+cluster_A::> metrocluster node show
+DR                           Configuration  DR
+Group Cluster Node           State          Mirroring Mode
+----- ------- -------------- -------------- --------- --------------------
+1     cluster_A
+              node_A_1       configured     enabled   normal
+      cluster_B
+              node_B_1       configured     enabled   normal
+2 entries were displayed.
+----
+. 檢查MetroCluster 這些元件是否健全：
++
+《不一樣的跑程》MetroCluster
+
++
+[listing]
+----
+cluster_A::> metrocluster check run
+
+Last Checked On: 10/1/2014 16:03:37
+
+Component           Result
+------------------- ---------
+nodes               ok
+lifs                ok
+config-replication  ok
+aggregates          ok
+4 entries were displayed.
+
+Command completed. Use the `metrocluster check show -instance` command or sub-commands in `metrocluster check` directory for detailed results.
+To check if the nodes are ready to do a switchover or switchback operation, run `metrocluster switchover -simulate` or `metrocluster switchback -simulate`, respectively.
+----
+. 檢查是否沒有健全狀況警示：
++
+「系統健全狀況警示顯示」
+
+. 模擬切換作業：
++
+.. 在任何節點的提示下、變更為進階權限層級：
++
+"進階權限"
+
++
+當系統提示您繼續進入進階模式時、您需要用「y」回應、並看到進階模式提示（*>）。
+
+.. 使用「-Simulate（模擬）”參數執行切換作業：
++
+《不一樣的切換-模擬》MetroCluster
+
+.. 返回管理權限層級：
++
+「et -priv. admin」
+
+
+
+. 如需MetroCluster 使用ONTAP 「支援者」服務的支援範圍、請確認「資訊員」服務已啟動且正常運作。
++
+.. 檢查系統是否能看到內核磁碟：
++
+「容錯移轉信箱磁碟顯示」
+
++
+下列範例顯示信箱磁碟已被辨識。
+
++
+[listing]
+----
+node_A_1::*> storage failover mailbox-disk show
+                 Mailbox
+Node             Owner     Disk    Name        Disk UUID
+-------------     ------   -----   -----        ----------------
+sti113-vsim-ucs626g
+.
+.
+     local     0m.i2.3L26      7BBA77C9:AD702D14:831B3E7E:0B0730EE:00000000:00000000:00000000:00000000:00000000:00000000
+     local     0m.i2.3L27      928F79AE:631EA9F9:4DCB5DE6:3402AC48:00000000:00000000:00000000:00000000:00000000:00000000
+     local     0m.i1.0L60      B7BCDB3C:297A4459:318C2748:181565A3:00000000:00000000:00000000:00000000:00000000:00000000
+.
+.
+.
+     partner   0m.i1.0L14      EA71F260:D4DD5F22:E3422387:61D475B2:00000000:00000000:00000000:00000000:00000000:00000000
+     partner   0m.i2.3L64      4460F436:AAE5AB9E:D1ED414E:ABF811F7:00000000:00000000:00000000:00000000:00000000:00000000
+28 entries were displayed.
+----
+.. 變更為進階權限層級：
++
+"進階權限"
+
+.. 檢查系統是否能看到信箱LUN：
++
+「iSCSI啟動器展示」
+
++
+輸出會顯示信箱LUN的存在：
+
++
+[listing]
+----
+
+Node    Type       Label      Target Portal     Target Name                                 Admin/Op
+----    ----       --------   ---------    --------- --------------------------------       --------
+.
+.
+.
+.node_A_1
+               mailbox
+                     mediator 172.16.254.1    iqn.2012-05.local:mailbox.target.db5f02d6-e3d3    up/up
+.
+.
+.
+17 entries were displayed.
+----
+.. 返回管理權限層級：
++
+「et -priv. admin」
+
+
+
+

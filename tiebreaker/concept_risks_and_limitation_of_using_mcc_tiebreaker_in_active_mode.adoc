@@ -1,0 +1,26 @@
+---
+permalink: tiebreaker/concept_risks_and_limitation_of_using_mcc_tiebreaker_in_active_mode.html 
+sidebar: sidebar 
+keywords: switchover, upon, detection, site, failure, automatic, metrocluster, tiebreaker, active, mode, supplement, ontap, fas, capability, risk, limitation 
+summary: 偵測到站台故障時會自動切換、MetroCluster 而使用作用中模式的還原器。此模式可用來輔助ONTAP/FAS自動切換功能。 
+---
+= 在MetroCluster 作用中模式中使用ESITirepreaker的風險和限制
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+偵測到站台故障時會自動切換、MetroCluster 而使用作用中模式的還原器。此模式可用來輔助ONTAP/FAS自動切換功能。
+
+當您在MetroCluster 作用中模式中實作資料保護斷路器時、下列已知問題可能會導致資料遺失：
+
+* 當站台間連結失敗時、每個站台上的控制器都會繼續為用戶端提供服務。但是控制器不會鏡射。一個站台的控制器故障被識別為站台故障、MetroCluster 而Eeti斷路 器則啟動切換。在站台間連結失敗之後、未鏡射到遠端站台的資料將會遺失。
+* 當遠端站台的集合體處於降級狀態時、就會發生切換。如果在Aggregate重新同步之前發生切換、則不會複寫資料。
+* 進行切換時、會發生遠端儲存設備故障。
+* 儲存控制器中的非揮發性記憶體（NVRAM或NVMEM、視平台機型而定）不會鏡射至合作夥伴站台上的遠端災難恢復（DR）合作夥伴。
+* 如果叢集對等網路長時間關機、且中繼資料磁碟區在切換後未上線、中繼資料就會遺失。
+
+
+
+NOTE: 您可能會遇到未提及的案例。對於MetroCluster 在作用中模式下使用本產品所造成的任何損害、NetApp概不負責。如果您無法接受風險和限制、請勿在MetroCluster 作用中模式中使用斷續器。

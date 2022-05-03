@@ -1,0 +1,58 @@
+---
+permalink: upgrade/task_expand_a_two_node_mcc_fc_configuration_to_a_four_node_fc_configuration_supertask.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, expand, two, node, fc, configuration, four 
+summary: 將雙節點MetroCluster 的EFC組態擴充為四節點MetroCluster 的EFC組態、包括在每個叢集新增控制器、在每MetroCluster 個站台形成HA配對、然後重新整理MetroCluster EzFC組態。 
+---
+= 將雙節點MetroCluster 的不含資料的FC組態擴充至四節點組態
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+將雙節點MetroCluster 的EFC組態擴充為四節點MetroCluster 的EFC組態、包括在每個叢集新增控制器、在每MetroCluster 個站台形成HA配對、然後重新整理MetroCluster EzFC組態。
+
+.開始之前
+* 節點必須以ONTAP 不含任何功能的功能的方式執行更新版本的版本。MetroCluster
++
+此程序不支援ONTAP 舊版的不支援使用的功能、也不支援MetroCluster 使用支援的功能。
+
+* 如果ONTAP 您的雙節點組態中的平台不受支援、且您計畫升級至ONTAP 支援的平台、並將其擴充至四節點叢集、則您必須先升級雙節點組態的平台、然後再擴充MetroCluster 支援的FC組態。
+* 現有MetroCluster 的無法正常運作的功能。
+* 您要新增的設備必須受到支援、並符合下列程序中所述的所有要求：
++
+link:../install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"]
+
++
+link:../install-stretch/concept_considerations_differences.html["延伸MetroCluster 安裝與組態"]
+
+* 您必須有可用的FC交換器連接埠、才能容納新的控制器和任何新的橋接器。
+* 您需要管理員密碼、才能存取FTP或scp伺服器。
+
+
+.關於這項工作
+* 此程序僅適用於MetroCluster 不含FFC組態的情況。
+* 此程序會造成中斷、大約需要四小時才能完成。
+* 在執行此程序之前MetroCluster 、由兩個單節點叢集組成的VMware FC組態包括：
++
+image::../media/mcc_dr_groups_2_node.gif[MCC DR群組2節點]
+
++
+完成此程序後MetroCluster 、由兩個HA配對組成的VMware FC組態、每個站台一個：
+
++
+image::../media/mcc_dr_groups_4_node.gif[MCC DR群組4個節點]
+
+* 這兩個站台都必須平均擴充。
++
+這個組態不能包含不平均數量的節點。MetroCluster
+
+* 此程序可能需要每個站台超過一小時的時間、而需要額外的時間來執行工作、例如初始化磁碟和網路開機新節點。
++
+初始化磁碟的時間取決於磁碟的大小。
+
+* 此程序使用下列工作流程：
+
+
+image::../media/workflow_mcc_2_to_4_node_expansion_high_level.gif[工作流程MCC 2至4節點的高層擴充]

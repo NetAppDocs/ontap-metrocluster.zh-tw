@@ -1,0 +1,123 @@
+---
+permalink: upgrade/task_refresh_the_mcc_configuration_mcc_configure_refresh.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, refresh, configuration, new, controller 
+summary: 將此功能從雙節點組態擴充至四節點組態時、您必須重新整理MetroCluster 此功能。 
+---
+= 使用MetroCluster 新的控制器重新整理功能
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+將此功能從雙節點組態擴充至四節點組態時、您必須重新整理MetroCluster 此功能。
+
+.步驟
+. 重新整理MetroCluster 此功能的組態：
++
+.. 進入進階權限模式：+「權限進階」
+.. 重新整理MetroCluster 靜態組態：+「MetroCluster 靜態configure -refreshtrue -allow-with one Aggregate true」
++
+下列命令會重新整理MetroCluster DR群組中包含控制器a_1的所有節點上的支援功能組態：
+
++
+[listing]
+----
+controller_A_1::*> metrocluster configure -refresh true -allow-with-one-aggregate true
+
+[Job 726] Job succeeded: Configure is successful.
+----
+.. 返回管理權限模式：
++
+「et -priv. admin」
+
+
+
+. 驗證站台A的網路狀態：
++
+「網路連接埠展示」
+
++
+以下範例顯示四節點MetroCluster 的列舉使用網路連接埠：
+
++
+[listing]
+----
+cluster_A::> network port show
+                                                          Speed (Mbps)
+Node   Port      IPspace   Broadcast Domain Link   MTU    Admin/Oper
+------ --------- --------- ---------------- ----- ------- ------------
+controller_A_1
+       e0a       Cluster   Cluster          up     9000  auto/1000
+       e0b       Cluster   Cluster          up     9000  auto/1000
+       e0c       Default   Default          up     1500  auto/1000
+       e0d       Default   Default          up     1500  auto/1000
+       e0e       Default   Default          up     1500  auto/1000
+       e0f       Default   Default          up     1500  auto/1000
+       e0g       Default   Default          up     1500  auto/1000
+controller_A_2
+       e0a       Cluster   Cluster          up     9000  auto/1000
+       e0b       Cluster   Cluster          up     9000  auto/1000
+       e0c       Default   Default          up     1500  auto/1000
+       e0d       Default   Default          up     1500  auto/1000
+       e0e       Default   Default          up     1500  auto/1000
+       e0f       Default   Default          up     1500  auto/1000
+       e0g       Default   Default          up     1500  auto/1000
+14 entries were displayed.
+----
+. 驗MetroCluster 證MetroCluster 以支援功能驗證的兩個站台的支援功能組態。
++
+.. 從站台A驗證組態：
++
+《不看》MetroCluster
+
++
+[listing]
+----
+cluster_A::> metrocluster show
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+ Local: cluster_A         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain auso-on-cluster-disaster
+Remote: cluster_B         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain auso-on-cluster-disaster
+----
+.. 從站台B驗證組態：
++
+《不看》MetroCluster
+
++
+[listing]
+----
+cluster_B::> metrocluster show
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+ Local: cluster_B         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain auso-on-cluster-disaster
+Remote: cluster_A         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain auso-on-cluster-disaster
+----
+.. 確認已正確建立DR關係：
++
+「MetroCluster 不只是字段dr-cluster、ddr-auxiliary、node-object-limit、autom-uso、ha-合作 夥伴、dr-Partner」
+
++
+[listing]
+----
+metrocluster node show -fields dr-cluster,dr-auxiliary,node-object-limit,automatic-uso,ha-partner,dr-partner
+dr-group-id cluster     node    ha-partner dr-cluster  dr-partner   dr-auxiliary  node-object-limit automatic-uso
+----------- ---------   ----    ---------- ----------  ----------   ------------  ----------------- -------------
+2           cluster_A   node_A_1 node_A_2    cluster_B  node_B_1     node_B_2      on                true
+2           cluster_A   node_A_2 node_A_1    cluster_B  node_B_2     node_B_1      on                true
+2           cluster_B   node_B_1 node_B_2    cluster_A  node_A_1     node_A_2      on                true
+2           cluster_B   node_B_2 node_B_1    cluster_A  node_A_2     node_A_1      on                true
+4 entries were displayed.
+----
+
+
+

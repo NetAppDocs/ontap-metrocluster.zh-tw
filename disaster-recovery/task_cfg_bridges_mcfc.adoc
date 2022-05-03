@@ -1,0 +1,158 @@
+---
+permalink: disaster-recovery/task_cfg_bridges_mcfc.html 
+sidebar: sidebar 
+keywords: fc, sas, bridge, configure, metrocluster, configuration 
+summary: 如果您更換了FC到SAS橋接器、則必須在還原MetroCluster 此功能時進行設定。 
+---
+= 設定FC對SAS橋接器（MetroCluster 僅限不含FSFC組態）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您更換了FC到SAS橋接器、則必須在還原MetroCluster 此功能時進行設定。此程序與FC對SAS橋接器的初始組態相同。
+
+.步驟
+. 開啟FC至SAS橋接器的電源。
+. 使用「Set IPAddress port ipaddress'」命令、在乙太網路連接埠上設定IP位址。
++
+** 「連接埠」可以是「MP1」或「MP2」。
+** ip位址可以是xxx、xxx、xxx格式的IP位址。
++
+在下列範例中、乙太網路連接埠1上的IP位址為10.10.10.55：
+
++
+[listing]
+----
+
+Ready.
+set IPAddress MP1 10.10.10.55
+
+Ready. *
+----
+
+
+. 使用「Set IPSubnetmask連接埠遮罩」命令、在乙太網路連接埠上設定IP子網路遮罩。
++
+** 「連接埠」可以是「MP1」或「MP2」。
+** 「MAK」可以是格式為xxx.xxx.xxx.xxx的子網路遮罩。
++
+在下列範例中、乙太網路連接埠1的IP子網路遮罩為255．255．255．0：
+
++
+[listing]
+----
+
+Ready.
+set IPSubnetMask MP1 255.255.255.0
+
+Ready. *
+----
+
+
+. 使用「以太網速度連接埠速度」命令、設定乙太網路連接埠的速度。
++
+** 「連接埠」可以是「MP1」或「MP2」。
+** 「PEed」可以是「100」、「1000」或「自動」。
++
+在下列範例中、乙太網路連接埠1的乙太網路速度設定為1000。
+
++
+[listing]
+----
+
+Ready.
+set EthernetSpeed MP1 1000
+
+Ready. *
+----
+
+
+. 使用「SaveConfiguration」命令儲存組態、並在系統提示時重新啟動橋接器。
++
+設定乙太網路連接埠後儲存組態、可讓您使用遠端登入繼續橋接器組態、並可讓您使用FTP存取橋接器以執行韌體更新。
+
++
+以下範例顯示「SaveConfiguration」命令和重新啟動橋接器的提示字元。
+
++
+[listing]
+----
+
+Ready.
+SaveConfiguration
+  Restart is necessary....
+  Do you wish to restart (y/n) ?
+Confirm with 'y'. The bridge will save and restart with the new settings.
+----
+. FC對SAS橋接器重新開機後、請重新登入。
+. 使用「set fcdatarate port speed」命令設定FC連接埠的速度。
++
+** 「連接埠」可以是「1」或「2」。
+** 視您的型號橋接器而定、「速度」可以是「2 GB」、「4 GB」、「8 GB」或「16 GB」。
++
+在下列範例中、連接埠FC1速度設為「8 GB」。
+
++
+[listing]
+----
+
+Ready.
+set fcdatarate 1 8Gb
+
+Ready. *
+----
+
+
+. 使用「Set FCConnMode連接埠模式」命令、在FC連接埠上設定拓撲。
++
+** 「連接埠」可以是「1」或「2」。
+** 「模式」可以是「PTP」、「迴圈」、「PTP-迴 圈」或「自動」。
++
+在下列範例中、連接埠FC1拓撲設定為「PTP」。
+
++
+[listing]
+----
+
+Ready.
+set FCConnMode 1 ptp
+
+Ready. *
+----
+
+
+. 使用「SaveConfiguration」命令儲存組態、並在系統提示時重新啟動橋接器。
++
+以下範例顯示「SaveConfiguration」命令和重新啟動橋接器的提示字元。
+
++
+[listing]
+----
+
+ Ready.
+ SaveConfiguration
+    Restart is necessary....
+    Do you wish to restart (y/n) ?
+ Confirm with 'y'. The bridge will save and restart with the new settings.
+----
+. FC對SAS橋接器重新開機後、請重新登入。
+. 如果FC對SAS橋接器執行韌體1.60或更新版本、請啟用SNMP。
++
+[listing]
+----
+
+Ready.
+set snmp enabled
+
+Ready. *
+saveconfiguration
+
+Restart is necessary....
+Do you wish to restart (y/n) ?
+
+Verify with 'y' to restart the FibreBridge.
+----
+. 關閉FC至SAS橋接器的電源。
+

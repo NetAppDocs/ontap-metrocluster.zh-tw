@@ -1,0 +1,143 @@
+---
+permalink: maintain/task_hot_remove_storage_from_a_mcc_fc_configuration.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, hot, remove, storage, fc, configuration 
+summary: 您可以將磁碟機櫃熱移除（從磁碟機上移除集合體的實體移除磁碟櫃）、從MetroCluster 運作中的不支援資料的功能區組態中移除磁碟機櫃。您可以將一個或多個磁碟櫃從磁碟櫃堆疊內的任何位置熱移除、或是移除磁碟櫃堆疊。 
+---
+= 將儲存設備熱移除MetroCluster 至不需使用的FC組態
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以熱移除磁碟機櫃、從MetroCluster 實體移除已從磁碟機移除集合體的磁碟櫃、從運作中的支援資料的功能不支援使用。您可以將一個或多個磁碟櫃從磁碟櫃堆疊內的任何位置熱移除、或是移除磁碟櫃堆疊。
+
+* 您的系統必須是多重路徑HA、多重路徑、四重路徑HA或四重路徑組態。
+* 在四節點MetroCluster 的不全功能FC組態中、本機HA配對無法處於接管狀態。
+* 您必須已經從要移除的磁碟櫃中移除所有的集合體。
++
+
+IMPORTANT: 如果您嘗試在您要移除的機櫃上使用Aggregate的非MetroCluster FC組態上執行此程序、可能會導致系統故障、並造成多磁碟機故障。
+
++
+移除Aggregate時、會將鏡射的Aggregate分割到您要移除的磁碟櫃上、然後再以另一組磁碟機重新建立鏡射的Aggregate。
+
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"]
+
+* 從要移除的磁碟機櫃中移除集合體之後、您必須移除磁碟機擁有權。
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"]
+
+* 如果要從堆疊中移除一個或多個層架、您必須將距離納入考慮範圍、才能繞過您要移除的層架。
++
+如果目前的纜線不夠長、您需要更長的纜線。
+
+
+
+此工作適用於下列MetroCluster 的FFC組態：
+
+* 直接附加MetroCluster 的SFC組態、其中儲存櫃會以SAS纜線直接連接至儲存控制器
+* 以光纖連接或橋接連接MetroCluster 的SFC組態、其中儲存櫃使用FC對SAS橋接器連接
+
+
+.步驟
+. 驗證MetroCluster 下列項目中的功能：ONTAP
++
+.. 檢查系統是否具有多路徑：+`*節點執行-node-name_ sysconfig -A*
+.. 檢查兩個叢集上的任何健全狀況警示：
++
+系統健全狀況警示顯示*
+
+.. 確認MetroCluster 此功能的組態、並確認操作模式正常：+「* MetroCluster 」「*」「show *」
+.. 執行功能檢查：MetroCluster
++
+《* MetroCluster 》*《*執行檢查*》
+
+.. 顯示MetroCluster 檢查結果：
++
+《* MetroCluster 》*《*》《*》《*》《*》
+
+.. 檢查交換器上是否有任何健全狀況警示（如果有）：
++
+「*儲存交換器show *」
+
+.. 執行Config Advisor
++
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"]
+
+.. 執行Config Advisor 完功能後、請檢閱工具的輸出結果、並依照輸出中的建議來解決發現的任何問題。
+
+
+. 將權限層級設為進階：
++
+「*設定-權限進階*」
+
+. 驗證機櫃上是否沒有郵箱磁碟機：「*儲存容錯移轉郵箱磁碟show*」
+. 根據相關案例的步驟移除機櫃。
++
+|===
+
+
+| 案例 | 步驟 
+
+
+ a| 
+若要在機櫃包含無鏡射、鏡射或兩種Aggregate類型時移除Aggregate ...
+ a| 
+.. 使用「shorage Aggregate DELETE -Aggregate _gregate name_」命令移除Aggregate。
+.. 使用標準程序移除該磁碟櫃中所有磁碟機的所有權、然後實際移除磁碟櫃。
++
+請依照「_SAS磁碟櫃服務指南」中的指示、以瞭解您的機櫃模型、以便將機櫃熱移除。
+
+
+
+
+
+ a| 
+若要從鏡射Aggregate移除叢、您需要取消鏡射Aggregate。
+ a| 
+.. 使用「run -Node local sysconfig -r」命令來識別您要移除的叢。
++
+在下列範例中、您可以從「Plex /DPM_MCC_8020_13_A1_aggr1/plex0」行識別叢。在這種情況下、指定的叢是「plex0」。
+
++
+[listing]
+----
+dpgmcc_8020_13_a1a2::storage aggregate> run -node local sysconfig -r
+*** This system has taken over dpg-mcc-8020-13-a1
+Aggregate dpg_mcc_8020_13_a1_aggr1 (online, raid_dp, mirrored) (block checksums)
+  Plex /dpg_mcc_8020_13_a1_aggr1/plex0 (online, normal, active, pool0)
+    RAID group /dpg_mcc_8020_13_a1_aggr1/plex0/rg0 (normal, block checksums)
+      RAID Disk Device                          HA  SHELF BAY CHAN Pool Type  RPM  Used (MB/blks)    Phys (MB/blks)
+      --------- ------                          ------------- ---- ---- ---- ----- --------------    --------------
+      dparity   mcc-cisco-8Gb-fab-2:1-1.126L16  0c    32  15  FC:B   0   SAS 15000 272000/557056000  274845/562884296
+      parity    mcc-cisco-8Gb-fab-2:1-1.126L18  0c    32  17  FC:B   0   SAS 15000 272000/557056000  274845/562884296
+      data      mcc-cisco-8Gb-fab-2:1-1.126L19  0c    32  18  FC:B   0   SAS 15000 272000/557056000  274845/562884296
+      data      mcc-cisco-8Gb-fab-2:1-1.126L21  0c    32  20  FC:B   0   SAS 15000 272000/557056000  274845/562884296
+      data      mcc-cisco-8Gb-fab-2:1-1.126L22  0c    32  21  FC:B   0   SAS 15000 272000/557056000  274845/562884296
+
+  Plex /dpg_mcc_8020_13_a1_aggr1/plex1 (online, normal, active, pool1)
+    RAID group /dpg_mcc_8020_13_a1_aggr1/plex1/rg0 (normal, block checksums)
+
+      RAID Disk Device                          HA  SHELF BAY CHAN Pool Type  RPM  Used (MB/blks)    Phys (MB/blks)
+      --------- ------                          ------------- ---- ---- ---- ----- --------------    --------------
+      dparity   mcc-cisco-8Gb-fab-3:1-1.126L37  0d    34  10  FC:A   1   SAS 15000 272000/557056000  280104/573653840
+      parity    mcc-cisco-8Gb-fab-3:1-1.126L14  0d    33  13  FC:A   1   SAS 15000 272000/557056000  280104/573653840
+      data      mcc-cisco-8Gb-fab-3:1-1.126L41  0d    34  14  FC:A   1   SAS 15000 272000/557056000  280104/573653840
+      data      mcc-cisco-8Gb-fab-3:1-1.126L15  0d    33  14  FC:A   1   SAS 15000 272000/557056000  280104/573653840
+      data      mcc-cisco-8Gb-fab-3:1-1.126L45  0d    34  18  FC:A   1   SAS 15000 272000/557056000  280104/573653840
+----
+.. 使用「叢集合式刪除-Aggregate _aggreg_name_-plex _plex名稱_」命令來移除叢。
++
+Plex定義叢名稱、例如「plex3」或「plex6」。
+
+.. 使用標準程序移除該磁碟櫃中所有磁碟機的所有權、然後實際移除磁碟櫃。
++
+請依照「_SAS磁碟櫃服務指南」中的指示、以瞭解您的機櫃模型、以便將機櫃熱移除。
+
+
+
+|===
+

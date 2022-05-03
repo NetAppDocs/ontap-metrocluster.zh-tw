@@ -1,0 +1,200 @@
+---
+permalink: install-ip/task_sw_config_assign_pool0.html 
+sidebar: sidebar 
+keywords: metrocluster, controller, assign drives, pool 0, disk assign 
+summary: 如果您沒有從原廠收到預先設定的系統、您可能必須手動指派Pool 0磁碟機。視平台機型和系統是否使用ADP而定、您必須針對MetroCluster 各個節點手動指派磁碟機至資源池0、以利執行各項功能。您使用的程序取決於ONTAP 您所使用的版本。 
+---
+= 手動指派磁碟機至集區0
+:allow-uri-read: 
+
+
+[role="lead"]
+如果您沒有從原廠收到預先設定的系統、您可能必須手動指派Pool 0磁碟機。視平台機型和系統是否使用ADP而定、您必須針對MetroCluster 各個節點手動指派磁碟機至資源池0、以利執行各項功能。您使用的程序取決於ONTAP 您所使用的版本。
+
+
+
+== 手動指派集區0的磁碟機（ONTAP 適用於更新版本的更新版本）
+
+如果系統尚未在原廠預先設定、且不符合自動磁碟指派的要求、您必須手動指派Pool 0磁碟機。
+
+此程序適用於執行ONTAP 版本為4、9.4或更新版本的組態。
+
+若要判斷您的系統是否需要手動指派磁碟、您應該檢閱 link:concept_considerations_drive_assignment.html["自動指派磁碟機和ONTAP ADP系統的考量事項、位於更新版本的更新版本"]。
+
+您可以在維護模式中執行這些步驟。此程序必須在組態中的每個節點上執行。
+
+本節的範例以下列假設為基礎：
+
+* node_a_1和node_a_2擁有下列磁碟機：
++
+** 站台_A-bider_1（本機）
+** 站台_B-s櫃_2（遠端）
+
+
+* node_B_1和node_B_2在下列項目上擁有磁碟機：
++
+** 站台_B-s櫃_1（本機）
+** 站台_A-bider_2（遠端）
+
+
+
+
+.步驟
+. 顯示開機功能表：
++
+Boot_ONTAP功能表
+
+. 選取選項9a。
++
+下列畫面顯示開機功能表提示：
+
++
+[listing]
+----
+
+Please choose one of the following:
+
+    (1) Normal Boot.
+    (2) Boot without /etc/rc.
+    (3) Change password.
+    (4) Clean configuration and initialize all disks.
+    (5) Maintenance mode boot.
+    (6) Update flash from backup config.
+    (7) Install new software first.
+    (8) Reboot node.
+    (9) Configure Advanced Drive Partitioning.
+    Selection (1-9)?  9a
+########## WARNING ##########
+
+    This is a disruptive operation and will result in the
+    loss of all filesystem data. Before proceeding further,
+    make sure that:
+    1) This option (9a) has been executed or will be executed
+    on the HA partner node (and DR/DR-AUX partner nodes if
+    applicable), prior to reinitializing any system in the
+    HA-pair (or MetroCluster setup).
+    2) The HA partner node (and DR/DR-AUX partner nodes if
+    applicable) is currently waiting at the boot menu.
+
+    Do you still want to continue (yes/no)? yes
+----
+. 節點重新啟動時、請在系統提示時按Ctrl-C以顯示開機功能表、然後選取「*維護模式開機*」選項。
+. 在維護模式中、手動指派節點上本機集合體的磁碟機：
++
+「磁碟指派_disk-id_-p 0 -s _local-node-sysid_」
+
++
+磁碟機應對稱指派、因此每個節點的磁碟機數量都相同。下列步驟適用於每個站台有兩個儲存櫃的組態。
+
++
+.. 在設定node_a_1時、請從se_a-balle_1手動將磁碟機從插槽0到11指派給節點A1的Pool0。
+.. 在設定node_a_2時、請從s加 層櫃1手動指派磁碟機、從插槽12到23、將磁碟機指派給節點A2的Pool0。
+.. 在設定node_B_1時、請從ssite _B-sider_1手動將磁碟機從插槽0到11指派給節點B1的Pool0。
+.. 在設定node_B_2時、請從ssite _B-sider_1手動將磁碟機從插槽12指派至節點B2的Pool0。
+
+
+. 結束維護模式：
++
+《停止》
+
+. 顯示開機功能表：
++
+Boot_ONTAP功能表
+
+. 從開機功能表中選取選項「4」、然後讓系統開機。
+. 在「介紹IP」組態的其他節點上重複上述步驟MetroCluster 。
+. 請前往 link:task_sw_config_setup_ontap.html["設定ONTAP 功能"]。
+
+
+
+
+== 手動指派集區0的磁碟機（ONTAP 發揮作用9.3）
+
+如果每個節點至少有兩個磁碟櫃、您可以使用ONTAP的自動指派功能來自動指派本機（Pool 0）磁碟。
+
+當節點處於維護模式時、您必須先將適當磁碟櫃上的單一磁碟指派給資源池0。然後、將機櫃上的其餘磁碟自動指派給同一個資源池。ONTAP從原廠接收的系統不需要執行此工作、因為原廠系統具有集區0、可容納預先設定的根Aggregate。
+
+本程序適用於執行ONTAP 不符合功能的組態。
+
+如果您從MetroCluster 原廠收到您的不確定組態、則不需要執行此程序。原廠節點已設定集區0磁碟和根Aggregate。
+
+此程序僅適用於每個節點至少有兩個磁碟櫃的情況、這可讓磁碟在磁碟櫃層級進行自動指派。如果您無法使用機櫃層級的自動指派、則必須手動指派本機磁碟、使每個節點都有本機磁碟集區（Pool 0）。
+
+這些步驟必須在維護模式下執行。
+
+本節中的範例假設下列磁碟櫃：
+
+* node_a_1擁有下列項目上的磁碟：
++
+** 站台_A-bider_1（本機）
+** 站台_B-s櫃_2（遠端）
+
+
+* node_a_2已連線至：
++
+** 站台_A-bider_3（本機）
+** 站台_B-sider_4（遠端）
+
+
+* 節點B_1已連線至：
++
+** 站台_B-s櫃_1（本機）
+** 站台_A-bider_2（遠端）
+
+
+* 節點B_2已連線至：
++
+** 站台_B-s櫃_3（本機）
+** 站台_A-bider_4（遠端）
+
+
+
+
+.步驟
+. 在每個節點上手動指派單一磁碟作為根Aggregate：
++
+「磁碟指派_disk-id_-p 0 -s _local-node-sysid_」
+
++
+這些磁碟的手動指派功能可讓ONTAP 您在每個磁碟櫃上指派其餘的磁碟。
+
++
+.. 在node_a_1上、手動將一個磁碟從本機se_A-bider_1指派至Pool 0。
+.. 在node_a_2上、手動將一個磁碟從本機se_A-bider_3指派給資源池0。
+.. 在node_B_1上、手動指派一個磁碟從本機se_B-b-bider_1到Pool 0。
+.. 在node_B_2上、手動將一個磁碟從本機se_B-b-bider_3指派給資源池0。
+
+
+. 使用開機功能表上的選項4、在站台A開機每個節點：
++
+您應該先在節點上完成此步驟、然後再繼續下一個節點。
+
++
+.. 結束維護模式：
++
+《停止》
+
+.. 顯示開機功能表：
++
+Boot_ONTAP功能表
+
+.. 從開機功能表中選取選項4、然後繼續。
+
+
+. 使用開機功能表上的選項4、在站台B開機每個節點：
++
+您應該先在節點上完成此步驟、然後再繼續下一個節點。
+
++
+.. 結束維護模式：
++
+《停止》
+
+.. 顯示開機功能表：
++
+Boot_ONTAP功能表
+
+.. 從開機功能表中選取選項4、然後繼續。
+
+
+

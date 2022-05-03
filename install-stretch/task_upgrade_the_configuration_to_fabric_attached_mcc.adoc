@@ -1,0 +1,63 @@
+---
+permalink: install-stretch/task_upgrade_the_configuration_to_fabric_attached_mcc.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, transition, stretch, fabric, attacjed, configuration 
+summary: 在架構附加MetroCluster 的支援功能中、節點位於不同的位置。這種地理差異會增加災難保護。若要從延伸MetroCluster 配置轉換為光纖附加的功能、您必須在組態中新增FC交換器、並視需要新增FC至SAS橋接器。 
+---
+= 從彈性轉換成以網路為基礎MetroCluster 的功能性的不全配置
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在架構附加MetroCluster 的支援功能中、節點位於不同的位置。這種地理差異會增加災難保護。若要從延伸MetroCluster 配置轉換為光纖附加的功能、您必須在組態中新增FC交換器、並視需要新增FC至SAS橋接器。
+
+* 您必須在兩個叢集上執行「MetroCluster 停止自動切換-自動切換-故障-網域自動停用」命令、以停用自動切換功能。
+* 您必須關閉節點。
++
+此程序會造成中斷。
+
+
+
+必須在兩個站台上轉換此組態。MetroCluster升級MetroCluster 完支援功能後、您必須在兩個叢集上啟用自動切換功能。您也必須執行「MetroCluster flex止 檢查RUN」命令來驗證組態。
+
+本程序概述所需的步驟。如需詳細步驟、您必須參閱中的特定章節 link:https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"]。您不需要執行完整的安裝與組態。
+
+.步驟
+. 請仔細檢閱MetroCluster 的「準備進行安裝」一節、準備升級 link:https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"]。
+. 安裝、連接及設定所需的交換器和FC對SAS橋接器。
++
+
+NOTE: 您應該使用MetroCluster 的「連接網路附加的功能部件的佈線」一節中的程序 link:https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"]。
+
+. 請MetroCluster 使用下列步驟來重新整理此功能組態。
++
+請勿使用MetroCluster 連結https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html[Fabric-attached《安裝與組態》中「在ONTAP 其中設定功能介紹」一節中的程序MetroCluster 。
+
++
+.. 進入進階權限模式：+「*設定-權限進階*」
+.. 重新整理MetroCluster 此靜態組態：+「* MetroCluster 」「*」「組態-重新整理true *」
++
+下列命令會重新整理MetroCluster DR群組中包含控制器a_1的所有節點上的支援功能組態：
+
++
+[listing]
+----
+controller_A_1::*> metrocluster configure -refresh true
+[Job 009] Job succeeded: Configure is successful.
+----
+.. 返回管理權限模式：+`* set -priv榮幸admin*
+
+
+. 檢查MetroCluster 不正確的組態、並確認其運作正常。
++
+您應該使用的下列章節中的程序 link:https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"]：
+
++
+** 使用MetroCluster 資訊功能檢查是否有不正確的組態錯誤Config Advisor
+** 正在驗證本機HA作業
+** 驗證切換、修復及切換
+
+
+

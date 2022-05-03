@@ -1,0 +1,25 @@
+---
+permalink: disaster-recovery/task_power_on_mcip.html 
+sidebar: sidebar 
+keywords: power, ip, disaster, site, configuration 
+summary: 您必須開啟MetroCluster 災難現場的磁碟櫃和可靠的IP交換器元件。 
+---
+= 在災難現場開啟設備電源（MetroCluster 不支援IP組態）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須開啟MetroCluster 災難現場的磁碟櫃和可靠的IP交換器元件。災難站台的控制器模組仍會保持在載入器提示字元。
+
+本程序中的範例假設如下：
+
+* 站台A是災難站台。
+* 站台B是存續的站台。
+
+
+.步驟
+. 開啟災難站台的磁碟櫃、並確定所有磁碟都在執行中。
+. 如果MetroCluster 尚未開啟、請開啟靜態IP交換器。
+

@@ -1,0 +1,30 @@
+---
+permalink: install-fc/task_download_the_brocade_fc_rcf_switch_software.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, download, brocade, fc, switch, rcf, file 
+summary: 您必須將參考組態（RCF）檔案下載到MetroCluster 位在整個交換器組態中的每個交換器。 
+---
+= 下載Brocade FC交換器RCF檔案
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須將參考組態（RCF）檔案下載到MetroCluster 位在整個過程中的每個交換器。
+
+若要使用這些RCF檔案、系統必須執行ONTAP 的是更新版本的版本、而且您必須使用連接埠配置ONTAP 來執行版本的更新版本。
+
+如果您打算只使用光纖橋接器上的其中一個FC連接埠、請依照一節中的指示、手動設定後端光纖通道交換器。 link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）"]。
+
+.步驟
+. 請參閱Brocade RCF下載頁面上的RCF檔案表、找出組態中每個交換器的正確RCF檔案。
++
+RCF檔案必須套用至正確的交換器。
+
+. 從下載交換器的RCF檔案 https://mysupport.netapp.com/site/products/all/details/metrocluster-rcf/downloads-tab["下載RCF MetroCluster"] 頁面。
++
+檔案必須放置在可傳輸至交換器的位置。組成雙交換器架構的四個交換器各有一個獨立的檔案。
+
+. 在組態中的每個交換器上重複這些步驟。
+

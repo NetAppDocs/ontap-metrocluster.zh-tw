@@ -1,0 +1,166 @@
+---
+permalink: maintain/task_upgrade_or_downgrad_the_firmware_on_a_brocade_fc_switch_mcc.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, upgrade, downgrade, firmware, brocade, fc, switch 
+summary: 若要升級或降級Brocade FC交換器上的韌體、您必須使用Brocade專屬命令來停用交換器、執行並驗證韌體變更、以及重新開機並重新啟用交換器。 
+---
+= 升級或降級Brocade FC交換器上的韌體
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+若要升級或降級Brocade FC交換器上的韌體、您必須使用Brocade專屬命令來停用交換器、執行並驗證韌體變更、以及重新開機並重新啟用交換器。
+
+* 您必須擁有韌體檔案。
+* 系統必須正確連接纜線。
+* 所有通往儲存櫃的路徑都必須可用。
+* 磁碟櫃堆疊必須穩定。
+* FC交換器架構必須健全。
+* 系統中沒有故障元件。
+* 系統必須正常運作。
+* 您必須擁有管理員密碼、才能存取FTP或scp伺服器。
+
+
+交換器架構在韌體升級或降級期間會停用、MetroCluster 而此功能需仰賴第二個架構才能繼續運作。
+
+此工作必須連續在每個交換器架構上執行、以便所有交換器都執行相同的韌體版本。
+
+
+NOTE: 此程序不中斷營運、約需一小時完成。
+
+.步驟
+. 登入網路中的每個交換器。
++
+下列步驟中的範例使用交換器「FC_switch_a_1」。
+
+. 停用網路中的每個交換器：
++
+"* switchCfgPersistentDisable*
+
++
+如果此命令不可用，則運行"shwitchDisable"命令。
+
++
+[listing]
+----
+FC_switch_A_1:admin> switchCfgPersistentDisable
+----
+. 下載所需的韌體版本：
++
+「* FirmwareDownload*」
+
++
+當系統提示您輸入檔案名稱時、您必須指定韌體檔案的子目錄或相對路徑。
+
++
+您可以在兩個交換器上同時執行「FirmwareDownload」命令、但必須先允許韌體正確下載並提交、才能繼續下一步。
+
++
+[listing]
+----
+FC_switch_A_1:admin> firmwaredownload
+Server Name or IP Address: 10.64.203.188
+User Name: test
+File Name: v7.3.1b
+Network Protocol(1-auto-select, 2-FTP, 3-SCP, 4-SFTP) [1]: 2
+Password:
+Server IP: 10.64.203.188, Protocol IPv4
+Checking system settings for firmwaredownload...
+System settings check passed.
+----
+. 確認韌體已下載並提交給兩個分割區：
++
+《Firmwarreshow》*
+
++
+下列範例顯示兩個映像都更新後、韌體下載即告完成：
+
++
+[listing]
+----
+FC_switch_A_1:admin> firmwareShow
+Appl     Primary/Secondary Versions
+
+------------------------------------------
+
+FOS      v7.3.1b
+
+         v7.3.1b
+----
+. 重新啟動交換器：
++
+"*重新開機*
+
++
+某些韌體版本會在韌體下載完成後自動執行HaReboot作業。即使已執行HaReboot、仍需要重新開機。
+
++
+[listing]
+----
+FC_switch_A_1:admin> reboot
+----
+. 檢查新韌體是屬於中繼韌體層級、還是屬於最終指定版本。
++
+如果下載屬於中繼韌體層級、請執行前兩個步驟、直到安裝指定的版本為止。
+
+. 啟用交換器：
++
+"* switchCfgPeristentEnable *（* switchCfgPeristentEnable *）"
+
++
+如果此命令不可用，則在執行「重新開機」命令後，交換器應處於「已啟用」狀態。
+
++
+[listing]
+----
+FC_switch_A_1:admin> switchCfgPersistentEnable
+----
+. 確認交換器已連線、且所有裝置均已正確登入：
++
+「* switchshow*」
+
++
+[listing]
+----
+FC_switch_A_1:admin> switchShow
+----
+. 驗證交換器中某個連接埠群組或所有連接埠群組的緩衝區使用資訊是否正確顯示：
++
+「* portbuffershow*」
+
++
+[listing]
+----
+FC_switch_A_1:admin> portbuffershow
+----
+. 確認連接埠的目前組態已正確顯示：
++
+「* portcfgshow*」
+
++
+[listing]
+----
+FC_switch_A_1:admin> portcfgshow
+----
++
+驗證連接埠設定、例如速度、模式、主幹連線、加密、 和壓縮、在交換器間連結（ISL）輸出中。確認連接埠設定不受韌體下載影響。
+
+. 驗證MetroCluster 下列項目中的功能：ONTAP
++
+.. 檢查系統是否具有多路徑：+`*節點執行-node-name_ sysconfig -A*
+.. 檢查兩個叢集上是否有任何健全狀況警示：+「*系統健全狀況警示顯示*」
+.. 確認MetroCluster 此功能的組態、並確認操作模式正常：+「* MetroCluster 」「*」「show *」
+.. 執行MetroCluster 功能不全：+「* MetroCluster 效能不全*」
+.. 顯示MetroCluster 畫面的結果：+「* MetroCluster 畫面檢查」顯示*
+.. 檢查交換器上是否有任何健全狀況警示（若有）：+「*儲存交換器show *」
+.. 執行Config Advisor
++
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"]
+
+.. 執行Config Advisor 完功能後、請檢閱工具的輸出結果、並依照輸出中的建議來解決發現的任何問題。
+
+
+. 請等待15分鐘、然後重複此程序、以處理第二個交換器架構。
+

@@ -1,0 +1,158 @@
+---
+permalink: upgrade/task_boot_the_new_controllers_and_join_them_to_the_cluster.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, boot, new, controller, join, cluster 
+summary: 若要將新的控制器加入叢集、您必須開機每個新的控制器模組、然後使用ONTAP 「叢集設定精靈」來識別叢集將會加入。 
+---
+= 開機並將新的控制器加入叢集
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+若要將新的控制器加入叢集、您必須開機每個新的控制器模組、然後使用ONTAP 「叢集設定精靈」來識別叢集將會加入。
+
+您必須使用纜線連接MetroCluster 的the不可用的功能組態。
+
+您在執行此工作之前、不得先設定服務處理器。
+
+這項工作必須在MetroCluster 兩個叢集的每個新控制器上執行、以進行支援。
+
+.步驟
+. 如果您尚未啟動、請開啟每個節點的電源、讓它們完全開機。
++
+如果系統處於維護模式、請發出「halt」命令以結束維護模式、然後從載入程式提示字元發出下列命令：
+
++
+Boot_ONTAP
+
++
+控制器模組會進入節點設定精靈。
+
++
+輸出應類似於下列內容：
+
++
+[listing]
+----
+Welcome to node setup
+
+You can enter the following commands at any time:
+  "help" or "?" - if you want to have a question clarified,
+  "back" - if you want to change previously answered questions, and
+  "exit" or "quit" - if you want to quit the setup wizard.
+				Any changes you made before quitting will be saved.
+
+To accept a default or omit a question, do not enter a value.
+.
+.
+.
+----
+. 請依照系統提供的指示啟用AutoSupport 「支援功能」工具。
+. 回應設定節點管理介面的提示。
++
+這些提示類似於下列內容：
+
++
+[listing]
+----
+Enter the node management interface port: [e0M]:
+Enter the node management interface IP address: 10.228.160.229
+Enter the node management interface netmask: 225.225.252.0
+Enter the node management interface default gateway: 10.228.160.1
+----
+. 確認節點已設定為高可用度模式：
++
+「儲存容錯移轉顯示欄位模式」
+
++
+如果不是、您必須在每個節點上發出下列命令、然後重新啟動節點：
+
++
+"torage容錯移轉修改-mode ha -nodNode localhost"
+
++
+此命令會設定高可用度模式、但不會啟用儲存容錯移轉。儲存容錯移轉會在MetroCluster 組態程序稍後發出「flexfconfigure」命令時自動啟用。
+
+. 確認您有四個連接埠設定為叢集互連：
++
+「網路連接埠展示」
+
++
+以下範例顯示叢集A中兩個控制器的輸出如果MetroCluster 是雙節點的不全功能組態、則輸出只會顯示一個節點。
+
++
+[listing]
+----
+cluster_A::> network port show
+                                                             Speed (Mbps)
+Node   Port      IPspace      Broadcast Domain Link   MTU    Admin/Oper
+------ --------- ------------ ---------------- ----- ------- ------------
+node_A_1
+       **e0a       Cluster      Cluster          up       1500  auto/1000
+       e0b       Cluster      Cluster          up       1500  auto/1000**
+       e0c       Default      Default          up       1500  auto/1000
+       e0d       Default      Default          up       1500  auto/1000
+       e0e       Default      Default          up       1500  auto/1000
+       e0f       Default      Default          up       1500  auto/1000
+       e0g       Default      Default          up       1500  auto/1000
+node_A_2
+       **e0a       Cluster      Cluster          up       1500  auto/1000
+       e0b       Cluster      Cluster          up       1500  auto/1000**
+       e0c       Default      Default          up       1500  auto/1000
+       e0d       Default      Default          up       1500  auto/1000
+       e0e       Default      Default          up       1500  auto/1000
+       e0f       Default      Default          up       1500  auto/1000
+       e0g       Default      Default          up       1500  auto/1000
+14 entries were displayed.
+----
+. 由於您使用CLI來設定叢集、因此請結束「節點設定」精靈：
++
+「退出」
+
+. 使用「admin」使用者名稱登入管理帳戶。
+. 啟動叢集設定精靈、然後加入現有的叢集：
++
+《叢集設定》
+
++
+[listing]
+----
+::> cluster setup
+
+Welcome to the cluster setup wizard.
+
+You can enter the following commands at any time:
+  "help" or "?" - if you want to have a question clarified,
+  "back" - if you want to change previously answered questions, and
+  "exit" or "quit" - if you want to quit the cluster setup wizard.
+     Any changes you made before quitting will be saved.
+
+You can return to cluster setup at any time by typing "cluster setup".
+To accept a default or omit a question, do not enter a value.
+
+
+Do you want to create a new cluster or join an existing cluster? {create, join}:`join`
+----
+. 完成「*叢集設定*」精靈並結束之後、請確認叢集處於作用中狀態、且節點正常運作：
++
+「叢集展示」
+
++
+以下範例顯示第一個節點（cluster1-01）健全且符合參與資格的叢集：
+
++
+[listing]
+----
+cluster_A::> cluster show
+Node               Health  Eligibility
+------------------ ------- ------------
+node_A_1           true    true
+node_A_2           true    true
+node_A_3           true    true
+----
++
+如果需要變更您為管理SVM或節點SVM所輸入的任何設定、您可以使用「叢集設定命令」來存取*叢集設定*精靈。
+
+

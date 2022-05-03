@@ -1,0 +1,110 @@
+---
+permalink: maintain/task_rename_the_cluster_for_mcc_configuration.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, rename, cluster, configuration 
+summary: 重新命名MetroCluster 以支援功能組態的叢集時、需要進行變更、然後在本機和遠端叢集上驗證變更是否正確生效。 
+---
+= 在MetroCluster 不完整的組態中重新命名叢集
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+重新命名MetroCluster 以支援功能組態的叢集時、需要進行變更、然後在本機和遠端叢集上驗證變更是否正確生效。
+
+.步驟
+. 使用檢視叢集名稱
++
+「* MetroCluster 鏡面顯示*」
+
++
+命令：
+
++
+[listing]
+----
+cluster_1::*> metrocluster node show
+DR                               Configuration  DR
+Group Cluster Node               State          Mirroring Mode
+----- ------- ------------------ -------------- --------- --------------------
+1     cluster_1
+              node_A_1           configured     enabled   normal
+              node_A_2           configured     enabled   normal
+      cluster_2
+              node_B_1           configured     enabled   normal
+              node_B_2           configured     enabled   normal
+4 entries were displayed.
+----
+. 重新命名叢集：
++
+`*叢集身分修改-name _new_name_*
+
++
+在以下範例中、「cluster _1」叢集已重新命名為「cluster _a」：
+
++
+[listing]
+----
+cluster_1::*> cluster identity modify -name cluster_A
+----
+. 在本機叢集上驗證重新命名的叢集是否正常執行：
++
+「* MetroCluster 鏡面顯示*」
+
++
+在以下範例中、新重新命名的「叢集_A」正常執行：
+
++
+[listing]
+----
+cluster_A::*> metrocluster node show
+DR                               Configuration  DR
+Group Cluster Node               State          Mirroring Mode
+----- ------- ------------------ -------------- --------- --------------------
+1     cluster_A
+              node_A_1           configured     enabled   normal
+              node_A_2           configured     enabled   normal
+      cluster_2
+              node_B_1           configured     enabled   normal
+              node_B_2           configured     enabled   normal
+4 entries were displayed.
+----
+. 重新命名遠端叢集：
++
+hy*叢集對等修改本機名稱-name _cluster _2_-new-name _cluster _B_*
+
++
+在以下範例中、「cluster」2會重新命名為「cluster」B：
+
++
+[listing]
+----
+cluster_2::> cluster peer modify-local-name -name cluster_2 -new-name
+cluster_B
+----
+. 在遠端叢集上確認本機叢集已重新命名且正常執行：
++
+「_fidnodeshow」MetroCluster
+
++
+在以下範例中、新重新命名的「叢集B」正常執行：
+
++
+[listing]
+----
+
+cluster_B::*> metrocluster node show
+DR                               Configuration  DR
+Group Cluster Node               State          Mirroring Mode
+----- ------- ------------------ -------------- --------- --------------------
+1     cluster_B
+              node_B_1           configured     enabled   normal
+              node_B_2           configured     enabled   normal
+      cluster_A
+              node_A_1           configured     enabled   normal
+              node_A_2           configured     enabled   normal
+4 entries were displayed.
+----
+. 針對您要重新命名的每個叢集重複這些步驟。
+

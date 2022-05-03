@@ -1,0 +1,111 @@
+---
+permalink: maintain/reference_mcc_failure_scenarios.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, failure, recovery, scenarios 
+summary: 您應該知道MetroCluster 該如何透過此功能來回應不同的故障事件。 
+---
+= 故障與恢復案例MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您應該知道MetroCluster 該如何透過此功能來回應不同的故障事件。
+
+
+NOTE: 如需從節點故障中恢復的其他資訊、請參閱中的「選擇正確的恢復程序」一節 link:../disaster-recovery/concept_dr_workflow.html["從災難中恢復"]。
+
+|===
+
+
+| 活動 | 影響 | 恢復 
+
+
+ a| 
+單一節點故障
+ a| 
+容錯移轉已觸發。
+ a| 
+組態會透過本機接管進行恢復。RAID不受影響。檢視系統訊息、並視需要更換故障的FRU。
+
+https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"^]
+
+
+
+ a| 
+一個站台有兩個節點故障
+ a| 
+只有MetroCluster 在啟用了ESITiebreaker軟體的自動切換時、兩個節點才會失敗。
+ a| 
+如果MetroCluster 未啟用在Setiebreaker軟體中自動切換、請手動執行USO。
+
+https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"^]
+
+
+
+ a| 
+靜態IP介面-單一連接埠故障MetroCluster
+ a| 
+系統降級。其他連接埠故障會影響HA鏡射。
+ a| 
+使用第二個連接埠。健全狀況監視器會在連接埠的實體連結中斷時產生警示。檢視系統訊息、並視需要更換故障的FRU。
+
+https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"^]
+
+
+
+ a| 
+介面-兩個連接埠故障MetroCluster
+ a| 
+HA功能受到影響。節點的RAID SyncMirror 功能停止同步。
+ a| 
+由於沒有HA接管、因此需要立即手動恢復。檢視系統訊息、並視需要更換故障的FRU。
+
+https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"^]
+
+
+
+ a| 
+一個MetroCluster 故障的靜態IP交換器
+ a| 
+不受影響。備援是透過第二個網路提供。
+ a| 
+如有必要、請更換故障的交換器。
+
+link:task_replace_an_ip_switch.html["更換IP交換器"]
+
+
+
+ a| 
+同MetroCluster 一個網路中的兩個靜態IP交換器故障
+ a| 
+不受影響。備援是透過第二個網路提供。
+ a| 
+如有必要、請更換故障的交換器。
+
+link:task_replace_an_ip_switch.html["更換IP交換器"]
+
+
+
+ a| 
+一個站台有兩MetroCluster 個故障的靜態IP交換器
+ a| 
+節點的RAID SyncMirror 功能停止同步。HA功能會受到影響、而且叢集超出仲裁數。
+ a| 
+如有必要、請更換故障的交換器。
+
+link:task_replace_an_ip_switch.html["更換IP交換器"]
+
+
+
+ a| 
+兩MetroCluster 個位於不同站台且不在同一個網路上的靜態IP交換器故障（對角故障）
+ a| 
+節點的RAID SyncMirror 功能停止同步。
+ a| 
+節點的RAID SyncMirror 功能停止同步。叢集與HA功能不受影響。如有必要、請更換故障的交換器。
+
+link:task_replace_an_ip_switch.html["更換IP交換器"]
+
+|===

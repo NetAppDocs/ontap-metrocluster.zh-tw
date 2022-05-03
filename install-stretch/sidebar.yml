@@ -1,0 +1,90 @@
+---
+section: install-stretch
+title: 安裝彈性MetroCluster 的版本
+entries:
+- title: 總覽
+  url: "/install-stretch/index.html"
+- title: 準備MetroCluster 進行安裝
+  entries:
+  - title: 不一樣的地方ONTAP MetroCluster
+    url: "/install-stretch/concept_considerations_differences.html"
+  - title: 叢集對等
+    url: "/install-stretch/concept_considerations_peering.html"
+  - title: 使用無鏡射Aggregate時的考量
+    url: "/install-stretch/concept_considerations_unmirrored_aggrs.html"
+  - title: 在景點使用防火牆MetroCluster
+    url: "/install-stretch/concept_considerations_firewalls.html"
+- title: 針對您的組態選擇正確的安裝程序
+  url: "/install-stretch/concept_choosing_the_correct_installation_procedure_for_your_configuration_mcc_install.html"
+- title: 連接雙節點SAS附加的Stretch MetroCluster Setch組態
+  entries:
+  - title: 總覽
+    url: "/install-stretch/task_configure_the_mcc_hardware_components_2_node_stretch_sas.html"
+  - title: 雙節點SAS附加的Stretch MetroCluster Sof組態的一部分
+    url: "/install-stretch/concept_parts_of_a_two_node_sas_attached_stretch_mcc_configuration.html"
+  - title: 雙MetroCluster 節點SAS附加延伸組態所需的零件和命名準則
+    url: "/install-stretch/concept_required_mcc_components_and_example_names_for_two_node_sas_attached_stretch_configurations_mcc.html"
+  - title: 安裝MetroCluster 及連接纜線的不二節點SAS延伸組態元件
+    entries:
+    - title: 總覽
+      url: "/install-stretch/reference_sas_optical_mc_configuring_a_stretch_mcc_system_with_sas_disk_shelves_and_sas_optical_cables.html"
+    - title: 安裝硬體元件
+      url: "/install-stretch/task_rack_the_hardware_components_2_node_stretch_sas.html"
+    - title: 將控制器連接至彼此和儲存櫃
+      url: "/install-stretch/task_cable_the_controllers_to_each_other_and_the_storage_shelves.html"
+    - title: 連接叢集對等連線
+      url: "/install-stretch/task_cable_the_cluster_peering_connections.html"
+    - title: 連接管理與資料連線
+      url: "/install-stretch/task_cable_the_management_and_data_connections.html"
+- title: 連接連接雙節點橋接器的Stretch MetroCluster 功能區組態
+  entries:
+  - title: 總覽
+    url: "/install-stretch/task_configure_the_mcc_hardware_components_2_node_stretch_atto.html"
+  - title: 雙節點橋接式延伸MetroCluster 功能的部分組態
+    url: "/install-stretch/concept_parts_of_a_two_node_mcc_configuration_using_fc_to_sas_bridges.html"
+  - title: 雙節點橋接延伸組態所需MetroCluster 的零件和命名慣例
+    url: "/install-stretch/concept_required_mcc_components_and_naming_conventions_for_two_node_bridge_attached_stretch_configurations_mcc.html"
+  - title: FC至SAS橋接器的資訊收集工作表
+    url: "/install-stretch/reference_information_gathering_worksheet_for_fc_to_sas_bridges_2_node_atto.html"
+  - title: 安裝MetroCluster 和連接線的元件
+    entries:
+    - title: 安裝硬體元件
+      url: "/install-stretch/task_rack_the_hardware_components_mcc_2_node_stretch_atto.html"
+    - title: 將控制器彼此連接
+      url: "/install-stretch/task_cable_the_fc_vi_adapters_to_the_partner_controller_2_node_stretch_atto.html"
+    - title: 連接叢集對等連線
+      url: "/install-stretch/task_cable_the_cluster_peering_connections.html"
+    - title: 連接管理與資料連線
+      url: "/install-stretch/task_cable_the_management_and_data_connections.html"
+  - title: 安裝FC至SAS橋接器和SAS磁碟櫃
+    url: "/install-stretch/task_fb_new_install.html"
+- title: 在MetroCluster 不提供的情況下設定此功能ONTAP
+  url: "/install-stretch/concept_configuring_the_mcc_software_in_ontap.html"
+- title: 使用虛擬IP和邊界閘道傳輸協定搭配MetroCluster 使用的考量事項
+  url: "/install-stretch/concept_considerations_for_using_virtual_ip_and_border_gateway_protocol_with_a_mcc_configuration.html"
+- title: 測試MetroCluster 該組態
+  url: "/install-stretch/task_test_the_mcc_configuration.html"
+- title: 以擴充MetroCluster 的等位組態與陣列LUN進行連線
+  entries:
+  - title: 總覽
+    url: "/install-stretch/concept_stretch_mcc_configuration_with_array_luns.html"
+  - title: 以陣列LUN為MetroCluster 例的延伸功能性樣例
+    url: "/install-stretch/reference_example_of_a_stretch_mcc_configuration_with_array_luns.html"
+  - title: 雙節點Stretch MetroCluster 的實體組態範例、包括磁碟和陣列LUN
+    url: "/install-stretch/reference_examples_of_two_node_stretch_mcc_configurations_with_disks_and_array_luns.html"
+  - title: E系列儲存陣列的彈性MetroCluster 支援範例
+    url: "/install-stretch/reference_example_of_a_stretch_mcc_configuration_with_e_series_storage_arrays.html"
+- title: 移除MetroCluster 不完整組態時的考量事項
+  url: "/install-stretch/concept_considerations_when_removing_mcc_configurations.html"
+- title: 如何使用Active IQ Unified Manager 功能不全的系統ONTAP 管理程式來進一步設定及監控
+  entries:
+  - title: 總覽
+    url: "/install-stretch/concept_using_the_oncommand_management_tools_for_further_configuration_and_monitoring.html"
+  - title: 使用NTP同步系統時間
+    url: "/install-stretch/task_synchronize_the_system_time_us_ntp.html"
+- title: 在一個邊的組態中使用ONTAP 邊的考量MetroCluster
+  url: "/install-stretch/concept_considerations_when_using_ontap_in_a_mcc_configuration.html"
+- title: 從彈性轉換成以網路為基礎MetroCluster 的功能性的不全配置
+  url: "/install-stretch/task_upgrade_the_configuration_to_fabric_attached_mcc.html"
+- title: 何處可找到其他資訊
+  url: "/install-stretch/reference_where_to_find_additional_information_icg.html"

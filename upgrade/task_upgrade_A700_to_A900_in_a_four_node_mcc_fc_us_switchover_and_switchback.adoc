@@ -1,0 +1,1358 @@
+---
+permalink: upgrade/task_upgrade_A700_to_A900_in_a_four_node_mcc_fc_us_switchover_and_switchback.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, controllers, switchover, switchback, fc, configuration, net, boot, root, aggregate, mcc 
+summary: 您可以在MetroCluster 升級合作夥伴叢集上的控制器模組時、使用「支援交換」作業來為用戶端提供不中斷營運的服務。其他元件（例如儲存櫃或交換器）無法在此程序中進行升級。 
+---
+= 使用交換器和切換功能、將控制器從AFF 功能不實的2700升級AFF 至功能不實的SFC MetroCluster 組態（ONTAP 版本號：32、10.1及更新版本）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以在MetroCluster 升級合作夥伴叢集上的控制器模組時、使用「支援交換」作業來為用戶端提供不中斷營運的服務。您無法在本程序中升級其他元件（例如儲存櫃或交換器）。
+
+.關於這項工作
+* 您只能將此程序用於控制器升級。
++
+您無法同時升級組態中的其他元件、例如儲存櫃或交換器。
+
+* 您可以將此程序搭配ONTAP 使用於更新版本的版本。
++
+** 支援四個和八個節點的組態ONTAP 、可在版本號為209.10.1或更新版本。
++
+
+NOTE: 僅支援《支援》更新版本的《支援》（《支援》）AFF ONTAP 。
+
++
+https://hwu.netapp.com/["NetApp Hardware Universe"^]
+
+
+
+* 組態中的所有控制器都應在相同的維護期間進行升級。
++
+下表顯示控制器升級所支援的機型對照表。
+
+
+
+|===
+
+
+| 舊平台模式 | 全新平台模式 
+
+
+ a| 
+* 部分A700 AFF
+
+ a| 
+* 解答900 AFF
+
+
+|===
+* 在升級程序期間、您必須更換MetroCluster 不必要的架構、包括RCF和實體纜線變更。在執行控制器升級之前、您可以執行RCF和纜線變更。
+* 此升級程序不需要變更原始節點與新節點之間的儲存設備、FC和乙太網路連線。
+* 在升級程序期間、您不應從AFF 該系統新增或移除其他卡片。如需詳細資訊、請參閱 https://hwu.netapp.com/["NetApp Hardware Universe"^]
+
+
+本程序使用下列範例名稱：
+
+* 站台_A
++
+** 升級前：
++
+*** node_a_1-A700
+*** node_a_2-A700
+
+
+** 升級後：
++
+*** node_a_1-A900
+*** 節點_a_2-A900
+
+
+
+
+* 站台_B
++
+** 升級前：
++
+*** 節點_B_1-A700
+*** 節點_B_2-A700
+
+
+** 升級後：
++
+*** 節點_B_1-A900
+*** 節點_B_2-A900
+
+
+
+
+
+
+
+
+== 準備升級
+
+在對現有MetroCluster 的資訊區組態進行任何變更之前、您必須先檢查組態的健全狀況、變更RCF檔案和纜線、以符合AFF 更新的連接埠連線拓撲、以利執行更新的資訊區（以利執行更新的資訊區連接拓撲MetroCluster ）、以及執行其他雜項工作。
+
+
+
+== 清除AFF VMware處理器上的插槽7
+
+在一個不支持VMware的基礎架構MetroCluster 上、使用8 AFF 個FC-VI連接埠、橫跨FC VI卡的插槽5和7。開始升級之前、如果AFF 在插槽7中有插卡、您必須將其移至叢集所有節點的其他插槽。
+
+
+
+=== 驗MetroCluster 證整個過程的效能狀況
+
+在更新RCF檔案和纜線以進行AFF 「還原A900架構MetroCluster 」組態之前、您必須先確認組態的健全狀況和連線能力。
+
+.步驟
+. 驗證MetroCluster 下列項目中的功能：ONTAP
++
+.. 檢查節點是否具有多路徑：+「節點執行-node-name_ sysconfig -A」
++
+您應該為MetroCluster Eflexeconfiguration中的每個節點發出此命令。
+
+.. 驗證組態中沒有損壞的磁碟：
++
+「torage disk show -dis中斷」
+
++
+您應該在MetroCluster Eflexeconfiguration中的每個節點上發出此命令。
+
+.. 檢查是否有任何健全狀況警示：
++
+「系統健全狀況警示顯示」
+
++
+您應該在每個叢集上發出此命令。
+
+.. 驗證叢集上的授權：
++
+「系統授權展示」
+
++
+您應該在每個叢集上發出此命令。
+
+.. 驗證連接至節點的裝置：
++
+「網路裝置探索秀」
+
++
+您應該在每個叢集上發出此命令。
+
+.. 確認兩個站台的時區和時間設定正確：
++
+「叢集日期顯示」
+
++
+您應該在每個叢集上發出此命令。您可以使用「叢集日期」命令來設定時間和時區。
+
+
+
+. 檢查交換器上是否有任何健全狀況警示（如果有）：
++
+「torage switchshow」
+
++
+您應該在每個叢集上發出此命令。
+
+. 確認MetroCluster 執行功能不正常的操作模式、並執行MetroCluster 功能不實的檢查。
++
+.. 確認MetroCluster 執行功能組態、並確認操作模式正常：
++
+《不看》MetroCluster
+
+.. 確認顯示所有預期節點：
++
+「不一樣的秀」MetroCluster
+
+.. 發出下列命令：
++
+《不一樣的跑程》MetroCluster
+
+.. 顯示MetroCluster 檢查結果：
++
+《不一樣的表演》MetroCluster
+
+
+
+. 使用MetroCluster 「資訊工具」檢查「資訊系統」的纜線。Config Advisor
++
+.. 下載並執行Config Advisor 更新。
++
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"^]
+
+.. 執行Config Advisor 完功能後、請檢閱工具的輸出結果、並依照輸出中的建議來解決發現的任何問題。
+
+
+
+
+
+
+=== 更新Fabric交換器RCF檔案
+
+與使用單一4埠FC-VI介面卡的情況相比、AFF 使用者每MetroCluster 個節點需要兩個4埠FC-VI介面卡才能使用此功能。AFF在開始將控制器升級至AFF 32 A900控制器之前、您必須先修改Fabric交換器RCF檔案、以支援AFF 32 A900連線拓撲。
+
+. 從 https://mysupport.netapp.com/site/products/all/details/metrocluster-rcf/downloads-tab["RCF檔案下載頁面MetroCluster"^]下載AFF 適用於整個過程的RCF檔案、以瞭解決如何在MetroCluster 整個過程中使用的功能、以及AFF 如何在整個過程中使用的交換器模式。
+. [[Update：RCF]依照中的步驟、更新Fabric A交換器、交換器A1和交換器B1上的RCF檔案 link:../disaster-recovery/task_cfg_switches_mcfc.html["設定FC交換器"]。
++
+
+NOTE: RCF檔案更新以支援AFF 《支援不支援使用支援功能的不支援功能的架構MetroCluster BIOS組態」、並不會影響AFF 用於「不支援功能」的連接埠和連線。MetroCluster
+
+. 更新Fabric A交換器上的RCF檔案之後、所有的儲存設備和FC-VI連線都應該上線。檢查FC-VI連線：
++
+《不互連鏡像秀》MetroCluster
+
++
+.. 驗證本地和遠端站台磁碟是否列在「sysconfig」輸出中。
+
+
+. [[VERIFY - health]您必須在MetroCluster Fabric A交換器的RCF檔案更新之後、確認該功能的運作狀況良好。
++
+.. 檢查Metro叢集連線：MetroCluster 「不互通的鏡像顯示」
+.. 執行MetroCluster 本檢查：MetroCluster 「不全檢查路跑」
+.. 當路跑完成時、請參閱MetroCluster 《MetroCluster 不景檢查秀》（《不景檢查秀》）的《不景運行結果》（英文）
+
+
+. 重複更新Fabric B交換器（交換器2和4） <<Update-RCF,步驟2>> 至 <<verify-healthy,步驟5.>>。
+
+
+
+
+=== 更新MetroCluster RCF檔案後、請確認此功能組態的健全狀況
+
+在執行升級之前、您必須先驗證MetroCluster 整個過程的健全狀況和連線能力。
+
+.步驟
+. 驗證MetroCluster 下列項目中的功能：ONTAP
++
+.. 檢查節點是否具有多路徑：+「節點執行-node-name_ sysconfig -A」
++
+您應該為MetroCluster Eflexeconfiguration中的每個節點發出此命令。
+
+.. 驗證組態中沒有損壞的磁碟：
++
+「torage disk show -dis中斷」
+
++
+您應該在MetroCluster Eflexeconfiguration中的每個節點上發出此命令。
+
+.. 檢查是否有任何健全狀況警示：
++
+「系統健全狀況警示顯示」
+
++
+您應該在每個叢集上發出此命令。
+
+.. 驗證叢集上的授權：
++
+「系統授權展示」
+
++
+您應該在每個叢集上發出此命令。
+
+.. 驗證連接至節點的裝置：
++
+「網路裝置探索秀」
+
++
+您應該在每個叢集上發出此命令。
+
+.. 確認兩個站台的時區和時間設定正確：
++
+「叢集日期顯示」
+
++
+您應該在每個叢集上發出此命令。您可以使用「叢集日期」命令來設定時間和時區。
+
+
+
+. 檢查交換器上是否有任何健全狀況警示（如果有）：
++
+「torage switchshow」
+
++
+您應該在每個叢集上發出此命令。
+
+. 確認MetroCluster 執行功能不正常的操作模式、並執行MetroCluster 功能不實的檢查。
++
+.. 確認MetroCluster 執行功能組態、並確認操作模式正常：
++
+《不看》MetroCluster
+
+.. 確認顯示所有預期節點：
++
+「不一樣的秀」MetroCluster
+
+.. 發出下列命令：
++
+《不一樣的跑程》MetroCluster
+
+.. 顯示MetroCluster 檢查結果：
++
+《不一樣的表演》MetroCluster
+
+
+
+. 使用MetroCluster 「資訊工具」檢查「資訊系統」的纜線。Config Advisor
++
+.. 下載並執行Config Advisor 更新。
++
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"^]
+
+.. 執行Config Advisor 完功能後、請檢閱工具的輸出結果、並依照輸出中的建議來解決發現的任何問題。
+
+
+
+
+
+
+=== 將連接埠從AFF 32個A700節點對應至AFF 32個A900節點
+
+在控制器升級過程中、您只能變更本程序中提及的連線。
+
+如果AFF 插槽7中有一張介面卡、您應該先將其移到另一個插槽、然後再開始控制器升級程序。您必須有插槽7、才能新增MetroCluster 功能在VMware A900上執行Fabric過程所需的第二個FC-VI介面卡AFF 。
+
+
+
+=== 在升級之前收集資訊
+
+在升級之前、您必須先收集每個節點的資訊、並視需要調整網路廣播網域、移除任何VLAN和介面群組、以及收集加密資訊。
+
+此工作是在現有MetroCluster 的不只是功能的基礎上執行。
+
+.步驟
+. 收集MetroCluster 這個功能不實的組態節點系統ID：
++
+「MetroCluster 這個節點顯示欄位節點系統ID、DR-Partner SystemID」
+
++
+在更換程序期間、您將以控制器模組的系統ID來取代這些系統ID。
+
++
+在此範例中、若為四節點MetroCluster 的SFC組態、則會擷取下列舊系統ID：
+
++
+** 節點_a_1-A700：537037649
+** 節點_a_2-A700：537407030
+** 節點_B_1-A700：0537407114
+** 節點_B_2-A700：537035354
+
+
++
+[listing]
+----
+Cluster_A::*> metrocluster node show -fields node-systemid,ha-partner-systemid,dr-partner-systemid,dr-auxiliary-systemid
+dr-group-id cluster    node           node-systemid ha-partner-systemid dr-partner-systemid dr-auxiliary-systemid
+----------- ------------------------- ------------- ------------------- ------------------- ---------------------
+1           Cluster_A  nodeA_1-A700   537407114     537035354           537411005           537410611
+1           Cluster_A  nodeA_2-A700   537035354     537407114           537410611           537411005
+1           Cluster_B  nodeB_1-A700   537410611     537411005           537035354           537407114
+1           Cluster_B  nodeB_2-A700   537411005
+
+4 entries were displayed.
+----
+. 收集每個節點的連接埠和LIF資訊。
++
+您應該為每個節點收集下列命令的輸出：
+
++
+** 「網路介面show -role叢集、node-mgmt」
+** 「網路連接埠show -node-name_-type Physical」
+** 「網路連接埠VLAN show -node-name_」
+** 「網路連接埠ifgrp show -node_node_name_-instance」
+** 「網路連接埠廣播網域節目」
+** 「網路連接埠連線能力顯示-詳細資料」
+** 「網路IPSpace節目」
+** 「Volume show」
+** 《集合體展》
+** 「系統節點執行節點_norme-name_ sysconfig -A」
+
+
+. 如果MetroCluster 支援SAN組態、請收集相關資訊。
++
+您應該收集下列命令的輸出：
+
++
+** 「FCP介面卡顯示-instance」
+** 「FCP介面show -instance」
+** 「iSCSI介面展示」
+** 「ucadmin show」
+
+
+. 如果根磁碟區已加密、請收集並儲存用於金鑰管理程式的通關密碼：
++
+「安全金鑰管理程式備份展示」
+
+. 如果MetroCluster 這個節點正在使用磁碟區或集合體的加密功能、請複製金鑰和複製密碼的相關資訊。
++
+如需其他資訊、請參閱 https://docs.netapp.com/us-en/ontap/encryption-at-rest/backup-key-management-information-manual-task.html["手動備份內建金鑰管理資訊"^]。
+
++
+.. 如果已設定Onboard Key Manager：
++
+「安全金鑰管理程式內建show Backup」
+
++
+稍後在升級程序中、您將需要密碼。
+
+.. 如果已設定企業金鑰管理（KMIP）、請發出下列命令：
++
+「安全金鑰管理程式外部show -instance」
+
++
+「安全金鑰管理程式金鑰查詢」
+
+
+
+
+
+
+
+=== 從斷路器或其他監控軟體移除現有組態
+
+如果現有的組態是以MetroCluster 可啟動切換的ESITTiebreaker組態或其他協力廠商應用程式（例如ClusterLion）來監控、則MetroCluster 在轉換之前、您必須先從斷路器或其他軟體移除該組態。
+
+.步驟
+. 從MetroCluster Tiebreaker軟體移除現有的部分組態。
++
+link:/tiebreaker/concept_configuring_the_tiebreaker_software.html["移除MetroCluster 不完整的組態"]
+
+. 從MetroCluster 任何可啟動切換的第三方應用程式移除現有的功能。
++
+請參閱應用程式的文件。
+
+
+
+
+
+=== 在維護前傳送自訂AutoSupport 的支援訊息
+
+在執行維護之前、您應發出AutoSupport 一份不知所知的訊息、通知NetApp技術支援部門正在進行維護。告知技術支援部門正在進行維護、可防止他們假設發生中斷、而開啟案例。
+
+此工作必須在每MetroCluster 個站台上執行。
+
+.步驟
+. 為了避免自動產生支援案例、請傳送AutoSupport 一個不全訊息來表示正在進行維護。
++
+.. 發出下列命令：
++
+「系統節點AutoSupport 不支援節點*-type all -most maints=_maintening-window-in-thing__」
+
++
+「維護時段」指定維護時段的長度、最長72小時。如果維護作業在時間結束之前完成、您可以叫用AutoSupport 指示維護期間結束的資訊消息：
+
++
+「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+
+.. 在合作夥伴叢集上重複執行命令。
+
+
+
+
+
+
+== 切換MetroCluster 整個過程
+
+您必須將組態切換為站台A、才能升級站台B上的平台。
+
+此工作必須在sSite _A上執行
+
+完成此工作之後、Site_A會處於作用中狀態、並為兩個站台提供資料。站台_B處於非作用中狀態、準備開始升級程序、如下圖所示。
+
+image::../media/mcc_upgrade_cluster_a_in_switchover_A900.png[在switchover A900中、MCC升級叢集A]
+
+.步驟
+. 切換MetroCluster 到站台A的支援、以便站台B的節點升級：
++
+.. 在se_a上發出下列命令：
++
+「不需要更換控制器」MetroCluster
+
++
+此作業可能需要數分鐘才能完成。
+
+.. 監控切換作業：
++
+《不穩定營運展》MetroCluster
+
+.. 作業完成後、請確認節點處於切換狀態：
++
+《不看》MetroCluster
+
+.. 檢查MetroCluster 不實節點的狀態：
++
+「不一樣的秀」MetroCluster
+
+
+
+. 修復資料集合體。
++
+.. 修復資料集合體：
++
+《資料整合的修復》MetroCluster
+
+.. 在MetroCluster 健全的叢集上執行「flexoperationshow」命令、確認修復作業已完成：
++
+[listing]
+----
+
+cluster_A::> metrocluster operation show
+  Operation: heal-aggregates
+      State: successful
+ Start Time: 7/29/2020 20:54:41
+   End Time: 7/29/2020 20:54:42
+     Errors: -
+----
+
+
+. 修復根Aggregate。
++
+.. 修復資料集合體：
++
+「修復根集合體」MetroCluster
+
+.. 在MetroCluster 健全的叢集上執行「flexoperationshow」命令、確認修復作業已完成：
++
+[listing]
+----
+
+cluster_A::> metrocluster operation show
+  Operation: heal-root-aggregates
+      State: successful
+ Start Time: 7/29/2020 20:58:41
+   End Time: 7/29/2020 20:59:42
+     Errors: -
+----
+
+
+
+
+
+
+== 移除AFF 站台B上的站台控制器模組和NVS
+
+您必須從組態中移除舊的控制器。
+
+您可在s站 點B上執行此工作
+
+如果您尚未接地、請正確接地。
+
+.步驟
+. 連接到站台B的舊控制器序列主控台（node_B_1-700和node_B_2-700）、並確認其顯示「loader"（載入器）提示。
+. 從站台B的兩個節點收集bootarg值：「printenv」
+. 關閉站台B的機箱電源
+
+
+
+
+== 從站台B的兩個節點上移除控制器模組和NVS
+
+
+
+=== 移除AFF 「功能不一」控制器模組
+
+請使用下列程序移除AFF 「非洲」控制器模組。
+
+.步驟
+. 在卸下控制器模組之前、請先從控制器模組拔下主控台纜線（如果有）和管理纜線。
+. 解除鎖定並從機箱中取出控制器模組。
++
+.. 將CAM把手上的橘色按鈕向下推、直到解鎖為止。
++
+image:../media/drw_9500_remove_PCM.png["控制器"]
+
++
+|===
+
+
+| image:../media/number1.png["第1名"] | CAM握把釋放鈕 
+
+
+| image:../media/number2.png["第2名"] | CAM握把 
+|===
+.. 旋轉CAM握把、使其完全脫離機箱的控制器模組、然後將控制器模組滑出機箱。將控制器模組滑出機箱時、請確定您支援控制器模組的底部。
+
+
+
+
+
+
+=== 移除AFF 「顯示器」的「顯示器」單元
+
+請使用下列程序移除AFF 「顯示器」的「顯示器」單元。
+
+
+NOTE: 此功能可在插槽6中使用、高度是系統中其他模組的兩倍。AFF
+
+. 解除鎖定、然後從插槽6移除NVS。
++
+.. 按下帶有字母和編號的CAM按鈕。CAM按鈕會從機箱移出。
+.. 向下轉動CAM栓鎖、直到其處於水平位置。此時、系統會從機箱中鬆脫、並移動數英吋。
+.. 拉動模組面兩側的拉片、將NVS從機箱中移除。
++
+image:../media/drw_a900_move-remove_NVRAM_module.png["NVS模組"]
+
++
+|===
+
+
+| image:../media/number1.png["第1名"] | I/O CAM栓鎖有編號和編號 
+
+
+| image:../media/number2.png["第2名"] | I/O鎖定完全解除鎖定 
+|===
+
+
+
+
+
+NOTE: 如果AFF 在非揮發性儲存模組上有任何作為coredump裝置的附加模組、請勿將這些模組傳輸至AFF EWSIA900軟體。請勿將AFF 任何零件從顯示器A700控制器模組和NVS移轉至AFF 顯示器A900。
+
+
+
+== 安裝AFF 《不需再使用的顯示器」
+
+您必須在AFF Site_B的兩個節點上安裝升級套件中的更新套件、以安裝支援的支援中心請勿將coredump裝置從AFF ESIEA700 NVS模組移至AFF ESIA900 NVS模組。
+
+如果您尚未接地、請正確接地。
+
+
+
+=== 安裝AFF VA900 NVS
+
+請使用下列程序、在AFF 站台B的兩個節點插槽6中安裝支援中心
+
+.步驟
+. 將NVS與插槽6中機箱開孔的邊緣對齊。
+. 將NVS輕推入插槽、直到帶有字母和編號的I/O CAM栓開始與I/O CAM栓接合為止、然後將I/O CAM栓完全推入、以將NVS鎖定到位。
++
+image:../media/drw_a900_move-remove_NVRAM_module.png["NVS模組"]
+
++
+|===
+
+
+| image:../media/number1.png["第1名"] | I/O CAM栓鎖有編號和編號 
+
+
+| image:../media/number2.png["第2名"] | I/O鎖定完全解除鎖定 
+|===
+
+
+
+
+=== 安裝AFF 「VA900控制器模組」
+
+請使用下列程序來安裝AFF 《Arc-A900控制器模組：
+
+.步驟
+. 將控制器模組的一端與機箱的開口對齊、然後將控制器模組輕推至系統的一半。
+. 將控制器模組穩固地推入機箱、直到它與中間板完全接入。控制器模組完全就位時、鎖定鎖定鎖定會上升。
++
+
+CAUTION: 將控制器模組滑入機箱時、請勿過度施力、以免損壞連接器。
+
+. 將管理連接埠和主控台連接埠連接至控制器模組。
++
+image:../media/drw_9500_remove_PCM.png["控制器"]
+
++
+|===
+
+
+| image:../media/number1.png["第1名"] | CAM握把釋放鈕 
+
+
+| image:../media/number2.png["第2名"] | CAM握把 
+|===
+. 在每個節點的插槽7中安裝第二個X91129A卡。
++
+.. 將FC VI連接埠從插槽7連接至交換器。請參閱 link:../install-fc/index.html["網路附加安裝與組態"] 記錄並前往AFF 適用於MetroCluster 您環境中交換器類型的《關於Arfe A900架構的不支援連線要求》（英文）。
+
+
+. 開啟機箱電源並連接至序列主控台。
+. BIOS初始化之後、如果節點開始自動開機、請按Ctrl-C中斷自動開機
+. 中斷自動開機之後、節點會在載入程式提示字元停止。如果您未準時中斷自動開機、且節點1開始開機、請等待提示訊息、按Ctrl-C進入開機功能表。節點在開機功能表停止後、請使用選項8重新啟動節點、並在重新開機期間中斷自動開機。
+. 在"loader"提示下、設定預設環境變數：「et-Defaults」
+. 儲存預設環境變數設定：「aveenv」
+
+
+
+
+=== 在站台B上為節點開機
+
+在交換AFF 完SESVA900控制器模組和軟體資源之後、您需要將AFF 該節點的叢集開機、並安裝與ONTAP 叢集上執行相同的版本資訊更新和修補程式層級。「netboot」一詞是指您從ONTAP 儲存在遠端伺服器上的支援影像進行開機。在準備「netboot」時、您必須在ONTAP 系統可以存取的網路伺服器上新增一份《支援》9開機映像複本。
+
+除非安裝在機箱中並已開啟電源、否則無法檢查ONTAP 安裝在AFF 架構控制器模組之開機媒體上的版本。在進行升級的32位元支援系統上執行的支援功能版本必須與在進行升級的32位元支援系統上執行的支援功能相同、而且主要和備份開機映像都必須相符。ONTAP AFF ONTAP AFF您可以在開機功能表中執行「netboot」、然後執行「wappeconfig」命令來設定映像。如果控制器模組先前曾在另一個叢集中使用、則「wifeconfig」命令會清除開機媒體上的任何剩餘組態。
+
+.開始之前
+* 確認您可以使用系統存取HTTP伺服器。
+* 您需要從下載系統所需的系統檔案、以及ONTAP 正確版本的《》 link:https://mysupport.netapp.com/site/["NetApp支援"^] 網站。關於這項工作、如果ONTAP 安裝的版本與原始控制器上安裝的版本不同、您必須「netboot」新的控制器。安裝每個新的控制器之後、您可以從ONTAP 儲存在Web伺服器上的Image9映像來啟動系統。然後、您可以將正確的檔案下載到開機媒體裝置、以供後續系統開機。
+
+
+.步驟
+. 存取 link:https://mysupport.netapp.com/site/["NetApp支援"^] 下載執行系統netboot所需的檔案、以執行系統的netboot。
+. [step2-download-software]請ONTAP 從NetApp支援網站的軟體下載區段下載適當的支援軟體、並將「<ONTAP_VERSION >_image.tgz」檔案儲存在可從網路存取的目錄中。
+. 切換至網路存取目錄、並確認您所需的檔案可用。您的目錄清單應包含「<ONTAP_VERSION >_image.tgz」。
+. 選擇下列其中一項動作來設定「netboot」連線。附註：您應該使用管理連接埠和IP作為「netboot」連線。請勿使用資料LIF IP、否則在執行升級時可能會發生資料中斷。
++
+|===
+
+
+| 如果動態主機組態傳輸協定（DHCP）是... | 然後... 
+
+
+| 執行中 | 在開機環境提示字元中使用下列命令自動設定連線：「ifconfige0M -auto」 
+
+
+| 未執行 | 在開機環境提示字元中使用下列命令手動設定連線：「ifconfige0M -addr=<filer_addr>-mask=<網路遮罩>-gateway=- dns =<dns _addr> domain=<dns網域>'<filer_addr>'是儲存系統的IP位址。「網路遮罩」是儲存系統的網路遮罩。「<閘道>」是儲存系統的閘道。'<DNs_addr>'是網路上名稱伺服器的IP位址。此參數為選用項目。'<DNs_domain>'是網域名稱服務（DNS）網域名稱。此參數為選用項目。附註：您的介面可能需要其他參數。在韌體提示字元中輸入說明以取得詳細資料。 
+|===
+. 在節點1上執行「netboot」：「netboot http://<web_server_ip/path_to_web_accessible_directory>/netboot/kernel`[]「<path_to_the_web-易於 存取的目錄>」應該會引導您下載「<ONTAP_VERSION >_image.tgz」 <<step2-download-software,步驟2>>。
++
+
+NOTE: 請勿中斷開機。
+
+. 等待AFF 執行於處理器A900控制器模組上的節點1開機、並顯示開機功能表選項、如下所示：
++
+[listing]
+----
+Please choose one of the following:
+
+(1)  Normal Boot.
+(2)  Boot without /etc/rc.
+(3)  Change password.
+(4)  Clean configuration and initialize all disks.
+(5)  Maintenance mode boot.
+(6)  Update flash from backup config.
+(7)  Install new software first.
+(8)  Reboot node.
+(9)  Configure Advanced Drive Partitioning.
+(10) Set Onboard Key Manager recovery secrets.
+(11) Configure node for external key management.
+Selection (1-11)?
+----
+. 從開機功能表中、選取選項「（7）Install new software first（先安裝新軟體）」。此功能表選項會下載新ONTAP 的功能表映像、並將其安裝至開機裝置。
++
+
+NOTE: 請忽略下列訊息：「HA配對不支援不中斷升級此程序。 本附註適用於不中斷營運ONTAP 的更新版軟體、不適用於控制器升級。請務必使用netboot將新節點更新為所需映像。如果您使用其他方法在新控制器上安裝映像、可能會安裝錯誤的映像。此問題適用於ONTAP 所有的版本。
+
+. 如果系統提示您繼續此程序、請輸入「y」、並在系統提示您輸入套件時、輸入URL：http://<web_server_ip/path_to_web-accessible_directory>/<ontap_version>_image.tgz[]
+. 完成下列子步驟以重新啟動控制器模組：
++
+.. 當您看到以下提示時、請輸入「n」跳過備份恢復：「您現在要還原備份組態嗎？｛y | n｝
+.. 當您看到下列提示時、請輸入「y」重新開機：「必須重新開機節點、才能開始使用新安裝的軟體。是否要立即重新開機？｛y | n｝
++
+控制器模組會重新開機、但會在開機功能表停止、因為開機裝置已重新格式化、而且需要還原組態資料。
+
+
+
+. 出現提示時、請執行「wecponfig」命令、清除開機媒體上任何先前的組態：
++
+.. 當您看到以下訊息時、請回答「yes」：「這將會刪除重要的系統組態、包括叢集成員資格。警告：請勿在已接管的HA節點上執行此選項。您確定要繼續嗎
+.. 節點會重新開機以完成「wecpionfig」、然後在開機功能表停止。
+
+
+. 從開機功能表中選取「5」選項以進入維護模式。對提示回答「yes」、直到節點在維護模式和命令提示字元「*>」停止為止。
+
+
+
+
+=== 還原HBA組態
+
+視控制器模組中是否有HBA卡及其組態而定、您必須針對站台的使用狀況正確設定這些卡。
+
+.步驟
+. 在維護模式中、設定系統中任何HBA的設定：
++
+.. 檢查連接埠的目前設定：「ucadmin show」
+.. 視需要更新連接埠設定。
+
+
++
+|===
+
+
+| 如果您有此類型的HBA和所需模式... | 使用此命令... 
+
+
+ a| 
+CNA FC
+ a| 
+「ucadmin modify -m光纖信道-t啟動器_adapter-name_」
+
+
+
+ a| 
+CNA乙太網路
+ a| 
+「ucadmin modify -mode cna _adapter-name_」
+
+
+
+ a| 
+FC目標
+ a| 
+「fcadmin config -t target _adapter-name_」
+
+
+
+ a| 
+FC啟動器
+ a| 
+「fcadmin config -t啟動器_adapter-name_」
+
+|===
+
+
+
+
+=== 在新的控制器和機箱上設定HA狀態
+
+您必須驗證控制器和機箱的HA狀態、並視需要更新狀態以符合您的系統組態。
+
+.步驟
+. 在維護模式中、顯示控制器模組和機箱的HA狀態：
++
+《ha-config show》
+
++
+所有元件的HA狀態應為MCC。
+
+. 如果顯示的控制器或機箱系統狀態不正確、請設定HA狀態：
++
+「ha-config modify控制器MCC」
+
++
+「ha-config modify機箱MCC」
+
+. 停止節點：「halt（停止）」節點應在「loader>」提示字元停止。
+. 在每個節點上、檢查系統日期、時間和時區：「顯示日期」
+. 如有必要、請以UTC或格林尼治標準時間（GMT）設定日期：「et date <mm/dd/ym>」（設定日期：月/日/西元年）
+. 請在開機環境提示字元中使用下列命令檢查時間：「How Time」（顯示時間）
+. 如有必要、請以UTC或格林尼治標準時間設定時間：「設定時間<hh：mm：ss>」
+. 儲存設定：「aveenv」
+. 收集環境變數：「prontenv」
+. 將節點重新開機回「維護」模式、使組態變更生效：「boot_ONTAP maint」
+. 確認您所做的變更有效、而且ucadmin顯示FC啟動器連接埠為線上狀態。
++
+|===
+
+
+| 如果您有此類HBA… | 使用此命令… 
+
+
+ a| 
+CNA
+ a| 
+「ucadmin show」
+
+
+
+ a| 
+FC
+ a| 
+「fcadmin show」
+
+|===
+. 驗證ha-config模式：「ha-config show」
++
+.. 請確認您有下列輸出：
++
+[listing]
+----
+*> ha-config show
+Chassis HA configuration: mcc
+Controller HA configuration: mcc
+----
+
+
+
+
+
+
+=== 在新的控制器和機箱上設定HA狀態
+
+您必須驗證控制器和機箱的HA狀態、並視需要更新狀態以符合您的系統組態。
+
+.步驟
+. 在維護模式中、顯示控制器模組和機箱的HA狀態：
++
+《ha-config show》
+
++
+所有元件的HA狀態應為MCC。
+
++
+|===
+
+
+| 如果MetroCluster 該組態有... | HA狀態應該是... 
+
+
+ a| 
+兩個節點
+ a| 
+MCC-2n
+
+
+
+ a| 
+四或八個節點
+ a| 
+MCC
+
+|===
+. 如果顯示的控制器系統狀態不正確、請設定控制器模組和機箱的HA狀態：
++
+|===
+
+
+| 如果MetroCluster 該組態有... | 發出這些命令... 
+
+
+ a| 
+*兩個節點*
+ a| 
+「ha-config modify控制器MCC-2n」
+
+「ha-config modify機箱MCC-2n」
+
+
+
+ a| 
+*四或八個節點*
+ a| 
+「ha-config modify控制器MCC」
+
+「ha-config modify機箱MCC」
+
+|===
+
+
+
+
+=== 重新指派根Aggregate磁碟
+
+使用先前收集的系統、將根Aggregate磁碟重新指派給新的控制器模組
+
+此工作會在維護模式中執行。
+
+舊系統ID已在中識別 link:task_upgrade_controllers_in_a_four_node_fc_mcc_us_switchover_and_switchback_mcc_fc_4n_cu.html["在升級之前收集資訊"]。
+
+本程序中的範例使用具有下列系統ID的控制器：
+
+|===
+
+
+| 節點 | 舊系統ID | 新系統ID 
+
+
+ a| 
+節點_B_1
+ a| 
+4068741254
+ a| 
+1574774970
+
+|===
+.步驟
+. 將所有其他連線連接至新的控制器模組（FC-VI、儲存設備、叢集互連等）。
+. 停止系統、並從「loader"（載入器）提示字元開機至維護模式：
++
+Boot_ONTAP maint
+
+. 顯示node_B_1-A700擁有的磁碟：
++
+「展示-A'」
+
++
+輸出範例顯示新控制器模組的系統ID（1574774970）。不過、根Aggregate磁碟仍為舊系統ID（40687441254）所有。此範例並未顯示MetroCluster 由其他節點所擁有的磁碟機、以供使用。
+
++
+[listing]
+----
+*> disk show -a
+Local System ID: 1574774970
+
+  DISK         OWNER                     POOL   SERIAL NUMBER    HOME                      DR HOME
+------------   -------------             -----  -------------    -------------             -------------
+...
+rr18:9.126L44 node_B_1-A700(4068741254)   Pool1  PZHYN0MD         node_B_1-A700(4068741254)  node_B_1-A700(4068741254)
+rr18:9.126L49 node_B_1-A700(4068741254)   Pool1  PPG3J5HA         node_B_1-A700(4068741254)  node_B_1-A700(4068741254)
+rr18:8.126L21 node_B_1-A700(4068741254)   Pool1  PZHTDSZD         node_B_1-A700(4068741254)  node_B_1-A700(4068741254)
+rr18:8.126L2  node_B_1-A700(4068741254)   Pool0  S0M1J2CF         node_B_1-A700(4068741254)  node_B_1-A700(4068741254)
+rr18:8.126L3  node_B_1-A700(4068741254)   Pool0  S0M0CQM5         node_B_1-A700(4068741254)  node_B_1-A700(4068741254)
+rr18:9.126L27 node_B_1-A700(4068741254)   Pool0  S0M1PSDW         node_B_1-A700(4068741254)  node_B_1-A700(4068741254)
+...
+----
+. 將磁碟機櫃上的根Aggregate磁碟重新指派給新的控制器：
++
+"Disk reassign-s _old-sysid_-d _new－sysid_"
+
++
+以下範例顯示磁碟機的重新指派：
+
++
+[listing]
+----
+*> disk reassign -s 4068741254 -d 1574774970
+Partner node must not be in Takeover mode during disk reassignment from maintenance mode.
+Serious problems could result!!
+Do not proceed with reassignment if the partner is in takeover mode. Abort reassignment (y/n)? n
+
+After the node becomes operational, you must perform a takeover and giveback of the HA partner node to ensure disk reassignment is successful.
+Do you want to continue (y/n)? Jul 14 19:23:49 [localhost:config.bridge.extra.port:error]: Both FC ports of FC-to-SAS bridge rtp-fc02-41-rr18:9.126L0 S/N [FB7500N107692] are attached to this controller.
+y
+Disk ownership will be updated on all disks previously belonging to Filer with sysid 4068741254.
+Do you want to continue (y/n)? y
+----
+. 檢查是否已按照預期重新分配所有磁碟：「顯示磁碟」
++
+[listing]
+----
+*> disk show
+Local System ID: 1574774970
+
+  DISK        OWNER                      POOL   SERIAL NUMBER   HOME                      DR HOME
+------------  -------------              -----  -------------   -------------             -------------
+rr18:8.126L18 node_B_1-A900(1574774970)   Pool1  PZHYN0MD        node_B_1-A900(1574774970)  node_B_1-A900(1574774970)
+rr18:9.126L49 node_B_1-A900(1574774970)   Pool1  PPG3J5HA        node_B_1-A900(1574774970)  node_B_1-A900(1574774970)
+rr18:8.126L21 node_B_1-A900(1574774970)   Pool1  PZHTDSZD        node_B_1-A900(1574774970)  node_B_1-A900(1574774970)
+rr18:8.126L2  node_B_1-A900(1574774970)   Pool0  S0M1J2CF        node_B_1-A900(1574774970)  node_B_1-A900(1574774970)
+rr18:9.126L29 node_B_1-A900(1574774970)   Pool0  S0M0CQM5        node_B_1-A900(1574774970)  node_B_1-A900(1574774970)
+rr18:8.126L1  node_B_1-A900(1574774970)   Pool0  S0M1PSDW        node_B_1-A900(1574774970)  node_B_1-A900(1574774970)
+*>
+----
+. 顯示Aggregate狀態：「aggr狀態」
++
+[listing]
+----
+*> aggr status
+           Aggr            State       Status           Options
+aggr0_node_b_1-root    online      raid_dp, aggr    root, nosnap=on,
+                           mirrored                     mirror_resync_priority=high(fixed)
+                           fast zeroed
+                           64-bit
+----
+. 在合作夥伴節點（node_B_2-A900）上重複上述步驟。
+
+
+
+
+=== 開機新的控制器
+
+您必須從開機功能表重新啟動控制器、才能更新控制器Flash映像。如果已設定加密、則需要執行其他步驟。
+
+此工作必須在所有新控制器上執行。
+
+.步驟
+. 停止節點：「halt」
+. 如果已設定外部金鑰管理程式、請設定相關的bootargs：
++
+「bootarg.kmip.init.ipaddr _ip-address_」
+
++
+「bootarg.kmip.init.netmask網路遮罩_」
+
++
+「bootarg.kmip.init.gateway gateway-address_」
+
++
+"etenv bootarg.kmip.init.interface _interface-id_"
+
+. 顯示開機功能表：「boot_ONTAP功能表」
+. 如果使用root加密、請針對金鑰管理組態發出開機功能表命令。
++
+|===
+
+
+| 如果您使用... | 選取此開機功能表選項... 
+
+
+ a| 
+內建金鑰管理
+ a| 
+選項10並依照提示提供必要的輸入、以恢復或還原金鑰管理程式組態
+
+
+
+ a| 
+外部金鑰管理
+ a| 
+選項11並依照提示提供必要的輸入、以恢復或還原金鑰管理程式組態
+
+|===
+. 如果已啟用自動開機、請按下control-c中斷自動開機
+. 從開機功能表中、執行選項（6）。
++
+
+NOTE: 選項6會在完成之前重新啟動節點兩次。
+
++
+對系統ID變更提示回應「y」。等待第二個重新開機訊息：
+
++
+[listing]
+----
+Successfully restored env file from boot media...
+
+Rebooting to load the restored env file...
+----
+. 再次檢查合作夥伴sysid是否正確：「prontenv合作夥伴sysid」
++
+如果合作夥伴sysid不正確、請設定：「etenv合作夥伴sysid _Partner sysid_」
+
+. 如果使用root加密、請針對金鑰管理組態再次發出開機功能表命令。
++
+|===
+
+
+| 如果您使用... | 選取此開機功能表選項... 
+
+
+ a| 
+內建金鑰管理
+ a| 
+選項10並依照提示提供必要的輸入、以恢復或還原金鑰管理程式組態
+
+
+
+ a| 
+外部金鑰管理
+ a| 
+選項11並依照提示提供必要的輸入、以恢復或還原金鑰管理程式組態
+
+|===
++
+您可能需要在開機功能表提示字元中多次發出「主機蓋_xxxxxxxxxxxx_keymanager」命令、直到節點完全開機為止。
+
+. 開機節點：「boot_ONTAP」
+. 等待替換的節點開機。
++
+如果任一節點處於接管模式、請使用「儲存容錯移轉恢復」命令執行恢復。
+
+. 確認所有連接埠都位於廣播網域中：
++
+.. 檢視廣播網域：
++
+「網路連接埠廣播網域節目」
+
+.. 視需要將任何連接埠新增至廣播網域。
++
+link:https://docs.netapp.com/us-en/ontap/networking/add_or_remove_ports_from_a_broadcast_domain97.html["新增或移除廣播網域中的連接埠"^]
+
+.. 將用於託管叢集間生命體的實體連接埠新增至對應的Broadcast網域。
+.. 修改叢集間的LIF、將新的實體連接埠當作主連接埠使用。
+.. 在叢集間生命體啟動之後、請檢查叢集對等端點狀態、並視需要重新建立叢集對等端點。
++
+您可能需要重新設定叢集對等關係。
+
++
+link:https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/concept_configure_the_mcc_software_in_ontap.html#peering-the-clusters["建立叢集對等關係"]
+
+.. 視需要重新建立VLAN和介面群組。
++
+VLAN和介面群組成員資格可能與舊節點不同。
+
++
+link:https://docs.netapp.com/us-en/ontap/networking/configure_vlans_over_physical_ports.html#create-a-vlan["建立VLAN"^]
+
++
+link:https://docs.netapp.com/us-en/ontap/networking/combine_physical_ports_to_create_interface_groups.html["結合實體連接埠以建立介面群組"^]
+
+
+
+. 如果使用加密、請使用適用於金鑰管理組態的正確命令來還原金鑰。
++
+|===
+
+
+| 如果您使用... | 使用此命令... 
+
+
+ a| 
+內建金鑰管理
+ a| 
+「安全金鑰管理程式內建同步」
+
+如需詳細資訊、請參閱 link:https://docs.netapp.com/us-en/ontap/encryption-at-rest/restore-onboard-key-management-encryption-keys-task.html["還原內建金鑰管理加密金鑰"^]。
+
+
+
+ a| 
+外部金鑰管理
+ a| 
+「安全金鑰管理程式外部還原-vserver _svm_-node_node_-key-server _host_name | ip_address: port_-key-id key_id -key-tag key_tag _node-name_」
+
+如需詳細資訊、請參閱 link:https://docs.netapp.com/us-en/ontap/encryption-at-rest/restore-external-encryption-keys-93-later-task.html["還原外部金鑰管理加密金鑰"^]。
+
+|===
+
+
+
+
+=== 驗證LIF組態
+
+在切換回復之前、請先確認將l生命 存放在適當的節點/連接埠上。需要執行下列步驟
+
+此工作是在站台B上執行、節點已使用根集合體開機。
+
+.步驟
+. 在進行切換之前、請先確認正式作業存放在適當的節點和連接埠上。
++
+.. 變更為進階權限層級：
++
+"進階權限"
+
+.. 置換連接埠組態以確保正確放置LIF：
++
+「vserver config override -command「network interface modify」-vserver _vserver_name_-home-port _active_port_after升級_-lif_lif_name_-home-node_new_norme_name_」
+
++
+在「vserver config override」命令中輸入「network interface modify」命令時、您無法使用標籤自動完成功能。您可以使用autosplete建立「網路介面修改」、然後以「vserver config override」命令將其包含在內。
+
+.. 返回管理員權限等級：+「設置權限管理」
+
+
+. 將介面還原至其主節點：
++
+「網路介面回復*-vserver _vserver名稱_」
+
++
+視需要在所有SVM上執行此步驟。
+
+
+
+
+
+== 切換回MetroCluster 還原組態
+
+設定好新的控制器之後、您可以切換回MetroCluster 該組態、使組態恢復正常運作。
+
+在本工作中、您將執行切換回復作業、將MetroCluster 該組態恢復正常運作。站台上的節點仍在等待升級。
+
+image::../media/mcc_upgrade_cluster_a_switchback_A900.png[四節點MetroCluster 的功能]
+
+.步驟
+. 在se_B上輸入「MetroCluster flexnodeshow」命令、然後檢查輸出。
++
+.. 驗證新節點的顯示是否正確。
+.. 確認新節點處於「等待切換回復狀態」。
+
+
+. 切換叢集：
++
+《還原》MetroCluster
+
+. 檢查切換回復作業的進度：
++
+《不看》MetroCluster
+
++
+當輸出顯示「waiting for switchback」（等待切換）時、切換作業仍在進行中：
+
++
+[listing]
+----
+cluster_B::> metrocluster show
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+ Local: cluster_B         Configuration state configured
+                          Mode                switchover
+                          AUSO Failure Domain -
+Remote: cluster_A         Configuration state configured
+                          Mode                waiting-for-switchback
+                          AUSO Failure Domain -
+----
++
+當輸出顯示「正常」時、即完成切換作業：
+
++
+[listing]
+----
+cluster_B::> metrocluster show
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+ Local: cluster_B         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain -
+Remote: cluster_A         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain -
+----
++
+如果切換需要很長時間才能完成、您可以使用「MetroCluster 更新組態複寫重新同步狀態show」命令來檢查進行中基準的狀態。此命令處於進階權限層級。
+
+
+
+
+
+== 檢查MetroCluster 資訊系統的健全狀況
+
+升級控制器模組之後、您必須確認MetroCluster 該組態的健全狀況。
+
+此工作可在MetroCluster 任何節點上執行、以進行不受限的組態設定。
+
+.步驟
+. 驗MetroCluster 證下列各項的功能：
++
+.. 確認MetroCluster 執行功能組態、並確認操作模式正常：
++
+《不看》MetroCluster
+
+.. 執行功能檢查：MetroCluster
++
+《不一樣的跑程》MetroCluster
+
+.. 顯示MetroCluster 檢查結果：
++
+《不一樣的表演》MetroCluster
+
+
+
+
+
+
+
+== 升級s加_a上的節點
+
+您必須在se_A上重複執行升級工作
+
+.步驟
+. 重複步驟、從開始升級se_a上的節點 link:task_upgrade_controllers_in_a_four_node_fc_mcc_us_switchover_and_switchback_mcc_fc_4n_cu.html["準備升級"]。
++
+執行工作時、所有站台和節點的參考範例都會反轉。例如、當範例是從Site_A切換時、您將從Site_B切換
+
+
+
+
+
+== 維護後傳送自訂AutoSupport 的資訊
+
+完成升級之後、您應該傳送AutoSupport 一個不完整的訊息、指出維護已結束、以便繼續自動建立個案。
+
+.步驟
+. 若要恢復自動產生支援案例、請傳送AutoSupport 一個不完整的訊息、表示維護已完成。
++
+.. 發出下列命令：
++
+「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+
+.. 在合作夥伴叢集上重複執行命令。
+
+
+
+
+
+
+== 還原斷路器監控
+
+如果MetroCluster 先前已將此組態設定為由斷路器軟體進行監控、您可以還原斷路器連線。
+
+. 請執行中的步驟 link:tiebreaker/concept_configuring_the_tiebreaker_software.html#adding-metrocluster-configurations["新增MetroCluster 功能"] 在「_Estriebreaker MetroCluster 安裝與組態」一節中。
+

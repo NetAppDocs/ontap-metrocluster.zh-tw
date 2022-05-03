@@ -1,0 +1,32 @@
+---
+permalink: maintain/task_hot_add_a_sas_disk_shelf_in_a_direct_attached_mcc_configuration_us_sas_optical_cables.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, hot, add, sas, disk, shelf, direct, attached, fc, configuration, optical, cables 
+summary: 您可以使用SAS光纖纜線、將SAS磁碟櫃熱新增至直接附加MetroCluster 的SFC組態中現有的SAS磁碟櫃堆疊、或是SAS HBA或控制器上內建SAS連接埠的新堆疊。 
+---
+= 使用MetroCluster SAS光纖纜線、在直接附加的SFC組態中熱新增SAS磁碟櫃
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用SAS光纖纜線、將SAS磁碟櫃熱新增至直接附加MetroCluster 的SFC組態中現有的SAS磁碟櫃堆疊、或是SAS HBA或控制器上內建SAS連接埠的新堆疊。
+
+* 此程序不中斷營運、約需兩小時完成。
+* 您需要管理員密碼、才能存取FTP或scp伺服器。
+* 如果您要將IOM12機櫃新增至IOM6機櫃堆疊、請參閱 link:https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-mix-hotadd/home.html["將IOM12磁碟櫃熱新增至IOM6磁碟櫃堆疊"]。
+
+
+此工作適用於MetroCluster 使用SAS纜線將儲存設備直接連接至儲存控制器的SFC組態。不適用於MetroCluster 使用FC對SAS橋接器或FC交換器架構的SFC組態。
+
+.步驟
+. 請依照磁碟櫃模型的_安裝指南_中有關熱新增SAS磁碟櫃的指示、執行下列工作以熱新增磁碟櫃：
++
+.. 安裝熱新增磁碟櫃。
+.. 開啟電源供應器、並設定熱新增的機櫃ID。
+.. 連接熱新增磁碟櫃的纜線。
+.. 驗證SAS連線能力。
+
+
+

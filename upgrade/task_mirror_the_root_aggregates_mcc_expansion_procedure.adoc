@@ -1,0 +1,33 @@
+---
+permalink: upgrade/task_mirror_the_root_aggregates_mcc_expansion_procedure.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, mirror, root, aggregate, new, controller 
+summary: 當您將控制器新增MetroCluster 至某個資訊區組態時、必須鏡射根Aggregate以提供資料保護。 
+---
+= 鏡射新控制器上的根Aggregate
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+當您將控制器新增MetroCluster 至某個資訊區組態時、必須鏡射根Aggregate以提供資料保護。
+
+此工作必須在新的控制器模組上執行。
+
+. 鏡射根Aggregate：
++
+"儲存Aggregate mirror _aggreg_name_"
+
++
+下列命令會鏡射控制器a_1的根Aggregate：
+
++
+[listing]
+----
+controller_A_1::> storage aggregate mirror aggr0_controller_A_1
+----
++
+這會鏡射Aggregate、因此它由位於遠端MetroCluster 站台的本機叢和遠端叢組成。
+
+

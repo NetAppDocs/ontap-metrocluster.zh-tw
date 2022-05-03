@@ -1,0 +1,120 @@
+---
+section: maintain
+title: 維護MetroCluster 這些元件
+entries:
+- title: 哪裡可以找MetroCluster 到執行維護工作的程序
+  url: "/maintain/concept_where_to_find_procedures_for_mcc_maintenance_tasks.html"
+- title: 故障與恢復案例MetroCluster
+  url: "/maintain/reference_mcc_failure_scenarios.html"
+- title: 在ONTAP 執行維護工作之前、請先移除「協調器」或「斷路器監控」
+  url: "/maintain/concept_remove_mediator_or_tiebreaker_when_performing_maintenance_tasks.html"
+- title: FC至SAS橋接器維護
+  entries:
+  - title: 支援MetroCluster 採用支援的FIBreBridge 7600N橋接器、採用各種不完整的組態
+    url: "/maintain/concept_using_fibrebridge_7600n_bridges_in_mcc_configurations.html"
+  - title: 支援MetroCluster 採用支援的FIBreBridge 7500N橋接器、採用各種不完整的組態
+    url: "/maintain/concept_using_fibrebridge_7500n_bridges_in_mcc_configurations.html"
+  - title: 如有必要、請在光纖橋接器7600N上啟用IP連接埠存取
+    url: "/maintain/task_enable_ip_port_access_on_the_fibrebridge_7600n_bridge_guides.html"
+  - title: 更新光纖橋接器上的韌體
+    url: "/maintain/task_update_firmware_on_a_fibrebridge_bridge_parent_topic.html"
+  - title: 更換單一FC對SAS橋接器
+    url: "/maintain/task_replace_a_sle_fc_to_sas_bridge.html"
+  - title: 將一對採用7600N或7500N橋接器的FibreBridge 6500N橋接器更換
+    url: "/maintain/task_fb_consolidate_replace_a_pair_of_fibrebridge_6500n_bridges_with_7500n_bridges.html"
+  - title: 使用其他介面來設定及管理光纖橋接器的需求
+    url: "/maintain/reference_requirements_for_using_other_interfaces_to_configure_and_manage_fibrebridge_bridges.html"
+  - title: 熱更換故障的電源供應器模組
+    url: "/maintain/reference_fb_replace_a_power_supply.html"
+  - title: FC至SAS橋接器的頻內管理
+    url: "/maintain/concept_in_band_management_of_the_fc_to_sas_bridges.html"
+  - title: 保護或取消保護光纖橋接器
+    url: "/maintain/task_secur_or_unsecur_a_fibrebridge_bridge.html"
+- title: FC交換器維護與更換
+  entries:
+  - title: 升級或降級Brocade FC交換器上的韌體
+    url: "/maintain/task_upgrade_or_downgrad_the_firmware_on_a_brocade_fc_switch_mcc.html"
+  - title: 升級或降級Cisco FC交換器上的韌體
+    url: "/maintain/task_upgrade_or_downgrad_the_firmware_on_a_cisco_fc_switch_mcc.html"
+  - title: 升級至新的Brocade FC交換器
+    url: "/maintain/task_upgrade_to_new_brocade_switches.html"
+  - title: 更換Brocade FC交換器
+    url: "/maintain/task_replace_a_brocade_fc_switch_mcc.html"
+  - title: 重新命名Brocade FC交換器
+    url: "/maintain/task_rename_a_brocade_fc_switch.html"
+  - title: 在Brocade FC交換器上停用加密
+    url: "/maintain/task_disable_encryption_on_brocade_fc_switches.html"
+  - title: 變更Brocade交換器上的ISL內容、ISL連接埠或IOD/ood組態
+    url: "/maintain/task_change_isl_properties_isl_ports_or_the_iod_ood_configuration_on_a_brocade_switch.html"
+  - title: 更換Cisco FC交換器
+    url: "/maintain/task_replace_a_cisco_fc_switch_mcc.html"
+  - title: 變更Cisco FC交換器上ISL連接埠的速度
+    url: "/maintain/task_change_speed_of_isl_ports_on_a_cisco_fc_switch.html"
+  - title: 將lSLs新增至Cisco交換器
+    url: "/maintain/task_add_lsls_to_a_cisco_fc_switch.html"
+- title: IP交換器維護與更換
+  entries:
+  - title: 更換IP交換器
+    url: "/maintain/task_replace_an_ip_switch.html"
+  - title: 升級MetroCluster 韌體至靜態IP交換器
+    url: "/maintain/task_upgrade_firmware_on_mcc_ip_switches.html"
+  - title: 升級MetroCluster 不只是在靜態IP交換器上的RCF檔案
+    url: "/maintain/task_upgrade_rcf_files_on_mcc_ip_switches.html"
+  - title: 重新命名Cisco IP交換器
+    url: "/maintain/task_rename_a_cisco_ip_switch.html"
+- title: 在不中斷營運的情況下新增、移除或變更ISL連接埠
+  url: "/maintain/task_add_remove_or_change_isl_ports_nondisruptively.html"
+- title: 如何在MetroCluster 一個不確定IP組態中識別儲存設備
+  url: "/maintain/concept_identifying_storage_in_a_mcc_ip_configuration.html"
+- title: 使用共享儲存設備/ MetroCluster交換器、將機櫃新增MetroCluster 至架構
+  url: "/maintain/task_add_shelves_using_shared_storage.html"
+- title: 將儲存熱新增至MetroCluster 功能不集區的FC組態
+  entries:
+  - title: 使用MetroCluster SAS光纖纜線、在直接附加的SFC組態中熱新增SAS磁碟櫃
+    url: "/maintain/task_hot_add_a_sas_disk_shelf_in_a_direct_attached_mcc_configuration_us_sas_optical_cables.html"
+  - title: 熱新增SAS儲存設備至連接橋接MetroCluster 的SFC組態
+    entries:
+    - title: 熱新增SAS磁碟櫃堆疊至現有的一對光纖橋接器7500N
+      url: "/maintain/task_hot_add_a_stack_to_exist_7500n_pair.html"
+    - title: 熱新增一堆SAS磁碟櫃、並將橋接器連接MetroCluster 至一套系統
+      url: "/maintain/task_fb_hot_add_stack_of_shelves_and_bridges.html"
+    - title: 熱新增SAS磁碟櫃至SAS磁碟櫃堆疊
+      entries:
+      - title: 準備熱新增SAS磁碟櫃
+        url: "/maintain/task_fb_hot_add_shelf_prepare_7500n.html"
+      - title: 熱新增磁碟櫃
+        url: "/maintain/task_fb_hot_add_a_disk_shelf_install_7500n.html"
+    - title: 熱新增IOM12磁碟櫃至IOM6磁碟櫃堆疊、採用連接橋MetroCluster 接的功能
+      url: "/maintain/task_hot_add_an_iom12_disk_shelf_to_a_stack_of_iom6_disk_shelves.html"
+- title: 將儲存設備熱移除MetroCluster 至不受需求的FC組態
+  url: "/maintain/task_hot_remove_storage_from_a_mcc_fc_configuration.html"
+- title: 以延伸MetroCluster 的功能型態、在不中斷營運的情況下更換機櫃
+  url: "/maintain/task_replace_a_shelf_nondisruptively_in_a_stretch_mcc_configuration.html"
+- title: 以架構附加MetroCluster 的功能不中斷的方式更換機櫃
+  url: "/maintain/task_replace_a_shelf_nondisruptively_in_a_mcc_fc_configuration.html"
+- title: 何時將根磁碟區移轉至新目的地
+  url: "/maintain/concept_migrating_root_volumes_to_a_new_destination.html"
+- title: 在MetroCluster 不完整的組態中移動中繼資料磁碟區
+  url: "/maintain/task_move_a_metadata_volume_in_mcc_configurations.html"
+- title: 在MetroCluster 不完整的組態中重新命名叢集
+  url: "/maintain/task_rename_the_cluster_for_mcc_configuration.html"
+- title: 關閉資料中心電源並開啟電源
+  url: "/maintain/task_power_on_and_power_off_a_data_center.html"
+- title: 關閉MetroCluster 整個支援IP組態的電源
+  url: "/maintain/task_power_off_an_entire_mcc_ip_configuration.html"
+- title: 關閉MetroCluster 整個支援功能
+  url: "/maintain/task_power_off_an_entire_mcc_fc_configuration.html"
+- title: 重新設定ONTAP 以不使用整套功能的FC交換器配置
+  url: "/maintain/task_do_not_use_for_9_8_and_later_reconfigure_the_fc_switch_layout_for_ontap_9_1_or_later.html"
+- title: FC交換器的連接埠指派
+  entries:
+  - title: 使用兩個啟動器連接埠的系統連接埠指派
+    url: "/maintain/concept_port_assignments_for_systems_using_two_initiator_ports.html"
+  - title: FC交換器的連接埠指派（使用ONTAP 功能）9.0
+    url: "/maintain/concept_port_assignments_for_fc_switches_when_using_ontap_9_0.html"
+  - title: FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）
+    url: "/maintain/concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html"
+- title: 如何使用互通性對照表工具來尋找MetroCluster 各種資訊
+  url: "/maintain/concept_using_the_interoperability_matrix_tool_to_find_mcc_information.html"
+- title: 何處可找到其他資訊
+  url: "/maintain/reference_where_to_find_additional_information_mcc_service_guide.html"

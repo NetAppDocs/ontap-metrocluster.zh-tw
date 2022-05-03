@@ -1,0 +1,70 @@
+---
+permalink: manage/reference_commands_for_switchover_healing_and_switchback.html 
+sidebar: sidebar 
+keywords: ontap, command, perform, metrocluster, disaster, recovery, process, switchover, heal, switchback 
+summary: 執行功能不全的災難恢復程序時、會ONTAP 有特定的支援功能。MetroCluster 
+---
+= 切換、修復及切換的命令
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+執行功能不全的災難恢復程序時、會ONTAP 有特定的支援功能。MetroCluster
+
+[cols="1,2"]
+|===
+
+
+| 如果您想要... | 使用此命令... 
+
+
+ a| 
+驗證是否可以在沒有錯誤或不使用的情況下執行切換。
+ a| 
+以進階權限等級來說MetroCluster 、「以模擬方式切換」+
+
+
+
+ a| 
+驗證是否可以在沒有錯誤或不使用的情況下執行切換。
+ a| 
+「還原-模擬」+進階權限等級MetroCluster
+
+
+
+ a| 
+切換至合作夥伴節點（協調切換）。
+ a| 
+《不切換》MetroCluster
+
+
+
+ a| 
+切換至合作夥伴節點（強制切換）。
+ a| 
+《支援災難時強制切換的真實》MetroCluster
+
+
+
+ a| 
+執行資料Aggregate修復。
+ a| 
+《修復階段集合體》MetroCluster
+
+
+
+ a| 
+執行根Aggregate修復。
+ a| 
+「MetroCluster 修復階段根集合體」
+
+
+
+ a| 
+切換回主節點。
+ a| 
+《還原》MetroCluster
+
+|===

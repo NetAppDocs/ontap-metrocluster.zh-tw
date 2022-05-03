@@ -1,0 +1,376 @@
+---
+permalink: maintain/task_update_firmware_on_a_fibrebridge_bridge_parent_topic.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, update, firmware, fibrebridge, bridge, update, configuration 
+summary: 更新橋接韌體的程序取決於您的橋接器機型和ONTAP 版本。 
+---
+= 正在更新光纖橋接器上的韌體
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+更新橋接韌體的程序取決於您的橋接器機型和ONTAP 版本。
+
+
+
+== 在執行ONTAP 版本號為9.4或更新版本的組態上、更新FIBreBridge 7600N或7500N上的韌體
+
+您可能需要更新您的FibreBridge橋接器上的韌體、以確保您擁有最新的功能或解決可能的問題。此程序應用於執行ONTAP 版本為9.4及更新版本之組態上的FIBreBridge 7600N或7500N橋接器。
+
+* 此功能組態必須正常運作。MetroCluster
+* 所有採用此功能的橋接器MetroCluster 都必須啟動並運作。
+* 所有儲存路徑都必須可用。
+* 您需要管理員密碼並存取HTTP伺服器。
+* 您必須使用支援的韌體版本。
++
+https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"^]
+
++
+在這個解決方案領域、您可以使用儲存解決方案欄位來選擇您的解決方案。IMT MetroCluster您可以使用*元件總管*來選取元件和ONTAP 更新版本、以精簡搜尋範圍。您可以按一下「*顯示結果*」來顯示符合條件的支援組態清單。
+
+* 您只能在執行ONTAP 版本號為9.4或更新版本的組態中、於FIBreBridge 7600N或7500N橋接器上使用此工作。
+* 您必須在MetroCluster 每個採用「支援」組態的光纖橋接器上執行此工作、以便所有的橋接器都能執行相同的韌體版本。
+
+
+
+NOTE: 此程序不中斷營運、約需30分鐘完成。
+
+
+NOTE: 從ONTAP 功能組別9.8開始、「最小橋接器」命令會改為「系統橋接器」。以下步驟顯示了「shorage bridge」命令、但ONTAP 如果您執行的是更新版本的版本、最好使用「系統橋接器」命令。
+
+.步驟
+. 叫出AutoSupport 指示維護開始的消息：
++
+「系統節點AutoSupport 不支援呼叫節點*-type all -most maints=_maintening-window-in-thing__」
+
++
+「維護時段」指定維護時段的長度、最長72小時。如果維護作業在時間結束之前完成、您可以叫用AutoSupport 指示維護期間結束的資訊消息：
+
++
+「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+
+. 前往Atto FIBreBridge頁面、並為橋接器選取適當的韌體。
++
+https://mysupport.netapp.com/site/products/all/details/atto-fibrebridge/downloads-tab["Atto FibreBridge韌體下載頁面"^]
+
+. 檢閱「警示/ MustRead」和「終端使用者合約」、然後按一下核取方塊以表示接受並繼續。
+. 將韌體檔案放在可由控制器模組存取的網路位置。
++
+您可以從任一控制器模組的主控台、在其餘步驟中輸入命令。
+
+. 變更為進階權限層級：
++
+"進階權限"
+
++
+當系統提示您繼續進入進階模式、並看到進階模式提示（*>）時、您必須使用「y」回應。
+
+. 更新橋接器韌體：
++
+「torage bridge韌體更新-橋接器名稱-uri _url-of韌體套件_」
+
++
+[listing]
+----
+cluster_A> storage bridge firmware update -bridge bridge_A_1a -uri http://192.168.132.97/firmware.spf
+----
+. 返回管理權限層級：
++
+「et -priv. admin」
+
+. 確認韌體升級已完成：
++
+「jobshow -name "_job-name_"」
+
++
+以下範例顯示「靜態橋接韌體更新」工作仍在執行中：
+
++
+[listing]
+----
+cluster_A> job show -name "storage bridge firmware update"
+Owning
+
+Job ID Name                 Vserver    Node           State
+------ -------------------- ---------- -------------- ----------
+2246   job-name
+                            cluster_A
+                                       node_A_1
+                                                      Running
+Description: Storage bridge firmware update job
+----
++
+大約10分鐘後、新韌體就會完全安裝、工作狀態將會是「成功」：
+
++
+[listing]
+----
+cluster_A> job show -name "storage bridge firmware update"
+
+                            Owning
+Job ID Name                 Vserver    Node           State
+------ -------------------- ---------- -------------- ----------
+2246   Storage bridge firmware update
+                            cluster_A
+                                       node_A_1
+                                                      Success
+Description: Storage bridge firmware update job
+----
+. 請根據是否啟用頻內管理、ONTAP 以及系統執行的版本來完成步驟：
++
+** 如果您執行ONTAP 的是支援使用支援內頻管理的功能、則必須從橋接主控台發出命令：
++
+... 在橋接器的主控台執行「flashImages」命令、確認顯示正確的韌體版本。
++
+
+NOTE: 範例顯示主要Flash映像顯示新的韌體映像、而次要Flash映像則顯示舊映像。
+
+
+
+
+
++
+[listing]
+----
+flashimages
+
+ ;Type Version
+;=====================================================
+Primary 3.16 001H
+Secondary 3.15 002S
+Ready.
+----
++
+.. 從橋接器執行「firmwarerestart」命令、重新啟動橋接器。
++
+*** 如果您執行ONTAP 的是版本號為2、9.5或更新版本、則支援頻內管理、並可從叢集提示字元發出命令：
+
+
+.. 執行「storage bridge run－CLI -name _bridge-name_－command FlashImages」命令。
++
+
+NOTE: 範例顯示主要Flash映像顯示新的韌體映像、而次要Flash映像則顯示舊映像。
+
++
+[listing]
+----
+cluster_A> storage bridge run-cli -name ATTO_7500N_IB_1 -command FlashImages
+
+[Job 2257]
+
+;Type         Version
+;=====================================================
+Primary 3.16 001H
+Secondary 3.15 002S
+Ready.
+
+
+[Job 2257] Job succeeded.
+----
+.. 如有必要、請重新啟動橋接器：
++
+「torage bridge run－CLI -name Ato_7500N_IB_1 -command FirmwareRestart'」
+
++
+
+NOTE: 從Atto韌體2.95版開始、橋接器將自動重新啟動、不需要執行此步驟。
+
+
+
+. 確認橋接器已正確重新啟動：
++
+"syssconfig"
+
++
+系統應以纜線連接、以獲得多重路徑的高可用度（兩個控制器均可透過橋接器存取每個堆疊中的磁碟櫃）。
+
++
+[listing]
+----
+cluster_A> node run -node cluster_A-01 -command sysconfig
+NetApp Release 9.6P8: Sat May 23 16:20:55 EDT 2020
+System ID: 1234567890 (cluster_A-01); partner ID: 0123456789 (cluster_A-02)
+System Serial Number: 200012345678 (cluster_A-01)
+System Rev: A4
+System Storage Configuration: Quad-Path HA
+----
+. 驗證是否已更新過FIBreBridge韌體：
++
+「torage bridge show -功能 變數fW-version、symbol-name」
+
++
+[listing]
+----
+cluster_A> storage bridge show -fields fw-version,symbolic-name
+name fw-version symbolic-name
+----------------- ----------------- -------------
+ATTO_20000010affeaffe 3.10 A06X bridge_A_1a
+ATTO_20000010affeffae 3.10 A06X bridge_A_1b
+ATTO_20000010affeafff 3.10 A06X bridge_A_2a
+ATTO_20000010affeaffa 3.10 A06X bridge_A_2b
+4 entries were displayed.
+----
+. 確認磁碟分割已從橋接器的提示字元更新：
++
+《Flash映像》
+
++
+主要Flash映像會顯示新的韌體映像、次要Flash映像則會顯示舊映像。
+
++
+[listing]
+----
+Ready.
+flashimages
+
+;Type         Version
+;=====================================================
+   Primary    3.16 001H
+ Secondary    3.15 002S
+
+ Ready.
+----
+. 重複步驟5至10、確保兩個Flash映像都更新為相同版本。
+. 確認兩個Flash映像都已更新為相同版本。
++
+《Flash映像》
+
++
+輸出應顯示兩個分割區的相同版本。
+
++
+[listing]
+----
+Ready.
+flashimages
+
+;Type         Version
+;=====================================================
+   Primary    3.16 001H
+ Secondary    3.16 001H
+
+ Ready.
+----
+. 重複下一橋接器的步驟5到13、直到MetroCluster 更新完所有的更新。
+
+
+
+
+== 在執行ONTAP 不含更新版本或6500N橋接器的組態上、更新FIBreBridge 7500N上的韌體
+
+您可能需要更新您的FibreBridge橋接器上的韌體、以確保您擁有最新的功能或解決可能的問題。此程序應用於執行ONTAP 下列組態的FIBreBridge 7500N：執行支援版本ONTAP 之所有支援版本的更新版本上的支援版本。
+
+.開始之前
+* 此功能組態必須正常運作。MetroCluster
+* 所有採用此功能的橋接器MetroCluster 都必須啟動並運作。
+* 所有儲存路徑都必須可用。
+* 您需要管理員密碼、才能存取FTP或scp伺服器。
+* 您必須使用支援的韌體版本。
++
+https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"^]
+
++
+在這個解決方案領域、您可以使用儲存解決方案欄位來選擇您的解決方案。IMT MetroCluster您可以使用*元件總管*來選取元件和ONTAP 更新版本、以精簡搜尋範圍。您可以按一下「*顯示結果*」來顯示符合條件的支援組態清單。
+
+
+
+您可以將此工作搭配使用於FIBreBridge 7500N或6500N橋接器。從ONTAP 使用起來、您可以使用ONTAP 「flexbridge」儲存橋接器韌體更新命令來更新fIBreBridge 7500N橋接器上的橋接器韌體。
+
+link:task_update_firmware_on_a_fibrebridge_bridge_parent_topic.html["在執行ONTAP 版本號為9.4或更新版本的組態上、更新FIBreBridge 7600N或7500N上的韌體"]
+
+您必須在MetroCluster 每個採用「支援」組態的光纖橋接器上執行此工作、以便所有的橋接器都能執行相同的韌體版本。
+
+
+NOTE: 此程序不中斷營運、約需30分鐘完成。
+
+.步驟
+. 叫出AutoSupport 指示維護開始的消息：
++
+「系統節點AutoSupport 不支援呼叫節點*-type all -most maints=_maintening-window-in-thing__」
+
++
+「`_maintenance：window-in-inhid_'」指定維護所需時間、最長72小時。如果維護作業在時間結束之前完成、您可以叫用AutoSupport 指示維護期間結束的資訊消息：
+
++
+「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+
+. 前往Atto FIBreBridge頁面、並為橋接器選取適當的韌體。
++
+https://mysupport.netapp.com/site/products/all/details/atto-fibrebridge/downloads-tab["Atto FibreBridge韌體下載頁面"^]
+
+. 檢閱「警示/ MustRead」和「終端使用者合約」、然後按一下核取方塊以表示接受並繼續。
+. 請使用Atto FibreBridge韌體下載頁面上程序的步驟1到3下載橋接韌體檔案。
+. 複製Atto FIBEBridge韌體下載頁面和版本說明、以便在指示您更新每個橋接器上的韌體時參考。
+. 更新橋接器：
++
+.. 在光纖橋接器上安裝韌體。
++
+*** 如果您使用Atto FibreBridge 7500N橋接器、請參閱_Atto FibreBridge 7500N安裝與操作手冊_的「更新韌體」一節中所提供的指示。
+*** 如果您使用Atto FibreBridge 6500N橋接器、請參閱_Atto FibreBridge 6500N安裝與操作手冊_的「更新韌體」一節中所提供的指示。
++
+*注意：*請確定您現在已關閉個別橋接器的電源再開啟。如果您在堆疊中同時等待並重新啟動兩個橋接器、則控制器可能會失去對磁碟機的存取權、進而導致叢故障或多磁碟毀損。
+
++
+橋接器應重新啟動。
+
+
+
+.. 從任一控制器的主控台、確認橋接器已正確重新啟動：
++
+"syssconfig"
+
++
+系統應以纜線連接、以獲得多重路徑的高可用度（兩個控制器均可透過橋接器存取每個堆疊中的磁碟櫃）。
+
++
+[listing]
+----
+cluster_A::> node run -node cluster_A-01 -command sysconfig
+NetApp Release 9.1P7: Sun Aug 13 22:33:49 PDT 2017
+System ID: 1234567890 (cluster_A-01); partner ID: 0123456789 (cluster_A-02)
+System Serial Number: 200012345678 (cluster_A-01)
+System Rev: A4
+System Storage Configuration: Quad-Path HA
+----
+.. 從任一控制器的主控台、確認已更新過FIBreBridge韌體：
++
+「torage bridge show -功能 變數fW-version、symbol-name」
+
++
+[listing]
+----
+cluster_A::> storage bridge show -fields fw-version,symbolic-name
+ name              fw-version        symbolic-name
+ ----------------- ----------------- -------------
+ ATTO_10.0.0.1     1.63 071C 51.01   bridge_A_1a
+ ATTO_10.0.0.2     1.63 071C 51.01   bridge_A_1b
+ ATTO_10.0.1.1     1.63 071C 51.01   bridge_B_1a
+ ATTO_10.0.1.2     1.63 071C 51.01   bridge_B_1b
+ 4 entries were displayed.
+----
+.. 在同一橋接器上重複上述子步驟、以更新第二個分割區。
+.. 確認兩個分割區都已更新：
++
+《Flash映像》
+
++
+輸出應顯示兩個分割區的相同版本。
+
++
+[listing]
+----
+Ready.
+flashimages
+4
+;Type         Version
+;=====================================================
+Primary    2.80 003T
+Secondary    2.80 003T
+Ready.
+----
+
+
+. 在下一個橋接器上重複上一步、直到MetroCluster 更新完所有的更新版本為止。
+

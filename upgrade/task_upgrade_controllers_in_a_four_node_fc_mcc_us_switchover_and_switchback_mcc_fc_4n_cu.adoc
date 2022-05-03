@@ -1,0 +1,1548 @@
+---
+permalink: upgrade/task_upgrade_controllers_in_a_four_node_fc_mcc_us_switchover_and_switchback_mcc_fc_4n_cu.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, nondisruptive, controller, switchover, switchback, fc, configuration, net, boot, root, aggregate, mcc 
+summary: 您可以在MetroCluster 升級合作夥伴叢集上的控制器模組時、使用「支援交換」作業來為用戶端提供不中斷營運的服務。其他元件（例如儲存櫃或交換器）無法在此程序中進行升級。 
+---
+= 使用MetroCluster 切換和切換功能升級採用SFC組態的控制器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以在MetroCluster 升級合作夥伴叢集上的控制器模組時、使用「支援交換」作業來為用戶端提供不中斷營運的服務。其他元件（例如儲存櫃或交換器）無法在此程序中進行升級。
+
+.關於這項工作
+* 您只能將此程序用於控制器升級。
++
+組態中的其他元件（例如儲存櫃或交換器）無法同時升級。
+
+* 您可以將此程序搭配特定ONTAP 的版本使用：
++
+** 支援雙節點組態ONTAP 的版本可在支援的版本中使用。
+** 支援4和8個節點組態ONTAP 、可在支援的版本號為2、8。
++
+請勿將此程序用於執行ONTAP 9.8版之前版本之各種版本的四節點或八節點組態。
+
+
+
+* 您的原始與新平台必須相容且受到支援。
++
+https://hwu.netapp.com["NetApp Hardware Universe"]
+
++
+
+NOTE: 如果原始或新平台是FAS8020或AFF8020系統、而在FC-VI模式中使用連接埠1c和1d、請聯絡技術支援部門。
+
+* 此程序適用於MetroCluster 採用支援以支援功能支援功能的控制器模組（雙節點Stretch MetroCluster 、雙節點或雙節點或四節點Fabric附加MetroCluster 功能的支援功能）。
+* 組態中的所有控制器都應在相同的維護期間進行升級。
++
+在本維護活動之外、不支援以MetroCluster 不同控制器類型來操作此項支援。
+
+* 支援的升級途徑取決於原始平台模式。
++
+不支援含有內部磁碟櫃的平台機型。
+
++
+|===
+
+
+| 舊平台模式 | 全新平台模式 
+
+
+ a| 
+** FAS80x0
+** FAS8200
+
+ a| 
+** FAS8300
+
+
+
+
+ a| 
+** 部分A300 AFF
+** AFF80x0
+
+ a| 
+** 解答400 AFF
+** 部分A700 AFF
+
+
+|===
+
+
+
+NOTE: 在FC-VI模式中使用1c和1d連接埠時、不支援升級FAS8020或AFF8020。
+
+* 建議預先對應原始節點與新節點之間的儲存設備、FC與乙太網路連線。
+* 如果新平台的插槽數少於原始系統、或是連接埠類型較少或不同、您可能需要在新系統中新增介面卡。
++
+如需詳細資訊、請參閱 https://hwu.netapp.com/["NetApp Hardware Universe"^]
+
+
+
+本程序使用下列範例名稱：
+
+* 站台_A
++
+** 升級前：
++
+*** node_a_1-old
+*** node_a_2-old
+
+
+** 升級後：
++
+*** node_a_1-new
+*** node_a_2-new
+
+
+
+
+* 站台_B
++
+** 升級前：
++
+*** node_B_1-old
+*** node_B_2-old
+
+
+** 升級後：
++
+*** node_B_1-new
+*** node_B_2-new
+
+
+
+
+
+
+
+
+== 準備升級
+
+在對現有MetroCluster 的版本進行任何變更之前、您必須檢查組態的健全狀況、準備新平台、以及執行其他雜項工作。
+
+
+
+=== 驗MetroCluster 證資訊功能組態的健全狀況
+
+在執行升級之前、您必須先驗證MetroCluster 整個過程的健全狀況和連線能力。
+
+.步驟
+. 驗證MetroCluster 下列項目中的功能：ONTAP
++
+.. 檢查節點是否具有多路徑：+「節點執行-node-name_ sysconfig -A」
++
+您應該為MetroCluster Eflexeconfiguration中的每個節點發出此命令。
+
+.. 驗證組態中沒有損壞的磁碟：
++
+「torage disk show -dis中斷」
+
++
+您應該在MetroCluster Eflexeconfiguration中的每個節點上發出此命令。
+
+.. 檢查是否有任何健全狀況警示：
++
+「系統健全狀況警示顯示」
+
++
+您應該在每個叢集上發出此命令。
+
+.. 驗證叢集上的授權：
++
+「系統授權展示」
+
++
+您應該在每個叢集上發出此命令。
+
+.. 驗證連接至節點的裝置：
++
+「網路裝置探索秀」
+
++
+您應該在每個叢集上發出此命令。
+
+.. 確認兩個站台的時區和時間設定正確：
++
+「叢集日期顯示」
+
++
+您應該在每個叢集上發出此命令。您可以使用「叢集日期」命令來設定時間和時區。
+
+
+
+. 檢查交換器上是否有任何健全狀況警示（如果有）：
++
+「torage switchshow」
+
++
+您應該在每個叢集上發出此命令。
+
+. 確認MetroCluster 執行功能不正常的操作模式、並執行MetroCluster 功能不實的檢查。
++
+.. 確認MetroCluster 執行功能組態、並確認操作模式正常：
++
+《不看》MetroCluster
+
+.. 確認顯示所有預期節點：
++
+「不一樣的秀」MetroCluster
+
+.. 發出下列命令：
++
+《不一樣的跑程》MetroCluster
+
+.. 顯示MetroCluster 檢查結果：
++
+《不一樣的表演》MetroCluster
+
+
+
+. 使用MetroCluster 「資訊工具」檢查「資訊系統」的纜線。Config Advisor
++
+.. 下載並執行Config Advisor 更新。
++
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"]
+
+.. 執行Config Advisor 完功能後、請檢閱工具的輸出結果、並依照輸出中的建議來解決發現的任何問題。
+
+
+
+
+
+
+=== 將連接埠從舊節點對應至新節點
+
+您必須規劃將舊節點實體連接埠上的LIF對應至新節點上的實體連接埠。
+
+當新節點在升級程序期間首次開機時、會重新執行其所取代之舊節點的最新組態。當您開機node_a_1-new時ONTAP 、支援功能會嘗試在節點_a_1-old上使用的相同連接埠上裝載lifs。因此、在升級過程中、您必須調整連接埠和LIF組態、使其與舊節點的組態相容。在升級程序期間、您將在新舊節點上執行步驟、以確保叢集、管理和資料LIF組態正確無誤。
+
+下表顯示與新節點的連接埠需求相關的組態變更範例。
+
+[cols="1,1,3"]
+|===
+
+
+3+| 叢集互連實體連接埠 
+
+
+| 舊控制器 | 新控制器 | 必要行動 
+
+
+ a| 
+e0a、e0b
+ a| 
+E3A、e3b
+ a| 
+無相符的連接埠。升級後、您必須重新建立叢集連接埠。
+
+
+
+ a| 
+e0c、e0d
+ a| 
+e0a、e0b、e0c、e0d
+ a| 
+e0c和e0d是相符的連接埠。您不需要變更組態、但在升級之後、您可以將叢集生命量分散到可用的叢集連接埠。
+
+|===
+.步驟
+. 確定新控制器上可用的實體連接埠、以及連接埠上可裝載的LIF。
++
+控制器的連接埠使用量取決於平台模組、以及MetroCluster 您將使用哪些交換器來進行靜態IP組態。您可以從收集新平台的連接埠使用量 link:https://hwu.netapp.com["NetApp Hardware Universe"^]。
+
++
+同時識別FC-VI卡插槽的使用情況。
+
+. 規劃連接埠使用量、並視需要填寫下列表格、以供每個新節點參考。
++
+執行升級程序時、請參閱表格。
+
++
+|===
+
+
+|  3+| node_a_1-old 3+| node_a_1-new 
+
+
+| LIF | 連接埠 | IPspaces | 廣播網域 | 連接埠 | IPspaces | 廣播網域 
+
+
+ a| 
+叢集1
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+叢集2
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+叢集3
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+叢集4.
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+節點管理
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+叢集管理
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+資料1.
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+資料2.
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+資料3.
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+資料4.
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+SAN
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+叢集間連接埠
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+|===
+
+
+
+
+=== 在升級之前收集資訊
+
+在升級之前、您必須先收集每個節點的資訊、並視需要調整網路廣播網域、移除任何VLAN和介面群組、以及收集加密資訊。
+
+此工作是在現有MetroCluster 的不只是功能的基礎上執行。
+
+.步驟
+. 標示現有控制器的纜線、以便在設定新控制器時輕鬆識別纜線。
+. 收集MetroCluster 節點的系統ID（以「Sof the Sof the Sof the nodes in the Sof the S
++
+「MetroCluster 這個節點顯示欄位節點系統ID、DR-Partner SystemID」
+
++
+在更換程序期間、您將以新控制器模組的系統ID來取代這些系統ID。
+
++
+在此範例中、若為四節點MetroCluster 的SFC組態、則會擷取下列舊系統ID：
+
++
+** node_a_1-old：40687441258
+** node_a_2-old：4068741260
+** node_B_1-old：40687441254
+** node_B_2-old：40687441256
++
+[listing]
+----
+metrocluster-siteA::> metrocluster node show -fields node-systemid,ha-partner-systemid,dr-partner-systemid,dr-auxiliary-systemid
+dr-group-id   cluster                       node                   node-systemid          ha-partner-systemid     dr-partner-systemid    dr-auxiliary-systemid
+-----------        ------------------------- ------------------    -------------                   -------------------                 -------------------              ---------------------
+1                    Cluster_A                  Node_A_1-old   4068741258              4068741260                        4068741256                    4068741256
+1                    Cluster_A                    Node_A_2-old   4068741260              4068741258                        4068741254                    4068741254
+1                    Cluster_B                    Node_B_1-old   4068741254              4068741256                         4068741258                    4068741260
+1                    Cluster_B                    Node_B_2-old   4068741256              4068741254                        4068741260                    4068741258
+4 entries were displayed.
+----
++
+在此範例中、若為雙節點MetroCluster 的SFC組態、則會擷取下列舊系統ID：
+
+** 節點_a_1：40687441258
+** 節點_B_1：40687441254
+
+
++
+[listing]
+----
+metrocluster node show -fields node-systemid,dr-partner-systemid
+
+dr-group-id cluster    node      node-systemid dr-partner-systemid
+----------- ---------- --------  ------------- ------------
+1           Cluster_A  Node_A_1-old  4068741258    4068741254
+1           Cluster_B  node_B_1-old  -             -
+2 entries were displayed.
+----
+. 收集每個節點的連接埠和LIF資訊。
++
+您應該為每個節點收集下列命令的輸出：
+
++
+** 「網路介面show -role叢集、node-mgmt」
+** 「網路連接埠show -node-name_-type Physical」
+** 「網路連接埠VLAN show -node-name_」
+** 「網路連接埠ifgrp show -node_node_name_-instance」
+** 「網路連接埠廣播網域節目」
+** 「網路連接埠連線能力顯示-詳細資料」
+** 「網路IPSpace節目」
+** 「Volume show」
+** 《集合體展》
+** 「系統節點執行節點_norme-name_ sysconfig -A」
+
+
+. 如果MetroCluster 支援SAN組態、請收集相關資訊。
++
+您應該收集下列命令的輸出：
+
++
+** 「FCP介面卡顯示-instance」
+** 「FCP介面show -instance」
+** 「iSCSI介面展示」
+** 「ucadmin show」
+
+
+. 如果根磁碟區已加密、請收集並儲存用於金鑰管理程式的通關密碼：
++
+「安全金鑰管理程式備份展示」
+
+. 如果MetroCluster 這個節點正在使用磁碟區或集合體的加密功能、請複製金鑰和複製密碼的相關資訊。
++
+如需其他資訊、請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-1677AE0A-FEF7-45FA-8616-885AA3283BCF.html["手動備份內建金鑰管理資訊"]。
+
++
+.. 如果已設定Onboard Key Manager：
++
+「安全金鑰管理程式內建show Backup」
+
++
+稍後在升級程序中、您將需要密碼。
+
+.. 如果已設定企業金鑰管理（KMIP）、請發出下列命令：
++
+「安全金鑰管理程式外部show -instance」
+
++
+「安全金鑰管理程式金鑰查詢」
+
+
+
+
+
+
+
+=== 從斷路器或其他監控軟體移除現有組態
+
+如果現有的組態是以MetroCluster 可啟動切換的ESITTiebreaker組態或其他協力廠商應用程式（例如ClusterLion）來監控、則MetroCluster 在轉換之前、您必須先從斷路器或其他軟體移除該組態。
+
+.步驟
+. 從MetroCluster Tiebreaker軟體移除現有的部分組態。
++
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.hw-metrocluster-tiebreaker/GUID-34C97A45-0BFF-46DD-B104-2AB2805A983D.html["移除MetroCluster 部分組態"]
+
+. 從MetroCluster 任何可啟動切換的第三方應用程式移除現有的功能。
++
+請參閱應用程式的文件。
+
+
+
+
+
+=== 在維護前傳送自訂AutoSupport 的支援訊息
+
+在執行維護之前、您應發出AutoSupport 一份不知所知的訊息、通知NetApp技術支援部門正在進行維護。告知技術支援部門正在進行維護、可防止他們假設發生中斷、而開啟案例。
+
+此工作必須在每MetroCluster 個站台上執行。
+
+.步驟
+. 為了避免自動產生支援案例、請傳送AutoSupport 一個不全訊息來表示正在進行維護。
++
+.. 發出下列命令：
++
+「系統節點AutoSupport 不支援節點*-type all -most maints=_maintening-window-in-thing__」
+
++
+「維護時段」指定維護時段的長度、最長72小時。如果維護作業在時間結束之前完成、您可以叫用AutoSupport 指示維護期間結束的資訊消息：
+
++
+「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+
+.. 在合作夥伴叢集上重複執行命令。
+
+
+
+
+
+
+== 切換MetroCluster 整個過程
+
+您必須將組態切換為站台A、才能升級站台B上的平台。
+
+此工作必須在sSite _A上執行
+
+完成此工作之後、叢集_A會處於作用中狀態、並為兩個站台提供資料。叢集B處於非作用中狀態、準備開始升級程序、如下圖所示。
+
+image::../media/mcc_upgrade_cluster_a_in_switchover.png[MCC升級叢集A（在切換中）]
+
+.步驟
+. 切換MetroCluster 到站台A的支援、以便站台B的節點升級：
++
+.. 在叢集_A上發出下列命令：
++
+「不需要更換控制器」MetroCluster
+
++
+此作業可能需要數分鐘才能完成。
+
+.. 監控切換作業：
++
+《不穩定營運展》MetroCluster
+
+.. 作業完成後、請確認節點處於切換狀態：
++
+《不看》MetroCluster
+
+.. 檢查MetroCluster 不實節點的狀態：
++
+「不一樣的秀」MetroCluster
+
+
+
+. 修復資料集合體。
++
+.. 修復資料集合體：
++
+《資料整合的修復》MetroCluster
+
+.. 在MetroCluster 健全的叢集上執行「flexoperationshow」命令、確認修復作業已完成：
++
+[listing]
+----
+
+cluster_A::> metrocluster operation show
+  Operation: heal-aggregates
+      State: successful
+ Start Time: 7/29/2020 20:54:41
+   End Time: 7/29/2020 20:54:42
+     Errors: -
+----
+
+
+. 修復根Aggregate。
++
+.. 修復資料集合體：
++
+「修復根集合體」MetroCluster
+
+.. 在MetroCluster 健全的叢集上執行「flexoperationshow」命令、確認修復作業已完成：
++
+[listing]
+----
+
+cluster_A::> metrocluster operation show
+  Operation: heal-root-aggregates
+      State: successful
+ Start Time: 7/29/2020 20:58:41
+   End Time: 7/29/2020 20:59:42
+     Errors: -
+----
+
+
+
+
+
+
+== 準備舊控制器的網路組態
+
+為了確保新控制器上的網路能正常恢復、您必須將LIF移至通用連接埠、然後移除舊控制器的網路組態。
+
+.關於這項工作
+* 此工作必須在每個舊節點上執行。
+* 您將使用中收集的資訊 link:task_upgrade_controllers_in_a_four_node_fc_mcc_us_switchover_and_switchback_mcc_fc_4n_cu.html["將連接埠從舊節點對應至新節點"]。
+
+
+.步驟
+. 開機舊節點、然後登入節點：
++
+Boot_ONTAP
+
+. 將舊控制器上所有資料LIF的主連接埠指派給舊控制器模組和新控制器模組上相同的通用連接埠。
++
+.. 顯示生命：
++
+「網路介面展示」
+
++
+所有的資料生命期間（包括SAN和NAS）都會在切換站台（叢集_A）啟動、因此系統將會啟動並運作。
+
+.. 檢閱輸出、找出舊控制器和新控制器上相同的通用實體網路連接埠、而這些控制器並未用作叢集連接埠。
++
+例如、e0d是舊控制器上的實體連接埠、也會出現在新的控制器上。e0d不做為叢集連接埠、也不做為新控制器的其他端口。
+
++
+如需平台機型的連接埠使用量、請參閱 https://hwu.netapp.com/["NetApp Hardware Universe"]
+
+.. 修改所有資料生命期、以使用通用連接埠作為主連接埠：
++
+「網路介面修改-vserver _svm-name_-lif_data-lif_-home-port _port-id_」
+
++
+在下列範例中、此為「e0d」。
+
++
+例如：
+
++
+[listing]
+----
+network interface modify -vserver vs0 -lif datalif1 -home-port e0d
+----
+
+
+. 修改廣播網域以移除需要刪除的VLAN和實體連接埠：
++
+「廣播網域移除連接埠-broadcast網域_broadcast網域名稱_-ports _norme-name:port-id_」
+
++
+對所有VLAN和實體連接埠重複此步驟。
+
+. 使用叢集連接埠做為成員連接埠來移除任何VLAN連接埠、並使用叢集連接埠做為成員連接埠來移除ifgrps。
++
+.. 刪除VLAN連接埠：
++
+「網路連接埠VLAN刪除-node-name_-vlan-name _portID-vlanid_'
+
++
+例如：
+
++
+[listing]
+----
+network port vlan delete -node node1 -vlan-name e1c-80
+----
+.. 從介面群組移除實體連接埠：
++
+「網路連接埠ifgrp remove-port -node-name_-ifgrp _interface-group-name_-port _portID_」
+
++
+例如：
+
++
+[listing]
+----
+network port ifgrp remove-port -node node1 -ifgrp a1a -port e0d
+----
+.. 從廣播網域移除VLAN和介面群組連接埠：
++
+「網路連接埠廣播網域移除連接埠-IPSpace _IPspacity_-broadcast網域_broadcast網域名稱_-連接埠_nodename：連接埠名稱、節點名稱：連接埠名稱_、...」
+
+.. 根據需要修改介面群組連接埠、以使用其他實體連接埠作為成員：
++
+"ifgrp add-port -node-name_-ifgrp _interface-group名稱_-port _port-id_"
+
+
+
+. 停止節點：
++
+「halt -distrake-takeover true -node-name_」
+
++
+此步驟必須在兩個節點上執行。
+
+
+
+
+
+== 移除舊平台
+
+必須從組態中移除舊的控制器。
+
+此工作是在ssite B上執行
+
+.步驟
+. 連接至站台B上舊控制器的序列主控台（node_B_1-old和node_B_2-old）、並確認其顯示載入器提示。
+. 拔下node_B_1-old和node_B_2-old上的儲存設備和網路連線、並標示纜線、以便重新連接至新節點。
+. 從node_B_1-old和node_B_2-old拔下電源線。
+. 從機架中移除node_B_1-old和node_B_2-old控制器。
+
+
+
+
+== 設定新的控制器
+
+您必須在維護模式下機架安裝控制器、執行必要的設定、然後啟動控制器、並驗證控制器上的LIF組態。
+
+
+
+=== 設定新的控制器
+
+您必須將新的控制器裝入機架並連接纜線。
+
+.步驟
+. 視需要規劃新控制器模組和儲存櫃的定位。
++
+機架空間取決於控制器模組的平台模式、交換器類型、以及組態中的儲存櫃數量。
+
+. 請妥善接地。
+. 在機架或機櫃中安裝控制器模組。
++
+https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"^]
+
+. 如果新的控制器模組未隨附本身的FC-VI卡、且舊控制器的FC-VI卡與新的控制器相容、請交換FC-VI卡、並將其安裝在正確的插槽中。
++
+請參閱 link:https://hwu.netapp.com["NetApp Hardware Universe"^] 以取得FC-VI卡的插槽資訊。
+
+. 如《_ MetroCluster 》《安裝與組態指南_》所述、連接控制器的電源、序列主控台和管理連線。
++
+此時請勿連接任何其他與舊控制器中斷連線的纜線。
+
++
+https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"^]
+
+. 開啟新節點的電源、並在系統提示顯示載入器提示時按Ctrl-C。
+
+
+
+
+=== 新控制器的Netbooting
+
+安裝新節點之後、您需要netboot才能確保新節點執行的ONTAP 版本與原始節點相同。「netboot」一詞是指您從ONTAP 儲存在遠端伺服器上的不實映像進行開機。準備網路開機時、您必須將ONTAP 一份《支援》9開機映像複本放到系統可以存取的網路伺服器上。
+
+此工作會在每個新的控制器模組上執行。
+
+.步驟
+. 存取 https://mysupport.netapp.com/site/["NetApp 支援網站"^] 可下載用於執行系統netboot的文件。
+. 從ONTAP NetApp支援網站的軟體下載區段下載適當的支援軟體、並將ONTAP-VERSION _image.tgz檔案儲存在可從網路存取的目錄中。
+. 移至網路存取目錄、確認您所需的檔案可用。
++
+|===
+
+
+| 如果平台模式是... | 然後... 
+
+
+| FAS / AFF8000系列系統 | 將ONTAP-VERIN_image.tgzfile的內容解壓縮到目標目錄：tar -zxvf ontap-VERVER版本_image.tgz注意：如果您要在Windows上解壓縮內容、請使用7-Zip或WinRAR來擷取netboot映像。您的目錄清單應包含一個netboot資料夾、其中含有核心檔案：netboot/kernel 
+
+
+| 所有其他系統 | 您的目錄清單應包含一個含有核心檔案的netboot資料夾：ontap版本映像.tgz、您不需要擷取ontap版本映像.tgz檔案。 
+|===
+. 在載入程式提示下、設定管理LIF的netboot連線：
++
+** 如果IP定址為DHCP、請設定自動連線：
++
+「ifconfige0M -auto」
+
+** 如果IP定址為靜態、請設定手動連線：
++
+"ifconfige0M -addr=ip_addr -mask=netmask"'-gateway=gateway"
+
+
+
+. 執行netboot。
++
+** 如果平台是80xx系列系統、請使用下列命令：
++
+“netboot \http://web_server_ip/path_to_web-accessible_directory/netboot/kernel`
+
+** 如果平台是任何其他系統、請使用下列命令：
++
+“netboot \http://web_server_ip/path_to_web-accessible_directory/ontap-version_image.tgz`
+
+
+
+. 從開機功能表中、選取選項*（7）Install new software first*（先安裝新軟體*）、將新的軟體映像下載並安裝至開機裝置。
++
+ Disregard the following message: "This procedure is not supported for Non-Disruptive Upgrade on an HA pair". It applies to nondisruptive upgrades of software, not to upgrades of controllers.
+. 如果系統提示您繼續此程序、請輸入「y」、並在系統提示您輸入套件時、輸入映像檔的URL：「http://web_server_ip/path_to_web-accessible_directory/ontap-version_image.tgz`」
++
+....
+Enter username/password if applicable, or press Enter to continue.
+....
+. 當您看到類似下列的提示時、請務必輸入「n」以跳過備份恢復：
++
+....
+Do you want to restore the backup configuration now? {y|n}
+....
+. 當您看到類似於以下內容的提示時、輸入「y」重新開機：
++
+....
+The node must be rebooted to start using the newly installed software. Do you want to reboot now? {y|n}
+....
+
+
+
+
+=== 清除控制器模組上的組態
+
+[role="lead"]
+在使用全新的控制器模組MetroCluster 進行整個過程之前、您必須先清除現有的組態。
+
+.步驟
+. 如有必要、請停止節點以顯示載入程式提示：
++
+《停止》
+
+. 在載入程式提示下、將環境變數設定為預設值：
++
+「預設值」
+
+. 儲存環境：
++
+「aveenv」
+
+. 在載入程式提示下、啟動開機功能表：
++
+Boot_ONTAP功能表
+
+. 在開機功能表提示字元中、清除組態：
++
+《無花果》
+
++
+請對確認提示回應「是」。
+
++
+節點會重新開機、並再次顯示開機功能表。
+
+. 在開機功能表中、選取選項* 5*以將系統開機至維護模式。
++
+請對確認提示回應「是」。
+
+
+
+
+
+=== 還原HBA組態
+
+視控制器模組中是否有HBA卡及其組態而定、您必須針對站台的使用狀況正確設定這些卡。
+
+.步驟
+. 在維護模式中、設定系統中任何HBA的設定：
++
+.. 檢查連接埠的目前設定：「ucadmin show」
+.. 視需要更新連接埠設定。
+
+
++
+[cols="1,3"]
+|===
+
+
+| 如果您有此類型的HBA和所需模式... | 使用此命令... 
+
+
+ a| 
+CNA FC
+ a| 
+「ucadmin modify -m光纖信道-t啟動器_adapter-name_」
+
+
+
+ a| 
+CNA乙太網路
+ a| 
+「ucadmin modify -mode cna _adapter-name_」
+
+
+
+ a| 
+FC目標
+ a| 
+「fcadmin config -t target _adapter-name_」
+
+
+
+ a| 
+FC啟動器
+ a| 
+「fcadmin config -t啟動器_adapter-name_」
+
+|===
+. 結束維護模式：
++
+《停止》
+
++
+執行命令之後、請等到節點停止在載入程式提示字元。
+
+. 將節點開機回「維護」模式、使組態變更生效：
++
+Boot_ONTAP maint
+
+. 驗證您所做的變更：
++
+|===
+
+
+| 如果您有這種HBA類型... | 使用此命令... 
+
+
+ a| 
+CNA
+ a| 
+「ucadmin show」
+
+
+
+ a| 
+FC
+ a| 
+「fcadmin show」
+
+|===
+
+
+
+
+=== 在新的控制器和機箱上設定HA狀態
+
+您必須驗證控制器和機箱的HA狀態、並視需要更新狀態以符合您的系統組態。
+
+.步驟
+. 在維護模式中、顯示控制器模組和機箱的HA狀態：
++
+《ha-config show》
+
++
+所有元件的HA狀態應為MCC。
+
++
+|===
+
+
+| 如果MetroCluster 該組態有... | HA狀態應該是... 
+
+
+ a| 
+兩個節點
+ a| 
+MCC-2n
+
+
+
+ a| 
+四或八個節點
+ a| 
+MCC
+
+|===
+. 如果顯示的控制器系統狀態不正確、請設定控制器模組和機箱的HA狀態：
++
+|===
+
+
+| 如果MetroCluster 該組態有... | 發出這些命令... 
+
+
+ a| 
+*兩個節點*
+ a| 
+「ha-config modify控制器MCC-2n」
+
+「ha-config modify機箱MCC-2n」
+
+
+
+ a| 
+*四或八個節點*
+ a| 
+「ha-config modify控制器MCC」
+
+「ha-config modify機箱MCC」
+
+|===
+
+
+
+
+=== 重新指派根Aggregate磁碟
+
+使用先前收集的系統、將根Aggregate磁碟重新指派給新的控制器模組
+
+此工作會在維護模式中執行。
+
+舊系統ID已在中識別 link:task_upgrade_controllers_in_a_four_node_fc_mcc_us_switchover_and_switchback_mcc_fc_4n_cu.html["在升級之前收集資訊"]。
+
+本程序中的範例使用具有下列系統ID的控制器：
+
+|===
+
+
+| 節點 | 舊系統ID | 新系統ID 
+
+
+ a| 
+節點_B_1
+ a| 
+4068741254
+ a| 
+1574774970
+
+|===
+.步驟
+. 將所有其他連線連接至新的控制器模組（FC-VI、儲存設備、叢集互連等）。
+. 停止系統、並從載入程式提示字元開機至維護模式：
++
+Boot_ONTAP maint
+
+. 顯示node_B_1-old擁有的磁碟：
++
+「展示-A'」
+
++
+命令輸出顯示新控制器模組的系統ID（1574774970）。不過、根Aggregate磁碟仍為舊系統ID（40687441254）所有。此範例並未顯示MetroCluster 由其他節點所擁有的磁碟機、以供使用。
+
++
+[listing]
+----
+*> disk show -a
+Local System ID: 1574774970
+
+  DISK         OWNER                     POOL   SERIAL NUMBER    HOME                      DR HOME
+------------   -------------             -----  -------------    -------------             -------------
+...
+rr18:9.126L44 node_B_1-old(4068741254)   Pool1  PZHYN0MD         node_B_1-old(4068741254)  node_B_1-old(4068741254)
+rr18:9.126L49 node_B_1-old(4068741254)   Pool1  PPG3J5HA         node_B_1-old(4068741254)  node_B_1-old(4068741254)
+rr18:8.126L21 node_B_1-old(4068741254)   Pool1  PZHTDSZD         node_B_1-old(4068741254)  node_B_1-old(4068741254)
+rr18:8.126L2  node_B_1-old(4068741254)   Pool0  S0M1J2CF         node_B_1-old(4068741254)  node_B_1-old(4068741254)
+rr18:8.126L3  node_B_1-old(4068741254)   Pool0  S0M0CQM5         node_B_1-old(4068741254)  node_B_1-old(4068741254)
+rr18:9.126L27 node_B_1-old(4068741254)   Pool0  S0M1PSDW         node_B_1-old(4068741254)  node_B_1-old(4068741254)
+...
+----
+. 將磁碟機櫃上的根Aggregate磁碟重新指派給新的控制器：
++
+"Disk reassign-s _old-sysid_-d _new－sysid_"
+
++
+以下範例顯示磁碟機的重新指派：
+
++
+[listing]
+----
+*> disk reassign -s 4068741254 -d 1574774970
+Partner node must not be in Takeover mode during disk reassignment from maintenance mode.
+Serious problems could result!!
+Do not proceed with reassignment if the partner is in takeover mode. Abort reassignment (y/n)? n
+
+After the node becomes operational, you must perform a takeover and giveback of the HA partner node to ensure disk reassignment is successful.
+Do you want to continue (y/n)? Jul 14 19:23:49 [localhost:config.bridge.extra.port:error]: Both FC ports of FC-to-SAS bridge rtp-fc02-41-rr18:9.126L0 S/N [FB7500N107692] are attached to this controller.
+y
+Disk ownership will be updated on all disks previously belonging to Filer with sysid 4068741254.
+Do you want to continue (y/n)? y
+----
+. 檢查是否已按照預期重新指派所有磁碟：
++
+「尖碑秀」
+
++
+[listing]
+----
+*> disk show
+Local System ID: 1574774970
+
+  DISK        OWNER                      POOL   SERIAL NUMBER   HOME                      DR HOME
+------------  -------------              -----  -------------   -------------             -------------
+rr18:8.126L18 node_B_1-new(1574774970)   Pool1  PZHYN0MD        node_B_1-new(1574774970)  node_B_1-new(1574774970)
+rr18:9.126L49 node_B_1-new(1574774970)   Pool1  PPG3J5HA        node_B_1-new(1574774970)  node_B_1-new(1574774970)
+rr18:8.126L21 node_B_1-new(1574774970)   Pool1  PZHTDSZD        node_B_1-new(1574774970)  node_B_1-new(1574774970)
+rr18:8.126L2  node_B_1-new(1574774970)   Pool0  S0M1J2CF        node_B_1-new(1574774970)  node_B_1-new(1574774970)
+rr18:9.126L29 node_B_1-new(1574774970)   Pool0  S0M0CQM5        node_B_1-new(1574774970)  node_B_1-new(1574774970)
+rr18:8.126L1  node_B_1-new(1574774970)   Pool0  S0M1PSDW        node_B_1-new(1574774970)  node_B_1-new(1574774970)
+*>
+----
+. 顯示Aggregate狀態：
++
+「aggr狀態」
+
++
+[listing]
+----
+*> aggr status
+           Aggr            State       Status           Options
+aggr0_node_b_1-root    online      raid_dp, aggr    root, nosnap=on,
+                           mirrored                     mirror_resync_priority=high(fixed)
+                           fast zeroed
+                           64-bit
+----
+. 在合作夥伴節點（node_B_2-new）上重複上述步驟。
+
+
+
+
+=== 啟動新的控制器
+
+您必須從開機功能表重新啟動控制器、才能更新控制器Flash映像。如果已設定加密、則需要執行其他步驟。
+
+此工作必須在所有新控制器上執行。
+
+.步驟
+. 停止節點：
++
+《停止》
+
+. 如果已設定外部金鑰管理程式、請設定相關的bootargs：
++
+「bootarg.kmip.init.ipaddr _ip-address_」
+
++
+「bootarg.kmip.init.netmask網路遮罩_」
+
++
+「bootarg.kmip.init.gateway gateway-address_」
+
++
+"etenv bootarg.kmip.init.interface _interface-id_"
+
+. 顯示開機功能表：
++
+Boot_ONTAP功能表
+
+. 如果使用root加密、視ONTAP 使用的是哪個版本的資訊而定、請選取開機功能表選項、或是針對金鑰管理組態發出開機功能表命令。
++
+** 從ONTAP 功能表9.8開始、選取開機功能表選項。
++
+|===
+
+
+| 如果您使用... | 選取此開機功能表選項... 
+
+
+ a| 
+內建金鑰管理
+ a| 
+選項「'10'」
+
+依照提示提供必要的輸入、以恢復及還原金鑰管理程式組態。
+
+
+
+ a| 
+外部金鑰管理
+ a| 
+選項「'11'」
+
+依照提示提供必要的輸入、以恢復及還原金鑰管理程式組態。
+
+|===
+** 在更新版本的版本中、發出開機功能表命令。ONTAP
++
+|===
+
+
+| 如果您使用... | 在開機功能表提示字元中輸入此命令... 
+
+
+ a| 
+內建金鑰管理
+ a| 
+「主機蓋內建金鑰管理程式」
+
+
+
+ a| 
+外部金鑰管理
+ a| 
+「主機蓋外部索引管理程式」
+
+|===
+
+
+. 如果啟用自動開機、請按下CTRL - C來中斷自動開機
+. 從開機功能表中、執行選項「'6'」。
++
+
+NOTE: 選項「'6'」會在完成之前重新啟動節點兩次。
+
++
+對系統ID變更提示回應「y」。等待第二個重新開機訊息：
+
++
+[listing]
+----
+Successfully restored env file from boot media...
+
+Rebooting to load the restored env file...
+----
+. 再次檢查合作夥伴系統是否正確：
++
+《prontenv合作夥伴sysid》
+
++
+如果合作夥伴sysid不正確、請設定：
+
++
+「etenv合作夥伴sysid _Partner sysid_」
+
+. 如果使用root加密、視ONTAP 使用的是哪個版本的資訊而定、請選取開機功能表選項、或再次發出開機功能表命令、以進行金鑰管理組態。
++
+** 從ONTAP 功能表9.8開始、選取開機功能表選項。
++
+|===
+
+
+| 如果您使用... | 選取此開機功能表選項... 
+
+
+ a| 
+內建金鑰管理
+ a| 
+選項「'10'」
+
+依照提示提供必要的輸入、以恢復及還原金鑰管理程式組態。
+
+
+
+ a| 
+外部金鑰管理
+ a| 
+選項「'11'」
+
+依照提示提供必要的輸入、以恢復及還原金鑰管理程式組態。
+
+|===
++
+視金鑰管理程式設定而定、請在第一個開機功能表提示字元中選取選項「10」或選項「11」、然後選取選項「6」、以執行還原程序。若要完全開機節點、您可能需要重複選項「1」（正常開機）的恢復程序。
+
+** 在更新版本的版本中、發出開機功能表命令。ONTAP
++
+|===
+
+
+| 如果您使用... | 在開機功能表提示字元中輸入此命令... 
+
+
+ a| 
+內建金鑰管理
+ a| 
+「主機蓋內建金鑰管理程式」
+
+
+
+ a| 
+外部金鑰管理
+ a| 
+「主機蓋外部索引管理程式」
+
+|===
++
+您可能需要在開機功能表提示字元中多次發出「主機蓋_xxxxxxxxxxxx_keymanager」命令、直到節點完全開機為止。
+
+
+
+. 開機節點：
++
+Boot_ONTAP
+
+. 等待替換的節點開機。
++
+如果任一節點處於接管模式、請執行恢復：
+
++
+"容錯移轉還原"
+
+. 確認所有連接埠都位於廣播網域中：
++
+.. 檢視廣播網域：
++
+「網路連接埠廣播網域節目」
+
+.. 視需要將任何連接埠新增至廣播網域。
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-003BDFCD-58A3-46C9-BF0C-BA1D1D1475F9.html["從廣播網域新增或移除連接埠"]
+
+.. 將用於託管叢集間生命體的實體連接埠新增至對應的Broadcast網域。
+.. 修改叢集間的LIF、將新的實體連接埠當作主連接埠使用。
+.. 在叢集間生命體啟動之後、請檢查叢集對等端點狀態、並視需要重新建立叢集對等端點。
++
+您可能需要重新設定叢集對等關係。
+
++
+link:../install-fc/concept_configure_the_mcc_software_in_ontap.html#peering-the-clusters["建立叢集對等關係"]
+
+.. 視需要重新建立VLAN和介面群組。
++
+VLAN和介面群組成員資格可能與舊節點不同。
+
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-8929FCE2-5888-4051-B8C0-E27CAF3F2A63.html["建立VLAN"^]
+
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EAB7-430A-A773-4E3420EE2AA1.html["結合實體連接埠以建立介面群組"^]
+
+
+
+. 如果使用加密、請使用適用於金鑰管理組態的正確命令來還原金鑰。
++
+|===
+
+
+| 如果您使用... | 使用此命令... 
+
+
+ a| 
+內建金鑰管理
+ a| 
+「安全金鑰管理程式內建同步」
+
+如需詳細資訊、請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-E4AB2ED4-9227-4974-A311-13036EB43A3D.html["還原內建金鑰管理加密金鑰"^]。
+
+
+
+ a| 
+外部金鑰管理
+ a| 
+「安全金鑰管理程式外部還原-vserver _svm_-node_node_-key-server _host_name | ip_address: port_-key-id key_id -key-tag key_tag _node-name_」
+
+如需詳細資訊、請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-32DA96C3-9B04-4401-92B8-EAF323C3C863.html["還原外部金鑰管理加密金鑰"^]。
+
+|===
+
+
+
+
+=== 正在驗證LIF組態
+
+在切換回復之前、請先確認將l生命 存放在適當的節點/連接埠上。需要執行下列步驟
+
+此工作是在站台B上執行、節點已使用根集合體開機。
+
+.步驟
+. 在進行切換之前、請先確認正式作業存放在適當的節點和連接埠上。
++
+.. 變更為進階權限層級：
++
+"進階權限"
+
+.. 置換連接埠組態以確保正確放置LIF：
++
+「vserver config override -command「network interface modify」-vserver _vserver_name_-home-port _active_port_after升級_-lif_lif_name_-home-node_new_norme_name_」
+
++
+在「vserver config override」命令中輸入「network interface modify」命令時、您無法使用標籤自動完成功能。您可以使用autosplete建立「網路介面修改」、然後以「vserver config override」命令將其包含在內。
+
+.. 返回管理員權限等級：+「設置權限管理」
+
+
+. 將介面還原至其主節點：
++
+「網路介面回復*-vserver _vserver名稱_」
+
++
+視需要在所有SVM上執行此步驟。
+
+
+
+
+
+== 切換回復MetroCluster 到該組態
+
+設定好新的控制器之後、您可以切換回MetroCluster 該組態、使組態恢復正常運作。
+
+在本工作中、您將執行切換回復作業、將MetroCluster 該組態恢復正常運作。站台上的節點仍在等待升級。
+
+image::../media/mcc_upgrade_cluster_a_switchback.png[MCC升級叢集A切換回復]
+
+.步驟
+. 在se_B上輸入「MetroCluster flexnodeshow」命令、然後檢查輸出。
++
+.. 驗證新節點的顯示是否正確。
+.. 確認新節點處於「等待切換回復狀態」。
+
+
+. 切換叢集：
++
+《還原》MetroCluster
+
+. 檢查切換回復作業的進度：
++
+《不看》MetroCluster
+
++
+當輸出顯示「waiting for switchback」（等待切換）時、切換作業仍在進行中：
+
++
+[listing]
+----
+cluster_B::> metrocluster show
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+ Local: cluster_B         Configuration state configured
+                          Mode                switchover
+                          AUSO Failure Domain -
+Remote: cluster_A         Configuration state configured
+                          Mode                waiting-for-switchback
+                          AUSO Failure Domain -
+----
++
+當輸出顯示「正常」時、即完成切換作業：
+
++
+[listing]
+----
+cluster_B::> metrocluster show
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+ Local: cluster_B         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain -
+Remote: cluster_A         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain -
+----
++
+如果切換需要很長時間才能完成、您可以使用「MetroCluster 更新組態複寫重新同步狀態show」命令來檢查進行中基準的狀態。此命令處於進階權限層級。
+
+
+
+
+
+== 檢查MetroCluster 不全組態的健全狀況
+
+升級控制器模組之後、您必須確認MetroCluster 該組態的健全狀況。
+
+此工作可在MetroCluster 任何節點上執行、以進行不受限的組態設定。
+
+.步驟
+. 驗MetroCluster 證下列各項的功能：
++
+.. 確認MetroCluster 執行功能組態、並確認操作模式正常：
++
+《不看》MetroCluster
+
+.. 執行功能檢查：MetroCluster
++
+《不一樣的跑程》MetroCluster
+
+.. 顯示MetroCluster 檢查結果：
++
+《不一樣的表演》MetroCluster
+
+
+
+
+
+
+
+== 正在升級叢集_A上的節點
+
+您必須重複叢集A上的升級工作
+
+.步驟
+. 重複步驟以升級叢集A上的節點、從開始 link:task_upgrade_controllers_in_a_four_node_fc_mcc_us_switchover_and_switchback_mcc_fc_4n_cu.html["準備升級"]。
++
+執行工作時、所有叢集和節點的參考範例都會反轉。例如、當範例是從叢集_A切換時、您將從叢集_B切換
+
+
+
+
+
+== 維護後傳送自訂AutoSupport 的資訊
+
+完成升級之後、您應該傳送AutoSupport 一個不完整的訊息、指出維護已結束、以便繼續自動建立個案。
+
+.步驟
+. 若要恢復自動產生支援案例、請傳送AutoSupport 一個不完整的訊息、表示維護已完成。
++
+.. 發出下列命令：
++
+「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+
+.. 在合作夥伴叢集上重複執行命令。
+
+
+
+
+
+
+== 還原斷路器監控
+
+如果MetroCluster 先前已將此組態設定為由斷路器軟體進行監控、您可以還原斷路器連線。
+
+. 請執行中的步驟 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.hw-metrocluster-tiebreaker/GUID-7259BCA4-104C-49C6-BAD0-1068CA2A3DA5.html["新增MetroCluster 功能"^] _ MetroCluster 此為_資料斷路器安裝與組態_。
+

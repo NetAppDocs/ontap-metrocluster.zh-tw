@@ -1,0 +1,153 @@
+---
+permalink: manage/concept_monitoring_and_protecting_database_validity_by_using_nvfail.html 
+sidebar: sidebar 
+keywords: monitor, protect, file, system, consistency, nvfail, parameter, volume, modify, enable, detect, nonvolatile, nvram, switchover, recover, impact, access, nfs, volume, lun, command, monitor, data, loss, event, access 
+summary: Volume modify命令的-nvfail參數可讓ONTAP 人在系統開機或進行切換作業後、偵測非揮發性RAM（NVRAM）的不一致性。它也會警告您、保護系統不受資料存取和修改、直到手動恢復磁碟區為止。 
+---
+= 使用NVFIL監控及保護檔案系統一致性
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用Volume modify命令的「-nvfail」參數、ONTAP 當系統開機或切換作業後、即可偵測非揮發性RAM（NVRAM）的不一致性。它也會警告您、保護系統不受資料存取和修改、直到手動恢復磁碟區為止。
+
+如果檢測到任何問題、資料庫或檔案系統執行個體將停止回應或關機。ONTAP接著、將錯誤訊息傳送至主控台、以警示您檢查資料庫或檔案系統的狀態。ONTAP您可以啟用NVFIL、以警告資料庫管理員叢集節點之間的NVRAM不一致、可能會影響資料庫的有效性。
+
+在容錯移轉或開機還原期間、NVRAM資料遺失之後、NFS用戶端必須先清除NVFIL狀態、才能從任何節點存取資料。CIFS用戶端不受影響。
+
+
+
+== NVFIL 如何影響 NFS 磁碟區或 LUN 的存取
+
+當ONTAP 下列情況時、NVFIL狀態會設定為：當開機時、MetroCluster 發生畫面切換作業時、或是在HA接管作業期間（如果已在Volume上設定NVFIL選項）偵測到NVRAM錯誤。如果在啟動時未偵測到錯誤、則檔案服務會正常啟動。不過、如果偵測到NVRAM錯誤、或是在災難切換上強制執行NVFIL處理、ONTAP 則無法回應資料庫執行個體。
+
+當您啟用NVFIL選項時、下表所述的其中一個程序會在開機期間執行：
+
+|===
+
+
+| 如果... | 然後... 
+
+
+ a| 
+無法偵測到NVRAM錯誤ONTAP
+ a| 
+檔案服務正常啟動。
+
+
+
+ a| 
+檢測NVRAM錯誤ONTAP
+ a| 
+* 針對嘗試存取資料庫的NFS用戶端傳回過時的檔案控制代碼（ESTALE）錯誤、導致應用程式停止回應、當機或關機。ONTAP
++
+接著、將錯誤訊息傳送至系統主控台和記錄檔。ONTAP
+
+* 當應用程式重新啟動時、即使您尚未驗證檔案是否有效、CIFS用戶端仍可使用檔案。
++
+對於NFS用戶端、在受影響的磁碟區上重設「連線失敗狀態」選項之前、檔案仍無法存取。
+
+
+
+
+
+ a| 
+如果使用下列其中一個參數：
+
+* 已設定「Dr-force-nv故障」Volume選項
+* 已設定「force-nvfall-all」切換命令選項。
+
+ a| 
+如果管理員不希望強制NVFIL處理未來可能發生的災難切換作業、您可以在切換後取消設定「dr-force-nvFail」選項。對於NFS用戶端、在受影響的磁碟區上重設「連線失敗狀態」選項之前、檔案仍無法存取。
+
+
+NOTE: 使用「force-nv容 錯移轉」選項、可在災難切換期間處理的所有DR磁碟區上設定「dr-force-nv故障」選項。
+
+
+
+ a| 
+在包含LUN的磁碟區上偵測NVRAM錯誤ONTAP
+ a| 
+該磁碟區中的LUN會離線。必須清除磁碟區上的「In -nvfaile-state」選項、且必須將受影響磁碟區中的每個LUN連線、以清除LUN上的NVFIL屬性。您可以執行這些步驟來檢查LUN的完整性、並視需要從Snapshot複本或備份中恢復LUN。恢復磁碟區中的所有LUN之後、受影響磁碟區上的「In -nvfaile-state」選項就會清除。
+
+|===
+
+
+== 用於監控資料遺失事件的命令
+
+如果您啟用NVFIL選項、當系統因NVRAM不一致或MetroCluster 發生故障切換而當機時、您會收到通知。
+
+預設不會啟用NVFIL參數。
+
+[cols="1,2"]
+|===
+
+
+| 如果您想要... | 使用此命令... 
+
+
+ a| 
+在啟用NVFIL的情況下建立新的Volume
+ a| 
+「Volume create -nvail on」
+
+
+
+ a| 
+在現有磁碟區上啟用NVFIL
+ a| 
+"Volume modify"（Volume修改）
+
+*注意：*您將「-nv失敗」選項設為「開啟」、以在建立的Volume上啟用NVFIL。
+
+
+
+ a| 
+顯示NVFIL目前是否已針對指定的Volume啟用
+ a| 
+「Volume show」
+
+*注意：*您將「-Fields」參數設定為「nvFail」、以顯示指定Volume的NVFIL屬性。
+
+|===
+如需詳細資訊、請參閱每個命令的手冊頁。
+
+
+
+== 切換後存取NVFIL狀態的磁碟區
+
+切換後、您必須重設「volume modify」命令的「-in nvf失敗 狀態」參數、以清除NVFAIL狀態、以移除用戶端存取資料的限制。
+
+資料庫或檔案系統不得執行或嘗試存取受影響的Volume。
+
+設定「-in nvfaile-state」參數需要進階權限。
+
+.步驟
+. 使用Volume modify命令、將-in nvf故障 狀態參數設為假、以恢復磁碟區。
+
+
+如需檢查資料庫檔案有效性的指示、請參閱特定資料庫軟體的說明文件。
+
+如果您的資料庫使用LUN、請檢閱在NVRAM故障後、讓主機存取LUN的步驟。
+
+link:../manage/concept_monitoring_and_protecting_database_validity_by_using_nvfail.html["使用NVFIL監控及保護檔案系統一致性"]
+
+
+
+== 在切換後恢復NVFAIL狀態中的LUN
+
+切換後、主機將無法再存取NVFIL狀態之LUN上的資料。您必須執行許多動作、資料庫才能存取LUN。
+
+資料庫不得執行。
+
+.步驟
+. 重設「volume modify」命令的「-in nvf失敗 狀態」參數、清除裝載LUN之影響磁碟區上的NVFAIL狀態。
+. 使受影響的LUN上線。
+. 檢查LUN是否有任何資料不一致之處、並加以解決。
++
+這可能涉及使用SnapRestore 還原在儲存控制器上進行主機型的還原或還原。
+
+. 恢復LUN後使資料庫應用程式上線。
+

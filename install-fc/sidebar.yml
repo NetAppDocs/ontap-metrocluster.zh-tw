@@ -1,0 +1,225 @@
+---
+section: install-fc
+title: 安裝以網路為基礎MetroCluster 的功能
+entries:
+- title: 總覽
+  url: "/install-fc/index.html"
+- title: 準備MetroCluster 進行安裝
+  entries:
+  - title: 各個不相同的地方ONTAP MetroCluster
+    url: "/install-fc/concept_considerations_differences.html"
+  - title: 叢集對等
+    url: "/install-fc/concept_considerations_peering.html"
+  - title: 使用原生磁碟櫃或陣列LUN進行的不完整組態考量MetroCluster
+    url: "/install-fc/concept_considerations_array_luns.html"
+  - title: 從7-Mode轉換ONTAP 至VMware時的考量
+    url: "/install-fc/concept_considerations_7mt.html"
+  - title: ISL的考量
+    url: "/install-fc/concept_considerations_isls_mcfc.html"
+  - title: 使用TDM/WDM設備搭配架構附加MetroCluster 的功能的考量
+    url: "/install-fc/concept_tdm_wdm.html"
+  - title: 使用Brocade DCX 8510-8交換器的需求
+    url: "/install-fc/concept_considerations_8510.html"
+  - title: 使用無鏡射Aggregate時的考量
+    url: "/install-fc/concept_considerations_unmirrored_aggrs.html"
+  - title: 在景點使用防火牆MetroCluster
+    url: "/install-fc/concept_considerations_firewalls.html"
+- title: 針對您的組態選擇正確的安裝程序
+  url: "/install-fc/concept_choosing_the_correct_installation_procedure_for_your_configuration_mcc_install.html"
+- title: 纜線A連接架構MetroCluster 的不全配置
+  entries:
+  - title: 總覽
+    url: "/install-fc/task_configure_the_mcc_hardware_components_fabric.html"
+  - title: 部分的Fabric MetroCluster 架構不整組態
+    entries:
+    - title: 總覽
+      url: "/install-fc/concept_parts_of_a_fabric_mcc_configuration.html"
+    - title: 以架構組態顯示本機HA配對的圖例MetroCluster
+      url: "/install-fc/concept_illustration_of_the_local_ha_pairs_in_a_mcc_configuration.html"
+    - title: 備援FC對SAS橋接器的圖例
+      url: "/install-fc/concept_illustration_of_redundant_fc_to_sas_bridges.html"
+    - title: 備援FC交換器架構
+      url: "/install-fc/concept_redundant_fc_switch_fabrics.html"
+    - title: 叢集對等網路的圖例
+      url: "/install-fc/concept_cluster_peering_network_mcc.html"
+  - title: 所需MetroCluster 的功能部件和命名慣例
+    url: "/install-fc/concept_required_mcc_components_and_naming_conventions_fabric_mcc.html"
+  - title: FC交換器和FC對SAS橋接器的組態工作表
+    url: "/install-fc/reference_configuration_gathering_worksheet_for_fc_switches_and_fc_to_sas_bridges.html"
+  - title: 安裝MetroCluster 和連接線的元件
+    entries:
+    - title: 安裝硬體元件
+      url: "/install-fc/task_rack_the_hardware_components_mcc_fabric_and_ip.html"
+    - title: 將新控制器模組的FC-VI和HBA連接埠連接至FC交換器
+      url: "/install-fc/task_cable_the_controller_module_s_fc_vi_hba_ports_to_the_fc_switches_controller_to_fc_sw.html"
+    - title: 在MetroCluster 各個不景點之間連接ISL
+      url: "/install-fc/task_cable_the_isl_between_the_mcc_sites_fabric_config.html"
+    - title: 使用兩個啟動器連接埠的系統連接埠指派
+      url: "/install-fc/concept_port_assignments_for_systems_using_two_initiator_ports.html"
+    - title: FC交換器的連接埠指派（使用ONTAP 功能）9.0
+      url: "/install-fc/concept_port_assignments_for_fc_switches_when_using_ontap_9_0.html"
+    - title: FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）
+      url: "/install-fc/concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html"
+    - title: FC交換器的連接埠指派（使用AFF Arfe A900系統時）
+      url: "/install-fc/concept_AFF_A900_port_assign_fc_switches_ontap_9_1.html"
+      entries:
+      - title: 適用於執行版本更新版本的控制器的VA900 Brocade連接埠使用量AFF ONTAP
+        url: "/install-fc/concept_AFF_A900_brocade_port_config.html"
+      - title: 適用於執行版本更新版本的ISL的VA900 Brocade連接埠使用量AFF ONTAP
+        url: "/install-fc/concept_AFF_A900_brocade_port_ISLs.html"
+      - title: 執行不含更新版本的32個Cisco連接埠使用控制器AFF ONTAP
+        url: "/install-fc/concept_AFF_A900_cisco_port_config.html"
+      - title: 適用於執行版本更新版本的ISL的Cisco連接埠使用率AFF ONTAP
+        url: "/install-fc/concept_AFF_A900_cisco_ISLs.html"
+    - title: 使用八節點或四節點組態來連接叢集互連
+      url: "/install-fc/task_cable_the_cluster_interconnect_in_four_node_configurations.html"
+    - title: 連接叢集對等連線
+      url: "/install-fc/task_cable_the_cluster_peering_connections.html"
+    - title: 視需要連接HA互連線
+      url: "/install-fc/task_cable_the_ha_interconnect.html"
+    - title: 連接管理與資料連線
+      url: "/install-fc/task_cable_the_management_and_data_connections.html"
+  - title: 設定FC交換器
+    entries:
+    - title: 使用RCF檔案設定Brocade FC交換器
+      entries:
+      - title: 將Brocade FC交換器重設為原廠預設值
+        url: "/install-fc/task_reset_the_brocade_fc_switch_to_factory_defaults.html"
+      - title: 下載Brocade FC交換器RCF檔案
+        url: "/install-fc/task_download_the_brocade_fc_rcf_switch_software.html"
+      - title: 安裝Brocade FC交換器RCF檔案
+        url: "/install-fc/task_install_the_brocade_fc_switch_rcf_file.html"
+    - title: 使用RCF檔案設定Cisco FC交換器
+      entries:
+      - title: 將Cisco FC交換器重設為原廠預設值
+        url: "/install-fc/task_reset_the_cisco_fc_switch_to_factory_defaults.html"
+      - title: 下載並安裝Cisco FC交換器NX-OS軟體
+        url: "/install-fc/task_download_and_install_the_cisco_fc_switch_software.html"
+      - title: 下載並安裝Cisco FC RCF檔案
+        url: "/install-fc/task_download_and_install_the_cisco_fc_switch_rcf_files.html"
+    - title: 手動設定Brocade FC交換器
+      url: "/install-fc/task_fcsw_brocade_configure_the_brocade_fc_switches_supertask.html"
+    - title: 手動設定Cisco FC交換器
+      url: "/install-fc/task_fcsw_cisco_configure_a_cisco_switch_supertask.html"
+  - title: 安裝FC至SAS橋接器和SAS磁碟櫃
+    url: "/install-fc/task_fb_new_install.html"
+- title: 設定硬體、以便在轉換期間共用Brocade 6510 FC架構
+  entries:
+  - title: 總覽
+    url: "/install-fc/task_fmc_mcc_transition_configure_the_mcc_hardware_for_share_a_7_mode_brocade_6510_fc_fabric_dure_transition.html"
+  - title: 檢閱Brocade授權要求
+    url: "/install-fc/concept_fcsw_brocade_reviewing_brocade_license_requirements.html"
+  - title: 安裝硬體元件
+    url: "/install-fc/task_rack_the_hardware_components_mcc_fabric_and_ip.html"
+  - title: 將新MetroCluster 的架構控制器連接至現有的FC架構
+    url: "/install-fc/task_fmc_mcc_transition_cable_the_new_mcc_controllers_to_the_exist_fc_fabrics.html"
+  - title: 在7-Mode和叢集MetroCluster 式的VMware交換器架構組態之間設定交換器架構共享
+    entries:
+    - title: 停用其中一個交換器架構
+      url: "/install-fc/task_fmc_mcc_transition_disable_one_of_the_switch_fabrics.html"
+    - title: 刪除TI分區並設定IOD設定
+      url: "/install-fc/task_fmc_mcc_transition_configure_zone_and_qos.html"
+    - title: 確保ISL位於相同的連接埠群組中、並設定分區
+      url: "/install-fc/task_fmc_mcc_transition_ensure_isls_are_in_the_same_port_group_and_configure_zon.html"
+    - title: 重新啟用交換器架構並驗證作業
+      url: "/install-fc/task_fmc_mcc_transition_reenable_the_switch_fabric_and_verify_operation.html"
+- title: 在MetroCluster 不提供的情況下設定此功能ONTAP
+  url: "/install-fc/concept_configure_the_mcc_software_in_ontap.html"
+- title: 使用虛擬IP和邊界閘道傳輸協定搭配MetroCluster 使用的考量事項
+  url: "/install-fc/concept_considerations_for_using_virtual_ip_and_border_gateway_protocol_with_a_mcc_configuration.html"
+- title: 測試MetroCluster 該組態
+  url: "/install-fc/task_test_the_mcc_configuration.html"
+- title: 移除MetroCluster 不完整組態時的考量事項
+  url: "/install-fc/concept_considerations_when_removing_mcc_configurations.html"
+- title: 規劃並安裝MetroCluster 含有陣列LUN的不實組態
+  entries:
+  - title: 規劃MetroCluster 採用陣列LUN的不實組態
+    url: "/install-fc/concept_planning_for_a_mcc_configuration_with_array_luns.html"
+  - title: 支援MetroCluster 使用陣列LUN的支援功能
+    url: "/install-fc/reference_supported_mcc_configuration_with_array_luns.html"
+  - title: 使用陣列LUN進行動態組態的需求MetroCluster
+    url: "/install-fc/reference_requirements_for_a_mcc_configuration_with_array_luns_reference.html"
+  - title: 使用MetroCluster 陣列LUN在組態中安裝及連接不需使用的元件
+    entries:
+    - title: 使用MetroCluster 陣列LUN、以一套不含資源的組態來架裝硬體元件
+      url: "/install-fc/task_rack_the_hardware_components_in_a_mcc_configuration_with_array_luns.html"
+    - title: 準備儲存陣列以搭配ONTAP 使用
+      url: "/install-fc/task_prepare_a_storage_array_for_use_with_ontap_systems.html"
+    - title: 使用陣列LUN進行不必要的交換器連接埠MetroCluster 以進行不必要的組態設定
+      url: "/install-fc/concept_switch_ports_required_for_a_eight_node_mcc_configuration_with_array_luns.html"
+    - title: 使用MetroCluster 陣列LUN連接至以不含資訊的組態設定中的FC-VI和HBA連接埠
+      entries:
+      - title: 使用MetroCluster 陣列LUN連接雙節點架構附加的功能區塊組態中的FC-VI和HBA連接埠
+        url: "/install-fc/task_cable_the_fc_vi_and_hba_ports_to_switches_in_a_two_node_fabric_attached_mcc_configuration_with_array_luns.html"
+      - title: 使用MetroCluster 陣列LUN連接四節點架構附加的功能區、將FC-VI和HBA連接埠連接至陣列LUN
+        url: "/install-fc/task_cable_the_fc_vi_and_hba_ports_to_switches_in_a_four_node_fabric_attached_mcc_configuration_with_array_luns.html"
+      - title: 使用MetroCluster 陣列LUN連接八節點架構附加的功能區塊組態中的FC-VI和HBA連接埠
+        url: "/install-fc/task_cable_the_fc_vi_and_hba_ports_to_switches_in_an_eight_node_fabric_attached_mcc_configuration_with_array_luns.html"
+    - title: 使用MetroCluster 陣列LUN連接整個ISL以進行不整組態
+      url: "/install-fc/task_cable_the_isls_in_a_mcc_configuration_with_array_luns.html"
+    - title: 以八節點或四節點組態連接叢集互連
+      url: "/install-fc/task_cable_the_cluster_interconnect_in_four_node_configurations.html"
+    - title: 連接叢集對等連線
+      url: "/install-fc/task_cable_the_cluster_peering_connections.html"
+    - title: 視需要連接HA互連線
+      url: "/install-fc/task_cable_the_ha_interconnect.html"
+    - title: 連接管理與資料連線
+      url: "/install-fc/task_cable_the_management_and_data_connections.html"
+    - title: 將儲存陣列纜線連接MetroCluster 至採用不完整組態的FC交換器
+      entries:
+      - title: 總覽
+        url: "/install-fc/task_cable_storage_arrays_to_fc_switches_in_a_mcc_configuration.html"
+      - title: 將儲存陣列連接埠連接至雙節點MetroCluster 的FC交換器之纜線配置範例
+        url: "/install-fc/reference_example_of_cabling_array_luns_to_fc_switches_in_a_two_node_mcc_configuration.html"
+      - title: 將儲存陣列連接埠佈線至FC交換器的四節點MetroCluster 堆線範例
+        url: "/install-fc/reference_example_of_cabling_array_luns_to_fc_switches_in_a_four_node_mcc_configuration.html"
+      - title: 將儲存陣列連接埠連接至FC交換器的八節點MetroCluster 堆線範例
+        url: "/install-fc/reference_example_of_cabling_array_luns_to_fc_switches_in_an_eight_node_mcc_configuration.html"
+  - title: 以採用陣列LUN的功能進行交換器分區MetroCluster
+    entries:
+    - title: 以採用陣列LUN的架構進行交換器分區的需求MetroCluster
+      url: "/install-fc/reference_requirements_for_switch_zoning_in_a_mcc_configuration_with_array_luns.html"
+    - title: 以陣列LUN進行雙節點MetroCluster 列舉的交換器分區範例
+      url: "/install-fc/concept_example_of_switch_zoning_in_a_two_node_mcc_configuration_with_array_luns.html"
+    - title: 以陣列LUN為例、在四節點MetroCluster 的列舉架構中使用交換器分區
+      url: "/install-fc/concept_example_of_switch_zoning_in_a_four_node_mcc_configuration_with_array_luns.html"
+    - title: 以MetroCluster 陣列LUN進行八節點的列舉之交換器分區的範例
+      url: "/install-fc/concept_example_of_switch_zoning_in_an_eight_node_mcc_configuration_with_array_luns.html"
+  - title: 使用ONTAP 陣列LUN在MetroCluster 一個不含資訊的組態中設定
+    entries:
+    - title: 在維護模式中驗證及設定元件的HA狀態
+      url: "/install-fc/task_verify_the_ha_state_of_components_is_mcc_or_mcc_2n_in_maintenance_mode.html"
+    - title: 在ONTAP 僅使用陣列LUN的系統上設定功能
+      url: "/install-fc/task_configure_ontap_on_a_system_that_uses_only_array_luns.html"
+    - title: 設定叢集
+      url: "/install-fc/concept_setting_up_the_cluster.html"
+    - title: 安裝使用MetroCluster 以供在整個功能組態中使用陣列LUN的授權
+      url: "/install-fc/task_install_the_license_for_us_array_luns_in_a_mcc_configuration.html"
+    - title: 在FAS8020系統上的X1132A-R6四埠卡上設定FC-VI連接埠
+      url: "/install-fc/task_configure_fc_vi_ports_on_a_x1132a_r6_quad_port_card.html"
+    - title: 指派陣列LUN的擁有權
+      url: "/install-fc/task_assign_ownership_of_array_luns.html"
+    - title: 對等建立叢集
+      url: "/install-fc/task_peer_the_clusters_mcc_with_array_luns.html"
+    - title: 鏡射根Aggregate
+      url: "/install-fc/task_mirror_the_root_aggregates_mcc_with_array_luns.html"
+    - title: 建立MetroCluster 資料集合體、實作及驗證等功能組態
+      url: "/install-fc/task_create_data_aggregates_and_implement_the_configuration_mcc_with_array_luns.html"
+  - title: 實作MetroCluster 包含磁碟和陣列LUN的支援組態
+    entries:
+    - title: 總覽
+      url: "/install-fc/concept_implementing_a_mcc_configuration_with_both_disks_and_array_luns.html"
+    - title: 在MetroCluster 磁碟和陣列LUN上實作不實組態時的考量
+      url: "/install-fc/concept_considerations_for_implementing_a_mcc_configuration_with_disks_and_array_luns.html"
+    - title: 雙節點架構附加MetroCluster 的支援磁碟和陣列LUN的功能區組態範例
+      url: "/install-fc/reference_example_of_a_two_node_fabric_attached_mcc_configuration_with_disks_and_array_luns.html"
+    - title: 使用磁碟和陣列LUN進行四節點MetroCluster 的實體化組態範例
+      url: "/install-fc/concept_example_of_a_four_node_mcc_configuration_with_disks_and_array_luns.html"
+- title: 如何使用Active IQ Unified Manager 功能不全的系統ONTAP 管理程式來進一步設定及監控
+  entries:
+  - title: 使用 NTP 同步系統時間
+    url: "/install-fc/task_synchronize_the_system_time_us_ntp.html"
+- title: 在一個邊的組態中使用ONTAP 邊的考量MetroCluster
+  url: "/install-fc/concept_considerations_when_using_ontap_in_a_mcc_configuration.html"
+- title: 何處可找到其他資訊
+  url: "/install-fc/reference_where_to_find_additional_information_icg.html"

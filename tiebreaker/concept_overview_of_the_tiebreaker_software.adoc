@@ -1,0 +1,146 @@
+---
+permalink: tiebreaker/concept_overview_of_the_tiebreaker_software.html 
+sidebar: sidebar 
+keywords: helpful, understand, netapp, metrocluster, tiebreaker, software, distinguish, failure, monitor, configuration, cli, setting, operation, overview, software, detect, site, intersite, connectivity, disaster, type, detection, time, man, page 
+summary: 瞭解NetApp MetroCluster ESIT斷路 器軟體是什麼、以及它如何區分故障類型、MetroCluster 以便您有效監控您的故障組態、是很有幫助的。您可以使用tiebreaker CLI來管理設定、並監控MetroCluster 各種ESITE組態的狀態和運作。 
+---
+= Tiebreaker軟體總覽
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+瞭解NetApp MetroCluster ESIT斷路 器軟體是什麼、以及它如何區分故障類型、MetroCluster 以便您有效監控您的故障組態、是很有幫助的。您可以使用tiebreaker CLI來管理設定、並監控MetroCluster 各種ESITE組態的狀態和運作。
+
+
+
+== 使用NetApp MetroCluster 斷點器軟體偵測故障
+
+Tiebreaker軟體位於Linux主機上。只有當您想要監控兩個叢集、以及它們之間從第三個站台的連線狀態時、才需要Tiebreaker軟體。如此一來、叢集中的每個合作夥伴就能在站台間連結中斷時、與站台故障區隔ISL故障。
+
+在Linux主機上安裝tiebreaker軟體之後、您可以將叢集設定為MetroCluster 使用支援物件組態來監控災難情況。
+
+
+
+== Tiebreaker軟體如何偵測站台故障
+
+NetApp MetroCluster 斷續器軟體可檢查MetroCluster ESIE組態中節點的可到達性和叢集、以判斷是否發生站台故障。在某些情況下、斷路器軟體也會觸發警示。
+
+
+
+=== 由Tiebreaker軟體監控的元件
+
+Tiebreaker軟體可透過MetroCluster 多個路徑、建立冗餘連線至節點管理LIF和叢集管理LIF（兩者均裝載於IP網路上）、以監控整個ESIE組態中的每個控制器。
+
+Tiebreaker軟體監控MetroCluster 下列元件的ESITESE組態：
+
+* 透過本機節點介面建立節點
+* 透過叢集指定的介面進行叢集
+* 正常運作的叢集、評估它是否能連線至災難站台（非易失性互連、儲存設備和叢集間對等）
+
+
+當斷路器軟體與叢集內的所有節點和叢集本身之間的連線中斷時、叢集會被斷路器軟體宣告為「無法連線」。偵測連線失敗約需三到五秒。如果叢集無法從Tiebreaker軟體連線到、則仍在運作的叢集（仍可連線的叢集）必須指出、在Tiebreaker軟體觸發警示之前、所有與合作夥伴叢集的連結都會中斷。
+
+
+NOTE: 如果存續的叢集無法再透過FC（內華達互連和儲存設備）和叢集間對等、與災難站台上的叢集進行通訊、則所有連結都會中斷。
+
+
+
+=== 故障情況下、斷路器軟體會觸發警示
+
+當災難站台上的叢集（所有節點）關閉或無法連線、而存續站台上的叢集指出「AllLinksSevered」狀態時、Tiebreaker軟體會觸發警示。
+
+在下列情況下、Tiebreaker軟體不會觸發警示（或警示遭否決）：
+
+* 在八節點MetroCluster 的不全功能組態中、如果災難站台的一個HA配對中斷
+* 在災難站台上所有節點都關閉的叢集中、在正常運作的站台上有一個HA配對、而在正常運作站台上的叢集則會指出「AllLinksSevered'」狀態
++
+斷路器軟體會觸發警示、但ONTAP 不知該警示。在這種情況下、手動切換也會遭到否決
+
+* 在任何情況下、斷路器軟體可以到達至少一個節點或災難站台的叢集介面、或是在正常運作的站台仍可透過FC（內華達互連與儲存設備）或叢集間對等來到達災難站台的任一節點
+
+
+link:concept_risks_and_limitation_of_using_mcc_tiebreaker_in_active_mode.html["在MetroCluster 作用中模式中使用ESITirepreaker的風險和限制"]
+
+
+
+== Tiebreaker軟體如何偵測站台間連線故障
+
+當站台之間的所有連線中斷時、系統會發出關於這個問題的警示。MetroCluster
+
+
+
+=== 網路路徑類型
+
+視組態而定、MetroCluster 在兩個叢集之間有三種類型的網路路徑、採用一套樣的組態：
+
+* * FC網路（以架構附加MetroCluster 的功能性支援組態提供）*
++
+此類網路由兩個備援FC交換器架構組成。每個交換器架構都有兩個FC交換器、每個交換器架構的一個交換器與一個叢集共用。每個叢集都有兩個FC交換器、每個交換器架構各一個。所有節點都能與位於同一位置的FC交換器建立FC（NV-互連和FCP啟動器）連線。資料會透過ISL從叢集複寫至叢集。
+
+* *叢集間對等網路*
++
+此類網路由兩個叢集之間的備援IP網路路徑所組成。叢集對等網路提供鏡射儲存虛擬機器（SVM）組態所需的連線能力。一個叢集上所有的SVM組態都會由合作夥伴叢集鏡射。
+
+* * IP網路（MetroCluster 以不完整IP組態顯示）*
++
+此類網路由兩個備援IP交換器網路組成。每個網路都有兩個IP交換器、每個交換器的一個交換器與一個叢集共用。每個叢集都有兩個IP交換器、每個交換器架構各一個。所有節點均可連線至每個共置FC交換器。資料會透過ISL從叢集複寫至叢集。
+
+
+
+
+
+=== 監控站台間連線
+
+Tiebreaker軟體會定期從節點擷取站台間連線的狀態。如果內華達互連連連中斷、而且叢集間對等連線無法回應ping、則叢集會假設站台已隔離、而且斷路器軟體會觸發「'AllLinksSevered'」警示。如果叢集識別「AllLinksSevered」狀態、而其他叢集無法透過網路連線、則Tiebreaker軟體會觸發警示「disaster」。
+
+
+
+== 不同的災難類型如何影響Tiebreaker軟體偵測時間
+
+為了改善災難恢復規劃、MetroCluster Eetire斷路 器軟體需要一些時間來偵測災難。這段時間是「災難偵測時間」。本產品可在災難發生後30秒內偵測站台災難、並觸發災難恢復作業、通知您災難發生的相關資訊。MetroCluster
+
+偵測時間也取決於災難類型、在某些情況下可能超過30秒、大部分稱為「循環災難」。循環災難的主要類型如下：
+
+* 電力中斷
+* 恐慌
+* 停止或重新開機
+* 災難站台FC交換器遺失
+
+
+
+
+=== 電力中斷
+
+當節點停止運作時、Tiebreaker軟體會立即觸發警示。停電時、所有連線和更新（例如叢集間對等、非易失互連和信箱磁碟）都會停止。叢集無法連線、偵測災難與觸發（包括預設的5秒無聲時間）之間所需的時間不應超過30秒。
+
+
+
+=== 恐慌
+
+當站台之間的NV-互連連連連線中斷、而存續站台指出「AllLinksSevered」狀態時、斷路器軟體會觸發警示。只有在完成coredump程序之後、才會發生這種情況。在此案例中、從叢集無法到達到偵測災難所需的時間可能較長、或大約等於核心傾印程序所需的時間。在許多情況下、偵測時間超過30秒。
+
+如果節點停止運作、但未產生用於coredump程序的檔案、則偵測時間不應超過30秒。
+
+
+
+=== 停止或重新開機
+
+僅當節點當機、且存續站台指出「AllLinksSevered」狀態時、Tiebreaker軟體才會觸發警示。叢集無法連線至偵測災難之間所需的時間可能超過30秒。在此案例中、偵測災難所需的時間取決於災難站台節點關閉所需的時間。
+
+
+
+=== 在災難現場遺失FC交換器（網路附加MetroCluster 的功能不全組態）
+
+當節點停止運作時、Tiebreaker軟體會觸發警示。如果FC交換器遺失、節點會嘗試將磁碟路徑恢復約30秒。在此期間、節點會在對等網路上啟動並回應。當兩個FC交換器都當機且無法恢復磁碟路徑時、節點會產生MultiDisk故障錯誤並停止。FC交換器故障與節點產生MultiDisk故障 錯誤的次數之間所需的時間約為30秒。這額外30秒必須新增至災難偵測時間。
+
+
+
+== 關於tiebreaker CLI和手冊頁
+
+Tiebreaker CLI提供的命令可讓您遠端設定Tiebreaker軟體、並監控MetroCluster 整個系統的支援。
+
+CLI命令提示字元表示為NetApp MetroCluster ESITirepreaker：>。
+
+在命令提示字元中輸入適用的命令名稱、即可在CLI中使用手冊頁。

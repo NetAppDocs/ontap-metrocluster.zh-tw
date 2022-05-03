@@ -1,0 +1,26 @@
+---
+permalink: manage/task_heal_the_configuration_in_a_mcc_fc_configuration_supertask.html 
+sidebar: sidebar 
+keywords: switchover, perform, heal, operation, restore, metrocluster, functionality, fc, configuration 
+summary: 切換後、您必須執行特定的修復作業、才能還原MetroCluster 還原功能。 
+---
+= 修復MetroCluster 以不還原FC組態設定的組態
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+切換後、您必須執行特定的修復作業、才能還原MetroCluster 還原功能。
+
+* 必須執行切換、且存續站台必須提供資料。
+* 災難站台上的節點必須暫停或保持關機狀態。
++
+在修復過程中、不得完全開機。
+
+* 災難站台的儲存設備必須可供存取（磁碟櫃已開機、功能正常且可存取）。
+* 在網路附加MetroCluster 的不支援功能組態中、交換器間連結（ISL）必須啟動並運作。
+* 在四節點MetroCluster 的不完整組態中、正常運作站台中的節點不得處於HA容錯移轉狀態（每個HA配對的所有節點都必須啟動並執行）。
+
+
+修復作業必須先在資料集合體上執行、然後再在根集合體上執行。

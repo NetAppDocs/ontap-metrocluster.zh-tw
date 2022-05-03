@@ -1,0 +1,222 @@
+---
+permalink: transition/task_transition_the_mcc_fc_nodes_2n_mcc_transition_supertask.html 
+sidebar: sidebar 
+keywords: information, exist, metrocluster, fc, node, autosupport, message, announcing, announce, maintenance, transition, node, gather, controller, module, send, custom, message, prior, shut, down, removing, remove 
+summary: 您必須從現有MetroCluster 的支援中心節點收集資訊、傳送AutoSupport 資訊以宣佈開始維護、以及轉換節點。 
+---
+= 轉換MetroCluster 功能不只是功能不一的FC節點
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須從現有MetroCluster 的支援中心節點收集資訊、傳送AutoSupport 資訊以宣佈開始維護、以及轉換節點。
+
+
+
+== 在轉換之前從現有的控制器模組收集資訊
+
+[role="lead"]
+在轉換之前、您必須先收集每個節點的資訊。
+
+此工作會在現有節點上執行：
+
+* node_a_1-FC
+* node_B_1-FC
++
+.. 收集下表中命令的輸出。
+
+
+
+
+|===
+| 類別 | 命令 | 附註 
+
+
+| 授權 | 系統授權展示 |  
+
+
+| 每個磁碟櫃的磁碟櫃數、快閃儲存設備詳細資料、記憶體、NVRAM和網路卡 | 系統節點執行節點node_name sysconfig |  
+
+
+| 叢集網路和節點管理生命里 | 系統節點執行節點node_name sysconfig網路介面顯示-role "cluster、node-mgmt、data" |  
+
+
+| SVM資訊 | Vserver展示 |  
+
+
+| 傳輸協定資訊 | NFS顯示iSCSI顯示CIFS |  
+
+
+| 實體連接埠 | 網路連接埠show -node_name -type實體網路連接埠show |  
+
+
+| 容錯移轉群組 | 網路介面容錯移轉群組show -vserver vserver_name | 記錄非叢集範圍的容錯移轉群組名稱和連接埠。 
+
+
+| VLAN組態 | 網路連接埠VLAN show -node_name | 記錄每個網路連接埠和VLAN ID配對。 
+
+
+| 介面群組組態 | 網路連接埠ifgrp show -node_name -instance | 記錄介面群組的名稱及指派給它們的連接埠。 
+
+
+| 廣播網域 | 網路連接埠廣播網域show |  
+
+
+| IPSpace | 網路IPSpace展示 |  
+
+
+| Volume資訊 | Volume show和Volume show -功能變數加密 |  
+
+
+| Aggregate資訊 | 儲存Aggregate顯示與儲存Aggr加密顯示及儲存Aggregate物件存放區顯示 |  
+
+
+| 磁碟擁有權資訊 | 儲存Aggregate顯示與儲存Aggr加密顯示及儲存Aggregate物件存放區顯示 |  
+
+
+| 加密 | 儲存容錯移轉信箱磁碟顯示與安全金鑰管理程式備份顯示 | 同時保留用於啟用金鑰管理程式的通關密碼。在外部金鑰管理程式的情況下、您需要用戶端和伺服器的驗證資訊。 
+
+
+| 加密 | 安全金鑰管理程式顯示 |  
+
+
+| 加密 | 安全金鑰管理程式外部展示 |  
+
+
+| 加密 | systemShell本機kenv kmip.init.ipaddr IP位址 |  
+
+
+| 加密 | systemShell本機kenv kmip.init.netmask網路遮罩 |  
+
+
+| 加密 | systemShell本機kenv kmip.init.gateway閘道 |  
+
+
+| 加密 | systemShell本機kenv kmip.init.interface介面 |  
+|===
+
+
+== 在維護前傳送自訂AutoSupport 的支援訊息
+
+[role="lead"]
+在執行維護之前、您應發出AutoSupport 一份不知所知的訊息、通知NetApp技術支援部門正在進行維護。這可防止他們在假設發生中斷的情況下開啟案例。
+
+此工作必須在每MetroCluster 個站台上執行。
+
+. 為了避免自動產生支援案例、請傳送AutoSupport 一個不全訊息來表示正在進行維護。
++
+.. 發出下列命令：「System Node AutoSupport Eflexoke -Node *-type all -most mainten=maintening-tope-inter-hours」
++
+「maintenance－window-in－hours」（維護時段）指定維護時段的長度、最長72小時。如果維護作業在時間結束之前完成、您可以叫用AutoSupport 一則消息、指出維護期間結束：「系統節點AutoSupport 不支援節點*-type all -most maint=end'」
+
+.. 在合作夥伴叢集上重複執行命令。
+
+
+
+
+
+
+== 轉換、關機及移除MetroCluster 不含功能的FC節點
+
+[role="lead"]
+除了在EFCFC節點上發出命令MetroCluster 之外、這項工作還包括實體功能的啟用、以及在每個站台上移除控制器模組。
+
+此工作必須在每個舊節點上執行：
+
+* node_a_1-FC
+* node_B_1-FC
++
+.. 停止所有用戶端流量。
+.. 在任一MetroCluster 個支援功能不全的FC節點上、例如node_a_1-FC、啟用轉換功能。
++
+... 設定進階權限等級：「et -priv進階」
+... 實現轉換：MetroCluster 「支援「不間斷的轉換」
+... 返回管理模式：「et -priv admin」
+
+
+.. 刪除根Aggregate的遠端叢集、以取消鏡射根Aggregate。
++
+... 識別根集合體：「torage Aggregate show -root true」
+... 顯示Pool1集合體：「torage Aggregate plex show -pool 1」
+... 刪除根Aggregate的本機叢：「aggr plex刪除agg-name -plex名稱」
+... 離線根Aggregate的遠端叢：「aggr plex offline root-aggregate -plex reme-plex for root aggregate」
++
+例如：
+
++
+[listing]
+----
+ # aggr plex offline aggr0_node_A_1-FC_01 -plex plex4
+----
+
+
+.. 在每個控制器上使用下列命令之前、請先確認信箱數、磁碟自動指派和轉換模式：
++
+... 設定進階權限等級：「et -priv進階」
+... 確認每個控制器模組只顯示三個信箱磁碟機：「儲存容錯移轉信箱磁碟顯示」
+... 返回管理模式：「et -priv admin」
+... 確認轉換模式會中斷運作：MetroCluster 畫面上顯示「升級」
+
+
+.. 檢查是否有任何損壞的磁碟：「磁碟顯示-中斷」
+.. 移除或更換任何損壞的磁碟
+.. 在node_a_1-FC和node_B_1-FC上使用以下命令確認Aggregate是否正常：'shorage Aggregate show'shorage gregate plex show'
++
+storage Aggregate show命令表示根Aggregate未鏡射。
+
+.. 檢查是否有任何VLAN或介面群組：「network port ifgrp show」（網路連接埠VLAN show）
++
+如果沒有、請跳過下列兩個步驟。
+
+.. 使用VLAN或ifgrps顯示LIF清單：「network interface show -field home-port、curr-port'、network port show -type if-group | vlan」
+.. 移除任何VLAN和介面群組。
++
+您必須為所有SVM中的所有LIF執行這些步驟、包括具有-MC字尾的SVM。
+
++
+... 使用VLAN或介面群組將任何LIF移至可用的連接埠：「網路介面修改-vserver vserver-name -lif_name -home-port連接埠」
+... 顯示不在其主連接埠上的LIF：「network interface show -is-home"
+... 將所有LIF還原至各自的主連接埠：「網路介面還原-vserver vserver_name -lIF lif_name」
+... 驗證所有生命體是否都在其主端口上：「network interface show -is home-false」（網路介面show -is主目錄錯誤）
++
+輸出中不應顯示任何生命。
+
+... 從廣播網域移除VLAN和ifgrp連接埠：「網路連接埠廣播網域移除連接埠-IPSpace -廣播網域廣播網域名稱-連接埠節點名稱：連接埠名稱、節點名稱：連接埠名稱、...」
+... 驗證是否未將所有VLAN和ifgrp連接埠指派給廣播網域：「network port show -type if-group | vlan」
+... 刪除所有VLAN：「網路連接埠VLAN刪除-節點節點節點名稱-vlan-name vlan-name」
+... 刪除介面群組：「network port ifgrp delete -nodename -ifgrp ifgrp-name」
+
+
+.. 視需要移動任何生命期、以解決MetroCluster 與該功能之間的衝突。
++
+您必須移動的步驟1中識別的生命週期 link:concept_requirements_for_fc_to_ip_transition_2n_mcc_transition.html["將連接埠從MetroCluster 靜態FC節點對應至MetroCluster 靜態IP節點"]。
+
++
+... 將所需連接埠上裝載的任何LIF移至另一個連接埠：「網路介面修改-liflifname -vserver vserver-name -home-port new－homebport」（網路介面還原-liflifname -vserver vservername`）
+... 如有必要、請將目的地連接埠移至適當的IPspace和廣播網域。「網路連接埠廣播網域移除連接埠-IPSpace電流-IPSpace -broadcast網域電流廣播網域-port控制器名稱：電流連接埠'network port broadcast網域附加連接埠-IPSpace NET-IPSpace -broadcast網域new廣播網域-ports控制器名稱：new連接埠'
+
+
+.. 停止MetroCluster 支援功能的FC控制器（node_a_1-FC和node_B_1-FC）：「System Node halt」（系統節點停止）
+.. 在載入程式提示下、同步FC與IP控制器模組之間的硬體時鐘。
++
+... 在舊MetroCluster 版的支援節點（node_a_1-FC）上、顯示日期：「How date（顯示日期）」
+... 在新MetroCluster 的支援IP控制器（node_a_1-IP和node_B_1-IP）上、設定原始控制器上顯示的日期：「Set date mm/dd/y'（設定日期：月/日/年）」
+... 在新MetroCluster 的支援IP控制器（node_a_1-IP和node_B_1-IP）上、確認日期：「How date（顯示日期）」
+
+
+.. 停止並關閉MetroCluster 連接至這些節點的SESSFC控制器模組（node_a_1-FC和node_B_1-FC）、FC至SAS橋接器（若有）、FC交換器（若有）和每個儲存櫃。
+.. 將磁碟櫃從MetroCluster EFC控制器上拔下、並記錄每個叢集的本機儲存磁碟櫃。
++
+如果組態使用FC對SAS橋接器或FC後端交換器、請中斷連線並將其移除。
+
+.. 在「維護」模式中、於MetroCluster 支援中心節點（node_a_1-FC和node_b_1-FC）上確認未連接磁碟：「磁碟show -v」
+.. 關閉電源並移除MetroCluster 不支援的FC節點。
+
+
+
+
+此時MetroCluster 、已移除完不相連的不相連磁碟櫃、將其從所有控制器上拔下。
+
+image::../media/transition_2n_remove_fc_nodes.png[Transition 2n移除光纖通道節點]

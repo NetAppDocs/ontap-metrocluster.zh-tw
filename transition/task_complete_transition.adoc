@@ -1,0 +1,106 @@
+---
+permalink: transition/task_complete_transition.html 
+sidebar: sidebar 
+keywords: Generating and applying RCFs to the new IP switches, review, requirement, preparing, prepare, transition, perform, procedure, order, completing, complete, step, task, moving, move, controller, storage, shelves, shelf, exist, configuration, direct, metrocluster, fc, ip, verify, health, removing, remove, tiebreaker, monitor, software, generating, generate, apply, rcf, switch, controller, configure, prepare, preparing 
+summary: 若要準備轉換組態、您可以將新節點新增至現有MetroCluster 的版本資訊功能組態、然後將資料移至新節點。 
+---
+= 完成轉換
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+若要完成轉換、您必須驗證新MetroCluster 版的整套功能。
+
+. 驗MetroCluster 證靜態IP組態。
++
+您必須在每個叢集上執行此步驟。
+
++
+下列範例顯示叢集A的輸出
+
++
+....
+cluster_A::> cluster show
+Node                 Health  Eligibility   Epsilon
+-------------------- ------- ------------  ------------
+node_A_1-IP          true    true          true
+node_A_2-IP          true    true          false
+2 entries were displayed.
+
+cluster_A::>
+....
++
+下列範例顯示叢集B的輸出
+
++
+....
+cluster_B::> cluster show
+Node                 Health  Eligibility   Epsilon
+-------------------- ------- ------------  ------------
+node_B_1-IP          true    true          true
+node_B_2-IP          true    true          false
+2 entries were displayed.
+
+cluster_B::>
+....
+. 啟用叢集HA和儲存容錯移轉。
++
+您必須在每個叢集上執行此步驟。
+
+. 確認已啟用叢集HA功能。
++
+....
+cluster_A::> cluster ha show
+High Availability Configured: true
+
+cluster_A::>
+
+
+cluster_A::> storage  failover show
+                              Takeover
+Node           Partner        Possible State Description
+-------------- -------------- -------- -------------------------------------
+node_A_1-IP    node_A_2-IP    true     Connected to node_A_2-IP
+node_A_2-IP    node_A_1-IP    true     Connected to node_A_1-IP
+2 entries were displayed.
+
+cluster_A::>
+....
+. 停用MetroCluster 「轉換」模式。
++
+.. 變更為進階權限等級：「et -priv榮幸 進階」
+.. 停用轉換模式：「metrocluster Transition disable'」
+.. 返回管理員權限等級：「et -priv. admin」
+
+
++
+....
+cluster_A::*> metrocluster transition disable
+
+cluster_A::*>
+....
+. 驗證轉換是否已停用：「metrocluster Transition show-mode'（metrocluster Transition show-mode）」
++
+您必須在兩個叢集上執行這些步驟。
+
++
+....
+cluster_A::> metrocluster transition show-mode
+Transition Mode
+--------------------------
+not-enabled
+
+cluster_A::>
+....
++
+....
+cluster_B::> metrocluster transition show-mode
+Transition Mode
+--------------------------
+not-enabled
+
+cluster_B::>
+....
+

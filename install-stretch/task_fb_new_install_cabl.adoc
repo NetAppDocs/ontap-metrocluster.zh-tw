@@ -1,0 +1,14 @@
+---
+permalink: install-stretch/task_fb_new_install_cabl.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, cable, disk, shelves, bridges 
+summary: 您必須使用正確的FC對SAS橋接器來連接磁碟櫃的纜線。 
+---
+= 將磁碟櫃連接至橋接器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須使用正確的FC對SAS橋接器來佈線這些磁碟櫃。

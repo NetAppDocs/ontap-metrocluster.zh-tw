@@ -1,0 +1,17 @@
+---
+permalink: install-fc/concept_considerations_when_removing_mcc_configurations.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, remove, configuration, disk connectivity, interconnects, adjust 
+summary: 您可以從MetroCluster 「還原」組態中的所有節點或MetroCluster 災難恢復（DR）群組中的所有節點移除「還原」組態。 
+---
+= 移除MetroCluster 不完整組態時的考量事項
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以從MetroCluster 「還原」組態中的所有節點或MetroCluster 災難恢復（DR）群組中的所有節點移除「還原」組態。移除MetroCluster 完「支援」組態之後、所有磁碟連線和互連都應調整為支援狀態。如果您需要移除MetroCluster 該組態、請聯絡技術支援部門。
+
+
+IMPORTANT: 您無法反轉MetroCluster 無法組態的功能。此程序只能在技術支援的協助下完成。

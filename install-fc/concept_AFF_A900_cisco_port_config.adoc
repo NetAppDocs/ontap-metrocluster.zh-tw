@@ -1,0 +1,162 @@
+---
+permalink: install-fc/concept_AFF_A900_cisco_port_config.html 
+sidebar: sidebar 
+keywords: AFF, A900, Cisco, ONTAP, FAS, FC, metrocluster 
+summary: 下表顯示支援的最大組態、AFF DR群組中有八個支援的Ar21 A900控制器模組。 
+---
+= Cisco連接埠使用功能適用於AFF 執行版本更新版本的32位元組態中的32位元組態的32位元組態MetroCluster ONTAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+下表顯示支援的最大組態、AFF DR群組中有八個支援的Ar21 A900控制器模組。
+
+[NOTE]
+====
+* 下表顯示具有八個FC-VI連接埠的系統。支援8個FC-VI連接埠（適用於FC-VI-1和FC-VI-2的A、b、c和d）AFF 。
+* 9132T交換器不支援使用2或DR 2。MetroCluster
+
+
+====
+|===
+
+
+6+| 使用光纖通道連接埠（FC1和FC2）的Fibre Bridge 7500N或7600N組態 
+
+
+6+| 支援1或DR群組1 MetroCluster 
+
+
+2.2+| 元件 .2+| 連接埠 3+| Cisco交換器模式 
+
+
+| 連線至FC_SWITCH ... | 9132T（1個LEM） | 9132T（2個LEM） 
+
+
+2.12+| 控制器_x_1 | FC-VI-1連接埠A | 1. | LEM1-1. | LEM1-1. 
+
+
+| FC-VI-1連接埠b | 2. | LEM1-1. | LEM1-1. 
+
+
+| FC-VI-1連接埠c | 1. | LEM1-2 | LEM1-2 
+
+
+| FC-VI-1連接埠d | 2. | LEM1-2 | LEM1-2 
+
+
+| FC-VI-2連接埠A | 1. | LEM1-3 | LEM1-3 
+
+
+| FC-VI-2連接埠b | 2. | LEM1-3 | LEM1-3 
+
+
+| FC-VI-2連接埠c | 1. | LEM1-4 | LEM1-4 
+
+
+| FC-VI-2連接埠d | 2. | LEM1-4 | LEM1-4 
+
+
+| HBA連接埠A | 1. | LEM1-5 | LEM1-5 
+
+
+| HBA連接埠b | 2. | LEM1-5 | LEM1-5 
+
+
+| HBA連接埠c | 1. | LEM1-6 | LEM1-6 
+
+
+| HBA連接埠d | 2. | LEM1-6 | LEM1-6 
+
+
+2.12+| Controller（控制器）_x_2 | FC-VI-1連接埠A | 1. | LEM1-7. | LEM1-7. 
+
+
+| FC-VI-1連接埠b | 2. | LEM1-7. | LEM1-7. 
+
+
+| FC-VI-1連接埠c | 1. | LEM1-8 | LEM1-8 
+
+
+| FC-VI-1連接埠d | 2. | LEM1-8 | LEM1-8 
+
+
+| FC-VI-2連接埠A | 1. | LEM1-9. | LEM1-9. 
+
+
+| FC-VI-2連接埠b | 2. | LEM1-9. | LEM1-9. 
+
+
+| FC-VI-2連接埠c | 1. | LEM1-10. | LEM1-10. 
+
+
+| FC-VI-2連接埠d | 2. | LEM1-10. | LEM1-10. 
+
+
+| HBA連接埠A | 1. | LEM1-11. | LEM1-11. 
+
+
+| HBA連接埠b | 2. | LEM1-11. | LEM1-11. 
+
+
+| HBA連接埠c | 1. | LEM1-12 | LEM1-12 
+
+
+| HBA連接埠d | 2. | LEM1-12 | LEM1-12 
+
+
+.4+| 堆疊1 .2+| bride_x_1a. | FC1 | 1. | LEM1-13 | LEM1-13 
+
+
+| FC2 | 2. | LEM1-13 | LEM1-13 
+
+
+.2+| bride_x_1b. | FC1 | 1. | LEM1-14 | LEM1-14 
+
+
+| FC2 | 2. | LEM1-14 | LEM1-14 
+
+
+.4+| 堆疊2. .2+| bride_x_2a | FC1 | 1. | - | LEM1-15 
+
+
+| FC2 | 2. | - | LEM1-15 
+
+
+.2+| bride_x_2b | FC1 | 1. | - | LEM1-16 
+
+
+| FC2 | 2. | - | LEM1-16 
+
+
+.4+| 堆疊3 .2+| bride_x_3a | FC1 | 1. | - | LEM2-1. 
+
+
+| FC2 | 2. | - | LEM2-1. 
+
+
+.2+| bride_x_3b | FC1 | 1. | - | LEM2-2. 
+
+
+| FC2 | 2. | - | LEM2-2. 
+
+
+.4+| 堆疊y .2+| bride_x_ya | FC1 | 1. | - | LEM2-3. 
+
+
+| FC2 | 2. | - | LEM2-3. 
+
+
+.2+| bride_x_yb | FC1 | 1. | - | LEM2-4 
+
+
+| FC2 | 2. | - | LEM2-4 
+|===
+[NOTE]
+====
+* 可使用2個LEM模組、將額外的橋接器連接至連接埠LEM2-5至LEM2-8 in 9132T交換器。
+* 使用9132T交換器搭配1x LEM模組時、僅支援一（1）個橋接堆疊。
+
+
+====

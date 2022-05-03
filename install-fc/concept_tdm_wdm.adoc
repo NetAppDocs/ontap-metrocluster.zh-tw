@@ -1,0 +1,89 @@
+---
+permalink: install-fc/concept_tdm_wdm.html 
+sidebar: sidebar 
+keywords: preparing, prepare, metrocluster, mcc, installation, install, differences, configurations, between, considerations, all, san, array, asa, cluster, peering, prerequisites, dedicated, ports, sharing, data, ports, native, disk, shelves, array, luns, transitions, 7-mode, isls, tdm/wdm, fabric-attached, iod, ood, encryption, devices, unmirrored, aggregates, maintenance, requiring, power, shutdown, firewall, hardware, racking, cabling, setup, checklist, all san array, asa 
+summary: 當您準備MetroCluster 進行此版本的安裝時、您應該瞭解MetroCluster 到該系統的硬體架構和必要元件。 
+---
+= 使用TDM/WDM設備搭配架構附加MetroCluster 的功能的考量
+:allow-uri-read: 
+
+
+[role="lead"]
+此功能提供一些關於時間分複用（TDM）或分頻多工（WDM）設備必須符合的要求、才能使用連接網路的功能性的功能性資訊。Hardware Universe MetroCluster這些附註也包含各種組態的相關資訊、可協助您決定何時使用依序交付（IOD）框架或依訂單交付（ODE）框架。
+
+例如、TDM/WDM設備必須支援連結集合（主幹連線）功能與路由原則。框架的傳輸順序（IOD或OD）會保留在交換器內、並由有效的路由原則決定。
+
+https://hwu.netapp.com["NetApp Hardware Universe"]
+
+下表提供包含Brocade交換器和Cisco交換器的組態之路由原則：
+
+|===
+
+
+| 交換器 | 設定MetroCluster IOD的版次組態 | 設定MetroCluster 適用於ood的各種組態 
+
+
+ a| 
+Brocade
+ a| 
+* AptPolicy必須設為1
+* DLS必須設為「關」
+* 必須將IOD設為開啟
+
+ a| 
+* AptPolicy必須設為3
+* DLS必須設為「開啟」
+* IOD必須設為「關」
+
+
+
+
+ a| 
+Cisco
+ a| 
+FCVI指定VSAN的原則：
+
+* 負載平衡原則：srcid和dstid
+* 必須將IOD設為開啟
+
+
+儲存設備指定VSAN的原則：
+
+* 負載平衡原則：srcid、dstid和oxid
+* vSAN不得設定訂單保證選項
+
+ a| 
+不適用
+
+|===
+
+
+== 何時使用IOD
+
+如果連結支援IOD、則最好使用IOD。下列組態支援IOD：
+
+* 單一ISL
+* ISL和連結（以及TDM/WDM等連結設備、如果使用）支援IOD的組態設定。
+* 單一主幹、ISL和連結（以及TDM/WDM等連結設備、如果使用）都支援IOD的組態。
+
+
+
+
+== 何時使用ood
+
+* 您可以針對不支援IOD的所有組態使用「ood」。
+* 您可以將ood用於不支援主幹連線功能的組態。
+
+
+
+
+== 使用加密裝置
+
+在ISL上使用專屬加密裝置或MetroCluster 在支援功能組態的WDM裝置上加密時、您必須符合下列要求：
+
+* 外部加密裝置或WDM設備已通過相關FC交換器廠商的自我認證。
++
+自我認證應涵蓋作業模式（例如主幹連線和加密）。
+
+* 加密所造成的額外延遲不應超過10微秒。
+

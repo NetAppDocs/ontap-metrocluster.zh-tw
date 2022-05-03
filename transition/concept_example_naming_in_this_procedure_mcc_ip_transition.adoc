@@ -1,0 +1,76 @@
+---
+permalink: transition/concept_example_naming_in_this_procedure_mcc_ip_transition.html 
+sidebar: sidebar 
+keywords: procedure, example, name, throughout, identify, dr, group, node, switch, naming 
+summary: 此程序使用範例名稱來識別整個過程中涉及的DR群組、節點和交換器。 
+---
+= 此程序中的命名範例
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+此程序使用範例名稱來識別整個過程中涉及的DR群組、節點和交換器。
+
+[cols="1,2,2"]
+|===
+
+
+| DR群組 | 叢集_A位於站台_A | 站台B的叢集B 
+
+
+ a| 
+Dr_group_1-FC
+ a| 
+* node_a_1-FC
+* node_a_2-FC
+
+ a| 
+* node_B_1-FC
+* node_B_2-FC
+
+
+
+
+ a| 
+Dr_group_2-IP
+ a| 
+* 節點_a_3-IP
+* 節點_a_4-IP
+
+ a| 
+* 節點_B_3-IP
+* 節點_B_4-IP
+
+
+
+
+ a| 
+交換器
+ a| 
+初始交換器（若為光纖附加組態：）
+
+* switch_a_1-FC
+* switch_a_2-FC
+
+
+IP交換器：MetroCluster
+
+* switch_a_1-ip
+* switch_a_2-ip
+
+ a| 
+初始交換器（若為光纖附加組態）：
+
+* switch_B_1-FC
+* switch_B_2-FC
+
+
+IP交換器：MetroCluster
+
+* switch_B_1-IP
+* switch_B_2-IP
+
+
+|===

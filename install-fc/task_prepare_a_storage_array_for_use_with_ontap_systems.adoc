@@ -1,0 +1,38 @@
+---
+permalink: install-fc/task_prepare_a_storage_array_for_use_with_ontap_systems.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, prepare, storage, array, systems 
+summary: 在使用ONTAP 陣列LUN開始MetroCluster 以VMware組態設定時、儲存陣列管理員必須先準備好要搭配ONTAP 使用的儲存設備。 
+---
+= 準備搭配ONTAP 使用的儲存陣列
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在使用ONTAP 陣列LUN開始MetroCluster 以VMware組態設定時、儲存陣列管理員必須先準備好要搭配ONTAP 使用的儲存設備。
+
+您打算在組態中使用的儲存陣列、韌體和交換器、必須由特定ONTAP 的版本支援。
+
+* https://mysupport.netapp.com/NOW/products/interoperability["NetApp互通性IMT （僅限部分）"]
++
+在這個解決方案領域、您可以使用儲存解決方案欄位來選擇您的解決方案。IMT MetroCluster您可以使用*元件總管*來選取元件和ONTAP 更新版本、以精簡搜尋範圍。您可以按一下「*顯示結果*」來顯示符合條件的支援組態清單。
+
+* https://hwu.netapp.com["NetApp Hardware Universe"]
+
+
+您必須與儲存陣列管理員協調、才能在儲存陣列上執行此工作。
+
+.步驟
+. 視MetroCluster 乎整個系統組態中的節點數量、在儲存陣列上建立LUN。
++
+在不必要的組態中、每個節點MetroCluster 都需要陣列LUN來執行根Aggregate、資料Aggregate和備用磁碟。
+
+. 在儲存陣列上設定搭配ONTAP 使用所需的參數。
++
+** https://docs.netapp.com/ontap-9/topic/com.netapp.doc.vs-ig-third/home.html["適用於協力廠商儲存設備的虛擬化實作FlexArray"]
+** https://docs.netapp.com/ontap-9/topic/com.netapp.doc.vs-ig-es/home.html["NetApp E系列儲存設備的虛擬化實作FlexArray"]
+
+
+

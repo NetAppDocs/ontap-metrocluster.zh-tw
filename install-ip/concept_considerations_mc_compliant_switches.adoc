@@ -1,0 +1,399 @@
+---
+permalink: install-ip/concept_considerations_mc_compliant_switches.html 
+sidebar: sidebar 
+keywords: metrocluster ip, metrocluster-compliant switches, metrocluster-compliant, requirements, compliant 
+summary: 從NetApp 9.7開始ONTAP 、MetroCluster 只要符合NetApp規格、即可支援未經NetApp驗證的交換器。 
+---
+= 使用MetroCluster相容交換器的考量事項
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp提供的NetApp IP交換器已通過NetApp驗證。MetroCluster從NetApp 9.7開始ONTAP 、MetroCluster 只要符合NetApp規格、即可支援未經NetApp驗證的交換器。
+
+
+
+== 一般要求
+
+這些需求顯示如何設定符合MetroCluster的交換器、而不使用參考組態（RCF）檔案。
+
+* 連接MetroCluster 至節點的交換器可承載非MetroCluster流量。
+* 僅支援提供專用連接埠以用於無交換器式叢集互連的平台。不AFF 支援FAS2750和S4A220等平台、因為MetroCluster 無法使用相同MetroCluster 的網路連接埠來傳輸流量和進行互連。
++
+不支援將本機叢集連線連線至符合MetroCluster的交換器。
+
+* 您可以將此介面連接至任何可設定以符合需求的交換器連接埠。MetroCluster
+* 交換器連接埠的速度必須為25 Gbps（FAS8200 AFF 和人民幣2、300平台）、而其他所有平台（40 Gbps或100 Gbps）的速度至少必須為40 Gbps。
+* 需要四個IP交換器、每個交換器架構需要兩個。
+* ISL必須為10 Gbps或更高、且必須根據MetroCluster 需求調整適當大小、才能承受整個系統的負載。
+* 該組態必須連線至兩個網路。MetroCluster不MetroCluster 支援將兩個支援介面連接至同一個網路或交換器。每MetroCluster 個節點都必須連接至兩個網路交換器。
+* 網路必須符合下列需求：
++
+** link:../install-ip/concept_considerations_isls.html#basic-metrocluster-isl-requirements["基本功能ISL需求MetroCluster"]
+** link:../install-ip/concept_considerations_isls.html#isl-requirements-in-shared-layer-2-networks["共享第2層網路的ISL需求"]
+** link:../install-ip/concept_considerations_layer_2.html#required-settings-on-intermediate-switches["中繼交換器上的必要設定"]
+
+
+* 在使用MetroCluster相容交換器的支援範本MetroCluster IP組態中、不ONTAP 支援還原至版本9.6或更早版本。
+* 9216的MTU必須設定在所有傳輸MetroCluster 到此資訊的交換器上。
+
+
+
+
+== 交換器和纜線需求
+
+* 交換器必須支援QoS /流量分類。
+* 交換器必須支援明確的壅塞通知（ECN）。
+* 交換器必須支援L4連接埠VLAN負載平衡原則、才能保留路徑上的順序。
+* 交換器必須支援L2流量控制（L2 FC）。
+* 連接節點與交換器的纜線必須向NetApp購買。交換器廠商必須支援我們提供的纜線。
+
+
+
+
+== 限制
+
+不支援任何需要將本機叢集連線連線至交換器的組態或功能。例如、下列組態和程序不受支援：
+
+* 八節點MetroCluster 的不完整組態
+* 從MetroCluster 靜態FC移轉至MetroCluster 靜態IP組態
+* 重新整理四節點MetroCluster 的靜態IP組態
+
+
+
+
+== 適用於MetroCluster相容交換器的平台專屬網路速度
+
+下表提供平台特定的網路速度、以供MetroCluster 符合不符合需求的交換器使用。
+
+
+NOTE: 遺失值表示平台不受支援。
+
+|===
+
+
+| 平台 | 網路速度（Gbps） 
+
+
+ a| 
+解答900 AFF
+ a| 
+100
+
+
+
+ a| 
+解答800 AFF
+ a| 
+40或100
+
+
+
+ a| 
+部分A700 AFF
+ a| 
+40
+
+
+
+ a| 
+解答400 AFF
+ a| 
+40或100
+
+
+
+ a| 
+解答320 AFF
+ a| 
+100
+
+
+
+ a| 
+部分A300 AFF
+ a| 
+25
+
+
+
+ a| 
+VA250 AFF
+ a| 
+-
+
+
+
+ a| 
+VA220 AFF
+ a| 
+-
+
+
+
+ a| 
+FAS9000
+ a| 
+40
+
+
+
+ a| 
+FAS8700
+ a| 
+100
+
+
+
+ a| 
+FAS8300
+ a| 
+40或100
+
+
+
+ a| 
+FAS8200
+ a| 
+25
+
+
+
+ a| 
+FAS2750
+ a| 
+-
+
+
+
+ a| 
+FAS500f
+ a| 
+-
+
+|===
+
+
+== 範例的假設
+
+所提供的範例適用於Cisco NX31xx和NX32xx交換器。如果使用其他交換器、則這些命令可做為指引、但命令可能有所不同。如果範例中所示的功能在交換器上無法使用、這表示交換器不符合最低需求、因此無法用來部署MetroCluster 一個版本不全的組態。這適用於任何連接MetroCluster 了某個交換器的交換器、以及這些交換器之間路徑上的所有交換器。
+
+* ISL連接埠為15和16、運作速度為40 Gbps。
+* 網路1中的VLAN為10、網路2中的VLAN為20。可能僅針對一個網路顯示範例。
+* 此介面連接至每個交換器的連接埠9、以100 Gbps的速度運作。MetroCluster
+* 未設定或顯示範例的完整內容。您可能需要輸入設定檔、VLAN或介面等進一步的組態資訊、才能執行命令。
+
+
+
+
+== 一般交換器組態
+
+必須在每個網路中設定一個VLAN。範例顯示如何在網路10中設定VLAN。
+
+範例：
+
+[listing]
+----
+# vlan 10
+----
+應設定負載平衡原則、以便保留順序。
+
+範例：
+
+[listing]
+----
+# port-channel load-balance src-dst ip-l4port-vlan
+----
+您必須設定存取和類別對應、將RDMA和iSCSI流量對應至適當的類別。
+
+所有往返連接埠65200的TCP流量都會對應至儲存設備（iSCSI）類別。連接埠10006往返的所有TCP流量都會對應至RDMA類別。
+
+範例：
+
+[listing]
+----
+
+ip access-list storage
+  10 permit tcp any eq 65200 any
+  20 permit tcp any any eq 65200
+ip access-list rdma
+  10 permit tcp any eq 10006 any
+  20 permit tcp any any eq 10006
+
+class-map type qos match-all storage
+  match access-group name storage
+class-map type qos match-all rdma
+  match access-group name rdma
+----
+您必須設定入口原則。入口原則會將分類的流量對應至不同的COS群組。在此範例中、RDMA流量會對應至COOS群組5、iSCSI流量則對應至COOS群組4。
+
+範例：
+
+[listing]
+----
+
+policy-map type qos MetroClusterIP_Ingress
+class rdma
+  set dscp 40
+  set cos 5
+  set qos-group 5
+class storage
+  set dscp 32
+  set cos 4
+  set qos-group 4
+----
+您必須在交換器上設定出口原則。出口原則會將流量對應至出口佇列。在此範例中、RDMA流量會對應至佇列5、iSCSI流量則對應至佇列4。
+
+範例：
+
+[listing]
+----
+
+policy-map type queuing MetroClusterIP_Egress
+class type queuing c-out-8q-q7
+  priority level 1
+class type queuing c-out-8q-q6
+  priority level 2
+class type queuing c-out-8q-q5
+  priority level 3
+  random-detect threshold burst-optimized ecn
+class type queuing c-out-8q-q4
+  priority level 4
+  random-detect threshold burst-optimized ecn
+class type queuing c-out-8q-q3
+  priority level 5
+class type queuing c-out-8q-q2
+  priority level 6
+class type queuing c-out-8q-q1
+  priority level 7
+class type queuing c-out-8q-q-default
+  bandwidth remaining percent 100
+  random-detect threshold burst-optimized ecn
+----
+您需要在MetroCluster ISL上設定具有不支援的交換器、但無法連線至MetroCluster 任何的支援介面。在這種情況下、流量已分類、只需對應至適當的佇列。在下列範例中、所有的COS5流量都會對應至類別RDMA、而所有的COS4流量都會對應至類別iSCSI。請注意、這會影響*所有*的COS5和COS4流量、而不只是MetroCluster 影響到各種流量。如果您只想對應MetroCluster 此資訊流量、則必須使用上述類別地圖、使用存取群組來識別流量。
+
+範例：
+
+[listing]
+----
+
+class-map type qos match-all rdma
+  match cos 5
+class-map type qos match-all storage
+  match cos 4
+----
+
+
+== 設定ISL
+
+設定允許的VLAN時、您可以設定「主幹」模式連接埠。
+
+有兩個命令：一個是*設定*允許的VLAN清單、另一個是*新增*至現有允許的VLAN清單。
+
+您可以*設定*允許的VLAN、如範例所示。
+
+範例：
+
+[listing]
+----
+switchport trunk allowed vlan 10
+----
+您可以*新增* VLAN至允許的清單、如範例所示。
+
+範例：
+
+[listing]
+----
+switchport trunk allowed vlan add 10
+----
+在範例中、連接埠通道10已設定為VLAN 10。
+
+範例：
+
+[listing]
+----
+
+interface port-channel10
+switchport mode trunk
+switchport trunk allowed vlan 10
+mtu 9216
+service-policy type queuing output MetroClusterIP_Egress
+----
+ISL連接埠應設定為連接埠通道的一部分、並指派輸出佇列、如範例所示。
+
+範例：
+
+[listing]
+----
+
+interface eth1/15-16
+switchport mode trunk
+switchport trunk allowed vlan 10
+no lldp transmit
+no lldp receive
+mtu 9216
+channel-group 10 mode active
+service-policy type queuing output MetroClusterIP_Egress
+no shutdown
+----
+
+
+== 設定節點連接埠
+
+您可能需要將節點連接埠設定為中斷模式。在此範例中、連接埠25和26設定為4 x 25 Gbps離線模式。
+
+範例：
+
+[listing]
+----
+interface breakout module 1 port 25-26 map 25g-4x
+----
+您可能需要設定MetroCluster 介面連接埠速度。範例顯示如何將速度設定為「自動」。
+
+範例：
+
+[listing]
+----
+speed auto
+----
+以下範例說明如何將速度修正為40 Gbps。
+
+範例：
+
+[listing]
+----
+speed 40000
+----
+您可能需要設定介面。在下列範例中、介面速度設定為「自動」。
+
+連接埠在VLAN 10中處於存取模式、MTU設為9216、MetroCluster 並指派了「資訊安全入侵」原則。
+
+範例：
+
+[listing]
+----
+
+interface eth1/9
+description MetroCluster-IP Node Port
+speed auto
+switchport access vlan 10
+spanning-tree port type edge
+spanning-tree bpduguard enable
+mtu 9216
+flowcontrol receive on
+flowcontrol send on
+service-policy type qos input MetroClusterIP_Ingress
+no shutdown
+----
+在25-Gbps連接埠上、FEC設定可能需要設定為「關」、如範例所示。
+
+範例：
+
+[listing]
+----
+fec off
+----
+
+NOTE: 您必須在設定介面之後*執行此命令。可能需要插入收發器模組、命令才能正常運作。

@@ -1,0 +1,44 @@
+---
+permalink: upgrade/task_add_a_new_controller_to_each_cluster_mcc_expansion.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, add, new, controller, module, cluster 
+summary: 您必須在每個站台新增一個控制器模組、以便在每個站台中建立HA配對。這是一個多步驟的程序、涉及硬體和軟體的變更、必須在每個站台上以適當的順序執行。 
+---
+= 將新的控制器模組新增至每個叢集
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須在每個站台新增一個控制器模組、以便在每個站台中建立HA配對。這是一個多步驟的程序、涉及硬體和軟體的變更、必須在每個站台上以適當的順序執行。
+
+.關於這項工作
+* 新的控制器模組必須從NetApp收到、作為升級套件的一部分。
++
+您應該確認新控制器模組中的PCIe卡相容、並受到新控制器模組的支援。
+
++
+https://hwu.netapp.com["NetApp Hardware Universe"]
+
+* 當升級至單一機箱HA配對（兩個控制器模組位於同一個機箱中的HA配對）時、您的系統必須有一個空插槽可供新的控制器模組使用。
++
+
+NOTE: 並非所有系統都支援此組態。採用單一機箱組態ONTAP 的平台、可在支援的平台上使用AFF 下列技術：人民幣300元、FAS8200、FAS8300、AFF 人民幣400元、AFF80xx、 FAS8020、FAS8060、FAS8080和FAS9000。
+
+* 升級至雙機箱HA配對（控制器模組位於不同機箱中的HA配對）時、您必須有新控制器模組的機架空間和纜線。
++
+
+NOTE: 並非所有系統都支援此組態。
+
+* 您必須透過每個控制器模組的e0a連接埠、將每個控制器模組連接至管理網路、或者、如果您的系統有一個、您可以將e0M連接埠作為管理連接埠。
+* 這些工作必須在每個站台重複執行。
+* 預先存在的控制器模組稱為_existing _控制器模組。
++
+本程序的範例中有主控台提示字元「existing _ctlr>'」。
+
+* 要新增的控制器模組稱為_new_控制器模組；此程序中的範例有主控台提示字元「new_ctlr>」。
+* 此工作使用下列工作流程：
+
+
+image::../media/workflow_mcc_2_to_4_node_expansion_adding_nodes.gif[工作流程MCC 2至4節點擴充新增節點]

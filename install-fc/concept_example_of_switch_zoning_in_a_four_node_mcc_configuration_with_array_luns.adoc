@@ -1,0 +1,328 @@
+---
+permalink: install-fc/concept_example_of_switch_zoning_in_a_four_node_mcc_configuration_with_array_luns.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, switch, four, node, array, luns 
+summary: 交換器分區可定義連接節點之間的路徑。設定分區可讓您定義特定ONTAP 的哪些陣列LUN可由特定的支援系統檢視。 
+---
+= 以陣列LUN為例、在四節點MetroCluster 的列舉架構中使用交換器分區
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+交換器分區可定義連接節點之間的路徑。設定分區可讓您定義特定ONTAP 的哪些陣列LUN可由特定的支援系統檢視。
+
+您可以使用下列範例作為參考資料、以決定MetroCluster 使用陣列LUN進行四節點的列舉組態分區。範例顯示MetroCluster 適用於整個功能組態的單一啟動器至單一目標分區。下列範例中的行代表區域而非連線；每一行都會以其區域編號標示：
+
+image::../media/v_series_metrocluster_zoning_example.gif[此圖以MetroCluster 使用陣列LUN進行的範例靜態組態來描述交換器區域。圖形會以周遭文字說明。]
+
+在圖例中、每個儲存陣列上都會配置陣列LUN以供MetroCluster 進行此組態。大小相同的LUN會配置在兩個站台的儲存陣列上、SyncMirror 這是不必要的。每ONTAP 個作業系統都有兩條路徑可通往陣列LUN。儲存陣列上的連接埠是備援的。
+
+在圖例中、兩個站台的備援陣列連接埠配對如下：
+
+* 站台A的儲存陣列：
++
+** 連接埠1A和2A
+** 連接埠1B和2B
+** 連接埠1C和2C
+** 連接埠一維和二維
+
+
+* 站台B的儲存陣列：
++
+** 連接埠1A'和2A'
+** 連接埠1B'和2B'
+** 連接埠1C'和2C'
+** 連接埠1D'和2D'
+
+
+
+
+每個儲存陣列上的備援連接埠配對會形成替代路徑。因此、連接埠配對的兩個連接埠都可以存取各自儲存陣列上的LUN。
+
+下表顯示此範例的區域：
+
+
+
+== FC-switch_a_1的區域
+
+|===
+
+
+| 區域 | 控制器與啟動器連接埠ONTAP | 儲存陣列連接埠 
+
+
+ a| 
+Z1
+ a| 
+Controller（控制器）a_1：連接埠0A
+ a| 
+連接埠1A
+
+
+
+ a| 
+Z3
+ a| 
+Controller（控制器）_a_1：連接埠0c
+ a| 
+連接埠1A'
+
+
+
+ a| 
+Z5.
+ a| 
+控制器a_2：連接埠0A
+ a| 
+連接埠1B
+
+
+
+ a| 
+Z7
+ a| 
+控制器_a_2：連接埠0c
+ a| 
+連接埠1B'
+
+|===
+
+
+== FC-switch_a_2的區域
+
+|===
+
+
+| 區域 | 控制器與啟動器連接埠ONTAP | 儲存陣列連接埠 
+
+
+ a| 
+Z2
+ a| 
+Controller（控制器）_a_1：連接埠0b
+ a| 
+連接埠2A'
+
+
+
+ a| 
+Z4
+ a| 
+Controller（控制器）_a_1：連接埠0d
+ a| 
+連接埠2A
+
+
+
+ a| 
+Z6
+ a| 
+Controller（控制器）_a_2：連接埠0b
+ a| 
+連接埠2B'
+
+
+
+ a| 
+Z8
+ a| 
+Controller（控制器）_a_2：連接埠0d
+ a| 
+連接埠2B
+
+|===
+
+
+== FC_SWIT_B_1的區域
+
+|===
+
+
+| 區域 | 控制器與啟動器連接埠ONTAP | 儲存陣列連接埠 
+
+
+ a| 
+z9.
+ a| 
+Controller（控制器）_B_1：連接埠0A
+ a| 
+連接埠1C'
+
+
+
+ a| 
+z11.
+ a| 
+Controller（控制器）_B_1：連接埠0c
+ a| 
+連接埠1C
+
+
+
+ a| 
+z13
+ a| 
+Controller（控制器）_B_2：連接埠0A
+ a| 
+連接埠1D'
+
+
+
+ a| 
+z15
+ a| 
+Controller（控制器）_B_2：連接埠0c
+ a| 
+連接埠1d
+
+|===
+
+
+== FC_SWIT_B_2的區域
+
+|===
+
+
+| 區域 | 控制器與啟動器連接埠ONTAP | 儲存陣列連接埠 
+
+
+ a| 
+z10
+ a| 
+Controller（控制器）_B_1：連接埠0b
+ a| 
+連接埠2C
+
+
+
+ a| 
+Z12
+ a| 
+Controller（控制器）_B_1：連接埠0d
+ a| 
+連接埠22C
+
+
+
+ a| 
+z14
+ a| 
+Controller（控制器）_B_2：連接埠0b
+ a| 
+連接埠2D
+
+
+
+ a| 
+z16
+ a| 
+Controller（控制器）_B_2：連接埠0d
+ a| 
+連接埠2D'
+
+|===
+
+
+== 站台A的FC-VI連線區域
+
+|===
+
+
+| 區域 | 不適用於控制器和FC啟動器連接埠ONTAP | 交換器 
+
+
+ a| 
+Zx
+ a| 
+Controller（控制器）_a_1：連接埠FC-VI A
+ a| 
+FC_SWIT_A_1
+
+
+
+ a| 
+ZY
+ a| 
+Controller（控制器）_a_1：連接埠FC-VI b
+ a| 
+FC_SWIT_A_2
+
+
+
+ a| 
+Zx
+ a| 
+Controller（控制器）_a_2：連接埠FC-VI A
+ a| 
+FC_SWIT_A_1
+
+
+
+ a| 
+ZY
+ a| 
+Controller（控制器）_a_2：連接埠FC-VI b
+ a| 
+FC_SWIT_A_2
+
+|===
+
+
+== 站台B的FC-VI連線區域
+
+|===
+
+
+| 區域 | 不適用於控制器和FC啟動器連接埠ONTAP | 交換器 
+
+
+ a| 
+Zx
+ a| 
+Controller（控制器）_B_1：連接埠FC-VI A
+ a| 
+FC_SWIT_B_1
+
+
+
+ a| 
+ZY
+ a| 
+Controller（控制器）_B_1：連接埠FC-VI b
+ a| 
+FC_SWIT_B_2
+
+
+
+ a| 
+Zx
+ a| 
+Controller（控制器）_B_2：連接埠FC-VI A
+ a| 
+FC_SWIT_B_1
+
+
+
+ a| 
+ZY
+ a| 
+Controller（控制器）_B_2：連接埠FC-VI b
+ a| 
+FC_SWIT_B_2
+
+|===
+.相關資訊
+* 交換器分區可定義連接節點之間的路徑。設定分區功能可讓您定義特定ONTAP 的哪些陣列LUN可供特定的作業系統檢視。
++
+link:concept_example_of_switch_zoning_in_a_two_node_mcc_configuration_with_array_luns.html["以陣列LUN進行雙節點MetroCluster 列舉的交換器分區範例"]
+
++
+link:concept_example_of_switch_zoning_in_an_eight_node_mcc_configuration_with_array_luns.html["以MetroCluster 陣列LUN進行八節點的列舉之交換器分區的範例"]
+
+* 在MetroCluster 使用含有陣列LUN的交換器分區時、您必須確保符合特定的基本需求。
++
+link:reference_requirements_for_switch_zoning_in_a_mcc_configuration_with_array_luns.html["以採用陣列LUN的架構進行交換器分區的需求MetroCluster"]
+
+

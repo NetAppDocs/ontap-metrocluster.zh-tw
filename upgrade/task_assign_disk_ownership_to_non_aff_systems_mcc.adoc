@@ -1,0 +1,163 @@
+---
+permalink: upgrade/task_assign_disk_ownership_to_non_aff_systems_mcc.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, assign, disk, ownership, aff, systems 
+summary: 如果MetroCluster 無法正確指派磁碟、或是您在組態中使用DS460C磁碟櫃、則必須將磁碟指派給MetroCluster 每個以磁碟櫃為基礎的「以Shel-by Shelves組態」中的節點。您將建立一個組態、讓每個節點在其本機和遠端磁碟集區中擁有相同數量的磁碟。 
+---
+= 在非AFF系統中指派磁碟擁有權
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果MetroCluster 無法正確指派磁碟、或是您在組態中使用DS460C磁碟櫃、則必須將磁碟指派給MetroCluster 每個以磁碟櫃為基礎的「以Shel-by Shelves組態」中的節點。您將建立一個組態、讓每個節點在其本機和遠端磁碟集區中擁有相同數量的磁碟。
+
+儲存控制器必須處於維護模式。
+
+如果您的組態不包含DS460C磁碟櫃、則如果從原廠收到磁碟時已正確指派磁碟、則不需要執行此工作。
+
+[NOTE]
+====
+Pool 0始終包含與擁有這些磁碟的儲存系統位於同一個站台的磁碟。
+
+集區1一律包含遠端磁碟、以供擁有這些磁碟的儲存系統使用。
+
+====
+如果您的組態包含DS460C磁碟櫃、則應針對每個12個磁碟櫃手動指派磁碟：
+
+|===
+
+
+| 在藥櫃中指派這些磁碟... | 至此節點和集區... 
+
+
+ a| 
+0 - 2
+ a| 
+本機節點的集區0
+
+
+
+ a| 
+3 - 5
+ a| 
+HA合作夥伴節點的資源池0
+
+
+
+ a| 
+6 - 8
+ a| 
+本機節點集區1的DR合作夥伴
+
+
+
+ a| 
+9 - 11
+ a| 
+HA合作夥伴Pool 1的DR合作夥伴
+
+|===
+此磁碟指派模式可確保在藥櫃離線時、集合體受到的影響最小。
+
+.步驟
+. 如果您尚未啟動、請將每個系統開機至維護模式。
+. 將磁碟櫃指派給位於第一個站台（站台A）的節點：
++
+與節點位於同一站台的磁碟機櫃會指派給資源池0、而位於合作夥伴站台的磁碟機櫃則指派給資源池1。
+
++
+您應該為每個資源池指派相同數量的磁碟櫃。
+
++
+.. 在第一個節點上、系統地將本機磁碟櫃指派給資源池0、並將遠端磁碟櫃指派給資源池1：
++
+「磁碟指派-機櫃_本機-交換器名稱：機櫃名稱.port_-p _pool」
+
++
+如果儲存控制器Controller_a_1有四個磁碟櫃、您可以發出下列命令：
+
++
+[listing]
+----
+*> disk assign -shelf FC_switch_A_1:1-4.shelf1 -p 0
+*> disk assign -shelf FC_switch_A_1:1-4.shelf2 -p 0
+
+*> disk assign -shelf FC_switch_B_1:1-4.shelf1 -p 1
+*> disk assign -shelf FC_switch_B_1:1-4.shelf2 -p 1
+----
+.. 針對本機站台的第二個節點重複此程序、系統地將本機磁碟櫃指派給集區0、並將遠端磁碟櫃指派給集區1：
++
+「磁碟指派-機櫃_本機-交換器名稱：機櫃名稱.port_-p _pool」
+
++
+如果儲存控制器Controller_a_2有四個磁碟櫃、您可以發出下列命令：
+
++
+[listing]
+----
+*> disk assign -shelf FC_switch_A_1:1-4.shelf3 -p 0
+*> disk assign -shelf FC_switch_B_1:1-4.shelf4 -p 1
+
+*> disk assign -shelf FC_switch_A_1:1-4.shelf3 -p 0
+*> disk assign -shelf FC_switch_B_1:1-4.shelf4 -p 1
+----
+
+
+. 將磁碟櫃指派給位於第二站台（站台B）的節點：
++
+與節點位於同一站台的磁碟機櫃會指派給資源池0、而位於合作夥伴站台的磁碟機櫃則指派給資源池1。
+
++
+您應該為每個資源池指派相同數量的磁碟櫃。
+
++
+.. 在遠端站台的第一個節點上、系統地將其本機磁碟櫃指派給集區0及其遠端磁碟櫃至集區1：
++
+「磁碟指派-機櫃_local-switch-nameshelf-name_-p _pool」
+
++
+如果儲存控制器Controller_B_1有四個磁碟櫃、您可以發出下列命令：
+
++
+[listing]
+----
+*> disk assign -shelf FC_switch_B_1:1-5.shelf1 -p 0
+*> disk assign -shelf FC_switch_B_1:1-5.shelf2 -p 0
+
+*> disk assign -shelf FC_switch_A_1:1-5.shelf1 -p 1
+*> disk assign -shelf FC_switch_A_1:1-5.shelf2 -p 1
+----
+.. 針對遠端站台的第二個節點重複此程序、系統地將本機磁碟櫃指派給集區0、並將遠端磁碟櫃指派給集區1：
++
+「磁碟指派-機櫃_機櫃名稱_-p _pool _」
+
++
+如果儲存控制器Controller_B_2有四個磁碟櫃、您可以發出下列命令：
+
++
+[listing]
+----
+*> disk assign -shelf FC_switch_B_1:1-5.shelf3 -p 0
+*> disk assign -shelf FC_switch_B_1:1-5.shelf4 -p 0
+
+*> disk assign -shelf FC_switch_A_1:1-5.shelf3 -p 1
+*> disk assign -shelf FC_switch_A_1:1-5.shelf4 -p 1
+----
+
+
+. 確認機櫃指派：
++
+「展示櫃」
+
+. 結束維護模式：
++
+《停止》
+
+. 顯示開機功能表：
++
+Boot_ONTAP功能表
+
+. 在每個節點上、選取選項* 4*以初始化所有磁碟。
+

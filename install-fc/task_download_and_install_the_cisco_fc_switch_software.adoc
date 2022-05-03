@@ -1,0 +1,179 @@
+---
+permalink: install-fc/task_download_and_install_the_cisco_fc_switch_software.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, download, cisco, fc, switch, nx, software 
+summary: 您必須將交換器作業系統檔案和RCF檔案下載到MetroCluster 位在整個過程中的每個交換器。 
+---
+= 下載並安裝Cisco FC交換器NX-OS軟體
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須將交換器作業系統檔案和RCF檔案下載到MetroCluster 位在整個過程中的每個交換器。
+
+此工作需要檔案傳輸軟體、例如FTP、TFTP、SFTP或scp。 將檔案複製到交換器。
+
+這些步驟必須重複執行MetroCluster 到位在整個過程中的每個FC交換器上。
+
+您必須使用支援的交換器軟體版本。
+
+https://hwu.netapp.com["NetApp Hardware Universe"]
+
+
+NOTE: 顯示的輸出適用於Cisco IP交換器、但這些步驟也適用於Cisco FC交換器。
+
+.步驟
+. 下載支援的NX-OS軟體檔案。
++
+https://software.cisco.com/download/home["Cisco下載頁面"]
+
+. 將交換器軟體複製到交換器：
++
+「copy sftp：//root@server-ip-address/tftpboot/NX-os-name-name bootflash：VRF管理」
+
++
+在此範例中、「nxos.7.0.3.I4.6.bin」檔案會從SFTP伺服器10.99.99複製到本機bootflash：
+
++
+[listing]
+----
+IP_switch_A_1# copy sftp://root@10.10.99.99/tftpboot/nxos.7.0.3.I4.6.bin bootflash: vrf management
+root@10.10.99.99's password: password
+sftp> progress
+Progress meter enabled
+sftp> get   /tftpboot/nxos.7.0.3.I4.6.bin  /bootflash/nxos.7.0.3.I4.6.bin
+Fetching /tftpboot/nxos.7.0.3.I4.6.bin to /bootflash/nxos.7.0.3.I4.6.bin
+/tftpboot/nxos.7.0.3.I4.6.bin                 100%  666MB   7.2MB/s   01:32
+sftp> exit
+Copy complete, now saving to disk (please wait)...
+----
+. 在每個交換器上、確認交換器NX-OS檔案是否存在於每個交換器的bootflash目錄中：
++
+《Dir bootflash》
+
++
+以下範例顯示檔案位於「ip_switch_a_1」上：
+
++
+[listing]
+----
+IP_switch_A_1# dir bootflash:
+                  .
+                  .
+                  .
+  698629632    Jun 13 21:37:44 2017  nxos.7.0.3.I4.6.bin
+                  .
+                  .
+                  .
+
+Usage for bootflash://sup-local
+ 1779363840 bytes used
+13238841344 bytes free
+15018205184 bytes total
+IP_switch_A_1#
+----
+. 安裝交換器軟體：
++
+「install all system bootflash：nxos.version-number.bin kickstart bootflash：nxos.version：kickstart-number.bin」
+
++
+[listing]
+----
+IP_switch_A_1#  install all system bootflash:nxos.7.0.3.I4.6.bin kickstart bootflash:nxos.7.0.3.I4.6.bin
+Installer will perform compatibility check first. Please wait.
+
+Verifying image bootflash:/nxos.7.0.3.I4.6.bin for boot variable "kickstart".
+[####################] 100% -- SUCCESS
+
+Verifying image bootflash:/nxos.7.0.3.I4.6.bin for boot variable "system".
+[####################] 100% -- SUCCESS
+
+Performing module support checks.                                                                                                            [####################] 100% -- SUCCESS
+
+Verifying image type.
+[####################] 100% -- SUCCESS
+
+Extracting "system" version from image bootflash:/nxos.7.0.3.I4.6.bin.
+[####################] 100% -- SUCCESS
+
+Extracting "kickstart" version from image bootflash:/nxos.7.0.3.I4.6.bin.
+[####################] 100% -- SUCCESS
+...
+----
++
+交換器軟體安裝完成後、交換器會自動重新開機。
+
+. 等待交換器重新載入、然後登入交換器。
++
+交換器重新開機後、會顯示登入提示：
+
++
+[listing]
+----
+User Access Verification
+IP_switch_A_1 login: admin
+Password:
+Cisco Nexus Operating System (NX-OS) Software
+TAC support: http://www.cisco.com/tac
+Copyright (C) 2002-2017, Cisco and/or its affiliates.
+All rights reserved.
+.
+.
+.
+MDP database restore in progress.
+IP_switch_A_1#
+
+The switch software is now installed.
+----
+. 確認交換器軟體已安裝：
++
+《如何版本》
+
++
+下列範例顯示輸出：
+
++
+[listing]
+----
+IP_switch_A_1# show version
+Cisco Nexus Operating System (NX-OS) Software
+TAC support: http://www.cisco.com/tac
+Copyright (C) 2002-2017, Cisco and/or its affiliates.
+All rights reserved.
+.
+.
+.
+
+Software
+  BIOS: version 04.24
+  NXOS: version 7.0(3)I4(6)   **<<< switch software version**
+  BIOS compile time:  04/21/2016
+  NXOS image file is: bootflash:///nxos.7.0.3.I4.6.bin
+  NXOS compile time:  3/9/2017 22:00:00 [03/10/2017 07:05:18]
+
+
+Hardware
+  cisco Nexus 3132QV Chassis
+  Intel(R) Core(TM) i3- CPU @ 2.50GHz with 16401416 kB of memory.
+  Processor Board ID FOC20123GPS
+
+  Device name: A1
+  bootflash:   14900224 kB
+  usb1:               0 kB (expansion flash)
+
+Kernel uptime is 0 day(s), 0 hour(s), 1 minute(s), 49 second(s)
+
+Last reset at 403451 usecs after  Mon Jun 10 21:43:52 2017
+
+  Reason: Reset due to upgrade
+  System version: 7.0(3)I4(1)
+  Service:
+
+plugin
+  Core Plugin, Ethernet Plugin
+IP_switch_A_1#
+----
+. 在剩下的三個FC交換器上重複上述步驟MetroCluster 、以進行支援。
+

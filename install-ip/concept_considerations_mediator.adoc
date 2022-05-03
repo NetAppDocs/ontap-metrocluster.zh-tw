@@ -1,0 +1,71 @@
+---
+permalink: install-ip/concept_considerations_mediator.html 
+sidebar: sidebar 
+keywords: differences, eight-node, four-node, fabric-attached, stretch, metrocluster ip, storage, bridges, fc-to-sas, atto, fibrebridge, SAS, local HA, auso, automatic unplanned switchover, array luns, mediator, tiebreaker 
+summary: 各種MetroCluster 版本的不二組態在必要的元件上有主要差異。 
+---
+= 不一樣的地方ONTAP MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+從ONTAP S廳9.7開始、您可以在ONTAP ESIIP組態中使用由資訊管理員輔助的自動非計畫性切換（MAUSO）MetroCluster 、也可以使用MetroCluster Setiebreaker軟體。只有這兩項服務的其中一項可搭配MetroCluster 使用。
+
+不同MetroCluster 的功能組態會在不同情況下自動切換：
+
+* *使用AUSO功能的SFC組態（不存在於SIP組態中）MetroCluster MetroCluster *
++
+在這些組態中、如果控制器故障但儲存設備（如果有橋接器）仍可運作、則會啟動AUSO。
+
+* * MetroCluster 使用ONTAP 「不完整」服務ONTAP 的「不完整IP組態」（僅限英文版）（僅限英文版）*
++
+在這些組態中、MAUSO會在與AUSO相同的情況下啟動、如前所述、也會在完整站台故障（控制器、儲存設備和交換器）之後啟動。
+
++
+
+NOTE: 只有在非揮發性快取鏡射（_DR鏡射_）和SyncMirror 鏡射在故障時同步時、才會啟動MAUSO。
+
+* *使用主動模式下的Tiebreaker軟體進行IP或FC組態* MetroCluster
++
+在這些組態中、當整個站台發生故障時、斷路器會啟動非計畫性的切換。
+
++
+使用Tiebreaker軟體之前、請先檢閱 link:../tiebreaker/concept_overview_of_the_tiebreaker_software.html["物件斷路器軟體安裝與組態MetroCluster"]
+
+
+
+
+
+== 不受任何應用程式與應用程式與應用裝置之間的互通性ONTAP
+
+您無法搭配ONTAP 使用任何可觸發切換的第三方應用程式或應用裝置、以搭配使用「媒體資訊器」。此外MetroCluster 、使用「SIESITERator」時、不支援使用MetroCluster ESITERE斷路 器軟體監控任何一個ESITESE組態ONTAP 。
+
+
+
+== 如何支援自動非計畫性切換ONTAP
+
+《支援者》將有關「支援中心」主機上信箱的「支援中心」節點狀態資訊儲存在內。ONTAP MetroCluster此資訊可用於監控災難恢復合作夥伴的狀態、並在發生災難時實作由中保輔助的自動非計畫性切換（MAUSO）MetroCluster 。
+
+當節點偵測到需要切換的站台故障時、會採取步驟確認切換是否適當、如果是、則會執行切換。
+
+MAUSO只會在下列情況下啟動：
+
+* 每個節點的非揮發性快取都在運作中、而且快取和鏡像會在故障時同步。SyncMirror
+* 在正常運作的站台上、沒有任何節點處於接管狀態。
+
+
+
+IMPORTANT: MAUSO只會在站台發生災難時啟動。站台災難是指同一個站台*所有*節點的故障、但也有一些例外情況。
+
+在下列關機案例中*未*啟動MAUSO：
+
+* 您已啟動關機。例如、當您：
++
+** 停止節點
+** 重新啟動節點
+
+
+* 風扇或元件故障會啟動關機（環境關機）
+

@@ -1,0 +1,120 @@
+---
+permalink: upgrade/task_implement_the_mcc_configuration_mcc_refresh_mcc_expansion.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, implement, configuration 
+summary: 您必須執行MetroCluster flexconfigure -refreshtrue命令、在已新增MetroCluster 至該組態的節點上啟動資料保護。 
+---
+= 實作MetroCluster 此功能組態
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須執行「MetroCluster flexconfigure -refreshtrue」命令、才能在已新增MetroCluster 至該組態的節點上啟動資料保護。
+
+您在MetroCluster 新增的其中一個節點上發出「flexconfigure -refreshtrue」命令一次、以重新整理MetroCluster 該組態。您不需要在每個站台或節點上發出命令。
+
+「flexconfigure -refreshtrue」命令會自動配對兩個節點、使兩個叢集的系統ID最低、成為災難恢復（DR）合作夥伴。MetroCluster在四節點MetroCluster 的不全功能組態中、有兩個DR合作夥伴配對。第二個DR配對是從兩個具有較高系統ID的節點建立。
+
+.步驟
+. 重新整理MetroCluster 此功能的組態：
++
+.. 進入進階權限模式：
++
+"進階權限"
+
+.. 在MetroCluster 其中一個新節點上重新整理此功能的靜態組態：+「MetroCluster 更新為真實的靜態組態」
++
+以下範例顯示MetroCluster 兩個DR群組上重新整理的支援功能組態：
+
++
+[listing]
+----
+controller_A_2::*> metrocluster configure -refresh true
+
+[Job 726] Job succeeded: Configure is successful.
+----
++
+[listing]
+----
+controller_A_4::*> metrocluster configure -refresh true
+
+[Job 740] Job succeeded: Configure is successful.
+----
+.. 返回管理權限模式：
++
+「et -priv. admin」
+
+
+
+. 驗證站台A的網路狀態：
++
+「網路連接埠展示」
+
++
+以下範例顯示四節點MetroCluster 的列舉使用網路連接埠：
+
++
+[listing]
+----
+cluster_A::> network port show
+                                                          Speed (Mbps)
+Node   Port      IPspace   Broadcast Domain Link   MTU    Admin/Oper
+------ --------- --------- ---------------- ----- ------- ------------
+controller_A_1
+       e0a       Cluster   Cluster          up     9000  auto/1000
+       e0b       Cluster   Cluster          up     9000  auto/1000
+       e0c       Default   Default          up     1500  auto/1000
+       e0d       Default   Default          up     1500  auto/1000
+       e0e       Default   Default          up     1500  auto/1000
+       e0f       Default   Default          up     1500  auto/1000
+       e0g       Default   Default          up     1500  auto/1000
+controller_A_2
+       e0a       Cluster   Cluster          up     9000  auto/1000
+       e0b       Cluster   Cluster          up     9000  auto/1000
+       e0c       Default   Default          up     1500  auto/1000
+       e0d       Default   Default          up     1500  auto/1000
+       e0e       Default   Default          up     1500  auto/1000
+       e0f       Default   Default          up     1500  auto/1000
+       e0g       Default   Default          up     1500  auto/1000
+14 entries were displayed.
+----
+. 驗MetroCluster 證MetroCluster 支援的功能：
++
+.. 從站台A驗證組態：
++
+《不看》MetroCluster
+
++
+[listing]
+----
+cluster_A::> metrocluster show
+
+Configuration: IP fabric
+
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+ Local: cluster_A         Configuration state configured
+                          Mode                normal
+Remote: cluster_B         Configuration state configured
+                          Mode                normal
+----
+.. 從站台B驗證組態：+ MetroCluster 「不實秀」
++
+[listing]
+----
+cluster_B::> metrocluster show
+
+Configuration: IP fabric
+
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+ Local: cluster_B         Configuration state configured
+                          Mode                normal
+Remote: cluster_A         Configuration state configured
+                          Mode                normal
+----
+
+
+

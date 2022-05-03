@@ -1,0 +1,217 @@
+---
+permalink: disaster-recovery/task_assign_ownership_mcfc.html 
+sidebar: sidebar 
+keywords: assign, ownership, drives, replaced 
+summary: 如果您在災難站台還原硬體時更換磁碟機、則必須將擁有權指派給受影響的磁碟機。 
+---
+= 指派更換磁碟機的擁有權
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您在災難站台還原硬體時更換磁碟機、或必須將磁碟機歸零或移除擁有權、則必須將擁有權指派給受影響的磁碟機。
+
+災難站台必須至少擁有與災難發生前一樣多的可用磁碟機。
+
+磁碟機櫃與磁碟機配置必須符合中的要求 link:../install-ip/concept_required_mcc_ip_components_and_naming_guidelines_mcc_ip.html["必要MetroCluster 的知識、知識、知識、知識、知識、知識、知識、技術"] 的一節 link:../install-ip/concept_considerations_differences.html["安裝與組態MetroCluster"]。
+
+這些步驟會在災難站台的叢集上執行。
+
+此程序顯示所有磁碟機的重新指派、以及在災難站台建立新的叢體。新的叢體是災難站台的遠端運作模式、以及災難站台的本機運作模式。
+
+本節提供兩個和四個節點組態的範例。對於雙節點組態、您可以忽略對每個站台第二個節點的參照。對於八節點組態、您必須考慮第二個DR群組上的其他節點。這些範例假設如下：
+
+* 站台A是災難站台。
++
+** 已更換node_a_1。
+** 已更換node_a_2。
++
+僅提供四節點MetroCluster 的不全功能組態。
+
+
+
+* 站台B是存續的站台。
++
+** node_B_1正常運作。
+** node_B_2正常。
++
+僅提供四節點MetroCluster 的不全功能組態。
+
+
+
+
+
+控制器模組具有下列原始系統ID：
+
+|===
+
+
+| 在不含資訊的組態中的節點數MetroCluster | 節點 | 原始系統ID 
+
+
+ a| 
+四
+ a| 
+node_a_1
+ a| 
+4068741258
+
+
+
+ a| 
+節點_a_2
+ a| 
+4068741260
+ a| 
+節點_B_1
+
+
+
+ a| 
+4068741254
+ a| 
+節點_B_2
+ a| 
+4068741256
+
+
+
+ a| 
+二
+ a| 
+node_a_1
+ a| 
+4068741258
+
+|===
+指派磁碟機時、請謹記以下幾點：
+
+* 舊磁碟數至少必須與災難發生前的每個節點相同數量的磁碟。
++
+如果指定或存在較少的磁碟數目、則可能是因為空間不足而無法完成修復作業。
+
+* 要建立的新叢集是屬於存續站台（node_b_x Pool1）的遠端叢集、以及屬於災難站台（node_b_xPool0）的本機叢集。
+* 所需的磁碟機總數不應包含根aggr磁碟。
++
+如果將n個磁碟指派給存續站台的Pool1、則應將n-3個磁碟指派給災難站台、並假設根Aggregate使用三個磁碟。
+
+* 任何磁碟都無法指派給與相同堆疊上所有其他磁碟所指派的資源池不同的資源池。
+* 屬於存續站台的磁碟會指派給集區1、屬於災難站台的磁碟則指派給集區0。
+
+
+.步驟
+. 根據您的四節點MetroCluster 或雙節點的功能組態、指派新的無擁有磁碟機：
++
+** 對於四節點MetroCluster 的非核心組態、請在替換節點上使用下列一系列命令、將新的非擁有磁碟指派給適當的磁碟集區：
++
+... 系統地將每個節點的更換磁碟指派給各自的磁碟集區：
++
+「磁碟指派-s sysid -n old-count-of磁碟-p Pool」
+
++
+在正常運作的站台上、您會為每個節點發出磁碟指派命令：
+
++
+[listing]
+----
+cluster_B::> disk assign -s node_B_1-sysid -n old-count-of-disks -p 1 **\(remote pool of surviving site\)**
+cluster_B::> disk assign -s node_B_2-sysid -n old-count-of-disks -p 1 **\(remote pool of surviving site\)**
+cluster_B::> disk assign -s node_A_1-old-sysid -n old-count-of-disks -p 0 **\(local pool of disaster site\)**
+cluster_B::> disk assign -s node_A_2-old-sysid -n old-count-of-disks -p 0 **\(local pool of disaster site\)**
+----
++
+以下範例顯示含有系統ID的命令：
+
++
+[listing]
+----
+cluster_B::> disk assign -s 4068741254 -n 21 -p 1
+cluster_B::> disk assign -s 4068741256 -n 21 -p 1
+cluster_B::> disk assign -s 4068741258 -n 21 -p 0
+cluster_B::> disk assign -s 4068741260 -n 21 -p 0
+----
+... 確認磁碟的擁有權：
++
+「torage disk show -Fields Owner, Pool」
+
++
+[listing]
+----
+storage disk show -fields owner, pool
+cluster_A::> storage disk show -fields owner, pool
+disk     owner          pool
+-------- ------------- -----
+0c.00.1  node_A_1      Pool0
+0c.00.2  node_A_1      Pool0
+.
+.
+.
+0c.00.8  node_A_1      Pool1
+0c.00.9  node_A_1      Pool1
+.
+.
+.
+0c.00.15 node_A_2      Pool0
+0c.00.16 node_A_2      Pool0
+.
+.
+.
+0c.00.22 node_A_2      Pool1
+0c.00.23 node_A_2      Pool1
+.
+.
+.
+----
+
+
+** 對於雙節點MetroCluster 的實體配置、請在替換節點上使用下列一系列命令、將新的無擁有磁碟指派給適當的磁碟集區：
++
+... 顯示本機磁碟櫃ID：
++
+「執行本機儲存展示櫃」
+
+... 將正常節點的替換磁碟指派給資源池1：
++
+「執行本機磁碟指派-機櫃機櫃ID -n舊磁碟數-p 1 s node_b_1-sysid -f'
+
+... 將替換節點的替換磁碟指派給Pool 0：
++
+「執行本機磁碟指派-機櫃機櫃ID -n舊磁碟數-p 0 -s node_a_1-sysid -f'
+
+
+
+
+
+. 在存續站台上、再次開啟自動磁碟指派：
++
+「torage disk option modify -autodassign on *」
+
++
+[listing]
+----
+cluster_B::> storage disk option modify -autoassign on *
+2 entries were modified.
+----
+. 在存續站台上、確認自動磁碟指派已開啟：
++
+「顯示磁碟選項」
+
++
+[listing]
+----
+ cluster_B::> storage disk option show
+ Node     BKg. FW. Upd.  Auto Copy   Auto Assign  Auto Assign Policy
+--------  -------------  -----------  -----------  ------------------
+node_B_1       on            on          on             default
+node_B_2       on            on          on             default
+2 entries were displayed.
+
+ cluster_B::>
+----
+
+
+link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"^]
+
+link:../manage/concept_understanding_mcc_data_protection_and_disaster_recovery.html#how-metrocluster-configurations-use-syncmirror-to-provide-data-redundancy["如何使用NetApp功能來提供資料備援MetroCluster SyncMirror"]

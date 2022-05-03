@@ -1,0 +1,106 @@
+---
+permalink: upgrade/task_create_unmirrored_data_aggregates_mcc.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, create, unmirrored, data, aggregates 
+summary: 您也可以針對MetroCluster 不需要由支援的組態所提供的備援鏡像的資料、建立無鏡射的資料集合體。 
+---
+= 建立無鏡射的資料集合體
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您也可以針對MetroCluster 不需要由支援的組態所提供的備援鏡像的資料、建立無鏡射的資料集合體。
+
+.關於這項工作
+* 您應該知道新的Aggregate將使用哪些磁碟機或陣列LUN。
+* 如果您的系統中有多種磁碟機類型（異質儲存設備）、您應該瞭解如何驗證選取的磁碟機類型是否正確。
+
+
+
+IMPORTANT: 在S不明IP組態中、切換後無法存取遠端無鏡射集合體MetroCluster
+
+
+NOTE: 無鏡射的Aggregate必須是擁有它們的節點的本機集合體。
+
+* 磁碟機和陣列LUN由特定節點擁有；當您建立Aggregate時、該Aggregate中的所有磁碟機都必須由同一個節點擁有、而該節點會成為該Aggregate的主節點。
+* Aggregate名稱應符合您在規劃MetroCluster 時所決定的名稱配置。
+* _磁碟與Aggregate管理_包含更多有關鏡射Aggregate的資訊。
+
+
+.步驟
+. 啟用無鏡射的Aggregate部署：
++
+「MetroCluster 支援無鏡射的Aggr-deployment true」
+
+. 確認磁碟自動指派已停用：
++
+顯示「磁碟選項」
+
+. 安裝並連接將包含無鏡射集合體的磁碟櫃。
++
+您可以使用平台和磁碟櫃的_安裝與設定_文件中的程序。
+
++
+https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"]
+
+. 手動將新機櫃上的所有磁碟指派給適當的節點：
++
+「磁碟指派磁碟_disk-id_-Owner_Owner-node-name_」
+
+. 建立Aggregate：
++
+《torage aggregate create》
+
++
+如果您已登入叢集管理介面上的叢集、則可以在叢集中的任何節點上建立集合體。若要驗證是否已在特定節點上建立Aggregate、您應該使用「-node-」參數、或指定該節點擁有的磁碟機。
+
++
+您也必須確保只將未鏡射磁碟櫃上的磁碟機納入到集合體中。
+
++
+您可以指定下列選項：
+
++
+** Aggregate的主節點（也就是在正常作業中擁有Aggregate的節點）
+** 要新增至集合體的特定磁碟機或陣列LUN清單
+** 要納入的磁碟機數量
+** 用於Aggregate的Checksum樣式
+** 要使用的磁碟機類型
+** 要使用的磁碟機大小
+** 使用的磁碟機速度
+** 集合體上RAID群組的RAID類型
+** RAID群組中可包含的磁碟機或陣列LUN數目上限
+** 是否允許使用不同RPM的磁碟機
++
+有關這些選項的更多信息，請參見"shorage aggregate creation"手冊頁。
+
++
+下列命令會建立10個磁碟的無鏡射Aggregate：
+
++
+[listing]
+----
+controller_A_1::> storage aggregate create aggr1_controller_A_1 -diskcount 10 -node controller_A_1
+[Job 15] Job is queued: Create aggr1_controller_A_1.
+[Job 15] The job is starting.
+[Job 15] Job succeeded: DONE
+----
+
+
+. 驗證新Aggregate的RAID群組和磁碟機：
++
+「torage Aggregate show-STATUS -Aggregate _gregate名稱_」
+
+. 停用無鏡射Aggregate部署：
++
+「MetroCluster 支援-無鏡射- aggr-deployment假」
+
+. 確認磁碟自動指派已啟用：
++
+顯示「磁碟選項」
+
+
+
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"]

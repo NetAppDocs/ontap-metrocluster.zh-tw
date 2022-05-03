@@ -1,0 +1,30 @@
+---
+permalink: transition/concept_transition_workflow_fc_to_ip_transition.html 
+sidebar: sidebar 
+keywords: follow, workflow, ensure, successful, nondisruptive, transition, metrocluster 
+summary: 您必須遵循特定的工作流程、以確保順利進行不中斷營運的移轉作業。 
+---
+= 不中斷MetroCluster 營運的流程無法進行不中斷的移轉
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須遵循特定的工作流程、以確保順利進行不中斷營運的移轉作業。
+
+轉換程序從健全的四節點MetroCluster 不含問題的FC組態開始。
+
+image::../media/transition_dr_group_1_fc_nodes.png[轉換DR群組1的光纖通道節點]
+
+新MetroCluster 的靜態IP節點會新增為第二個DR群組。
+
+image::../media/transition_dr_groups_fc_and_ip.png[轉換DR群組光纖通道和IP]
+
+資料會從舊的DR群組傳輸至新的DR群組、然後從組態中移除舊節點及其儲存設備、並予以停用。此程序以四節點MetroCluster 的靜態IP組態結束。
+
+image::../media/transition_dr_group_2_ip.png[移轉DR群組2 IP]
+
+您將使用下列工作流程來轉換MetroCluster 此功能。
+
+image::../media/workflow_4n_transition_nondisruptive.png[工作流程4n轉換不中斷營運]

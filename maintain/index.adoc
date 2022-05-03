@@ -1,0 +1,16 @@
+---
+permalink: maintain/index.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service 
+summary: 您可以在MetroCluster 您的系統配置中維護MetroCluster專屬的硬體元件。 
+---
+= 維護MetroCluster 這些元件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用下列程序來維護MetroCluster 您的故障設定中的MetroCluster專屬硬體元件。
+
+適用於此系統的服務程序MetroCluster 包括磁碟機櫃、IP交換器、FC交換器、FC至SAS橋接器和SAS纜線的韌體升級和硬體更換程序。

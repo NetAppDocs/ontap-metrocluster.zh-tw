@@ -1,0 +1,42 @@
+---
+section: manage
+title: 執行切換、修復及切換
+entries:
+- title: 執行切換以進行測試或維護
+  entries:
+  - title: 總覽
+    url: "/manage/task_perform_switchover_for_tests_or_maintenance.html"
+  - title: 確認系統已準備好進行切換
+    url: "/manage/task_verifiy_that_your_system_is_ready_for_a_switchover.html"
+  - title: 在協商切換之前傳送自訂AutoSupport 的消息
+    url: "/manage/task_send_a_custom_autosupport_message_prior_to_negotiated_switchover.html"
+  - title: 執行協商切換
+    url: "/manage/task_perform_a_negotiated_switchover.html"
+  - title: 儲存Aggregate plex show命令的輸出在MetroCluster 執行完功能介紹後仍不確定
+    url: "/manage/concept_output_for_storage_aggregate_plex_show_after_a_mcc_switchover.html"
+  - title: 確認DR合作夥伴已上線
+    url: "/manage/task_confirm_that_dr_partners_have_come_online.html"
+  - title: 修復組態
+    entries:
+    - title: 修復MetroCluster 以不修復FC組態的組態
+      entries:
+      - title: 總覽
+        url: "/manage/task_heal_the_configuration_in_a_mcc_fc_configuration_supertask.html"
+      - title: 協調切換後修復資料集合體
+        url: "/manage/task_heal_the_data_aggregates_after_negotiated_switchover.html"
+      - title: 協調切換後修復根集合體
+        url: "/manage/task_heal_the_root_aggregates_after_negotiated_switchover.html"
+    - title: 恢復MetroCluster 使用不含更新版本的IP組態（ONTAP 僅限版本號為2、9.4及更早版本）
+      url: "/manage/task_heal_the_configuration_in_a_mcc_ip_configuration_ontap_9_4_and_earlier.html"
+  - title: 執行切換
+    url: "/manage/task_perform_a_switchback.html"
+  - title: 驗證是否成功切換
+    url: "/manage/task_verify_a_successful_switchback.html"
+- title: 切換、修復及切換的命令
+  url: "/manage/reference_commands_for_switchover_healing_and_switchback.html"
+- title: 監控MetroCluster 此功能的組態
+  url: "/manage/concept_monitoring_the_mcc_configuration.html"
+- title: 使用NVFIL監控及保護檔案系統一致性
+  url: "/manage/concept_monitoring_and_protecting_database_validity_by_using_nvfail.html"
+- title: 何處可找到其他資訊
+  url: "/manage/reference_where_to_find_additional_information_dr_guide.html"

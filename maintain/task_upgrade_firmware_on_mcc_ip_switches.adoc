@@ -1,0 +1,98 @@
+---
+permalink: maintain/task_upgrade_firmware_on_mcc_ip_switches.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, upgrade, firmware. ip, switches, cisco, broadcom, efos, nxos, nx-os, software, install 
+summary: 升級MetroCluster 靜態IP交換器上的韌體。 
+---
+= 升級MetroCluster 靜態IP交換器上的韌體
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可能需要在MetroCluster 一個無法更新的IP交換器上升級韌體。
+
+您必須在每個交換器上連續重複此工作。
+
+.步驟
+. 檢查組態的健全狀況。
++
+.. 檢查MetroCluster 每個叢集上的功能是否已設定且處於正常模式：
++
+《不看》MetroCluster
+
++
+[listing]
+----
+cluster_A::> metrocluster show
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+ Local: cluster_A         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain auso-on-cluster-disaster
+Remote: cluster_B         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain auso-on-cluster-disaster
+----
+.. 檢查每個節點是否已啟用鏡射：
++
+「不一樣的秀」MetroCluster
+
++
+[listing]
+----
+cluster_A::> metrocluster node show
+DR                           Configuration  DR
+Group Cluster Node           State          Mirroring Mode
+----- ------- -------------- -------------- --------- --------------------
+1     cluster_A
+              node_A_1       configured     enabled   normal
+      cluster_B
+              node_B_1       configured     enabled   normal
+2 entries were displayed.
+----
+.. 檢查MetroCluster 這些元件是否健全：
++
+《不一樣的跑程》MetroCluster
+
++
+[listing]
+----
+cluster_A::> metrocluster check run
+
+Last Checked On: 10/1/2014 16:03:37
+
+Component           Result
+------------------- ---------
+nodes               ok
+lifs                ok
+config-replication  ok
+aggregates          ok
+4 entries were displayed.
+
+Command completed. Use the "metrocluster check show -instance" command or sub-commands in "metrocluster check" directory for detailed results.
+To check if the nodes are ready to do a switchover or switchback operation, run "metrocluster switchover -simulate" or "metrocluster switchback -simulate", respectively.
+----
+.. 檢查是否沒有健全狀況警示：
++
+「系統健全狀況警示顯示」
+
+
+
+. 在第一台交換器上安裝軟體。
++
+
+NOTE: 您必須依照下列順序在交換器上安裝交換器軟體：switch_a_1、switch_b_1、switch_a_2、switch_b_2。
+
++
+根據MetroCluster 交換器類型是Broadcom或Cisco、請依照「_EIP安裝與組態_」資訊的相關主題中的步驟安裝交換器軟體：
+
++
+** link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-broadcom-switch-efos-software["下載並安裝Broadcom交換器EFOS軟體"]
+** link:../install-ip/task_switch_config_cisco.html#downloading-and-installing-the-cisco-switch-nx-os-software["下載並安裝Cisco交換器NX-OS軟體"]
+
+
+. 針對每個交換器重複上述步驟。
+. 重複步驟1以檢查組態的健全狀況。
+

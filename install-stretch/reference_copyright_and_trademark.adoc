@@ -1,0 +1,12 @@
+---
+permalink: install-stretch/reference_copyright_and_trademark.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, copyright, trademark, machine, translation 
+summary: 適用於Stretch MetroCluster 的安裝與組態設定的版權、商標及機器翻譯。 
+---
+= 版權、商標及機器翻譯
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+

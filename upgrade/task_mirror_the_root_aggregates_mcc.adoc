@@ -1,0 +1,42 @@
+---
+permalink: upgrade/task_mirror_the_root_aggregates_mcc.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, mirror, root, aggregate 
+summary: 您必須鏡射根Aggregate以提供資料保護。 
+---
+= 鏡射根Aggregate
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須鏡射根Aggregate以提供資料保護。
+
+根據預設、根Aggregate會建立為RAID-DP類型Aggregate。您可以將根Aggregate從RAID-DP變更為RAID4類型Aggregate。下列命令會修改RAID4類型Aggregate的根Aggregate：
+
+[listing]
+----
+storage aggregate modify –aggregate aggr_name -raidtype raid4
+----
+
+NOTE: 在非ADP系統上、可在鏡射Aggregate之前或之後、將Aggregate的RAID類型從預設RAID-DP修改為RAID4。
+
+.步驟
+. 鏡射根Aggregate：
++
+"儲存Aggregate mirror _aggreg_name_"
+
++
+下列命令會鏡射控制器a_1的根Aggregate：
+
++
+[listing]
+----
+controller_A_1::> storage aggregate mirror aggr0_controller_A_1
+----
++
+這會鏡射Aggregate、因此它由位於遠端MetroCluster 站台的本機叢和遠端叢組成。
+
+. 針對MetroCluster 「資訊功能」組態中的每個節點、重複上述步驟。
+

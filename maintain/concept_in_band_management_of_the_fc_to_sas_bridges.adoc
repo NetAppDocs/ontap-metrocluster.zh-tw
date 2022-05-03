@@ -1,0 +1,71 @@
+---
+permalink: maintain/concept_in_band_management_of_the_fc_to_sas_bridges.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, in, band, management, fc, sas, bridges 
+summary: 從採用FibreBridge 7500N或7600N橋接器的支援版本起、即可支援橋接器的頻內管理、作為橋接器的IP管理替代方案。ONTAP從功能不完善的9.8開始ONTAP 、頻外管理已不再適用。 
+---
+= FC至SAS橋接器的頻內管理
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+從採用FibreBridge 7500N或7600N橋接器的支援版本起、即可支援橋接器的頻內管理、作為橋接器的IP管理替代方案。ONTAP從功能不完善的9.8開始ONTAP 、頻外管理已不再適用。
+
+.關於這項工作
+
+NOTE: 從ONTAP 功能組別9.8開始、「最小橋接器」命令會改為「系統橋接器」。以下步驟顯示了「shorage bridge」命令、但ONTAP 如果您執行的是更新版本的版本、最好使用「系統橋接器」命令。
+
+使用頻內管理時、橋接器可透過ONTAP FC連線至橋接器、從CLI進行管理及監控。不需要透過橋接式乙太網路連接埠實體存取橋接器、以減少橋接器的安全弱點。
+
+橋接器的頻內管理是否可用、取決ONTAP 於版本的下列項目：
+
+* 從ONTAP 功能不再是功能不全的9.8開始、橋接器依預設是透過頻內連線進行管理、而透過SNMP進行頻外管理的橋接器則已過時。
+* 支援從9.5到9.7的頻內管理或頻外SNMP管理。ONTAP
+* 在版本不含支援的版本不含支援的頻外SNMP管理。ONTAP
+
+
+橋接CLI命令可從ONTAP 位於整個過程的介面上的「sorage bridge run－CLI -name _bridge-name_－command _bridge-command-name_」命令發出ONTAP 。
+
+
+NOTE: 建議在停用IP存取的情況下使用頻內管理、藉由限制橋接器的實體連線能力來改善安全性。
+
+link:task_replace_a_sle_fc_to_sas_bridge.html#hot-swapping-a-bridge-with-a-replacement-bridge-of-the-same-model["以相同機型的替換橋接器熱交換橋接器"]
+
+link:task_replace_a_sle_fc_to_sas_bridge.html#hot-swapping-a-fibrebridge-7500n-with-a-7600n-bridge["以7600N橋接器熱交換使用FibreBridge 7500N"]
+
+link:task_replace_a_sle_fc_to_sas_bridge.html#hot-swapping-a-fibrebridge-a-6500n-bridge-with-a-fibrebrdige-7600n-or-7500n-bridge["使用光纖橋接器7600N或7500N橋接器熱交換光纖橋接器6500N"]
+
+link:task_fb_hot_add_stack_of_shelves_and_bridges.html#hot-adding-a-stack-of-sas-disk-shelves-and-bridges["熱新增一堆SAS磁碟櫃和橋接器"]
+
+
+
+== 從ONTAP 功能區管理光纖橋接器
+
+從ONTAP 功能介紹9.5開始、您可以使用ONTAP SectorCLI將FibreBridge命令傳遞至橋接器、並顯示這些命令的結果。
+
+.關於這項工作
+--
+
+NOTE: 從ONTAP 功能組別9.8開始、「最小橋接器」命令會改為「系統橋接器」。以下步驟顯示了「shorage bridge」命令、但ONTAP 如果您執行的是更新版本的版本、最好使用「系統橋接器」命令。
+
+--
+.步驟
+. 在「shorage bridge run－CLI（最小橋接器運行－CLI）命令中執行適用的fIBreBridge命令：
++
+「torage bridge run－CLI -name _bridge-name_-command（命令字串）」
+
++
+下列命令會從ONTAP Windows提示字元執行「FibreBridge「Asport停 用」命令、以停用橋接器上的SAS連接埠b：
+
++
+[listing]
+----
+cluster_A::> storage bridge run-cli -name "SASPortDisable b"
+
+SAS Port B has been disabled.
+Ready
+cluster_A::>
+----
+

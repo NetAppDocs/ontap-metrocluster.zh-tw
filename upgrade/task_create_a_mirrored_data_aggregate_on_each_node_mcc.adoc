@@ -1,0 +1,79 @@
+---
+permalink: upgrade/task_create_a_mirrored_data_aggregate_on_each_node_mcc.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, create, mirrored, data, aggregate, node 
+summary: 您必須在DR群組中的每個節點上建立鏡射資料Aggregate。 
+---
+= 在每個節點上建立鏡射資料Aggregate
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須在DR群組中的每個節點上建立鏡射資料Aggregate。
+
+.關於這項工作
+* 您應該知道新的Aggregate將使用哪些磁碟機。
+* 如果您的系統中有多種磁碟機類型（異質儲存設備）、您應該瞭解如何確保選取正確的磁碟機類型。
+* 磁碟機由特定節點擁有；當您建立Aggregate時、該Aggregate中的所有磁碟機都必須由同一個節點擁有、此節點會成為該Aggregate的主節點。
++
+在使用ADP的系統中、會使用分割區來建立集合體、將每個磁碟機分割至P1、P2和P3分割區。
+
+* Aggregate名稱應符合您在規劃MetroCluster 時所決定的名稱配置。
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"]
+
+
+
+.步驟
+. 顯示可用備援磁碟機清單：
++
+「torage disk show -spare -Owner_node_name_」
+
+. 建立Aggregate：
++
+"集合體建立-鏡射真"
+
++
+如果您已登入叢集管理介面上的叢集、則可以在叢集中的任何節點上建立集合體。若要確保在特定節點上建立Aggregate、請使用「-node-」參數或指定該節點擁有的磁碟機。
+
++
+您可以指定下列選項：
+
++
+** Aggregate的主節點（也就是在正常作業中擁有Aggregate的節點）
+** 要新增至集合體的特定磁碟機清單
+** 要納入的磁碟機數量
++
+
+NOTE: 在可用磁碟機數量有限的最低支援組態中、您必須使用force-min-Aggregate選項來建立三個磁碟RAID-DP Aggregate。
+
+** 用於Aggregate的Checksum樣式
+** 要使用的磁碟機類型
+** 要使用的磁碟機大小
+** 使用的磁碟機速度
+** 集合體上RAID群組的RAID類型
+** RAID群組中可包含的磁碟機數目上限
+** 是否允許使用不同RPM的磁碟機
++
+有關這些選項的更多信息，請參見"shorage aggregate creation"手冊頁。
+
++
+下列命令會建立10個磁碟的鏡射Aggregate：
+
++
+[listing]
+----
+cluster_A::> storage aggregate create aggr1_node_A_1 -diskcount 10 -node node_A_1 -mirror true
+[Job 15] Job is queued: Create aggr1_node_A_1.
+[Job 15] The job is starting.
+[Job 15] Job succeeded: DONE
+----
+
+
+. 驗證新Aggregate的RAID群組和磁碟機：
++
+「torage Aggregate show-STATUS -Aggregate _gregate名稱_」
+
+

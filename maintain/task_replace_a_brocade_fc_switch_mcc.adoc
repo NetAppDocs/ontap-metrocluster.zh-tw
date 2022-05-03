@@ -1,0 +1,266 @@
+---
+permalink: maintain/task_replace_a_brocade_fc_switch_mcc.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, replace, brocade, fc, switch 
+summary: 您必須使用此Brocade專屬程序來更換故障的交換器。 
+---
+= 更換Brocade FC交換器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須使用此Brocade專屬程序來更換故障的交換器。
+
+您需要管理員密碼、才能存取FTP或scp伺服器。
+
+在下列範例中、FC_switch_a_1是正常的交換器、FC_switch_B_1是功能受損的交換器。下表顯示範例中的交換器連接埠使用量：
+
+|===
+
+
+| 連接埠連線 | 連接埠 
+
+
+ a| 
+FC-VI連線
+ a| 
+0、3
+
+
+
+ a| 
+HBA連線
+ a| 
+1、2、4、5
+
+
+
+ a| 
+FC至SAS橋接器連線
+ a| 
+6、7.
+
+
+
+ a| 
+ISL連線
+ a| 
+10、11.
+
+|===
+這些範例顯示兩個FC對SAS橋接器。如果您有更多連接埠、則必須停用及啟用其他連接埠。
+
+
+NOTE: 此程序不中斷營運、約需兩小時完成。
+
+您的交換器連接埠使用量應遵循建議的指派。
+
+* link:concept_port_assignments_for_fc_switches_when_using_ontap_9_0.html["FC交換器的連接埠指派（使用ONTAP 功能）9.0"]
+* link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）"]
+
+
+.步驟
+. 關閉正在更換的交換器、停用網路中正常交換器上的ISL連接埠、以及受損交換器上的FC-VI和HBA連接埠（如果受損交換器仍在運作）：
++
+.. 針對每個連接埠停用正常交換器上的ISL連接埠：
++
+「portcfg堅持 停用_port-number_」
+
++
+[listing]
+----
+FC_switch_A_1:admin> portcfgpersistentdisable 10
+FC_switch_A_1:admin> portcfgpersistentdisable 11
+----
+.. 如果受損的交換器仍可運作、請針對每個連接埠停用該交換器上的FC-VI和HBA連接埠：
++
+「portcfg堅持 停用_port-number_」
+
++
+[listing]
+----
+FC_switch_B_1:admin> portcfgpersistentdisable 0
+FC_switch_B_1:admin> portcfgpersistentdisable 1
+FC_switch_B_1:admin> portcfgpersistentdisable 2
+FC_switch_B_1:admin> portcfgpersistentdisable 3
+FC_switch_B_1:admin> portcfgpersistentdisable 4
+FC_switch_B_1:admin> portcfgpersistentdisable 5
+----
+
+
+. 如果受損的交換器仍在運作、請從「shwitchshow」命令收集輸出。
++
+[listing]
+----
+FC_switch_B_1:admin> switchshow
+    switchName: FC_switch_B_1
+    switchType: 71.2
+    switchState:Online
+    switchMode: Native
+    switchRole: Subordinate
+    switchDomain:       2
+    switchId:   fffc01
+    switchWwn:  10:00:00:05:33:86:89:cb
+    zoning:             OFF
+    switchBeacon:       OFF
+----
+. 在實際安裝新交換器之前、先開機並預先設定：
++
+.. 開啟新交換器的電源、讓它開機。
+.. 檢查交換器的韌體版本、確認其符合其他FC交換器的版本：
++
+《Firmwarreshow》
+
+.. 依照「_RAYInstallation MetroCluster and Configuration」（安裝與組態）中所述設定新交換器、但跳過「在Brocade FC交換器上設定分區」程序。
++
+https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"]
+
++
+您可以稍後在本程序中設定分區。
+
++
+
+NOTE: 此時、新交換器並未連接至MetroCluster 該組態的纜線。
+
+.. 停用新交換器上的FC-VI、HBA和儲存連接埠、以及連接至FC-SAS橋接器的連接埠。
++
+[listing]
+----
+FC_switch_B_1:admin> portcfgpersistentdisable 0
+FC_switch_B_1:admin> portcfgpersistentdisable 1
+FC_switch_B_1:admin> portcfgpersistentdisable 2
+FC_switch_B_1:admin> portcfgpersistentdisable 3
+FC_switch_B_1:admin> portcfgpersistentdisable 4
+FC_switch_B_1:admin> portcfgpersistentdisable 5
+
+FC_switch_B_1:admin> portcfgpersistentdisable 6
+FC_switch_B_1:admin> portcfgpersistentdisable 7
+----
+
+
+. 實際更換交換器：
++
+.. 關閉功能受損的FC交換器。
+.. 關閉備用FC交換器的電源。
+.. 拔下受損的交換器、並仔細記下連接至哪個連接埠的纜線。
+.. 在機架中安裝替換交換器。
+.. 將替換交換器的纜線與舊交換器的纜線完全相同。
+.. 開啟新的FC交換器。
+
+
+. 若要啟用ISL加密、請在中完成適用的工作 link:https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"]。
++
+如果您要啟用ISL加密、則必須完成下列工作：
+
++
+** 停用虛擬架構
+** 設定有效負載
+** 設定驗證原則
+** 在Brocade交換器上啟用ISL加密
+
+
+. 完成新交換器的組態：
++
+.. 啟用ISL：
++
+「portcfg堅持 啟用_port-number_」
+
++
+[listing]
+----
+FC_switch_B_1:admin> portcfgpersistentenable 10
+FC_switch_B_1:admin> portcfgpersistentenable 11
+----
+.. 在替換交換器上（範例中為FC_SWIT_B_1）、確認ISL處於線上狀態：
++
+「秀秀」
+
++
+[listing]
+----
+FC_switch_B_1:admin> switchshow
+switchName: FC_switch_B_1
+switchType: 71.2
+switchState:Online
+switchMode: Native
+switchRole: Principal
+switchDomain:       4
+switchId:   fffc03
+switchWwn:  10:00:00:05:33:8c:2e:9a
+zoning:             OFF
+switchBeacon:       OFF
+
+Index Port Address Media Speed State  Proto
+==============================================
+...
+10   10    030A00 id   16G     Online  FC E-Port 10:00:00:05:33:86:89:cb "FC_switch_A_1"
+11   11    030B00 id   16G     Online  FC E-Port 10:00:00:05:33:86:89:cb "FC_switch_A_1" (downstream)
+...
+----
+.. 啟用連接FC橋接器的儲存連接埠。
++
+[listing]
+----
+FC_switch_B_1:admin> portcfgpersistentenable 6
+FC_switch_B_1:admin> portcfgpersistentenable 7
+----
+.. 啟用儲存設備、HBA和FC-VI連接埠。
++
+以下範例顯示用於啟用連接HBA介面卡之連接埠的命令：
+
++
+[listing]
+----
+FC_switch_B_1:admin> portcfgpersistentenable 1
+FC_switch_B_1:admin> portcfgpersistentenable 2
+FC_switch_B_1:admin> portcfgpersistentenable 4
+FC_switch_B_1:admin> portcfgpersistentenable 5
+----
++
+以下範例顯示用於啟用連接FC-VI介面卡之連接埠的命令：
+
++
+[listing]
+----
+FC_switch_B_1:admin> portcfgpersistentenable 0
+FC_switch_B_1:admin> portcfgpersistentenable 3
+----
+
+
+. 驗證連接埠是否在線上：
++
+「秀秀」
+
+. 驗證MetroCluster 下列項目中的功能：ONTAP
++
+.. 檢查系統是否具有多路徑：
++
+「節點執行節點_norme-name_ sysconfig -A」
+
+.. 檢查兩個叢集上的任何健全狀況警示：
++
+「系統健全狀況警示顯示」
+
+.. 確認MetroCluster 執行功能組態、並確認操作模式正常：
++
+《不看》MetroCluster
+
+.. 執行功能檢查：MetroCluster
++
+《不一樣的跑程》MetroCluster
+
+.. 顯示MetroCluster 檢查結果：
++
+《不一樣的表演》MetroCluster
+
+.. 檢查交換器上是否有任何健全狀況警示（如果有）：
++
+「torage switchshow」
+
+.. 執行 https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["Config Advisor"]。
+.. 執行Config Advisor 完功能後、請檢閱工具的輸出結果、並依照輸出中的建議來解決發現的任何問題。
+
+
+

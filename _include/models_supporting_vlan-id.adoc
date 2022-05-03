@@ -1,0 +1,38 @@
+= 
+:allow-uri-read: 
+
+
++
+
+--
+[NOTE]
+====
+* 某些平台會使用VLAN作為MetroCluster 支援靜態IP介面。根據預設、這兩個連接埠各自使用不同的VLAN：10和20。您也可以使用「MetroCluster 還原組態設定介面create」命令中的「-vlan-id參數」、指定高於100（介於101和4095之間）的不同（非預設）VLAN。
+* 從ONTAP 《支援範圍》9.9.1開始、如果您使用的是第3層組態、則在建立MetroCluster 支援範圍介面時、也必須指定「閘道」參數。請參閱 link:../install-ip/concept_considerations_layer_3.html["第3層廣域網路的考量"]。
+
+
+====
+--
++下列平台機型使用VLAN並允許設定非預設的VLAN ID。
+
++
+
+|===
+
+
+| 支援各種平台AFF | 支援各種平台FAS 
+
+
+ a| 
+* VA220 AFF
+* VA250 AFF
+* 解答400 AFF
+
+ a| 
+* FAS2750
+* FAS500f
+* FAS8300
+* FAS8700
+
+
+|===

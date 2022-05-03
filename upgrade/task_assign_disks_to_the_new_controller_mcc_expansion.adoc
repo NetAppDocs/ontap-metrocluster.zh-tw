@@ -1,0 +1,45 @@
+---
+permalink: upgrade/task_assign_disks_to_the_new_controller_mcc_expansion.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, assign, disks, new, controller, module 
+summary: 在透過netboot完成新控制器模組的組態之前、您必須先為其指派磁碟。 
+---
+= 將磁碟指派給新的控制器模組
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在透過netboot完成新控制器模組的組態之前、您必須先為其指派磁碟。
+
+您必須確定有足夠的備援磁碟、未指派的磁碟或指派的磁碟不屬於現有的Aggregate。
+
+link:task_prepare_for_the_upgrade_add_2nd_controller_to_create_ha_pair.html["準備升級"]
+
+這些步驟會在現有的控制器模組上執行。
+
+.步驟
+. 將根磁碟指派給新的控制器模組：
++
+'磁碟指派磁碟磁碟_disk_name_-sysid _new_控制 器_sysid_-force true '
+
++
+如果您的平台模式使用進階磁碟分割（ADP）功能、則必須包含-root true參數：
+
++
+torage disk assign -disk _disk_name_-root true -sysid _new_控制 器sysid_-force true
+
+. 為每個磁碟輸入下列命令、將剩餘的必要磁碟指派給新的控制器模組：
++
+'磁碟指派磁碟磁碟_disk_name_-sysid _new_控制 器_sysid_-force true '
+
+. 驗證磁碟指派是否正確：
++
+「torage disk show -partition創造 擁有權*」
+
++
+
+NOTE: 請確定您已將所有要指派給新節點的磁碟指派給新節點。
+
+

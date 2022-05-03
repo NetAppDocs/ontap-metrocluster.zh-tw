@@ -1,0 +1,57 @@
+---
+permalink: install-stretch/concept_considerations_firewalls.html 
+sidebar: sidebar 
+keywords: metrocluster, firewall, ports, prepare, tcp, udp 
+summary: 如果MetroCluster 您在站台使用防火牆、則必須確保存取特定必要的連接埠。 
+---
+= 在景點使用防火牆MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+
+
+== 使用防火牆的考MetroCluster 量因素
+
+如果MetroCluster 您在站台使用防火牆、則必須確保存取所需的連接埠。
+
+下表顯示位於MetroCluster 兩個景點之間的外部防火牆使用TCP/IP連接埠。
+
+|===
+
+
+| 流量類型 | 連接埠/服務 
+
+
+ a| 
+叢集對等
+ a| 
+11104 / TCP
+
+11105 / TCP
+
+
+
+ a| 
+系統管理程式ONTAP
+ a| 
+443 / TCP
+
+
+
+ a| 
+SIP叢集間LIF MetroCluster
+ a| 
+65200 / TCP
+
+10006/ TCP與udp
+
+
+
+ a| 
+硬體輔助
+ a| 
+4444 / TCP
+
+|===

@@ -1,0 +1,60 @@
+---
+permalink: maintain/task_fb_hot_add_shelf_prepare_7500n.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, prepare, hot, add, sas, disk, shelves 
+summary: 準備熱新增SAS磁碟櫃時、需要下載文件、以及磁碟機和磁碟櫃韌體。 
+---
+= 準備熱新增SAS磁碟櫃
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+準備熱新增SAS磁碟櫃時、需要下載文件、以及磁碟機和磁碟櫃韌體。
+
+* 您的系統必須是支援的組態、而且必須執行支援的ONTAP 版本的支援。
+* 系統中的所有磁碟機和磁碟櫃都必須執行最新的韌體版本。
++
+您可能需要在MetroCluster 整個版本的整個BIOS組態中更新磁碟和機櫃韌體、然後再新增機櫃。
+
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-ug-rdg/home.html["升級、回復或降級"]
+
+
+
+
+NOTE: 如果您的系統執行支援版本ONTAP 的支援、則同一堆疊中支援IOM12模組和IOM6模組的混合組合。若要確定您的ONTAP 版本是否支援機櫃混合、 請參閱互通性對照表工具（IMT）。https://mysupport.netapp.com/NOW/products/interoperability[NetApp互通性]如果ONTAP 不支援您的版本、而且您無法升級或降級現有堆疊上的IOM模組、或是將新增至受支援的IOM模組組合的新機櫃、 您需要執行下列其中一項：
+
+* 在新的SAS連接埠上啟動新堆疊（如果橋接配對支援）。
+* 在額外的橋接配對上啟動新的堆疊。
+
+
+.步驟
+. 請從NetApp支援網站下載或檢視下列文件：
++
+** https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"]
+** 適用於您磁碟櫃模型的_安裝指南_。
+
+
+. 驗證是否支援熱新增的磁碟櫃。
++
+https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"]
+
+. 下載最新的磁碟與磁碟櫃韌體：
++
+
+NOTE: 在此步驟中、您只要完成連結中提供的下載部分。您必須遵循中的步驟 link:task_fb_hot_add_a_disk_shelf_install_7500n.html["熱新增磁碟櫃"] 安裝磁碟櫃的一節。
+
++
+.. 下載磁碟韌體、並複製磁碟韌體說明以供日後參考。
++
+https://mysupport.netapp.com/site/downloads/firmware/disk-drive-firmware["NetApp下載：磁碟機韌體"]
+
+.. 下載磁碟櫃韌體、並複製磁碟櫃韌體說明以供日後參考。
++
+https://mysupport.netapp.com/site/downloads/firmware/disk-shelf-firmware["NetApp下載：磁碟櫃韌體"]
+
+
+
+

@@ -1,0 +1,42 @@
+---
+permalink: install-ip/using_rcf_generator.html 
+sidebar: sidebar 
+keywords: cabling, cable, component, link, site, management, network, hardware, component, switch, cluster, connection, management, data, configuring, configure, rcf, file, generator, RcfFileGenerator 
+summary: 您必須瞭解如何使用連接埠表格中的資訊來正確產生RCF檔案。 
+---
+= 使用連接埠表格搭配RcfFileGeneratorR工具或多MetroCluster 種支援的組態
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須瞭解如何使用連接埠表格中的資訊來正確產生RCF檔案。
+
+使用表格之前、請先檢閱下列考量事項：
+
+* 下表顯示站台A的連接埠使用量站台B使用相同的纜線
+* 交換器無法設定不同速度的連接埠（例如、混合使用100 Gbps連接埠和40 Gbps連接埠）。
+* 追蹤MetroCluster 不穩定的資料群組MetroCluster （例如、支援1、MetroCluster 2等）。如本組態程序稍後所述、使用RcfFileGenerator.工具時、您將需要此資訊。
+* 。 https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["RcfFileGeneratorfor MetroCluster EfIP"] 此外、也提供每個交換器的每埠纜線配置總覽。使用此纜線總覽來驗證纜線。
+
+
+
+
+== 佈線八節點MetroCluster 的架構
+
+針對執行效能不全的9.8和更早版本的執行功能、為了轉換升級作業、某些程序需要在組態中新增第二個四節點DR群組、才能建立一個暫用的八節點組態。MetroCluster ONTAP從支援永久性的8節點版本的支援、從版本號9.9開始。ONTAP MetroCluster
+
+對於這類組態、您使用的方法與上述方法相同。除了第二MetroCluster 個問題、您還需要額外的四節點災難恢復群組。
+
+例如、您的組態包括下列項目：
+
+* Cisco 3132Q-V交換器
+* 產品特色1：FAS2750平台MetroCluster
+* 支援2：功能完善的支援平台（這些平台將新增為第二個四節點DR群組）MetroCluster AFF
+
+
+.步驟
+. 對於僅有的部分、請使用FAS2750平台的表格、以及用作支援1介面的資料列、來連接Cisco 3132Q-V交換器。MetroCluster MetroCluster
+. 對於2（第二個DR群組）、請使用表格連接Cisco 3132Q-V交換器、以利執行該平台、並將資料列連接至2個介面。MetroCluster AFF MetroCluster
+

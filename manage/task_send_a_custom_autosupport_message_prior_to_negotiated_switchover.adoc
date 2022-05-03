@@ -1,0 +1,25 @@
+---
+permalink: manage/task_send_a_custom_autosupport_message_prior_to_negotiated_switchover.html 
+sidebar: sidebar 
+keywords: perform, negotiate, switchover, autosupport, message, netapp, technical, support, maintenance, underway, failure, trigger, support, prevent, disruption, custom, prior 
+summary: 在進行協商切換之前、您應該發出AutoSupport 一份「不知」訊息、通知NetApp技術支援人員正在進行維護。協商切換可能會導致引發MetroCluster 故障訊息的叢或不穩定作業故障AutoSupport 。告知技術支援部門正在進行維護、可防止他們假設發生中斷、而開啟案例。 
+---
+= 在協商切換之前傳送自訂AutoSupport 的消息
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在進行協商切換之前、您應該發出AutoSupport 一份「不知」訊息、通知NetApp技術支援人員正在進行維護。協商切換可能會導致引發MetroCluster 故障訊息的叢或不穩定作業故障AutoSupport 。告知技術支援部門正在進行維護、可防止他們假設發生中斷、而開啟案例。
+
+此工作必須在每MetroCluster 個站台上執行。
+
+.步驟
+. 登入Site_A的叢集
+. 叫出AutoSupport 指示維護開始的消息：「System Node AutoSupport 現象叫用節點*-type all -most mainten=maintening-window-inter-hours」
++
+maintenance－window-in－hours（維護時段）指定維護時段的長度，最長可達72小時。如果維護作業在時間結束之前完成、您可以發出命令、指示維護期間已結束：「系統節點AutoSupport 不再叫用節點*-type all -most maint=end'」
+
+. 在合作夥伴網站上重複此步驟。
+

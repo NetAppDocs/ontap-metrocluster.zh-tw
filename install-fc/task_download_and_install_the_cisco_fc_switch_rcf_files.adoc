@@ -1,0 +1,142 @@
+---
+permalink: install-fc/task_download_and_install_the_cisco_fc_switch_rcf_files.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, download, install, cisco, fc, rcf, files 
+summary: 您必須將RCF檔案下載到MetroCluster 以「支援」為基礎的各個交換器組態中。 
+---
+= 下載並安裝Cisco FC RCF檔案
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須將RCF檔案下載到MetroCluster 以「支援」為基礎的各個交換器組態中。
+
+這項工作需要檔案傳輸軟體（例如FTP、Trivial File Transfer Protocol（TFTP）、SFTP或Secure Copy Protocol（SCP））、才能將檔案複製到交換器。
+
+這些步驟必須重複執行MetroCluster 到位在整個過程中的每個Cisco FC交換器上。
+
+您必須使用支援的交換器軟體版本。
+
+https://hwu.netapp.com["NetApp Hardware Universe"]
+
+共有四個RCF檔案、MetroCluster 其中四個交換器的RCF設定各一個。您必須針對所使用的交換器機型使用正確的RCF檔案。
+
+|===
+
+
+| 交換器 | RCF檔案 
+
+
+ a| 
+FC_SWIT_A_1
+ a| 
+「NX323232_v1.80交換器-a1.txt」
+
+
+
+ a| 
+FC_SWIT_A_2
+ a| 
+「NX323232_v1.1_Switch-a2.txt'
+
+
+
+ a| 
+FC_SWIT_B_1
+ a| 
+「NX323232_v1.80交換器-B1.txt」
+
+
+
+ a| 
+FC_SWIT_B_2
+ a| 
+「NX323232_v1.1_Switch-b2.txt'
+
+|===
+
+NOTE: 顯示的輸出適用於Cisco IP交換器、但這些步驟也適用於Cisco FC交換器。
+
+.步驟
+. 從下載Cisco FC RCF檔案 https://mysupport.netapp.com/site/products/all/details/metrocluster-rcf/downloads-tab["RCF下載頁面MetroCluster"]。
+. 將RCF檔案複製到交換器。
++
+.. 將RCF檔案複製到第一個交換器：
++
+「copy sftp：//_root@ft-server_ip-address/tftpboot/switch-specif_bootflash：VRF管理」
+
++
+在此範例中、「NX323232_v1.m_Switch-a1.txt' RCF檔案會從位於「10.10.99.99」的SFTP伺服器複製到本機bootflash。您必須使用TFTP/SFTP伺服器的IP位址、以及需要安裝的RCF檔案名稱。
+
++
+[listing]
+----
+IP_switch_A_1# copy sftp://root@10.10.99.99/tftpboot/NX3232_v1.8T-X1_Switch-A1.txt bootflash: vrf management
+root@10.10.99.99's password: password
+sftp> progress
+Progress meter enabled
+sftp> get   /tftpboot/NX3232_v1.80_Switch-A1.txt /bootflash/NX3232_v1.80_Switch-A1.txt
+Fetching /tftpboot/NX3232_v1.80_Switch-A1.txt to /bootflash/NX3232_v1.80_Switch-A1.txt
+/tftpboot/NX3232_v1.80_Switch-A1.txt          100% 5141     5.0KB/s   00:00
+sftp> exit
+Copy complete, now saving to disk (please wait)...
+IP_switch_A_1#
+----
+.. 對其他三個交換器重複上一個子步驟、請務必將相符的RCF檔案複製到對應的交換器。
+
+
+. 在每個交換器上、確認每個交換器的「bootflash」目錄中都有RCF檔案：
++
+《Dir bootflash:》
+
++
+下列範例顯示檔案存在於ip_switch_a_1上：
+
++
+[listing]
+----
+IP_switch_A_1# dir bootflash:
+                  .
+                  .
+                  .
+       5514    Jun 13 22:09:05 2017  NX3232_v1.80_Switch-A1.txt
+                  .
+                  .
+                  .
+
+Usage for bootflash://sup-local
+ 1779363840 bytes used
+13238841344 bytes free
+15018205184 bytes total
+IP_switch_A_1#
+----
+. 將相符的RCF檔案從本機bootFlash複製到每個交換器上的執行組態：
++
+「copy bootflash：__switch-specific-RCF__.txt執行組態」
+
+. 將RCF檔案從執行中的組態複製到每個交換器的啟動組態：
++
+「copy running-config startup-config」
+
++
+您應該會看到類似下列的輸出：
+
++
+[listing]
+----
+IP_switch_A_1# copy bootflash:NX3232_v1.80_Switch-A1.txt running-config
+IP_switch_A_1# copy running-config startup-config
+----
+. 重新載入交換器：
++
+"重裝"
+
++
+[listing]
+----
+IP_switch_A_1# reload
+----
+. 在其他三個MetroCluster 交換器上重複上述步驟、以進行REIP組態設定。
+

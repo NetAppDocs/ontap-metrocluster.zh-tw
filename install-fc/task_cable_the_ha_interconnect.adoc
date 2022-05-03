@@ -1,0 +1,32 @@
+---
+permalink: install-fc/task_cable_the_ha_interconnect.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, cable, ha, interconnect, cabling 
+summary: 如果您有八節點或四節點MetroCluster 的不一致組態、而且HA配對內的儲存控制器位於不同的機箱中、則必須將HA互連纜線連接至控制器之間。 
+---
+= HA互連纜線
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您有八節點或四節點MetroCluster 的不一致組態、而且HA配對內的儲存控制器位於不同的機箱中、則必須將HA互連纜線連接至控制器之間。
+
+.關於這項工作
+* 這項工作不適用於雙節點MetroCluster 的不全功能組態。
+* 這項工作必須在MetroCluster 兩個地方執行。
+* 唯有HA配對內的儲存控制器位於不同的機箱中時、才能連接HA互連。
++
+部分儲存控制器機型在單一機箱中支援兩個控制器、在這種情況下、它們會使用內部HA互連。
+
+
+
+.步驟
+. 如果儲存控制器的HA合作夥伴位於獨立的機箱中、請連接HA互連。
++
+https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"]
+
+. 如果MetroCluster 該站台包含兩個HA配對、請在第二個HA配對上重複上述步驟。
+. 請在MetroCluster 「不合作夥伴」網站重複此工作。
+

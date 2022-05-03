@@ -1,0 +1,43 @@
+---
+permalink: install-fc/concept_choosing_the_correct_installation_procedure_for_your_configuration_mcc_install.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, correct, procedure, configuration 
+summary: 您必須根據是否使用FlexArray VMware LUN、MetroCluster 在VMware組態中的節點數量、以及是否共享7-Mode Fabric MetroCluster 所使用的現有FC交換器架構、來選擇正確的安裝程序。 
+---
+= 針對您的組態選擇正確的安裝程序
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須根據是否使用FlexArray VMware LUN、MetroCluster 在VMware組態中的節點數量、以及是否共享7-Mode Fabric MetroCluster 所使用的現有FC交換器架構、來選擇正確的安裝程序。
+
+image::../media/workflow_select_your_metrocluster_configuration_fabric.gif[工作流程選擇MetroCluster 您的支援架構]
+
+|===
+
+
+| 對於此安裝類型... | 請使用下列程序... 
+
+
+ a| 
+採用NetApp（原生）磁碟的網路附加組態
+ a| 
+. link:task_configure_the_mcc_hardware_components_fabric.html["佈線連接架構MetroCluster 的不整合式架構組態"]
+. link:concept_configure_the_mcc_software_in_ontap.html["在MetroCluster 不提供的情況下設定功能ONTAP"]
+
+
+
+
+ a| 
+與現有FC交換器架構共用時的網路附加組態
+
+這僅作為使用MetroCluster Brocade 6510交換器進行7-Mode Fabric之組態的暫用組態支援。
+ a| 
+. link:task_configure_the_mcc_hardware_components_fabric.html["佈線連接架構MetroCluster 的不整合式架構組態"]
+. link:task_fmc_mcc_transition_configure_the_mcc_hardware_for_share_a_7_mode_brocade_6510_fc_fabric_dure_transition.html["設定MetroCluster 支援7-Mode Brocade 6510 FC架構的支援硬體、以便在轉換期間共用"]
+. link:concept_configure_the_mcc_software_in_ontap.html["在MetroCluster 不提供的情況下設定功能ONTAP"]
+
+
+|===

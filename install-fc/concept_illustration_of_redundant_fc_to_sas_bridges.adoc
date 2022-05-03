@@ -1,0 +1,22 @@
+---
+permalink: install-fc/concept_illustration_of_redundant_fc_to_sas_bridges.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, illustration, redundant, fc, sas, bridges 
+summary: FC至SAS橋接器可在SAS附加磁碟與FC交換器架構之間提供傳輸協定橋接。 
+---
+= 備援FC對SAS橋接器的圖例
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+FC至SAS橋接器可在SAS附加磁碟與FC交換器架構之間提供傳輸協定橋接。
+
+image::../media/mcc_hw_architecture_shelf_stacks.gif[MCC硬體架構機櫃堆疊]
+
+link:concept_illustration_of_the_local_ha_pairs_in_a_mcc_configuration.html["以架構組態顯示本機HA配對的圖例MetroCluster"]
+
+link:concept_redundant_fc_switch_fabrics.html["備援FC交換器架構"]
+
+link:concept_cluster_peering_network_mcc.html["叢集對等網路的圖例"]

@@ -1,0 +1,167 @@
+---
+permalink: disaster-recovery/task_reassign_roots_mcfc.html 
+sidebar: sidebar 
+keywords: reassign, ownership, nvram, system, id, replaced 
+summary: 如果災難站台更換了一或兩個控制器模組或NVRAM卡、您必須將屬於根集合體的磁碟重新指派給更換的控制器模組。 
+---
+= 將根Aggregate的磁碟擁有權重新分配給更換的控制器模組（MetroCluster 不含FC組態）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果災難站台更換了一或兩個控制器模組或NVRAM卡、則系統ID已變更、您必須將屬於根Aggregate的磁碟重新指派給更換的控制器模組。
+
+由於節點處於切換模式且已進行修復、因此本節僅會重新指派含有災難站台Pool1根集合體的磁碟。它們是目前唯一仍由舊系統ID擁有的磁碟。
+
+本節提供兩個和四個節點組態的範例。對於雙節點組態、您可以忽略對每個站台第二個節點的參照。對於八節點組態、您必須考慮第二個DR群組上的其他節點。這些範例假設如下：
+
+* 站台A是災難站台。
++
+** 已更換node_a_1。
+** 已更換node_a_2。
++
+僅提供四節點MetroCluster 的不全功能組態。
+
+
+
+* 站台B是存續的站台。
++
+** node_B_1正常運作。
+** node_B_2正常。
++
+僅提供四節點MetroCluster 的不全功能組態。
+
+
+
+
+
+舊的和新的系統ID已在中識別 link:task_replace_hardware_and_boot_new_controllers.html#determining-the-system-ids-and-vlan-ids-of-the-old-controller-modules["確定更換控制器模組的系統ID"]。
+
+本程序中的範例使用具有下列系統ID的控制器：
+
+|===
+
+
+| 節點數 | 節點 | 原始系統ID | 新系統ID 
+
+
+.4+| 四  a| 
+node_a_1
+ a| 
+4068741258
+ a| 
+1574774970
+
+
+
+ a| 
+節點_a_2
+ a| 
+4068741260
+ a| 
+1574774991
+
+
+
+ a| 
+節點_B_1
+ a| 
+4068741254
+ a| 
+不變
+
+
+
+ a| 
+節點_B_2
+ a| 
+4068741256
+ a| 
+不變
+
+
+
+ a| 
+二
+ a| 
+node_a_1
+ a| 
+4068741258
+ a| 
+1574774970
+
+|===
+.步驟
+. 將替換節點置於維護模式、重新指派根Aggregate磁碟：
++
+「磁碟重新指派-s old-system-ID -d new system-ID」
+
++
+[listing]
+----
+*> disk reassign -s 4068741258 -d 1574774970
+----
+. 檢視磁碟、確認災難站台的Pool1根aggr磁碟擁有權變更為替換節點：
++
+「尖碑秀」
+
++
+輸出可能會顯示更多或更少的磁碟、這取決於根Aggregate中有多少磁碟、以及這些磁碟中是否有任何一個發生故障或被更換。如果更換磁碟、則輸出中不會顯示Pool0磁碟。
+
++
+此時應將災難站台的Pool1根Aggregate磁碟指派給替換節點。
+
++
+[listing]
+----
+*> disk show
+Local System ID: 1574774970
+
+  DISK             OWNER                POOL   SERIAL NUMBER   HOME                DR HOME
+------------       -------------        -----  -------------   -------------       -------------
+sw_A_1:6.126L19    node_A_1(1574774970) Pool0  serial-number   node_A_1(1574774970)
+sw_A_1:6.126L3     node_A_1(1574774970) Pool0  serial-number   node_A_1(1574774970)
+sw_A_1:6.126L7     node_A_1(1574774970) Pool0  serial-number   node_A_1(1574774970)
+sw_B_1:6.126L8     node_A_1(1574774970) Pool1  serial-number   node_A_1(1574774970)
+sw_B_1:6.126L24    node_A_1(1574774970) Pool1  serial-number   node_A_1(1574774970)
+sw_B_1:6.126L2     node_A_1(1574774970) Pool1  serial-number   node_A_1(1574774970)
+
+*> aggr status
+         Aggr State           Status
+ node_A_1_root online          raid_dp, aggr
+                               mirror degraded
+                               64-bit
+*>
+----
+. 檢視Aggregate狀態：
++
+「aggr狀態」
+
++
+輸出可能會顯示更多或更少的磁碟、這取決於根Aggregate中有多少磁碟、以及這些磁碟中是否有任何一個發生故障或被更換。如果更換磁碟、則輸出中不會顯示Pool0磁碟。
+
++
+[listing]
+----
+*> aggr status
+          Aggr State           Status
+  node_A_1_root online          raid_dp, aggr
+                                mirror degraded
+                                64-bit
+*>
+----
+. 刪除信箱磁碟的內容：
++
+《破壞本地的信箱》
+
+. 如果Aggregate不在線上、請將其上線：
++
+《Aggr online agger_name》
+
+. 停止節點以顯示載入器提示：
++
+《停止》
+
+

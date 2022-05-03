@@ -1,0 +1,31 @@
+---
+permalink: upgrade/task_send_a_custom_autosupport_message_before_add_nodes_to_the_mcc_configuration_2_node_to_4_node.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, send, custom, autosupport, message, add, nodes, configuration 
+summary: 您應該發出AutoSupport 一份消息、通知NetApp技術支援部門正在進行維護。告知技術支援部門正在進行維護、可防止他們假設發生中斷、而開啟案例。 
+---
+= 在AutoSupport 將節點新增MetroCluster 至「不確定」組態之前、先傳送自訂的「不確定」訊息
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您應該發出AutoSupport 一份消息、通知NetApp技術支援部門正在進行維護。告知技術支援部門正在進行維護、可防止他們假設發生中斷、而開啟案例。
+
+此工作必須在每MetroCluster 個站台上執行。
+
+.步驟
+. 登入Site_A的叢集
+. 叫出AutoSupport 指示維護開始的消息：
++
+「系統節點AutoSupport 不支援節點*-type all -most maints=_maintening-window-in-thing__」
+
++
+「maintenance window-in-hours」參數指定維護時間範圍的長度、最長可達72小時。如果您在時間結束之前完成維護、可以發出下列命令、表示維護期間已結束：
+
++
+「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+
+. 在合作夥伴網站上重複此步驟。
+

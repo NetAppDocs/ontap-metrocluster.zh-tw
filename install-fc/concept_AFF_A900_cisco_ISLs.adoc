@@ -1,0 +1,47 @@
+---
+permalink: install-fc/concept_AFF_A900_cisco_ISLs.html 
+sidebar: sidebar 
+keywords: AFF, A900, ONTAP, FAS, Cisco, ISL, metrocluster 
+summary: 下表顯示ISL連接埠使用量。 
+---
+= 以執行版本號9.10.1或更新版本的32節點組態、在8節點組態中使用Cisco連接埠來處理ISL AFF MetroCluster ONTAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+下表顯示ISL連接埠使用量。在組態中的所有交換器上、ISL連接埠使用量都相同。
+
+|===
+| 交換器模式 | ISL連接埠 | 交換器連接埠 
+
+
+.2+| Cisco 9132T搭配1個LEM | ISL1 | LEM1-15 
+
+
+| ISL2 | LEM1-16 
+
+
+.8+| Cisco 9132T搭配2個LEM | ISL1 | LEM2-9. 
+
+
+| ISL2 | LEM2-10. 
+
+
+| ISL3 | LEM2-11. 
+
+
+| ISL4 | LEM2-12 
+
+
+| ISL5. | LEM2-13 
+
+
+| ISL6. | LEM2-14 
+
+
+| ISL7. | LEM2-15 
+
+
+| ISL8. | LEM2-16 
+|===

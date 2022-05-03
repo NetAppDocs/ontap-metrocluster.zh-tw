@@ -1,0 +1,97 @@
+---
+permalink: install-fc/concept_considerations_isls_mcfc.html 
+sidebar: sidebar 
+keywords: preparing, prepare, metrocluster, mcc, installation, install, differences, configurations, between, considerations, all, san, array, asa, cluster, peering, prerequisites, dedicated, ports, sharing, data, ports, native, disk, shelves, array, luns, transitions, 7-mode, isls, tdm/wdm, fabric-attached, iod, ood, encryption, devices, unmirrored, aggregates, maintenance, requiring, power, shutdown, firewall, hardware, racking, cabling, setup, checklist, all san array, asa, san 
+summary: 您必須決定MetroCluster 在支援的基礎架構中、每個FC交換器架構需要多少ISL。 
+---
+= ISL的考量
+:allow-uri-read: 
+
+
+[role="lead"]
+您必須決定MetroCluster 在支援的基礎架構中、每個FC交換器架構需要多少ISL。從功能組態9.2開始ONTAP 、在某些情況MetroCluster 下、您可以共享相同的四個交換器、而非將FC交換器和ISL專用於每個個別的功能組態。
+
+
+
+== ISL共享考量（ONTAP 功能9.2）
+
+從功能支援9.2開始ONTAP 、您可以在下列情況下使用ISL共享：
+
+* 一個雙節點和一個四節點MetroCluster 的不二組態
+* 兩MetroCluster 個獨立的四節點的不二組態
+* 兩MetroCluster 個獨立的雙節點的不二組態
+* 兩個DR群組位於一個八節點MetroCluster 的不全功能組態中
+
+
+共享交換器之間所需的ISL數量取決於連接至共享交換器之平台模型的頻寬。
+
+在決定您需要多少ISL時、請考量下列組態層面。
+
+* 非MetroCluster裝置不應連接至任何提供後端MetroCluster 還原連線功能的FC交換器。
+* 除了Cisco 9250i和Cisco 9148交換器之外、所有交換器都支援ISL共享。
+* 所有節點都必須執行ONTAP 不符合要求的9.2或更新版本。
+* 用於ISL共享的FC交換器纜線與用於八節點MetroCluster 的資訊共享相同。
+* ISL共享的RCF檔案與八節點MetroCluster 的RCF纜線相同。
+* 您應該確認是否支援所有的硬體和軟體版本。
++
+https://hwu.netapp.com["NetApp Hardware Universe"]
+
+* ISL的速度和數量必須經過調整、才能支援兩MetroCluster 個支援系統上的用戶端負載。
+* 後端ISL和後端元件必須僅用於MetroCluster 支援該組態。
+* ISL必須使用支援的速度之一：4 Gbps、8 Gbps、16 Gbps或32 Gbps。
+* 單一架構上的ISL應該都是相同的速度和長度。
+* 單一架構上的ISL應該都具有相同的拓撲。例如、它們都應該是直接連結、或者如果您的系統使用的是WDM、那麼它們都應該使用WDM。
+
+
+
+
+== 平台專屬ISL考量
+
+建議的ISL數量是特定平台機型。下表依平台模式顯示每個網路的ISL需求。假設每個ISL都有16-Gbps的容量。
+
+|===
+
+
+| 平台模式 | 建議的每個四節點DR群組ISL數目（每個交換器架構） 
+
+
+ a| 
+解答900 AFF
+ a| 
+八
+
+
+
+ a| 
+部分A700 AFF
+ a| 
+六
+
+
+
+ a| 
+FAS9000
+ a| 
+六
+
+
+
+ a| 
+8080
+ a| 
+四
+
+
+
+ a| 
+所有其他
+ a| 
+二
+
+|===
+如果交換器架構支援八個節點（單一、八節點MetroCluster 的整套組態、或是兩個共用ISL的四節點組態）、則該架構的建議ISL總數即為每個四節點DR群組所需的總和。例如：
+
+* 如果DR群組1包含四AFF 個不實A700系統、則需要六個ISL。
+* 如果DR群組2包含四個FAS8200系統、則需要兩個ISL。
+* 交換器架構的建議ISL總數為八個。
+

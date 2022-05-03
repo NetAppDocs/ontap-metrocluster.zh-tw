@@ -1,0 +1,95 @@
+---
+permalink: manage/task_perform_a_negotiated_switchover.html 
+sidebar: sidebar 
+keywords: negotiate, switchover, clean, shut, down, partner, site, operation, metrocluster, perform 
+summary: 透過協調式切換功能、可完全關閉合作夥伴站台上的程序、然後從合作夥伴站台切換作業。您可以使用議定的切換功能、在MetroCluster 某個站台上執行維護作業、或測試切換功能。 
+---
+= 執行協商切換
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+透過協調式切換功能、可完全關閉合作夥伴站台上的程序、然後從合作夥伴站台切換作業。您可以使用議定的切換功能、在MetroCluster 某個站台上執行維護作業、或測試切換功能。
+
+* 執行切換作業之前、必須先完成所有先前的組態變更。
++
+這是為了避免與議定的切換或切換作業競爭。
+
+* 先前停機的任何節點都必須開機、並處於叢集仲裁中。
++
+「瞭解仲裁與epsilon」一節中的_系統管理參考_有更多關於叢集仲裁的資訊。
+
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sag/home.html["系統管理"]
+
+* 叢集對等網路必須可從兩個站台使用。
+* 在整個過程中、所有的節點MetroCluster 都必須執行相同版本ONTAP 的版本的軟件。
+* 在建立新的SnapMirror關係之前、必須先將MetroCluster 複製.create_data_protection reles.enable選項設為on（在採用整套組態的兩個站台上）。
+* 對於雙節點MetroCluster 的不一致組態、ONTAP 如果站台之間有不相符的版本、則不應在升級期間建立新的SnapMirror關係。
+* 對於四節點MetroCluster 的不支援組態、ONTAP 不支援站台之間不相符的版本。
+
+
+恢復站台可能需要數小時才能執行切換作業。
+
+使用Sflexswitchover命令可切換整個節點、並在整個DR組態中切換所有的DR群組。MetroCluster MetroCluster例如、在八節點MetroCluster 的「列舉」組態中、它會在兩個DR群組中的節點之間切換。
+
+在準備及執行協調式切換時、您不得對叢集進行組態變更、也不得執行任何接管或恢復作業。
+
+適用於精選FC組態：MetroCluster
+
+* 如果可存取遠端儲存設備、鏡射Aggregate將維持正常狀態。
+* 如果遠端儲存設備的存取中斷、鏡射Aggregate會在協商切換後降級。
+* 如果遠端儲存設備的存取中斷、位於災難站台的無鏡射集合體將無法使用。這可能導致控制器中斷運作。
+
+
+適用於下列各項的靜態IP組態：MetroCluster
+
+
+NOTE: 在執行維護工作之前、如果MetroCluster 使用斷路器或協調器公用程式來監控不正確的組態、您必須先移除監控。link:../maintain/concept_remove_mediator_or_tiebreaker_when_performing_maintenance_tasks.html["在ONTAP 執行維護工作之前、請先移除「協調器」或「斷路器監控」"]
+
+* 適用於更新版本的版本：ONTAP
++
+** 鏡射Aggregate會在協調切換後降級。
+
+
+* 適用對象：ONTAP
++
+** 如果可存取遠端儲存設備、鏡射Aggregate將維持正常狀態。
+** 如果遠端儲存設備的存取中斷、鏡射Aggregate會在協商切換後降級。
+
+
+* 適用於更新版本的更新版本：ONTAP
++
+** 如果遠端儲存設備的存取中斷、位於災難站台的無鏡射集合體將無法使用。這可能導致控制器中斷運作。
++
+... 使用MetroCluster 執行功能零件檢查、MetroCluster 執行功能不全、執行功能不全、MetroCluster 並執行功能不全、不需執行任何組態更新。從站台發出這些命令、這些命令將維持正常運作。
+... 從將維持正常運作的站台、執行切換：MetroCluster 「景點切換」
++
+此作業可能需要數分鐘才能完成。
+
+... 監控切換完成：MetroCluster 「不穩定營運展」
++
+[listing]
+----
+cluster_A::*> metrocluster operation show
+  Operation: Switchover
+ Start time: 10/4/2012 19:04:13
+      State: in-progress
+   End time: -
+     Errors:
+
+cluster_A::*> metrocluster operation show
+  Operation: Switchover
+ Start time: 10/4/2012 19:04:13
+      State: successful
+   End time: 10/4/2012 19:04:22
+     Errors: -
+----
+... 重新建立任何SnapMirror或SnapVault 不完整的組態。
+
+
+
+
+

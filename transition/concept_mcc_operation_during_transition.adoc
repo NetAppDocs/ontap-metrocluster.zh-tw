@@ -1,0 +1,26 @@
+---
+permalink: transition/concept_mcc_operation_during_transition.html 
+sidebar: sidebar 
+keywords: notice, alert, message, transition, alert, safe, ignore, tool, transition 
+summary: 您可能會在轉換期間注意到警示訊息。這些警示可以安全地忽略。此外、有些工具在轉換期間無法使用。 
+---
+= 轉換期間的警示訊息和工具支援
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可能會在轉換期間注意到警示訊息。這些警示可以安全地忽略。此外、有些工具在轉換期間無法使用。
+
+* 在轉換期間、ARS可能會發出警示。
++
+這些警示可被忽略、並在轉換完成後消失。
+
+* 在轉換期間、統一化管理程式可能會發出警示。OnCommand
++
+這些警示可被忽略、並在轉換完成後消失。
+
+* 轉換期間不支援此功能。Config Advisor
+* 轉換期間不支援System Manager。
+

@@ -1,0 +1,26 @@
+---
+permalink: install-fc/task_cable_the_cluster_interconnect_in_four_node_configurations.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, cable, cluster, interconnect, four, node 
+summary: 在八節點或四節點MetroCluster 的「樣」組態中、您必須在每個站台的本機控制器模組之間連接叢集互連。 
+---
+= 使用八節點或四節點組態來連接叢集互連
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在八節點或四節點MetroCluster 的「樣」組態中、您必須在每個站台的本機控制器模組之間連接叢集互連。
+
+這項工作不需要在雙節點MetroCluster 的不全功能組態上執行。
+
+這項工作必須在MetroCluster 兩個地方執行。
+
+.步驟
+. 將叢集互連從一個控制器模組連接至另一個控制器模組、或是使用叢集互連交換器、從每個控制器模組連接至交換器。
+
+
+https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"]
+
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/home.html["網路與LIF管理"]

@@ -1,0 +1,58 @@
+---
+permalink: upgrade/task_shut_down_the_exist_controller_when_add_a_2nd_controller_in_c_mode.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, shut, down, existing, controller, module 
+summary: 您必須對現有的控制器模組執行乾淨關機、以確認所有資料都已寫入磁碟。您也必須拔下電源供應器。 
+---
+= 關閉現有的控制器模組
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須對現有的控制器模組執行乾淨關機、以確認所有資料都已寫入磁碟。您也必須拔下電源供應器。
+
+.關於這項工作
+--
+
+IMPORTANT: 在更換系統元件之前、您必須執行乾淨的系統關機、以避免遺失NVRAM或NVMEM中未寫入的資料。
+
+--
+.步驟
+. 從現有的控制器模組提示字元停止節點：
++
+「halt local -trake-takeover true」
+
++
+如果系統提示您繼續停止程序、請在出現提示時輸入「y」、然後等到系統在載入程式提示下停止。
+
++
+在80xx系統中、NVRAM LED位於網路連接埠右側的控制器模組上、並標有電池符號。
+
++
+如果NVRAM中有未寫入的資料、此LED會開始閃爍。如果在輸入halt命令後此LED呈黃色閃爍、您需要重新啟動系統、然後再次嘗試停止。
+
+. 如果您尚未接地、請正確接地。
+. 關閉電源供應器並拔下電源、使用適用於您系統和電源供應器類型的正確方法：
++
+|===
+
+
+| 如果您的系統使用... | 然後... 
+
+
+ a| 
+AC電源供應器
+ a| 
+從電源拔下電源線、然後拔下電源線。
+
+
+
+ a| 
+DC電源供應器
+ a| 
+拔下DC電源的電源、必要時請拔下DC線路。
+
+|===
+

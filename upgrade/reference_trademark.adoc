@@ -1,0 +1,15 @@
+---
+permalink: upgrade/reference_trademark.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, trademark 
+summary: 《The VMware升級、移轉及擴充指南》的商標資訊MetroCluster 。 
+---
+= 商標
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+NetApp 、 NetApp 標誌及 NetApp 商標頁面上列出的標章均為 NetApp 、 Inc. 的商標。其他公司與產品名稱可能為其各自所有者的商標。
+
+https://www.netapp.com/company/legal/trademarks/[]

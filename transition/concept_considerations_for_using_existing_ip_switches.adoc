@@ -1,0 +1,36 @@
+---
+permalink: transition/concept_considerations_for_using_existing_ip_switches.html 
+sidebar: sidebar 
+keywords: ensure, ip, switch, support, exist, model, metrocluster, fc, configuration, ip, consideration, support 
+summary: 您必須確保IP交換器受到支援。如果現有的交換器模式同時支援原始MetroCluster 的ORFFC組態和全新MetroCluster 的REIP組態、您就可以重複使用現有的交換器。 
+---
+= IP交換器的考量
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須確保IP交換器受到支援。如果現有的交換器模式同時支援原始MetroCluster 的ORFFC組態和全新MetroCluster 的REIP組態、您就可以重複使用現有的交換器。
+
+
+
+== 支援的交換器
+
+您必須使用NetApp提供的交換器。
+
+* 不支援使用符合MetroCluster的交換器（未經NetApp驗證及提供的交換器）進行轉換。
+* IP交換器必須同時支援MetroCluster 作為叢集交換器、以支援使用支援的功能包括：MetroCluster
+* 如果MetroCluster 將此IP交換器MetroCluster 重新用於新的支援功能、則當該功能是交換式叢集、且IP叢集交換器受MetroCluster 支援時、即可在該功能中重複使用。
+* 新的IP交換器通常用於下列情況：
++
+** 由於此為無交換器叢集、因此需要新的交換器。MetroCluster
+** 該功能是交換式叢集、MetroCluster 但目前的IP交換器不支援MetroCluster 該功能。
+** 您想要使用不同的交換器來MetroCluster 進行靜態IP組態。
+
+
+
+
+如Hardware Universe 需平台模式與交換器支援的相關資訊、請參閱_NetApp SUR__。
+
+https://hwu.netapp.com["NetApp Hardware Universe"]

@@ -1,0 +1,85 @@
+= 
+:allow-uri-read: 
+
+
+[role="lead"]
+重設並還原控制器模組的預設值。
+
+. 在載入程式提示下、將環境變數恢復為預設設定：「et-Defaults」
+. 將節點開機至開機功能表：「boot_ONTAP功能表」
++
+執行此命令之後、請等待開機功能表顯示。
+
+. 清除節點組態：
++
+--
+** 如果您使用的系統已設定為ADP、請從開機功能表中選取選項「9a」、並在出現提示時回應「yes」。
++
+
+NOTE: 此程序會中斷營運。
+
++
+下列畫面顯示開機功能表提示：
+
++
+[listing]
+----
+
+Please choose one of the following:
+
+    (1) Normal Boot.
+    (2) Boot without /etc/rc.
+    (3) Change password.
+    (4) Clean configuration and initialize all disks.
+    (5) Maintenance mode boot.
+    (6) Update flash from backup config.
+    (7) Install new software first.
+    (8) Reboot node.
+    (9) Configure Advanced Drive Partitioning.
+    Selection (1-9)?  9a
+########## WARNING ##########
+
+    This is a disruptive operation and will result in the
+    loss of all filesystem data. Before proceeding further,
+    make sure that:
+    1) This option (9a) has been executed or will be executed
+    on the HA partner node, prior to reinitializing either
+    system in the HA-pair.
+    2) The HA partner node is currently in a halted state or
+    at the LOADER prompt.
+
+
+    Do you still want to continue (yes/no)? yes
+----
+
+
+--
++
+** 如果您的系統未設定ADP、請在開機功能表提示字元中輸入「wepeconfig」、然後按Enter。
++
+下列畫面顯示開機功能表提示：
+
++
+[listing]
+----
+
+Please choose one of the following:
+
+    (1) Normal Boot.
+    (2) Boot without /etc/rc.
+    (3) Change password.
+    (4) Clean configuration and initialize all disks.
+    (5) Maintenance mode boot.
+    (6) Update flash from backup config.
+    (7) Install new software first.
+    (8) Reboot node.
+    (9) Configure Advanced Drive Partitioning.
+    Selection (1-9)?  wipeconfig
+This option deletes critical system configuration, including cluster membership.
+Warning: do not run this option on a HA node that has been taken over.
+Are you sure you want to continue?: yes
+Rebooting to finish wipeconfig request.
+----
+
+
+

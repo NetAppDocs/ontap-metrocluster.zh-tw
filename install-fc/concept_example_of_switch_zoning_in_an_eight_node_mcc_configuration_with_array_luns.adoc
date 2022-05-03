@@ -1,0 +1,50 @@
+---
+permalink: install-fc/concept_example_of_switch_zoning_in_an_eight_node_mcc_configuration_with_array_luns.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, example, eight, node, array, luns, mcc 
+summary: 交換器分區可定義連接節點之間的路徑。設定分區功能可讓您定義特定ONTAP 的哪些陣列LUN可供特定的作業系統檢視。 
+---
+= 以MetroCluster 陣列LUN進行八節點的列舉之交換器分區的範例
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+交換器分區可定義連接節點之間的路徑。設定分區功能可讓您定義特定ONTAP 的哪些陣列LUN可供特定的作業系統檢視。
+
+八節點MetroCluster 的不全功能組態由兩個四節點的DR群組組成。第一個DR群組包含下列節點：
+
+* 控制器_a_1.
+* 控制器_a_2.
+* 控制器_B_1
+* 控制器_B_2
+
+
+第二個DR群組包含下列節點：
+
+* 控制器_a_3.
+* 控制器_a_4.
+* Controller（控制器）_B_3
+* 控制器_B_4
+
+
+若要設定交換器分區、您可以針對MetroCluster 第一個DR群組使用四節點的靜態組態分區範例。
+
+link:concept_example_of_switch_zoning_in_a_four_node_mcc_configuration_with_array_luns.html["以陣列LUN為例、在四節點MetroCluster 的列舉架構中使用交換器分區"]
+
+若要設定第二個DR群組的分區、請遵循與第二個DR群組中控制器相同的FC啟動器連接埠和陣列LUN範例和需求。
+
+.相關資訊
+* 交換器分區可定義連接節點之間的路徑。設定分區功能可讓您定義特定ONTAP 的哪些陣列LUN可供特定的作業系統檢視。
++
+link:concept_example_of_switch_zoning_in_a_two_node_mcc_configuration_with_array_luns.html["以陣列LUN進行雙節點MetroCluster 列舉的交換器分區範例"]
+
++
+link:concept_example_of_switch_zoning_in_a_four_node_mcc_configuration_with_array_luns.html["以陣列LUN為例、在四節點MetroCluster 的列舉架構中使用交換器分區"]
+
+* 在MetroCluster 使用含有陣列LUN的交換器分區時、您必須確保符合特定的基本需求。
++
+link:reference_requirements_for_switch_zoning_in_a_mcc_configuration_with_array_luns.html["以採用陣列LUN的架構進行交換器分區的需求MetroCluster"]
+
+

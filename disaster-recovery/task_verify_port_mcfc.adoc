@@ -1,0 +1,72 @@
+---
+permalink: disaster-recovery/task_verify_port_mcfc.html 
+sidebar: sidebar 
+keywords: verify, port, environmental, metrocluster, configuration 
+summary: 您必須在節點上設定環境變數、然後將其關機、以準備MetroCluster 好進行支援的組態設定。 
+---
+= 驗證連接埠組態（MetroCluster 僅限F精選FC組態）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須在節點上設定環境變數、然後將其關機、以準備MetroCluster 好進行支援的組態設定。
+
+此程序會在更換控制器模組處於維護模式時執行。
+
+只有在以啟動器模式使用FC或CNA連接埠的系統上、才需要檢查連接埠組態的步驟。
+
+.步驟
+. 在維護模式中、還原FC連接埠組態：
++
+「ucadmin modify -m sfc-t initatorrider_name」
+
++
+如果您只想在啟動器組態中使用其中一個連接埠配對、請輸入精確的介面卡名稱。
+
+. 視您的組態而定、執行下列其中一項動作：
++
+|===
+
+
+| 如果FC連接埠組態為... | 然後... 
+
+
+ a| 
+兩個連接埠的情況相同
+ a| 
+系統提示時回答「y」、因為修改連接埠配對中的一個連接埠也會修改另一個連接埠。
+
+
+
+ a| 
+與眾不同
+ a| 
+.. 系統提示時、請回答「n」。
+.. 還原FC連接埠組態：
+
+
+「ucadmin modify -m fc-t啟動器|目標介面卡名稱」
+
+|===
+. 結束維護模式：
++
+《停止》
+
++
+發出命令後、請等待系統在載入程式提示字元停止。
+
+. 將節點開機回「維護」模式、使組態變更生效：
++
+Boot_ONTAP maint
+
+. 驗證變數的值：
++
+「ucadmin show」
+
+. 結束維護模式並顯示載入程式提示：
++
+《停止》
+
+

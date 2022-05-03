@@ -1,0 +1,53 @@
+---
+permalink: tiebreaker/task_configure_snmp_setts_for_tiebreaker_software.html 
+sidebar: sidebar 
+keywords: snmp, tiebreaker, software, configure, setting 
+summary: 若要將SNMP與Tiebreaker軟體搭配使用、您必須設定SNMP設定。 
+---
+= 設定斷路器軟體的SNMP設定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+若要將SNMP與Tiebreaker軟體搭配使用、您必須設定SNMP設定。
+
+. 使用tiebreaker CLI SNMP組態精靈命令來新增MetroCluster 各種組態。
++
+
+NOTE: 目前僅支援一個SNMP設陷主機。
+
++
+以下範例顯示支援SNMP V1的SNMP接收器組態、IP位址為10.222.210.234、設陷訊息的連接埠號碼162、以及設為Public的社群字串：
+
++
+....
+
+NetApp MetroCluster Tiebreaker :> snmp config wizard
+Enter SNMP Version [V1/V3]: V1
+Enter SNMP Host: 10.222.210.234
+Enter SNMP Port: 162
+Enter SNMP V1 Community: public
+Successfully added SNMP properties to NetApp MetroCluster Tiebreaker software.
+NetApp MetroCluster Tiebreaker :>
+....
++
+Tiebreaker軟體已準備好傳送設陷到您指定的SNMP接收器。
+
+. 確認已設定SNMP設定：
++
+"NMP組態測試"
+
++
+下列範例顯示、Tiebreaker軟體可傳送事件test_SNMP設陷的SNMP：
+
++
+....
+
+NetApp MetroCluster Tiebreaker :> snmp config test
+Sending SNMP trap to localhost. Version : V1.
+Successfully sent SNMP trap for event TEST_SNMP_CONFIG
+NetApp MetroCluster Tiebreaker :>
+....
+

@@ -1,0 +1,105 @@
+---
+permalink: install-stretch/concept_required_mcc_components_and_example_names_for_two_node_sas_attached_stretch_configurations_mcc.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, required, hardware, components, naming, guidelines, two, node, sas, configuration 
+summary: 這個組態需要多種硬體元件。MetroCluster為了方便且清楚起見、MetroCluster 整個篇篇版的產品文件中都會使用元件的標準名稱。一個站台稱為站台A、另一個站台稱為站台B 
+---
+= 雙MetroCluster 節點SAS附加延伸組態所需的零件和命名準則
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+這個組態需要多種硬體元件。MetroCluster為了方便且清楚起見、MetroCluster 整個篇篇版的產品文件中都會使用元件的標準名稱。一個站台稱為站台A、另一個站台稱為站台B
+
+
+
+== 支援的軟體與硬體
+
+硬體與軟體必須支援MetroCluster 以利支援不支援使用。
+
+https://hwu.netapp.com["NetApp Hardware Universe"]
+
+使用AFF 不完整的系統時、MetroCluster 必須將不完整組態中的所有控制器模組設定為AFF 不完整的系統。
+
+
+
+== 硬體備援功能MetroCluster
+
+由於在整個過程中使用硬體備援MetroCluster 、因此每個站台都有兩個元件。站台會任意指派字母A和B、而個別元件則會任意指派數字1和2。
+
+
+
+== 兩ONTAP 個單節點的叢集
+
+SAS附加的Stretch MetroCluster Setch組態需要兩ONTAP 個單節點的S叢 集。
+
+命名必須在MetroCluster 整個功能區組態中是唯一的。
+
+範例名稱：
+
+* 站台A：叢集_A
+* 站台B：叢集B
+
+
+
+
+== 兩個儲存控制器模組
+
+SAS附加的Stretch MetroCluster Setch組態需要兩個儲存控制器模組。
+
+* 命名必須在MetroCluster 整個功能區組態中是唯一的。
+* 所有採用此功能的控制器模組MetroCluster 都必須執行相同版本ONTAP 的功能。
+* DR群組中的所有控制器模組都必須為相同的機型。
+* DR群組中的所有控制器模組都必須使用相同的FC-VI組態。
++
+某些控制器模組支援兩種FC-VI連線選項：
+
++
+** 內建FC-VI連接埠
+** 插槽1中的FC-VI卡
++
+不支援混合使用內建FC-VI連接埠的控制器模組、以及使用附加FC-VI卡的控制器模組。例如、如果某個節點使用內建的FC-VI組態、則DR群組中的所有其他節點也必須使用內建的FC-VI組態。
+
+
+
+
+
+範例名稱：
+
+* 站台A：控制器_a_1
+* 站台B：控制器_B_1
+
+
+
+
+== 至少四個SAS磁碟櫃（建議）
+
+SAS附加的Stretch MetroCluster Setch組態至少需要兩個SAS磁碟櫃。建議使用四個SAS磁碟櫃。
+
+每個站台建議使用兩個磁碟櫃、以允許每個磁碟櫃擁有磁碟。每個站台至少支援一個機櫃。
+
+範例名稱：
+
+* 站台A：
++
+** 機櫃_a_1_1
+** 機櫃_a_1_2
+
+
+* 站台B：
++
+** 機櫃_B_1_1
+** 機櫃_B_1_2
+
+
+
+
+
+
+== 在堆疊中混合IOM12和IOM 6模組
+
+您的ONTAP 版本必須支援機櫃混合。請參閱互通性對照表工具IMT （英文）、瞭解您的ONTAP 版本的支援機櫃混合。 https://mysupport.netapp.com/NOW/products/interoperability["NetApp互通性"]
+
+如需機櫃混合的詳細資訊、請參閱： https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-mix-hotadd/home.html["將含有IOM12模組的熱新增磁碟櫃放到具有IOM6模組的磁碟櫃堆疊中"]

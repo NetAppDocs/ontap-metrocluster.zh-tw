@@ -1,0 +1,68 @@
+---
+permalink: manage/task_heal_the_configuration_in_a_mcc_ip_configuration_ontap_9_4_and_earlier.html 
+sidebar: sidebar 
+keywords: heal, aggregate, preparation, switchback, operation, configuration, metrocluster, ip, ontap 
+summary: 您必須修復集合體、才能準備進行切換作業。 
+---
+= 修復MetroCluster 以靜態IP組態設定的組態（ONTAP 例如、還原9.4及更早版本）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須修復集合體、才能準備進行切換作業。
+
+
+NOTE: 在執行S還原9.5的SIP系統上、系統會自動執行修復、您可以跳過這些工作。MetroCluster ONTAP
+
+執行修復程序之前、必須具備下列條件：
+
+* 必須執行切換、且存續站台必須提供資料。
+* 災難站台的儲存櫃必須開機、正常運作且可存取。
+* ISL必須正常運作。
+* 正常運作站台中的節點不得處於HA容錯移轉狀態（兩個節點必須都已啟動且正在執行）。
+
+
+此工作僅適用於MetroCluster 執行ONTAP 9.5版之前版本之不完整版的靜態IP組態。
+
+此程序與MetroCluster 適用於不符合需求的FC組態修復程序有所不同。
+
+.步驟
+. 開啟站台上每個切換後的控制器模組、讓它們完全開機。
++
+如果系統顯示載入器提示、請執行「boot_ontap」命令。
+
+. 執行根Aggregate修復階段：MetroCluster 「還原根集合體」
++
+[listing]
+----
+cluster_A::> metrocluster heal root-aggregates
+[Job 137] Job succeeded: Heal Root-Aggregates is successful
+----
++
+如果修復被否決、您可以選擇使用MetroCluster --overrover-etoes參數來重新發出還原根集合體命令。如果您使用此選用參數、系統將會置換任何軟質否決、以防止修復作業。
+
+. 重新同步集合體：MetroCluster 「無法修復集合體」
++
+[listing]
+----
+cluster_A::> metrocluster heal aggregates
+[Job 137] Job succeeded: Heal Aggregates is successful
+----
++
+如果修復被否決、您可以選擇MetroCluster 使用--overrover-etoes參數重新發出還原指令。如果您使用此選用參數、系統將會置換任何軟質否決、以防止修復作業。
+
+. 在MetroCluster 健全的叢集上執行flexoperationshow命令、確認修復作業已完成：
++
+[listing]
+----
+
+cluster_A::> metrocluster operation show
+  Operation: heal-aggregates
+      State: successful
+ Start Time: 7/29/2017 20:54:41
+   End Time: 7/29/2017 20:54:42
+     Errors: -
+----
+

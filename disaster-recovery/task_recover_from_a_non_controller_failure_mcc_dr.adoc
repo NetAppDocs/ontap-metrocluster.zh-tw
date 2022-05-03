@@ -1,0 +1,474 @@
+---
+permalink: disaster-recovery/task_recover_from_a_non_controller_failure_mcc_dr.html 
+sidebar: sidebar 
+keywords: equipment, disaster, site, undergone, require, maintenance, replacement, controller, replace, process, metrocluster, configuration, data, aggregate, switchback, operation, recover, non-controller, failure, heal, configuration, metrocluster, fc, data, aggregate, root, disaster, verify, system, switchback, verification, result, perform, successful, delete, deleting, stale, listing 
+summary: 在災難現場的設備完成任何必要的維護或更換、但未更換控制器之後、您可以開始將MetroCluster 此功能組態恢復至完全備援狀態的程序。這包括修復組態（首先是資料集合體、然後是根集合體）、以及執行切換作業。 
+---
+= 從非控制器故障中恢復
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在災難現場的設備完成任何必要的維護或更換、但未更換控制器之後、您可以開始將MetroCluster 此功能組態恢復至完全備援狀態的程序。這包括修復組態（首先是資料集合體、然後是根集合體）、以及執行切換作業。
+
+.開始之前
+* 災難叢集中的所有MetroCluster 支援硬體都必須正常運作。
+* 整體MetroCluster 的不完整組態必須處於切換狀態。
+* 在以Fabric連接MetroCluster 的不實資料組態中、ISL必須在MetroCluster 各個景點之間正常運作。
+
+
+
+
+== 修復MetroCluster 以不還原FC組態設定的組態
+
+切換後、您必須執行特定的修復作業、才能還原MetroCluster 還原功能。
+
+.開始之前
+* 必須執行切換、且存續站台必須提供資料。
+* 災難站台上的節點必須暫停或保持關機狀態。
++
+在修復過程中、不得完全開機。
+
+* 災難站台的儲存設備必須可供存取（磁碟櫃已開機、功能正常且可存取）。
+* 在網路附加MetroCluster 的不支援功能組態中、交換器間連結（ISL）必須啟動並運作。
+* 在四節點MetroCluster 的不完整組態中、正常運作站台中的節點不得處於HA容錯移轉狀態（每個HA配對的所有節點都必須啟動並執行）。
+
+
+修復作業必須先在資料集合體上執行、然後再在根集合體上執行。
+
+
+
+=== 修復資料集合體
+
+修復及更換災難站台上的任何硬體之後、您必須修復資料集合體。此程序可重新同步資料集合體、並準備（現已修復）災難站台以進行正常作業。在修復根集合體之前、您必須先修復資料集合體。
+
+以下範例顯示強制切換、您可在其中將切換式Aggregate上線。遠端叢集中的所有組態更新都會成功複寫到本機叢集。您可以在災難站台上開啟儲存設備的電源、但您並不需要、也不可以開啟災難站台上的控制器模組。
+
+.步驟
+. 確認已完成切換：
++
+《不穩定營運展》MetroCluster
+
++
+[listing]
+----
+controller_A_1::> metrocluster operation show
+  Operation: switchover
+      State: successful
+ Start Time: 7/25/2014 20:01:48
+   End Time: 7/25/2014 20:02:14
+     Errors: -
+----
+. 從存續的叢集執行下列命令、以重新同步資料集合體：
++
+《修復階段集合體》MetroCluster
+
++
+[listing]
+----
+controller_A_1::> metrocluster heal -phase aggregates
+[Job 130] Job succeeded: Heal Aggregates is successful.
+----
++
+如果治療被否決、您可以選擇MetroCluster 使用「-overrover-etoes」參數重新發出「還原」命令。如果您使用此選用參數、系統將會置換任何軟質否決、以防止修復作業。
+
+. 確認作業已完成：
++
+《不穩定營運展》MetroCluster
+
++
+[listing]
+----
+controller_A_1::> metrocluster operation show
+    Operation: heal-aggregates
+      State: successful
+Start Time: 7/25/2014 18:45:55
+   End Time: 7/25/2014 18:45:56
+     Errors: -
+----
+. 檢查集合體的狀態：
++
+「torage Aggregate show」命令。
+
++
+[listing]
+----
+controller_A_1::> storage aggregate show
+Aggregate Size     Available Used% State   #Vols  Nodes        RAID Status
+--------- -------- --------- ----- ------- ------ ------------ ------------
+...
+aggr_b2   227.1GB  227.1GB   0%    online  0      mcc1-a2      raid_dp, mirrored, normal...
+----
+. 如果已在災難站台更換儲存設備、您可能需要重新鏡射集合體。
+
+
+
+
+=== 災難後修復根集合體
+
+在資料集合體修復之後、您必須修復根集合體、以準備進行切換作業。
+
+必須成功完成資料集合體階段MetroCluster 的還原程序。
+
+.步驟
+. 切換回鏡射Aggregate：
++
+「MetroCluster 修復階段根集合體」
+
++
+[listing]
+----
+mcc1A::> metrocluster heal -phase root-aggregates
+[Job 137] Job succeeded: Heal Root Aggregates is successful
+----
++
+如果治療被否決、您可以選擇MetroCluster 使用「-overrover-etoes」參數重新發出「還原」命令。如果您使用此選用參數、系統將會置換任何軟質否決、以防止修復作業。
+
+. 在目的地叢集上執行下列命令、確保修復作業已完成：
++
+《不穩定營運展》MetroCluster
+
++
+[listing]
+----
+
+mcc1A::> metrocluster operation show
+  Operation: heal-root-aggregates
+      State: successful
+ Start Time: 7/29/2014 20:54:41
+   End Time: 7/29/2014 20:54:42
+     Errors: -
+----
+. 開啟災難站台上的每個控制器模組。
+. 引導節點後、請確認根集合體已鏡射。
++
+如果兩個plexes都存在、任何重新同步都會自動啟動。如果某個叢發生故障、則必須銷毀該叢、並使用下列命令重新建立鏡射關係、以重新建立鏡射關係。
+
++
+「torage Aggregate mirror -Aggregate <gregate名稱>」
+
+
+
+
+
+== 驗證系統是否已準備好進行切換
+
+如果您的系統已經處於切換狀態、您可以使用「-Simulate」選項來預覽切換操作的結果。
+
+.步驟
+. 模擬切換回復作業：
++
+.. 從任一正常節點的提示字元、變更為進階權限層級：
++
+"進階權限"
+
++
+當系統提示您繼續進入進階模式時、您需要用「y」回應、並看到進階模式提示（*>）。
+
+.. 使用「-Simulate（模擬）”參數執行切換操作：
++
+《還原模擬》MetroCluster
+
+.. 返回管理權限層級：
++
+「et -priv. admin」
+
+
+
+. 檢閱傳回的輸出。
++
+輸出會顯示切換回復作業是否會發生錯誤。
+
+
+
+
+
+=== 驗證結果範例
+
+下列範例顯示成功驗證切換回復作業：
+
+[listing]
+----
+cluster4::*> metrocluster switchback -simulate
+  (metrocluster switchback)
+[Job 130] Setting up the nodes and cluster components for the switchback operation...DBG:backup_api.c:327:backup_nso_sb_vetocheck : MetroCluster Switch Back
+[Job 130] Job succeeded: Switchback simulation is successful.
+
+cluster4::*> metrocluster op show
+  (metrocluster operation show)
+  Operation: switchback-simulate
+      State: successful
+ Start Time: 5/15/2014 16:14:34
+   End Time: 5/15/2014 16:15:04
+     Errors: -
+
+cluster4::*> job show -name Me*
+                            Owning
+Job ID Name                 Vserver    Node           State
+------ -------------------- ---------- -------------- ----------
+130    MetroCluster Switchback
+                            cluster4
+                                       cluster4-01
+                                                      Success
+       Description: MetroCluster Switchback Job - Simulation
+----
+
+
+== 執行切換
+
+修復MetroCluster 完這個功能後、您就可以執行MetroCluster 還原操作。此還原操作會將組態恢復至正常作業狀態、使災難站台上的同步來源儲存虛擬機器（SVM）處於作用中狀態、並從本機磁碟集區提供資料。MetroCluster
+
+.開始之前
+* 災難叢集必須已成功切換至正常運作的叢集。
+* 必須在資料和根集合體上執行修復。
+* 正常運作的叢集節點不得處於HA容錯移轉狀態（每個HA配對的所有節點都必須已啟動並執行）。
+* 災難站台控制器模組必須完全開機、而非處於HA接管模式。
+* 根Aggregate必須鏡射。
+* 交換器間連結（ISL）必須在線上。
+* 任何必要的授權都必須安裝在系統上。
+
+
+.步驟
+. 確認所有節點均處於啟用狀態：
++
+「不一樣的秀」MetroCluster
+
++
+下列範例顯示處於「已啟用」狀態的節點：
+
++
+[listing]
+----
+cluster_B::>  metrocluster node show
+
+DR                        Configuration  DR
+Group Cluster Node        State          Mirroring Mode
+----- ------- ----------- -------------- --------- --------------------
+1     cluster_A
+              node_A_1    configured     enabled   heal roots completed
+              node_A_2    configured     enabled   heal roots completed
+      cluster_B
+              node_B_1    configured     enabled   waiting for switchback recovery
+              node_B_2    configured     enabled   waiting for switchback recovery
+4 entries were displayed.
+----
+. 確認所有SVM上的重新同步已完成：
++
+《看不出》MetroCluster
+
+. 驗證修復作業所執行的任何自動LIF移轉是否已成功完成：
++
+《不看利夫秀》MetroCluster
+
+. 從正常運作的叢集中的任何節點執行下列命令、以執行切換回復。
++
+《還原》MetroCluster
+
+. 檢查切換回復作業的進度：
++
+《不看》MetroCluster
+
++
+當輸出顯示「waiting for switchback」時、切換回復作業仍在進行中：
+
++
+[listing]
+----
+cluster_B::> metrocluster show
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+ Local: cluster_B         Configuration state configured
+                          Mode                switchover
+                          AUSO Failure Domain -
+Remote: cluster_A         Configuration state configured
+                          Mode                waiting-for-switchback
+                          AUSO Failure Domain -
+----
++
+當輸出顯示「正常」時、即完成切換作業：
+
++
+[listing]
+----
+cluster_B::> metrocluster show
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+ Local: cluster_B         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain -
+Remote: cluster_A         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain -
+----
++
+如果切換需要很長時間才能完成、您可以在進階權限層級使用下列命令來檢查進行中基準的狀態。
+
++
+「重新同步狀態顯示」MetroCluster
+
+. 重新建立任何SnapMirror或SnapVault 不完整的組態。
++
+在S還原8.3中ONTAP 、MetroCluster 您需要在執行還原操作之後、手動重新建立遺失的SnapMirror組態。在更新版本的版本中、關係會自動重新建立。ONTAP
+
+
+
+
+
+== 驗證成功的切換
+
+執行切換後、您想確認所有的集合體和儲存虛擬機器（SVM）都已切換回線上狀態。
+
+.步驟
+. 確認切換式資料集合體已切換回：
++
+《集合體展》
+
++
+在下列範例中、節點B2上的agger_B2已切換回：
+
++
+[listing]
+----
+node_B_1::> storage aggregate show
+Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
+--------- -------- --------- ----- ------- ------ ---------------- ------------
+...
+aggr_b2    227.1GB   227.1GB    0% online       0 node_B_2   raid_dp,
+                                                                   mirrored,
+                                                                   normal
+
+node_A_1::> aggr show
+Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
+--------- -------- --------- ----- ------- ------ ---------------- ------------
+...
+aggr_b2          -         -     - unknown      - node_A_1
+----
++
+如果災難站台包含未鏡射的集合體、而未鏡射的集合體不再存在、則集合體可能會在「shorage Aggregate show」命令的輸出中顯示「unknown」（未知）狀態。請聯絡技術支援部門、移除未鏡射集合體的過時項目。
+
+. 確認在正常運作的叢集上的所有同步目的地SVM都處於休眠狀態（顯示「Stopped」（已停止）的管理狀態）、且災難叢集上的同步來源SVM都已啟動並執行：
++
+「vserver show -subtype sync-source-
+
++
+[listing]
+----
+node_B_1::> vserver show -subtype sync-source
+                               Admin      Root                       Name    Name
+Vserver     Type    Subtype    State      Volume     Aggregate       Service Mapping
+----------- ------- ---------- ---------- ---------- ----------      ------- -------
+...
+vs1a        data    sync-source
+                               running    vs1a_vol   node_B_2        file    file
+                                                                     aggr_b2
+
+node_A_1::> vserver show -subtype sync-destination
+                               Admin      Root                         Name    Name
+Vserver            Type    Subtype    State      Volume     Aggregate  Service Mapping
+-----------        ------- ---------- ---------- ---------- ---------- ------- -------
+...
+cluster_A-vs1a-mc  data    sync-destination
+                                      stopped    vs1a_vol   sosb_      file    file
+                                                                       aggr_b2
+----
++
+Sync-destinate Aggregate在MetroCluster 支援的支援組態中、會在名稱中自動加上「-MC」字尾、以協助識別它們。
+
+. 確認切換回復作業成功：
++
+《不穩定營運展》MetroCluster
+
+
+
+|===
+
+
+| 如果命令輸出顯示... | 然後... 
+
+
+ a| 
+切換回復作業狀態成功。
+ a| 
+切換程序已完成、您可以繼續操作系統。
+
+
+
+ a| 
+切換作業或「切換回復代理程式」作業部分成功。
+ a| 
+請執行「MetroCluster 畫面操作show」命令輸出中提供的建議修正程式。
+
+|===
+您必須重複上述各節、以相反方向執行切換。如果站台_A切換到站台_B、請讓站台_B切換站台_A
+
+
+
+== 切換後刪除過時的Aggregate清單
+
+在切換後的某些情況下、您可能會注意到_stalon__集合體存在。過時的Aggregate是指已從ONTAP 無法使用的集合體、但其資訊仍會記錄在磁碟上。過時的Aggregate會以「nodesgrogr」狀態命令顯示、但不會以「sorage aggregate show」命令顯示。您可以刪除這些記錄、使其不再出現。
+
+如果您在MetroCluster 交換器中重新放置Aggregate組態時、可能會發生過時的Aggregate。例如：
+
+. 站台A切換至站台B
+. 您可以刪除Aggregate的鏡像、然後將Aggregate從node_B_1重新定位至node_B_2、以進行負載平衡。
+. 您可以執行Aggregate修復。
+
+
+此時、即使實際的Aggregate已從該節點刪除、node_B_1上仍會顯示過時的Aggregate。此Aggregate會出現在"nodesrogr狀態-r"命令的輸出中。它不會出現在命令"shorage Aggregate show"的輸出中。
+
+. 比較下列命令的輸出：
++
+《集合體展》
+
++
+「執行本機aggr狀態-r」
+
++
+過時的Aggregate會出現在「執行本機aggr狀態-r」輸出中、但不會出現在「儲存Aggregate show」輸出中。例如、下列Aggregate可能會出現在「RUN local aggr STATUS -r」輸出中：
+
++
+[listing]
+----
+
+Aggregate aggr05 (failed, raid_dp, partial) (block checksums)
+Plex /aggr05/plex0 (offline, failed, inactive)
+  RAID group /myaggr/plex0/rg0 (partial, block checksums)
+
+ RAID Disk Device  HA  SHELF BAY CHAN Pool Type  RPM  Used (MB/blks)  Phys (MB/blks)
+ --------- ------  ------------- ---- ---- ----  ----- --------------  --------------
+ dparity   FAILED          N/A                        82/ -
+ parity    0b.5    0b    -   -   SA:A   0 VMDISK  N/A 82/169472      88/182040
+ data      FAILED          N/A                        82/ -
+ data      FAILED          N/A                        82/ -
+ data      FAILED          N/A                        82/ -
+ data      FAILED          N/A                        82/ -
+ data      FAILED          N/A                        82/ -
+ data      FAILED          N/A                        82/ -
+ Raid group is missing 7 disks.
+----
+. 移除過時的Aggregate：
++
+.. 從任一節點的提示字元、變更為進階權限層級：
++
+"進階權限"
+
++
+當系統提示您繼續進入進階模式時、您需要用「y」回應、並看到進階模式提示（*>）。
+
+.. 移除過時的Aggregate：
++
+「Aggregate remove-stale-record -Aggregate gregate名稱」
+
+.. 返回管理權限層級：
++
+「et -priv. admin」
+
+
+
+. 確認已移除過時的Aggregate記錄：
++
+「執行本機aggr狀態-r」
+
+

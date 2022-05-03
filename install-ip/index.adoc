@@ -1,0 +1,21 @@
+---
+permalink: install-ip/index.html 
+sidebar: sidebar 
+keywords: metrocluster, ip, installation 
+summary: 若要安裝MetroCluster 您的靜態IP組態、您必須依照正確順序執行許多程序。 
+---
+= 總覽
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+若要安裝MetroCluster 您的靜態IP組態、您必須依照正確順序執行許多程序。
+
+* link:../install-ip/concept_considerations_differences.html["準備安裝並瞭解所有需求"]。
+* link:../install-ip/concept_parts_of_an_ip_mcc_configuration_mcc_ip.html["連接元件"]
+* link:../install-ip/concept_configure_the_mcc_software_in_ontap.html["設定軟體"]
+* link:../install-ip/concept_mediator_requirements.html["設定ONTAP 充當中介者"] （選用）
+* link:../install-ip/task_test_the_mcc_configuration.html["測試組態"]
+

@@ -1,0 +1,79 @@
+---
+permalink: transition/concept_deciding_which_procedure_to_use_mcc_upgrade_transition_and_expansion_guide.html 
+sidebar: sidebar 
+keywords: difference, metrocluster, upgrade, expansion, transition, procedure, match, goal, deciding, decide 
+summary: 您必須瞭解MetroCluster 升級、擴充或轉換之間的差異、並選擇符合您目標的程序。 
+---
+= 決定要使用的程序
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須瞭解MetroCluster 升級、擴充或轉換之間的差異、並選擇符合您目標的程序。
+
+* *升級*
++
+在升級程序中、您將以新的控制器模組機型來更換控制器模組。
+
++
+** 舊的控制器模組已淘汰。
+** 儲存設備未升級。
+** 儲存交換器基礎架構技術並未變更。
++
+它仍然是MetroCluster 一個以結構為附加MetroCluster 的靜態或延伸MetroCluster 的靜態組態。
+
++
+link:../upgrade/concept_choosing_an_upgrade_method_mcc.html["選擇升級或重新整理方法"]
+
+
+
+* *重新整理*
++
+在更新程序中、您將以新的控制器模組機型來更換控制器模組、並更換儲存櫃。
+
++
+** 舊的控制器模組和儲存櫃已淘汰。
+** 儲存交換器基礎架構技術不會變更、除非需要新的交換器來容納新的平台模式。
++
+組態會維持其原始類型：
+
++
+*** 知識產權MetroCluster
+*** 網路附加MetroCluster 功能
+*** 彈性MetroCluster 的組態+link:../upgrade/concept_choosing_an_upgrade_method_mcc.html["選擇升級或重新整理方法"]
+
+
+
+
+* *移轉*
++
+在轉換程序中、後端交換器基礎架構會從FC交換器或IP交換器的連線變更、而平台模型會被取代。
+
++
+** 新的控制器模組會新增至組態。
+** 程序結束後、會淘汰原始的控制器模組。
+** 如果原始組態使用叢集互連交換器、則視交換器和平台機型而定、可以重複使用這些交換器。
+** 儲存設備可重複使用或更換、視平台機型而定。
++
+如果儲存櫃無法重複使用、資料會從舊的磁碟櫃移至新的磁碟櫃。
+
++
+連結：../轉換/ concept_choosing_your_transition_procedure_mcc_transition.html
+
+
+
+* *擴充*
++
+在擴充程序中、MetroCluster 額外的節點和儲存設備會新增至整個過程的Gb FC組態。
+
++
+** link:../upgrade/task_expand_a_two_node_mcc_fc_configuration_to_a_four_node_fc_configuration_supertask.html["將雙節點MetroCluster 的不含資料的FC組態擴充至四節點組態"]
+** link:../upgrade/task_expand_a_four_node_mcc_fc_configuration_to_an_eight_node_configuration.html["將四節點MetroCluster 的不含資料的FC組態擴充至八節點組態"]
++
+移除移轉的連結
+
+
+
+

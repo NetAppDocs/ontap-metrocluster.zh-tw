@@ -1,0 +1,73 @@
+---
+permalink: upgrade/task_configure_the_fc_to_sas_bridges_for_health_monitor.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, configure, fc, sas, bridges, health, monitoring 
+summary: 不支援第三方SNMP監控工具用於連接光纖橋接器。從ONTAP 功能組態9.8開始、FC對SAS橋接器依預設會透過頻內連線進行監控、不需要額外的組態設定。 
+---
+= 設定FC對SAS橋接器以進行健全狀況監控
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+.關於這項工作
+* 不支援第三方SNMP監控工具用於連接光纖橋接器。
+* 從ONTAP 功能組態9.8開始、FC對SAS橋接器依預設會透過頻內連線進行監控、不需要額外的組態設定。
+
+
+
+NOTE: 從ONTAP 功能組別9.8開始、「最小橋接器」命令會改為「系統橋接器」。以下步驟顯示了「shorage bridge」命令、但ONTAP 如果您執行的是更新版本的版本、最好使用「系統橋接器」命令。
+
+.步驟
+. 從「叢集提示」中、將橋接器新增至健全狀況監控：ONTAP
++
+.. 使用適用於ONTAP 您的版本的命令來新增橋接器：
++
+|===
+
+
+| 版本ONTAP | 命令 
+
+
+ a| 
+9.5及更新版本
+ a| 
+「torage bridge add -address0.0.00.0.00.-managed by in-band -name _bridge-name_」
+
+
+
+ a| 
+9.4及更早版本
+ a| 
+「torage bridge add -address_bridge-ip-address_-name _bridge-name_」
+
+|===
+.. 確認橋接器已新增且設定正確：
++
+《龍橋秀》
+
++
+由於輪詢時間間隔、可能需要15分鐘才能反映所有資料。如果「狀態」欄中的值為「正常」、則可聯絡及監控此橋接器、並顯示其他資訊、例如全球名稱（WWN）ONTAP 。
+
++
+以下範例顯示已設定FC對SAS橋接器：
+
++
+[listing]
+----
+controller_A_1::> storage bridge show
+
+Bridge              Symbolic Name Is Monitored  Monitor Status  Vendor Model                Bridge WWN
+------------------  ------------- ------------  --------------  ------ -----------------    ----------
+ATTO_10.10.20.10  atto01        true          ok              Atto   FibreBridge 7500N   	20000010867038c0
+ATTO_10.10.20.11  atto02        true          ok              Atto   FibreBridge 7500N   	20000010867033c0
+ATTO_10.10.20.12  atto03        true          ok              Atto   FibreBridge 7500N   	20000010867030c0
+ATTO_10.10.20.13  atto04        true          ok              Atto   FibreBridge 7500N   	2000001086703b80
+
+4 entries were displayed
+
+ controller_A_1::>
+----
+
+
+

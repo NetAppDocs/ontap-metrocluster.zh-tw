@@ -1,0 +1,181 @@
+---
+permalink: maintain/concept_where_to_find_procedures_for_mcc_maintenance_tasks.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, find, procedures, maintenance, tasks 
+summary: 執行MetroCluster 硬體維護工作時、請務必選擇正確的程序。 
+---
+= 哪裡可以找MetroCluster 到執行維護工作的程序
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+執行MetroCluster 硬體維護工作時、請務必選擇正確的程序。
+
+
+NOTE: 發行版的更新版本為《》（英文）ONTAP 、MetroCluster 更新及擴充程序已移至《》（英文） link:../upgrade/concept_choosing_an_upgrade_method_mcc.html["升級與擴充MetroCluster"] 和 link:../transition/concept_choosing_your_transition_procedure_mcc_transition.html["從MetroCluster 靜態FC移轉至MetroCluster 靜態IP"]。
+
+|===
+
+
+| 元件 | 邊類（FC或IP）MetroCluster | 工作 | 程序 
+
+
+ a| 
+軟件ONTAP
+ a| 
+兩者兼具
+ a| 
+軟體升級ONTAP
+ a| 
+https://docs.netapp.com/us-en/ontap/upgrade/index.html["升級、回復或降級"^]
+
+
+
+ a| 
+控制器模組
+ a| 
+兩者兼具
+ a| 
+FRU更換（包括控制器模組、PCIe卡、FC-VI卡等）
+
+
+NOTE: 不MetroCluster 支援將儲存控制器模組或NVRAM卡移至各個不支援的儲存系統。
+ a| 
+https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"]
+
+
+
+ a| 
+升級與擴充
+ a| 
+link:../upgrade/concept_choosing_an_upgrade_method_mcc.html["升級與擴充MetroCluster"]
+
+
+
+ a| 
+從FC移轉至IP連線
+ a| 
+link:../transition/concept_choosing_your_transition_procedure_mcc_transition.html["從MetroCluster 靜態FC移轉至MetroCluster 靜態IP"]
+
+
+
+ a| 
+磁碟機櫃
+ a| 
+FC
+ a| 
+機櫃新增（含橋接器或個別機櫃的堆疊）
+ a| 
+link:task_hot_add_a_stack_to_exist_7500n_pair.html["將一堆SAS磁碟櫃熱新增至現有的一對光纖橋接器7500N"]
+
+link:task_fb_hot_add_stack_of_shelves_and_bridges.html["熱新增一堆SAS磁碟櫃、並將橋接器連接MetroCluster 至一套系統"]
+
+link:task_fb_hot_add_shelf_prepare_7500n.html["將SAS磁碟櫃熱新增至SAS磁碟櫃堆疊"]
+
+
+
+ a| 
+FC
+ a| 
+機櫃移除
+ a| 
+link:task_hot_remove_storage_from_a_mcc_fc_configuration.html["將儲存設備熱移除MetroCluster 至不需使用的FC組態"]
+
+
+
+ a| 
+FC
+ a| 
+所有其他機櫃維護程序。可使用標準程序。
+ a| 
+https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-sas3-service/home.html["維護DS460C DS224C和DS212C磁碟櫃"^]
+
+
+
+ a| 
+IP
+ a| 
+所有機櫃維護程序。可使用標準程序。
+
+如果要新增磁碟櫃以供未鏡射的Aggregate使用、請參閱 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-mcc-inst-cnfg-ip/GUID-EA385AF8-7786-4C3C-B5AE-1B4CFD3AD2EE.html["使用無鏡射Aggregate時的考量"^]
+ a| 
+https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-sas3-service/home.html["維護DS460C DS224C和DS212C磁碟櫃"^]
+
+
+
+ a| 
+兩者兼具
+ a| 
+熱新增IOM12磁碟櫃至IOM6磁碟櫃堆疊
+ a| 
+https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-mix-hotadd/home.html["將含有IOM12模組的熱新增磁碟櫃放到具有IOM6模組的磁碟櫃堆疊中"^]
+
+
+
+ a| 
+FC至SAS橋接器
+ a| 
+FC
+ a| 
+橋接器更換
+ a| 
+link:task_replace_a_sle_fc_to_sas_bridge.html["更換單一FC對SAS橋接器"]
+
+link:task_fb_consolidate_replace_a_pair_of_fibrebridge_6500n_bridges_with_7500n_bridges.html["以7600N或7500N橋接器取代一對FibreBridge 6500N橋接器"]
+
+link:task_replace_a_sle_fc_to_sas_bridge.html#hot-swapping-a-fibrebridge-7500n-with-a-7600n-bridge["以7600N橋接器熱交換使用FibreBridge 7500N"]
+
+
+
+ a| 
+FC
+ a| 
+韌體升級
+ a| 
+link:task_update_firmware_on_a_fibrebridge_bridge_parent_topic.html["更新光纖橋接器上的韌體"]
+
+
+
+ a| 
+FC
+ a| 
+更換故障的電源供應器模組
+ a| 
+link:reference_fb_replace_a_power_supply.html["熱更換故障的電源供應器模組"]
+
+
+
+ a| 
+FC交換器
+ a| 
+FC
+ a| 
+交換器升級
+ a| 
+link:task_upgrade_to_new_brocade_switches.html["升級至新的Brocade FC交換器"]
+
+
+
+ a| 
+FC
+ a| 
+更換交換器
+ a| 
+link:task_replace_a_brocade_fc_switch_mcc.html["更換Brocade FC交換器MetroCluster （插座）"]
+
+link:task_replace_a_cisco_fc_switch_mcc.html["更換Cisco FC交換器"]
+
+
+
+ a| 
+FC
+ a| 
+韌體升級
+ a| 
+link:task_upgrade_or_downgrad_the_firmware_on_a_brocade_fc_switch_mcc.html["更新Brocade FC交換器上的韌體"]
+
+link:task_upgrade_or_downgrad_the_firmware_on_a_cisco_fc_switch_mcc.html["正在更新Cisco FC交換器上的韌體"]
+
+|===

@@ -1,0 +1,720 @@
+---
+permalink: disaster-recovery/task_replace_hardware_and_boot_new_controllers.html 
+sidebar: sidebar 
+keywords: hardware, component, replace, individual, replacement, installation, guide, replacing, controller, booting, new 
+summary: 如果硬體元件必須更換、您必須使用各自的硬體更換與安裝指南來更換。 
+---
+= 更換硬體並啟動新的控制器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+
+
+== 更換災難站台的硬體
+
+如果硬體元件必須更換、您必須使用各自的硬體更換與安裝指南來更換。
+
+儲存控制器必須關閉電源或保持暫停狀態（顯示載入器提示）。
+
+.步驟
+. 視需要更換元件。
++
+
+NOTE: 在此步驟中、您可以完全依照災難發生前的接線方式來更換和連接元件。您不得開啟元件電源。
+
++
+|===
+
+
+| 如果您要更換... | 執行下列步驟... | 使用這些指南... 
+
+
+ a| 
+FC交換器、MetroCluster 採用F精選FC組態
+ a| 
+.. 安裝新交換器。
+.. 連接ISL連結。此時請勿開啟FC交換器的電源。
+
+| link:../maintain/index.html["維護MetroCluster 元件"] 
+
+
+ a| 
+IP交換器、採用MetroCluster 靜態IP組態
+ a| 
+.. 安裝新交換器。
+.. 連接ISL連結。此時請勿開啟IP交換器的電源。
+
+ a| 
+link:../install-ip/concept_considerations_differences.html["安裝與組態：各不相同的功能MetroCluster ONTAP MetroCluster"]
+
+
+
+ a| 
+磁碟櫃
+ a| 
+.. 安裝磁碟櫃和磁碟。
++
+*** 磁碟櫃堆疊的組態應與存續站台相同。
+*** 磁碟可以大小相同或更大、但必須是相同類型（SAS或SATA）。
+
+
+.. 將磁碟櫃纜線連接至堆疊內的鄰近磁碟櫃、以及FC對SAS橋接器。此時請勿開啟磁碟櫃電源。
+
+| link:http://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"^] 
+
+
+ a| 
+SAS纜線
+ a| 
+.. 安裝新纜線。此時請勿開啟磁碟櫃電源。
+
+ a| 
+link:http://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"^]
+
+
+
+ a| 
+以不受需求的FC組態連接FC至SAS橋接器MetroCluster
+ a| 
+.. 安裝FC至SAS橋接器。
+.. 連接FC至SAS橋接器的纜線。
++
+視MetroCluster 您的組態類型而定、將它們連接至FC交換器或控制器模組。
+
++
+此時請勿開啟FC對SAS橋接器的電源。
+
+
+ a| 
+link:../install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"]
+
+link:../install-stretch/concept_considerations_differences.html["延伸MetroCluster 安裝與組態"]
+
+
+
+ a| 
+控制器模組
+ a| 
+.. 安裝新的控制器模組：
++
+*** 控制器模組的型號必須與要更換的模組相同。
++
+例如、8080控制器模組必須更換為8080控制器模組。
+
+*** 控制器模組之前不得是MetroCluster 位於該組態內的叢集或任何先前現有的叢集組態中的一部分。
++
+如果是、您必須設定預設值並執行「wifeconfig」程序。
+
+*** 確保所有的網路介面卡（例如乙太網路或FC）都位於舊控制器模組所使用的相同插槽中。
+
+
+.. 將新的控制器模組與舊的模組完全相同。
++
+將控制器模組連接至儲存設備的連接埠（透過連接至IP或FC交換器、FC至SAS橋接器或直接連接）應與災難發生前使用的連接埠相同。
+
++
+此時請勿開啟控制器模組的電源。
+
+
+ a| 
+link:http://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"^]
+
+|===
+. 驗證所有元件的纜線是否正確連接至您的組態。
++
+** link:../install-ip/using_rcf_generator.html["IP組態MetroCluster"]
+** link:../install-fc/task_fmc_mcc_transition_cable_the_new_mcc_controllers_to_the_exist_fc_fabrics.html["連接架構的組態MetroCluster"]
+
+
+
+
+
+
+== 確定舊控制器模組的系統ID和VLAN ID
+
+在您更換災難站台的所有硬體之後、您必須判斷更換的控制器模組的系統ID。將磁碟重新指派給新的控制器模組時、您需要舊的系統ID。如果系統AFF 是不只是功能性的A220、AFF 不只是功能性的A250、AFF 還包括功能AFF 性的 FAS500f、FAS8300或FAS8700機型、您也必須判斷MetroCluster 出由Sing IP介面所使用的VLAN ID。
+
+災難現場的所有設備都必須關機。
+
+本討論提供兩個和四個節點組態的範例。對於八節點組態、您必須考量第二個DR群組中其他節點的任何故障。
+
+對於雙節點MetroCluster 的不全功能組態、您可以忽略每個站台對第二個控制器模組的參照。
+
+本程序的範例以下列假設為基礎：
+
+* 站台A是災難站台。
+* node_a_1發生故障、正在完全更換。
+* node_a_2發生故障、正在完全更換。
++
+節點_a_2 MetroCluster 僅存在於四節點的不全功能組態中。
+
+* 站台B是存續的站台。
+* node_B_1正常運作。
+* node_B_2正常。
++
+節點_B_2 MetroCluster 僅存在於四節點的不二組態中。
+
+
+
+控制器模組具有下列原始系統ID：
+
+|===
+
+
+| 在不含資訊的組態中的節點數MetroCluster | 節點 | 原始系統ID 
+
+
+ a| 
+四
+ a| 
+node_a_1
+ a| 
+4068741258
+
+
+
+ a| 
+節點_a_2
+ a| 
+4068741260
+
+
+
+ a| 
+節點_B_1
+ a| 
+4068741254
+
+
+
+ a| 
+節點_B_2
+ a| 
+4068741256
+
+
+
+ a| 
+二
+ a| 
+node_a_1
+ a| 
+4068741258
+
+
+
+ a| 
+節點_B_1
+ a| 
+4068741254
+
+|===
+.步驟
+. 在運作中的站台、顯示MetroCluster 系統ID中的節點、以進行功能性設定。
++
+|===
+
+
+| 在不含資訊的組態中的節點數MetroCluster | 使用此命令 
+
+
+ a| 
+四或八個
+ a| 
+「MetroCluster 這個節點顯示欄位節點系統ID、ha-合作 夥伴系統ID、dr-Partner SystemID、dr輔助系統ID」
+
+
+
+ a| 
+二
+ a| 
+「MetroCluster 這個節點顯示欄位節點系統ID、DR-Partner SystemID」
+
+|===
++
+在此範例中、若為四節點MetroCluster 的列舉、將會擷取下列舊系統ID：
+
++
+** 節點_a_1：40687441258
+** 節點_a_2：40687441260
++
+舊控制器模組擁有的磁碟仍擁有這些系統ID。
+
++
+[listing]
+----
+metrocluster node show -fields node-systemid,ha-partner-systemid,dr-partner-systemid,dr-auxiliary-systemid
+
+dr-group-id cluster    node      node-systemid ha-partner-systemid dr-partner-systemid dr-auxiliary-systemid
+----------- ---------- --------  ------------- ------ ------------ ------ ------------ ------ --------------
+1           Cluster_A  Node_A_1  4068741258    4068741260          4068741254          4068741256
+1           Cluster_A  Node_A_2  4068741260    4068741258          4068741256          4068741254
+1           Cluster_B  Node_B_1  -             -                   -                   -
+1           Cluster_B  Node_B_2  -             -                   -                   -
+4 entries were displayed.
+----
+
+
++
+在此範例中、若為雙節點MetroCluster 的列舉、將會擷取下列舊系統ID：
+
++
+** 節點_a_1：40687441258
++
+舊控制器模組擁有的磁碟仍擁有此系統ID。
+
++
+[listing]
+----
+metrocluster node show -fields node-systemid,dr-partner-systemid
+
+dr-group-id cluster    node      node-systemid dr-partner-systemid
+----------- ---------- --------  ------------- ------------
+1           Cluster_A  Node_A_1  4068741258    4068741254
+1           Cluster_B  Node_B_1  -             -
+2 entries were displayed.
+----
+
+
+. 如需MetroCluster 使用ONTAP 「功能不完整」服務的靜態IP組態、請取得ONTAP 「功能不完整」服務的IP位址：
++
+「儲存iSCSI啟動器show -Node *-label中介器」
+
+. 如果系統AFF 是不只A220、AFF 不只A400、FAS2750、FAS8300或FAS8700機型、 確定VLAN ID：
++
+《不互連秀》MetroCluster
+
++
+VLAN ID包含在輸出的介面卡欄位中顯示的介面卡名稱中。
+
++
+在此範例中、VLAN ID為120和130：
+
++
+[listing]
+----
+metrocluster interconnect show
+                          Mirror   Mirror
+                  Partner Admin    Oper
+Node Partner Name Type    Status   Status  Adapter Type   Status
+---- ------------ ------- -------- ------- ------- ------ ------
+Node_A_1 Node_A_2 HA      enabled  online
+                                           e0a-120 iWARP  Up
+                                           e0b-130 iWARP  Up
+         Node_B_1 DR      enabled  online
+                                           e0a-120 iWARP  Up
+                                           e0b-130 iWARP  Up
+         Node_B_2 AUX     enabled  offline
+                                           e0a-120 iWARP  Up
+                                           e0b-130 iWARP  Up
+Node_A_2 Node_A_1 HA      enabled  online
+                                           e0a-120 iWARP  Up
+                                           e0b-130 iWARP  Up
+         Node_B_2 DR      enabled  online
+                                           e0a-120 iWARP  Up
+                                           e0b-130 iWARP  Up
+         Node_B_1 AUX     enabled  offline
+                                           e0a-120 iWARP  Up
+                                           e0b-130 iWARP  Up
+12 entries were displayed.
+----
+
+
+
+
+== 將替換磁碟機與正常運作的站台隔離（MetroCluster 知識產權組態）
+
+您必須從MetroCluster 正常運作的節點中斷連接到任何更換磁碟機、以隔離這些磁碟機。
+
+此程序僅適用於MetroCluster 不完整的IP組態。
+
+.步驟
+. 從任一正常節點的提示字元、變更為進階權限層級：
++
+"進階權限"
+
++
+當系統提示您繼續進入進階模式時、您需要用「y」回應、並看到進階模式提示（*>）。
+
+. 中斷DR群組中兩個可用節點上的iSCSI啟動器連線：
++
+「儲存iSCSI啟動器中斷連線-節點存續節點-標籤*」
+
++
+此命令必須發出兩次、每個正常運作的節點都必須發出一次。
+
++
+以下範例顯示在站台B上中斷啟動器連線的命令：
+
++
+[listing]
+----
+site_B::*> storage iscsi-initiator disconnect -node node_B_1 -label *
+site_B::*> storage iscsi-initiator disconnect -node node_B_2 -label *
+----
+. 返回管理權限層級：
++
+「et -priv. admin」
+
+
+
+
+
+== 清除控制器模組上的組態
+
+[role="lead"]
+在使用全新的控制器模組MetroCluster 進行整個過程之前、您必須先清除現有的組態。
+
+.步驟
+. 如有必要、請停止節點以顯示載入程式提示：
++
+《停止》
+
+. 在載入程式提示下、將環境變數設定為預設值：
++
+「預設值」
+
+. 儲存環境：
++
+「aveenv」
+
+. 在載入程式提示下、啟動開機功能表：
++
+Boot_ONTAP功能表
+
+. 在開機功能表提示字元中、清除組態：
++
+《無花果》
+
++
+請對確認提示回應「是」。
+
++
+節點會重新開機、並再次顯示開機功能表。
+
+. 在開機功能表中、選取選項* 5*以將系統開機至維護模式。
++
+請對確認提示回應「是」。
+
+
+
+
+
+== Netbooting新的控制器模組
+
+如果新的控制器模組的ONTAP 版本不同於正常運作的控制器模組版本、則必須以netboot新的控制器模組。
+
+.開始之前
+* 您必須能夠存取HTTP伺服器。
+* 您必須能夠存取NetApp支援網站、才能下載平台所需的系統檔案、以及ONTAP 其上所執行的版本的支援軟體。
++
+https://mysupport.netapp.com/site/global/dashboard["NetApp支援"^]
+
+
+
+.步驟
+. 存取 https://mysupport.netapp.com/site/["NetApp 支援網站"^] 可下載用於執行系統netboot的文件。
+. 從ONTAP NetApp支援網站的軟體下載區段下載適當的支援軟體、並將ONTAP-VERSION _image.tgz檔案儲存在可從網路存取的目錄中。
+. 移至網路存取目錄、確認您所需的檔案可用。
++
+|===
+
+
+| 如果平台模式是... | 然後... 
+
+
+| FAS / AFF8000系列系統 | 將ONTAP-VERIN_image.tgzfile的內容解壓縮到目標目錄：tar -zxvf ontap-VERVER版本_image.tgz注意：如果您要在Windows上解壓縮內容、請使用7-Zip或WinRAR來擷取netboot映像。您的目錄清單應包含一個netboot資料夾、其中含有核心檔案：netboot/kernel 
+
+
+| 所有其他系統 | 您的目錄清單應包含一個含有核心檔案的netboot資料夾：ontap版本映像.tgz、您不需要擷取ontap版本映像.tgz檔案。 
+|===
+. 在載入程式提示下、設定管理LIF的netboot連線：
++
+** 如果IP定址為DHCP、請設定自動連線：
++
+「ifconfige0M -auto」
+
+** 如果IP定址為靜態、請設定手動連線：
++
+"ifconfige0M -addr=ip_addr -mask=netmask"'-gateway=gateway"
+
+
+
+. 執行netboot。
++
+** 如果平台是80xx系列系統、請使用下列命令：
++
+“netboot \http://web_server_ip/path_to_web-accessible_directory/netboot/kernel`
+
+** 如果平台是任何其他系統、請使用下列命令：
++
+“netboot \http://web_server_ip/path_to_web-accessible_directory/ontap-version_image.tgz`
+
+
+
+. 從開機功能表中、選取選項*（7）Install new software first*（先安裝新軟體*）、將新的軟體映像下載並安裝至開機裝置。
++
+ Disregard the following message: "This procedure is not supported for Non-Disruptive Upgrade on an HA pair". It applies to nondisruptive upgrades of software, not to upgrades of controllers.
+. 如果系統提示您繼續此程序、請輸入「y」、並在系統提示您輸入套件時、輸入映像檔的URL：「http://web_server_ip/path_to_web-accessible_directory/ontap-version_image.tgz`」
++
+....
+Enter username/password if applicable, or press Enter to continue.
+....
+. 當您看到類似下列的提示時、請務必輸入「n」以跳過備份恢復：
++
+....
+Do you want to restore the backup configuration now? {y|n}
+....
+. 當您看到類似於以下內容的提示時、輸入「y」重新開機：
++
+....
+The node must be rebooted to start using the newly installed software. Do you want to reboot now? {y|n}
+....
+. 從「開機」功能表中、選取*選項5*以進入「維護」模式。
+. 如果您有四節點MetroCluster 的內存不整組態、請在其他新的控制器模組上重複此程序。
+
+
+
+
+== 確定更換控制器模組的系統ID
+
+在您更換災難站台上的所有硬體之後、必須判斷新安裝的儲存控制器模組或模組的系統ID。
+
+您必須在維護模式下、將更換的控制器模組執行此程序。
+
+本節提供兩個和四個節點組態的範例。對於雙節點組態、您可以忽略對每個站台第二個節點的參照。對於八節點組態、您必須考慮第二個DR群組上的其他節點。這些範例假設如下：
+
+* 站台A是災難站台。
+* 已更換node_a_1。
+* 已更換node_a_2。
++
+僅提供四節點MetroCluster 的不全功能組態。
+
+* 站台B是存續的站台。
+* node_B_1正常運作。
+* node_B_2正常。
++
+僅提供四節點MetroCluster 的不全功能組態。
+
+
+
+本程序中的範例使用具有下列系統ID的控制器：
+
+|===
+
+
+| 在不含資訊的組態中的節點數MetroCluster | 節點 | 原始系統ID | 新系統ID | 將與此節點配對成為DR合作夥伴 
+
+
+ a| 
+四
+ a| 
+node_a_1
+ a| 
+4068741258
+ a| 
+1574774970
+ a| 
+節點_B_1
+
+
+
+ a| 
+節點_a_2
+ a| 
+4068741260
+ a| 
+1574774991
+ a| 
+節點_B_2
+
+
+
+ a| 
+節點_B_1
+ a| 
+4068741254
+ a| 
+不變
+ a| 
+node_a_1
+
+
+
+ a| 
+節點_B_2
+ a| 
+4068741256
+ a| 
+不變
+ a| 
+節點_a_2
+
+
+
+ a| 
+二
+ a| 
+node_a_1
+ a| 
+4068741258
+ a| 
+1574774970
+ a| 
+節點_B_1
+
+
+
+ a| 
+節點_B_1
+ a| 
+4068741254
+ a| 
+不變
+ a| 
+node_a_1
+
+|===
+
+NOTE: 在四節點MetroCluster 的不全功能組態中、系統會將節點與站台A的最低系統ID和站台B的最低系統ID配對、藉此決定DR合作關係因為系統ID會變更、所以在完成控制器更換之後、DR配對可能會與災難發生之前的配對不同。
+
+在上例中：
+
+* node_a_1（1574774970）將與node_B_1（40687441254）配對
+* node_a_2（1574774991）將與node_B_2（40687441256）配對
+
+
+.步驟
+. 當節點處於維護模式時、顯示每個節點的本機系統ID：「磁碟顯示」
++
+在下列範例中、新的本機系統ID為1574774970：
+
++
+[listing]
+----
+*> disk show
+ Local System ID: 1574774970
+ ...
+----
+. 在第二個節點上、重複上一步。
++
+
+NOTE: 在雙節點MetroCluster 的不二節點的不二組態中、不需要執行此步驟。
+
++
+在下列範例中、新的本機系統ID為1574774991：
+
++
+[listing]
+----
+*> disk show
+ Local System ID: 1574774991
+ ...
+----
+
+
+
+
+== 驗證元件的ha-config狀態
+
+在不支援的組態中MetroCluster 、控制器模組和機箱元件的ha-config狀態必須設定為「MCC」或「mc-2n」、才能正常開機。
+
+系統必須處於維護模式。
+
+此工作必須在每個新的控制器模組上執行。
+
+.步驟
+. 在維護模式中、顯示控制器模組和機箱的HA狀態：
++
+《ha-config show》
+
++
+HA狀態是否正確取決MetroCluster 於您的使用情況組態。
+
++
+|===
+
+
+| 在整個過程中使用的控制器數量MetroCluster | 所有元件的HA狀態應為... 
+
+
+ a| 
+八節點或四節點MetroCluster 的不全功能FC組態
+ a| 
+MCC
+
+
+
+ a| 
+雙節點MetroCluster 的不含功能的FC組態
+ a| 
+MCC-2n
+
+
+
+ a| 
+IP組態MetroCluster
+ a| 
+Mccip
+
+|===
+. 如果控制器的顯示系統狀態不正確、請設定控制器模組的HA狀態：
++
+|===
+
+
+| 在整個過程中使用的控制器數量MetroCluster | 命令 
+
+
+ a| 
+八節點或四節點MetroCluster 的不全功能FC組態
+ a| 
+「ha-config modify控制器MCC」
+
+
+
+ a| 
+雙節點MetroCluster 的不含功能的FC組態
+ a| 
+「ha-config modify控制器MCC-2n」
+
+
+
+ a| 
+IP組態MetroCluster
+ a| 
+「ha-config modify控制器mccip」
+
+|===
+. 如果機箱顯示的系統狀態不正確、請設定機箱的HA狀態：
++
+|===
+
+
+| 在整個過程中使用的控制器數量MetroCluster | 命令 
+
+
+ a| 
+八節點或四節點MetroCluster 的不全功能FC組態
+ a| 
+「ha-config modify機箱MCC」
+
+
+
+ a| 
+雙節點MetroCluster 的不含功能的FC組態
+ a| 
+「ha-config modify機箱MCC-2n」
+
+
+
+ a| 
+IP組態MetroCluster
+ a| 
+「ha-config modify機箱mccip」
+
+|===
+. 在其他替換節點上重複這些步驟。
+

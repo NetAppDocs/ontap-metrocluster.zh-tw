@@ -1,0 +1,82 @@
+---
+permalink: upgrade/task_apply_the_rcf_files_and_recable_the_switches.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, apply, rcf, files, recable, switches 
+summary: 您必須套用RCF檔案、才能重新設定分區以容納新節點。 
+---
+= 套用RCF檔案並重新啟用交換器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須套用RCF檔案、才能重新設定分區以容納新節點。
+
+.步驟
+. 找出您組態的RCF檔案。
++
+您必須將RCF檔案用於八節點組態、而且必須符合交換器模式。
+
+. 依照下載頁面上的指示套用RCF檔案、視需要調整ISL設定。
+. 確定交換器組態已儲存。
+. 重新啟動FC交換器。
+. 使用您先前建立的佈線配置、將既有的FC橋接器和新的FC對SAS橋接器連接至FC交換器。
++
+FC交換器連接埠的使用必須符合MetroCluster 中所述的8節點使用情形 link:../install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"] 以便使用參考組態檔（RCT）。
+
++
+
+NOTE: 如果您的環境無法以能夠使用RCF檔案的方式連線、請聯絡技術支援部門。如果纜線無法使用RCF檔案、請勿使用此程序。
+
+. 使用正確的命令來驗證連接埠是否在線上。
++
+|===
+
+
+| 交換器廠商 | 命令 
+
+
+ a| 
+Brocade
+ a| 
+切換顯示
+
+
+
+ a| 
+Cisco
+ a| 
+顯示介面簡介
+
+|===
+. 請使用中的程序 link:../install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"] 使用您先前建立的佈線配置、從現有和新的控制器連接FC-VI連接埠。
++
+FC交換器連接埠的使用必須符合MetroCluster 中所述的8節點使用情形 link:../install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"] 以便使用參考組態檔（RCT）。
+
++
+
+NOTE: 如果您的環境無法以能夠使用RCF檔案的方式連線、請聯絡技術支援部門。如果纜線無法使用RCF檔案、請勿使用此程序。
+
+. 從現有節點、確認FC-VI連接埠已上線：
++
+「顯示此介面卡的資訊」MetroCluster
+
++
+《不互連鏡像秀》MetroCluster
+
+. 將HBA連接埠從目前的控制器和新的控制器連接至纜線。
+. 在現有的控制器模組上、啟用連接至交換器架構的連接埠進行維護：
++
+「torage連接埠啟用-node-name_-port _port-ID_」
+
+. 啟動新的控制器並將其開機至維護模式：
++
+Boot_ONTAP maint
+
+. 確認新的控制器模組只能看到新DR群組所使用的儲存設備。
++
+其他DR群組所使用的任何儲存設備均不可見。
+
+. 返回此程序的開頭、重新連接第二個交換器網路。
+

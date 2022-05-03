@@ -1,0 +1,117 @@
+---
+permalink: upgrade/task_move_a_metadata_volume_in_mcc_configurations.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, move, metadata, volume, configuration 
+summary: 您可以在MetroCluster 一個組態中、將中繼資料磁碟區從一個Aggregate移至另一個Aggregate。當來源Aggregate已停用或未鏡射、或是由於其他原因導致Aggregate不符合資格時、您可能會想要移動中繼資料Volume。 
+---
+= 在MetroCluster 不完整的組態中移動中繼資料磁碟區
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以在MetroCluster 一個組態中、將中繼資料磁碟區從一個Aggregate移至另一個Aggregate。當來源Aggregate已停用或未鏡射、或是由於其他原因導致Aggregate不符合資格時、您可能會想要移動中繼資料Volume。
+
+.關於這項工作
+* 您必須擁有叢集管理員權限才能執行此工作。
+* 目標Aggregate必須鏡射、不得處於降級狀態。
+* 目標Aggregate中的可用空間必須大於您要移動的中繼資料Volume。
+
+
+.步驟
+. 將權限層級設為進階：
++
+"進階權限"
+
+. 識別應移動的中繼資料磁碟區：
++
+「Volume show MDV_CRS*」
+
++
+[listing]
+----
+Cluster_A::*> volume show MDV_CRS*
+Vserver   Volume       Aggregate    State      Type       Size  Available Used%
+--------- ------------ ------------ ---------- ---- ---------- ---------- -----
+Cluster_A
+          MDV_CRS_14c00d4ac9f311e7922800a0984395f1_A
+                       Node_A_1_aggr1
+                                    online     RW         10GB     9.50GB    5%
+Cluster_A
+          MDV_CRS_14c00d4ac9f311e7922800a0984395f1_B
+                       Node_A_2_aggr1
+                                    online     RW         10GB     9.50GB    5%
+Cluster_A
+          MDV_CRS_15035e66c9f311e7902700a098439625_A
+                       Node_B_1_aggr1
+                                    -          RW            -          -     -
+Cluster_A
+          MDV_CRS_15035e66c9f311e7902700a098439625_B
+                       Node_B_2_aggr1
+                                    -          RW            -          -     -
+4 entries were displayed.
+
+Cluster_A::>
+----
+. 識別合格的目標Aggregate：
++
+《不合格的組態複寫顯示集合體資格》MetroCluster
+
++
+下列命令可識別叢集A中符合裝載中繼資料磁碟區資格的集合體：
+
++
+[listing]
+----
+
+Cluster_A::*> metrocluster check config-replication show-aggregate-eligibility
+
+Aggregate Hosted Config Replication Vols Host Addl Vols Comments
+------------ ------------------------------------------ -------------- --------
+Node_A_1_aggr0 - false Root Aggregate
+Node_A_2_aggr0 - false Root Aggregate
+Node_A_1_aggr1 MDV_CRS_1bc7134a5ddf11e3b63f123478563412_A true -
+Node_A_2_aggr1 MDV_CRS_1bc7134a5ddf11e3b63f123478563412_B true -
+Node_A_1_aggr2 - true
+Node_A_2_aggr2 - true
+Node_A_1_Aggr3 - false Unable to determine available space of aggregate
+Node_A_1_aggr5 - false Unable to determine mirror configuration
+Node_A_2_aggr6 - false Mirror configuration does not match requirement
+Node_B_1_aggr4 - false NonLocal Aggregate
+----
++
+
+NOTE: 在上一個範例中、Node_a_aggr2和Node_a_2_aggr2均符合資格。
+
+. 啟動Volume Move作業：
++
+「Volume move start -vserver _Svm_name_-volume _madgental_volume名稱_-destination-Aggregate _destination_aggregate名稱_*」
+
++
+下列命令可將中繼資料磁碟區「MDV_CRs_14c00d4ac9f311e7922800a0984395f1」從「Aggregate Node_a_aggr1」移至「Aggregate Node_a_aggr2」：
+
++
+[listing]
+----
+Cluster_A::*> volume move start -vserver svm_cluster_A -volume MDV_CRS_14c00d4ac9f311e7922800a0984395f1
+-destination-aggregate aggr_cluster_A_02_01
+
+Warning: You are about to modify the system volume
+         "MDV_CRS_9da04864ca6011e7b82e0050568be9fe_A".  This may cause severe
+         performance or stability problems.  Do not proceed unless directed to
+         do so by support.  Do you want to proceed? {y|n}: y
+[Job 109] Job is queued: Move "MDV_CRS_9da04864ca6011e7b82e0050568be9fe_A" in Vserver
+"svm_cluster_A" to aggregate "aggr_cluster_A_02_01".
+Use the "volume move show -vserver svm_cluster_A -volume
+MDV_CRS_9da04864ca6011e7b82e0050568be9fe_A" command to view the status of this operation.
+----
+. 驗證Volume Move作業的狀態：
++
+「Volume move show -volume vol_entional_name'
+
+. 返回管理權限層級：
++
+「et -priv. admin」
+
+

@@ -1,0 +1,736 @@
+---
+permalink: transition/concept_requirements_for_fc_to_ip_transition_2n_mcc_transition.html 
+sidebar: sidebar 
+keywords: start, transition, process, configuration, requirement, meet, preparing, prepare, disruptive, fc-to-ip, transition, general, workflow, disruptive, map, port, fc, node, ip 
+summary: 在開始轉換程序之前、您必須確定組態符合要求。 
+---
+= 準備顛覆性的FC對IP轉換
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+
+
+== 中斷FC對IP轉換的一般需求
+
+[role="lead"]
+在開始轉換程序之前、您必須確定組態符合要求。
+
+現有MetroCluster 的無法使用的功能組態必須符合下列要求：
+
+* 它必須是雙節點組態、而且所有節點都必須執行ONTAP 不含更新版本的版本。
++
+它可以是雙節點架構連接或延伸MetroCluster 的功能。
+
+* 它必須符合_ MetroCluster 《_》安裝與組態_程序中所述的所有需求和佈線要求。
++
+link:../install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"]
+
++
+link:../install-stretch/concept_considerations_differences.html["延伸MetroCluster 安裝與組態"]
+
+* 無法使用NetApp儲存加密（NSE）進行設定。
+* 無法加密MDV磁碟區。
+
+
+您必須能從MetroCluster 任何一個站台、或是依照程序的要求、對所有六個節點進行遠端主控台存取、或是規劃在站台之間的交通。
+
+
+
+== 磁碟機櫃的重複使用和磁碟機需求、可中斷FC對IP的轉換
+
+您必須確保儲存櫃上有足夠的備用磁碟機和根Aggregate空間可用。
+
+
+
+=== 重複使用現有的儲存櫃
+
+使用此程序時、現有的儲存櫃會保留供新組態使用。移除node_a_1-FC和node_B_1-FC時、現有磁碟機櫃會連接至叢集A上的node_a_1-IP和node_a_2-IP、以及叢集B上的node_B_1-IP和node_B_2-IP
+
+* 新平台機型必須支援現有的儲存櫃（連接至node_a_1-FC和node_B_1-FC的儲存櫃）。
++
+如果新平台機型不支援現有的磁碟櫃、請參閱 link:task_disruptively_transition_when_exist_shelves_are_not_supported_on_new_controllers.html["當新控制器不支援現有磁碟櫃時、會中斷轉換作業（ONTAP 版本號：NetApp 9.8及更新版本）"]。
+
+* 您必須確保不會超過磁碟機等的平台限制
++
+https://hwu.netapp.com["NetApp Hardware Universe"^]
+
+
+
+
+
+=== 額外控制器的儲存需求
+
+如有必要、必須新增額外的儲存設備以容納兩個額外的控制器（node_a_2-IP和node_B_2-IP）、因為組態會從雙節點變更為四節點配置。
+
+* 視現有磁碟櫃中可用的備用磁碟機而定、必須新增額外的磁碟機、以容納組態中的其他控制器。
++
+這可能需要額外的儲存磁碟櫃、如下圖所示。
+
++
+image::../media/transition_2n_4_new_ip_nodes_on_the_shelves.png[在機櫃上移轉2n 4個新的IP節點]
+
++
+第三和第四個控制器（node_a_2-IP和node_B_2-IP）各需要額外14到18個磁碟機：
+
++
+** 三個Pool0磁碟機
+** 三個Pool1磁碟機
+** 兩個備用磁碟機
+** 六到十個磁碟機用於系統磁碟區
+
+
+* 您必須確保組態（包括新節點）不會超過組態的平台限制、包括磁碟機數、根Aggregate大小容量等
++
+此資訊適用於每種平台模式、請參閱_NetApp Hardware Universe SUR__。
+
++
+https://hwu.netapp.com["NetApp Hardware Universe"^]
+
+
+
+
+
+== 顛覆性移轉的工作流程
+
+您必須遵循特定的工作流程、才能確保順利轉換。
+
+準備轉換時、請規劃各地點之間的差旅。請注意、當遠端節點機架安裝並連接纜線之後、您需要對節點進行序列終端機存取。在設定節點之前、「服務處理器」存取將無法使用。
+
+image::../media/workflow_2n_transition_bsaic.png[工作流程2n轉換bsaic]
+
+
+
+== 將連接埠從MetroCluster 靜態FC節點對應至MetroCluster 靜態IP節點
+
+您必須調整MetroCluster 連接埠和LIF組態以使其與MetroCluster 將取代之的靜態IP節點相容。
+
+當新節點在升級程序期間首次開機時、每個節點都會使用其所取代之節點的最新組態。當您開機node_a_1-IP時、ONTAP Sfets0會嘗試在節點_a_1-FC上使用的相同連接埠上裝載lifs。
+
+在轉換程序期間、您將在新舊節點上執行步驟、以確保叢集、管理和資料LIF組態正確無誤。
+
+.步驟
+. 找出現有MetroCluster 的使用情形與MetroCluster 新節點上的使用端口使用情況之間的任何衝突。
++
+您必須使用MetroCluster 下表來識別新MetroCluster 版的靜態IP控制器上的靜態IP連接埠。然後檢查並記錄MetroCluster 哪些資料生命量或叢集生命量存在於哪些連接埠上、以及哪些連接埠位於哪些SFC節點上。
+
++
+這些在MetroCluster Sing FC節點上發生衝突的資料生命週期或叢集生命週期、將會在轉換程序的適當步驟中移動。
+
++
+
+NOTE: 在FASA220和FAS2750系統上AFF 、也會將該物件的實體連接埠當作叢集介面使用。MetroCluster如果新MetroCluster 的靜態IP節點是AFF 指不需要移動現有的叢集LIF或FAS2750系統、
+
++
+下表依MetroCluster 平台模式顯示了各個靜態IP連接埠。您可以忽略「VLAN ID」欄。
+
++
+|===
+
+
+| 平台模式 | IP連接埠MetroCluster | VLAN ID |  
+
+
+.2+| 解答800 AFF  a| 
+e0b.
+.8+| 未使用  a| 
+
+
+
+ a| 
+e1b
+ a| 
+
+
+
+.2+| 以利A700和FAS9000 AFF  a| 
+e5a
+ a| 
+
+
+
+ a| 
+e5b.
+ a| 
+
+
+
+.2+| 解答320 AFF  a| 
+e0g
+ a| 
+
+
+
+ a| 
+電子0小時
+ a| 
+
+
+
+.2+| 適用於A300和FAS8200 AFF  a| 
+e1a.
+ a| 
+
+
+
+ a| 
+e1b
+ a| 
+
+
+
+.2+| 解答A220和FAS2750 AFF  a| 
+e0a
+ a| 
+10.
+.2+| 在這些系統上、這些實體連接埠也會用作叢集介面。 
+
+
+ a| 
+e0b.
+ a| 
+20
+
+
+
+.2+| FASA250和FAS500f AFF  a| 
+e0c
+ a| 
+10.
+ a| 
+
+
+
+ a| 
+e0d
+ a| 
+20
+ a| 
+
+|===
++
+您可以填寫下表、稍後在轉換程序中參閱。
+
++
+|===
+
+
+| 連接埠 | 對應MetroCluster 的靜態IP介面連接埠（如上表） | 這些連接埠上的LIF在MetroCluster 不相互衝突的FC節點上 
+
+
+ a| 
+node_a_1-FC上的第一個MetroCluster 支援IP連接埠
+ a| 
+ a| 
+
+
+
+ a| 
+node_a_1-FC上的第二MetroCluster 個支援IP連接埠
+ a| 
+ a| 
+
+
+
+ a| 
+node_B_1-FC上的第一個MetroCluster 支援IP連接埠
+ a| 
+ a| 
+
+
+
+ a| 
+node_B_1-FC上的第二MetroCluster 個支援IP連接埠
+ a| 
+ a| 
+
+|===
+. 確定新控制器上可用的實體連接埠、以及連接埠上可裝載哪些LIF。
++
+控制器的連接埠使用量取決於平台機型和MetroCluster 將用於支援該IP組態的IP交換器機型。您可以從_NetApp__收集新平台的連接埠使用量Hardware Universe 。
+
++
+https://hwu.netapp.com["NetApp Hardware Universe"^]
+
+. 如果需要、請記錄node_a_1-FC和node_a_1-IP的連接埠資訊。
++
+執行轉換程序時、請參閱表格。
+
++
+在node_a_1-IP的欄中、新增新控制器模組的實體連接埠、並規劃新節點的IPspace和廣播網域。
+
++
+|===
+
+
+|  3+| node_a_1-FC 3+| 節點_a_1-IP 
+
+
+| LIF | 連接埠 | IPspaces | 廣播網域 | 連接埠 | IPspaces | 廣播網域 
+
+
+ a| 
+叢集1
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+叢集2
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+叢集3
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+叢集4.
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+節點管理
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+叢集管理
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+資料1.
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+資料2.
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+資料3.
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+資料4.
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+SAN
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+叢集間連接埠
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+|===
+. 如果需要、請記錄node_B_1-FC的所有連接埠資訊。
++
+執行升級程序時、請參閱表格。
+
++
+在node_B_1-IP的欄中、新增新控制器模組的實體連接埠、並規劃新節點的LIF連接埠使用量、IPspaces和廣播網域。
+
++
+|===
+
+
+|  3+| node_B_1-FC 3+| 節點_B_1-IP 
+
+
+| LIF | 實體連接埠 | IPspaces | 廣播網域 | 實體連接埠 | IPspaces | 廣播網域 
+
+
+ a| 
+叢集1
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+叢集2
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+叢集3
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+叢集4.
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+節點管理
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+叢集管理
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+資料1.
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+資料2.
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+資料3.
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+資料4.
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+SAN
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+叢集間連接埠
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+|===
+
+
+
+
+== 準備MetroCluster 好執行功能
+
+您必須準備四MetroCluster 個全新的靜態IP節點、並安裝正確ONTAP 的版本。
+
+此工作必須在每個新節點上執行：
+
+* 節點_a_1-IP
+* 節點_a_2-IP
+* 節點_B_1-IP
+* 節點_B_2-IP
+
+
+節點應連接至任何*新*的儲存櫃。它們必須*不*連接至包含資料的現有儲存磁碟櫃。
+
+這些步驟可在控制器和磁碟櫃機被機架機架機架時執行、或是稍後再執行。無論如何、您必須先清除組態並準備節點*之前*將其連接至現有的儲存櫃、*之後*再變更MetroCluster 任何對SFC節點的組態。
+
+
+NOTE: 請勿在MetroCluster 連接至MetroCluster 現有儲存櫃的連接至該功能的不含知識的IP控制器上執行這些步驟。
+
+在這些步驟中、您可以清除節點上的組態、並清除新磁碟機上的信箱區域。
+
+.步驟
+. 將控制器模組連接至新的儲存櫃。
+. 在維護模式中、顯示控制器模組和機箱的HA狀態：
++
+《ha-config show》
+
++
+所有元件的HA狀態應為「mCCIP」。
+
+. 如果顯示的控制器或機箱系統狀態不正確、請設定HA狀態：
++
+「ha-config modify控制器mccip」（ha-config修改機箱mccip）
+
+. 結束維護模式：
++
+《停止》
+
++
+執行命令之後、請等到節點停止在載入程式提示字元。
+
+. 在所有四個節點上重複下列子步驟以清除組態：
++
+.. 將環境變數設為預設值：
++
+「預設值」
+
+.. 儲存環境：
++
+「aveenv」
+
++
+"再見"
+
+
+
+. 重複下列子步驟、使用開機功能表上的9a選項來開機所有四個節點。
++
+.. 在載入程式提示下、啟動開機功能表：
++
+Boot_ONTAP功能表
+
+.. 在開機功能表中、選取選項「'9a'」以重新啟動控制器。
+
+
+. 使用開機功能表上的選項「'5'」、將四個節點的每個節點開機至維護模式。
+. 記錄系統ID、並從四個節點中的每個節點：
++
+"syssconfig"
+
+. 在node_a_1-IP和node_B_1-IP上重複下列步驟。
++
+.. 將所有本機磁碟的擁有權指派給每個站台：
++
+"磁 碟指派介面卡.xx.*
+
+.. 針對節點_a_1-IP和節點_B_1-IP上連接磁碟機櫃的每個HBA、重複上述步驟。
+
+
+. 在node_a_1-IP和node_B_1-IP上重複下列步驟、以清除每個本機磁碟上的信箱區域。
++
+.. 摧毀每個磁碟上的信箱區域：
++
+《電子郵件信箱摧毀當地的破壞合作夥伴》
+
+
+
+. 停止所有四個控制器：
++
+《停止》
+
+. 在每個控制器上、顯示開機功能表：
++
+Boot_ONTAP功能表
+
+. 在四個控制器上、清除組態：
++
+《無花果》
+
++
+當無圖作業完成時、節點會自動返回開機功能表。
+
+. 重複下列子步驟、使用開機功能表上的9a選項、重新啟動所有四個節點。
++
+.. 在載入程式提示下、啟動開機功能表：
++
+Boot_ONTAP功能表
+
+.. 在開機功能表中、選取選項「'9a'」以重新啟動控制器。
+.. 在移至下一個控制器模組之前、請先讓控制器模組完成開機。
+
+
++
+「9a」完成後、節點會自動返回開機功能表。
+
+. 關閉控制器電源。
+
+
+
+
+== 驗MetroCluster 證不完整的驗證功能
+
+在執行轉換之前、您必須先驗證MetroCluster 不中斷的功能和連線能力
+
+這項工作是在MetroCluster 整個過程中執行。
+
+. 驗證MetroCluster 下列項目中的功能：ONTAP
++
+.. 檢查系統是否具有多路徑：
++
+「節點執行節點node-name sysconfig -As」
+
+.. 檢查兩個叢集上的任何健全狀況警示：
++
+「系統健全狀況警示顯示」
+
+.. 確認MetroCluster 執行功能組態、並確認操作模式正常：
++
+《不看》MetroCluster
+
+.. 執行功能檢查：MetroCluster
++
+《不一樣的跑程》MetroCluster
+
+.. 顯示MetroCluster 檢查結果：
++
+《不一樣的表演》MetroCluster
+
+.. 檢查交換器上是否有任何健全狀況警示（如果有）：
++
+「torage switchshow」
+
+.. 執行Config Advisor
++
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"^]
+
+.. 執行Config Advisor 完功能後、請檢閱工具的輸出結果、並依照輸出中的建議來解決發現的任何問題。
+
+
+. 確認節點處於非HA模式：
++
+「容錯移轉顯示」
+
+
+
+
+
+== 從斷路器或其他監控軟體移除現有組態
+
+如果現有的組態是以MetroCluster 可啟動切換的ESITTiebreaker組態或其他協力廠商應用程式（例如ClusterLion）來監控、則MetroCluster 在轉換之前、您必須先從斷路器或其他軟體移除該組態。
+
+.步驟
+. 從MetroCluster Tiebreaker軟體移除現有的部分組態。
++
+link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#removing-metrocluster-configurations["移除MetroCluster 部分組態"]
+
+. 從MetroCluster 任何可啟動切換的第三方應用程式移除現有的功能。
++
+請參閱應用程式的文件。
+
+

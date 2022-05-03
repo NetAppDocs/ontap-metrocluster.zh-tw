@@ -1,0 +1,39 @@
+---
+permalink: maintain/concept_migrating_root_volumes_to_a_new_destination.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, migrate, root, volumes, new, destination 
+summary: 您可能需要將根磁碟區移至雙節點或四節點MetroCluster 之間的另一個根Aggregate。 
+---
+= 何時將根磁碟區移轉至新目的地
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可能需要將根磁碟區移至雙節點或四節點MetroCluster 之間的另一個根Aggregate。
+
+
+
+== 在雙節點MetroCluster 的不全功能組態中移轉根磁碟區
+
+若要將根磁碟區移轉至雙節點MetroCluster 的效能測試組態內的新根Aggregate、請參閱 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/How_to_move_mroot_to_a_new_root_aggregate_in_a_2-node_Clustered_MetroCluster_with_Switchover["如何將mroot移至MetroCluster 具有Switchover功能的雙節點叢集式節點上的新根Aggregate"]。本程序說明如何在MetroCluster 執行停止功能的過程中、不中斷營運地移轉根磁碟區。此程序與四節點組態上使用的程序略有不同。
+
+
+
+== 在四節點MetroCluster 的不全功能組態中移轉根磁碟區
+
+若要將根磁碟區移轉至四節點MetroCluster 的更新組態內的新根Aggregate、您可以使用 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-cmpr-930/system%5F%5Fnode%5F%5Fmigrate-root.html["系統節點移轉根目錄"] 滿足下列需求時執行命令：
+
+* 您可以使用系統節點移轉根目錄、在四節點MetroCluster 的資訊區組態中移動根集合體。
+* 所有根Aggregate都必須鏡射。
+* 您可以在兩個站台上新增磁碟櫃、並使用較小的磁碟機來裝載根Aggregate。
+* 在連接新磁碟機之前、您必須檢查平台所支援的磁碟機限制。
++
+https://hwu.netapp.com["NetApp Hardware Universe"]
+
+* 如果您將根Aggregate移至較小的磁碟機、則必須符合平台的最小根磁碟區大小、以確保儲存所有核心檔案。
+
+
+
+NOTE: 四節點程序也可套用至八節點組態。

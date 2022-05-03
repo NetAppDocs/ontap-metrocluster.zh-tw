@@ -1,0 +1,18 @@
+---
+permalink: upgrade/task_verify_switchover_heal_and_switchback.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, verify, switchover, healing, switchback 
+summary: 您應該驗證MetroCluster 該組態的切換、修復及切換作業。 
+---
+= 驗證切換、修復及切換
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您應該驗證MetroCluster 該組態的切換、修復及切換作業。
+
+.步驟
+. 使用協商切換、修復及切換的程序 link:../disaster-recovery/concept_dr_workflow.html["支援管理與災難恢復MetroCluster"]。
+

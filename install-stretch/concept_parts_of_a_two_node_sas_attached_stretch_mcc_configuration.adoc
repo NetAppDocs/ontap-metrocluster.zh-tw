@@ -1,0 +1,44 @@
+---
+permalink: install-stretch/concept_parts_of_a_two_node_sas_attached_stretch_mcc_configuration.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, parts, two, node, sas, attached, configuration 
+summary: 雙節點MetroCluster 的不含SAS的組態需要許多零件、包括兩個單節點叢集、其中儲存控制器使用SAS纜線直接連接至儲存設備。 
+---
+= 雙節點SAS附加的Stretch MetroCluster Sof組態的一部分
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+雙節點MetroCluster 的不含SAS的組態需要許多零件、包括兩個單節點叢集、其中儲存控制器使用SAS纜線直接連接至儲存設備。
+
+此組態包含下列主要硬體元素：MetroCluster
+
+* 儲存控制器
++
+儲存控制器使用SAS纜線直接連接至儲存設備。
+
++
+每個儲存控制器都設定為DR合作夥伴、以供合作夥伴站台上的儲存控制器使用。
+
++
+** 銅線SAS纜線可用於較短的距離。
+** 光纖SAS纜線可用於較遠的距離。
++
+
+NOTE: 在使用E系列陣列LUN的系統中、儲存控制器可直接連接至E系列儲存陣列。對於其他陣列LUN、則需要透過FC交換器進行連線。
+
++
+https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"]
+
++
+在這個解決方案領域、您可以使用儲存解決方案欄位來選擇您的解決方案。IMT MetroCluster您可以使用*元件總管*來選取元件和ONTAP 更新版本、以精簡搜尋範圍。您可以按一下「*顯示結果*」來顯示符合條件的支援組態清單。
+
+
+
+* 叢集對等網路
++
+叢集對等網路提供連線功能、可鏡射儲存虛擬機器（SVM）組態。一個叢集上所有SVM的組態都會鏡射到合作夥伴叢集。
+
+

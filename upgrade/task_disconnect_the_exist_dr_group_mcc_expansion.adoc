@@ -1,0 +1,27 @@
+---
+permalink: upgrade/task_disconnect_the_exist_dr_group_mcc_expansion.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, disconnect, existing, dr, group, fabric 
+summary: 您必須從光纖網路中的FC交換器中斷開現有的控制器模組。 
+---
+= 從網路中斷現有DR群組的連線
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須從光纖網路中的FC交換器中斷開現有的控制器模組。
+
+此工作必須在每MetroCluster 個站台執行。
+
+.步驟
+. 停用將現有控制器模組連接至交換器架構的HBA連接埠、以進行維護：
++
+「torage port disable-node-name_-port _port-number_」
+
+. 在本機FC交換器上、從現有控制器模組HBA、FC-VI和Atto橋接器的連接埠拔下纜線。
++
+重新連接纜線時、您應該貼上纜線的標籤、以便輕鬆識別。只有ISL連接埠應保持連線。
+
+

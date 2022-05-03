@@ -1,0 +1,55 @@
+---
+permalink: install-fc/concept_considerations_firewalls.html 
+sidebar: sidebar 
+keywords: preparing, prepare, metrocluster, mcc, installation, install, differences, configurations, between, considerations, all, san, array, asa, cluster, peering, prerequisites, dedicated, ports, sharing, data, ports, native, disk, shelves, array, luns, transitions, 7-mode, isls, tdm/wdm, fabric-attached, iod, ood, encryption, devices, unmirrored, aggregates, maintenance, requiring, power, shutdown, firewall, hardware, racking, cabling, setup, checklist, all san array, asa 
+summary: 當您準備MetroCluster 進行此版本的安裝時、您應該瞭解MetroCluster 到該系統的硬體架構和必要元件。 
+---
+= 在景點使用防火牆MetroCluster
+:allow-uri-read: 
+
+
+
+
+== 使用防火牆的考MetroCluster 量因素
+
+如果MetroCluster 您在站台使用防火牆、則必須確保存取所需的連接埠。
+
+下表顯示位於MetroCluster 兩個景點之間的外部防火牆使用TCP/IP連接埠。
+
+|===
+
+
+| 流量類型 | 連接埠/服務 
+
+
+ a| 
+叢集對等
+ a| 
+11104 / TCP
+
+11105 / TCP
+
+
+
+ a| 
+系統管理程式ONTAP
+ a| 
+443 / TCP
+
+
+
+ a| 
+SIP叢集間LIF MetroCluster
+ a| 
+65200 / TCP
+
+10006/ TCP與udp
+
+
+
+ a| 
+硬體輔助
+ a| 
+4444 / TCP
+
+|===

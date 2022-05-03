@@ -1,0 +1,36 @@
+---
+permalink: install-fc/reference_example_of_cabling_array_luns_to_fc_switches_in_an_eight_node_mcc_configuration.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, cabling, storage, array, ports, fc, switches, eight, node 
+summary: 在使用陣列LUN的功能組態中MetroCluster 、您必須將構成備援連接埠配對的儲存陣列連接埠、連接至備用FC交換器。 
+---
+= 將儲存陣列連接埠連接至FC交換器的八節點MetroCluster 堆線範例
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在使用陣列LUN的功能組態中MetroCluster 、您必須將構成備援連接埠配對的儲存陣列連接埠、連接至備用FC交換器。
+
+八節點MetroCluster 的不全功能組態由兩個四節點的DR群組組成。第一個DR群組包含下列節點：
+
+* 控制器_a_1.
+* 控制器_a_2.
+* 控制器_B_1
+* 控制器_B_2
+
+
+第二個DR群組包含下列節點：
+
+* 控制器_a_3.
+* 控制器_a_4.
+* Controller（控制器）_B_3
+* 控制器_B_4
+
+
+若要連接第一個DR群組的陣列連接埠、您可以使用第MetroCluster 一個DR群組的四節點版的纜線組態範例。
+
+link:reference_example_of_cabling_array_luns_to_fc_switches_in_a_four_node_mcc_configuration.html["將儲存陣列連接埠佈線至FC交換器的四節點MetroCluster 堆線範例"]
+
+若要將陣列連接埠連接至第二個DR群組、請依照相同的範例、針對屬於第二個DR群組中控制器的FC-VI連接埠和FC啟動器連接埠進行外推。

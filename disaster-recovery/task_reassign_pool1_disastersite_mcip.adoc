@@ -1,0 +1,206 @@
+---
+permalink: disaster-recovery/task_reassign_pool1_disastersite_mcip.html 
+sidebar: sidebar 
+keywords: metrocluster, disaster, site, replacement, controller, module, reassign, ownership 
+summary: 如果在災難站台更換了控制器模組或NVRAM卡、您必須將屬於根集合體的磁碟重新指派給更換的控制器模組。 
+---
+= 重新指派災難站台上集區1磁碟的磁碟擁有權（MetroCluster 知識IP組態）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果災難站台更換了一或兩個控制器模組或NVRAM卡、則系統ID已變更、您必須將屬於根Aggregate的磁碟重新指派給更換的控制器模組。
+
+由於節點處於切換模式、因此在此工作中只會重新指派包含災難站台Pool1根集合體的磁碟。它們是目前唯一仍由舊系統ID擁有的磁碟。
+
+此工作是在災難站台的替換節點上執行。
+
+此工作會在維護模式中執行。
+
+這些範例假設如下：
+
+* 站台A是災難站台。
+* 已更換node_a_1。
+* 已更換node_a_2。
+* 站台B是存續的站台。
+* node_B_1正常運作。
+* node_B_2正常。
+
+
+舊的和新的系統ID已在中識別 link:../disaster-recovery/task_replace_hardware_and_boot_new_controllers.html#determining-the-system-ids-of-the-replacement-controller-modules["確定更換控制器模組的新系統ID"]。
+
+本程序中的範例使用具有下列系統ID的控制器：
+
+|===
+
+
+| 節點 | 原始系統ID | 新系統ID 
+
+
+ a| 
+node_a_1
+ a| 
+4068741258
+ a| 
+1574774970
+
+
+
+ a| 
+節點_a_2
+ a| 
+4068741260
+ a| 
+1574774991
+
+
+
+ a| 
+節點_B_1
+ a| 
+4068741254
+ a| 
+不變
+
+
+
+ a| 
+節點_B_2
+ a| 
+4068741256
+ a| 
+不變
+
+|===
+.步驟
+. 當更換節點處於維護模式時、視系統是否設定ADP和ONTAP 您的版本而定、使用正確的命令重新指派根Aggregate磁碟。
++
+出現提示時、您可以繼續重新指派。
+
++
+|===
+
+
+| 如果系統使用ADP ... | 使用此命令重新指派磁碟... 
+
+
+ a| 
+是ONTAP （功能9.8）
+ a| 
+「磁碟重新指派-s old-system-ID -d new system-ID -r dr-Partner system-ID」
+
+
+
+ a| 
+是（ONTAP 更新版本為0.9.7 x）
+ a| 
+「磁碟重新指派-s old-system-ID -d new system-ID -p old合作夥伴系統ID」
+
+
+
+ a| 
+否
+ a| 
+「磁碟重新指派-s old-system-ID -d new system-ID」
+
+|===
++
+以下範例顯示在非ADP系統上重新指派磁碟機：
+
++
+[listing]
+----
+*> disk reassign -s 4068741256 -d 1574774970
+Partner node must not be in Takeover mode during disk reassignment from maintenance mode.
+Serious problems could result!!
+Do not proceed with reassignment if the partner is in takeover mode. Abort reassignment (y/n)? n
+
+After the node becomes operational, you must perform a takeover and giveback of the HA partner node to ensure disk reassignment is successful.
+Do you want to continue (y/n)? y
+Disk ownership will be updated on all disks previously belonging to Filer with sysid 537037643.
+Do you want to continue (y/n)? y
+disk reassign parameters: new_home_owner_id 537070473 , new_home_owner_name
+Disk 0m.i0.3L14 will be reassigned.
+Disk 0m.i0.1L6 will be reassigned.
+Disk 0m.i0.1L8 will be reassigned.
+Number of disks to be reassigned: 3
+----
+. 銷毀信箱磁碟的內容：
++
+《破壞本地的信箱》
+
++
+出現提示時、您可以繼續執行銷毀作業。
+
++
+下列範例顯示信箱銷毀本機命令的輸出：
+
++
+[listing]
+----
+*> mailbox destroy local
+Destroying mailboxes forces a node to create new empty mailboxes,
+which clears any takeover state, removes all knowledge
+of out-of-date plexes of mirrored volumes, and will prevent
+management services from going online in 2-node cluster
+HA configurations.
+Are you sure you want to destroy the local mailboxes? y
+...............Mailboxes destroyed.
+*>
+----
+. 如果已更換磁碟、則必須刪除失敗的本機叢。
++
+.. 顯示Aggregate狀態：
++
+「aggr狀態」
+
++
+在下列範例中、plex node_a_1_aggr0/plex0失敗。
+
++
+[listing]
+----
+*> aggr status
+Aug 18 15:00:07 [node_B_1:raid.vol.mirror.degraded:ALERT]: Aggregate node_A_1_aggr0 is
+   mirrored and one plex has failed. It is no longer protected by mirroring.
+Aug 18 15:00:07 [node_B_1:raid.debug:info]: Mirrored aggregate node_A_1_aggr0 has plex0
+   clean(-1), online(0)
+Aug 18 15:00:07 [node_B_1:raid.debug:info]: Mirrored aggregate node_A_1_aggr0 has plex2
+   clean(0), online(1)
+Aug 18 15:00:07 [node_B_1:raid.mirror.vote.noRecord1Plex:error]: WARNING: Only one plex
+   in aggregate node_A_1_aggr0 is available. Aggregate might contain stale data.
+Aug 18 15:00:07 [node_B_1:raid.debug:info]: volobj_mark_sb_recovery_aggrs: tree:
+   node_A_1_aggr0 vol_state:1 mcc_dr_opstate: unknown
+Aug 18 15:00:07 [node_B_1:raid.fsm.commitStateTransit:debug]: /node_A_1_aggr0 (VOL):
+   raid state change UNINITD -> NORMAL
+Aug 18 15:00:07 [node_B_1:raid.fsm.commitStateTransit:debug]: /node_A_1_aggr0 (MIRROR):
+   raid state change UNINITD -> DEGRADED
+Aug 18 15:00:07 [node_B_1:raid.fsm.commitStateTransit:debug]: /node_A_1_aggr0/plex0
+   (PLEX): raid state change UNINITD -> FAILED
+Aug 18 15:00:07 [node_B_1:raid.fsm.commitStateTransit:debug]: /node_A_1_aggr0/plex2
+   (PLEX): raid state change UNINITD -> NORMAL
+Aug 18 15:00:07 [node_B_1:raid.fsm.commitStateTransit:debug]: /node_A_1_aggr0/plex2/rg0
+   (GROUP): raid state change UNINITD -> NORMAL
+Aug 18 15:00:07 [node_B_1:raid.debug:info]: Topology updated for aggregate node_A_1_aggr0
+   to plex plex2
+*>
+----
+.. 刪除故障叢：
++
+《Aggr. destroy ple-id》
+
++
+[listing]
+----
+*> aggr destroy node_A_1_aggr0/plex0
+----
+
+
+. 停止節點以顯示載入器提示：
++
+《停止》
+
+. 在災難站台的其他節點上重複這些步驟。
+

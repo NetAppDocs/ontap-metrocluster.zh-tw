@@ -1,0 +1,232 @@
+---
+permalink: install-stretch/task_configure_the_fc_to_sas_bridges_fb_new_install_configure.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, configuration, fc, sas, bridges 
+summary: 在連接FC至SAS橋接器的模型纜線之前、您必須先在Fibre Bridge軟體中設定設定。 
+---
+= 設定FC對SAS橋接器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在連接FC至SAS橋接器的模型纜線之前、您必須先在Fibre Bridge軟體中設定設定。
+
+您應該決定是否要使用橋接器的頻內管理。
+
+
+NOTE: 從ONTAP 功能組別9.8開始、「最小橋接器」命令會改為「系統橋接器」。下列步驟顯示了「最小橋接器」命令。但是、如果您執行ONTAP 的是flex9.8或更新版本、則偏好使用「系統橋接器」命令。
+
+如果您要使用橋接器的頻內管理、而非IP管理、則可略過設定乙太網路連接埠和IP設定的步驟。
+
+.步驟
+. 如果設定用於頻內管理、請將纜線從FIBRBridge的RS-232序列連接埠連接至個人電腦上的序列（COM）連接埠。
++
+序列連線將用於初始組態。然後、透過ONTAP 功能區和FC連接埠進行頻內管理、即可用來監控和管理橋接器。
+
+. 如果設定IP管理、請使用乙太網路纜線、將每個橋接器上的乙太網路管理1連接埠連接至網路。
++
+在執行ONTAP 版本不超過版本的系統中、頻內管理可透過FC連接埠（而非乙太網路連接埠）存取橋接器。從功能表9.8開始ONTAP 、僅支援頻內管理、且SNMP管理已過時。
+
++
+乙太網路管理1連接埠可讓您快速下載橋接韌體（使用Atto ExpressNAV或FTP管理介面）、並擷取核心檔案和擷取記錄。
+
+. 如果設定IP管理、請依照橋接器機型的_Atto FibreBridge安裝與操作手冊_第2.0節中的程序、為每個橋接器設定乙太網路管理1連接埠。
++
+在執行ONTAP 版本不超過版本的系統中、頻內管理可透過FC連接埠（而非乙太網路連接埠）存取橋接器。從功能表9.8開始ONTAP 、僅支援頻內管理、且SNMP管理已過時。
+
++
+執行QuickNAV以設定乙太網路管理連接埠時、只會設定以太網路纜線所連接的乙太網路管理連接埠。例如、如果您也想要設定乙太網路管理2連接埠、則需要將乙太網路纜線連接至連接埠2並執行QuickNAV。
+
+. 設定橋接器。
++
+您應該記下您指定的使用者名稱和密碼。
+
++
+
+NOTE: 請勿在Atto FibreBridge 7600N或7500N上設定時間同步。Atto FIBreBridge 7600N或7500N的時間同步設定為ONTAP 叢集時間、之後橋接器被人發現。它也會每天定期同步一次。使用的時區為GMT,不可變更。
+
++
+.. 如果設定IP管理、請設定橋接器的IP設定。
++
+在執行ONTAP 版本不超過版本的系統中、頻內管理可透過FC連接埠（而非乙太網路連接埠）存取橋接器。從功能表9.8開始ONTAP 、僅支援頻內管理、且SNMP管理已過時。
+
++
+若要在不使用QuickNAV公用程式的情況下設定IP位址、您需要連線至FibreBridge。
+
++
+如果使用CLI、您必須執行下列命令：
+
++
+「et ipaddressMP1 _ip-address_」
+
++
+"et ipsubnetmaskMP1 _subnet-mask_"
+
++
+"et ipgateway MP1 x x x．x．x"
+
++
+停用了MP1
+
++
+「設定etethernetspeed MP1 1000」
+
+.. 設定橋接器名稱。
++
+橋接器在MetroCluster 整個支援架構中應各有一個獨特的名稱。
+
++
+每個站台上一個堆疊群組的橋接名稱範例：
+
++
+*** bride_a_1a.
+*** bride_a_1b
+*** bride_B_1a
+*** bride_b_1b.
++
+如果使用CLI、您必須執行下列命令：
+
++
+《以太網的方式來處理問題》
+
+
+
+.. 如果執行ONTAP 的是S得9.4或更早版本、請在橋接器上啟用SNMP：+「設為SNMP啟用」
++
+在執行ONTAP 版本不超過版本的系統中、頻內管理可透過FC連接埠（而非乙太網路連接埠）存取橋接器。從功能表9.8開始ONTAP 、僅支援頻內管理、且SNMP管理已過時。
+
+
+
+. 設定橋接FC連接埠。
++
+.. 設定橋接FC連接埠的資料速率/速度。
++
+支援的FC資料速率取決於您的機型橋接器。
+
++
+*** 最多支援32、16或8 Gbps的FibreBridge 7600橋接器。
+*** 最多支援16、8或4 Gbps的光纖橋接器。
+*** 最多支援8、4或2 Gbps的FibreBridge 6500橋接器。
++
+
+NOTE: 您選取的FCDataRate速度會限制為橋接器連接埠所連接之控制器模組的橋接器和FC連接埠所支援的最大速度。佈線距離不得超過SFP和其他硬體的限制。
+
++
+--
+如果使用CLI、您必須執行下列命令：
+
+「et FCDataRate _port-numberport-spe__」
+
+--
+
+
+.. 如果您要設定的是FIBreBridge 7500N或6500N橋接器、請設定連接埠用於PTP的連線模式。
++
+
+NOTE: 設定FIBreBridge 7600N橋接器時、不需要FCConnMode設定。
+
++
+--
+如果使用CLI、您必須執行下列命令：
+
+「et FCConnMode _port-number_ PTP」
+
+--
+.. 如果您要設定的是FIBreBridge 7600N或7500N橋接器、則必須設定或停用FC2連接埠。
++
+*** 如果您使用第二個連接埠、則必須針對FC2連接埠重複上述子步驟。
+*** 如果您不使用第二個連接埠、則必須停用連接埠：+「fcportDisable port-Number」
++
+下列範例顯示停用FC連接埠2：
+
++
+[listing]
+----
+FCPortDisable 2
+
+Fibre Channel Port 2 has been disabled.
+----
+
+
+.. 如果您要設定的是FIBEBridge 7600N或7500N橋接器、請停用未使用的SAS連接埠：+"ASPortDisable _SAS-port_"
++
+
+NOTE: 預設會啟用SAS連接埠A到D。您必須停用未使用的SAS連接埠。
+
++
+如果只使用SAS連接埠A、則必須停用SAS連接埠B、C和D。下列範例顯示停用SAS連接埠B同樣地、您必須停用SAS連接埠C和D：
+
++
+....
+SASPortDisable b
+
+SAS Port B has been disabled.
+....
+
+
+. 安全存取橋接器並儲存橋接器的組態。根據ONTAP 系統執行的版本、從下列選項中選擇一個選項。
++
+|===
+
+
+| 版本ONTAP | 步驟 
+
+
+ a| 
+*《*》（*）9.5或更新版本* ONTAP
+ a| 
+.. 觀看橋樑的狀態：《龍橋秀》（Torage bridge show）
++
+輸出顯示哪個橋接器未受到保護。
+
+.. 保護橋樑：+「Recurebridge」
+
+
+
+
+ a| 
+*《*》9.4或更早版本* ONTAP
+ a| 
+.. 觀看橋樑的狀態：《龍橋秀》（Torage bridge show）
++
+輸出顯示哪個橋接器未受到保護。
+
+.. 檢查不安全的橋接器連接埠狀態：
++
+《資訊》
+
++
+輸出會顯示乙太網路連接埠MP1和MP2的狀態。
+
+.. 如果已啟用乙太網路連接埠MP1、請執行：
++
+「設定乙太網路連接埠MP1已停用」
+
++
+如果也啟用乙太網路連接埠MP2、請針對連接埠MP2重複上一個子步驟。
+
+.. 儲存橋接器的組態。
++
+您必須執行下列命令：
+
++
+「另存組態」
+
++
+「FirmwareRestart」
+
++
+系統會提示您重新啟動橋接器。
+
+
+
+|===
+. 完成MetroCluster 支援的功能組態後、請使用「flashimaged」命令檢查您的版本的網路橋接器韌體、如果橋接器未使用支援的最新版本、請更新組態中所有橋接器上的韌體。
++
+link:../maintain/index.html["維護MetroCluster 元件"]
+
+
+
+link:concept_in_band_management_of_the_fc_to_sas_bridges.html["FC至SAS橋接器的頻內管理"]

@@ -1,0 +1,36 @@
+---
+permalink: transition/task_move_data_to_new_drive_shelves.html 
+sidebar: sidebar 
+keywords: Generating and applying RCFs to the new IP switches, review, requirement, preparing, prepare, transition, perform, procedure, order, completing, complete, step, task, moving, move, controller, storage, shelves, shelf, exist, configuration, direct, metrocluster, fc, ip, verify, health, removing, remove, tiebreaker, monitor, software, generating, generate, apply, rcf, switch, controller, configure, prepare, preparing 
+summary: 在轉換期間、您可以將資料從MetroCluster 採用支援功能支援功能的磁碟機櫃移至全新MetroCluster 的支援功能IP組態。 
+---
+= 將資料移至新的磁碟機櫃
+:allow-uri-read: 
+
+
+[role="lead"]
+在轉換期間、您可以將資料從MetroCluster 採用支援功能支援功能的磁碟機櫃移至全新MetroCluster 的支援服務架構。
+
+. 若要恢復自動產生支援案例、請傳送AutoSupport 一個不完整的訊息、表示維護已完成。
++
+.. 發出下列命令：「System Node AutoSupport Eflexoke -Node *-type all -Message MAn=end」
+.. 在合作夥伴叢集上重複執行命令。
+
+
+. 將資料磁碟區移至新控制器上的集合體、一次一個磁碟區。
++
+請使用中的程序 http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-upgrade-controller/GUID-AFE432F6-60AD-4A79-86C0-C7D12957FA63.html["建立Aggregate並將磁碟區移至新節點"]。
+
+. 在最近新增的節點上建立SAN LIF。
++
+請使用中的下列程序 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-expand/GUID-E3BB89AF-6251-4210-A979-130E845BC9A1.html["更新新節點的LUN路徑"^]。
+
+. 檢查FC節點上是否有任何節點鎖定的授權、如果有的話、就必須將其新增至新增的節點。
++
+請使用中的下列程序 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-expand/GUID-487FAC36-3C5C-4314-B4BD-4253CB67ABE8.html["新增節點鎖定的授權"^]。
+
+. 移轉資料生命量。
++
+請使用中的程序  http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-upgrade-controller/GUID-95CA9262-327D-431D-81AA-C73DEFF3DEE2.html["將非SAN資料生命期和叢集管理生命期移至新節點"^] 但是*不要*執行最後兩個步驟來移轉叢集管理生命期。
+
+

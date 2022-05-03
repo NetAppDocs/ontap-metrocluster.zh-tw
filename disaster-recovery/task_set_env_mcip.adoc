@@ -1,0 +1,559 @@
+---
+permalink: disaster-recovery/task_set_env_mcip.html 
+sidebar: sidebar 
+keywords: metrocluster, ip, configuration, setting, require, environmental, variable 
+summary: 在靜態IP組態中、您可以擷取乙太網路連接埠上的各個介面IP位址、然後使用它們來設定替換控制器模組上的介面。MetroCluster MetroCluster 
+---
+= 在MetroCluster 靜態IP組態中設定必要的環境變數
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在靜態IP組態中、您必須擷取乙太網路連接埠上的各個介面IP位址、然後使用它們來設定替換控制器模組上的介面。MetroCluster MetroCluster
+
+此工作僅適用於MetroCluster 不完整的IP組態。
+
+此工作中的命令是從存續站台的叢集提示字元、以及災難站台節點的載入器提示字元執行。
+
+這些範例中的節點MetroCluster 使用下列IP位址進行其不完整的IP連線：
+
+
+NOTE: 這些範例適用於AFF 不符合功能的A700或FAS9000系統。介面因平台模式而異。
+
+|===
+
+
+| 節點 | 連接埠 | IP 位址 
+
+
+ a| 
+node_a_1
+ a| 
+e5a
+ a| 
+172.17.26.10
+
+
+
+ a| 
+e5b.
+ a| 
+172.17.27.10
+
+
+
+ a| 
+節點_a_2
+ a| 
+e5a
+ a| 
+172.17.26.11
+
+
+
+ a| 
+e5b.
+ a| 
+172.17.27.11
+
+
+
+ a| 
+節點_B_1
+ a| 
+e5a
+ a| 
+172.17.26.13
+
+
+
+ a| 
+e5b.
+ a| 
+172.17.27.13
+
+
+
+ a| 
+節點_B_2
+ a| 
+e5a
+ a| 
+172.17.26.12
+
+
+
+ a| 
+e5b.
+ a| 
+172.17.27.12
+
+|===
+下表摘要說明節點與每個節點MetroCluster 的各個EIP位址之間的關係。
+
+|===
+
+
+| 節點 | HA合作夥伴 | DR合作夥伴 | DR輔助合作夥伴 
+
+
+ a| 
+node_a_1
+
+* e5a：172.17.26.10
+* e5b：172.17.27.10
+
+ a| 
+節點_a_2
+
+* e5a：172.17.26.11
+* e5b：172.17.27.11
+
+ a| 
+節點_B_1
+
+* e5a：172.17.26.13
+* e5b：172.17.27.13
+
+ a| 
+節點_B_2
+
+* e5a：172.17.26.12
+* e5b：172.17.27.12
+
+
+
+
+ a| 
+節點_a_2
+
+* e5a：172.17.26.11
+* e5b：172.17.27.11
+
+ a| 
+node_a_1
+
+* e5a：172.17.26.10
+* e5b：172.17.27.10
+
+ a| 
+節點_B_2
+
+* e5a：172.17.26.12
+* e5b：172.17.27.12
+
+ a| 
+節點_B_1
+
+* e5a：172.17.26.13
+* e5b：172.17.27.13
+
+
+
+
+ a| 
+節點_B_1
+
+* e5a：172.17.26.13
+* e5b：172.17.27.13
+
+ a| 
+節點_B_2
+
+* e5a：172.17.26.12
+* e5b：172.17.27.12
+
+ a| 
+node_a_1
+
+* e5a：172.17.26.10
+* e5b：172.17.27.10
+
+ a| 
+節點_a_2
+
+* e5a：172.17.26.11
+* e5b：172.17.27.11
+
+
+
+
+ a| 
+節點_B_2
+
+* e5a：172.17.26.12
+* e5b：172.17.27.12
+
+ a| 
+節點_B_1
+
+* e5a：172.17.26.13
+* e5b：172.17.27.13
+
+ a| 
+節點_a_2
+
+* e5a：172.17.26.11
+* e5b：172.17.27.11
+
+ a| 
+node_a_1
+
+* e5a：172.17.26.10
+* e5b：172.17.27.10
+
+
+|===
+下表列出MetroCluster 使用VLAN ID的平台模型、這些平台模型會使用在各個方面的知識。如果您不使用預設的VLAN ID、這些機型可能需要額外的步驟。
+
+|===
+
+
+2+| 使用VLAN ID搭配MetroCluster 使用靜態IP介面的平台模型 
+
+
+ a| 
+* VA220 AFF
+* VA250 AFF
+* 解答400 AFF
+
+ a| 
+* FAS500f
+* FAS2750
+* FAS8300
+* FAS8700
+
+
+|===
+.步驟
+. 從存續站台收集MetroCluster 災難站台上的各種支援介面的IP位址：
++
+「組態設定連線顯示」MetroCluster
+
++
+所需的地址為*目的地網路位址*欄中所示的DR合作夥伴位址。
+
++
+下列輸出顯示AFF 使用端MetroCluster 口e5a和e5b上的ESITE IP介面、搭配使用ESIEA700和FAS9000系統組態的IP位址。介面視平台類型而異。
+
++
+[listing]
+----
+cluster_B::*> metrocluster configuration-settings connection show
+DR                    Source          Destination
+DR                    Source          Destination
+Group Cluster Node    Network Address Network Address Partner Type Config State
+----- ------- ------- --------------- --------------- ------------ ------------
+1     cluster_B
+              node_B_1
+                 Home Port: e5a
+                      172.17.26.13    172.17.26.12    HA Partner   completed
+                 Home Port: e5a
+                      172.17.26.13    172.17.26.10    DR Partner   completed
+                 Home Port: e5a
+                      172.17.26.13    172.17.26.11    DR Auxiliary completed
+                 Home Port: e5b
+                      172.17.27.13    172.17.27.12    HA Partner   completed
+                 Home Port: e5b
+                      172.17.27.13    172.17.27.10    DR Partner   completed
+                 Home Port: e5b
+                      172.17.27.13    172.17.27.11    DR Auxiliary completed
+              node_B_2
+                 Home Port: e5a
+                      172.17.26.12    172.17.26.13    HA Partner   completed
+                 Home Port: e5a
+                      172.17.26.12    172.17.26.11    DR Partner   completed
+                 Home Port: e5a
+                      172.17.26.12    172.17.26.10    DR Auxiliary completed
+                 Home Port: e5b
+                      172.17.27.12    172.17.27.13    HA Partner   completed
+                 Home Port: e5b
+                      172.17.27.12    172.17.27.11    DR Partner   completed
+                 Home Port: e5b
+                      172.17.27.12    172.17.27.10    DR Auxiliary completed
+12 entries were displayed.
+----
+. 如果您需要判斷介面的VLAN ID或閘道位址、請從正常運作的站台判斷VLAN ID：
++
+「顯示組態設定介面」MetroCluster
+
++
+** 如果平台機型使用VLAN ID（請參閱上表）、而且您未使用預設的VLAN ID、則需要VLAN ID。
+** 如果使用、則需要閘道位址 link:../install-ip/concept_considerations_layer_3.html["第3層廣域網路"]。
++
+VLAN ID包含在輸出的*網路位址*欄中。「*閘道*」欄顯示閘道IP位址。
+
++
+在此範例中、介面為e0a、VLAN ID為120、e0b則VLAN ID為130：
+
++
+[listing]
+----
+Cluster-A::*> metrocluster configuration-settings interface show
+DR                                                                     Config
+Group Cluster Node     Network Address Netmask         Gateway         State
+----- ------- ------- --------------- --------------- --------------- ---------
+1
+      cluster_A
+              node_A_1
+                  Home Port: e0a-120
+                          172.17.26.10  255.255.255.0  -            completed
+                  Home Port: e0b-130
+                          172.17.27.10  255.255.255.0  -            completed
+----
+
+
+. 如果災難站台節點使用VLAN ID（請參閱上述清單）、請在每個災難站台節點的載入器提示字元中、設定下列bootargs：
++
+--
+....
+setenv bootarg.mcc.port_a_ip_config local-IP-address/local-IP-mask,gateway-IP-address,HA-partner-IP-address,DR-partner-IP-address,DR-aux-partnerIP-address,vlan-id
+
+setenv bootarg.mcc.port_b_ip_config local-IP-address/local-IP-mask,gateway-IP-address,HA-partner-IP-address,DR-partner-IP-address,DR-aux-partnerIP-address,vlan-id
+....
+[NOTE]
+====
+** 如果介面使用預設VLAN、或平台模式不需要VLAN（請參閱上表）、則不需要_vlan-id_。
+** 如果組態未使用 link:../install-ip/concept_considerations_layer_3.html["第3層廣域網路"]，_gateway-ip-address_的值為* 0*（零）。
+
+
+====
+** 如果介面使用預設VLAN、或平台模式不需要VLAN（請參閱上表）、則不需要_vlan-id_。
+** 如果組態未使用 link:../install-ip/concept_considerations_layer_3.html["第3層後端連線"]，_gateway-ip-address_的值為* 0*（零）。
++
+下列命令會針對第一個網路設定使用VLAN 120的node_a_1值、針對第二個網路設定VLAN 130值：
+
+
+
+....
+setenv bootarg.mcc.port_a_ip_config 172.17.26.10/23,0,172.17.26.11,172.17.26.13,172.17.26.12,120
+
+setenv bootarg.mcc.port_b_ip_config 172.17.27.10/23,0,172.17.27.11,172.17.27.13,172.17.27.12,130
+....
+下列範例顯示節點_a_1的命令、但不含VLAN ID：
+
+....
+setenv bootarg.mcc.port_a_ip_config 172.17.26.10/23,0,172.17.26.11,172.17.26.13,172.17.26.12
+
+setenv bootarg.mcc.port_b_ip_config 172.17.27.10/23,0,172.17.27.11,172.17.27.13,172.17.27.12
+....
+--
+. 如果災難站台節點不是使用VLAN ID的系統、請在每個災難節點的載入器提示字元中、使用local_ip/mask,gateway設定下列bootargs：
++
+....
+setenv bootarg.mcc.port_a_ip_config local-IP-address/local-IP-mask,0,HA-partner-IP-address,DR-partner-IP-address,DR-aux-partnerIP-address
+
+
+setenv bootarg.mcc.port_b_ip_config local-IP-address/local-IP-mask,0,HA-partner-IP-address,DR-partner-IP-address,DR-aux-partnerIP-address
+....
++
+[NOTE]
+====
+** 如果介面使用預設VLAN、或平台模式不需要VLAN（請參閱上表）、則不需要_vlan-id_。
+** 如果組態未使用 link:../install-ip/concept_considerations_layer_3.html["第3層廣域網路"]，_gateway-ip-address_的值為* 0*（零）。
+
+
+====
++
+下列命令會設定node_a_1的值。在此範例中、不使用_gateway-ip-address_和_vlan-id_值。
+
++
+....
+setenv bootarg.mcc.port_a_ip_config 172.17.26.10/23,0,172.17.26.11,172.17.26.13,172.17.26.12
+
+setenv bootarg.mcc.port_b_ip_config 172.17.27.10/23,0,172.17.27.11,172.17.27.13,172.17.27.12
+....
+. 從存續站台收集災難站台的UUID：
++
+「MetroCluster 節點show -功能 變數node-叢 集-uuid、node-uuid」
+
++
+[listing]
+----
+cluster_B::> metrocluster node show -fields node-cluster-uuid, node-uuid
+
+  (metrocluster node show)
+dr-group-id cluster     node     node-uuid                            node-cluster-uuid
+----------- ----------- -------- ------------------------------------ ------------------------------
+1           cluster_A   node_A_1 f03cb63c-9a7e-11e7-b68b-00a098908039 ee7db9d5-9a82-11e7-b68b-00a098
+                                                                        908039
+1           cluster_A   node_A_2 aa9a7a7a-9a81-11e7-a4e9-00a098908c35 ee7db9d5-9a82-11e7-b68b-00a098
+                                                                        908039
+1           cluster_B   node_B_1 f37b240b-9ac1-11e7-9b42-00a098c9e55d 07958819-9ac6-11e7-9b42-00a098
+                                                                        c9e55d
+1           cluster_B   node_B_2 bf8e3f8f-9ac4-11e7-bd4e-00a098ca379f 07958819-9ac6-11e7-9b42-00a098
+                                                                        c9e55d
+4 entries were displayed.
+cluster_A::*>
+----
++
+|===
+
+
+| 節點 | UUID 
+
+
+ a| 
+叢集_B
+ a| 
+07958819-9ac6-11e7-9b42-00a098c9e55d
+
+
+
+ a| 
+節點_B_1
+ a| 
+f37b240b-9ac1-11e7-9b42-00a098c9e55d
+
+
+
+ a| 
+節點_B_2
+ a| 
+bf8e3f8f-9ac4-11e7-bd4e-00a098ca379f
+
+
+
+ a| 
+叢集_A
+ a| 
+ee7db9d5-9a82-11e7-b68b-00a098908039
+
+
+
+ a| 
+node_a_1
+ a| 
+f03cb63c-9a7e-11e7-b68b-00a098908039
+
+
+
+ a| 
+節點_a_2
+ a| 
+aa9a7a7a-9a81-11e7-a4e9-00a098908c35
+
+|===
+. 在替換節點的載入器提示下、設定UUID：
++
+....
+setenv bootarg.mgwd.partner_cluster_uuid partner-cluster-UUID
+
+setenv bootarg.mgwd.cluster_uuid local-cluster-UUID
+
+setenv bootarg.mcc.pri_partner_uuid DR-partner-node-UUID
+
+setenv bootarg.mcc.aux_partner_uuid DR-aux-partner-node-UUID
+
+setenv bootarg.mcc_iscsi.node_uuid local-node-UUID`
+....
++
+.. 在node_a_1上設定UUID。
++
+下列範例顯示在node_a_1上設定UUID的命令：
+
++
+....
+setenv bootarg.mgwd.cluster_uuid ee7db9d5-9a82-11e7-b68b-00a098908039
+
+setenv bootarg.mgwd.partner_cluster_uuid 07958819-9ac6-11e7-9b42-00a098c9e55d
+
+setenv bootarg.mcc.pri_partner_uuid f37b240b-9ac1-11e7-9b42-00a098c9e55d
+
+setenv bootarg.mcc.aux_partner_uuid bf8e3f8f-9ac4-11e7-bd4e-00a098ca379f
+
+setenv bootarg.mcc_iscsi.node_uuid f03cb63c-9a7e-11e7-b68b-00a098908039
+....
+.. 在node_a_2上設定UUID：
++
+下列範例顯示在node_a_2上設定UUID的命令：
+
++
+....
+setenv bootarg.mgwd.cluster_uuid ee7db9d5-9a82-11e7-b68b-00a098908039
+
+setenv bootarg.mgwd.partner_cluster_uuid 07958819-9ac6-11e7-9b42-00a098c9e55d
+
+setenv bootarg.mcc.pri_partner_uuid bf8e3f8f-9ac4-11e7-bd4e-00a098ca379f
+
+setenv bootarg.mcc.aux_partner_uuid f37b240b-9ac1-11e7-9b42-00a098c9e55d
+
+setenv bootarg.mcc_iscsi.node_uuid aa9a7a7a-9a81-11e7-a4e9-00a098908c35
+....
+
+
+. 如果原始系統已設定為ADP、請在每個替換節點的載入器提示字元中、啟用ADP：
++
+「etenv bootarg.mCa.adp_enabledtrue」
+
+. 如果執行ONTAP 的是32個以上的版本、請在每個替換節點的載入器提示下、啟用下列變數：
++
+「etenv bootarg.mCs.lun_part true」
+
++
+.. 在node_a_1上設定變數。
++
+下列範例顯示在執行ONTAP 支援程式碼9.6時、用於設定node_a_1上的值的命令：
+
++
+[listing]
+----
+setenv bootarg.mcc.lun_part true
+----
+.. 在node_a_2上設定變數。
++
+下列範例顯示在執行ONTAP 《關於在node_a_2上設定值的命令、以供執行《關於
+
++
+[listing]
+----
+setenv bootarg.mcc.lun_part true
+----
+
+
+. 如果原始系統已設定為ADP、請在每個替換節點的載入器提示字元中、設定原始系統ID（*非*替換控制器模組的系統ID）和節點DR合作夥伴的系統ID：
++
+「etenv bootarg.mCs.local_config_id原始sysid」
+
++
+「etenv bootarg.mCd.dr_PARTNER_PARTNER_sysid」
+
++
+link:task_replace_hardware_and_boot_new_controllers.html#determining-the-system-ids-of-the-replacement-controller-modules["確定舊控制器模組的系統ID和VLAN ID"]
+
++
+.. 在node_a_1上設定變數。
++
+下列範例顯示在node_a_1上設定系統ID的命令：
+
++
+*** node_a_1的舊系統ID為40687441258。
+*** node_B_1的系統ID為40687441254。
++
+[listing]
+----
+setenv bootarg.mcc.local_config_id 4068741258
+setenv bootarg.mcc.dr_partner 4068741254
+----
+
+
+.. 在node_a_2上設定變數。
++
+下列範例顯示在node_a_2上設定系統ID的命令：
+
++
+*** node_a_1的舊系統ID為40687441260。
+*** node_B_1的系統ID為40687441256。
++
+[listing]
+----
+setenv bootarg.mcc.local_config_id 4068741260
+setenv bootarg.mcc.dr_partner 4068741256
+----
+
+
+
+
+

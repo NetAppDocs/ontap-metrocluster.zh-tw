@@ -1,0 +1,70 @@
+---
+permalink: upgrade/task_prepare_the_netboot_server_cluster_mode.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, prepare, netboot, server, download, image 
+summary: 當您準備好準備netboot伺服器時、必須從ONTAP NetApp支援網站下載正確的版本資訊更新映像到netboot伺服器、並記下IP位址。 
+---
+= 準備netboot伺服器以下載映像
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+當您準備好準備netboot伺服器時、必須從ONTAP NetApp支援網站下載正確的版本資訊更新映像到netboot伺服器、並記下IP位址。
+
+.關於這項工作
+* 您必須能夠在新增控制器模組之前和之後、從系統存取HTTP伺服器。
+* 您必須能夠存取NetApp支援網站、才能下載適用於您平台和ONTAP 版本的必要系統檔案。
++
+https://mysupport.netapp.com/site/global/dashboard["NetApp 支援網站"]
+
+* HA配對中的兩個控制器模組都必須執行相同版本ONTAP 的支援。
+
+
+.步驟
+. 請ONTAP 從NetApp支援網站的軟體下載區段下載適當的支援軟體、並將「<ONTAP_VERW>_image.tgz」檔案儲存在可從網路存取的目錄中。
++
+「<ONTAP_VERSION >_image.tgz」檔案用於執行系統的網路開機。
+
+. 切換至網路存取目錄、並確認您所需的檔案可用。
++
+|===
+
+
+| 適用於... | 然後... 
+
+
+ a| 
+FAS2200、FAS2500、FAS3200、FAS6200、FAS/AFF8000系列系統
+ a| 
+將<ONTAP_VERV>_image.tgz檔案的內容擷取至目標目錄：
+
+「tar -zxvf <onta_version>_image.tgz」
+
+
+NOTE: 如果要在Windows上解壓縮內容、請使用7-Zip或WinRAR擷取netboot映像。
+
+您的目錄清單應包含一個含有核心檔案的netboot資料夾：
+
+"netboot/kernel-"
+
+
+
+ a| 
+所有其他系統
+ a| 
+您的目錄清單應包含下列檔案：
+
+「<ONTAP版本>_image.tgz」
+
+
+NOTE: 不需要擷取檔案內容。
+
+|===
+. 確定現有控制器模組的IP位址。
++
+本程序稍後將此位址稱為「現有控制器的IP位址」。
+
+. Ping「現有控制器的IP位址」以驗證IP位址是否可到達。
+

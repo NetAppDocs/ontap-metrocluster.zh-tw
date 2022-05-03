@@ -1,0 +1,56 @@
+---
+permalink: install-stretch/concept_considerations_for_using_virtual_ip_and_border_gateway_protocol_with_a_mcc_configuration.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, virtual, ip, border, gateway, protocol, configuration 
+summary: 從支援VMware 9.5開始ONTAP 、ONTAP 支援使用虛擬IP（VIP）和邊界閘道傳輸協定（BGP）進行第3層連線。結合VIP與BGP、可在前端網路中提供備援功能、搭配後端MetroCluster 的可靠性備援功能、提供第3層災難恢復解決方案。 
+---
+= 使用虛擬IP和邊界閘道傳輸協定搭配MetroCluster 使用的考量事項
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+從支援使用支援第3層連線功能的《支援使用虛擬IP（VIP）和邊界閘道傳輸協定（BGP）》（ONTAP Border ONTAP Gateway Protocol、BGP）開始、結合VIP與BGP、可在前端網路中提供備援功能、搭配後端MetroCluster 的可靠性備援功能、提供第3層災難恢復解決方案。
+
+規劃第3層解決方案時、請檢閱下列準則和圖例。如需實作ONTAP BGP和BGP的詳細資訊、請參閱下列章節：
+
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-A8EF6D34-1717-4813-BBFA-AA33E104CF6F.html["*設定虛擬IP（VIP）lifs*"]
+
+image::../media/vip_and_bgp_in_metrocluster_2.png[VIP與BGP的MetroCluster 功能2]
+
+*不受限制* ONTAP
+
+不自動驗證兩個站台上的所有節點是否都設定了BGP對等。ONTAP MetroCluster
+
+不執行路由集合、但會隨時將所有個別虛擬LIF IP宣告為唯一的主機路由。ONTAP
+
+不支援真正的任意點傳送：叢集中只有一個節點會顯示特定的虛擬LIF IP（但只要實體連接埠是正確IPspace的一部分、所有實體介面都會接受該IP、無論它們是否為BGP LIF LIF）ONTAP 。不同的生命期可以將彼此獨立移轉至不同的託管節點。
+
+* MetroCluster 此第3層解決方案搭配使用的指南*
+
+您必須正確設定BGP和VIP、才能提供所需的備援功能。
+
+較複雜的架構（例如、BGP對等路由器可透過中間、非BGP路由器到達）、較適合採用較簡單的部署案例。不過ONTAP 、不強制實施網路設計或拓撲限制。
+
+VIP生命量僅涵蓋前端/資料網路。
+
+視ONTAP 您的版本而定、您必須在節點SVM中設定BGP對等生命量、而非在系統或資料SVM中設定。在S9.8中ONTAP 、BGP LIF會顯示在叢集（系統）SVM中、而節點SVM則不再存在。
+
+每個資料SVM都需要設定所有可能的第一跳閘道位址（通常是BGP路由器對等IP位址）、以便在LIF移轉或MetroCluster 進行故障復原時、傳回資料路徑可供使用。
+
+BGP lifs與叢集間lifs類似、每個節點都有獨特的組態、不需要複寫到DR站台節點。
+
+V0a（v0b等）的存在會持續驗證連線能力、確保LIF移轉或容錯移轉成功（不像L2、只有在停機後才能看到毀損的組態）。
+
+架構上的一大差異在於、用戶端不應再與資料SVM的VIP共用相同的IP子網路。啟用適當企業級恢復能力和備援功能（例如、VRP/HSRP）的L3路由器、應位於儲存設備和用戶端之間的路徑上、VIP才能正常運作。
+
+BGP的可靠更新程序可讓LIF移轉作業更順暢、因為這些移轉速度稍微加快、而且對某些用戶端造成中斷的機率較低。
+
+您可以設定BGP偵測某些類別的網路或交換器錯誤行為、速度比LACP快（若有相應設定）。
+
+外部BGP（EBgp）使用不同的AS編號作為ONTAP 支援節點與對等路由器之間的編號、是簡化路由器上的路由集合和重新分配的首選部署。內部BGP（IBGP）和路由反射器的使用並非不可能、而是在簡單的VIP設定範圍之外。
+
+部署完成後、您必須檢查在每個站台的所有節點之間（包括MetroCluster 進行交換）移轉相關虛擬LIF時、是否可存取資料SVM、以驗證靜態路由到相同資料SVM的正確組態。
+
+VIP適用於大多數IP型傳輸協定（NFS、SMB、iSCSI）。

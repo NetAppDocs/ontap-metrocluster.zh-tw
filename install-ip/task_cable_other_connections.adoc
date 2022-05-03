@@ -1,0 +1,33 @@
+---
+permalink: install-ip/task_cable_other_connections.html 
+sidebar: sidebar 
+keywords: cabling, cable, component, peering, management, network, hardware, component, switch, cluster, connection, management, data, configuring, configure 
+summary: 您必須連接用於叢集對等、管理和資料連線的控制器模組連接埠。 
+---
+= 控制器對等連接、資料和管理連接埠的佈線
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須連接用於叢集對等、管理和資料連線的控制器模組連接埠。
+
+此工作必須在MetroCluster ESCSI組態中的每個控制器模組上執行。
+
+每個控制器模組上至少應使用兩個連接埠進行叢集對等處理。
+
+建議的連接埠和網路連線最低頻寬為1 GbE。
+
+. 識別並連接至少兩個連接埠以供叢集對等、並驗證它們是否與合作夥伴叢集具有網路連線能力。
++
+叢集對等作業可在專用連接埠或資料連接埠上執行。使用專用連接埠可為叢集對等流量提供更高的處理量。
+
++
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-clus-peer/home.html["叢集與SVM對等化快速組態"]
+
+. 將控制器的管理和資料連接埠連接至本機站台的管理和資料網路。
++
+請使用適用於您平台的安裝說明、網址為 https://docs.netapp.com/us-en/ontap-systems/["系統文件AFF FAS"]。
+
+

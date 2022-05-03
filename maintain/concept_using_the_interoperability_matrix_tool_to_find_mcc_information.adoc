@@ -1,0 +1,22 @@
+---
+permalink: maintain/concept_using_the_interoperability_matrix_tool_to_find_mcc_information.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, interoperability, matrix, tool, information 
+summary: 設定MetroCluster 支援的支援功能時、您可以使用互通性工具來確保使用支援的軟體和硬體版本。 
+---
+= 使用互通性對照表工具來尋找MetroCluster 各種資訊
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+設定MetroCluster 支援的支援功能時、您可以使用互通性工具來確保使用支援的軟體和硬體版本。
+
+https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"]
+
+開啟「互通性對照表」之後、您可以使用「儲存解決方案」欄位來選擇MetroCluster 您的解決方案。
+
+您可以使用*元件總管*來選取元件和ONTAP 更新版本、以精簡搜尋範圍。
+
+您可以按一下「*顯示結果*」來顯示符合條件的支援組態清單。

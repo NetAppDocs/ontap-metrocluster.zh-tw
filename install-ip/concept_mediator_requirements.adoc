@@ -1,0 +1,110 @@
+---
+permalink: install-ip/concept_mediator_requirements.html 
+sidebar: sidebar 
+keywords: ontap, mediator, service, assist, metrocluster, ip, configuration, perform, automatic, unplan, switchover, physical, repository, status, information, configuring, configure, install, configuring, configure, mtu size, packet loss, bandwidth, firewall, rhel, centos, linux, revert, kernal, upgrade, latency 
+summary: 從Sf2 9.7開始ONTAP 、ONTAP 透過MetroCluster 提供實體獨立的儲存庫來儲存狀態資訊、該功能可協助執行不計畫性的自動切換。 
+---
+= 準備安裝ONTAP 《不知道如何安裝》服務
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您的環境必須符合下列需求。
+
+[NOTE]
+====
+* 如果您打算更新Linux版本、請在安裝最新ONTAP 的《支援者》服務之前、先進行更新。
+* 不應將此二者同時用於相同的Se組態設定中、即使用此功能的「支援器」服務和「資料斷路器」軟體。ONTAP MetroCluster MetroCluster
+* 這個功能只能安裝在Linux主機上、而且必須與這個功能區分開安裝。ONTAP MetroCluster
+* 「支援器」服務最多可同時支援五種支援的「支援架構」組態。ONTAP MetroCluster
+* 支援自動非計畫性的切換ONTAP 功能、可在更新版本的更新版本中使用。
+
+
+====
+
+
+== 在MetroCluster 一個架構中使用資訊器的網路需求
+
+若要在ONTAP 一個不實的組態中安裝此功能、MetroCluster 您必須確保組態符合多項網路需求。
+
+* 往返延遲
++
+往返延遲不得超過25毫秒。
+
+* MTU
++
+MTU大小必須至少為1400。
+
+* 封包遺失
++
+封包遺失必須小於或等於0.01%。
+
+* 頻寬
++
+中保服務與MetroCluster 支援架構之間的連結必須至少有1 Gbps的頻寬。
+
+
+
+
+
+== 防火牆需求ONTAP
+
+利用多個連接埠與特定服務進行通訊。ONTAP
+
+如果您使用的是協力廠商防火牆：
+
+* 必須啟用HTTPS存取。
+* 必須將其設定為允許存取連接埠31784和3260。
++
+使用預設的Red Hat或CentOS防火牆時、防火牆會在安裝中保期間自動設定。
+
+
+
+下表列出防火牆中必須允許的連接埠：
+
+|===
+
+
+| 連接埠/服務 | 來源 | 目的地 | 目的 
+
+
+ a| 
+31784/TCP
+ a| 
+叢集管理介面ONTAP
+ a| 
+資訊媒體伺服器ONTAP
+ a| 
+REST API（HTTPS）
+
+
+
+ a| 
+3260/TCP
+ a| 
+叢集ONTAP
+ a| 
+支援iSCSI目標ONTAP
+ a| 
+適用於信箱的iSCSI資料連線
+
+|===
+
+
+== 升級ONTAP 以供參考組態之用的功能指南MetroCluster
+
+如果您要升級ONTAP 此功能、您必須符合Linux版本要求、並遵守升級準則。
+
+* 可以將「媒體資訊器」服務從先前版本升級至目前版本。
+* 所有的媒體版本都支援MetroCluster 執行ONTAP 支援支援的各種知識、例如執行支援的知識產權配置、例如更新版本的支援。
+
+
+link:https://docs.netapp.com/us-en/ontap/mediator/index.html["安裝或升級ONTAP 《不知道如何使用》服務"^]
+
+
+
+== 升級之後
+
+完成調控器和作業系統升級之後、您應該使用「shorage iscsi啟動器show」命令來確認調控器連線正常。

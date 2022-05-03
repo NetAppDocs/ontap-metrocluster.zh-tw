@@ -1,0 +1,31 @@
+---
+permalink: upgrade/task_install_licenses_on_the_new_controller_module_cluster_mode.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, install, license, new, controller, module 
+summary: 您必須針對ONTAP 需要標準\（節點鎖定\）授權的任何支援服務、新增控制器模組的授權。對於具有標準授權的功能、叢集中的每個節點都必須擁有其專屬的功能金鑰。 
+---
+= 安裝新控制器模組的授權
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須為需要ONTAP 標準（節點鎖定）授權的任何支援服務新增控制器模組授權。對於具有標準授權的功能、叢集中的每個節點都必須擁有其專屬的功能金鑰。
+
+如需授權的詳細資訊、請參閱Data ONTAP NetApp支援網站上的知識庫文章301349：《支援概述與參考資料》（英文）和《系統管理參考資料》（_System Administration Reference）。
+
+.步驟
+. 如有必要、請在「軟體授權」下方的「我的支援」區段中、取得NetApp支援網站上新節點的授權金鑰。
++
+如果網站沒有您需要的授權金鑰、請聯絡您的銷售或支援代表。
+
+. 發出下列命令以安裝每個授權金鑰：
++
+「系統授權新增-授權碼_license _key_」
+
++
+長度為28位數的「_license key」。
+
+. 針對每個必要的標準（節點鎖定）授權重複此步驟。
+

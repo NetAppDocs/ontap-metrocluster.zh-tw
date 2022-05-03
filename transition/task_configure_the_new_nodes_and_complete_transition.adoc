@@ -1,0 +1,344 @@
+---
+permalink: transition/task_configure_the_new_nodes_and_complete_transition.html 
+sidebar: sidebar 
+keywords: node, complete, transition, configure, metrocluster, ip, node, configuring, disabling, disable, data, set, up, lif, bring, svm, moving, move, system, volume 
+summary: 新增節點之後、您必須完成轉換步驟、並設定MetroCluster 好各個節點。 
+---
+= 設定新節點並完成轉換
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+新增節點之後、您必須完成轉換步驟、並設定MetroCluster 好各個節點。
+
+
+
+== 設定MetroCluster 靜態IP節點並停用轉換
+
+您必須實作MetroCluster 靜態IP連線、重新整理MetroCluster 靜態組態、以及停用轉換模式。
+
+. 從控制器node_a_1-IP發出下列命令、將新節點組成DR群組：
++
+「功能組態設定DR-group create -合作 夥伴叢集對等叢集名稱-local-Node local-控制 器名稱-reme-node-控制 器名稱」MetroCluster
+
++
+「組態設定DR群組顯示」MetroCluster
+
+. 建立MetroCluster 支援IP介面（node_a_1-ip、node_a_2-ip、node_b_1-ip、node_b_2-ip）-每個控制器需要建立兩個介面、總共需要八個介面：
++
+「靜態組態設定介面create -cluster名稱cluster名稱-home-node-name -home-port port -address ip-address -netmask -vlan-id vlan-id '"metrocluster configuration -settings interface show" MetroCluster
+
++
+
+NOTE: 從ONTAP 《支援範圍》9.9.1開始、如果您使用的是第3層組態、則在建立MetroCluster 支援範圍介面時、也必須指定「閘道」參數。請參閱 link:../install-ip/concept_considerations_layer_3.html["第3層廣域網路的考量"]。
+
++
+僅當您未使用預設的VLAN ID時、才需要使用-vlan-id參數。只有某些系統支援非預設的VLAN ID。
+
++
+--
+[NOTE]
+====
+** 某些平台會使用VLAN作為MetroCluster 支援靜態IP介面。根據預設、這兩個連接埠各自使用不同的VLAN：10和20。您也可以使用「MetroCluster 還原組態設定介面create」命令中的「-vlan-id參數」、指定高於100（介於101和4095之間）的不同（非預設）VLAN。
+** 從ONTAP 《支援範圍》9.9.1開始、如果您使用的是第3層組態、則在建立MetroCluster 支援範圍介面時、也必須指定「閘道」參數。請參閱 link:../install-ip/concept_considerations_layer_3.html["第3層廣域網路的考量"]。
+
+
+====
+--
++
+下列平台機型使用VLAN並允許設定非預設的VLAN ID。
+
++
+|===
+
+
+| 支援各種平台AFF | 支援各種平台FAS 
+
+
+ a| 
+** VA220 AFF
+** VA250 AFF
+** 解答400 AFF
+
+ a| 
+** FAS2750
+** FAS500f
+** FAS8300
+** FAS8700
+
+
+|===
+
+
+. 從MetroCluster 控制器節點_a_1-IP執行「鏈接」作業、以連接MetroCluster 到各個景點、此作業可能需要幾分鐘的時間才能完成：
++
+「組態設定連線」MetroCluster
+
+. 確認透過iSCSI連線、從每個控制器都能看到遠端叢集磁碟：
++
+「尖碑秀」
+
++
+您應該會在組態中看到屬於其他節點的遠端磁碟。
+
+. 鏡射node_a_1-IP和node_B_1-IP的根Aggregate：
++
+「Aggregate mirror -Aggregate root-aggr」
+
+. 為node_a_2-IP和node_B_2-IP指派磁碟。
++
+在開機功能表發出boot_after _MCC傳輸命令時、已針對node_a_1-IP和node_B_1-IP進行資源池1磁碟指派。
+
++
+.. 在node_a_2-IP上發出下列命令：
++
+"Disk assign disk1disk2disk3... diskn -sysid node_b_2-ip-控制 器-sysid -pool 1 -force"
+
+.. 在node_B_2-IP上發出下列命令：
++
+"Disk assign disk1disk2disk3... diskn -sysid node_a_2-ip-控制 器-sysid -pool 1 -force"
+
+
+
+. 確認遠端磁碟的擁有權已更新：
++
+「尖碑秀」
+
+. 如有必要、請使用下列命令重新整理擁有權資訊：
++
+.. 進入進階權限模式、並在系統提示您繼續時輸入y：
++
+《et priv進階》
+
+.. 重新整理磁碟擁有權：
++
+「磁碟更新所有權控制器名稱」
+
+.. 返回管理模式：
++
+「et priv admin」
+
+
+
+. 鏡射node_a_2-IP和node_B_2-IP的根Aggregate：
++
+「Aggregate mirror -Aggregate root-aggr」
+
+. 確認已完成根集合體和資料集合體的Aggregate重新同步：
++
+《Aggre show》
+
++
+重新同步可能需要一些時間、但必須先完成、才能繼續執行下列步驟。
+
+. 重新整理MetroCluster 此功能以整合新節點：
++
+.. 進入進階權限模式、並在系統提示您繼續時輸入y：
++
+《et priv進階》
+
+.. 重新整理組態：
++
+|===
+
+
+| 如果您已設定... | 發出此命令... 
+
+
+ a| 
+每個叢集中的單一Aggregate：
+ a| 
+「MetroCluster 僅需一個Aggregate true、即可重新整理。
+
+
+
+ a| 
+每個叢集中有多個集合體
+ a| 
+《靜態組態-重新整理真實》MetroCluster
+
+|===
+.. 返回管理模式：
++
+「et priv admin」
+
+
+
+. 停用MetroCluster 動態轉換模式：
++
+.. 進入進階權限模式、並在系統提示您繼續時輸入「y」：
++
+《et priv進階》
+
+.. 停用轉換模式：
++
+「停止轉換」MetroCluster
+
+.. 返回管理模式：
++
+「et priv admin」
+
+
+
+
+
+
+
+== 在新節點上設定資料LIF
+
+您必須在新節點node_a_2-IP和node_B_2-IP上設定資料LIF。
+
+如果尚未指派給廣播網域、您必須將新控制器上可用的任何新連接埠新增至廣播網域。如有需要、請在新連接埠上建立VLAN或介面群組。請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/home.html["網路與LIF管理"^]
+
+. 識別目前的連接埠使用量和廣播網域：
++
+網路連接埠show（網路連接埠廣播網域節目）
+
+. 視需要新增連接埠至廣播網域和VLAN。
++
+.. 檢視IP空間：
++
+「網路IPSpace節目」
+
+.. 視需要建立IP空間並指派資料連接埠。
++
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-69120CF0-F188-434F-913E-33ACB8751A5D.html["設定IPspaces（僅限叢集管理員）"^]
+
+.. 檢視廣播網域：
++
+「網路連接埠廣播網域節目」
+
+.. 視需要將任何資料連接埠新增至廣播網域。
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-003BDFCD-58A3-46C9-BF0C-BA1D1D1475F9.html["從廣播網域新增或移除連接埠"^]
+
+.. 視需要重新建立VLAN和介面群組。
++
+VLAN和介面群組成員資格可能與舊節點不同。
+
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-8929FCE2-5888-4051-B8C0-E27CAF3F2A63.html["建立VLAN"^]
+
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EAB7-430A-A773-4E3420EE2AA1.html["結合實體連接埠以建立介面群組"^]
+
+
+
+. 視MetroCluster 需要驗證是否在適當的節點和連接埠上裝載了lifs（包括SVM with -MC vserver）。
++
+請參閱中收集的資訊 link:task_connect_the_mcc_ip_controller_modules_2n_mcc_transition_supertask.html["建立網路組態"]。
+
++
+.. 檢查lifs的主連接埠：
++
+「網路介面show -field home-port」
+
+.. 如有必要、請修改LIF組態：
++
+「vserver config override -command「network interface modify -vserver vserver_name -home-port active_port_after升級-liflif_name -home-Node new_node_name」
+
+.. 將LIF還原至其主連接埠：
++
+「網路介面回復*-vserver _vserver_name_」
+
+
+
+
+
+
+
+== 啟動SVM
+
+由於LIF組態變更、您必須在新節點上重新啟動SVM。
+
+.步驟
+. 檢查SVM的狀態：
++
+《看不出》MetroCluster
+
+. 在沒有「`-MC」字尾的叢集A上重新啟動SVM：
++
+「vserver start -vserver svm-name -force true」
+
+. 在合作夥伴叢集上重複上述步驟。
+. 檢查所有SVM是否都處於正常狀態：
++
+《看不出》MetroCluster
+
+. 確認所有資料生命量都在線上：
++
+「網路介面展示」
+
+
+
+
+
+== 將系統磁碟區移至新節點
+
+為了改善恢復能力、系統磁碟區應從控制器節點_a_1-IP移至控制器節點_a_2-IP、也應從節點_B_1-IP移至節點_B_2-IP。您必須在系統磁碟區的目的地節點上建立鏡射Aggregate。
+
+系統磁碟區的名稱為「'DV\_CRS_*\_A'」或「'DV_CRS_*\_B'」。 名稱「`_a`」和「`_B'」與本節中使用的站台_A和站台_B參照無關、例如、MDV_CRS_*不與站台_A相關
+
+.步驟
+. 視需要為控制器node_a_2-IP和node_B_2-IP指派至少三個Pool 0和三個Pool 1磁碟。
+. 啟用磁碟自動指派。
+. 使用下列站點A的步驟、將_B系統磁碟區從node_a_1-IP移至node_a_2-IP
++
+.. 在控制器節點_a_2-IP上建立鏡射Aggregate、以容納系統磁碟區：
++
+「aggr create -Aggregate new_node_a_2-ip_aggr -diskcount10 -mirror true -Node nodename_node_a_2-ip'」
+
++
+「Aggr show」
+
++
+鏡射Aggregate需要五個Pool 0和五個Pool 1備用磁碟、由控制器node_a_2-IP擁有。
+
++
+進階選項「-force-Small Aggregate true」可用於限制磁碟使用3個資源池0和3個資源池1磁碟（如果磁碟供應不足）。
+
+.. 列出與管理SVM相關的系統磁碟區：
++
+「Vserver show」
+
++
+「Volume show -vserver _admin-vserver-name_」
+
++
+您應該識別站台A擁有的集合體所包含的磁碟區也會顯示站台B系統磁碟區。
+
+
+
+. 將站台_A的MDV_CRS_*系統磁碟區移至控制器節點_a_2-IP上建立的鏡射Aggregate
++
+.. 檢查可能的目的地集合體：
++
+「Volume Move target aggr show -vserver _admin-vserver_name_-volume system_vol_MDV_B」
+
++
+應列出節點_a_2-IP上新建立的Aggregate。
+
+.. 將磁碟區移至節點a_2-IP上新建立的Aggregate：
++
+《進階設定》
+
++
+「Volume Move start -vserver _admin-vserver_-volume system_vol_MDV_B -destination-Aggregate new_node_a_2-ip_aggr -cover -window40」
+
+.. 檢查移動作業的狀態：
++
+「Volume Move show -vserver _admin-vserver_name_-volume system_vvol_MDV_B」
+
+.. 當移動作業完成時、請確認節點_a_2-IP上的新Aggregate是否包含MDV_CRS_*_B系統：
++
+「et admin」
+
++
+「Volume show -vserver _admin-vserver_」
+
+
+
+. 在站台B（node_B_1-IP和node_B_2-IP）上重複上述步驟。
+

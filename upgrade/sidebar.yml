@@ -1,0 +1,152 @@
+---
+section: upgrade
+title: 升級或擴充MetroCluster 此功能
+entries:
+- title: 選擇您的升級或重新整理方法
+  url: "/upgrade/concept_choosing_an_upgrade_method_mcc.html"
+- title: 使用MetroCluster 切換和切換功能升級採用SFC組態的控制器
+  url: "/upgrade/task_upgrade_controllers_in_a_four_node_fc_mcc_us_switchover_and_switchback_mcc_fc_4n_cu.html"
+- title: 使用交換器和切換功能、將控制器從AFF 功能不實的2700升級AFF 至功能不實的SFC MetroCluster 組態（ONTAP 版本號：32、10.1及更新版本）
+  url: "/upgrade/task_upgrade_A700_to_A900_in_a_four_node_mcc_fc_us_switchover_and_switchback.html"
+- title: 使用MetroCluster 切換功能升級四節點的SFC組態中的控制器、並以「系統控制器更換」命令（ONTAP 版本號：E59.10.1及更新版本）進行切換。
+  url: "/upgrade/task_upgrade_controllers_system_control_commands_in_a_four_node_mcc_fc.html"
+- title: 使用MetroCluster 切換和切換功能升級採用S還原IP組態的控制器（ONTAP 版本號：9.8及更新版本）
+  url: "/upgrade/task_upgrade_controllers_in_a_four_node_ip_mcc_us_switchover_and_switchback_mcc_ip.html"
+- title: 使用交換器和切換功能、將控制器從AFF 功能性的2700升級至AFF 功能性的S還原MetroCluster IP組態（ONTAP 版本號：32、10.1及更新版本）
+  url: "/upgrade/task_upgrade_A700_to_A900_in_a_four_node_mcc_ip_us_switchover_and_switchback.html"
+- title: 重新整理四節點MetroCluster 的不含功能的FC組態
+  url: "/upgrade/task_refresh_4n_mcc_fc.html"
+- title: 重新整理四節點MetroCluster 的靜態IP組態（ONTAP 不含更新版本的更新版本）
+  url: "/upgrade/task_refresh_4n_mcc_ip.html"
+- title: 將雙節點MetroCluster 的不含功能的FC組態擴充為四節點組態
+  entries:
+  - title: 總覽
+    url: "/upgrade/task_expand_a_two_node_mcc_fc_configuration_to_a_four_node_fc_configuration_supertask.html"
+  - title: 驗MetroCluster 證不實組態的狀態
+    url: "/upgrade/task_verify_the_state_of_the_mcc_configuration_mcc_expansion.html"
+  - title: 在AutoSupport 將節點新增MetroCluster 至該組態之前、請先傳送自訂的功能資訊
+    url: "/upgrade/task_send_a_custom_autosupport_message_before_add_nodes_to_the_mcc_configuration_2_node_to_4_node.html"
+  - title: 新控制器連接埠的區域、當在光纖附加MetroCluster 的功能區組態中新增控制器模組時
+    url: "/upgrade/task_zone_for_the_new_controller_ports_in_a_fabric_attached_mcc_configuration_four_node_expansion.html"
+  - title: 將新的控制器模組新增至每個叢集
+    entries:
+    - title: 總覽
+      url: "/upgrade/task_add_a_new_controller_to_each_cluster_mcc_expansion.html"
+    - title: 準備升級
+      url: "/upgrade/task_prepare_for_the_upgrade_add_2nd_controller_to_create_ha_pair.html"
+    - title: 清除控制器模組上的組態
+      url: "/upgrade/task_clear_the_configuration_on_a_controller_module_mcc.html"
+    - title: 準備現有控制器模組上的叢集連接埠
+      url: "/upgrade/task_prepare_cluster_ports_on_the_exist_controller.html"
+    - title: 準備netboot伺服器以下載映像
+      url: "/upgrade/task_prepare_the_netboot_server_cluster_mode.html"
+    - title: 在現有的控制器模組上設定HA模式
+      url: "/upgrade/task_enable_the_ha_mode_on_the_exist_controller_mcc_when_add_a_2nd_controller.html"
+    - title: 關閉現有的控制器模組
+      url: "/upgrade/task_shut_down_the_exist_controller_when_add_a_2nd_controller_in_c_mode.html"
+    - title: 安裝並連接新的控制器模組
+      entries:
+      - title: 先決條件與安裝
+        url: "/upgrade/task_install_and_cable_the_new_controller.html"
+      - title: 將新控制器模組的FC-VI和HBA連接埠連接至FC交換器
+        url: "/upgrade/task_cable_the_controller_module_s_fc_vi_hba_ports_to_the_fc_switches_controller_to_fc_sw.html"
+      - title: 新控制器模組的叢集對等連線纜線
+        url: "/upgrade/task_cable_the_cluster_peering_connections.html"
+    - title: 開啟兩個控制器模組的電源、並顯示載入器提示
+      url: "/upgrade/task_power_up_both_controller_modules_and_display_the_loader_prompt_2_node_mcc_expansion.html"
+    - title: 變更現有和新控制器模組的ha-config設定
+      url: "/upgrade/task_change_the_ha_config_setts_mcc_add_a_2nd_controller.html"
+    - title: 設定兩個控制器模組的合作夥伴系統ID
+      url: "/upgrade/task_set_the_partner_system_id_for_both_controller_modules.html"
+    - title: 啟動現有的控制器模組
+      url: "/upgrade/task_boot_the_exist_controller_module.html"
+    - title: 將磁碟指派給新的控制器模組
+      url: "/upgrade/task_assign_disks_to_the_new_controller_mcc_expansion.html"
+    - title: 在ONTAP 新的控制器模組上進行NETboot和設定
+      url: "/upgrade/task_netboot_and_set_up_ontap_on_the_new_controller_module_mcc.html"
+    - title: 鏡射新控制器上的根Aggregate
+      url: "/upgrade/task_mirror_the_root_aggregates_mcc_expansion_procedure.html"
+    - title: 設定叢集間LIF
+      entries:
+      - title: 在專用連接埠上設定叢集間LIF
+        url: "/upgrade/task_configure_intercluster_lifs_to_use_dedicated_intercluster_ports.html"
+      - title: 在共享的資料連接埠上設定叢集間LIF
+        url: "/upgrade/task_configure_intercluster_lifs_to_share_data_ports.html"
+    - title: 在每個節點上建立鏡射資料Aggregate
+      url: "/upgrade/task_create_a_mirrored_data_aggregate_on_each_node_mcc.html"
+    - title: 安裝新控制器模組的授權
+      url: "/upgrade/task_install_licenses_on_the_new_controller_module_cluster_mode.html"
+    - title: 建立無鏡射的資料集合體
+      url: "/upgrade/task_create_unmirrored_data_aggregates_mcc.html"
+    - title: 新增控制器模組之後、請安裝韌體
+      url: "/upgrade/task_install_firmware_after_add_a_controller_module.html"
+  - title: 使用MetroCluster 新的控制器重新整理此功能
+    url: "/upgrade/task_refresh_the_mcc_configuration_mcc_configure_refresh.html"
+  - title: 在控制器模組和enabl叢集HA上啟用儲存容錯移轉
+    url: "/upgrade/task_enable_storage_failover_both_controller_modules_and_set_cluster_ha.html"
+  - title: 重新啟動SVM
+    url: "/upgrade/task_restart_the_svms.html"
+- title: 將四節點MetroCluster 的不含任何功能的FC組態擴充為八節點組態
+  entries:
+  - title: 總覽
+    url: "/upgrade/task_expand_a_four_node_mcc_fc_configuration_to_an_eight_node_configuration.html"
+  - title: 判斷新的纜線配置
+    url: "/upgrade/task_determin_the_new_cable_layout_mcc_expansion.html"
+  - title: 裝上新設備
+    url: "/upgrade/task_rack_the_new_equipment_mcc_expansion.html"
+  - title: 驗MetroCluster 證整個過程的效能狀況
+    url: "/upgrade/task_verify_the_health_of_the_mcc_configuration.html"
+  - title: 使用MetroCluster 資訊功能檢查是否有任何不實的組態錯誤Config Advisor
+    url: "/upgrade/task_check_for_mcc_configuration_errors_with_config_advisor.html"
+  - title: 在AutoSupport 將節點新增MetroCluster 至「版本資訊」組態之前、請先傳送自訂的版本資訊
+    url: "/upgrade/task_send_a_custom_autosupport_message_before_add_nodes_to_the_mcc_configuration.html"
+  - title: 可重新分區新節點的交換器架構
+    entries:
+    - title: 從網路中斷開現有DR群組的連線
+      url: "/upgrade/task_disconnect_the_exist_dr_group_mcc_expansion.html"
+    - title: 套用RCF檔案並重新執行交換器
+      url: "/upgrade/task_apply_the_rcf_files_and_recable_the_switches.html"
+  - title: 在ONTAP 新的控制器上設定
+    entries:
+    - title: 清除控制器模組上的組態
+      url: "/upgrade/task_clear_the_configuration_on_a_controller_module_mcc.html"
+    - title: 在AFF 不可靠的系統中指派磁碟擁有權
+      url: "/upgrade/task_assign_disk_ownership_in_aff_systems_mcc.html"
+    - title: 在非AFF系統中指派磁碟擁有權
+      url: "/upgrade/task_assign_disk_ownership_to_non_aff_systems_mcc.html"
+    - title: 驗證元件的ha-config狀態
+      url: "/upgrade/task_verify_that_the_ha_state_of_components_is_mcc_dr_smok_crater_or_mcc_expansion.html"
+    - title: 啟動新控制器並將其加入叢集
+      url: "/upgrade/task_boot_the_new_controllers_and_join_them_to_the_cluster.html"
+    - title: 將叢集設定為MetroCluster 一個靜態組態
+      entries:
+      - title: 設定叢集間LIF
+        entries:
+        - title: 在專用連接埠上設定叢集間LIF
+          url: "/upgrade/task_configure_intercluster_lifs_to_use_dedicated_intercluster_ports.html"
+        - title: 在共享的資料連接埠上設定叢集間LIF
+          url: "/upgrade/task_configure_intercluster_lifs_to_share_data_ports.html"
+      - title: 鏡射根Aggregate
+        url: "/upgrade/task_mirror_the_root_aggregates_mcc.html"
+      - title: 實作MetroCluster 這個組態
+        url: "/upgrade/task_implement_the_mcc_configuration_mcc_refresh_mcc_expansion.html"
+      - title: 在每個節點上建立鏡射資料Aggregate
+        url: "/upgrade/task_create_a_mirrored_data_aggregate_on_each_node_mcc.html"
+      - title: 設定FC至SAS橋接器以進行健全狀況監控
+        url: "/upgrade/task_configure_the_fc_to_sas_bridges_for_health_monitor.html"
+      - title: 在MetroCluster 不完整的組態中移動中繼資料磁碟區
+        url: "/upgrade/task_move_a_metadata_volume_in_mcc_configurations.html"
+      - title: 檢查MetroCluster 該組態
+        url: "/upgrade/task_check_the_mcc_configuration.html"
+  - title: 使用MetroCluster 資訊功能檢查是否有任何不實的組態錯誤Config Advisor
+    url: "/upgrade/task_check_for_mcc_configuration_errors_with_config_advisor.html"
+  - title: 之後傳送自訂AutoSupport 的動態訊息、將節點新增MetroCluster 至「動態影像」組態
+    url: "/upgrade/task_send_a_custom_autosupport_message_after_add_nodes_to_the_mcc_configuration.html"
+  - title: 驗證切換、修復及切換
+    url: "/upgrade/task_verify_switchover_heal_and_switchback.html"
+- title: 將四節點MetroCluster 的「靜態IP」組態擴充為八節點組態
+  url: "/upgrade/task_expand_a_four_node_mcc_ip_configuration.html"
+- title: 移除Disaster Recovery群組
+  url: "/upgrade/concept_removing_a_disaster_recovery_group.html"
+- title: 何處可找到其他資訊
+  url: "/upgrade/reference_where_to_find_additional_information_mcc_ug.html"

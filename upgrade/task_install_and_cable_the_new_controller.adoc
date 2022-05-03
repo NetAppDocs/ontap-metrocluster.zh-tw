@@ -1,0 +1,96 @@
+---
+permalink: upgrade/task_install_and_cable_the_new_controller.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, install, cable, new, controller, module 
+summary: 您必須在機箱中實際安裝新的控制器模組、然後將其纜線。 
+---
+= 安裝新的控制器模組並進行纜線連接
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須在機箱中實際安裝新的控制器模組、然後將其纜線。
+
+.步驟
+. 如果您的系統中有I/O擴充模組（IOXM）、且正在建立單一機箱HA配對、則必須拔下IOXM纜線並將其移除。
++
+然後、您可以將閒置的支架用於新的控制器模組。不過、新組態不會有IOXM提供的額外I/O。
+
+. 實際安裝新的控制器模組、必要時安裝額外的風扇：
++
+|===
+
+
+| 如果您要新增控制器模組... | 然後執行下列步驟... 
+
+
+ a| 
+在空的機槽中建立單一機箱HA配對、而系統屬於下列其中一個平台：
+ a| 
+.. 卸下機箱背面的空白板、此擋板會覆蓋將包含新控制器模組的空插槽。
+.. 將控制器模組輕推至機箱的一半。
++
+為了防止控制器模組自動開機、請勿在本程序稍後的步驟中、將其完全放入機箱。
+
+
+
+
+
+ a| 
+當現有組態位於控制器IOX模組組組態中時、請在獨立於HA合作夥伴的機箱中建立雙機箱HA配對。
+
+** FAS8200
+** 80xx
+
+ a| 
+在機架或系統機櫃中安裝新系統。
+
+|===
+. 視需要連接叢集網路連線：
++
+.. 識別控制器模組上用於叢集連線的連接埠。
++
+https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-a320-install-setup/home.html["作業系統：安裝與設定AFF"^]
+
++
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2842666["解答A220/FAS2700系統安裝與設定說明AFF"^]
+
++
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2842668["《系統安裝與設定說明》（英文）AFF"^]
+
++
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2469722["《系統安裝與設定說明》（英文）AFF"^]
+
++
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2316769["FAS8200系統安裝與設定說明"^]
+
+.. 如果您要設定交換式叢集、請識別要在叢集網路交換器上使用的連接埠。
++
+請參閱Data ONTAP 《_叢集式的Cisco交換器設定指南_》、《_ NetApp 10G叢集模式交換器安裝指南_》或《_ NetApp 1G叢集模式交換器安裝指南_》、視您使用的交換器而定。
+
+.. 將纜線連接至叢集連接埠：
+
+
++
+|===
+
+
+| 如果叢集是... | 然後... 
+
+
+ a| 
+雙節點無交換器叢集
+ a| 
+將現有控制器模組上的叢集連接埠直接連接至新控制器模組上的對應叢集連接埠。
+
+
+
+ a| 
+交換式叢集
+ a| 
+將每個控制器上的叢集連接埠連接至子步驟b中所識別的叢集網路交換器上的連接埠
+
+|===
+

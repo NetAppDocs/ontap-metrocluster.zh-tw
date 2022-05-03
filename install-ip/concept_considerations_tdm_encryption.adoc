@@ -1,0 +1,51 @@
+---
+permalink: install-ip/concept_considerations_tdm_encryption.html 
+sidebar: sidebar 
+keywords: differences, eight-node, four-node, fabric-attached, stretch, metrocluster ip, storage, bridges, fc-to-sas, atto, fibrebridge, SAS, local HA, auso, automatic unplanned switchover, array luns, mediator, tiebreaker 
+summary: 在MetroCluster 使用支援多工處理設備的過程中、您應該注意某些考量事項。 
+---
+= 使用TDM/xWDM和加密設備搭配MetroCluster 使用、並提供不完整的IP組態
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在MetroCluster 使用支援多工處理設備的過程中、您應該注意某些考量事項。
+
+這些考量僅適用於直接、專用MetroCluster 的背後鏈結和交換器、而非與非MetroCluster流量共享的連結。
+
+此功能提供一些關於TDM/xWDM設備在使用該IP組態時必須符合的需求的注意事項。Hardware Universe MetroCluster
+
+https://hwu.netapp.com["NetApp Hardware Universe"]
+
+
+
+== 在WDM或外部加密裝置上使用加密
+
+在採用「以靜態IP組態」的WDM裝置上使用加密MetroCluster 時、您的環境必須符合下列需求：
+
+* 外部加密裝置或DWDWR設備必須已通過相關交換器的廠商認證。
++
+認證應涵蓋作業模式（例如主幹連線和加密）。
+
+* 端點對端點的整體延遲和不穩定性（包括加密）不能超過IMT 本文檔中所述的最大值。
+
+
+
+
+== SFP考量
+
+任何由設備廠商支援的SFP或QSFP、都可支援MetroCluster 支援支援功能。SFP和QSFP可向NetApp或設備廠商購買。
+
+
+
+== ISL的考量
+
+單一架構上的ISL應該都是相同的速度和長度。
+
+單一架構上的ISL應該都具有相同的拓撲。例如、它們都應該是直接連結、或者如果組態使用的是WDM、則它們都應該使用WDM。
+
+如果您要與非MetroCluster網路共用ISL、則必須遵循一節中的準則 link:concept_considerations_layer_2.html["共享私有第2層網路的考量"]。
+
+Fabric 1與Fabric 2之間的最大支援距離差異為20公里

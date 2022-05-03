@@ -1,0 +1,94 @@
+---
+permalink: transition/task_return_the_system_to_normal_operation_2n_mcc_transition_supertask.html 
+sidebar: sidebar 
+keywords: perform, final, configuration, return, metrocluster, normal, operation, system, verify, assign, drive, transition, install, license, module, complete, completing, node, send, custom, autosupport, message, maintenance 
+summary: 您必須執行最後的組態步驟、並將MetroCluster 此功能恢復正常運作。 
+---
+= 使系統恢復正常運作
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須執行最後的組態步驟、並將MetroCluster 此功能恢復正常運作。
+
+
+
+== 在MetroCluster 轉換後驗證運作和指派磁碟機
+
+[role="lead"]
+您必須驗證MetroCluster 此功能是否正常運作、並將磁碟機指派給第二組新節點（node_a_2-IP和node_B_2-IP）。
+
+. 確認MetroCluster 此支援類型為「IP架構：MetroCluster 「show」
+. 執行MetroCluster 功能檢查。
++
+.. 發出下列命令：MetroCluster 「不執行檢查」
+.. 顯示MetroCluster 「不MetroCluster 實檢查」的結果：「不實檢查顯示」
+
+
+. 確認已MetroCluster 設定含有「整套IP節點MetroCluster 」的DR群組：「節點顯示」
+. 視需要為每個站台的控制器節點節點_a_2-IP和節點_B_2-IP建立及鏡射其他資料集合體。
+
+
+
+
+== 安裝新控制器模組的授權
+
+[role="lead"]
+您必須為需要ONTAP 標準（節點鎖定）授權的任何支援服務新增控制器模組授權。對於具有標準授權的功能、叢集中的每個節點都必須擁有其專屬的功能金鑰。
+
+如需授權的詳細資訊、請參閱Data ONTAP NetApp支援網站上的知識庫文章301349：《支援概述與參考資料》（英文）和《系統管理參考資料》（_System Administration Reference）。
+
+. 如有必要、請在「軟體授權」下方的「我的支援」區段中、取得NetApp支援網站上新節點的授權金鑰。
++
+如果網站沒有您需要的授權金鑰、請聯絡您的銷售或支援代表。
+
+. 發出下列命令以安裝每個授權金鑰：「系統授權新增-license－Code license－key」
++
+license_key長度為28位數。
+
++
+針對每個必要的標準（節點鎖定）授權重複此步驟。
+
+
+
+
+
+== 完成節點組態
+
+[role="lead"]
+在完成程序之前、您可以執行其他組態步驟。其中一些步驟為選用步驟。
+
+. 設定服務處理器：「系統服務處理器網路修改」
+. 在AutoSupport 新節點上設定功能：「系統節點AutoSupport 的更新」
+. 控制器可選擇性地重新命名、作為轉換的一部分。以下命令用於重新命名控制器：「System Node Rename -node"-newname <new-name>」
++
+重新命名作業可能需要幾分鐘的時間才能完成。使用系統show -Fields節點命令、在繼續執行其他步驟之前、請先確認所有名稱變更都已傳播至每個節點。
+
+. 視需要設定監控服務。
++
+link:../install-ip/concept_considerations_mediator.html["內化員的考量"]
+
++
+連結：../install-ip/concept_mediator_requirements.html
+
++
+link:../tiebreaker/concept_overview_of_the_tiebreaker_software.html["Tiebreaker軟體安裝與組態"]
+
+
+
+
+
+== 維護後傳送自訂AutoSupport 的資訊
+
+[role="lead"]
+完成轉換之後、您應該傳送AutoSupport 一個不完整的訊息、指出維護作業已結束、以便繼續自動建立個案。
+
+. 若要恢復自動產生支援案例、請傳送AutoSupport 一個不完整的訊息、表示維護已完成。
++
+.. 發出下列命令：「System Node AutoSupport Eflexoke -Node *-type all -Message MAn=end」
+.. 在合作夥伴叢集上重複執行命令。
+
+
+

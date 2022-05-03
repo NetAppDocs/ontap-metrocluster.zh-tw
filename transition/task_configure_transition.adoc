@@ -1,0 +1,758 @@
+---
+permalink: transition/task_configure_transition.html 
+sidebar: sidebar 
+keywords: Generating and applying RCFs to the new IP switches, review, requirement, preparing, prepare, transition, perform, procedure, order, completing, complete, step, task, moving, move, controller, storage, shelves, shelf, exist, configuration, direct, metrocluster, fc, ip, verify, health, removing, remove, tiebreaker, monitor, software, generating, generate, apply, rcf, switch, controller, configure, prepare, preparing 
+summary: 若要準備轉換組態、您可以將新節點新增至現有MetroCluster 的版本資訊功能組態、然後將資料移至新節點。 
+---
+= 設定MetroCluster 要移轉的功能
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+若要準備轉換組態、您可以將新節點新增至現有MetroCluster 的版本資訊功能組態、然後將資料移至新節點。
+
+
+
+== 在維護前傳送自訂AutoSupport 的支援訊息
+
+在執行維護之前、您應發出AutoSupport 一份不知所知的訊息、通知NetApp技術支援部門正在進行維護。告知技術支援部門正在進行維護、可防止他們假設發生中斷、而開啟案例。
+
+此工作必須在每MetroCluster 個站台上執行。
+
+.步驟
+. 若要避免自動產生支援案例、請傳送AutoSupport 不全訊息以表示正在進行維護：
++
+「系統節點AutoSupport 不支援呼叫節點*-type all -Message mainten=maintening-tope-window-in hours」
+
++
+「維護時段」指定維護時段的長度、最長72小時。如果維護作業在時間結束之前完成、您可以叫用AutoSupport 指示維護期間結束的資訊消息：
+
++
+「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+
+. 在合作夥伴叢集上重複執行命令。
+
+
+
+
+== 啟用轉換模式並停用叢集HA
+
+您必須啟用MetroCluster 「不支援功能」轉換模式、才能讓新舊節點在MetroCluster 支援的情況下一起運作、並停用叢集HA。
+
+. 實現轉換：
++
+.. 變更為進階權限層級：
++
+"進階權限"
+
+.. 啟用轉換模式：
++
+「支援不中斷營運的轉換模式」MetroCluster
+
++
+
+NOTE: 僅在一個叢集上執行此命令。
+
++
+....
+cluster_A::*> metrocluster transition enable -transition-mode non-disruptive
+
+Warning: This command enables the start of a "non-disruptive" MetroCluster
+         FC-to-IP transition. It allows the addition of hardware for another DR
+         group that uses IP fabrics, and the removal of a DR group that uses FC
+         fabrics. Clients will continue to access their data during a
+         non-disruptive transition.
+
+         Automatic unplanned switchover will also be disabled by this command.
+Do you want to continue? {y|n}: y
+
+cluster_A::*>
+
+....
+.. 返回管理權限層級：
++
+「et -priv. admin」
+
+
+
+. 確認兩個叢集都已啟用轉換。
++
+....
+
+cluster_A::> metrocluster transition show-mode
+Transition Mode
+
+non-disruptive
+
+cluster_A::*>
+
+
+cluster_B::*> metrocluster transition show-mode
+Transition Mode
+
+non-disruptive
+
+Cluster_B::>
+
+....
+. 停用叢集HA。
++
+
+NOTE: 您必須在兩個叢集上執行此命令。
+
++
+....
+cluster_A::*> cluster ha modify -configured false
+
+Warning: This operation will unconfigure cluster HA. Cluster HA must be
+configured on a two-node cluster to ensure data access availability in
+the event of storage failover.
+Do you want to continue? {y|n}: y
+Notice: HA is disabled.
+
+cluster_A::*>
+
+
+cluster_B::*> cluster ha modify -configured false
+
+Warning: This operation will unconfigure cluster HA. Cluster HA must be
+configured on a two-node cluster to ensure data access availability in
+the event of storage failover.
+Do you want to continue? {y|n}: y
+Notice: HA is disabled.
+
+cluster_B::*>
+....
+. 確認叢集HA已停用。
++
+
+NOTE: 您必須在兩個叢集上執行此命令。
+
++
+....
+cluster_A::> cluster ha show
+
+High Availability Configured: false
+Warning: Cluster HA has not been configured. Cluster HA must be configured
+on a two-node cluster to ensure data access availability in the
+event of storage failover. Use the "cluster ha modify -configured
+true" command to configure cluster HA.
+
+cluster_A::>
+
+cluster_B::> cluster ha show
+
+High Availability Configured: false
+Warning: Cluster HA has not been configured. Cluster HA must be configured
+on a two-node cluster to ensure data access availability in the
+event of storage failover. Use the "cluster ha modify -configured
+true" command to configure cluster HA.
+
+cluster_B::>
+....
+
+
+
+
+== 將MetroCluster 靜態IP節點加入叢集
+
+您必須將四MetroCluster 個全新的靜態IP節點新增至現有MetroCluster 的靜態組態。
+
+您必須在兩個叢集上執行此工作。
+
+.步驟
+. 將MetroCluster 「靜態IP」節點新增至現有MetroCluster 的「靜態」組態。
++
+.. 將第一個MetroCluster 支援靜態IP的節點（node_a_1-IP）加入現有MetroCluster 的支援靜態FC組態。
++
+....
+
+Welcome to the cluster setup wizard.
+
+You can enter the following commands at any time:
+  "help" or "?" - if you want to have a question clarified,
+  "back" - if you want to change previously answered questions, and
+  "exit" or "quit" - if you want to quit the cluster setup wizard.
+     Any changes you made before quitting will be saved.
+
+You can return to cluster setup at any time by typing "cluster setup".
+To accept a default or omit a question, do not enter a value.
+
+This system will send event messages and periodic reports to NetApp Technical
+Support. To disable this feature, enter autosupport modify -support disable
+within 24 hours.
+
+Enabling AutoSupport can significantly speed problem determination and
+resolution, should a problem occur on your system.
+For further information on AutoSupport, see:
+http://support.netapp.com/autosupport/
+
+Type yes to confirm and continue {yes}: yes
+
+Enter the node management interface port [e0M]:
+Enter the node management interface IP address: 172.17.8.93
+Enter the node management interface netmask: 255.255.254.0
+Enter the node management interface default gateway: 172.17.8.1
+A node management interface on port e0M with IP address 172.17.8.93 has been created.
+
+Use your web browser to complete cluster setup by accessing https://172.17.8.93
+
+Otherwise, press Enter to complete cluster setup using the command line
+interface:
+
+Do you want to create a new cluster or join an existing cluster? {create, join}:
+join
+
+
+Existing cluster interface configuration found:
+
+Port    MTU     IP              Netmask
+e0c     9000    169.254.148.217 255.255.0.0
+e0d     9000    169.254.144.238 255.255.0.0
+
+Do you want to use this configuration? {yes, no} [yes]: yes
+.
+.
+.
+....
+.. 將第二MetroCluster 個「靜態IP」節點（node_a_2-IP）加入現有MetroCluster 的「靜態FC」組態。
+
+
+. 重複這些步驟、將node_B_1-IP和node_B_2-IP連接至叢集B
+
+
+
+
+== 設定叢集間的生命體、建立MetroCluster 支援資訊介面、以及鏡射根集合體
+
+您必須建立叢集對等的生命、在MetroCluster 新MetroCluster 的物件節點上建立一個物件介面。
+
+範例中使用的主連接埠是平台專屬的連接埠。您應該使用MetroCluster 特定於靜態IP節點平台的適當主連接埠。
+
+.步驟
+. 在全新MetroCluster 的靜態IP節點上、 link:../install-ip/task_sw_config_configure_clusters.html#configuring-intercluster-lifs-for-cluster-peering["設定叢集間的LIF"]。
+. 在每個站台上、確認已設定叢集對等：
++
+「叢集同儕秀」
+
++
+下列範例顯示叢集A上的叢集對等配置：
+
++
+....
+cluster_A:> cluster peer show
+Peer Cluster Name         Cluster Serial Number Availability   Authentication
+------------------------- --------------------- -------------- --------------
+cluster_B                 1-80-000011           Available      ok
+....
++
+下列範例顯示叢集B上的叢集對等配置：
+
++
+....
+cluster_B:> cluster peer show
+Peer Cluster Name         Cluster Serial Number Availability   Authentication
+------------------------- --------------------- -------------- --------------
+cluster_A 1-80-000011 Available ok
+....
+. 設定MetroCluster DR群組以利執行下列動作：
++
+「組態設定DR-group create -合作 夥伴叢集」MetroCluster
+
++
+....
+cluster_A::> metrocluster configuration-settings dr-group create -partner-cluster
+cluster_B -local-node node_A_3-IP -remote-node node_B_3-IP
+[Job 259] Job succeeded: DR Group Create is successful.
+cluster_A::>
+....
+. 確認已建立DR群組。
++
+「組態設定DR群組顯示」MetroCluster
+
++
+....
+cluster_A::> metrocluster configuration-settings dr-group show
+
+DR Group ID Cluster                    Node               DR Partner Node
+----------- -------------------------- ------------------ ------------------
+2           cluster_A
+                                       node_A_3-IP        node_B_3-IP
+                                       node_A_4-IP        node_B_4-IP
+            cluster_B
+                                       node_B_3-IP        node_A_3-IP
+                                       node_B_4-IP        node_A_4-IP
+
+4 entries were displayed.
+
+cluster_A::>
+....
++
+您會注意到、MetroCluster 當您執行「MetroCluster 支援組態設定的Dr-group show」命令時、舊版的支援功能支援中心節點（DR群組1）的DR群組並未列出。
+
++
+您可以在MetroCluster 兩個站台上使用「flexnodes show」命令來列出所有節點。
+
++
+....
+cluster_A::> metrocluster node show
+
+DR                               Configuration  DR
+Group Cluster Node               State          Mirroring Mode
+----- ------- ------------------ -------------- --------- --------------------
+1     cluster_A
+              node_A_1-FC         configured     enabled   normal
+              node_A_2-FC         configured     enabled   normal
+      cluster_B
+              node_B_1-FC         configured     enabled   normal
+              node_B_2-FC         configured     enabled   normal
+2     cluster_A
+              node_A_1-IP      ready to configure
+                                                -         -
+              node_A_2-IP      ready to configure
+                                                -         -
+
+cluster_B::> metrocluster node show
+
+DR                               Configuration  DR
+Group Cluster Node               State          Mirroring Mode
+----- ------- ------------------ -------------- --------- --------------------
+1     cluster_B
+              node_B_1-FC         configured     enabled   normal
+              node_B_2-FC         configured     enabled   normal
+      cluster_A
+              node_A_1-FC         configured     enabled   normal
+              node_A_2-FC         configured     enabled   normal
+2     cluster_B
+              node_B_1-IP      ready to configure
+                                                -         -
+              node_B_2-IP      ready to configure
+                                                -         -
+....
+. 為MetroCluster 新加入MetroCluster 的「靜態IP」節點設定「靜態IP」介面：
++
+「功能組態設定介面create -cluster名稱」MetroCluster
+
++
+請參閱 link:../install-ip/task_sw_config_configure_clusters.html#configuring-and-connecting-the-metrocluster-ip-interfaces["設定及連線MetroCluster 功能"] 用於設定IP介面時的考量。
+
++
+
+NOTE: 您可以從MetroCluster 任一叢集設定靜態IP介面。此外、從ONTAP 支援的支援範圍僅為1.9.1、如果您使用的是第3層組態、則在建立MetroCluster 支援範圍內的IP介面時、也必須指定「-gateway'（閘道）參數。請參閱連結：../install-ip/concite_iniation_layer_3.html。
+
++
+....
+cluster_A::> metrocluster configuration-settings interface create -cluster-name cluster_A -home-node node_A_3-IP -home-port e1a -address 172.17.26.10 -netmask 255.255.255.0
+[Job 260] Job succeeded: Interface Create is successful.
+
+cluster_A::> metrocluster configuration-settings interface create -cluster-name cluster_A -home-node node_A_3-IP -home-port e1b -address 172.17.27.10 -netmask 255.255.255.0
+[Job 261] Job succeeded: Interface Create is successful.
+
+cluster_A::> metrocluster configuration-settings interface create -cluster-name cluster_A -home-node node_A_4-IP -home-port e1a -address 172.17.26.11 -netmask 255.255.255.0
+[Job 262] Job succeeded: Interface Create is successful.
+
+cluster_A::> :metrocluster configuration-settings interface create -cluster-name cluster_A -home-node node_A_4-IP -home-port e1b -address 172.17.27.11 -netmask 255.255.255.0
+[Job 263] Job succeeded: Interface Create is successful.
+
+cluster_A::> metrocluster configuration-settings interface create -cluster-name cluster_B -home-node node_B_3-IP -home-port e1a -address 172.17.26.12 -netmask 255.255.255.0
+[Job 264] Job succeeded: Interface Create is successful.
+
+cluster_A::> metrocluster configuration-settings interface create -cluster-name cluster_B -home-node node_B_3-IP -home-port e1b -address 172.17.27.12 -netmask 255.255.255.0
+[Job 265] Job succeeded: Interface Create is successful.
+
+cluster_A::> metrocluster configuration-settings interface create -cluster-name cluster_B -home-node node_B_4-IP -home-port e1a -address 172.17.26.13 -netmask 255.255.255.0
+[Job 266] Job succeeded: Interface Create is successful.
+
+cluster_A::> metrocluster configuration-settings interface create -cluster-name cluster_B -home-node node_B_4-IP -home-port e1b -address 172.17.27.13 -netmask 255.255.255.0
+[Job 267] Job succeeded: Interface Create is successful.
+....
+. 驗證MetroCluster 是否已建立下列的靜態IP介面：
++
+「顯示組態設定介面」MetroCluster
+
++
+....
+cluster_A::>metrocluster configuration-settings interface show
+
+DR                                                                    Config
+Group Cluster Node    Network Address Netmask         Gateway         State
+----- ------- ------- --------------- --------------- --------------- ---------
+2     cluster_A
+             node_A_3-IP
+                 Home Port: e1a
+                      172.17.26.10    255.255.255.0   -               completed
+                 Home Port: e1b
+                      172.17.27.10    255.255.255.0   -               completed
+              node_A_4-IP
+                 Home Port: e1a
+                      172.17.26.11    255.255.255.0   -               completed
+                 Home Port: e1b
+                      172.17.27.11    255.255.255.0   -               completed
+      cluster_B
+             node_B_3-IP
+                 Home Port: e1a
+                      172.17.26.13    255.255.255.0   -               completed
+                 Home Port: e1b
+                      172.17.27.13    255.255.255.0   -               completed
+              node_B_3-IP
+                 Home Port: e1a
+                      172.17.26.12    255.255.255.0   -               completed
+                 Home Port: e1b
+                      172.17.27.12    255.255.255.0   -               completed
+8 entries were displayed.
+
+cluster_A>
+....
+. 連接MetroCluster 下列的靜態IP介面：
++
+「組態設定連線」MetroCluster
+
++
+
+NOTE: 此命令可能需要數分鐘才能完成。
+
++
+....
+cluster_A::> metrocluster configuration-settings connection connect
+
+cluster_A::>
+....
+. 確認連線已正確建立：
++
+「組態設定連線顯示」MetroCluster
+
++
+....
+cluster_A::> metrocluster configuration-settings connection show
+
+DR                    Source          Destination
+Group Cluster Node    Network Address Network Address Partner Type Config State
+----- ------- ------- --------------- --------------- ------------ ------------
+2     cluster_A
+              node_A_3-IP**
+                 Home Port: e1a
+                      172.17.26.10    172.17.26.11    HA Partner   completed
+                 Home Port: e1a
+                      172.17.26.10    172.17.26.12    DR Partner   completed
+                 Home Port: e1a
+                      172.17.26.10    172.17.26.13    DR Auxiliary completed
+                 Home Port: e1b
+                      172.17.27.10    172.17.27.11    HA Partner   completed
+                 Home Port: e1b
+                      172.17.27.10    172.17.27.12    DR Partner   completed
+                 Home Port: e1b
+                      172.17.27.10    172.17.27.13    DR Auxiliary completed
+              node_A_4-IP
+                 Home Port: e1a
+                      172.17.26.11    172.17.26.10    HA Partner   completed
+                 Home Port: e1a
+                      172.17.26.11    172.17.26.13    DR Partner   completed
+                 Home Port: e1a
+                      172.17.26.11    172.17.26.12    DR Auxiliary completed
+                 Home Port: e1b
+                      172.17.27.11    172.17.27.10    HA Partner   completed
+                 Home Port: e1b
+                      172.17.27.11    172.17.27.13    DR Partner   completed
+                 Home Port: e1b
+                      172.17.27.11    172.17.27.12    DR Auxiliary completed
+
+DR                    Source          Destination
+Group Cluster Node    Network Address Network Address Partner Type Config State
+----- ------- ------- --------------- --------------- ------------ ------------
+2     cluster_B
+              node_B_4-IP
+                 Home Port: e1a
+                      172.17.26.13    172.17.26.12    HA Partner   completed
+                 Home Port: e1a
+                      172.17.26.13    172.17.26.11    DR Partner   completed
+                 Home Port: e1a
+                      172.17.26.13    172.17.26.10    DR Auxiliary completed
+                 Home Port: e1b
+                      172.17.27.13    172.17.27.12    HA Partner   completed
+                 Home Port: e1b
+                      172.17.27.13    172.17.27.11    DR Partner   completed
+                 Home Port: e1b
+                      172.17.27.13    172.17.27.10    DR Auxiliary completed
+              node_B_3-IP
+                 Home Port: e1a
+                      172.17.26.12    172.17.26.13    HA Partner   completed
+                 Home Port: e1a
+                      172.17.26.12    172.17.26.10    DR Partner   completed
+                 Home Port: e1a
+                      172.17.26.12    172.17.26.11    DR Auxiliary completed
+                 Home Port: e1b
+                      172.17.27.12    172.17.27.13    HA Partner   completed
+                 Home Port: e1b
+                      172.17.27.12    172.17.27.10    DR Partner   completed
+                 Home Port: e1b
+                      172.17.27.12    172.17.27.11    DR Auxiliary completed
+24 entries were displayed.
+
+cluster_A::>
+....
+. 驗證磁碟自動指派與分割：
++
+「展示池Pool1」
+
++
+....
+cluster_A::> disk show -pool Pool1
+                     Usable           Disk    Container   Container
+Disk                   Size Shelf Bay Type    Type        Name      Owner
+---------------- ---------- ----- --- ------- ----------- --------- --------
+1.10.4                    -    10   4 SAS     remote      -         node_B_2
+1.10.13                   -    10  13 SAS     remote      -         node_B_2
+1.10.14                   -    10  14 SAS     remote      -         node_B_1
+1.10.15                   -    10  15 SAS     remote      -         node_B_1
+1.10.16                   -    10  16 SAS     remote      -         node_B_1
+1.10.18                   -    10  18 SAS     remote      -         node_B_2
+...
+2.20.0              546.9GB    20   0 SAS     aggregate   aggr0_rha1_a1 node_a_1
+2.20.3              546.9GB    20   3 SAS     aggregate   aggr0_rha1_a2 node_a_2
+2.20.5              546.9GB    20   5 SAS     aggregate   rha1_a1_aggr1 node_a_1
+2.20.6              546.9GB    20   6 SAS     aggregate   rha1_a1_aggr1 node_a_1
+2.20.7              546.9GB    20   7 SAS     aggregate   rha1_a2_aggr1 node_a_2
+2.20.10             546.9GB    20  10 SAS     aggregate   rha1_a1_aggr1 node_a_1
+...
+43 entries were displayed.
+
+cluster_A::>
+....
+. 鏡射根Aggregate：
++
+「torage Aggregate mirror -Aggregate aggr0_node_a_3-ip」
+
++
+
+NOTE: 您必須在每MetroCluster 個環節上完成此步驟。
+
++
+....
+cluster_A::> aggr mirror -aggregate aggr0_node_A_3-IP
+
+Info: Disks would be added to aggregate "aggr0_node_A_3-IP"on node "node_A_3-IP"
+      in the following manner:
+
+      Second Plex
+
+        RAID Group rg0, 3 disks (block checksum, raid_dp)
+                                                            Usable Physical
+          Position   Disk                      Type           Size     Size
+          ---------- ------------------------- ---------- -------- --------
+          dparity    4.20.0                    SAS               -        -
+          parity     4.20.3                    SAS               -        -
+          data       4.20.1                    SAS         546.9GB  558.9GB
+
+      Aggregate capacity available forvolume use would be 467.6GB.
+
+Do you want to continue? {y|n}: y
+
+cluster_A::>
+....
+. 驗證根集合體是否為鏡射：
++
+《集合體展》
+
++
+....
+cluster_A::> aggr show
+
+Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
+--------- -------- --------- ----- ------- ------ ---------------- ------------
+aggr0_node_A_1-FC
+           349.0GB   16.84GB   95% online       1 node_A_1-FC      raid_dp,
+                                                                   mirrored,
+                                                                   normal
+aggr0_node_A_2-FC
+           349.0GB   16.84GB   95% online       1 node_A_2-FC      raid_dp,
+                                                                   mirrored,
+                                                                   normal
+aggr0_node_A_3-IP
+           467.6GB   22.63GB   95% online       1 node_A_3-IP      raid_dp,
+                                                                   mirrored,
+                                                                   normal
+aggr0_node_A_4-IP
+           467.6GB   22.62GB   95% online       1 node_A_4-IP      raid_dp,
+                                                                   mirrored,
+                                                                   normal
+aggr_data_a1
+            1.02TB    1.01TB    1% online       1 node_A_1-FC      raid_dp,
+                                                                   mirrored,
+                                                                   normal
+aggr_data_a2
+            1.02TB    1.01TB    1% online       1 node_A_2-FC      raid_dp,
+                                                                   mirrored,
+....
+
+
+
+
+== 完成MetroCluster 加入的不確定性IP節點
+
+您必須將新的DR群組整合到MetroCluster 「更新」組態中、並在新節點上建立鏡射的資料集合體。
+
+.步驟
+. 設定MetroCluster 執行變更的功能：
++
+《靜態組態》MetroCluster
+
++
+
+NOTE: 您必須執行「MetroCluster 靜態組態」和*「非」* MetroCluster 「靜態組態-重新整理為真」
+
++
+....
+cluster_A::> metrocluster configure
+
+[Job 439] Job succeeded: Configure is successful.
+
+cluster_A::>
+....
+. 確認節點已新增至其DR群組：
++
+「不一樣的秀」MetroCluster
+
++
+....
+cluster_A::> metrocluster node show
+
+DR                               Configuration  DR
+Group Cluster Node               State          Mirroring Mode
+----- ------- ------------------ -------------- --------- --------------------
+1     cluster_A
+              node-A-1-FC        configured     enabled   normal
+              node-A-2-FC        configured     enabled   normal
+      Cluster-B
+              node-B-1-FC        configured     enabled   normal
+              node-B-2-FC        configured     enabled   normal
+2     cluster_A
+              node-A-3-IP        configured     enabled   normal
+              node-A-4-IP        configured     enabled   normal
+      Cluster-B
+              node-B-3-IP        configured     enabled   normal
+              node-B-4-IP        configured     enabled   normal
+8 entries were displayed.
+
+cluster_A::>
+....
+. 在每MetroCluster 個新的EFlash節點上建立鏡射的資料集合體：
++
+「torage Aggregate create -Aggregate gregate名稱-node-name -diskcount無磁碟-mirror true」
+
++
+
+NOTE: 每個站台至少必須建立一個鏡射資料Aggregate。建議MetroCluster 每個站台在支援每個站台的兩個鏡射資料集合體、以裝載MDV磁碟區、不過每個站台只支援一個集合體（但不建議）。支援MetroCluster 的是、其中一個站台具有單一鏡射資料集合體、另一個站台則有多個鏡射資料集合體。
+
++
+下列範例顯示在node_a_1-new上建立Aggregate。
+
++
+....
+cluster_A::> storage aggregate create -aggregate data_a3 -node node_A_1-new -diskcount 10 -mirror t
+
+Info: The layout for aggregate "data_a3" on node "node_A_1-new" would be:
+
+      First Plex
+
+        RAID Group rg0, 5 disks (block checksum, raid_dp)
+                                                            Usable Physical
+          Position   Disk                      Type           Size     Size
+          ---------- ------------------------- ---------- -------- --------
+          dparity    5.10.15                   SAS               -        -
+          parity     5.10.16                   SAS               -        -
+          data       5.10.17                   SAS         546.9GB  547.1GB
+          data       5.10.18                   SAS         546.9GB  558.9GB
+          data       5.10.19                   SAS         546.9GB  558.9GB
+
+      Second Plex
+
+        RAID Group rg0, 5 disks (block checksum, raid_dp)
+                                                            Usable Physical
+          Position   Disk                      Type           Size     Size
+          ---------- ------------------------- ---------- -------- --------
+          dparity    4.20.17                   SAS               -        -
+          parity     4.20.14                   SAS               -        -
+          data       4.20.18                   SAS         546.9GB  547.1GB
+          data       4.20.19                   SAS         546.9GB  547.1GB
+          data       4.20.16                   SAS         546.9GB  547.1GB
+
+      Aggregate capacity available for volume use would be 1.37TB.
+
+Do you want to continue? {y|n}: y
+[Job 440] Job succeeded: DONE
+
+cluster_A::>
+....
+. 以進階權限將MDV_CRS磁碟區從舊節點移至新節點。
++
+.. 顯示用於識別MDV磁碟區的磁碟區：
++
+
+NOTE: 如果每個站台有單一鏡射資料Aggregate、請將兩個MDV磁碟區移到此單一Aggregate。如果您有兩個以上的鏡射資料集合體、請將每個MDV磁碟區移至不同的集合體。
+
++
+以下範例顯示Volume show輸出中的MDV磁碟區：
+
++
+....
+cluster_A::> volume show
+Vserver   Volume       Aggregate    State      Type       Size  Available Used%
+--------- ------------ ------------ ---------- ---- ---------- ---------- -----
+...
+
+cluster_A   MDV_CRS_2c78e009ff5611e9b0f300a0985ef8c4_A
+                       aggr_b1      -          RW            -          -     -
+cluster_A   MDV_CRS_2c78e009ff5611e9b0f300a0985ef8c4_B
+                       aggr_b2      -          RW            -          -     -
+cluster_A   MDV_CRS_d6b0b313ff5611e9837100a098544e51_A
+                       aggr_a1      online     RW         10GB     9.50GB    0%
+cluster_A   MDV_CRS_d6b0b313ff5611e9837100a098544e51_B
+                       aggr_a2      online     RW         10GB     9.50GB    0%
+...
+11 entries were displayed.mple
+....
+.. 設定進階權限層級：
++
+"進階權限"
+
+.. 一次移動一個MDV磁碟區：
++
+「Volume Move start -volume MDV-volume -destination-aggreg-on-new節點-vserver vserver-name」
+
++
+下列範例顯示將MDV_CRS_d6b0b313ff5611e9837100a098544e51_A移至node_a_3上的Aggregate data_A3的命令和輸出。
+
++
+....
+cluster_A::*> vol move start -volume MDV_CRS_d6b0b313ff5611e9837100a098544e51_A -destination-aggregate data_a3 -vserver cluster_A
+
+Warning: You are about to modify the system volume
+         "MDV_CRS_d6b0b313ff5611e9837100a098544e51_A". This might cause severe
+         performance or stability problems. Do not proceed unless directed to
+         do so by support. Do you want to proceed? {y|n}: y
+[Job 494] Job is queued: Move "MDV_CRS_d6b0b313ff5611e9837100a098544e51_A" in Vserver "cluster_A" to aggregate "data_a3". Use the "volume move show -vserver cluster_A -volume MDV_CRS_d6b0b313ff5611e9837100a098544e51_A" command to view the status of this operation.
+....
+.. 使用volume show命令檢查是否已成功移動MDV磁碟區：
++
+「Volume show MDV-name」
+
++
+下列輸出顯示已成功移動MDV Volume。
+
++
+....
+cluster_A::*> vol show MDV_CRS_d6b0b313ff5611e9837100a098544e51_B
+Vserver     Volume       Aggregate    State      Type       Size  Available Used%
+---------   ------------ ------------ ---------- ---- ---------- ---------- -----
+cluster_A   MDV_CRS_d6b0b313ff5611e9837100a098544e51_B
+                       aggr_a2      online     RW         10GB     9.50GB    0%
+....
+.. 返回管理模式：
++
+「et -priv. admin」
+
+
+
+

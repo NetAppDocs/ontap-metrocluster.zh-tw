@@ -1,0 +1,24 @@
+---
+permalink: install-fc/concept_implementing_a_mcc_configuration_with_both_disks_and_array_luns.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, implement, configuration, disks, array, luns 
+summary: 若要實作MetroCluster 含有原生磁碟和陣列LUN的功能區塊組態、您必須確保ONTAP 組態中使用的功能區系統可以連接至儲存陣列。 
+---
+= 實作MetroCluster 包含磁碟和陣列LUN的支援組態
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+若要實作MetroCluster 含有原生磁碟和陣列LUN的功能區塊組態、您必須確保ONTAP 組態中使用的功能區系統可以連接至儲存陣列。
+
+包含磁碟和陣列LUN的實體組態可以有兩個或四個節點。MetroCluster雖然四節點MetroCluster 的不全功能組態必須連接光纖、但雙節點組態可以是彈性配置、也可以連接光纖。
+
+在中 https://mysupport.netapp.com/matrix["NetApp互通性對照表工具IMT （不含）"]、您可以使用儲存解決方案欄位來選擇MetroCluster 您的解決方案。您可以使用*元件總管*來選取元件和ONTAP 更新版本、以精簡搜尋範圍。您可以按一下「*顯示結果*」來顯示符合條件的支援組態清單。
+
+若要使用MetroCluster 原生磁碟和陣列LUN來設定雙節點架構附加的功能、或使用四節點MetroCluster 的功能、您必須使用FC對SAS橋接器、ONTAP 透過FC交換器將含有磁碟櫃的功能不穩定系統與磁碟櫃連接起來。您可以透過FC交換器將陣列LUN連線ONTAP 至各個系統。
+
+link:reference_example_of_a_two_node_fabric_attached_mcc_configuration_with_disks_and_array_luns.html["雙節點架構附加MetroCluster 的支援磁碟和陣列LUN的功能區組態範例"]
+
+link:concept_example_of_a_four_node_mcc_configuration_with_disks_and_array_luns.html["使用磁碟和陣列LUN進行四節點MetroCluster 的實體化組態範例"]

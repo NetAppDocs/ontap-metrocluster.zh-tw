@@ -1,0 +1,21 @@
+---
+permalink: upgrade/task_boot_the_exist_controller_module.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, boot, existing, controller, module 
+summary: 您必須將現有的控制器模組開機ONTAP 至 
+---
+= 開機現有的控制器模組
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須將現有的控制器模組開機ONTAP 至
+
+.步驟
+. 在載入程式提示下、將現有的控制器模組開機ONTAP 至
++
+Boot_ONTAP
+
+

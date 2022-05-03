@@ -1,0 +1,4588 @@
+---
+permalink: install-fc/task_fcsw_brocade_configure_the_brocade_fc_switches_supertask.html 
+sidebar: sidebar 
+keywords: MetroCluster configurations 
+summary: 您必須在MetroCluster Ef2組態中設定每個Brocade交換器架構。 
+---
+= 手動設定Brocade FC交換器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須在MetroCluster Ef2組態中設定每個Brocade交換器架構。
+
+.開始之前
+* 您必須擁有可透過遠端登入或安全Shell（SSH）存取FC交換器的PC或UNIX工作站。
+* 您必須使用四個相同機型的受支援Brocade交換器、以及相同的Brocade Fabric作業系統（FOS）版本和授權。
++
+https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"]
+
++
+在這個解決方案領域、您可以使用儲存解決方案欄位來選擇您的解決方案。IMT MetroCluster您可以使用*元件總管*來選取元件和ONTAP 更新版本、以精簡搜尋範圍。您可以按一下「*顯示結果*」來顯示符合條件的支援組態清單。
+
+* 四個支援的Brocade交換器必須連接至兩個交換器的架構、每個交換器的架構橫跨兩個站台。
+* 每個儲存控制器都必須有四個啟動器連接埠、才能連線至交換器架構。每個儲存控制器必須連接兩個啟動器連接埠至每個光纖。
++
+
+NOTE: 如果符合下列所有條件、您可以設定FAS8020、AFF8020、FAS8200和AFF E4A300系統、每個控制器都有兩個啟動器連接埠（每個架構都有一個啟動器連接埠）：
+
++
+** 可用的FC啟動器連接埠少於四個、無法將其他連接埠設定為FC啟動器。
+** 所有插槽均在使用中、無法新增FC啟動器卡。
+
+
+
+
+.關於這項工作
+* 當連結支援時、您應該啟用交換器間連結（ISL）主幹連線。
++
+link:concept_tdm_wdm.html["使用TDM/WDM設備搭配架構附加MetroCluster 的功能的考量"]
+
+* 所有ISL在同一個Fabric中必須具有相同的長度和相同的速度。
++
+不同的Fabric可採用不同長度。所有Fabric都必須使用相同的速度。
+
+* 不支援Metro E和TDM（SONET/SDH）、也不支援任何非FC原生架構或訊號。
++
+Metro E表示乙太網路架構或訊號是透過Metro距離原生進行、或是透過特定的分時多工（TDM）、多重傳輸協定標籤交換（MPLS）、或是透過Waveler-部門 多工（WDM）進行。
+
+* 不支援TDMS、FCR（原生FC路由）或FCIP擴充功能、以MetroCluster 利支援該交換器架構。
+* 某些交換器MetroCluster 採用支援加密或壓縮的功能、有時也支援這兩種功能。
++
+https://mysupport.netapp.com/matrix["NetApp互通性對照表工具IMT （不含）"]
+
++
+在這個解決方案領域、您可以使用儲存解決方案欄位來選擇您的解決方案。IMT MetroCluster您可以使用*元件總管*來選取元件和ONTAP 更新版本、以精簡搜尋範圍。您可以按一下「*顯示結果*」來顯示符合條件的支援組態清單。
+
+* 不支援Brocade Virtual Fabric（Vf）功能。
+* 支援以網域連接埠為基礎的FC分區、但不支援以全球名稱（WWN）為基礎的分區。
+
+
+
+
+== 檢閱Brocade授權要求
+
+您需要針對MetroCluster 交換器的某些權限才能進行整個交換器的功能。您必須在所有四個交換器上安裝這些授權。
+
+此組態具有下列Brocade授權需求：MetroCluster
+
+* 使用多個ISL的系統之主幹授權（如建議）。
+* Extended Fabric授權（適用於ISL距離超過6公里）
+* 企業授權、適用於具有多個ISL且ISL距離大於6公里的站台
++
+企業授權包括Brocade Network Advisor及所有授權、但額外的連接埠授權除外。
+
+
+
+.步驟
+. 確認已安裝授權：
++
+《許可證》
+
++
+如果您沒有這些授權、請在繼續之前聯絡您的銷售代表。
+
+
+
+
+
+== 將Brocade FC交換器值設為原廠預設值
+
+您必須將交換器設為原廠預設值、以確保組態成功。您也必須為每個交換器指派唯一的名稱。
+
+在本程序的範例中、Fabric包含BrocadeSwitchA和BrocadeSwitchB。
+
+.步驟
+. 建立主控台連線、並登入單一網路架構中的兩個交換器。
+. 持續停用交換器：
++
+「witchcfg堅持 禁用」
+
++
+如此可確保交換器在重新開機或快速開機後仍保持停用狀態。如果此命令不可用，請使用"shwitchdisable"命令。
+
++
+以下範例顯示BrocadeSwitchA上的命令：
+
++
+[listing]
+----
+BrocadeSwitchA:admin> switchcfgpersistentdisable
+----
++
+以下範例顯示BrocadeSwitchB上的命令：
+
++
+[listing]
+----
+BrocadeSwitchB:admin> switchcfgpersistentdisable
+----
+. 設定交換器名稱：
++
+《witchname switch_name》
+
++
+每個交換器都應有唯一的名稱。設定名稱後、提示字元會隨之變更。
+
++
+以下範例顯示BrocadeSwitchA上的命令：
+
++
+[listing]
+----
+BrocadeSwitchA:admin> switchname "FC_switch_A_1"
+FC_switch_A_1:admin>
+----
++
+以下範例顯示BrocadeSwitchB上的命令：
+
++
+[listing]
+----
+BrocadeSwitchB:admin> switchname "FC_Switch_B_1"
+FC_switch_B_1:admin>
+----
+. 將所有連接埠設為預設值：
++
+' portcfgDefault '
+
++
+必須對交換器上的所有連接埠執行此動作。
+
++
+以下範例顯示FC-switch_a_1上的命令：
+
++
+[listing]
+----
+FC_switch_A_1:admin> portcfgdefault 0
+FC_switch_A_1:admin> portcfgdefault 1
+...
+FC_switch_A_1:admin> portcfgdefault 39
+----
++
+下列範例顯示FC-switch_B_1上的命令：
+
++
+[listing]
+----
+FC_switch_B_1:admin> portcfgdefault 0
+FC_switch_B_1:admin> portcfgdefault 1
+...
+FC_switch_B_1:admin> portcfgdefault 39
+----
+. 清除分區資訊：
++
+「cfgdisable'
+
++
+《cfgClear'》
+
++
+《cfgSAVE》
+
++
+以下範例顯示FC-switch_a_1上的命令：
+
++
+[listing]
+----
+FC_switch_A_1:admin> cfgdisable
+FC_switch_A_1:admin> cfgclear
+FC_switch_A_1:admin> cfgsave
+----
++
+下列範例顯示FC-switch_B_1上的命令：
+
++
+[listing]
+----
+FC_switch_B_1:admin> cfgdisable
+FC_switch_B_1:admin> cfgclear
+FC_switch_B_1:admin> cfgsave
+----
+. 將一般交換器設定設為預設值：
++
+"configdefault"
+
++
+以下範例顯示FC-switch_a_1上的命令：
+
++
+[listing]
+----
+FC_switch_A_1:admin> configdefault
+----
++
+以下範例顯示FC-switch_B_1上的命令：
+
++
+[listing]
+----
+FC_switch_B_1:admin> configdefault
+----
+. 將所有連接埠設為非主幹連線模式：
++
+'切換主幹0 '
+
++
+以下範例顯示FC-switch_a_1上的命令：
+
++
+[listing]
+----
+FC_switch_A_1:admin> switchcfgtrunk 0
+----
++
+以下範例顯示FC-switch_B_1上的命令：
+
++
+[listing]
+----
+FC_switch_B_1:admin> switchcfgtrunk 0
+----
+. 在Brocade 6510交換器上、停用Brocade Virtual Fabrics（Vf）功能：
++
+《設定選項》
+
++
+以下範例顯示FC-switch_a_1上的命令：
+
++
+[listing]
+----
+FC_switch_A_1:admin> fosconfig --disable vf
+----
++
+以下範例顯示FC-switch_B_1上的命令：
+
++
+[listing]
+----
+FC_switch_B_1:admin> fosconfig --disable vf
+----
+. 清除管理網域（AD）組態：
++
+廣告選項
+
++
+以下範例顯示FC-switch_a_1上的命令：
+
++
+[listing]
+----
+FC_switch_A_1:admin> switch:admin> ad --select AD0
+FC_switch_A_1:> defzone --noaccess
+FC_switch_A_1:> cfgsave
+FC_switch_A_1:> exit
+FC_switch_A_1:admin> ad --clear -f
+FC_switch_A_1:admin> ad --apply
+FC_switch_A_1:admin> ad --save
+FC_switch_A_1:admin> exit
+----
++
+下列範例顯示FC-switch_B_1上的命令：
+
++
+[listing]
+----
+FC_switch_B_1:admin> switch:admin> ad --select AD0
+FC_switch_A_1:> defzone --noaccess
+FC_switch_A_1:> cfgsave
+FC_switch_A_1:> exit
+FC_switch_B_1:admin> ad --clear -f
+FC_switch_B_1:admin> ad --apply
+FC_switch_B_1:admin> ad --save
+FC_switch_B_1:admin> exit
+----
+. 重新啟動交換器：
++
+"重新開機"
+
++
+以下範例顯示FC-switch_a_1上的命令：
+
++
+[listing]
+----
+FC_switch_A_1:admin> reboot
+----
++
+以下範例顯示FC-switch_B_1上的命令：
+
++
+[listing]
+----
+FC_switch_B_1:admin> reboot
+----
+
+
+
+
+== 設定基本交換器設定
+
+您必須為Brocade交換器設定基本的全域設定、包括網域ID。
+
+本工作包含兩MetroCluster 個景點的每個交換器都必須執行的步驟。
+
+在此程序中、您可以為每個交換器設定唯一的網域ID、如下例所示。在範例中、網域ID 5和7格式為fnetfa_1、網域ID 6和8格式為fnetfa_2。
+
+* FC_switch_a_1已指派給網域ID 5
+* FC_switch_a_2已指派給網域ID 6
+* FC_SWIT_B_1已指派至網域ID 7
+* FC_SWIT_B_2已指派給網域ID 8
+
+
+.步驟
+. 進入組態模式：
++
+設定
+
+. 繼續執行下列提示：
++
+.. 設定交換器的網域ID。
+.. 按* Enter *回應提示、直到您進入「RDP Polling Cycle」（RDP輪詢週期）、然後將該值設為「0」、以停用輪詢。
+.. 按* Enter *鍵、直到您回到交換器提示。
++
+[listing]
+----
+FC_switch_A_1:admin> configure
+Fabric parameters = y
+Domain_id = 5
+.
+.
+
+RSCN Transmission Mode [yes, y, no, no: [no] y
+
+End-device RSCN Transmission Mode
+ (0 = RSCN with single PID, 1 = RSCN with multiple PIDs, 2 = Fabric RSCN): (0..2) [1]
+Domain RSCN To End-device for switch IP address or name change
+ (0 = disabled, 1 = enabled): (0..1) [0] 1
+
+.
+.
+RDP Polling Cycle(hours)[0 = Disable Polling]: (0..24) [1] 0
+----
+
+
+. 如果您每個架構使用兩個以上的ISL、則可以設定依序傳送（IOD）框架或依序傳送（OD）框架。
++
+
+NOTE: 建議使用標準IOD設定。只有在必要時才應設定ood。
+
++
+link:concept_prepare_for_the_mcc_installation.html["使用TDM/WDM設備搭配架構附加MetroCluster 的功能的考量"]
+
++
+.. 必須在每個交換器架構上執行下列步驟、才能設定框架的IOD：
++
+... 啟用IOD：
++
+「iodset」
+
+... 將進階效能調校（APT）原則設為1：
++
+《aptpolicy 1》
+
+... 停用動態負載共享（DLS）：
++
+"DlsRESET"
+
+... 使用「iodshow」、「aptpolicy」和「dlsshow」命令來驗證IOD設定。
++
+例如、在FC_switch_a_1上發出下列命令：
+
++
+[listing]
+----
+FC_switch_A_1:admin> iodshow
+    IOD is set
+
+    FC_switch_A_1:admin> aptpolicy
+    Current Policy: 1 0(ap)
+
+    3 0(ap) : Default Policy
+    1: Port Based Routing Policy
+    3: Exchange Based Routing Policy
+         0: AP Shared Link Policy
+         1: AP Dedicated Link Policy
+    command aptpolicy completed
+
+    FC_switch_A_1:admin> dlsshow
+    DLS is not set
+----
+... 在第二個交換器架構上重複這些步驟。
+
+
+.. 必須在每個交換器架構上執行下列步驟、才能設定框架的正常狀態：
++
+... 啟用ood：
++
+"iodRESET"
+
+... 將進階效能調校（APT）原則設為3：
++
+《aptpolicy 3》
+
+... 停用動態負載共享（DLS）：
++
+"DlsRESET"
+
+... 驗證良好設定：
++
+「iodshow」
+
++
+《aptpolicy》
+
++
+「Dlsshow」
+
++
+例如、在FC_switch_a_1上發出下列命令：
+
++
+[listing]
+----
+FC_switch_A_1:admin> iodshow
+    IOD is not set
+
+    FC_switch_A_1:admin> aptpolicy
+    Current Policy: 3 0(ap)
+    3 0(ap) : Default Policy
+    1: Port Based Routing Policy
+    3: Exchange Based Routing Policy
+    0: AP Shared Link Policy
+    1: AP Dedicated Link Policy
+    command aptpolicy completed
+
+
+    FC_switch_A_1:admin> dlsshow
+    DLS is set by default with current routing policy
+----
+... 在第二個交換器架構上重複這些步驟。
++
+
+NOTE: 在ONTAP 控制器模組上設定功能時、必須在MetroCluster 每個控制器模組上明確設定ood、以供採用此功能。
+
++
+https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/concept_configure_the_mcc_software_in_ontap.html#configuring-in-order-delivery-or-out-of-order-delivery-of-frames-on-ontap-software["設定以順序交付或不按順序交付以ONTAP 利在各種軟體上交付框架"]
+
+
+
+
+
+. 驗證交換器是否使用動態連接埠授權方法。
++
+.. 執行授權命令：
++
+--
+「licensePort - show」
+
+[listing]
+----
+FC_switch_A_1:admin> licenseport -show
+24 ports are available in this switch
+Full POD license is installed
+Dynamic POD method is in use
+----
+
+NOTE: Brocade FabricOS 8.0之前的版本會以admin和8.0之後版本的身分執行下列命令、並以root身分執行這些命令。
+
+--
+.. 啟用root使用者。
++
+如果root使用者已被Brocade停用、請啟用root使用者、如下列範例所示：
+
++
+[listing]
+----
+FC_switch_A_1:admin> userconfig --change root -e yes
+FC_switch_A_1:admin> rootaccess --set consoleonly
+----
+.. 執行授權命令：
++
+「licensePort - show」
+
++
+[listing]
+----
+FC_switch_A_1:root> licenseport -show
+24 ports are available in this switch
+Full POD license is installed
+Dynamic POD method is in use
+----
+.. 將授權方法變更為動態：
++
+「licenseport -方法動態」
+
++
+
+NOTE: 如果未使用動態授權方法（如果方法為靜態）、則必須將授權方法變更為動態。如果使用動態授權方法、請跳過此步驟。
+
++
+[listing]
+----
+FC_switch_A_1:admin> licenseport --method dynamic
+The POD method has been changed to dynamic.
+Please reboot the switch now for this change to take effect
+----
+
+
+. 啟用T11-FC-ZE-ZE-Server-mib的陷阱、以成功監控ONTAP 位於下列情況的交換器：
++
+.. 啟用T11-FC-ZE-SERVER-MIB..
++
+「nmpconfig --set mibCapability -mib_name T11-FC-ZON-Server-mib -bitmask 0x3f'
+
+.. 啟用T11-FC-ZE-Server-mib設陷：
++
+「nmpconfig -啟用mibCapability -MIB_name SW-mib -fap_name swZoneConfigChangelp」
+
+.. 在第二個交換器架構上重複上述步驟。
+
+
+. *選用*：如果您將社群字串設為「公有」以外的值、則必須ONTAP 使用您指定的社群字串來設定「靜態健全狀況監視器」：
++
+.. 變更現有的社群字串：
++
+「nmpconfig - set npv1」
+
+.. 按* Enter *鍵、直到看到「Community（ro）：[public]（社群（ro）：[public]）」文字。
+.. 輸入所需的社群字串。
++
+在FC_switch_a_1上：
+
++
+[listing]
+----
+FC_switch_A_1:admin> snmpconfig --set snmpv1
+SNMP community and trap recipient configuration:
+Community (rw): [Secret C0de]
+Trap Recipient's IP address : [0.0.0.0]
+Community (rw): [OrigEquipMfr]
+Trap Recipient's IP address : [0.0.0.0]
+Community (rw): [private]
+Trap Recipient's IP address : [0.0.0.0]
+Community (ro): [public] mcchm     <<<<<< change the community string to the desired value,
+Trap Recipient's IP address : [0.0.0.0]    in this example it is set to "mcchm"
+Community (ro): [common]
+Trap Recipient's IP address : [0.0.0.0]
+Community (ro): [FibreChannel]
+Trap Recipient's IP address : [0.0.0.0]
+Committing configuration.....done.
+FC_switch_A_1:admin>
+----
++
+在FC_SWIT_B_1上：
+
++
+[listing]
+----
+FC_switch_B_1:admin> snmpconfig --set snmpv1
+SNMP community and trap recipient configuration:
+Community (rw): [Secret C0de]
+Trap Recipient's IP address : [0.0.0.0]
+Community (rw): [OrigEquipMfr]
+Trap Recipient's IP address : [0.0.0.0]
+Community (rw): [private]
+Trap Recipient's IP address : [0.0.0.0]
+Community (ro): [public] mcchm      <<<<<< change the community string to the desired value,
+Trap Recipient's IP address : [0.0.0.0]     in this example it is set to "mcchm"
+Community (ro): [common]
+Trap Recipient's IP address : [0.0.0.0]
+Community (ro): [FibreChannel]
+Trap Recipient's IP address : [0.0.0.0]
+Committing configuration.....done.
+FC_switch_B_1:admin>
+----
+
+
+. 重新啟動交換器：
++
+"重新開機"
+
++
+在FC_switch_a_1上：
+
++
+[listing]
+----
+FC_switch_A_1:admin> reboot
+----
++
+在FC_SWIT_B_1上：
+
++
+[listing]
+----
+FC_switch_B_1:admin> reboot
+----
+. 持續啟用交換器：
++
+「witchcfg堅持」
+
++
+在FC_switch_a_1上：
+
++
+[listing]
+----
+FC_switch_A_1:admin> switchcfgpersistentenable
+----
++
+在FC_SWIT_B_1上：
+
++
+[listing]
+----
+FC_switch_B_1:admin> switchcfgpersistentenable
+----
+
+
+
+
+== 在Brocade DCX 8510-8交換器上設定基本交換器設定
+
+您必須為Brocade交換器設定基本的全域設定、包括網域ID。
+
+您必須在MetroCluster 這兩個景點的每個交換器上執行步驟。在此程序中、您可以設定每個交換器的網域ID、如下列範例所示：
+
+* FC_switch_a_1已指派給網域ID 5
+* FC_switch_a_2已指派給網域ID 6
+* FC_SWIT_B_1已指派至網域ID 7
+* FC_SWIT_B_2已指派給網域ID 8
+
+
+在上一個範例中、網域ID 5和7形成fnetfa_1、網域ID 6和8形成fnetfa_2。
+
+
+NOTE: 當每個站台只使用一個DCX 8510-8交換器時、您也可以使用此程序來設定交換器。
+
+使用此程序、您應該在每個Brocade DCX 8510-8交換器上建立兩個邏輯交換器。在兩個Brocade DCX8510-8交換器上建立的兩個邏輯交換器將形成兩個邏輯架構、如下列範例所示：
+
+* 邏輯架構1：Switch1/Blades1和Switch 2 Blade 1
+* 邏輯架構2：交換器1/Blade2和交換器2刀鋒2
+
+
+.步驟
+. 進入命令模式：
++
+設定
+
+. 繼續執行下列提示：
++
+.. 設定交換器的網域ID。
+.. 繼續選擇* Enter *直到您進入「RDP Polling Cycle」（RDP輪詢週期）、然後將值設為「0」以停用輪詢。
+.. 選擇* Enter *、直到您回到交換器提示。
++
+[listing]
+----
+FC_switch_A_1:admin> configure
+Fabric parameters = y
+Domain_id = `5
+
+
+RDP Polling Cycle(hours)[0 = Disable Polling]: (0..24) [1] 0
+`
+----
+
+
+. 在fabr_1和fabr_2中的所有交換器上重複這些步驟。
+. 設定虛擬架構。
++
+.. 在交換器上啟用虛擬架構：
++
+《fifconfig-enablevf》
+
+.. 將系統設定為在所有邏輯交換器上使用相同的基礎組態：
++
+"configurechassis（組態機箱）"
+
++
+以下範例顯示「configurechassis」命令的輸出：
+
++
+[listing]
+----
+System (yes, y, no, n): [no] n
+cfgload attributes (yes, y, no, n): [no] n
+Custom attributes (yes, y, no, n): [no] y
+Config Index (0 to ignore): (0..1000) [3]:
+----
+
+
+. 建立及設定邏輯交換器：
++
+「組態設定-建立fabricID」
+
+. 將刀鋒伺服器的所有連接埠新增至虛擬架構：
++
+「lscfg-config fabricID -slot slot -port slabout-port - High-port」
+
++
+
+NOTE: 構成邏輯光纖的刀鋒伺服器（例如 交換器1刀鋒1和交換器3刀鋒1）需要相同的架構ID。
+
++
+[listing]
+----
+setcontext fabricid
+switchdisable
+configure
+<configure the switch per the above settings>
+switchname unique switch name
+switchenable
+----
+
+
+link:concept_prepare_for_the_mcc_installation.html["使用Brocade DCX 8510-8交換器的需求"]
+
+
+
+== 使用FC連接埠在Brocade FC交換器上設定E連接埠
+
+對於使用FC連接埠設定交換器間連結（ISL）的Brocade交換器、您必須在連接ISL的每個交換器架構上設定交換器連接埠。這些ISL連接埠也稱為E連接埠。
+
+.開始之前
+* FC交換器架構中的所有ISL都必須設定相同的速度和距離。
+* 交換器連接埠與小型可插拔（SFP）的組合必須支援速度。
+* 支援的ISL距離取決於FC交換器機型。
++
+https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"]
+
++
+在這個解決方案領域、您可以使用儲存解決方案欄位來選擇您的解決方案。IMT MetroCluster您可以使用*元件總管*來選取元件和ONTAP 更新版本、以精簡搜尋範圍。您可以按一下「*顯示結果*」來顯示符合條件的支援組態清單。
+
+* ISL連結必須有專用的Lambda、而且Brocade必須支援距離、交換器類型和Fabric作業系統（FOS）的連結。
+
+
+在發出「portCfgLong Distance」命令時、您不得使用L0設定。相反地、您應該使用LE或LS設定、以最低LE距離層級設定Brocade交換器上的距離。
+
+在使用xWM/TDM設備時、切勿在發出「portCfgLong Distance」命令時使用LD設定。您應該改用LE或LS設定來設定Brocade交換器的距離。
+
+您必須為每個FC交換器架構執行此工作。
+
+下表顯示不同交換器的ISL連接埠、以及執行ONTAP 版本號為9.1或9.2的組態中不同數量的ISL。本節所示範例適用於Brocade 6505交換器。您應該修改範例、以使用適用於您交換器類型的連接埠。
+
+如果您的組態執行ONTAP 的是NetApp 9.0或更早版本、請參閱 link:concept_port_assignments_for_fc_switches_when_using_ontap_9_0.html["FC交換器的連接埠指派（使用ONTAP 功能）9.0"]。
+
+您的組態必須使用所需的ISL數。
+
+|===
+
+
+| 交換器模式 | ISL連接埠 | 交換器連接埠 
+
+
+.4+| Brocade 6520 | ISL連接埠1 | 23 
+
+
+| ISL連接埠2 | 47 
+
+
+| ISL連接埠3 | 71. 
+
+
+| ISL連接埠4. | 95 
+
+
+.4+| Brocade 6505 | ISL連接埠1 | 20 
+
+
+| ISL連接埠2 | 21 
+
+
+| ISL連接埠3 | 22 
+
+
+| ISL連接埠4. | 23 
+
+
+.8+| Brocade 6510和Brocade DCX 8510-8 | ISL連接埠1 | 40 
+
+
+| ISL連接埠2 | 41. 
+
+
+| ISL連接埠3 | 42. 
+
+
+| ISL連接埠4. | 43. 
+
+
+| ISL連接埠5. | 44 
+
+
+| ISL連接埠6. | 45 
+
+
+| ISL連接埠7. | 46 
+
+
+| ISL連接埠8. | 47 
+
+
+.6+| Brocade 7810  a| 
+ISL連接埠1
+ a| 
+GE2（10-Gbps）
+
+
+
+ a| 
+ISL連接埠2
+ a| 
+地理3（10-Gbps）
+
+
+
+ a| 
+ISL連接埠3
+ a| 
+地理4（10-Gbps）
+
+
+
+ a| 
+ISL連接埠4.
+ a| 
+地理5（10-Gbps）
+
+
+
+ a| 
+ISL連接埠5.
+ a| 
+地理6（10-Gbps）
+
+
+
+ a| 
+ISL連接埠6.
+ a| 
+地理7（10-Gbps）
+
+
+
+.4+| Brocade 7840 *注意：* Brocade 7840交換器支援兩個40 Gbps VE-port或每個交換器最多四個10 Gbps VE-port、以建立FCIP ISL。  a| 
+ISL連接埠1
+ a| 
+ge0（40-Gbps）或GE2（10-Gbps）
+
+
+
+ a| 
+ISL連接埠2
+ a| 
+GE1（40-Gbps）或ge3（10-Gbps）
+
+
+
+ a| 
+ISL連接埠3
+ a| 
+地理10（10-Gbps）
+
+
+
+ a| 
+ISL連接埠4.
+ a| 
+地理11（10-Gbps）
+
+
+
+.4+| Brocade G610  a| 
+ISL連接埠1
+ a| 
+20
+
+
+
+ a| 
+ISL連接埠2
+ a| 
+21
+
+
+
+ a| 
+ISL連接埠3
+ a| 
+22
+
+
+
+ a| 
+ISL連接埠4.
+ a| 
+23
+
+
+
+.7+| Brocade G620、G620-1、G630、G630-1、G720  a| 
+ISL連接埠1
+ a| 
+40
+
+
+
+ a| 
+ISL連接埠2
+ a| 
+41.
+
+
+
+ a| 
+ISL連接埠3
+ a| 
+42.
+
+
+
+ a| 
+ISL連接埠4.
+ a| 
+43.
+
+
+
+ a| 
+ISL連接埠5.
+ a| 
+44
+
+
+
+ a| 
+ISL連接埠6.
+ a| 
+45
+
+
+
+ a| 
+ISL連接埠7.
+ a| 
+46
+
+|===
+.步驟
+. [[step1_Brocade組態]設定連接埠速度：
++
+「portcfgspeed port-numberSpeed」
+
++
+您必須使用路徑中元件所支援的最高通用速度。
+
++
+在下列範例中、每個Fabric有兩個ISL：
+
++
+[listing]
+----
+FC_switch_A_1:admin> portcfgspeed 20 16
+FC_switch_A_1:admin> portcfgspeed 21 16
+
+FC_switch_B_1:admin> portcfgspeed 20 16
+FC_switch_B_1:admin> portcfgspeed 21 16
+----
+. 設定每個ISL的主幹連線模式：
++
+「portcfgTRKport Port-Number」
+
++
+** 如果您要設定ISL進行主幹連線（IOD）、請將portcfgtrunk連接埠編號設定為1、如下列範例所示：
++
+[listing]
+----
+FC_switch_A_1:admin> portcfgtrunkport 20 1
+FC_switch_A_1:admin> portcfgtrunkport 21 1
+FC_switch_B_1:admin> portcfgtrunkport 20 1
+FC_switch_B_1:admin> portcfgtrunkport 21 1
+----
+** 如果您不想將ISL設定為主幹（ood）、請將portcfgtrunkport-number設定為0、如下列範例所示：
++
+[listing]
+----
+FC_switch_A_1:admin> portcfgtrunkport 20 0
+FC_switch_A_1:admin> portcfgtrunkport 21 0
+FC_switch_B_1:admin> portcfgtrunkport 20 0
+FC_switch_B_1:admin> portcfgtrunkport 21 0
+----
+
+
+. 為每個ISL連接埠啟用QoS流量：
++
+「portcfgqos --enable port-number'
+
++
+在下列範例中、每個交換器架構有兩個ISL：
+
++
+[listing]
+----
+FC_switch_A_1:admin> portcfgqos --enable 20
+FC_switch_A_1:admin> portcfgqos --enable 21
+
+FC_switch_B_1:admin> portcfgqos --enable 20
+FC_switch_B_1:admin> portcfgqos --enable 21
+----
+. 驗證設定：
++
+「portCfgShow命令」
+
++
+下列範例顯示使用兩個ISL連線至連接埠20和連接埠21的組態輸出。IOD的主幹連接埠設定應為開啟、而OD的主幹連接埠設定應為關閉：
+
++
+[listing]
+----
+
+Ports of Slot 0   12  13   14 15    16  17  18  19   20  21 22  23    24  25  26  27
+----------------+---+---+---+---+-----+---+---+---+----+---+---+---+-----+---+---+---
+Speed             AN  AN  AN  AN    AN  AN  8G  AN   AN  AN  16G  16G    AN  AN  AN  AN
+Fill Word         0   0   0   0     0   0   3   0    0   0   3   3     3   0   0   0
+AL_PA Offset 13   ..  ..  ..  ..    ..  ..  ..  ..   ..  ..  ..  ..    ..  ..  ..  ..
+Trunk Port        ..  ..  ..  ..    ..  ..  ..  ..   ON  ON  ..  ..    ..  ..  ..  ..
+Long Distance     ..  ..  ..  ..    ..  ..  ..  ..   ..  ..  ..  ..    ..  ..  ..  ..
+VC Link Init      ..  ..  ..  ..    ..  ..  ..  ..   ..  ..  ..  ..    ..  ..  ..  ..
+Locked L_Port     ..  ..  ..  ..    ..  ..  ..  ..   ..  ..  ..  ..    ..  ..  ..  ..
+Locked G_Port     ..  ..  ..  ..    ..  ..  ..  ..   ..  ..  ..  ..    ..  ..  ..  ..
+Disabled E_Port   ..  ..  ..  ..    ..  ..  ..  ..   ..  ..  ..  ..    ..  ..  ..  ..
+Locked E_Port     ..  ..  ..  ..    ..  ..  ..  ..   ..  ..  ..  ..    ..  ..  ..  ..
+ISL R_RDY Mode    ..  ..  ..  ..    ..  ..  ..  ..   ..  ..  ..  ..    ..  ..  ..  ..
+RSCN Suppressed   ..  ..  ..  ..    ..  ..  ..  ..   ..  ..  ..  ..    ..  ..  ..  ..
+Persistent Disable..  ..  ..  ..    ..  ..  ..  ..   ..  ..  ..  ..    ..  ..  ..  ..
+LOS TOV enable    ..  ..  ..  ..    ..  ..  ..  ..   ..  ..  ..  ..    ..  ..  ..  ..
+NPIV capability   ON  ON  ON  ON    ON  ON  ON  ON   ON  ON  ON  ON    ON  ON  ON  ON
+NPIV PP Limit    126 126 126 126   126 126 126 126  126 126 126 126   126 126 126 126
+QOS E_Port        AE  AE  AE  AE    AE  AE  AE  AE   AE  AE  AE  AE    AE  AE  AE  AE
+Mirror Port       ..  ..  ..  ..    ..  ..  ..  ..   ..  ..  ..  ..    ..  ..  ..  ..
+Rate Limit        ..  ..  ..  ..    ..  ..  ..  ..   ..  ..  ..  ..    ..  ..  ..  ..
+Credit Recovery   ON  ON  ON  ON    ON  ON  ON  ON   ON  ON  ON  ON    ON  ON  ON  ON
+Fport Buffers     ..  ..  ..  ..    ..  ..  ..  ..   ..  ..  ..  ..    ..  ..  ..  ..
+Port Auto Disable ..  ..  ..  ..    ..  ..  ..  ..   ..  ..  ..  ..    ..  ..  ..  ..
+CSCTL mode        ..  ..  ..  ..    ..  ..  ..  ..   ..  ..  ..  ..    ..  ..  ..  ..
+
+Fault Delay       0  0  0  0    0  0  0  0   0  0  0  0    0  0  0  0
+----
+. 計算ISL距離。
++
+由於FC-VI的行為、距離必須設定為實際距離的1.5倍、最小距離必須為10公里（使用LE距離等級）。
+
++
+ISL的距離計算方式如下、四捨五入至下一整公里：
+
++
+1.5 x Real_Distance =距離
+
++
+如果距離為3公里、則1.5 x 3公里= 4.5公里此距離低於10公里、因此ISL必須設定為LE距離等級。
+
++
+如果距離為20公里、則1.5 x 20公里= 30公里ISL必須設為30公里、且必須使用LS距離等級。
+
+. 設定每個ISL連接埠的距離：
++
+「portcfglong平行 相距_連接埠距離層級_ vc連結_初始化_距離_」
+
++
+「VC_LINK_INIT」值「1」使用ARB填滿字（預設）。值「0」使用閒置。所需的值可能取決於所使用的連結。每個ISL連接埠都必須重複執行命令。
+
++
+如前一步驟所示、ISL距離為3公里、設定為4.5公里、預設的「VC_LINK_INIT」值為「1」。由於4.5公里的設定低於10公里、因此連接埠必須設定為LE距離等級：
+
++
+[listing]
+----
+FC_switch_A_1:admin> portcfglongdistance 20 LE 1
+
+FC_switch_B_1:admin> portcfglongdistance 20 LE 1
+----
++
+如前一步驟範例所示、ISL距離為20公里、設定為30公里、預設VC_LINK_INIT值為「1」：
+
++
+[listing]
+----
+FC_switch_A_1:admin> portcfglongdistance 20 LS 1 -distance 30
+
+FC_switch_B_1:admin> portcfglongdistance 20 LS 1 -distance 30
+----
+. 確認距離設定：
++
+「portbuffershow」
+
++
+LE的距離等級顯示為10公里
+
++
+下列範例顯示在連接埠20和連接埠21上使用ISL的組態輸出：
+
++
+[listing]
+----
+FC_switch_A_1:admin> portbuffershow
+
+User  Port     Lx      Max/Resv    Buffer Needed    Link      Remaining
+Port  Type    Mode     Buffers     Usage  Buffers   Distance  Buffers
+----  ----    ----     -------     ------ -------   --------- ---------
+...
+ 20     E      -          8         67      67       30km
+ 21     E      -          8         67      67       30km
+...
+ 23            -          8          0      -        -        466
+----
+. 驗證兩個交換器是否形成一個網路：
++
+「秀秀」
+
++
+下列範例顯示在連接埠20和連接埠21上使用ISL的組態輸出：
+
++
+[listing]
+----
+FC_switch_A_1:admin> switchshow
+switchName: FC_switch_A_1
+switchType: 109.1
+switchState:Online
+switchMode: Native
+switchRole: Subordinate
+switchDomain:       5
+switchId:   fffc01
+switchWwn:  10:00:00:05:33:86:89:cb
+zoning:             OFF
+switchBeacon:       OFF
+
+Index Port Address Media Speed State  Proto
+===========================================
+...
+20   20  010C00   id    16G  Online FC  LE E-Port  10:00:00:05:33:8c:2e:9a "FC_switch_B_1" (downstream)(trunk master)
+21   21  010D00   id    16G  Online FC  LE E-Port  (Trunk port, master is Port 20)
+...
+
+FC_switch_B_1:admin> switchshow
+switchName: FC_switch_B_1
+switchType: 109.1
+switchState:Online
+switchMode: Native
+switchRole: Principal
+switchDomain:       7
+switchId:   fffc03
+switchWwn:  10:00:00:05:33:8c:2e:9a
+zoning:             OFF
+switchBeacon:       OFF
+
+Index Port Address Media Speed State Proto
+==============================================
+...
+20   20  030C00   id    16G  Online  FC  LE E-Port  10:00:00:05:33:86:89:cb "FC_switch_A_1" (downstream)(Trunk master)
+21   21  030D00   id    16G  Online  FC  LE E-Port  (Trunk port, master is Port 20)
+...
+----
+. 確認架構的組態：
++
+《fabricshow》
+
++
+[listing]
+----
+FC_switch_A_1:admin> fabricshow
+   Switch ID   Worldwide Name      Enet IP Addr FC IP Addr Name
+-----------------------------------------------------------------
+1: fffc01 10:00:00:05:33:86:89:cb 10.10.10.55  0.0.0.0    "FC_switch_A_1"
+3: fffc03 10:00:00:05:33:8c:2e:9a 10.10.10.65  0.0.0.0   >"FC_switch_B_1"
+----
++
+[listing]
+----
+FC_switch_B_1:admin> fabricshow
+   Switch ID   Worldwide Name     Enet IP Addr FC IP Addr   Name
+----------------------------------------------------------------
+1: fffc01 10:00:00:05:33:86:89:cb 10.10.10.55  0.0.0.0     "FC_switch_A_1"
+
+3: fffc03 10:00:00:05:33:8c:2e:9a 10.10.10.65  0.0.0.0    >"FC_switch_B_1
+----
+. [[step10_Brocade組態]確認ISL的主幹連線：
++
+《警示》
+
++
+** 如果您要設定ISL進行主幹連線（IOD）、應該會看到類似下列的輸出：
++
+[listing]
+----
+FC_switch_A_1:admin> trunkshow
+ 1: 20-> 20 10:00:00:05:33:ac:2b:13 3 deskew 15 MASTER
+    21-> 21 10:00:00:05:33:8c:2e:9a 3 deskew 16
+ FC_switch_B_1:admin> trunkshow
+ 1: 20-> 20 10:00:00:05:33:86:89:cb 3 deskew 15 MASTER
+    21-> 21 10:00:00:05:33:86:89:cb 3 deskew 16
+----
+** 如果您未設定ISL進行主幹連線（ood）、您應該會看到類似下列的輸出：
++
+[listing]
+----
+FC_switch_A_1:admin> trunkshow
+ 1: 20-> 20 10:00:00:05:33:ac:2b:13 3 deskew 15 MASTER
+ 2: 21-> 21 10:00:00:05:33:8c:2e:9a 3 deskew 16 MASTER
+FC_switch_B_1:admin> trunkshow
+ 1: 20-> 20 10:00:00:05:33:86:89:cb 3 deskew 15 MASTER
+ 2: 21-> 21 10:00:00:05:33:86:89:cb 3 deskew 16 MASTER
+----
+
+
+. 重複 <<step1_brocade_config,步驟1.>> 透過 <<step10_brocade_config,步驟10>> 適用於第二個FC交換器網路。
+
+
+link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）"]
+
+
+
+== 在Brocade FC 7840交換器上設定10 Gbps VE連接埠
+
+使用10 Gbps VE連接埠（使用FCIP）用於ISL時、您必須在每個連接埠上建立IP介面、並在每個通道中設定FCIP通道和電路。
+
+此程序必須在MetroCluster 整個交換器架構上執行、以支援整個流程。
+
+本程序中的範例假設兩台Brocade 7840交換器具有下列IP位址：
+
+* FC_switch_a_1為本機。
+* FC_SWIT_B_1是遠端的。
+
+
+.步驟
+. 為光纖網路中兩台交換器的10 Gbps連接埠建立IP介面（ipIF）位址：
++
+「portcfg ipIF FC_switch1_namefirst_port_name create FC_switch1_ip_address netmask_number vlan 2 MTU auto'
+
++
+下列命令會在FC_switch_a_1的連接埠GE2.DP0和ge3.DP0上建立ipIF位址：
+
++
+[listing]
+----
+portcfg ipif  ge2.dp0 create  10.10.20.71 netmask 255.255.0.0 vlan 2 mtu auto
+portcfg ipif  ge3.dp0 create  10.10.21.71 netmask 255.255.0.0 vlan 2 mtu auto
+----
++
+下列命令會在FC_switch_B_1的連接埠GE2.DP0和ge3.DP0上建立ipIF位址：
+
++
+[listing]
+----
+portcfg ipif  ge2.dp0 create  10.10.20.72 netmask 255.255.0.0 vlan 2 mtu auto
+portcfg ipif  ge3.dp0 create  10.10.21.72 netmask 255.255.0.0 vlan 2 mtu auto
+----
+. 驗證兩台交換器上的ipIF位址是否已成功建立：
++
+「portShow ipif all」
+
++
+以下命令顯示交換器FC_switch_a_1上的ipIF位址：
+
++
+[listing]
+----
+FC_switch_A_1:root> portshow ipif all
+
+ Port         IP Address                     / Pfx  MTU   VLAN  Flags
+--------------------------------------------------------------------------------
+ ge2.dp0      10.10.20.71                    / 24   AUTO  2     U R M I
+ ge3.dp0      10.10.21.71                    / 20   AUTO  2     U R M I
+--------------------------------------------------------------------------------
+Flags: U=Up B=Broadcast D=Debug L=Loopback P=Point2Point R=Running I=InUse
+       N=NoArp PR=Promisc M=Multicast S=StaticArp LU=LinkUp X=Crossport
+----
++
+以下命令顯示交換器FC_switch_B_1上的ipIF位址：
+
++
+[listing]
+----
+FC_switch_B_1:root> portshow ipif all
+
+ Port         IP Address                     / Pfx  MTU   VLAN  Flags
+--------------------------------------------------------------------------------
+ ge2.dp0      10.10.20.72                    / 24   AUTO  2     U R M I
+ ge3.dp0      10.10.21.72                    / 20   AUTO  2     U R M I
+--------------------------------------------------------------------------------
+Flags: U=Up B=Broadcast D=Debug L=Loopback P=Point2Point R=Running I=InUse
+       N=NoArp PR=Promisc M=Multicast S=StaticArp LU=LinkUp X=Crossport
+----
+. 使用DP0上的連接埠建立兩個FCIP通道中的第一個：
++
+《portcfg fciptunn通道》
+
++
+此命令會建立具有單一電路的通道。
+
++
+下列命令會在交換器FC_switch_a_1上建立通道：
+
++
+[listing]
+----
+portcfg fciptunnel 24 create -S 10.10.20.71  -D 10.10.20.72 -b 10000000 -B 10000000
+----
++
+下列命令會在交換器FC_switch_B_1上建立通道：
+
++
+[listing]
+----
+portcfg fciptunnel 24 create -S 10.10.20.72  -D 10.10.20.71 -b 10000000 -B 10000000
+----
+. 確認FCIP通道已成功建立：
++
+「portShow fiptunnall」
+
++
+下列範例顯示通道已建立且電路已啟動：
+
++
+[listing]
+----
+FC_switch_B_1:root>
+
+ Tunnel Circuit  OpStatus  Flags    Uptime  TxMBps  RxMBps ConnCnt CommRt Met/G
+--------------------------------------------------------------------------------
+ 24    -         Up      ---------     2d8m    0.05    0.41   3      -       -
+--------------------------------------------------------------------------------
+ Flags (tunnel): i=IPSec f=Fastwrite T=TapePipelining F=FICON r=ReservedBW
+                 a=FastDeflate d=Deflate D=AggrDeflate P=Protocol
+                 I=IP-Ext
+----
+. 為DP0建立額外的電路。
++
+下列命令會在DP0的交換器FC_switch_a_1上建立一個電路：
+
++
+[listing]
+----
+portcfg fcipcircuit 24 create 1 -S 10.10.21.71 -D 10.10.21.72  --min-comm-rate 5000000 --max-comm-rate 5000000
+----
++
+下列命令會在DP0的交換器FC_switch_B_1上建立一個電路：
+
++
+[listing]
+----
+portcfg fcipcircuit 24 create 1 -S 10.10.21.72 -D 10.10.21.71  --min-comm-rate 5000000 --max-comm-rate 5000000
+----
+. 確認已成功建立所有電路：
++
+「portShow fcipcall」
+
++
+下列命令會顯示電路及其狀態：
+
++
+[listing]
+----
+FC_switch_A_1:root> portshow fcipcircuit all
+
+ Tunnel Circuit  OpStatus  Flags    Uptime  TxMBps  RxMBps ConnCnt CommRt Met/G
+--------------------------------------------------------------------------------
+ 24    0 ge2     Up      ---va---4    2d12m    0.02    0.03   3 10000/10000 0/-
+ 24    1 ge3     Up      ---va---4    2d12m    0.02    0.04   3 10000/10000 0/-
+--------------------------------------------------------------------------------
+ Flags (circuit): h=HA-Configured v=VLAN-Tagged p=PMTU i=IPSec 4=IPv4 6=IPv6
+                 ARL a=Auto r=Reset s=StepDown t=TimedStepDown  S=SLA
+----
+
+
+
+
+== 在Brocade 7810和7840 FC交換器上設定40 Gbps VE-port
+
+使用兩個40 GbE VE-port（使用FCIP）用於ISL時、您必須在每個連接埠上建立IP介面、並在每個通道中設定FCIP通道和電路。
+
+此程序必須在MetroCluster 整個交換器架構上執行、以支援整個流程。
+
+本程序的範例使用兩個交換器：
+
+* FC_switch_a_1為本機。
+* FC_SWIT_B_1是遠端的。
+
+
+.步驟
+. 為光纖中的兩台交換器上的40 Gbps連接埠建立IP介面（ipIF）位址：
++
+「portcfg ipIF FC_switch_namefirst_port_name create FC_switch_ip_address netmask_number vlan 2 MTU auto'
+
++
+下列命令會在FC_switch_a_1的連接埠ge0.DP0和GE1.DP0上建立ipIF位址：
+
++
+[listing]
+----
+portcfg ipif  ge0.dp0 create  10.10.82.10 netmask 255.255.0.0 vlan 2 mtu auto
+portcfg ipif  ge1.dp0 create  10.10.82.11 netmask 255.255.0.0 vlan 2 mtu auto
+----
++
+下列命令會在FC_switch_B_1的連接埠ge0.DP0和GE1.DP0上建立ipIF位址：
+
++
+[listing]
+----
+portcfg ipif  ge0.dp0 create  10.10.83.10 netmask 255.255.0.0 vlan 2 mtu auto
+portcfg ipif  ge1.dp0 create  10.10.83.11 netmask 255.255.0.0 vlan 2 mtu auto
+----
+. 驗證兩台交換器上的ipIF位址是否已成功建立：
++
+「portShow ipif all」
+
++
+以下範例顯示FC_switch_a_1上的IP介面：
+
++
+[listing]
+----
+Port         IP Address                     / Pfx  MTU   VLAN  Flags
+---------------------------------------------------------------------------
+-----
+ ge0.dp0      10.10.82.10                    / 16   AUTO  2     U R M
+ ge1.dp0      10.10.82.11                    / 16   AUTO  2     U R M
+--------------------------------------------------------------------------------
+Flags: U=Up B=Broadcast D=Debug L=Loopback P=Point2Point R=Running I=InUse
+       N=NoArp PR=Promisc M=Multicast S=StaticArp LU=LinkUp X=Crossport
+----
++
+以下範例顯示FC_switch_B_1上的IP介面：
+
++
+[listing]
+----
+Port         IP Address                     / Pfx  MTU   VLAN  Flags
+--------------------------------------------------------------------------------
+ ge0.dp0      10.10.83.10                    / 16   AUTO  2     U R M
+ ge1.dp0      10.10.83.11                    / 16   AUTO  2     U R M
+--------------------------------------------------------------------------------
+Flags: U=Up B=Broadcast D=Debug L=Loopback P=Point2Point R=Running I=InUse
+       N=NoArp PR=Promisc M=Multicast S=StaticArp LU=LinkUp X=Crossport
+----
+. 在兩台交換器上建立FCIP通道：
++
+《portcfig fciptunn通道》
+
++
+下列命令會在FC_switch_a_1上建立通道：
+
++
+[listing]
+----
+portcfg fciptunnel 24 create -S 10.10.82.10  -D 10.10.83.10 -b 10000000 -B 10000000
+----
++
+下列命令會在FC_switch_B_1上建立通道：
+
++
+[listing]
+----
+portcfg fciptunnel 24 create -S 10.10.83.10  -D 10.10.82.10 -b 10000000 -B 10000000
+----
+. 確認FCIP通道已成功建立：
++
+「portShow fiptunnall」
+
++
+下列範例顯示通道已建立且電路正常運作：
+
++
+[listing]
+----
+FC_switch_A_1:root>
+
+ Tunnel Circuit  OpStatus  Flags    Uptime  TxMBps  RxMBps ConnCnt CommRt Met/G
+--------------------------------------------------------------------------------
+ 24    -         Up      ---------     2d8m    0.05    0.41   3      -       -
+ --------------------------------------------------------------------------------
+ Flags (tunnel): i=IPSec f=Fastwrite T=TapePipelining F=FICON r=ReservedBW
+                 a=FastDeflate d=Deflate D=AggrDeflate P=Protocol
+                 I=IP-Ext
+----
+. 在每個交換器上建立額外的電路：
++
+「portcfg/fcipcircuit 24 create 1 -S source-ip-addressD destination-ip-address（portcfcircuit 24建立1 S source-ip-addressD destination-ip-address）-min-scom-rate（最小通訊速率）10000000 -max-scom-
+
++
+下列命令會在DP0的交換器FC_switch_a_1上建立一個電路：
+
++
+[listing]
+----
+portcfg fcipcircuit 24  create 1 -S 10.10.82.11 -D 10.10.83.11  --min-comm-rate 10000000 --max-comm-rate 10000000
+----
++
+下列命令會在DP1的交換器FC_switch_B_1上建立一個電路：
+
++
+[listing]
+----
+portcfg fcipcircuit 24 create 1  -S 10.10.83.11 -D 10.10.82.11  --min-comm-rate 10000000 --max-comm-rate 10000000
+----
+. 確認已成功建立所有電路：
++
+「portShow fcipcall」
+
++
+以下範例列出這些電路、並顯示其OpStatus為up狀態：
+
++
+[listing]
+----
+FC_switch_A_1:root> portshow fcipcircuit all
+
+ Tunnel Circuit  OpStatus  Flags    Uptime  TxMBps  RxMBps ConnCnt CommRt Met/G
+--------------------------------------------------------------------------------
+ 24    0 ge0     Up      ---va---4    2d12m    0.02    0.03   3 10000/10000 0/-
+ 24    1 ge1     Up      ---va---4    2d12m    0.02    0.04   3 10000/10000 0/-
+ --------------------------------------------------------------------------------
+ Flags (circuit): h=HA-Configured v=VLAN-Tagged p=PMTU i=IPSec 4=IPv4 6=IPv6
+                 ARL a=Auto r=Reset s=StepDown t=TimedStepDown  S=SLA
+----
+
+
+
+
+== 在Brocade交換器上設定非E連接埠
+
+您必須在FC交換器上設定非E連接埠。在架構組態中MetroCluster 、這些連接埠可將交換器連接至HBA啟動器、FC-VI互連和FC對SAS橋接器。必須針對每個連接埠執行這些步驟。
+
+在下列範例中、連接埠會連接FC對SAS橋接器：
+
+--
+* FC_FC_switch_a_1站台A上的連接埠6
+* FC_FC_SWIT_B_1站台B的連接埠6
+
+
+--
+.步驟
+. 設定每個非E連接埠的連接埠速度：
++
+「portcfgSpeed portspeed」
+
++
+您應該使用最高的通用速度、這是資料路徑中所有元件所支援的最高速度：SFP、安裝SFP的交換器連接埠、以及連接的裝置（HBA、橋接器等）。
+
++
+例如、元件可能具有下列支援的速度：
+
++
+** SFP容量為4、8或16 GB。
+** 交換器連接埠的容量為4、8或16 GB。
+** 連線的HBA最大速度為16 GB。在此案例中、最高的共同速度為16 GB、因此連接埠應設定為16 GB的速度。
++
+[listing]
+----
+FC_switch_A_1:admin> portcfgspeed 6 16
+
+FC_switch_B_1:admin> portcfgspeed 6 16
+----
+
+
+. 驗證設定：
++
+「portcfgshow」
+
++
+[listing]
+----
+FC_switch_A_1:admin> portcfgshow
+
+FC_switch_B_1:admin> portcfgshow
+----
++
+在範例輸出中、連接埠6具有下列設定；速度設定為16G：
+
++
+[listing]
+----
+Ports of Slot 0                     0   1   2   3   4   5   6   7   8
+-------------------------------------+---+---+---+--+---+---+---+---+--
+Speed                               16G 16G 16G 16G 16G 16G 16G 16G 16G
+AL_PA Offset 13                     ..  ..  ..  ..  ..  ..  ..  ..  ..
+Trunk Port                          ..  ..  ..  ..  ..  ..  ..  ..  ..
+Long Distance                       ..  ..  ..  ..  ..  ..  ..  ..  ..
+VC Link Init                        ..  ..  ..  ..  ..  ..  ..  ..  ..
+Locked L_Port                       -   -   -   -   -  -   -   -   -
+Locked G_Port                       ..  ..  ..  ..  ..  ..  ..  ..  ..
+Disabled E_Port                     ..  ..  ..  ..  ..  ..  ..  ..  ..
+Locked E_Port                       ..  ..  ..  ..  ..  ..  ..  ..  ..
+ISL R_RDY Mode                      ..  ..  ..  ..  ..  ..  ..  .. ..
+RSCN Suppressed                     ..  ..  ..  ..  ..  ..  ..  .. ..
+Persistent Disable                  ..  ..  ..  ..  ..  ..  ..  .. ..
+LOS TOV enable                      ..  ..  ..  ..  ..  ..  ..  .. ..
+NPIV capability                     ON  ON  ON  ON  ON  ON  ON  ON  ON
+NPIV PP Limit                       126 126 126 126 126 126 126 126 126
+QOS Port                            AE  AE  AE  AE  AE  AE  AE  AE  ON
+EX Port                             ..  ..  ..  ..  ..  ..  ..  ..  ..
+Mirror Port                         ..  ..  ..  ..  ..  ..  ..  ..  ..
+Rate Limit                          ..  ..  ..  ..  ..  ..  ..  ..  ..
+Credit Recovery                     ON  ON  ON  ON  ON  ON  ON  ON  ON
+Fport Buffers                       ..  ..  ..  ..  ..  ..  ..  ..  ..
+Eport Credits                       ..  ..  ..  ..  ..  ..  ..  ..  ..
+Port Auto Disable                   ..  ..  ..  ..  ..  ..  ..  ..  ..
+CSCTL mode                          ..  ..  ..  ..  ..  ..  ..  ..  ..
+D-Port mode                         ..  ..  ..  ..  ..  ..  ..  ..  ..
+D-Port over DWDM                    ..  ..  ..  ..  ..  ..  ..  ..  ..
+FEC                                 ON  ON  ON  ON  ON  ON  ON  ON  ON
+Fault Delay                         0   0   0   0   0   0   0   0   0
+Non-DFE                             ..  ..  ..  ..  ..  ..  ..  ..  ..
+----
+
+
+
+
+== 在Brocade G620交換器的ISL連接埠上設定壓縮
+
+如果您使用Brocade G620交換器並在ISL上啟用壓縮、則必須在交換器上的每個E連接埠上進行設定。
+
+這項工作必須在使用ISL的兩部交換器上的ISL連接埠上執行。
+
+.步驟
+. 停用您要設定壓縮的連接埠：
++
+「portdisableport-id」
+
+. 在連接埠上啟用壓縮：
++
+「portCfgCompress -啟用port-id」
+
+. 啟用連接埠以壓縮啟動組態：
++
+「portEnable port-id」
+
+. 確認設定已變更：
++
+「portcfgshow port-id」
+
+
+
+下列範例可在連接埠0上啟用壓縮。
+
+[listing]
+----
+FC_switch_A_1:admin> portdisable 0
+FC_switch_A_1:admin> portcfgcompress --enable 0
+FC_switch_A_1:admin> portenable 0
+FC_switch_A_1:admin> portcfgshow 0
+Area Number: 0
+Octet Speed Combo: 3(16G,10G)
+(output truncated)
+D-Port mode: OFF
+D-Port over DWDM ..
+Compression: ON
+Encryption: ON
+----
+您可以使用islShow命令來檢查E_port是否已連線、並已設定加密或壓縮並處於作用中狀態。
+
+[listing]
+----
+FC_switch_A_1:admin> islshow
+  1: 0-> 0 10:00:c4:f5:7c:8b:29:86   5 FC_switch_B_1
+sp: 16.000G bw: 16.000G TRUNK QOS CR_RECOV ENCRYPTION COMPRESSION
+----
+您可以使用portEncCompShow命令查看哪些連接埠處於作用中狀態。在此範例中、您可以看到加密和壓縮已在連接埠0上設定並啟用。
+
+[listing]
+----
+FC_switch_A_1:admin> portenccompshow
+User	  Encryption		           Compression	         Config
+Port   Configured    Active   Configured   Active  Speed
+----   ----------    -------  ----------   ------  -----
+  0	   Yes	          Yes	     Yes	         Yes	    16G
+----
+
+
+== 在Brocade FC交換器上設定分區
+
+您必須將交換器連接埠指派給不同的區域、以分隔控制器和儲存流量。此程序視您使用的是FIBreBridge 7500N或FIBreBridge 6500N橋接器而定。
+
+
+
+=== FC-VI連接埠分區
+
+對於整個過程中的每個DR群組MetroCluster 、您必須為FC-VI連線設定兩個區域、以允許控制器對控制器的流量。這些區域包含連接至控制器模組FC-VI連接埠的FC交換器連接埠。這些區域是服務品質（QoS）區域。
+
+QoS區域名稱開頭為前置字元QOSHid_、後面接著使用者定義的字串、以區分它與一般區域。無論所使用的是哪種類型的光纖橋接器、這些QoS區域都是相同的。
+
+每個區域都包含所有的FC-VI連接埠、每條FC-VI纜線各一條。這些區域設定為高優先順序。
+
+下表顯示兩個DR群組的FC-VI區域。
+
+* DR群組1：FC-VI連接埠A / c*的QOSH1 FC-VI區域
+
+|===
+| FC交換器 | 網站 | 交換器網域 | 6505 / 6510連接埠 | 6520連接埠 | G620連接埠 | 連線至... 
+
+
+| FC_SWIT_A_1 | 答 | 5. | 0 | 0 | 0 | Controller（控制器）_a_1連接埠FC-VI A 
+
+
+| FC_SWIT_A_1 | 答 | 5. | 1. | 1. | 1. | Controller（控制器）_a_1連接埠FC-VI c 
+
+
+| FC_SWIT_A_1 | 答 | 5. | 4. | 4. | 4. | Controller（控制器）_a_2連接埠FC-VI A 
+
+
+| FC_SWIT_A_1 | 答 | 5. | 5. | 5. | 5. | 控制器_a_2連接埠FC-VI c 
+
+
+| FC_SWIT_B_1 | b | 7. | 0 | 0 | 0 | Controller（控制器）_B_1連接埠FC-VI A 
+
+
+| FC_SWIT_B_1 | b | 7. | 1. | 1. | 1. | Controller（控制器）_B_1連接埠FC-VI c 
+
+
+| FC_SWIT_B_1 | b | 7. | 4. | 4. | 4. | Controller（控制器）_B_2連接埠FC-VI A 
+
+
+| FC_SWIT_B_1 | b | 7. | 5. | 5. | 5. | Controller（控制器）_B_2連接埠FC-VI c 
+|===
+|===
+
+
+| Fabric中的區域 | 成員連接埠 
+
+
+| QOSH1_MC1_FA_1_FCVI | 5、0；5、1；5、4；5、5；7、0；7、1；7、4；7、5 
+|===
+* DR群組1：FC VI連接埠b / d*的QOSH1 FC-VI區域
+
+|===
+| FC交換器 | 網站 | 交換器網域 | 6505 / 6510連接埠 | 6520連接埠 | G620連接埠 | 連線至... 
+
+
+| FC_SWIT_A_2 | 答 | 6. | 0 | 0 | 0 | Controller（控制器）_a_1連接埠FC-VI b 
+
+
+|  |  |  | 1. | 1. | 1. | Controller（控制器）_a_1連接埠FC-VI d 
+
+
+|  |  |  | 4. | 4. | 4. | Controller（控制器）_a_2連接埠FC-VI b 
+
+
+|  |  |  | 5. | 5. | 5. | Controller（控制器）_a_2連接埠FC-VI d 
+
+
+| FC_SWIT_B_2 | b | 8. | 0 | 0 | 0 | Controller（控制器）_B_1連接埠FC-VI b 
+
+
+|  |  |  | 1. | 1. | 1. | Controller（控制器）_B_1連接埠FC-VI d 
+
+
+|  |  |  | 4. | 4. | 4. | Controller（控制器）_B_2連接埠FC-VI b 
+
+
+|  |  |  | 5. | 5. | 5. | Controller（控制器）_B_2連接埠FC-VI d 
+|===
+|===
+
+
+| Fabric中的區域 | 成員連接埠 
+
+
+| QOSH1_MC1_FA_2_FCVI | 6、0；6、1；6、4；6、5；8、0；8、1；8、4；8、5 
+|===
+* DR群組2：適用於FC-VI連接埠A / c*的QOSH2 FC-VI區域
+
+|===
+| FC交換器 | 網站 | 交換器網域 | 交換器連接埠 |  |  | 連線至... 
+
+
+|  |  |  | 6510. | 6520 | G620 |  
+
+
+| FC_SWIT_A_1 | 答 | 5. | 24 | 48 | 18 | Controller（控制器）_a_3連接埠FC-VI A 
+
+
+|  |  |  | 25 | 49 | 19 | 控制器_a_3連接埠FC-VI c 
+
+
+|  |  |  | 28.28 | 52. | 22 | Controller（控制器）_a_4連接埠FC-VI A 
+
+
+|  |  |  | 29 | 53. | 23 | Controller（控制器）_a_4連接埠FC-VI c 
+
+
+| FC_SWIT_B_1 | b | 7. | 24 | 48 | 18 | Controller（控制器）_B_3連接埠FC-VI A 
+
+
+|  |  |  | 25 | 49 | 19 | Controller（控制器）_B_3連接埠FC-VI c 
+
+
+|  |  |  | 28.28 | 52. | 22 | Controller（控制器）_B_4連接埠FC-VI A 
+
+
+|  |  |  | 29 | 53. | 23 | Controller（控制器）_B_4連接埠FC-VI c 
+|===
+|===
+
+
+| Fabric中的區域 | 成員連接埠 
+
+
+| QOSH2_MC2_FAP_1_FCVI（6510） | 5、24；5、25；5、28；5、29；7、24；7、25；7、28；7、29 
+
+
+| QOSH2_MC2_FAP_1_FCVI（6520） | 5、48；5、49；5、52；5、53；7、48；7、49；7、52；7、53 
+|===
+* DR群組2：適用於FC-VI連接埠b / d*的QOSH2 FC-VI區域
+
+|===
+| FC交換器 | 網站 | 交換器網域 | 6510連接埠 | 6520連接埠 | G620連接埠 | 連線至... 
+
+
+| FC_SWIT_A_2 | 答 | 6. | 24 | 48 | 18 | Controller（控制器）_a_3連接埠FC-VI b 
+
+
+| FC_SWIT_A_2 | 答 | 6. | 25 | 49 | 19 | Controller（控制器）_a_3連接埠FC-VI d 
+
+
+| FC_SWIT_A_2 | 答 | 6. | 28.28 | 52. | 22 | Controller（控制器）_a_4連接埠FC-VI b 
+
+
+| FC_SWIT_A_2 | 答 | 6. | 29 | 53. | 23 | Controller（控制器）_a_4連接埠FC-VI d 
+
+
+| FC_SWIT_B_2 | b | 8. | 24 | 48 | 18 | Controller（控制器）_B_3連接埠FC-VI b 
+
+
+| FC_SWIT_B_2 | b | 8. | 25 | 49 | 19 | Controller（控制器）_B_3連接埠FC-VI d 
+
+
+| FC_SWIT_B_2 | b | 8. | 28.28 | 52. | 22 | Controller（控制器）_B_4連接埠FC-VI b 
+
+
+| FC_SWIT_B_2 | b | 8. | 29 | 53. | 23 | Controller（控制器）_B_4連接埠FC-VI d 
+|===
+|===
+
+
+| Fabric中的區域 | 成員連接埠 
+
+
+| QOSH2_MC2_FA_2_FCVI（6510） | 6、24；6、25；6、28；6、29；8、24；8、25；8、28；8、29 
+
+
+| QOSH2_MC2_FA_2_FCVI（6520） | 6、48；6、49；6、52；6、53；8、48；8、49；8、52；8、53 
+|===
+下表提供FC-VI區域的摘要：
+
+|===
+
+
+| 網路 | 區域名稱 | 成員連接埠 
+
+
+.3+| FC_switch_a_1和FC_switch_B_1  a| 
+QOSH1_MC1_FA_1_FCVI
+ a| 
+5、0；5、1；5、4；5、5；7、0；7、1；7、4；7、5
+
+
+
+ a| 
+QOSH2_MC1_FA_1_FCVI（6510）
+ a| 
+5、24；5、25；5、28；5、29；7、24；7、25；7、28；7、29
+
+
+
+ a| 
+QOSH2_MC1_FA_1_FCVI（6520）
+ a| 
+5、48；5、49；5、52；5、53；7、48；7、49；7、52；7、53
+
+
+
+.3+| FC_switch_a_2和FC_switch_B_2  a| 
+QOSH1_MC1_FA_2_FCVI
+ a| 
+6、0；6、1；6、4；6、5；8、0；8、1；8、4；8、5
+
+
+
+ a| 
+QOSH2_MC1_FA_2_FCVI（6510）
+ a| 
+6、24；6、25；6、28；6、29；8、24；8、25；8、28；8、29
+
+
+
+ a| 
+QOSH2_MC1_FA_2_FCVI（6520）
+ a| 
+6、48；6、49；6、52；6、53；8、48；8、49；8、52；8、53
+
+|===
+
+
+=== 使用單一FC連接埠的Fibre Bridge 6500N橋接器或Fibre Bridge 7500N或7600N橋接器分區
+
+如果您使用的是Fibre Bridge 6500N橋接器、或是使用兩個FC連接埠之一的Fibre Bridge 7500N或7600N橋接器、則需要為橋接連接埠建立儲存區域。在設定區域之前、您應該先瞭解區域和相關連接埠。
+
+範例僅顯示DR群組1的分區。如果您的組態包含第二個DR群組、請使用控制器和橋接器的對應連接埠、以相同方式設定第二個DR群組的分區。
+
+
+
+==== 必要的區域
+
+您必須為每個FC對SAS橋接FC連接埠設定一個區域、以允許每個控制器模組上的啟動器與該FC對SAS橋接器之間的流量。
+
+每個儲存區域均包含九個連接埠：
+
+* 八個HBA啟動器連接埠（每個控制器兩個連線）
+* 一個連接埠連接至FC對SAS橋接FC連接埠
+
+
+儲存區域使用標準分區。
+
+這些範例顯示連接每個站台兩個堆疊群組的兩對橋接器。由於每個橋接器使用一個FC連接埠、因此每個架構總共有四個儲存區域（總共八個）。
+
+
+
+==== 橋接器命名
+
+這些橋接器使用下列命名範例：bridge站台堆疊配對中的同一層
+
+|===
+
+
+| 這個部分的名稱... | 識別... | 可能值... 
+
+
+ a| 
+網站
+ a| 
+橋接器配對實體所在的站台。
+ a| 
+A或B
+
+
+
+ a| 
+堆疊群組
+ a| 
+橋接器配對所連接的堆疊群組編號。
+
+* 最多支援堆疊群組中四個堆疊的FIBreBridge 7600N或7500N橋接器。
++
+堆疊群組最多可包含10個儲存磁碟櫃。
+
+* FibreBridge 6500N橋接器僅支援堆疊群組中的單一堆疊。
+
+ a| 
+1、2等
+
+
+
+ a| 
+配對位置
+ a| 
+橋接器配對中的橋接器。一對橋接器會連接至特定堆疊群組。
+ a| 
+a或b
+
+|===
+每個站台上一個堆疊群組的橋接名稱範例：
+
+* bride_a_1a.
+* bride_a_1b
+* bride_B_1a
+* bride_b_1b.
+
+
+
+
+==== DR群組1 - Site_A的堆疊1
+
+* DRgroup 1：MC1_INIT_GRP_1_STIR_A_STK_GRP_1_TOP FC1：*
+
+|===
+| FC交換器 | 網站 | 交換器網域 | Brocade 6505、6510、6520、G620或G610交換器連接埠 | 連線至... 
+
+
+| FC_SWIT_A_1 | 答 | 5. | 2. | Controller（控制器）a_1連接埠0A 
+
+
+| FC_SWIT_A_1 | 答 | 5. | 3. | 控制器_a_1連接埠0c 
+
+
+| FC_SWIT_A_1 | 答 | 5. | 6. | Controller（控制器）a_2連接埠0A 
+
+
+| FC_SWIT_A_1 | 答 | 5. | 7. | 控制器_a_2連接埠0c 
+
+
+| FC_SWIT_A_1 | 答 | 5. | 8. | bride_a_1a FC1 
+
+
+| FC_SWIT_B_1 | b | 7. | 2. | Controller（控制器）B_1連接埠0A 
+
+
+| FC_SWIT_B_1 | b | 7. | 3. | Controller（控制器）_B_1連接埠0c 
+
+
+| FC_SWIT_B_1 | b | 7. | 6. | Controller（控制器）_B_2連接埠0A 
+
+
+| FC_SWIT_B_1 | b | 7. | 7. | Controller（控制器）_B_2連接埠0c 
+|===
+|===
+
+
+| Fabric中的區域 | 成員連接埠 
+
+
+| MC1_INIT_GRP_1_STIRM_A_STK_GRP_1_TOP _FC1 | 5、2；5、3；5、6；5、7；7、2；7、3；7、6；7、5、8 
+|===
+* DRgroup 1：MC1_INIT_GRP_1_STIR_A_STK_GRP_1_BOT_FC1：*
+
+|===
+| FC交換器 | 網站 | 交換器網域 | Brocade 6505、6510、6520、G620或G610交換器連接埠 | 連線至... 
+
+
+| FC_SWIT_A_1 | 答 | 6. | 2. | Controller（控制器）a_1連接埠0b 
+
+
+| FC_SWIT_A_1 | 答 | 6. | 3. | Controller（控制器）a_1連接埠0d 
+
+
+| FC_SWIT_A_1 | 答 | 6. | 6. | Controller（控制器）_a_2連接埠0b 
+
+
+| FC_SWIT_A_1 | 答 | 6. | 7. | 控制器_a_2連接埠0d 
+
+
+| FC_SWIT_A_1 | 答 | 6. | 8. | bridge _a_1b FC1 
+
+
+| FC_SWIT_B_1 | b | 8. | 2. | Controller（控制器）_B_1連接埠0b 
+
+
+| FC_SWIT_B_1 | b | 8. | 3. | Controller（控制器）_B_1連接埠0d 
+
+
+| FC_SWIT_B_1 | b | 8. | 6. | Controller（控制器）_B_2連接埠0b 
+
+
+| FC_SWIT_B_1 | b | 8. | 7. | Controller（控制器）_B_2連接埠0d 
+|===
+|===
+
+
+| Fabric中的區域 | 成員連接埠 
+
+
+| MC1_INIT_GRP_1_STIR_A_STK_GRP_1_BOT_FC1 | 6、2；6、3；6、6；6、7；8、2；8、3；8、6；8、7；6、8 
+|===
+
+
+==== DR群組1 - Site_A的堆疊2
+
+* DRgroup 1：MC1_INIT_GRP_1_STIR_A_STK_GRP_2_TOP FC1：*
+
+|===
+| FC交換器 | 網站 | 交換器網域 | Brocade 6505、6510、6520、G620或G610交換器連接埠 | 連線至... 
+
+
+| FC_SWIT_A_1 | 答 | 5. | 2. | Controller（控制器）a_1連接埠0A 
+
+
+| FC_SWIT_A_1 | 答 | 5. | 3. | 控制器_a_1連接埠0c 
+
+
+| FC_SWIT_A_1 | 答 | 5. | 6. | Controller（控制器）a_2連接埠0A 
+
+
+| FC_SWIT_A_1 | 答 | 5. | 7. | 控制器_a_2連接埠0c 
+
+
+| FC_SWIT_A_1 | 答 | 5. | 9. | bride_a_2a FC1 
+
+
+| FC_SWIT_B_1 | b | 7. | 2. | Controller（控制器）B_1連接埠0A 
+
+
+| FC_SWIT_B_1 | b | 7. | 3. | Controller（控制器）_B_1連接埠0c 
+
+
+| FC_SWIT_B_1 | b | 7. | 6. | Controller（控制器）_B_2連接埠0A 
+
+
+| FC_SWIT_B_1 | b | 7. | 7. | Controller（控制器）_B_2連接埠0c 
+|===
+|===
+
+
+| Fabric中的區域 | 成員連接埠 
+
+
+| MC1_INIT_GRP_1_STIRM_A_STK_GRP_2_TOP _FC1 | 5、2；5、3；5、6；5、7；7、2；7、3；7、6；7、5、9 
+|===
+* DRgroup 1：MC1_INIT_GRP_1_STIR_A_STK_GRP_2_BOT_FC1：*
+
+|===
+| FC交換器 | 網站 | 交換器網域 | Brocade 6505、6510、6520、G620或G610交換器連接埠 | 連線至... 
+
+
+| FC_SWIT_A_1 | 答 | 6. | 2. | Controller（控制器）a_1連接埠0b 
+
+
+| FC_SWIT_A_1 | 答 | 6. | 3. | Controller（控制器）a_1連接埠0d 
+
+
+| FC_SWIT_A_1 | 答 | 6. | 6. | Controller（控制器）_a_2連接埠0b 
+
+
+| FC_SWIT_A_1 | 答 | 6. | 7. | 控制器_a_2連接埠0d 
+
+
+| FC_SWIT_A_1 | 答 | 6. | 9. | bride_a_2b FC1 
+
+
+| FC_SWIT_B_1 | b | 8. | 2. | Controller（控制器）_B_1連接埠0b 
+
+
+| FC_SWIT_B_1 | b | 8. | 3. | Controller（控制器）_B_1連接埠0d 
+
+
+| FC_SWIT_B_1 | b | 8. | 6. | Controller（控制器）_B_2連接埠0b 
+
+
+| FC_SWIT_B_1 | b | 8. | 7. | Controller（控制器）_B_2連接埠0d 
+|===
+|===
+
+
+| Fabric中的區域 | 成員連接埠 
+
+
+| MC1_INIT_GRP_1_STIR_A_STK_GRP_2_BOT_FC1 | 6、2；6、3；6、6；6、7；8、2；8、3；8、6；8、7；6、9 
+|===
+
+
+==== DR群組1 -站台B的堆疊1
+
+* MC1_INIT_GRP_1_STIR_B_STK_GRP_1_TOP FC1：*
+
+|===
+| FC交換器 | 網站 | 交換器網域 | Brocade 6505、6510、6520、G620或G610交換器 | 連線至... 
+
+
+| FC_SWIT_A_1 | 答 | 5. | 2. | Controller（控制器）a_1連接埠0A 
+
+
+| FC_SWIT_A_1 | 答 | 5. | 3. | 控制器_a_1連接埠0c 
+
+
+| FC_SWIT_A_1 | 答 | 5. | 6. | Controller（控制器）a_2連接埠0A 
+
+
+| FC_SWIT_A_1 | 答 | 5. | 7. | 控制器_a_2連接埠0c 
+
+
+| FC_SWIT_B_1 | b | 7. | 2. | Controller（控制器）B_1連接埠0A 
+
+
+| FC_SWIT_B_1 | b | 7. | 3. | Controller（控制器）_B_1連接埠0c 
+
+
+| FC_SWIT_B_1 | b | 7. | 6. | Controller（控制器）_B_2連接埠0A 
+
+
+| FC_SWIT_B_1 | b | 7. | 7. | Controller（控制器）_B_2連接埠0c 
+
+
+| FC_SWIT_B_1 | b | 7. | 8. | bridge _B_1A FC1 
+|===
+|===
+
+
+| Fabric中的區域 | 成員連接埠 
+
+
+| MC1_INIT_GRP_1_STIR_B_STK_GRP_1_TOP _FC1 | 5、2；5、3；5、6；5、7；7、2；7、3；7、6；7、7、8 
+|===
+* DRgroup 1：MC1_INIT_GRP_1_STIR_B_STK_GRP_1_BOT_FC1：*
+
+|===
+| FC交換器 | 網站 | 交換器網域 | Brocade 6505、6510、6520、G620或G610交換器 | 連線至... 
+
+
+| FC_SWIT_A_1 | 答 | 6. | 2. | Controller（控制器）a_1連接埠0b 
+
+
+| FC_SWIT_A_1 | 答 | 6. | 3. | Controller（控制器）a_1連接埠0d 
+
+
+| FC_SWIT_A_1 | 答 | 6. | 6. | Controller（控制器）_a_2連接埠0b 
+
+
+| FC_SWIT_A_1 | 答 | 6. | 7. | 控制器_a_2連接埠0d 
+
+
+| FC_SWIT_B_1 | b | 8. | 2. | Controller（控制器）_B_1連接埠0b 
+
+
+| FC_SWIT_B_1 | b | 8. | 3. | Controller（控制器）_B_1連接埠0d 
+
+
+| FC_SWIT_B_1 | b | 8. | 6. | Controller（控制器）_B_2連接埠0b 
+
+
+| FC_SWIT_B_1 | b | 8. | 7. | Controller（控制器）_B_2連接埠0d 
+
+
+| FC_SWIT_B_1 | b | 8. | 8. | bridge _B_1b FC1 
+|===
+|===
+
+
+| Fabric中的區域 | 成員連接埠 
+
+
+| MC1_INIT_GRP_1_STIR_B_STK_GRP_1_BOD_FC1 | 5、2；5、3；5、6；5、7；7、2；7、3；7、6；7、8 
+|===
+
+
+==== DR群組1 -站台B的堆疊2
+
+* DRgroup 1：MC1_INIT_GRP_1_STIR_B_STK_GRP_2_TOP FC1：*
+
+|===
+| FC交換器 | 網站 | 交換器網域 | Brocade 6505、6510、6520、G620或G610交換器連接埠 | 連線至... 
+
+
+| FC_SWIT_A_1 | 答 | 5. | 2. | Controller（控制器）a_1連接埠0A 
+
+
+| FC_SWIT_A_1 | 答 | 5. | 3. | 控制器_a_1連接埠0c 
+
+
+| FC_SWIT_A_1 | 答 | 5. | 6. | Controller（控制器）a_2連接埠0A 
+
+
+| FC_SWIT_A_1 | 答 | 5. | 7. | 控制器_a_2連接埠0c 
+
+
+| FC_SWIT_B_1 | b | 7. | 2. | Controller（控制器）B_1連接埠0A 
+
+
+| FC_SWIT_B_1 | b | 7. | 3. | Controller（控制器）_B_1連接埠0c 
+
+
+| FC_SWIT_B_1 | b | 7. | 6. | Controller（控制器）_B_2連接埠0A 
+
+
+| FC_SWIT_B_1 | b | 7. | 7. | Controller（控制器）_B_2連接埠0c 
+
+
+| FC_SWIT_B_1 | b | 7. | 9. | bride_b_2a FC1 
+|===
+|===
+
+
+| Fabric中的區域 | 成員連接埠 
+
+
+| MC1_INIT_GRP_1_STIR_b_STK_GRP_2_TOP _FC1 | 5、2；5、3；5、6；5、7；7、2；7、3；7、6；7、7、9 
+|===
+* DRgroup 1：MC1_INIT_GRP_1_STIR_B_STK_GRP_2_BOT_FC1：*
+
+|===
+| FC交換器 | 網站 | 交換器網域 | Brocade 6505、6510、6520、G620或G610交換器連接埠 | 連線至... 
+
+
+| FC_SWIT_A_1 | 答 | 6. | 2. | Controller（控制器）a_1連接埠0b 
+
+
+| FC_SWIT_A_1 | 答 | 6. | 3. | Controller（控制器）a_1連接埠0d 
+
+
+| FC_SWIT_A_1 | 答 | 6. | 6. | Controller（控制器）_a_2連接埠0b 
+
+
+| FC_SWIT_A_1 | 答 | 6. | 7. | 控制器_a_2連接埠0d 
+
+
+| FC_SWIT_B_1 | b | 8. | 2. | Controller（控制器）_B_1連接埠0b 
+
+
+| FC_SWIT_B_1 | b | 8. | 3. | Controller（控制器）_B_1連接埠0d 
+
+
+| FC_SWIT_B_1 | b | 8. | 6. | Controller（控制器）_B_2連接埠0b 
+
+
+| FC_SWIT_B_1 | b | 8. | 7. | Controller（控制器）_B_2連接埠0d 
+
+
+| FC_SWIT_B_1 | b | 8. | 9. | bridge _B_1b FC1 
+|===
+|===
+
+
+| Fabric中的區域 | 成員連接埠 
+
+
+| MC1_INIT_GRP_1_STIR_B_STK_GRP_2_BOD_FC1 | 6、2、6、3、6、6、7、8、2、8、3、8、6、8、7、8、9 
+|===
+
+
+==== 儲存區域摘要
+
+|===
+
+
+| 網路 | 區域名稱 | 成員連接埠 
+
+
+.4+| FC_switch_a_1和FC_switch_B_1 | MC1_INIT_GRP_1_STIRM_A_STK_GRP_1_TOP _FC1 | 5、2；5、3；5、6；5、7；7、2；7、3；7、6；7、5、8 
+
+
+| MC1_INIT_GRP_1_STIRM_A_STK_GRP_2_TOP _FC1 | 5、2；5、3；5、6；5、7；7、2；7、3；7、6；7、5、9 
+
+
+| MC1_INIT_GRP_1_STIR_B_STK_GRP_1_TOP _FC1 | 5、2；5、3；5、6；5、7；7、2；7、3；7、6；7、7、8 
+
+
+| MC1_INIT_GRP_1_STIR_B_STK_GRP_2_TOP _FC1 | 5、2；5、3；5、6；5、7；7、2；7、3；7、6；7、7、9 
+
+
+.4+| FC_switch_a_2和FC_switch_B_2 | MC1_INIT_GRP_1_STIR_A_STK_GRP_1_BOT_FC1 | 6、2；6、3；6、6；6、7；8、2；8、3；8、6；8、7；6、8 
+
+
+| MC1_INIT_GRP_1_STIR_A_STK_GRP_2_BOT_FC1 | 6、2；6、3；6、6；6、7；8、2；8、3；8、6；8、7；6、9 
+
+
+| MC1_INIT_GRP_1_STIR_B_STK_GRP_1_BOD_FC1 | 6、2、6、3、6、6、7、8、2、8、3、8、6、8、7、8 
+
+
+| MC1_INIT_GRP_1_STIR_B_STK_GRP_2_BOD_FC1 | 6、2、6、3、6、6、7、8、2、8、3、8、6、8、7、8、9 
+|===
+
+
+=== 使用兩個FC連接埠的Fibre Bridge 7500N橋接器分區
+
+如果您使用的是同時具有兩個FC連接埠的Fibre Bridge 7500N橋接器、則需要為橋接連接埠建立儲存區域。在設定區域之前、您應該先瞭解區域和相關連接埠。
+
+
+
+==== 必要的區域
+
+您必須為每個FC對SAS橋接FC連接埠設定一個區域、以允許每個控制器模組上的啟動器與該FC對SAS橋接器之間的流量。
+
+每個儲存區域均包含五個連接埠：
+
+* 四個HBA啟動器連接埠（每個控制器一個連線）
+* 一個連接埠連接至FC對SAS橋接FC連接埠
+
+
+儲存區域使用標準分區。
+
+這些範例顯示連接每個站台兩個堆疊群組的兩對橋接器。由於每個橋接器使用一個FC連接埠、因此每個架構總共有八個儲存區域（總共16個）。
+
+
+
+==== 橋接器命名
+
+這些橋接器使用下列命名範例：bridge站台堆疊配對中的同一層
+
+|===
+
+
+| 這個部分的名稱... | 識別... | 可能值... 
+
+
+ a| 
+網站
+ a| 
+橋接器配對實體所在的站台。
+ a| 
+A或B
+
+
+
+ a| 
+堆疊群組
+ a| 
+橋接器配對所連接的堆疊群組編號。
+
+* 最多支援堆疊群組中四個堆疊的FIBreBridge 7600N或7500N橋接器。
++
+堆疊群組最多可包含10個儲存磁碟櫃。
+
+* FibreBridge 6500N橋接器僅支援堆疊群組中的單一堆疊。
+
+ a| 
+1、2等
+
+
+
+ a| 
+配對位置
+ a| 
+橋接器配對中的橋接器。一對橋接器連接至特定堆疊群組。
+ a| 
+a或b
+
+|===
+每個站台上一個堆疊群組的橋接名稱範例：
+
+* bride_a_1a.
+* bride_a_1b
+* bride_B_1a
+* bride_b_1b.
+
+
+
+
+==== DR群組1 - Site_A的堆疊1
+
+* DRgroup 1：MC1_INIT_GRP_1_STIR_A_STK_GRP_1_TOP FC1：*
+
+|===
+
+
+| FC交換器 | 網站 | 交換器網域 | 6505 / 6510 / G610/ G620連接埠 | 6520連接埠 | 連線至... 
+
+
+ a| 
+FC_SWIT_A_1
+ a| 
+答
+ a| 
+5.
+ a| 
+2.
+ a| 
+2.
+ a| 
+Controller（控制器）a_1連接埠0A
+
+
+
+ a| 
+FC_SWIT_A_1
+ a| 
+答
+ a| 
+5.
+ a| 
+6.
+ a| 
+6.
+ a| 
+Controller（控制器）a_2連接埠0A
+
+
+
+ a| 
+FC_SWIT_A_1
+ a| 
+答
+ a| 
+5.
+ a| 
+8.
+ a| 
+8.
+ a| 
+bride_a_1a FC1
+
+
+
+ a| 
+FC_SWIT_B_1
+ a| 
+b
+ a| 
+7.
+ a| 
+2.
+ a| 
+2.
+ a| 
+Controller（控制器）B_1連接埠0A
+
+
+
+ a| 
+FC_SWIT_B_1
+ a| 
+b
+ a| 
+7.
+ a| 
+6.
+ a| 
+6.
+ a| 
+Controller（控制器）_B_2連接埠0A
+
+|===
+|===
+
+
+| Fabric中的區域 | 成員連接埠 
+
+
+ a| 
+MC1_INIT_GRP_1_STIRM_A_STK_GRP_1_TOP _FC1
+ a| 
+5、2；5、6；7、2；7、6；5、8
+
+|===
+* DRgroup 1：MC1_INIT_GRP_2_STIR_A_STK_GRP_1_TOP _FC1：*
+
+|===
+
+
+| FC交換器 | 網站 | 交換器網域 | 6505 / 6510 / G610連接埠 | 6520連接埠 | G620連接埠 | 連線至... 
+
+
+ a| 
+FC_SWIT_A_1
+ a| 
+答
+ a| 
+5.
+ a| 
+3.
+ a| 
+3.
+ a| 
+3.
+ a| 
+控制器_a_1連接埠0c
+
+
+
+ a| 
+FC_SWIT_A_1
+ a| 
+答
+ a| 
+5.
+ a| 
+7.
+ a| 
+7.
+ a| 
+7.
+ a| 
+控制器_a_2連接埠0c
+
+
+
+ a| 
+FC_SWIT_A_1
+ a| 
+答
+ a| 
+5.
+ a| 
+9.
+ a| 
+9.
+ a| 
+9.
+ a| 
+bridge _a_1b FC1
+
+
+
+ a| 
+FC_SWIT_B_1
+ a| 
+b
+ a| 
+7.
+ a| 
+3.
+ a| 
+3.
+ a| 
+3.
+ a| 
+Controller（控制器）_B_1連接埠0c
+
+
+
+ a| 
+FC_SWIT_B_1
+ a| 
+b
+ a| 
+7.
+ a| 
+7.
+ a| 
+7.
+ a| 
+7.
+ a| 
+Controller（控制器）_B_2連接埠0c
+
+|===
+|===
+
+
+| Fabric中的區域 | 成員連接埠 
+
+
+ a| 
+MC1_INIT_GRP_2_STIR_A_STK_GRP_1_BOT_FC1
+ a| 
+5、3；5、7；7、3；7、7；5、9
+
+|===
+* DRgroup 1：MC1_INIT_GRP_1_STIR_A_STK_GRP_1_BOT_FC1：*
+
+|===
+
+
+| FC交換器 | 網站 | 交換器網域 | 6505 / 6510 / G610 | 6520 | G620 | 連線至... 
+
+
+ a| 
+FC_SWIT_A_2
+ a| 
+答
+ a| 
+6.
+ a| 
+2.
+ a| 
+2.
+ a| 
+2.
+ a| 
+Controller（控制器）a_1連接埠0d
+
+
+
+ a| 
+FC_SWIT_A_2
+ a| 
+答
+ a| 
+6.
+ a| 
+6.
+ a| 
+6.
+ a| 
+6.
+ a| 
+控制器_a_2連接埠0d
+
+
+
+ a| 
+FC_SWIT_A_2
+ a| 
+答
+ a| 
+6.
+ a| 
+8.
+ a| 
+8.
+ a| 
+8.
+ a| 
+bride_a_1a FC2
+
+
+
+ a| 
+FC_SWIT_B_2
+ a| 
+b
+ a| 
+8.
+ a| 
+2.
+ a| 
+2.
+ a| 
+2.
+ a| 
+Controller（控制器）_B_1連接埠0b
+
+
+
+ a| 
+FC_SWIT_B_2
+ a| 
+b
+ a| 
+8.
+ a| 
+6.
+ a| 
+6.
+ a| 
+6.
+ a| 
+Controller（控制器）_B_2連接埠0b
+
+|===
+|===
+
+
+| Fabric中的區域 | 成員連接埠 
+
+
+ a| 
+MC1_INIT_GRP_1_STIRM_A_STK_GRP_1_TOP _FC2
+ a| 
+6、2；6、6；8、2；8、6；6、8
+
+|===
+* DRgroup 1：MC1_INIT_GRP_2_STIR_A_STK_GRP_1_BOT_FC2：*
+
+|===
+
+
+| FC交換器 | 網站 | 交換器網域 | 6505 / 6510 / G610 | 6520 | G620 | 連線至... 
+
+
+ a| 
+FC_SWIT_A_2
+ a| 
+答
+ a| 
+6.
+ a| 
+3.
+ a| 
+3.
+ a| 
+3.
+ a| 
+Controller（控制器）a_1連接埠0d
+
+
+
+ a| 
+FC_SWIT_A_2
+ a| 
+答
+ a| 
+6.
+ a| 
+7.
+ a| 
+7.
+ a| 
+7.
+ a| 
+控制器_a_2連接埠0d
+
+
+
+ a| 
+FC_SWIT_A_2
+ a| 
+答
+ a| 
+6.
+ a| 
+9.
+ a| 
+9.
+ a| 
+9.
+ a| 
+bridge _a_1b FC2
+
+
+
+ a| 
+FC_SWIT_B_2
+ a| 
+b
+ a| 
+8.
+ a| 
+3.
+ a| 
+3.
+ a| 
+3.
+ a| 
+Controller（控制器）_B_1連接埠0b
+
+
+
+ a| 
+FC_SWIT_B_2
+ a| 
+b
+ a| 
+8.
+ a| 
+7.
+ a| 
+7.
+ a| 
+7.
+ a| 
+Controller（控制器）_B_2連接埠0b
+
+|===
+|===
+
+
+| Fabric中的區域 | 成員連接埠 
+
+
+ a| 
+MC1_INIT_GRP_2_STIR_A_STK_GRP_1_BOD_FC2
+ a| 
+6、3、6、7、8、3、8、7、6、9
+
+|===
+
+
+==== DR群組1 - Site_A的堆疊2
+
+* DRgroup 1：MC1_INIT_GRP_1_STIR_A_STK_GRP_2_TOP FC1：*
+
+|===
+
+
+| FC交換器 | 網站 | 交換器網域 | 6505 / 6510 / G610連接埠 | 6520連接埠 | G620連接埠 | 連線至... 
+
+
+ a| 
+FC_SWIT_A_1
+ a| 
+答
+ a| 
+5.
+ a| 
+2.
+ a| 
+2.
+ a| 
+2.
+ a| 
+Controller（控制器）a_1連接埠0A
+
+
+
+ a| 
+FC_SWIT_A_1
+ a| 
+答
+ a| 
+5.
+ a| 
+6.
+ a| 
+6.
+ a| 
+6.
+ a| 
+Controller（控制器）a_2連接埠0A
+
+
+
+ a| 
+FC_SWIT_A_1
+ a| 
+答
+ a| 
+5.
+ a| 
+10.
+ a| 
+10.
+ a| 
+10.
+ a| 
+bride_a_2a FC1
+
+
+
+ a| 
+FC_SWIT_B_1
+ a| 
+b
+ a| 
+7.
+ a| 
+2.
+ a| 
+2.
+ a| 
+2.
+ a| 
+Controller（控制器）B_1連接埠0A
+
+
+
+ a| 
+FC_SWIT_B_1
+ a| 
+b
+ a| 
+7.
+ a| 
+6.
+ a| 
+6.
+ a| 
+6.
+ a| 
+Controller（控制器）_B_2連接埠0A
+
+|===
+|===
+
+
+| Fabric中的區域1 hh | 成員連接埠 
+
+
+ a| 
+MC1_INIT_GRP_1_STIRM_A_STK_GRP_2_TOP _FC1
+ a| 
+5、2；5、6；7、2；7、6；5、10
+
+|===
+* DRgroup 1：MC1_INIT_GRP_2_STIR_A_STK_GRP_2_TOP FC1：*
+
+|===
+
+
+| FC交換器 | 網站 | 交換器網域 | 6505 / 6510 / G610連接埠 | 6520連接埠 | G620連接埠 | 連線至... 
+
+
+ a| 
+FC_SWIT_A_1
+ a| 
+答
+ a| 
+5.
+ a| 
+3.
+ a| 
+3.
+ a| 
+3.
+ a| 
+控制器_a_1連接埠0c
+
+
+
+| FC_SWIT_A_1  a| 
+答
+ a| 
+5.
+ a| 
+7.
+ a| 
+7.
+ a| 
+7.
+ a| 
+控制器_a_2連接埠0c
+
+
+
+| FC_SWIT_A_1  a| 
+答
+ a| 
+5.
+ a| 
+11.
+ a| 
+11.
+ a| 
+11.
+ a| 
+bride_a_2b FC1
+
+
+
+ a| 
+FC_SWIT_B_1
+ a| 
+b
+ a| 
+7.
+ a| 
+3.
+ a| 
+3.
+ a| 
+3.
+ a| 
+Controller（控制器）_B_1連接埠0c
+
+
+
+ a| 
+FC_SWIT_B_1
+ a| 
+b
+ a| 
+7.
+ a| 
+7.
+ a| 
+7.
+ a| 
+7.
+ a| 
+Controller（控制器）_B_2連接埠0c
+
+|===
+|===
+
+
+| Fabric中的區域 | 成員連接埠 
+
+
+ a| 
+MC1_INIT_GRP_2_STIR_A_STK_GRP_2_BOT_FC1
+ a| 
+5、3；5、7；7、3；7、7；5、11
+
+|===
+* DRgroup 1：MC1_INIT_GRP_1_STIR_A_STK_GRP_2_BOT_FC2：*
+
+|===
+
+
+| FC交換器 | 網站 | 交換器網域 | 6505 / 6510 / G610連接埠 | 6520連接埠 | G620連接埠 | 連線至... 
+
+
+ a| 
+FC_SWIT_A_2
+ a| 
+答
+ a| 
+6.
+ a| 
+2.
+ a| 
+0
+ a| 
+0
+ a| 
+Controller（控制器）a_1連接埠0d
+
+
+
+ a| 
+FC_SWIT_A_2
+ a| 
+答
+ a| 
+6.
+ a| 
+6.
+ a| 
+4.
+ a| 
+4.
+ a| 
+Controller（控制器）_a_2連接埠0b
+
+
+
+ a| 
+FC_SWIT_A_2
+ a| 
+答
+ a| 
+6.
+ a| 
+10.
+ a| 
+10.
+ a| 
+10.
+ a| 
+bride_a_2a FC2
+
+
+
+ a| 
+FC_SWIT_B_2
+ a| 
+b
+ a| 
+8.
+ a| 
+2.
+ a| 
+2.
+ a| 
+2.
+ a| 
+Controller（控制器）_B_1連接埠0b
+
+
+
+ a| 
+FC_SWIT_B_2
+ a| 
+b
+ a| 
+8.
+ a| 
+6.
+ a| 
+6.
+ a| 
+6.
+ a| 
+Controller（控制器）_B_2連接埠0b
+
+|===
+|===
+
+
+| Fabric中的區域 | 成員連接埠 
+
+
+ a| 
+MC1_INIT_GRP_1_STIRM_A_STK_GRP_2_TOP _FC2
+ a| 
+6、2；6、6；8、2；8、6；6、10
+
+|===
+* DRgroup 1：MC1_INIT_GRP_2_STIR_A_STK_GRP_2_BOT_FC2：*
+
+|===
+
+
+| FC交換器 | 網站 | 交換器網域 | 6505 / 6510 / G610連接埠 | 6520連接埠 | G620連接埠 | 連線至... 
+
+
+ a| 
+FC_SWIT_A_2
+ a| 
+答
+ a| 
+6.
+ a| 
+3.
+ a| 
+3.
+ a| 
+3.
+ a| 
+Controller（控制器）a_1連接埠0d
+
+
+
+ a| 
+FC_SWIT_A_2
+ a| 
+答
+ a| 
+6.
+ a| 
+7.
+ a| 
+7.
+ a| 
+7.
+ a| 
+Controller（控制器）_a_2連接埠0b
+
+
+
+ a| 
+FC_SWIT_A_2
+ a| 
+答
+ a| 
+6.
+ a| 
+11.
+ a| 
+11.
+ a| 
+11.
+ a| 
+bride_a_2b FC2
+
+
+
+ a| 
+FC_SWIT_B_2
+ a| 
+b
+ a| 
+8.
+ a| 
+3.
+ a| 
+3.
+ a| 
+3.
+ a| 
+Controller（控制器）_B_1連接埠0b\
+
+
+
+ a| 
+FC_SWIT_B_2
+ a| 
+b
+ a| 
+8.
+ a| 
+7.
+ a| 
+7.
+ a| 
+7.
+ a| 
+Controller（控制器）_B_2連接埠0b
+
+|===
+|===
+
+
+| Fabric中的區域 | 成員連接埠 
+
+
+ a| 
+MC1_INIT_GRP_2_STIR_A_STK_GRP_2_BOT_FC2
+ a| 
+6、3、6、7、8、3、8、7、6、11
+
+|===
+
+
+==== DR群組1 -站台B的堆疊1
+
+* DRgroup 1：MC1_INIT_GRP_1_STIR_B_STK_GRP_1_TOP _FC1：*
+
+|===
+
+
+| FC交換器 | 網站 | 交換器網域 | 6505 / 6510 / G610連接埠 | 6520連接埠 | G620連接埠 | 連線至... 
+
+
+ a| 
+FC_SWIT_A_1
+ a| 
+答
+ a| 
+5.
+ a| 
+2.
+ a| 
+2.
+ a| 
+2.
+ a| 
+Controller（控制器）a_1連接埠0A
+
+
+
+ a| 
+FC_SWIT_A_1
+ a| 
+答
+ a| 
+5.
+ a| 
+6.
+ a| 
+6.
+ a| 
+6.
+ a| 
+Controller（控制器）a_2連接埠0A
+
+
+
+ a| 
+FC_SWIT_B_1
+ a| 
+b
+ a| 
+7.
+ a| 
+2.
+ a| 
+2.
+ a| 
+8.
+ a| 
+Controller（控制器）B_1連接埠0A
+
+
+
+ a| 
+FC_SWIT_B_1
+ a| 
+b
+ a| 
+7.
+ a| 
+6.
+ a| 
+6.
+ a| 
+2.
+ a| 
+Controller（控制器）_B_2連接埠0A
+
+
+
+ a| 
+FC_SWIT_B_1
+ a| 
+b
+ a| 
+7.
+ a| 
+8.
+ a| 
+8.
+ a| 
+6.
+ a| 
+bridge _B_1A FC1
+
+|===
+|===
+
+
+| Fabric中的區域 | 成員連接埠 
+
+
+ a| 
+MC1_INIT_GRP_1_STIR_B_STK_GRP_1_TOP _FC1
+ a| 
+5、2；5、6；7、2；7、6；7、8
+
+|===
+* DRgroup 1：MC1_INIT_GRP_2_STIR_B_STK_GRP_1_TOP _FC1：*
+
+|===
+
+
+| FC交換器 | 網站 | 交換器網域 | 6505 / 6510 / G610連接埠 | 6520連接埠 | G620連接埠 | 連線至... 
+
+
+ a| 
+FC_SWIT_A_1
+ a| 
+答
+ a| 
+5.
+ a| 
+3.
+ a| 
+3.
+ a| 
+3.
+ a| 
+控制器_a_1連接埠0c
+
+
+
+ a| 
+FC_SWIT_A_1
+ a| 
+答
+ a| 
+5.
+ a| 
+7.
+ a| 
+7.
+ a| 
+7.
+ a| 
+控制器_a_2連接埠0c
+
+
+
+ a| 
+FC_SWIT_B_1
+ a| 
+b
+ a| 
+7.
+ a| 
+3.
+ a| 
+3.
+ a| 
+9.
+ a| 
+Controller（控制器）_B_1連接埠0c
+
+
+
+ a| 
+FC_SWIT_B_1
+ a| 
+b
+ a| 
+7.
+ a| 
+7.
+ a| 
+7.
+ a| 
+3.
+ a| 
+Controller（控制器）_B_2連接埠0c
+
+
+
+ a| 
+FC_SWIT_B_1
+ a| 
+b
+ a| 
+7.
+ a| 
+9.
+ a| 
+9.
+ a| 
+7.
+ a| 
+bridge _B_1b FC1
+
+|===
+|===
+
+
+| Fabric中的區域 | 成員連接埠 
+
+
+ a| 
+MC1_INIT_GRP_2_STIR_B_STK_GRP_1_BOD_FC1
+ a| 
+5、3；5、7；7、3；7、7；7、9
+
+|===
+* DRgroup 1：MC1_INIT_GRP_1_STIR_B_STK_GRP_1_BOD_FC2：*
+
+|===
+
+
+| FC交換器 | 網站 | 交換器網域 | 6505 / 6510 / G610連接埠 | 6520連接埠 | G620連接埠 | 連線至... 
+
+
+ a| 
+FC_SWIT_A_2
+ a| 
+答
+ a| 
+6.
+ a| 
+2.
+ a| 
+2.
+ a| 
+2.
+ a| 
+Controller（控制器）a_1連接埠0d
+
+
+
+ a| 
+FC_SWIT_A_2
+ a| 
+答
+ a| 
+6.
+ a| 
+6.
+ a| 
+6.
+ a| 
+6.
+ a| 
+Controller（控制器）_a_2連接埠0b
+
+
+
+ a| 
+FC_SWIT_B_2
+ a| 
+b
+ a| 
+8.
+ a| 
+2.
+ a| 
+2.
+ a| 
+2.
+ a| 
+Controller（控制器）_B_1連接埠0b
+
+
+
+ a| 
+FC_SWIT_B_2
+ a| 
+b
+ a| 
+8.
+ a| 
+6.
+ a| 
+6.
+ a| 
+6.
+ a| 
+Controller（控制器）_B_2連接埠0b
+
+
+
+ a| 
+FC_SWIT_B_2
+ a| 
+b
+ a| 
+8.
+ a| 
+8.
+ a| 
+8.
+ a| 
+8.
+ a| 
+bridge _B_1a FC2
+
+|===
+|===
+| Fabric中的區域 | 成員連接埠 
+
+
+ a| 
+MC1_INIT_GRP_1_STIR_B_STK_GRP_1_TOP _FC2
+ a| 
+6、2、6、6、8、2、8、6、8
+
+|===
+* DRgroup 1：MC1_INIT_GRP_2_STIR_B_STK_GRP_1_BOD_FC2：*
+
+|===
+
+
+| FC交換器 | 網站 | 交換器網域 | 6505 / 6510 / G610連接埠 | 6520連接埠 | G620連接埠 | 連線至... 
+
+
+ a| 
+FC_SWIT_A_2
+ a| 
+答
+ a| 
+6.
+ a| 
+3.
+ a| 
+3.
+ a| 
+3.
+ a| 
+Controller（控制器）a_1連接埠0d
+
+
+
+ a| 
+FC_SWIT_A_2
+ a| 
+答
+ a| 
+6.
+ a| 
+7.
+ a| 
+7.
+ a| 
+7.
+ a| 
+Controller（控制器）_a_2連接埠0b
+
+
+
+ a| 
+FC_SWIT_B_2
+ a| 
+b
+ a| 
+8.
+ a| 
+3.
+ a| 
+3.
+ a| 
+3.
+ a| 
+Controller（控制器）_B_1連接埠0b
+
+
+
+ a| 
+FC_SWIT_B_2
+ a| 
+b
+ a| 
+8.
+ a| 
+7.
+ a| 
+7.
+ a| 
+7.
+ a| 
+Controller（控制器）_B_2連接埠0b
+
+
+
+ a| 
+FC_SWIT_B_2
+ a| 
+b
+ a| 
+8.
+ a| 
+9.
+ a| 
+9.
+ a| 
+9.
+ a| 
+bridge _a_1b FC2
+
+|===
+|===
+
+
+| Fabric中的區域 | 成員連接埠 
+
+
+ a| 
+MC1_INIT_GRP_2_STIR_B_STK_GRP_1_BOD_FC2
+ a| 
+6、3、6、7、8、3、8、7、8、9
+
+|===
+
+
+==== DR群組1 -站台B的堆疊2
+
+* DRgroup 1：MC1_INIT_GRP_1_STIR_B_STK_GRP_2_TOP FC1：*
+
+|===
+
+
+| FC交換器 | 網站 | 交換器網域 | 6505 / 6510 / G610連接埠 | 6520連接埠 | G620連接埠 | 連線至... 
+
+
+ a| 
+FC_SWIT_A_1
+ a| 
+答
+ a| 
+5.
+ a| 
+2.
+ a| 
+2.
+ a| 
+2.
+ a| 
+Controller（控制器）a_1連接埠0A
+
+
+
+ a| 
+FC_SWIT_A_1
+ a| 
+答
+ a| 
+5.
+ a| 
+6.
+ a| 
+6.
+ a| 
+6.
+ a| 
+Controller（控制器）a_2連接埠0A
+
+
+
+ a| 
+FC_SWIT_B_1
+ a| 
+b
+ a| 
+7.
+ a| 
+2.
+ a| 
+2.
+ a| 
+2.
+ a| 
+Controller（控制器）B_1連接埠0A
+
+
+
+ a| 
+FC_SWIT_B_1
+ a| 
+b
+ a| 
+7.
+ a| 
+6.
+ a| 
+6.
+ a| 
+6.
+ a| 
+Controller（控制器）_B_2連接埠0A
+
+
+
+ a| 
+FC_SWIT_B_1
+ a| 
+b
+ a| 
+7.
+ a| 
+10.
+ a| 
+10.
+ a| 
+10.
+ a| 
+bridge _B_2a FC1
+
+|===
+|===
+
+
+| Fabric中的區域 | 成員連接埠 
+
+
+ a| 
+MC1_INIT_GRP_1_STIR_B_STK_GRP_2_TOP _FC1
+ a| 
+5、2；5、6；7、2；7、6；7、10
+
+|===
+* DRgroup 1：MC1_INIT_GRP_2_STIR_B_STK_GRP_2_TOP FC1：*
+
+|===
+
+
+| FC交換器 | 網站 | 交換器網域 | 6505 / 6510 / G610連接埠 | 6520連接埠 | G620連接埠 | 連線至... 
+
+
+ a| 
+FC_SWIT_A_1
+ a| 
+答
+ a| 
+5.
+ a| 
+3.
+ a| 
+3.
+ a| 
+3.
+ a| 
+控制器_a_1連接埠0c
+
+
+
+ a| 
+FC_SWIT_A_1
+ a| 
+答
+ a| 
+5.
+ a| 
+7.
+ a| 
+7.
+ a| 
+7.
+ a| 
+控制器_a_2連接埠0c
+
+
+
+ a| 
+FC_SWIT_B_1
+ a| 
+b
+ a| 
+7.
+ a| 
+3.
+ a| 
+3.
+ a| 
+3.
+ a| 
+Controller（控制器）_B_1連接埠0c
+
+
+
+ a| 
+FC_SWIT_B_1
+ a| 
+b
+ a| 
+7.
+ a| 
+7.
+ a| 
+7.
+ a| 
+7.
+ a| 
+Controller（控制器）_B_2連接埠0c
+
+
+
+ a| 
+FC_SWIT_B_1
+ a| 
+b
+ a| 
+7.
+ a| 
+11.
+ a| 
+11.
+ a| 
+11.
+ a| 
+bride_B_2b FC1
+
+|===
+|===
+
+
+| Fabric中的區域_2 hh | 成員連接埠 
+
+
+ a| 
+MC1_INIT_GRP_2_STIR_B_STK_GRP_2_BOD_FC1
+ a| 
+5、3；5、7；7、3；7、7；7、11
+
+|===
+* DRgroup 1：MC1_INIT_GRP_1_STIR_B_STK_GRP_2_BOT_FC2：*
+
+|===
+
+
+| FC交換器 | 網站 | 交換器網域 | 6505 / 6510 / G610連接埠 | 6520連接埠 | G620連接埠 | 連線至... 
+
+
+ a| 
+FC_SWIT_A_2
+ a| 
+答
+ a| 
+6.
+ a| 
+2.
+ a| 
+2.
+ a| 
+2.
+ a| 
+控制器a_1連接埠d
+
+
+
+ a| 
+FC_SWIT_A_2
+ a| 
+答
+ a| 
+6.
+ a| 
+6.
+ a| 
+6.
+ a| 
+6.
+ a| 
+Controller（控制器）_a_2連接埠0b
+
+
+
+ a| 
+FC_SWIT_B_2
+ a| 
+b
+ a| 
+8.
+ a| 
+2.
+ a| 
+2.
+ a| 
+2.
+ a| 
+Controller（控制器）_B_1連接埠0b
+
+
+
+ a| 
+FC_SWIT_B_2
+ a| 
+b
+ a| 
+8.
+ a| 
+6.
+ a| 
+6.
+ a| 
+6.
+ a| 
+Controller（控制器）_B_2連接埠0b
+
+
+
+ a| 
+FC_SWIT_B_2
+ a| 
+b
+ a| 
+8.
+ a| 
+10.
+ a| 
+10.
+ a| 
+10.
+ a| 
+bridge _B_2a FC2
+
+|===
+|===
+
+
+| Fabric中的區域 | 成員連接埠 
+
+
+ a| 
+MC1_INIT_GRP_1_STIR_B_STK_GRP_2_TOP _FC2
+ a| 
+6、2、6、6、8、2、8、6、8、10
+
+|===
+* DRgroup 1：MC1_INIT_GRP_2_STIR_B_STK_GRP_2_BOT_FC2：*
+
+|===
+
+
+| FC交換器 | 網站 | 交換器網域 | 6505 / 6510 / G610連接埠 | 6520連接埠 | G620連接埠 | 連線至... 
+
+
+ a| 
+FC_SWIT_A_2
+ a| 
+答
+ a| 
+6.
+ a| 
+3.
+ a| 
+3.
+ a| 
+3.
+ a| 
+Controller（控制器）a_1連接埠0d
+
+
+
+ a| 
+FC_SWIT_A_2
+ a| 
+答
+ a| 
+6.
+ a| 
+7.
+ a| 
+7.
+ a| 
+7.
+ a| 
+Controller（控制器）_a_2連接埠0b
+
+
+
+ a| 
+FC_SWIT_B_2
+ a| 
+b
+ a| 
+8.
+ a| 
+3.
+ a| 
+3.
+ a| 
+3.
+ a| 
+Controller（控制器）_B_1連接埠0b
+
+
+
+ a| 
+FC_SWIT_B_2
+ a| 
+b
+ a| 
+8.
+ a| 
+7.
+ a| 
+7.
+ a| 
+7.
+ a| 
+Controller（控制器）_B_2連接埠0b
+
+
+
+ a| 
+FC_SWIT_B_2
+ a| 
+b
+ a| 
+8.
+ a| 
+11.
+ a| 
+11.
+ a| 
+11.
+ a| 
+bride_B_2b FC2
+
+|===
+|===
+
+
+| Fabric中的區域 | 成員連接埠 
+
+
+ a| 
+MC1_INIT_GRP_2_STIR_B_STK_GRP_2_BOD_FC2
+ a| 
+6、3、6、7、8、3、8、7、8、11
+
+|===
+
+
+==== 儲存區域摘要
+
+|===
+
+
+| 網路 | 區域名稱 | 成員連接埠 
+
+
+ a| 
+FC_switch_a_1和FC_switch_B_1
+ a| 
+MC1_INIT_GRP_1_STIRM_A_STK_GRP_1_TOP _FC1
+ a| 
+5、2；5、6；7、2；7、6；5、8
+
+
+
+ a| 
+FC_switch_a_1和FC_switch_B_1
+ a| 
+MC1_INIT_GRP_2_STIR_A_STK_GRP_1_BOT_FC1
+ a| 
+5、3；5、7；7、3；7、7；5、9
+
+
+
+ a| 
+FC_switch_a_1和FC_switch_B_1
+ a| 
+MC1_INIT_GRP_1_STIRM_A_STK_GRP_2_TOP _FC1
+ a| 
+5、2；5、6；7、2；7、6；5、10
+
+
+
+ a| 
+FC_switch_a_1和FC_switch_B_1
+ a| 
+MC1_INIT_GRP_2_STIR_A_STK_GRP_2_BOT_FC1
+ a| 
+5、3；5、7；7、3；7、7；5、11
+
+
+
+ a| 
+FC_switch_a_1和FC_switch_B_1
+ a| 
+MC1_INIT_GRP_1_STIR_B_STK_GRP_1_TOP _FC1
+ a| 
+5、2；5、6；7、2；7、6；7、8
+
+
+
+ a| 
+FC_switch_a_1和FC_switch_B_1
+ a| 
+MC1_INIT_GRP_2_STIR_B_STK_GRP_1_BOD_FC1
+ a| 
+5、3；5、7；7、3；7、7；7、9
+
+
+
+ a| 
+FC_switch_a_1和FC_switch_B_1
+ a| 
+MC1_INIT_GRP_1_STIR_B_STK_GRP_2_TOP _FC1
+ a| 
+5、2；5、6；7、2；7、6；7、10
+
+
+
+ a| 
+FC_switch_a_1和FC_switch_B_1
+ a| 
+MC1_INIT_GRP_2_STIR_B_STK_GRP_2_BOD_FC1
+ a| 
+5、3；5、7；7、3；7、7；7、11
+
+
+
+ a| 
+FC_switch_a_2和FC_switch_B_2
+ a| 
+MC1_INIT_GRP_1_STIRM_A_STK_GRP_1_TOP _FC2
+ a| 
+6、2；6、6；8、2；8、6；6、8
+
+
+
+ a| 
+FC_switch_a_2和FC_switch_B_2
+ a| 
+MC1_INIT_GRP_2_STIR_A_STK_GRP_1_BOD_FC2
+ a| 
+6、3、6、7、8、3、8、7、6、9
+
+
+
+ a| 
+FC_switch_a_2和FC_switch_B_2
+ a| 
+MC1_INIT_GRP_1_STIRM_A_STK_GRP_2_TOP _FC2
+ a| 
+6、2；6、6；8、2；8、6；6、10
+
+
+
+ a| 
+FC_switch_a_2和FC_switch_B_2
+ a| 
+MC1_INIT_GRP_2_STIR_A_STK_GRP_2_BOT_FC2
+ a| 
+6、3、6、7、8、3、8、7、6、11
+
+
+
+ a| 
+FC_switch_a_2和FC_switch_B_2
+ a| 
+MC1_INIT_GRP_1_STIR_B_STK_GRP_1_TOP _FC2
+ a| 
+6、2、6、6、8、2、8、6、8
+
+
+
+ a| 
+FC_switch_a_2和FC_switch_B_2
+ a| 
+MC1_INIT_GRP_2_STIR_B_STK_GRP_1_BOD_FC2
+ a| 
+6、3、6、7、8、3、8、7、8、9
+
+
+
+ a| 
+FC_switch_a_2和FC_switch_B_2
+ a| 
+MC1_INIT_GRP_1_STIR_B_STK_GRP_2_TOP _FC2
+ a| 
+6、2、6、6、8、2、8、6、8、10
+
+
+
+ a| 
+FC_switch_a_2和FC_switch_B_2
+ a| 
+MC1_INIT_GRP_2_STIR_B_STK_GRP_2_BOD_FC2
+ a| 
+6、3、6、7、8、3、8、7、8、11
+
+|===
+
+
+=== 在Brocade FC交換器上設定分區
+
+您必須將交換器連接埠指派給不同的區域、以區隔控制器和儲存流量、並針對FC-VI連接埠和儲存連接埠的區域。
+
+下列步驟使用適用於MetroCluster 整個過程的標準分區設定。
+
+link:task_fcsw_brocade_configure_the_brocade_fc_switches_supertask.html["FC-VI連接埠分區"]
+
+link:task_fcsw_brocade_configure_the_brocade_fc_switches_supertask.html["使用單一FC連接埠的Fibre Bridge 6500N橋接器或Fibre Bridge 7500N或7600N橋接器分區"]
+
+link:task_fcsw_brocade_configure_the_brocade_fc_switches_supertask.html["使用兩個FC連接埠的Fibre Bridge 7500N橋接器分區"]
+
+.步驟
+. 在每個交換器上建立FC-VI區域：
++
+《區域創建者"QOSH1_FCVI_1"、成員；成員...》
+
++
+在此範例中、會建立QoS FCVI區域、其中包含連接埠5、0、5、4、5、5、7、0、7、1、7、4、7、5：
+
++
+[listing]
+----
+Switch_A_1:admin> zonecreate "QOSH1_FCVI_1", "5,0;5,1;5,4;5,5;7,0;7,1;7,4;7,5"
+----
+. 在每個交換器上設定儲存區域。
++
+您可以從網路中的一個交換器設定網路分區。在接下來的範例中、分區是在Switch_a_1上設定的。
+
++
+.. 為交換器架構中的每個交換器網域建立儲存區域：
++
+《區域創建者名稱、成員、成員……》
+
++
+在此範例中、使用兩個FC連接埠建立的是用於Fibre Bridge 7500N的儲存區域。區域包含連接埠5、2、5、6、7、2、7、6、5、16：
+
++
+[listing]
+----
+Switch_A_1:admin> zonecreate "MC1_INIT_GRP_1_SITE_A_STK_GRP_1_TOP_FC1", "5,2;5,6;7,2;7,6;5,16"
+----
+.. 在第一個交換器架構中建立組態：
++
+「cfgcreate config_name、區域；區域...」
+
++
+在此範例中、會建立名稱為CFG_1的組態、以及兩個區域QOSH1_MC1_FA_1_FCVI和MC1_INIT_GRP_1_SION_A_STK_GRP_1_TOP_FC1
+
++
+[listing]
+----
+Switch_A_1:admin> cfgcreate "CFG_1", "QOSH1_MC1_FAB_1_FCVI; MC1_INIT_GRP_1_SITE_A_STK_GRP_1_TOP_FC1"
+----
+.. 視需要新增區域至組態：
++
+"cfgadd config_nameize;ZONE…"
+
+.. 啟用組態：
++
+《cfgenable config_name》
+
++
+[listing]
+----
+Switch_A_1:admin> cfgenable "CFG_1"
+----
+.. 儲存組態：
++
+《cfgSAVE》
+
++
+[listing]
+----
+Switch_A_1:admin> cfgsave
+----
+.. 驗證分區組態：
++
+「區域-驗證」
+
++
+[listing]
+----
+Switch_A_1:admin> zone --validate
+Defined configuration:
+cfg: CFG_1 QOSH1_MC1_FAB_1_FCVI ; MC1_INIT_GRP_1_SITE_A_STK_GRP_1_TOP_FC1
+zone: QOSH1_MC1_FAB_1_FCVI
+5,0;5,1;5,4;5,5;7,0;7,1;7,4;7,5
+zone: MC1_INIT_GRP_1_SITE_A_STK_GRP_1_TOP_FC1
+5,2;5,6;7,2;7,6;5,16
+Effective configuration:
+cfg: CFG_1
+zone: QOSH1_MC1_FAB_1_FCVI
+5,0
+5,1
+5,4
+5,5
+7,0
+7,1
+7,4
+7,5
+zone: MC1_INIT_GRP_1_SITE_A_STK_GRP_1_TOP_FC1
+5,2
+5,6
+7,2
+7,6
+5,16
+------------------------------------
+~ - Invalid configuration
+* - Member does not exist
+# - Invalid usage of broadcast zone
+----
+
+
+
+
+
+
+== 在Brocade 6510或G620交換器上設定ISL加密
+
+在Brocade 6510或G620交換器上、您可以選擇在ISL連線上使用Brocade加密功能。如果您想要使用加密功能、則必須在MetroCluster 每個交換器上執行額外的組態設定步驟（以供使用）。
+
+.開始之前
+* 您必須擁有Brocade 6510或G620交換器。
++
+
+NOTE: Brocade G620交換器上的ISL加密支援僅支援ONTAP 於支援版本9.4及更新版本。
+
+* 您必須從同一個網路中選取兩個交換器。
+* 您必須檢閱交換器和Fabric作業系統版本的Brocade文件、以確認頻寬和連接埠限制。
+
+
+這些步驟必須在同一個Fabric中的兩個交換器上執行。
+
+
+
+=== 正在停用虛擬架構
+
+若要設定ISL加密、您必須停用MetroCluster 整個虛擬架構、使其位於整個4部交換器上、以利進行支援。
+
+.步驟
+. 在交換器主控台輸入下列命令來停用虛擬架構：
++
+「Fifconfig-disableVf」
+
+. 重新啟動交換器。
+
+
+
+
+=== 設定有效負載
+
+停用虛擬架構之後、您必須在Fabric中的兩個交換器上設定有效負載或資料欄位大小。
+
+資料欄位大小不得超過2048。
+
+.步驟
+. 停用交換器：
++
+「切換」
+
+. 設定及設定有效負載：
++
+設定
+
+. 設定下列交換器參數：
++
+.. 設定Fabric參數如下：「y」
+.. 設定其他參數、例如網域、以WWN為基礎的持續性PID等。
+.. 設定資料欄位大小：「2048」
+
+
+
+
+
+
+=== 設定驗證原則
+
+您必須設定驗證原則及相關參數。
+
+命令必須在交換器主控台執行。
+
+.步驟
+. 設定驗證密碼：
++
+.. 開始設定程序：
++
+「ecAuthSecret --set」
+
++
+此命令會啟動您在下列步驟中回應的一系列提示：
+
+.. 在架構中提供其他交換器的全球名稱（WWN）、以輸入對等WWN、網域或交換器名稱參數。
+.. 為「Enter Peer secret（輸入對等機密）」參數提供對等機密。
+.. 提供「輸入本機密碼」參數的本機密碼。
+.. 在「您完成了」參數中輸入「Y」。
++
+--
+以下是設定驗證密碼的範例：
+
+[listing]
+----
+brcd> secAuthSecret --set
+
+This command is used to set up secret keys for the DH-CHAP authentication.
+The minimum length of a secret key is 8 characters and maximum 40
+characters. Setting up secret keys does not initiate DH-CHAP
+authentication. If switch is configured to do DH-CHAP, it is performed
+whenever a port or a switch is enabled.
+
+Warning: Please use a secure channel for setting secrets. Using
+an insecure channel is not safe and may compromise secrets.
+
+Following inputs should be specified for each entry.
+
+1. WWN for which secret is being set up.
+2. Peer secret: The secret of the peer that authenticates to peer.
+3. Local secret: The local secret that authenticates peer.
+
+Press enter to start setting up secrets > <cr>
+
+Enter peer WWN, Domain, or switch name (Leave blank when done): 10:00:00:05:33:76:2e:99
+Enter peer secret: <hidden>
+Re-enter peer secret: <hidden>
+Enter local secret: <hidden>
+Re-enter local secret: <hidden>
+
+Enter peer WWN, Domain, or switch name (Leave blank when done):
+Are you done? (yes, y, no, n): [no] yes
+Saving data to key store... Done.
+----
+--
+
+
+. 將驗證群組設為4：
++
+「authutil-set -g 4」
+
+. 將驗證類型設為「dhchap」：
++
+「authutil-set -a dhchap」
+
++
+系統會顯示下列輸出：
+
++
+[listing]
+----
+Authentication is set to dhchap.
+----
+. 將交換器上的驗證原則設定為開啟：
++
+「authutil-policy -SW on」
+
++
+系統會顯示下列輸出：
+
++
+[listing]
+----
+Warning: Activating the authentication policy requires either DH-CHAP secrets or PKI certificates depending on the protocol selected. Otherwise, ISLs will be segmented during next E-port bring-up.
+ARE YOU SURE  (yes, y, no, n): [no] yes
+Auth Policy is set to ON
+----
+
+
+
+
+=== 在Brocade交換器上啟用ISL加密
+
+設定驗證原則和驗證密碼之後、您必須在連接埠上啟用ISL加密、才能生效。
+
+.關於這項工作
+* 這些步驟應一次在一個交換器架構上執行。
+* 命令必須在交換器主控台執行。
+
+
+.步驟
+. 在所有ISL連接埠上啟用加密：
++
+「portCfgEncrypt -啟用port_number'
+
++
+在下列範例中、加密會在連接埠8和12上啟用：
+
++
+「portCfgEncrypt -啟用8」
+
++
+「portCfgEncrypt -啟用12」
+
+. 啟用交換器：
++
+「witchenable」
+
+. 確認ISL正常運作：
++
+《島上秀》
+
+. 確認已啟用加密：
++
+「portenccompshow」
+
++
+下列範例顯示已在連接埠8和12上啟用加密：
+
++
+[listing]
+----
+
+User Encryption
+Port  configured     Active
+----   ----------    ------
+ 8      yes          yes
+ 9      No           No
+ 10     No           No
+ 11     No           No
+ 12     yes          yes
+----
+
+
+在MetroCluster 其他架構的交換器上執行所有步驟、以進行一個整體配置。

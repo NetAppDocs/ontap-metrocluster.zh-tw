@@ -1,0 +1,52 @@
+---
+permalink: upgrade/task_enable_storage_failover_both_controller_modules_and_set_cluster_ha.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, enable, storage, failover, both, controller, module, cluster, ha 
+summary: 在MetroCluster 將新的控制器模組新增至支援功能組態之後、您必須在兩個控制器模組上啟用儲存容錯移轉、並分別啟用叢集HA。 
+---
+= 在兩個控制器模組上啟用儲存容錯移轉、並啟用叢集HA
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在MetroCluster 將新的控制器模組新增至支援功能組態之後、您必須在兩個控制器模組上啟用儲存容錯移轉、並分別啟用叢集HA。
+
+先前必須使用「flexconfigure -refreshtrue」命令重新整理此組態。MetroCluster MetroCluster
+
+此工作必須在每MetroCluster 個站台上執行。
+
+.步驟
+. 啟用儲存容錯移轉：
++
+「torage容錯移轉修改啟用的true節點_existing節點名稱_」
+
++
+單一命令可在兩個控制器模組上進行儲存容錯移轉。
+
+. 確認已啟用儲存容錯移轉：
++
+「容錯移轉顯示」
+
++
+輸出應類似於下列內容：
+
++
+[listing]
+----
+
+Node           Partner        Possible State Description
+-------------- -------------- -------- ----------------------
+old-ctlr        new-ctlr      true      Connected to new-ctlr
+new-ctlr        old-ctlr      true      Connected to old-ctlr
+2 entries were displayed.
+----
+. 啟用叢集HA：
++
+"cluster ha modify -configured true"
+
++
+如果叢集僅包含兩個節點、且與儲存容錯移轉所提供的HA不同、則必須在叢集中設定叢集高可用度（HA）。
+
+

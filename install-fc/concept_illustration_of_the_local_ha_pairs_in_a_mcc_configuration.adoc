@@ -1,0 +1,26 @@
+---
+permalink: install-fc/concept_illustration_of_the_local_ha_pairs_in_a_mcc_configuration.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, local, ha, pairs, configuration, illustration 
+summary: 在八節點或四節點MetroCluster 的「架構」組態中、每個站台都包含設定為一或兩個HA配對的儲存控制器。如此一來、本機備援功能便可在某個儲存控制器故障時、由其本機HA合作夥伴接管。此類故障無需MetroCluster 執行不可用的切換操作即可處理。 
+---
+= 以架構組態顯示本機HA配對的圖例MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在八節點或四節點MetroCluster 的「架構」組態中、每個站台都包含設定為一或兩個HA配對的儲存控制器。如此一來、本機備援功能便可在某個儲存控制器故障時、由其本機HA合作夥伴接管。此類故障無需MetroCluster 執行不可用的切換操作即可處理。
+
+本機HA容錯移轉和還原作業是以非MetroCluster組態的相同方式、使用儲存容錯移轉命令來執行。
+
+image::../media/mcc_hw_architecture_local_ha.gif[MCC HW架構本機Ha]
+
+link:concept_illustration_of_redundant_fc_to_sas_bridges.html["備援FC對SAS橋接器的圖例"]
+
+link:concept_redundant_fc_switch_fabrics.html["備援FC交換器架構"]
+
+link:concept_cluster_peering_network_mcc.html["叢集對等網路的圖例"]
+
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-concepts/home.html["概念ONTAP"^]

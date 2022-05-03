@@ -1,0 +1,97 @@
+---
+permalink: maintain/task_upgrade_or_downgrad_the_firmware_on_a_cisco_fc_switch_mcc.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, upgrade, downgrade, firmware, cisco, fc, switch 
+summary: 若要升級或降級Cisco FC交換器上的韌體、您必須使用Cisco專屬的命令來停用交換器、執行並驗證升級、以及重新開機並重新啟用交換器。 
+---
+= 升級或降級Cisco FC交換器上的韌體
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+若要升級或降級Cisco FC交換器上的韌體、您必須使用Cisco專屬的命令來停用交換器、執行並驗證升級、以及重新開機並重新啟用交換器。
+
+* 系統必須正確連接纜線。
+* 所有通往儲存櫃的路徑都必須可用。
+* 磁碟櫃堆疊必須穩定。
+* FC交換器架構必須健全。
+* 系統中的所有元件都必須正常運作。
+* 系統必須正常運作。
+* 您需要管理員密碼、才能存取FTP或scp伺服器。
+
+
+交換器架構在韌體升級或降級期間會停用、MetroCluster 而支援的功能則是仰賴第二個架構來繼續運作。
+
+您必須在每個交換器架構上連續重複此工作、以確保所有交換器都執行相同的韌體版本。
+
+您必須擁有韌體檔案。
+
+
+NOTE: 此程序不中斷營運、約需一小時完成。
+
+.步驟
+. 登入網路中的每個交換器。
++
+在這些範例中、交換器稱為FC_switch_a_1和FC_switch_B_1。
+
+. 確定每個交換器上的bootflash目錄是否有足夠的空間：
++
+’*目錄bootflash*
+
++
+如果沒有、請使用「刪除bootflash:file_name」命令刪除不需要的韌體檔案。
+
+. 將Kickstart和系統檔案複製到交換器：
++
+‘* copy _source_filetarGet_file_*’
+
++
+在以下範例中、kickstart檔案（「m9200-s2ek9-kickstart-mz.5.2.1.bin」）和系統檔案（「m9200-s2ek9-mz.5.2.1.bin」）位於FTP伺服器的路徑：him/韌 體/`。
+
++
+以下範例顯示在FC_switch_a_1上發出的命令：
+
++
+[listing]
+----
+FC_switch_A_1# copy ftp://10.10.10.55/firmware/m9200-s2ek9-kickstart-mz.5.2.1.bin bootflash:m9200-s2ek9-kickstart-mz.5.2.1.bin
+FC_switch_A_1# copy ftp://10.10.10.55/firmware/m9200-s2ek9-mz.5.2.1.bin bootflash:m9200-s2ek9-mz.5.2.1.bin
+----
+. 停用此網路中兩個交換器上的所有VSAN。
+. 在交換器上安裝所需的韌體：
++
+"*安裝所有系統bootflash:_systemfile_name__ kickstart bootflash:_kickstartfile_name__*
+
++
+以下範例顯示在FC_switch_a_1上發出的命令：
+
++
+[listing]
+----
+FC_switch_A_1# install all system bootflash:m9200-s2ek9-mz.5.2.1.bin kickstart bootflash:m9200-s2ek9-kickstart-mz.5.2.1.bin
+Enter Yes to confirm the installation.
+----
+. 檢查每個交換器上的韌體版本、確定已安裝正確版本：
++
+’*顯示版本*
+
+. 啟用此網路中兩個交換器上的所有VSAN。
+. 驗證MetroCluster 下列項目中的功能：ONTAP
++
+.. 檢查系統是否具有多路徑：+`*節點執行-node-name_ sysconfig -A*
+.. 檢查兩個叢集上是否有任何健全狀況警示：+「*系統健全狀況警示顯示*」
+.. 確認MetroCluster 此功能的組態、並確認操作模式正常：+「* MetroCluster 」「*」「show *」
+.. 執行MetroCluster 功能不全：+「* MetroCluster 效能不全*」
+.. 顯示MetroCluster 畫面的結果：+「* MetroCluster 畫面檢查」顯示*
+.. 檢查交換器上是否有任何健全狀況警示（若有）：+「*儲存交換器show *」
+.. 執行Config Advisor
++
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"]
+
+.. 執行Config Advisor 完功能後、請檢閱工具的輸出結果、並依照輸出中的建議來解決發現的任何問題。
+
+
+. 對第二個交換器網路重複此程序。
+

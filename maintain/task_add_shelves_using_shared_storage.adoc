@@ -1,0 +1,703 @@
+---
+permalink: maintain/task_add_shelves_using_shared_storage.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, shelf, shelves, add, ns224, 
+summary: 您可能需要使用MetroCluster 共享儲存MetroCluster 功能交換器、將NS224磁碟櫃新增至功能區。 
+---
+= 使用共享儲存區功能交換器將磁碟櫃新增至MetroCluster 靜態IP MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可能需要使用MetroCluster 共享儲存MetroCluster 功能交換器、將NS224磁碟櫃新增至功能區。
+
+從S59.10.1開始ONTAP 、您可以MetroCluster 使用共享的儲存/ MetroCluster 功能交換器、從一個功能區新增NS224磁碟櫃。您一次可以新增多個機櫃。
+
+.開始之前
+* 節點必須執行ONTAP 的是無法正常運作的版本。
+* 所有目前連線的NS224磁碟櫃都必須連接到MetroCluster 與該處理器相同的交換器（共享儲存/ MetroCluster 交換器組態）。
+* 此程序無法用於將直接連接NS224磁碟櫃或NS224磁碟櫃連接至專用乙太網路交換器的組態、轉換成使用共享儲存/ MetroCluster 交換器的組態。
+
+
+
+
+== 在維護前傳送自訂AutoSupport 的支援訊息
+
+在執行維護之前、您應發出AutoSupport 一份不知所知的訊息、通知NetApp技術支援部門正在進行維護。告知技術支援部門正在進行維護、可防止他們假設發生中斷、而開啟案例。
+
+此工作必須在每MetroCluster 個站台上執行。
+
+.步驟
+. 為了避免自動產生支援案例、請傳送AutoSupport 一個不全的訊息、指出正在進行升級。
++
+.. 發出下列命令：
++
+「系統節點AutoSupport 不完整地叫用節點*-type all -most "MAn=10h adding or emeing NS224 Shelfo"_」
+
++
+此範例指定10小時的維護時間。您可能需要額外的時間、視您的計畫而定。
+
++
+如果維護作業在時間結束之前完成、您可以叫用AutoSupport 指示維護期間結束的資訊消息：
+
++
+「系統節點AutoSupport 不完整地叫用節點*-type all -most MAn=end」
+
+.. 在合作夥伴叢集上重複執行命令。
+
+
+
+
+
+
+== 驗MetroCluster 證資訊功能組態的健全狀況
+
+在執行轉換之前、您必須先驗證MetroCluster 整個流程的健全狀況和連線能力。
+
+.步驟
+. 驗證MetroCluster 下列項目中的功能：ONTAP
++
+.. 檢查系統是否具有多路徑：
++
+「節點執行節點_norme-name_ sysconfig -A」
+
+.. 檢查兩個叢集上的任何健全狀況警示：
++
+「系統健全狀況警示顯示」
+
+.. 確認MetroCluster 執行功能組態、並確認操作模式正常：
++
+《不看》MetroCluster
+
+.. 執行功能檢查：MetroCluster
++
+《不一樣的跑程》MetroCluster
+
+.. 顯示MetroCluster 檢查結果：
++
+《不一樣的表演》MetroCluster
+
+.. 執行Config Advisor
++
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"]
+
+.. 執行Config Advisor 完功能後、請檢閱工具的輸出結果、並依照輸出中的建議來解決發現的任何問題。
+
+
+. 驗證叢集是否正常：
++
+「叢集show -vserver叢集」
+
++
+[listing]
+----
+cluster_A::> cluster show -vserver Cluster
+Node           Health  Eligibility   Epsilon
+-------------- ------  -----------   -------
+node_A_1    true    true          false
+node_A_2    true    true          false
+
+cluster_A::>
+----
+. 驗證所有叢集連接埠是否正常運作：
++
+「網路連接埠show -IPSpace叢集」
+
++
+[listing]
+----
+cluster_A::> network port show -ipspace cluster
+
+Node: node_A_1-old
+
+                                                  Speed(Mbps) Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status
+--------- ------------ ---------------- ---- ---- ----------- --------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy
+
+Node: node_A_2-old
+
+                                                  Speed(Mbps) Health
+Port      IPspace      Broadcast Domain Link MTU  Admin/Oper  Status
+--------- ------------ ---------------- ---- ---- ----------- --------
+e0a       Cluster      Cluster          up   9000  auto/10000 healthy
+e0b       Cluster      Cluster          up   9000  auto/10000 healthy
+
+4 entries were displayed.
+
+cluster_A::>
+----
+. 驗證所有叢集生命體是否正常運作：
++
+「網路介面show -vserver叢集」
+
++
+每個叢集LIF都應顯示為「真實」、並具有「狀態管理/作業者」的「正常」狀態
+
++
+[listing]
+----
+cluster_A::> network interface show -vserver cluster
+
+            Logical      Status     Network          Current       Current Is
+Vserver     Interface  Admin/Oper Address/Mask       Node          Port    Home
+----------- ---------- ---------- ------------------ ------------- ------- -----
+Cluster
+            node_A_1-old_clus1
+                       up/up      169.254.209.69/16  node_A_1   e0a     true
+            node_A_1-old_clus2
+                       up/up      169.254.49.125/16  node_A_1   e0b     true
+            node_A_2-old_clus1
+                       up/up      169.254.47.194/16  node_A_2   e0a     true
+            node_A_2-old_clus2
+                       up/up      169.254.19.183/16  node_A_2   e0b     true
+
+4 entries were displayed.
+
+cluster_A::>
+----
+. 驗證是否已在所有叢集生命體上啟用自動還原：
++
+「網路介面show -vserver叢集-功能 變數自動回復」
+
++
+[listing]
+----
+cluster_A::> network interface show -vserver Cluster -fields auto-revert
+
+          Logical
+Vserver   Interface     Auto-revert
+--------- ------------- ------------
+Cluster
+           node_A_1-old_clus1
+                        true
+           node_A_1-old_clus2
+                        true
+           node_A_2-old_clus1
+                        true
+           node_A_2-old_clus2
+                        true
+
+    4 entries were displayed.
+
+cluster_A::>
+----
+
+
+
+
+== 將新的RCF檔案套用至交換器
+
+
+NOTE: 如果您的交換器已正確設定、您可以跳過以下部分、直接前往 <<Configuring MACsec encryption on Cisco 9336C switches>>（如果適用）或至 <<Connecting the new NS224 shelf>>。
+
+* 您必須變更交換器組態才能新增磁碟櫃。
+* 您應該在檢閱纜線詳細資料 link:https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/port_usage_3232c_9336c.html#cabling-a-aff-a800-to-a-cisco-3232c-or-cisco-9336c-switch["平台連接埠指派"^]。
+* 您必須使用「**RcfFileGenerator**」工具來建立組態的RCF檔案。。 link:https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["RcfFileGenerator"^] 此外、也提供每個交換器的每埠纜線配置總覽。確定您選擇正確數量的磁碟櫃。此外還會建立其他檔案、以及RCF檔案、提供符合您特定選項的詳細佈線配置。使用此纜線總覽來驗證新機櫃的纜線佈線。
+
+
+
+
+=== 升級MetroCluster 以使用不需更新的IP交換器上的RCF檔案
+
+如果您要安裝新的交換器韌體、則必須先安裝交換器韌體、才能升級RCF檔案。
+
+此程序會中斷升級RCF檔案的交換器流量。一旦套用新的RCF檔案、流量就會恢復。
+
+.步驟
+. 驗證組態的健全狀況。
++
+.. 驗證MetroCluster 這些元件是否正常運作：
++
+《* MetroCluster 》*《*執行檢查*》
+
++
+[listing]
+----
+cluster_A::*> metrocluster check run
+
+----
+
+
++
+此作業會在背景執行。
+
++
+.. 完成「畫面檢查」作業後MetroCluster 、請執行「MetroCluster 畫面檢查」以檢視結果。
++
+大約五分鐘後、會顯示下列結果：
+
++
+[listing]
+----
+-----------
+::*> metrocluster check show
+
+Last Checked On: 4/7/2019 21:15:05
+
+Component           Result
+------------------- ---------
+nodes               ok
+lifs                ok
+config-replication  ok
+aggregates          warning
+clusters            ok
+connections         not-applicable
+volumes             ok
+7 entries were displayed.
+----
+.. 若要檢查執行MetroCluster 中的E驗 證作業狀態、請使用命令：+「* MetroCluster 」*「*執行歷史記錄」show -job-id 38*」
+.. 確認沒有健全狀況警示：+「*系統健全狀況警示顯示*」
+
+
+. 準備IP交換器以應用新的RCF檔案。
+
+
+
+
+=== 將Cisco IP交換器重設為原廠預設值
+
+在安裝新的軟體版本和RCFs之前、您必須先清除Cisco交換器組態並執行基本組態。
+
+您必須在MetroCluster 各個採用EIP組態的IP交換器上重複這些步驟。
+
+. 將交換器重設為原廠預設值：
++
+.. 刪除現有的組態：「寫入清除」
+.. 重新載入交換器軟體：「重新載入」
++
+系統會重新開機並進入組態精靈。在開機期間、如果您收到「Abort Auto Provisioning」（中止自動資源配置）提示並繼續正常設定？（是/否）[n]、您應該回應「yes」（是）以繼續。
+
+.. 在組態精靈中、輸入基本的交換器設定：
++
+*** 管理密碼
+*** 交換器名稱
+*** 頻外管理組態
+*** 預設閘道
+*** SSH服務（RSA）完成組態精靈後、交換器會重新開機。
+
+
+.. 出現提示時、輸入使用者名稱和密碼以登入交換器。
++
+以下範例顯示設定交換器時的提示和系統回應。角括弧（「<」）會顯示您輸入資訊的位置。
+
++
+[listing]
+----
+---- System Admin Account Setup ----
+Do you want to enforce secure password standard (yes/no) [y]:y  **<<<**
+
+Enter the password for "admin": password
+Confirm the password for "admin": password
+---- Basic System Configuration Dialog VDC: 1 ----
+
+This setup utility will guide you through the basic configuration of the system. Setup configures only enough connectivity for management of the system.
+
+Please register Cisco Nexus3000 Family devices promptly with your supplier. Failure to register may affect response times for initial service calls. Nexus3000 devices must be registered to receive entitled support services.
+
+Press Enter at anytime to skip a dialog. Use ctrl-c at anytime to skip the remaining dialogs.
+----
++
+您可以在下一組提示中輸入基本資訊、包括交換器名稱、管理位址和閘道、然後選取SSH with RSA。
+
++
+[listing]
+----
+Would you like to enter the basic configuration dialog (yes/no): yes
+  Create another login account (yes/no) [n]:
+  Configure read-only SNMP community string (yes/no) [n]:
+  Configure read-write SNMP community string (yes/no) [n]:
+  Enter the switch name : switch-name **<<<**
+  Continue with Out-of-band (mgmt0) management configuration? (yes/no) [y]:
+    Mgmt0 IPv4 address : management-IP-address  **<<<**
+   Mgmt0 IPv4 netmask : management-IP-netmask  **<<<**
+  Configure the default gateway? (yes/no) [y]: y **<<<**
+    IPv4 address of the default gateway : gateway-IP-address  **<<<**
+  Configure advanced IP options? (yes/no) [n]:
+  Enable the telnet service? (yes/no) [n]:
+  Enable the ssh service? (yes/no) [y]: y  **<<<**
+    Type of ssh key you would like to generate (dsa/rsa) [rsa]: rsa **<<<**
+   Number of rsa key bits <1024-2048> [1024]:
+ Configure the ntp server? (yes/no) [n]:
+  Configure default interface layer (L3/L2) [L2]:
+ Configure default switchport interface state (shut/noshut) [noshut]: shut **<<<**
+  Configure CoPP system profile (strict/moderate/lenient/dense) [strict]:
+----
++
+最後一組提示會完成組態設定：
+
++
+[listing]
+----
+The following configuration will be applied:
+ password strength-check
+  switchname IP_switch_A_1
+vrf context management
+ip route 0.0.0.0/0 10.10.99.1
+exit
+ no feature telnet
+  ssh key rsa 1024 force
+  feature ssh
+  system default switchport
+  system default switchport shutdown
+  copp profile strict
+interface mgmt0
+ip address 10.10.99.10 255.255.255.0
+no shutdown
+
+Would you like to edit the configuration? (yes/no) [n]:
+
+Use this configuration and save it? (yes/no) [y]:
+2017 Jun 13 21:24:43 A1 %$ VDC-1 %$ %COPP-2-COPP_POLICY: Control-Plane is protected with policy copp-system-p-policy-strict.
+
+[########################################] 100%
+Copy complete.
+
+User Access Verification
+IP_switch_A_1 login: admin
+Password:
+Cisco Nexus Operating System (NX-OS) Software
+.
+.
+.
+IP_switch_A_1#
+----
+
+
+. 儲存組態：
++
+[listing]
+----
+IP_switch-A-1# copy running-config startup-config
+----
+. 重新啟動交換器、然後等待交換器重新載入：
++
+[listing]
+----
+IP_switch-A-1# reload
+----
+. 在其他三個MetroCluster 交換器上重複上述步驟、以進行REIP組態設定。
+
+
+
+
+=== 下載並安裝Cisco交換器NX-OS軟體
+
+您必須將交換器作業系統檔案和RCF檔案下載到MetroCluster 各個交換器、使其採用EWIP組態。
+
+此工作需要檔案傳輸軟體、例如FTP、TFTP、SFTP或scp。 將檔案複製到交換器。
+
+這些步驟必須重複執行MetroCluster 於各個採用EIP組態的IP交換器上。
+
+您必須使用支援的交換器軟體版本。
+
+https://hwu.netapp.com["NetApp Hardware Universe"]
+
+. 下載支援的NX-OS軟體檔案。
++
+https://software.cisco.com/download/home["Cisco軟體下載"]
+
+. 將交換器軟體複製到交換器：「+複製sftp//root@server-ip-address/tftpboot/NX-os-file-name bootflash: VRF管理+」
++
+在此範例中、nxos.7.0.3.I4.6.bin檔案會從SFTP伺服器10.10.99.99複製到本機bootflash：
+
++
+[listing]
+----
+IP_switch_A_1# copy sftp://root@10.10.99.99/tftpboot/nxos.7.0.3.I4.6.bin bootflash: vrf management
+root@10.10.99.99's password: password
+sftp> progress
+Progress meter enabled
+sftp> get   /tftpboot/nxos.7.0.3.I4.6.bin  /bootflash/nxos.7.0.3.I4.6.bin
+Fetching /tftpboot/nxos.7.0.3.I4.6.bin to /bootflash/nxos.7.0.3.I4.6.bin
+/tftpboot/nxos.7.0.3.I4.6.bin                 100%  666MB   7.2MB/s   01:32
+sftp> exit
+Copy complete, now saving to disk (please wait)...
+----
+. 在每個交換器上、確認交換器NX-OS檔案是否存在於每個交換器的bootflash目錄：「Dir bootflash:」中
++
+下列範例顯示檔案存在於ip_switch_a_1上：
+
++
+[listing]
+----
+IP_switch_A_1# dir bootflash:
+                  .
+                  .
+                  .
+  698629632    Jun 13 21:37:44 2017  nxos.7.0.3.I4.6.bin
+                  .
+                  .
+                  .
+
+Usage for bootflash://sup-local
+ 1779363840 bytes used
+13238841344 bytes free
+15018205184 bytes total
+IP_switch_A_1#
+----
+. 安裝交換器軟體：「install all nxos bootflash:nxos.version-number.bin」
++
+交換器軟體安裝完成後、交換器會自動重新載入（重新開機）。
+
++
+下列範例顯示在ip_switch_a_1上安裝軟體：
+
++
+[listing]
+----
+IP_switch_A_1# install all nxos bootflash:nxos.7.0.3.I4.6.bin
+Installer will perform compatibility check first. Please wait.
+Installer is forced disruptive
+
+Verifying image bootflash:/nxos.7.0.3.I4.6.bin for boot variable "nxos".
+[####################] 100% -- SUCCESS
+
+Verifying image type.
+[####################] 100% -- SUCCESS
+
+Preparing "nxos" version info using image bootflash:/nxos.7.0.3.I4.6.bin.
+[####################] 100% -- SUCCESS
+
+Preparing "bios" version info using image bootflash:/nxos.7.0.3.I4.6.bin.
+[####################] 100% -- SUCCESS       [####################] 100%            -- SUCCESS
+
+Performing module support checks.            [####################] 100%            -- SUCCESS
+
+Notifying services about system upgrade.     [####################] 100%            -- SUCCESS
+
+
+
+Compatibility check is done:
+Module  bootable          Impact  Install-type  Reason
+------  --------  --------------  ------------  ------
+     1       yes      disruptive         reset  default upgrade is not hitless
+
+
+
+Images will be upgraded according to following table:
+Module       Image   Running-Version(pri:alt)         New-Version   Upg-Required
+------  ----------   ------------------------  ------------------   ------------
+     1        nxos                7.0(3)I4(1)         7.0(3)I4(6)   yes
+     1        bios         v04.24(04/21/2016)  v04.24(04/21/2016)   no
+
+
+Switch will be reloaded for disruptive upgrade.
+Do you want to continue with the installation (y/n)?  [n] y
+
+
+Install is in progress, please wait.
+
+Performing runtime checks.         [####################] 100%    -- SUCCESS
+
+Setting boot variables.
+[####################] 100% -- SUCCESS
+
+Performing configuration copy.
+[####################] 100% -- SUCCESS
+
+Module 1: Refreshing compact flash and upgrading bios/loader/bootrom.
+Warning: please do not remove or power off the module at this time.
+[####################] 100% -- SUCCESS
+
+
+Finishing the upgrade, switch will reboot in 10 seconds.
+IP_switch_A_1#
+----
+. 等待交換器重新載入、然後登入交換器。
++
+交換器重新開機後、會顯示登入提示：
+
++
+[listing]
+----
+User Access Verification
+IP_switch_A_1 login: admin
+Password:
+Cisco Nexus Operating System (NX-OS) Software
+TAC support: http://www.cisco.com/tac
+Copyright (C) 2002-2017, Cisco and/or its affiliates.
+All rights reserved.
+.
+.
+.
+MDP database restore in progress.
+IP_switch_A_1#
+
+The switch software is now installed.
+----
+. 驗證是否已安裝交換器軟體：「How version（顯示版本）」
++
+下列範例顯示輸出：
+
++
+[listing]
+----
+IP_switch_A_1# show version
+Cisco Nexus Operating System (NX-OS) Software
+TAC support: http://www.cisco.com/tac
+Copyright (C) 2002-2017, Cisco and/or its affiliates.
+All rights reserved.
+.
+.
+.
+
+Software
+  BIOS: version 04.24
+  NXOS: version 7.0(3)I4(6)   **<<< switch software version**
+  BIOS compile time:  04/21/2016
+  NXOS image file is: bootflash:///nxos.7.0.3.I4.6.bin
+  NXOS compile time:  3/9/2017 22:00:00 [03/10/2017 07:05:18]
+
+
+Hardware
+  cisco Nexus 3132QV Chassis
+  Intel(R) Core(TM) i3- CPU @ 2.50GHz with 16401416 kB of memory.
+  Processor Board ID FOC20123GPS
+
+  Device name: A1
+  bootflash:   14900224 kB
+  usb1:               0 kB (expansion flash)
+
+Kernel uptime is 0 day(s), 0 hour(s), 1 minute(s), 49 second(s)
+
+Last reset at 403451 usecs after  Mon Jun 10 21:43:52 2017
+
+  Reason: Reset due to upgrade
+  System version: 7.0(3)I4(1)
+  Service:
+
+plugin
+  Core Plugin, Ethernet Plugin
+IP_switch_A_1#
+----
+. 在靜態IP組態的其餘三個IP交換器上重複上述步驟MetroCluster 。
+
+
+
+
+== 在Cisco 9336C交換器上設定Macsec加密
+
+如果需要、您可以在站台之間執行的WAN ISL連接埠上設定Macsec加密。套用正確的RCF檔案之後、您必須設定Macsec。
+
+
+NOTE: MAC秒加密只能套用至WAN ISL連接埠。
+
+
+
+=== MAC的授權要求
+
+Macsec需要安全授權。如需Cisco NX-OS授權方案的完整說明、以及如何取得及申請授權、請參閱 https://www.cisco.com/c/en/us/td/docs/switches/datacenter/sw/nx-os/licensing/guide/b_Cisco_NX-OS_Licensing_Guide/b_Cisco_NX-OS_Licensing_Guide_chapter_01.html["Cisco NX-OS授權指南"]
+
+
+
+=== 啟用MetroCluster Cisco Macsec Encryption WAN ISL以利支援各種IP組態
+
+您可以在MetroCluster WAN ISL上的Cisco 9336C交換器上啟用MAC加密功能、以利執行支援。
+
+. 進入全域組態模式：「configure terminal」（設定終端機）
++
+[listing]
+----
+IP_switch_A_1# configure terminal
+IP_switch_A_1(config)#
+----
+. 在裝置上啟用Macsec和MKA：「feature Macsec」（功能MAC秒）
++
+[listing]
+----
+IP_switch_A_1(config)# feature macsec
+----
+. 將執行組態複製到啟動組態：「copy running-config startup-config」
++
+[listing]
+----
+IP_switch_A_1(config)# copy running-config startup-config
+----
+
+
+
+
+=== 停用Cisco Macsec Encryption
+
+您可能需要在MetroCluster WAN ISL上針對Cisco 9336C交換器停用MAC加密、以利進行IP組態設定。
+
+
+NOTE: 如果停用加密、您也必須刪除金鑰。
+
+. 進入全域組態模式：「configure terminal」（設定終端機）
++
+[listing]
+----
+IP_switch_A_1# configure terminal
+IP_switch_A_1(config)#
+----
+. 停用裝置上的Macsec組態：「Macsec shutruted」（Macsec關機）
++
+[listing]
+----
+IP_switch_A_1(config)# macsec shutdown
+----
++
+
+NOTE: 選取「否」選項可還原Macsec功能。
+
+. 選取您已使用Macsec設定的介面。
++
+您可以指定介面類型和身分識別。對於乙太網路連接埠、請使用乙太網路插槽/連接埠。
+
++
+[listing]
+----
+IP_switch_A_1(config)# interface ethernet 1/15
+switch(config-if)#
+----
+. 移除介面上設定的金鑰鏈、原則和後援金鑰鏈、以移除Macsec組態：「無Macsec金鑰鏈金鑰鏈名稱原則名稱後援金鑰鏈名稱」
++
+[listing]
+----
+IP_switch_A_1(config-if)# no macsec keychain kc2 policy abc fallback-keychain fb_kc2
+----
+. 在所有設定了Macsec的介面上重複步驟3和4。
+. 將執行組態複製到啟動組態：「copy running-config startup-config」
++
+[listing]
+----
+IP_switch_A_1(config)# copy running-config startup-config
+----
+
+
+
+
+=== 設定Macsec金鑰鏈和金鑰
+
+如需設定Macsec金鑰鏈的詳細資訊、請參閱交換器的Cisco文件。
+
+
+
+== 連接新的NS224機櫃
+
+.步驟
+. 使用套件包裝箱隨附的安裝傳單、安裝機櫃隨附的軌道安裝套件。
+. 使用安裝說明將機櫃安裝並固定在支撐托架、機架或機櫃上。
+. 將電源線連接至機櫃、以電源線固定器固定電源線、然後將電源線連接至不同的電源供應器、以獲得恢復能力。
++
+機櫃連接電源時會啟動、但沒有電源開關。當電源供應器正常運作時、雙色LED會亮起綠燈。
+
+. 將機櫃ID設為HA配對內和整個組態內唯一的數字。
+. 依下列順序連接機櫃連接埠：
++
+.. 將NSMA-A、e0a連接至交換器（Switch-A1或Switch-B1）
+.. 將NSM-B、e0A連接至交換器（Switch-A2或Switch-B2）
+.. 將NSM A、e0b連接至交換器（Switch-A1或Switch-B1）
+.. 將NSM-B、e0b連接至交換器（Switch-A2或Switch-B2）
+
+
+. 使用由「**RcfFileGenerator*」工具產生的佈線配置、將機櫃連接至適當的連接埠。
++
+一旦新機櫃正確連接纜線、ONTAP 即可在網路上自動偵測。
+
+

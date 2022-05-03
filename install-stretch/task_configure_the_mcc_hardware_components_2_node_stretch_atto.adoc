@@ -1,0 +1,16 @@
+---
+permalink: install-stretch/task_configure_the_mcc_hardware_components_2_node_stretch_atto.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, cable, two, nose, bridge, attached, stretch, configuration 
+summary: 必須在兩個地理站台上實際安裝、連接及設定支援的元件。MetroCluster對於使用原生磁碟櫃的系統而言、步驟略有不同、而非使用陣列LUN的系統。 
+---
+= 連接雙節點橋接式Stretch MetroCluster 功能的纜線配置
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+必須在兩個地理站台上實際安裝、連接及設定支援的元件。MetroCluster對於使用原生磁碟櫃的系統而言、步驟略有不同、而非使用陣列LUN的系統。
+
+image::../media/workflow_hardware_installation_and_configuration_2_node_bridge_attached.gif[工作流程硬體安裝與組態附加2節點橋接器]

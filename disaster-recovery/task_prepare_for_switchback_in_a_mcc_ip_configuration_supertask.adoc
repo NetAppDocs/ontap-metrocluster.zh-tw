@@ -1,0 +1,18 @@
+---
+permalink: disaster-recovery/task_prepare_for_switchback_in_a_mcc_ip_configuration_supertask.html 
+sidebar: sidebar 
+keywords: perform, task, prepare, metrocluster, ip, configuration, switchback, operation 
+summary: 您必須執行某些工作、才能準備MetroCluster 好進行切換作業所需的Sfor the switchback IP組態。 
+---
+= 準備MetroCluster 在不還原IP組態中進行切換
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須執行某些工作、才能準備MetroCluster 好進行切換作業所需的Sfor the switchback IP組態。
+
+&KB;
+
+image::../media/workflow_preparing_for_switchback_in_mcc_ip_dr.gif[準備在MCC IP DR中切換的工作流程]

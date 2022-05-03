@@ -1,0 +1,122 @@
+---
+permalink: manage/task_perform_a_switchback.html 
+sidebar: sidebar 
+keywords: metrocluster, configuration, switchback, operation, return, operating, operate, state, sync-source, storage, virtual, machine, svm, disaster, site, active, serving, local, disk, pool, perform 
+summary: 修復MetroCluster 完這個功能後、您就可以執行MetroCluster 還原操作。此還原操作會將組態恢復至正常作業狀態、使災難站台上的同步來源儲存虛擬機器（SVMs）處於作用中狀態、並從本機磁碟集區提供資料。MetroCluster 
+---
+= 執行切換
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+修復MetroCluster 完這個功能後、您就可以執行MetroCluster 還原操作。此還原操作會將組態恢復至正常作業狀態、使災難站台上的同步來源儲存虛擬機器（SVM）處於作用中狀態、並從本機磁碟集區提供資料。MetroCluster
+
+* 災難叢集必須已成功切換至正常運作的叢集。
+* 必須在資料和根集合體上執行修復。
+* 正常運作的叢集節點不得處於HA容錯移轉狀態（每個HA配對的所有節點都必須已啟動並執行）。
+* 災難站台控制器模組必須完全開機、而非處於HA接管模式。
+* 根Aggregate必須鏡射。
+* 交換器間連結（ISL）必須在線上。
+* 任何必要的授權都必須安裝在系統上。
++
+.. 確認所有節點都處於啟用狀態：MetroCluster 「不支援節點顯示」
++
+下列範例顯示處於啟用狀態的節點：
+
++
+[listing]
+----
+cluster_B::>  metrocluster node show
+
+DR                        Configuration  DR
+Group Cluster Node        State          Mirroring Mode
+----- ------- ----------- -------------- --------- --------------------
+1     cluster_A
+              node_A_1    configured     enabled   heal roots completed
+              node_A_2    configured     enabled   heal roots completed
+      cluster_B
+              node_B_1    configured     enabled   waiting for switchback recovery
+              node_B_2    configured     enabled   waiting for switchback recovery
+4 entries were displayed.
+----
+.. 確認所有SVM上的重新同步已完成：MetroCluster 「Svserver show」
+.. 驗證修復作業所執行的任何自動LIF移轉是否已成功完成：「MetroCluster 還原檢查LIF show」
+.. 執行模擬切換以驗證系統是否就緒：MetroCluster 「還原模擬」
+.. 檢查組態：
++
+《不一樣的跑程》MetroCluster
+
++
+命令會以背景工作的形式執行、而且可能不會立即完成。
+
++
+[listing]
+----
+cluster_A::> metrocluster check run
+The operation has been started and is running in the background. Wait for
+it to complete and run "metrocluster check show" to view the results. To
+check the status of the running metrocluster check operation, use the command,
+"metrocluster operation history show -job-id 2245"
+----
++
+[listing]
+----
+cluster_A::> metrocluster check show
+Last Checked On: 9/13/2018 20:41:37
+
+Component           Result
+------------------- ---------
+nodes               ok
+lifs                ok
+config-replication  ok
+aggregates          ok
+clusters            ok
+connections         ok
+6 entries were displayed.
+----
+.. 從MetroCluster 存續叢集中的任何節點執行「還原」命令來執行還原功能：MetroCluster 「還原還原還原」
+.. 查看切換作業的進度：MetroCluster 「還原」
++
+當輸出顯示「等待切換」時、切換回復作業仍在進行中：
+
++
+[listing]
+----
+cluster_B::> metrocluster show
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+ Local: cluster_B         Configuration state configured
+                          Mode                switchover
+                          AUSO Failure Domain -
+Remote: cluster_A         Configuration state configured
+                          Mode                waiting-for-switchback
+                          AUSO Failure Domain -
+----
++
+當輸出顯示正常時、即完成切換作業：
+
++
+[listing]
+----
+cluster_B::> metrocluster show
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+ Local: cluster_B         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain -
+Remote: cluster_A         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain -
+----
++
+如果切換需要很長時間才能完成、您可以使用「MetroCluster 更新組態複寫重新同步狀態show」命令來檢查進行中基準的狀態。此命令處於進階權限層級。
+
+.. 重新建立任何SnapMirror或SnapVault 不完整的組態。
++
+在S還原8.3中ONTAP 、MetroCluster 您需要在執行還原操作之後、手動重新建立遺失的SnapMirror組態。在更新版本的版本中、關係會自動重新建立。ONTAP
+
+
+
+

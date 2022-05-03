@@ -1,0 +1,34 @@
+---
+permalink: install-stretch/task_cable_the_fc_vi_adapters_to_the_partner_controller_2_node_stretch_atto.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, cable, controllers 
+summary: 每個控制器的FC-VI介面卡必須直接連接至其合作夥伴。 
+---
+= 將控制器彼此連接
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+每個控制器的FC-VI介面卡必須直接連接至其合作夥伴。
+
+.步驟
+. 連接FC-VI連接埠。
++
+image::../media/mcc_cabling_fc_vi_controller_to_partner.gif[MCC將光纖通道VI控制器連接至合作夥伴]
+
++
+上圖為所需纜線的典型表示方式。特定的FC-VI連接埠因控制器模組而異。
+
++
+** 您可以訂購支援FC-VI連線的2種選項之一、以利訂購支援A300和FAS8200控制器模組：AFF
++
+*** 以FC-VI模式設定的內建連接埠0e和0f。
+*** 插槽1中FC-VI卡上的連接埠1A和1b。
+
+
+** 例如、EFCA700和FAS9000儲存系統控制器模組各使用四個FC-VI連接埠。AFF
+
+
+

@@ -1,0 +1,73 @@
+---
+permalink: install-ip/task_rack_hw_components.html 
+sidebar: sidebar 
+keywords: metrocluster ip, rack hardware, components, racking 
+summary: 如果您尚未收到已安裝在機櫃中的設備、則必須裝入元件機架。 
+---
+= 安裝硬體元件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您尚未收到已安裝在機櫃中的設備、則必須裝入元件機架。
+
+這項工作必須在MetroCluster 兩個地方執行。
+
+.步驟
+. 規劃MetroCluster 好各個環節的定位。
++
+機架空間取決於控制器模組的平台模式、交換器類型、以及組態中的磁碟櫃堆疊數量。
+
+. 請妥善接地。
+
+
+. 在機架或機櫃中安裝控制器模組。
++
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2842666["解答A220/FAS2700系統安裝與設定說明AFF"^]
+
++
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2870798["《系統安裝與設定說明》（英文）AFF"^]
+
++
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2469722["《系統安裝與設定說明》（英文）AFF"^]
+
++
+https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-a320-install-setup/home.html["作業系統：安裝與設定AFF"^]
+
++
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2858854["《系統安裝與設定說明》（英文）AFF"^]
+
++
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2873445["《系統安裝與設定說明》（英文）AFF"^]
+
++
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2842668["《系統安裝與設定說明》（英文）AFF"^]
+
++
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2872833["FAS500f系統安裝與設定說明"^]
+
++
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2316769["FAS8200系統安裝與設定說明"^]
+
++
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2858856["FAS8300和FAS8700系統安裝與設定說明"^]
+
++
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2874463["FAS9000系統安裝與設定說明"^]
+
+
+
+. 在機架或機櫃中安裝IP交換器。
+. 安裝磁碟櫃、開啟磁碟櫃電源、然後設定磁碟櫃ID。
++
+** 您必須重新啟動每個磁碟櫃。
+** 我們強烈建議每MetroCluster 個EDR群組內的每個SAS磁碟櫃都使用獨特的磁碟櫃ID、以協助疑難排解。
+
+
++
+
+IMPORTANT: 此時請勿將原本打算包含無鏡射集合體的磁碟櫃纜線。您必須等到MetroCluster 完成整套組態之後、才部署用於無鏡射集合體的磁碟櫃、並在使用「MetroCluster 取消鏡射-無鏡射- aggr部署true」命令之後才部署。
+
+

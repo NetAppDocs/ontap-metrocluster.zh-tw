@@ -1,0 +1,137 @@
+---
+permalink: install-fc/reference_where_to_find_additional_information_icg.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, additional, information 
+summary: 您可以MetroCluster 從NetApp文件中深入瞭解有關功能的組態設定與操作。 
+---
+= 何處可找到其他資訊
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以深入瞭MetroCluster 解有關功能的組態設定與操作。
+
+
+
+== 包含各種資訊MetroCluster
+
+|===
+
+
+| 資訊 | 主旨 
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap/index.html["供應說明文件ONTAP"^]
+ a| 
+* 所有MetroCluster 資訊
+
+
+
+
+| https://www.netapp.com/pdf.html?item=/media/13480-tr4705.pdf["NetApp MetroCluster 解決方案架構與設計、TR-4705"^]  a| 
+* 關於整套功能的技術概覽MetroCluster 。
+* 最佳實務做法MetroCluster ：
+
+
+
+
+| https://www.netapp.com/pdf.html?item=/media/13481-tr4689.pdf["《SIP解決方案架構與設計》、MetroCluster TR-4689"^]  a| 
+* 關於整套IP組態與操作的技術總覽MetroCluster 。
+* 最佳實務做法MetroCluster ：
+
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-metrocluster/install-stretch/concept_considerations_differences.html["延伸MetroCluster 安裝與組態"]
+ a| 
+* 延伸MetroCluster 架構
+* 組態佈線
+* 設定FC對SAS橋接器
+* 設定MetroCluster 功能不ONTAP 只是功能不一
+
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/concept_considerations_differences.html["安裝與組態：各不相同的功能MetroCluster ONTAP MetroCluster"]
+ a| 
+* 知識產權架構MetroCluster
+* 組態佈線
+* 設定MetroCluster 功能不ONTAP 只是功能不一
+
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-metrocluster/manage/index.html["支援管理與災難恢復MetroCluster"]
+ a| 
+* 瞭MetroCluster 解此功能的組態
+* 切換、修復及切換
+* 災難恢復
+
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-metrocluster/maintain/index.html["維護MetroCluster 這些元件"]
+ a| 
+* 關於在支援不支援支援服務的環境中進行維護的準則MetroCluster
+* FC至SAS橋接器和FC交換器的硬體更換或升級與韌體升級程序
+* 以光纖連接或延伸MetroCluster 的支援功能、熱新增磁碟櫃
+* 以光纖連接或延伸MetroCluster 的支援功能將磁碟櫃熱移除
+* 在災難現場以架構連接或延伸MetroCluster 的支援功能進行硬體更換
+* 將雙節點架構連接或延伸MetroCluster 的不含支援架構的支援功能、擴充至四節點MetroCluster 的不支援功能組態。
+* 將四節點的Fabric附加或延伸MetroCluster 的支援功能、擴充成八節點MetroCluster 的支援功能。
+
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-metrocluster/transition/concept_choosing_your_transition_procedure_mcc_transition.html["從MetroCluster 靜態FC移轉至MetroCluster 靜態IP"]
+
+https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["《升級與擴充指南》MetroCluster"]
+ a| 
+* 升級或重新整理MetroCluster 一個功能不清的組態
+* 從MetroCluster 靜態FC組態轉換為MetroCluster 靜態IP組態
+* 透過新增額外節點來擴充MetroCluster 功能
+
+
+
+
+ a| 
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.hw-metrocluster-tiebreaker/home.html["物件斷路器軟體安裝與組態MetroCluster"]
+ a| 
+* 使用MetroCluster ESITiebreaker軟體監控整個系統的組態MetroCluster
+
+
+
+
+ a| 
+《數位顧問》文件 Active IQ
+
+https://www.netapp.com/support-and-training/documentation/["NetApp文件：產品指南與資源"^]
+ a| 
+* 監控MetroCluster 不一致的組態和效能
+
+
+
+
+ a| 
+https://docs.netapp.com/us-en/ontap-7mode-transition/copy-based/index.html["複本型轉換"^]
+ a| 
+* 將資料從7-Mode儲存系統移轉至叢集式儲存系統
+
+
+
+
+ a| 
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-concepts/home.html["概念ONTAP"^]
+ a| 
+* 鏡射Aggregate的運作方式
+
+
+|===

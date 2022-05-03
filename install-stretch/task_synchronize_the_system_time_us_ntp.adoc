@@ -1,0 +1,37 @@
+---
+permalink: install-stretch/task_synchronize_the_system_time_us_ntp.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, synchronize, system, time, ntp 
+summary: 每個叢集都需要自己的網路時間傳輸協定（NTP）伺服器、才能在節點與其用戶端之間同步時間。您可以使用System Manager中的「編輯日期時間」對話方塊來設定NTP伺服器。 
+---
+= 使用NTP同步系統時間
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+每個叢集都需要自己的網路時間傳輸協定（NTP）伺服器、才能在節點與其用戶端之間同步時間。您可以使用System Manager中的「編輯日期時間」對話方塊來設定NTP伺服器。
+
+確認您已下載並安裝System Manager。您可從NetApp支援網站取得System Manager。
+
+* 您無法在發生接管之後、修改故障節點或合作夥伴節點的時區設定。
+* 每個MetroCluster 叢集在EFCFC組態中、都應該有各自獨立的NTP伺服器或伺服器供節點使用、以及MetroCluster （如果有）該站台的FC對SAS橋接器。
++
+如果您使用MetroCluster 的是ESITTiebreaker軟體、則它也應該有自己的獨立NTP伺服器。
+
+
+
+.步驟
+. 在首頁中、按兩下適當的儲存系統。
+. 在左側導覽窗格中展開*叢集*階層。
+. 在導覽窗格中、按一下*組態*>*系統工具*>*日期時間*。
+. 按一下 * 編輯 * 。
+. 選取時區。
+. 指定時間伺服器的IP位址、然後按一下「*新增*」。
++
+您必須將NTP伺服器新增至時間伺服器清單。網域控制器可以是驗證伺服器。
+
+. 按一下「*確定*」。
+. 確認您在「日期與時間」視窗中對日期與時間設定所做的變更。
+

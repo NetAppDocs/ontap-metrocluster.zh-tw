@@ -1,0 +1,158 @@
+---
+permalink: install-ip/concept_considerations_mcip.html 
+sidebar: sidebar 
+keywords: differences, eight-node, four-node, fabric-attached, stretch, metrocluster ip, storage, bridges, fc-to-sas, atto, fibrebridge, SAS, local HA, auso, automatic unplanned switchover, array luns, mediator, tiebreaker 
+summary: 您應該瞭解控制器如何存取遠端儲存設備、MetroCluster 以及如何使用此功能。 
+---
+= 關於靜態IP組態的考量MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您應該瞭解控制器如何存取遠端儲存設備、MetroCluster 以及如何使用此功能。
+
+
+
+== 以MetroCluster 不完整的IP組態存取遠端儲存設備
+
+在靜態IP組態中、本機控制器只能透過遠端控制器到達遠端儲存資源池。MetroClusterIP交換器連接至控制器上的乙太網路連接埠、它們沒有直接連線至磁碟櫃。如果遠端控制器當機、本機控制器就無法到達其遠端儲存資源池。
+
+這不同MetroCluster 於透過FC架構或SAS連線、將遠端儲存資源池連接至本機控制器的SFC組態。即使遠端控制器關閉、本機控制器仍可存取遠端儲存設備。
+
+
+
+== IP位址MetroCluster
+
+您應該瞭解MetroCluster 如何在MetroCluster 一套靜態IP組態中實作靜態IP位址和介面、以及相關的需求。
+
+在靜態IP組態中、HA配對和DR合作夥伴之間的儲存和非揮發性快取複寫作業是透過使用者介面的高速頻寬專用連結來執行。MetroCluster MetroClusteriSCSI連線用於儲存複寫。IP交換器也用於本機叢集內的所有叢集內流量。利用個別的IP子網路和VLAN、將資料流量與叢集內流量分開。MetroCluster此功能與叢集對等網路截然不同、MetroCluster
+
+image::../media/mcc_ip_ip_subnets.gif[MCC IP IP子網路]
+
+這個支援的IP組態需要在每個節點上保留兩個IP位址、以供後端的靜態IP架構使用。MetroCluster MetroCluster在MetroCluster 初始組態期間、保留的IP位址會指派給靜態IP邏輯介面（LIF）、並具有下列需求：
+
+
+NOTE: 您必須MetroCluster 謹慎選擇不完整的IP位址、因為在初始組態之後、您無法變更這些位址。
+
+* 它們必須位於唯一的IP範圍內。
++
+它們不得與環境中的任何IP空間重疊。
+
+* 它們必須位於兩個IP子網路中的其中一個、這些子網路必須將它們與所有其他流量區隔開。
+
+
+例如、節點可以設定下列IP位址：
+
+|===
+
+
+| 節點 | 介面 | IP 位址 | 子網路 
+
+
+ a| 
+node_a_1
+ a| 
+支援的IP介面1. MetroCluster
+ a| 
+10.1.1.1
+ a| 
+10.1.1/24
+
+
+
+ a| 
+node_a_1
+ a| 
+IP介面2. MetroCluster
+ a| 
+10.1.2.1
+ a| 
+10.1.2/24
+
+
+
+ a| 
+節點_a_2
+ a| 
+支援的IP介面1. MetroCluster
+ a| 
+10.1.1.2
+ a| 
+10.1.1/24
+
+
+
+ a| 
+節點_a_2
+ a| 
+IP介面2. MetroCluster
+ a| 
+10.1.2.2
+ a| 
+10.1.2/24
+
+
+
+ a| 
+節點_B_1
+ a| 
+支援的IP介面1. MetroCluster
+ a| 
+10.1.1.3
+ a| 
+10.1.1/24
+
+
+
+ a| 
+節點_B_1
+ a| 
+IP介面2. MetroCluster
+ a| 
+10.1.2.3
+ a| 
+10.1.2/24
+
+
+
+ a| 
+節點_B_2
+ a| 
+支援的IP介面1. MetroCluster
+ a| 
+10.1.1.4
+ a| 
+10.1.1/24
+
+
+
+ a| 
+節點_B_2
+ a| 
+IP介面2. MetroCluster
+ a| 
+10.1.2.4
+ a| 
+10.1.2/24
+
+|===
+
+
+== 靜態IP介面的特性MetroCluster
+
+此功能僅適用於各種不同的IP組態。MetroCluster MetroCluster它們的特性與ONTAP 其他的不相同的介面類型不同：
+
+* 它們是由「MetroCluster 效能分析組態設定介面created」命令所建立、作為初始MetroCluster 的效能分析組態的一部分。
++
+
+NOTE: 從ONTAP 《支援範圍》9.9.1開始、如果您使用的是第3層組態、則在建立MetroCluster 支援範圍介面時、也必須指定「閘道」參數。請參閱 link:../install-ip/concept_considerations_layer_3.html["第3層廣域網路的考量"]。
+
++
+它們不會由網路介面命令建立或修改。
+
+* 它們不會出現在「network interface show」命令的輸出中。
+* 它們不會容錯移轉、但會與建立它們的連接埠保持關聯。
+* 根據平台、透過特定的乙太網路連接埠（視平台而定）來配置各種不同的介面。MetroCluster MetroCluster
+

@@ -1,0 +1,21 @@
+---
+permalink: upgrade/task_install_firmware_after_add_a_controller_module.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, install, firmware, add, controller, module 
+summary: 新增控制器模組之後、您必須在新的控制器模組上安裝最新的韌體、以便控制器模組能與ONTAP 停止功能正常運作。 
+---
+= 在新增控制器模組之後安裝韌體
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+新增控制器模組之後、您必須在新的控制器模組上安裝最新的韌體、以便控制器模組能與ONTAP 停止功能正常運作。
+
+.步驟
+. 下載適用於您系統的最新韌體版本、並依照指示下載及安裝新韌體。
++
+https://mysupport.netapp.com/site/downloads/firmware/system-firmware-diagnostics["NetApp下載：系統韌體與診斷"]
+
+

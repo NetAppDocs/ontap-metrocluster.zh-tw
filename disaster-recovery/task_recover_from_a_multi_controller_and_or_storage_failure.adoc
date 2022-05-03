@@ -1,0 +1,36 @@
+---
+permalink: disaster-recovery/task_recover_from_a_multi_controller_and_or_storage_failure.html 
+sidebar: sidebar 
+keywords: controller, failure, extend, module, side, dr, group, metrocluster, configuration, single, controller, two-node, replace, equipment, reassign, equipment, ownership, drive, disaster, recover, multi-controller, storage 
+summary: 如果控制器故障延伸至DR群組一側的所有控制器模組MetroCluster （包括雙節點MetroCluster 的單一控制器）、或是儲存設備已更換、則必須更換設備並重新指派磁碟機所有權、以便從災難中恢復。 
+---
+= 從多控制器或儲存設備故障中恢復
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果控制器故障延伸到DR群組一側的所有控制器模組MetroCluster （包括雙節點MetroCluster 的一個組態中的單一控制器）、或是儲存設備已更換、則您必須更換設備並重新指派磁碟機的擁有權、以便從災難中恢復。
+
+* 在決定使用此程序之前、您應該先檢閱可用的恢復程序。
++
+link:concept_choosing_the_correct_recovery_procedure_parent_concept.html["選擇正確的恢復程序"]
+
+* 災難現場必須圍起來。
++
+link:task_perform_a_forced_switchover_after_a_disaster.html#fencing-off-the-disaster-site["隔離災難站台"]。
+
+* 必須已執行切換。
++
+link:task_perform_a_forced_switchover_after_a_disaster.html#performing-a-forced-switchover["執行強制切換"]。
+
+* 更換磁碟機和控制器模組必須是新的、而且之前不得指派所有權。
+* 本程序中的範例顯示兩個或四個節點的組態。如果您有八節點組態（兩個DR群組）、則必須考量任何故障、並在其他控制器模組上執行所需的恢復工作。
+
+
+此程序使用下列工作流程：
+
+image::../media/workflow_smoking_crater_recovery.png[抽吸口的工作流程恢復]
+
+當發生故障時、可在進行中階轉換的系統上執行恢復時、使用此程序。在這種情況下、您必須在準備切換時執行適當的步驟、如程序所述。

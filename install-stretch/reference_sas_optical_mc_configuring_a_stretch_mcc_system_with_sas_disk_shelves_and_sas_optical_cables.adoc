@@ -1,0 +1,37 @@
+---
+permalink: install-stretch/reference_sas_optical_mc_configuring_a_stretch_mcc_system_with_sas_disk_shelves_and_sas_optical_cables.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, install, cable, components, two, node, sas, stretch, attached, configuration 
+summary: 儲存控制器必須以纜線連接至儲存媒體和彼此。儲存控制器也必須以纜線連接至資料與管理網路。 
+---
+= 安裝MetroCluster 和佈線等元件、以進行雙節點SAS附加延伸組態
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+儲存控制器必須以纜線連接至儲存媒體和彼此。儲存控制器也必須以纜線連接至資料與管理網路。
+
+
+
+== 在您開始執行本文件中的任何程序之前
+
+完成此工作之前、必須滿足下列整體需求：
+
+* 安裝之前、您必須先熟悉安裝磁碟櫃模型的考量事項和最佳實務做法、以及如何為磁碟櫃模型進行佈線。
+* 必須支援所有的MichoCluster元件。
++
+https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"]
+
++
+在這個解決方案領域、您可以使用儲存解決方案欄位來選擇您的解決方案。IMT MetroCluster使用*元件總管*來選取元件和ONTAP 更新版本、以精簡搜尋範圍。您可以按一下「*顯示結果*」來顯示符合條件的支援組態清單。
+
+
+
+
+
+== 關於這項工作
+
+* 術語節點和控制器可互換使用。
+

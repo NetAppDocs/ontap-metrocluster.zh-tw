@@ -1,0 +1,66 @@
+---
+permalink: install-stretch/task_enable_ip_port_access_on_the_fibrebridge_7600n_bridge_guides.html 
+sidebar: sidebar 
+keywords: metrocluster, stretch, installation, enable, ip, port, access, bridge, fibrebridge 
+summary: 如果您使用ONTAP 9.5版之前的版本、或是打算使用遠端登入或其他IP連接埠傳輸協定和服務（FTP、ExpressNAV、ICMP或QuickNAV）、使用頻外存取到FibreBridge 7600N橋接器、則可透過主控台連接埠啟用存取服務。 
+---
+= 如有必要、可在光纖橋接器7600N上啟用IP連接埠存取
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您使用ONTAP 的是9.5版之前的版本、或是打算使用遠端登入或其他IP連接埠傳輸協定和服務（FTP、ExpressNAV、ICMP或QuickNAV）、來使用頻外存取到FibreBridge 7600N橋接器、您可以透過主控台連接埠來啟用存取服務。
+
+不同於Atto FIBreBridge 7500N和6500N橋接器、FIBreBridge 7600N橋接器會隨附所有停用的IP連接埠傳輸協定和服務。
+
+從ONTAP 支援橋接器的32個版本開始、就支援橋接器的頻內管理。這表示橋接器可透過ONTAP 連接至橋接器的FC連線、從CLI進行設定和監控。不需要透過橋接式乙太網路連接埠實體存取橋接器、也不需要橋接器使用者介面。
+
+從ONTAP 功能表S9.8開始、預設會支援橋接器的頻內管理、頻外SNMP管理則已過時。
+
+如果您*未*使用頻內管理來管理橋接器、則必須執行此工作。在此情況下、您需要透過乙太網路管理連接埠來設定橋接器。
+
+.步驟
+. 將序列纜線連接至光纖橋接器7600N橋接器上的序列連接埠、即可存取橋接器的主控台介面。
+. 使用主控台啟用存取服務、然後儲存組態：
++
+「* Set closePort none*」
+
++
+文件組態*
+
++
+「設為封閉連接埠NONE」命令可啟用橋接器上的所有存取服務。
+
+. 如有需要、請發出「設為關閉連接埠」、並視需要重複執行命令、直到停用所有所需的服務為止、以停用服務：
++
+‘* Set closePort _service_*’
+
++
+「設為關閉連接埠」命令一次會停用單一服務。
+
++
+「_service_（服務）”可以指定下列其中一項：
+
++
+** expresssnav
+** FTP
+** ICMP
+** Quicknav
+** SNMP
+** Telnet+您可以使用「Get closePort」命令來檢查是否啟用或停用特定的傳輸協定。
+
+
+. 如果您要啟用SNMP、也必須發出「Set SNMP啟用」命令：
++
+‘*設置SNMP enably*’
+
++
+SNMP是唯一需要個別啟用命令的傳輸協定。
+
+. 儲存組態：
++
+文件組態*
+
+

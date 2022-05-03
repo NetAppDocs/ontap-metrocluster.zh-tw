@@ -1,0 +1,58 @@
+---
+permalink: upgrade/task_power_up_both_controller_modules_and_display_the_loader_prompt_2_node_mcc_expansion.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, power, up, controller. modules, display, loader, prompt 
+summary: 開啟現有的控制器模組和新的控制器模組、以顯示載入器提示。 
+---
+= 開啟兩個控制器模組的電源、並顯示載入器提示
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+開啟現有的控制器模組和新的控制器模組、以顯示載入器提示。
+
+依照組態步驟、啟動控制器模組並中斷開機程序：
+
+[cols="25,75"]
+|===
+
+
+| 如果控制器模組... | 然後... 
+
+
+ a| 
+在同一個機箱中
+ a| 
+. 驗證新的控制器模組是否已*完全插入支架。
++
+現有的控制器模組應該完全插入機箱、因為它從未從機箱中移除、但新的控制器模組不應該是。
+
+. 連接電源並開啟電源供應器、讓現有的控制器模組獲得電力。
+. 按Ctrl-C中斷現有控制器模組的開機程序
+. 將新的控制器模組穩固地推入支架。
++
+完全就位時、新的控制器模組會收到電源並自動開機。
+
+. 按Ctrl-C中斷開機程序
+. 如果有、請鎖緊CAM握把上的指旋螺絲。
+. 安裝纜線管理裝置（如果有）。
+. 使用掛勾和迴圈固定帶將纜線綁定至纜線管理裝置。
+
+
+
+
+ a| 
+在獨立的機箱中
+ a| 
+. 開啟現有控制器模組上的電源供應器。
+. 按Ctrl-C中斷開機程序
+. 對新的控制器模組重複這些步驟
+
+
+|===
+每個控制器模組都應顯示載入器提示字元（「loader>'」、「loader-a>'」或「loader-B>'」）。
+
+
+NOTE: 如果沒有載入程式提示、請記下錯誤訊息、然後聯絡技術支援部門。如果系統顯示開機功能表、請重新開機並再次嘗試中斷開機程序。

@@ -1,0 +1,125 @@
+---
+permalink: upgrade/reference_where_to_find_additional_information_mcc_ug.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, additional, information 
+summary: 您可以深入瞭MetroCluster 解有關功能的組態設定與操作。 
+---
+= 何處可找到其他資訊
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以深入瞭MetroCluster 解有關功能的組態設定與操作。
+
+
+
+== 包含各種資訊MetroCluster
+
+|===
+
+
+| 資訊 | 主旨 
+
+
+ a| 
+link:../index.html["資訊文件MetroCluster"]
+ a| 
+* 所有MetroCluster 資訊
+
+
+
+
+ a| 
+link:../install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"]
+ a| 
+* 架構附加MetroCluster 的架構
+* 組態佈線
+* 設定FC對SAS橋接器
+* 設定FC交換器
+* 設定MetroCluster 功能不ONTAP 只是功能不一
+
+
+
+
+ a| 
+link:../install-stretch/concept_considerations_differences.html["延伸MetroCluster 安裝與組態"]
+ a| 
+* 延伸MetroCluster 架構
+* 組態佈線
+* 設定FC對SAS橋接器
+* 設定MetroCluster 功能不ONTAP 只是功能不一
+
+
+
+
+ a| 
+link:../disaster-recovery/concept_dr_workflow.html["支援管理與災難恢復MetroCluster"]
+ a| 
+* 瞭MetroCluster 解此功能的組態
+* 切換、修復及切換
+* 災難恢復
+
+
+
+
+ a| 
+link:../maintain/index.html["維護MetroCluster 元件"]
+ a| 
+* 關於在支援不支援支援服務的環境中進行維護的準則MetroCluster
+* FC至SAS橋接器和FC交換器的硬體更換或升級與韌體升級程序
+* 以光纖連接或延伸MetroCluster 的支援功能、熱新增磁碟櫃
+* 以光纖連接或延伸MetroCluster 的支援功能將磁碟櫃熱移除
+* 在災難現場以架構連接或延伸MetroCluster 的支援功能進行硬體更換
+* 將雙節點架構連接或延伸MetroCluster 的不含支援架構的支援功能、擴充至四節點MetroCluster 的不支援功能組態。
+* 將四節點的Fabric附加或延伸MetroCluster 的支援功能、擴充成八節點MetroCluster 的支援功能。
+
+
+
+
+ a| 
+link:../upgrade/concept_choosing_an_upgrade_method_mcc.html["升級、轉換及擴充MetroCluster"]
+ a| 
+* 升級或重新整理MetroCluster 一個功能不清的組態
+* 從MetroCluster 靜態FC組態轉換為MetroCluster 靜態IP組態
+* 透過新增額外節點來擴充MetroCluster 功能
+
+
+
+
+ a| 
+link:../tiebreaker/concept_overview_of_the_tiebreaker_software.html["物件斷路器軟體安裝與組態MetroCluster"]
+ a| 
+* 使用MetroCluster ESITiebreaker軟體監控整個系統的組態MetroCluster
+
+
+
+
+ a| 
+https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"^]
+
+
+NOTE: 標準儲存櫃維護程序可搭配MetroCluster 使用、以供搭配使用。
+ a| 
+* 熱新增磁碟櫃
+* 熱移除磁碟櫃
+
+
+
+
+ a| 
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-7mtt-dctg/home.html["複本型轉換"^]
+ a| 
+* 將資料從7-Mode儲存系統移轉至叢集式儲存系統
+
+
+
+
+ a| 
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-concepts/home.html["概念ONTAP"^]
+ a| 
+* 鏡射Aggregate的運作方式
+
+
+|===

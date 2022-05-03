@@ -1,0 +1,275 @@
+---
+permalink: transition/task_move_an_fc_san_workload_from_mcc_fc_to_mcc_ip_nodes.html 
+sidebar: sidebar 
+keywords: non-disruptively, transition, metrocluster, fc, ip, node, san, host, moving, move 
+summary: 如果從MetroCluster 支援不中斷營運的功能、從支援功能的FC移轉至IP節點、您必須不中斷營運地將FC SAN主機物件從MetroCluster 支援功能的支援中心移轉至IP節點。 
+---
+= 將FC SAN工作負載從MetroCluster 支援功能的FC移至MetroCluster 支援功能的IP節點
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果從MetroCluster 支援不中斷營運的功能、從支援功能的FC移轉至IP節點、您必須不中斷營運地將FC SAN主機物件從MetroCluster 支援功能的支援中心移轉至IP節點。
+
+. 在MetroCluster Sing IP節點上設定新的FC介面（LIF）：
++
+.. 如有需要、請MetroCluster 在靜態IP節點上修改FC連接埠、以供用戶端連線至FC目標特性設定。
++
+這可能需要重新開機節點。
+
+.. 在所有SAN Vserver的IP節點上建立FC LIP/介面。（可選）驗證新創建的FC LIF中的WWPN是否已登錄到FC SAN交換機
+
+
+. 更新SAN分區組態、以便MetroCluster 在更新的支援IP節點上新增FC LIF。
++
+為了協助將包含LUN的磁碟區搬移到FC SAN用戶端、請更新現有的FC交換器區域、讓FC SAN用戶端能夠存取MetroCluster 位於EzIP節點上的LUN。
+
++
+.. 在FC SAN交換器（Cisco或Brocade）上、將新增FC SAN LIF的WWPN新增至區域。
+.. 更新、儲存及提交分區變更。
+.. 從用戶端、檢查FC啟動器是否登入MetroCluster 到位於支援中心IP節點上的新SAN LIF：「anlun LUN show -p」
++
+此時、用戶端應該會看到MetroCluster 並登入到位於該功能的FC介面上、該介面同時位於該功能的支援中心MetroCluster 和支援中心IP節點上。LUN和磁碟區仍以實體方式託管於MetroCluster F地 靜止FC節點上。
+
++
+由於LUN只會在MetroCluster 不含資源的FC節點介面上報告、因此用戶端只會顯示FC節點上的路徑。這可在sanlun LUN show -p和multipath-ll -d命令的輸出中看到。
+
++
+[listing]
+----
+[root@stemgr]# sanlun lun show -p
+ONTAP Path: vsa_1:/vol/vsa_1_vol6/lun_linux_12
+ LUN: 4
+ LUN Size: 2g
+ Product: cDOT
+ Host Device: 3600a098038304646513f4f674e52774b
+ Multipath Policy: service-time 0
+ Multipath Provider: Native
+--------- ---------- ------- ------------ ----------------------------------------------
+host vserver
+path path /dev/ host vserver
+state type node adapter LIF
+--------- ---------- ------- ------------ ----------------------------------------------
+up primary sdk host3 iscsi_lf__n2_p1_
+up secondary sdh host2 iscsi_lf__n1_p1_
+
+[root@stemgr]# multipath -ll -d
+3600a098038304646513f4f674e52774b dm-5 NETAPP ,LUN C-Mode
+size=2.0G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+| `- 3:0:0:4 sdk 8:160 active ready running
+`-+- policy='service-time 0' prio=10 status=enabled
+ `- 2:0:0:4 sdh 8:112 active ready running
+----
+
+
+. 修改報告節點、以新增MetroCluster 「靜態IP」節點
++
+.. 列出SVM上LUN的報告節點：「LUN對應show -vserver Svm-name -Fields report-nodes -osttype Linux」
++
+顯示的報告節點為本機節點、因為LUN實體位於FC節點A_1和A_2上。
+
++
+[listing]
+----
+cluster_A::> lun mapping show -vserver vsa_1 -fields reporting-nodes -ostype linux
+
+vserver  path                        igroup         reporting-nodes
+-------  --------------------------- ------------   -------------------------------------
+vsa_1    /vol/vsa_1_vol1/lun_linux_2 igroup_linux   A_1,A_2
+vsa_1    /vol/vsa_1_vol1/lun_linux_3 igroup_linux   A_1,A_2
+vsa_1    /vol/vsa_1_vol2/lun_linux_4 igroup_linux   A_1,A_2
+vsa_1    /vol/vsa_1_vol3/lun_linux_7 igroup_linux   A_1,A_2
+vsa_1    /vol/vsa_1_vol4/lun_linux_8 igroup_linux   A_1,A_2
+vsa_1    /vol/vsa_1_vol4/lun_linux_9 igroup_linux   A_1,A_2
+vsa_1    /vol/vsa_1_vol6/lun_linux_12 igroup_linux  A_1,A_2
+vsa_1    /vol/vsa_1_vol6/lun_linux_13 igroup_linux  A_1,A_2
+vsa_1    /vol/vsa_1_vol7/lun_linux_14 igroup_linux  A_1,A_2
+vsa_1    /vol/vsa_1_vol8/lun_linux_17 igroup_linux  A_1,A_2
+vsa_1    /vol/vsa_1_vol9/lun_linux_18 igroup_linux  A_1,A_2
+vsa_1    /vol/vsa_1_vol9/lun_linux_19 igroup_linux  A_1,A_2
+12 entries were displayed.
+----
+.. 新增報告節點以包含MetroCluster 不含資訊的IP節點。
++
+[listing]
+----
+cluster_A::> lun mapping add-reporting-nodes -vserver vsa_1 -path /vol/vsa_1_vol*/lun_linux_* -nodes B_1,B_2 -igroup igroup_linux
+
+12 entries were acted on.
+----
+.. 列出報告節點並確認新節點是否存在：
++
+[listing]
+----
+cluster_A::> lun mapping show -vserver vsa_1 -fields reporting-nodes -ostype linux
+
+vserver path                          igroup          reporting-nodes
+------- ---------------------------   ------------    -------------------------------------------------------------------------------
+
+vsa_1   /vol/vsa_1_vol1/lun_linux_2   igroup_linux    A_1,A_2,B_1,B_2
+vsa_1   /vol/vsa_1_vol1/lun_linux_3   igroup_linux    A_1,A_2,B_1,B_2
+vsa_1   /vol/vsa_1_vol2/lun_linux_4   igroup_linux    A_1,A_2,B_1,B_2
+vsa_1   /vol/vsa_1_vol3/lun_linux_7   igroup_linux    A_1,A_2,B_1,B_2
+...
+
+12 entries were displayed.
+----
+.. 重新掃描主機上的SCSI匯流排、以探索新增的路徑：「usr/bin/rescan-scsi-bus.sh -As」
++
+[listing]
+----
+[root@stemgr]# /usr/bin/rescan-scsi-bus.sh -a
+Scanning SCSI subsystem for new devices
+Scanning host 0 for SCSI target IDs 0 1 2 3 4 5 6 7, all LUNs
+Scanning host 1 for SCSI target IDs 0 1 2 3 4 5 6 7, all LUNs
+Scanning host 2 for SCSI target IDs 0 1 2 3 4 5 6 7, all LUNs
+ Scanning for device 2 0 0 0 ...
+.
+.
+.
+OLD: Host: scsi5 Channel: 00 Id: 00 Lun: 09
+ Vendor: NETAPP Model: LUN C-Mode Rev: 9800
+ Type: Direct-Access ANSI SCSI revision: 05
+0 new or changed device(s) found.
+0 remapped or resized device(s) found.
+0 device(s) removed.
+----
+.. 顯示新增的路徑：「anlun LUN show -p」
++
+每個LUN將有四個路徑。
+
++
+[listing]
+----
+[root@stemgr]# sanlun lun show -p
+ONTAP Path: vsa_1:/vol/vsa_1_vol6/lun_linux_12
+ LUN: 4
+ LUN Size: 2g
+ Product: cDOT
+ Host Device: 3600a098038304646513f4f674e52774b
+ Multipath Policy: service-time 0
+ Multipath Provider: Native
+--------- ---------- ------- ------------ ----------------------------------------------
+host vserver
+path path /dev/ host vserver
+state type node adapter LIF
+--------- ---------- ------- ------------ ----------------------------------------------
+up primary sdk host3 iscsi_lf__n2_p1_
+up secondary sdh host2 iscsi_lf__n1_p1_
+up secondary sdag host4 iscsi_lf__n4_p1_
+up secondary sdah host5 iscsi_lf__n3_p1_
+----
+.. 在控制器上、將包含LUN的磁碟區從MetroCluster 無法使用的功能區移至MetroCluster 無法使用的功能區節點。
++
+[listing]
+----
+cluster_A::> vol move start -vserver vsa_1 -volume vsa_1_vol1 -destination-aggregate A_1_htp_005_aggr1
+[Job 1877] Job is queued: Move "vsa_1_vol1" in Vserver "vsa_1" to aggregate "A_1_htp_005_aggr1". Use the "volume move show -vserver vsa_1 -volume vsa_1_vol1"
+command to view the status of this operation.
+cluster_A::> volume move show
+Vserver    Volume    State    Move Phase   Percent-Complete Time-To-Complete
+--------- ---------- -------- ----------   ---------------- ----------------
+vsa_1     vsa_1_vol1 healthy  initializing
+ - -
+----
+.. 在FC SAN用戶端上、顯示LUN資訊：「anlun LUN show -p」
++
+目前LUN所在的Firming IP節點上的FC介面MetroCluster 會更新為主要路徑。如果主路徑在磁碟區移動後未更新、請執行/usr/bin/rescan-scsi-bus.sh -A、或只是等待執行多重路徑重新掃描。
+
++
+以下範例中的主要路徑是MetroCluster 位於SIP節點上的LIF。
+
++
+[listing]
+----
+[root@localhost ~]# sanlun lun show -p
+
+                    ONTAP Path: vsa_1:/vol/vsa_1_vol1/lun_linux_2
+                           LUN: 22
+                      LUN Size: 2g
+                       Product: cDOT
+                   Host Device: 3600a098038302d324e5d50305063546e
+              Multipath Policy: service-time 0
+            Multipath Provider: Native
+--------- ---------- ------- ------------ ----------------------------------------------
+host      vserver
+path      path       /dev/   host         vserver
+state     type       node    adapter      LIF
+--------- ---------- ------- ------------ ----------------------------------------------
+up        primary    sddv    host6        fc_5
+up        primary    sdjx    host7        fc_6
+up        secondary  sdgv    host6        fc_8
+up        secondary  sdkr    host7        fc_8
+----
+.. 針對屬於FC SAN主機的所有磁碟區、LUN和FC介面、重複上述步驟。
++
+完成後、特定SVM和FC SAN主機的所有LUN都應位於MetroCluster ESIIP節點上。
+
+
+
+. 從用戶端移除報告節點並重新掃描路徑。
++
+.. 移除MetroCluster Linux LUN的遠端報告節點（支援功能的FC節點）：「LUN對應移除報告節點-vserver VSA_1 -path *-igroup igroup_Linux -reme-nodes true」
++
+[listing]
+----
+cluster_A::> lun mapping remove-reporting-nodes -vserver vsa_1 -path * -igroup igroup_linux -remote-nodes true
+12 entries were acted on.
+----
+.. 檢查LUN的報告節點：「LUN對應show -vserver VSA_1 -Fields reporting_nodes -osttype Linux」
++
+[listing]
+----
+cluster_A::> lun mapping show -vserver vsa_1 -fields reporting-nodes -ostype linux
+
+vserver path igroup reporting-nodes
+------- --------------------------- ------------ -----------------------------------------
+vsa_1 /vol/vsa_1_vol1/lun_linux_2 igroup_linux B_1,B_2
+vsa_1 /vol/vsa_1_vol1/lun_linux_3 igroup_linux B_1,B_2
+vsa_1 /vol/vsa_1_vol2/lun_linux_4 igroup_linux B_1,B_2
+...
+
+12 entries were displayed.
+----
+.. 重新掃描用戶端上的SCSI匯流排：「/usr/bin/rescan-scsi-bus.sh -r」
++
+從F精選FC節點移MetroCluster 除路徑：
+
++
+[listing]
+----
+[root@stemgr]# /usr/bin/rescan-scsi-bus.sh -r
+Syncing file systems
+Scanning SCSI subsystem for new devices and remove devices that have disappeared
+Scanning host 0 for SCSI target IDs 0 1 2 3 4 5 6 7, all LUNs
+Scanning host 1 for SCSI target IDs 0 1 2 3 4 5 6 7, all LUNs
+Scanning host 2 for SCSI target IDs 0 1 2 3 4 5 6 7, all LUNs
+sg0 changed: LU not available (PQual 1)
+REM: Host: scsi2 Channel: 00 Id: 00 Lun: 00
+DEL: Vendor: NETAPP Model: LUN C-Mode Rev: 9800
+ Type: Direct-Access ANSI SCSI revision: 05
+sg2 changed: LU not available (PQual 1)
+.
+.
+.
+OLD: Host: scsi5 Channel: 00 Id: 00 Lun: 09
+ Vendor: NETAPP Model: LUN C-Mode Rev: 9800
+ Type: Direct-Access ANSI SCSI revision: 05
+0 new or changed device(s) found.
+0 remapped or resized device(s) found.
+24 device(s) removed.
+ [2:0:0:0]
+ [2:0:0:1]
+...
+----
+.. 驗證MetroCluster 主機上是否只能看到來自於此實體IP節點的路徑：「anlun LUN show -p」
+.. 如有需要、請從MetroCluster SisclsFC節點移除iSCSI LIF。
++
+如果節點上沒有其他LUN對應至其他用戶端、則應執行此動作。
+
+
+
+

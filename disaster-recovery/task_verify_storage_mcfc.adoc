@@ -1,0 +1,32 @@
+---
+permalink: disaster-recovery/task_verify_storage_mcfc.html 
+sidebar: sidebar 
+keywords: verify, storage, configuration 
+summary: 您必須確認所有儲存設備均可從正常運作的節點中看到。 
+---
+= 驗證儲存組態
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須確認所有儲存設備均可從正常運作的節點中看到。
+
+.步驟
+. 確認災難站台上的所有儲存元件數量和類型在存續站台上相同。
++
+正常運作的站台和災難站台應該擁有相同數量的磁碟櫃堆疊、磁碟櫃和磁碟。在連接橋接器或連接架構MetroCluster 的功能區塊配置中、站台應擁有相同數量的FC至SAS橋接器。
+
+. 確認已在災難站台更換的所有磁碟均為無擁有：
++
+「執行本機磁碟show-n」
+
++
+磁碟應顯示為未擁有。
+
+. 如果未更換磁碟、請確認所有磁碟均存在：
++
+「尖碑秀」
+
+
