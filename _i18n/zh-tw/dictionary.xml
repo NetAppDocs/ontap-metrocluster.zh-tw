@@ -568,7 +568,6 @@
   <block id="e4194351c70f628f28ee542a65494961" category="list-text">某些平台會使用VLAN作為MetroCluster 支援靜態IP介面。根據預設、這兩個連接埠各自使用不同的VLAN：10和20。您也可以使用「MetroCluster 還原組態設定介面create」命令中的「-vlan-id參數」、指定高於100（介於101和4095之間）的不同（非預設）VLAN。</block>
   <block id="6d8c2528a36ade2616de34224d776375" category="inline-link-macro">第3層廣域網路的考量</block>
   <block id="eae306387b2384204fa6a3c19690890a" category="list-text">從ONTAP 《支援範圍》9.9.1開始、如果您使用的是第3層組態、則在建立MetroCluster 支援範圍介面時、也必須指定「閘道」參數。請參閱 <block ref="babfc343bda1ae07500c981be392a72d" category="inline-link-macro-rx"></block>。</block>
-  <block id="19d390d9b8d24ef2e5e8d530b56b6c3a" category="paragraph">+下列平台機型使用VLAN並允許設定非預設的VLAN ID。</block>
   <block id="9ace720c417350af9e7b31ebc811b5de" category="cell">支援各種平台AFF</block>
   <block id="cc04b828d9f0654ce99362fa4a96bb32" category="cell">支援各種平台FAS</block>
   <block id="8fd3ca5f66dff5be16e79560dd28171e" category="list-text">VA220 AFF</block>
@@ -1894,14 +1893,11 @@
   <block id="c1444ba460cdd9b59c8ecf988ca907c4" category="list-text">支援自動非計畫性的切換ONTAP 功能、可在更新版本的更新版本中使用。</block>
   <block id="927ed696d98572bdb5039cbffcfdb480" category="section-title">在MetroCluster 一個架構中使用資訊器的網路需求</block>
   <block id="b2b90a2080b20a433104d14b3164613a" category="paragraph">若要在ONTAP 一個不實的組態中安裝此功能、MetroCluster 您必須確保組態符合多項網路需求。</block>
-  <block id="584cbb7b9a5b8e8c3d576c37046ef4f5" category="list-text">往返延遲</block>
-  <block id="44bf16da487b917462868fadbd2d975a" category="paragraph">往返延遲不得超過25毫秒。</block>
   <block id="1a03f6720968dfb968df6cc034114444" category="list-text">MTU</block>
   <block id="6b55a3ff2ffe6275beb9e73d58d08007" category="paragraph">MTU大小必須至少為1400。</block>
   <block id="64ddceb2cbf941d1fc93373ce9219a1f" category="list-text">封包遺失</block>
   <block id="48826ffed53f55da6bc21c81ca1b5e8f" category="paragraph">封包遺失必須小於或等於0.01%。</block>
   <block id="7d724e4bd163fe8323200b15500517f9" category="list-text">頻寬</block>
-  <block id="72b09b4c164fb776e6577cef10d7084d" category="paragraph">中保服務與MetroCluster 支援架構之間的連結必須至少有1 Gbps的頻寬。</block>
   <block id="652f10975e44b79de998287113035fac" category="section-title">防火牆需求ONTAP</block>
   <block id="671e00f956495c99ae5aae5896e8542a" category="paragraph">利用多個連接埠與特定服務進行通訊。ONTAP</block>
   <block id="861ef6676813cbc81369ee701ae73269" category="paragraph">如果您使用的是協力廠商防火牆：</block>
@@ -1982,7 +1978,6 @@
   <block id="58f6e08c96a99398ddfbc5fa56d957dc" category="list-text">在來源叢集上、驗證來源叢集到目的地叢集的驗證：</block>
   <block id="83da41cb2046392d9c91b9b42b375ebe" category="list-text">在每個節點上輸入下列命令、確認節點已準備好建立DR群組：</block>
   <block id="1012d3a631b6876c6dcb7face2d6a501" category="list-text">您必須在MetroCluster 同一個VLAN中建立所有的S21 IP介面「a」連接埠、MetroCluster 並在另一個VLAN中建立所有的S21 IP介面「B」連接埠。請參閱 <block ref="0d7e2206ca44f9cb7344ddf469b6d625" category="inline-link-macro-rx"></block>。</block>
-  <block id="8120231654641080268a38a8ad065e8b" category="paragraph">下列平台機型使用VLAN並允許設定非預設的VLAN ID。</block>
   <block id="577e6b9899e57c4e54e43cf79c919f83" category="paragraph">E3A.</block>
   <block id="969d430598a257671bdf944480e4d46b" category="paragraph">e3b.</block>
   <block id="89084e438af77c52e3bb123d64f339eb" category="list-text">在「'node_a_1'」上建立介面。</block>
@@ -4611,17 +4606,8 @@
   <block id="57ab4d65e05ba7805256e178468b7043" category="cell">靜態IP節點模型MetroCluster</block>
   <block id="dcf4881a93cea43ae1634b2f0f7939ac" category="cell">交換器連接埠</block>
   <block id="5cf0603a9cc38118a92d6f62afbc27ad" category="cell">連線至</block>
-  <block id="e3ba5feff9c2f5df371992a6af632d38" category="cell">Cisco 3132Q-V或3232C</block>
   <block id="ed36a1ef76a59ee3f15180e0441188ad" category="cell">任何</block>
-  <block id="8e8bf4eef9dc6ef4efedcee322e60026" category="paragraph">node_x_1-FC</block>
-  <block id="496f634a3fb7abe92600445e4ebf2858" category="paragraph">node_x_2-FC</block>
   <block id="4dd13a124f96d89e0fd6c36f6d82e131" category="cell">Broadcom Bes - 53248</block>
-  <block id="5065d90219d07238456028a58852a578" category="paragraph">FAS2750/A220</block>
-  <block id="66ce05ea43c73b8e33c74c12d0371bc9" category="paragraph">1、2、3</block>
-  <block id="9be00eab53c162af955730115921876c" category="paragraph">FAS8200 / A300</block>
-  <block id="c0fedf1d3c6d43675ba3ccd93a26de39" category="paragraph">1、2、3、7、8、 9.</block>
-  <block id="c2d626f8beba73ad0cf4e66214f7d949" category="paragraph">4、5、6</block>
-  <block id="195ae27cd18c9577876e8db4440c4230" category="paragraph">4、5、6、10、11、 12.</block>
   <block id="41add71327ff82aa85f0074583131e05" category="section-title">使用新的IP交換器時移動本機叢集連線</block>
   <block id="f96b1e8d8ce6fb44d55bd62523f1fffd" category="paragraph">如果您使用新的IP交換器、則必須將現有MetroCluster 的叢集連線實際移至新交換器。</block>
   <block id="971a965432d70710e6faba87f3271008" category="list-text">將MetroCluster 叢集連線移至新的IP交換器、將該節點群組移至其中。</block>
@@ -4741,7 +4727,6 @@
   <block id="934706a419f8bd1c7c07e2f70f366db7" category="list-text">找出現有MetroCluster 的使用情形與MetroCluster 新節點上的使用端口使用情況之間的任何衝突。</block>
   <block id="5ec820848a37e15913e881383d321172" category="paragraph">您必須使用MetroCluster 下表來識別新MetroCluster 版的靜態IP控制器上的靜態IP連接埠。然後檢查並記錄MetroCluster 哪些資料生命量或叢集生命量存在於哪些連接埠上、以及哪些連接埠位於哪些SFC節點上。</block>
   <block id="f792a94ecd326887dad12660284df14c" category="paragraph">這些在MetroCluster Sing FC節點上發生衝突的資料生命週期或叢集生命週期、將會在轉換程序的適當步驟中移動。</block>
-  <block id="f9ce0bc7b36b38eb2afa4b5dabcd6c8a" category="admonition">在FASA220和FAS2750系統上AFF 、也會將該物件的實體連接埠當作叢集介面使用。MetroCluster如果新MetroCluster 的靜態IP節點是AFF 指不需要移動現有的叢集LIF或FAS2750系統、</block>
   <block id="8e00032c24d53ef0b02b39ad3a87a5fc" category="paragraph">下表依MetroCluster 平台模式顯示了各個靜態IP連接埠。您可以忽略「VLAN ID」欄。</block>
   <block id="05808f0e86c04c2a062c2e041f9e0827" category="cell">VLAN ID</block>
   <block id="aadb3ee341867ca2327dd458d9f1e42b" category="cell">未使用</block>
@@ -4944,7 +4929,6 @@
   <block id="e9f061fb2bc125b997083e48a3442510" category="list-text">綠色儲存格表示支援組合。</block>
   <block id="7bf7e1a6cec96a843176b66291c50547" category="list-text">白色（空白）儲存格表示不支援組合。</block>
   <block id="1799408ec992ed3e5561f7b04ccef0fe" category="paragraph">例如MetroCluster 、支援從由AFF8060控制器模組組成的FESFC組態、轉換為AFF 由FESA400控制器模組組成的IP組態。</block>
-  <block id="06dbf695b0eb6bb2278b17719899aba9" category="image-alt">移轉支援的平台組合</block>
   <block id="2abcc8e487f56251cd49b5a74738c4c4" category="section-title">轉換至Cisco 9336C-FX2共享交換器組態</block>
   <block id="f8e0758b3af85da8f282b95e41204586" category="paragraph">不支援轉換至Cisco 9336C-FX2共用交換器組態。共享交換器組態_是交換器同時提供MetroCluster 支援鏈路的地方、也是儲存櫃連線的地方。</block>
   <block id="1a0ece25400c2d4c0b3a063a4d9d1aad" category="paragraph">Cisco 9336C-FX2交換器僅提供MetroCluster 支援的不支援鏈路的組態。</block>
@@ -6828,8 +6812,6 @@
   <block id="68a68579e29d4f4e1a1a17f8dc790b3c" category="admonition">每個版本的每個版本組態應只有一MetroCluster 部ESIT斷路 器監控器MetroCluster 、以避免與多部斷路器監控器發生衝突。</block>
   <block id="74c24f77157a44b3d1b75c7a631b2f1a" category="list-text">支援MetroCluster 結合使用各種不同的知識、包括知識、MetroCluster 知識、技術、MetroCluster 技術及彈性等組態。</block>
   <block id="0051a43c14e5ca151dedc81a1b8f3b8e" category="list-text">硬體與軟體：</block>
-  <block id="acbfeda7edea7eba0418c4de0c90e09c" category="list-text">版本8.3.x、9.0、9.1、9.2、9.3、ONTAP 9.4、9.5、9.6、9.7、9.8、 9.9.1或9.10.1</block>
-  <block id="df889c76e4219d94a86d75d41919ad14" category="list-text">Red Hat Enterprise Linux 7至7.9或8至8.4、或CentOS 7至7.9 64位元（實體安裝或虛擬機器）</block>
   <block id="1622cddcc8d92c2f521cf45ebeeb83b0" category="list-text">MariaDB 5.5.52 x / MySQL Server 5.6x</block>
   <block id="f211a801e18d8052b211fd5a87a83253" category="list-text">4 GB RAM</block>
   <block id="fcf5a54aabe95484b6469eae85dc2a6a" category="list-text">開啟Java執行時間環境8.</block>
@@ -12533,4 +12515,26 @@
   <block id="dd20522d7848c343bdb11bf7a434d0ad" category="sidebar">之後傳送自訂AutoSupport 的動態訊息、將節點新增MetroCluster 至「動態影像」組態</block>
   <block id="62cb54844a683179dd9896f2c466d71f" category="sidebar">將四節點MetroCluster 的「靜態IP」組態擴充為八節點組態</block>
   <block id="0344e1867e953d0d51eac7e816dee9fe" category="sidebar">移除Disaster Recovery群組</block>
+  <block id="cf5928613cf8b77d8355882cdec38712" category="paragraph">僅限16個內部磁碟機</block>
+  <block id="90cd0db781b4639c1c46407e5a4f0a93" category="paragraph">+如果MetroCluster 使用的VLAN為10/20或大於100、則可將下列平台機型新增至現有的支援功能組態。如果使用任何其他VLAN、則MetroCluster 無法將這些平台新增至現有組態、因為無法設定此介面。如果您使用任何其他平台、則VLAN組態並不相關、ONTAP 因為在介紹中並不需要。</block>
+  <block id="92083475c7b52cf5e29e7faa8db9dc17" category="paragraph">從ONTAP 功能完善的9.11.1開始、MetroCluster 在功能完善的組態中、兩個叢集都能成為SVM DR與第三個站台之間關係的來源。</block>
+  <block id="26ae7bdd1d6fb8c4886e6fde8d12601c" category="list-text">延遲</block>
+  <block id="66420f475101cc9c2b0d458605176249" category="paragraph">往返延遲不得超過75毫秒。</block>
+  <block id="d89a2477841e85e6d37fac9fb392f350" category="paragraph">不穩定性不得超過25毫秒。</block>
+  <block id="31677ea68806d62bf012786b0cfb0379" category="paragraph">中保服務與MetroCluster 支援架構組態之間的連結必須至少有20 Gbps的頻寬。</block>
+  <block id="37e445da4970f1c0106716e8dba83be8" category="paragraph">如果使用的VLAN是10/20或大於100、則可將下列平台機型新增至現有MetroCluster 的支援功能組態。如果使用任何其他VLAN、則MetroCluster 無法將這些平台新增至現有組態、因為無法設定此介面。如果您使用任何其他平台、則VLAN組態並不相關、ONTAP 因為在介紹中並不需要。</block>
+  <block id="9e9a93655547f7858baef5194a909e2c" category="cell">Cisco 3132Q-V、3232C或9336C-FX2</block>
+  <block id="a825d9b135e0604b1a8244aa950f4952" category="paragraph">FC節點上的本機叢集介面</block>
+  <block id="32e69a0f5d950aefcb7cefee34c73d19" category="paragraph">FAS500f/A250</block>
+  <block id="22c9730efa04ff77f4d689d1554cb1af" category="paragraph">FAS8200/A300</block>
+  <block id="44966f51999c176196bdbfe7e74f3762" category="paragraph">3、4、9、10、11、 12.</block>
+  <block id="3ee537e70a06614ada97e070ef70fe96" category="paragraph">FAS8300/A400/FAS8700</block>
+  <block id="fb6814303d896b70f8e88a7a5fa288c1" category="list-text">藍色的儲存格顯示從ONTAP 支援的功能是從支援的版本號為《支援的產品組合、從版本號為《支援的產品組合</block>
+  <block id="f65f3d1cbac500084196b8e4bf5ad772" category="image-alt">FC IP移轉中繼節點及更新版本</block>
+  <block id="8cff99d2c284195b8638b34190ed3388" category="list-text">版本8.3.x、9.0、9.1、9.2、9.3、ONTAP 9.4、9.5、9.6、9.7、9.8、 9.9.1、9.10.1或9.11.1。</block>
+  <block id="e551931a21b4ccec04009df38f655079" category="list-text">Red Hat Enterprise Linux 7至7.9或8至8.5、或CentOS 7至7.9 64位元（實體安裝或虛擬機器）</block>
+  <block id="8e41be9a68008dd9f01c00807dd75f69" category="section-title">一致性群組支援MetroCluster 的不一致性組態</block>
+  <block id="b36742dbca767f044c826ec8fbe9b099" category="inline-link">一致性群組</block>
+  <block id="2b9902d272c75c4def3400c620342746" category="paragraph">從ONTAP 功能性的9.11.1開始、<block ref="cf613318e210a5e8a8ae9de011eafc43" category="inline-link-rx"></block> 支援的功能包括MetroCluster ：</block>
+  <block id="fe92f5934bf96194725b46db02f72324" category="list-text">FAS2750或AFF FASA220系統不支援此程序。</block>
 </blocks>

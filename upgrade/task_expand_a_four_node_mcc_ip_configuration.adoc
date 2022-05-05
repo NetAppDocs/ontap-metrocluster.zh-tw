@@ -24,6 +24,7 @@ https://hwu.netapp.com["NetApp Hardware Universe"]
 https://hwu.netapp.com["NetApp Hardware Universe"]
 
 * 新節點必須有足夠的儲存空間來容納舊節點的資料、以及足夠的磁碟來容納根集合體和備用磁碟。
+* FAS2750或AFF FASA220系統不支援此程序。
 
 
 
@@ -498,7 +499,7 @@ cluster_A::>
 ====
 --
 +
-下列平台機型使用VLAN並允許設定非預設的VLAN ID。
+如果使用的VLAN是10/20或大於100、則可將下列平台機型新增至現有MetroCluster 的支援功能組態。如果使用任何其他VLAN、則MetroCluster 無法將這些平台新增至現有組態、因為無法設定此介面。如果您使用任何其他平台、則VLAN組態並不相關、ONTAP 因為在介紹中並不需要。
 
 +
 |===

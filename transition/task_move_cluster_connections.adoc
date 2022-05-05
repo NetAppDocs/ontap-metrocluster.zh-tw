@@ -65,53 +65,44 @@ e0b、e0d
 | 交換器模式 | 靜態IP節點模型MetroCluster | 交換器連接埠 | 連線至 
 
 
-.2+| Cisco 3132Q-V或3232C .2+| 任何  a| 
+.2+| Cisco 3132Q-V、3232C或9336C-FX2 .2+| 任何  a| 
 5.
  a| 
-node_x_1-FC
+FC節點上的本機叢集介面
 
 
 
  a| 
 6.
  a| 
-node_x_2-FC
+FC節點上的本機叢集介面
 
 
 
-.4+| Broadcom Bes - 53248  a| 
-FAS2750/A220
+.6+| Broadcom Bes - 53248  a| 
+FAS500f/A250
  a| 
-1、2、3
+1 - 6
  a| 
-node_x_1-FC
-
-
-
- a| 
-FAS8200 / A300
- a| 
-1、2、3、7、8、 9.
- a| 
-node_x_1-FC
+FC節點上的本機叢集介面
 
 
 
  a| 
-FAS2750/A220
+FAS8200/A300
  a| 
-4、5、6
+3、4、9、10、11、 12.
  a| 
-node_x_2-FC
+FC節點上的本機叢集介面
 
 
 
  a| 
-FAS8200 / A300
+FAS8300/A400/FAS8700
  a| 
-4、5、6、10、11、 12.
+1 - 6
  a| 
-node_x_2-FC
+FC節點上的本機叢集介面
 
 |===
 

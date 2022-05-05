@@ -32,10 +32,10 @@ NOTE: 每個版本的每個版本組態應只有一MetroCluster 部ESIT斷路 �
 * 支援MetroCluster 結合使用各種不同的知識、包括知識、MetroCluster 知識、技術、MetroCluster 技術及彈性等組態。
 * 硬體與軟體：
 +
-** 版本8.3.x、9.0、9.1、9.2、9.3、ONTAP 9.4、9.5、9.6、9.7、9.8、 9.9.1或9.10.1
+** 版本8.3.x、9.0、9.1、9.2、9.3、ONTAP 9.4、9.5、9.6、9.7、9.8、 9.9.1、9.10.1或9.11.1。
 
 
-* Red Hat Enterprise Linux 7至7.9或8至8.4、或CentOS 7至7.9 64位元（實體安裝或虛擬機器）
+* Red Hat Enterprise Linux 7至7.9或8至8.5、或CentOS 7至7.9 64位元（實體安裝或虛擬機器）
 +
 ** MariaDB 5.5.52 x / MySQL Server 5.6x
 ** 4 GB RAM

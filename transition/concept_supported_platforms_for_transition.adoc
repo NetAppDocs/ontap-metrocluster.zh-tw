@@ -17,11 +17,12 @@ summary: 然後轉換MetroCluster 至靜態IP組態、您必須擁有支援的�
 
 * 綠色儲存格表示支援組合。
 * 白色（空白）儲存格表示不支援組合。
+* 藍色的儲存格顯示從ONTAP 支援的功能是從支援的版本號為《支援的產品組合、從版本號為《支援的產品組合
 
 
 例如MetroCluster 、支援從由AFF8060控制器模組組成的FESFC組態、轉換為AFF 由FESA400控制器模組組成的IP組態。
 
-image::../media/transition_supported_platform_combinations.png[移轉支援的平台組合]
+image::../media/fc_ip_transition_metrpolitan_and_later.png[FC IP移轉中繼節點及更新版本]
 
 
 

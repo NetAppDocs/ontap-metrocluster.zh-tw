@@ -119,10 +119,6 @@ image::../media/workflow_2n_transition_bsaic.png[工作流程2n轉換bsaic]
 這些在MetroCluster Sing FC節點上發生衝突的資料生命週期或叢集生命週期、將會在轉換程序的適當步驟中移動。
 
 +
-
-NOTE: 在FASA220和FAS2750系統上AFF 、也會將該物件的實體連接埠當作叢集介面使用。MetroCluster如果新MetroCluster 的靜態IP節點是AFF 指不需要移動現有的叢集LIF或FAS2750系統、
-
-+
 下表依MetroCluster 平台模式顯示了各個靜態IP連接埠。您可以忽略「VLAN ID」欄。
 
 +
@@ -180,17 +176,19 @@ e1b
 
 
 
-.2+| 解答A220和FAS2750 AFF  a| 
-e0a
+.2+| FAS8300/A400/FAS8700  a| 
+e1a.
  a| 
 10.
-.2+| 在這些系統上、這些實體連接埠也會用作叢集介面。 
+ a| 
+
 
 
  a| 
-e0b.
+e1b
  a| 
 20
+ a| 
 
 
 
@@ -203,7 +201,7 @@ e0c
 
 
  a| 
-e0d
+e0b.
  a| 
 20
  a| 

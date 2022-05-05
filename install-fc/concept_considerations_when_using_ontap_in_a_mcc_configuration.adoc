@@ -122,6 +122,12 @@ NOTE: 在設定Aggregate之前、您必須依照FabricPool 中的「設定物件
 
 
 
+== 一致性群組支援MetroCluster 的不一致性組態
+
+從ONTAP 功能性的9.11.1開始、 https://docs.netapp.com/us-en/ontap/consistency-groups/index.html["一致性群組"^] 支援的功能包括MetroCluster ：
+
+
+
 == 以功能不一的組態排程工作MetroCluster
 
 在使用者建立的作業排程中、使用者建立的工作排程會自動複寫到以功能性為設計目標的叢集之間。ONTAP MetroCluster如果您在叢集上建立、修改或刪除工作排程、則會使用組態複寫服務（CRS）、在合作夥伴叢集上自動建立相同的排程。
@@ -403,6 +409,8 @@ NOTE: 即使來源SVM停機、如果目的地SVM中的IP空間和網路相同、
 == SVM災難恢復功能MetroCluster 、以一套功能不全的組態進行
 
 從ONTAP 功能介紹的起、MetroCluster 使用支援VMware®的動態儲存虛擬機器（SVM）就能透過SnapMirror SVM災難恢復功能、作為來源。目的地SVM必須位於MetroCluster 不屬於該組態的第三個叢集上。
+
+從ONTAP 功能完善的9.11.1開始、MetroCluster 在功能完善的組態中、兩個叢集都能成為SVM DR與第三個站台之間關係的來源。
 
 您應該瞭解搭配SnapMirror災難恢復使用SVM的下列要求和限制：
 
