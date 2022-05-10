@@ -378,7 +378,7 @@ dr-group-id cluster     node     node-systemid ha-partner-systemid dr-partner-sy
  a| 
 Tiebreaker
  a| 
-link:tiebreaker/concept_configuring_the_tiebreaker_software.html#commands-for-modifying-metrocluster-tiebreaker-configurations["移除MetroCluster 部分組態"] 在「安裝MetroCluster 與組態」內容中
+link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#removing-metrocluster-configurations["移除MetroCluster 部分組態"] 在「安裝MetroCluster 與組態」內容中
 
 
 

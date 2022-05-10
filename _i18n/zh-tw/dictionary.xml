@@ -1597,7 +1597,6 @@
   <block id="d2294acb2c54a8144dcb00a8f1554fab" category="paragraph">依預設、裝置會將開始時間視為UTC。start-time引數是金鑰成為作用中的時間和日期。duration引數是以秒為單位的壽命長度。最大長度為2147483646秒（約68年）。</block>
   <block id="8dd0074f8606108f750defc9306a01b3" category="list-text">顯示Keychain組態：</block>
   <block id="86a60ed3b0e59f151ab802f5cdfc940b" category="paragraph">「如何輸入金鑰鏈名稱」</block>
-  <block id="2861de74286d86a770050eefe484b016" category="section-title">設定Macsec原則</block>
   <block id="dde20920c9bc2285cedc0171616ad91e" category="list-text">建立Macsec原則：</block>
   <block id="3ec088691927601a692a22de57f7b714" category="paragraph">"Malaccec"原則名稱</block>
   <block id="f6f1bccdbe1b9de16d5e5c9a259735ef" category="list-text">設定下列其中一個密碼：GCM-AES-128、GCM-AES-256、GCM-AES-XPN-128或GCM-AES-XPN-256：</block>
@@ -1623,15 +1622,12 @@
   <block id="5382d2282494796171738f35b9361ab8" category="admonition">中繼交換器可能需要使用此命令、才能像MPLS標記一樣使用封包標頭（DMAC、SMAC、ettype）。</block>
   <block id="dbedb7cefba22d6d33123561705f89d7" category="list-text">顯示Macsec原則組態：</block>
   <block id="388f63f7d6fad1c81c4ee48ef9a6717c" category="paragraph">「How Macsec Policy」</block>
-  <block id="c65d9e378f505697a236ecdbbf4f570d" category="section-title">在MetroCluster 不完整的IP組態中停用Cisco Macsec Encryption WAN ISL</block>
   <block id="749ac7a2f1348088d99ca5c98ffd2d16" category="paragraph">您可能需要在MetroCluster WAN ISL上針對Cisco 9336C交換器停用MAC加密、以利進行IP組態設定。</block>
   <block id="8593f4ba6cc280cf6c5bf594528f3eb4" category="list-text">停用裝置上的Macsec組態：</block>
   <block id="cdb4bb93b3a531a567e11665f5148cc9" category="paragraph">"Malaccec"關機</block>
   <block id="c00cade2f94121d752e8500322a535ab" category="admonition">選取「no」選項可還原Macsec功能。</block>
   <block id="d87fb26eb8c307c05c4cef618a867ad5" category="list-text">選取您已使用Macsec設定的介面。</block>
   <block id="38b72613f93d93bebc25e126c3accdb1" category="paragraph">您可以指定介面類型和身分識別。對於乙太網路連接埠、請使用乙太網路插槽/連接埠。</block>
-  <block id="994f1ea1f472d234f9c01b086bcddfff" category="list-text">移除介面上設定的金鑰鏈、原則和後援金鑰鏈、以移除Macsec組態：</block>
-  <block id="4433609b41a7b52c237c57c092b2feb7" category="paragraph">「沒有Macsec keychain keychain keychain name policy名稱fallback-keychain keychain name」</block>
   <block id="099cf25e93dd32c5578a33534cbb5ff2" category="list-text">在所有設定了Macsec的介面上重複步驟3和4。</block>
   <block id="bb7076dff2fa5f0d308e776f5006e07e" category="section-title">驗證Macsec組態</block>
   <block id="8111242ac0c7119fbea7317d86a32103" category="list-text">在組態內的第二個交換器上重複*全部*先前的程序、以建立一個Macsec工作階段。</block>
@@ -2060,10 +2056,8 @@
   <block id="2dd10a99a16640634ad6093b398b6036" category="paragraph">以下範例顯示MetroCluster 「不知道叢集show」命令輸出、可確保四節點MetroCluster 的效能正常。這表示叢集已準備好在必要時執行協調式切換。</block>
   <block id="d3e0fb982a529e06bf305b944b1f5000" category="list-text">使用協商切換、修復及切換的程序<block ref="31eae521f3e4fd8fd098b415771facd9" category="inline-link-rx"></block></block>
   <block id="c5ca300fc0462691509bf45ae10e3bc5" category="paragraph">您可以下載並安裝在第三個站台MetroCluster 上、也可以下載或安裝《斷位器》軟體、或是從ONTAP 《e ONTAP 2》9.7開始安裝。</block>
-  <block id="2045016bec8bea27ddbdf3bf4b176595" category="paragraph"><block ref="2045016bec8bea27ddbdf3bf4b176595" category="inline-link-macro-rx"></block></block>
   <block id="c9016b3f72dba4b8f61408d9d613c969" category="paragraph">如果您必須安裝新的Tiebreaker軟體執行個體、請依照指示安裝及設定軟體。</block>
   <block id="8510397a0db0873faf52a037f4e5c265" category="paragraph"><block ref="8510397a0db0873faf52a037f4e5c265" category="inline-link-rx"></block></block>
-  <block id="6c8f611a4b721174f4789122858e5dc3" category="paragraph"><block ref="6c8f611a4b721174f4789122858e5dc3" category="inline-link-macro-rx"></block></block>
   <block id="24135708f40bc30abbe1b5a601010307" category="list-text">如果您使用的是Tiebreaker軟體、請參閱Tiebreaker文件。</block>
   <block id="4978301a508dcc7f7e8778cdb2401e04" category="section-title">保護組態備份檔案</block>
   <block id="afc362bb21237b3cf262e5bb73c2e7ce" category="paragraph">您可以指定遠端URL（HTTP或FTP）來上傳組態備份檔案、以及本機叢集中的預設位置、為叢集組態備份檔案提供額外的保護。</block>
@@ -2273,7 +2267,6 @@
   <block id="f3b35ec0554707831c93f8d1726c3e1d" category="list-text">在裝置上啟用Macsec和MKA：「feature Macsec」（功能MAC秒）</block>
   <block id="67d10db60edc762f7873c87cd6b4d249" category="list-text">將執行組態複製到啟動組態：「copy running-config startup-config」</block>
   <block id="8289fc55a0dea0e27a08723be563875e" category="section-title">停用Cisco Macsec Encryption</block>
-  <block id="096c074687c2dd6452629aee93157757" category="admonition">如果停用加密、您也必須刪除金鑰、如XXX所述。</block>
   <block id="408e437eca7dacdea718d8544eb31c70" category="list-text">停用裝置上的Macsec組態：「Macsec shutruted」（Macsec關機）</block>
   <block id="a78ca51eaaf1a7fe31e057a59182b175" category="admonition">選取「否」選項可還原Macsec功能。</block>
   <block id="1fd9a2e4a02fcc573ee7bb473c57b045" category="list-text">移除介面上設定的金鑰鏈、原則和後援金鑰鏈、以移除Macsec組態：「無Macsec金鑰鏈金鑰鏈名稱原則名稱後援金鑰鏈名稱」</block>
@@ -3787,7 +3780,6 @@
   <block id="c7534d571d84fdfe4912d24b4f1f30bf" category="list-text">若要檢查特定ONTAP 的支援版本、交換器及平台的檔案、請使用RcfFileGenerator.如果您可以針對您的組態或您要升級至的組態產生RCF檔案、則會受到支援。</block>
   <block id="282bc05e82ec2895ab48f3f9377e06d3" category="list-text">若要驗證交換器韌體是否受支援、請參閱下列內容：</block>
   <block id="da160308e3b4b4a80bf1b72b5bdbedb8" category="inline-link">Hardware Universe</block>
-  <block id="e77a7dbb2ff81ed5602321d5148ff36e" category="list-text"><block ref="e77a7dbb2ff81ed5602321d5148ff36e" category="inline-link-rx"></block></block>
   <block id="10f02f59043b28fac9ff50a9e24e6044" category="inline-link">NetApp互通性</block>
   <block id="8ae1a8b6dc4a3df150f27ca419fb9a6c" category="list-text"><block ref="8ae1a8b6dc4a3df150f27ca419fb9a6c" category="inline-link-rx"></block></block>
   <block id="bde0605fb74695c23ddd122685cfc65e" category="section-title">升級RCF檔案</block>
@@ -4924,8 +4916,6 @@
   <block id="e41c011f64e44fbeddd2c6edef20e2e0" category="list-text">驗證轉換是否已停用：「metrocluster Transition show-mode'（metrocluster Transition show-mode）」</block>
   <block id="7f864a19d7a5386c4631d2ba924b2c1c" category="paragraph">您必須在兩個叢集上執行這些步驟。</block>
   <block id="9dbbc592d23a777892a7b326fdecb27a" category="summary">然後轉換MetroCluster 至靜態IP組態、您必須擁有支援的平台機型組合。</block>
-  <block id="7e78f2c6ef0bb1c644bf13957f799b3e" category="paragraph">轉換至MetroCluster 靜態IP組態時、您必須結合支援的平台機型。</block>
-  <block id="5bb55ff54cc0047e95b27d7917c63627" category="paragraph">下表顯示支援的平台組合。您可以從左欄中的平台轉換至右欄中所列支援的平台、如綠色表格儲存格所示。</block>
   <block id="e9f061fb2bc125b997083e48a3442510" category="list-text">綠色儲存格表示支援組合。</block>
   <block id="7bf7e1a6cec96a843176b66291c50547" category="list-text">白色（空白）儲存格表示不支援組合。</block>
   <block id="1799408ec992ed3e5561f7b04ccef0fe" category="paragraph">例如MetroCluster 、支援從由AFF8060控制器模組組成的FESFC組態、轉換為AFF 由FESA400控制器模組組成的IP組態。</block>
@@ -10765,7 +10755,6 @@
   <block id="678e939686a32024b8f3da61fd748985" category="paragraph">下列範例顯示網路連接埠使用量：</block>
   <block id="a51a9fa7ea4ed8f7d2d312630ac5f093" category="list-text">請從站台A：+ MetroCluster 「不顯示」確認組態</block>
   <block id="9c04a1314d36b0b92db99654757f37c2" category="list-text">從站台B驗證組態：+ MetroCluster 「不實秀」</block>
-  <block id="8e2467ce90556be64053bd8e7c611ad8" category="paragraph">如果您需要RO存取權限、請在「User（ro）：」之後指定「nmpv3user'」、如範例所示：</block>
   <block id="c3ba99ea78fe878c8116f93f8bc6caea" category="paragraph">在執行ONTAP 9.8版之前版本的系統中、如果您的組態包含FC到SAS橋接器、則必須執行一些特殊的組態步驟、以監控MetroCluster 以供使用者使用的SFC到SAS橋接器。</block>
   <block id="6c004e557097d04e25499f1d1a527295" category="paragraph">更新版本ONTAP</block>
   <block id="4ae8d24c72dd765a4920ac53c2dafe90" category="paragraph">更新版本ONTAP</block>
@@ -11100,8 +11089,6 @@
   <block id="1b8b021695a2698fadae5c009b0b6295" category="paragraph">「安全金鑰管理程式外部show -instance」</block>
   <block id="2a4a9d693caa859153f77cf2204d30cc" category="paragraph">「安全金鑰管理程式金鑰查詢」</block>
   <block id="c455927c47d829e25595da49b62049ba" category="section-title">從斷路器或其他監控軟體移除現有組態</block>
-  <block id="02f80d1409d40adabdcd4b00959239b0" category="inline-link-macro">移除MetroCluster 不完整的組態</block>
-  <block id="b0d3c2e52841601c113af9d2ec1d76e1" category="paragraph"><block ref="b0d3c2e52841601c113af9d2ec1d76e1" category="inline-link-macro-rx"></block></block>
   <block id="2c8c38da3af9290bc8367a776b867b51" category="section-title">在維護前傳送自訂AutoSupport 的支援訊息</block>
   <block id="22a619e2119eac132eeee61c7997aae7" category="paragraph">「維護時段」指定維護時段的長度、最長72小時。如果維護作業在時間結束之前完成、您可以叫用AutoSupport 指示維護期間結束的資訊消息：</block>
   <block id="0cd13c32173979ae3ca88ab25050c571" category="section-title">切換MetroCluster 整個過程</block>
@@ -11323,8 +11310,6 @@
   <block id="a00b322f5fbb0ab63d64eb15f5fd23e9" category="paragraph">完成升級之後、您應該傳送AutoSupport 一個不完整的訊息、指出維護已結束、以便繼續自動建立個案。</block>
   <block id="641ef094fd6e3f18fc8a62270dc2b543" category="section-title">還原斷路器監控</block>
   <block id="cf01be10c4ad6c0e087f2447c096712d" category="paragraph">如果MetroCluster 先前已將此組態設定為由斷路器軟體進行監控、您可以還原斷路器連線。</block>
-  <block id="9708813a6edf75a072848cc8c19d1d0b" category="inline-link-macro">新增MetroCluster 功能</block>
-  <block id="41e5a570a4f2d19e8390709e59c70fa0" category="list-text">請執行中的步驟 <block ref="12128e797396b704d910303dde9a32c0" category="inline-link-macro-rx"></block> 在「_Estriebreaker MetroCluster 安裝與組態」一節中。</block>
   <block id="6d212900b72ecc3ea28faeef719a987e" category="summary">您必須為新節點安裝設備。</block>
   <block id="448b6a1ae7f7f1277a02fda9c0f9fd58" category="doc">運用新設備</block>
   <block id="7965e118387157e57593becb6ae60117" category="list-text">請使用中的程序 <block ref="a9f150ef34b7953b6119f5ac779097fe" category="inline-link-macro-rx"></block> 用於架裝新的儲存系統、磁碟櫃和FC對SAS橋接器。</block>
@@ -11859,7 +11844,6 @@
   <block id="bebcf28331e2ef1173754b217ce3b9d4" category="list-text">如果設定「Onboard Key Manager（機載金鑰管理程式）」、請在稍後的升級程序中輸入「ecurity key-manager Onboard show-Backup（機載顯示備份）」+。</block>
   <block id="10a7f52b07c24ded6796ce7b186bcafe" category="list-text">收集現有節點的系統ID：「MetroCluster Sic節點show -Fields node-SystemID、ha-合作 夥伴SystemID、DR-Partner SystemID、DR-auxiliary SystemID」</block>
   <block id="1cefe6fb0bd3a21a29c31cc3652723ce" category="section-title">移除內管或斷路器監控</block>
-  <block id="4a3e665f4593afeb6ebcabea7ce85845" category="paragraph"><block ref="97b0c50183125e551abb5b04258316bf" category="inline-link-macro-rx"></block> 在「安裝MetroCluster 與組態」內容中</block>
   <block id="9db835e4c4f6ecab5779d22af305de38" category="paragraph">在執行維護之前、您應發出AutoSupport 一份不知所知的訊息、通知技術支援人員正在進行維護。告知技術支援部門正在進行維護、可防止他們假設發生中斷、而開啟案例。</block>
   <block id="efa982219e642bd5186be6c92fb7a64f" category="paragraph">完成此工作之後、Site_A會處於作用中狀態、並為兩個站台提供資料。站台_B處於非作用中狀態、準備開始升級程序。</block>
   <block id="d02e71ae77b3af75d1cc326f36f84ae3" category="paragraph">在控制器升級期間、會停用協調式切換後的Aggregate自動修復功能。站台B的節點會在「載入器」提示字元停止。</block>
@@ -12521,7 +12505,6 @@
   <block id="26ae7bdd1d6fb8c4886e6fde8d12601c" category="list-text">延遲</block>
   <block id="66420f475101cc9c2b0d458605176249" category="paragraph">往返延遲不得超過75毫秒。</block>
   <block id="d89a2477841e85e6d37fac9fb392f350" category="paragraph">不穩定性不得超過25毫秒。</block>
-  <block id="31677ea68806d62bf012786b0cfb0379" category="paragraph">中保服務與MetroCluster 支援架構組態之間的連結必須至少有20 Gbps的頻寬。</block>
   <block id="37e445da4970f1c0106716e8dba83be8" category="paragraph">如果使用的VLAN是10/20或大於100、則可將下列平台機型新增至現有MetroCluster 的支援功能組態。如果使用任何其他VLAN、則MetroCluster 無法將這些平台新增至現有組態、因為無法設定此介面。如果您使用任何其他平台、則VLAN組態並不相關、ONTAP 因為在介紹中並不需要。</block>
   <block id="9e9a93655547f7858baef5194a909e2c" category="cell">Cisco 3132Q-V、3232C或9336C-FX2</block>
   <block id="a825d9b135e0604b1a8244aa950f4952" category="paragraph">FC節點上的本機叢集介面</block>
@@ -12537,4 +12520,25 @@
   <block id="b36742dbca767f044c826ec8fbe9b099" category="inline-link">一致性群組</block>
   <block id="2b9902d272c75c4def3400c620342746" category="paragraph">從ONTAP 功能性的9.11.1開始、<block ref="cf613318e210a5e8a8ae9de011eafc43" category="inline-link-rx"></block> 支援的功能包括MetroCluster ：</block>
   <block id="fe92f5934bf96194725b46db02f72324" category="list-text">FAS2750或AFF FASA220系統不支援此程序。</block>
+  <block id="610f11b52907034f4715c6fa1abf8d1b" category="paragraph">「訊號器」服務與MetroCluster 「資訊系統」組態之間的連結必須至少有20 Mbps的頻寬。</block>
+  <block id="f5cd93f67ab362b3830ef2c47249e909" category="paragraph"><block ref="f5cd93f67ab362b3830ef2c47249e909" category="inline-link-macro-rx"></block></block>
+  <block id="a3816a0d57fcb59bc1a3bfba35af44cf" category="paragraph"><block ref="a3816a0d57fcb59bc1a3bfba35af44cf" category="inline-link-macro-rx"></block></block>
+  <block id="8a4f175190a1710cdcd52e7efde01268" category="section-title">在MetroCluster 不支援的IP組態中啟用Cisco Macsec Encryption WAN ISL</block>
+  <block id="dbbfd3dd70a4d25284d890b07ad9bc31" category="section-title">設定Macsec金鑰鏈和金鑰</block>
+  <block id="2903318a6fa99cbae17be8d84747e6f4" category="section-title">設定Macsec原則</block>
+  <block id="d2b2747d0c22a09619558cfbac550396" category="section-title">在介面上啟用Cisco Macsec加密</block>
+  <block id="022ccd39646806bfe7a58384a672a87d" category="list-text">選取您使用Macsec加密設定的介面。</block>
+  <block id="b07933039277c17cd5a85e3d7906d601" category="list-text">新增要在介面上設定的金鑰鏈和原則、以新增Macsec組態：</block>
+  <block id="82cc9e863d73c099e61d0b3f2db03cbf" category="paragraph">"Malaccec keychain keychain keychain name policy police-name"</block>
+  <block id="5b62e90551dcaf31183c797f549f19f5" category="list-text">在所有要設定Macsec加密的介面上重複步驟1和2。</block>
+  <block id="2df81ef73ca6234e1f2efffdc855e826" category="section-title">在MetroCluster 不穩定的IP組態中停用Cisco Macsec Encryption WAN ISL</block>
+  <block id="dc58a5917fbb05da0e560a4cbcb1f72c" category="list-text">移除介面上設定的金鑰鏈和原則、以移除Macsec組態：</block>
+  <block id="c988e8ca5d6e6bb62b67254721e13586" category="paragraph">「沒有Macsec keychain keychain keychain名稱policy原則名稱」</block>
+  <block id="8d0f34f00997c62960ad51adbe64457d" category="list-text"><block ref="8d0f34f00997c62960ad51adbe64457d" category="inline-link-rx"></block></block>
+  <block id="2687b88898e3642fcc69aaef6be8e73c" category="paragraph">轉換至MetroCluster 靜態IP組態時、您必須結合支援的平台機型。您也應該確保MetroCluster 針對從MetroCluster 靜態FC組態轉換為MetroCluster 靜態IP組態的負載、使用適當的尺寸來調整此平台。</block>
+  <block id="d9599a6265b31306f6c79d760a47a9aa" category="paragraph">下表顯示支援的平台組合。您可以從左欄中的平台轉換至右側欄中所列的平台、如彩色表格儲存格所示。</block>
+  <block id="d84d4239724af43bfdc3b74836c335fe" category="paragraph">設定完成後、V0a（v0b等）會持續驗證連線能力、以確保LIF移轉或容錯移轉成功（不像L2、只有在停機後才能看到毀損的組態）。</block>
+  <block id="222561f9cba21343a81a9b2ee1890d68" category="paragraph"><block ref="222561f9cba21343a81a9b2ee1890d68" category="inline-link-macro-rx"></block></block>
+  <block id="81fe00b955881476878ae80a1ff92b24" category="list-text">請依照下列步驟操作： <block ref="7efa6fc838c006d396e42638b4ff25d1" category="inline-link-macro-rx"></block> 在「_Estriebreaker MetroCluster 安裝與組態」一節中。</block>
+  <block id="61324fd73aeb16a8318bff07556941ad" category="paragraph"><block ref="222561f9cba21343a81a9b2ee1890d68" category="inline-link-macro-rx"></block> 在「安裝MetroCluster 與組態」內容中</block>
 </blocks>

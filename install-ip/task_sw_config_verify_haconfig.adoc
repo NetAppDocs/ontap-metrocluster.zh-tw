@@ -2983,7 +2983,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/home.html["網�
 
 如果您必須安裝ONTAP 全新的《不景不景》執行個體、請依照指示安裝及設定軟體。
 
-link:concept_configure_the_ontap_mediator_for_unplanned_automatic_switchover.html["針對ONTAP 非計畫性自動切換設定「功能不全」服務"]
+link:concept_mediator_requirements.html["針對ONTAP 非計畫性自動切換設定「功能」服務"]
 
 如果您必須安裝新的Tiebreaker軟體執行個體、請依照指示安裝及設定軟體。
 
@@ -2991,7 +2991,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.hw-metrocluster-tiebreaker/
 
 您無法同時使用MetroCluster 相同ONTAP 的ESITireaker軟體和ESITERator MetroCluster 、以及相同的ESITESE組態。
 
-link:concept_prepare_for_the_mcc_installation.html#considerations-for-using-ontap-mediator-or-metrocluster-tiebreaker["使用ONTAP 《不知道如何使用》或MetroCluster 《斷邊器》的考量"]
+link:concept_considerations_differences.html["使用ONTAP 《不知道如何使用》或MetroCluster 《斷邊器》的考量"]
 
 .步驟
 . 設定ONTAP 「不適用」服務或Tiebreaker軟體：

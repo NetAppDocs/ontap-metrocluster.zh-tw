@@ -15,30 +15,46 @@ NOTE: MAC秒加密只能套用至WAN ISL連接埠。
 
 
 
-== MAC的授權要求
+== 在Cisco 9336C交換器上設定Macsec加密
 
-Macsec需要安全授權。如需Cisco NX-OS授權方案的完整說明、以及如何取得及申請授權、請參閱 https://www.cisco.com/c/en/us/td/docs/switches/datacenter/sw/nx-os/licensing/guide/b_Cisco_NX-OS_Licensing_Guide/b_Cisco_NX-OS_Licensing_Guide_chapter_01.html["Cisco NX-OS授權指南"]
+您只能在站台之間執行的WAN ISL連接埠上設定Macsec加密。套用正確的RCF檔案之後、您必須設定Macsec。
 
 
 
-== 啟用MetroCluster Cisco Macsec Encryption WAN ISL以利支援各種IP組態
+=== MAC的授權要求
+
+Macsec需要安全授權。如需Cisco NX-OS授權方案的完整說明、以及如何取得及申請授權、請參閱 https://www.cisco.com/c/en/us/td/docs/switches/datacenter/sw/nx-os/licensing/guide/b_Cisco_NX-OS_Licensing_Guide/b_Cisco_NX-OS_Licensing_Guide_chapter_01.html["Cisco NX-OS授權指南"^]
+
+
+
+=== 在MetroCluster 不支援的IP組態中啟用Cisco Macsec Encryption WAN ISL
 
 您可以在MetroCluster WAN ISL上的Cisco 9336C交換器上啟用MAC加密功能、以利執行支援。
 
-. 進入全域組態模式：「configure terminal」（設定終端機）
+.步驟
+. 進入全域組態模式：
++
+設定終端機
+
 +
 [listing]
 ----
 IP_switch_A_1# configure terminal
 IP_switch_A_1(config)#
 ----
-. 在裝置上啟用Macsec和MKA：「feature Macsec」（功能MAC秒）
+. 在裝置上啟用Macsec和MKA：
++
+《F精選Macsec》（功能MAC秒）
+
 +
 [listing]
 ----
 IP_switch_A_1(config)# feature macsec
 ----
-. 將執行組態複製到啟動組態：「copy running-config startup-config」
+. 將執行組態複製到啟動組態：
++
+「copy running-config startup-config」
+
 +
 [listing]
 ----
@@ -48,21 +64,297 @@ IP_switch_A_1(config)# copy running-config startup-config
 
 
 
-== 停用Cisco Macsec Encryption
+=== 設定Macsec金鑰鏈和金鑰
 
-您可能需要在MetroCluster WAN ISL上針對Cisco 9336C交換器停用MAC加密、以利進行IP組態設定。
+您可以在組態上建立Macsec金鑰鏈或金鑰。
 
+*金鑰存留期與無中斷金鑰存留期*
 
-NOTE: 如果停用加密、您也必須刪除金鑰、如XXX所述。
+一個Macsec金鑰鏈可以有多個預先共用金鑰（PSK）、每個金鑰都設定有金鑰ID和選用的存留期。金鑰存留期指定金鑰啟動和過期的時間。如果沒有生命週期組態、則預設的生命週期是無限的。設定存留期後、MKA會在金鑰鏈中的下一個已設定的預先共用金鑰過期後、再繼續使用。金鑰的時區可以是本機或UTC。預設時區為UTC。如果您設定第二個金鑰（在金鑰鏈中）、並設定第一個金鑰的生命週期、金鑰就可以在同一個金鑰鏈內捲動到第二個金鑰。當第一個金鑰的存留期到期時、它會自動移至清單中的下一個金鑰。如果在連結的兩側同時設定相同的金鑰、則金鑰轉換是無雜訊的（也就是金鑰在不中斷流量的情況下自動移轉）。
 
-. 進入全域組態模式：「configure terminal」（設定終端機）
+.步驟
+. 進入全域組態模式：
++
+設定終端機
+
 +
 [listing]
 ----
 IP_switch_A_1# configure terminal
 IP_switch_A_1(config)#
 ----
-. 停用裝置上的Macsec組態：「Macsec shutruted」（Macsec關機）
+. 若要隱藏加密金鑰字節字串、請在「show running-config」和「show startup-config」命令的輸出中、以萬用字元取代字串：
++
+[listing]
+----
+IP_switch_A_1(config)# key-chain macsec-psk no-show
+----
++
+
+NOTE: 當您將組態儲存至檔案時、也會隱藏八位元字串。
+
++
+根據預設、系統會以加密格式顯示PSKs金鑰、並可輕鬆解密。此命令僅適用於Macsec金鑰鏈。
+
+. 建立一組Macsec金鑰鏈以保留一組Macsec金鑰、然後進入Macsec金鑰鏈組態模式：
++
+金鑰鏈名稱Macsec
+
++
+[listing]
+----
+IP_switch_A_1(config)# key chain 1 macsec
+IP_switch_A_1(config-macseckeychain)#
+----
+. 建立Macsec金鑰並進入Macsec金鑰組態模式：
++
+「key key-id」
+
++
+範圍為1到32個六位數的金鑰字串、最大大小為64個字元。
+
++
+[listing]
+----
+IP_switch_A_1 switch(config-macseckeychain)# key 1000
+IP_switch_A_1 (config-macseckeychain-macseckey)#
+----
+. 設定金鑰的八位元組字串：
++
+「key字節字節字串字節字節字串密碼編譯演算法AES-122_CMAC | AES-256_CMAC」
+
++
+[listing]
+----
+IP_switch_A_1(config-macseckeychain-macseckey)# key-octet-string abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789
+cryptographic-algorithm AES_256_CMAC
+----
++
+
+NOTE: 八位元字串引數最多可包含64個十六進位字元。八位元組金鑰是內部編碼的、因此純文字中的金鑰不會出現在「show running-config Macsec」命令的輸出中。
+
+. 設定金鑰的傳送壽命（以秒為單位）：
++
+「終止生命週期開始時間持續時間」
+
++
+[listing]
+----
+IP_switch_A_1(config-macseckeychain-macseckey)# send-lifetime 00:00:00 Oct 04 2020 duration 100000
+----
++
+依預設、裝置會將開始時間視為UTC。start-time引數是金鑰成為作用中的時間和日期。duration引數是以秒為單位的壽命長度。最大長度為2147483646秒（約68年）。
+
+. 將執行組態複製到啟動組態：
++
+「copy running-config startup-config」
+
++
+[listing]
+----
+IP_switch_A_1(config)# copy running-config startup-config
+----
+. 顯示Keychain組態：
++
+「如何輸入金鑰鏈名稱」
+
++
+[listing]
+----
+IP_switch_A_1(config-macseckeychain-macseckey)# show key chain 1
+----
+
+
+
+
+=== 設定Macsec原則
+
+.步驟
+. 進入全域組態模式：
++
+設定終端機
+
++
+[listing]
+----
+IP_switch_A_1# configure terminal
+IP_switch_A_1(config)#
+----
+. 建立Macsec原則：
++
+"Malaccec"原則名稱
+
++
+[listing]
+----
+IP_switch_A_1(config)# macsec policy abc
+IP_switch_A_1(config-macsec-policy)#
+----
+. 設定下列其中一個密碼：GCM-AES-128、GCM-AES-256、GCM-AES-XPN-128或GCM-AES-XPN-256：
++
+「密碼套件名稱」
+
++
+[listing]
+----
+IP_switch_A_1(config-macsec-policy)# cipher-suite GCM-AES-256
+----
+. 設定金鑰伺服器優先順序、以便在金鑰交換期間打破對等端點之間的關聯：
++
+「金鑰伺服器優先順序編號」
+
++
+[listing]
+----
+switch(config-macsec-policy)# key-server-priority 0
+----
+. 設定安全性原則以定義資料處理和控制封包：
++
+「安全性原則」
+
++
+從下列選項中選擇安全原則：
+
++
+** 「必須安全」：不包含Macsec標頭的封包會被丟棄
+** 應予保護：允許不含Macsec標頭的封包（這是預設值）
+
+
++
+[listing]
+----
+IP_switch_A_1(config-macsec-policy)# security-policy should-secure
+----
+. 設定重播保護視窗、使安全介面不接受小於設定視窗大小的封包：「視窗大小數字」
++
+
+NOTE: 重播保護視窗大小代表Macsec接受且不捨棄的最大不連續框架數。範圍從0到596000000。
+
++
+[listing]
+----
+IP_switch_A_1(config-macsec-policy)# window-size 512
+----
+. 設定強制SAK重新輸入的時間（以秒為單位）：
++
+「過期時間」
+
++
+您可以使用此命令將工作階段金鑰變更為可預測的時間間隔。預設值為0。
+
++
+[listing]
+----
+IP_switch_A_1(config-macsec-policy)# sak-expiry-time 100
+----
+. 在第2層框架中設定下列其中一項機密偏移、以開始加密：
++
+「conf-offsetconfidentiality offset」
+
++
+從下列選項中選擇：
+
++
+** 會議偏移量為0。
+** 會議偏移量：30。
+** 會議偏移量-50。
++
+[listing]
+----
+IP_switch_A_1(config-macsec-policy)# conf-offset CONF-OFFSET-0
+----
++
+
+NOTE: 中繼交換器可能需要使用此命令、才能像MPLS標記一樣使用封包標頭（DMAC、SMAC、ettype）。
+
+
+
+. 將執行組態複製到啟動組態：
++
+「copy running-config startup-config」
+
++
+[listing]
+----
+IP_switch_A_1(config)# copy running-config startup-config
+----
+. 顯示Macsec原則組態：
++
+「How Macsec Policy」
+
++
+[listing]
+----
+IP_switch_A_1(config-macsec-policy)# show macsec policy
+----
+
+
+
+
+=== 在介面上啟用Cisco Macsec加密
+
+. 進入全域組態模式：
++
+設定終端機
+
++
+[listing]
+----
+IP_switch_A_1# configure terminal
+IP_switch_A_1(config)#
+----
+. 選取您使用Macsec加密設定的介面。
++
+您可以指定介面類型和身分識別。對於乙太網路連接埠、請使用乙太網路插槽/連接埠。
+
++
+[listing]
+----
+IP_switch_A_1(config)# interface ethernet 1/15
+switch(config-if)#
+----
+. 新增要在介面上設定的金鑰鏈和原則、以新增Macsec組態：
++
+"Malaccec keychain keychain keychain name policy police-name"
+
++
+[listing]
+----
+IP_switch_A_1(config-if)# macsec keychain 1 policy abc
+----
+. 在所有要設定Macsec加密的介面上重複步驟1和2。
+. 將執行組態複製到啟動組態：
++
+「copy running-config startup-config」
+
++
+[listing]
+----
+IP_switch_A_1(config)# copy running-config startup-config
+----
+
+
+
+
+=== 在MetroCluster 不穩定的IP組態中停用Cisco Macsec Encryption WAN ISL
+
+您可能需要在MetroCluster WAN ISL上針對Cisco 9336C交換器停用MAC加密、以利進行IP組態設定。
+
+.步驟
+. 進入全域組態模式：
++
+設定終端機
+
++
+[listing]
+----
+IP_switch_A_1# configure terminal
+IP_switch_A_1(config)#
+----
+. 停用裝置上的Macsec組態：
++
+"Malaccec"關機
+
 +
 [listing]
 ----
@@ -70,7 +362,7 @@ IP_switch_A_1(config)# macsec shutdown
 ----
 +
 
-NOTE: 選取「否」選項可還原Macsec功能。
+NOTE: 選取「no」選項可還原Macsec功能。
 
 . 選取您已使用Macsec設定的介面。
 +
@@ -82,14 +374,20 @@ NOTE: 選取「否」選項可還原Macsec功能。
 IP_switch_A_1(config)# interface ethernet 1/15
 switch(config-if)#
 ----
-. 移除介面上設定的金鑰鏈、原則和後援金鑰鏈、以移除Macsec組態：「無Macsec金鑰鏈金鑰鏈名稱原則名稱後援金鑰鏈名稱」
+. 移除介面上設定的金鑰鏈和原則、以移除Macsec組態：
++
+「沒有Macsec keychain keychain keychain名稱policy原則名稱」
+
 +
 [listing]
 ----
-IP_switch_A_1(config-if)# no macsec keychain kc2 policy abc fallback-keychain fb_kc2
+IP_switch_A_1(config-if)# no macsec keychain 1 policy abc
 ----
 . 在所有設定了Macsec的介面上重複步驟3和4。
-. 將執行組態複製到啟動組態：「copy running-config startup-config」
+. 將執行組態複製到啟動組態：
++
+「copy running-config startup-config」
+
 +
 [listing]
 ----
@@ -99,6 +397,52 @@ IP_switch_A_1(config)# copy running-config startup-config
 
 
 
-== 設定Macsec金鑰鏈和金鑰
+=== 驗證Macsec組態
 
-如需設定Macsec金鑰鏈的詳細資訊、請參閱交換器的Cisco文件。
+.步驟
+. 在組態內的第二個交換器上重複*全部*先前的程序、以建立一個Macsec工作階段。
+. 執行下列命令、確認兩台交換器都已成功加密：
++
+.. RUN：「How Macsec mka Summary」
+.. RUN：「How Macsec mka工作階段」
+.. RUN：「How Macsec mka Statistics」
++
+您可以使用下列命令來驗證Macsec組態：
+
++
+|===
+
+
+| 命令 | 顯示有關...的資訊 
+
+
+ a| 
+「How Macsec mka工作階段介面類型/連接埠編號」
+ a| 
+特定介面或所有介面的Macsec MKA工作階段
+
+
+
+ a| 
+「如何輸入金鑰鏈名稱」
+ a| 
+金鑰鏈組態
+
+
+
+ a| 
+「MAC的摘要」
+ a| 
+Macsec MKA組態
+
+
+
+ a| 
+「How Macsec policy police-name」（如何設定MAC原則名稱）
+ a| 
+特定Macsec原則或所有Macsec原則的組態
+
+|===
+
+
+
