@@ -3911,7 +3911,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-05-03 08:11:44 +0000">05/03/2022</time>
+    <time datetime="2022-05-10 16:14:55 +0000">05/10/2022</time>
     
   
 
@@ -6464,129 +6464,6 @@ Remote: cluster_A         Configuration state configured
 </li>
 </ol>
 </div>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="在metrocluster-不顯示的組態中設定v3">在MetroCluster 不顯示的組態中設定v3</h3>
-<div class="paragraph">
-<p>交換器和ONTAP 作業系統上的驗證和隱私權傳輸協定必須相同。</p>
-</div>
-<div class="paragraph">
-<p>目前支援AES-128和AES-256加密。ONTAP</p>
-</div>
-<div class="olist arabic">
-<div class="title">步驟</div>
-<ol class="arabic">
-<li>
-<p>從控制器提示字元為每個交換器建立SNMP使用者：</p>
-<div class="paragraph">
-<p>《安全登入建立》</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>Controller_A_1::&gt; security login create -user-or-group-name snmpv3user -application snmp -authentication-method usm -role none -remote-switch-ipaddress 10.10.10.10</pre>
-</div>
-</div>
-</li>
-<li>
-<p>視需要在您的站台回應下列提示：</p>
-<div class="listingblock">
-<div class="content">
-<pre>Enter the authoritative entity's EngineID [remote EngineID]:
-
-Which authentication protocol do you want to choose (none, md5, sha, sha2-256) [none]: sha
-
-Enter the authentication protocol password (minimum 8 characters long):
-
-Enter the authentication protocol password again:
-
-Which privacy protocol do you want to choose (none, des, aes128) [none]: aes128
-
-Enter privacy protocol password (minimum 8 characters long):
-
-Enter privacy protocol password again:</pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<img src="/us-en/ontap-metrocluster/images/note.svg" alt="附註">
-</td>
-<td class="content">
-相同的使用者名稱可新增至具有不同IP位址的不同交換器。
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p>為其餘交換器建立SNMP使用者。</p>
-<div class="paragraph">
-<p>以下範例說明如何為IP位址為10.10.10.11的交換器建立使用者名稱。</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>Controller_A_1::&gt; security login create -user-or-group-name snmpv3user -application snmp -authentication-method usm -role none -remote-switch-ipaddress 10.
-10.10.11</pre>
-</div>
-</div>
-</li>
-<li>
-<p>檢查每個交換器是否有一個登入項目：</p>
-<div class="paragraph">
-<p>「安全登入秀」</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>Controller_A_1::&gt; security login show -user-or-group-name snmpv3user -fields remote-switch-ipaddress
-
-vserver      user-or-group-name application authentication-method remote-switch-ipaddress
-
------------- ------------------ ----------- --------------------- -----------------------
-
-node_A_1 SVM 1 snmpv3user     snmp        usm                   10.10.10.10
-
-node_A_1 SVM 2 snmpv3user     snmp        usm                   10.10.10.11
-
-node_A_1 SVM 3 snmpv3user    snmp        usm                   10.10.10.12
-
-node_A_1 SVM 4 snmpv3user     snmp        usm                   10.10.10.13
-
-4 entries were displayed.</pre>
-</div>
-</div>
-</li>
-<li>
-<p>在交換器提示字元的交換器上設定v3：</p>
-<div class="paragraph">
-<p>「nmpconfig - set v3」</p>
-</div>
-<div class="paragraph">
-<p>如果您需要RO存取權限、請在「User（ro）：」之後指定「nmpv3user'」、如範例所示：</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>Switch-A1:admin&gt; snmpconfig --set snmpv3
-SNMP Informs Enabled (true, t, false, f): [false] true
-SNMPv3 user configuration(snmp user not configured in FOS user database will have physical AD and admin role as the default):
-User (rw): [snmpadmin1]
-Auth Protocol [MD5(1)/SHA(2)/noAuth(3)]: (1..3) [3]
-Priv Protocol [DES(1)/noPriv(2)/AES128(3)/AES256(4)]): (2..2) [2]
-Engine ID: [00:00:00:00:00:00:00:00:00]
-User (ro): [snmpuser2] snmpv3user
-Auth Protocol [MD5(1)/SHA(2)/noAuth(3)]: (1..3) [2]
-Priv Protocol [DES(1)/noPriv(2)/AES128(3)/AES256(4)]): (2..2) [3]</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>範例顯示如何設定唯讀使用者。您可以視需要調整RW使用者。您也應該為未使用的帳戶設定密碼、以確保密碼安全、並使用ONTAP 您的版本資訊系統所提供的最佳加密功能。</p>
-</div>
-</li>
-<li>
-<p>視站台的需求、在其餘交換器使用者上設定加密和密碼。</p>
 </li>
 </ol>
 </div>
