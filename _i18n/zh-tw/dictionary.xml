@@ -4211,7 +4211,6 @@
   <block id="1abb821f2b965d18052b2448ef4137ed" category="summary">您必須知道如何關閉資料中心電源、以便進行站台維護或將站台重新定位至其他位置。</block>
   <block id="3f7ef4e6486f47719dca790d2a160ae5" category="doc">關閉資料中心電源並開啟電源</block>
   <block id="50619d56fd21f33883011467e89403f8" category="paragraph">如果站台需要重新配置和重新設定（例如、如果您需要從四節點擴充至八節點叢集）、則無法同時完成這些工作。本程序僅涵蓋執行站台維護或重新定位站台而不變更其組態所需的步驟。</block>
-  <block id="8dae46f3452d05c7a36200c9a9200768" category="paragraph">下圖顯示MetroCluster 一個E面的 組態。叢集A將會關閉以進行維護。</block>
   <block id="e42120d29d88cc6c3c023d82236437a8" category="admonition">此程序適用於MetroCluster 支援靜態IP和FC組態。</block>
   <block id="13453110a818269a21fc3929d2514208" category="image-alt">關閉資料中心電源</block>
   <block id="efe31da79ff42582640c229b718168aa" category="section-title">關閉MetroCluster 站台電源</block>
@@ -12501,7 +12500,6 @@
   <block id="0344e1867e953d0d51eac7e816dee9fe" category="sidebar">移除Disaster Recovery群組</block>
   <block id="cf5928613cf8b77d8355882cdec38712" category="paragraph">僅限16個內部磁碟機</block>
   <block id="90cd0db781b4639c1c46407e5a4f0a93" category="paragraph">+如果MetroCluster 使用的VLAN為10/20或大於100、則可將下列平台機型新增至現有的支援功能組態。如果使用任何其他VLAN、則MetroCluster 無法將這些平台新增至現有組態、因為無法設定此介面。如果您使用任何其他平台、則VLAN組態並不相關、ONTAP 因為在介紹中並不需要。</block>
-  <block id="92083475c7b52cf5e29e7faa8db9dc17" category="paragraph">從ONTAP 功能完善的9.11.1開始、MetroCluster 在功能完善的組態中、兩個叢集都能成為SVM DR與第三個站台之間關係的來源。</block>
   <block id="26ae7bdd1d6fb8c4886e6fde8d12601c" category="list-text">延遲</block>
   <block id="66420f475101cc9c2b0d458605176249" category="paragraph">往返延遲不得超過75毫秒。</block>
   <block id="d89a2477841e85e6d37fac9fb392f350" category="paragraph">不穩定性不得超過25毫秒。</block>
@@ -12541,4 +12539,14 @@
   <block id="222561f9cba21343a81a9b2ee1890d68" category="paragraph"><block ref="222561f9cba21343a81a9b2ee1890d68" category="inline-link-macro-rx"></block></block>
   <block id="81fe00b955881476878ae80a1ff92b24" category="list-text">請依照下列步驟操作： <block ref="7efa6fc838c006d396e42638b4ff25d1" category="inline-link-macro-rx"></block> 在「_Estriebreaker MetroCluster 安裝與組態」一節中。</block>
   <block id="61324fd73aeb16a8318bff07556941ad" category="paragraph"><block ref="222561f9cba21343a81a9b2ee1890d68" category="inline-link-macro-rx"></block> 在「安裝MetroCluster 與組態」內容中</block>
+  <block id="1fe9ee738ca0e6e9e3aeec4c7902cb67" category="paragraph">下圖顯示MetroCluster 一個E面的 組態。叢集B已關閉以進行維護。</block>
+  <block id="04609bc4c74d3a1d83089f636a27a4b0" category="paragraph">從ONTAP 功能完善的9.11.1開始、MetroCluster 可從功能完善的兩個站台開始、成為SVM DR與FAS 功能完善或AFF 功能完善的目的地叢集之間關係的來源、如下圖所示。</block>
+  <block id="66a9b9ac77fa7e18f707ae56e903dd9c" category="inline-image-macro">SVM DR新拓撲</block>
+  <block id="852e82b3cf4859eb193e979d1ed02eba" category="paragraph"><block ref="852e82b3cf4859eb193e979d1ed02eba" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="11956e846be834740959ad71d40b9547" category="list-text">如果您連接兩MetroCluster 個支援對象的組態、並同時使用相同的控制器類型、則必須使用MetroCluster 支援對象群組3和4。如果控制器不同、則必須使用MetroCluster 任一類型的「支援埠群組3」和「4」、MetroCluster 另一類型的「支援埠群組1」和「2」。</block>
+  <block id="691efed68d0449f254968b0811d65b71" category="list-text">例如、如果您連線：</block>
+  <block id="2ad4e214daf4f2fbe760328984025270" category="list-text">兩MetroCluster 個僅包含FAS2750/AFF A220或FAS500f/AFF A250的支援支援組態、您必須選取MetroCluster 「支援組3和4」。</block>
+  <block id="1c4e028af9d72f4e84ad919004a88581" category="list-text">兩MetroCluster 種支援不同MetroCluster 的支援對象為FAS2750/AFF A220類型、另一種是FAS500f/AFF A250、您必須為其中一種選擇連接埠群組3和4、另一種選擇連接埠群組1和2。在中<block ref="166489b3c340ece1eccb5706fda90624" category="inline-link-rx"></block>下拉式欄位1和2只會在您在下拉式欄位3和4中選取平台之後、才會填入支援的平台。請參閱 <block ref="4dfd72a31c74d2e269d1ca49dcbd7291" category="inline-link-macro-rx"></block> 如需如何使用連接埠表格的詳細資訊、</block>
+  <block id="a9bf0a810b5c634110cced1dcc9dd514" category="section-title">交換器連接埠的使用方式、可結合使用AFF Arf2 A250或FAS500f與AFF Arf2 A220或FAS2750系統</block>
+  <block id="eab2b22490c89198b6c41f5b7c6e6104" category="image-alt">MCC IP纜線AFF 連接至Broadcom bes 53248交換器的功能為250和A220</block>
 </blocks>

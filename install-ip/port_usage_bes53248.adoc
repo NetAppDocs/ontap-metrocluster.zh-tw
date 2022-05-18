@@ -34,6 +34,16 @@ summary: 連接埠在MetroCluster 一個靜態IP組態中的使用取決於交�
 ** 重新整理四節點MetroCluster 的靜態IP組態（ONTAP 不含更新版本的更新版本）
 
 
+. 如果您連接兩MetroCluster 個支援對象的組態、並同時使用相同的控制器類型、則必須使用MetroCluster 支援對象群組3和4。如果控制器不同、則必須使用MetroCluster 任一類型的「支援埠群組3」和「4」、MetroCluster 另一類型的「支援埠群組1」和「2」。
++
+** 例如、如果您連線：
++
+*** 兩MetroCluster 個僅包含FAS2750/AFF A220或FAS500f/AFF A250的支援支援組態、您必須選取MetroCluster 「支援組3和4」。
+*** 兩MetroCluster 種支援不同MetroCluster 的支援對象為FAS2750/AFF A220類型、另一種是FAS500f/AFF A250、您必須為其中一種選擇連接埠群組3和4、另一種選擇連接埠群組1和2。在中 https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["RcfFileGeneratorfor MetroCluster EfIP"]下拉式欄位1和2只會在您在下拉式欄位3和4中選取平台之後、才會填入支援的平台。請參閱 link:../install-ip/using_rcf_generator.html["使用連接埠表格搭配RcfFileGeneratorR工具或多MetroCluster 種支援的組態"] 如需如何使用連接埠表格的詳細資訊、
+
+
+
+
 
 
 
@@ -47,6 +57,12 @@ image::../media/mcc_ip_cabling_a_aff_a220_or_fas2750_to_a_broadcom_bes_53248_swi
 == 交換器連接埠使用率、適用於AFF 不符合需求的A250或FAS500f系統
 
 image::../media/mcc_ip_cabling_a_aff_a250_or_fas500f_to_a_broadcom_bes_53248_switch.png[MCC IP纜線AFF 連接至Broadcom bes 53248交換器的功能是將一個3250或fas500f]
+
+
+
+== 交換器連接埠的使用方式、可結合使用AFF Arf2 A250或FAS500f與AFF Arf2 A220或FAS2750系統
+
+image::../media/mcc_ip_cabling_aff_a250_and_ a220_to_a_broadcom_bes_53248_switch.png[MCC IP纜線AFF 連接至Broadcom bes 53248交換器的功能為250和A220]
 
 
 

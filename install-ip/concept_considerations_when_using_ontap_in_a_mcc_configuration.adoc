@@ -366,7 +366,9 @@ link:concept_considerations_when_using_ontap_in_a_mcc_configuration.html#require
 
 從ONTAP 功能介紹的起、MetroCluster 使用支援VMware®的動態儲存虛擬機器（SVM）就能透過SnapMirror SVM災難恢復功能、作為來源。目的地SVM必須位於MetroCluster 不屬於該組態的第三個叢集上。
 
-從ONTAP 功能完善的9.11.1開始、MetroCluster 在功能完善的組態中、兩個叢集都能成為SVM DR與第三個站台之間關係的來源。
+從ONTAP 功能完善的9.11.1開始、MetroCluster 可從功能完善的兩個站台開始、成為SVM DR與FAS 功能完善或AFF 功能完善的目的地叢集之間關係的來源、如下圖所示。
+
+image:../media/svmdr_new_topology-2.png["SVM DR新拓撲"]
 
 您應該瞭解搭配SnapMirror災難恢復使用SVM的下列要求和限制：
 
