@@ -1719,8 +1719,6 @@
 
 
 
-
-
     
       <ul class="subfolders" style="display:none;">
         <li class="pdf-ux-container">
@@ -3381,10 +3379,8 @@
         在協商切換之前傳送自訂AutoSupport 的消息
       </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/manage/task_perform_a_negotiated_switchover.html">
         執行協商切換
-      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/manage/concept_output_for_storage_aggregate_plex_show_after_a_mcc_switchover.html">
-        儲存Aggregate plex show命令的輸出在MetroCluster 執行完功能介紹後仍不確定
-      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/manage/task_confirm_that_dr_partners_have_come_online.html">
-        確認DR合作夥伴已上線
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/manage/task_verify_SVMs are_running_and_aggregates_are_online.html">
+        確認SVM正在執行、而且Aggregate處於線上狀態
       </a></li><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> 修復組態</div>
       </a>
@@ -3911,7 +3907,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-05-03 08:11:44 +0000">05/03/2022</time>
+    <time datetime="2022-06-01 14:13:16 +0000">06/01/2022</time>
     
   
 
@@ -3972,18 +3968,6 @@
 <div class="olist arabic">
 <div class="title">步驟</div>
 <ol class="arabic">
-<li>
-<p>啟用無鏡射的Aggregate部署：</p>
-<div class="paragraph">
-<p>「MetroCluster 支援無鏡射的Aggr-deployment true」</p>
-</div>
-</li>
-<li>
-<p>確認磁碟自動指派已停用：</p>
-<div class="paragraph">
-<p>顯示「磁碟選項」</p>
-</div>
-</li>
 <li>
 <p>安裝並連接將包含無鏡射集合體的磁碟櫃。</p>
 <div class="paragraph">
@@ -4066,18 +4050,6 @@
 <p>驗證新Aggregate的RAID群組和磁碟機：</p>
 <div class="paragraph">
 <p>「torage Aggregate show-STATUS -Aggregate <em>gregate名稱</em>」</p>
-</div>
-</li>
-<li>
-<p>停用無鏡射Aggregate部署：</p>
-<div class="paragraph">
-<p>「MetroCluster 支援-無鏡射- aggr-deployment假」</p>
-</div>
-</li>
-<li>
-<p>確認磁碟自動指派已啟用：</p>
-<div class="paragraph">
-<p>顯示「磁碟選項」</p>
 </div>
 </li>
 </ol>
