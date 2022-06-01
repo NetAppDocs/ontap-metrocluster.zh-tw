@@ -3837,8 +3837,6 @@
   <block id="dcb50c9c2355a3cb9319d8e715205e95" category="list-text">確認MetroCluster 執行功能組態、並確認操作模式正常。+"* MetroCluster 《*》節目*</block>
   <block id="a5bdcf7a78025a6dd8c23463165acdf4" category="list-text">執行下列命令：+`*儲存橋接show *</block>
   <block id="dde8f3550b8192d2b695c0bd40ddc1c4" category="list-text">將AUSO故障網域修改為、以停用AUSO</block>
-  <block id="c4e7bf68890c72361daa13a0af4f08f2" category="list-text">使用下列命令停止節點：</block>
-  <block id="74baa61a2162fe0f71b9573c2f34fc32" category="paragraph">如果MetroCluster 是四節點或八節點的版本、請使用參數+「*禁止接管*」</block>
   <block id="93081236e78e8a13aff59ffaa04927e9" category="list-text">如需雙節點MetroCluster 的效能不全組態、請使用以下命令：</block>
   <block id="da7a50a0e8e8ff0c06082864043b3257" category="list-text">精選FC交換器MetroCluster</block>
   <block id="043cef7f3b4952ab49e47a66b62d07cb" category="list-text">Atto FibreBridge</block>
@@ -6612,7 +6610,6 @@
   <block id="3139f8423b6707a01c072b52b74bba88" category="list-text">「MAK」可以是格式為xxx.xxx.xxx.xxx的子網路遮罩。</block>
   <block id="fd027079bbe69098f8750a9a1f564dac" category="paragraph">在下列範例中、乙太網路連接埠1的IP子網路遮罩為255．255．255．0：</block>
   <block id="bd82535b64d275e691210920ce86e57c" category="list-text">使用「以太網速度連接埠速度」命令、設定乙太網路連接埠的速度。</block>
-  <block id="8d9110a527c214f8634fced6b92afa82" category="list-text">「PEed」可以是「100」、「1000」或「自動」。</block>
   <block id="c77a0844b861447f5e1f655105bfc197" category="paragraph">在下列範例中、乙太網路連接埠1的乙太網路速度設定為1000。</block>
   <block id="b9fe6f89437e8317bad43dd8d668d48b" category="list-text">使用「SaveConfiguration」命令儲存組態、並在系統提示時重新啟動橋接器。</block>
   <block id="fb9b5d11aea961816a10aea050894354" category="paragraph">設定乙太網路連接埠後儲存組態、可讓您使用遠端登入繼續橋接器組態、並可讓您使用FTP存取橋接器以執行韌體更新。</block>
@@ -8060,11 +8057,9 @@
   <block id="d2dda80f1fff01d0e113ebb44b5f1ed8" category="paragraph">下表列出儲存陣列連接埠與FC交換器之間的連線、以供範例MetroCluster 參考：</block>
   <block id="7808905132392bd0ce5a445469e4132d" category="summary">必須針對ISL和儲存連線、適當設定每台MetroCluster 採用此功能的Cisco交換器。</block>
   <block id="e5d68dba728fb2d82fcd5253e45d2606" category="paragraph">以下要求適用於Cisco FC交換器：</block>
-  <block id="961d09a7e51b8ffaa03e9f30944b0adf" category="list-text">您必須使用四個支援相同型號的Cisco交換器、以及相同的NX-OS版本和授權。</block>
   <block id="3ec266ea74a45a024e2d5a1bd41809e5" category="list-text">這個組態需要四個交換器。MetroCluster</block>
   <block id="2761e9bec5ebacec4c753af20fb77c0b" category="paragraph">這四台交換器必須連接至兩個交換器的架構、每個架構橫跨兩個站台。</block>
   <block id="94ddea3989db862af4097d594a0b3616" category="list-text">交換器必須支援連線至Atto FibreBridge模型。</block>
-  <block id="6b0913c627afc4001314955fa8aa4721" category="list-text">您無法在Cisco FC儲存架構中使用加密或壓縮。不支援MetroCluster 此功能。</block>
   <block id="02bbbf38700dabcfb5519437d1e2d0bb" category="paragraph">在中<block ref="a5900d751cd970c3de875b616ebb9e28" category="inline-link-rx"></block>、您可以使用儲存解決方案欄位來選擇MetroCluster 您的解決方案。您可以使用*元件總管*來選取元件和ONTAP 更新版本、以精簡搜尋範圍。您可以按一下「*顯示結果*」來顯示符合條件的支援組態清單。</block>
   <block id="bdec96a67c6505262de48bb96911cf92" category="paragraph">下列需求適用於交換器間連結（ISL）連線：</block>
   <block id="83b23219f5596e10bed8c27500b5613d" category="paragraph">不同的Fabric可以使用不同長度的ISL。所有Fabric都必須使用相同的速度。</block>
@@ -9979,9 +9974,6 @@
   <block id="06ccaea4aa2153e3017917c93f2bc4de" category="list-text">執行MetroCluster flexoperationshow命令、確認作業已完成。</block>
   <block id="a597aa7f276119e64c6acd3b11c984e5" category="list-text">執行儲存Aggregate show命令來檢查集合體的狀態。</block>
   <block id="2213f433c7bd712d0cb81eedc430d2bd" category="summary">切換完成後、您應確認DR合作夥伴已取得磁碟的所有權、而合作夥伴SVM已上線。</block>
-  <block id="8603db18d8c416ccc81d2b424b35cf76" category="doc">確認DR合作夥伴已上線</block>
-  <block id="66122b38af0f3f61bd3ec6b33481e4cf" category="list-text">確認Aggregate磁碟已切換至災難站台：「torage disk show -Fields Owner,dr-home-」</block>
-  <block id="067a26f886e470db719ff9cb0e9f3446" category="paragraph">在此範例中、輸出顯示切換磁碟已設定DR-home欄位：</block>
   <block id="61b3dba0ec8dd8583fd3305e70822e04" category="list-text">使用storage Aggregate show命令檢查集合體是否已切換。</block>
   <block id="9088c944ef75a914aa5d4867e1767842" category="paragraph">在此範例中、會切換集合體。根Aggregate（aggr0_B2）處於降級狀態。資料Aggregate（B2_aggr2）處於鏡射的正常狀態：</block>
   <block id="e6425dc24f9a2e2af2f6d10b0fe7e9bd" category="list-text">使用vserver show命令確認次要SVM已上線。</block>
@@ -10940,7 +10932,6 @@
   <block id="23f2a9bd836b9e00e34a454cba5390cc" category="list-text">確定現有控制器模組的IP位址。</block>
   <block id="b73423aee4baa8b2e3981087f56b1924" category="paragraph">本程序稍後將此位址稱為「現有控制器的IP位址」。</block>
   <block id="e55d5b2636e0726a99f7d5e4158359bb" category="list-text">Ping「現有控制器的IP位址」以驗證IP位址是否可到達。</block>
-  <block id="ed4a2e0538bc20c760b1ea91bd6a8e39" category="list-text">確認磁碟自動指派已啟用：</block>
   <block id="780864490b171ee37c989f91c94e4987" category="summary">當您擴充MetroCluster 一個內存擴充組態時、必須更新現有控制器模組和新控制器模組的ha-config設定。您也必須判斷新控制器模組的系統ID。</block>
   <block id="42d274ad148eaa63474a2e722577dc11" category="doc">變更現有和新控制器模組的ha-config設定</block>
   <block id="d995ff2c2ae18fbf74b51a7969e7486d" category="paragraph">這項工作會在維護模式下、同時在現有和新的控制器模組上執行。</block>
@@ -12433,7 +12424,6 @@
   <block id="96effe55f4da22d5c25718b62d05d235" category="sidebar">確認系統已準備好進行切換</block>
   <block id="6f4a780481b56c575dbc6baddb640db2" category="sidebar">在協商切換之前傳送自訂AutoSupport 的消息</block>
   <block id="fb46e3fec300d7afb8d95ad37dd036c2" category="sidebar">執行協商切換</block>
-  <block id="54d232cc2492683cacdfa62436baae04" category="sidebar">確認DR合作夥伴已上線</block>
   <block id="dc83484006791ea1b99aaaea10c1bafb" category="sidebar">修復組態</block>
   <block id="a3a667e65760237e6d02c759034ddd73" category="sidebar">修復MetroCluster 以不修復FC組態的組態</block>
   <block id="efe698fdacf5509f669bbfa66669a1e4" category="sidebar">協調切換後修復資料集合體</block>
@@ -12551,4 +12541,15 @@
   <block id="cbb84028bf466aea1ee153b79bbe1a90" category="list-text">Red Hat Enterprise Linux 7至7.9、或CentOS 7至7.9 64位元（實體安裝或虛擬機器）</block>
   <block id="7ddeb0fd81d52fb9d56f1689ef0faa65" category="list-text">Red Hat Enterprise Linux 8.1至8.5</block>
   <block id="af5c7720c35a6c5bbdbd9a0118f9b86a" category="list-text">MariaDB 10.x（使用使用「yum install MariaDB-server.x86_64」安裝的預設版本）</block>
+  <block id="f59e44c66a463087eb80b00cc5e7867c" category="list-text">您必須在相同的NX-OS版本和授權下、使用四個相同型號的Cisco交換器。</block>
+  <block id="de27fc3292cfa48f233ba5969313e590" category="list-text">您無法在Cisco FC儲存架構中使用加密或壓縮。不支援MetroCluster 此功能。</block>
+  <block id="17a482b02d43109c8b8a1497839ff0b4" category="list-text">使用下列命令停止節點：「* halt *」</block>
+  <block id="fad9503a100b92ad7c54437a9309f256" category="list-text">若為四節點或八節點MetroCluster 的不全功能組態、請使用參數：「*禁止接管*」</block>
+  <block id="63e64e288714d32cded7a6ed8dfec32c" category="list-text">FFC交換器（若使用中且組態並非雙節點延伸組態）MetroCluster</block>
+  <block id="a2a7d27c6bf1ad121aeada48fc70ca1d" category="list-text">等待30分鐘、然後在站台上開啟下列設備：</block>
+  <block id="383d92c84e46dd00caa3dbad6de7fe2f" category="paragraph"><block ref="903819e2154a41f8227f7c0192db71f6" category="inline-link-macro-rx"></block> 在「安裝MetroCluster 與組態」內容中</block>
+  <block id="688f019e2f851b28c81904e0acd0c450" category="paragraph"><block ref="6f99ee259693716af238b16f6b3287d3" category="inline-link-macro-rx"></block> 在「_SURFIP MetroCluster 安裝與組態」一節中。</block>
+  <block id="e3b4bec7cc0382f3d2b420e4d37da974" category="list-text">開啟儲存控制器的電源。</block>
+  <block id="be8e7921b8bc696adb0f989ee98b7e9f" category="list-text">「PPEed」可以是「100」或「1000」。</block>
+  <block id="e44042693910b4bd1a0494893ddc1892" category="doc">確認SVM正在執行、而且Aggregate處於線上狀態</block>
 </blocks>

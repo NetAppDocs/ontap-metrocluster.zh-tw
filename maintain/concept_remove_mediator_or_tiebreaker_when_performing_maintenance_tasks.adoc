@@ -31,7 +31,7 @@ summary: 使用斷路器或協調器監控軟體的組態必須在維護前先�
  a| 
 Tiebreaker
  a| 
-http://docs.netapp.com/ontap-9/topic/com.netapp.doc.hw-metrocluster-tiebreaker/GUID-34C97A45-0BFF-46DD-B104-2AB2805A983D.html["移除MetroCluster 部分組態"] 請參閱《_ MetroCluster 資料斷路器安裝與組態指南_》
+link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#commands-for-modifying-metrocluster-tiebreaker-configurations["移除MetroCluster 部分組態"] 在「安裝MetroCluster 與組態」內容中
 
 
 
@@ -66,7 +66,7 @@ link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#adding-metro
  a| 
 中介者
  a| 
-連結：/install-ip/concept_mediator_requirements.html [Configuring the ONTAP SUREator service from a MetroCluster SURFIP configuration（從一套靜態IP組態設定）]、位於「_EYSIP MetroCluster Installation and Configuration」（_）區段。
+link:../install-ip/task_configuring_the_ontap_mediator_service_from_a_metrocluster_ip_configuration.html["從ONTAP 一套不實的IP組態設定「不實不作」MetroCluster 服務"] 在「_SURFIP MetroCluster 安裝與組態」一節中。
 
 
 

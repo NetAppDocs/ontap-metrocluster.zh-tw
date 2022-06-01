@@ -30,14 +30,6 @@ NOTE: 無鏡射的Aggregate必須是擁有它們的節點的本機集合體。
 
 
 .步驟
-. 啟用無鏡射的Aggregate部署：
-+
-「MetroCluster 支援無鏡射的Aggr-deployment true」
-
-. 確認磁碟自動指派已停用：
-+
-顯示「磁碟選項」
-
 . 安裝並連接將包含無鏡射集合體的磁碟櫃。
 +
 您可以使用平台和磁碟櫃的_安裝與設定_文件中的程序。
@@ -92,14 +84,6 @@ controller_A_1::> storage aggregate create aggr1_controller_A_1 -diskcount 10 -n
 . 驗證新Aggregate的RAID群組和磁碟機：
 +
 「torage Aggregate show-STATUS -Aggregate _gregate名稱_」
-
-. 停用無鏡射Aggregate部署：
-+
-「MetroCluster 支援-無鏡射- aggr-deployment假」
-
-. 確認磁碟自動指派已啟用：
-+
-顯示「磁碟選項」
 
 
 

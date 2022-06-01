@@ -586,6 +586,7 @@ switch_A_1# copy running-config startup-config
 .. 驗證ISL。
 
 
+. 開啟儲存控制器的電源。
 . 開啟磁碟櫃電源、讓它們有足夠的時間完全開啟電源。
 . 開啟連接橋接器的電源。
 +

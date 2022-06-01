@@ -12,10 +12,8 @@ entries:
     url: "/manage/task_send_a_custom_autosupport_message_prior_to_negotiated_switchover.html"
   - title: 執行協商切換
     url: "/manage/task_perform_a_negotiated_switchover.html"
-  - title: 儲存Aggregate plex show命令的輸出在MetroCluster 執行完功能介紹後仍不確定
-    url: "/manage/concept_output_for_storage_aggregate_plex_show_after_a_mcc_switchover.html"
-  - title: 確認DR合作夥伴已上線
-    url: "/manage/task_confirm_that_dr_partners_have_come_online.html"
+  - title: 確認SVM正在執行、而且Aggregate處於線上狀態
+    url: "/manage/task_verify_SVMs are_running_and_aggregates_are_online.html"
   - title: 修復組態
     entries:
     - title: 修復MetroCluster 以不修復FC組態的組態

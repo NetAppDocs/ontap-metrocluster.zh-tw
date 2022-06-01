@@ -1,10 +1,10 @@
 ---
-permalink: manage/task_confirm_that_dr_partners_have_come_online.html 
+permalink: manage/task_verify_SVMs are_running_and_aggregates_are_online.html 
 sidebar: sidebar 
 keywords: switchover, dr, partner, ownership, disk, svm, online, confirm 
 summary: 切換完成後、您應確認DR合作夥伴已取得磁碟的所有權、而合作夥伴SVM已上線。 
 ---
-= 確認DR合作夥伴已上線
+= 確認SVM正在執行、而且Aggregate處於線上狀態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -13,27 +13,9 @@ summary: 切換完成後、您應確認DR合作夥伴已取得磁碟的所有權
 [role="lead"]
 切換完成後、您應確認DR合作夥伴已取得磁碟的所有權、而合作夥伴SVM已上線。
 
-.步驟
-. 確認Aggregate磁碟已切換至災難站台：「torage disk show -Fields Owner,dr-home-」
-+
-在此範例中、輸出顯示切換磁碟已設定DR-home欄位：
+當您在MetroCluster 執行完還原切換後執行儲存Aggregate plex show命令時、切換根Aggregate的plex0狀態會不確定、並顯示為故障。在此期間、切換根目錄不會更新。此叢的實際狀態只能在MetroCluster 還原階段之後決定。
 
-+
-[listing]
-----
-cluster_A::> storage disk show -fields owner,dr-home
-disk                 owner           dr-home
--------------------- --------------- -------
-1.11.0               node_A_1        node_B_1
-1.11.1               node_A_1        node_B_1
-1.11.2               node_A_1        node_B_1
-1.11.3               node_A_1        node_B_1
-1.11.4               node_A_1        node_B_1
-1.11.5               node_A_1        node_B_1
-1.11.6               node_A_1        node_B_1
-1.11.7               node_A_1        node_B_1
-1.11.8               node_A_1        node_B_1
-----
+.步驟
 . 使用storage Aggregate show命令檢查集合體是否已切換。
 +
 在此範例中、會切換集合體。根Aggregate（aggr0_B2）處於降級狀態。資料Aggregate（B2_aggr2）處於鏡射的正常狀態：

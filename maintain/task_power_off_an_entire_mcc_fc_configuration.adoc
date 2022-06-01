@@ -52,19 +52,14 @@ cluster_A_site_A::*>metrocluster modify -auto-switchover-failure-domain auso-dis
         End Time: 4/25/2020 20:20:36
           Errors: -
 ----
-. 使用下列命令停止節點：
+. 使用下列命令停止節點：「* halt *」
 +
-如果MetroCluster 是四節點或八節點的版本、請使用參數+「*禁止接管*」
-
-+
-+
-
+** 若為四節點或八節點MetroCluster 的不全功能組態、請使用參數：「*禁止接管*」
 +
 [listing]
 ----
 system node halt -node node1_SiteA -inhibit-takeover true -ignore-quorum-warnings true
 ----
-+
 ** 如需雙節點MetroCluster 的效能不全組態、請使用以下命令：
 +
 [listing]
@@ -76,12 +71,19 @@ system node halt -node node1_SiteA -ignore-quorum-warnings true
 . 在現場關閉下列設備：
 +
 ** 儲存控制器
-** 精選FC交換器MetroCluster
+** FFC交換器（若使用中且組態並非雙節點延伸組態）MetroCluster
 ** Atto FibreBridge
 ** 儲存櫃
 
 
-. 等待30分鐘、然後開啟所有控制器的電源。
+. 等待30分鐘、然後在站台上開啟下列設備：
++
+** 儲存櫃
+** Atto FibreBridge
+** 精選FC交換器MetroCluster
+** 儲存控制器
+
+
 . 在控制器開機之後、請從MetroCluster 兩個站台驗證支援功能組態。
 +
 若要驗證組態、請重複步驟1。

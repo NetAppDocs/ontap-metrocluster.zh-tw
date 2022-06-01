@@ -80,7 +80,7 @@ hy*叢集對等修改本機名稱-name _cluster _2_-new-name _cluster _B_*
 +
 [listing]
 ----
-cluster_2::> cluster peer modify-local-name -name cluster_2 -new-name
+cluster_A::> cluster peer modify-local-name -name cluster_2 -new-name
 cluster_B
 ----
 . 在遠端叢集上確認本機叢集已重新命名且正常執行：
