@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
   <head class="at-element-marker">
-  <title>準備升級</title>
+  <title>從ONTAP 無法使用的IP組態中取消設定「無法使用的」MetroCluster 服務</title>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
   <meta http-equiv="language" content="en">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:title" content="準備升級" />
+  <meta property="og:title" content="從ONTAP 無法使用的IP組態中取消設定「無法使用的」MetroCluster 服務" />
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://docs.netapp.com/zh-tw/ontap-metrocluster/upgrade/task_prepare_for_the_upgrade_add_2nd_controller_to_create_ha_pair.html" />
-	<meta property="og:description" content="在升級至HA配對之前、您必須確認系統符合所有需求、而且您擁有所有必要資訊。" />
+	<meta property="og:url" content="https://docs.netapp.com/zh-tw/ontap-metrocluster/install-ip/task_remove_unconfigure_mediator.html" />
+	<meta property="og:description" content="您可以從ONTAP 無法使用的知識庫IP組態中移除此「資訊庫中介器」服務MetroCluster 。" />
   <meta property="og:image" content="https://docs.netapp.com/zh-tw/ontap-metrocluster/images/logo-tophat-social.png" />
   <meta property="og:image:alt" content="NetApp Logo" />
   <meta name="format-detection" content="telephone=no">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="encoding" content="utf-8">
   <meta http-equiv="nss-type" content="Product Documentation"/>
-  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="在升級至HA配對之前、您必須確認系統符合所有需求、而且您擁有所有必要資訊。">
-  <meta name="keywords" content=" metrocluster, upgrade, prepare, upgrade"><!-- Icons -->
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="您可以從ONTAP 無法使用的知識庫IP組態中移除此「資訊庫中介器」服務MetroCluster 。">
+  <meta name="keywords" content=" ontap, mediator, service, assist, remove, unconfigure, requirements, mediator requirements"><!-- Icons -->
   <link rel="icon" href="/zh-tw/ontap-metrocluster/images/favicon.ico" type="image/x-icon">
 
   <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
@@ -169,7 +169,7 @@
   
   <!-- Start Page Toolbar -->
   
-  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/ontap-metrocluster/issues/new?body=Page%3A%20[準備升級](https://docs.netapp.com/zh-tw/ontap-metrocluster/upgrade/task_prepare_for_the_upgrade_add_2nd_controller_to_create_ha_pair.html)" class="page-nav-contribute-link" role="button"><img src="/zh-tw/ontap-metrocluster/images/discuss-sm.svg" class="github-icon" />要求變更文件</a><a target="_blank" href="https://github.com/NetAppDocs/ontap-metrocluster/blob/main/upgrade/task_prepare_for_the_upgrade_add_2nd_controller_to_create_ha_pair.adoc" class="page-nav-contribute-link" role="button"><img src="/zh-tw/ontap-metrocluster/images/edit-sm.svg" class="github-icon" />編輯此頁面</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/zh-tw/ontap-metrocluster/images/article-sm.svg" class="github-icon" />瞭解如何作出貢獻</a></div>
+  <div class="page-nav-toolbar"><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/ontap-metrocluster/issues/new?body=Page%3A%20[從ONTAP 無法使用的IP組態中取消設定「無法使用的」MetroCluster 服務](https://docs.netapp.com/zh-tw/ontap-metrocluster/install-ip/task_remove_unconfigure_mediator.html)" class="page-nav-contribute-link" role="button"><img src="/zh-tw/ontap-metrocluster/images/discuss-sm.svg" class="github-icon" />要求變更文件</a><a target="_blank" href="https://github.com/NetAppDocs/ontap-metrocluster/blob/main/install-ip/task_remove_unconfigure_mediator.adoc" class="page-nav-contribute-link" role="button"><img src="/zh-tw/ontap-metrocluster/images/edit-sm.svg" class="github-icon" />編輯此頁面</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/zh-tw/ontap-metrocluster/images/article-sm.svg" class="github-icon" />瞭解如何作出貢獻</a></div>
     <div class="page-nav-container">
       <nav class="page-nav-fixed">
         <div class="page-nav-title">在此頁面上</div>
@@ -292,15 +292,15 @@
           <ul class="n-menu__list">
             <li class="n-menu__list-column">
               <ul class="n-menu__list"><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/task_prepare_for_the_upgrade_add_2nd_controller_to_create_ha_pair.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
+                  <a href="https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/task_remove_unconfigure_mediator.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/ja-jp/ontap-metrocluster/upgrade/task_prepare_for_the_upgrade_add_2nd_controller_to_create_ha_pair.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
+                  <a href="https://docs.netapp.com/ja-jp/ontap-metrocluster/install-ip/task_remove_unconfigure_mediator.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/ko-kr/ontap-metrocluster/upgrade/task_prepare_for_the_upgrade_add_2nd_controller_to_create_ha_pair.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
+                  <a href="https://docs.netapp.com/ko-kr/ontap-metrocluster/install-ip/task_remove_unconfigure_mediator.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/zh-cn/ontap-metrocluster/upgrade/task_prepare_for_the_upgrade_add_2nd_controller_to_create_ha_pair.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
+                  <a href="https://docs.netapp.com/zh-cn/ontap-metrocluster/install-ip/task_remove_unconfigure_mediator.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/zh-tw/ontap-metrocluster/upgrade/task_prepare_for_the_upgrade_add_2nd_controller_to_create_ha_pair.html" class="n-menu__header-text"><span translate="no" class="notranslate">繁體中文</span></a>
+                  <a href="https://docs.netapp.com/zh-tw/ontap-metrocluster/install-ip/task_remove_unconfigure_mediator.html" class="n-menu__header-text"><span translate="no" class="notranslate">繁體中文</span></a>
                 </li></ul>
             </li>
           </ul>
@@ -1308,6 +1308,15 @@
 
 
 
+    <ul class="subfolders" style="display:none;"><li class="active pdf-hide">
+  <a target="_blank" href="/zh-tw/ontap-metrocluster/pdfs/pages/install-ip/task_remove_unconfigure_mediator.pdf" >
+    <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
+    PDF of this page
+  </a>
+</li>
+
+</ul>
+  
 
 
 
@@ -2375,15 +2384,6 @@
           
 
 
-    <ul class="subfolders" style="display:none;"><li class="active pdf-hide">
-  <a target="_blank" href="/zh-tw/ontap-metrocluster/pdfs/pages/upgrade/task_prepare_for_the_upgrade_add_2nd_controller_to_create_ha_pair.pdf" >
-    <img src="/zh-tw/ontap-metrocluster/images/pdf.png" width="16" height="16"/>
-    PDF of this page
-  </a>
-</li>
-
-</ul>
-  
 
 
 
@@ -3237,7 +3237,7 @@
         準備安裝ONTAP 《不知道如何安裝》服務
       </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/task_configuring_the_ontap_mediator_service_from_a_metrocluster_ip_configuration.html">
         從ONTAP 一套不實的IP組態設定「不實不作」MetroCluster 服務
-      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/task_remove_unconfigure_mediator.html">
+      </a></li><li class="  active "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/task_remove_unconfigure_mediator.html">
         從ONTAP 無法使用的IP組態中取消設定「無法使用的」MetroCluster 服務
       </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/install-ip/task_connecting_mcc_to_different_mediator_instance.html">
         將MetroCluster 一個組態連接到另ONTAP 一個不相同的「位向器」執行個體
@@ -3653,7 +3653,7 @@
       </a>
       <ul><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_add_a_new_controller_to_each_cluster_mcc_expansion.html">
         總覽
-      </a></li><li class="  active "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_prepare_for_the_upgrade_add_2nd_controller_to_create_ha_pair.html">
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_prepare_for_the_upgrade_add_2nd_controller_to_create_ha_pair.html">
         準備升級
       </a></li><li class=" "><a class="na-navbar-padding" href="/zh-tw/ontap-metrocluster/upgrade/task_clear_the_configuration_on_a_controller_module_mcc.html">
         清除控制器模組上的組態
@@ -3904,14 +3904,14 @@
     </div>
   </span>
 </div><div class="n-doc__component-detail-heading-wrap">
-  <h1 class="n-doc__component-detail-heading">準備升級</h1>
+  <h1 class="n-doc__component-detail-heading">從ONTAP 無法使用的IP組態中取消設定「無法使用的」MetroCluster 服務</h1>
 </div>
 
 
 <p class="page-details">
   
     
-    <time datetime="2022-05-03 08:11:44 +0000">05/03/2022</time>
+    <time datetime="2022-06-02 18:30:33 +0000">06/02/2022</time>
     
   
 
@@ -3919,103 +3919,44 @@
 </p>
 
 <div class="paragraph lead">
-<p>在升級至HA配對之前、您必須確認系統符合所有需求、而且您擁有所有必要資訊。</p>
+<p>您可以從ONTAP 無法使用的IP組態中取消設定「無法使用的資訊」服務MetroCluster 。</p>
+</div>
+<div class="paragraph">
+<p>您必須已在ONTAP 兩MetroCluster 個景點都能到達的網路位置上成功安裝及設定好《支援中心》。</p>
+</div>
+<div class="paragraph">
+<p>您必須在MetroCluster 兩個叢集上執行此工作、以實現「支援不支援的IP」組態。</p>
 </div>
 <div class="olist arabic">
 <div class="title">步驟</div>
 <ol class="arabic">
 <li>
-<p>您需要識別可指派給新控制器模組的未指派磁碟或備用磁碟。</p>
+<p>使用下列命令取消設定ONTAP 「靜態資訊站服務：</p>
 <div class="paragraph">
-<p><a href="https://library.netapp.com/ecm/ecm_download_file/ECMLP2427462" target="_blank" rel="noopener">"實體儲存管理"</a></p>
-</div>
-<div class="paragraph">
-<p><a href="https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html" target="_blank" rel="noopener">"磁碟與Aggregate管理"</a></p>
-</div>
-</li>
-<li>
-<p>根據上一個步驟的結果、執行下列任一項：</p>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 75%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">如果結果顯示&#8230;&#8203;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">然後&#8230;&#8203;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>沒有根資料分割的系統上、沒有足夠的備用磁碟可供新的控制器模組使用</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>如需詳細資訊、請聯絡技術支援部門。</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>其他結果</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>完成下列子步驟：</p>
+<p>「取消組態設定中介程式」MetroCluster</p>
 </div>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>判斷現有節點的集合體所在位置：</p>
+<p>使用下列命令檢查是否有任何磁碟毀損：</p>
 <div class="paragraph">
-<p>《集合體展》</p>
+<p>「展示-中斷」</p>
 </div>
-</li>
-<li>
-<p>如果磁碟擁有權自動指派已開啟、請將其關閉：</p>
-<div class="paragraph">
-<p>「torage disk option modify -node_node_name_-autodassign Off」</p>
-</div>
-</li>
-<li>
-<p>移除沒有集合體的磁碟擁有權：</p>
-<div class="paragraph">
-<p>'磁碟移除擁有者_磁碟名稱_'</p>
-</div>
-</li>
-<li>
-<p>針對新節點所需的磁碟數目、重複上述步驟。</p>
-</li>
-</ol>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</li>
-<li>
-<p>確認您已準備好連接下列連接線：</p>
 <div class="ulist">
 <ul>
 <li>
-<p>叢集連線</p>
-<div class="paragraph">
-<p>如果您要建立雙節點無交換式叢集、則需要兩條纜線來連接控制器模組。否則、您至少需要四條纜線、每個控制器模組都需要兩條纜線才能連線至叢集網路交換器。其他系統（例如80xx系列）的預設值為四或六個叢集連線。</p>
-</div>
-</li>
-<li>
-<p>HA互連連連連線（如果系統是雙機箱HA配對）</p>
+<p>範例 *</p>
 </li>
 </ul>
 </div>
 </li>
-<li>
-<p>驗證是否有序列連接埠主控台可用於控制器模組。</p>
-</li>
-<li>
-<p>確認您的環境符合站台和系統需求。</p>
-<div class="paragraph">
-<p><a href="https://hwu.netapp.com" target="_blank" rel="noopener">"NetApp Hardware Universe"</a></p>
+</ol>
 </div>
-</li>
-<li>
-<p>收集新控制器模組的所有IP位址和其他網路參數。</p>
+<div class="literalblock">
+<div class="content">
+<pre>There are no entries matching your query.</pre>
+</div>
+</div>
 </li>
 </ol>
 </div>
