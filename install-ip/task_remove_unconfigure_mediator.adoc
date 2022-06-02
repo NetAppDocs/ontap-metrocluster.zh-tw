@@ -1,0 +1,39 @@
+---
+permalink: install-ip/task_remove_unconfigure_mediator.html 
+sidebar: sidebar 
+keywords: ontap, mediator, service, assist, remove, unconfigure, requirements, mediator requirements 
+summary: 您可以從ONTAP 無法使用的知識庫IP組態中移除此「資訊庫中介器」服務MetroCluster 。 
+---
+= 從ONTAP 無法使用的IP組態中取消設定「無法使用的」MetroCluster 服務
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以從ONTAP 無法使用的IP組態中取消設定「無法使用的資訊」服務MetroCluster 。
+
+您必須已在ONTAP 兩MetroCluster 個景點都能到達的網路位置上成功安裝及設定好《支援中心》。
+
+您必須在MetroCluster 兩個叢集上執行此工作、以實現「支援不支援的IP」組態。
+
+.步驟
+. 使用下列命令取消設定ONTAP 「靜態資訊站服務：
++
+「取消組態設定中介程式」MetroCluster
+
++
+.. 使用下列命令檢查是否有任何磁碟毀損：
++
+「展示-中斷」
+
++
+* 範例 *
+
++
+....
+There are no entries matching your query.
+....
+
+
+

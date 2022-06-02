@@ -12552,4 +12552,13 @@
   <block id="e3b4bec7cc0382f3d2b420e4d37da974" category="list-text">開啟儲存控制器的電源。</block>
   <block id="be8e7921b8bc696adb0f989ee98b7e9f" category="list-text">「PPEed」可以是「100」或「1000」。</block>
   <block id="e44042693910b4bd1a0494893ddc1892" category="doc">確認SVM正在執行、而且Aggregate處於線上狀態</block>
+  <block id="0f6663ce923ab095e111674a6a00e20f" category="summary">您可以從ONTAP 無法使用的知識庫IP組態中移除此「資訊庫中介器」服務MetroCluster 。</block>
+  <block id="dbef88bf7072abf7cb1500b76c098158" category="doc">從ONTAP 無法使用的IP組態中取消設定「無法使用的」MetroCluster 服務</block>
+  <block id="b265dc310dca1d74417a4715e46c4168" category="paragraph">您可以從ONTAP 無法使用的IP組態中取消設定「無法使用的資訊」服務MetroCluster 。</block>
+  <block id="db31f506e34352cf979355688abceeac" category="paragraph">您必須已在ONTAP 兩MetroCluster 個景點都能到達的網路位置上成功安裝及設定好《支援中心》。</block>
+  <block id="5bf67de758861fac80bba5762e2395d5" category="paragraph">您必須在MetroCluster 兩個叢集上執行此工作、以實現「支援不支援的IP」組態。</block>
+  <block id="c8dd54fd6141594c239adba6bd3401ff" category="list-text">使用下列命令取消設定ONTAP 「靜態資訊站服務：</block>
+  <block id="0c87e171b9e1156bebc0a65b722d174d" category="list-text">使用下列命令檢查是否有任何磁碟毀損：</block>
+  <block id="27bf55792722dd4b16925981ef8953b4" category="paragraph">「展示-中斷」</block>
+  <block id="938f1047c15f00fdd0cbfc8e4cfa15e1" category="paragraph">* 範例 *</block>
 </blocks>
