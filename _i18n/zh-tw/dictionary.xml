@@ -9586,7 +9586,6 @@
   <block id="da490e4cad45c10def878a2b7c965b5e" category="list-text">刪除現有的組態：+「*寫入清除*」</block>
   <block id="4eec5768b0acba2b883e4b34537af3c1" category="list-text">重新載入交換器軟體：+「*重新載入*」</block>
   <block id="6ca513baf7b251864842229b25190fb8" category="paragraph">系統會重新開機並進入組態精靈。在開機期間、如果您收到「Abort Auto Provisioning」（中止自動資源配置）提示並繼續正常設定？（是/否）[n]、您應該回應「* yes *」以繼續進行。</block>
-  <block id="2d49954711bf3702573c6a8e8d807645" category="list-text">SSH服務（遠端支援代理程式）完成組態精靈後、交換器會重新開機。</block>
   <block id="f1739ac2b66c3c894842c1cb12d27102" category="paragraph">以下範例顯示登入交換器時的提示和系統回應。角括弧（「*」&lt;「*」）會顯示您輸入資訊的位置。</block>
   <block id="5a50560fb9b26d7fc2c92b7d5f6ae1b1" category="list-text">在下一組提示中輸入基本資訊、包括交換器名稱、管理位址和閘道、並輸入「* rSA*」作為SSH金鑰、如範例所示：</block>
   <block id="1b4782ce89069f77ed7b432f97688c96" category="paragraph">最後一組提示會完成組態設定：</block>
@@ -11543,14 +11542,12 @@
   <block id="a9143ce30f02be342b3ac1761b894447" category="inline-link">手動升級執行ONTAP 效能為更新版本的控制器硬體</block>
   <block id="c3e6669930ba273936fc70ff1592ca3d" category="paragraph"><block ref="c3e6669930ba273936fc70ff1592ca3d" category="inline-link-rx"></block></block>
   <block id="f13350a82ffb5e406781c64809e8f8a8" category="summary">您必須套用RCF檔案、才能重新設定分區以容納新節點。</block>
-  <block id="6016ea2cf4e87fb0a89afdab83b8a98b" category="doc">套用RCF檔案並重新啟用交換器</block>
   <block id="c0b2ef0c7e8bedc314010fcbe929e544" category="paragraph">您必須將RCF檔案用於八節點組態、而且必須符合交換器模式。</block>
   <block id="93db71f559f17fb1c146361893f3ff36" category="list-text">依照下載頁面上的指示套用RCF檔案、視需要調整ISL設定。</block>
   <block id="b862528f72ea6d2ddcdf03d59e55fa27" category="list-text">確定交換器組態已儲存。</block>
   <block id="9566c6febae9d51d50e73e64dbd10cfe" category="list-text">重新啟動FC交換器。</block>
   <block id="cc421f36cbb2a622eb7463c75215237e" category="list-text">使用您先前建立的佈線配置、將既有的FC橋接器和新的FC對SAS橋接器連接至FC交換器。</block>
   <block id="61eb859904ba2d6f08ea80ad772e9aba" category="paragraph">FC交換器連接埠的使用必須符合MetroCluster 中所述的8節點使用情形 <block ref="a9f150ef34b7953b6119f5ac779097fe" category="inline-link-macro-rx"></block> 以便使用參考組態檔（RCT）。</block>
-  <block id="81f2b3db69617a2591d70d6a0ed93fe7" category="admonition">如果您的環境無法以能夠使用RCF檔案的方式連線、請聯絡技術支援部門。如果纜線無法使用RCF檔案、請勿使用此程序。</block>
   <block id="6bea4e12f9fc7219e8f9f668a51bbd7e" category="list-text">使用正確的命令來驗證連接埠是否在線上。</block>
   <block id="9735c41c5a405cd610d4fad10780f0e8" category="paragraph">切換顯示</block>
   <block id="9bacb249b0368cefba275373cd07ba98" category="paragraph">顯示介面簡介</block>
@@ -12479,7 +12476,6 @@
   <block id="1d6f4a845a954c7b875dc506c2f3b1dc" category="sidebar">在AutoSupport 將節點新增MetroCluster 至「版本資訊」組態之前、請先傳送自訂的版本資訊</block>
   <block id="991d75ef8b30d43e0c77377fdedbced8" category="sidebar">可重新分區新節點的交換器架構</block>
   <block id="5d4fa840aa69061d766097a3909fad83" category="sidebar">從網路中斷開現有DR群組的連線</block>
-  <block id="59c85c278b8f5f8a994f268744829b19" category="sidebar">套用RCF檔案並重新執行交換器</block>
   <block id="d9a531a3f31df861443133dd9765f39c" category="sidebar">在ONTAP 新的控制器上設定</block>
   <block id="a3d53cea9a8b8b61d7bf5ff5d1804260" category="sidebar">在AFF 不可靠的系統中指派磁碟擁有權</block>
   <block id="83acf92ff8f6812b50314e32473081e5" category="sidebar">在非AFF系統中指派磁碟擁有權</block>
@@ -12561,4 +12557,11 @@
   <block id="0c87e171b9e1156bebc0a65b722d174d" category="list-text">使用下列命令檢查是否有任何磁碟毀損：</block>
   <block id="27bf55792722dd4b16925981ef8953b4" category="paragraph">「展示-中斷」</block>
   <block id="938f1047c15f00fdd0cbfc8e4cfa15e1" category="paragraph">* 範例 *</block>
+  <block id="2e5c6d46dc39a1cc71a6f41b56106221" category="list-text">SSH服務（遠端支援代理程式）。</block>
+  <block id="4c20f2b5dfebba1daad521c7b3ab4c3b" category="paragraph">完成組態精靈之後、交換器會重新開機。</block>
+  <block id="5582507cb9f874f57ac6bf62db65d371" category="doc">重新設定交換器</block>
+  <block id="6647147ed73881ba6516c57ac1b5fe4a" category="paragraph">如果您無法使用RCF檔案來設定交換器、則必須手動設定交換器。請參閱：</block>
+  <block id="71620bedc8491865816460c55b3cde98" category="list-text"><block ref="71620bedc8491865816460c55b3cde98" category="inline-link-macro-rx"></block></block>
+  <block id="3a8190b24d904ae352e54f8a0a3df0bb" category="list-text"><block ref="3a8190b24d904ae352e54f8a0a3df0bb" category="inline-link-macro-rx"></block></block>
+  <block id="bee24b783e44923012afab506584e701" category="list-text">SSH服務（RSA）</block>
 </blocks>

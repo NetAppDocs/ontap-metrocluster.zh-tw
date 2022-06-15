@@ -104,7 +104,7 @@ entries:
     entries:
     - title: 從網路中斷開現有DR群組的連線
       url: "/upgrade/task_disconnect_the_exist_dr_group_mcc_expansion.html"
-    - title: 套用RCF檔案並重新執行交換器
+    - title: 重新設定交換器
       url: "/upgrade/task_apply_the_rcf_files_and_recable_the_switches.html"
   - title: 在ONTAP 新的控制器上設定
     entries:
