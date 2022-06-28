@@ -1967,13 +1967,8 @@ NOTE: 在可用磁碟機數量有限的最低支援組態中、您必須使用fo
 ** 集合體上RAID群組的RAID類型
 ** RAID群組中可包含的磁碟機數目上限
 ** 是否允許使用不同RPM的磁碟機取得這些選項的詳細資訊、請參閱儲存Aggregate create手冊頁。
-
-
 +
 下列命令會建立10個磁碟的鏡射Aggregate：
-
-+
-+
 
 +
 [listing]
@@ -1983,6 +1978,8 @@ cluster_A::> storage aggregate create aggr1_node_A_1 -diskcount 10 -node node_A_
 [Job 15] The job is starting.
 [Job 15] Job succeeded: DONE
 ----
+
+
 . 驗證新Aggregate的RAID群組和磁碟機：
 +
 「torage Aggregate show-STATUS -Aggregate _gregate名稱_」
@@ -2010,6 +2007,9 @@ NOTE: 如果您要使用單一鏡射資料Aggregate、請參閱 <<step1_single_m
 您可以在MetroCluster 任何節點上發出「flexconfigure」命令一次、以啟用MetroCluster 該組態。您不需要在每個站台或節點上發出命令、也不需要在哪個節點或站台上發出命令。
 
 「Sof the flexconfigure」命令會自動配對兩個節點、使兩個叢集的系統ID最低、成為災難恢復（DR）合作夥伴。MetroCluster在四節點MetroCluster 的不全功能組態中、有兩個DR合作夥伴配對。第二個DR配對是從兩個具有較高系統ID的節點建立。
+
+
+NOTE: 您必須*不*設定Onboard Key Manager（OKM）或外部金鑰管理、才能執行「MetroCluster 靜態組態」命令。
 
 .步驟
 . [step1_sone_mirror ]設定MetroCluster 下列格式的支援功能：

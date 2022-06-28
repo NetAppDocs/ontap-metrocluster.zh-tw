@@ -14,4 +14,4 @@ summary: 您可以從MetroCluster 災難恢復（DR）群組中的所有節點�
 您可以從MetroCluster 災難恢復（DR）群組中的所有節點移除此支援組態。移除MetroCluster 完「支援」組態之後、所有磁碟連線和互連都應調整為支援狀態。如果您需要移除MetroCluster 該組態、請聯絡技術支援部門。
 
 
-IMPORTANT: 您無法反轉MetroCluster 無法組態的功能。此程序只能在技術支援的協助下完成。
+IMPORTANT: 您無法反轉MetroCluster 無法組態的功能。此程序只能在技術支援的協助下完成。請聯絡NetApp技術支援部門、並參閱中的適當組態指南 link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/How_to_remove_nodes_from_a_MetroCluster_configuration_-_Resolution_Guide["NetApp知識庫：如何從MetroCluster 《物件組態-解決方案指南》中移除節點。"^]

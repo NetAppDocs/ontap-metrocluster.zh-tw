@@ -2663,6 +2663,9 @@ NOTE: 如果您要使用單一鏡射資料Aggregate、請參閱 <<step1_aggr,步
 
 「Sof the flexconfigure」命令會自動配對兩個節點、使兩個叢集的系統ID最低、成為災難恢復（DR）合作夥伴。MetroCluster在四節點MetroCluster 的不全功能組態中、有兩個DR合作夥伴配對。第二個DR配對是從兩個具有較高系統ID的節點建立。
 
+
+NOTE: 您必須*不*設定Onboard Key Manager（OKM）或外部金鑰管理、才能執行「MetroCluster 靜態組態」命令。
+
 .步驟
 . [step1_agggr]以MetroCluster 下列格式設定支援功能：
 +

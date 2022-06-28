@@ -18,7 +18,7 @@ summary: 您必須針對ONTAP 需要標準\（節點鎖定\）授權的任何支
 .步驟
 . 如有必要、請在「軟體授權」下方的「我的支援」區段中、取得NetApp支援網站上新節點的授權金鑰。
 +
-如果網站沒有您需要的授權金鑰、請聯絡您的銷售或支援代表。
+如需授權更換的詳細資訊、請參閱 link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/Post_Motherboard_Replacement_Process_to_update_Licensing_on_a_AFF_FAS_system["在AFF/FAS系統上更新授權的主機板更換程序"^]
 
 . 發出下列命令以安裝每個授權金鑰：
 +

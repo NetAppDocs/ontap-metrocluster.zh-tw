@@ -21,7 +21,7 @@ summary: 您可以在MetroCluster 升級合作夥伴叢集上的控制器模組�
 * 您可以將此程序搭配特定ONTAP 的版本使用：
 +
 ** 支援雙節點組態ONTAP 的版本可在支援的版本中使用。
-** 支援4和8個節點組態ONTAP 、可在支援的版本號為2、8。
+** 支援4節點和8節點組態ONTAP 、可在支援的版本號為2、8。
 +
 請勿將此程序用於執行ONTAP 9.8版之前版本之各種版本的四節點或八節點組態。
 
@@ -33,8 +33,9 @@ https://hwu.netapp.com["NetApp Hardware Universe"]
 
 +
 
-NOTE: 如果原始或新平台是FAS8020或AFF8020系統、而在FC-VI模式中使用連接埠1c和1d、請聯絡技術支援部門。
+NOTE: 如果原始或新平台是使用連接埠1c和1d的FAS8020或AFF8020系統、請參閱 link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/Upgrading_controllers_when_FCVI_connections_on_existing_FAS8020_or_AFF8020_nodes_use_ports_1c_and_1d["NetApp知識庫：在現有FAS8020或AFF8020節點上使用連接埠1c和1d的FCVI連線時、升級控制器。"^]
 
+* 兩個站台的授權必須相符。您可以從取得新的授權 link:https://mysupport.netapp.com/site/["NetApp 支援網站"^]。
 * 此程序適用於MetroCluster 採用支援以支援功能支援功能的控制器模組（雙節點Stretch MetroCluster 、雙節點或雙節點或四節點Fabric附加MetroCluster 功能的支援功能）。
 * 組態中的所有控制器都應在相同的維護期間進行升級。
 +
@@ -1416,6 +1417,16 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
 +
 視需要在所有SVM上執行此步驟。
 
+
+
+
+
+=== 安裝新授權
+
+在切換回復作業之前、您必須先安裝新控制器的授權。
+
+.步驟
+. link:task_install_licenses_on_the_new_controller_module_cluster_mode.html["安裝新控制器模組的授權"]
 
 
 

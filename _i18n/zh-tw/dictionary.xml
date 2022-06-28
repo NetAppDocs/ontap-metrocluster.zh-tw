@@ -1187,7 +1187,6 @@
   <block id="4ef3b220e04ca274abbe1def1b61d2bc" category="list-text">不支援自動IP指派。</block>
   <block id="ff63653e290a8e5b339966cb9855555f" category="summary">移除MetroCluster 完「支援」組態之後、所有磁碟連線和互連都應調整為支援狀態。如果您需要移除MetroCluster 該組態、請聯絡技術支援部門。</block>
   <block id="882861c4cbc2720bbf7b9b7ae1dbada9" category="doc">移除MetroCluster 不完整組態時的考量事項</block>
-  <block id="42c2aaa725120c3eba302533d73629d7" category="admonition">您無法反轉MetroCluster 無法組態的功能。此程序只能在技術支援的協助下完成。</block>
   <block id="bbcb3b5036e2a08450550efac9975ba1" category="summary">本資訊說明如何安裝及設定MetroCluster 不完整的IP硬體和軟體元件。</block>
   <block id="09bf7c8746b0eccb2f8b87d398db4ad3" category="doc">安裝與組態MetroCluster</block>
   <block id="8a0b74215590506f148554eeefc4f739" category="paragraph">在MetroCluster 下列情況下、您應該使用此資訊來規劃、安裝及設定一套靜態IP組態：</block>
@@ -2535,7 +2534,6 @@
   <block id="6485f9afbf9c5f34e988054e67e3b142" category="paragraph">此工作必須在每MetroCluster 個站台執行。</block>
   <block id="37e68b1ed6861ebdf386fc5e91c46ae5" category="list-text">使用<block ref="df3a11b0f7b8977a7ee2ae6dd464c6cb" category="inline-link-rx"></block> 若要判斷交換器類型的纜線配置、請使用連接埠使用方式進行八節點MetroCluster 的邊邊架構。</block>
   <block id="9846b9bd1d098858cca0855cc4e56c18" category="paragraph">FC交換器連接埠使用量必須符合本指南所述的使用量、才能使用參考組態檔（RCFC）。</block>
-  <block id="9abd645e397061a8e3dab1bb33124897" category="admonition">如果您的環境無法以可使用RCT的方式進行纜線連接、請聯絡技術支援部門。如果纜線無法使用RCT、請勿使用此程序。</block>
   <block id="62f6cc0bf7eb35e158a953058ca74eca" category="section-title">套用RCF檔案並重新啟用交換器</block>
   <block id="240180de393c4a94b035628cb25892f2" category="paragraph">您必須套用適當的參考組態（RCF）檔案、才能重新設定交換器以容納新節點。套用RCF檔案之後、您就可以重新恢復交換器。</block>
   <block id="f2fa326e6e1c8de922a1dcd02e4670eb" category="paragraph">FC交換器連接埠使用量必須符合中所述的使用量<block ref="df3a11b0f7b8977a7ee2ae6dd464c6cb" category="inline-link-rx"></block> 以便能夠使用RCT。</block>
@@ -5156,7 +5154,6 @@
   <block id="df2ef58daa49e755e50530b551f462b9" category="paragraph">您必須為需要ONTAP 標準（節點鎖定）授權的任何支援服務新增控制器模組授權。對於具有標準授權的功能、叢集中的每個節點都必須擁有其專屬的功能金鑰。</block>
   <block id="3995801a90ce2d1b48223a6bace39bcd" category="paragraph">如需授權的詳細資訊、請參閱Data ONTAP NetApp支援網站上的知識庫文章301349：《支援概述與參考資料》（英文）和《系統管理參考資料》（_System Administration Reference）。</block>
   <block id="e5514e918432d58e8d631dcf6889b269" category="list-text">如有必要、請在「軟體授權」下方的「我的支援」區段中、取得NetApp支援網站上新節點的授權金鑰。</block>
-  <block id="ecf4debaa8ac551655e89b1663c331ed" category="paragraph">如果網站沒有您需要的授權金鑰、請聯絡您的銷售或支援代表。</block>
   <block id="290e875938329d020b3c3f6ccdb05a4c" category="list-text">發出下列命令以安裝每個授權金鑰：「系統授權新增-license－Code license－key」</block>
   <block id="ad84535a7610d84ea66e143e874bc33f" category="paragraph">license_key長度為28位數。</block>
   <block id="60da9a265bc4a7751e78320152a60b69" category="paragraph">針對每個必要的標準（節點鎖定）授權重複此步驟。</block>
@@ -6205,7 +6202,6 @@
   <block id="6a4974bedd0009da69e6a878e12b82bd" category="paragraph">執行切換後、您想確認所有的集合體和儲存虛擬機器（SVM）都已切換回線上狀態。</block>
   <block id="3579c4d393b95e31540a220033fd8ed1" category="list-text">確認切換式資料集合體已切換回：</block>
   <block id="5a64108d7ac092878672067dc635803d" category="paragraph">在下列範例中、節點B2上的agger_B2已切換回：</block>
-  <block id="db835b1e3cf598f7016d1b565d22d173" category="paragraph">如果災難站台包含未鏡射的集合體、而未鏡射的集合體不再存在、則集合體可能會在「shorage Aggregate show」命令的輸出中顯示「unknown」（未知）狀態。請聯絡技術支援部門、移除未鏡射集合體的過時項目。</block>
   <block id="8d90a1ad74872449b69dcbc9a1230a79" category="list-text">確認在正常運作的叢集上的所有同步目的地SVM都處於休眠狀態（顯示「Stopped」（已停止）的管理狀態）、且災難叢集上的同步來源SVM都已啟動並執行：</block>
   <block id="529311fd1dafee8998290952c2b30156" category="paragraph">「vserver show -subtype sync-source-</block>
   <block id="a657e2ecdb4e6ab9790d126a51b552c5" category="paragraph">Sync-destinate Aggregate在MetroCluster 支援的支援組態中、會在名稱中自動加上「-MC」字尾、以協助識別它們。</block>
@@ -6355,7 +6351,6 @@
   <block id="1523d0cbbedf508597567dac56417eb2" category="paragraph">《不檢證照秀》MetroCluster</block>
   <block id="881fe4323212cb8e35cee6be8d05c929" category="paragraph">下列範例顯示適用於節點的授權：</block>
   <block id="bc6cb5ca7b5ffe469e55f15360b228c7" category="list-text">如果您需要新的授權金鑰、請在「軟體授權」下方的「我的支援」區段中、於NetApp支援網站取得替換授權金鑰。</block>
-  <block id="d3c2ed97232b4e6667d7111adb92a79c" category="admonition">系統會自動產生您所需的新授權金鑰、並將其傳送至檔案上的電子郵件地址。如果您在30天內未收到附有授權金鑰的電子郵件、請聯絡技術支援部門。</block>
   <block id="179f3c48aec46d54f5f4fe15ed0484b2" category="list-text">安裝每個授權金鑰：</block>
   <block id="c71ddef805b4933b2cfdcf19e62282bf" category="paragraph">「系統授權新增授權碼授權金鑰、授權金鑰...+」</block>
   <block id="11d90ad9838fdc1545ee368cd8943df9" category="list-text">視需要移除舊授權：</block>
@@ -6368,7 +6363,6 @@
   <block id="ca433a1a8cdfe2e0d09b21bb5cf1db25" category="paragraph">下列範例顯示處於啟用狀態的節點：</block>
   <block id="dc7b301c5776f0cc16bbe8a1a0af179f" category="list-text">從存續叢集中的任何節點執行「MetroCluster 還原」命令、以執行切換。</block>
   <block id="1a255a509a23411cee70fd6198bcd3dd" category="paragraph">如果切換需要很長時間才能完成、您可以在進階權限層級使用下列命令來檢查進行中基準的狀態：</block>
-  <block id="673c12c7e6525bb3d967abd59cf88b50" category="paragraph">如果災難站台包含未鏡射的Aggregate、而未鏡射的Aggregate不再存在、則儲存Aggregate show命令的輸出中可能會顯示「'unknown'」狀態。請聯絡技術支援部門、移除未鏡射集合體的過時項目。</block>
   <block id="aa22b9d198bd6a038b670437eee9be3f" category="list-text">驗證在存續叢集上的所有同步目的地SVM都處於休眠狀態（顯示「最新」的管理狀態）、且災難叢集上的同步來源SVM都已啟動並執行：</block>
   <block id="842c1547cc0bfd1bffb5a2f2520f3453" category="list-text">使用「MetroCluster 還原作業show」命令來確認切換作業是否成功。</block>
   <block id="7072d1b360a3772389261a074c882d35" category="paragraph">切換回復作業或切換回復繼續代理程式作業部分成功。</block>
@@ -11456,7 +11450,6 @@
   <block id="41365539a8ffcff55d887255791f26f6" category="list-text">開啟現有控制器模組上的電源供應器。</block>
   <block id="81849b984186456aa612c556a4914aaa" category="list-text">對新的控制器模組重複這些步驟</block>
   <block id="4b7867ffe681fd760cc93c409952f239" category="paragraph">每個控制器模組都應顯示載入器提示字元（「loader&gt;'」、「loader-a&gt;'」或「loader-B&gt;'」）。</block>
-  <block id="ff3d4335d0a6cda4d1a193cc9b93d0ac" category="admonition">如果沒有載入程式提示、請記下錯誤訊息、然後聯絡技術支援部門。如果系統顯示開機功能表、請重新開機並再次嘗試中斷開機程序。</block>
   <block id="437238e14c493f4cd7340eb1bdcdd921" category="summary">不支援第三方SNMP監控工具用於連接光纖橋接器。從ONTAP 功能組態9.8開始、FC對SAS橋接器依預設會透過頻內連線進行監控、不需要額外的組態設定。</block>
   <block id="6a196eaaaf5706d9ce20b734bb2a4c2b" category="summary">您必須在每個站台新增一個控制器模組、以便在每個站台中建立HA配對。這是一個多步驟的程序、涉及硬體和軟體的變更、必須在每個站台上以適當的順序執行。</block>
   <block id="d3256498545f94492ffa6db4eb64e092" category="doc">將新的控制器模組新增至每個叢集</block>
@@ -11973,9 +11966,7 @@
   <block id="d2f829e728cf15e6e3b1c66326532c9f" category="list-text">收集新控制器模組的所有IP位址和其他網路參數。</block>
   <block id="775b84147d85d58d8180690300a5d104" category="list-text">您可以將此程序搭配特定ONTAP 的版本使用：</block>
   <block id="0658afd7b63854a03c773da7890b79c4" category="list-text">支援雙節點組態ONTAP 的版本可在支援的版本中使用。</block>
-  <block id="2e6da68450b987e7ad374e965e63ad0e" category="list-text">支援4和8個節點組態ONTAP 、可在支援的版本號為2、8。</block>
   <block id="ed332ae2e9a3efd17382e627809f4c84" category="paragraph">請勿將此程序用於執行ONTAP 9.8版之前版本之各種版本的四節點或八節點組態。</block>
-  <block id="46e4f6024087b0e1c3fd4a21ef438dad" category="admonition">如果原始或新平台是FAS8020或AFF8020系統、而在FC-VI模式中使用連接埠1c和1d、請聯絡技術支援部門。</block>
   <block id="b7071513452c80dcfb33a91f6c6f0ecd" category="list-text">此程序適用於MetroCluster 採用支援以支援功能支援功能的控制器模組（雙節點Stretch MetroCluster 、雙節點或雙節點或四節點Fabric附加MetroCluster 功能的支援功能）。</block>
   <block id="ea82c7b5fb58362afd3d6e95de6eb609" category="list-text">FAS80x0</block>
   <block id="9b81337122f1b971d326821246c0fb05" category="list-text">AFF80x0</block>
@@ -12564,4 +12555,25 @@
   <block id="71620bedc8491865816460c55b3cde98" category="list-text"><block ref="71620bedc8491865816460c55b3cde98" category="inline-link-macro-rx"></block></block>
   <block id="3a8190b24d904ae352e54f8a0a3df0bb" category="list-text"><block ref="3a8190b24d904ae352e54f8a0a3df0bb" category="inline-link-macro-rx"></block></block>
   <block id="bee24b783e44923012afab506584e701" category="list-text">SSH服務（RSA）</block>
+  <block id="39ceb938ecce9e03ffb814b0ab98c3ff" category="inline-link-macro">NetApp知識庫：如何從MetroCluster 《物件組態-解決方案指南》中移除節點。</block>
+  <block id="ddcd0bc62cc0d6ad3a96c234e8e9acc2" category="admonition">您無法反轉MetroCluster 無法組態的功能。此程序只能在技術支援的協助下完成。請聯絡NetApp技術支援部門、並參閱中的適當組態指南 <block ref="6b274ee2da4e368d83246d3228463b74" category="inline-link-macro-rx"></block></block>
+  <block id="aac7cfec46f1e12804543ab7e9f0bf82" category="admonition">您必須*不*設定Onboard Key Manager（OKM）或外部金鑰管理、才能執行「MetroCluster 靜態組態」命令。</block>
+  <block id="b7dc5f17370f3f6d8f0564ad37092c2e" category="list-text">支援4節點和8節點組態ONTAP 、可在支援的版本號為2、8。</block>
+  <block id="4d8ef96135f1fcc906a1c836b94ccd72" category="inline-link-macro">NetApp知識庫：在現有FAS8020或AFF8020節點上使用連接埠1c和1d的FCVI連線時、升級控制器。</block>
+  <block id="3b66e88b9eec711f27eed9c397de04df" category="admonition">如果原始或新平台是使用連接埠1c和1d的FAS8020或AFF8020系統、請參閱 <block ref="5f6e886a55fbfce55c807e98c86f0ed7" category="inline-link-macro-rx"></block></block>
+  <block id="6f2e4be613f6e5c211f118c1604357ae" category="list-text">兩個站台的授權必須相符。您可以從取得新的授權 <block ref="a42716fdd3c80ae75cadfb8024b65de0" category="inline-link-macro-rx"></block>。</block>
+  <block id="4bf20a918b2c6b62364371fe4f4d9c7f" category="section-title">安裝新授權</block>
+  <block id="c24d2fcd8511c8b51a6aef773200e0d8" category="paragraph">在切換回復作業之前、您必須先安裝新控制器的授權。</block>
+  <block id="07beb3f4161a6f204edf78213ee21dd3" category="list-text"><block ref="07beb3f4161a6f204edf78213ee21dd3" category="inline-link-macro-rx"></block></block>
+  <block id="852fee667b0218d56efb26732593192d" category="inline-link-macro">在AFF/FAS系統上更新授權的主機板更換程序</block>
+  <block id="4d373838f1432114e8cb3f53c45f8736" category="paragraph">如需授權更換的詳細資訊、請參閱 <block ref="7fa6d13435a2a82c954f1735e8d67b30" category="inline-link-macro-rx"></block></block>
+  <block id="42f4edc2efb2c786550a905c38a8416c" category="admonition">如果沒有載入程式提示、請記下錯誤訊息。如果系統顯示開機功能表、請重新開機並再次嘗試中斷開機程序。</block>
+  <block id="8c4c17369ebab47cd3919b9e6b1e8537" category="admonition">如果纜線無法使用RCT、請勿使用此程序。</block>
+  <block id="07d36974183f0bd379705eb8861c8bba" category="inline-link-macro">NetApp知識庫：如何在MetroCluster 發生儲存設備遺失的災難後、移除過時的未鏡射Aggregate項目。</block>
+  <block id="e8a2aa8f2b533983c4b701d088ac2fa9" category="paragraph">如果災難站台包含未鏡射的集合體、而未鏡射的集合體不再存在、則集合體可能會在「shorage Aggregate show」命令的輸出中顯示「unknown」（未知）狀態。請聯絡技術支援部門、移除未鏡射集合體和參考的過時項目 <block ref="857cf6ab3254f5ce14b6347a5dc33b9f" category="inline-link-macro-rx"></block></block>
+  <block id="34e63b4d455bee1fbdab9ea6d4e3fcb7" category="inline-link-macro">NetApp知識庫：更新AFF/FAS系統授權的主機板更換程序。</block>
+  <block id="6abc18b19d1261841c5bebef07ade3cc" category="admonition">系統會自動產生您所需的新授權金鑰、並將其傳送至檔案上的電子郵件地址。如果您在30天內未收到附有授權金鑰的電子郵件、請參閱中的_「如果我的授權有問題、該聯絡誰？」一節<block ref="01bfbfba842a68c11d464652fb5b8666" category="inline-link-macro-rx"></block></block>
+  <block id="a83bdcaf895c6161de37c26c6fde86a6" category="paragraph">如果災難站台包含未鏡射的Aggregate、而未鏡射的Aggregate不再存在、則儲存Aggregate show命令的輸出中可能會顯示「'unknown'」狀態。請聯絡技術支援部門、以移除未鏡射集合體的過時項目、請參閱 <block ref="857cf6ab3254f5ce14b6347a5dc33b9f" category="inline-link-macro-rx"></block></block>
+  <block id="efa4707d1136ea0f455cfb38e7371895" category="inline-link-macro">NetApp知識庫：更新AFF/FAS系統授權的主機板更換程序</block>
+  <block id="e4d43f7afcae270903f6fda758c33beb" category="paragraph">如需授權更換的詳細資訊、請參閱 <block ref="fd34fb83b47f441a190e089e21262454" category="inline-link-macro-rx"></block></block>
 </blocks>

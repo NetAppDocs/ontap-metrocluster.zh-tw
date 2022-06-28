@@ -90,7 +90,7 @@ FCP               periodic-check-enabled            ok
 . 如果您需要新的授權金鑰、請在「軟體授權」下方的「我的支援」區段中、於NetApp支援網站取得替換授權金鑰。
 +
 
-NOTE: 系統會自動產生您所需的新授權金鑰、並將其傳送至檔案上的電子郵件地址。如果您在30天內未收到附有授權金鑰的電子郵件、請聯絡技術支援部門。
+NOTE: 系統會自動產生您所需的新授權金鑰、並將其傳送至檔案上的電子郵件地址。如果您在30天內未收到附有授權金鑰的電子郵件、請參閱中的_「如果我的授權有問題、該聯絡誰？」一節link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/Post_Motherboard_Replacement_Process_to_update_Licensing_on_a_AFF_FAS_system["NetApp知識庫：更新AFF/FAS系統授權的主機板更換程序。"^]
 
 . 安裝每個授權金鑰：
 +
@@ -275,7 +275,7 @@ Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
 aggr_b2          -         -     - unknown      - node_A_1
 ----
 +
-如果災難站台包含未鏡射的Aggregate、而未鏡射的Aggregate不再存在、則儲存Aggregate show命令的輸出中可能會顯示「'unknown'」狀態。請聯絡技術支援部門、移除未鏡射集合體的過時項目。
+如果災難站台包含未鏡射的Aggregate、而未鏡射的Aggregate不再存在、則儲存Aggregate show命令的輸出中可能會顯示「'unknown'」狀態。請聯絡技術支援部門、以移除未鏡射集合體的過時項目、請參閱 link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/How_to_remove_stale_unmirrored_aggregate_entries_in_a_MetroCluster_following_disaster_where_storage_was_lost["NetApp知識庫：如何在MetroCluster 發生儲存設備遺失的災難後、移除過時的未鏡射Aggregate項目。"^]
 
 . 驗證在存續叢集上的所有同步目的地SVM都處於休眠狀態（顯示「最新」的管理狀態）、且災難叢集上的同步來源SVM都已啟動並執行：
 +
