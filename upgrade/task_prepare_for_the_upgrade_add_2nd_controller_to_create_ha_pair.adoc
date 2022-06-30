@@ -14,34 +14,14 @@ summary: 在升級至HA配對之前、您必須確認系統符合所有需求、
 在升級至HA配對之前、您必須確認系統符合所有需求、而且您擁有所有必要資訊。
 
 .步驟
-. 您需要識別可指派給新控制器模組的未指派磁碟或備用磁碟。
+. 使用下列命令識別可指派給新控制器模組的未指派磁碟或備用磁碟：
 +
-https://library.netapp.com/ecm/ecm_download_file/ECMLP2427462["實體儲存管理"^]
+** 「torage disk show -container類型spare」
+** 「torage disk show -conter-type未指派」
 
+
+. 完成下列子步驟：
 +
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"^]
-
-. 根據上一個步驟的結果、執行下列任一項：
-+
-[cols="1,3"]
-|===
-
-
-| 如果結果顯示... | 然後... 
-
-
- a| 
-沒有根資料分割的系統上、沒有足夠的備用磁碟可供新的控制器模組使用
- a| 
-如需詳細資訊、請聯絡技術支援部門。
-
-
-
- a| 
-其他結果
- a| 
-完成下列子步驟：
-
 .. 判斷現有節點的集合體所在位置：
 +
 《集合體展》
@@ -57,7 +37,6 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁�
 .. 針對新節點所需的磁碟數目、重複上述步驟。
 
 
-|===
 . 確認您已準備好連接下列連接線：
 +
 ** 叢集連線

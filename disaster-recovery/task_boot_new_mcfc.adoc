@@ -30,7 +30,7 @@ Boot_ONTAP功能表
 
 +
 
-NOTE: 如果您未清除已用替換控制器的NVRAM內容、您可能會看到以下訊息：「痛苦：NVRAM內容無效...」 如果發生這種情況、請重複執行 <<step2>> 以將系統開機至ONTAP 畫面提示字元。接著您需要執行根還原。如需協助、請聯絡技術支援部門。
+NOTE: 如果您未清除已用替換控制器的NVRAM內容、您可能會看到以下訊息：「痛苦：NVRAM內容無效...」 如果發生這種情況、請重複執行 <<step2>> 以將系統開機至ONTAP 畫面提示字元。然後您就需要 <<Reset-the-boot-recovery,重設開機恢復和RDB_rebootargs>>
 
 . 鏡射叢0上的根Aggregate：
 +
@@ -89,3 +89,35 @@ cluster_B::>
 
 
 請前往 link:../disaster-recovery/task_complete_recovery.html["完成災難恢復程序"]。
+
+
+
+=== 重設boot_recovery和RDB_rebootargs
+
+[role="lead"]
+如果需要、您可以重設boot_recovery和RDB_reboot_bootargs
+
+.步驟
+. 將節點停止回載入程式提示：
++
+[listing]
+----
+node_A_1::*> halt -node _node-name_
+----
+. 檢查是否已設定下列bootargs：
++
+[listing]
+----
+LOADER> printenv bootarg.init.boot_recovery
+LOADER> printenv bootarg.rdb_corrupt
+----
+. 如果其中任一bootarg已設定為值、請將其取消設定並啟動ONTAP
++
+[listing]
+----
+LOADER> unsetenv bootarg.init.boot_recovery
+LOADER> unsetenv bootarg.rdb_corrupt
+LOADER> saveenv
+LOADER> bye
+----
+

@@ -4,16 +4,16 @@ sidebar: sidebar
 keywords: AFF, A900, ONTAP, FAS, Brocade, ISL, metrocluster 
 summary: 下表顯示AFF 了在一個32位元組系統中、Brocade交換器的ISL連接埠使用量。 
 ---
-= 執行版本號為32的組態中、適用於ISL的Brocade連接埠使用率AFF MetroCluster ONTAP
+= 適用於執行版本號為SHW9.10.1或更新版本的ISL組態中的ISL之Brocade連接埠使用量AFF MetroCluster ONTAP
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
-下表顯示AFF 了在一個32位元組系統中、Brocade交換器的ISL連接埠使用量。
+下表顯示AFF 了適用於整個過程中的Brocade交換器的ISL連接埠使用情況。
 
 
-NOTE: 支援八個ISL的FASA900系統。AFFBrocade 6510、G620、G620-1和G720交換器支援八個ISL。
+NOTE: FASA900和FAS9500系統支援八個ISL。AFFBrocade 6510、G620、G620-1和G720交換器支援八個ISL。
 
 |===
 | 交換器模式 | ISL連接埠 | 交換器連接埠 

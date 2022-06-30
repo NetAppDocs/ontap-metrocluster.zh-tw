@@ -30,16 +30,7 @@ Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
 aggr_b2    227.1GB   227.1GB    0% online       0 node_B_2   raid_dp,
                                                                    mirrored,
                                                                    normal
-
-node_A_1::> aggr show
-Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
---------- -------- --------- ----- ------- ------ ---------------- ------------
-...
-aggr_b2          -         -     - unknown      - node_A_1
 ----
-+
-如果災難站台包含未鏡射的集合體、而未鏡射的集合體不再存在、則集合體可能會在「shorage Aggregate show」命令的輸出中顯示「'unknown'」狀態。請聯絡技術支援部門、移除未鏡射集合體的過時項目。
-
 . 驗證在正常運作的叢集上的所有同步目的地SVM都處於休眠狀態（顯示「最新」的管理狀態）、且災難叢集上的同步來源SVM都已啟動並正在執行：
 +
 「vserver show -subtype sync-source-

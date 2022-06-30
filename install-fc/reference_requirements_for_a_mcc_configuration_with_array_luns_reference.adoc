@@ -65,7 +65,7 @@ https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"]
 
 * 每個網路都必須有兩個FC交換器。
 * 每ONTAP 個支援系統都必須使用備援元件連接至儲存設備、以便在設備和路徑故障時提供備援。
-* 每個架構最多可支援八個ISL的FASA900和FAS9000儲存系統。AFF其他儲存系統機型則支援每個架構最多四個ISL。
+* 每個架構最多可支援八個ISL的FASA700、FAS9000、FASA900和FAS9500儲存系統。AFF AFF其他儲存系統機型則支援每個架構最多四個ISL。
 
 
 交換器必須使用MetroCluster 不完整的基本交換器組態、ISL設定和FC-VI組態。

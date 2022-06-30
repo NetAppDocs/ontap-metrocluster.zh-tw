@@ -56,7 +56,7 @@ https://hwu.netapp.com["NetApp Hardware Universe"]
 
 
  a| 
-解答900 AFF
+FASA900和FAS9500 AFF
  a| 
 八
 

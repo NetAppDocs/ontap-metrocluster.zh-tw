@@ -346,7 +346,7 @@ Aggregate     Size Available Used% State   #Vols  Nodes            RAID Status
 aggr_b2          -         -     - unknown      - node_A_1
 ----
 +
-如果災難站台包含未鏡射的集合體、而未鏡射的集合體不再存在、則集合體可能會在「shorage Aggregate show」命令的輸出中顯示「unknown」（未知）狀態。請聯絡技術支援部門、移除未鏡射集合體和參考的過時項目 link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/How_to_remove_stale_unmirrored_aggregate_entries_in_a_MetroCluster_following_disaster_where_storage_was_lost["NetApp知識庫：如何在MetroCluster 發生儲存設備遺失的災難後、移除過時的未鏡射Aggregate項目。"^]
+如果災難站台包含未鏡射的集合體、而未鏡射的集合體不再存在、則集合體可能會在「shorage Aggregate show」命令的輸出中顯示「unknown」（未知）狀態。請聯絡技術支援部門、移除未鏡射集合體的過時項目、並參閱知識庫文章 link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/How_to_remove_stale_unmirrored_aggregate_entries_in_a_MetroCluster_following_disaster_where_storage_was_lost["如何在MetroCluster 發生儲存設備遺失的災難後、在不再鏡射的情況下移除過時的未鏡射Aggregate項目。"^]
 
 . 確認在正常運作的叢集上的所有同步目的地SVM都處於休眠狀態（顯示「Stopped」（已停止）的管理狀態）、且災難叢集上的同步來源SVM都已啟動並執行：
 +

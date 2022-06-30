@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: AFF, A900, ONTAP, FAS, Cisco, ISL, metrocluster 
 summary: 下表顯示ISL連接埠使用量。 
 ---
-= 以執行版本號9.10.1或更新版本的32節點組態、在8節點組態中使用Cisco連接埠來處理ISL AFF MetroCluster ONTAP
+= 以執行版本號的32個節點組態、將ISL的Cisco連接埠用於執行版本號為9.10.1或更新版本的八節點組態AFF MetroCluster ONTAP
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

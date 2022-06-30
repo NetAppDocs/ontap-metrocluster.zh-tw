@@ -64,7 +64,7 @@ Boot_ONTAP功能表
 
 +
 
-NOTE: 如果您未清除已用替換控制器的NVRAM內容、您可能會看到以下訊息：「痛苦：NVRAM內容無效...」 如果發生這種情況、請重複這些子步驟、將系統開機至ONTAP 瞬間提示字元。接著您需要執行根還原。如需協助、請聯絡技術支援部門。
+NOTE: 如果您未清除已用替換控制器的NVRAM內容、您可能會看到以下訊息：「痛苦：NVRAM內容無效...」 如果發生這種情況、請重複這些子步驟、將系統開機至ONTAP 瞬間提示字元。然後您就需要 <<Reset-the-boot-recovery,重設開機恢復和RDB_rebootargs>>
 
 
 
@@ -132,4 +132,36 @@ Group Cluster Node               State          Mirroring Mode
 . 在不含任何功能的節點上、執行中的步驟MetroCluster link:task_heal_restore_mcfc.html["執行Aggregate修復及還原鏡像（MetroCluster 不含FC組態）"]。
 . 在靜態IP節點上、執行中的步驟MetroCluster link:task_heal_restore_mcip.html["執行Aggregate修復及還原鏡像（MetroCluster 知識IP組態）"]。
 . 從開始、繼續執行恢復程序的剩餘工作 link:task_complete_recovery.html#reestablishing-object-stores-for-fabricpool-configurations["重新建立物件存放區以供FabricPool 進行物件組態"]。
+
+
+
+
+=== 重設boot_recovery和RDB_rebootargs
+
+[role="lead"]
+如果需要、您可以重設boot_recovery和RDB_reboot_bootargs
+
+.步驟
+. 將節點停止回載入程式提示：
++
+[listing]
+----
+node_A_1::*> halt -node _node-name_
+----
+. 檢查是否已設定下列bootargs：
++
+[listing]
+----
+LOADER> printenv bootarg.init.boot_recovery
+LOADER> printenv bootarg.rdb_corrupt
+----
+. 如果其中任一bootarg已設定為值、請將其取消設定並啟動ONTAP
++
+[listing]
+----
+LOADER> unsetenv bootarg.init.boot_recovery
+LOADER> unsetenv bootarg.rdb_corrupt
+LOADER> saveenv
+LOADER> bye
+----
 

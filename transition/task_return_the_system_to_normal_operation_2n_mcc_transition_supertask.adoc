@@ -42,7 +42,7 @@ summary: 您必須執行最後的組態步驟、並將MetroCluster 此功能恢�
 
 . 如有必要、請在「軟體授權」下方的「我的支援」區段中、取得NetApp支援網站上新節點的授權金鑰。
 +
-如需授權更換的詳細資訊、請參閱 link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/Post_Motherboard_Replacement_Process_to_update_Licensing_on_a_AFF_FAS_system["NetApp知識庫：更新AFF/FAS系統授權的主機板更換程序"^]
+如需授權更換的詳細資訊、請參閱知識庫文章 link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/Post_Motherboard_Replacement_Process_to_update_Licensing_on_a_AFF_FAS_system["在AFF/FAS系統上更新授權的主機板更換程序。"^]
 
 . 發出下列命令以安裝每個授權金鑰：「系統授權新增-license－Code license－key」
 +

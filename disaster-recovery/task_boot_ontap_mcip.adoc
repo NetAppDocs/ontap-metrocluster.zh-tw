@@ -24,7 +24,7 @@ summary: 您必須將災難現場的替換節點開機至ONTAP 該作業系統�
 
 +
 
-NOTE: 如果未清除已用過的更換控制器模組的NVRAM內容、您可能會看到下列緊急訊息：「嚴重：NVRAM內容無效...」 如果發生這種情況、ONTAP 請再次將系統開機至更新提示字元（「boot_ONTAP功能表」）。然後您需要執行root恢復。如需協助、請聯絡技術支援部門。
+NOTE: 如果未清除已用過的更換控制器模組的NVRAM內容、您可能會看到下列緊急訊息：「嚴重：NVRAM內容無效...」 如果發生這種情況、ONTAP 請再次將系統開機至更新提示字元（「boot_ONTAP功能表」）。然後您就需要 <<Reset-the-boot-recovery,重設boot_recovery和RDB_rebootargs>>
 
 +
 ** 確認以繼續提示：
@@ -190,4 +190,36 @@ Group Cluster Node    Network Address Network Address Partner Type Config State
 cluster_B::*>
 ----
 . 在災難站台的其他節點上重複上述步驟。
+
+
+
+
+=== 重設boot_recovery和RDB_rebootargs
+
+[role="lead"]
+如果需要、您可以重設boot_recovery和RDB_reboot_bootargs
+
+.步驟
+. 將節點停止回載入程式提示：
++
+[listing]
+----
+node_A_1::*> halt -node _node-name_
+----
+. 檢查是否已設定下列bootargs：
++
+[listing]
+----
+LOADER> printenv bootarg.init.boot_recovery
+LOADER> printenv bootarg.rdb_corrupt
+----
+. 如果其中任一bootarg已設定為值、請將其取消設定並啟動ONTAP
++
+[listing]
+----
+LOADER> unsetenv bootarg.init.boot_recovery
+LOADER> unsetenv bootarg.rdb_corrupt
+LOADER> saveenv
+LOADER> bye
+----
 

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, controller, ip, configuration, switchover, switchback, workflow, nodes, tiebreaker, verify, bootrage, root, aggregate, disks 
 summary: BYou可在MetroCluster 升級合作夥伴叢集上的控制器模組時、使用「不中斷切換」作業來為用戶端提供不中斷的服務。其他元件（例如儲存櫃或交換器）無法在此程序中進行升級。 
 ---
-= 使用交換器和切換功能、將控制器從AFF 功能性的2700升級至AFF 功能性的S還原MetroCluster IP組態（ONTAP 版本號：32、10.1及更新版本）
+= 使用切換和切換功能（AFF 例如、更新版本的版本）、將控制器從S還原A700/A900升級至FAS9x00 MetroCluster （以供選擇）ONTAP
 :allow-uri-read: 
 
 
@@ -12,8 +12,8 @@ summary: BYou可在MetroCluster 升級合作夥伴叢集上的控制器模組時
 您可以在MetroCluster 升級合作夥伴叢集上的控制器模組時、使用「支援交換」作業來為用戶端提供不中斷營運的服務。其他元件（例如儲存櫃或交換器）無法在此程序中進行升級。
 
 .關於這項工作
-* 控制器必須執行ONTAP 的是版本不含更新版本的版本。
-* 此程序適用於AFF 在AFF 整個過程中升級至以MetroCluster 32位元IP組態的32位元A700控制器模組。
+* 若要將AFF 處理器2700控制器模組升級AFF 至更新版本、控制器必須執行ONTAP 版本為《更新版本》的版本。
+* 若要將FAS9000控制器模組升級至FAS95000、控制器必須執行ONTAP 版本不只是執行版本不符合要求的版本。
 +
 |===
 
@@ -28,14 +28,23 @@ summary: BYou可在MetroCluster 升級合作夥伴叢集上的控制器模組時
 ** 解答900 AFF
 
 
+
+
+ a| 
+** FAS9000
+
+ a| 
+** FAS9500
+
+
 |===
 * 組態中的所有控制器都應在相同的維護期間進行升級。
 +
-在MetroCluster 本維護活動之外、不支援以AFF 不支援使用支援的方式操作含有此功能的Ar21、A700和AFF 一個支援的支援功能。
+在MetroCluster 本維護活動之外、不支援以AFF 不支援使用NetApp的A700和AFF 不支援使用FASA900或FAS9000和FAS9500控制器來操作此組態。
 
 * IP交換器必須執行支援的韌體版本。
 * 您將在新平台上重複使用原始平台的IP位址、網路遮罩和閘道。
-* 本程序使用下列範例名稱：
+* 本程序中使用下列範例名稱、包括範例和圖形：
 +
 ** 站台_A
 +
@@ -89,15 +98,15 @@ image::../media/workflow_ip_upgrade.png[工作流程IP升級]
 
 
 
-=== 清除AFF VMware處理器上的插槽7
+=== 清除AFF VMware的插槽7或FAS9000控制器
 
-在一個VMware上的VMware E3D組態使用DR卡上位於插槽5和7的每個連接埠之一。MetroCluster AFF開始升級之前、如果AFF 在插槽7中有插卡、您必須將其移至叢集所有節點的其他插槽。
+在一個不含任何功能的基礎架構上、使用位於插槽5和7的DR卡上的每個連接埠之一。MetroCluster AFF在開始升級之前、如果AFF 在插槽7中的插槽7或FAS9000中有插卡、您必須將其移至叢集所有節點的其他插槽。
 
 
 
 === 在升級控制器之前、請先更新MetroCluster RCF交換器檔案
 
-不使用VLAN、而在整個過程中、使用的是不支援的支援。MetroCluster AFF在不支援VLAN的情況下、使用支援的支援功能可在不使用VLAN的情況下使用。MetroCluster AFF因此、當您將RCF檔案從AFF 某個版本升級至AFF 某個版本時、必須變更RCF檔案。
+在不使用VLAN的情況下MetroCluster 、無法在AFF 不支援使用VLAN的情況下使用支援。在不支援虛擬區域網路的情況下、使用虛擬區域網路（VLAN）的架構。MetroCluster AFF因此、當您將RCF檔案從AFF 某個版本升級至AFF 某個版本的時、您需要變更RCF檔案、例如從某個版本的E或FAS9000升級至某個版本的E或FAS9500。
 
 |===
 
@@ -106,7 +115,7 @@ image::../media/workflow_ip_upgrade.png[工作流程IP升級]
 
 
  a| 
-* 解答900 AFF
+* FASA900或FAS9500 AFF
 
  a| 
 * 10.
@@ -143,7 +152,7 @@ image::../media/workflow_ip_upgrade.png[工作流程IP升級]
 
 === 將舊節點的連接埠對應至新節點
 
-從AFF E不到A700升級到AFF E不到A900時、您不會變更資料網路連接埠、FCP SAN介面卡連接埠、以及SAS和NVMe儲存連接埠。資料生命期會在升級期間和升級後持續運作。因此、您不需要將舊節點的網路連接埠對應至新節點。
+當從AFF EWSAE700升級至AFF EWSAF900或FAS9000至FAS9500時、您不會變更資料網路連接埠、FCP SAN介面卡連接埠、以及SAS和NVMe儲存連接埠。資料生命期會在升級期間和升級後持續運作。因此、您不需要將舊節點的網路連接埠對應至新節點。
 
 
 
@@ -465,7 +474,7 @@ image::../media/mcc_upgrade_cluster_a_in_switchover_A900.png[在switchover A900�
 
 
 
-== 移除AFF 平台控制器模組和NVS
+== 移除AFF 不完整的平台控制器模組和NVS
 
 如果您尚未接地、請正確接地。
 
@@ -476,9 +485,9 @@ image::../media/mcc_upgrade_cluster_a_in_switchover_A900.png[在switchover A900�
 
 
 
-=== 移除AFF 「功能不一」控制器模組
+=== 移除AFF 「功能不整」或「FAS9000」控制器模組
 
-請使用下列程序移除AFF 「非洲」控制器模組
+請使用下列程序移除AFF 不適用的A700或FAS9000控制器模組
 
 .步驟
 . 在卸下控制器模組之前、請先從控制器模組拔下主控台纜線（如果有）和管理纜線。
@@ -504,11 +513,11 @@ image::../media/drw_9500_remove_PCM.png[控制器模組]
 
 
 
-=== 移除AFF 「顯示器」的「顯示器」單元
+=== 移除AFF 「FASA700」或「FAS9000 NVS」模組
 
-請使用下列程序移除AFF 「顯示器」的「顯示器」單元。
+請使用下列程序移除AFF 「不適用的」A700或FAS9000 NVS模組。
 
-附註：AFF 此功能可讓您在系統的插槽6中找到更高的介面、而非系統中的其他模組。
+附註：NVS模組位於插槽6、高度是系統中其他模組的兩倍。
 
 .步驟
 . 解除鎖定、然後從插槽6移除NVS。
@@ -530,22 +539,22 @@ image::../media/drw_a900_move-remove_NVRAM_module.png[移除模組]
 |===
 
 
-. 如果您在AFF 使用附加模組做為ESIEA700軟體上的核心傾印裝置、請勿將其傳輸至AFF ESI填寫A900軟體。請勿將AFF 任何零件從顯示器A700控制器模組和NVS移轉至AFF 顯示器A900。
+. 如果您在AFF 使用附加模組做為ESIA700或FAS9000軟體上的核心傾印裝置、請勿將其傳輸至AFF ESIA900或FAS9500軟體。請勿將AFF 任何零件從無法識別的A700或FAS9000控制器模組和NVS移轉至AFF 無法識別的A900或FAS9500模組。
 
 
 
 
-== 安裝AFF 《不需再安裝的顯示器」和「控制器」模組
+== 安裝AFF 「FASA900」或「FAS9500」的NVS和控制器模組
 
-您必須在AFF 站台B的兩個節點上、安裝升級套件中所提供的支援功能請勿將coredump裝置從AFF ESIEA700 NVS模組移至AFF ESIA900 NVS模組。
+您必須在AFF 站台B的兩個節點上、安裝升級套件中所附的支援功能不支援的FASA900或FAS9500軟體與控制器模組請勿將coredump裝置從AFF 無法識別的A700或FAS9000 NVS模組移至AFF 無法識別的A900或FAS9500 NVS模組。
 
 如果您尚未接地、請正確接地。
 
 
 
-=== 安裝AFF VA900 NVS
+=== 安裝AFF 《不再需要的產品」
 
-請使用下列程序、在AFF 站台B的兩個節點插槽6中安裝支援中心
+請使用下列程序、在AFF 站台B的兩個節點插槽6中安裝支援的ArfeA900或FAS9500
 
 .步驟
 . 將NVS與插槽6中機箱開孔的邊緣對齊。
@@ -566,9 +575,9 @@ image::../media/drw_a900_move-remove_NVRAM_module.png[移除模組]
 
 
 
-=== 安裝AFF 「VA900控制器模組」。
+=== 安裝AFF 「FASA900」或「FAS9500」控制器模組。
 
-請使用下列程序來安裝AFF 《Arc-A900控制器模組：
+請使用下列程序來安裝AFF 《非洲的不規則及不規則」（FAS900）或「FAS9500」（FAS9500）控制器模組。
 
 .步驟
 . 將控制器模組的一端與機箱的開口對齊、然後將控制器模組輕推至系統的一半。
@@ -607,7 +616,7 @@ NOTE: 叢集所有節點上的插槽7應為空白、如所述 <<Map ports from t
 
 === netboot節點位於se_B
 
-在交換AFF 完SESVA900控制器模組和軟體資源之後、您需要將AFF 該節點的叢集開機、並安裝與ONTAP 叢集上執行相同的版本資訊更新和修補程式層級。「netboot」一詞是指您從ONTAP 儲存在遠端伺服器上的不實映像進行開機。準備網路開機時、您必須在ONTAP 系統可以存取的網路伺服器上新增一份《支援》9開機映像。除非安裝在機箱中並已開啟電源、否則無法檢查ONTAP 安裝在AFF 架構控制器模組之開機媒體上的版本。在進行升級的32位元支援系統上執行的支援功能必須與在進行升級的支援功能系統上執行的支援功能相同、而且主要和備份開機映像都必須相符。ONTAP AFF ONTAP AFF您可以在開機功能表中執行netboot、然後執行wappeconfig命令來設定映像。如果控制器模組先前曾在另一個叢集中使用、則「wifeconfig」命令會清除開機媒體上的任何剩餘組態。
+在交換AFF 完FASA900或FAS9500控制器模組和NVS之後、您需要將AFF 該節點的叢集開機至NETBOOT或FAS9500節點、並安裝叢ONTAP 集上執行的相同的版本更新和修補程式層級。「netboot」一詞是指您從ONTAP 儲存在遠端伺服器上的不實映像進行開機。準備網路開機時、您必須在ONTAP 系統可以存取的網路伺服器上新增一份《支援》9開機映像。除非安裝在機箱中並已開啟電源、否則無法檢查ONTAP 安裝在AFF 架構套件上的支援媒體版本、例如：在執行於正在升級的S景 點A700或FAS9000系統上的支援功能、必須與執行此功能的支援功能相同、而且主要和備份開機映像都必須相符。ONTAP AFF ONTAP AFF您可以在開機功能表中執行netboot、然後執行wappeconfig命令來設定映像。如果控制器模組先前曾在另一個叢集中使用、則「wifeconfig」命令會清除開機媒體上的任何剩餘組態。
 
 .開始之前
 * 確認您可以使用系統存取HTTP伺服器。
@@ -656,7 +665,7 @@ NOTE: 您應該使用管理連接埠和IP做為netboot連線。請勿使用資�
 
 NOTE: 請勿中斷開機。
 
-. 請等待節點B_1現在在AFF 執行於更新控制器模組的情況下開機、並顯示開機功能表選項、如下所示：
+. 請等待節點B_1現在在AFF 執行下列動作的情況下、從支援的支援範圍內啟動、並顯示開機功能表選項：
 +
 [listing]
 ----

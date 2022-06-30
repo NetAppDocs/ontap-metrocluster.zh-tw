@@ -1,0 +1,16 @@
+---
+permalink: install-ip/task_install_and_cable_the_mcc_components.html 
+sidebar: sidebar 
+keywords: ip, switch, configuring 
+summary: 您必須設定IP交換器、才能提供後端MetroCluster 的不中斷IP連線功能。 
+---
+= 設定交換器
+:allow-uri-read: 
+
+
+[role="lead"]
+您必須設定IP交換器、才能提供後端MetroCluster 的不中斷IP連線功能。
+
+* link:../install-ip/task_switch_config_broadcom.html["設定Broadcom IP交換器"]
+* link:../install-ip/task_switch_config_broadcom.html["設定Cisco IP交換器"]
+

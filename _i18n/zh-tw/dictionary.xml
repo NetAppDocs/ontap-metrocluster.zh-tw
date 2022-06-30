@@ -138,7 +138,6 @@
   <block id="ab4a2de3931dbed092e0d44be3c87116" category="list-text">產生Broadcom RCF檔案MetroCluster 以利知識IP。</block>
   <block id="ebd9fb85557b54bcafec3d1a1ac1c292" category="inline-link">RcfFileGeneratorfor MetroCluster EfIP</block>
   <block id="fd550a9c3a7b7c6106ae07bc6bb69106" category="list-text">下載<block ref="166489b3c340ece1eccb5706fda90624" category="inline-link-rx"></block></block>
-  <block id="7d5c4b7a8cb7bc598a3b2eb9fb74fe60" category="list-text">使用RcfFileGeneratorfor MetroCluster EIP、為您的組態產生RCF檔案</block>
   <block id="516e7c19b1a750a903f4fd9e3624c57a" category="list-text">將RCF檔案複製到交換器：</block>
   <block id="c02e1d7f483cf9ccd0ff120c09ebc64f" category="list-text">將RCF檔案複製到第一個交換器：「copy sftp：//user@ft-server_ip-address/rcfFiles/switch-specific -rCF nvNVRAM：指令碼BES-53248_v1.32_Switch-A1.txt nvNVRAM：指令碼bes-53241_v1.32_switch-a1.scr」</block>
   <block id="0fde531bbbf90d47fe7905001a962dde" category="paragraph">在此範例中、「Bes-53241_v1.32_Switch-a1.txt」RCF檔案會從SFTP伺服器複製到本機BootFlash、路徑為「50.50.50.50」。您需要使用TFTP/SFTP伺服器的IP位址、以及需要安裝的RCF檔案名稱。</block>
@@ -181,8 +180,6 @@
   <block id="c3622e8c695936793cc1d144ed2a0dcd" category="image-alt">MCC IP將AFF 一個名為fasa700或fas9000的纜線連接至Cisco 3232c或Cisco 9336c交換器</block>
   <block id="d1438768164c95178a940e0363badcd6" category="section-title">將功能組的纜線連接AFF 到Cisco 3232C或Cisco 9336C交換器</block>
   <block id="18eee486aa8db1f9803e8ca4f2a1c002" category="image-alt">將某個交換器連接AFF 至Cisco 3232c或Cisco 9336c交換器</block>
-  <block id="a017a6db2fc01588987d027787f42d9c" category="section-title">將Arc-A900纜線連接AFF 至Cisco 3232C或Cisco 9336C交換器</block>
-  <block id="34bc1dd80a773d74b460af7f29e7d10f" category="image-alt">將AFF VA900纜線連接至Cisco 3232c或Cisco 9336c交換器</block>
   <block id="5d21ef93e8cb12318e2d8486435cc6f1" category="section-title">將AFF 一個名為「Sf2 A320」AFF 、「Sf2 A400」、AFF 「Sf2 A700」或AFF 「Sf2 A800」的纜線連接至Cisco 9336C-FX2共用交換器</block>
   <block id="8522044be3175fd7ff7606798d41836f" category="image-alt">MCC IP纜線AFF 從320 A400 a700 a800連接至Cisco 9336c共享交換器</block>
   <block id="2b1013f1c2f3e9436213f4a43069d1f4" category="image-alt">每個平台的MCC介面9336共享</block>
@@ -5770,7 +5767,6 @@
   <block id="5b4b0e7e80cfc96d7b00d2037086ecaf" category="list-text">回應「y」下列提示：</block>
   <block id="5da0ed75f8d94f3ba9a459b96d248368" category="paragraph">「這將取代所有以Flash為基礎的組態、取代上次備份到磁碟的組態。您確定要繼續嗎？：Y'</block>
   <block id="960738ca2fc1770da21e6c687ca1c350" category="paragraph">系統會開機兩次、第二次載入新組態。</block>
-  <block id="b2010eca22012b8a09d2f9548f1d744a" category="admonition">如果您未清除已用替換控制器的NVRAM內容、您可能會看到以下訊息：「痛苦：NVRAM內容無效...」 如果發生這種情況、請重複這些子步驟、將系統開機至ONTAP 瞬間提示字元。接著您需要執行根還原。如需協助、請聯絡技術支援部門。</block>
   <block id="d16c283588f04c1ce2bf0f46ad1b9ea4" category="list-text">鏡射叢0上的根Aggregate：</block>
   <block id="ee5ab6f8636a09cbbf2aa0b4a2b5e769" category="list-text">將三個Pool0磁碟指派給新的控制器模組。</block>
   <block id="574d18b9a555a66e217652610abd0f80" category="list-text">鏡射根Aggregate Pool1叢：</block>
@@ -6230,7 +6226,6 @@
   <block id="468593af13a5bd30c38497b351a5043c" category="doc">開機新的控制器模組（MetroCluster 不含FFC組態）</block>
   <block id="9ee8f2900460e61f0a89d33f7d0bcf8c" category="paragraph">此工作從顯示載入程式提示的節點開始。</block>
   <block id="8f9b1d4a15d7661fc51874327dc22f61" category="list-text">[[step2、Step 2 ]從開機功能表中選取選項6、*從備份組態*更新Flash。</block>
-  <block id="8782ce5e44a58103b967cd55863bf183" category="admonition">如果您未清除已用替換控制器的NVRAM內容、您可能會看到以下訊息：「痛苦：NVRAM內容無效...」 如果發生這種情況、請重複執行 <block ref="358c6da937c27d6519a48f813996b4db" category="inline-xref-macro-rx"></block> 以將系統開機至ONTAP 畫面提示字元。接著您需要執行根還原。如需協助、請聯絡技術支援部門。</block>
   <block id="0216636a5feabe1a5c811d7808839765" category="list-text">如果您有四節點組態、請在災難站台的其他節點上重複上述步驟。</block>
   <block id="f7695325c497f5514c126672cf022583" category="list-text">重新整理MetroCluster 此功能的組態：</block>
   <block id="e2abc6b4b0a92a8da98912b57b0ce298" category="list-text">返回管理權限模式：</block>
@@ -6624,7 +6619,6 @@
   <block id="a1ea8f7e98610dd5fef2ac85b3267080" category="list-text">在其中一個替換節點上、結束以顯示載入程式提示：「halt（停止）」</block>
   <block id="a5092c70d4454b55202bf686e38812b2" category="list-text">顯示開機功能表：「boot_ONTAP功能表」</block>
   <block id="ae9185bf6adb2fa07aa8f16b9fabf53e" category="paragraph">系統開機兩次。當系統提示您繼續時、您應該回應「是」。第二次開機之後、當系統ID不符時、您應該回應「y」。</block>
-  <block id="860d5f3016c12a37c0c22c0cbda49625" category="admonition">如果未清除已用過的更換控制器模組的NVRAM內容、您可能會看到下列緊急訊息：「嚴重：NVRAM內容無效...」 如果發生這種情況、ONTAP 請再次將系統開機至更新提示字元（「boot_ONTAP功能表」）。然後您需要執行root恢復。如需協助、請聯絡技術支援部門。</block>
   <block id="6359390f2bf4b3d61775f586653a8795" category="list-text">確認以繼續提示：</block>
   <block id="3906957452f2289e724b0ecfd78b63bc" category="list-text">系統ID不相符提示：</block>
   <block id="128fa92dd8a609500440a24cb01e7c12" category="list-text">從存續站台、確認已將正確的合作夥伴系統ID套用至節點：</block>
@@ -8827,7 +8821,6 @@
   <block id="e48060ce0dce850ba08838b0bbacf939" category="paragraph">Controller（控制器）_B_2：連接埠FC-VI A</block>
   <block id="05d031d4d0c0ba6aad9ddd1f447198d6" category="paragraph">Controller（控制器）_B_2：連接埠FC-VI b</block>
   <block id="dac255183ddd968b772755feaa9b4cd7" category="summary">下表顯示ISL連接埠使用量。</block>
-  <block id="cbe2b16a509b760d191376479e32ca46" category="doc">以執行版本號9.10.1或更新版本的32節點組態、在8節點組態中使用Cisco連接埠來處理ISL AFF MetroCluster ONTAP</block>
   <block id="83e876af5f485a9a733864cbf5a3e21b" category="cell">Cisco 9132T搭配1個LEM</block>
   <block id="629f8f8fa5cb9442f2cf5a2289a1e051" category="cell">ISL1</block>
   <block id="e7e6eebc5253d1872205b3e8e4fe67cb" category="cell">LEM1-15</block>
@@ -8898,8 +8891,6 @@
   <block id="f52d44aaa981f34fa588225f9d4cc820" category="paragraph">「系統授權展示」</block>
   <block id="c4f2ecfddbca137434d6171dc1d881dd" category="paragraph">下列輸出範例顯示V_StorageAttach授權已安裝在叢集節點上：</block>
   <block id="96cf9ddcf3fc08fd3054be11d6e19c44" category="summary">下表顯示支援的最大組態、AFF DR群組中有八個支援的Ar21 A900控制器模組。</block>
-  <block id="7c01bf7bcd73a403f5efa68a836503a3" category="doc">Cisco連接埠使用功能適用於AFF 執行版本更新版本的32位元組態中的32位元組態的32位元組態MetroCluster ONTAP</block>
-  <block id="49a0ddc4c9cb3939ab0983fc26175d57" category="list-text">下表顯示具有八個FC-VI連接埠的系統。支援8個FC-VI連接埠（適用於FC-VI-1和FC-VI-2的A、b、c和d）AFF 。</block>
   <block id="f537ff78df4afb387541f1166be1d417" category="list-text">9132T交換器不支援使用2或DR 2。MetroCluster</block>
   <block id="e0c3bd3b17898f5fa1d870e22fd0b2a7" category="cell">Cisco交換器模式</block>
   <block id="105a26504e48c255c684a48adb3a654d" category="cell">9132T（1個LEM）</block>
@@ -8938,8 +8929,6 @@
   <block id="a5a5f58f8b4f49c67db8ac8769e18a9e" category="paragraph">這項工作不需要在雙節點MetroCluster 的不全功能組態上執行。</block>
   <block id="eb952ac83e127d9e9c609c32989ebbf0" category="list-text">將叢集互連從一個控制器模組連接至另一個控制器模組、或是使用叢集互連交換器、從每個控制器模組連接至交換器。</block>
   <block id="72fa0ea37e0389a6c2e6107de6bbcbe8" category="summary">下表顯示AFF 了在一個32位元組系統中、Brocade交換器的ISL連接埠使用量。</block>
-  <block id="088d34fa95b78fea4357e6fb952a2960" category="doc">執行版本號為32的組態中、適用於ISL的Brocade連接埠使用率AFF MetroCluster ONTAP</block>
-  <block id="e7f0f0c64372c73e52760c46dea51cf3" category="admonition">支援八個ISL的FASA900系統。AFFBrocade 6510、G620、G620-1和G720交換器支援八個ISL。</block>
   <block id="83f8b75cddaf0acd53872b333bc5d6c1" category="paragraph">6510、G620、G620-1、G720</block>
   <block id="f3089a69f0cb0a583fab7f5c1ea7226c" category="cell">6505、G610</block>
   <block id="5482b27fb601c9d5069a7533e0dd1b02" category="summary">當您設定Brocade FC交換器時、可以安裝交換器組態檔、為特定組態提供完整的交換器設定。</block>
@@ -9439,7 +9428,6 @@
   <block id="15036251faefea85ea9b6ffa4f283c29" category="list-text">將MetroCluster 「vol-dr-force-nv故障」參數設定為「開啟」、啟用此組態以在切換時觸發NVFIL：</block>
   <block id="a0672ab43d6a3c035ef982f4bbdf4ec8" category="paragraph">Check Alignment of PHs&gt;"* vvolvmodify -vserver _vserver-name_-volume _volvolvol-name_-dr-force-nvail on*</block>
   <block id="aef9e13f2797744b62209b58e52a9a40" category="paragraph">使用ONTAP 版本更新的版本時、使用纜線連接FC交換器時、您必須確認使用的是指定的連接埠指派。</block>
-  <block id="e9f60c97614e1831c49ced50d37383dd" category="list-text">無需使用八個FC-VI連接埠即可完成儲存系統的需求。AFF如果您使用AFF 的是FASA900、則需要使用八個連接埠組態。如果組態包含其他儲存系統機型、請使用表格中所示的纜線、但不要使用不需要的FC-VI連接埠纜線。</block>
   <block id="69e92926786e575346dbd083b8dec2f2" category="paragraph"><block ref="69e92926786e575346dbd083b8dec2f2" category="inline-link-macro-rx"></block></block>
   <block id="a9376b40838c95dc0e4da39abdfa72b0" category="summary">您必須透過交換器間連結（ISL）將FC交換器連接至站台、才能使用MetroCluster 陣列LUN、在您的不執行交換器組態中形成交換器架構。</block>
   <block id="54ac487d2d6ff680a517207a9eced839" category="doc">使用MetroCluster 陣列LUN、在不含資訊的組態中佈線ISL</block>
@@ -9706,7 +9694,6 @@
   <block id="d729ae9faac07f81f2be521fde99983b" category="list-text">交換器和交換器韌體必須識別為MetroCluster 支援的支援功能、才能進行各種版本的支援。</block>
   <block id="efe2f1a5b22c4c08760a2c8298133cbc" category="list-text">每個網路都必須有兩個FC交換器。</block>
   <block id="633329c29defa71e64bad7e22f7391d6" category="list-text">每ONTAP 個支援系統都必須使用備援元件連接至儲存設備、以便在設備和路徑故障時提供備援。</block>
-  <block id="8841354ff2977f75451a48280abce5e4" category="list-text">每個架構最多可支援八個ISL的FASA900和FAS9000儲存系統。AFF其他儲存系統機型則支援每個架構最多四個ISL。</block>
   <block id="00cf1532f7b3f1f9e9e57c27005e5afe" category="paragraph">交換器必須使用MetroCluster 不完整的基本交換器組態、ISL設定和FC-VI組態。</block>
   <block id="bc8f1fcb589a975f8303117094ef8f50" category="section-title">需求SyncMirror</block>
   <block id="3e033f133aa9e3ec8a824c1f70405edc" category="list-text">需要使用以利進行一個不必要的組態設定。SyncMirror MetroCluster</block>
@@ -9794,8 +9781,6 @@
   <block id="3d46a6eeb65ebe391571feddc1cc5164" category="paragraph"><block ref="3d46a6eeb65ebe391571feddc1cc5164" category="inline-link-macro-rx"></block></block>
   <block id="2740d289d4d49097464e045111134762" category="paragraph"><block ref="2740d289d4d49097464e045111134762" category="inline-link-macro-rx"></block></block>
   <block id="6a3afd8e0bd4d7b0e5cc9f66134c7c8d" category="summary">下表顯示AFF 適用於Solid-A900系統的Brocade交換器上的連接埠使用量</block>
-  <block id="7b73f35b5be5225d6f5bdfe1008d55a6" category="doc">Brocade連接埠使用功能、適用於AFF 執行版本更新版本的32位元組態中的32位元組態A900控制器MetroCluster ONTAP</block>
-  <block id="29a8f5d5fb8dceda7389ca8a30f56ec8" category="paragraph">下表顯示Brocade交換器上的連接埠使用量。下表顯示支援的最大組態、四個DR群組中有八個控制器模組。支援16個FC-VI連接埠（適用於FC-VI-1和FC-VI-2的A、b、c和d）AFF</block>
   <block id="56e8146206df37b2e114695d0ee8d127" category="cell">6505、G610</block>
   <block id="6468480fd8b1a2f75ef118118bd03a58" category="cell">G620、G620-1</block>
   <block id="81df3dccd5bcac9f92dc3ce6a45f1ac2" category="cell">G630、G630-1</block>
@@ -9982,7 +9967,6 @@
   <block id="4a5d310b918422071950c1fcecc07f4f" category="paragraph">下列範例顯示在模擬切換作業時發生的錯誤：</block>
   <block id="882cc651d6e4857669eb4eede90211bf" category="admonition">在您更換所有故障磁碟之前、協調式切換和切換都會失敗。您可以在更換故障磁碟之後執行災難恢復。如果您想忽略故障磁碟的警告、可以針對議定的切換和切換新增軟式否決功能。</block>
   <block id="7814aadb42b148f35b4d559e400b4895" category="summary">執行切換後、您要確認所有的集合體和儲存虛擬機器（SVMs）都已切換回線上。</block>
-  <block id="eaee39239c11bb1725bfd13bb19bb2a1" category="paragraph">如果災難站台包含未鏡射的集合體、而未鏡射的集合體不再存在、則集合體可能會在「shorage Aggregate show」命令的輸出中顯示「'unknown'」狀態。請聯絡技術支援部門、移除未鏡射集合體的過時項目。</block>
   <block id="7b173496e8f6041144abc83f7e17506f" category="list-text">驗證在正常運作的叢集上的所有同步目的地SVM都處於休眠狀態（顯示「最新」的管理狀態）、且災難叢集上的同步來源SVM都已啟動並正在執行：</block>
   <block id="90755aace4dbf79660e4f610c3481e12" category="paragraph">Sync-destinate Aggregate在MetroCluster 其名稱中會自動加上「`-MC」字尾、以協助識別它們。</block>
   <block id="af43e56e33ecd52eb98fb08d4dfa593c" category="summary">執行功能不全的災難恢復程序時、會ONTAP 有特定的支援功能。MetroCluster</block>
@@ -10261,7 +10245,6 @@
   <block id="a9954c87406948a9244102f901d9fddb" category="admonition">不支援MetroCluster 自動非計畫性切換功能。</block>
   <block id="cc98b13ef41574a22c96136d7ba3ca4e" category="paragraph">在功能不全的FC組態中、如果站台的所有節點都因為下列原因而故障、就會觸發AUSO：MetroCluster</block>
   <block id="c4a46c6949c88ae14f48c1ec17cc024b" category="list-text">關機</block>
-  <block id="0fd4e09726402ce862074b93272dce4a" category="list-text">電力恐慌</block>
   <block id="61da928f74d2d91963b98396376808e7" category="admonition">在八節點MetroCluster 的不間斷FC組態中、如果HA配對中的兩個節點都失敗、您可以設定觸發AUSO的選項。</block>
   <block id="29548d02eff38acb713ead1e542313f7" category="paragraph">由於雙節點MetroCluster 的現象組態中沒有可用的本機HA容錯移轉、因此系統會執行AUSO、以便在控制器故障後繼續運作。此功能類似HA配對中的HA接管功能。在雙節點MetroCluster 的不間斷組態中、可在下列情況下觸發AUSO：</block>
   <block id="cb8e3939c868fc0e87662c41607fd2a7" category="list-text">節點關機</block>
@@ -10857,7 +10840,6 @@
   <block id="6abf8fcf1209a0e61a34ee20748a726e" category="paragraph">將每個控制器上的叢集連接埠連接至子步驟b中所識別的叢集網路交換器上的連接埠</block>
   <block id="ad227e6a4e6deeee2a76bd6b755dad7e" category="summary">從ONTAP 功能完善的9.8開始、您可以從八節點MetroCluster 的功能完善的組態中移除DR群組、以建立四節點MetroCluster 的功能完善的組態。</block>
   <block id="54c28d1cf3d720cc9297f6c3da2658be" category="doc">移除災難恢復群組</block>
-  <block id="262ce168ea85d04c696b00eca18415d4" category="paragraph">此程序在ONTAP 支援更新版本的版本上提供支援。如需ONTAP 舊版的更新版本、請聯絡技術支援部門以移除DR群組。</block>
   <block id="cba784dbb6dad30cadc1fcb2d1b5ee81" category="paragraph"><block ref="cba784dbb6dad30cadc1fcb2d1b5ee81" category="inline-link-rx"></block></block>
   <block id="19df577c80891b37cfa2f1b29c518f6e" category="paragraph">八節點組態包含八個節點、以兩個四節點DR群組形式組織。</block>
   <block id="e66e23247af7503f663027daef188754" category="paragraph">移除DR群組後、組態中仍有四個節點。</block>
@@ -10968,11 +10950,9 @@
   <block id="6e6b232c4d8217880056a89ba42f455b" category="paragraph">「系統節點AutoSupport 不支援節點*-type all -most maints=_maintening-window-in-thing__」</block>
   <block id="f87f81c47e934db057be5853753c7d35" category="paragraph">「maintenance window-in-hours」參數指定維護時間範圍的長度、最長可達72小時。如果維護作業在時間結束之前完成、您可以發出下列命令、指示維護期間已結束：</block>
   <block id="96b370eac5aa139852f6e8fd4b6aaf01" category="summary">您可以在MetroCluster 升級合作夥伴叢集上的控制器模組時、使用「支援交換」作業來為用戶端提供不中斷營運的服務。其他元件（例如儲存櫃或交換器）無法在此程序中進行升級。</block>
-  <block id="a16fca697a4d7027a976fdabfbb92414" category="doc">使用交換器和切換功能、將控制器從AFF 功能不實的2700升級AFF 至功能不實的SFC MetroCluster 組態（ONTAP 版本號：32、10.1及更新版本）</block>
   <block id="8a51355d335889c9ddb7276ab9a129ab" category="paragraph">您可以在MetroCluster 升級合作夥伴叢集上的控制器模組時、使用「支援交換」作業來為用戶端提供不中斷營運的服務。您無法在本程序中升級其他元件（例如儲存櫃或交換器）。</block>
   <block id="b33f40e27c2c4b0024c1160808166b4d" category="list-text">您只能將此程序用於控制器升級。</block>
   <block id="b93e6d7c2789cd393ddbb5ccdfac4676" category="paragraph">您無法同時升級組態中的其他元件、例如儲存櫃或交換器。</block>
-  <block id="4ba76377711a6b41b576dc98a6d77475" category="list-text">您可以將此程序搭配ONTAP 使用於更新版本的版本。</block>
   <block id="0dc490dd8b5efdca7b88c08cca2f094e" category="list-text">支援四個和八個節點的組態ONTAP 、可在版本號為209.10.1或更新版本。</block>
   <block id="4917ae881b859c002a74dd97a85dc1a1" category="admonition">僅支援《支援》更新版本的《支援》（《支援》）AFF ONTAP 。</block>
   <block id="4c1c93397a0ad82f0b80502a6c7c0799" category="paragraph"><block ref="4c1c93397a0ad82f0b80502a6c7c0799" category="inline-link-rx"></block></block>
@@ -10982,7 +10962,6 @@
   <block id="9ced91efcf548438eaefe7f78378491e" category="cell">全新平台模式</block>
   <block id="e9341f18ed4204c823e94155fc3f3291" category="list-text">在升級程序期間、您必須更換MetroCluster 不必要的架構、包括RCF和實體纜線變更。在執行控制器升級之前、您可以執行RCF和纜線變更。</block>
   <block id="921e8f2bccd093913cccd021ff87834b" category="list-text">此升級程序不需要變更原始節點與新節點之間的儲存設備、FC和乙太網路連線。</block>
-  <block id="427137cf506c596ab903f51949d69296" category="list-text">在升級程序期間、您不應從AFF 該系統新增或移除其他卡片。如需詳細資訊、請參閱<block ref="bb9c67b5a4c15a85b5e6aa6c9afd0285" category="inline-link-rx"></block></block>
   <block id="d56109dc6cdff9e5d4982aefd8e09776" category="paragraph">本程序使用下列範例名稱：</block>
   <block id="e9a54e1b4684f979a8cb74d5905f649a" category="list-text">站台_A</block>
   <block id="6ebf1aa13bc5d22e1a7b81b495a4bde5" category="list-text">升級前：</block>
@@ -10997,11 +10976,8 @@
   <block id="6ebc306eeb1def676054e59bc9404975" category="list-text">節點_B_1-A900</block>
   <block id="ba6437ec6a5b86f7113439313eac431a" category="list-text">節點_B_2-A900</block>
   <block id="2e93b137ca8dae100d477cd0ce20ea2f" category="section-title">準備升級</block>
-  <block id="9b43ae11d5506ae36d605efa71d75d03" category="paragraph">在對現有MetroCluster 的資訊區組態進行任何變更之前、您必須先檢查組態的健全狀況、變更RCF檔案和纜線、以符合AFF 更新的連接埠連線拓撲、以利執行更新的資訊區（以利執行更新的資訊區連接拓撲MetroCluster ）、以及執行其他雜項工作。</block>
   <block id="c95ade519950de23a4b47d2d182edbdf" category="section-title">清除AFF VMware處理器上的插槽7</block>
-  <block id="1e56d1624f07d77f2f7328ad84907663" category="paragraph">在一個不支持VMware的基礎架構MetroCluster 上、使用8 AFF 個FC-VI連接埠、橫跨FC VI卡的插槽5和7。開始升級之前、如果AFF 在插槽7中有插卡、您必須將其移至叢集所有節點的其他插槽。</block>
   <block id="e7323a54c9f53a295a2c4d707c7b3fce" category="section-title">驗MetroCluster 證整個過程的效能狀況</block>
-  <block id="0c92be5dc9bacc6fec90d4eda711663f" category="paragraph">在更新RCF檔案和纜線以進行AFF 「還原A900架構MetroCluster 」組態之前、您必須先確認組態的健全狀況和連線能力。</block>
   <block id="e64a7827901a0e6216b6c75c3b100902" category="list-text">檢查節點是否具有多路徑：+「節點執行-node-name_ sysconfig -A」</block>
   <block id="542da501ed6fd2c5eec24de28539644a" category="paragraph">您應該為MetroCluster Eflexeconfiguration中的每個節點發出此命令。</block>
   <block id="d0a21ff59a32489a592aeb50ea891e1c" category="list-text">驗證組態中沒有損壞的磁碟：</block>
@@ -11018,11 +10994,8 @@
   <block id="aac5384a5dcc4e59accf30153a8b7d7e" category="list-text">使用MetroCluster 「資訊工具」檢查「資訊系統」的纜線。Config Advisor</block>
   <block id="933923ae8bf973656d61d56922e3ef32" category="list-text">下載並執行Config Advisor 更新。</block>
   <block id="55c7e830ad3437c4f8fd31ab9226f8c8" category="section-title">更新Fabric交換器RCF檔案</block>
-  <block id="0f89570dfac2c9fb6f2c766555d80984" category="paragraph">與使用單一4埠FC-VI介面卡的情況相比、AFF 使用者每MetroCluster 個節點需要兩個4埠FC-VI介面卡才能使用此功能。AFF在開始將控制器升級至AFF 32 A900控制器之前、您必須先修改Fabric交換器RCF檔案、以支援AFF 32 A900連線拓撲。</block>
   <block id="72a262115ee86c554da1619c96bfeeee" category="inline-link">RCF檔案下載頁面MetroCluster</block>
-  <block id="59c5fa349bbe7c349edaab194073a5eb" category="list-text">從<block ref="6f619f85f519d88d6754ebdd8b0379b5" category="inline-link-rx"></block>下載AFF 適用於整個過程的RCF檔案、以瞭解決如何在MetroCluster 整個過程中使用的功能、以及AFF 如何在整個過程中使用的交換器模式。</block>
   <block id="39de322b7893b3a67a5b64826dbc9649" category="list-text">[[Update：RCF]依照中的步驟、更新Fabric A交換器、交換器A1和交換器B1上的RCF檔案 <block ref="0d46bcb6b73f6dc40e567a72dc62e0bb" category="inline-link-macro-rx"></block>。</block>
-  <block id="be348e1dd15b6d8c27d3e0c621822d20" category="admonition">RCF檔案更新以支援AFF 《支援不支援使用支援功能的不支援功能的架構MetroCluster BIOS組態」、並不會影響AFF 用於「不支援功能」的連接埠和連線。MetroCluster</block>
   <block id="c26e64a5009ccc789dbec17cba2c94ad" category="list-text">更新Fabric A交換器上的RCF檔案之後、所有的儲存設備和FC-VI連線都應該上線。檢查FC-VI連線：</block>
   <block id="0adb4f1b4288fc4eed5b163b48e9e83d" category="list-text">驗證本地和遠端站台磁碟是否列在「sysconfig」輸出中。</block>
   <block id="3fc17475ce1dc3ff5bb802858331640f" category="list-text">[[VERIFY - health]您必須在MetroCluster Fabric A交換器的RCF檔案更新之後、確認該功能的運作狀況良好。</block>
@@ -11034,9 +11007,7 @@
   <block id="2ecd99ab4785312fa2bf124d83f7951a" category="list-text">重複更新Fabric B交換器（交換器2和4） <block ref="9f27406d35f42d93476705a0a18bfe19" category="inline-xref-macro-rx"></block> 至 <block ref="ae794ac9e946dd061b07601f0aed5cc8" category="inline-xref-macro-rx"></block>。</block>
   <block id="1c86d82f8c3d0da890a22ac664ed4e79" category="section-title">更新MetroCluster RCF檔案後、請確認此功能組態的健全狀況</block>
   <block id="4391b07561c519a0e33f2d598bbaf24e" category="paragraph">在執行升級之前、您必須先驗證MetroCluster 整個過程的健全狀況和連線能力。</block>
-  <block id="eab49f20a38cb319af1c5032035c5d8a" category="section-title">將連接埠從AFF 32個A700節點對應至AFF 32個A900節點</block>
   <block id="1009168ca9b613e3f4fa7884c8377f36" category="paragraph">在控制器升級過程中、您只能變更本程序中提及的連線。</block>
-  <block id="cf06fb5873d66fa2a000cef39e03e781" category="paragraph">如果AFF 插槽7中有一張介面卡、您應該先將其移到另一個插槽、然後再開始控制器升級程序。您必須有插槽7、才能新增MetroCluster 功能在VMware A900上執行Fabric過程所需的第二個FC-VI介面卡AFF 。</block>
   <block id="caccf9eabe1f135a9e70fe0ca30a0130" category="section-title">在升級之前收集資訊</block>
   <block id="3545d6bfcbf822da47d2253b1d36541e" category="paragraph">在升級之前、您必須先收集每個節點的資訊、並視需要調整網路廣播網域、移除任何VLAN和介面群組、以及收集加密資訊。</block>
   <block id="bd644239cebf0eee7e6c7d4b4e3a0c40" category="paragraph">此工作是在現有MetroCluster 的不只是功能的基礎上執行。</block>
@@ -11123,30 +11094,20 @@
   <block id="20d7cafa77ced4deb94fb09d7a230ff9" category="paragraph"><block ref="20d7cafa77ced4deb94fb09d7a230ff9" category="inline-image-macro-rx" type="image"></block></block>
   <block id="c6e52defde912721ad3ec5315c5d9664" category="cell">I/O CAM栓鎖有編號和編號</block>
   <block id="0e50691d6ac3e9df529fa546f2486bd7" category="cell">I/O鎖定完全解除鎖定</block>
-  <block id="0633c91c5a4508e5dec03750074b6f0d" category="admonition">如果AFF 在非揮發性儲存模組上有任何作為coredump裝置的附加模組、請勿將這些模組傳輸至AFF EWSIA900軟體。請勿將AFF 任何零件從顯示器A700控制器模組和NVS移轉至AFF 顯示器A900。</block>
-  <block id="4f29f89e2c29c172aeb92e4fab1d80f1" category="section-title">安裝AFF 《不需再使用的顯示器」</block>
-  <block id="98c079e634c6d65d9fa54a62906f3de9" category="paragraph">您必須在AFF Site_B的兩個節點上安裝升級套件中的更新套件、以安裝支援的支援中心請勿將coredump裝置從AFF ESIEA700 NVS模組移至AFF ESIA900 NVS模組。</block>
-  <block id="34290340b4b3829c1db8fd373c38d431" category="section-title">安裝AFF VA900 NVS</block>
-  <block id="308ec104a3637bade21210dfaf7f4f61" category="paragraph">請使用下列程序、在AFF 站台B的兩個節點插槽6中安裝支援中心</block>
   <block id="3f417eabfc9204738789b7d35e1ec889" category="list-text">將NVS與插槽6中機箱開孔的邊緣對齊。</block>
   <block id="89ecb4d27fdab7dab9977862e3a2aea5" category="list-text">將NVS輕推入插槽、直到帶有字母和編號的I/O CAM栓開始與I/O CAM栓接合為止、然後將I/O CAM栓完全推入、以將NVS鎖定到位。</block>
-  <block id="887d66d2227e68134a4ce7a92c0d5522" category="section-title">安裝AFF 「VA900控制器模組」</block>
-  <block id="46c5f3a7ae22aa54244fc367a806c8c0" category="paragraph">請使用下列程序來安裝AFF 《Arc-A900控制器模組：</block>
   <block id="0dc0820d363c65f7e12beec6160b793f" category="list-text">將控制器模組的一端與機箱的開口對齊、然後將控制器模組輕推至系統的一半。</block>
   <block id="5e3db24c1810c8b2903e6716613744e9" category="list-text">將控制器模組穩固地推入機箱、直到它與中間板完全接入。控制器模組完全就位時、鎖定鎖定鎖定會上升。</block>
   <block id="ca40fd9083dd4ade691492058e938f48" category="admonition">將控制器模組滑入機箱時、請勿過度施力、以免損壞連接器。</block>
   <block id="0211a688f7d2788036c23138bf4edb82" category="list-text">將管理連接埠和主控台連接埠連接至控制器模組。</block>
   <block id="0715013d30fff3fad3eac3c38b9777ef" category="list-text">在每個節點的插槽7中安裝第二個X91129A卡。</block>
   <block id="b3a621e112846c20710b79eacb2e43fe" category="inline-link-macro">網路附加安裝與組態</block>
-  <block id="c27b4d527bbbbd163bf7803ce6a4eac3" category="list-text">將FC VI連接埠從插槽7連接至交換器。請參閱 <block ref="995b1601992c6a25573ab03322643d00" category="inline-link-macro-rx"></block> 記錄並前往AFF 適用於MetroCluster 您環境中交換器類型的《關於Arfe A900架構的不支援連線要求》（英文）。</block>
   <block id="4570827282a7195b67f3c4e03ad406e9" category="list-text">開啟機箱電源並連接至序列主控台。</block>
   <block id="13e7ec57497ed1146060eb34bb91857a" category="list-text">BIOS初始化之後、如果節點開始自動開機、請按Ctrl-C中斷自動開機</block>
   <block id="7d667bf02951c187f0d201b2091ed082" category="list-text">中斷自動開機之後、節點會在載入程式提示字元停止。如果您未準時中斷自動開機、且節點1開始開機、請等待提示訊息、按Ctrl-C進入開機功能表。節點在開機功能表停止後、請使用選項8重新啟動節點、並在重新開機期間中斷自動開機。</block>
   <block id="e15df7abd18a1784d56a916d5eea87f8" category="list-text">在"loader"提示下、設定預設環境變數：「et-Defaults」</block>
   <block id="9cb93e3e52c9acd5dbc54779bde1d1f9" category="list-text">儲存預設環境變數設定：「aveenv」</block>
   <block id="88ddfc7e314aeb15a213f2a59a493e9f" category="section-title">在站台B上為節點開機</block>
-  <block id="70146809c2d89438d1fffd038bc77510" category="paragraph">在交換AFF 完SESVA900控制器模組和軟體資源之後、您需要將AFF 該節點的叢集開機、並安裝與ONTAP 叢集上執行相同的版本資訊更新和修補程式層級。「netboot」一詞是指您從ONTAP 儲存在遠端伺服器上的支援影像進行開機。在準備「netboot」時、您必須在ONTAP 系統可以存取的網路伺服器上新增一份《支援》9開機映像複本。</block>
-  <block id="a4cd91be64df1f08e86dd4135dc70c84" category="paragraph">除非安裝在機箱中並已開啟電源、否則無法檢查ONTAP 安裝在AFF 架構控制器模組之開機媒體上的版本。在進行升級的32位元支援系統上執行的支援功能版本必須與在進行升級的32位元支援系統上執行的支援功能相同、而且主要和備份開機映像都必須相符。ONTAP AFF ONTAP AFF您可以在開機功能表中執行「netboot」、然後執行「wappeconfig」命令來設定映像。如果控制器模組先前曾在另一個叢集中使用、則「wifeconfig」命令會清除開機媒體上的任何剩餘組態。</block>
   <block id="bf49a2af93184828c602f30985ab7b3e" category="list-title">開始之前</block>
   <block id="1d32dacc20fe1feb077659fd0bebdc03" category="list-text">確認您可以使用系統存取HTTP伺服器。</block>
   <block id="c8ccdf38ac9270bf4afbb1e3492b8838" category="list-text">您需要從下載系統所需的系統檔案、以及ONTAP 正確版本的《》 <block ref="3bd7a72b5bb22d07b50aba30cd6fdbe6" category="inline-link-macro-rx"></block> 網站。關於這項工作、如果ONTAP 安裝的版本與原始控制器上安裝的版本不同、您必須「netboot」新的控制器。安裝每個新的控制器之後、您可以從ONTAP 儲存在Web伺服器上的Image9映像來啟動系統。然後、您可以將正確的檔案下載到開機媒體裝置、以供後續系統開機。</block>
@@ -11161,7 +11122,6 @@
   <block id="5952ce6c5039c7475de3fea77be26768" category="cell">在開機環境提示字元中使用下列命令手動設定連線：「ifconfige0M -addr=&lt;filer_addr&gt;-mask=&lt;網路遮罩&gt;-gateway=- dns =&lt;dns _addr&gt; domain=&lt;dns網域&gt;'&lt;filer_addr&gt;'是儲存系統的IP位址。「網路遮罩」是儲存系統的網路遮罩。「&lt;閘道&gt;」是儲存系統的閘道。'&lt;DNs_addr&gt;'是網路上名稱伺服器的IP位址。此參數為選用項目。'&lt;DNs_domain&gt;'是網域名稱服務（DNS）網域名稱。此參數為選用項目。附註：您的介面可能需要其他參數。在韌體提示字元中輸入說明以取得詳細資料。</block>
   <block id="3e740d926a40d82c2fcc72ee1fb84e5b" category="list-text">在節點1上執行「netboot」：「netboot<block ref="489fdc1c448bf7fbb7b53d2ad099b1ec" category="inline-link-rx"></block>「&lt;path_to_the_web-易於 存取的目錄&gt;」應該會引導您下載「&lt;ONTAP_VERSION &gt;_image.tgz」 <block ref="28cd24b5ecf937229eb419cc55587b9d" category="inline-xref-macro-rx"></block>。</block>
   <block id="85bd8aebb41cb27f7bc364e977313958" category="admonition">請勿中斷開機。</block>
-  <block id="c365fef4a48637bf4080ee61f4a8ce61" category="list-text">等待AFF 執行於處理器A900控制器模組上的節點1開機、並顯示開機功能表選項、如下所示：</block>
   <block id="188edb9f514b65304cf0a3564a7bc692" category="list-text">從開機功能表中、選取選項「（7）Install new software first（先安裝新軟體）」。此功能表選項會下載新ONTAP 的功能表映像、並將其安裝至開機裝置。</block>
   <block id="81ff6a54875aaf720a2c324484bc2178" category="admonition">請忽略下列訊息：「HA配對不支援不中斷升級此程序。 本附註適用於不中斷營運ONTAP 的更新版軟體、不適用於控制器升級。請務必使用netboot將新節點更新為所需映像。如果您使用其他方法在新控制器上安裝映像、可能會安裝錯誤的映像。此問題適用於ONTAP 所有的版本。</block>
   <block id="9fbd27646b729fd730070da29cb836c5" category="list-text">如果系統提示您繼續此程序、請輸入「y」、並在系統提示您輸入套件時、輸入URL：<block ref="a2ba1d0ee1c156220079edd2f4d50848" category="inline-link-rx"></block></block>
@@ -11794,15 +11754,10 @@
   <block id="50457dca5a837dbab5a5d65f7d4bcf58" category="paragraph">以下範例顯示MetroCluster 兩個DR群組上重新整理的支援功能組態：</block>
   <block id="1a19a64f583970049a90e38276e4d459" category="list-text">驗MetroCluster 證MetroCluster 支援的功能：</block>
   <block id="070a06c68e9e4e7cecc2e9719193b28c" category="summary">BYou可在MetroCluster 升級合作夥伴叢集上的控制器模組時、使用「不中斷切換」作業來為用戶端提供不中斷的服務。其他元件（例如儲存櫃或交換器）無法在此程序中進行升級。</block>
-  <block id="8a3326b69dc57d7b9fb4be4e8d481446" category="list-text">控制器必須執行ONTAP 的是版本不含更新版本的版本。</block>
-  <block id="96f2d97f0b631b5c95ff1b6d9ef6ab34" category="list-text">此程序適用於AFF 在AFF 整個過程中升級至以MetroCluster 32位元IP組態的32位元A700控制器模組。</block>
-  <block id="65f94a89140814fe0c4770b2e8f9bd58" category="paragraph">在MetroCluster 本維護活動之外、不支援以AFF 不支援使用支援的方式操作含有此功能的Ar21、A700和AFF 一個支援的支援功能。</block>
   <block id="93b195f498a318e8891093dd91595a9f" category="list-text">站台_A</block>
   <block id="3c673528b64c2295b1c285da9cfcc7a6" category="list-text">站台_B</block>
   <block id="d6a05f216ff3e2d50b361bbcdff5ee3d" category="section-title">升級MetroCluster 以供升級的控制器之用的流程、採用一套不需更新的IP組態</block>
-  <block id="7e4f355d90b64a0e17c9b35fa200a081" category="paragraph">在一個VMware上的VMware E3D組態使用DR卡上位於插槽5和7的每個連接埠之一。MetroCluster AFF開始升級之前、如果AFF 在插槽7中有插卡、您必須將其移至叢集所有節點的其他插槽。</block>
   <block id="a38c8b65ec97b4e54f007517a94544d5" category="section-title">在升級控制器之前、請先更新MetroCluster RCF交換器檔案</block>
-  <block id="89115546d2dcc62b1c87ef172b932966" category="paragraph">不使用VLAN、而在整個過程中、使用的是不支援的支援。MetroCluster AFF在不支援VLAN的情況下、使用支援的支援功能可在不使用VLAN的情況下使用。MetroCluster AFF因此、當您將RCF檔案從AFF 某個版本升級至AFF 某個版本時、必須變更RCF檔案。</block>
   <block id="381666f515959bb42f36179e1ccf18b0" category="inline-link-macro">RcfFileGenerator</block>
   <block id="01624fead9baaddc3669cdd47ad795ed" category="list-text">如果交換器未設定支援的最小RCF檔案版本、您必須更新RCF檔案。如需正確的交換器機型RCF檔案版本、請參閱 <block ref="da64f60a95327a9651de90bff4a67cd3" category="inline-link-macro-rx"></block>。下列步驟適用於RCF檔案應用程式。</block>
   <block id="590efa3b2ef6486e61048a848e166d21" category="inline-link-macro">安裝與組態MetroCluster</block>
@@ -11813,7 +11768,6 @@
   <block id="8e077a574605e13d75ee083e7cd96f27" category="list-text"><block ref="8e077a574605e13d75ee083e7cd96f27" category="inline-link-macro-rx"></block></block>
   <block id="5860040c16ad914f0dc769bbc79c2a6d" category="list-text"><block ref="5860040c16ad914f0dc769bbc79c2a6d" category="inline-link-macro-rx"></block></block>
   <block id="dadca3d57b191a678f23de76f79b283e" category="section-title">將舊節點的連接埠對應至新節點</block>
-  <block id="87ff91e75692235d02e091de808fd819" category="paragraph">從AFF E不到A700升級到AFF E不到A900時、您不會變更資料網路連接埠、FCP SAN介面卡連接埠、以及SAS和NVMe儲存連接埠。資料生命期會在升級期間和升級後持續運作。因此、您不需要將舊節點的網路連接埠對應至新節點。</block>
   <block id="0c8985d7cfbb81f5f054993ed8285211" category="section-title">在現場升級之前、請先驗MetroCluster 證其健全狀況</block>
   <block id="35ea33e0235c583b6402101248b20260" category="paragraph">您應該在每個叢集上發出此命令。您可以使用「叢集日期」命令來設定時間和時區。</block>
   <block id="9c1a38eb049be04bc1fa9147e20650b3" category="list-text">收集每個節點的下列命令輸出：</block>
@@ -11827,21 +11781,13 @@
   <block id="9db835e4c4f6ecab5779d22af305de38" category="paragraph">在執行維護之前、您應發出AutoSupport 一份不知所知的訊息、通知技術支援人員正在進行維護。告知技術支援部門正在進行維護、可防止他們假設發生中斷、而開啟案例。</block>
   <block id="efa982219e642bd5186be6c92fb7a64f" category="paragraph">完成此工作之後、Site_A會處於作用中狀態、並為兩個站台提供資料。站台_B處於非作用中狀態、準備開始升級程序。</block>
   <block id="d02e71ae77b3af75d1cc326f36f84ae3" category="paragraph">在控制器升級期間、會停用協調式切換後的Aggregate自動修復功能。站台B的節點會在「載入器」提示字元停止。</block>
-  <block id="d04a9d363414c80a7dddd513e822e599" category="section-title">移除AFF 平台控制器模組和NVS</block>
-  <block id="9062e1727eade9a5acf76c04072793bc" category="paragraph">請使用下列程序移除AFF 「非洲」控制器模組</block>
   <block id="b5da16aeb772a8949c023bb31bb3d2b7" category="image-alt">控制器模組</block>
   <block id="1a08d4399aa1cca3c1e1468f4fd2f4f9" category="inline-image-macro">第1號</block>
   <block id="dd81025bcaa658357182b704e883f3ef" category="cell"><block ref="dd81025bcaa658357182b704e883f3ef" category="inline-image-macro-rx" type="image"></block></block>
   <block id="27bf0058af50fd43e46419d6324f0b88" category="inline-image-macro">編號2</block>
   <block id="33d42cfbdf6857f6d56828022546f696" category="cell"><block ref="33d42cfbdf6857f6d56828022546f696" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="71721121b3fecd9454fc35fcfd4f05e0" category="paragraph">附註：AFF 此功能可讓您在系統的插槽6中找到更高的介面、而非系統中的其他模組。</block>
   <block id="97bf9cd87a9cbb5619926733a7d23035" category="list-text">按下有字母和編號的「CAM」按鈕。CAM按鈕會從機箱移出。</block>
   <block id="ae6364697691c6be3fd29e2d7291d42d" category="image-alt">移除模組</block>
-  <block id="f3f482b3a383653a62a89aa0855a51a2" category="list-text">如果您在AFF 使用附加模組做為ESIEA700軟體上的核心傾印裝置、請勿將其傳輸至AFF ESI填寫A900軟體。請勿將AFF 任何零件從顯示器A700控制器模組和NVS移轉至AFF 顯示器A900。</block>
-  <block id="69dad03f2f8fa3ab596af770d202a4f7" category="section-title">安裝AFF 《不需再安裝的顯示器」和「控制器」模組</block>
-  <block id="e077f9e44aa337907651a4b315e224b8" category="paragraph">您必須在AFF 站台B的兩個節點上、安裝升級套件中所提供的支援功能請勿將coredump裝置從AFF ESIEA700 NVS模組移至AFF ESIA900 NVS模組。</block>
-  <block id="2088ccd3511f01144c1a8efc333f0042" category="paragraph">請使用下列程序、在AFF 站台B的兩個節點插槽6中安裝支援中心</block>
-  <block id="01b60e3dda8cb6b16d737a4fba5c154c" category="section-title">安裝AFF 「VA900控制器模組」。</block>
   <block id="d88810fb8906950d9f286c06d1c3782d" category="list-text">將控制器模組穩固地推入機箱、直到它與中間板完全接入。控制器模組完全就位時、鎖定鎖定鎖定會上升。注意：為避免損壞連接器、請勿在將控制器模組滑入機箱時過度施力。</block>
   <block id="990ac8bd3d980454d3baa7da8bb565b3" category="list-text">在每個節點的插槽7中安裝第二個X91146A卡。</block>
   <block id="4d53d8734246840e8cc7377b52dcff98" category="list-text">將e5b連線移至e7b。</block>
@@ -11853,7 +11799,6 @@
   <block id="d7ba82af5856ab55308cde8e78ff093f" category="list-text">在載入程式提示下、設定預設環境變數：Set-Defaults</block>
   <block id="960a61d8ce9851a898f21bd064898378" category="list-text">儲存預設環境變數設定：「aveenv」</block>
   <block id="55abff1e847770dde7396e977b6f43a8" category="section-title">netboot節點位於se_B</block>
-  <block id="9df90297634f0e8d8ac52c13d00e352d" category="paragraph">在交換AFF 完SESVA900控制器模組和軟體資源之後、您需要將AFF 該節點的叢集開機、並安裝與ONTAP 叢集上執行相同的版本資訊更新和修補程式層級。「netboot」一詞是指您從ONTAP 儲存在遠端伺服器上的不實映像進行開機。準備網路開機時、您必須在ONTAP 系統可以存取的網路伺服器上新增一份《支援》9開機映像。除非安裝在機箱中並已開啟電源、否則無法檢查ONTAP 安裝在AFF 架構控制器模組之開機媒體上的版本。在進行升級的32位元支援系統上執行的支援功能必須與在進行升級的支援功能系統上執行的支援功能相同、而且主要和備份開機映像都必須相符。ONTAP AFF ONTAP AFF您可以在開機功能表中執行netboot、然後執行wappeconfig命令來設定映像。如果控制器模組先前曾在另一個叢集中使用、則「wifeconfig」命令會清除開機媒體上的任何剩餘組態。</block>
   <block id="7e50dc6378f3e2a11e73b6c2111ee61e" category="list-text">您需要從ONTAP NetApp支援網站下載系統所需的系統檔案、以及正確版本的支援。</block>
   <block id="008f1056138f3dd1061c0c135f496d75" category="paragraph">如果ONTAP 安裝的版本不同於原始控制器上安裝的版本、則您必須為新的控制器進行網路開機。安裝每個新的控制器之後、您可以從ONTAP 儲存在Web伺服器上的Image9映像來啟動系統。然後、您可以將正確的檔案下載到開機媒體裝置、以供後續系統開機。</block>
   <block id="e4c7a6a9ed6a7acb0614144c062d21fd" category="list-text">[step2-download-software]請ONTAP 從NetApp支援網站的軟體下載區段下載適當的支援軟體、並將「ONTAP-VERON_image.tgz」檔案儲存在可從網路存取的目錄中。</block>
@@ -11866,7 +11811,6 @@
   <block id="befdb6ab41f0cd39ff57e00b0ee8c3f6" category="paragraph">'&lt;filer_addr&gt;'是儲存系統的IP位址。「網路遮罩」是儲存系統的網路遮罩。「&lt;閘道&gt;」是儲存系統的閘道。'&lt;DNs_addr&gt;'是網路上名稱伺服器的IP位址。此參數為選用項目。'&lt;DNs_domain&gt;'是網域名稱服務（DNS）網域名稱。此參數為選用項目。附註：您的介面可能需要其他參數。在韌體提示字元中輸入「Help ifconfig」以取得詳細資料。</block>
   <block id="8cadcd3d278c7bf112a3d2eb870dfb3e" category="list-text">在node_B_1上執行netboot：「netboot」、「http://&lt;web_server_ip/path_to_web_accessible_directory&gt;/netboot/kernel`」</block>
   <block id="f9917e026c23b682e18bcd6bc125c1b9" category="paragraph">「&lt;path_to_the_web-易於 存取的目錄&gt;」應該會引導您下載「&lt;ONTAP_VERSION &gt;\_image.tgz」 <block ref="28cd24b5ecf937229eb419cc55587b9d" category="inline-xref-macro-rx"></block>。</block>
-  <block id="6f6f6695a268d5918427f02892c43312" category="list-text">請等待節點B_1現在在AFF 執行於更新控制器模組的情況下開機、並顯示開機功能表選項、如下所示：</block>
   <block id="2653300b079109b65a613fd185414faa" category="list-text">從開機功能表中、選取選項「（7）Install new software first（先安裝新軟體）」 此功能表選項會下載新ONTAP 的功能表映像、並將其安裝至開機裝置。附註：請忽略下列訊息：「HA配對不支援此程序進行不中斷升級。 本附註適用於不中斷營運ONTAP 的更新版軟體、不適用於控制器升級。</block>
   <block id="f7462137da4e89b12e82937bb5da165f" category="paragraph">請務必使用netboot將新節點更新為所需映像。如果您使用其他方法在新控制器上安裝映像、可能會安裝不正確的映像。此問題適用於ONTAP 所有的版本。</block>
   <block id="b04e99a0adbd90ade4803bbd436b76af" category="list-text">如果系統提示您繼續此程序、請輸入「y」、然後在系統提示您輸入套件時、輸入URL：「http://&lt;web_server_ip/path_to_web-accessible_directory&gt;/&lt;ontap_version&gt;\_image.tgz`」</block>
@@ -11943,14 +11887,6 @@
   <block id="190f442ec800c13e897c87518425fe6b" category="paragraph">DC電源供應器</block>
   <block id="f5e19357fd9b182f2726ad95e957ec42" category="paragraph">拔下DC電源的電源、必要時請拔下DC線路。</block>
   <block id="ae0930527dc1f23b45618d9c343cf9e0" category="summary">在升級至HA配對之前、您必須確認系統符合所有需求、而且您擁有所有必要資訊。</block>
-  <block id="3d9091c2e30d55a610e464250d80ae97" category="list-text">您需要識別可指派給新控制器模組的未指派磁碟或備用磁碟。</block>
-  <block id="30ff186227aaf51cf730a9cf5a73a9e1" category="inline-link">實體儲存管理</block>
-  <block id="139a2480b517efabfcd850e52aeab3e8" category="paragraph"><block ref="139a2480b517efabfcd850e52aeab3e8" category="inline-link-rx"></block></block>
-  <block id="a2fd0d057f2ea8496e15a769414d84b0" category="list-text">根據上一個步驟的結果、執行下列任一項：</block>
-  <block id="37a8f31a7e8b7690ba6e2ff0ddbc6fcc" category="cell">如果結果顯示...</block>
-  <block id="e4a39395bf8b1ab17a3ba564d7947d03" category="paragraph">沒有根資料分割的系統上、沒有足夠的備用磁碟可供新的控制器模組使用</block>
-  <block id="2208b4293f1ea60ea2302dbae5547ea5" category="paragraph">如需詳細資訊、請聯絡技術支援部門。</block>
-  <block id="5ee53f5a50bdec7bbc4b95227e35b804" category="paragraph">其他結果</block>
   <block id="3678fe02acf5ec3ff8f4fbebc3fd7a4d" category="paragraph">完成下列子步驟：</block>
   <block id="70ede8550fd471e8c5c1bef06eb1447b" category="list-text">判斷現有節點的集合體所在位置：</block>
   <block id="9fb69b3f5bbfa809364de634824a9137" category="list-text">如果磁碟擁有權自動指派已開啟、請將其關閉：</block>
@@ -11967,7 +11903,6 @@
   <block id="775b84147d85d58d8180690300a5d104" category="list-text">您可以將此程序搭配特定ONTAP 的版本使用：</block>
   <block id="0658afd7b63854a03c773da7890b79c4" category="list-text">支援雙節點組態ONTAP 的版本可在支援的版本中使用。</block>
   <block id="ed332ae2e9a3efd17382e627809f4c84" category="paragraph">請勿將此程序用於執行ONTAP 9.8版之前版本之各種版本的四節點或八節點組態。</block>
-  <block id="b7071513452c80dcfb33a91f6c6f0ecd" category="list-text">此程序適用於MetroCluster 採用支援以支援功能支援功能的控制器模組（雙節點Stretch MetroCluster 、雙節點或雙節點或四節點Fabric附加MetroCluster 功能的支援功能）。</block>
   <block id="ea82c7b5fb58362afd3d6e95de6eb609" category="list-text">FAS80x0</block>
   <block id="9b81337122f1b971d326821246c0fb05" category="list-text">AFF80x0</block>
   <block id="9630fdb2df8bbf2bbd201638e1cc2f2e" category="admonition">在FC-VI模式中使用1c和1d連接埠時、不支援升級FAS8020或AFF8020。</block>
@@ -12555,25 +12490,110 @@
   <block id="71620bedc8491865816460c55b3cde98" category="list-text"><block ref="71620bedc8491865816460c55b3cde98" category="inline-link-macro-rx"></block></block>
   <block id="3a8190b24d904ae352e54f8a0a3df0bb" category="list-text"><block ref="3a8190b24d904ae352e54f8a0a3df0bb" category="inline-link-macro-rx"></block></block>
   <block id="bee24b783e44923012afab506584e701" category="list-text">SSH服務（RSA）</block>
-  <block id="39ceb938ecce9e03ffb814b0ab98c3ff" category="inline-link-macro">NetApp知識庫：如何從MetroCluster 《物件組態-解決方案指南》中移除節點。</block>
-  <block id="ddcd0bc62cc0d6ad3a96c234e8e9acc2" category="admonition">您無法反轉MetroCluster 無法組態的功能。此程序只能在技術支援的協助下完成。請聯絡NetApp技術支援部門、並參閱中的適當組態指南 <block ref="6b274ee2da4e368d83246d3228463b74" category="inline-link-macro-rx"></block></block>
   <block id="aac7cfec46f1e12804543ab7e9f0bf82" category="admonition">您必須*不*設定Onboard Key Manager（OKM）或外部金鑰管理、才能執行「MetroCluster 靜態組態」命令。</block>
   <block id="b7dc5f17370f3f6d8f0564ad37092c2e" category="list-text">支援4節點和8節點組態ONTAP 、可在支援的版本號為2、8。</block>
-  <block id="4d8ef96135f1fcc906a1c836b94ccd72" category="inline-link-macro">NetApp知識庫：在現有FAS8020或AFF8020節點上使用連接埠1c和1d的FCVI連線時、升級控制器。</block>
-  <block id="3b66e88b9eec711f27eed9c397de04df" category="admonition">如果原始或新平台是使用連接埠1c和1d的FAS8020或AFF8020系統、請參閱 <block ref="5f6e886a55fbfce55c807e98c86f0ed7" category="inline-link-macro-rx"></block></block>
-  <block id="6f2e4be613f6e5c211f118c1604357ae" category="list-text">兩個站台的授權必須相符。您可以從取得新的授權 <block ref="a42716fdd3c80ae75cadfb8024b65de0" category="inline-link-macro-rx"></block>。</block>
   <block id="4bf20a918b2c6b62364371fe4f4d9c7f" category="section-title">安裝新授權</block>
   <block id="c24d2fcd8511c8b51a6aef773200e0d8" category="paragraph">在切換回復作業之前、您必須先安裝新控制器的授權。</block>
   <block id="07beb3f4161a6f204edf78213ee21dd3" category="list-text"><block ref="07beb3f4161a6f204edf78213ee21dd3" category="inline-link-macro-rx"></block></block>
-  <block id="852fee667b0218d56efb26732593192d" category="inline-link-macro">在AFF/FAS系統上更新授權的主機板更換程序</block>
-  <block id="4d373838f1432114e8cb3f53c45f8736" category="paragraph">如需授權更換的詳細資訊、請參閱 <block ref="7fa6d13435a2a82c954f1735e8d67b30" category="inline-link-macro-rx"></block></block>
   <block id="42f4edc2efb2c786550a905c38a8416c" category="admonition">如果沒有載入程式提示、請記下錯誤訊息。如果系統顯示開機功能表、請重新開機並再次嘗試中斷開機程序。</block>
   <block id="8c4c17369ebab47cd3919b9e6b1e8537" category="admonition">如果纜線無法使用RCT、請勿使用此程序。</block>
-  <block id="07d36974183f0bd379705eb8861c8bba" category="inline-link-macro">NetApp知識庫：如何在MetroCluster 發生儲存設備遺失的災難後、移除過時的未鏡射Aggregate項目。</block>
-  <block id="e8a2aa8f2b533983c4b701d088ac2fa9" category="paragraph">如果災難站台包含未鏡射的集合體、而未鏡射的集合體不再存在、則集合體可能會在「shorage Aggregate show」命令的輸出中顯示「unknown」（未知）狀態。請聯絡技術支援部門、移除未鏡射集合體和參考的過時項目 <block ref="857cf6ab3254f5ce14b6347a5dc33b9f" category="inline-link-macro-rx"></block></block>
-  <block id="34e63b4d455bee1fbdab9ea6d4e3fcb7" category="inline-link-macro">NetApp知識庫：更新AFF/FAS系統授權的主機板更換程序。</block>
-  <block id="6abc18b19d1261841c5bebef07ade3cc" category="admonition">系統會自動產生您所需的新授權金鑰、並將其傳送至檔案上的電子郵件地址。如果您在30天內未收到附有授權金鑰的電子郵件、請參閱中的_「如果我的授權有問題、該聯絡誰？」一節<block ref="01bfbfba842a68c11d464652fb5b8666" category="inline-link-macro-rx"></block></block>
-  <block id="a83bdcaf895c6161de37c26c6fde86a6" category="paragraph">如果災難站台包含未鏡射的Aggregate、而未鏡射的Aggregate不再存在、則儲存Aggregate show命令的輸出中可能會顯示「'unknown'」狀態。請聯絡技術支援部門、以移除未鏡射集合體的過時項目、請參閱 <block ref="857cf6ab3254f5ce14b6347a5dc33b9f" category="inline-link-macro-rx"></block></block>
-  <block id="efa4707d1136ea0f455cfb38e7371895" category="inline-link-macro">NetApp知識庫：更新AFF/FAS系統授權的主機板更換程序</block>
-  <block id="e4d43f7afcae270903f6fda758c33beb" category="paragraph">如需授權更換的詳細資訊、請參閱 <block ref="fd34fb83b47f441a190e089e21262454" category="inline-link-macro-rx"></block></block>
+  <block id="8d9fb55ee32f6df582d661812847c467" category="doc">使用AFF FASA900或FAS9500系統時、FC交換器的連接埠指派</block>
+  <block id="4382ff0992965ffdabb9c638b6f2ecf2" category="list-text">FASA900或FAS9500儲存系統需要八個FC-VI連接埠。AFF如果您使用AFF 的是FASA900或FAS9500、則需要使用八個連接埠組態。如果組態包含其他儲存系統機型、請使用表格中所示的纜線、但不要使用不需要的FC-VI連接埠纜線。</block>
+  <block id="649ae78fb315c7c5f6a700dfdf86f4bb" category="doc">以執行版本號的32個節點組態、將ISL的Cisco連接埠用於執行版本號為9.10.1或更新版本的八節點組態AFF MetroCluster ONTAP</block>
+  <block id="a0bc38f50488b4f686bd2fe145def041" category="inline-link-macro">如何從MetroCluster 「解決方案指南」中移除節點。</block>
+  <block id="8b54a6608c7aceee8d4dfde954124547" category="admonition">您無法反轉MetroCluster 無法組態的功能。此程序只能在技術支援的協助下完成。請聯絡NetApp技術支援部門、並參閱中的適當組態指南 <block ref="c2ef60fcbce343052d34da400cf98089" category="inline-link-macro-rx"></block></block>
+  <block id="8ec1014b27ed523596c5c910443b0827" category="paragraph">FASA900和FAS9500 AFF</block>
+  <block id="87ba2462050ce75d6d9915d834efe9b7" category="doc">適用於執行版本號為SHW9.10.1或更新版本的ISL組態中的ISL之Brocade連接埠使用量AFF MetroCluster ONTAP</block>
+  <block id="801938c63db0b16215aa712c6d1fd12c" category="paragraph">下表顯示AFF 了適用於整個過程中的Brocade交換器的ISL連接埠使用情況。</block>
+  <block id="5cc34fc9164e77d33b971042da17edf2" category="admonition">FASA900和FAS9500系統支援八個ISL。AFFBrocade 6510、G620、G620-1和G720交換器支援八個ISL。</block>
+  <block id="1dcd768f9d116bda4a2253d295e01fb8" category="doc">Brocade連接埠使用功能適用於AFF 執行MetroCluster 檔名9.10.1或更新版本的功能組態中的32個或9個以上的FAS900控制器ONTAP</block>
+  <block id="e33ab3eabb81d3db08bba17fee6ed399" category="paragraph">下表顯示Brocade交換器上的連接埠使用量。下表顯示支援的最大組態、四個DR群組中有八個控制器模組。FASA900和FAS9500系統有八個FC-VI連接埠（適用於FC-VI-1和FC-VI-2的A、b、c和d）AFF</block>
+  <block id="e0477011a5767f5250fc49bfe9ab153c" category="list-text">每個架構最多可支援八個ISL的FASA700、FAS9000、FASA900和FAS9500儲存系統。AFF AFF其他儲存系統機型則支援每個架構最多四個ISL。</block>
+  <block id="f7326e6cfc29ebefdb936677ae7dd110" category="doc">Cisco連接埠使用功能適用於AFF 執行MetroCluster 版本更新版本的32位元組態中的32位元組態A900或FAS9500控制器ONTAP</block>
+  <block id="dfed8939b1f16a32e24cbf7db94e77b4" category="paragraph">下表顯示支援的最大組態、AFF DR群組中有八個支援的FASA900或FAS9500控制器模組。</block>
+  <block id="850f7b79a5d7e3532f3461f2abbf9036" category="list-text">下表顯示具有八個FC-VI連接埠的系統。FASA900和FAS9500有八個FC-VI連接埠（適用於FC-VI-1和FC-VI-2的A、b、c和d）AFF 。</block>
+  <block id="756d409209ace98589705774b5011aa0" category="paragraph">FAS9500</block>
+  <block id="9c4b6feb4a0e2e1a3b0880149249570d" category="section-title">將AFF FASA900或FAS9500纜線連接至Cisco 3232C或Cisco 9336C交換器</block>
+  <block id="c12126891bd5121c9da9a05042a756ac" category="paragraph"><block ref="c12126891bd5121c9da9a05042a756ac" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="413a1a8040eaed9020b7af4ba6c24e5f" category="section-title">FAS9500系統上的磁碟指派</block>
+  <block id="dd6721b9055a32492dda0434480da44d" category="admonition">不支援下載後修改RCF檔案。</block>
+  <block id="03b9eedf57c55a2eb9b4feaa990c85f6" category="list-text">使用RcfFileGeneratorfor MetroCluster EIP、為您的組態產生RCF檔案。</block>
+  <block id="52ad3b024ecc6eae02e8415cef1140ba" category="summary">您必須設定IP交換器、才能提供後端MetroCluster 的不中斷IP連線功能。</block>
+  <block id="9e93b10c56fcff9e0d1564e5ad629c03" category="doc">設定交換器</block>
+  <block id="e3af9bb8aab2257a1ad4ff7a5c3ecd15" category="list-text"><block ref="e3af9bb8aab2257a1ad4ff7a5c3ecd15" category="inline-link-macro-rx"></block></block>
+  <block id="72f9c6aaf4948fa7910f533f9d8355a5" category="list-text"><block ref="72f9c6aaf4948fa7910f533f9d8355a5" category="inline-link-macro-rx"></block></block>
+  <block id="8c6cfac074d0567f4c5a941062f42343" category="paragraph">此程序在ONTAP 支援更新版本的版本上提供支援。如需執行ONTAP 效能不均9.7或更低版本的系統、請參閱知識庫文章</block>
+  <block id="d5d6932337b2af2eda1bd96fd5aa3832" category="inline-link-macro">如何從MetroCluster 功能不完善的組態中移除DR群組</block>
+  <block id="44fa5f61d97cbf15ad67ee9c5aedc1c6" category="paragraph"><block ref="44fa5f61d97cbf15ad67ee9c5aedc1c6" category="inline-link-macro-rx"></block></block>
+  <block id="240e83062f934da5c217268779ad19cc" category="inline-link-macro">當現有FAS8020或AFF8020節點上的FCVI連線使用連接埠1c和1d時、升級控制器。</block>
+  <block id="7d52f2b0abe5122410e02b6a1f5063c2" category="admonition">如果原始或新平台是使用連接埠1c和1d的FAS8020或AFF8020系統、則請參閱知識庫文章 <block ref="932e72f00053653311064be7a28a435b" category="inline-link-macro-rx"></block></block>
+  <block id="0304fb1b1795f11d66da6052c99f1cca" category="list-text">兩個站台的授權必須相符。您可以從取得新授權 <block ref="3bd7a72b5bb22d07b50aba30cd6fdbe6" category="inline-link-macro-rx"></block>。</block>
+  <block id="01e6fb16c1595a47f506d4d654f7859f" category="list-text">此程序適用於MetroCluster 採用支援以支援支援支援功能的FC組態（雙節點Stretch MetroCluster 支援或雙節點、四節點或八節點光纖附加MetroCluster 功能的支援功能）的控制器模組。</block>
+  <block id="7935b714e63d97b0e787db90607ba0fc" category="list-text">同一個DR群組中的所有控制器都應在相同的維護期間進行升級。</block>
+  <block id="810c9113a382d35f83c48d0bc5ad007c" category="paragraph">在本維護活動之外、不支援在MetroCluster 同一個DR群組中使用不同控制器類型來操作此支援。對於八節點MetroCluster 的不完整配置、DR群組中的控制器必須相同、但兩個DR群組可以使用不同的控制器類型。</block>
+  <block id="f0f7e2a1799d8b479b19f71aa5a163de" category="inline-link-macro">在AFF/FAS系統上更新授權的主機板更換程序。</block>
+  <block id="70dc27aa0b1b6fd743baaf39ac831057" category="paragraph">如需授權更換的詳細資訊、請參閱知識庫文章 <block ref="fefc92a8d5d54e07ec6a27ea1fbe0992" category="inline-link-macro-rx"></block></block>
+  <block id="b36fd383298dd454964a70693b082d21" category="doc">使用切換和切換功能（AFF 例如、更新版本的版本）、將控制器從S還原A700/A900升級至FAS9x00 MetroCluster （以供選擇）ONTAP</block>
+  <block id="fa5bebfbd3b64c98d09c75db575bd11c" category="list-text">若要將AFF 處理器2700控制器模組升級AFF 至更新版本、控制器必須執行ONTAP 版本為《更新版本》的版本。</block>
+  <block id="b8c01685df64d764fee3ea66bb33411d" category="list-text">若要將FAS9000控制器模組升級至FAS95000、控制器必須執行ONTAP 版本不只是執行版本不符合要求的版本。</block>
+  <block id="ae4867e3d506833b86caef7b0885d0ba" category="paragraph">在MetroCluster 本維護活動之外、不支援以AFF 不支援使用NetApp的A700和AFF 不支援使用FASA900或FAS9000和FAS9500控制器來操作此組態。</block>
+  <block id="975e1cbd2148147537ebaf00649d3b64" category="list-text">本程序中使用下列範例名稱、包括範例和圖形：</block>
+  <block id="07861cb79e114503ecd43d810982548c" category="section-title">清除AFF VMware的插槽7或FAS9000控制器</block>
+  <block id="33fde62eca72a6b040fde5ee872c847c" category="paragraph">在一個不含任何功能的基礎架構上、使用位於插槽5和7的DR卡上的每個連接埠之一。MetroCluster AFF在開始升級之前、如果AFF 在插槽7中的插槽7或FAS9000中有插卡、您必須將其移至叢集所有節點的其他插槽。</block>
+  <block id="ea9c648e1ece3666c16468e1b7bf9609" category="paragraph">在不使用VLAN的情況下MetroCluster 、無法在AFF 不支援使用VLAN的情況下使用支援。在不支援虛擬區域網路的情況下、使用虛擬區域網路（VLAN）的架構。MetroCluster AFF因此、當您將RCF檔案從AFF 某個版本升級至AFF 某個版本的時、您需要變更RCF檔案、例如從某個版本的E或FAS9000升級至某個版本的E或FAS9500。</block>
+  <block id="367b6ed56e5d72c6f7fc505e20f24bd2" category="list-text">FASA900或FAS9500 AFF</block>
+  <block id="faab2cbd973ffc485dff6e74aeeab547" category="paragraph">當從AFF EWSAE700升級至AFF EWSAF900或FAS9000至FAS9500時、您不會變更資料網路連接埠、FCP SAN介面卡連接埠、以及SAS和NVMe儲存連接埠。資料生命期會在升級期間和升級後持續運作。因此、您不需要將舊節點的網路連接埠對應至新節點。</block>
+  <block id="e834b095ea947be3c6866a33f1da8979" category="section-title">移除AFF 不完整的平台控制器模組和NVS</block>
+  <block id="ba579f865c148542656e741f915bc210" category="section-title">移除AFF 「功能不整」或「FAS9000」控制器模組</block>
+  <block id="9215947559c2e7cc959d296b609112d9" category="paragraph">請使用下列程序移除AFF 不適用的A700或FAS9000控制器模組</block>
+  <block id="294524298144dbbf0480ba277400b734" category="section-title">移除AFF 「FASA700」或「FAS9000 NVS」模組</block>
+  <block id="59b55859e42bb9a8cb7f2f21d794fed6" category="paragraph">請使用下列程序移除AFF 「不適用的」A700或FAS9000 NVS模組。</block>
+  <block id="7a682da1b921c288604ff1ba20b3701e" category="paragraph">附註：NVS模組位於插槽6、高度是系統中其他模組的兩倍。</block>
+  <block id="15d293596473daa84e96fb0a5cafc3c3" category="list-text">如果您在AFF 使用附加模組做為ESIA700或FAS9000軟體上的核心傾印裝置、請勿將其傳輸至AFF ESIA900或FAS9500軟體。請勿將AFF 任何零件從無法識別的A700或FAS9000控制器模組和NVS移轉至AFF 無法識別的A900或FAS9500模組。</block>
+  <block id="d3a228303e1f5019fd998731b94f3832" category="section-title">安裝AFF 「FASA900」或「FAS9500」的NVS和控制器模組</block>
+  <block id="7967219dee6205a6946c519fdf6d46c6" category="paragraph">您必須在AFF 站台B的兩個節點上、安裝升級套件中所附的支援功能不支援的FASA900或FAS9500軟體與控制器模組請勿將coredump裝置從AFF 無法識別的A700或FAS9000 NVS模組移至AFF 無法識別的A900或FAS9500 NVS模組。</block>
+  <block id="cc6aecd0b77f7e4d0e9b241213c30d89" category="section-title">安裝AFF 《不再需要的產品」</block>
+  <block id="3d927ff83f34d204c25685406d4c4bb6" category="paragraph">請使用下列程序、在AFF 站台B的兩個節點插槽6中安裝支援的ArfeA900或FAS9500</block>
+  <block id="ae5f8d8d7bae730e7805e4ab226507ca" category="section-title">安裝AFF 「FASA900」或「FAS9500」控制器模組。</block>
+  <block id="f3462e9a0da818d19db18b31c71a3b87" category="paragraph">請使用下列程序來安裝AFF 《非洲的不規則及不規則」（FAS900）或「FAS9500」（FAS9500）控制器模組。</block>
+  <block id="2c375ca355c558652a52988f89bdc033" category="paragraph">在交換AFF 完FASA900或FAS9500控制器模組和NVS之後、您需要將AFF 該節點的叢集開機至NETBOOT或FAS9500節點、並安裝叢ONTAP 集上執行的相同的版本更新和修補程式層級。「netboot」一詞是指您從ONTAP 儲存在遠端伺服器上的不實映像進行開機。準備網路開機時、您必須在ONTAP 系統可以存取的網路伺服器上新增一份《支援》9開機映像。除非安裝在機箱中並已開啟電源、否則無法檢查ONTAP 安裝在AFF 架構套件上的支援媒體版本、例如：在執行於正在升級的S景 點A700或FAS9000系統上的支援功能、必須與執行此功能的支援功能相同、而且主要和備份開機映像都必須相符。ONTAP AFF ONTAP AFF您可以在開機功能表中執行netboot、然後執行wappeconfig命令來設定映像。如果控制器模組先前曾在另一個叢集中使用、則「wifeconfig」命令會清除開機媒體上的任何剩餘組態。</block>
+  <block id="c90754ff62c724c351a1fdbc2c0922dc" category="list-text">請等待節點B_1現在在AFF 執行下列動作的情況下、從支援的支援範圍內啟動、並顯示開機功能表選項：</block>
+  <block id="1efe4497214b901f523cf96a2c33ab26" category="list-text">使用下列命令識別可指派給新控制器模組的未指派磁碟或備用磁碟：</block>
+  <block id="2849cfeed499bf8aebf6e17e9cf254ca" category="list-text">「torage disk show -container類型spare」</block>
+  <block id="45a22a50381b7d0a6d65f4f38ec04b7d" category="doc">使用切換和切換功能（AFF 例如、更新版本的版本）、將控制器從S還原A700/A900升級至FAS9x00 MetroCluster 組態的FAS9x00 ONTAP 。</block>
+  <block id="304e34c553d5aabda89299a7fe2902b4" category="list-text">您可以使用此程序、將AFF 包含AFF 更新版本的不含ONTAP 更新版本的功能升級到包含更新版本的不含更新版本的不含更新版本的不含更新版本的不含更新版本的不含</block>
+  <block id="35a4e2939e219a109bc9eacce7e98324" category="list-text">您可以使用此程序、將FAS9000升級為使用ONTAP 更新版本的FAS9.10.1P3。</block>
+  <block id="995bf77226d032f3f7bb0a9172e19e98" category="list-text">在升級程序期間、您不應從AFF FASA700或FAS9000系統中新增或移除其他卡片。如需詳細資訊、請參閱<block ref="bb9c67b5a4c15a85b5e6aa6c9afd0285" category="inline-link-rx"></block></block>
+  <block id="ed21ec6cc897803ab446d04522b8215b" category="paragraph">本程序的範例和圖形中使用下列名稱範例：</block>
+  <block id="4f7fa4ba8a2b7d1dcd5684cabdf4bf8d" category="paragraph">在對現有MetroCluster 的資訊區組態進行任何變更之前、您必須檢查組態的健全狀況、變更RCF檔案和纜線、以符合AFF 更新的連接埠連線拓撲、以利執行更新的資訊區、以利執行更新的資訊區（如不符合更新的要求）MetroCluster 。</block>
+  <block id="8e8ad934b559d7b31276a88f6629cbae" category="paragraph">在插槽5和7中、在FFC-VI卡上使用的不只是一個架構、還需要8個FC-VI連接埠。MetroCluster AFF在開始升級之前、如果AFF 在插槽7中的插槽7或FAS9000中有插卡、您必須將其移至叢集所有節點的其他插槽。</block>
+  <block id="dce33c4d4b745f3879d39503bee14c22" category="paragraph">在更新RCF檔案和纜線以進行AFF 還原A900或FAS9500架構MetroCluster 的組態之前、您必須先確認組態的健全狀況和連線能力。</block>
+  <block id="0ed649b51c980caac951192bd233e8ca" category="paragraph">相較於一個由一個4埠FC-VI介面卡所需的單個4埠介面AFF 卡、每MetroCluster 個節點需要兩個4埠FC-VI介面卡才能使用此功能。AFF在開始將控制器升級至AFF Ardora900或FAS9500控制器之前、您必須先修改Fabric交換器RCF檔案、以支援AFF 該架構A900或FAS9500連線拓撲。</block>
+  <block id="e6b6dbc98b28672b7d02790d1de0295a" category="list-text">從<block ref="6f619f85f519d88d6754ebdd8b0379b5" category="inline-link-rx"></block>下載AFF 適用於不支援的RC900或FAS9500架構MetroCluster 的正確RCF檔案、以及AFF 使用於支援該功能的交換器機型（例如：）A700或FAS9000組態。</block>
+  <block id="1a246311887a704e5ab1d187d0cc6336" category="admonition">RCF檔案更新以支援AFF 不支援不支援使用支援不支援的A900或FAS9500架構MetroCluster 的BIOS組態、並不會影響AFF 使用於支援不支援該功能的連接埠和連線。MetroCluster</block>
+  <block id="20924b6eb8b6cea108e86b88645e9bcc" category="section-title">將連接埠從AFF FASA700或FAS9000節點對應到AFF FASA900或FAS9500節點</block>
+  <block id="28533a78f5b9ed1a1d242b6608b33990" category="paragraph">如果AFF 插槽7中有一張介面卡、則應先將其移至另一個插槽、再開始執行控制器升級程序。您必須有插槽7、才能新增MetroCluster 功能在VMware FASA900或FAS9500控制器上執行Fabric效益所需的第二個FC-VI介面卡AFF 。</block>
+  <block id="f54a1f359c3619ec4b54a5cbaf5a1d68" category="admonition">如果AFF 有任何附加模組在ESIA700或FAS9000非揮發性儲存模組上做為核心傾印裝置、請勿將這些模組傳輸至AFF ESIA900或FAS9500軟體。請勿將AFF 任何零件從無法識別的A700或A900控制器模組和NVS移轉至AFF 無法識別的A900或FAS9500控制器模組。</block>
+  <block id="147bc4d2dafd157a0f974f42f685692c" category="section-title">安裝AFF 「FASA900」或「FAS9500」的NVS和控制器模組</block>
+  <block id="d0cf791b8d9197d3aeb94c14818053cb" category="paragraph">您必須在AFF Site_B的兩個節點上、安裝升級套件中的更新套件、以安裝不支援的A900或FAS9500軟體和控制器模組請勿將coredump裝置從AFF 無法識別的A700或FAS9000 NVS模組移至AFF 無法識別的A900或FAS9500 NVS模組。</block>
+  <block id="f92e6303c5bbd6720b3a3c23e3e7d624" category="paragraph">請使用下列程序、在AFF 站台_B的兩個節點插槽6中安裝支援不支援的A900或FAS9500</block>
+  <block id="5f2bbf9d53b83c5d58b1fbf3a16b8016" category="section-title">安裝AFF 「FASA900」或「FAS9500」控制器模組</block>
+  <block id="e4c18ff35056da1d93c0204834351b0d" category="list-text">將FC VI連接埠從插槽7連接至交換器。請參閱 <block ref="995b1601992c6a25573ab03322643d00" category="inline-link-macro-rx"></block> 記錄並前往AFF 您MetroCluster 環境中交換器類型的《關於Arfe A900或FAS9500 Fabric的鏈接要求》。</block>
+  <block id="3cf4fc594d7fd1cf039eb4ac58c28e8c" category="paragraph">在交換AFF 完FASA900或FAS9500控制器模組和NVS之後、您需要將AFF 該節點的叢集開機至NETBOOT或FAS9500節點、並安裝叢ONTAP 集上執行的相同的版本更新和修補程式層級。「netboot」一詞是指您從ONTAP 儲存在遠端伺服器上的支援影像進行開機。在準備「netboot」時、您必須在ONTAP 系統可以存取的網路伺服器上新增一份《支援》9開機映像複本。</block>
+  <block id="0a9836acbabf719b22960977cfaa6666" category="paragraph">除非安裝在機箱中並已開啟電源、否則無法檢查ONTAP 安裝在AFF 架構更新媒體上的更新版本。在進行升級的過程中、在S景A900或FAS9500開機媒體上執行的支援功能版本必須與在進行升級的支援功能上執行的支援功能相同、而且主要和備份開機映像都必須相符。ONTAP AFF ONTAP AFF您可以在開機功能表中執行「netboot」、然後執行「wappeconfig」命令來設定映像。如果控制器模組先前曾在另一個叢集中使用、則「wifeconfig」命令會清除開機媒體上的任何剩餘組態。</block>
+  <block id="739b832185fa1247626c05bbd7c49e6b" category="list-text">等待AFF 執行於處理器A900或FAS9500控制器模組上的節點1開機、並顯示開機功能表選項、如下所示：</block>
+  <block id="14df4d809d9812994f1e4264e6272db6" category="paragraph">如果需要、您可以重設boot_recovery和RDB_reboot_bootargs</block>
+  <block id="d2c039898f8a935b9869f711551f1bdc" category="list-text">將節點停止回載入程式提示：</block>
+  <block id="0b0c0d8fa1e4052e4b5d4195ede1e340" category="list-text">檢查是否已設定下列bootargs：</block>
+  <block id="99892b3569ad9c719e8f7c24fa15b733" category="list-text">如果其中任一bootarg已設定為值、請將其取消設定並啟動ONTAP</block>
+  <block id="097a789cebf1d8b62e0e25ac5634e09a" category="inline-xref">重設開機恢復和RDB_rebootargs</block>
+  <block id="bbfd04df316138a8bd107ee376a54dc1" category="admonition">如果您未清除已用替換控制器的NVRAM內容、您可能會看到以下訊息：「痛苦：NVRAM內容無效...」 如果發生這種情況、請重複執行 <block ref="358c6da937c27d6519a48f813996b4db" category="inline-xref-macro-rx"></block> 以將系統開機至ONTAP 畫面提示字元。然後您就需要 <block ref="98b89efafafc6baeefb50e35f16eee3c" category="inline-xref-macro-rx"></block></block>
+  <block id="749bb4f63c981ace3f4595e0221aeaa6" category="section-title">重設boot_recovery和RDB_rebootargs</block>
+  <block id="e6d0640faf9a5179bcd547053596e9fb" category="admonition">如果您未清除已用替換控制器的NVRAM內容、您可能會看到以下訊息：「痛苦：NVRAM內容無效...」 如果發生這種情況、請重複這些子步驟、將系統開機至ONTAP 瞬間提示字元。然後您就需要 <block ref="98b89efafafc6baeefb50e35f16eee3c" category="inline-xref-macro-rx"></block></block>
+  <block id="04008409e45af76f1283ce88932da449" category="inline-link-macro">如何在MetroCluster 發生儲存設備遺失的災難後、在不再鏡射的情況下移除過時的未鏡射Aggregate項目。</block>
+  <block id="2acb95fae93eb0a712fe18af796439f5" category="paragraph">如果災難站台包含未鏡射的集合體、而未鏡射的集合體不再存在、則集合體可能會在「shorage Aggregate show」命令的輸出中顯示「unknown」（未知）狀態。請聯絡技術支援部門、移除未鏡射集合體的過時項目、並參閱知識庫文章 <block ref="5f58a40bfe898f128ca76e4a4e4715d4" category="inline-link-macro-rx"></block></block>
+  <block id="24f7d38b1eaa5b3c78d65d263e040011" category="admonition">系統會自動產生您所需的新授權金鑰、並將其傳送至檔案上的電子郵件地址。如果您在30天內未收到附有授權金鑰的電子郵件、請參閱知識庫文章中的_「如果我的授權有問題、該聯絡誰？」_一節 <block ref="fefc92a8d5d54e07ec6a27ea1fbe0992" category="inline-link-macro-rx"></block></block>
+  <block id="d903b046ad4e23192a38f289cf8b3677" category="paragraph">如果災難站台包含未鏡射的Aggregate、而未鏡射的Aggregate不再存在、則儲存Aggregate show命令的輸出中可能會顯示「'unknown'」狀態。如需移除未鏡射集合體的過時項目、請聯絡技術支援部門、請參閱知識庫文章 <block ref="5f58a40bfe898f128ca76e4a4e4715d4" category="inline-link-macro-rx"></block></block>
+  <block id="9734751a8e945b1c9cd85ffbdd0c241e" category="admonition">如果未清除已用過的更換控制器模組的NVRAM內容、您可能會看到下列緊急訊息：「嚴重：NVRAM內容無效...」 如果發生這種情況、ONTAP 請再次將系統開機至更新提示字元（「boot_ONTAP功能表」）。然後您就需要 <block ref="81092c96bc8b36fe9ac80e13a918f8bb" category="inline-xref-macro-rx"></block></block>
+  <block id="2117e88807c2074036a5c585d3364860" category="sidebar">使用切換和切換功能（AFF 例如、更新版本的版本）、將控制器從S還原A700/A900升級至FAS9x00 MetroCluster （以供選擇）ONTAP</block>
 </blocks>

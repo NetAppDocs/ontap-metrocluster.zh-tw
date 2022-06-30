@@ -4,13 +4,13 @@ sidebar: sidebar
 keywords: AFF, A900, ONTAP, FAS, FC, Brocade, metrocluster 
 summary: 下表顯示AFF 適用於Solid-A900系統的Brocade交換器上的連接埠使用量 
 ---
-= Brocade連接埠使用功能、適用於AFF 執行版本更新版本的32位元組態中的32位元組態A900控制器MetroCluster ONTAP
+= Brocade連接埠使用功能適用於AFF 執行MetroCluster 檔名9.10.1或更新版本的功能組態中的32個或9個以上的FAS900控制器ONTAP
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
-下表顯示Brocade交換器上的連接埠使用量。下表顯示支援的最大組態、四個DR群組中有八個控制器模組。支援16個FC-VI連接埠（適用於FC-VI-1和FC-VI-2的A、b、c和d）AFF
+下表顯示Brocade交換器上的連接埠使用量。下表顯示支援的最大組態、四個DR群組中有八個控制器模組。FASA900和FAS9500系統有八個FC-VI連接埠（適用於FC-VI-1和FC-VI-2的A、b、c和d）AFF
 
 |===
 

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: AFF, A900, ONTAP, FAS, FC, Brocade, ISL, Cisco, metrocluster 
 summary: 當您在使用ONTAP 更新版本的版本時、使用纜線連接FC交換器時、必須確認您使用的是指定的連接埠指派。 
 ---
-= FC交換器的連接埠指派（使用AFF Arfe A900系統時）
+= 使用AFF FASA900或FAS9500系統時、FC交換器的連接埠指派
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -24,7 +24,7 @@ summary: 當您在使用ONTAP 更新版本的版本時、使用纜線連接FC交
 
 使用佈線表格時、請注意下列準則：
 
-* 無需使用八個FC-VI連接埠即可完成儲存系統的需求。AFF如果您使用AFF 的是FASA900、則需要使用八個連接埠組態。如果組態包含其他儲存系統機型、請使用表格中所示的纜線、但不要使用不需要的FC-VI連接埠纜線。
+* FASA900或FAS9500儲存系統需要八個FC-VI連接埠。AFF如果您使用AFF 的是FASA900或FAS9500、則需要使用八個連接埠組態。如果組態包含其他儲存系統機型、請使用表格中所示的纜線、但不要使用不需要的FC-VI連接埠纜線。
 * 如果MetroCluster 您有兩個共享ISL的不完整組態、請使用與八節點MetroCluster 的不完整連接線相同的連接埠指派。
 * 根據站台的需求、您纜線的ISL數量可能會有所不同。
 * 請參閱ISL考量事項一節。

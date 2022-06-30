@@ -77,9 +77,9 @@ image::../media/cabling_an_aff_a800_to_a_cisco_3232c_or_cisco_9336c_switch.png[�
 
 
 
-== 將Arc-A900纜線連接AFF 至Cisco 3232C或Cisco 9336C交換器
+== 將AFF FASA900或FAS9500纜線連接至Cisco 3232C或Cisco 9336C交換器
 
-image::../media/cabling_an_aff_a900_to_a_cisco_3232c_or_cisco_9336c_switch.png[將AFF VA900纜線連接至Cisco 3232c或Cisco 9336c交換器]
+image:../media/cabling_an_aff_a900_or_FAS9500_to_a_cisco_3232c_or_cisco_9336c_switch.png[""]
 
 
 

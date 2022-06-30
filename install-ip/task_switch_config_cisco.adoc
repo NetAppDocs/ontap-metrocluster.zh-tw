@@ -416,6 +416,10 @@ NX3232_v1.80_Switch-B2.txt
 |===
 .步驟
 . 下載MetroCluster 《RCF》檔案。
++
+
+NOTE: 不支援下載後修改RCF檔案。
+
 . 將RCF檔案複製到交換器：
 +
 .. 將RCF檔案複製到第一個交換器：

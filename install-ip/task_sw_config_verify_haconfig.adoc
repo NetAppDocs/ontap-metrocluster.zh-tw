@@ -1439,7 +1439,7 @@ IP介面2. MetroCluster
 
 
  a| 
-解答900 AFF
+FASA900和FAS9500 AFF
  a| 
 e5b.
  a| 

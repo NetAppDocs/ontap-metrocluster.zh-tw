@@ -870,7 +870,7 @@ IP介面2. MetroCluster
 
 
  a| 
-解答900 AFF
+FASA900和FAS9500 AFF
  a| 
 e5b.
  a| 
@@ -896,7 +896,7 @@ e1b
 
 
  a| 
-產品包括A700和FAS900 AFF
+以利A700和FAS9000 AFF
  a| 
 e5a
  a| 
