@@ -3757,7 +3757,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-05-10 16:14:55 +0000">05/10/2022</time>
+    <time datetime="2022-07-11 22:42:33 +0000">07/11/2022</time>
     
   
 
@@ -3930,19 +3930,33 @@ volumes             ok
 </div>
 </li>
 <li>
-<p>視交換器廠商而定、下載並安裝IP RCF檔案：</p>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-broadcom-rcf-files">"下載並安裝Broadcom IP RCF檔案"</a></p>
+<p>視交換器廠商而定、下載並安裝IP RCF檔案。</p>
 </li>
-<li>
-<p><a href="../install-ip/task_switch_config_cisco.html#downloading-and-installing-the-cisco-ip-rcf-files">"下載並安裝Cisco IP RCF檔案"</a></p>
-<div class="paragraph">
-<p>請依照下列順序更新交換器：</p>
+</ol>
 </div>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-metrocluster/images/note.svg" alt="附註">
+</td>
+<td class="content">
+如果您有L2共用或L3網路組態、可能需要調整中繼/客戶交換器上的ISL連接埠。switchport模式可能會從「存取」模式變更為「主幹」模式。只有在交換器A_1和B_1之間的網路連線完全正常且網路正常時、才繼續升級第二個交換器配對（A_2、B_2）。
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>+* <a href="../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-broadcom-rcf-files">"下載並安裝Broadcom IP RCF檔案"</a></p>
+</div>
+<div class="paragraph">
+<p>+* <a href="../install-ip/task_switch_config_cisco.html#downloading-and-installing-the-cisco-ip-rcf-files">"下載並安裝Cisco IP RCF檔案"</a></p>
+</div>
+<div class="paragraph">
+<p>+依照下列順序更新交換器：</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>switch_a_1.</p>
 </li>
@@ -3957,11 +3971,8 @@ volumes             ok
 </li>
 </ol>
 </div>
-</li>
-</ul>
-</div>
-</li>
-</ol>
+<div class="paragraph">
+<p>GitHub第135期、2022年7月4日</p>
 </div>
 </div>
 </div>

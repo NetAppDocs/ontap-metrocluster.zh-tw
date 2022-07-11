@@ -3757,7 +3757,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-05-03 08:11:44 +0000">05/03/2022</time>
+    <time datetime="2022-07-11 22:42:33 +0000">07/11/2022</time>
     
   
 
@@ -3991,8 +3991,37 @@ Where is the controller located []: site_A</pre>
 <div class="paragraph">
 <p>"torage容錯移轉修改-mode ha -nodNode localhost"</p>
 </div>
-<div class="paragraph">
-<p>此命令會設定高可用度模式、但不會啟用儲存容錯移轉。儲存容錯移轉功能會在MetroCluster 稍後設定支援功能時自動啟用。</p>
+<div class="exampleblock">
+<div class="content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/ontap-metrocluster/images/note.svg" alt="附註">
+</td>
+<td class="content">
+HA和儲存容錯移轉的預期組態狀態如下：
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>已設定HA模式、但未啟用儲存容錯移轉。</p>
+</li>
+<li>
+<p>HA接管功能已停用。</p>
+</li>
+<li>
+<p>HA介面離線。</p>
+</li>
+<li>
+<p>HA模式、儲存容錯移轉和介面會在稍後的程序中進行設定。</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </li>
 <li>

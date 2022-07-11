@@ -3757,7 +3757,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-06-01 14:13:16 +0000">06/01/2022</time>
+    <time datetime="2022-07-11 22:42:33 +0000">07/11/2022</time>
     
   
 
@@ -3801,7 +3801,7 @@
 <p>您必須先關閉站台和所有設備的電源、才能開始進行現場維護或重新配置。</p>
 </div>
 <div class="paragraph">
-<p>下列步驟中的所有命令都會從您要關閉電源的站台發出。</p>
+<p>下列步驟中的所有命令都會從站台發出、以維持開機狀態。</p>
 </div>
 <div class="olist arabic">
 <div class="title">步驟</div>
@@ -3859,9 +3859,14 @@
 </div>
 </li>
 <li>
-<p>輸入下列命令以實作切換：</p>
+<p>從您想要維持不變的站台執行切換：</p>
 <div class="paragraph">
 <p>《不切換》MetroCluster</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cluster_A::*&gt; metrocluster switchover</pre>
+</div>
 </div>
 <div class="paragraph">
 <p>此作業可能需要數分鐘才能完成。</p>
@@ -3901,6 +3906,37 @@ cluster_A::*&gt; metrocluster operation show
 <p>如果MetroCluster 您有執行ONTAP 支援支援支援的支援功能、請等待災難站台上線、並自動完成修復作業。</p>
 <div class="paragraph">
 <p>在執行舊版支援的靜態IP組態中、災難站台節點不會自動開機至靜態、而且叢集仍會離線。MetroCluster ONTAP ONTAP對於精選FC組態、所有的彈性都會維持在線上、您不需要在線上進行彈性作業。MetroCluster</p>
+</div>
+</li>
+<li>
+<p>離線移動磁碟區和LUN。</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>離線移動磁碟區。</p>
+<div class="listingblock">
+<div class="content">
+<pre>cluster_A::* volume offline &lt;volume name&gt;</pre>
+</div>
+</div>
+</li>
+<li>
+<p>離線移動LUN。</p>
+<div class="listingblock">
+<div class="content">
+<pre>cluster_A::* lun offline lun_path &lt;lun_path&gt;</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>離線移動無鏡射的集合體：「將Aggregate離線」</p>
+<div class="listingblock">
+<div class="content">
+<pre>cluster_A*::&gt; storage aggregate offline -aggregate &lt;aggregate-name&gt;</pre>
+</div>
 </div>
 </li>
 <li>
