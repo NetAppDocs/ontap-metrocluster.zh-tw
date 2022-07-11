@@ -206,8 +206,17 @@ https://docs.netapp.com/us-en/ontap/index.html#about-ontap-system-manager["系�
 "torage容錯移轉修改-mode ha -nodNode localhost"
 
 +
-此命令會設定高可用度模式、但不會啟用儲存容錯移轉。儲存容錯移轉功能會在MetroCluster 稍後設定支援功能時自動啟用。
+====
 
+NOTE: HA和儲存容錯移轉的預期組態狀態如下：
+
+** 已設定HA模式、但未啟用儲存容錯移轉。
+** HA接管功能已停用。
+** HA介面離線。
+** HA模式、儲存容錯移轉和介面會在稍後的程序中進行設定。
+
+
+====
 . 確認您有四個連接埠設定為叢集互連：
 +
 「網路連接埠展示」

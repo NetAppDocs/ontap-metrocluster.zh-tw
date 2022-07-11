@@ -3786,11 +3786,7 @@
   <block id="c58c2c8b494a438765beae02806faf3a" category="paragraph">請依照交換器廠商的步驟進行：</block>
   <block id="680a4f630b21eab8e23842ce1e77c536" category="list-text"><block ref="680a4f630b21eab8e23842ce1e77c536" category="inline-link-macro-rx"></block></block>
   <block id="fe829dd203a0238e92149d6e50fe01a3" category="list-text"><block ref="fe829dd203a0238e92149d6e50fe01a3" category="inline-link-macro-rx"></block></block>
-  <block id="2deafafde550e3fbeae046746ef3f599" category="list-text">視交換器廠商而定、下載並安裝IP RCF檔案：</block>
   <block id="97a377942f4f2e5cbecdba36cbfb77ea" category="inline-link-macro">下載並安裝Broadcom IP RCF檔案</block>
-  <block id="c1e630c896fe7378e2dd05cd5272a6ff" category="list-text"><block ref="c1e630c896fe7378e2dd05cd5272a6ff" category="inline-link-macro-rx"></block></block>
-  <block id="e36e202b6cdca1dbc2cdea18cfdd7bdb" category="list-text"><block ref="e36e202b6cdca1dbc2cdea18cfdd7bdb" category="inline-link-macro-rx"></block></block>
-  <block id="d42d9a9e37bc8567ae9ea46bcfad54c0" category="paragraph">請依照下列順序更新交換器：</block>
   <block id="78000b0502657029700618498b49c2a2" category="list-text">switch_a_1.</block>
   <block id="e8ec5d8866ea800460ce1192269d2c8f" category="list-text">switch_B_1</block>
   <block id="9c84e76a527ed2550b5deb0129b1f0ef" category="list-text">switch_a_2</block>
@@ -4208,9 +4204,7 @@
   <block id="13453110a818269a21fc3929d2514208" category="image-alt">關閉資料中心電源</block>
   <block id="efe31da79ff42582640c229b718168aa" category="section-title">關閉MetroCluster 站台電源</block>
   <block id="c72683789a2c53d80a618207766d5e8e" category="paragraph">您必須先關閉站台和所有設備的電源、才能開始進行現場維護或重新配置。</block>
-  <block id="d8a69cf9d5438bcb021a7abc71ab4571" category="paragraph">下列步驟中的所有命令都會從您要關閉電源的站台發出。</block>
   <block id="4bfd66c37cd5ce244e0dfdd30c499d83" category="list-text">開始之前、請檢查站台上的任何非鏡射Aggregate是否離線。</block>
-  <block id="9458e87c0098f44c3f2f9a56df027289" category="list-text">輸入下列命令以實作切換：</block>
   <block id="edc7b16c34c41ad12b6699da441a1e45" category="paragraph">此作業可能需要數分鐘才能完成。</block>
   <block id="0829264e645ef456fedfb9d7d6e189a9" category="paragraph">在SFC組態中MetroCluster 、只有在可存取Aggregate中的遠端磁碟時、才能在切換後將無鏡射的Aggregate連線。如果ISL失敗、本機節點可能無法存取無鏡射遠端磁碟中的資料。Aggregate故障可能導致本機節點重新開機。</block>
   <block id="c35cb6405b316f2999613190b9a610f3" category="list-text">監控並驗證切換是否完成：</block>
@@ -11900,7 +11894,6 @@
   <block id="8530ba5faae064c1995c97418375b708" category="list-text">驗證是否有序列連接埠主控台可用於控制器模組。</block>
   <block id="7954d231078e39daa7e7ed014287f37f" category="list-text">確認您的環境符合站台和系統需求。</block>
   <block id="d2f829e728cf15e6e3b1c66326532c9f" category="list-text">收集新控制器模組的所有IP位址和其他網路參數。</block>
-  <block id="775b84147d85d58d8180690300a5d104" category="list-text">您可以將此程序搭配特定ONTAP 的版本使用：</block>
   <block id="0658afd7b63854a03c773da7890b79c4" category="list-text">支援雙節點組態ONTAP 的版本可在支援的版本中使用。</block>
   <block id="ed332ae2e9a3efd17382e627809f4c84" category="paragraph">請勿將此程序用於執行ONTAP 9.8版之前版本之各種版本的四節點或八節點組態。</block>
   <block id="ea82c7b5fb58362afd3d6e95de6eb609" category="list-text">FAS80x0</block>
@@ -12596,4 +12589,23 @@
   <block id="d903b046ad4e23192a38f289cf8b3677" category="paragraph">如果災難站台包含未鏡射的Aggregate、而未鏡射的Aggregate不再存在、則儲存Aggregate show命令的輸出中可能會顯示「'unknown'」狀態。如需移除未鏡射集合體的過時項目、請聯絡技術支援部門、請參閱知識庫文章 <block ref="5f58a40bfe898f128ca76e4a4e4715d4" category="inline-link-macro-rx"></block></block>
   <block id="9734751a8e945b1c9cd85ffbdd0c241e" category="admonition">如果未清除已用過的更換控制器模組的NVRAM內容、您可能會看到下列緊急訊息：「嚴重：NVRAM內容無效...」 如果發生這種情況、ONTAP 請再次將系統開機至更新提示字元（「boot_ONTAP功能表」）。然後您就需要 <block ref="81092c96bc8b36fe9ac80e13a918f8bb" category="inline-xref-macro-rx"></block></block>
   <block id="2117e88807c2074036a5c585d3364860" category="sidebar">使用切換和切換功能（AFF 例如、更新版本的版本）、將控制器從S還原A700/A900升級至FAS9x00 MetroCluster （以供選擇）ONTAP</block>
+  <block id="0ab5e32384cf33a80caff743210417d8" category="admonition">HA和儲存容錯移轉的預期組態狀態如下：</block>
+  <block id="a9c14bf4555cada69be518fce567a21c" category="list-text">已設定HA模式、但未啟用儲存容錯移轉。</block>
+  <block id="917db687ec940c706231d4c917812bb2" category="list-text">HA接管功能已停用。</block>
+  <block id="202fc6604bcb0268741426bb0d623520" category="list-text">HA介面離線。</block>
+  <block id="9064d0cb38703eeae4019097f2ba6dee" category="list-text">HA模式、儲存容錯移轉和介面會在稍後的程序中進行設定。</block>
+  <block id="a5820aab646669a3b5a9ad826ceaf514" category="list-text">您可以將此程序搭配特定ONTAP 的版本使用：</block>
+  <block id="5ac8082d208bbf03d0cce2d606e0f49f" category="paragraph">無相符的連接埠。升級後、您必須重新建立叢集連接埠。<block ref="2305a256def4f5c38d82352fac177e1d" category="inline-link-macro-rx"></block></block>
+  <block id="44489e59a236bf582156026d721d7300" category="list-text">視交換器廠商而定、下載並安裝IP RCF檔案。</block>
+  <block id="a208547a21e1dc907c538b655cfee7c1" category="admonition">如果您有L2共用或L3網路組態、可能需要調整中繼/客戶交換器上的ISL連接埠。switchport模式可能會從「存取」模式變更為「主幹」模式。只有在交換器A_1和B_1之間的網路連線完全正常且網路正常時、才繼續升級第二個交換器配對（A_2、B_2）。</block>
+  <block id="a7ad2cc3f2e65335d382b74029354ee6" category="paragraph">+* <block ref="c1e630c896fe7378e2dd05cd5272a6ff" category="inline-link-macro-rx"></block></block>
+  <block id="15229eb2fb74ec06320e5767f87322b0" category="paragraph">+* <block ref="e36e202b6cdca1dbc2cdea18cfdd7bdb" category="inline-link-macro-rx"></block></block>
+  <block id="6103dfdbf1ef77c8394206644595ce63" category="paragraph">+依照下列順序更新交換器：</block>
+  <block id="440e5d46a3352ce5e00ab6b9ecdbc792" category="paragraph">GitHub第135期、2022年7月4日</block>
+  <block id="05cb8d64e2770620783bfd98ba2c571c" category="paragraph">下列步驟中的所有命令都會從站台發出、以維持開機狀態。</block>
+  <block id="714cb8627bb0d04d6b5d032326cab4a3" category="list-text">從您想要維持不變的站台執行切換：</block>
+  <block id="d5e08bac7a66723faca8e245c44582ae" category="list-text">離線移動磁碟區和LUN。</block>
+  <block id="4434ac45fa2bd65c77619dc4135a3848" category="list-text">離線移動磁碟區。</block>
+  <block id="8a0f98caf632998576a36c94b83328a6" category="list-text">離線移動LUN。</block>
+  <block id="e7edce3217788bc841a63851100c9164" category="list-text">離線移動無鏡射的集合體：「將Aggregate離線」</block>
 </blocks>

@@ -28,7 +28,7 @@ image::power-on-off-data-center.gif[關閉資料中心電源]
 
 您必須先關閉站台和所有設備的電源、才能開始進行現場維護或重新配置。
 
-下列步驟中的所有命令都會從您要關閉電源的站台發出。
+下列步驟中的所有命令都會從站台發出、以維持開機狀態。
 
 .步驟
 . 開始之前、請檢查站台上的任何非鏡射Aggregate是否離線。
@@ -62,10 +62,15 @@ https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp
 .. 執行Config Advisor 完功能後、請檢閱工具的輸出結果、並依照輸出中的建議來解決發現的任何問題。
 
 
-. 輸入下列命令以實作切換：
+. 從您想要維持不變的站台執行切換：
 +
 《不切換》MetroCluster
 
++
+[listing]
+----
+cluster_A::*> metrocluster switchover
+----
 +
 此作業可能需要數分鐘才能完成。
 
@@ -99,6 +104,28 @@ cluster_A::*> metrocluster operation show
 +
 在執行舊版支援的靜態IP組態中、災難站台節點不會自動開機至靜態、而且叢集仍會離線。MetroCluster ONTAP ONTAP對於精選FC組態、所有的彈性都會維持在線上、您不需要在線上進行彈性作業。MetroCluster
 
+. 離線移動磁碟區和LUN。
++
+.. 離線移動磁碟區。
++
+[listing]
+----
+cluster_A::* volume offline <volume name>
+----
+.. 離線移動LUN。
++
+[listing]
+----
+cluster_A::* lun offline lun_path <lun_path>
+----
+
+
+. 離線移動無鏡射的集合體：「將Aggregate離線」
++
+[listing]
+----
+cluster_A*::> storage aggregate offline -aggregate <aggregate-name>
+----
 . 視您的組態和ONTAP 版本而定、找出並移動位於災難站台（Cluster_B）的離線受影響的叢集。
 +
 [NOTE]

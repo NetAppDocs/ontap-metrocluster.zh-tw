@@ -127,20 +127,22 @@ volumes             ok
 ** link:../install-ip/task_switch_config_cisco.html["將Cisco IP交換器重設為原廠預設值"]
 
 
-. 視交換器廠商而定、下載並安裝IP RCF檔案：
-+
-** link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-broadcom-rcf-files["下載並安裝Broadcom IP RCF檔案"]
-** link:../install-ip/task_switch_config_cisco.html#downloading-and-installing-the-cisco-ip-rcf-files["下載並安裝Cisco IP RCF檔案"]
-
-
-+
-請依照下列順序更新交換器：
-
-+
-.. switch_a_1.
-.. switch_B_1
-.. switch_a_2
-.. switch_b_2
+. 視交換器廠商而定、下載並安裝IP RCF檔案。
 
 
 
+NOTE: 如果您有L2共用或L3網路組態、可能需要調整中繼/客戶交換器上的ISL連接埠。switchport模式可能會從「存取」模式變更為「主幹」模式。只有在交換器A_1和B_1之間的網路連線完全正常且網路正常時、才繼續升級第二個交換器配對（A_2、B_2）。
+
++* link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-broadcom-rcf-files["下載並安裝Broadcom IP RCF檔案"]
+
++* link:../install-ip/task_switch_config_cisco.html#downloading-and-installing-the-cisco-ip-rcf-files["下載並安裝Cisco IP RCF檔案"]
+
++依照下列順序更新交換器：
+
+. switch_a_1.
+. switch_B_1
+. switch_a_2
+. switch_b_2
+
+
+GitHub第135期、2022年7月4日

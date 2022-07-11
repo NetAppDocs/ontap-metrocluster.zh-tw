@@ -239,7 +239,7 @@ e0a、e0b
  a| 
 E3A、e3b
  a| 
-無相符的連接埠。升級後、您必須重新建立叢集連接埠。
+無相符的連接埠。升級後、您必須重新建立叢集連接埠。link:task_prepare_cluster_ports_on_the_exist_controller.html["準備現有控制器模組上的叢集連接埠"]
 
 
 

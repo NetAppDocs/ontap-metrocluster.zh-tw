@@ -209,7 +209,6 @@ data_cluster_B
                                                               normal
 root_cluster_B    -         -     - unknown      - node_A_1   -
 ----
-. 從災難站台開機節點。
 . 檢查切換回復的狀態：
 +
 「不一樣的秀」MetroCluster
