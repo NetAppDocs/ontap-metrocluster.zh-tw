@@ -258,11 +258,13 @@
           <div id="react-search" 
           data-search-html="/zh-tw/ontap-metrocluster/search.html"
           data-type="widget" 
-          data-placeholder="搜尋文件" 
-          data-no-results-found="找不到符合 {query} 的相關結果。" 
-          data-did-you-mean="搜尋 {suggestion}。" 
-          data-no-results-found-did-you-mean="找不到符合 {query} 的相關結果。您是否要找的是{suggestion}？" 
-          data-results-found="找到 {hitCount} 筆結果"  
+          data-placeholder="搜尋文件"
+          data-no-results-found="找不到符合 {query} 的相關結果。"
+          data-did-you-mean="搜尋 {suggestion}。"
+          data-no-results-found-did-you-mean="找不到符合 {query} 的相關結果。您是否要找的是{suggestion}？"
+          data-results-found="找到 {hitCount} 筆結果"
+          data-error-message="We're sorry, an issue occurred when fetching your results. Please try again."
+          data-error-reset="Reset Search"
           data-sk-es-pf-indexes=""
           data-flavor=""></div>
           <button class="n-property-bar__search-toggle-button" type="button">
@@ -3757,7 +3759,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-05-10 16:14:55 +0000">05/10/2022</time>
+    <time datetime="2022-07-14 21:00:16 +0000">07/14/2022</time>
     
   
 
@@ -3767,15 +3769,11 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph lead">
-<p>您的環境必須符合下列需求。</p>
+<p>您的環境必須符合特定要求。</p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<img src="/us-en/ontap-metrocluster/images/note.svg" alt="附註">
-</td>
-<td class="content">
+<div class="paragraph">
+<p>下列需求適用於單一災難恢復群組（DR群組）。深入瞭解 <a href="concept_parts_of_an_ip_mcc_configuration_mcc_ip.html#disaster-recovery-dr-groups">"DR群組"</a>。</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -3786,6 +3784,9 @@
 </li>
 <li>
 <p>這個功能只能安裝在Linux主機上、而且必須與這個功能區分開安裝。ONTAP MetroCluster</p>
+<div class="paragraph">
+<p>每個站台之間的連線ONTAP 能力必須是兩個獨立的故障領域。</p>
+</div>
 </li>
 <li>
 <p>「支援器」服務最多可同時支援五種支援的「支援架構」組態。ONTAP MetroCluster</p>
@@ -3794,10 +3795,6 @@
 <p>支援自動非計畫性的切換ONTAP 功能、可在更新版本的更新版本中使用。</p>
 </li>
 </ul>
-</div>
-</td>
-</tr>
-</table>
 </div>
 </div>
 </div>
@@ -3812,10 +3809,10 @@
 <li>
 <p>延遲</p>
 <div class="paragraph">
-<p>往返延遲不得超過75毫秒。</p>
+<p>最大延遲低於75ms（RTT）。</p>
 </div>
 <div class="paragraph">
-<p>不穩定性不得超過25毫秒。</p>
+<p>不穩定性不得超過5毫秒。</p>
 </div>
 </li>
 <li>
@@ -3827,13 +3824,50 @@
 <li>
 <p>封包遺失</p>
 <div class="paragraph">
-<p>封包遺失必須小於或等於0.01%。</p>
+<p>對於網際網路控制訊息傳輸協定（ICMP）和TCP流量、封包遺失必須低於0.01%。</p>
 </div>
 </li>
 <li>
 <p>頻寬</p>
 <div class="paragraph">
-<p>「訊號器」服務與MetroCluster 「資訊系統」組態之間的連結必須至少有20 Mbps的頻寬。</p>
+<p>調解器服務與一個DR群組之間的連結必須至少有20Mbps的頻寬。</p>
+</div>
+</li>
+<li>
+<p>獨立連線</p>
+<div class="paragraph">
+<p>每個站台和ONTAP 這個「位址器」之間必須獨立連線。一個站台發生故障時、不得中斷其他兩個不受影響站台之間的IP連線。</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="以架構架構進行的主機需求ontap-metrocluster">以架構架構進行的主機需求ONTAP MetroCluster</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>您必須確保組態符合多項主機需求。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>必須在實體與兩個實體叢集分離的外部站台安裝此資訊卡。ONTAP ONTAP</p>
+</li>
+<li>
+<p>支援最多五種支援的不限位功能組態。ONTAP MetroCluster</p>
+</li>
+<li>
+<p>不需要超過主機作業系統的CPU和記憶體（RAM）最低需求。ONTAP</p>
+</li>
+<li>
+<p>除了主機作業系統的最低需求之外、還必須至少提供30GB的額外可用磁碟空間。</p>
+<div class="ulist">
+<ul>
+<li>
+<p>每個DR群組最多需要200MB的磁碟空間。</p>
+</li>
+</ul>
 </div>
 </li>
 </ul>
