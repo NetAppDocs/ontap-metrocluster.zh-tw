@@ -11,18 +11,20 @@ summary: 從Sf2 9.7開始ONTAP 、ONTAP 透過MetroCluster 提供實體獨立的
 
 
 [role="lead"]
-您的環境必須符合下列需求。
+您的環境必須符合特定要求。
 
-[NOTE]
-====
+下列需求適用於單一災難恢復群組（DR群組）。深入瞭解 link:concept_parts_of_an_ip_mcc_configuration_mcc_ip.html#disaster-recovery-dr-groups["DR群組"]。
+
 * 如果您打算更新Linux版本、請在安裝最新ONTAP 的《支援者》服務之前、先進行更新。
 * 不應將此二者同時用於相同的Se組態設定中、即使用此功能的「支援器」服務和「資料斷路器」軟體。ONTAP MetroCluster MetroCluster
 * 這個功能只能安裝在Linux主機上、而且必須與這個功能區分開安裝。ONTAP MetroCluster
++
+每個站台之間的連線ONTAP 能力必須是兩個獨立的故障領域。
+
 * 「支援器」服務最多可同時支援五種支援的「支援架構」組態。ONTAP MetroCluster
 * 支援自動非計畫性的切換ONTAP 功能、可在更新版本的更新版本中使用。
 
 
-====
 
 
 == 在MetroCluster 一個架構中使用資訊器的網路需求
@@ -31,10 +33,10 @@ summary: 從Sf2 9.7開始ONTAP 、ONTAP 透過MetroCluster 提供實體獨立的
 
 * 延遲
 +
-往返延遲不得超過75毫秒。
+最大延遲低於75ms（RTT）。
 
 +
-不穩定性不得超過25毫秒。
+不穩定性不得超過5毫秒。
 
 * MTU
 +
@@ -42,11 +44,31 @@ MTU大小必須至少為1400。
 
 * 封包遺失
 +
-封包遺失必須小於或等於0.01%。
+對於網際網路控制訊息傳輸協定（ICMP）和TCP流量、封包遺失必須低於0.01%。
 
 * 頻寬
 +
-「訊號器」服務與MetroCluster 「資訊系統」組態之間的連結必須至少有20 Mbps的頻寬。
+調解器服務與一個DR群組之間的連結必須至少有20Mbps的頻寬。
+
+* 獨立連線
++
+每個站台和ONTAP 這個「位址器」之間必須獨立連線。一個站台發生故障時、不得中斷其他兩個不受影響站台之間的IP連線。
+
+
+
+
+
+== 以架構架構進行的主機需求ONTAP MetroCluster
+
+您必須確保組態符合多項主機需求。
+
+* 必須在實體與兩個實體叢集分離的外部站台安裝此資訊卡。ONTAP ONTAP
+* 支援最多五種支援的不限位功能組態。ONTAP MetroCluster
+* 不需要超過主機作業系統的CPU和記憶體（RAM）最低需求。ONTAP
+* 除了主機作業系統的最低需求之外、還必須至少提供30GB的額外可用磁碟空間。
++
+** 每個DR群組最多需要200MB的磁碟空間。
+
 
 
 
