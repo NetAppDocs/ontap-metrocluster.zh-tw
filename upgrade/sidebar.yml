@@ -6,14 +6,15 @@ entries:
   url: "/upgrade/concept_choosing_an_upgrade_method_mcc.html"
 - title: 使用MetroCluster 切換和切換功能升級採用SFC組態的控制器
   url: "/upgrade/task_upgrade_controllers_in_a_four_node_fc_mcc_us_switchover_and_switchback_mcc_fc_4n_cu.html"
-- title: 使用切換和切換功能（AFF 例如、更新版本的版本）、將控制器從S還原A700/A900升級至FAS9x00 MetroCluster 組態的FAS9x00
-    ONTAP 。
+- title: 使用切換和切換功能（AFF 更新版本）、將控制器從功能不實的A700/FAS9000升級AFF 至功能不實的A900/FAS9500 MetroCluster
+    （以功能不實的FC組態）ONTAP
   url: "/upgrade/task_upgrade_A700_to_A900_in_a_four_node_mcc_fc_us_switchover_and_switchback.html"
 - title: 使用MetroCluster 切換功能升級四節點的SFC組態中的控制器、並以「系統控制器更換」命令（ONTAP 版本號：E59.10.1及更新版本）進行切換。
   url: "/upgrade/task_upgrade_controllers_system_control_commands_in_a_four_node_mcc_fc.html"
 - title: 使用MetroCluster 切換和切換功能升級採用S還原IP組態的控制器（ONTAP 版本號：9.8及更新版本）
   url: "/upgrade/task_upgrade_controllers_in_a_four_node_ip_mcc_us_switchover_and_switchback_mcc_ip.html"
-- title: 使用切換和切換功能（AFF 例如、更新版本的版本）、將控制器從S還原A700/A900升級至FAS9x00 MetroCluster （以供選擇）ONTAP
+- title: 使用交換器和切換功能（AFF 更新版本）、將控制器從功能性的A700/FAS9000升級AFF 至功能性的S還原A900/FAS9500 MetroCluster
+    （以不整合的IP組態）ONTAP
   url: "/upgrade/task_upgrade_A700_to_A900_in_a_four_node_mcc_ip_us_switchover_and_switchback.html"
 - title: 重新整理四節點MetroCluster 的不含功能的FC組態
   url: "/upgrade/task_refresh_4n_mcc_fc.html"

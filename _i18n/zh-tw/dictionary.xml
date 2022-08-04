@@ -605,7 +605,6 @@
   <block id="53270fbfda62583949b287e08ae3d063" category="paragraph">解答800 AFF</block>
   <block id="22fe67c2e87caff18249cf1804bbeaad" category="paragraph">e0b.</block>
   <block id="e737b5ac24a63afc00e81377a906728d" category="paragraph">e1b</block>
-  <block id="4d2df55d2343b32800bfea20e735c55a" category="paragraph">產品包括A700和FAS900 AFF</block>
   <block id="ce8a9ea1be6239e906e9f5393a9f9ea5" category="paragraph">e5a</block>
   <block id="9cb7b36b3f2bccc776862e6f2f494077" category="paragraph">e1a.</block>
   <block id="73ab298c8e00d66d28156892903a39ce" category="paragraph">解答320 AFF</block>
@@ -1863,7 +1862,6 @@
   <block id="7d191b34c9144d68eb2fae3f407083be" category="paragraph">「儲存容錯移轉顯示欄位模式」</block>
   <block id="b4c9e1380e1ed5373eae1207de120c59" category="paragraph">如果不是、您必須在每個節點上設定HA模式、然後重新啟動節點：</block>
   <block id="0f68bcf6db23f619a99e94a2fc9e080a" category="paragraph">"torage容錯移轉修改-mode ha -nodNode localhost"</block>
-  <block id="734411caacc66dc5fb48af46a3ee7524" category="paragraph">此命令會設定高可用度模式、但不會啟用儲存容錯移轉。儲存容錯移轉功能會在MetroCluster 稍後設定支援功能時自動啟用。</block>
   <block id="dd06a2caac751d244ed876cee557e7fb" category="list-text">確認您有四個連接埠設定為叢集互連：</block>
   <block id="c8a47a2f93307e796690ebd7d82f5573" category="paragraph">目前尚未設定好這個介面、且不會出現在命令輸出中。MetroCluster</block>
   <block id="76c896ac6b7a90ae2d17c2b3934e8219" category="paragraph">以下範例顯示node_a_1上的兩個叢集連接埠：</block>
@@ -1942,122 +1940,30 @@
   <block id="1be7c4ddc79016b4335125e64b368241" category="list-text">如果機箱的顯示系統狀態不是「mCCIP」、請設定機箱的HA狀態：</block>
   <block id="b687dd86b8db3b030c46a3fbc2a2d024" category="paragraph">「ha-config modify機箱mccip」</block>
   <block id="49eb5704f61afb2484b6cc1439fa40de" category="list-text">在MetroCluster 整個過程中的每個節點上重複上述步驟。</block>
-  <block id="eb7f8625ee8e86a6bca2611bb12442ec" category="list-text"><block ref="c1f5a94cfd066062167f55d534e50946" category="inline-xref-macro-rx"></block></block>
-  <block id="6c7a64a1f4e024ce7a69797733e5ea70" category="list-text"><block ref="a68a4adac480e2cd0e0cb4df2db11ae4" category="inline-xref-macro-rx"></block></block>
-  <block id="f9a26e7e1146416447089df2dd5e9a7a" category="list-text">選取選項「9a」。</block>
-  <block id="f2c62ba974aeba381c63dedf483a3554" category="list-text">節點重新啟動時、請在系統提示時按Ctrl-C以顯示開機功能表、然後選取*維護模式開機*選項。</block>
-  <block id="777c3d143908c77e542462fee4831d88" category="list-text">請前往 <block ref="0ec0f3cb91ab6923e11455d08d5019fc" category="inline-link-macro-rx"></block>。</block>
-  <block id="9620a315fe49582f83b352cb3df7065d" category="paragraph">當節點處於維護模式時、您必須先將適當磁碟櫃上的單一磁碟指派給資源池0。然後、將機櫃上的其餘磁碟自動指派給同一個資源池。ONTAP從原廠接收的系統不需要執行此工作、因為原廠系統具有集區0、可容納預先設定的根Aggregate。</block>
-  <block id="25b5ead61653e93322d7cdd02e68bed7" category="list-text">使用開機功能表上的選項「4」來啟動站台A的每個節點：</block>
-  <block id="d6262ce3ce8d4552f5bba743fa687f27" category="list-text">從開機功能表中選取選項「4」、然後繼續。</block>
-  <block id="c00ad9db1ba9b2390705a2374f4d3c8b" category="list-text">使用開機功能表上的選項「4」、在站台B開機每個節點：</block>
-  <block id="da4ffc9643edc63e8b45b98c3db4e4d1" category="list-text">從開機功能表中選取選項「4」、然後繼續。</block>
-  <block id="973fe20c86fcee0442e8a4a7a7390bba" category="list-text">在每個叢集中的第一個節點上、繼續執行各項提示以設定叢集</block>
-  <block id="8628c8f82d22aaba7e4ff8640b5c8913" category="paragraph"><block ref="8628c8f82d22aaba7e4ff8640b5c8913" category="inline-link-rx"></block></block>
-  <block id="e8453ea55ca2ab8a592b2cb35594bcab" category="inline-link">系統管理程式（9.7版及更新版本）ONTAP</block>
-  <block id="4c5303bd380c1014a165c1ad253ea2f5" category="paragraph"><block ref="4c5303bd380c1014a165c1ad253ea2f5" category="inline-link-rx"></block></block>
   <block id="f753a91b4868b4d2d7ad06fa15958542" category="paragraph">"torage容錯移轉修改-mode ha -nod_norlocalhost_"</block>
-  <block id="6823c1546d13fbb3599a3e00ab6bcc7a" category="paragraph">「torage disk option modify -node_name -autodassign Off」（磁碟選項修改節點節點名稱自動指派關閉）</block>
   <block id="9312a7c47a9915cb921363b9989a8320" category="paragraph"><block ref="9312a7c47a9915cb921363b9989a8320" category="inline-link-rx"></block></block>
   <block id="bdbc69625247b40d3d574c3ca97d72a6" category="paragraph">以下範例顯示cluster01中的網路連接埠：</block>
   <block id="ae9570444f7281706174b8d5e38ee0a2" category="paragraph">以下範例顯示尚未指派連接埠「e0e」和「e0f」的LIF：</block>
-  <block id="b8aeb50ab1946f3c20e4f5ceed42b633" category="paragraph">以下範例將連接埠「e0e」和「e0f」指派給系統「VMcluster01」上的容錯移轉群組「'inter01'」：</block>
   <block id="fd66c372a432e4ea90b5ad9291a5cd7d" category="paragraph">以下範例會在容錯移轉群組「'intercluster01」中建立叢集間LIF「'cluster01_icl01」和「'cluster01_icl02」：</block>
-  <block id="1a42d5e3ae526a4699281b8767219ce1" category="paragraph">下列範例顯示、「e0e」連接埠上的叢集間lifs「cluster01_icl01」和「cluster01_icl02」將容錯移轉至「e0f」連接埠。</block>
   <block id="29c7a215dd6ee71543010039c946511e" category="paragraph">以下範例顯示、叢集間連接埠「叢集01 _icl01」和「叢集01 _icl02」將容錯移轉至「e0d」連接埠。</block>
   <block id="58f6e08c96a99398ddfbc5fa56d957dc" category="list-text">在來源叢集上、驗證來源叢集到目的地叢集的驗證：</block>
-  <block id="83da41cb2046392d9c91b9b42b375ebe" category="list-text">在每個節點上輸入下列命令、確認節點已準備好建立DR群組：</block>
-  <block id="1012d3a631b6876c6dcb7face2d6a501" category="list-text">您必須在MetroCluster 同一個VLAN中建立所有的S21 IP介面「a」連接埠、MetroCluster 並在另一個VLAN中建立所有的S21 IP介面「B」連接埠。請參閱 <block ref="0d7e2206ca44f9cb7344ddf469b6d625" category="inline-link-macro-rx"></block>。</block>
-  <block id="577e6b9899e57c4e54e43cf79c919f83" category="paragraph">E3A.</block>
-  <block id="969d430598a257671bdf944480e4d46b" category="paragraph">e3b.</block>
-  <block id="89084e438af77c52e3bb123d64f339eb" category="list-text">在「'node_a_1'」上建立介面。</block>
-  <block id="34b309a7a8f5ac4692710dfcf5a00777" category="list-text">在「'node_a_1'」的連接埠「'e5a'」上設定介面：</block>
-  <block id="b44259ae71dce764eaaa8b48707da56a" category="list-text">在「'node_a_1'」的連接埠「'e5b'」上設定介面：</block>
-  <block id="9b466f494271828adb713455019d23f2" category="paragraph">以下範例顯示在IP位址為「'10.1.2.1'」的「節點_a_1'」上、在連接埠「'e5b'」上建立介面：</block>
-  <block id="718d065eac1ff3e2a2be302bd8ff88ce" category="list-text">在「'node_a_2'」上建立介面。</block>
-  <block id="ff775bc8ad4e6cc1937bbf2876775f01" category="list-text">下列範例中的連接埠用途是AFF 針對某個不符合技術需求的產品（例如：a）或FAS9000系統（「e5a」和「e5b」）。您必須依照上述說明、在正確的連接埠上為您的平台模式設定介面。</block>
-  <block id="c628ef83038584c5f47c7ddfe50d38c0" category="list-text">在「'node_a_2'」的連接埠「'e5a'」上設定介面：</block>
-  <block id="b69208c65d61eacde5488594766fd3b8" category="paragraph">以下範例顯示在IP位址為「10.1.1.2」的「'node_a_2'」上、在連接埠「'e5a'」上建立介面：</block>
-  <block id="5ecd7c22ce3acd95a76953721fa8aeb8" category="paragraph">如果您MetroCluster 不想使用預設的VLAN ID、則可在支援VLAN for the Suse IP介面的平台機型中加入「-vlan-id」參數。以下範例顯示AFF 適用於VLAN ID為「'120'」的32位元組系統的命令：</block>
-  <block id="20b7ea9a5bf1a5d7c5fabf9131abf09c" category="list-text">在「'node_a_2'」的連接埠「'e5b'」上設定介面：</block>
-  <block id="c59dee00f6497e29ef0226d20704dc10" category="paragraph">以下範例顯示在IP位址為「10.1.2.2」的「節點_a_2」上、在連接埠「'e5b'」上建立介面：</block>
-  <block id="49d2fe60521b8a0cdb30285ac8543c5b" category="paragraph">如果您MetroCluster 不想使用預設的VLAN ID、則可在支援VLAN for the Suse IP介面的平台機型中加入「-vlan-id」參數。以下範例顯示AFF 適用於VLAN ID為「'220'」之ArfeA220系統的命令：</block>
-  <block id="b62e9bf9d023237b47ada0b7d6d4cf59" category="list-text">在「'node_B_1'」上建立介面。</block>
-  <block id="80c6329501b0e5f8b016ef76f6be3664" category="list-text">在「'node_B_1'」的連接埠「'e5a'」上設定介面：</block>
-  <block id="270269f59ee1cd9bc99f05eb79147eeb" category="paragraph">以下範例顯示在IP位址為「10.1.1.3」的「'node_B_1'」上、在連接埠「'e5a'」上建立介面：</block>
-  <block id="616f51ca22d7fe8514da17f4fb96fa92" category="list-text">在「'node_B_1'」的連接埠「'e5b'」上設定介面：</block>
-  <block id="e4c1125b6535c7798f7ae85e122d60e2" category="paragraph">以下範例顯示在IP位址為「10.1.2.3」的「'node_b_1'」上、在連接埠「e5b」上建立介面：</block>
-  <block id="d26f7b805ed0dcb944e2e280b30bbd07" category="list-text">在「'node_B_2'」上建立介面。</block>
-  <block id="e2d56705aef6b7c5a25f72f46d88bbe7" category="list-text">在「'node_B_2'」的連接埠「'e5a'」上設定介面：</block>
-  <block id="af46fd28618bde8b135c1c6b4d3405ac" category="paragraph">「靜態組態設定介面create -cluster名稱_cluster名稱_-home-node-node-name_-home-port e5a -address_-netask_` MetroCluster</block>
-  <block id="3149faae3d7ae9c0621829d63f66c33d" category="paragraph">以下範例顯示在IP位址為「10.1.1.4」的「'node_B_2'」上、在連接埠「'e5a'」上建立介面：</block>
-  <block id="9c7f78e9d2e564d314650f4f8d2f89cf" category="list-text">在「'node_b_2'」的連接埠「'e5b'」上設定介面：</block>
-  <block id="426b66c3321be38bf5e743497b7a06cd" category="paragraph">以下範例顯示在IP位址為「10.1.2.4」的「'node_b_2'」上、在連接埠「'e5b'」上建立介面：</block>
-  <block id="36531c09673685da2eb7a9b424719e07" category="paragraph">以下範例顯示所有處於「連線準備」狀態的節點：</block>
-  <block id="4f756847ca1507865cb117aa60347adb" category="list-text">建立連線：</block>
   <block id="e84d9abe5e1fc391ac4a450f001b2f71" category="paragraph">「組態設定連線」MetroCluster</block>
-  <block id="6cf81a0d4823756f8f92c439387e37c5" category="paragraph">以下範例顯示「叢集_a'」已成功連線：</block>
-  <block id="3c5bea345bf95b2ddd2d4480093df667" category="paragraph">當系統提示您繼續進入進階模式時、您必須使用「y」回應、並看到進階模式提示（'*&gt;'）。</block>
-  <block id="459f816e984e3774fe54bd0c3739bd78" category="paragraph">視儲存組態而定、您必須驗證資源池1磁碟機指派、或針對MetroCluster 各個節點手動指派磁碟機至資源池1、以利進行支援。</block>
-  <block id="576b0156512a49a83913a3d968e689c1" category="paragraph">您使用的程序取決於ONTAP 您所使用的版本。</block>
-  <block id="b210f8e02a0b572eec2a5c98da81b46b" category="paragraph">命令輸出將以下列格式顯示磁碟名稱：</block>
-  <block id="5bddb9f920514b0a0a299f0a0cca3e7e" category="paragraph">「node-name:0m.i1.0L1」</block>
-  <block id="705296b22d53fe306b6160e173a7dfff" category="list-text">確認已自動指派集區1磁碟：</block>
-  <block id="89afa329dc5f807f2e8486478a15c3a4" category="paragraph">磁碟機自動指派已將四分之一（8個磁碟機）指派給「node_a_1」、再將四分之一指派給「節點_a_2」。其餘磁碟機將是「'node_B_1'」和「'node_B_2'」的遠端（Pool1）磁碟。</block>
-  <block id="808399043c3072cd0aa24746698a6720" category="list-text">將遠端磁碟機的擁有權（0m）指派給第一個節點的集區1（例如、「node_a_1'」）：</block>
-  <block id="2e9a660786a2138a9457f0cdb952c99d" category="paragraph">「磁碟ID」必須識別遠端磁碟櫃上的磁碟機「Owner-node-name」。</block>
-  <block id="3ce7f1b9ad5e0866fca8bb3ed3bfaf24" category="paragraph">下列輸出顯示磁碟機已指派「'23'」磁碟機、因為它們不再出現在未指派磁碟機的清單中：</block>
-  <block id="15ca6babcd89f4df7fef4ad08eebc182" category="list-text">重複這些步驟、將集區1磁碟機指派給站台A上的第二個節點（例如「節點_a_2」）。</block>
-  <block id="654be415f4fd25d4eb7ef5d13950da64" category="paragraph">如果每個節點至少有兩個磁碟櫃、您可以使用ONTAP的自動指派功能來自動指派遠端（集區1）磁碟。</block>
-  <block id="0225c53f2baba94a31b5eb0d90e365cf" category="list-text">此時會自動將site_B-b櫃_2上的所有磁碟指派給node_a_1的資源池1</block>
-  <block id="48f3a4ccc31158c28a0543a8d0931d55" category="list-text">此時會自動將site_B-b櫃_4上的所有磁碟指派給node_a_2的資源池1</block>
-  <block id="275964d7b48391c0fbb2a8a50a6722d9" category="list-text">此時會自動將site_A-ble_2上的所有磁碟指派給node_B_1的Pool1</block>
-  <block id="04c166136aa1b3c5a330651de02e8c2c" category="list-text">此時會自動將site_A-ble_4上的所有磁碟指派給node_B_2的Pool1</block>
-  <block id="ec556c6f0a7c1341af78db8c6979a3ec" category="paragraph">您必須在每個磁碟櫃上指定一個磁碟、才能「調整」自動指派。</block>
-  <block id="a106bbb8c6a0404bf4119f09f97f4b2b" category="list-text">選取遠端磁碟（0m）並將磁碟的擁有權指派給第一個節點的集區1（例如、「node_a_1`」）：</block>
-  <block id="6a9998a797a4b4ebbb6e136447e6189c" category="paragraph">「磁碟指派-disk disk-id -pool 1 -Owner-node-name」</block>
-  <block id="0c90186b6a1b1bb07d839515b5838513" category="paragraph">下列輸出顯示磁碟機「'23'」現已指派、不再顯示：</block>
-  <block id="cc5f058fa8df2998a58b6fe6de2c6ca6" category="list-text">重複這些步驟、將集區1磁碟指派給站台A的第二個節點（例如、「node_a_2」）。</block>
   <block id="df48f09d2bf110a410011a8de35fb788" category="paragraph">下列命令會鏡射控制器a_1的根Aggregate：</block>
   <block id="f6d7b348eb50ac463eb2cc91d02f51b4" category="paragraph">「torage disk show -spare -Owner_node_name_」</block>
-  <block id="49252d08fb330c8c53b08b310f655d3f" category="paragraph">如果您已登入叢集管理介面上的叢集、則可以在叢集中的任何節點上建立集合體。若要確保在特定節點上建立Aggregate、請使用「節點」「參數」或指定該節點擁有的磁碟機。</block>
-  <block id="2da5317e4e730871c4e0eebd9caf388e" category="list-text">Aggregate的主節點（也就是在正常作業中擁有Aggregate的節點）。</block>
-  <block id="24039e9f7463121386eb64f0a5fbe184" category="list-text">要新增至集合體的特定磁碟機清單。</block>
-  <block id="cbd02cd515fef46c3f5978bf3a1c2fa5" category="list-text">要納入的磁碟機數量。</block>
-  <block id="3b03d743e2fdb9ba04471b09a100499d" category="list-text">用於Aggregate的Checksum樣式。</block>
-  <block id="915fe9fcfebfa751a522bb919d397401" category="list-text">要使用的磁碟機類型。</block>
-  <block id="aa3349a8ef996a1caa4d11cec0481ea2" category="list-text">要使用的磁碟機大小。</block>
-  <block id="28430df9d9883e95bc26f63f68cab7ac" category="list-text">使用的磁碟機速度。</block>
-  <block id="dbf6704815a89e026e7222b9ddbd1be6" category="list-text">集合體上RAID群組的RAID類型。</block>
-  <block id="32e5424b78c791c02cd24f2a1f66b779" category="list-text">RAID群組中可包含的磁碟機數目上限。</block>
-  <block id="6314ba11af07fde9f749195a4938e623" category="list-text">是否允許使用不同RPM的磁碟機。</block>
   <block id="a09517d85950406142abe0b5f1a98a2e" category="paragraph">您可以使用storage Aggregate show命令來驗證。</block>
-  <block id="ef59cc1d4f18c9ecc43389044e0b17b3" category="admonition">如果您要使用單一鏡射資料Aggregate、請參閱 <block ref="69c8031a2de94253e9843bb8f5d7573d" category="inline-xref-macro-rx"></block> 以取得相關指示。</block>
-  <block id="5064cf282b956b1a00cb68a958a94a35" category="list-text">控制器和機箱的ha-config狀態必須為「mCCIP」。</block>
   <block id="9ea79dc17a6b01f7950f89175d68862a" category="paragraph">您可以在MetroCluster 任何節點上發出「flexconfigure」命令一次、以啟用MetroCluster 該組態。您不需要在每個站台或節點上發出命令、也不需要在哪個節點或站台上發出命令。</block>
-  <block id="f8a921915ee07bb012df13da2fdd7c05" category="list-text">[step1_sine_fonized]以MetroCluster 下列格式設定支援功能：</block>
-  <block id="7f844e6639d44c336dfaaa0017b0dbc8" category="paragraph">在任何節點的提示下、設定MetroCluster 「MetroCluster 功能不全的節點名稱」</block>
-  <block id="bfbb3cda3599b6898415d47ca3b06d9f" category="list-text">使用MetroCluster 「-allow-with e-Aggregate（允許單一Aggregate）true參數設定功能：</block>
   <block id="794714ece855897a8f048ab85dcccd86" category="paragraph">「MetroCluster 配合單一Aggregate true node-name」</block>
   <block id="c77c236a9e8399fe3f4e66a32fcdd188" category="paragraph">下列命令可在MetroCluster DR群組中包含「'controller _a_1'」的所有節點上啟用支援功能：</block>
-  <block id="a6344715e21a74094ac5f97c4b6becd5" category="list-text">確認磁碟自動指派已停用：</block>
   <block id="b2fa14e3df9342c7d9ce9f5ac1643744" category="paragraph">您可以使用平台和磁碟櫃的_安裝與設定_文件中的程序。</block>
   <block id="cbd00cb1e3956c7b77e9a26286ae68a5" category="paragraph">如果您已登入叢集管理介面上的叢集、則可以在叢集中的任何節點上建立集合體。若要驗證是否已在特定節點上建立Aggregate、您應該使用「-node-」參數、或指定該節點擁有的磁碟機。</block>
-  <block id="74d845e51b59918636d9a13b9fc37d69" category="list-text">要新增至集合體的特定磁碟機或陣列LUN清單。</block>
-  <block id="755643e3264b43687573ebc08e75d0aa" category="list-text">RAID群組中可包含的磁碟機或陣列LUN數目上限。</block>
   <block id="eab11a9537b1f041fab270b4e4138028" category="paragraph">您可以檢查MetroCluster 功能組態中的元件和關係是否正常運作。您應該在初始組態設定後、以及MetroCluster 變更任何的功能後進行檢查。您也應該在協商（計畫性）切換或切換作業之前進行檢查。</block>
   <block id="9275100524e5245543e3ee9346ec3d30" category="list-text">顯示最新MetroCluster 的「不檢流程」命令更詳細的結果：</block>
   <block id="2dd10a99a16640634ad6093b398b6036" category="paragraph">以下範例顯示MetroCluster 「不知道叢集show」命令輸出、可確保四節點MetroCluster 的效能正常。這表示叢集已準備好在必要時執行協調式切換。</block>
-  <block id="d3e0fb982a529e06bf305b944b1f5000" category="list-text">使用協商切換、修復及切換的程序<block ref="31eae521f3e4fd8fd098b415771facd9" category="inline-link-rx"></block></block>
-  <block id="c5ca300fc0462691509bf45ae10e3bc5" category="paragraph">您可以下載並安裝在第三個站台MetroCluster 上、也可以下載或安裝《斷位器》軟體、或是從ONTAP 《e ONTAP 2》9.7開始安裝。</block>
-  <block id="c9016b3f72dba4b8f61408d9d613c969" category="paragraph">如果您必須安裝新的Tiebreaker軟體執行個體、請依照指示安裝及設定軟體。</block>
   <block id="8510397a0db0873faf52a037f4e5c265" category="paragraph"><block ref="8510397a0db0873faf52a037f4e5c265" category="inline-link-rx"></block></block>
-  <block id="24135708f40bc30abbe1b5a601010307" category="list-text">如果您使用的是Tiebreaker軟體、請參閱Tiebreaker文件。</block>
   <block id="4978301a508dcc7f7e8778cdb2401e04" category="section-title">保護組態備份檔案</block>
   <block id="afc362bb21237b3cf262e5bb73c2e7ce" category="paragraph">您可以指定遠端URL（HTTP或FTP）來上傳組態備份檔案、以及本機叢集中的預設位置、為叢集組態備份檔案提供額外的保護。</block>
   <block id="d459dc1ddad8d856203ba30b84fd6675" category="list-text">設定組態備份檔案的遠端目的地URL：</block>
   <block id="267f48079d5a0c20b3bac37bdeae2c4e" category="paragraph">「系統組態備份設定修改_url-of destination_」</block>
-  <block id="5fb51bd58dc6b3d970f3c719b5895808" category="paragraph">使用CLI進行叢集管理包含「管理組態備份」一節下的其他資訊。</block>
   <block id="1e7af3d71c61db132b57b2c8e061b86d" category="inline-link">系統管理</block>
   <block id="760481252d481e55778f320967eca451" category="paragraph"><block ref="760481252d481e55778f320967eca451" category="inline-link-rx"></block></block>
   <block id="c3294642ebc4a24320ba23b1a71d691f" category="summary">必須在無法用於靜態IP組態的「節點」上設定「BMC調解器」服務。ONTAP ONTAP MetroCluster</block>
@@ -11032,7 +10938,6 @@
   <block id="0cd13c32173979ae3ca88ab25050c571" category="section-title">切換MetroCluster 整個過程</block>
   <block id="332d6b9e68571fab560335a786aee2d6" category="paragraph">您必須將組態切換為站台A、才能升級站台B上的平台。</block>
   <block id="2ed2f89a99daa3452e8fc315262c95f5" category="paragraph">此工作必須在sSite _A上執行</block>
-  <block id="2038f837dd43f190a92c79bb698d5d00" category="paragraph">完成此工作之後、Site_A會處於作用中狀態、並為兩個站台提供資料。站台_B處於非作用中狀態、準備開始升級程序、如下圖所示。</block>
   <block id="1ab09d70d6824875fab00d3405138192" category="image-alt">在switchover A900中、MCC升級叢集A</block>
   <block id="19e5fa2e94382f90d18bf6ea6ee57e9a" category="list-text">切換MetroCluster 到站台A的支援、以便站台B的節點升級：</block>
   <block id="cf88bd4ca7f9abb34dda4d2a47769931" category="list-text">在se_a上發出下列命令：</block>
@@ -11045,7 +10950,6 @@
   <block id="b784ced918e2a1928ccd95f5122fb01c" category="paragraph">《資料整合的修復》MetroCluster</block>
   <block id="fd56eef3a229dc89f4583f9f02a2f52e" category="list-text">在MetroCluster 健全的叢集上執行「flexoperationshow」命令、確認修復作業已完成：</block>
   <block id="33e64bb1016dec9153a09112c1918728" category="list-text">修復根Aggregate。</block>
-  <block id="b1b207442d1d74b512ee7783091ec80b" category="section-title">移除AFF 站台B上的站台控制器模組和NVS</block>
   <block id="fbb702216c9d47455a0b8dbde9a6a6ca" category="paragraph">您必須從組態中移除舊的控制器。</block>
   <block id="e4dfa2cb8ac36daa9c5d60ebed0d438b" category="paragraph">您可在s站 點B上執行此工作</block>
   <block id="30ba799d12bc55203e3416a6ec482bf4" category="paragraph">如果您尚未接地、請正確接地。</block>
@@ -11053,8 +10957,6 @@
   <block id="b780f876891edc15fa85c699a7f8bfcb" category="list-text">從站台B的兩個節點收集bootarg值：「printenv」</block>
   <block id="1e80b49a305b8f9776f5ad016b85d8e7" category="list-text">關閉站台B的機箱電源</block>
   <block id="60086a2b9ff0b21debbb0d8bf099b8e7" category="section-title">從站台B的兩個節點上移除控制器模組和NVS</block>
-  <block id="7772cd0198105a3d1385b2e8a38dfd13" category="section-title">移除AFF 「功能不一」控制器模組</block>
-  <block id="aa7985a89f1c2f960f222e4a5876a369" category="paragraph">請使用下列程序移除AFF 「非洲」控制器模組。</block>
   <block id="f6cb76da900c86fece5eb404a84c66d1" category="list-text">在卸下控制器模組之前、請先從控制器模組拔下主控台纜線（如果有）和管理纜線。</block>
   <block id="dfa9bdf3553d14d1f1265d5adf46b338" category="list-text">解除鎖定並從機箱中取出控制器模組。</block>
   <block id="c1ed0cd23ea77c49b5611e5929537b3f" category="list-text">將CAM把手上的橘色按鈕向下推、直到解鎖為止。</block>
@@ -11067,9 +10969,6 @@
   <block id="53ced8e8440d5837c67cd7e98c36b357" category="cell"><block ref="53ced8e8440d5837c67cd7e98c36b357" category="inline-image-macro-rx" type="image"></block></block>
   <block id="b733ab833a64f07b84375a26a6af83f0" category="cell">CAM握把</block>
   <block id="f0231ce2b907f79181e8b9703e9a2c98" category="list-text">旋轉CAM握把、使其完全脫離機箱的控制器模組、然後將控制器模組滑出機箱。將控制器模組滑出機箱時、請確定您支援控制器模組的底部。</block>
-  <block id="fd22b7848c5af6378d0b6f4b2d27e00f" category="section-title">移除AFF 「顯示器」的「顯示器」單元</block>
-  <block id="79c5d41bbb72ea24170f3061addd9ece" category="paragraph">請使用下列程序移除AFF 「顯示器」的「顯示器」單元。</block>
-  <block id="87f2b2201ecbf070e4e854d1304aeeac" category="admonition">此功能可在插槽6中使用、高度是系統中其他模組的兩倍。AFF</block>
   <block id="0d64a71c5e54f6a18144ca98af6bba12" category="list-text">解除鎖定、然後從插槽6移除NVS。</block>
   <block id="771fe3d405626b11981b56d013399632" category="list-text">按下帶有字母和編號的CAM按鈕。CAM按鈕會從機箱移出。</block>
   <block id="3e40de17d289a21aa0995b29466f1eab" category="list-text">向下轉動CAM栓鎖、直到其處於水平位置。此時、系統會從機箱中鬆脫、並移動數英吋。</block>
@@ -12410,8 +12309,6 @@
   <block id="b36742dbca767f044c826ec8fbe9b099" category="inline-link">一致性群組</block>
   <block id="2b9902d272c75c4def3400c620342746" category="paragraph">從ONTAP 功能性的9.11.1開始、<block ref="cf613318e210a5e8a8ae9de011eafc43" category="inline-link-rx"></block> 支援的功能包括MetroCluster ：</block>
   <block id="fe92f5934bf96194725b46db02f72324" category="list-text">FAS2750或AFF FASA220系統不支援此程序。</block>
-  <block id="f5cd93f67ab362b3830ef2c47249e909" category="paragraph"><block ref="f5cd93f67ab362b3830ef2c47249e909" category="inline-link-macro-rx"></block></block>
-  <block id="a3816a0d57fcb59bc1a3bfba35af44cf" category="paragraph"><block ref="a3816a0d57fcb59bc1a3bfba35af44cf" category="inline-link-macro-rx"></block></block>
   <block id="8a4f175190a1710cdcd52e7efde01268" category="section-title">在MetroCluster 不支援的IP組態中啟用Cisco Macsec Encryption WAN ISL</block>
   <block id="dbbfd3dd70a4d25284d890b07ad9bc31" category="section-title">設定Macsec金鑰鏈和金鑰</block>
   <block id="2903318a6fa99cbae17be8d84747e6f4" category="section-title">設定Macsec原則</block>
@@ -12513,7 +12410,6 @@
   <block id="810c9113a382d35f83c48d0bc5ad007c" category="paragraph">在本維護活動之外、不支援在MetroCluster 同一個DR群組中使用不同控制器類型來操作此支援。對於八節點MetroCluster 的不完整配置、DR群組中的控制器必須相同、但兩個DR群組可以使用不同的控制器類型。</block>
   <block id="f0f7e2a1799d8b479b19f71aa5a163de" category="inline-link-macro">在AFF/FAS系統上更新授權的主機板更換程序。</block>
   <block id="70dc27aa0b1b6fd743baaf39ac831057" category="paragraph">如需授權更換的詳細資訊、請參閱知識庫文章 <block ref="fefc92a8d5d54e07ec6a27ea1fbe0992" category="inline-link-macro-rx"></block></block>
-  <block id="b36fd383298dd454964a70693b082d21" category="doc">使用切換和切換功能（AFF 例如、更新版本的版本）、將控制器從S還原A700/A900升級至FAS9x00 MetroCluster （以供選擇）ONTAP</block>
   <block id="fa5bebfbd3b64c98d09c75db575bd11c" category="list-text">若要將AFF 處理器2700控制器模組升級AFF 至更新版本、控制器必須執行ONTAP 版本為《更新版本》的版本。</block>
   <block id="b8c01685df64d764fee3ea66bb33411d" category="list-text">若要將FAS9000控制器模組升級至FAS95000、控制器必須執行ONTAP 版本不只是執行版本不符合要求的版本。</block>
   <block id="ae4867e3d506833b86caef7b0885d0ba" category="paragraph">在MetroCluster 本維護活動之外、不支援以AFF 不支援使用NetApp的A700和AFF 不支援使用FASA900或FAS9000和FAS9500控制器來操作此組態。</block>
@@ -12540,7 +12436,6 @@
   <block id="c90754ff62c724c351a1fdbc2c0922dc" category="list-text">請等待節點B_1現在在AFF 執行下列動作的情況下、從支援的支援範圍內啟動、並顯示開機功能表選項：</block>
   <block id="1efe4497214b901f523cf96a2c33ab26" category="list-text">使用下列命令識別可指派給新控制器模組的未指派磁碟或備用磁碟：</block>
   <block id="2849cfeed499bf8aebf6e17e9cf254ca" category="list-text">「torage disk show -container類型spare」</block>
-  <block id="45a22a50381b7d0a6d65f4f38ec04b7d" category="doc">使用切換和切換功能（AFF 例如、更新版本的版本）、將控制器從S還原A700/A900升級至FAS9x00 MetroCluster 組態的FAS9x00 ONTAP 。</block>
   <block id="304e34c553d5aabda89299a7fe2902b4" category="list-text">您可以使用此程序、將AFF 包含AFF 更新版本的不含ONTAP 更新版本的功能升級到包含更新版本的不含更新版本的不含更新版本的不含更新版本的不含更新版本的不含</block>
   <block id="35a4e2939e219a109bc9eacce7e98324" category="list-text">您可以使用此程序、將FAS9000升級為使用ONTAP 更新版本的FAS9.10.1P3。</block>
   <block id="995bf77226d032f3f7bb0a9172e19e98" category="list-text">在升級程序期間、您不應從AFF FASA700或FAS9000系統中新增或移除其他卡片。如需詳細資訊、請參閱<block ref="bb9c67b5a4c15a85b5e6aa6c9afd0285" category="inline-link-rx"></block></block>
@@ -12575,7 +12470,6 @@
   <block id="24f7d38b1eaa5b3c78d65d263e040011" category="admonition">系統會自動產生您所需的新授權金鑰、並將其傳送至檔案上的電子郵件地址。如果您在30天內未收到附有授權金鑰的電子郵件、請參閱知識庫文章中的_「如果我的授權有問題、該聯絡誰？」_一節 <block ref="fefc92a8d5d54e07ec6a27ea1fbe0992" category="inline-link-macro-rx"></block></block>
   <block id="d903b046ad4e23192a38f289cf8b3677" category="paragraph">如果災難站台包含未鏡射的Aggregate、而未鏡射的Aggregate不再存在、則儲存Aggregate show命令的輸出中可能會顯示「'unknown'」狀態。如需移除未鏡射集合體的過時項目、請聯絡技術支援部門、請參閱知識庫文章 <block ref="5f58a40bfe898f128ca76e4a4e4715d4" category="inline-link-macro-rx"></block></block>
   <block id="9734751a8e945b1c9cd85ffbdd0c241e" category="admonition">如果未清除已用過的更換控制器模組的NVRAM內容、您可能會看到下列緊急訊息：「嚴重：NVRAM內容無效...」 如果發生這種情況、ONTAP 請再次將系統開機至更新提示字元（「boot_ONTAP功能表」）。然後您就需要 <block ref="81092c96bc8b36fe9ac80e13a918f8bb" category="inline-xref-macro-rx"></block></block>
-  <block id="2117e88807c2074036a5c585d3364860" category="sidebar">使用切換和切換功能（AFF 例如、更新版本的版本）、將控制器從S還原A700/A900升級至FAS9x00 MetroCluster （以供選擇）ONTAP</block>
   <block id="0ab5e32384cf33a80caff743210417d8" category="admonition">HA和儲存容錯移轉的預期組態狀態如下：</block>
   <block id="a9c14bf4555cada69be518fce567a21c" category="list-text">已設定HA模式、但未啟用儲存容錯移轉。</block>
   <block id="917db687ec940c706231d4c917812bb2" category="list-text">HA接管功能已停用。</block>
@@ -12591,9 +12485,6 @@
   <block id="440e5d46a3352ce5e00ab6b9ecdbc792" category="paragraph">GitHub第135期、2022年7月4日</block>
   <block id="05cb8d64e2770620783bfd98ba2c571c" category="paragraph">下列步驟中的所有命令都會從站台發出、以維持開機狀態。</block>
   <block id="714cb8627bb0d04d6b5d032326cab4a3" category="list-text">從您想要維持不變的站台執行切換：</block>
-  <block id="d5e08bac7a66723faca8e245c44582ae" category="list-text">離線移動磁碟區和LUN。</block>
-  <block id="4434ac45fa2bd65c77619dc4135a3848" category="list-text">離線移動磁碟區。</block>
-  <block id="8a0f98caf632998576a36c94b83328a6" category="list-text">離線移動LUN。</block>
   <block id="e7edce3217788bc841a63851100c9164" category="list-text">離線移動無鏡射的集合體：「將Aggregate離線」</block>
   <block id="eeb4c33e80d1b1f4f321335e6c0a8948" category="list-text">停用此網路中兩個交換器上的所有VSAN。</block>
   <block id="f214faa187b0f8585d0284ecf49f3906" category="paragraph">請使用下列程序來停用VSAN：</block>
@@ -12636,4 +12527,19 @@
   <block id="00dcc4021e9b5b5c4107ab832d8a3b22" category="list-text">不需要超過主機作業系統的CPU和記憶體（RAM）最低需求。ONTAP</block>
   <block id="3238177a17500506d8e25597811d95a1" category="list-text">除了主機作業系統的最低需求之外、還必須至少提供30GB的額外可用磁碟空間。</block>
   <block id="d87323d7c443195bdfe43686953d17da" category="list-text">每個DR群組最多需要200MB的磁碟空間。</block>
+  <block id="cba78abc40cd6aa38755c20692e16922" category="list-text">將屬於無鏡射集合體的任何磁碟區和LUN離線移動。</block>
+  <block id="7386845cd79b01875eaa7f006f46b9f2" category="list-text">離線移動磁碟區。</block>
+  <block id="cd69a3dbda56dd351c139686ba9519dc" category="list-text">離線移動LUN。</block>
+  <block id="17327179cc24e43223407ad31775b347" category="doc">使用交換器和切換功能（AFF 更新版本）、將控制器從功能性的A700/FAS9000升級AFF 至功能性的S還原A900/FAS9500 MetroCluster （以不整合的IP組態）ONTAP</block>
+  <block id="4adc962ec0036e99dcb3ed30b5a7bb90" category="doc">使用交換器和切換功能（AFF 更新版本）、將控制器從S還原A700/FAS9000升級AFF 至還原A990/FAS9500 MetroCluster （以不含更新ONTAP 版本的版本）</block>
+  <block id="18d71f6f9b2869ce694a656dc6e2f46c" category="paragraph">完成此工作之後、Site_A會處於作用中狀態、並為兩個站台提供資料。站台_B處於非作用中狀態、準備開始升級程序、如下圖所示。（此圖也適用於將FAS9000升級至FAS9500控制器。）</block>
+  <block id="104b8a291f0127f5923408928b5ee7e9" category="section-title">移除AFF 站台B上的「功能不整」或「FAS9000」控制器模組和「系統管理」</block>
+  <block id="208671d931da81374958ab0bdeb8d0f0" category="paragraph">請使用下列程序移除AFF 不適用的A700或FAS9000控制器模組。</block>
+  <block id="d1bba686a5b245f47f0d8653cd12d51c" category="admonition">插槽6中有一個介面卡、就是系統中其他模組的兩倍高度。AFF</block>
+  <block id="400837732a47a77ab9ec9d475301631a" category="paragraph">在本工作中、您將執行切換回復作業、將MetroCluster 該組態恢復正常運作。站台A上的節點仍在等待升級、如下圖所示。（此圖也適用於將FAS9000升級至FAS9500控制器）。</block>
+  <block id="aacdf7a1a9a3666db3b501d37a579c04" category="summary">您必須設定FC交換器、以提供後端MetroCluster 的F精選FC連線功能。</block>
+  <block id="3c2e7a09f3e6838bdc9926952b8e998b" category="list-text"><block ref="3c2e7a09f3e6838bdc9926952b8e998b" category="inline-link-macro-rx"></block></block>
+  <block id="8c67eafd90e097bf6228c8d6f91f15cb" category="list-text"><block ref="8c67eafd90e097bf6228c8d6f91f15cb" category="inline-link-macro-rx"></block></block>
+  <block id="6fc32e58ee37ceb6ca0bb1590e84ab08" category="sidebar">使用切換和切換功能（AFF 更新版本）、將控制器從功能不實的A700/FAS9000升級AFF 至功能不實的A900/FAS9500 MetroCluster （以功能不實的FC組態）ONTAP</block>
+  <block id="121ccccf0953c4b38cd58e1f1be63ffd" category="sidebar">使用交換器和切換功能（AFF 更新版本）、將控制器從功能性的A700/FAS9000升級AFF 至功能性的S還原A900/FAS9500 MetroCluster （以不整合的IP組態）ONTAP</block>
 </blocks>

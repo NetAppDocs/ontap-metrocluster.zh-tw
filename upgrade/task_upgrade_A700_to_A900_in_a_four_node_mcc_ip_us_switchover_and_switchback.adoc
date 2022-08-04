@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, controller, ip, configuration, switchover, switchback, workflow, nodes, tiebreaker, verify, bootrage, root, aggregate, disks 
 summary: BYou可在MetroCluster 升級合作夥伴叢集上的控制器模組時、使用「不中斷切換」作業來為用戶端提供不中斷的服務。其他元件（例如儲存櫃或交換器）無法在此程序中進行升級。 
 ---
-= 使用切換和切換功能（AFF 例如、更新版本的版本）、將控制器從S還原A700/A900升級至FAS9x00 MetroCluster （以供選擇）ONTAP
+= 使用交換器和切換功能（AFF 更新版本）、將控制器從功能性的A700/FAS9000升級AFF 至功能性的S還原A900/FAS9500 MetroCluster （以不整合的IP組態）ONTAP
 :allow-uri-read: 
 
 

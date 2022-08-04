@@ -740,23 +740,20 @@ NOTE: 您必須MetroCluster 謹慎選擇不完整的IP位址、因為在初始�
 --
 * 您必須為每個節點建立兩個介面。這些介面必須與MetroCluster 在RESRCF檔案中定義的VLAN相關聯。
 * 您必須在MetroCluster 同一個VLAN中建立所有的SID IP介面「A」連接埠、並在MetroCluster 另一個VLAN中建立所有的SID IP介面「B」連接埠。請參閱 link:concept_considerations_mcip.html["關於靜態IP組態的考量MetroCluster"]。
-
-
 +
-
 --
 [NOTE]
 ====
-* 某些平台會使用VLAN作為MetroCluster 支援靜態IP介面。根據預設、這兩個連接埠各自使用不同的VLAN：10和20。您也可以使用「MetroCluster 還原組態設定介面create」命令中的「-vlan-id參數」、指定高於100（介於101和4095之間）的不同（非預設）VLAN。
-* 從ONTAP 《支援範圍》9.9.1開始、如果您使用的是第3層組態、則在建立MetroCluster 支援範圍介面時、也必須指定「閘道」參數。請參閱 link:../install-ip/concept_considerations_layer_3.html["第3層廣域網路的考量"]。
+** 某些平台會使用VLAN作為MetroCluster 支援靜態IP介面。根據預設、這兩個連接埠各自使用不同的VLAN：10和20。您也可以使用「MetroCluster 還原組態設定介面create」命令中的「-vlan-id參數」、指定高於100（介於101和4095之間）的不同（非預設）VLAN。
+** 從ONTAP 《支援範圍》9.9.1開始、如果您使用的是第3層組態、則在建立MetroCluster 支援範圍介面時、也必須指定「閘道」參數。請參閱 link:../install-ip/concept_considerations_layer_3.html["第3層廣域網路的考量"]。
 
 
 ====
 --
-+如果MetroCluster 使用的VLAN為10/20或大於100、則可將下列平台機型新增至現有的支援功能組態。如果使用任何其他VLAN、則MetroCluster 無法將這些平台新增至現有組態、因為無法設定此介面。如果您使用任何其他平台、則VLAN組態並不相關、ONTAP 因為在介紹中並不需要。
++
+如果使用的VLAN是10/20或大於100、則可將下列平台機型新增至現有MetroCluster 的支援功能組態。如果使用任何其他VLAN、則MetroCluster 無法將這些平台新增至現有組態、因為無法設定此介面。如果您使用任何其他平台、則VLAN組態並不相關、ONTAP 因為在介紹中並不需要。
 
 +
-
 |===
 
 
@@ -764,20 +761,22 @@ NOTE: 您必須MetroCluster 謹慎選擇不完整的IP位址、因為在初始�
 
 
  a| 
-* VA220 AFF
-* VA250 AFF
-* 解答400 AFF
+** VA220 AFF
+** VA250 AFF
+** 解答400 AFF
 
  a| 
-* FAS2750
-* FAS500f
-* FAS8300
-* FAS8700
+** FAS2750
+** FAS500f
+** FAS8300
+** FAS8700
 
 
 |===
++
 範例中使用下列IP位址和子網路：
 
++
 |===
 
 
@@ -863,8 +862,10 @@ IP介面2. MetroCluster
 10.1.2/24
 
 |===
++
 根據平台模式、由下列表格所示、由站台介面使用的實體連接埠MetroCluster 。
 
++
 |===
 | 平台模式 | IP連接埠MetroCluster | 附註 
 
@@ -986,6 +987,8 @@ e1a.
 e1b
 
 |===
+
+
 下列範例中的連接埠用途適用於AFF 不含任何功能的FASA700或FAS9000系統。
 
 .步驟

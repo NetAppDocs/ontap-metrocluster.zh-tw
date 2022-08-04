@@ -104,7 +104,7 @@ cluster_A::*> metrocluster operation show
 +
 在執行舊版支援的靜態IP組態中、災難站台節點不會自動開機至靜態、而且叢集仍會離線。MetroCluster ONTAP ONTAP對於精選FC組態、所有的彈性都會維持在線上、您不需要在線上進行彈性作業。MetroCluster
 
-. 離線移動磁碟區和LUN。
+. 將屬於無鏡射集合體的任何磁碟區和LUN離線移動。
 +
 .. 離線移動磁碟區。
 +

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, controllers, switchover, switchback, fc, configuration, net, boot, root, aggregate, mcc 
 summary: 您可以在MetroCluster 升級合作夥伴叢集上的控制器模組時、使用「支援交換」作業來為用戶端提供不中斷營運的服務。其他元件（例如儲存櫃或交換器）無法在此程序中進行升級。 
 ---
-= 使用切換和切換功能（AFF 例如、更新版本的版本）、將控制器從S還原A700/A900升級至FAS9x00 MetroCluster 組態的FAS9x00 ONTAP 。
+= 使用交換器和切換功能（AFF 更新版本）、將控制器從S還原A700/FAS9000升級AFF 至還原A990/FAS9500 MetroCluster （以不含更新ONTAP 版本的版本）
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -472,7 +472,7 @@ link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#removing-met
 
 此工作必須在sSite _A上執行
 
-完成此工作之後、Site_A會處於作用中狀態、並為兩個站台提供資料。站台_B處於非作用中狀態、準備開始升級程序、如下圖所示。
+完成此工作之後、Site_A會處於作用中狀態、並為兩個站台提供資料。站台_B處於非作用中狀態、準備開始升級程序、如下圖所示。（此圖也適用於將FAS9000升級至FAS9500控制器。）
 
 image::../media/mcc_upgrade_cluster_a_in_switchover_A900.png[在switchover A900中、MCC升級叢集A]
 
@@ -544,7 +544,7 @@ cluster_A::> metrocluster operation show
 
 
 
-== 移除AFF 站台B上的站台控制器模組和NVS
+== 移除AFF 站台B上的「功能不整」或「FAS9000」控制器模組和「系統管理」
 
 您必須從組態中移除舊的控制器。
 
@@ -564,9 +564,9 @@ cluster_A::> metrocluster operation show
 
 
 
-=== 移除AFF 「功能不一」控制器模組
+=== 移除AFF 「功能不整」或「FAS9000」控制器模組
 
-請使用下列程序移除AFF 「非洲」控制器模組。
+請使用下列程序移除AFF 不適用的A700或FAS9000控制器模組。
 
 .步驟
 . 在卸下控制器模組之前、請先從控制器模組拔下主控台纜線（如果有）和管理纜線。
@@ -592,12 +592,12 @@ image:../media/drw_9500_remove_PCM.png["控制器"]
 
 
 
-=== 移除AFF 「顯示器」的「顯示器」單元
+=== 移除AFF 「FASA700」或「FAS9000 NVS」模組
 
-請使用下列程序移除AFF 「顯示器」的「顯示器」單元。
+請使用下列程序移除AFF 「不適用的」A700或FAS9000 NVS模組。
 
 
-NOTE: 此功能可在插槽6中使用、高度是系統中其他模組的兩倍。AFF
+NOTE: 插槽6中有一個介面卡、就是系統中其他模組的兩倍高度。AFF
 
 . 解除鎖定、然後從插槽6移除NVS。
 +
@@ -1244,7 +1244,7 @@ link:https://docs.netapp.com/us-en/ontap/networking/combine_physical_ports_to_cr
 
 設定好新的控制器之後、您可以切換回MetroCluster 該組態、使組態恢復正常運作。
 
-在本工作中、您將執行切換回復作業、將MetroCluster 該組態恢復正常運作。站台上的節點仍在等待升級。
+在本工作中、您將執行切換回復作業、將MetroCluster 該組態恢復正常運作。站台A上的節點仍在等待升級、如下圖所示。（此圖也適用於將FAS9000升級至FAS9500控制器）。
 
 image::../media/mcc_upgrade_cluster_a_switchback_A900.png[四節點MetroCluster 的功能]
 
