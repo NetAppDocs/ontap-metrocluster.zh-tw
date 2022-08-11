@@ -43,7 +43,7 @@ cluster_B::> metrocluster heal -phase root aggregates
  a| 
 鏡射降級
  a| 
-請前往 <<step3_fc_aggr_healing,步驟3.>>
+請前往 <<step3_fc_aggr_healing,如果有一或多個plexes保持離線狀態、則需要執行其他步驟來重新建置鏡射。>>
 
 
 

@@ -30,7 +30,7 @@ Boot_ONTAP功能表
 
 +
 
-NOTE: 如果您未清除已用替換控制器的NVRAM內容、您可能會看到以下訊息：「痛苦：NVRAM內容無效...」 如果發生這種情況、請重複執行 <<step2>> 以將系統開機至ONTAP 畫面提示字元。然後您就需要 <<Reset-the-boot-recovery,重設開機恢復和RDB_rebootargs>>
+NOTE: 如果您未清除已用替換控制器的NVRAM內容、您可能會看到以下訊息：「痛苦：NVRAM內容無效...」 如果發生這種情況、請重複執行 <<step2,從開機功能表中、選取選項6 *從備份組態更新Flash *。>> 以將系統開機至ONTAP 畫面提示字元。然後您就需要 <<Reset-the-boot-recovery,重設開機恢復和RDB_rebootargs>>
 
 . 鏡射叢0上的根Aggregate：
 +

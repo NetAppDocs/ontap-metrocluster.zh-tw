@@ -1,0 +1,293 @@
+---
+permalink: maintain/task_upgrade_rcf_files_on_mcc_ip_switches_with_cleanupfiles.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, upgrade, rcf, files, ip, switches, cleanupfiles 
+summary: 您可能需要在MetroCluster 一個不知如何的IP交換器上升級RCF檔案。例如ONTAP 、進行升級時、或是交換器韌體升級時、都需要新的RCF檔案。 
+---
+= 使用CleanUpFiles在MetroCluster 不更新的IP交換器上升級RCF檔案
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可能需要在MetroCluster 一個不知如何的IP交換器上升級RCF檔案。例如ONTAP 、進行升級時、或是交換器韌體升級時、都需要新的RCF檔案。
+
+從RcfFileGenerator1.4a版開始、Cisco IP交換器上有一個新選項可以變更（升級、降級或更換）交換器組態、而不需要執行「寫入清除」。
+
+如果您的組態符合下列需求、可以使用此方法：
+
+* 套用標準RCF組態。
+* 。 https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["RcfFileGenerator"] 必須能夠建立套用的相同RCF檔案、以及相同的版本和組態（平台、VLAN）。
+* NetApp並未針對特殊組態提供所套用的RCF檔案。
+* RCF檔案在套用之前並未變更。
+* 在套用目前的RCF檔案之前、已遵循將交換器重設為原廠預設值的步驟。
+* 套用RCF之後、不會變更交換器（連接埠）組態。
++
+如果您不符合這些需求、則無法使用在產生RCF檔案時所建立的高效能檔案。不過、您可以利用此功能來建立一般的高效能檔案、因為使用此方法的清除是從「show running-config」的輸出衍生而來、而且是最佳實務做法。
+
++
+
+NOTE: 您必須依照下列順序更新交換器：switch_a_1、Switch_B_1、Switch_a_2、Switch_B_2。或者、您也可以同時更新交換器Switch_a_1和Switch_B_1、然後再更新Switch_B_1和Switch_B_2。
+
+
+
+.步驟
+. 確定目前的RCF檔案版本、以及使用的連接埠和VLAN：「ip_switch_a_1# show banner motd」
++
+
+NOTE: 您需要從所有四個交換器取得此資訊、並填寫下列資訊表。
+
++
+[listing]
+----
+* NetApp Reference Configuration File (RCF)
+*
+* Switch : NX9336C (SAS storage, L2 Networks, direct ISL)
+* Filename : NX9336_v1.81_Switch-A1.txt
+* Date : Generator version: v1.3c_2022-02-24_001, file creation time: 2021-05-11, 18:20:50
+*
+* Platforms : MetroCluster 1 : FAS8300, AFF-A400, FAS8700
+*              MetroCluster 2 : AFF-A320, FAS9000, AFF-A700, AFF-A800
+* Port Usage:
+* Ports 1- 2: Intra-Cluster Node Ports, Cluster: MetroCluster 1, VLAN 111
+* Ports 3- 4: Intra-Cluster Node Ports, Cluster: MetroCluster 2, VLAN 151
+* Ports 5- 6: Ports not used
+* Ports 7- 8: Intra-Cluster ISL Ports, local cluster, VLAN 111, 151
+* Ports 9-10: MetroCluster 1, Node Ports, VLAN 119
+* Ports 11-12: MetroCluster 2, Node Ports, VLAN 159
+* Ports 13-14: Ports not used
+* Ports 15-20: MetroCluster-IP ISL Ports, VLAN 119, 159, Port Channel 10
+* Ports 21-24: MetroCluster-IP ISL Ports, VLAN 119, 159, Port Channel 11, breakout mode 10gx4
+* Ports 25-30: Ports not used
+* Ports 31-36: Ports not used
+*
+
+#
+IP_switch_A_1#
+----
++
+您必須從此輸出中收集下表所示的資訊。
+
++
+|===
+
+
+| 一般資訊 | MetroCluster | 資料 
+
+
+| RCF檔案版本 |  | 1.81 
+
+
+| 交換器類型 |  | NX9336 
+
+
+| 網路類型 |  | L2網路、直接ISL 
+
+
+| 儲存類型 |  | SAS儲存設備 
+
+
+.2+| 平台 | 1. | 解答400 AFF 
+
+
+| 2. | FAS9000 
+|===
++
+|===
+| VLAN資訊 | 網路 | 組態MetroCluster | 交換器連接埠 | 站台A | 站台B 
+
+
+.4+| VLAN本機叢集 .2+| 網路1 | 1. | 1、2 | 111. | 222.22 
+
+
+| 2. | 3、4. | 151. | 251. 
+
+
+.2+| 網路2. | 1. | 1、2 | 111. | 222.22 
+
+
+| 2. | 3、4. | 151. | 251. 
+
+
+.4+| VLAN MetroCluster 功能 .2+| 網路1 | 1. | 9、10 | 119 | 119 
+
+
+| 2. | 11、12 | 159. | 159. 
+
+
+.2+| 網路2. | 1. | 9、10 | 219 | 219 
+
+
+| 2. | 11、12 | 259 | 259 
+|===
+. [Cree-RCF-file-and－CleanUpFiles-or－cree-generic-CleanUpFiles]]建立RCF檔案和CleanUpFiles、或為目前組態建立一般的高效能檔案。
++
+如果您的組態符合先決條件中所述的需求、請選取*選項1*。如果您的組態*不符合先決條件中所列的需求、請選取*選項2*。
+
++
+[role="tabbed-block"]
+====
+.選項1：建立RCF檔案和清除更新檔案
+--
+如果組態符合要求、請使用此程序。
+
+.步驟
+.. 使用RcfFileGenerator1.4a（或更新版本）、以您在步驟1中擷取的資訊建立RCF檔案。新版的RcfFileGenerator-會建立一組額外的高效能檔案、您可以使用這些檔案來還原部分組態、並準備交換器套用新的RCF組態。
+.. 比較橫幅motd與目前套用的RCF檔案。平台類型、交換器類型、連接埠和VLAN使用量必須相同。
++
+
+NOTE: 您必須使用與RCF檔案相同版本的高效能檔案、以及完全相同的組態。使用任何高效能檔案都無法運作、可能需要完全重設交換器。
+
++
+
+NOTE: 儲存類型可能不同、即SAS儲存設備或直接儲存設備。
+
++
+
+NOTE: RCF檔案所建立的版本與此無關。ONTAP只有RCF檔案版本很重要。
+
++
+
+NOTE: RCF檔案（即使是相同版本）可能會列出較少或更多平台。請確定您的平台已列出。
+
+
+
+--
+.選項2：建立一般的高效能檔案
+--
+如果組態*不符合所有需求、請使用此程序。
+
+.步驟
+.. 從每個交換器擷取「show running-config」的輸出。
+.. 開啟RcfFileGenerator,然後按一下視窗底部的「Create generic CleanUpFiles」
+.. 將您在步驟1中從「One」交換器擷取的輸出複製到上方視窗。您可以移除或保留預設輸出。
+.. 按一下「Create CUF Files」（建立CUF檔案）。
+.. 將輸出內容從下方視窗複製到文字檔（此檔案為CleanUpFile）。
+.. 對組態中的所有交換器重複步驟c、d和e。
++
+在此程序結束時、您應該有四個文字檔、每個交換器一個。您可以使用與使用選項1建立的高效能檔案相同的方式來使用這些檔案。
+
+
+
+--
+====
+. [[Cree-be-on-ree-rCF-files-for the -new組態]]建立新組態的「新」RCF檔案。建立這些檔案的方式與您在上一個步驟中建立檔案的方式相同、只是選擇個別ONTAP 的版本即可。
++
+完成此步驟之後、您應該擁有兩組RCF檔案、每組檔案包含12個檔案。
+
+. 將檔案下載至bootflash。
++
+.. 下載您在中建立的高效能檔案 <<Create-RCF-files-and-CleanUpFiles-or-create-generic-CleanUpFiles,建立RCF檔案和CleanUpFiles、或為目前組態建立一般的CleanUpFiles>>
++
+
+NOTE: 此高效能檔案適用於目前套用的RCF檔案、*不適用於您要升級至的新RCF。
+
++
+例如：Switch-A1的高效能檔案：「Cleanup_NX9336_v1.81_Switch-a1.txt'
+
+.. 下載您在中建立的「新」RCF檔案 <<Create-the-new-RCF-files-for-the-new-configuration,建立新組態的「新」RCF檔案。>>
++
+Switch-A1的RCF檔案範例：「NX9336_v1.90_Switch-a1.txt'
+
+.. 下載您在中建立的高效能檔案 <<Create-the-new-RCF-files-for-the-new-configuration,建立新組態的「新」RCF檔案。>> 此步驟為選用步驟、您日後可以使用此檔案來更新交換器組態。它符合目前套用的組態。
++
+例如：Switch-A1的高效能檔案：「Cleanup_NX9336_v1.90_Switch-a1.txt'
+
++
+
+NOTE: 您必須使用高效能檔案取得正確（相符）的RCF版本。如果您針對不同的RCF版本或不同的組態使用高效能檔案、則可能無法正確清除組態。
+
++
+以下範例將三個檔案複製到bootflash：
+
++
+[listing]
+----
+IP_switch_A_1# copy sftp://user@50.50.50.50/RcfFiles/NX9336-direct-SAS_v1.81_MetroCluster-IP_L2Direct_A400FAS8700_xxx_xxx_xxx_xxx/Cleanup_NX9336_v1.81_Switch-A1.txt bootflash:
+IP_switch_A_1# copy sftp://user@50.50.50.50/RcfFiles/NX9336-direct-SAS_v1.90_MetroCluster-IP_L2Direct_A400FAS8700A900FAS9500_xxx_xxx_xxx_xxxNX9336_v1.90//NX9336_v1.90_Switch-A1.txt bootflash:
+IP_switch_A_1# copy sftp://user@50.50.50.50/RcfFiles/NX9336-direct-SAS_v1.90_MetroCluster-IP_L2Direct_A400FAS8700A900FAS9500_xxx_xxx_xxx_xxxNX9336_v1.90//Cleanup_NX9336_v1.90_Switch-A1.txt bootflash:
+----
+
+
+. 套用高效能檔案或一般高效能檔案。
++
+部分組態會還原、而且交換器連接埠會「離線」。
+
++
+.. 確認啟動組態沒有擱置中的變更：「How running-config diff」
++
+[listing]
+----
+IP_switch_A_1# show running-config diff
+IP_switch_A_1#
+----
+
+
+. 如果看到系統輸出、請將執行組態儲存至啟動組態：「copy running-config startup-config」
++
+
+NOTE: 系統輸出指出啟動組態和執行中組態不同、且處於擱置狀態。如果您未儲存擱置中的變更、則無法使用交換器的重新載入來回復。
+
++
+.. 套用高效能檔案：
++
+[listing]
+----
+
+IP_switch_A_1# copy bootflash:Cleanup_NX9336_v1.81_Switch-A1.txt running-config
+
+IP_switch_A_1#
+----
++
+
+NOTE: 指令碼可能需要一段時間才能返回交換器提示。不需要輸出。
+
+
+
+. 檢視執行中的組態、確認組態已清除：「How running-config」
++
+目前的組態應顯示：
+
++
+** 未設定類別對應和IP存取清單
+** 未設定原則對應
+** 未設定任何服務原則
+** 未設定連接埠設定檔
+** 所有乙太網路介面（mgmt0除外、它不應顯示任何組態、而且只應設定VLAN 1）。
++
+如果您發現已設定上述任何項目、則可能無法套用新的RCF檔案組態。不過、您可以重新載入交換器*而不將執行中的組態儲存至啟動組態、以回復到先前的組態。交換器會顯示先前的組態。
+
+
+
+. 套用RCF檔案並確認連接埠已上線。
++
+.. 套用RCF檔案。
++
+[listing]
+----
+IP_switch_A_1# copy bootflash:NX9336_v1.90-X2_Switch-A1.txt running-config
+----
++
+
+NOTE: 套用組態時會出現一些警告訊息。不需要錯誤訊息。
+
+.. 套用組態之後、請使用MetroCluster 下列命令之一「show interface brief」、「show cup neighbor」或「show LLDP鄰近設備」來確認叢集和列舉的各個連接埠是否已上線
++
+
+NOTE: 如果您變更本機叢集的VLAN、並在站台升級第一台交換器、則叢集健全狀況監控可能不會將狀態報告為「健全」、因為舊組態和新組態的VLAN不相符。更新第二個交換器之後、狀態應恢復正常。
+
++
+如果組態未正確套用、或您不想保留組態、您可以重新載入交換器*而不將執行中的組態儲存為啟動組態、以回復到先前的組態。交換器會顯示先前的組態。
+
+
+
+. 儲存組態並重新載入交換器。
++
+[listing]
+----
+IP_switch_A_1# copy running-config startup-config
+
+IP_switch_A_1# reload
+----
+

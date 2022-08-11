@@ -1514,6 +1514,20 @@ Remote: cluster_A         Configuration state configured
 +
 《不一樣的表演》MetroCluster
 
++
+
+NOTE: 執行「MetroCluster 不景檢查路跑」和MetroCluster 「不景檢查秀」之後、您會看到類似下列的錯誤訊息：
+
++
+.範例
+[listing]
+----
+Failed to validate the node and cluster components before the switchover operation.
+                  Cluster_A:: node_A_1 (non-overridable veto): DR partner NVLog mirroring is not online. Make sure that the links between the two sites are healthy and properly configured.
+----
++
+這是升級過程中控制器不相符所造成的預期行為、而且可以安全地忽略錯誤訊息。
+
 
 
 

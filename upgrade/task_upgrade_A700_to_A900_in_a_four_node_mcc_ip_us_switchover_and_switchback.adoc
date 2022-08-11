@@ -106,7 +106,7 @@ image::../media/workflow_ip_upgrade.png[工作流程IP升級]
 
 === 在升級控制器之前、請先更新MetroCluster RCF交換器檔案
 
-在不使用VLAN的情況下MetroCluster 、無法在AFF 不支援使用VLAN的情況下使用支援。在不支援虛擬區域網路的情況下、使用虛擬區域網路（VLAN）的架構。MetroCluster AFF因此、當您將RCF檔案從AFF 某個版本升級至AFF 某個版本的時、您需要變更RCF檔案、例如從某個版本的E或FAS9000升級至某個版本的E或FAS9500。
+執行此升級時、您必須更新MetroCluster 位於BIOS交換器上的RCF檔案。下表提供AFF 支援的VLAN範圍、以利執行不支援的FASA900/FAS9500/IP MetroCluster 組態。
 
 |===
 
@@ -1456,7 +1456,7 @@ link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#adding-metro
  a| 
 中介者
  a| 
-連結：/install-ip/concept_mediator_requirements.html [Configuring the ONTAP SUREator service from a MetroCluster SURFIP configuration（從一套靜態IP組態設定）]、位於「_EYSIP MetroCluster Installation and Configuration」（_）區段。
+link:../install-ip/concept_mediator_requirements.html["從ONTAP 一套不實的IP組態設定「不實不作」MetroCluster 服務"] 在「_SURFIP MetroCluster 安裝與組態」一節中。
 
 
 

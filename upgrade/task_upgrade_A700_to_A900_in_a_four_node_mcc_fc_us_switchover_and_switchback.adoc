@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, controllers, switchover, switchback, fc, configuration, net, boot, root, aggregate, mcc 
 summary: 您可以在MetroCluster 升級合作夥伴叢集上的控制器模組時、使用「支援交換」作業來為用戶端提供不中斷營運的服務。其他元件（例如儲存櫃或交換器）無法在此程序中進行升級。 
 ---
-= 使用交換器和切換功能（AFF 更新版本）、將控制器從S還原A700/FAS9000升級AFF 至還原A990/FAS9500 MetroCluster （以不含更新ONTAP 版本的版本）
+= 使用切換和切換功能（AFF 更新版本）、將控制器從功能不實的A700/FAS9000升級AFF 至功能不實的A900/FAS9500 MetroCluster （以功能不實的FC組態）ONTAP
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

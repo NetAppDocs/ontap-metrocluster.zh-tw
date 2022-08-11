@@ -60,6 +60,8 @@ entries:
     url: "/maintain/task_upgrade_firmware_on_mcc_ip_switches.html"
   - title: 升級MetroCluster 不只是在靜態IP交換器上的RCF檔案
     url: "/maintain/task_upgrade_rcf_files_on_mcc_ip_switches.html"
+  - title: 使用MetroCluster 清除檔案在支援的IP交換器上升級RCF檔案
+    url: "/maintain/task_upgrade_rcf_files_on_mcc_ip_switches_with_cleanupfiles.html"
   - title: 重新命名Cisco IP交換器
     url: "/maintain/task_rename_a_cisco_ip_switch.html"
 - title: 在不中斷營運的情況下新增、移除或變更ISL連接埠
