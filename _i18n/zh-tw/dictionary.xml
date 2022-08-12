@@ -12299,7 +12299,6 @@
   <block id="44966f51999c176196bdbfe7e74f3762" category="paragraph">3、4、9、10、11、 12.</block>
   <block id="3ee537e70a06614ada97e070ef70fe96" category="paragraph">FAS8300/A400/FAS8700</block>
   <block id="fb6814303d896b70f8e88a7a5fa288c1" category="list-text">藍色的儲存格顯示從ONTAP 支援的功能是從支援的版本號為《支援的產品組合、從版本號為《支援的產品組合</block>
-  <block id="f65f3d1cbac500084196b8e4bf5ad772" category="image-alt">FC IP移轉中繼節點及更新版本</block>
   <block id="8cff99d2c284195b8638b34190ed3388" category="list-text">版本8.3.x、9.0、9.1、9.2、9.3、ONTAP 9.4、9.5、9.6、9.7、9.8、 9.9.1、9.10.1或9.11.1。</block>
   <block id="8e41be9a68008dd9f01c00807dd75f69" category="section-title">一致性群組支援MetroCluster 的不一致性組態</block>
   <block id="b36742dbca767f044c826ec8fbe9b099" category="inline-link">一致性群組</block>
@@ -12655,4 +12654,8 @@
   <block id="e5df3565fbad5a4849fc6fb6ec79e8d1" category="list-text">在Bes至53248交換器上使用40或100-Gbps ISL連接埠需要額外授權。</block>
   <block id="394d86b50aa384c22c3eeb7d90023e15" category="list-text">當您為Cisco 9336C-FX2建立RCF檔案（連接NS224磁碟櫃）時、必須選擇以原生*或*中斷模式設定ISL。</block>
   <block id="a455825d44f1e4a4ab9b205b1b01f846" category="sidebar">使用MetroCluster 清除檔案在支援的IP交換器上升級RCF檔案</block>
+  <block id="b811a3677c5b098a6945ad54c6058363" category="section-title">支援使用切換和切換來升級控制器的平台組合</block>
+  <block id="773198299cf56ea3814545219f2bb9cb" category="paragraph">您可以使用切換和切換操作來升級特定平台。下表顯示支援哪些控制器升級組合：</block>
+  <block id="0af1623ce613439fe5aa524f7c4b1e1b" category="image-alt">支援的控制器升級組合</block>
+  <block id="bc85eece93965de5b37264d01e4e5eeb" category="image-alt">FC IP移轉大都會及更新版本</block>
 </blocks>

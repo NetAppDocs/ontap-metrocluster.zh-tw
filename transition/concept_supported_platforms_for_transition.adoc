@@ -22,7 +22,7 @@ summary: 然後轉換MetroCluster 至靜態IP組態、您必須擁有支援的�
 
 例如MetroCluster 、支援從由AFF8060控制器模組組成的FESFC組態、轉換為AFF 由FESA400控制器模組組成的IP組態。
 
-image::../media/fc_ip_transition_metrpolitan_and_later.png[FC IP移轉中繼節點及更新版本]
+image::../media/fc_ip_transition_metropolitan_and_later.png[FC IP移轉大都會及更新版本]
 
 
 
