@@ -14,6 +14,13 @@ summary: 您必須設定Broadcom IP交換器作為叢集互連和後端MetroClus
 您必須設定Broadcom IP交換器作為叢集互連和後端MetroCluster 的靜態IP連線。
 
 
+NOTE: 您的組態在下列情況下需要額外授權（6個100-GB連接埠授權）：
+
+* 您使用連接埠53和54做為40-Gbps或100-Gbps MetroCluster 的支援。
+* 您所使用的平台將本機叢集和MetroCluster 功能區介面連接至連接埠49 - 52。
+
+
+
 
 == 將Broadcom IP交換器重設為原廠預設值
 
@@ -715,7 +722,7 @@ NOTE: 不支援下載後修改RCF檔案。
 
 . 將RCF檔案複製到交換器：
 +
-.. 將RCF檔案複製到第一個交換器：「copy sftp：//user@ft-server_ip-address/rcfFiles/switch-specific -rCF nvNVRAM：指令碼BES-53248_v1.32_Switch-A1.txt nvNVRAM：指令碼bes-53241_v1.32_switch-a1.scr」
+.. 將RCF檔案複製到第一個交換器：「copy sftp：//user@ft-server_ip-address/rcfFiles/switch-specific -rCF/BES-53248_v1.32_Switch-A1.txt nvRAv:script bes-53241_v1.32_switch-a1.scr」
 +
 在此範例中、「Bes-53241_v1.32_Switch-a1.txt」RCF檔案會從SFTP伺服器複製到本機BootFlash、路徑為「50.50.50.50」。您需要使用TFTP/SFTP伺服器的IP位址、以及需要安裝的RCF檔案名稱。
 

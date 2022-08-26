@@ -139,7 +139,6 @@
   <block id="ebd9fb85557b54bcafec3d1a1ac1c292" category="inline-link">RcfFileGeneratorfor MetroCluster EfIP</block>
   <block id="fd550a9c3a7b7c6106ae07bc6bb69106" category="list-text">下載<block ref="166489b3c340ece1eccb5706fda90624" category="inline-link-rx"></block></block>
   <block id="516e7c19b1a750a903f4fd9e3624c57a" category="list-text">將RCF檔案複製到交換器：</block>
-  <block id="c02e1d7f483cf9ccd0ff120c09ebc64f" category="list-text">將RCF檔案複製到第一個交換器：「copy sftp：//user@ft-server_ip-address/rcfFiles/switch-specific -rCF nvNVRAM：指令碼BES-53248_v1.32_Switch-A1.txt nvNVRAM：指令碼bes-53241_v1.32_switch-a1.scr」</block>
   <block id="0fde531bbbf90d47fe7905001a962dde" category="paragraph">在此範例中、「Bes-53241_v1.32_Switch-a1.txt」RCF檔案會從SFTP伺服器複製到本機BootFlash、路徑為「50.50.50.50」。您需要使用TFTP/SFTP伺服器的IP位址、以及需要安裝的RCF檔案名稱。</block>
   <block id="e1e09f5dca0aef21d822f07bad5eea3b" category="list-text">確認RCF檔案已儲存為指令碼：</block>
   <block id="406bb351c55daa6b29920fa6ce644c29" category="paragraph">《記錄清單》</block>
@@ -12533,7 +12532,6 @@
   <block id="8c67eafd90e097bf6228c8d6f91f15cb" category="list-text"><block ref="8c67eafd90e097bf6228c8d6f91f15cb" category="inline-link-macro-rx"></block></block>
   <block id="6fc32e58ee37ceb6ca0bb1590e84ab08" category="sidebar">使用切換和切換功能（AFF 更新版本）、將控制器從功能不實的A700/FAS9000升級AFF 至功能不實的A900/FAS9500 MetroCluster （以功能不實的FC組態）ONTAP</block>
   <block id="121ccccf0953c4b38cd58e1f1be63ffd" category="sidebar">使用交換器和切換功能（AFF 更新版本）、將控制器從功能性的A700/FAS9000升級AFF 至功能性的S還原A900/FAS9500 MetroCluster （以不整合的IP組態）ONTAP</block>
-  <block id="cfb1fc36dd671ed91ba25af840a49e64" category="doc">使用CleanUpFiles在MetroCluster 不更新的IP交換器上升級RCF檔案</block>
   <block id="44d9da525f678322921a73864bd0b924" category="paragraph">從RcfFileGenerator1.4a版開始、Cisco IP交換器上有一個新選項可以變更（升級、降級或更換）交換器組態、而不需要執行「寫入清除」。</block>
   <block id="0d98f6fd87f88cd68844ee1450081b43" category="paragraph">如果您的組態符合下列需求、可以使用此方法：</block>
   <block id="cf5d82da1dbb504eeff51105d1c22631" category="list-text">套用標準RCF組態。</block>
@@ -12543,7 +12541,6 @@
   <block id="22bfd0bc1ef7b5ec6b0c3d09a25173dd" category="list-text">在套用目前的RCF檔案之前、已遵循將交換器重設為原廠預設值的步驟。</block>
   <block id="bdda45d6734a620758197fdb8292141f" category="list-text">套用RCF之後、不會變更交換器（連接埠）組態。</block>
   <block id="7db0739314c77bc294505bdbb23e67b7" category="paragraph">如果您不符合這些需求、則無法使用在產生RCF檔案時所建立的高效能檔案。不過、您可以利用此功能來建立一般的高效能檔案、因為使用此方法的清除是從「show running-config」的輸出衍生而來、而且是最佳實務做法。</block>
-  <block id="c9adb95bef755c2c28edaaae2720ea48" category="admonition">您必須依照下列順序更新交換器：switch_a_1、Switch_B_1、Switch_a_2、Switch_B_2。或者、您也可以同時更新交換器Switch_a_1和Switch_B_1、然後再更新Switch_B_1和Switch_B_2。</block>
   <block id="0e0fe23e527e37b417182290ff6ed374" category="list-text">確定目前的RCF檔案版本、以及使用的連接埠和VLAN：「ip_switch_a_1# show banner motd」</block>
   <block id="e020d7382ce2a21b56ea6460a45b49c2" category="admonition">您需要從所有四個交換器取得此資訊、並填寫下列資訊表。</block>
   <block id="2b6ad2a040294d5c6d9cd85338614383" category="paragraph">您必須從此輸出中收集下表所示的資訊。</block>
@@ -12662,4 +12659,11 @@
   <block id="0b9982c26f9b690896e158b901c7001c" category="paragraph">*範例1*</block>
   <block id="66fcc909c7d6b29950f9da753e168312" category="paragraph">*範例2*</block>
   <block id="beb59952abfbd2e99ff165a613423fa0" category="list-text">請使用下表來判斷您必須遵循的方法：</block>
+  <block id="242fc88f1fc9a405fa9f0e7cbf2c069b" category="summary">您可能需要升級Cisco IP交換器上的RCF檔案。例如ONTAP 、進行升級時、或是交換器韌體升級時、都需要新的RCF檔案。</block>
+  <block id="ec9296ef857e944ab344eb684e789ddc" category="doc">使用高效能檔案升級Cisco IP交換器上的RCF檔案</block>
+  <block id="88d8da08ee7e7170ae3a43278a025761" category="admonition">您必須依照下列順序更新交換器：switch_a_1、Switch_B_1、Switch_a_2、Switch_B_2。或者、您也可以同時更新交換器Switch_a_1和Switch_a_2、然後再更新Switch_B_1和Switch_B_2。</block>
+  <block id="6eedc2d4a1f7c30325c52c25b14dda09" category="admonition">您的組態在下列情況下需要額外授權（6個100-GB連接埠授權）：</block>
+  <block id="d4a39e254ca0e79abbaea7e91f10d1c8" category="list-text">您使用連接埠53和54做為40-Gbps或100-Gbps MetroCluster 的支援。</block>
+  <block id="39d6f919c4f9487cf3eba1907393cc85" category="list-text">您所使用的平台將本機叢集和MetroCluster 功能區介面連接至連接埠49 - 52。</block>
+  <block id="b457d19307b0152d2948b75490c21739" category="list-text">將RCF檔案複製到第一個交換器：「copy sftp：//user@ft-server_ip-address/rcfFiles/switch-specific -rCF/BES-53248_v1.32_Switch-A1.txt nvRAv:script bes-53241_v1.32_switch-a1.scr」</block>
 </blocks>

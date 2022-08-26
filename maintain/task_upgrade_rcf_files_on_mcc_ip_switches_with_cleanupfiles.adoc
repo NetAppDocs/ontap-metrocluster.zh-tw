@@ -1,17 +1,17 @@
 ---
 permalink: maintain/task_upgrade_rcf_files_on_mcc_ip_switches_with_cleanupfiles.html 
 sidebar: sidebar 
-keywords: metrocluster, maintain, service, upgrade, rcf, files, ip, switches, cleanupfiles 
-summary: 您可能需要在MetroCluster 一個不知如何的IP交換器上升級RCF檔案。例如ONTAP 、進行升級時、或是交換器韌體升級時、都需要新的RCF檔案。 
+keywords: metrocluster, maintain, service, upgrade, rcf, files, ip, switches, cleanupfiles, cisco 
+summary: 您可能需要升級Cisco IP交換器上的RCF檔案。例如ONTAP 、進行升級時、或是交換器韌體升級時、都需要新的RCF檔案。 
 ---
-= 使用CleanUpFiles在MetroCluster 不更新的IP交換器上升級RCF檔案
+= 使用高效能檔案升級Cisco IP交換器上的RCF檔案
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-您可能需要在MetroCluster 一個不知如何的IP交換器上升級RCF檔案。例如ONTAP 、進行升級時、或是交換器韌體升級時、都需要新的RCF檔案。
+您可能需要升級Cisco IP交換器上的RCF檔案。例如ONTAP 、進行升級時、或是交換器韌體升級時、都需要新的RCF檔案。
 
 從RcfFileGenerator1.4a版開始、Cisco IP交換器上有一個新選項可以變更（升級、降級或更換）交換器組態、而不需要執行「寫入清除」。
 
@@ -28,7 +28,7 @@ summary: 您可能需要在MetroCluster 一個不知如何的IP交換器上升�
 
 +
 
-NOTE: 您必須依照下列順序更新交換器：switch_a_1、Switch_B_1、Switch_a_2、Switch_B_2。或者、您也可以同時更新交換器Switch_a_1和Switch_B_1、然後再更新Switch_B_1和Switch_B_2。
+NOTE: 您必須依照下列順序更新交換器：switch_a_1、Switch_B_1、Switch_a_2、Switch_B_2。或者、您也可以同時更新交換器Switch_a_1和Switch_a_2、然後再更新Switch_B_1和Switch_B_2。
 
 
 
