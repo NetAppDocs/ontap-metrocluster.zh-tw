@@ -35,11 +35,19 @@ summary: 您所使用的升級或更新程序取決於平台機型、升級範�
 
 
 
-== 支援使用切換和切換來升級控制器的平台組合
+== 支援的平台組合、可在MetroCluster 支援的情況下使用切換和切換功能進行控制器升級、並採用一套支援的IP組態
 
-您可以使用切換和切換操作來升級特定平台。下表顯示支援哪些控制器升級組合：
+您可以使用MetroCluster 切換和切換操作來升級某些平台、以支援各種功能。下表顯示支援哪些控制器升級組合：
 
-image::supported_controller_upgrades.png[支援的控制器升級組合]
+image::supported_controller_upgrades.png[IP組態中支援的控制器升級組合]
+
+
+
+== 支援的平台組合、可在MetroCluster 支援的情況下使用切換和切換功能進行控制器升級、以支援使用支援的功能
+
+您可以使用MetroCluster 切換和切換功能、以支援功能支援的功能來升級特定平台。下表顯示支援哪些控制器升級組合：
+
+image::supported_controller_upgrades_fc_configurations.png[FC組態中支援的控制器升級組合]
 
 
 

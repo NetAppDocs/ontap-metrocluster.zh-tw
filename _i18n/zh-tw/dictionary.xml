@@ -435,7 +435,6 @@
   <block id="e544ed43da5fbe5f1ff53ed83f313e27" category="section-title">FAS2750系統上的磁碟指派</block>
   <block id="348b34a8fc3bce6d3e74519d8b7e9ca3" category="paragraph">24個內部磁碟機和24個外部磁碟機</block>
   <block id="8a9765ee788aa0ec121d5869524dbbb4" category="paragraph">內部與外部磁碟櫃分為兩半。每一半會自動指派給不同的資源池</block>
-  <block id="1727ed989c7f4287136d81d78aeb960e" category="paragraph">不適用。</block>
   <block id="9b69500f7139e9ab34f753b13df6c609" category="section-title">FAS8200系統上的磁碟指派</block>
   <block id="f5282c0c22db3753989149a870ee22a6" category="paragraph">外部磁碟櫃上的磁碟機分為兩個等群組（兩個半）。每個半磁碟櫃都會自動指派給個別的資源池。</block>
   <block id="f279008175291c0c57dfde21cb38762c" category="section-title">FAS500f系統上的磁碟指派</block>
@@ -12650,10 +12649,6 @@
   <block id="eb4cfd99b709d0b0ddc435f063be95cf" category="paragraph">中斷纜線（2）</block>
   <block id="e5df3565fbad5a4849fc6fb6ec79e8d1" category="list-text">在Bes至53248交換器上使用40或100-Gbps ISL連接埠需要額外授權。</block>
   <block id="394d86b50aa384c22c3eeb7d90023e15" category="list-text">當您為Cisco 9336C-FX2建立RCF檔案（連接NS224磁碟櫃）時、必須選擇以原生*或*中斷模式設定ISL。</block>
-  <block id="a455825d44f1e4a4ab9b205b1b01f846" category="sidebar">使用MetroCluster 清除檔案在支援的IP交換器上升級RCF檔案</block>
-  <block id="b811a3677c5b098a6945ad54c6058363" category="section-title">支援使用切換和切換來升級控制器的平台組合</block>
-  <block id="773198299cf56ea3814545219f2bb9cb" category="paragraph">您可以使用切換和切換操作來升級特定平台。下表顯示支援哪些控制器升級組合：</block>
-  <block id="0af1623ce613439fe5aa524f7c4b1e1b" category="image-alt">支援的控制器升級組合</block>
   <block id="bc85eece93965de5b37264d01e4e5eeb" category="image-alt">FC IP移轉大都會及更新版本</block>
   <block id="731380609e4acd613ed054b92fc261e6" category="list-text">使用「show FIPS STATUS」命令檢查您的EFOS版本是否符合FIPS標準或不符合FIPS標準。在下列範例中、「ip_switch_a_1」使用FIPS相容的EFOS、而「ip_switch_a_2」使用的是非FIPS相容的EFOS。</block>
   <block id="0b9982c26f9b690896e158b901c7001c" category="paragraph">*範例1*</block>
@@ -12666,4 +12661,15 @@
   <block id="d4a39e254ca0e79abbaea7e91f10d1c8" category="list-text">您使用連接埠53和54做為40-Gbps或100-Gbps MetroCluster 的支援。</block>
   <block id="39d6f919c4f9487cf3eba1907393cc85" category="list-text">您所使用的平台將本機叢集和MetroCluster 功能區介面連接至連接埠49 - 52。</block>
   <block id="b457d19307b0152d2948b75490c21739" category="list-text">將RCF檔案複製到第一個交換器：「copy sftp：//user@ft-server_ip-address/rcfFiles/switch-specific -rCF/BES-53248_v1.32_Switch-A1.txt nvRAv:script bes-53241_v1.32_switch-a1.scr」</block>
+  <block id="ea32627e820d2d706867bdf52f203354" category="section-title">支援的平台組合、可在MetroCluster 支援的情況下使用切換和切換功能進行控制器升級、並採用一套支援的IP組態</block>
+  <block id="5a133f61008521cf04b795cbed594afb" category="paragraph">您可以使用MetroCluster 切換和切換操作來升級某些平台、以支援各種功能。下表顯示支援哪些控制器升級組合：</block>
+  <block id="3683e9c25b6907e036fd4e9c0b1f6c3e" category="image-alt">IP組態中支援的控制器升級組合</block>
+  <block id="c18cacb38175bec2261f766082f949f2" category="section-title">支援的平台組合、可在MetroCluster 支援的情況下使用切換和切換功能進行控制器升級、以支援使用支援的功能</block>
+  <block id="d71f8b4a76cf6eed8f9c4126a751829c" category="paragraph">您可以使用MetroCluster 切換和切換功能、以支援功能支援的功能來升級特定平台。下表顯示支援哪些控制器升級組合：</block>
+  <block id="2a9c49e8bc60cebb402b316352750e02" category="image-alt">FC組態中支援的控制器升級組合</block>
+  <block id="6ecbc3bbbc5acac0e3a1eaa928b0ef3a" category="list-text">兩個資料分割區</block>
+  <block id="203589fdbad6f6dc48cf251ed51e812a" category="list-text">無備用磁碟分割</block>
+  <block id="78da571ba5b07c0449886d55d21269c6" category="paragraph">需要手動指派</block>
+  <block id="361139022557555da3940779901816d7" category="paragraph">需要手動指派。</block>
+  <block id="6d54b17c6700f2c764e16c85409687ad" category="sidebar">使用清除檔案升級Cisco IP交換器上的RCF檔案</block>
 </blocks>
