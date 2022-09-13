@@ -79,6 +79,9 @@ image::../media/cabling_an_aff_a800_to_a_cisco_3232c_or_cisco_9336c_switch.png[�
 
 == 將AFF FASA900或FAS9500纜線連接至Cisco 3232C或Cisco 9336C交換器
 
+
+NOTE: 您可以選擇使用連接埠e5a和e7a做MetroCluster 為叢集間的LIF組態。
+
 image:../media/cabling_an_aff_a900_or_FAS9500_to_a_cisco_3232c_or_cisco_9336c_switch.png[""]
 
 

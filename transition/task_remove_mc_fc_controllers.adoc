@@ -80,25 +80,25 @@ cluster_B::>
 +
 .. 使Aggregate離線：「torage gregate offline -Aggregate aggregate name」
 +
-下列範例顯示正在離線的Aggregate node_B_1_aggr0：
+下列範例顯示Agggr_data_A1離線：
 
 +
 ....
-cluster_B::> storage aggregate offline -aggregate node_B_1_aggr0
+cluster_B::> storage aggregate offline -aggregate aggr_data_a1
 
-Aggregate offline successful on aggregate: node_B_1_aggr0
+Aggregate offline successful on aggregate: aggr_data_a1
 ....
 .. 刪除Aggregate：「torage gregate delete -gregate aggregregate name」
 +
 出現提示時、您可以銷毀叢。
 
 +
-下列範例顯示要刪除的Aggregate node_B_1_aggr0。
+下列範例顯示要刪除的Agggr_data_A1集合體。
 
 +
 ....
-cluster_B::> storage aggregate delete -aggregate node_B_1_aggr0
-Warning: Are you sure you want to destroy aggregate "node_B_1_aggr0"? {y|n}: y
+cluster_B::> storage aggregate delete -aggregate aggr_data_a1
+Warning: Are you sure you want to destroy aggregate "aggr_data_a1"? {y|n}: y
 [Job 123] Job succeeded: DONE
 
 cluster_B::>

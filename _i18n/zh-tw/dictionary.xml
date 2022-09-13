@@ -12672,4 +12672,7 @@
   <block id="78da571ba5b07c0449886d55d21269c6" category="paragraph">需要手動指派</block>
   <block id="361139022557555da3940779901816d7" category="paragraph">需要手動指派。</block>
   <block id="6d54b17c6700f2c764e16c85409687ad" category="sidebar">使用清除檔案升級Cisco IP交換器上的RCF檔案</block>
+  <block id="cd87d30388635f4978d5e5f84d17c64e" category="admonition">您可以選擇使用連接埠e5a和e7a做MetroCluster 為叢集間的LIF組態。</block>
+  <block id="ec8b479c503bdd6824b5e3505ef1d0df" category="paragraph">下列範例顯示Agggr_data_A1離線：</block>
+  <block id="aa8cd184e817ada870c8b763be695d0b" category="paragraph">下列範例顯示要刪除的Agggr_data_A1集合體。</block>
 </blocks>
