@@ -71,7 +71,7 @@ NOTE: 每個版本的每個版本組態應只有一MetroCluster 部ESIT斷路 �
 .步驟
 . 安裝Java執行時間環境。
 +
-<<install-java-1-8,安裝Java執行時間環境1.8>>
+,安裝Java執行時間環境1.8
 
 . 安裝MySQL或MariaDB伺服器：
 +
@@ -87,7 +87,7 @@ Red Hat Enterprise Linux 7/CentOS 7.
  a| 
 安裝MySQL
 
-<<install-mysql-redhat,在Red Hat Enterprise Linux 7或CentOS 7上安裝MySQL Server 5.5.30或更新版本及5.6.x版本>>
+,在Red Hat Enterprise Linux 7或CentOS 7上安裝MySQL Server 5.5.30或更新版本及5.6.x版本
 
 
 
@@ -96,7 +96,7 @@ Red Hat Enterprise Linux 8
  a| 
 安裝MariaDB
 
-<<install-mariadb,在Red Hat Enterprise Linux 8上安裝MariaDB伺服器>>
+,在Red Hat Enterprise Linux 8上安裝MariaDB伺服器
 
 |===
 
@@ -559,7 +559,7 @@ Nov 08 21:29:01 scspr0523972001 systemd[1]: Started MariaDB database server.
 ....
 +
 
-NOTE: 確認MariaDB的「啟用自動啟動」設定已開啟。請參閱 <<mariadb-autostart>>。
+NOTE: 確認MariaDB的「啟用自動啟動」設定已開啟。請參閱 。
 
 . 設定安全性和密碼設定：
 +
@@ -764,7 +764,7 @@ NetApp MetroCluster Tiebreaker :> monitor modify -monitor-name _monitor_name_ -o
 ....
 . 若要升級Tiebreaker主機、請依照下列程序中的所有步驟進行：
 +
-<<install-upgrade-sw-pkg,安裝或升級軟體套件>>
+,安裝或升級軟體套件
 
 . 停用觀察者模式、將所有監視器移回線上模式。
 +

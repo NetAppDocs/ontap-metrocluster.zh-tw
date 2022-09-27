@@ -1612,8 +1612,8 @@ Boot_ONTAP
 如果您需要以網路方式開機新的控制器、請參閱 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-mcc-upgrade/GUID-3370EC34-310E-4F09-829F-F632EC8CDD9B.html["Netbooting新的控制器模組"] 請參閱《_ MetroCluster 升級、轉換與擴充指南》_。
 
 .選擇
-* <<setup_ontap_2node_MCC,在ONTAP 雙節點MetroCluster 的不全功能組態中設定功能>>
-* <<setup_ontap_8node_4node_MCC,在ONTAP 八模式或四節點MetroCluster 的不全功能組態中設定功能>>
+* ,在ONTAP 雙節點MetroCluster 的不全功能組態中設定功能
+* ,在ONTAP 八模式或四節點MetroCluster 的不全功能組態中設定功能
 
 
 
@@ -1861,8 +1861,8 @@ NOTE: 您可以在後續的工作中建立鏡射集合體。
 您必須在MetroCluster 連接埠上建立叢集間的LIF、以便在各個連接埠之間進行通訊。您可以使用也有資料流量的專用連接埠或連接埠。
 
 .選擇
-* <<config_LIFs_dedicated,在專用連接埠上設定叢集間LIF>>
-* <<config_LIFs_shared_data,在共享的資料連接埠上設定叢集間LIF>>
+* ,在專用連接埠上設定叢集間LIF
+* ,在共享的資料連接埠上設定叢集間LIF
 
 
 
@@ -2654,7 +2654,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁�
 
 +
 
-NOTE: 如果您要使用單一鏡射資料Aggregate、請參閱 <<step1_aggr,步驟1.>> 以取得相關指示。
+NOTE: 如果您要使用單一鏡射資料Aggregate、請參閱 ,步驟1. 以取得相關指示。
 
 * 控制器和機箱的ha-config狀態必須為「MCC」。
 

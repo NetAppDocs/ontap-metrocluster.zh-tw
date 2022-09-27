@@ -1238,7 +1238,7 @@ FC_switch_B_1:admin> trunkshow
 ----
 
 
-. 重複 <<step1_brocade_config,步驟1.>> 透過 <<step10_brocade_config,步驟10>> 適用於第二個FC交換器網路。
+. 重複 ,步驟1. 透過 ,步驟10 適用於第二個FC交換器網路。
 
 
 link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）"]

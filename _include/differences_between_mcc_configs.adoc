@@ -195,7 +195,7 @@
 
 
 
-| 支援 <<Support for All SAN Array systems in MetroCluster configurations,所有SAN陣列>>  a| 
+| 支援  for All SAN Array systems in MetroCluster configurations,所有SAN陣列  a| 
 是的
  a| 
 是的

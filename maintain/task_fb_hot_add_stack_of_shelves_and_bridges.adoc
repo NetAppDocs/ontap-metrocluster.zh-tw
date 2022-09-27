@@ -421,15 +421,15 @@ Tgt VendorID ProductID        Type        SerialNumber
  a| 
 正確
  a| 
-重複 <<step11-verify-each-bridge-detect,步驟11.>> 每個剩餘的橋接器。
+重複 ,步驟11. 每個剩餘的橋接器。
 
 
 
  a| 
 不正確
  a| 
-.. 檢查SAS纜線是否鬆脫、或重複修正SAS纜線 <<step10-cable-shelves-bridges,步驟10>>。
-.. 重複 <<step11-verify-each-bridge-detect,步驟11.>>。
+.. 檢查SAS纜線是否鬆脫、或重複修正SAS纜線 ,步驟10。
+.. 重複 ,步驟11.。
 
 
 |===

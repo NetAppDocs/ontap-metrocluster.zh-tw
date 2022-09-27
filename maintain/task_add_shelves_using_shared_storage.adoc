@@ -192,7 +192,7 @@ cluster_A::>
 == 將新的RCF檔案套用至交換器
 
 
-NOTE: 如果您的交換器已正確設定、您可以跳過以下部分、直接前往 <<Configuring MACsec encryption on Cisco 9336C switches>>（如果適用）或至 <<Connecting the new NS224 shelf>>。
+NOTE: 如果您的交換器已正確設定、您可以跳過以下部分、直接前往  MACsec encryption on Cisco 9336C switches（如果適用）或至  the new NS224 shelf。
 
 * 您必須變更交換器組態才能新增磁碟櫃。
 * 您應該在檢閱纜線詳細資料 link:https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/port_usage_3232c_9336c.html#cabling-a-aff-a800-to-a-cisco-3232c-or-cisco-9336c-switch["平台連接埠指派"^]。

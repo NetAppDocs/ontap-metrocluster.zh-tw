@@ -110,5 +110,6 @@ homepage:
       summary: 搜尋您的支援問題答案。
       url: https://kb.netapp.com/
 product-family:
-  name: AFF and FAS Systems
-  repo: ontap-systems-family
+  name: ONTAP
+  repo: ontap-family
+  sidebar_label: 所有ONTAP 產品文件

@@ -158,7 +158,7 @@ cluster_A::*>
 
 ... 停用儲存容錯移轉：
 +
-"torage容錯移轉修改-node-name_-enable假<---- 其他步驟
+「torage容錯移轉修改-node-name_-enable假」
 
 ... 取消加入節點：+「cluster unjoin -node-name_」
 +

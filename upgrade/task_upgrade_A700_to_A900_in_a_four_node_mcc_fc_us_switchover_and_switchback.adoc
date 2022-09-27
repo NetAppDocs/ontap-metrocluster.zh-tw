@@ -228,7 +228,7 @@ NOTE: RCF檔案更新以支援AFF 不支援不支援使用支援不支援的A900
 .. 當路跑完成時、請參閱MetroCluster 《MetroCluster 不景檢查秀》（《不景檢查秀》）的《不景運行結果》（英文）
 
 
-. 重複更新Fabric B交換器（交換器2和4） <<Update-RCF,步驟2>> 至 <<verify-healthy,步驟5.>>。
+. 重複更新Fabric B交換器（交換器2和4） ,步驟2 至 ,步驟5.。
 
 
 
@@ -722,7 +722,7 @@ image:../media/drw_9500_remove_PCM.png["控制器"]
 
 | 未執行 | 在開機環境提示字元中使用下列命令手動設定連線：「ifconfige0M -addr=<filer_addr>-mask=<網路遮罩>-gateway=- dns =<dns _addr> domain=<dns網域>'<filer_addr>'是儲存系統的IP位址。「網路遮罩」是儲存系統的網路遮罩。「<閘道>」是儲存系統的閘道。'<DNs_addr>'是網路上名稱伺服器的IP位址。此參數為選用項目。'<DNs_domain>'是網域名稱服務（DNS）網域名稱。此參數為選用項目。附註：您的介面可能需要其他參數。在韌體提示字元中輸入說明以取得詳細資料。 
 |===
-. 在節點1上執行「netboot」：「netboot http://<web_server_ip/path_to_web_accessible_directory>/netboot/kernel`[]「<path_to_the_web-易於 存取的目錄>」應該會引導您下載「<ONTAP_VERSION >_image.tgz」 <<step2-download-software,步驟2>>。
+. 在節點1上執行「netboot」：「netboot http://<web_server_ip/path_to_web_accessible_directory>/netboot/kernel`[]「<path_to_the_web-易於 存取的目錄>」應該會引導您下載「<ONTAP_VERSION >_image.tgz」 ,步驟2。
 +
 
 NOTE: 請勿中斷開機。

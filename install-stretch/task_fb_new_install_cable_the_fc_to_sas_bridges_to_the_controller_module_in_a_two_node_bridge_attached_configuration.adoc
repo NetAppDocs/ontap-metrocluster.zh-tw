@@ -84,7 +84,7 @@ Tgt VendorID ProductID        Type        SerialNumber
  a| 
 正確
  a| 
-重複 <<step1-verify-detect,步驟1.>> 每個剩餘的橋接器。
+重複 ,步驟1. 每個剩餘的橋接器。
 
 
 
@@ -95,7 +95,7 @@ Tgt VendorID ProductID        Type        SerialNumber
 +
 link:task_fb_new_install_cabl.html["將磁碟櫃連接至橋接器"]
 
-.. 重複 <<step1-verify-detect,步驟1.>> 每個剩餘的橋接器。
+.. 重複 ,步驟1. 每個剩餘的橋接器。
 
 
 |===
@@ -114,5 +114,5 @@ image::../media/cluster_peering_network.gif[叢集對等網路]
 
 
 
-. 重複 <<step3-cable-each-bridge,步驟3.>> 在其他橋接器上、直到所有橋接器都連接好纜線。
+. 重複 ,步驟3. 在其他橋接器上、直到所有橋接器都連接好纜線。
 

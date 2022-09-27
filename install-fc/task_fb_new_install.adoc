@@ -629,7 +629,7 @@ NOTE: 如果輸出開頭出現截短的文字回應、您可以使用Telnet連�
  a| 
 正確
  a| 
-重複 <<step1_verify_bridges,步驟1.>> 每個剩餘的橋接器。
+重複 ,步驟1. 每個剩餘的橋接器。
 
 
 
@@ -640,7 +640,7 @@ NOTE: 如果輸出開頭出現截短的文字回應、您可以使用Telnet連�
 +
 link:task_fb_new_install.html["將磁碟櫃連接至橋接器"]
 
-.. 重複 <<step1_verify_bridges,步驟1.>>。
+.. 重複 ,步驟1.。
 
 
 |===

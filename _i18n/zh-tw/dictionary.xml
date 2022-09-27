@@ -1181,15 +1181,8 @@
   <block id="4ef3b220e04ca274abbe1def1b61d2bc" category="list-text">不支援自動IP指派。</block>
   <block id="ff63653e290a8e5b339966cb9855555f" category="summary">移除MetroCluster 完「支援」組態之後、所有磁碟連線和互連都應調整為支援狀態。如果您需要移除MetroCluster 該組態、請聯絡技術支援部門。</block>
   <block id="882861c4cbc2720bbf7b9b7ae1dbada9" category="doc">移除MetroCluster 不完整組態時的考量事項</block>
-  <block id="bbcb3b5036e2a08450550efac9975ba1" category="summary">本資訊說明如何安裝及設定MetroCluster 不完整的IP硬體和軟體元件。</block>
   <block id="09bf7c8746b0eccb2f8b87d398db4ad3" category="doc">安裝與組態MetroCluster</block>
-  <block id="8a0b74215590506f148554eeefc4f739" category="paragraph">在MetroCluster 下列情況下、您應該使用此資訊來規劃、安裝及設定一套靜態IP組態：</block>
-  <block id="463528d23a54279a25ea4137731c7ca5" category="list-text">您想要瞭解MetroCluster 一套架構的知識、包括一套知識、知識、知識、知識、知識、知識、</block>
-  <block id="12a8edac591f0bee9a2dbbaed62060a3" category="list-text">您想要瞭解設定MetroCluster 靜態IP組態的要求和最佳實務做法。</block>
   <block id="62f7ef95a1a4f5a1e459930846582588" category="list-text">您想要使用命令列介面（CLI）、而非自動化指令碼工具。</block>
-  <block id="58f4e450e6637270a6ebb47e42477be1" category="paragraph">此外也提供有關「供應」和「供應」組態的一般資訊ONTAP 。MetroCluster</block>
-  <block id="774a065cb3548cc61fb0ec3bc1494fbe" category="inline-link">供應說明文件中心 ONTAP</block>
-  <block id="04b0bb6aae6dc41149097cc24034df97" category="paragraph"><block ref="04b0bb6aae6dc41149097cc24034df97" category="inline-link-rx"></block></block>
   <block id="8f40f02b2069b8947b976e569e5762e5" category="summary">從ONTAP 支援MetroCluster 的Cisco交換器的支援範本支援的靜態IP組態、開始可以共享現有的ISL網路、而非使用專用MetroCluster 的功能性ISL。</block>
   <block id="137fb6b7668b4dc771dba830f9525b67" category="paragraph">從ONTAP 支援MetroCluster 的Cisco交換器的支援範本支援的靜態IP組態、開始可以共享現有的ISL網路、而非使用專用MetroCluster 的功能性ISL。早期ONTAP 版本需要專用ISL。</block>
   <block id="26a46433a2f75a74966a962fd286906b" category="paragraph">不支援使用支援靜態組態的IP交換器、因此無法共享。MetroCluster MetroCluster因此MetroCluster 、一組靜態IP交換器只能連接一個MetroCluster 靜態組態。只有位於靜態IP交換器上的靜態ISL連接埠可以連接至共享交換器。MetroCluster MetroCluster</block>
@@ -3678,10 +3671,6 @@
   <block id="680a4f630b21eab8e23842ce1e77c536" category="list-text"><block ref="680a4f630b21eab8e23842ce1e77c536" category="inline-link-macro-rx"></block></block>
   <block id="fe829dd203a0238e92149d6e50fe01a3" category="list-text"><block ref="fe829dd203a0238e92149d6e50fe01a3" category="inline-link-macro-rx"></block></block>
   <block id="97a377942f4f2e5cbecdba36cbfb77ea" category="inline-link-macro">下載並安裝Broadcom IP RCF檔案</block>
-  <block id="78000b0502657029700618498b49c2a2" category="list-text">switch_a_1.</block>
-  <block id="e8ec5d8866ea800460ce1192269d2c8f" category="list-text">switch_B_1</block>
-  <block id="9c84e76a527ed2550b5deb0129b1f0ef" category="list-text">switch_a_2</block>
-  <block id="24a317c09a8ce13b1d45e281822fc809" category="list-text">switch_b_2</block>
   <block id="e1af59c4560e3899befd23783e6a3c93" category="summary">支援使用FIBreBridge 7600N橋接器的ONTAP 版本可在更新版本的版本中使用、以取代連接到FIBreBridge 7500N或6500N橋接器、或是在MetroCluster 將新儲存設備新增到該功能組態時使用。橋接器FC連接埠的使用分區要求和限制與Fibre Bridge 7500N橋接器相同。</block>
   <block id="0a0b2f8493bfc4e7fb3cb00d79943c6b" category="doc">支援MetroCluster 採用支援的FIBreBridge 7600N橋接器、採用各種不完整的組態</block>
   <block id="d996c9171711ede1bccddd47d17c5a7c" category="paragraph">支援使用FIBreBridge 7600N橋接器的ONTAP 版本可在更新版本的版本中使用、以取代連接到FIBreBridge 7500N或6500N橋接器、或是在MetroCluster 將新儲存設備新增到該功能組態時使用。橋接器FC連接埠的分區需求和使用限制、與Fibre Bridge 7500N橋接器相同。</block>
@@ -10755,7 +10744,6 @@
   <block id="deba5df0dea3cbba9463f219100e5ba4" category="list-text">刪除舊DR群組的組態。+ MetroCluster 「不包含組態設定的DR-group刪除」</block>
   <block id="8d3c998ce16ecd4cdc06e3ddd8c757e6" category="list-text">取消加入舊DR群組中的節點。</block>
   <block id="ed2e5c7ebbd6b2c749bdb92415d9787c" category="list-text">停用儲存容錯移轉：</block>
-  <block id="e55c19252352253899907fe9a7a48ff5" category="paragraph">"torage容錯移轉修改-node-name_-enable假&lt;---- 其他步驟</block>
   <block id="cdab15f9840a783bfc35d8f8baa514e9" category="list-text">取消加入節點：+「cluster unjoin -node-name_」</block>
   <block id="ff6434ad658fa9ed7826817a3f9f0dff" category="paragraph">對舊DR群組中的其他本機節點重複此步驟。</block>
   <block id="06b28530123c83dfb519d35b8e3e11f5" category="list-text">設定管理員權限等級：+「Set -priv榮幸admin」</block>
@@ -12470,9 +12458,6 @@
   <block id="5ac8082d208bbf03d0cce2d606e0f49f" category="paragraph">無相符的連接埠。升級後、您必須重新建立叢集連接埠。<block ref="2305a256def4f5c38d82352fac177e1d" category="inline-link-macro-rx"></block></block>
   <block id="44489e59a236bf582156026d721d7300" category="list-text">視交換器廠商而定、下載並安裝IP RCF檔案。</block>
   <block id="a208547a21e1dc907c538b655cfee7c1" category="admonition">如果您有L2共用或L3網路組態、可能需要調整中繼/客戶交換器上的ISL連接埠。switchport模式可能會從「存取」模式變更為「主幹」模式。只有在交換器A_1和B_1之間的網路連線完全正常且網路正常時、才繼續升級第二個交換器配對（A_2、B_2）。</block>
-  <block id="a7ad2cc3f2e65335d382b74029354ee6" category="paragraph">+* <block ref="c1e630c896fe7378e2dd05cd5272a6ff" category="inline-link-macro-rx"></block></block>
-  <block id="15229eb2fb74ec06320e5767f87322b0" category="paragraph">+* <block ref="e36e202b6cdca1dbc2cdea18cfdd7bdb" category="inline-link-macro-rx"></block></block>
-  <block id="6103dfdbf1ef77c8394206644595ce63" category="paragraph">+依照下列順序更新交換器：</block>
   <block id="05cb8d64e2770620783bfd98ba2c571c" category="paragraph">下列步驟中的所有命令都會從站台發出、以維持開機狀態。</block>
   <block id="714cb8627bb0d04d6b5d032326cab4a3" category="list-text">從您想要維持不變的站台執行切換：</block>
   <block id="e7edce3217788bc841a63851100c9164" category="list-text">離線移動無鏡射的集合體：「將Aggregate離線」</block>
@@ -12675,4 +12660,9 @@
   <block id="cd87d30388635f4978d5e5f84d17c64e" category="admonition">您可以選擇使用連接埠e5a和e7a做MetroCluster 為叢集間的LIF組態。</block>
   <block id="ec8b479c503bdd6824b5e3505ef1d0df" category="paragraph">下列範例顯示Agggr_data_A1離線：</block>
   <block id="aa8cd184e817ada870c8b763be695d0b" category="paragraph">下列範例顯示要刪除的Agggr_data_A1集合體。</block>
+  <block id="d2038b70348bcc50135596de145913db" category="admonition">請依下列順序更新交換器：switch_a_1、switch_b_1、Switch_a_2、Switch_B_2</block>
+  <block id="c1e630c896fe7378e2dd05cd5272a6ff" category="list-text"><block ref="c1e630c896fe7378e2dd05cd5272a6ff" category="inline-link-macro-rx"></block></block>
+  <block id="e36e202b6cdca1dbc2cdea18cfdd7bdb" category="list-text"><block ref="e36e202b6cdca1dbc2cdea18cfdd7bdb" category="inline-link-macro-rx"></block></block>
+  <block id="f6d453c97574893aee9bca0a4faee686" category="paragraph">「torage容錯移轉修改-node-name_-enable假」</block>
+  <block id="d1b92a4930d50c6ed1038655db0d2684" category="sidebar">所有ONTAP 產品文件</block>
 </blocks>

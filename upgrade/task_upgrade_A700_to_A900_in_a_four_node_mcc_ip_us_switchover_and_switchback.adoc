@@ -601,7 +601,7 @@ image::../media/drw_9500_remove_PCM.png[控制器模組]
 .. 將e5a連線移至e5b。
 +
 
-NOTE: 叢集所有節點上的插槽7應為空白、如所述 <<Map ports from the old nodes to the new nodes>> 區段。
+NOTE: 叢集所有節點上的插槽7應為空白、如所述  ports from the old nodes to the new nodes 區段。
 
 
 
@@ -659,7 +659,7 @@ NOTE: 您應該使用管理連接埠和IP做為netboot連線。請勿使用資�
 |===
 . 在node_B_1上執行netboot：「netboot」、「http://<web_server_ip/path_to_web_accessible_directory>/netboot/kernel`」
 +
-「<path_to_the_web-易於 存取的目錄>」應該會引導您下載「<ONTAP_VERSION >\_image.tgz」 <<step2-download-software,步驟2>>。
+「<path_to_the_web-易於 存取的目錄>」應該會引導您下載「<ONTAP_VERSION >\_image.tgz」 ,步驟2。
 
 +
 

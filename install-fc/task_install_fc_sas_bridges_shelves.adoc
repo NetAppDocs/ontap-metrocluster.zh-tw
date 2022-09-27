@@ -452,9 +452,9 @@ link:task_fb_new_install.html["FC至SAS橋接器的頻內管理"]
 您必須使用正確的FC對SAS橋接器來連接磁碟櫃的纜線。
 
 .選擇
-* <<cabling_fb_7600N_7500N_with_iom12,使用IOM12模組、將連接至磁碟櫃的FIBLBridge 7600N或7500N橋接器進行纜線連接>>
-* <<cabling_fb_7600N_7500N_with_iom6_iom3,使用IOM6或IOM3模組、將連接至磁碟櫃的FIBiBridge 7600N或7500N橋接器進行纜線連接>>
-* <<cabling_fb_6500N_with_iom6_iom3,使用IOM6或IOM3模組、將連接至磁碟櫃的FibreBridge 6500N橋接器進行纜線連接>>
+* ,使用IOM12模組、將連接至磁碟櫃的FIBLBridge 7600N或7500N橋接器進行纜線連接
+* ,使用IOM6或IOM3模組、將連接至磁碟櫃的FIBiBridge 7600N或7500N橋接器進行纜線連接
+* ,使用IOM6或IOM3模組、將連接至磁碟櫃的FibreBridge 6500N橋接器進行纜線連接
 
 
 
@@ -646,7 +646,7 @@ Tgt VendorID ProductID        Type        SerialNumber
  a| 
 正確
  a| 
-重複 <<step1_bridge,步驟1.>> 每個剩餘的橋接器。
+重複 ,步驟1. 每個剩餘的橋接器。
 
 
 
@@ -655,9 +655,9 @@ Tgt VendorID ProductID        Type        SerialNumber
  a| 
 .. 重複佈線、檢查SAS纜線是否鬆脫或修正SAS纜線。
 +
-<<Cabling disk shelves to the bridges>>
+ disk shelves to the bridges
 
-.. 重複 <<step1_bridge,步驟1.>>。
+.. 重複 ,步驟1.。
 
 
 |===

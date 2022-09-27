@@ -511,15 +511,15 @@ Tgt VendorID ProductID        Type SerialNumber
  a| 
 正確
  a| 
-重複 <<step18-verify-each-bridge,步驟18>> 每個剩餘的橋接器。
+重複 ,步驟18 每個剩餘的橋接器。
 
 
 
  a| 
 不正確
  a| 
-.. 檢查SAS纜線是否鬆脫、或重複修正SAS纜線 <<step17-reconnect-newbridge,步驟17>>。
-.. 重複 <<step18-verify-each-bridge,步驟18>>。
+.. 檢查SAS纜線是否鬆脫、或重複修正SAS纜線 ,步驟17。
+.. 重複 ,步驟18。
 
 
 |===
@@ -899,7 +899,7 @@ Tgt VendorID ProductID        Type        SerialNumber
  a| 
 不正確
  a| 
-.. 檢查SAS纜線是否鬆脫、或重複修正SAS纜線 <<step17-reconnect-cables,步驟17>>。
+.. 檢查SAS纜線是否鬆脫、或重複修正SAS纜線 ,步驟17。
 .. 重複上一步。
 
 
@@ -1334,7 +1334,7 @@ NOTE: 如果輸出開頭出現「回應被截短」文字、您可以使用Telne
  a| 
 不正確
  a| 
-.. 檢查SAS纜線是否鬆脫、或重複修正SAS纜線 <<step17-recable,步驟17>>。
+.. 檢查SAS纜線是否鬆脫、或重複修正SAS纜線 ,步驟17。
 .. 針對其餘的每個橋接重複上一步。
 
 

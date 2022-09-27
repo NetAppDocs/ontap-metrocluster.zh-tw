@@ -277,7 +277,7 @@ dr-group-id cluster    node          node-systemid dr-partner-systemid
 
 .關於這項工作
 * 此工作必須在每個舊節點上執行。
-* 您將使用中收集的資訊 <<Preparing for the upgrade>>。
+* 您將使用中收集的資訊  for the upgrade。
 
 
 .步驟

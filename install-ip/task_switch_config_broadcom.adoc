@@ -377,8 +377,8 @@ IP_switch_A_2 #
 
 |===
 +
-** 方法1： <<Steps to upgrade EFOS with downloading the software image to the backup boot partition>>
-** 方法2： <<Steps to upgrade EFOS using the ONIE OS installation>>
+** 方法1：  to upgrade EFOS with downloading the software image to the backup boot partition
+** 方法2：  to upgrade EFOS using the ONIE OS installation
 
 
 
@@ -491,12 +491,12 @@ Are you sure you would like to reset the system? (y/n) y
 . 等待交換器重新開機。
 +
 
-NOTE: 在極少數情況下、交換器可能無法開機。請依照 <<Steps to upgrade EFOS using the ONIE OS installation>> 以安裝新映像。
+NOTE: 在極少數情況下、交換器可能無法開機。請依照  to upgrade EFOS using the ONIE OS installation 以安裝新映像。
 
 . 如果您將交換器從EFOS 3.4.x.x變更為EFOS 3.7.x.x或反之、請遵循下列兩個程序來套用正確的組態（RCF）：
 +
-.. <<Resetting the Broadcom IP switch to factory defaults>>
-.. <<Downloading and installing the Broadcom RCF files>>
+..  the Broadcom IP switch to factory defaults
+..  and installing the Broadcom RCF files
 
 
 . 在靜態IP組態的其餘三個IP交換器上重複上述步驟MetroCluster 。
@@ -644,8 +644,8 @@ unit 	active 	   backup   current-active  next-active
 交換器將在未套用組態的情況下重新開機、然後重設為原廠預設值。請依照下列兩份文件所述的兩個程序來設定交換器基本設定並套用RCF檔案：
 
 +
-.. 設定交換器基本設定。請遵循步驟4及更新版本： <<Resetting the Broadcom IP switch to factory defaults>>
-.. 建立並套用RCF檔案、如所述 <<Downloading and installing the Broadcom RCF files>>
+.. 設定交換器基本設定。請遵循步驟4及更新版本：  the Broadcom IP switch to factory defaults
+.. 建立並套用RCF檔案、如所述  and installing the Broadcom RCF files
 
 
 

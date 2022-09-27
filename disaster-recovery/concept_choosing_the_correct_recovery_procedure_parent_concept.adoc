@@ -84,10 +84,10 @@ IMPORTANT: 如果在轉換期間發生故障、而節點正在新增或移除、
 
 故障案例：
 
-* <<Single controller module failures in a single DR group>>
-* <<Two controller module failures in a single DR group>>
-* <<Single controller module failures in separate DR groups>>
-* <<Three controller module failures spread across the DR groups>>
+*  controller module failures in a single DR group
+*  controller module failures in a single DR group
+*  controller module failures in separate DR groups
+*  controller module failures spread across the DR groups
 
 
 

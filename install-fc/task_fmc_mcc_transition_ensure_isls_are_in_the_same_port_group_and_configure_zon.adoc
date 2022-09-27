@@ -23,7 +23,7 @@ summary: 您必須確定交換器間連結（ISL）位於相同的連接埠群�
 共享Fabric時的連接埠編號與一節中所示的不同。共享時、將連接埠46和47用於ISL連接埠。如果您移動了ISL連接埠、則需要使用中的程序 link:task_fcsw_brocade_configure_the_brocade_fc_switches_supertask.html["在Brocade FC交換器上設定E連接埠（ISL連接埠）"] 一節來設定連接埠。
 
 . [step3_zones]請依照中的步驟進行 link:task_fcsw_brocade_configure_the_brocade_fc_switches_supertask.html["在Brocade交換器上設定非E連接埠"] 一節來設定非E連接埠。
-. 除了MetroCluster 中的流量隔離（TI）區域之外、請勿刪除後端交換器中已存在的區域或區域集（適用於7-Mode Fabric） <<step3_zones,步驟3.>>。
+. 除了MetroCluster 中的流量隔離（TI）區域之外、請勿刪除後端交換器中已存在的區域或區域集（適用於7-Mode Fabric） ,步驟3.。
 . 請遵循中的步驟 link:task_fcsw_brocade_configure_the_brocade_fc_switches_supertask.html["在Brocade FC交換器上設定E連接埠（ISL連接埠）"] 一節、將新MetroCluster 版的功能區新增至現有的功能區集。
 +
 以下範例顯示建立區域的命令和系統輸出：

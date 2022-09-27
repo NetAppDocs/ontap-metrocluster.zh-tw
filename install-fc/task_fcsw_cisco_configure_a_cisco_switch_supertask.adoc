@@ -931,9 +931,9 @@ FC_switch_B_1# copy running-config startup-config
 
 您使用的程序取決於您使用的交換器：
 
-* <<config-e-ports-cisco-fc,在Cisco FC交換器上設定E連接埠>>
-* <<config-fcip-ports-single-isl-cisco-9250i,在Cisco 9250i FC交換器上設定單一ISL的FCIP連接埠>>
-* <<config-fcip-ports-dual-isl-cisco-9250i,在Cisco 9250i FC交換器上設定雙ISL的FCIP連接埠>>
+* ,在Cisco FC交換器上設定E連接埠
+* ,在Cisco 9250i FC交換器上設定單一ISL的FCIP連接埠
+* ,在Cisco 9250i FC交換器上設定雙ISL的FCIP連接埠
 
 
 
@@ -1595,8 +1595,8 @@ image::../media/fcip_ports_dual_isl.gif[FCIP連接埠雙ISL]
 
 工作和範例使用下列設定檔組態表格：
 
-* <<fabric1_table>>
-* <<fabric2_table>>
+* 
+* 
 
 
 * Fabric 1設定檔組態表*
@@ -1935,7 +1935,7 @@ NOTE: 在每個交換器上、IPStorage介面「'IPStorage1/1'」和「IPStorage
 +
 「退出」
 
-.. 重複 <<substep_a>> 透過 <<substep_f>> 以不同的IP位址設定IPStorage1/2 GbE介面。
+.. 重複  透過  以不同的IP位址設定IPStorage1/2 GbE介面。
 
 
 . 使用設定檔組態表中指定的設定檔名稱、設定FC-VI和儲存流量的FCIP設定檔：

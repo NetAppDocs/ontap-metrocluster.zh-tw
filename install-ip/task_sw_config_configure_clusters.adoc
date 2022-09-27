@@ -1441,28 +1441,28 @@ cluster_B::>
  a| 
 系統符合自動指派磁碟機的要求、如果執行ONTAP 的是還原9.3、則會從原廠收到。
  a| 
-<<Verifying disk assignment for pool 1 disks>>
+ disk assignment for pool 1 disks
 
 
 
  a| 
 此組態包括三個磁碟櫃、或如果其中包含四個以上的磁碟櫃、則四個磁碟櫃的倍數（例如七個磁碟櫃）不均、且執行ONTAP 的是S29.5。
  a| 
-<<Manually assigning drives for pool 1 (ONTAP 9.4 or later)>>
+ assigning drives for pool 1 (ONTAP 9.4 or later)
 
 
 
  a| 
 此組態不包括每個站台四個儲存櫃、而且執行ONTAP 的是NetApp 9.4
  a| 
-<<Manually assigning drives for pool 1 (ONTAP 9.4 or later)>>
+ assigning drives for pool 1 (ONTAP 9.4 or later)
 
 
 
  a| 
 系統未從原廠接收、且執行ONTAP 原廠提供的還原9.3系統已預先設定指派的磁碟機。
  a| 
-<<Manually assigning disks for pool 1 (ONTAP 9.3)>>
+ assigning disks for pool 1 (ONTAP 9.3)
 
 |===
 
@@ -2002,7 +2002,7 @@ cluster_A::> storage aggregate create aggr1_node_A_1 -diskcount 10 -node node_A_
 
 +
 
-NOTE: 如果您要使用單一鏡射資料Aggregate、請參閱 <<step1_single_mirror,步驟1.>> 以取得相關指示。
+NOTE: 如果您要使用單一鏡射資料Aggregate、請參閱 ,步驟1. 以取得相關指示。
 
 * 控制器和機箱的ha-config狀態必須為「mcip」。
 

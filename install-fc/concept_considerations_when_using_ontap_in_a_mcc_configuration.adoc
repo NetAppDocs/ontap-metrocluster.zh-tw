@@ -159,15 +159,15 @@ NOTE: 系統建立的排程不會複寫、您必須在合作夥伴叢集上手�
 * https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/home.html["網路與LIF管理"]
 * 您應該瞭解將IPspace物件複寫到合作夥伴叢集、以及在MetroCluster 整個過程中設定子網路和IPv6的需求。
 +
-<<ipspace_obj_rep,IPSpace物件複寫和子網路組態需求>>
+,IPSpace物件複寫和子網路組態需求
 
 * 在MetroCluster 設定以功能性為基礎的網路組態時、您應該瞭解建立生命的需求。
 +
-<<reqs_lif_create,以架構組態建立LIF的需求MetroCluster>>
+,以架構組態建立LIF的需求MetroCluster
 
 * 您應該瞭解MetroCluster 到整個流程組態中的LIF複寫需求。您也應該知道複寫的LIF如何放置在合作夥伴叢集上、而且您應該瞭解LIF複寫或LIF放置失敗時所發生的問題。
 +
-<<lif_rep_place,LIF複寫及放置需求與問題>>
+,LIF複寫及放置需求與問題
 
 
 
@@ -230,11 +230,11 @@ subnet1   192.168.2.0/24   Default   192.168.2.1       10/10    192.168.2.21-192
 .相關資訊
 * 在MetroCluster 設定以功能性為基礎的網路組態時、您應該瞭解建立生命的需求。
 +
-<<reqs_lif_create,以架構組態建立LIF的需求MetroCluster>>
+,以架構組態建立LIF的需求MetroCluster
 
 * 您應該瞭解MetroCluster 到整個流程組態中的LIF複寫需求。您也應該知道複寫的LIF如何放置在合作夥伴叢集上、而且您應該瞭解LIF複寫或LIF放置失敗時所發生的問題。
 +
-<<lif_rep_place,LIF複寫及放置需求與問題>>
+,LIF複寫及放置需求與問題
 
 
 
@@ -262,11 +262,11 @@ subnet1   192.168.2.0/24   Default   192.168.2.1       10/10    192.168.2.21-192
 .相關資訊
 * 您應該瞭解將IPspace物件複寫到合作夥伴叢集、以及在MetroCluster 整個過程中設定子網路和IPv6的需求。
 +
-<<ipspace_obj_rep,IPSpace物件複寫和子網路組態需求>>
+,IPSpace物件複寫和子網路組態需求
 
 * 您應該瞭解MetroCluster 到整個流程組態中的LIF複寫需求。您也應該知道複寫的LIF如何放置在合作夥伴叢集上、而且您應該瞭解LIF複寫或LIF放置失敗時所發生的問題。
 +
-<<lif_rep_place,LIF複寫及放置需求與問題>>
+,LIF複寫及放置需求與問題
 
 
 
@@ -388,11 +388,11 @@ NOTE: 即使來源SVM停機、如果目的地SVM中的IP空間和網路相同、
 .相關資訊
 * 您應該瞭解將IPspace物件複寫到合作夥伴叢集、以及在MetroCluster 整個過程中設定子網路和IPv6的需求。
 +
-<<ipspace_obj_rep,IPSpace物件複寫和子網路組態需求>>
+,IPSpace物件複寫和子網路組態需求
 
 * 在MetroCluster 設定以功能性為基礎的網路組態時、您應該瞭解建立生命的需求。
 +
-<<reqs_lif_create,以架構組態建立LIF的需求MetroCluster>>
+,以架構組態建立LIF的需求MetroCluster
 
 
 
