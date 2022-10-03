@@ -12673,4 +12673,74 @@
   <block id="29011b2c4a1fcc691d4080c12a975cd2" category="inline-link-macro">將Linux iSCSI主機從MetroCluster 支援功能的FC移至MetroCluster 支援功能的IP節點。</block>
   <block id="15c49ac51668072fdf92e5d8db0ec9ff" category="list-text">完成MetroCluster 從FC到IP的支援節點移轉之後、您可能需要將iSCSI主機連線移至新節點、請參閱 <block ref="e3ab265f03332ea44056fafa567b430d" category="inline-link-macro-rx"></block></block>
   <block id="1fd94f8dc4aef371c8059f7aadb13ffb" category="list-text">您可以AFF 使用下列程序、從FASA700/FAS9000控制器升級AFF 至FASA900/FAS9500控制器： <block ref="d4055a630aa0f5dfe07651f60a376ff8" category="inline-link-macro-rx"></block></block>
+  <block id="e52e46b2e9a285a92c4fb276c84c544e" category="summary">您必須設定NVIDIA IP交換器作為叢集互連和後端MetroCluster 的靜態IP連線。</block>
+  <block id="12dfda519b07b8627c017865df4388a6" category="doc">設定NVIDIA IP SN2100交換器</block>
+  <block id="056bd4ccfa99eecc32b7151072832cb7" category="paragraph">您必須設定NVIDIA SN2100 IP交換器作為叢集互連和後端MetroCluster 的SIP連線。</block>
+  <block id="80d79e74efb3cf7c2ad45e7e1c96223d" category="section-title">將NVIDIA IP SN2100交換器重設為原廠預設值</block>
+  <block id="7c3ceaca0865f6c6621d894d5c1f5274" category="paragraph">您可以選擇下列方法、將交換器重設為原廠預設值。</block>
+  <block id="61168c45da9c3d852ce200a8e6fe5441" category="inline-xref">使用RCF檔案選項重設交換器</block>
+  <block id="f39c98e742374a832c3bc1976a82c99a" category="list-text"><block ref="4d1a1da583a14975a026f863f46efa9e" category="inline-xref-macro-rx"></block></block>
+  <block id="2905d1a656f6dd8b76df3793ca9d808a" category="inline-xref">使用Cummuls安裝選項重設交換器</block>
+  <block id="07e63a61b44e7110afc73ee228b45e9f" category="list-text"><block ref="c5c4030964ab0fc53589e1f003b13a41" category="inline-xref-macro-rx"></block></block>
+  <block id="465c9065d10e2d00f4f4116734ac1084" category="paragraph">在安裝新的RCF組態之前、您必須還原NVIDIA交換器設定。</block>
+  <block id="4cc34c69d718b06fff00dea4b3e4a9d7" category="paragraph">若要將交換器還原為預設設定、請使用「restoreDefaults」選項來執行RCF檔案。此選項會將原始備份檔案複製到原始位置、然後重新啟動交換器。重新開機之後、交換器會與您第一次執行RCF檔案來設定交換器時的原始組態一起上線。</block>
+  <block id="2678e0ba955ea31dc3a2b8d425811dfc" category="paragraph">下列組態詳細資料不會重設：</block>
+  <block id="0ed4e7e607ce6aeb54fbe2eee71c8925" category="list-text">使用者與認證組態</block>
+  <block id="a93cf3e8ddcdb9137b78b02a173624c6" category="list-text">管理網路連接埠eth0的組態</block>
+  <block id="0359ad641e8604c134d24d2bbddd1f44" category="admonition">在應用RCF檔案期間發生的所有其他組態變更、都會還原為原始組態。</block>
+  <block id="764bb8fed74d46f6a6171f7253b5bb18" category="inline-xref">下載並安裝NVIDIA RCF檔案</block>
+  <block id="e1f1980ba1430c6d4553ef8f7963bb4f" category="list-text">您必須根據設定交換器 <block ref="67df29514d3fd31c6e0b92fb5ef28c21" category="inline-xref-macro-rx"></block>。如果您尚未以這種方式設定、或是在執行RCF檔案之前已設定其他功能、則無法使用此程序。</block>
+  <block id="9d06a5d3de791df53c7a1c71fe30deed" category="list-text">您必須使用序列主控台連線連接至交換器。</block>
+  <block id="4e95898c852022962fdebc7727a93f46" category="list-text">確認RCF組態已成功套用至相同或相容的RCF檔案版本、而且備份檔案已存在。</block>
+  <block id="b6446010a605d2f225bc5b4a651d77f6" category="admonition">輸出內容可以顯示備份檔案、保留檔案或兩者。如果輸出中沒有出現備份檔案或保留的檔案、您就無法使用此程序。</block>
+  <block id="50fc7f4fc4780b7f326a480f73bd0267" category="list-text">使用選項執行RCF檔案以還原預設值：「恢復預設值」</block>
+  <block id="389656231e83b20cf8f1080911ace092" category="list-text">對提示回應「是」。交換器會還原為原始組態並重新開機。</block>
+  <block id="9c7625742f7f1ccd999df088ad4a3ae7" category="paragraph">交換器會重設並保留初始組態、例如管理網路組態和目前認證、然後再套用RCF檔案。重新開機之後、您可以使用相同或不同版本的RCF檔案來套用新組態。</block>
+  <block id="8ea07ce14527ee98182ee1d95fed9b57" category="paragraph">如果您想要套用Cummuls映像來完全重設交換器、請使用這些步驟。</block>
+  <block id="7ad863bb2a72d36c0234f4f6bfc2e19f" category="list-text">可透過HTTP存取Cummulis交換器軟體映像。</block>
+  <block id="f230e571a49fa16f56965586613d2b79" category="list-text">您必須擁有root密碼才能存取命令。</block>
+  <block id="c67ce273436af6008876bf44654fd767" category="list-text">從Cummulo主控台下載交換器軟體、然後使用命令「onie-install -A -i」排入安裝佇列、接著再輸入交換器軟體的檔案路徑：</block>
+  <block id="c6f62465ade5eb8bf0739b3b9e260823" category="paragraph">在此範例中、會將韌體檔案「累計至Linux -4.4.2-mlx-amd64.bin」從HTTP伺服器「50.50.50」複製到本機交換器。</block>
+  <block id="0271d2dea0397f75aa8c0d5cd4c35209" category="list-text">在下載並驗證映像時、請回應提示「y」以確認安裝。</block>
+  <block id="efb5ccaab9d7fe2b2ab5b9f178475a7a" category="list-text">重新啟動交換器以安裝新軟體：「Udo reboot...」</block>
+  <block id="1f66fcbdc3a63bbe8e57cebc96e1d8a9" category="admonition">交換器會重新開機並進入交換器軟體安裝、這需要一些時間。安裝完成後、交換器會重新開機、並保持「登入」提示。</block>
+  <block id="8c1c8ef99f8d9e49251d5052029a2122" category="list-text">設定基本交換器設定</block>
+  <block id="c6f0365546c55b3f9de31ce3118ed962" category="list-text">當交換器開機並出現登入提示時、請登入並變更密碼。</block>
+  <block id="9d837b283737463bc96b390a448572da" category="admonition">使用者名稱為「累計」、預設密碼為「累計」。</block>
+  <block id="462a12e5e5fc8a8f0f2503ac82e01e16" category="list-text">設定管理網路介面。</block>
+  <block id="404f235a0e668325747a3bbe34a85550" category="admonition">以下範例說明如何使用命令設定主機名稱（ip_switch_a_1）、IP位址（10.10.10.10）、網路遮罩（255．255．255．255．0（24））和閘道（10．10．10）：「net add hostname&gt;'、「net add interface eth0 ip address&lt;IPAddress/mask&gt;'、「net add interface eth0 ip gateway &lt;gateway&gt;」（網路新增介面eth0 IP閘道&lt;gateway&gt;）。</block>
+  <block id="fd56421b5278bf3b069d8729f920f29e" category="list-text">使用「show reboot"命令重新啟動交換器。</block>
+  <block id="c55cbcd30055e2eecf2070469bd7907a" category="paragraph">當交換器重新開機時、您可以使用中的步驟套用新的組態 <block ref="67df29514d3fd31c6e0b92fb5ef28c21" category="inline-xref-macro-rx"></block>。</block>
+  <block id="8fa6539999f2d3aff134c30600c80e41" category="section-title">下載並安裝NVIDIA RCF檔案</block>
+  <block id="62217055050b5f95ab3ac1b301982bec" category="list-text">交換器軟體已安裝且管理網路已設定完成。</block>
+  <block id="8d8734eaa9f80f06163e261ecd8dfd87" category="list-text">您依照步驟、使用方法1或方法2開始安裝交換器。</block>
+  <block id="f5029a9b9e4cf676befc86e9839549bd" category="list-text">初始安裝之後、您並未套用任何其他組態。</block>
+  <block id="223a78def5043a8e8a25a141206e0278" category="admonition">如果您在重設交換器之後以及套用RCF檔案之前執行進一步的組態、則無法使用此程序。</block>
+  <block id="696548cd048bf1ec4d31654cdbb3c156" category="paragraph">您必須在MetroCluster 各個IP交換器上重複上述步驟（全新安裝）或更換交換器（更換交換器）。</block>
+  <block id="b547506e85823bfaa1522cd7d20ababb" category="list-text">產生NVIDIA RCF檔案MetroCluster 以利知識IP。</block>
+  <block id="a68522a1adf950d13a0dab9b74d36669" category="list-text">下載<block ref="b3f8a8564bd91efeacbc3b6197426c6e" category="inline-link-rx"></block>。</block>
+  <block id="38325ef6d268e93ab480af3cd0b3bd5f" category="list-text">使用RcfFileGeneratorfor MetroCluster EscIP、為您的組態產生RCF檔案。</block>
+  <block id="7332a56dad899da7a26afe16c9ca077a" category="list-text">瀏覽至您的主目錄。如果您記錄為「累計」、則檔案路徑為「home/gumulus」。</block>
+  <block id="323d6ef10b6c3c66d13f049670cbdb83" category="list-text">將RCF檔案下載至此目錄。以下範例顯示、您可以使用scp將檔案「M f2 2100 v1.0」_ip_switch_a_1.txt'從伺服器「50、50」下載到您的主目錄、並將其儲存為「M f2 2100、v1.0、ip_switch_a_1.py」：</block>
+  <block id="59c778d760eb930375b77337b3ee45b9" category="list-text">執行RCF檔案。RCF檔案需要選項才能套用一或多個步驟。除非技術支援人員指示、否則請在不使用命令列選項的情況下執行RCF檔案。若要驗證RCF檔案各個步驟的完成狀態、請使用選項「-1」或「ALL」來套用所有（擱置中）步驟。</block>
+  <block id="91fda6ec6c364088ae4a9e6553b26f99" category="doc">適用於NVIDIA支援SN2100 IP交換器的平台連接埠指派</block>
+  <block id="1f0b82560627b660c6c6958a1df834b8" category="section-title">支援的組態</block>
+  <block id="5b7679ef32240286811b416ba05c54c1" category="paragraph">目前支援下列平台：</block>
+  <block id="e1da8c334241f25c9cc939f9d9e1c5b2" category="list-text">FAS500f / AFF FASA250</block>
+  <block id="cbdc5a97c94bd42a3c869ae6831f7b04" category="list-text">FAS8300 / AFF FASA400</block>
+  <block id="4c744d90883c4aab83c5469643da24c7" category="list-text">FAS9000 / AFF E4A700</block>
+  <block id="b6db688996a59c9dcd63d8adb538f928" category="paragraph">目前不支援下列平台和組態：</block>
+  <block id="570a8334b13f037157ca46f8cbbf662b" category="list-text">FC到IP的轉換MetroCluster</block>
+  <block id="67ce3d63d94102f7ff725a6564099821" category="list-text">八節點MetroCluster 的不全功能組態</block>
+  <block id="5aa692c4552b821f69bb151f7aa0f216" category="paragraph">如果您連接多MetroCluster 個支援的組態、請依照相應的表格進行。例如：</block>
+  <block id="8bcb14049f972f715f22c433283f9028" category="list-text">如果您連接兩MetroCluster 個AFF 類型為「叢集A700」的四節點位向組態、請連接MetroCluster 第一個顯示為MetroCluster 「支援1」的資訊、然後連接MetroCluster 另一個顯示為MetroCluster 「支援2」的資訊。AFF</block>
+  <block id="88a7b55f8e462f6453124192f872e512" category="admonition">連接埠13和14可在原生速度模式下使用、支援40 Gbps和100 Gbps、或在中斷模式下使用、以支援4 x 25 Gbps或4 x 10 Gbps。如果使用原生速度模式、則會顯示為連接埠13和14。如果他們使用中斷模式、即4 x 25 Gbps或4 x 10 Gbps、則表示為13s-3和14s-3。</block>
+  <block id="10fe94c98083f4e751ef035d96910a62" category="paragraph">以下各節將說明實體纜線的佈線大綱。您也可以參閱<block ref="c52b4d12f68853a25c52576697c6b2b5" category="inline-link-rx"></block> 以取得詳細的纜線連接資訊。</block>
+  <block id="09a5cc95a7bf7e0d1b588340d9deb189" category="image-alt">MCC IP纜線A250 MSN2100</block>
+  <block id="189ceff67ac9718189406d45e1d9192a" category="image-alt">MCC IP纜線A400 MSN2100</block>
+  <block id="9b1abf59f2c97ca1a2592e463ceb99ff" category="section-title">交換器連接埠用途AFF 、適用於FASA700或FAS9000</block>
+  <block id="ef983d4a2755d55ad39ed1892fc3e613" category="image-alt">MCC IP纜線A700 MSN2100</block>
+  <block id="e22ae8f3e1d3ede96551e02f922872f0" category="section-title">交換器連接埠使用AFF 率</block>
+  <block id="31b0afd6a52b93da38138e53814052b1" category="image-alt">MCC IP纜線A800 MSN2100</block>
+  <block id="fb66ffdb7a65b64035629ded64b78faf" category="sidebar">設定NVIDIA IP交換器</block>
 </blocks>

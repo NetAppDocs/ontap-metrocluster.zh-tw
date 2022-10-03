@@ -1,0 +1,339 @@
+---
+permalink: install-ip/task_switch_config_nvidia.html 
+sidebar: sidebar 
+keywords: ip, switch, connection, configuring, configure, NVIDIA, factory defaults, MSN2100, SN2100 
+summary: 您必須設定NVIDIA IP交換器作為叢集互連和後端MetroCluster 的靜態IP連線。 
+---
+= 設定NVIDIA IP SN2100交換器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必須設定NVIDIA SN2100 IP交換器作為叢集互連和後端MetroCluster 的SIP連線。
+
+
+
+== 將NVIDIA IP SN2100交換器重設為原廠預設值
+
+您可以選擇下列方法、將交換器重設為原廠預設值。
+
+* ,使用RCF檔案選項重設交換器
+* ,使用Cummuls安裝選項重設交換器
+
+
+
+
+=== 使用RCF檔案選項重設交換器
+
+在安裝新的RCF組態之前、您必須還原NVIDIA交換器設定。
+
+若要將交換器還原為預設設定、請使用「restoreDefaults」選項來執行RCF檔案。此選項會將原始備份檔案複製到原始位置、然後重新啟動交換器。重新開機之後、交換器會與您第一次執行RCF檔案來設定交換器時的原始組態一起上線。
+
+下列組態詳細資料不會重設：
+
+* 使用者與認證組態
+* 管理網路連接埠eth0的組態
+
+
+
+NOTE: 在應用RCF檔案期間發生的所有其他組態變更、都會還原為原始組態。
+
+.開始之前
+* 您必須根據設定交換器 ,下載並安裝NVIDIA RCF檔案。如果您尚未以這種方式設定、或是在執行RCF檔案之前已設定其他功能、則無法使用此程序。
+* 您必須在MetroCluster 各個採用EIP組態的IP交換器上重複這些步驟。
+* 您必須使用序列主控台連線連接至交換器。
+* 此工作會重設管理網路的組態。
+
+
+.步驟
+. 確認RCF組態已成功套用至相同或相容的RCF檔案版本、而且備份檔案已存在。
++
+
+NOTE: 輸出內容可以顯示備份檔案、保留檔案或兩者。如果輸出中沒有出現備份檔案或保留的檔案、您就無法使用此程序。
+
++
+[listing, subs="+quotes"]
+----
+cumulus@IP_switch_A_1:mgmt:~$ sudo python3 MSN2100_v1.0_IP_switch_A_1.py
+[sudo] password for cumulus:
+>>> Opened RcfApplyLog
+*A RCF configuration has been successfully applied.*
+  *Backup files exist.*
+    *Preserved files exist.*
+    Listing completion of the steps:
+        Success: Step: 1: Performing Backup and Restore
+        Success: Step: 2: updating MOTD file
+        Success: Step: 3: Disabling apt-get
+        Success: Step: 4: Disabling cdp
+        Success: Step: 5: Adding lldp config
+        Success: Step: 6: Creating interfaces
+        Success: Step: 7: Configuring switch basic settings: Hostname, SNMP
+        Success: Step: 8: Configuring switch basic settings: bandwidth allocation
+        Success: Step: 9: Configuring switch basic settings: ecn
+        Success: Step: 10: Configuring switch basic settings: cos and dscp remark
+        Success: Step: 11: Configuring switch basic settings: generic egress cos mappings
+        Success: Step: 12: Configuring switch basic settings: traffic classification
+        Success: Step: 13: Configuring LAG load balancing policies
+        Success: Step: 14: Configuring the VLAN bridge
+        Success: Step: 15: Configuring local cluster ISL ports
+        Success: Step: 16: Configuring MetroCluster ISL ports
+        Success: Step: 17: Configuring ports for MetroCluster-1, local cluster and MetroCluster interfaces
+        Success: Step: 18: Configuring ports for MetroCluster-2, local cluster and MetroCluster interfaces
+        Success: Step: 19: Configuring ports for MetroCluster-3, local cluster and MetroCluster interfaces
+        Success: Step: 20: Configuring L2FC for MetroCluster interfaces
+        Success: Step: 21: Configuring the interface to UP
+        Success: Step: 22: Final commit
+        Success: Step: 23: Final reboot of the switch
+    Exiting ...
+<<< Closing RcfApplyLog
+cumulus@IP_switch_A_1:mgmt:~$
+
+----
+. 使用選項執行RCF檔案以還原預設值：「恢復預設值」
++
+[listing]
+----
+cumulus@IP_switch_A_1:mgmt:~$ sudo python3 MSN2100_v1.0_IP_switch_A_2.py restoreDefaults
+[sudo] password for cumulus:
+>>> Opened RcfApplyLog
+Can restore from backup directory. Continuing.
+This will reboot the switch !!!
+Enter yes or no: yes
+----
+. 對提示回應「是」。交換器會還原為原始組態並重新開機。
+. 等待交換器重新開機。
++
+交換器會重設並保留初始組態、例如管理網路組態和目前認證、然後再套用RCF檔案。重新開機之後、您可以使用相同或不同版本的RCF檔案來套用新組態。
+
+
+
+
+
+=== 使用Cummuls安裝選項重設交換器
+
+如果您想要套用Cummuls映像來完全重設交換器、請使用這些步驟。
+
+.開始之前
+* 您必須使用序列主控台連線連接至交換器。
+* 可透過HTTP存取Cummulis交換器軟體映像。
+* 您必須擁有root密碼才能存取命令。
+
+
+.步驟
+. 從Cummulo主控台下載交換器軟體、然後使用命令「onie-install -A -i」排入安裝佇列、接著再輸入交換器軟體的檔案路徑：
++
+在此範例中、會將韌體檔案「累計至Linux -4.4.2-mlx-amd64.bin」從HTTP伺服器「50.50.50」複製到本機交換器。
+
++
+[listing]
+----
+cumulus@IP_switch_A_1:mgmt:~$ sudo onie-install -a -i http://50.50.50.50/switchsoftware/cumulus-linux-4.4.2-mlx-amd64.bin
+Fetching installer: http://50.50.50.50/switchsoftware/cumulus-linux-4.4.2-mlx-amd64.bin
+Downloading URL: http://50.50.50.50/switchsoftware/cumulus-linux-4.4.2-mlx-amd64.bin
+######################################################################### 100.0%
+Success: HTTP download complete.
+tar: ./sysroot.tar: time stamp 2021-01-30 17:00:58 is 53895092.604407122 s in the future
+tar: ./kernel: time stamp 2021-01-30 17:00:58 is 53895092.582826352 s in the future
+tar: ./initrd: time stamp 2021-01-30 17:00:58 is 53895092.509682557 s in the future
+tar: ./embedded-installer/bootloader/grub: time stamp 2020-12-10 15:25:16 is 49482950.509433937 s in the future
+tar: ./embedded-installer/bootloader/init: time stamp 2020-12-10 15:25:16 is 49482950.509336507 s in the future
+tar: ./embedded-installer/bootloader/uboot: time stamp 2020-12-10 15:25:16 is 49482950.509213637 s in the future
+tar: ./embedded-installer/bootloader: time stamp 2020-12-10 15:25:16 is 49482950.509153787 s in the future
+tar: ./embedded-installer/lib/init: time stamp 2020-12-10 15:25:16 is 49482950.509064547 s in the future
+tar: ./embedded-installer/lib/logging: time stamp 2020-12-10 15:25:16 is 49482950.508997777 s in the future
+tar: ./embedded-installer/lib/platform: time stamp 2020-12-10 15:25:16 is 49482950.508913317 s in the future
+tar: ./embedded-installer/lib/utility: time stamp 2020-12-10 15:25:16 is 49482950.508847367 s in the future
+tar: ./embedded-installer/lib/check-onie: time stamp 2020-12-10 15:25:16 is 49482950.508761477 s in the future
+tar: ./embedded-installer/lib: time stamp 2020-12-10 15:25:47 is 49482981.508710647 s in the future
+tar: ./embedded-installer/storage/blk: time stamp 2020-12-10 15:25:16 is 49482950.508631277 s in the future
+tar: ./embedded-installer/storage/gpt: time stamp 2020-12-10 15:25:16 is 49482950.508523097 s in the future
+tar: ./embedded-installer/storage/init: time stamp 2020-12-10 15:25:16 is 49482950.508437507 s in the future
+tar: ./embedded-installer/storage/mbr: time stamp 2020-12-10 15:25:16 is 49482950.508371177 s in the future
+tar: ./embedded-installer/storage/mtd: time stamp 2020-12-10 15:25:16 is 49482950.508293856 s in the future
+tar: ./embedded-installer/storage: time stamp 2020-12-10 15:25:16 is 49482950.508243666 s in the future
+tar: ./embedded-installer/platforms.db: time stamp 2020-12-10 15:25:16 is 49482950.508179456 s in the future
+tar: ./embedded-installer/install: time stamp 2020-12-10 15:25:47 is 49482981.508094606 s in the future
+tar: ./embedded-installer: time stamp 2020-12-10 15:25:47 is 49482981.508044066 s in the future
+tar: ./control: time stamp 2021-01-30 17:00:58 is 53895092.507984316 s in the future
+tar: .: time stamp 2021-01-30 17:00:58 is 53895092.507920196 s in the future
+Staging installer image...done.
+WARNING:
+WARNING: Activating staged installer requested.
+WARNING: This action will wipe out all system data.
+WARNING: Make sure to back up your data.
+WARNING:
+Are you sure (y/N)? y
+Activating staged installer...done.
+Reboot required to take effect.
+cumulus@IP_switch_A_1:mgmt:~$
+----
+. 在下載並驗證映像時、請回應提示「y」以確認安裝。
+. 重新啟動交換器以安裝新軟體：「Udo reboot...」
++
+[listing]
+----
+cumulus@IP_switch_A_1:mgmt:~$ sudo reboot
+----
++
+
+NOTE: 交換器會重新開機並進入交換器軟體安裝、這需要一些時間。安裝完成後、交換器會重新開機、並保持「登入」提示。
+
+. 設定基本交換器設定
++
+.. 當交換器開機並出現登入提示時、請登入並變更密碼。
++
+
+NOTE: 使用者名稱為「累計」、預設密碼為「累計」。
+
+
+
++
+[listing]
+----
+Debian GNU/Linux 10 cumulus ttyS0
+
+cumulus login: cumulus
+Password:
+You are required to change your password immediately (administrator enforced)
+Changing password for cumulus.
+Current password:
+New password:
+Retype new password:
+Linux cumulus 4.19.0-cl-1-amd64 #1 SMP Cumulus 4.19.206-1+cl4.4.2u1 (2021-12-18) x86_64
+
+Welcome to NVIDIA Cumulus (R) Linux (R)
+
+For support and online technical documentation, visit
+http://www.cumulusnetworks.com/support
+
+The registered trademark Linux (R) is used pursuant to a sublicense from LMI,
+the exclusive licensee of Linus Torvalds, owner of the mark on a world-wide
+basis.
+
+cumulus@cumulus:mgmt:~$
+----
+. 設定管理網路介面。
++
+
+NOTE: 以下範例說明如何使用命令設定主機名稱（ip_switch_a_1）、IP位址（10.10.10.10）、網路遮罩（255．255．255．255．0（24））和閘道（10．10．10）：「net add hostname>'、「net add interface eth0 ip address<IPAddress/mask>'、「net add interface eth0 ip gateway <gateway>」（網路新增介面eth0 IP閘道<gateway>）。
+
++
+[listing]
+----
+
+cumulus@cumulus:mgmt:~$ net add hostname IP_switch_A_1
+cumulus@cumulus:mgmt:~$ net add interface eth0 ip address 10.0.10.10/24
+cumulus@cumulus:mgmt:~$ net add interface eth0 ip gateway 10.10.10.1
+cumulus@cumulus:mgmt:~$ net pending
+
+.
+.
+.
+
+
+cumulus@cumulus:mgmt:~$ net commit
+
+.
+.
+.
+
+
+net add/del commands since the last "net commit"
+
+
+User Timestamp Command
+
+cumulus 2021-05-17 22:21:57.437099 net add hostname Switch-A-1
+cumulus 2021-05-17 22:21:57.538639 net add interface eth0 ip address 10.10.10.10/24
+cumulus 2021-05-17 22:21:57.635729 net add interface eth0 ip gateway 10.10.10.1
+
+cumulus@cumulus:mgmt:~$
+----
+. 使用「show reboot"命令重新啟動交換器。
++
+[listing]
+----
+cumulus@cumulus:~$ sudo reboot
+----
++
+當交換器重新開機時、您可以使用中的步驟套用新的組態 ,下載並安裝NVIDIA RCF檔案。
+
+
+
+
+
+== 下載並安裝NVIDIA RCF檔案
+
+您必須將交換器RCF檔案下載並安裝到MetroCluster 各個交換器、以供採用此功能的介面IP組態。
+
+.開始之前
+* 您必須擁有root密碼才能存取命令。
+* 交換器軟體已安裝且管理網路已設定完成。
+* 您依照步驟、使用方法1或方法2開始安裝交換器。
+* 初始安裝之後、您並未套用任何其他組態。
++
+
+NOTE: 如果您在重設交換器之後以及套用RCF檔案之前執行進一步的組態、則無法使用此程序。
+
+
+
+您必須在MetroCluster 各個IP交換器上重複上述步驟（全新安裝）或更換交換器（更換交換器）。
+
+.步驟
+. 產生NVIDIA RCF檔案MetroCluster 以利知識IP。
++
+.. 下載 https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["RcfFileGeneratorfor MetroCluster EfIP"^]。
+.. 使用RcfFileGeneratorfor MetroCluster EscIP、為您的組態產生RCF檔案。
+.. 瀏覽至您的主目錄。如果您記錄為「累計」、則檔案路徑為「home/gumulus」。
++
+[listing]
+----
+cumulus@IP_switch_A_1:mgmt:~$ cd ~
+cumulus@IP_switch_A_1:mgmt:~$ pwd
+/home/cumulus
+cumulus@IP_switch_A_1:mgmt:~$
+----
+.. 將RCF檔案下載至此目錄。以下範例顯示、您可以使用scp將檔案「M f2 2100 v1.0」_ip_switch_a_1.txt'從伺服器「50、50」下載到您的主目錄、並將其儲存為「M f2 2100、v1.0、ip_switch_a_1.py」：
++
+[listing]
+----
+cumulus@Switch-A-1:mgmt:~$ scp username@50.50.50.50:/RcfFiles/MSN2100_v1.0_IP_switch_A_1.txt ./MSN2100_v1.0_IP_switch-A1.py
+The authenticity of host '50.50.50.50 (50.50.50.50)' can't be established.
+RSA key fingerprint is SHA256:B5gBtOmNZvdKiY+dPhh8=ZK9DaKG7g6sv+2gFlGVF8E.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '50.50.50.50' (RSA) to the list of known hosts.
+***********************************************************************
+Banner of the SCP server
+***********************************************************************
+username@50.50.50.50's password:
+MSN2100_v1.0-X2_IP_switch_A1.txt 100% 55KB 1.4MB/s 00:00
+cumulus@IP_switch_A_1:mgmt:~$
+----
+
+
+. 執行RCF檔案。RCF檔案需要選項才能套用一或多個步驟。除非技術支援人員指示、否則請在不使用命令列選項的情況下執行RCF檔案。若要驗證RCF檔案各個步驟的完成狀態、請使用選項「-1」或「ALL」來套用所有（擱置中）步驟。
++
+[listing]
+----
+
+cumulus@IP_switch_A_1:mgmt:~$ sudo python3 MSN2100_v1.0_IP_switch_A_1.py
+all
+[sudo] password for cumulus:
+The switch will be rebooted after the step(s) have been run.
+Enter yes or no: yes
+
+
+
+... the steps will apply - this is generating a lot of output ...
+
+
+
+Running Step 24: Final reboot of the switch
+
+
+
+... The switch will reboot if all steps applied successfully ...
+----
+
