@@ -76,7 +76,7 @@ cluster_B::>
 +
 您必須刪除無法移動的MDV_aud磁碟區。
 
-. 將每個集合體離線、然後刪除：
+. 將每個資料集合體離線、然後刪除：
 +
 .. 使Aggregate離線：「torage gregate offline -Aggregate aggregate name」
 +

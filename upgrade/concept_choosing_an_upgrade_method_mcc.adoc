@@ -49,6 +49,9 @@ image::supported_controller_upgrades.png[IP組態中支援的控制器升級組�
 
 image::supported_controller_upgrades_fc_configurations.png[FC組態中支援的控制器升級組合]
 
+* 您可以AFF 使用下列程序、從FASA700/FAS9000控制器升級AFF 至FASA900/FAS9500控制器： link:task_upgrade_A700_to_A900_in_a_four_node_mcc_fc_us_switchover_and_switchback.html["使用切換和切換功能（AFF 更新版本）、將控制器從功能不實的A700/FAS9000升級AFF 至功能不實的A900/FAS9500 MetroCluster （以功能不實的FC組態）ONTAP"]
+
+
 
 
 == 選擇不使用Aggregate重新配置的程序

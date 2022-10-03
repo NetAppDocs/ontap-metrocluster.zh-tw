@@ -11,6 +11,8 @@ summary: 在轉換期間、您可以將資料從MetroCluster 採用支援功能�
 [role="lead"]
 在轉換期間、您可以將資料從MetroCluster 採用支援功能支援功能的磁碟機櫃移至全新MetroCluster 的支援服務架構。
 
+您應該在目的地或IP節點上建立新的SAN LIF、並在將磁碟區移至新的Aggregate之前連接主機。
+
 . 若要恢復自動產生支援案例、請傳送AutoSupport 一個不完整的訊息、表示維護已完成。
 +
 .. 發出下列命令：「System Node AutoSupport Eflexoke -Node *-type all -Message MAn=end」
@@ -34,3 +36,11 @@ summary: 在轉換期間、您可以將資料從MetroCluster 採用支援功能�
 請使用中的程序  http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-upgrade-controller/GUID-95CA9262-327D-431D-81AA-C73DEFF3DEE2.html["將非SAN資料生命期和叢集管理生命期移至新節點"^] 但是*不要*執行最後兩個步驟來移轉叢集管理生命期。
 
 
+
+[NOTE]
+====
+* 您無法移轉LIF、以便使用VMware vStorage API進行陣列整合（VAAI）進行複本卸載作業。
+* 完成MetroCluster 從FC到IP的支援節點移轉之後、您可能需要將iSCSI主機連線移至新節點、請參閱 link:task_move_linux_iscsi_hosts_from_mcc_fc_to_mcc_ip_nodes.html["將Linux iSCSI主機從MetroCluster 支援功能的FC移至MetroCluster 支援功能的IP節點。"]
+
+
+====

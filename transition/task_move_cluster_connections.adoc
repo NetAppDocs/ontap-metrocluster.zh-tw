@@ -150,6 +150,57 @@ e0b       Cluster      Cluster          up   9000  auto/10000 healthy
 
 cluster_A::*>
 ....
+. 確認站台間交換器間連結（ISL）正常運作、且連接埠通道正常運作：
++
+「How介面簡介」
+
++
+在以下範例中、遠端站台連結的ISL連接埠「eth1/15」至「eth1/20」設定為「Po10」、而遠端叢集ISL的「eth1/7」至「eth1/8」則設定為「PO1」。「eth1/15」至「eth1/20」、「eth1/7」至「eth1/8」、「Po10」及「PO1」的狀態應為「UP」。
+
++
+[listing]
+----
+IP_switch_A_1# show interface brief
+
+--------------------------------------------------------------
+Port   VRF          Status   IP Address        Speed      MTU
+--------------------------------------------------------------
+mgmt0  --            up        100.10.200.20    1000      1500
+--------------------------------------------------------------------------------
+Ethernet     VLAN   Type Mode    Status     Reason              Speed    Port
+Interface                                    Ch #
+--------------------------------------------------------------------------------
+Eth1/1       101    eth  access   up        none                100G(D)    --
+Eth1/2       101    eth  access   up        none                100G(D)    --
+Eth1/3        1     eth  access   down      XCVR not inserted   auto(D)    --
+Eth1/4        1     eth  access   down      XCVR not inserted   auto(D)    --
+Eth1/5        1     eth  access   down      XCVR not inserted   auto(D)    --
+Eth1/6        1     eth  access   down      XCVR not inserted   auto(D)    --
+Eth1/7        1     eth  trunk    up        none                100G(D)    1
+Eth1/8        1     eth  trunk    up        none                100G(D)    1
+Eth1/9        1     eth  trunk    up        none                100G(D)    --
+Eth1/10       1     eth  trunk    up        none                100G(D)    --
+Eth1/11       1     eth  access   down      XCVR not inserted   auto(D)    --
+Eth1/12       1     eth  access   down      XCVR not inserted   auto(D)    --
+Eth1/13       1     eth  access   down      XCVR not inserted   auto(D)    --
+Eth1/14       1     eth  access   down      XCVR not inserted   auto(D)    --
+Eth1/15       1     eth  trunk    up        none                100G(D)    10
+Eth1/16       1     eth  trunk    up        none                100G(D)    10
+Eth1/17       1     eth  trunk    up        none                100G(D)    10
+Eth1/18       1     eth  trunk    up        none                100G(D)    10
+Eth1/19       1     eth  trunk    up        none                100G(D)    10
+Eth1/20       1     eth  trunk    up        none                100G(D)    10
+
+--------------------------------------------------------------------------------
+Port-channel VLAN  Type Mode   Status   Reason         Speed    Protocol
+Interface
+--------------------------------------------------------------------------------
+Po1          1     eth  trunk   up      none            a-100G(D) lacp
+Po10         1     eth  trunk   up      none            a-100G(D) lacp
+Po11         1     eth  trunk   down    No operational  auto(D)   lacp
+                                        members
+IP_switch_A_1#
+----
 . 驗證所有介面在「is Home」欄位中均顯示為真：
 +
 「網路介面show -vserver cluster」

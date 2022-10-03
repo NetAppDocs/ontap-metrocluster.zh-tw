@@ -12665,4 +12665,12 @@
   <block id="e36e202b6cdca1dbc2cdea18cfdd7bdb" category="list-text"><block ref="e36e202b6cdca1dbc2cdea18cfdd7bdb" category="inline-link-macro-rx"></block></block>
   <block id="f6d453c97574893aee9bca0a4faee686" category="paragraph">「torage容錯移轉修改-node-name_-enable假」</block>
   <block id="d1b92a4930d50c6ed1038655db0d2684" category="sidebar">所有ONTAP 產品文件</block>
+  <block id="f91adcd268075ddcfabf631a5a33611e" category="list-text">將每個資料集合體離線、然後刪除：</block>
+  <block id="d4fbfd12406441eb6b750cde2dcb9137" category="list-text">確認站台間交換器間連結（ISL）正常運作、且連接埠通道正常運作：</block>
+  <block id="0e199c470dcfb3a63ccc62156cd2085f" category="paragraph">在以下範例中、遠端站台連結的ISL連接埠「eth1/15」至「eth1/20」設定為「Po10」、而遠端叢集ISL的「eth1/7」至「eth1/8」則設定為「PO1」。「eth1/15」至「eth1/20」、「eth1/7」至「eth1/8」、「Po10」及「PO1」的狀態應為「UP」。</block>
+  <block id="69e830aa4ae0ba332c540430bb342b65" category="paragraph">您應該在目的地或IP節點上建立新的SAN LIF、並在將磁碟區移至新的Aggregate之前連接主機。</block>
+  <block id="87375b5769d5bc8e37ee39d964c25804" category="list-text">您無法移轉LIF、以便使用VMware vStorage API進行陣列整合（VAAI）進行複本卸載作業。</block>
+  <block id="29011b2c4a1fcc691d4080c12a975cd2" category="inline-link-macro">將Linux iSCSI主機從MetroCluster 支援功能的FC移至MetroCluster 支援功能的IP節點。</block>
+  <block id="15c49ac51668072fdf92e5d8db0ec9ff" category="list-text">完成MetroCluster 從FC到IP的支援節點移轉之後、您可能需要將iSCSI主機連線移至新節點、請參閱 <block ref="e3ab265f03332ea44056fafa567b430d" category="inline-link-macro-rx"></block></block>
+  <block id="1fd94f8dc4aef371c8059f7aadb13ffb" category="list-text">您可以AFF 使用下列程序、從FASA700/FAS9000控制器升級AFF 至FASA900/FAS9500控制器： <block ref="d4055a630aa0f5dfe07651f60a376ff8" category="inline-link-macro-rx"></block></block>
 </blocks>
