@@ -13,37 +13,31 @@ summary: 您可以使用此引導式自動化MetroCluster 的動作來執行不�
 [role="lead"]
 您可以使用此引導式自動MetroCluster 資料交換作業、在四節點MetroCluster 的SFC組態上執行不中斷營運的控制器升級。其他元件（例如儲存櫃或交換器）無法在此程序中進行升級。
 
-.關於這項工作
+
+
+== 支援的平台組合
+
+下表顯示支援的控制器機型組合。
+
+如果*目前平台*列和*目標平台*欄的交會不是綠色、則無法使用此程序。
+
+請參閱 https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["選擇升級或重新整理方法"] 以瞭解其他程序。
+
+
+NOTE: 本表未顯示從FASA700/FAS9000控制器升級AFF 至AFF FASA900/FAS9500控制器的資訊。使用支援該組合 link:task_upgrade_A700_to_A900_in_a_four_node_mcc_fc_us_switchover_and_switchback.html["還原A700 / FAS9500切換/切換回復程序AFF"]。
+
+image::supported_controller_upgrades_mccfc_sosb.png[FC組態中支援的控制器升級組合]
+
+
+
+== 關於這項工作
+
 * 您只能將此程序用於控制器升級。
 +
 組態中的其他元件（例如儲存櫃或交換器）無法同時升級。
 
 * 此程序適用於四節點MetroCluster 的FESFC組態中的控制器模組。
 * 平台必須執行ONTAP 的是版本不支援的版本。
-* 您的原始與新平台必須相容且受到支援。
-+
-下表顯示控制器升級所支援的機型對照表。
-
-+
-|===
-
-
-| 舊平台模式 | 替換平台模式 
-
-
- a| 
-部分A300 AFF
- a| 
-部分A400、部分A700 AFF AFF
-
-
-
- a| 
-FAS8200
- a| 
-FAS8300
-
-|===
 +
 https://hwu.netapp.com["NetApp Hardware Universe"^]
 

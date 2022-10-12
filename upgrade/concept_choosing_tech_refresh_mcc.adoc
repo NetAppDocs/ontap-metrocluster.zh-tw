@@ -1,0 +1,45 @@
+---
+permalink: upgrade/concept_choosing_tech_refresh_mcc.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, choose, upgrade, refresh, method 
+summary: 您所使用的更新程序取決於平台機型、升級範圍和MetroCluster 類型的支援。 
+---
+= 選擇系統重新整理方法
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您所使用的系統更新程序取決於平台機型、升級範圍及MetroCluster 版本類型。
+
+[cols="2,1,1,2"]
+|===
+| 範圍 | 組態類型 | 支援ONTAP | 前往... 
+
+
+ a| 
+* 範圍：平台（控制器模組）和儲存櫃
+* 方法：展開MetroCluster 「資訊庫」組態、然後移除舊節點
+
+ a| 
+FC
+ a| 
+9.6及更新版本
+ a| 
+link:task_refresh_4n_mcc_fc.html["重新整理四節點MetroCluster 的不含功能的FC組態"]
+
+
+
+ a| 
+* 範圍：平台（控制器模組）和儲存櫃
+* 方法：展開MetroCluster 「資訊庫」組態、然後移除舊節點
+
+ a| 
+IP
+ a| 
+9.8
+ a| 
+link:task_refresh_4n_mcc_ip.html["重新整理四節點MetroCluster 的靜態IP組態（ONTAP 不含更新版本的更新版本）"]
+
+|===

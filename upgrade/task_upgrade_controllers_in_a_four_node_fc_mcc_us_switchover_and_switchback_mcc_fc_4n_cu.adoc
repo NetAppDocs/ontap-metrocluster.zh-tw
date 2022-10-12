@@ -13,7 +13,25 @@ summary: 您可以在MetroCluster 升級合作夥伴叢集上的控制器模組�
 [role="lead"]
 您可以在MetroCluster 升級合作夥伴叢集上的控制器模組時、使用「支援交換」作業來為用戶端提供不中斷營運的服務。其他元件（例如儲存櫃或交換器）無法在此程序中進行升級。
 
-.關於這項工作
+
+
+== 支援的平台組合
+
+您可以使用MetroCluster 切換和切換功能、以支援功能支援的功能來升級特定平台。下表顯示支援哪些控制器升級組合。
+
+如果*目前平台*列和*目標平台*欄的交會不是綠色、則無法使用此程序。
+
+請參閱 https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["選擇升級或重新整理方法"] 以瞭解其他程序。
+
+
+NOTE: 本表未顯示從FASA700/FAS9000控制器升級AFF 至AFF FASA900/FAS9500控制器的資訊。使用支援該組合 link:task_upgrade_A700_to_A900_in_a_four_node_mcc_fc_us_switchover_and_switchback.html["還原A700 / FAS9500切換/切換回復程序AFF"]。
+
+image::supported_controller_upgrades_mccfc_sosb.png[FC組態中支援的控制器升級組合]
+
+
+
+== 關於這項工作
+
 * 您只能將此程序用於控制器升級。
 +
 組態中的其他元件（例如儲存櫃或交換器）無法同時升級。
@@ -40,42 +58,6 @@ NOTE: 如果原始或新平台是使用連接埠1c和1d的FAS8020或AFF8020系�
 * 同一個DR群組中的所有控制器都應在相同的維護期間進行升級。
 +
 在本維護活動之外、不支援在MetroCluster 同一個DR群組中使用不同控制器類型來操作此支援。對於八節點MetroCluster 的不完整配置、DR群組中的控制器必須相同、但兩個DR群組可以使用不同的控制器類型。
-
-* 支援的升級途徑取決於原始平台模式。
-+
-不支援含有內部磁碟櫃的平台機型。
-
-+
-|===
-
-
-| 舊平台模式 | 全新平台模式 
-
-
- a| 
-** FAS80x0
-** FAS8200
-
- a| 
-** FAS8300
-
-
-
-
- a| 
-** 部分A300 AFF
-** AFF80x0
-
- a| 
-** 解答400 AFF
-** 部分A700 AFF
-
-
-|===
-
-
-
-NOTE: 在FC-VI模式中使用1c和1d連接埠時、不支援升級FAS8020或AFF8020。
 
 * 建議預先對應原始節點與新節點之間的儲存設備、FC與乙太網路連線。
 * 如果新平台的插槽數少於原始系統、或是連接埠類型較少或不同、您可能需要在新系統中新增介面卡。

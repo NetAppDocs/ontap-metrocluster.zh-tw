@@ -1,0 +1,139 @@
+---
+permalink: upgrade/concept_choosing_controller_upgrade_mcc.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, choose, upgrade, refresh, method 
+summary: 您使用的升級程序取決於平台模式。 
+---
+= 選擇控制器升級程序
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您所使用的控制器升級程序取決於平台機型、升級範圍及MetroCluster 版本類型。
+
+
+
+== 選擇不使用Aggregate重新配置的程序
+
+[cols="2,1,1,2"]
+|===
+
+
+| 升級或更新類型 | 適用類型MetroCluster | 第一個ONTAP 支援版本 | 程序 
+
+
+ a| 
+* 範圍：僅平台（控制器模組）
+* 方法：自動切換/切換
+
+ a| 
+FC
+ a| 
+9.10.1
+ a| 
+link:task_upgrade_controllers_system_control_commands_in_a_four_node_mcc_fc.html["使用MetroCluster 切換功能升級四節點的SFC組態中的控制器、並以「系統控制器更換」命令（ONTAP 版本號：E59.10.1及更新版本）進行切換。"]
+
+
+
+ a| 
+* 範圍：僅平台（控制器模組）
+* 方法：自動切換/切換
+
+ a| 
+IP
+ a| 
+9.10.1
+ a| 
+link:task_upgrade_A700_to_A900_in_a_four_node_mcc_ip_us_switchover_and_switchback.html["使用交換器和切換功能、將控制器從AFF 功能性的2700升級至AFF 功能性的S還原MetroCluster IP組態（ONTAP 版本號：32、10.1及更新版本）"]
+
+
+
+ a| 
+* 範圍：僅平台（控制器模組）
+* 方法：切換/切換
+
+ a| 
+FC
+ a| 
+9.8
+ a| 
+link:task_upgrade_controllers_in_a_four_node_fc_mcc_us_switchover_and_switchback_mcc_fc_4n_cu.html["使用MetroCluster 切換和切換功能升級採用SFC組態的控制器"]
+
+
+
+ a| 
+* 範圍：僅平台（控制器模組）
+* 方法：切換/切換
+
+ a| 
+IP
+ a| 
+9.8
+ a| 
+link:task_upgrade_controllers_in_a_four_node_ip_mcc_us_switchover_and_switchback_mcc_ip.html["使用MetroCluster 切換和切換功能升級以使用靜態IP組態的控制器（ONTAP 版本號：S9.8及更新版本）"]
+
+|===
+
+
+== 使用Aggregate重新配置來選擇程序
+
+|===
+| Aggregate重新配置程序 | 適用類型MetroCluster | 第一個ONTAP 支援版本 | 程序 
+
+
+ a| 
+使用「系統控制器更換」命令、並交換控制器模組和NVM
+ a| 
+FC
+ a| 
+9.10.1及更新版本
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-affa900/index.html["使用「系統控制器更換」命令、將AFF 執行AFF 《E59.10.1 RC2》或更新版本的《ERA700》升級至《ERA900》ONTAP"^]
+
+
+
+ a| 
+使用「系統控制器置換」命令
+ a| 
+FC
+ a| 
+9.8及更新版本
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-app/index.html["使用「系統控制器更換」命令來升級執行ONTAP 《E9．8及更新版本》的控制器硬體"^]
+
+
+
+ a| 
+使用「系統控制器置換」命令
+ a| 
+FC
+ a| 
+9.5至9.7
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto/index.html["使用「系統控制器更換」命令、將執行ONTAP E9.5的控制器硬體升級至ONTAP E9.7"^]
+
+
+
+ a| 
+使用手動ARL命令
+ a| 
+FC
+ a| 
+9.8
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-manual-app/index.html["手動升級執行ONTAP 效能不更新的控制器硬體"^]
+
+
+
+ a| 
+使用手動ARL命令
+ a| 
+FC
+ a| 
+9.7及更早版本
+ a| 
+https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-manual/index.html["手動升級執行ONTAP 效能為更新版本的控制器硬體"^]
+
+|===
