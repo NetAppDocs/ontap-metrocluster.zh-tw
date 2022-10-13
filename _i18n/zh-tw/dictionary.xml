@@ -12775,4 +12775,5 @@
   <block id="31214012750b888cbecfe6100ea9a335" category="sidebar">使用MetroCluster 切換和切換功能升級SIP中的控制器（ONTAP 更新版本：S還原9.8及更新版本）</block>
   <block id="0f0bf8d23aa860be830e25b6f1b90c86" category="sidebar">使用切換和切換功能（AFF 更新版本為《》）、將控制器（從SNEA700/FAS9000升級AFF 至《S還原A900/FAS9500》）升級MetroCluster 到《S還原IP》（ONTAP 《更新版本》）</block>
   <block id="34e0a85e8dfaaeca6dadc1260cdef2ae" category="sidebar">重新整理四節點MetroCluster 的不全功能FC組態</block>
+  <block id="027b9ebdca6bdd3a2f1b2789fdd87f98" category="list-text">僅在執行9.10.1之前版本的系統上、才支援使用內建連接埠0e和0f做為FC-VI連線的AFF 從EVA300或FAS8200平台升級ONTAP 。</block>
 </blocks>
