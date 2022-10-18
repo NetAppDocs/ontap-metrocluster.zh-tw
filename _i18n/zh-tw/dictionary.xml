@@ -9410,7 +9410,6 @@
   <block id="2c473c2b0dd7e7fd0a780aba4f6b52cb" category="paragraph">在判斷叢集間複寫是否使用專用連接埠是正確的叢集間網路解決方案時、您應該考量LAN類型、可用的WAN頻寬、複寫時間間隔、變更率及連接埠數量等組態與需求。</block>
   <block id="b8e7cebe68f75c9a508edbf43913f3f6" category="paragraph">以下範例建立叢集間lifs cluster01_icl01和cluster01_icl02：</block>
   <block id="121791834cc106d1f75cc10ba9274408" category="paragraph">* ONTAP 在S69.6及更新版本*中：</block>
-  <block id="47e9356ba3921e22bdc9f1b3569697d0" category="paragraph">+下列範例顯示、「e0c」連接埠上的叢集間lifs「cluster01_icl01」和「cluster01_icl02」將容錯移轉至「e0d」連接埠。</block>
   <block id="4dfeab60c8ad724190124edabecd3b7d" category="paragraph">您可以使用「叢集對等建立」命令、在本機與遠端叢集之間建立對等關係。建立對等關係之後、您可以在遠端叢集上執行「叢集對等實體建立」、將其驗證到本機叢集。</block>
   <block id="0a7ea5f8ad5ebcb9f76e1946a612f708" category="paragraph">您可以使用「叢集對等點create」命令來初始化本機與遠端叢集之間對等關係的要求。在本機叢集要求對等關係之後、您可以在遠端叢集上執行「叢集對等實體建立」、以接受關係。</block>
   <block id="f227beeb960f3332c7459a76dc3a00f7" category="list-text">叢集管理員必須同意每個叢集用來驗證自己與其他叢集之間的通關密碼。</block>
@@ -12776,4 +12775,7 @@
   <block id="0f0bf8d23aa860be830e25b6f1b90c86" category="sidebar">使用切換和切換功能（AFF 更新版本為《》）、將控制器（從SNEA700/FAS9000升級AFF 至《S還原A900/FAS9500》）升級MetroCluster 到《S還原IP》（ONTAP 《更新版本》）</block>
   <block id="34e0a85e8dfaaeca6dadc1260cdef2ae" category="sidebar">重新整理四節點MetroCluster 的不全功能FC組態</block>
   <block id="027b9ebdca6bdd3a2f1b2789fdd87f98" category="list-text">僅在執行9.10.1之前版本的系統上、才支援使用內建連接埠0e和0f做為FC-VI連線的AFF 從EVA300或FAS8200平台升級ONTAP 。</block>
+  <block id="ddbd6ef13caff567c99b6c907c4fee1c" category="list-text">此AFF 表未顯示從E4A700/FAS9000控制器升級至AFF E4A900/FAS9500控制器的控制器。使用支援該組合 <block ref="246d2420012a9cc76fe218ed0d95c813" category="inline-link-macro-rx"></block>。</block>
+  <block id="80a030e3352fb989821aa7c6d15bcfad" category="inline-link-macro">公開報告</block>
+  <block id="9f65944593edc840cbe5ddb177ae6b75" category="list-text">只AFF 有執行ONTAP 9.9之前版本的系統、才支援使用內建連接埠0e和0f作為FC-VI連線的控制器從EVA300或FAS8200平台升級。如需詳細資訊、請參閱 <block ref="845e64151c0738e7120f5a63234759b0" category="inline-link-macro-rx"></block>。</block>
 </blocks>
