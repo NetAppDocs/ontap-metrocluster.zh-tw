@@ -12774,8 +12774,8 @@
   <block id="31214012750b888cbecfe6100ea9a335" category="sidebar">使用MetroCluster 切換和切換功能升級SIP中的控制器（ONTAP 更新版本：S還原9.8及更新版本）</block>
   <block id="0f0bf8d23aa860be830e25b6f1b90c86" category="sidebar">使用切換和切換功能（AFF 更新版本為《》）、將控制器（從SNEA700/FAS9000升級AFF 至《S還原A900/FAS9500》）升級MetroCluster 到《S還原IP》（ONTAP 《更新版本》）</block>
   <block id="34e0a85e8dfaaeca6dadc1260cdef2ae" category="sidebar">重新整理四節點MetroCluster 的不全功能FC組態</block>
-  <block id="027b9ebdca6bdd3a2f1b2789fdd87f98" category="list-text">僅在執行9.10.1之前版本的系統上、才支援使用內建連接埠0e和0f做為FC-VI連線的AFF 從EVA300或FAS8200平台升級ONTAP 。</block>
   <block id="ddbd6ef13caff567c99b6c907c4fee1c" category="list-text">此AFF 表未顯示從E4A700/FAS9000控制器升級至AFF E4A900/FAS9500控制器的控制器。使用支援該組合 <block ref="246d2420012a9cc76fe218ed0d95c813" category="inline-link-macro-rx"></block>。</block>
   <block id="80a030e3352fb989821aa7c6d15bcfad" category="inline-link-macro">公開報告</block>
   <block id="9f65944593edc840cbe5ddb177ae6b75" category="list-text">只AFF 有執行ONTAP 9.9之前版本的系統、才支援使用內建連接埠0e和0f作為FC-VI連線的控制器從EVA300或FAS8200平台升級。如需詳細資訊、請參閱 <block ref="845e64151c0738e7120f5a63234759b0" category="inline-link-macro-rx"></block>。</block>
+  <block id="bf65ff1f2c88ec7d1999086f6c8ba8ea" category="list-text">只有執行版本9.9.1之前的系統、才支援使用內建連接埠0e和0f作為FC-VI連線的AFF 從EVA300或FAS8200平台升級ONTAP 。如需詳細資訊、請參閱 <block ref="845e64151c0738e7120f5a63234759b0" category="inline-link-macro-rx"></block>。</block>
 </blocks>

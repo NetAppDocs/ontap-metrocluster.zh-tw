@@ -26,7 +26,7 @@ summary: 您可以使用此引導式自動化MetroCluster 的動作來執行不�
 [NOTE]
 ====
 * 本表未顯示從FASA700/FAS9000控制器升級AFF 至AFF FASA900/FAS9500控制器的資訊。使用支援該組合 link:task_upgrade_A700_to_A900_in_a_four_node_mcc_fc_us_switchover_and_switchback.html["還原A700 / FAS9500切換/切換回復程序AFF"]。
-* 僅在執行9.10.1之前版本的系統上、才支援使用內建連接埠0e和0f做為FC-VI連線的AFF 從EVA300或FAS8200平台升級ONTAP 。
+* 只有執行版本9.9.1之前的系統、才支援使用內建連接埠0e和0f作為FC-VI連線的AFF 從EVA300或FAS8200平台升級ONTAP 。如需詳細資訊、請參閱 link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1507088["公開報告"]。
 
 
 ====
