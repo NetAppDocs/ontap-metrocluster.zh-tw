@@ -23,6 +23,9 @@ link:https://docs.netapp.com/us-en/ontap/mediator/index.html["安裝或升級ONT
 * 所有的靜態IP組態節點MetroCluster 都必須在線上。
 
 
+
+CAUTION: 從ONTAP 《S廳9.12.1（支援）：MetroCluster 在MetroCluster 一套支援靜態IP的組態中、您可以啟用「自動切換」功能。此功能是由中保輔助的非計畫性切換的延伸功能。啟用此功能之前、請先檢閱 link:concept-risks-limitations-automatic-switchover.html["使用MetroCluster 不全自動強制切換的風險與限制"]。
+
 .關於這項工作
 * 此工作預設會啟用自動非計畫性切換。
 * 此工作可在ONTAP 任何節點的整個介面上執行MetroCluster 、以進行整個過程。
@@ -87,4 +90,12 @@ NOTE: 系統會提示您輸入「促成者管理」使用者帳戶的使用者�
 ....
 
 
+. 如果您想要設定MetroCluster 自動執行的靜態切換、請執行下列命令： `metrocluster modify -allow-automatic-forced-switchover true`
++
+啟用此功能之前、請先檢閱 link:concept-risks-limitations-automatic-switchover.html["使用MetroCluster 不全自動強制切換的風險與限制"]。
+
++
+....
+cluster_A::*> metrocluster modify -allow-automatic-forced-switchover true
+....
 
