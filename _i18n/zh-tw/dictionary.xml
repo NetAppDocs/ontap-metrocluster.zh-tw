@@ -411,7 +411,6 @@
   <block id="3101be4d53f99469f2c1b39892d6d93f" category="list-text">Q2：node_a_2 Pool0</block>
   <block id="dbe07d3b0e16c3d4d765887b1b29b7bd" category="list-text">問題3：node_B_1 Pool1</block>
   <block id="36a6b2d82f1c99925006210a57878b24" category="list-text">Q4：node_B_2 Pool1</block>
-  <block id="78901a670ecee0e2cae92a552370d833" category="list-text">一個資料分割區</block>
   <block id="88f336a63a2478d097af48b4a173b710" category="section-title">ADP和磁碟指派、位於AFF Solide A250系統上</block>
   <block id="f3a88820bdb6aec9f587dc31d6c8d2a5" category="paragraph">每個機櫃上的分割區都用於建立根Aggregate。根Aggregate在每個叢中包含下列分割區：</block>
   <block id="ebc41c749d217e4e33d72e9e61f637ae" category="paragraph">僅限24個內部磁碟機</block>
@@ -3651,7 +3650,6 @@
   <block id="bdff20b545d5f7f451d6cc86cddcd9d5" category="list-text">使用交換器的下列命令來驗證RCF檔案的版本：</block>
   <block id="cb1e716ab831d1ef2a5741deabd44bd7" category="cell">從這個交換器...</block>
   <block id="5c0951f5a767642dcb5de6e5878a5032" category="cell">發出此命令...</block>
-  <block id="e1b2d6a1b751cb96efc81bdc19b3dec8" category="paragraph">Brocade交換器</block>
   <block id="196859a46785802c1b55cf0cc9501818" category="paragraph">「（ip_switch_a_1）# show clipbid'</block>
   <block id="4b7e6b18c6a39aa5ac2a1c68aebcc388" category="paragraph">Cisco交換器</block>
   <block id="9b3b2c674f3b4b1f564ace7400510bbc" category="paragraph">「ip_switch_a_1# show banner motd」</block>
@@ -7148,7 +7146,6 @@
   <block id="3871b5c010a2e068a625e5d358ef749a" category="list-text">您想要瞭解設定Fabric附加MetroCluster 的功能介紹組態的要求和最佳實務做法。</block>
   <block id="4a4442f93bedaff86c4d502cdec5989f" category="summary">您必須連接用於叢集對等的控制器模組連接埠、以便它們與合作夥伴站台上的叢集建立連線。</block>
   <block id="4cd1110435955b3b14ac2d145c6baae1" category="paragraph">每MetroCluster 個站台均設定為其合作夥伴站台的對等站台。您應該熟悉設定對等關係的先決條件和準則、以及決定要使用共用或專用連接埠來建立這些關係。</block>
-  <block id="4f14bd83165c34717fd8f31fd01148f6" category="paragraph"><block ref="4f14bd83165c34717fd8f31fd01148f6" category="inline-link-macro-rx"></block></block>
   <block id="90ca2ba118d725d3d2c212d37d698f66" category="summary">您必須鏡射MetroCluster 整個基礎組態中的根集合體、以確保資料受到保護。</block>
   <block id="aea48cdfc5800125bb39de01bb53c503" category="inline-link-macro">使用陣列LUN進行動態組態的需求MetroCluster</block>
   <block id="7c9ce51ecda69bd6b8e4f23c6195b311" category="paragraph">您必須確保SyncMirror 滿足使用陣列LUN進行的不必要功能組態。MetroCluster請參閱<block ref="dde9fbc727f8cd4c9b4ba4b7030d98ee" category="inline-link-macro-rx"></block>。</block>
@@ -7293,7 +7290,6 @@
   <block id="207c024d1855ef3c7e08eb0a0aceac8f" category="inline-link-macro">以MetroCluster 陣列LUN進行八節點的列舉之交換器分區的範例</block>
   <block id="6e2b6e2786426e2aeed4db0ecc5b8890" category="paragraph"><block ref="6e2b6e2786426e2aeed4db0ecc5b8890" category="inline-link-macro-rx"></block></block>
   <block id="4c9e12fec4832bc4e599f3f834b24296" category="summary">當您準備MetroCluster 進行此版本的安裝時、您應該瞭解MetroCluster 到該系統的硬體架構和必要元件。</block>
-  <block id="3ace0101eda807644a901de4c89f212a" category="paragraph">每MetroCluster 個站台均設定為其合作夥伴站台的對等站台。您應該熟悉設定對等關係的先決條件和準則、以及決定要使用共用或專用連接埠來建立這些關係。</block>
   <block id="4efb93e6e74e61398b92661ce23351c2" category="summary">如果您要使用MetroCluster 陣列LUN設定八節點光纖附加的功能區組態、則必須將FC-VI連接埠和HBA連接埠纜線連接至交換器連接埠。</block>
   <block id="3b3f9b1e3b78cf5c7c6c5dd771ebcbe6" category="doc">使用MetroCluster 陣列LUN、在八節點架構附加的功能區塊中連接FC-VI和HBA連接埠的纜線</block>
   <block id="db45d2962a244516b91cdcdb10eabed7" category="list-text">將FC-VI連接埠和HBA連接埠從每個控制器連接至備用FC交換器上的連接埠。請參閱下列表格：</block>
@@ -9408,8 +9404,6 @@
   <block id="a96b46d6c220e82969d9ba10b064f72d" category="paragraph">下列範例會在容錯移轉群組「intercluster01」中建立叢集間LIF「cluster01_icl01」和「cluster01_icl02」：</block>
   <block id="1456cda5fcdd4ba6dc58aaeb75ae33ca" category="paragraph">下列範例顯示、SVM「e0e」連接埠上的叢集間LIF「cluster01_icl01」和「cluster01_icl02」將容錯移轉至「e0f」連接埠。</block>
   <block id="2c473c2b0dd7e7fd0a780aba4f6b52cb" category="paragraph">在判斷叢集間複寫是否使用專用連接埠是正確的叢集間網路解決方案時、您應該考量LAN類型、可用的WAN頻寬、複寫時間間隔、變更率及連接埠數量等組態與需求。</block>
-  <block id="b8e7cebe68f75c9a508edbf43913f3f6" category="paragraph">以下範例建立叢集間lifs cluster01_icl01和cluster01_icl02：</block>
-  <block id="121791834cc106d1f75cc10ba9274408" category="paragraph">* ONTAP 在S69.6及更新版本*中：</block>
   <block id="4dfeab60c8ad724190124edabecd3b7d" category="paragraph">您可以使用「叢集對等建立」命令、在本機與遠端叢集之間建立對等關係。建立對等關係之後、您可以在遠端叢集上執行「叢集對等實體建立」、將其驗證到本機叢集。</block>
   <block id="0a7ea5f8ad5ebcb9f76e1946a612f708" category="paragraph">您可以使用「叢集對等點create」命令來初始化本機與遠端叢集之間對等關係的要求。在本機叢集要求對等關係之後、您可以在遠端叢集上執行「叢集對等實體建立」、以接受關係。</block>
   <block id="f227beeb960f3332c7459a76dc3a00f7" category="list-text">叢集管理員必須同意每個叢集用來驗證自己與其他叢集之間的通關密碼。</block>
@@ -10635,11 +10629,6 @@
   <block id="7a15f8c2a97f6388700c82fdf3a949b2" category="paragraph">「* ifconfige0M -auto*」</block>
   <block id="2d25c72c1b18e562f6654fff8e11711e" category="paragraph">無法使用</block>
   <block id="1a29ce3d863e175d333643f75803d49b" category="paragraph">「ifconfige0M -addr=_filer_addr__-mask=_netmask__-gateway__-DNS=_DNs_addr__-domain=_DNs_domain__」</block>
-  <block id="5cae28c48acee98f2baac425290bbe14" category="paragraph">「filer_addr」是儲存系統的IP位址。</block>
-  <block id="846aab4775f72f7500de656fcc2ac584" category="paragraph">「網路遮罩」是儲存系統的網路遮罩。</block>
-  <block id="5c53dd4f07d069ff3358f3008241d6cd" category="paragraph">「閘道」是儲存系統的閘道。</block>
-  <block id="e14b9c106486400a1e3f574403b479e2" category="paragraph">「Dns_addr」是網路上名稱伺服器的IP位址。</block>
-  <block id="5eeab609359fce246c8785de7ee7e37a" category="paragraph">「Dns_domain」是網域名稱系統（DNS）網域名稱。如果使用此選用參數、則不需要netboot伺服器URL中的完整網域名稱；您只需要伺服器的主機名稱。</block>
   <block id="204216aae6f9292b8a5efb27c92a401f" category="admonition">您的介面可能需要其他參數。如需詳細資訊、請在載入程式提示字元下使用「Help ifconfig」命令。</block>
   <block id="10b41884caecbbf69bf85b01824d86cc" category="list-text">在載入程式提示字元下、以netboot新節點：</block>
   <block id="0ba2b3e0a887666765eb2d690768c576" category="cell">適用於...</block>
@@ -12322,7 +12311,6 @@
   <block id="dbef88bf7072abf7cb1500b76c098158" category="doc">從ONTAP 無法使用的IP組態中取消設定「無法使用的」MetroCluster 服務</block>
   <block id="b265dc310dca1d74417a4715e46c4168" category="paragraph">您可以從ONTAP 無法使用的IP組態中取消設定「無法使用的資訊」服務MetroCluster 。</block>
   <block id="db31f506e34352cf979355688abceeac" category="paragraph">您必須已在ONTAP 兩MetroCluster 個景點都能到達的網路位置上成功安裝及設定好《支援中心》。</block>
-  <block id="5bf67de758861fac80bba5762e2395d5" category="paragraph">您必須在MetroCluster 兩個叢集上執行此工作、以實現「支援不支援的IP」組態。</block>
   <block id="c8dd54fd6141594c239adba6bd3401ff" category="list-text">使用下列命令取消設定ONTAP 「靜態資訊站服務：</block>
   <block id="0c87e171b9e1156bebc0a65b722d174d" category="list-text">使用下列命令檢查是否有任何磁碟毀損：</block>
   <block id="27bf55792722dd4b16925981ef8953b4" category="paragraph">「展示-中斷」</block>
@@ -12787,4 +12775,31 @@
   <block id="64aca5dcd09842ce5e26c9c9f52a5c79" category="paragraph">當您允許MetroCluster 使用自動強制切換模式來操作S不明IP組態時、下列已知問題可能會導致資料遺失：</block>
   <block id="432fccc7d25e83271acb25e6c686d22f" category="list-text">儲存控制器中的非揮發性記憶體並未鏡射至合作夥伴站台上的遠端災難恢復（DR）合作夥伴。</block>
   <block id="4e94608087f1df11aa020cbfe28a7876" category="admonition">您可能會遇到未提及的案例。NetApp對於啟用MetroCluster 「自動強制切換」功能所造成的任何資料毀損、資料遺失或其他損害概不負責。如果您無法接受風險和限制、請勿使用MetroCluster 「無法自動切換」功能。</block>
+  <block id="80f6a6e12e6ca0304707e7a67581f248" category="paragraph">Broadcom交換器</block>
+  <block id="530dbe55cb10e603b69b517d0cb2f4bc" category="list-text">在ONTAP 兩個叢集上執行下列命令、確認已從MetroCluster 「支援資訊系統組態中移除「支援資訊系統服務：</block>
+  <block id="49b7410e94a7ca7d1c674a14241ebe49" category="list-text"><block ref="7200673afad174d0ff258c801fbb9def" prefix="" category="inline-code"></block></block>
+  <block id="f85af53e3d7c278ec6cd756cf3365359" category="list-text">無備援磁碟機</block>
+  <block id="385f02022cf6cb2f3cfc0aa026b7c3d7" category="list-text">選取符合組態的選項、然後在叢集_A上發出正確的命令：</block>
+  <block id="ee300e8560b29f936da49959eebf76e9" category="open-title">選項1：四節點或八節點FC組態、執行ONTAP 版本號為2、9.8或更新版本</block>
+  <block id="33bc2208a49f224c5922ce3b2b42fb21" category="paragraph">執行命令：<block ref="71b269d201dc030c963a1b0b33ee014f" prefix=" " category="inline-code"></block></block>
+  <block id="322ed43657dad6df7189e69bbea9fe57" category="open-title">選項2：雙節點FC組態、執行ONTAP 版本不含更新版本的功能</block>
+  <block id="ad714f1a11f3ed1c3d1a9c5c0a9c185b" category="paragraph">執行命令：<block ref="803740ddd57a4d0c8a51c6ede10e3096" prefix=" " category="inline-code"></block></block>
+  <block id="dda9fac268f3774282dbdcee2b98e206" category="paragraph"><block ref="c823de4f8bc2e5e070e3f2a6b83c709f" prefix="" category="inline-code"></block></block>
+  <block id="9a63e80a7a324f409930e8d454b5e538" category="paragraph"><block ref="cb485a0e6e52cf58d8ed72bd00e074ec" prefix="" category="inline-code"></block></block>
+  <block id="4ee3c0b4cfc3305a195d42ce617dcc41" category="paragraph"><block ref="854a4be4b1fce65bf3a90ee74692188e" prefix="" category="inline-code"></block> 是儲存系統的IP位址。</block>
+  <block id="db90801e232a1746aec7c835ee93e932" category="paragraph"><block ref="220b0a4790e2c047ae96a881e506e1fe" prefix="" category="inline-code"></block> 是儲存系統的網路遮罩。</block>
+  <block id="2341e6b2fbc3a695ee3dd2358295392c" category="paragraph"><block ref="14fb245f7140583707d1cda241eeeff2" prefix="" category="inline-code"></block> 是儲存系統的閘道。</block>
+  <block id="9ecb124bd7cc72ce8836d42500ccf1c1" category="paragraph"><block ref="573c932508ccab841c5c117fb2cd2186" prefix="" category="inline-code"></block> 是網路上名稱伺服器的IP位址。</block>
+  <block id="0b01a5f19097da529bc5a887225bb6d0" category="paragraph"><block ref="79e5a69f76d034adaafbb5cb6cb8fc45" prefix="" category="inline-code"></block> 為網域名稱系統（DNS）網域名稱。如果使用此選用參數、則不需要netboot伺服器URL中的完整網域名稱；您只需要伺服器的主機名稱。</block>
+  <block id="bafe4bc75cd2dda40df8007d783f6a0b" category="paragraph"><block ref="bafe4bc75cd2dda40df8007d783f6a0b" category="inline-link-macro-rx"></block></block>
+  <block id="2fc63d7ef73ec51fea07c22bee9e5328" category="open-title">更新版本ONTAP</block>
+  <block id="a6716741999f9bc3ac379c0b1266ee9e" category="paragraph">執行命令：<block ref="adc0f0943e919c37894a966fa46c4084" prefix=" " category="inline-code"></block></block>
+  <block id="99aae08435ef4a82bc4ed2301471d60e" category="paragraph">執行命令：<block ref="b7394405b5c746164dce6dfd2501d986" prefix=" " category="inline-code"></block></block>
+  <block id="6ddde2f3f00d7171e5fc3d8622653a6e" category="paragraph">Ron命令：<block ref="fdb848f6761ac46e0ea7678b5269bd3c" prefix=" " category="inline-code"></block></block>
+  <block id="9bb6c900985ca15d936c8e04295202f6" category="paragraph">執行命令：<block ref="4686e63f75ecbb5593b9aac27ab89dd7" prefix=" " category="inline-code"></block></block>
+  <block id="ef272f06b8afd4c6381d192259829c5a" category="paragraph">執行命令：<block ref="e24a79e2175b07b7a27cd83a3dc6847e" prefix=" " category="inline-code"></block></block>
+  <block id="bea69222028495543641d681312bfac9" category="paragraph">執行命令：<block ref="a95e2d29f4907b8b27d7a8683d428c09" prefix=" " category="inline-code"></block></block>
+  <block id="a417bfe3b0e85c20658fe71357feb3ef" category="paragraph">如需完整的命令語法、請參閱手冊頁。以下範例建立叢集間lifs cluster01_icl01和cluster01_icl02：</block>
+  <block id="0074a60c2f111fa09e324bfc6f086bfd" category="paragraph">執行命令：<block ref="08fd4296d1145ee217b3ba481add0899" prefix=" " category="inline-code"></block></block>
+  <block id="bb084c29063404b6611bde28d4ed57d3" category="paragraph">執行命令：<block ref="4686e63f75ecbb5593b9aac27ab89dd7" prefix=" " category="inline-code"></block></block>
 </blocks>

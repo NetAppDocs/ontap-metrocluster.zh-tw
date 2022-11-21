@@ -47,15 +47,15 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁�
  a| 
 「ifconfige0M -addr=_filer_addr__-mask=_netmask__-gateway__-DNS=_DNs_addr__-domain=_DNs_domain__」
 
-「filer_addr」是儲存系統的IP位址。
+`_filer_addr_` 是儲存系統的IP位址。
 
-「網路遮罩」是儲存系統的網路遮罩。
+`_netmask_` 是儲存系統的網路遮罩。
 
-「閘道」是儲存系統的閘道。
+`_gateway_` 是儲存系統的閘道。
 
-「Dns_addr」是網路上名稱伺服器的IP位址。
+`_dns_addr_` 是網路上名稱伺服器的IP位址。
 
-「Dns_domain」是網域名稱系統（DNS）網域名稱。如果使用此選用參數、則不需要netboot伺服器URL中的完整網域名稱；您只需要伺服器的主機名稱。
+`_dns_domain_` 為網域名稱系統（DNS）網域名稱。如果使用此選用參數、則不需要netboot伺服器URL中的完整網域名稱；您只需要伺服器的主機名稱。
 
 
 NOTE: 您的介面可能需要其他參數。如需詳細資訊、請在載入程式提示字元下使用「Help ifconfig」命令。

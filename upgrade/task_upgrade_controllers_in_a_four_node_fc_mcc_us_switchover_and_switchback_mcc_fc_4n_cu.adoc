@@ -560,10 +560,21 @@ image::../media/mcc_upgrade_cluster_a_in_switchover.png[MCC升級叢集A（在�
 .步驟
 . 切換MetroCluster 到站台A的支援、以便站台B的節點升級：
 +
-.. 在叢集_A上發出下列命令：
+.. 選取符合組態的選項、然後在叢集_A上發出正確的命令：
 +
-「不需要更換控制器」MetroCluster
+[role="tabbed-block"]
+====
+.選項1：四節點或八節點FC組態、執行ONTAP 版本號為2、9.8或更新版本
+--
+執行命令： `metrocluster switchover -controller-replacement true`
 
+--
+.選項2：雙節點FC組態、執行ONTAP 版本不含更新版本的功能
+--
+執行命令： `metrocluster switchover`
+
+--
+====
 +
 此作業可能需要數分鐘才能完成。
 

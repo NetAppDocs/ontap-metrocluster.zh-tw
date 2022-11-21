@@ -54,14 +54,14 @@ NOTE: 不會刪除根Aggregate。
 
 ... 將所有資料LIF移轉到另一個DR群組的主節點。+「網路介面show -home-node_old_node_」
 +
-「網路介面修改-vserver _svm-name_-lif_data-lif_-home-port _port-id_」
+`network interface modify -vserver svm-name -lif data-lif -home-node new_node -home-port port-id`
 
 ... 將叢集管理LIF移轉至另一個DR群組中的主節點。
 +
 「網路介面show -role叢集管理」
 
 +
-「網路介面修改-vserver _svm-name_-lif_data-lif_-home-port _port-id_」
+`network interface modify -vserver svm-name -lif cluster_mgmt -home-node new_node -home-port port-id`
 
 +
 節點管理和叢集間生命體不會移轉。

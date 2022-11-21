@@ -146,12 +146,12 @@ cluster_A::>
 ----
 . 驗證所有叢集連接埠是否正常運作：
 +
-「網路連接埠show -IPSpace叢集」
+「網路連接埠show -IPSpace Cluster」
 
 +
 [listing]
 ----
-cluster_A::> network port show -ipspace cluster
+cluster_A::> network port show -ipspace Cluster
 
 Node: node_A_1-old
 

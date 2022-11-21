@@ -30,7 +30,7 @@ summary: 您可能需要在MetroCluster 一個不知如何的IP交換器上升�
 
 
  a| 
-Brocade交換器
+Broadcom交換器
  a| 
 「（ip_switch_a_1）# show clipbid'
 

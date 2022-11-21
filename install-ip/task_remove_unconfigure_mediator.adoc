@@ -15,8 +15,6 @@ summary: 您可以從ONTAP 無法使用的知識庫IP組態中移除此「資訊
 
 您必須已在ONTAP 兩MetroCluster 個景點都能到達的網路位置上成功安裝及設定好《支援中心》。
 
-您必須在MetroCluster 兩個叢集上執行此工作、以實現「支援不支援的IP」組態。
-
 .步驟
 . 使用下列命令取消設定ONTAP 「靜態資訊站服務：
 +
@@ -34,6 +32,28 @@ summary: 您可以從ONTAP 無法使用的知識庫IP組態中移除此「資訊
 ....
 There are no entries matching your query.
 ....
+
+
+. 在ONTAP 兩個叢集上執行下列命令、確認已從MetroCluster 「支援資訊系統組態中移除「支援資訊系統服務：
++
+.. `metrocluster configuration-settings mediator show`
++
+* 範例 *
+
++
+[listing]
+----
+This table is currently empty.
+----
+.. 「儲存iSCSI啟動器顯示-標籤中介器」
++
+* 範例 *
+
++
+[listing]
+----
+There are no entries matching your query.
+----
 
 
 
