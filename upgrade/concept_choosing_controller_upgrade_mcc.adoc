@@ -21,7 +21,7 @@ summary: 您使用的升級程序取決於平台模式。
 |===
 
 
-| 升級或更新類型 | 適用類型MetroCluster | 第一個ONTAP 支援版本 | 程序 
+| 升級或更新類型 | 適用類型MetroCluster | 版本ONTAP | 程序 
 
 
  a| 
@@ -31,7 +31,7 @@ summary: 您使用的升級程序取決於平台模式。
  a| 
 FC
  a| 
-9.10.1
+9.10.1及更新版本
  a| 
 link:task_upgrade_controllers_system_control_commands_in_a_four_node_mcc_fc.html["使用MetroCluster 切換功能升級四節點的SFC組態中的控制器、並以「系統控制器更換」命令（ONTAP 版本號：E59.10.1及更新版本）進行切換。"]
 
@@ -44,7 +44,7 @@ link:task_upgrade_controllers_system_control_commands_in_a_four_node_mcc_fc.html
  a| 
 IP
  a| 
-9.10.1
+9.10.1及更新版本
  a| 
 link:task_upgrade_A700_to_A900_in_a_four_node_mcc_ip_us_switchover_and_switchback.html["使用交換器和切換功能、將控制器從AFF 功能性的2700升級至AFF 功能性的S還原MetroCluster IP組態（ONTAP 版本號：32、10.1及更新版本）"]
 
@@ -57,7 +57,7 @@ link:task_upgrade_A700_to_A900_in_a_four_node_mcc_ip_us_switchover_and_switchbac
  a| 
 FC
  a| 
-9.8
+9.8及更新版本
  a| 
 link:task_upgrade_controllers_in_a_four_node_fc_mcc_us_switchover_and_switchback_mcc_fc_4n_cu.html["使用MetroCluster 切換和切換功能升級採用SFC組態的控制器"]
 
@@ -70,7 +70,7 @@ link:task_upgrade_controllers_in_a_four_node_fc_mcc_us_switchover_and_switchback
  a| 
 IP
  a| 
-9.8
+9.8及更新版本
  a| 
 link:task_upgrade_controllers_in_a_four_node_ip_mcc_us_switchover_and_switchback_mcc_ip.html["使用MetroCluster 切換和切換功能升級以使用靜態IP組態的控制器（ONTAP 版本號：S9.8及更新版本）"]
 
@@ -80,7 +80,7 @@ link:task_upgrade_controllers_in_a_four_node_ip_mcc_us_switchover_and_switchback
 == 使用Aggregate重新配置來選擇程序
 
 |===
-| Aggregate重新配置程序 | 適用類型MetroCluster | 第一個ONTAP 支援版本 | 程序 
+| Aggregate重新配置程序 | 適用類型MetroCluster | 版本ONTAP | 程序 
 
 
  a| 

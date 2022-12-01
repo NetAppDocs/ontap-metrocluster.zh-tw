@@ -273,6 +273,7 @@ Configuration Saved!
 
 此工作必須在MetroCluster 每個交換器上重複執行、且必須採用EIP組態。
 
+[]
 ====
 *請注意下列事項：*
 

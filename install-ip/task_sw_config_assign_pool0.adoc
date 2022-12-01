@@ -44,7 +44,7 @@ summary: 如果您沒有從原廠收到預先設定的系統、您可能必須�
 +
 Boot_ONTAP功能表
 
-. 選取選項9a。
+. 選取選項9a並回應 `no` 出現提示時。
 +
 下列畫面顯示開機功能表提示：
 
@@ -54,29 +54,36 @@ Boot_ONTAP功能表
 
 Please choose one of the following:
 
-    (1) Normal Boot.
-    (2) Boot without /etc/rc.
-    (3) Change password.
-    (4) Clean configuration and initialize all disks.
-    (5) Maintenance mode boot.
-    (6) Update flash from backup config.
-    (7) Install new software first.
-    (8) Reboot node.
-    (9) Configure Advanced Drive Partitioning.
-    Selection (1-9)?  9a
-########## WARNING ##########
+(1) Normal Boot.
+(2) Boot without /etc/rc.
+(3) Change password.
+(4) Clean configuration and initialize all disks.
+(5) Maintenance mode boot.
+(6) Update flash from backup config.
+(7) Install new software first.
+(8) Reboot node.
+(9) Configure Advanced Drive Partitioning.
+(10) Set Onboard Key Manager recovery secrets.
+(11) Configure node for external key management.
+Selection (1-11)? 9a
 
-    This is a disruptive operation and will result in the
-    loss of all filesystem data. Before proceeding further,
-    make sure that:
-    1) This option (9a) has been executed or will be executed
-    on the HA partner node (and DR/DR-AUX partner nodes if
-    applicable), prior to reinitializing any system in the
-    HA-pair (or MetroCluster setup).
-    2) The HA partner node (and DR/DR-AUX partner nodes if
-    applicable) is currently waiting at the boot menu.
+...
 
-    Do you still want to continue (yes/no)? yes
+########## WARNING: AGGREGATES WILL BE DESTROYED ##########
+This is a disruptive operation that applies to all the disks
+that are attached and visible to this node.
+
+Before proceeding further, make sure that:
+
+The aggregates visible from this node do not contain
+data that needs to be preserved.
+This option (9a) has been executed or will be executed
+on the HA partner node (and DR/DR-AUX partner nodes if
+applicable), prior to reinitializing any system in the
+HA-pair or MetroCluster configuration.
+The HA partner node (and DR/DR-AUX partner nodes if
+applicable) is currently waiting at the boot menu.
+Do you want to abort this operation (yes/no)? no
 ----
 . 節點重新啟動時、請在系統提示時按Ctrl-C以顯示開機功能表、然後選取「*維護模式開機*」選項。
 . 在維護模式中、手動指派節點上本機集合體的磁碟機：
@@ -101,8 +108,8 @@ Please choose one of the following:
 +
 Boot_ONTAP功能表
 
-. 從開機功能表中選取選項「4」、然後讓系統開機。
 . 在「介紹IP」組態的其他節點上重複上述步驟MetroCluster 。
+. 從兩個節點的開機功能表中選取選項* 4*、然後讓系統開機。
 . 請前往 link:task_sw_config_setup_ontap.html["設定ONTAP 功能"]。
 
 

@@ -830,7 +830,7 @@ Boot_ONTAP
 +
 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-003BDFCD-58A3-46C9-BF0C-BA1D1D1475F9.html["從廣播網域新增或移除連接埠"^]
 
-.. 將用於託管叢集間生命體的實體連接埠新增至對應的Broadcast網域。
+.. 將將叢集間生命體所在的實體連接埠新增至對應的廣播網域。
 .. 修改叢集間的LIF、將新的實體連接埠當作主連接埠使用。
 .. 在叢集間生命體啟動之後、請檢查叢集對等端點狀態、並視需要重新建立叢集對等端點。
 +
@@ -848,6 +848,10 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-8929FCE2-58
 
 +
 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EAB7-430A-A773-4E3420EE2AA1.html["結合實體連接埠以建立介面群組"^]
+
+.. 確認合作夥伴叢集可連線、且組態已在合作夥伴叢集上成功重新同步：
++
+`metrocluster switchback -simulate true`
 
 
 

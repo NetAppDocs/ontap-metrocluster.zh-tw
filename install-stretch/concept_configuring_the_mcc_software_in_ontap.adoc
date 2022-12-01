@@ -1787,6 +1787,7 @@ cluster_A::> storage aggregate create aggr1_node_A_1 -diskcount 10 -node node_A_
 
 
 .關於這項工作
+[]
 ====
 *注意*：MetroCluster 在不鏡射FC組態中、只有在可存取Aggregate中的遠端磁碟時、才能在切換後上線無鏡射集合體。如果ISL失敗、本機節點可能無法存取無鏡射遠端磁碟中的資料。Aggregate故障可能導致本機節點重新開機。
 

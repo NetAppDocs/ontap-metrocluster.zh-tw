@@ -75,6 +75,7 @@ cluster_A::*> metrocluster switchover
 此作業可能需要數分鐘才能完成。
 
 +
+[]
 ====
 在SFC組態中MetroCluster 、只有在可存取Aggregate中的遠端磁碟時、才能在切換後將無鏡射的Aggregate連線。如果ISL失敗、本機節點可能無法存取無鏡射遠端磁碟中的資料。Aggregate故障可能導致本機節點重新開機。
 

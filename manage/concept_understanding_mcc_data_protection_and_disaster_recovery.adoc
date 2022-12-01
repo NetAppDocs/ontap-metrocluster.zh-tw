@@ -248,7 +248,7 @@ _High-Availability Configuration Guide_提供更多資訊、說明如何從不�
 下表顯示故障類型、對應的災難恢復（DR）機制和恢復方法：
 
 
-NOTE: AUSO（自動非排程切換）不支援MetroCluster 在各種EUNIP組態上使用。
+NOTE: AUSO（自動非計畫性切換）不支援MetroCluster 使用於各種IP組態。
 
 |===
 
