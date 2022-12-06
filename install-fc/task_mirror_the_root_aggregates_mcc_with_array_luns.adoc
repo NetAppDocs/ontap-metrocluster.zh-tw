@@ -13,8 +13,10 @@ summary: 您必須鏡射MetroCluster 整個基礎組態中的根集合體、以�
 [role="lead"]
 您必須鏡射MetroCluster 整個基礎組態中的根集合體、以確保資料受到保護。
 
+.開始之前
 您必須確保SyncMirror 滿足使用陣列LUN進行的不必要功能組態。MetroCluster請參閱link:reference_requirements_for_a_mcc_configuration_with_array_luns_reference.html["使用陣列LUN進行動態組態的需求MetroCluster"]。
 
+.關於這項工作
 您必須為MetroCluster E塊 組態中的每個控制器重複此工作。
 
 .步驟

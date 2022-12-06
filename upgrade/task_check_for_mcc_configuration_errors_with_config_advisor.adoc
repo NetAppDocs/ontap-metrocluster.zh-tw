@@ -13,6 +13,7 @@ summary: 您可以前往NetApp支援網站下載Config Advisor 此功能、以�
 [role="lead"]
 您可以前往NetApp支援網站下載Config Advisor 此功能、以檢查常見的組態錯誤。
 
+.關於這項工作
 此為組態驗證與健全狀況檢查工具。Config Advisor您可以在安全站台和非安全站台上部署、以供資料收集和系統分析之用。
 
 

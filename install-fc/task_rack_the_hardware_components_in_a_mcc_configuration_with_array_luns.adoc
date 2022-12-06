@@ -13,6 +13,7 @@ summary: 您必須確保MetroCluster 使用陣列LUN來設定一個整套組態�
 [role="lead"]
 您必須確保MetroCluster 使用陣列LUN來設定一個整套組態所需的硬體元件已正確機架。
 
+.關於這項工作
 您必須在MetroCluster 兩個支援中心執行此工作。
 
 .步驟

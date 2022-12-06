@@ -234,7 +234,7 @@ NTP伺服器2.
 |===
 
 
-==== 網站A AutoSupport 資訊
+==== 網站A nbsp；AutoSupport 資訊
 
 您必須在AutoSupport 每個節點上設定、這需要下列資訊：
 
@@ -293,7 +293,7 @@ Proxy伺服器
 |===
 
 
-==== 站台A SP資訊
+==== 站台A nbsp；SP資訊
 
 您必須啟用每個節點的服務處理器（SP）、才能進行疑難排解和維護、這需要每個節點的下列網路資訊：
 
@@ -533,7 +533,7 @@ NTP伺服器2.
 |===
 
 
-==== 站台B AutoSupport 的資訊
+==== 站台B；AutoSupport資訊
 
 您必須在AutoSupport 每個節點上設定、這需要下列資訊：
 
@@ -590,7 +590,7 @@ Proxy伺服器
 |===
 
 
-==== 站台B SP資訊
+==== 站台B nbsp；SP資訊
 
 您必須啟用每個節點的服務處理器（SP）、才能進行疑難排解和維護、這需要每個節點的下列網路資訊：
 
@@ -680,6 +680,7 @@ Proxy伺服器
 --
 為了確保MetroCluster 成功安裝、請重設並還原控制器模組的預設值。
 
+.重要事項
 此工作僅適用於使用FC至SAS橋接器的延伸組態。
 
 .步驟
@@ -814,6 +815,7 @@ Please choose one of the following:
 
 如果您在FAS8020系統上使用X1132A-R6四埠卡、您可以進入維護模式、設定用於FC-VI和啟動器的1a和1b連接埠。從原廠收到的不需要此功能MetroCluster 、因為系統會根據您的組態設定適當的連接埠。
 
+.關於這項工作
 此工作必須在維護模式下執行。
 
 
@@ -919,6 +921,7 @@ controller_B_1
 
 在將系統完全開機至ONTAP 顯示器之前、您可以選擇性地開機至維護模式、並驗證節點上的磁碟指派。應指派磁碟來建立完全對稱的雙主動式組態、其中每個集區都有相同數量的磁碟指派給它們。
 
+.關於這項工作
 全新MetroCluster 的功能系統在出貨前已完成磁碟指派。
 
 下表顯示MetroCluster 適用於整個程序集區組態的範例集區指派。磁碟會根據每個機櫃的需求指派給資源池。
@@ -1117,8 +1120,10 @@ controller_B_1
 
 如果MetroCluster 無法正確指派磁碟、或是您在組態中使用DS460C磁碟櫃、則必須將磁碟指派給MetroCluster 每個以磁碟櫃為基礎的「以Shel-by Shelves組態」中的節點。您將建立一個組態、讓每個節點在其本機和遠端磁碟集區中擁有相同數量的磁碟。
 
+.開始之前
 儲存控制器必須處於維護模式。
 
+.關於這項工作
 如果您的組態不包含DS460C磁碟櫃、則如果從原廠收到磁碟時已正確指派磁碟、則不需要執行此工作。
 
 [NOTE]
@@ -1272,8 +1277,10 @@ Boot_ONTAP功能表
 
 如果AFF 您在組態中使用鏡射Aggregate、但節點未正確指派磁碟（SSD）、則應將每個機櫃上的一半磁碟指派給一個本機節點、另一半磁碟指派給HA合作夥伴節點。您應該建立一個組態、讓每個節點在其本機和遠端磁碟集區中擁有相同數量的磁碟。
 
+.開始之前
 儲存控制器必須處於維護模式。
 
+.關於這項工作
 這不適用於具有無鏡射集合體、主動/被動組態、或在本機和遠端集區中磁碟數目不相等的組態。
 
 如果從原廠收到磁碟時已正確指派磁碟、則不需要執行此工作。
@@ -1386,8 +1393,10 @@ Boot_ONTAP功能表
 
 在將系統完全開機至ONTAP 顯示器之前、您可以選擇性地將系統開機至維護模式、並驗證節點上的磁碟指派。應指派磁碟來建立完全對稱的組態、讓兩個站台擁有自己的磁碟櫃並提供資料、其中每個節點和每個集區都有相同數量的鏡射磁碟指派給它們。
 
+.開始之前
 系統必須處於維護模式。
 
+.關於這項工作
 全新MetroCluster 的功能系統在出貨前已完成磁碟指派。
 
 下表顯示MetroCluster 適用於整個程序集區組態的範例集區指派。磁碟會根據每個機櫃的需求指派給資源池。
@@ -1501,8 +1510,10 @@ DR合作夥伴的資源池1
 
 在MetroCluster 以支援功能組態設定儲存系統時、您必須確定控制器模組和機箱元件的高可用度（HA）狀態為MCC或MCC-2n、以便這些元件能夠正常開機。
 
+.開始之前
 系統必須處於維護模式。
 
+.關於這項工作
 從原廠接收的系統不需要執行此工作。
 
 .步驟
@@ -1612,8 +1623,8 @@ Boot_ONTAP
 如果您需要以網路方式開機新的控制器、請參閱 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-mcc-upgrade/GUID-3370EC34-310E-4F09-829F-F632EC8CDD9B.html["Netbooting新的控制器模組"] 請參閱《_ MetroCluster 升級、轉換與擴充指南》_。
 
 .選擇
-* ,在ONTAP 雙節點MetroCluster 的不全功能組態中設定功能
-* ,在ONTAP 八模式或四節點MetroCluster 的不全功能組態中設定功能
+* <<setup_ontap_2node_MCC,在ONTAP 雙節點MetroCluster 的不全功能組態中設定功能>>
+* <<setup_ontap_8node_4node_MCC,在ONTAP 八模式或四節點MetroCluster 的不全功能組態中設定功能>>
 
 
 
@@ -1622,8 +1633,10 @@ Boot_ONTAP
 
 在雙節點MetroCluster 的靜態組態中、您必須在每個叢集上開機節點、結束叢集設定精靈、然後使用叢集設定命令將節點設定為單節點叢集。
 
+.開始之前
 您不得設定服務處理器。
 
+.關於這項工作
 此工作適用於MetroCluster 使用原生NetApp儲存設備的雙節點效能不整組態。
 
 全新MetroCluster 的功能已預先設定好、您不需要執行這些步驟。不過、您應該設定AutoSupport 好用的功能。
@@ -1718,8 +1731,10 @@ cluster1-01           true    true
 
 每個節點開機後、系統會提示您執行系統設定工具、以執行基本節點和叢集組態。設定叢集後、您將返回ONTAP 到還原CLI以建立集合體並建立MetroCluster 該組態。
 
+.開始之前
 您必須使用纜線連接MetroCluster 的the不可用的功能組態。
 
+.關於這項工作
 此工作適用於MetroCluster 使用原生NetApp儲存設備的八節點或四節點的效能不穩定組態。
 
 全新MetroCluster 的功能已預先設定好、您不需要執行這些步驟。不過、您應該設定AutoSupport 這個功能。
@@ -1840,6 +1855,7 @@ NOTE: 您可以在後續的工作中建立鏡射集合體。
 
 
 
+.完成後
 返回ONTAP 到指令行介面、MetroCluster 執行後續的工作、完成整套的功能。
 
 
@@ -1861,8 +1877,8 @@ NOTE: 您可以在後續的工作中建立鏡射集合體。
 您必須在MetroCluster 連接埠上建立叢集間的LIF、以便在各個連接埠之間進行通訊。您可以使用也有資料流量的專用連接埠或連接埠。
 
 .選擇
-* ,在專用連接埠上設定叢集間LIF
-* ,在共享的資料連接埠上設定叢集間LIF
+* <<config_LIFs_dedicated,在專用連接埠上設定叢集間LIF>>
+* <<config_LIFs_shared_data,在共享的資料連接埠上設定叢集間LIF>>
 
 
 
@@ -2075,6 +2091,7 @@ cluster01
                             Failover Targets:  cluster01-02:e0e,
                                                cluster01-02:e0f
 ----
+.相關資訊
 link:concept_prepare_for_the_mcc_installation.html["使用專用連接埠時的考量事項"]
 
 在判斷叢集間複寫是否使用專用連接埠是正確的叢集間網路解決方案時、您應該考量LAN類型、可用的WAN頻寬、複寫時間間隔、變更率及連接埠數量等組態與需求。
@@ -2216,6 +2233,7 @@ cluster01
 ----
 
 
+.相關資訊
 link:concept_prepare_for_the_mcc_installation.html["共享資料連接埠時的考量"]
 
 
@@ -2224,6 +2242,7 @@ link:concept_prepare_for_the_mcc_installation.html["共享資料連接埠時的�
 
 您必須在MetroCluster 叢集之間建立叢集對等關係。
 
+.關於這項工作
 您可以使用「叢集對等建立」命令、在本機與遠端叢集之間建立對等關係。建立對等關係之後、您可以在遠端叢集上執行「叢集對等實體建立」、將其驗證到本機叢集。
 
 .開始之前
@@ -2440,6 +2459,7 @@ cluster01-02
 
 您必須鏡射根Aggregate以提供資料保護。
 
+.關於這項工作
 根據預設、根Aggregate會建立為RAID-DP類型Aggregate。您可以將根Aggregate從RAID-DP變更為RAID4類型Aggregate。下列命令會修改RAID4類型Aggregate的根Aggregate：
 
 [listing]
@@ -2468,6 +2488,7 @@ controller_A_1::> storage aggregate mirror aggr0_controller_A_1
 . 針對MetroCluster 「資訊功能」組態中的每個節點、重複上述步驟。
 
 
+.相關資訊
 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-vsmg/home.html["邏輯儲存管理"]
 
 
@@ -2602,6 +2623,7 @@ controller_A_1::> storage aggregate create aggr1_controller_A_1 -diskcount 10 -n
 
 
 
+.相關資訊
 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"]
 
 
@@ -2620,11 +2642,12 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁�
 
 +
 
-NOTE: 如果您要使用單一鏡射資料Aggregate、請參閱 ,步驟1. 以取得相關指示。
+NOTE: 如果您要使用單一鏡射資料Aggregate、請參閱 <<step1_aggr,步驟1.>> 以取得相關指示。
 
 * 控制器和機箱的ha-config狀態必須為「MCC」。
 
 
+.關於這項工作
 您可以在MetroCluster 任何節點上發出「flexconfigure」命令一次、以啟用MetroCluster 該組態。您不需要在每個站台或節點上發出命令、也不需要在哪個節點或站台上發出命令。
 
 「Sof the flexconfigure」命令會自動配對兩個節點、使兩個叢集的系統ID最低、成為災難恢復（DR）合作夥伴。MetroCluster在四節點MetroCluster 的不全功能組態中、有兩個DR合作夥伴配對。第二個DR配對是從兩個具有較高系統ID的節點建立。
@@ -2764,6 +2787,7 @@ Remote: cluster_A         Configuration state configured
 
 您必須根據光纖通道（FC）交換器組態、設定依序傳送（IOD）或依序傳送（OE）的框架。
 
+.關於這項工作
 如果FC交換器設定為IOD、ONTAP 則必須將該軟件設定為IOD。同樣地、如果FC交換器已設定為ood、ONTAP 則必須將其設定為ood。
 
 .步驟
@@ -2866,8 +2890,10 @@ mcc4-b2      mlx4_0          IB      Up     false     192.0.2.10  	ib2b
 
 === 在MetroCluster 不顯示的組態中設定v3
 
+.開始之前
 交換器和ONTAP 作業系統上的驗證和隱私權傳輸協定必須相同。
 
+.關於這項工作
 目前支援AES-128加密。ONTAP
 
 .步驟
@@ -2972,6 +2998,7 @@ Priv Protocol [DES(1)/noPriv(2)/AES128(3)/AES256(4)]): (2..2) [3]
 
 您必須先執行一些特殊的組態步驟、才能監控MetroCluster 採用功能組態的元件。
 
+.關於這項工作
 這些工作僅適用於具有FC至SAS橋接器的系統。
 
 [NOTE]
@@ -3039,6 +3066,7 @@ controller_A_1::>
 
 
 
+.相關資訊
 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sag/home.html["系統管理"]
 
 
@@ -3118,6 +3146,7 @@ ATTO_10.10.20.13  atto04        true          ok              Atto   FibreBridge
 
 您應該在初始組態設定後、以及MetroCluster 變更任何的功能後進行檢查。您也應該在協商（計畫性）切換或切換作業之前進行檢查。
 
+.關於這項工作
 如果在MetroCluster 兩個叢集上的短時間內發出兩次「支援驗證執行」命令、可能會發生衝突、而且命令可能無法收集所有資料。隨後MetroCluster 的「畫面檢查show」命令將不會顯示預期的輸出。
 
 .步驟
@@ -3239,6 +3268,7 @@ mccint-fas9000-0304
 ----
 
 
+.相關資訊
 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"]
 
 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/home.html["網路與LIF管理"]
@@ -3249,6 +3279,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/home.html["網�
 
 您可以前往NetApp支援網站下載Config Advisor 此功能、以檢查常見的組態錯誤。
 
+.關於這項工作
 此為組態驗證與健全狀況檢查工具。Config Advisor您可以在安全站台和非安全站台上部署、以供資料收集和系統分析之用。
 
 
@@ -3268,6 +3299,7 @@ https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp
 
 如果您有四節點MetroCluster 的資訊穩定組態、則應在MetroCluster 該組態中驗證本機HA配對的運作情況。這對於雙節點組態而言是不必要的。
 
+.關於這項工作
 雙節點MetroCluster 的不含本機HA配對、此工作不適用。
 
 本工作範例使用標準命名慣例：
@@ -3366,6 +3398,7 @@ controller_A_2 controller_A_1 true     Connected to controller_A_1
 . 在叢集B上重複上述步驟
 
 
+.相關資訊
 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-hacg/home.html["高可用度組態"]
 
 

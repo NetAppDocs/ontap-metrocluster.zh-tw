@@ -13,6 +13,7 @@ summary: 必須針對ISL和儲存連線、適當設定每台MetroCluster 採用�
 [role="lead"]
 必須針對ISL和儲存連線、適當設定每台MetroCluster 採用此功能的Cisco交換器。
 
+.開始之前
 以下要求適用於Cisco FC交換器：
 
 * 您必須在相同的NX-OS版本和授權下、使用四個相同型號的Cisco交換器。
@@ -26,6 +27,7 @@ summary: 必須針對ISL和儲存連線、適當設定每台MetroCluster 採用�
 
 在中 https://mysupport.netapp.com/matrix["NetApp互通性對照表工具IMT （不含）"]、您可以使用儲存解決方案欄位來選擇MetroCluster 您的解決方案。您可以使用*元件總管*來選取元件和ONTAP 更新版本、以精簡搜尋範圍。您可以按一下「*顯示結果*」來顯示符合條件的支援組態清單。
 
+.關於這項工作
 下列需求適用於交換器間連結（ISL）連線：
 
 * 所有ISL在同一個Fabric中必須具有相同的長度和相同的速度。
@@ -52,6 +54,7 @@ summary: 必須針對ISL和儲存連線、適當設定每台MetroCluster 採用�
 ====
 
 
+.相關資訊
 https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"]
 
 
@@ -90,6 +93,7 @@ NOTE: Cisco MDS 9250i交換器有兩個固定的1/10 GbE IP儲存服務連接埠
 
 若要確保組態成功、您必須將交換器設定為其原廠預設值。如此可確保交換器從乾淨的組態啟動。
 
+.關於這項工作
 此工作必須在MetroCluster 所有採用此功能的交換器上執行。
 
 .步驟
@@ -114,6 +118,7 @@ NOTE: Cisco MDS 9250i交換器有兩個固定的1/10 GbE IP儲存服務連接埠
 
 
 
+.範例
 以下範例顯示由FC_switch_a_1和FC_switch_B_1組成的網路架構上的程序。
 
 [listing]
@@ -184,6 +189,7 @@ FC_switch_B_1# setup
 
 您不需要在持續範圍的連接埠上使用Cisco交換器授權、而是可以取得所使用之特定連接埠的授權、並從未使用的連接埠移除授權。
 
+.開始之前
 您應該確認交換器組態中的授權連接埠數量、並視需要將授權從一個連接埠移至另一個連接埠。
 
 .步驟
@@ -340,6 +346,7 @@ switch(config-if)# end
 
 您必須在FC交換器上設定F-port。
 
+.關於這項工作
 在不支援的組態中MetroCluster 、F連接埠是將交換器連接至HBA啟動器、FC-VI互連和FC對SAS橋接器的連接埠。
 
 每個連接埠都必須個別設定。
@@ -390,6 +397,7 @@ switch(config-if)# end
 
 
 
+.範例
 以下範例顯示兩個交換器上的命令：
 
 [listing]
@@ -419,6 +427,7 @@ FC_switch_B_1# copy running-config startup-config
 
 如果F連接埠與ISL位於同一個連接埠群組、則必須將緩衝區對緩衝區的信用額度指派給F連接埠。如果連接埠沒有所需的緩衝區對緩衝資源、則ISL可能無法運作。
 
+.關於這項工作
 如果F連接埠與ISL連接埠不在同一個連接埠群組中、則不需要執行此工作。
 
 如果F連接埠位於包含ISL的連接埠群組中、則必須在MetroCluster 支援該組態的每個FC交換器上執行此工作。
@@ -471,6 +480,7 @@ FC_switch_B_1# copy running-config startup-config
 
 
 
+.範例
 在此範例中、連接埠FC1/40是ISL。連接埠FC1/37、FC1/38和FC1/39位於相同的連接埠群組中、必須加以設定。
 
 下列命令顯示設定FC1/37到FC1/39的連接埠範圍：
@@ -535,6 +545,7 @@ fc1/39                                      1        8.0 dedicated
 
 您必須為FC-VI連接埠建立VSAN、MetroCluster 並為每個FC交換器上的儲存連接埠建立VSAN（以供支援）（以供支援）。
 
+.關於這項工作
 VSAN應該有唯一的號碼和名稱。如果您使用兩個ISL來依序傳送框架、則必須執行其他組態。
 
 此工作的範例使用下列命名慣例：
@@ -929,11 +940,12 @@ FC_switch_B_1# copy running-config startup-config
 
 您必須設定連接ISL的交換器連接埠（這些是E連接埠）。
 
+.關於這項工作
 您使用的程序取決於您使用的交換器：
 
-* ,在Cisco FC交換器上設定E連接埠
-* ,在Cisco 9250i FC交換器上設定單一ISL的FCIP連接埠
-* ,在Cisco 9250i FC交換器上設定雙ISL的FCIP連接埠
+* <<config-e-ports-cisco-fc,在Cisco FC交換器上設定E連接埠>>
+* <<config-fcip-ports-single-isl-cisco-9250i,在Cisco 9250i FC交換器上設定單一ISL的FCIP連接埠>>
+* <<config-fcip-ports-dual-isl-cisco-9250i,在Cisco 9250i FC交換器上設定雙ISL的FCIP連接埠>>
 
 
 
@@ -942,6 +954,7 @@ FC_switch_B_1# copy running-config startup-config
 
 您必須設定連接交換器間連結（ISL）的FC交換器連接埠。
 
+.關於這項工作
 這些是E連接埠、必須針對每個連接埠進行組態設定。若要這麼做、您必須計算緩衝區對緩衝區信用額度（BBC）的正確數量。
 
 Fabric中的所有ISL都必須設定相同的速度和距離設定。
@@ -1171,6 +1184,7 @@ FC_switch_B_1# copy running-config startup-config
 
 
 
+.相關資訊
 當您在使用ONTAP 更新版本的版本時、使用纜線連接FC交換器時、必須確認您使用的是指定的連接埠指派。請參閱 link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）"]
 
 
@@ -1179,6 +1193,7 @@ FC_switch_B_1# copy running-config startup-config
 
 您必須建立FCIP設定檔和介面來設定連接ISL（E連接埠）的FCIP交換器連接埠、然後將它們指派給IPStorage1/1 GbE介面。
 
+.關於這項工作
 此工作僅適用於使用每個交換器架構的單一ISL組態、並在每個交換器上使用IPStorage1/1介面。
 
 此工作必須在每個FC交換器上執行。
@@ -1587,6 +1602,7 @@ FC_switch_B_1# copy running-config startup-config
 
 您必須建立FCIP設定檔和介面來設定連接ISL（E連接埠）的FCIP交換器連接埠、然後將它們指派給IPStorage1/1和IPStorage1/2 GbE介面。
 
+.關於這項工作
 此工作僅適用於使用每個交換器架構雙ISL的組態、使用每個交換器上的IPStorage1/1和IPStorage1/2 GbE介面。
 
 此工作必須在每個FC交換器上執行。
@@ -1595,8 +1611,8 @@ image::../media/fcip_ports_dual_isl.gif[FCIP連接埠雙ISL]
 
 工作和範例使用下列設定檔組態表格：
 
-* 
-* 
+* <<fabric1_table>>
+* <<fabric2_table>>
 
 
 * Fabric 1設定檔組態表*
@@ -1935,7 +1951,7 @@ NOTE: 在每個交換器上、IPStorage介面「'IPStorage1/1'」和「IPStorage
 +
 「退出」
 
-.. 重複  透過  以不同的IP位址設定IPStorage1/2 GbE介面。
+.. 重複 <<substep_a>> 透過 <<substep_f>> 以不同的IP位址設定IPStorage1/2 GbE介面。
 
 
 . 使用設定檔組態表中指定的設定檔名稱、設定FC-VI和儲存流量的FCIP設定檔：
@@ -2400,6 +2416,7 @@ exit
 
 您必須將交換器連接埠指派給不同的區域、以隔離儲存設備（HBA）和控制器（FC-VI）流量。
 
+.關於這項工作
 這些步驟必須在兩個FC交換器架構上執行。
 
 下列步驟使用分區一節中所述的分區功能、在四節點MetroCluster 的非功能區組態中、針對光纖橋接器7500N進行分區。請參閱 link:task_fcsw_cisco_configure_a_cisco_switch_supertask.html#configuring-fcip-ports-for-a-dual-isl-on-cisco-9250i-fc-switches["FC-VI連接埠分區"]。
@@ -2677,6 +2694,7 @@ FC_switch_A_1# copy running-config startup-config
 
 您必須確定FC交換器組態已儲存至所有交換器的啟動組態。
 
+.步驟
 在兩個FC交換器架構上發出下列命令：
 
 「copy running-config startup-config」

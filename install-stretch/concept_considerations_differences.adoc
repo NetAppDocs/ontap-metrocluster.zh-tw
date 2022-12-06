@@ -204,7 +204,7 @@ summary: 各種MetroCluster 版本的不二組態在必要的元件上有主要�
 
 
 
-| 支援  for All SAN Array systems in MetroCluster configurations,所有SAN陣列  a| 
+| 支援 <<支援MetroCluster 所有的SAN Array系統、採用各種不完整的組態,所有SAN陣列>>  a| 
 是的
  a| 
 是的

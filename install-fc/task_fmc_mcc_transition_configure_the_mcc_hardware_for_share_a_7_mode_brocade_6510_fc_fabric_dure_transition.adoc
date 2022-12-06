@@ -31,10 +31,12 @@ summary: 如果您的7-Mode Fabric MetroCluster 支援組態使用Brocade 6510�
 * Brocade 6510交換器必須執行7-Mode Fabric MetroCluster VMware和叢集ONTAP MetroCluster 式VMware組態所支援的FOS韌體版本。
 
 
+.完成後
 在分享架構並完成MetroCluster 支援功能後、您可以從7-Mode Fabric MetroCluster 支援組態轉換資料。
 
 轉換資料之後、您可以移除7-Mode Fabric MetroCluster 資訊纜線、並視需要將叢集ONTAP MetroCluster 式的VMware纜線移至先前用於7-Mode MetroCluster 資訊纜線的編號較低的連接埠。連接埠顯示在「檢閱FC交換器連接埠指派以供四節點MetroCluster 使用」一節中。 您必須調整重新排列連接埠的分區。
 
 link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）"]
 
+.相關資訊
 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-7mtt-dctg/home.html["複本型轉換"]

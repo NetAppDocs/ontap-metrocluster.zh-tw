@@ -13,8 +13,10 @@ summary: 您必須將交換器作業系統檔案和RCF檔案下載到MetroCluste
 [role="lead"]
 您必須將交換器作業系統檔案和RCF檔案下載到MetroCluster 位在整個過程中的每個交換器。
 
+.開始之前
 此工作需要檔案傳輸軟體、例如FTP、TFTP、SFTP或scp。 將檔案複製到交換器。
 
+.關於這項工作
 這些步驟必須重複執行MetroCluster 到位在整個過程中的每個FC交換器上。
 
 您必須使用支援的交換器軟體版本。

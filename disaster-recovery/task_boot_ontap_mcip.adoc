@@ -13,6 +13,7 @@ summary: 您必須將災難現場的替換節點開機至ONTAP 該作業系統�
 [role="lead"]
 您必須將災難現場的替換節點開機至ONTAP 該作業系統。
 
+.關於這項工作
 這項工作從災難站台的節點開始、以維護模式執行。
 
 .步驟
@@ -24,7 +25,7 @@ summary: 您必須將災難現場的替換節點開機至ONTAP 該作業系統�
 
 +
 
-NOTE: 如果未清除已用過的更換控制器模組的NVRAM內容、您可能會看到下列緊急訊息：「嚴重：NVRAM內容無效...」 如果發生這種情況、ONTAP 請再次將系統開機至更新提示字元（「boot_ONTAP功能表」）。然後您就需要 ,重設boot_recovery和RDB_rebootargs
+NOTE: 如果未清除已用過的更換控制器模組的NVRAM內容、您可能會看到下列緊急訊息：「嚴重：NVRAM內容無效...」 如果發生這種情況、ONTAP 請再次將系統開機至更新提示字元（「boot_ONTAP功能表」）。然後您就需要 <<Reset-the-boot-recovery,重設boot_recovery和RDB_rebootargs>>
 
 +
 ** 確認以繼續提示：
@@ -194,7 +195,7 @@ cluster_B::*>
 
 
 
-=== 重設boot_recovery和RDB_rebootargs
+=== [Reset-the_boot-recovery ]重設boot_recovery和RDB_rebootargs
 
 [role="lead"]
 如果需要、您可以重設boot_recovery和RDB_reboot_bootargs

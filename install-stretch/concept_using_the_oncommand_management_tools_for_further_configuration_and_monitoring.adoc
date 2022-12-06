@@ -17,4 +17,5 @@ summary: 利用此功能、即可管理叢集的GUI管理及監控組態。Activ
 
 您也可以使用Active IQ Unified Manager 功能資訊功能來監控MetroCluster 整個功能。
 
+.相關資訊
 http://docs.netapp.com["系統管理程式文件Active IQ Unified Manager ONTAP"^]

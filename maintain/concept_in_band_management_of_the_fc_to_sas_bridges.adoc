@@ -31,6 +31,7 @@ NOTE: 從ONTAP 功能組別9.8開始、「最小橋接器」命令會改為「�
 
 NOTE: 建議在停用IP存取的情況下使用頻內管理、藉由限制橋接器的實體連線能力來改善安全性。
 
+.相關資訊
 link:task_replace_a_sle_fc_to_sas_bridge.html#hot-swapping-a-bridge-with-a-replacement-bridge-of-the-same-model["以相同機型的替換橋接器熱交換橋接器"]
 
 link:task_replace_a_sle_fc_to_sas_bridge.html#hot-swapping-a-fibrebridge-7500n-with-a-7600n-bridge["以7600N橋接器熱交換使用FibreBridge 7500N"]

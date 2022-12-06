@@ -88,6 +88,7 @@ image::../media/workflow_2n_transition_moving_data_to_new_shelves.png[工作流�
 
 您必須遵循詳細的轉換程序。
 
+.關於這項工作
 在下列步驟中、您會被導向至其他程序。您必須依照所給的順序執行每個參考程序中的步驟。
 
 .步驟
@@ -125,6 +126,7 @@ image::../media/workflow_2n_transition_moving_data_to_new_shelves.png[工作流�
 
 轉換完成後、將現有的根集合體從MetroCluster 整個過程中移轉到MetroCluster 以整個過程為基礎的架構上、並將剩餘的物件從整個過程中移轉到更新的架構中。
 
+.關於這項工作
 此工作會將node_a_1-FC和node_B_1-FC的根Aggregate移至新MetroCluster 版的更新版IP控制器所擁有的磁碟櫃：
 
 .步驟

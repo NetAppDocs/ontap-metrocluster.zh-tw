@@ -75,6 +75,7 @@ Are you sure you want to enable automatic switchover capability for monitor "8pa
 ----
 
 
+.相關資訊
 link:concept_risks_and_limitation_of_using_mcc_tiebreaker_in_active_mode.html["在MetroCluster 作用中模式中使用ESITirepreaker的風險和限制"]
 
 

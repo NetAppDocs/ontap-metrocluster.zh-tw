@@ -13,6 +13,7 @@ summary: 您必須將參考組態（RCF）檔案下載到MetroCluster 位在整�
 [role="lead"]
 您必須將參考組態（RCF）檔案下載到MetroCluster 位在整個過程中的每個交換器。
 
+.關於這項工作
 若要使用這些RCF檔案、系統必須執行ONTAP 的是更新版本的版本、而且您必須使用連接埠配置ONTAP 來執行版本的更新版本。
 
 如果您打算只使用光纖橋接器上的其中一個FC連接埠、請依照一節中的指示、手動設定後端光纖通道交換器。 link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）"]。

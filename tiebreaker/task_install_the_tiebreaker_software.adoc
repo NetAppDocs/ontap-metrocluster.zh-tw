@@ -71,7 +71,7 @@ NOTE: 每個版本的每個版本組態應只有一MetroCluster 部ESIT斷路 �
 .步驟
 . 安裝Java執行時間環境。
 +
-,安裝Java執行時間環境1.8
+<<install-java-1-8,安裝Java執行時間環境1.8>>
 
 . 安裝MySQL或MariaDB伺服器：
 +
@@ -87,7 +87,7 @@ Red Hat Enterprise Linux 7/CentOS 7.
  a| 
 安裝MySQL
 
-,在Red Hat Enterprise Linux 7或CentOS 7上安裝MySQL Server 5.5.30或更新版本及5.6.x版本
+<<install-mysql-redhat,在Red Hat Enterprise Linux 7或CentOS 7上安裝MySQL Server 5.5.30或更新版本及5.6.x版本>>
 
 
 
@@ -96,7 +96,7 @@ Red Hat Enterprise Linux 8
  a| 
 安裝MariaDB
 
-,在Red Hat Enterprise Linux 8上安裝MariaDB伺服器
+<<install-mariadb,在Red Hat Enterprise Linux 8上安裝MariaDB伺服器>>
 
 |===
 
@@ -475,6 +475,7 @@ mysqld.service     enabled
 
 您必須先在主機系統上安裝MariaDB伺服器、才能安裝或升級tiebreaker軟體。
 
+.開始之前
 您的主機系統必須在Red Hat Enterprise Linux（RHEL）8上執行。
 
 .步驟
@@ -559,7 +560,7 @@ Nov 08 21:29:01 scspr0523972001 systemd[1]: Started MariaDB database server.
 ....
 +
 
-NOTE: 確認MariaDB的「啟用自動啟動」設定已開啟。請參閱 。
+NOTE: 確認MariaDB的「啟用自動啟動」設定已開啟。請參閱 <<mariadb-autostart>>。
 
 . 設定安全性和密碼設定：
 +
@@ -712,6 +713,7 @@ NOTE: 如果您輸入錯誤的MySQL根密碼、則Tiebreaker軟體會指出已�
 . 開啟從斷路器主機到每個節點管理生命期和叢集管理生命期的SSH連線、以驗證與MetroCluster 該軟件的斷路器連線。
 
 
+.相關資訊
 https://mysupport.netapp.com/site/["NetApp支援"]
 
 
@@ -764,7 +766,7 @@ NetApp MetroCluster Tiebreaker :> monitor modify -monitor-name _monitor_name_ -o
 ....
 . 若要升級Tiebreaker主機、請依照下列程序中的所有步驟進行：
 +
-,安裝或升級軟體套件
+<<install-upgrade-sw-pkg,安裝或升級軟體套件>>
 
 . 停用觀察者模式、將所有監視器移回線上模式。
 +

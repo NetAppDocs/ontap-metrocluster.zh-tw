@@ -106,6 +106,7 @@ image::../media/workflow_2n_transition_bsaic.png[工作流程2n轉換bsaic]
 
 您必須調整MetroCluster 連接埠和LIF組態以使其與MetroCluster 將取代之的靜態IP節點相容。
 
+.關於這項工作
 當新節點在升級程序期間首次開機時、每個節點都會使用其所取代之節點的最新組態。當您開機node_a_1-IP時、ONTAP Sfets0會嘗試在節點_a_1-FC上使用的相同連接埠上裝載lifs。
 
 在轉換程序期間、您將在新舊節點上執行步驟、以確保叢集、管理和資料LIF組態正確無誤。
@@ -555,6 +556,7 @@ SAN
 
 您必須準備四MetroCluster 個全新的靜態IP節點、並安裝正確ONTAP 的版本。
 
+.關於這項工作
 此工作必須在每個新節點上執行：
 
 * 節點_a_1-IP

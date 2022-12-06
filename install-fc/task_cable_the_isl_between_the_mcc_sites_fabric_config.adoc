@@ -13,6 +13,7 @@ summary: 您必須透過光纖交換器間連結（ISL\）連接每個站台的F
 [role="lead"]
 您必須透過光纖交換器間連結（ISL）連接每個站台的FC交換器、以形成連接MetroCluster 到該元件的交換器架構。
 
+.關於這項工作
 這兩種交換器架構都必須完成。
 
 .步驟
@@ -24,4 +25,5 @@ summary: 您必須透過光纖交換器間連結（ISL\）連接每個站台的F
 
 
 
+.相關資訊
 link:concept_considerations_isls_mcfc.html["ISL的考量"]

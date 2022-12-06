@@ -15,6 +15,7 @@ summary: 每個交換器架構都包含連接站台的交換器間連結（ISL�
 
 image::../media/mcc_hw_architecture_switch_fabrics.gif[MCC硬體架構交換器架構]
 
+.相關資訊
 link:concept_illustration_of_the_local_ha_pairs_in_a_mcc_configuration.html["以架構組態顯示本機HA配對的圖例MetroCluster"]
 
 link:concept_illustration_of_redundant_fc_to_sas_bridges.html["備援FC對SAS橋接器的圖例"]

@@ -112,6 +112,7 @@ NOTE: 使用「force-nv容 錯移轉」選項、可在災難切換期間處理�
 *注意：*您將「-Fields」參數設定為「nvFail」、以顯示指定Volume的NVFIL屬性。
 
 |===
+.相關資訊
 如需詳細資訊、請參閱每個命令的手冊頁。
 
 
@@ -120,18 +121,22 @@ NOTE: 使用「force-nv容 錯移轉」選項、可在災難切換期間處理�
 
 切換後、您必須重設「volume modify」命令的「-in nvf失敗 狀態」參數、以清除NVFAIL狀態、以移除用戶端存取資料的限制。
 
+.開始之前
 資料庫或檔案系統不得執行或嘗試存取受影響的Volume。
 
+.關於這項工作
 設定「-in nvfaile-state」參數需要進階權限。
 
 .步驟
 . 使用Volume modify命令、將-in nvf故障 狀態參數設為假、以恢復磁碟區。
 
 
+.完成後
 如需檢查資料庫檔案有效性的指示、請參閱特定資料庫軟體的說明文件。
 
 如果您的資料庫使用LUN、請檢閱在NVRAM故障後、讓主機存取LUN的步驟。
 
+.相關資訊
 link:../manage/concept_monitoring_and_protecting_database_validity_by_using_nvfail.html["使用NVFIL監控及保護檔案系統一致性"]
 
 
@@ -140,6 +145,7 @@ link:../manage/concept_monitoring_and_protecting_database_validity_by_using_nvfa
 
 切換後、主機將無法再存取NVFIL狀態之LUN上的資料。您必須執行許多動作、資料庫才能存取LUN。
 
+.開始之前
 資料庫不得執行。
 
 .步驟

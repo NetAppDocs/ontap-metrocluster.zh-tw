@@ -17,6 +17,7 @@ summary: 透過客戶提供的叢集對等網路、將會對支援此組態的�
 
 image::../media/mcc_hw_architecture_cluster_peering.gif[MCC硬體架構叢集對等]
 
+.相關資訊
 link:concept_illustration_of_the_local_ha_pairs_in_a_mcc_configuration.html["以架構組態顯示本機HA配對的圖例MetroCluster"]
 
 link:concept_illustration_of_redundant_fc_to_sas_bridges.html["備援FC對SAS橋接器的圖例"]

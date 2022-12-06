@@ -19,6 +19,7 @@ summary: 若要準備轉換組態、您可以將新節點新增至現有MetroClu
 
 在執行維護之前、您應發出AutoSupport 一份不知所知的訊息、通知NetApp技術支援部門正在進行維護。告知技術支援部門正在進行維護、可防止他們假設發生中斷、而開啟案例。
 
+.關於這項工作
 此工作必須在每MetroCluster 個站台上執行。
 
 .步驟
@@ -160,6 +161,7 @@ cluster_B::>
 
 您必須將四MetroCluster 個全新的靜態IP節點新增至現有MetroCluster 的靜態組態。
 
+.關於這項工作
 您必須在兩個叢集上執行此工作。
 
 .步驟
@@ -229,6 +231,7 @@ Do you want to use this configuration? {yes, no} [yes]: yes
 
 您必須建立叢集對等的生命、在MetroCluster 新MetroCluster 的物件節點上建立一個物件介面。
 
+.關於這項工作
 範例中使用的主連接埠是平台專屬的連接埠。您應該使用MetroCluster 特定於靜態IP節點平台的適當主連接埠。
 
 .步驟

@@ -127,7 +127,7 @@ RcfFileGenerators可能會限制使用某些VLAN ID（例如、如果這些ID是
 在使用共享ISL進行MetroCluster 支援的IP組態時、您必須瞭解端點對端MetroCluster 點的需求、這些需求是從站台A的控制器連接埠、到站台B的控制器連接埠
 
 
-NOTE: 您必須遵循  MetroCluster ISL requirements。
+NOTE: 您必須遵循 <<基本功能ISL需求MetroCluster>>。
 
 
 

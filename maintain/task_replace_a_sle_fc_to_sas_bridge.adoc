@@ -13,14 +13,17 @@ summary: 您可以不中斷地以相同的橋接器或新的模型橋接器取�
 [role="lead"]
 您可以不中斷地以相同的橋接器或新的模型橋接器取代橋接器。
 
+.開始之前
 您需要管理員密碼、才能存取FTP或scp伺服器。
 
+.關於這項工作
 此程序不中斷營運、約需60分鐘完成。
 
 此程序使用橋接CLI來設定及管理橋接器、並更新橋接器韌體和Atto QuickNAV公用程式、以設定橋接器乙太網路管理1連接埠。如果其他介面符合需求、您可以使用這些介面。
 
 link:reference_requirements_for_using_other_interfaces_to_configure_and_manage_fibrebridge_bridges.html["使用其他介面來設定及管理光纖橋接器的需求"]
 
+.相關資訊
 link:task_fb_consolidate_replace_a_pair_of_fibrebridge_6500n_bridges_with_7500n_bridges.html["以7600N或7500N橋接器取代一對FibreBridge 6500N橋接器"]
 
 
@@ -29,6 +32,7 @@ link:task_fb_consolidate_replace_a_pair_of_fibrebridge_6500n_bridges_with_7500n_
 
 在更換橋接器之前、您應該先確認橋接器和儲存設備的連線能力。熟悉命令輸出之後、即可在進行組態變更後、確認連線能力。
 
+.關於這項工作
 您可以在MetroCluster 進行維護的站台上、從執行此功能的任何一個控制器模組的管理提示字元發出這些命令。
 
 .步驟
@@ -95,6 +99,7 @@ slot 0: FC Host Adapter 0g (QLogic 8324 rev. 2, N-port, <UP>)**<=== Initiator po
 
 您可以將故障的橋接器熱抽換為同一機型的另一橋接器。
 
+.關於這項工作
 如果您要使用橋接器的頻內管理、而非IP管理、則可跳過設定乙太網路連接埠和IP設定的步驟、如相關步驟所述。
 
 
@@ -511,15 +516,15 @@ Tgt VendorID ProductID        Type SerialNumber
  a| 
 正確
  a| 
-重複 ,步驟18 每個剩餘的橋接器。
+重複 <<step18-verify-each-bridge,步驟18>> 每個剩餘的橋接器。
 
 
 
  a| 
 不正確
  a| 
-.. 檢查SAS纜線是否鬆脫、或重複修正SAS纜線 ,步驟17。
-.. 重複 ,步驟18。
+.. 檢查SAS纜線是否鬆脫、或重複修正SAS纜線 <<step17-reconnect-newbridge,步驟17>>。
+.. 重複 <<step18-verify-each-bridge,步驟18>>。
 
 
 |===
@@ -633,6 +638,7 @@ https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp
 
 
 
+.相關資訊
 link:concept_in_band_management_of_the_fc_to_sas_bridges.html["FC至SAS橋接器的頻內管理"]
 
 
@@ -641,6 +647,7 @@ link:concept_in_band_management_of_the_fc_to_sas_bridges.html["FC至SAS橋接器
 
 您可以使用7600N橋接器熱抽換到光纖橋接器7500N。
 
+.關於這項工作
 如果您要使用橋接器的頻內管理、而非IP管理、則可跳過設定乙太網路連接埠和IP設定的步驟、如相關步驟所述。
 
 
@@ -899,7 +906,7 @@ Tgt VendorID ProductID        Type        SerialNumber
  a| 
 不正確
  a| 
-.. 檢查SAS纜線是否鬆脫、或重複修正SAS纜線 ,步驟17。
+.. 檢查SAS纜線是否鬆脫、或重複修正SAS纜線 <<step17-reconnect-cables,步驟17>>。
 .. 重複上一步。
 
 
@@ -1015,6 +1022,7 @@ https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp
 
 
 
+.相關資訊
 link:concept_in_band_management_of_the_fc_to_sas_bridges.html["FC至SAS橋接器的頻內管理"]
 
 
@@ -1334,7 +1342,7 @@ NOTE: 如果輸出開頭出現「回應被截短」文字、您可以使用Telne
  a| 
 不正確
  a| 
-.. 檢查SAS纜線是否鬆脫、或重複修正SAS纜線 ,步驟17。
+.. 檢查SAS纜線是否鬆脫、或重複修正SAS纜線 <<step17-recable,步驟17>>。
 .. 針對其餘的每個橋接重複上一步。
 
 
@@ -1450,4 +1458,5 @@ https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp
 . 更換零件後、請將故障零件歸還給NetApp、如套件隨附的RMA指示所述。請參閱 link:https://mysupport.netapp.com/site/info/rma["產品退貨安培；更換"] 頁面以取得更多資訊。
 
 
+.相關資訊
 link:concept_in_band_management_of_the_fc_to_sas_bridges.html["FC至SAS橋接器的頻內管理"]

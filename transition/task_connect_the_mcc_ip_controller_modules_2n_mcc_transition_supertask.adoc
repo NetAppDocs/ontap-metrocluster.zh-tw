@@ -19,6 +19,7 @@ summary: 您必須在組態中新增四個新的控制器模組和任何其他�
 
 您必須將新MetroCluster 的靜態IP控制器機架和纜線連接至先前連接MetroCluster 至該功能的儲存櫃。
 
+.關於這項工作
 這些步驟必須在MetroCluster 每個E各種 知識型IP節點上執行。
 
 * 節點_a_1-IP
@@ -219,6 +220,7 @@ MetroCluster Transition: Please confirm if this is the correct value [yes|no]:? 
 
 如果根磁碟區已加密、您必須使用特殊的開機命令來還原金鑰管理。
 
+.開始之前
 您必須擁有先前收集的密碼。
 
 .步驟
@@ -373,6 +375,7 @@ Boot_ONTAP功能表
 
 您必須建立符合FC節點上組態的網路組態。這是因為MetroCluster 當執行此動作時、Sfetsip節點會重新執行相同的組態、也就是說、當節點_a_1-IP和node_B_1-IP開機時ONTAP 、Sf2會嘗試在節點_a_1-FC和node_B_1-FC上分別使用的相同連接埠上裝載LIF。
 
+.關於這項工作
 建立網路組態時、請使用中的計畫 link:concept_requirements_for_fc_to_ip_transition_2n_mcc_transition.html["將連接埠從MetroCluster 靜態FC節點對應至MetroCluster 靜態IP節點"] 協助您。
 
 
@@ -574,6 +577,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
 
 您必須使用開機功能表中的正確選項、一次開機一個新的控制器模組。
 
+.關於這項工作
 在這些步驟中、您會開機兩個全新節點、將兩個節點的組態擴充為四個節點的組態。
 
 這些步驟會在下列節點上執行：

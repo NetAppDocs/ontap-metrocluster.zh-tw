@@ -18,6 +18,7 @@ summary: 陣列LUN必須由節點擁有、才能將其新增至要用作儲存�
 * 您要指派的陣列LUN必須呈現ONTAP 給整個系統。
 
 
+.關於這項工作
 您可以指派具有下列特性的陣列LUN擁有權：
 
 * 他們是無人擁有的。
@@ -49,4 +50,5 @@ summary: 陣列LUN必須由節點擁有、才能將其新增至要用作儲存�
 
 
 
+.相關資訊
 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.vs-irrg/home.html["介紹虛擬化安裝需求與參考資料FlexArray"]

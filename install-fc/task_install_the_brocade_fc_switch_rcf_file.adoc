@@ -13,6 +13,7 @@ summary: 當您設定Brocade FC交換器時、可以安裝交換器組態檔、�
 [role="lead"]
 當您設定Brocade FC交換器時、可以安裝交換器組態檔、為特定組態提供完整的交換器設定。
 
+.關於這項工作
 這些步驟必須重複執行MetroCluster 到位在整個過程中的每個Brocade FC交換器上。
 
 .步驟

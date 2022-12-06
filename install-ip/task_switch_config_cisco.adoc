@@ -11,6 +11,7 @@ summary: 您必須設定Cisco IP交換器作為叢集互連和後端MetroCluster
 [role="lead"]
 您必須設定Cisco IP交換器作為叢集互連和後端MetroCluster 的靜態IP連線。
 
+.關於這項工作
 本節中的幾個程序是獨立的程序、您只需要執行您被導向或與您的工作相關的程序。
 
 
@@ -166,6 +167,7 @@ IP_switch_A_1#
 
 您必須將交換器作業系統檔案和RCF檔案下載到MetroCluster 各個交換器、使其採用EWIP組態。
 
+.關於這項工作
 此工作需要檔案傳輸軟體、例如FTP、TFTP、SFTP或scp。 將檔案複製到交換器。
 
 這些步驟必須重複執行MetroCluster 於各個採用EIP組態的IP交換器上。
@@ -371,6 +373,7 @@ IP_switch_A_1#
 
 您必須將RCF檔案下載MetroCluster 到各個交換器、以供使用。
 
+.關於這項工作
 此工作需要檔案傳輸軟體、例如FTP、TFTP、SFTP或scp。 將檔案複製到交換器。
 
 這些步驟必須重複執行MetroCluster 於各個採用EIP組態的IP交換器上。
@@ -542,6 +545,7 @@ IP_switch_A_1# reload
 
 如果您的系統設定為使用25-Gbps連線、則在套用RCF檔案之後、您需要手動將轉送錯誤修正（FEC）參數設定為關閉。RCF檔案不套用此設定。
 
+.關於這項工作
 在執行此程序之前、必須先連接25 Gbps連接埠的纜線。
 
 link:port_usage_3232c_9336c.html["Cisco 3232C或Cisco 9336C交換器的平台連接埠指派"]

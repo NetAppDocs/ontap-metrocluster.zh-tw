@@ -53,6 +53,7 @@ summary: 如果發生災難、您必須在切換後在災難叢集和存續的�
 
 NOTE: SnapMirror和SnapVault SnapMirror組態會自動刪除。
 
+.關於這項工作
 「不完整切換」命令會在整個DR群組的節點上切換、以利執行整個過程。MetroCluster MetroCluster例如、在八節點MetroCluster 的「列舉」組態中、它會在兩個DR群組中的節點之間切換。
 
 .步驟
@@ -86,6 +87,7 @@ mcc1A::> metrocluster operation show
 
 
 
+.完成後
 SnapMirror關係必須在切換後重新建立。
 
 
@@ -100,16 +102,20 @@ SnapMirror關係必須在切換後重新建立。
 
 切換後、您必須重設「volume modify」命令的「-in nvf失敗 狀態」參數、以清除NVFAIL狀態、以移除用戶端存取資料的限制。
 
+.開始之前
 資料庫或檔案系統不得執行或嘗試存取受影響的Volume。
 
+.關於這項工作
 設定「-in nvfaile-state」參數需要進階權限。
 
 .步驟
 . 使用「volume modify」命令恢復磁碟區、並將「-in nvf失敗 狀態」參數設為「假」。
 
 
+.完成後
 如需檢查資料庫檔案有效性的指示、請參閱特定資料庫軟體的說明文件。
 
 如果您的資料庫使用LUN、請檢閱在NVRAM故障後、讓主機存取LUN的步驟。
 
+.相關資訊
 link:../manage/concept_monitoring_and_protecting_database_validity_by_using_nvfail.html["使用NVFIL監控及保護資料庫有效性"]

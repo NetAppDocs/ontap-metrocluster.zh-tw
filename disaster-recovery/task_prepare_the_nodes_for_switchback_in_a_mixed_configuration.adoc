@@ -13,6 +13,7 @@ summary: 您必須執行某些工作、才能準備混合MetroCluster 式的靜�
 [role="lead"]
 您必須執行某些工作、才能準備混合MetroCluster 式的靜態IP和FC組態、以利切換作業。此程序僅適用於MetroCluster 在從FFC移轉至IP期間發生故障的組態。
 
+.關於這項工作
 此程序僅適用於在發生故障時處於轉換中的系統上執行恢復時。
 
 在此案例中MetroCluster 、此功能為混合式組態：
@@ -27,6 +28,7 @@ summary: 您必須執行某些工作、才能準備混合MetroCluster 式的靜�
 
 
 
+.步驟
 請依照下列順序執行步驟。
 
 . 依照順序執行下列工作、準備FC節點以進行切換：
@@ -64,7 +66,7 @@ Boot_ONTAP功能表
 
 +
 
-NOTE: 如果您未清除已用替換控制器的NVRAM內容、您可能會看到以下訊息：「痛苦：NVRAM內容無效...」 如果發生這種情況、請重複這些子步驟、將系統開機至ONTAP 瞬間提示字元。然後您就需要 ,重設開機恢復和RDB_rebootargs
+NOTE: 如果您未清除已用替換控制器的NVRAM內容、您可能會看到以下訊息：「痛苦：NVRAM內容無效...」 如果發生這種情況、請重複這些子步驟、將系統開機至ONTAP 瞬間提示字元。然後您就需要 <<Reset-the-boot-recovery,重設開機恢復和RDB_rebootargs>>
 
 
 
@@ -136,7 +138,7 @@ Group Cluster Node               State          Mirroring Mode
 
 
 
-=== 重設boot_recovery和RDB_rebootargs
+=== [Reset-the_boot-recovery ]重設boot_recovery和RDB_rebootargs
 
 [role="lead"]
 如果需要、您可以重設boot_recovery和RDB_reboot_bootargs

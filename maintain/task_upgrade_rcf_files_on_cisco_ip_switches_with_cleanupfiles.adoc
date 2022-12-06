@@ -13,8 +13,10 @@ summary: 您可能需要升級Cisco IP交換器上的RCF檔案。例如ONTAP 、
 [role="lead"]
 您可能需要升級Cisco IP交換器上的RCF檔案。例如ONTAP 、進行升級時、或是交換器韌體升級時、都需要新的RCF檔案。
 
+.關於這項工作
 從RcfFileGenerator1.4a版開始、Cisco IP交換器上有一個新選項可以變更（升級、降級或更換）交換器組態、而不需要執行「寫入清除」。
 
+.開始之前
 如果您的組態符合下列需求、可以使用此方法：
 
 * 套用標準RCF組態。
@@ -178,7 +180,7 @@ NOTE: RCF檔案（即使是相同版本）可能會列出較少或更多平台�
 
 . 將檔案下載至bootflash。
 +
-.. 下載您在中建立的高效能檔案 ,建立RCF檔案和CleanUpFiles、或為目前組態建立一般的CleanUpFiles
+.. 下載您在中建立的高效能檔案 <<Create-RCF-files-and-CleanUpFiles-or-create-generic-CleanUpFiles,建立RCF檔案和CleanUpFiles、或為目前組態建立一般的CleanUpFiles>>
 +
 
 NOTE: 此高效能檔案適用於目前套用的RCF檔案、*不適用於您要升級至的新RCF。
@@ -186,11 +188,11 @@ NOTE: 此高效能檔案適用於目前套用的RCF檔案、*不適用於您要�
 +
 例如：Switch-A1的高效能檔案：「Cleanup_NX9336_v1.81_Switch-a1.txt'
 
-.. 下載您在中建立的「新」RCF檔案 ,建立新組態的「新」RCF檔案。
+.. 下載您在中建立的「新」RCF檔案 <<Create-the-new-RCF-files-for-the-new-configuration,建立新組態的「新」RCF檔案。>>
 +
 Switch-A1的RCF檔案範例：「NX9336_v1.90_Switch-a1.txt'
 
-.. 下載您在中建立的高效能檔案 ,建立新組態的「新」RCF檔案。 此步驟為選用步驟、您日後可以使用此檔案來更新交換器組態。它符合目前套用的組態。
+.. 下載您在中建立的高效能檔案 <<Create-the-new-RCF-files-for-the-new-configuration,建立新組態的「新」RCF檔案。>> 此步驟為選用步驟、您日後可以使用此檔案來更新交換器組態。它符合目前套用的組態。
 +
 例如：Switch-A1的高效能檔案：「Cleanup_NX9336_v1.90_Switch-a1.txt'
 

@@ -27,6 +27,7 @@ summary: 您可能需要使用MetroCluster 共享儲存MetroCluster 功能交換
 
 在執行維護之前、您應發出AutoSupport 一份不知所知的訊息、通知NetApp技術支援部門正在進行維護。告知技術支援部門正在進行維護、可防止他們假設發生中斷、而開啟案例。
 
+.關於這項工作
 此工作必須在每MetroCluster 個站台上執行。
 
 .步驟
@@ -192,7 +193,7 @@ cluster_A::>
 == 將新的RCF檔案套用至交換器
 
 
-NOTE: 如果您的交換器已正確設定、您可以跳過以下部分、直接前往  MACsec encryption on Cisco 9336C switches（如果適用）或至  the new NS224 shelf。
+NOTE: 如果您的交換器已正確設定、您可以跳過以下部分、直接前往 <<在Cisco 9336C交換器上設定Macsec加密>>（如果適用）或至 <<連接新的NS224機櫃>>。
 
 * 您必須變更交換器組態才能新增磁碟櫃。
 * 您應該在檢閱纜線詳細資料 link:https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/port_usage_3232c_9336c.html#cabling-a-aff-a800-to-a-cisco-3232c-or-cisco-9336c-switch["平台連接埠指派"^]。

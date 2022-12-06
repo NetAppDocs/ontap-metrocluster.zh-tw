@@ -129,8 +129,10 @@ FC_switch_a_1、連接埠6
 |===
 
 
+.完成後
 您應該在MetroCluster 整個站台的FC交換器之間連接ISL。
 
+.相關資訊
 當您將ONTAP 非功能性系統連接至FC交換器以設定MetroCluster 含有陣列LUN的功能性組態時、您必須將每個控制器的FC-VI和HBA連接埠連接至特定的交換器連接埠。
 
 link:concept_switch_ports_required_for_a_eight_node_mcc_configuration_with_array_luns.html["使用陣列LUN進行不必要的交換器連接埠MetroCluster 以進行不必要的組態設定"]

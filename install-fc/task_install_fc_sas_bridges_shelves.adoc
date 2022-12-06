@@ -13,6 +13,7 @@ summary: 在組態中新增儲存設備時、您可以安裝Atto FibreBridge橋�
 [role="lead"]
 在組態中新增儲存設備時、您可以安裝Atto FibreBridge橋接器和SAS磁碟櫃、並進行纜線連接。
 
+.關於這項工作
 對於從原廠接收的系統、FC對SAS橋接器已預先設定、不需要額外的組態。
 
 此程序是假設您使用建議的橋接管理介面：Atto ExpressNAV GUI和Atto QuickNAV公用程式。
@@ -138,6 +139,7 @@ NOTE: 不支援ACP纜線的SAS架構MetroCluster 。
 
 如果您使用ONTAP 9.5版之前的版本、或是打算使用遠端登入或其他IP連接埠傳輸協定和服務（FTP、ExpressNAV、ICMP或QuickNAV）、以頻外存取的方式存取到FibreBridge 7600N橋接器、您可以透過主控台連接埠來啟用存取服務。
 
+.關於這項工作
 不同於Atto FIBreBridge 7500N和6500N橋接器、FIBreBridge 7600N橋接器會隨附所有停用的IP連接埠傳輸協定和服務。
 
 從ONTAP 支援橋接器的32個版本開始、就支援橋接器的頻內管理。這表示橋接器可透過ONTAP 連接至橋接器的FC連線、從CLI進行設定和監控。不需要透過橋接式乙太網路連接埠實體存取橋接器、也不需要橋接器使用者介面。
@@ -197,11 +199,13 @@ SNMP是唯一需要個別啟用命令的傳輸協定。
 
 在連接FC至SAS橋接器的模型纜線之前、您必須先在Fibre Bridge軟體中設定設定。
 
+.開始之前
 您應該決定是否要使用橋接器的頻內管理。
 
 
 NOTE: 從ONTAP 功能組別9.8開始、「最小橋接器」命令會改為「系統橋接器」。以下步驟顯示了「shorage bridge」命令、但ONTAP 如果您執行的是更新版本的版本、最好使用「系統橋接器」命令。
 
+.關於這項工作
 如果您要使用橋接器的頻內管理、而非IP管理、則可跳過設定乙太網路連接埠和IP設定的步驟、如相關步驟所述。
 
 .步驟
@@ -443,6 +447,7 @@ link:../maintain/index.html["維護MetroCluster 元件"]
 
 
 
+.相關資訊
 link:task_fb_new_install.html["FC至SAS橋接器的頻內管理"]
 
 
@@ -452,9 +457,9 @@ link:task_fb_new_install.html["FC至SAS橋接器的頻內管理"]
 您必須使用正確的FC對SAS橋接器來連接磁碟櫃的纜線。
 
 .選擇
-* ,使用IOM12模組、將連接至磁碟櫃的FIBLBridge 7600N或7500N橋接器進行纜線連接
-* ,使用IOM6或IOM3模組、將連接至磁碟櫃的FIBiBridge 7600N或7500N橋接器進行纜線連接
-* ,使用IOM6或IOM3模組、將連接至磁碟櫃的FibreBridge 6500N橋接器進行纜線連接
+* <<cabling_fb_7600N_7500N_with_iom12,使用IOM12模組、將連接至磁碟櫃的FIBLBridge 7600N或7500N橋接器進行纜線連接>>
+* <<cabling_fb_7600N_7500N_with_iom6_iom3,使用IOM6或IOM3模組、將連接至磁碟櫃的FIBiBridge 7600N或7500N橋接器進行纜線連接>>
+* <<cabling_fb_6500N_with_iom6_iom3,使用IOM6或IOM3模組、將連接至磁碟櫃的FibreBridge 6500N橋接器進行纜線連接>>
 
 
 
@@ -463,6 +468,7 @@ link:task_fb_new_install.html["FC至SAS橋接器的頻內管理"]
 
 設定橋接器之後、您可以開始為新系統佈線。
 
+.關於這項工作
 若為磁碟櫃、請插入SAS纜線連接器、拉片朝下（位於連接器底部）。
 
 . 菊環鏈連接每個堆疊中的磁碟櫃：
@@ -509,6 +515,7 @@ image::../media/mcc_cabling_bridge_and_sas3_stack_with_7500n_and_multiple_stacks
 
 設定橋接器之後、您可以開始為新系統佈線。FibreBridge 7600N或7500N橋接器使用Mini-SAS連接器、並支援使用IOM6或IOM3模組的機櫃。
 
+.關於這項工作
 iOM3模組不支援使用FIBLIBRIBridge 7600N橋接器。
 
 若為磁碟櫃、請插入SAS纜線連接器、拉片朝下（位於連接器底部）。
@@ -545,6 +552,7 @@ image::../media/mcc_cabling_bridge_and_sas_stack_with_7500n_four_stacks.gif[MCC�
 
 設定橋接器之後、您可以開始為新系統佈線。FibreBridge 6500N橋接器使用QSFP連接器。
 
+.關於這項工作
 連接連接埠之前、請至少等待10秒鐘。SAS纜線連接器採用鎖定式設計；若方向正確放入SAS連接埠、連接器會卡入定位、而磁碟櫃SAS連接埠LNK LED會亮起綠色。若為磁碟櫃、請插入SAS纜線連接器、拉片朝下（位於連接器底部）。
 
 由於採用IOM12的磁碟機櫃不支援使用FIBRIBridge 6500N橋接器、
@@ -646,7 +654,7 @@ Tgt VendorID ProductID        Type        SerialNumber
  a| 
 正確
  a| 
-重複 ,步驟1. 每個剩餘的橋接器。
+重複 <<step1_bridge,步驟1.>> 每個剩餘的橋接器。
 
 
 
@@ -655,9 +663,9 @@ Tgt VendorID ProductID        Type        SerialNumber
  a| 
 .. 重複佈線、檢查SAS纜線是否鬆脫或修正SAS纜線。
 +
- disk shelves to the bridges
+<<將磁碟櫃連接至橋接器>>
 
-.. 重複 ,步驟1.。
+.. 重複 <<step1_bridge,步驟1.>>。
 
 
 |===
@@ -672,6 +680,7 @@ IMPORTANT: 在完成分區之前、請勿使用光纖橋接器7500N上的第二�
 . 在合作夥伴網站的橋上重複上述步驟。
 
 
+.相關資訊
 link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）"]
 
 當您在使用ONTAP 更新版本的版本時、使用纜線連接FC交換器時、必須確認您使用的是指定的連接埠指派。

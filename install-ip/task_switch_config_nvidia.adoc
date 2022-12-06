@@ -15,20 +15,21 @@ summary: 您必須設定NVIDIA IP交換器作為叢集互連和後端MetroCluste
 
 
 
-== 將NVIDIA IP SN2100交換器重設為原廠預設值
+== [Reset-the switch]將NVIDIA IP SN2100交換器重設為原廠預設值
 
 您可以選擇下列方法、將交換器重設為原廠預設值。
 
-* ,使用RCF檔案選項重設交換器
-* ,使用Cummuls安裝選項重設交換器
+* <<RCF-file-option,使用RCF檔案選項重設交換器>>
+* <<Cumulus-install-option,使用Cummuls安裝選項重設交換器>>
 
 
 
 
-=== 使用RCF檔案選項重設交換器
+=== [[RCF-file-option]]使用RCF檔案選項重設交換器
 
 在安裝新的RCF組態之前、您必須還原NVIDIA交換器設定。
 
+.關於這項工作
 若要將交換器還原為預設設定、請使用「restoreDefaults」選項來執行RCF檔案。此選項會將原始備份檔案複製到原始位置、然後重新啟動交換器。重新開機之後、交換器會與您第一次執行RCF檔案來設定交換器時的原始組態一起上線。
 
 下列組態詳細資料不會重設：
@@ -41,7 +42,7 @@ summary: 您必須設定NVIDIA IP交換器作為叢集互連和後端MetroCluste
 NOTE: 在應用RCF檔案期間發生的所有其他組態變更、都會還原為原始組態。
 
 .開始之前
-* 您必須根據設定交換器 ,下載並安裝NVIDIA RCF檔案。如果您尚未以這種方式設定、或是在執行RCF檔案之前已設定其他功能、則無法使用此程序。
+* 您必須根據設定交換器 <<Download-and-install,下載並安裝NVIDIA RCF檔案>>。如果您尚未以這種方式設定、或是在執行RCF檔案之前已設定其他功能、則無法使用此程序。
 * 您必須在MetroCluster 各個採用EIP組態的IP交換器上重複這些步驟。
 * 您必須使用序列主控台連線連接至交換器。
 * 此工作會重設管理網路的組態。
@@ -111,8 +112,9 @@ Enter yes or no: yes
 
 
 
-=== 使用Cummuls安裝選項重設交換器
+=== [[Cummule-install-option]]使用Cummuls安裝選項重設交換器
 
+.關於這項工作
 如果您想要套用Cummuls映像來完全重設交換器、請使用這些步驟。
 
 .開始之前
@@ -258,13 +260,13 @@ cumulus@cumulus:mgmt:~$
 cumulus@cumulus:~$ sudo reboot
 ----
 +
-當交換器重新開機時、您可以使用中的步驟套用新的組態 ,下載並安裝NVIDIA RCF檔案。
+當交換器重新開機時、您可以使用中的步驟套用新的組態 <<Download-and-install,下載並安裝NVIDIA RCF檔案>>。
 
 
 
 
 
-== 下載並安裝NVIDIA RCF檔案
+== [[Download-and -install]]下載並安裝NVIDIA RCF檔案
 
 您必須將交換器RCF檔案下載並安裝到MetroCluster 各個交換器、以供採用此功能的介面IP組態。
 
@@ -279,6 +281,7 @@ NOTE: 如果您在重設交換器之後以及套用RCF檔案之前執行進一�
 
 
 
+.關於這項工作
 您必須在MetroCluster 各個IP交換器上重複上述步驟（全新安裝）或更換交換器（更換交換器）。
 
 .步驟

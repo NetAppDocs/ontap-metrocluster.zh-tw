@@ -13,10 +13,12 @@ summary: 如果您在災難站台還原硬體時更換磁碟機、則必須將�
 [role="lead"]
 如果您在災難站台還原硬體時更換磁碟機、或必須將磁碟機歸零或移除擁有權、則必須將擁有權指派給受影響的磁碟機。
 
+.開始之前
 災難站台必須至少擁有與災難發生前一樣多的可用磁碟機。
 
 磁碟機櫃與磁碟機配置必須符合中的要求 link:../install-ip/concept_required_mcc_ip_components_and_naming_guidelines_mcc_ip.html["必要MetroCluster 的知識、知識、知識、知識、知識、知識、知識、技術"] 的一節 link:../install-ip/concept_considerations_differences.html["安裝與組態MetroCluster"]。
 
+.關於這項工作
 這些步驟會在災難站台的叢集上執行。
 
 此程序顯示所有磁碟機的重新指派、以及在災難站台建立新的叢體。新的叢體是災難站台的遠端運作模式、以及災難站台的本機運作模式。
@@ -212,6 +214,7 @@ node_B_2       on            on          on             default
 ----
 
 
+.相關資訊
 link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"^]
 
 link:../manage/concept_understanding_mcc_data_protection_and_disaster_recovery.html#how-metrocluster-configurations-use-syncmirror-to-provide-data-redundancy["如何使用NetApp功能來提供資料備援MetroCluster SyncMirror"]

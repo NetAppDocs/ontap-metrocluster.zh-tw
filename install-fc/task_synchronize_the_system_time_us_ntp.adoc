@@ -13,6 +13,7 @@ summary: 每個叢集都需要自己的網路時間傳輸協定（NTP）伺服�
 [role="lead"]
 每個叢集都需要自己的網路時間傳輸協定（NTP）伺服器、才能在節點與其用戶端之間同步時間。您可以使用System Manager中的「編輯日期時間」對話方塊來設定NTP伺服器。
 
+.開始之前
 您必須已下載並安裝System Manager。您可從NetApp支援網站取得System Manager。
 
 .關於這項工作

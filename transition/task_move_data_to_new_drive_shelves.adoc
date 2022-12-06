@@ -11,6 +11,7 @@ summary: 在轉換期間、您可以將資料從MetroCluster 採用支援功能�
 [role="lead"]
 在轉換期間、您可以將資料從MetroCluster 採用支援功能支援功能的磁碟機櫃移至全新MetroCluster 的支援服務架構。
 
+.開始之前
 您應該在目的地或IP節點上建立新的SAN LIF、並在將磁碟區移至新的Aggregate之前連接主機。
 
 . 若要恢復自動產生支援案例、請傳送AutoSupport 一個不完整的訊息、表示維護已完成。

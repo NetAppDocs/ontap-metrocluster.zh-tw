@@ -158,7 +158,7 @@ NTP伺服器2.
 |===
 
 
-=== 網站A AutoSupport 資訊
+=== 網站A nbsp；AutoSupport 資訊
 
 您必須在AutoSupport 每個節點上設定、這需要下列資訊：
 
@@ -372,7 +372,7 @@ NTP伺服器2.
 |===
 
 
-=== 站台B AutoSupport 的資訊
+=== 站台B nbsp；AutoSupport 資訊
 
 您必須在AutoSupport 每個節點上設定、這需要下列資訊：
 
@@ -431,7 +431,7 @@ Proxy伺服器
 |===
 
 
-=== 站台B SP資訊
+=== 站台B nbsp；SP資訊
 
 您必須啟用每個節點的服務處理器（SP）、才能進行疑難排解和維護、這需要每個節點的下列網路資訊：
 
@@ -522,6 +522,7 @@ Proxy伺服器
 
 為了確保MetroCluster 成功安裝、請重設並還原控制器模組的預設值。
 
+.重要事項
 此工作僅適用於使用FC至SAS橋接器的延伸組態。
 
 .步驟
@@ -655,6 +656,7 @@ Please choose one of the following:
 
 如果您在FAS8020系統上使用X1132A-R6四埠卡、您可以進入維護模式、設定用於FC-VI和啟動器的1a和1b連接埠。從原廠收到的不需要此功能MetroCluster 、因為系統會根據您的組態設定適當的連接埠。
 
+.關於這項工作
 此工作必須在維護模式下執行。
 
 
@@ -760,8 +762,10 @@ controller_B_1
 
 在將系統完全開機至ONTAP 顯示器之前、您可以選擇性地將系統開機至維護模式、並驗證節點上的磁碟指派。應指派磁碟來建立完全對稱的組態、讓兩個站台擁有自己的磁碟櫃並提供資料、其中每個節點和每個集區都有相同數量的鏡射磁碟指派給它們。
 
+.開始之前
 系統必須處於維護模式。
 
+.關於這項工作
 全新MetroCluster 的功能系統在出貨前已完成磁碟指派。
 
 下表顯示MetroCluster 適用於整個程序集區組態的範例集區指派。磁碟會根據每個機櫃的需求指派給資源池。
@@ -909,6 +913,7 @@ DR合作夥伴的資源池1
 
 在MetroCluster 原廠未預先設定的延伸支援組態中、您必須確認控制器和機箱元件的HA狀態已設定為「mcc-2n」、以便正常開機。對於從原廠接收的系統、此值已預先設定、您不需要驗證。
 
+.開始之前
 系統必須處於維護模式。
 
 .步驟
@@ -942,8 +947,10 @@ DR合作夥伴的資源池1
 
 在雙節點MetroCluster 的靜態組態中、您必須在每個叢集上開機節點、結束叢集設定精靈、然後使用「叢集設定」命令、將節點設定為單節點叢集。
 
+.開始之前
 您不得設定服務處理器。
 
+.關於這項工作
 此工作適用於MetroCluster 使用原生NetApp儲存設備的雙節點效能不整組態。
 
 全新MetroCluster 的功能已預先設定好、您不需要執行這些步驟。不過、您應該設定AutoSupport 好用的功能。
@@ -1044,6 +1051,7 @@ cluster1-01           true    true
 
 在不支援的組態中、叢集MetroCluster 必須處於對等關係中、以便彼此通訊、並執行MetroCluster 對恢復災難至關重要的資料鏡射。
 
+.相關資訊
 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-clus-peer/home.html["叢集與SVM對等化快速組態"^]
 
 link:concept_considerations_peering.html#considerations-when-using-dedicated-ports["使用專用連接埠時的考量事項"]
@@ -1288,6 +1296,7 @@ cluster01
 ----
 
 
+.相關資訊
 link:concept_considerations_peering.html#considerations-when-using-dedicated-ports["使用專用連接埠時的考量事項"]
 
 
@@ -1449,6 +1458,7 @@ cluster01
 ----
 
 
+.相關資訊
 link:concept_considerations_peering.html#considerations-when-sharing-data-ports["共享資料連接埠時的考量"]
 
 
@@ -1677,6 +1687,7 @@ cluster01-02
 
 您必須鏡射根Aggregate以提供資料保護。
 
+.關於這項工作
 根據預設、根Aggregate會建立為RAID-DP類型Aggregate。您可以將根Aggregate從RAID-DP變更為RAID4類型Aggregate。下列命令會修改RAID4類型Aggregate的根Aggregate：
 
 "torage Aggregate modify–aggreg_name_-raidtype RAID4"
@@ -1703,6 +1714,7 @@ controller_A_1::> storage aggregate mirror aggr0_controller_A_1
 . 針對MetroCluster 「資訊功能」組態中的每個節點、重複上述步驟。
 
 
+.相關資訊
 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-vsmg/home.html["邏輯儲存管理"^]
 
 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-concepts/home.html["概念ONTAP"^]
@@ -1869,6 +1881,7 @@ NOTE: 如果您要使用單一鏡射資料Aggregate、請參閱 link:concept_con
 * 控制器和機箱的ha-config狀態必須是"mcc-2n"。
 
 
+.關於這項工作
 您可以在MetroCluster 任何節點上發出「flexconfigure」命令一次、以啟用MetroCluster 該組態。您不需要在每個站台或節點上發出命令、也不需要在哪個節點或站台上發出命令。
 
 .步驟
@@ -2178,6 +2191,7 @@ mccint-fas9000-0304
 ----
 
 
+.相關資訊
 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"^]
 
 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/home.html["網路與LIF管理"^]

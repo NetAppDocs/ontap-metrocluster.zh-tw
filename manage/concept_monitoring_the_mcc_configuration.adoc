@@ -19,6 +19,7 @@ summary: 您可以使用ONTAP MetroCluster 功能齊全的功能表來Active IQ 
 
 您可以檢查MetroCluster 功能組態中的元件和關係是否正常運作。您應該在初始組態設定後、以及MetroCluster 變更任何的功能後進行檢查。您也應該在協商（計畫性）切換或切換作業之前進行檢查。
 
+.關於這項工作
 如果在MetroCluster 兩個叢集上的短時間內發出兩次「支援驗證執行」命令、可能會發生衝突、而且命令可能無法收集所有資料。後續的「MetroCluster 示例檢查show」命令不會顯示預期的輸出。
 
 .步驟

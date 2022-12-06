@@ -75,6 +75,7 @@ System Manager不支援無鏡射Aggregate。
 
 執行切換時、您必須再次在ssite（站台）a（原始叢集）和ssite（站台）c上還原SVM
 
+.相關資訊
 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-fc-mgmt/home.html["資料區管理FlexCache"^]
 
 
@@ -104,6 +105,7 @@ http://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-fc-mgmt/home.html["資�
 
 NOTE: 在設定Aggregate之前、您必須依照FabricPool 中的「設定物件存放區以MetroCluster 供使用的物件組態」所述、設定物件存放區 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"^]。
 
+.步驟
 若要設定Aggregate以供FabricPool 在整個過程中使用：
 
 . 建立Aggregate或選取現有Aggregate。
@@ -157,6 +159,7 @@ NOTE: 系統建立的排程不會複寫、您必須在合作夥伴叢集上手�
 
 您應該瞭MetroCluster 解如何在一套功能性的組態中建立及複寫生命。您也必須瞭解一致性需求、以便在設定網路時做出適當的決策。
 
+.相關資訊
 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/home.html["網路與LIF管理"^]
 
 link:concept_considerations_when_using_ontap_in_a_mcc_configuration.html#ipspace-object-replication-and-subnet-configuration-requirements["IPSpace物件複寫和子網路組態需求"]
@@ -221,6 +224,7 @@ subnet1   192.168.2.0/24   Default   192.168.2.1       10/10    192.168.2.21-192
 
 如果在一個站台上設定IPv6、則另一個站台也必須設定IPv6。
 
+.相關資訊
 link:concept_considerations_when_using_ontap_in_a_mcc_configuration.html#requirements-for-lif-creation-in-a-metrocluster-configuration["以架構組態建立LIF的需求MetroCluster"]
 
 link:concept_considerations_when_using_ontap_in_a_mcc_configuration.html#lif-replication-and-placement-requirements-and-issues["LIF複寫及放置需求與問題"]
@@ -246,6 +250,7 @@ link:concept_considerations_when_using_ontap_in_a_mcc_configuration.html#lif-rep
 
 您可以執行SeskCheck LIF show命令、確認是否能在MetroCluster 一個SeskesfConfiguration中成功建立LIF MetroCluster 。如果您在建立LIF時遇到任何問題、可以使用MetroCluster 指令《核對LIF修復放置命令」來修正問題。
 
+.相關資訊
 link:concept_considerations_when_using_ontap_in_a_mcc_configuration.html#ipspace-object-replication-and-subnet-configuration-requirements["IPSpace物件複寫和子網路組態需求"]
 
 link:concept_considerations_when_using_ontap_in_a_mcc_configuration.html#lif-replication-and-placement-requirements-and-issues["LIF複寫及放置需求與問題"]
@@ -348,6 +353,7 @@ LIF放置
 
 NOTE: 即使來源SVM停機、如果目的地SVM中的IP空間和網路相同、連接埠中有屬於不同SVM的LIF、則LIF放置可能會正常進行。
 
+.相關資訊
 link:concept_considerations_when_using_ontap_in_a_mcc_configuration.html#ipspace-object-replication-and-subnet-configuration-requirements["IPSpace物件複寫和子網路組態需求"]
 
 link:concept_considerations_when_using_ontap_in_a_mcc_configuration.html#requirements-for-lif-creation-in-a-metrocluster-configuration["以架構組態建立LIF的需求MetroCluster"]

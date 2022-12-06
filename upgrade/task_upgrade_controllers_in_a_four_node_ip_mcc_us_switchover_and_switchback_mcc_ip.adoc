@@ -113,6 +113,7 @@ image::../media/workflow_ip_upgrade.png[工作流程IP升級]
 
 根據舊的平台機型、或交換器組態未在最低版本上、或如果您想要變更後端MetroCluster 資訊鏈路所使用的VLAN ID、您必須在開始平台升級程序之前更新交換器RCF檔案。
 
+.關於這項工作
 您必須在下列情況下更新RCF檔案：
 
 * 對於某些平台機型、交換器必須使用支援的VLAN ID來進行後端MetroCluster 的靜態IP連線。如果舊的或新的平台機型位於下表*、而非*使用支援的VLAN ID、則您必須更新交換器RCF檔案。
@@ -200,6 +201,7 @@ VLAN ID範圍為101到4096（含）。
 
 您必須驗證node_a_1-old上的實體連接埠是否正確對應至node_a_1-new上的實體連接埠、以便節點_a_1-new在升級後與叢集中的其他節點和網路進行通訊。
 
+.關於這項工作
 當新節點在升級程序期間首次開機時、會重新執行其所取代之舊節點的最新組態。當您開機node_a_1-new時ONTAP 、支援功能會嘗試在節點_a_1-old上使用的相同連接埠上裝載lifs。因此、在升級過程中、您必須調整連接埠和LIF組態、使其與舊節點的組態相容。在升級程序期間、您將在新舊節點上執行步驟、以確保叢集、管理和資料LIF組態正確無誤。
 
 下表顯示與新節點的連接埠需求相關的組態變更範例。
@@ -820,6 +822,7 @@ http://docs.netapp.com/ontap-9/topic/com.netapp.doc.hw-metrocluster-tiebreaker/G
 
 在執行維護之前、您應發出AutoSupport 一份不知所知的訊息、通知NetApp技術支援部門正在進行維護。告知技術支援部門正在進行維護、可防止他們假設發生中斷、而開啟案例。
 
+.關於這項工作
 此工作必須在每MetroCluster 個站台上執行。
 
 .步驟
@@ -843,6 +846,7 @@ http://docs.netapp.com/ontap-9/topic/com.netapp.doc.hw-metrocluster-tiebreaker/G
 
 您必須將組態切換為站台A、才能升級站台B上的平台。
 
+.關於這項工作
 此工作必須在sSite _A上執行
 
 完成此工作之後、叢集_A會處於作用中狀態、並為兩個站台提供資料。叢集B處於非作用中狀態、準備開始升級程序。
@@ -977,6 +981,7 @@ network port ifgrp remove-port -node node1 -ifgrp a1a -port e0d
 
 您必須將交換器更新為支援新平台機型的組態。
 
+.關於這項工作
 您可以在包含目前正在升級之控制器的站台上執行此工作。在本程序所示的範例中、我們會先升級se_B。
 
 站台A的交換器將在站台A上的控制器升級時升級。
@@ -1148,6 +1153,7 @@ FC
 
 必須MetroCluster 在新的控制器模組上設定特定的靜態IP bootarg值。這些值必須與舊控制器模組上設定的值相符。
 
+.關於這項工作
 在此工作中、您將使用先前在升級程序中所識別的UUID和系統ID link:task_upgrade_controllers_in_a_four_node_ip_mcc_us_switchover_and_switchback_mcc_ip.html["在升級之前收集資訊"]。
 
 .步驟
@@ -1327,6 +1333,7 @@ bootarg.kmip.kmip.init.interface`
 
 使用先前收集的系統、將根Aggregate磁碟重新指派給新的控制器模組。
 
+.關於這項工作
 這些步驟會在維護模式中執行。
 
 .步驟
@@ -1719,6 +1726,7 @@ Remote: cluster_A         Configuration state configured
 
 升級控制器模組之後、您必須確認MetroCluster 該組態的健全狀況。
 
+.關於這項工作
 此工作可在MetroCluster 任何節點上執行、以進行不受限的組態設定。
 
 .步驟

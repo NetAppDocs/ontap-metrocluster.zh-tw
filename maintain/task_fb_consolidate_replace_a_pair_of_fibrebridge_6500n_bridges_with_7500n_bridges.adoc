@@ -13,8 +13,10 @@ summary: 若要善用光纖橋接器7600N或7500N橋接器上的額外FC2連接�
 [role="lead"]
 若要善用光纖橋接器7600N或7500N橋接器上的額外FC2連接埠、並降低機架使用率、您可以不中斷地更換6500N橋接器、並在單一一連接埠的一對光纖橋接器7600N或7500N橋接器之後、合併最多四個儲存堆疊。
 
+.開始之前
 您需要管理員密碼、才能存取FTP或scp伺服器。
 
+.關於這項工作
 在下列情況下、您應該使用此程序：
 
 * 您將一對採用FibreBridge 7600N或7500N橋接器的FibreBridge 6500N橋接器替換成一對。
@@ -27,6 +29,7 @@ summary: 若要善用光纖橋接器7600N或7500N橋接器上的額外FC2連接�
 
 此程序不中斷營運、約需兩小時完成。
 
+.相關資訊
 link:task_replace_a_sle_fc_to_sas_bridge.html["更換單一FC對SAS橋接器"]
 
 
@@ -100,6 +103,7 @@ slot 0: FC Host Adapter 0g (QLogic 8324 rev. 2, N-port, <UP>)**<=== Initiator po
 
 若要熱交換一或兩個FibreBridge 6500N橋接器、以建立一對採用一對FibreBridge 7600N或7500N橋接器的組態、您必須一次更換一個橋接器、並遵循正確的佈線程序。新的纜線與原始纜線不同。
 
+.關於這項工作
 如果符合下列條件、您也可以使用此程序：
 
 * 您要更換一對連接至同一堆疊SAS儲存設備的FIBreBridge 6500N橋接器。
@@ -248,6 +252,7 @@ slot 0: FC Host Adapter 0g (QLogic 8324 rev. 2, N-port, <UP>)**<=== Initiator po
 
 將多個SAS儲存堆疊整合到一對採用可用SAS連接埠的光纖橋接器7600N或7500N橋接器之後時、您必須將上方和下方SAS纜線移到新的橋接器。
 
+.關於這項工作
 FibreBridge 6500N橋接SAS連接埠使用QSFP連接器。FibreBridge 7600N或7500N橋接SAS連接埠使用Mini-SAS連接器。
 
 
@@ -362,6 +367,7 @@ image::../media/consolidation_sas_bottom_connection_4_stacks.gif[整合SAS底部
 
 當您將Fibre Bridge 6500N橋接器更換為Fibre Bridge 7500N橋接器、並使用Fibre Bridge 7500N橋接器上的兩個FC連接埠時、必須變更分區。每個區域最多可有四個啟動器連接埠。您使用的分區取決於您執行ONTAP 的是9.1版或9.1版或更新版本之前的版本
 
+.關於這項工作
 本工作中的特定分區適用於ONTAP 9.1版之前的版本的版本。
 
 分區變更是為了避免ONTAP 使用不必要的問題、因為不超過四個FC啟動器連接埠可以有通往磁碟的路徑。在重新配置以整合磁碟櫃之後、現有的分區會使八個FC連接埠可連線至每個磁碟。您必須變更分區、將每個區域中的啟動器連接埠減少為四個。
@@ -507,6 +513,7 @@ image::../media/zoning_consolidation_site_a_after.gif[分區整合站台A之後]
 
 若要為儲存堆疊提供多個路徑、當您將光纖橋接器7600N或7500N橋接器新增至組態時、您可以將每個光纖橋接器上的第二個FC連接埠纜線。
 
+.開始之前
 分區必須經過調整、才能為第二個FC連接埠提供區域。
 
 .步驟

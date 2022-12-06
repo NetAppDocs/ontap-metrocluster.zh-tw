@@ -17,6 +17,7 @@ summary: 在八節點或四節點MetroCluster 的「架構」組態中、每個�
 
 image::../media/mcc_hw_architecture_local_ha.gif[MCC HW架構本機Ha]
 
+.相關資訊
 link:concept_illustration_of_redundant_fc_to_sas_bridges.html["備援FC對SAS橋接器的圖例"]
 
 link:concept_redundant_fc_switch_fabrics.html["備援FC交換器架構"]

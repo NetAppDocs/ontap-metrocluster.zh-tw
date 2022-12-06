@@ -18,6 +18,7 @@ summary: 您必須在MetroCluster 每個想要搭配陣列LUN使用的節點上�
 * 您必須擁有V_StorageAttach授權的授權金鑰。
 
 
+.關於這項工作
 您必須針對要安裝V_StorageAttach授權的每個節點、使用個別的授權金鑰。
 
 .步驟

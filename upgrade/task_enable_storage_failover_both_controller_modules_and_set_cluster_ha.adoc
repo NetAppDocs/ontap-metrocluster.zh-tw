@@ -13,8 +13,10 @@ summary: 在MetroCluster 將新的控制器模組新增至支援功能組態之�
 [role="lead"]
 在MetroCluster 將新的控制器模組新增至支援功能組態之後、您必須在兩個控制器模組上啟用儲存容錯移轉、並分別啟用叢集HA。
 
+.開始之前
 先前必須使用「flexconfigure -refreshtrue」命令重新整理此組態。MetroCluster MetroCluster
 
+.關於這項工作
 此工作必須在每MetroCluster 個站台上執行。
 
 .步驟

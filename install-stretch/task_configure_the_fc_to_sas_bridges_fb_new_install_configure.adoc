@@ -13,6 +13,7 @@ summary: 在連接FC至SAS橋接器的模型纜線之前、您必須先在Fibre 
 [role="lead"]
 在連接FC至SAS橋接器的模型纜線之前、您必須先在Fibre Bridge軟體中設定設定。
 
+.關於這項工作
 您應該決定是否要使用橋接器的頻內管理。
 
 
@@ -229,4 +230,5 @@ link:../maintain/index.html["維護MetroCluster 元件"]
 
 
 
+.相關資訊
 link:concept_in_band_management_of_the_fc_to_sas_bridges.html["FC至SAS橋接器的頻內管理"]

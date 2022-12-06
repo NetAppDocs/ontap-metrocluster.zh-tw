@@ -206,6 +206,7 @@ https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp
 
 您必須規劃將舊節點實體連接埠上的LIF對應至新節點上的實體連接埠。
 
+.關於這項工作
 當新節點在升級程序期間首次開機時、會重新執行其所取代之舊節點的最新組態。當您開機node_a_1-new時ONTAP 、支援功能會嘗試在節點_a_1-old上使用的相同連接埠上裝載lifs。因此、在升級過程中、您必須調整連接埠和LIF組態、使其與舊節點的組態相容。在升級程序期間、您將在新舊節點上執行步驟、以確保叢集、管理和資料LIF組態正確無誤。
 
 下表顯示與新節點的連接埠需求相關的組態變更範例。
@@ -398,6 +399,7 @@ SAN
 
 在升級之前、您必須先收集每個節點的資訊、並視需要調整網路廣播網域、移除任何VLAN和介面群組、以及收集加密資訊。
 
+.關於這項工作
 此工作是在現有MetroCluster 的不只是功能的基礎上執行。
 
 .步驟
@@ -525,6 +527,7 @@ http://docs.netapp.com/ontap-9/topic/com.netapp.doc.hw-metrocluster-tiebreaker/G
 
 在執行維護之前、您應發出AutoSupport 一份不知所知的訊息、通知NetApp技術支援部門正在進行維護。告知技術支援部門正在進行維護、可防止他們假設發生中斷、而開啟案例。
 
+.關於這項工作
 此工作必須在每MetroCluster 個站台上執行。
 
 .步驟
@@ -551,6 +554,7 @@ http://docs.netapp.com/ontap-9/topic/com.netapp.doc.hw-metrocluster-tiebreaker/G
 
 您必須將組態切換為站台A、才能升級站台B上的平台。
 
+.關於這項工作
 此工作必須在sSite _A上執行
 
 完成此工作之後、叢集_A會處於作用中狀態、並為兩個站台提供資料。叢集B處於非作用中狀態、準備開始升級程序、如下圖所示。
@@ -741,6 +745,7 @@ network port ifgrp remove-port -node node1 -ifgrp a1a -port e0d
 
 必須從組態中移除舊的控制器。
 
+.關於這項工作
 此工作是在ssite B上執行
 
 .步驟
@@ -1043,6 +1048,7 @@ MCC
 
 使用先前收集的系統、將根Aggregate磁碟重新指派給新的控制器模組
 
+.關於這項工作
 此工作會在維護模式中執行。
 
 舊系統ID已在中識別 link:task_upgrade_controllers_in_a_four_node_fc_mcc_us_switchover_and_switchback_mcc_fc_4n_cu.html["在升級之前收集資訊"]。
@@ -1157,6 +1163,7 @@ aggr0_node_b_1-root    online      raid_dp, aggr    root, nosnap=on,
 
 您必須從開機功能表重新啟動控制器、才能更新控制器Flash映像。如果已設定加密、則需要執行其他步驟。
 
+.關於這項工作
 此工作必須在所有新控制器上執行。
 
 .步驟
@@ -1388,6 +1395,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
 
 在切換回復之前、請先確認將l生命 存放在適當的節點/連接埠上。需要執行下列步驟
 
+.關於這項工作
 此工作是在站台B上執行、節點已使用根集合體開機。
 
 .步驟
@@ -1432,6 +1440,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
 
 設定好新的控制器之後、您可以切換回MetroCluster 該組態、使組態恢復正常運作。
 
+.關於這項工作
 在本工作中、您將執行切換回復作業、將MetroCluster 該組態恢復正常運作。站台上的節點仍在等待升級。
 
 image::../media/mcc_upgrade_cluster_a_switchback.png[MCC升級叢集A切換回復]
@@ -1494,6 +1503,7 @@ Remote: cluster_A         Configuration state configured
 
 升級控制器模組之後、您必須確認MetroCluster 該組態的健全狀況。
 
+.關於這項工作
 此工作可在MetroCluster 任何節點上執行、以進行不受限的組態設定。
 
 .步驟

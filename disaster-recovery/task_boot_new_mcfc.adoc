@@ -13,6 +13,7 @@ summary: 完成資料與根集合體的Aggregate修復之後、您必須在災�
 [role="lead"]
 完成資料與根集合體的Aggregate修復之後、您必須在災難站台上開機節點。
 
+.關於這項工作
 此工作從顯示載入程式提示的節點開始。
 
 .步驟
@@ -30,7 +31,7 @@ Boot_ONTAP功能表
 
 +
 
-NOTE: 如果您未清除已用替換控制器的NVRAM內容、您可能會看到以下訊息：「痛苦：NVRAM內容無效...」 如果發生這種情況、請重複執行 ,從開機功能表中、選取選項6 *從備份組態更新Flash *。 以將系統開機至ONTAP 畫面提示字元。然後您就需要 ,重設開機恢復和RDB_rebootargs
+NOTE: 如果您未清除已用替換控制器的NVRAM內容、您可能會看到以下訊息：「痛苦：NVRAM內容無效...」 如果發生這種情況、請重複執行 <<step2,從開機功能表中、選取選項6 *從備份組態更新Flash *。>> 以將系統開機至ONTAP 畫面提示字元。然後您就需要 <<Reset-the-boot-recovery,重設開機恢復和RDB_rebootargs>>
 
 . 鏡射叢0上的根Aggregate：
 +
@@ -88,11 +89,12 @@ cluster_B::>
 ....
 
 
+.接下來該怎麼做
 請前往 link:../disaster-recovery/task_complete_recovery.html["完成災難恢復程序"]。
 
 
 
-=== 重設boot_recovery和RDB_rebootargs
+=== [Reset-the_boot-recovery ]重設boot_recovery和RDB_rebootargs
 
 [role="lead"]
 如果需要、您可以重設boot_recovery和RDB_reboot_bootargs

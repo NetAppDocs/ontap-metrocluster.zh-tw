@@ -153,6 +153,7 @@ NOTE: 系統建立的排程不會複寫、您必須在合作夥伴叢集上手�
 
 您應該瞭MetroCluster 解如何在一套功能性的組態中建立及複寫生命。您也必須瞭解一致性需求、以便在設定網路時做出適當的決策。
 
+.相關資訊
 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-concepts/home.html["概念ONTAP"^]
 
 

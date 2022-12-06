@@ -13,6 +13,7 @@ summary: 每MetroCluster 個站台均設定為其合作夥伴站台的對等站�
 [role="lead"]
 每MetroCluster 個站台均設定為其合作夥伴站台的對等站台。您必須熟悉設定對等關係的先決條件和準則。這在決定是否要使用共享或專用連接埠來處理這些關係時非常重要。
 
+.相關資訊
 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-clus-peer/home.html["叢集與SVM對等化快速組態"]
 
 

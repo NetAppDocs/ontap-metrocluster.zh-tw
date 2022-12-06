@@ -271,6 +271,7 @@ Configuration Saved!
 
 您必須將交換器作業系統檔案和RCF檔案下載到MetroCluster 各個交換器、使其採用EWIP組態。
 
+.關於這項工作
 此工作必須在MetroCluster 每個交換器上重複執行、且必須採用EIP組態。
 
 []
@@ -378,8 +379,8 @@ IP_switch_A_2 #
 
 |===
 +
-** 方法1：  to upgrade EFOS with downloading the software image to the backup boot partition
-** 方法2：  to upgrade EFOS using the ONIE OS installation
+** 方法1： <<將軟體映像下載到備份開機分割區、以升級EFOS的步驟>>
+** 方法2： <<使用ONIE OS安裝來升級EFOS的步驟>>
 
 
 
@@ -492,12 +493,12 @@ Are you sure you would like to reset the system? (y/n) y
 . 等待交換器重新開機。
 +
 
-NOTE: 在極少數情況下、交換器可能無法開機。請依照  to upgrade EFOS using the ONIE OS installation 以安裝新映像。
+NOTE: 在極少數情況下、交換器可能無法開機。請依照 <<使用ONIE OS安裝來升級EFOS的步驟>> 以安裝新映像。
 
 . 如果您將交換器從EFOS 3.4.x.x變更為EFOS 3.7.x.x或反之、請遵循下列兩個程序來套用正確的組態（RCF）：
 +
-..  the Broadcom IP switch to factory defaults
-..  and installing the Broadcom RCF files
+.. <<將Broadcom IP交換器重設為原廠預設值>>
+.. <<下載並安裝Broadcom RCF檔案>>
 
 
 . 在靜態IP組態的其餘三個IP交換器上重複上述步驟MetroCluster 。
@@ -645,8 +646,8 @@ unit 	active 	   backup   current-active  next-active
 交換器將在未套用組態的情況下重新開機、然後重設為原廠預設值。請依照下列兩份文件所述的兩個程序來設定交換器基本設定並套用RCF檔案：
 
 +
-.. 設定交換器基本設定。請遵循步驟4及更新版本：  the Broadcom IP switch to factory defaults
-.. 建立並套用RCF檔案、如所述  and installing the Broadcom RCF files
+.. 設定交換器基本設定。請遵循步驟4及更新版本： <<將Broadcom IP交換器重設為原廠預設值>>
+.. 建立並套用RCF檔案、如所述 <<下載並安裝Broadcom RCF檔案>>
 
 
 
@@ -657,8 +658,10 @@ unit 	active 	   backup   current-active  next-active
 
 您必須將交換器RCF檔案下載並安裝到MetroCluster 各個交換器、以供採用此功能的介面IP組態。
 
+.開始之前
 此工作需要檔案傳輸軟體、例如FTP、TFTP、SFTP或scp。 將檔案複製到交換器。
 
+.關於這項工作
 這些步驟必須重複執行MetroCluster 於各個採用EIP組態的IP交換器上。
 
 共有四個RCF檔案、MetroCluster 每個檔案分別對應於整個EIP組態中的四個交換器。您必須針對所使用的交換器機型使用正確的RCF檔案。

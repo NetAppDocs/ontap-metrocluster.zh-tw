@@ -80,4 +80,5 @@ FC_switch_a_1、連接埠3
 |===
 
 
+.完成後
 您應該在MetroCluster 整個站台的FC交換器之間連接ISL。

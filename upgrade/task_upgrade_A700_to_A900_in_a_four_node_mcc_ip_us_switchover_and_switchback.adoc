@@ -390,6 +390,7 @@ link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#removing-met
 
 在執行維護之前、您應發出AutoSupport 一份不知所知的訊息、通知技術支援人員正在進行維護。告知技術支援部門正在進行維護、可防止他們假設發生中斷、而開啟案例。
 
+.關於這項工作
 此工作必須在每MetroCluster 個站台上執行。
 
 .步驟
@@ -413,6 +414,7 @@ link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#removing-met
 
 您必須將組態切換為站台A、才能升級站台B上的平台。
 
+.關於這項工作
 此工作必須在sSite _A上執行
 
 完成此工作之後、Site_A會處於作用中狀態、並為兩個站台提供資料。站台_B處於非作用中狀態、準備開始升級程序。
@@ -452,6 +454,7 @@ image::../media/mcc_upgrade_cluster_a_in_switchover_A900.png[在switchover A900�
 
 == 移除AFF 不完整的平台控制器模組和NVS
 
+.關於這項工作
 如果您尚未接地、請正確接地。
 
 .步驟
@@ -524,6 +527,7 @@ image::../media/drw_a900_move-remove_NVRAM_module.png[移除模組]
 
 您必須在AFF 站台B的兩個節點上、安裝升級套件中所附的支援功能不支援的FASA900或FAS9500軟體與控制器模組請勿將coredump裝置從AFF 無法識別的A700或FAS9000 NVS模組移至AFF 無法識別的A900或FAS9500 NVS模組。
 
+.關於這項工作
 如果您尚未接地、請正確接地。
 
 
@@ -577,7 +581,7 @@ image::../media/drw_9500_remove_PCM.png[控制器模組]
 .. 將e5a連線移至e5b。
 +
 
-NOTE: 叢集所有節點上的插槽7應為空白、如所述  ports from the old nodes to the new nodes 區段。
+NOTE: 叢集所有節點上的插槽7應為空白、如所述 <<將舊節點的連接埠對應至新節點>> 區段。
 
 
 
@@ -599,6 +603,7 @@ NOTE: 叢集所有節點上的插槽7應為空白、如所述  ports from the ol
 * 您需要從ONTAP NetApp支援網站下載系統所需的系統檔案、以及正確版本的支援。
 
 
+.關於這項工作
 如果ONTAP 安裝的版本不同於原始控制器上安裝的版本、則您必須為新的控制器進行網路開機。安裝每個新的控制器之後、您可以從ONTAP 儲存在Web伺服器上的Image9映像來啟動系統。然後、您可以將正確的檔案下載到開機媒體裝置、以供後續系統開機。
 
 .步驟
@@ -635,7 +640,7 @@ NOTE: 您應該使用管理連接埠和IP做為netboot連線。請勿使用資�
 |===
 . 在node_B_1上執行netboot：「netboot」、「http://<web_server_ip/path_to_web_accessible_directory>/netboot/kernel`」
 +
-「<path_to_the_web-易於 存取的目錄>」應該會引導您下載「<ONTAP_VERSION >\_image.tgz」 ,步驟2。
+「<path_to_the_web-易於 存取的目錄>」應該會引導您下載「<ONTAP_VERSION >\_image.tgz」 <<step2-download-software,步驟2>>。
 
 +
 
@@ -804,6 +809,7 @@ FC
 
 您必須將交換器更新為支援新平台機型的組態。
 
+.關於這項工作
 您可以在包含目前正在升級之控制器的站台上執行此工作。在本程序所示的範例中、我們會先升級se_B。
 
 站台A的交換器將在站台A上的控制器升級時升級。
@@ -844,6 +850,7 @@ link:../install-ip/index.html["安裝與組態MetroCluster"]
 
 必須MetroCluster 在新的控制器模組上設定特定的靜態IP bootarg值。這些值必須與舊控制器模組上設定的值相符。
 
+.關於這項工作
 在此工作中、您將使用先前在升級程序中所識別的UUID和系統ID link:task_upgrade_controllers_in_a_four_node_ip_mcc_us_switchover_and_switchback_mcc_ip.html#gathering-information-before-the-upgrade["在升級之前收集資訊"]。
 
 .步驟
@@ -976,6 +983,7 @@ bootarg.kmip.kmip.init.interface`
 
 使用先前收集的系統、將根Aggregate磁碟重新指派給新的控制器模組。
 
+.關於這項工作
 這些步驟會在維護模式中執行。
 
 .步驟
@@ -1361,6 +1369,7 @@ Remote: cluster_A         Configuration state configured
 
 升級控制器模組之後、您必須確認MetroCluster 該組態的健全狀況。
 
+.關於這項工作
 此工作可在MetroCluster 任何節點上執行、以進行不受限的組態設定。
 
 .步驟

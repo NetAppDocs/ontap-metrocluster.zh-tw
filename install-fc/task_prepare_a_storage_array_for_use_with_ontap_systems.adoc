@@ -13,6 +13,7 @@ summary: 在使用ONTAP 陣列LUN開始MetroCluster 以VMware組態設定時、�
 [role="lead"]
 在使用ONTAP 陣列LUN開始MetroCluster 以VMware組態設定時、儲存陣列管理員必須先準備好要搭配ONTAP 使用的儲存設備。
 
+.開始之前
 您打算在組態中使用的儲存陣列、韌體和交換器、必須由特定ONTAP 的版本支援。
 
 * https://mysupport.netapp.com/NOW/products/interoperability["NetApp互通性IMT （僅限部分）"]
@@ -22,6 +23,7 @@ summary: 在使用ONTAP 陣列LUN開始MetroCluster 以VMware組態設定時、�
 * https://hwu.netapp.com["NetApp Hardware Universe"]
 
 
+.關於這項工作
 您必須與儲存陣列管理員協調、才能在儲存陣列上執行此工作。
 
 .步驟

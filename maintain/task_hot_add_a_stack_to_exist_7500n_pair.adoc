@@ -25,6 +25,7 @@ https://mysupport.netapp.com/site/downloads/firmware/disk-shelf-firmware["NetApp
 * 您必須連線至光纖橋接器7500N、並具有可用的SAS連接埠。
 
 
+.關於這項工作
 此程序是假設您使用建議的橋接管理介面：Atto ExpressNAV GUI和Atto QuickNAV公用程式。
 
 您可以使用Atto ExpressNAV GUI來設定及管理橋接器、以及更新橋接器韌體。您可以使用Atto QuickNAV公用程式來設定橋接式乙太網路管理1連接埠。

@@ -28,6 +28,7 @@ image::power-on-off-data-center.gif[關閉資料中心電源]
 
 您必須先關閉站台和所有設備的電源、才能開始進行現場維護或重新配置。
 
+.關於這項工作
 下列步驟中的所有命令都會從站台發出、以維持開機狀態。
 
 .步驟
@@ -601,6 +602,7 @@ switch_A_1# copy running-config startup-config
 [role="lead"]
 維護完成或站台搬移之後、您必須開啟站台電源、重新建立MetroCluster 該組態。
 
+.關於這項工作
 下列步驟中的所有命令都會從您啟動的站台發出。
 
 .步驟

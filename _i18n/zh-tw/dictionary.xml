@@ -3033,7 +3033,6 @@
   <block id="ad6e34d4719cd2f503bdb298311a85e4" category="paragraph">在Fabric中的兩個交換器上使用「portcfglong平行 相距_連接埠號連接埠距離_」命令。</block>
   <block id="43a533d4a7711d238594840dabecdae9" category="paragraph">若要移除ISL ...</block>
   <block id="0251accfd0a01d6b6678e4acc31b0511" category="paragraph">拔下連結（纜線）。</block>
-  <block id="626ba26700ca8d483bcdb1b5d3a41336" category="paragraph">將SFP插入要新增為ISL連接埠的連接埠。請確定您MetroCluster 要新增的交換器*架構附加的支援功能安裝與組態*中已列出這些連接埠、並根據本指南進行連接。</block>
   <block id="30157269456de4c3887b93d1ec060d5c" category="paragraph">若要重新部署ISL ...</block>
   <block id="aef3cfb377e896595d24bea72737dbb1" category="paragraph">重新部署ISL與移除然後新增ISL相同。首先、中斷連結以移除ISL、然後將SFP插入要新增為ISL連接埠的連接埠。</block>
   <block id="93852cc642726104756c52dbcffc5cb5" category="list-text">重新設定訂單外交付（OD）或訂單內交付（IOD）。</block>
@@ -8906,7 +8905,6 @@
   <block id="70371f8efd2b8ae536be80520d74c423" category="paragraph">您必須同步時間、這需要一或多個NTP時間伺服器。</block>
   <block id="85cabef5a0ee43a130abed28ee18d27f" category="paragraph">NTP伺服器1.</block>
   <block id="0a86604d1b452801458d10e0355af6e8" category="paragraph">NTP伺服器2.</block>
-  <block id="f05d34c7805315dc6fc70f4c8224224f" category="section-title">網站A AutoSupport 資訊</block>
   <block id="9bd9fbffad4433a66e131c6c4f75968e" category="paragraph">您必須在AutoSupport 每個節點上設定、這需要下列資訊：</block>
   <block id="6f6da7aec649851c977b6bf4e083977d" category="paragraph">寄件者電子郵件地址</block>
   <block id="cba7670aee94b794bf55fa5db6b8b248" category="paragraph">郵件主機</block>
@@ -8932,8 +8930,6 @@
   <block id="6f126fa7932b6b060d8301f099d74d18" category="section-title">用於叢集對等的站台B生命與連接埠</block>
   <block id="782e54b0ba0da8311c22531d4ba4ee23" category="paragraph">節點2 IC LIF 2</block>
   <block id="5b3864552eeb932b0d36514ae2ad1a25" category="section-title">站台B時間伺服器資訊</block>
-  <block id="5f43c444f290a66ebda4ce17c1b520f5" category="section-title">站台B AutoSupport 的資訊</block>
-  <block id="ece8759484e6ed2004c668a872ecdb9e" category="section-title">站台B SP資訊</block>
   <block id="922040b92464414838bf711f5439a941" category="paragraph">節點1（控制器_B_1）</block>
   <block id="9c7d24fa70f73a1fe4ee0bc58f0d443b" category="paragraph">節點2（控制器_B_2）</block>
   <block id="4a94c7ab81b2c8ac93e5e9e84c29b30c" category="paragraph">將叢集中的節點設定為HA配對</block>
@@ -12634,7 +12630,6 @@
   <block id="e52e46b2e9a285a92c4fb276c84c544e" category="summary">您必須設定NVIDIA IP交換器作為叢集互連和後端MetroCluster 的靜態IP連線。</block>
   <block id="12dfda519b07b8627c017865df4388a6" category="doc">設定NVIDIA IP SN2100交換器</block>
   <block id="056bd4ccfa99eecc32b7151072832cb7" category="paragraph">您必須設定NVIDIA SN2100 IP交換器作為叢集互連和後端MetroCluster 的SIP連線。</block>
-  <block id="80d79e74efb3cf7c2ad45e7e1c96223d" category="section-title">將NVIDIA IP SN2100交換器重設為原廠預設值</block>
   <block id="7c3ceaca0865f6c6621d894d5c1f5274" category="paragraph">您可以選擇下列方法、將交換器重設為原廠預設值。</block>
   <block id="61168c45da9c3d852ce200a8e6fe5441" category="inline-xref">使用RCF檔案選項重設交換器</block>
   <block id="f39c98e742374a832c3bc1976a82c99a" category="list-text"><block ref="4d1a1da583a14975a026f863f46efa9e" category="inline-xref-macro-rx"></block></block>
@@ -12669,7 +12664,6 @@
   <block id="404f235a0e668325747a3bbe34a85550" category="admonition">以下範例說明如何使用命令設定主機名稱（ip_switch_a_1）、IP位址（10.10.10.10）、網路遮罩（255．255．255．255．0（24））和閘道（10．10．10）：「net add hostname&gt;'、「net add interface eth0 ip address&lt;IPAddress/mask&gt;'、「net add interface eth0 ip gateway &lt;gateway&gt;」（網路新增介面eth0 IP閘道&lt;gateway&gt;）。</block>
   <block id="fd56421b5278bf3b069d8729f920f29e" category="list-text">使用「show reboot"命令重新啟動交換器。</block>
   <block id="c55cbcd30055e2eecf2070469bd7907a" category="paragraph">當交換器重新開機時、您可以使用中的步驟套用新的組態 <block ref="67df29514d3fd31c6e0b92fb5ef28c21" category="inline-xref-macro-rx"></block>。</block>
-  <block id="8fa6539999f2d3aff134c30600c80e41" category="section-title">下載並安裝NVIDIA RCF檔案</block>
   <block id="62217055050b5f95ab3ac1b301982bec" category="list-text">交換器軟體已安裝且管理網路已設定完成。</block>
   <block id="8d8734eaa9f80f06163e261ecd8dfd87" category="list-text">您依照步驟、使用方法1或方法2開始安裝交換器。</block>
   <block id="f5029a9b9e4cf676befc86e9839549bd" category="list-text">初始安裝之後、您並未套用任何其他組態。</block>
@@ -12806,4 +12800,26 @@
   <block id="5dae04759c79459bcbe855ce6759cc39" category="list-text">如果您使用的系統已設定為ADP、請選取選項<block ref="3de20f8f6d054d551e879fef0f0fc83c" prefix=" " category="inline-code"></block> 從開機功能表、然後回應<block ref="7fa3b767c460b54a2be4d49030b349c7" prefix=" " category="inline-code"></block> 出現提示時。</block>
   <block id="0bab44e07fec8808eebb4c9baedcc312" category="admonition">您必須依照下列順序更新交換器：switch_a_1、Switch_B_1、Switch_a_2、Switch_B_2。或者、您也可以同時更新交換器Switch_a_1和Switch_B_1、然後再更新Switch_a_2和Switch_B_2。</block>
   <block id="70743d1dc2a6fb8238c19b7d315abc9f" category="admonition">系統會提示您指定虛擬路由和轉送（VRF）。</block>
+  <block id="bd965e38a0c9cf27aa1bde099308e23f" category="paragraph-title">完成後</block>
+  <block id="ebf8099b0d57d09213f64014fd257ea1" category="section-title">[Reset-the switch]將NVIDIA IP SN2100交換器重設為原廠預設值</block>
+  <block id="841793e4a1e005b1b9596c374804395a" category="section-title">[[RCF-file-option]]使用RCF檔案選項重設交換器</block>
+  <block id="261e7c7b4c25948690ce095224937522" category="section-title">[[Cummule-install-option]]使用Cummuls安裝選項重設交換器</block>
+  <block id="66dfac56c9206023b345746e3fd92eae" category="section-title">[[Download-and -install]]下載並安裝NVIDIA RCF檔案</block>
+  <block id="c938b5cfd075c2f653372f886805b37a" category="paragraph-title">使用組態表之前、請先檢閱這些考量事項</block>
+  <block id="3f710cadb0123c693533da68aaf5b596" category="paragraph-title">接下來該怎麼做</block>
+  <block id="0fcee5126250d77f3f33a330fd9c5a17" category="paragraph">將SFP插入要新增為ISL連接埠的連接埠。請確定這些連接埠列於 <block ref="5488151483f7e2bfe24758bbbb4d6f40" category="inline-link-macro-rx"></block> 針對您要新增的交換器。</block>
+  <block id="4b18b6ffcae5c35c0fd047b621fdb59e" category="section-title">站台A；AutoSupport資訊</block>
+  <block id="ed68524d33cb83b7bc35eb3921cd5e50" category="section-title">站台A nbsp；SP資訊</block>
+  <block id="75cb9d2c8e6c492546bef17abe8e5a69" category="section-title">站台B；AutoSupport資訊</block>
+  <block id="336d72b5902fa5007c0f1b27db5d4cb7" category="section-title">站台B nbsp；SP資訊</block>
+  <block id="0ab984d91ab0a037bdf692bf0e73c349" category="paragraph-title">重要事項</block>
+  <block id="c6e21fae72937c189cf8456f90c8f3a5" category="section-title">網站A nbsp；AutoSupport 資訊</block>
+  <block id="9416a5cc051e7f0bc3db126192f4a9c8" category="section-title">站台A nbsp；SP資訊</block>
+  <block id="ac3e6c4174906200ce86dcb34e0c1feb" category="section-title">站台B；AutoSupport資訊</block>
+  <block id="be9e3196b872778c6a28445130404d80" category="section-title">站台B nbsp；SP資訊</block>
+  <block id="9d103bd3bd0b1f3ca173693727680cd3" category="section-title">[Reset-the_boot-recovery ]重設boot_recovery和RDB_rebootargs</block>
+  <block id="ec18da962520ae390c485b5c542ac279" category="paragraph-title">相關工作</block>
+  <block id="c1902fd1f00ac0b0e269fd37dd64f7e8" category="section-title">網站A nbsp；AutoSupport 資訊</block>
+  <block id="a321560b2ae4d0c708a5027ac5562270" category="section-title">站台B nbsp；AutoSupport 資訊</block>
+  <block id="87713443a9395f659a438c305d6fa70d" category="section-title">站台B nbsp；SP資訊</block>
 </blocks>

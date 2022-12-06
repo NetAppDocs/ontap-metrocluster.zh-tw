@@ -421,15 +421,15 @@ Tgt VendorID ProductID        Type        SerialNumber
  a| 
 正確
  a| 
-重複 ,步驟11. 每個剩餘的橋接器。
+重複 <<step11-verify-each-bridge-detect,步驟11.>> 每個剩餘的橋接器。
 
 
 
  a| 
 不正確
  a| 
-.. 檢查SAS纜線是否鬆脫、或重複修正SAS纜線 ,步驟10。
-.. 重複 ,步驟11.。
+.. 檢查SAS纜線是否鬆脫、或重複修正SAS纜線 <<step10-cable-shelves-bridges,步驟10>>。
+.. 重複 <<step11-verify-each-bridge-detect,步驟11.>>。
 
 
 |===
@@ -1740,4 +1740,5 @@ https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp
 . 如果適用、請針對合作夥伴網站重複此程序。
 
 
+.相關資訊
 link:concept_in_band_management_of_the_fc_to_sas_bridges.html["FC至SAS橋接器的頻內管理"]

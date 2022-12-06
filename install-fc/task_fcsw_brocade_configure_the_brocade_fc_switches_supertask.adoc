@@ -66,6 +66,7 @@ https://mysupport.netapp.com/matrix["NetApp互通性對照表工具IMT （不含
 
 您需要針對MetroCluster 交換器的某些權限才能進行整個交換器的功能。您必須在所有四個交換器上安裝這些授權。
 
+.關於這項工作
 此組態具有下列Brocade授權需求：MetroCluster
 
 * 使用多個ISL的系統之主幹授權（如建議）。
@@ -92,6 +93,7 @@ https://mysupport.netapp.com/matrix["NetApp互通性對照表工具IMT （不含
 
 您必須將交換器設為原廠預設值、以確保組態成功。您也必須為每個交換器指派唯一的名稱。
 
+.關於這項工作
 在本程序的範例中、Fabric包含BrocadeSwitchA和BrocadeSwitchB。
 
 .步驟
@@ -325,6 +327,7 @@ FC_switch_B_1:admin> reboot
 
 您必須為Brocade交換器設定基本的全域設定、包括網域ID。
 
+.關於這項工作
 本工作包含兩MetroCluster 個景點的每個交換器都必須執行的步驟。
 
 在此程序中、您可以為每個交換器設定唯一的網域ID、如下例所示。在範例中、網域ID 5和7格式為fnetfa_1、網域ID 6和8格式為fnetfa_2。
@@ -648,6 +651,7 @@ FC_switch_B_1:admin> switchcfgpersistentenable
 
 您必須為Brocade交換器設定基本的全域設定、包括網域ID。
 
+.關於這項工作
 您必須在MetroCluster 這兩個景點的每個交換器上執行步驟。在此程序中、您可以設定每個交換器的網域ID、如下列範例所示：
 
 * FC_switch_a_1已指派給網域ID 5
@@ -738,6 +742,7 @@ switchenable
 ----
 
 
+.相關資訊
 link:concept_prepare_for_the_mcc_installation.html["使用Brocade DCX 8510-8交換器的需求"]
 
 
@@ -759,6 +764,7 @@ https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"]
 * ISL連結必須有專用的Lambda、而且Brocade必須支援距離、交換器類型和Fabric作業系統（FOS）的連結。
 
 
+.關於這項工作
 在發出「portCfgLong Distance」命令時、您不得使用L0設定。相反地、您應該使用LE或LS設定、以最低LE距離層級設定Brocade交換器上的距離。
 
 在使用xWM/TDM設備時、切勿在發出「portCfgLong Distance」命令時使用LD設定。您應該改用LE或LS設定來設定Brocade交換器的距離。
@@ -1238,9 +1244,10 @@ FC_switch_B_1:admin> trunkshow
 ----
 
 
-. 重複 ,步驟1. 透過 ,步驟10 適用於第二個FC交換器網路。
+. 重複 <<step1_brocade_config,步驟1.>> 透過 <<step10_brocade_config,步驟10>> 適用於第二個FC交換器網路。
 
 
+.相關資訊
 link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）"]
 
 
@@ -1249,6 +1256,7 @@ link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.htm
 
 使用10 Gbps VE連接埠（使用FCIP）用於ISL時、您必須在每個連接埠上建立IP介面、並在每個通道中設定FCIP通道和電路。
 
+.關於這項工作
 此程序必須在MetroCluster 整個交換器架構上執行、以支援整個流程。
 
 本程序中的範例假設兩台Brocade 7840交換器具有下列IP位址：
@@ -1404,6 +1412,7 @@ FC_switch_A_1:root> portshow fcipcircuit all
 
 使用兩個40 GbE VE-port（使用FCIP）用於ISL時、您必須在每個連接埠上建立IP介面、並在每個通道中設定FCIP通道和電路。
 
+.關於這項工作
 此程序必須在MetroCluster 整個交換器架構上執行、以支援整個流程。
 
 本程序的範例使用兩個交換器：
@@ -1556,6 +1565,7 @@ FC_switch_A_1:root> portshow fcipcircuit all
 
 您必須在FC交換器上設定非E連接埠。在架構組態中MetroCluster 、這些連接埠可將交換器連接至HBA啟動器、FC-VI互連和FC對SAS橋接器。必須針對每個連接埠執行這些步驟。
 
+.關於這項工作
 在下列範例中、連接埠會連接FC對SAS橋接器：
 
 --
@@ -1645,6 +1655,7 @@ Non-DFE                             ..  ..  ..  ..  ..  ..  ..  ..  ..
 
 如果您使用Brocade G620交換器並在ISL上啟用壓縮、則必須在交換器上的每個E連接埠上進行設定。
 
+.關於這項工作
 這項工作必須在使用ISL的兩部交換器上的ISL連接埠上執行。
 
 .步驟
@@ -4268,6 +4279,7 @@ MC1_INIT_GRP_2_STIR_B_STK_GRP_2_BOD_FC2
 
 您必須將交換器連接埠指派給不同的區域、以區隔控制器和儲存流量、並針對FC-VI連接埠和儲存連接埠的區域。
 
+.關於這項工作
 下列步驟使用適用於MetroCluster 整個過程的標準分區設定。
 
 link:task_fcsw_brocade_configure_the_brocade_fc_switches_supertask.html["FC-VI連接埠分區"]
@@ -4396,6 +4408,7 @@ NOTE: Brocade G620交換器上的ISL加密支援僅支援ONTAP 於支援版本9.
 * 您必須檢閱交換器和Fabric作業系統版本的Brocade文件、以確認頻寬和連接埠限制。
 
 
+.關於這項工作
 這些步驟必須在同一個Fabric中的兩個交換器上執行。
 
 
@@ -4418,6 +4431,7 @@ NOTE: Brocade G620交換器上的ISL加密支援僅支援ONTAP 於支援版本9.
 
 停用虛擬架構之後、您必須在Fabric中的兩個交換器上設定有效負載或資料欄位大小。
 
+.關於這項工作
 資料欄位大小不得超過2048。
 
 .步驟
@@ -4444,6 +4458,7 @@ NOTE: Brocade G620交換器上的ISL加密支援僅支援ONTAP 於支援版本9.
 
 您必須設定驗證原則及相關參數。
 
+.關於這項工作
 命令必須在交換器主控台執行。
 
 .步驟
@@ -4585,4 +4600,5 @@ Port  configured     Active
 ----
 
 
+.接下來該怎麼做
 在MetroCluster 其他架構的交換器上執行所有步驟、以進行一個整體配置。

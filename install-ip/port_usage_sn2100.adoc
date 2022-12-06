@@ -32,6 +32,7 @@ summary: 連接埠在MetroCluster 一個靜態IP組態中的使用取決於交�
 * 八節點MetroCluster 的不全功能組態
 
 
+.使用組態表之前、請先檢閱這些考量事項
 如果您連接多MetroCluster 個支援的組態、請依照相應的表格進行。例如：
 
 * 如果您連接兩MetroCluster 個AFF 類型為「叢集A700」的四節點位向組態、請連接MetroCluster 第一個顯示為MetroCluster 「支援1」的資訊、然後連接MetroCluster 另一個顯示為MetroCluster 「支援2」的資訊。AFF

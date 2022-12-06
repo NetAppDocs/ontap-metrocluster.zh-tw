@@ -13,6 +13,7 @@ summary: 如果您已更換災難站台中的FC交換器、則必須使用廠商
 [role="lead"]
 如果您已更換災難站台中的FC交換器、則必須使用廠商專屬的程序來設定。您必須設定一個交換器、確認存續站台上的儲存存取不受影響、然後設定第二個交換器。
 
+.相關工作
 link:../install-fc/concept_port_assignments_for_fc_switches_when_using_ontap_9_0.html["使用9.0時FC交換器的連接埠指派"]
 
 link:../install-fc/concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）"]
@@ -23,6 +24,7 @@ link:../install-fc/concept_port_assignments_for_fc_switches_when_using_ontap_9_1
 
 您必須使用此Brocade專屬程序來設定替換交換器並啟用ISL連接埠。
 
+.關於這項工作
 本程序的範例以下列假設為基礎：
 
 * 站台A是災難站台。
@@ -147,6 +149,7 @@ Index Port Address Media Speed State  Proto
 
 您必須使用Cisco專屬的程序來設定替換交換器並啟用ISL連接埠。
 
+.關於這項工作
 本程序的範例以下列假設為基礎：
 
 * 站台A是災難站台。

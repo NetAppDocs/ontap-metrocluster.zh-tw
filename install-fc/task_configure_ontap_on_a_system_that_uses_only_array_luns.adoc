@@ -19,6 +19,7 @@ summary: 如果您要設定ONTAP 搭配陣列LUN使用的功能、則必須設�
 * 儲存陣列管理員必須已設定LUN安全性。
 
 
+.關於這項工作
 您必須設定要搭配陣列LUN使用的每個節點。如果節點位於HA配對中、則必須先在一個節點上完成組態程序、然後再繼續在合作夥伴節點上進行組態設定。
 
 .步驟
@@ -197,6 +198,8 @@ This node has its management address assigned and is ready for cluster setup.
 ----
 
 
+.完成後
 在ONTAP 您要搭配陣列LUN使用的所有節點上設定好「功能」之後、您應該完成https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-ssg/home.html["叢集設定程序"]
 
+.相關資訊
 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.vs-irrg/home.html["介紹虛擬化安裝需求與參考資料FlexArray"]

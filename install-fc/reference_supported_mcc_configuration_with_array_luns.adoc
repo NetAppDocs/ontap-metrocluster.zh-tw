@@ -48,4 +48,5 @@ summary: 您可以使用MetroCluster 陣列LUN來設定任一項資訊功能組�
 
 | 支援自動切換 | 是的 | 是的 | 是的 | 是的 
 |===
+.相關資訊
 link:concept_considerations_differences.html["不一樣的地方ONTAP MetroCluster"]

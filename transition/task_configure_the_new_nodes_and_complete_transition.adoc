@@ -279,6 +279,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
 
 為了改善恢復能力、系統磁碟區應從控制器節點_a_1-IP移至控制器節點_a_2-IP、也應從節點_B_1-IP移至節點_B_2-IP。您必須在系統磁碟區的目的地節點上建立鏡射Aggregate。
 
+.關於這項工作
 系統磁碟區的名稱為「'DV\_CRS_*\_A'」或「'DV_CRS_*\_B'」。 名稱「`_a`」和「`_B'」與本節中使用的站台_A和站台_B參照無關、例如、MDV_CRS_*不與站台_A相關
 
 .步驟

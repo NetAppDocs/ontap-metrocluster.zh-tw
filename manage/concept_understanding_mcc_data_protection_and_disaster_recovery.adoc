@@ -35,6 +35,7 @@ summary: 瞭解MetroCluster NetApp如何保護資料、並提供透明的故障�
 
 image::../media/mcc_hw_architecture_local_ha.gif[MCC HW架構本機Ha]
 
+.相關資訊
 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-hacg/home.html["高可用度組態"^]
 
 
@@ -105,6 +106,7 @@ image::../media/mcc_svms_after_switchover.gif[MCC切換後的服務]
 
 
 
+.相關資訊
 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sag/home.html["系統管理"^]
 
 
@@ -313,6 +315,7 @@ http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-hacg/home.html["高�
 
 對於雙節點組態、在HA配對中觸發自動儲存容錯移轉的相同事件會觸發自動非計畫性切換（AUSO）。這表示雙節點MetroCluster 的「架構」組態具有與HA配對相同的保護層級。
 
+.相關資訊
 link:concept_understanding_mcc_data_protection_and_disaster_recovery.html["在不完整的FC組態中自動進行非計畫性切換MetroCluster"]
 
 

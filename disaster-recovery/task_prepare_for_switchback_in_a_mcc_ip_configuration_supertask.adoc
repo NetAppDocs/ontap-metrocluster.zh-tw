@@ -13,6 +13,7 @@ summary: 您必須執行某些工作、才能準備MetroCluster 好進行切換�
 [role="lead"]
 您必須執行某些工作、才能準備MetroCluster 好進行切換作業所需的Sfor the switchback IP組態。
 
+.關於這項工作
 &KB;
 
 image::../media/workflow_preparing_for_switchback_in_mcc_ip_dr.gif[準備在MCC IP DR中切換的工作流程]

@@ -61,6 +61,7 @@ NOTE: 如果存續的叢集無法再透過FC（內華達互連和儲存設備）
 * 在任何情況下、斷路器軟體可以到達至少一個節點或災難站台的叢集介面、或是在正常運作的站台仍可透過FC（內華達互連與儲存設備）或叢集間對等來到達災難站台的任一節點
 
 
+.相關資訊
 link:concept_risks_and_limitation_of_using_mcc_tiebreaker_in_active_mode.html["在MetroCluster 作用中模式中使用ESITirepreaker的風險和限制"]
 
 

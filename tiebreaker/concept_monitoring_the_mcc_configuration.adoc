@@ -19,6 +19,7 @@ summary: 藉由讓您監控功能、評估傳送給NetApp客戶支援的SNMP事�
 
 根據預設、AutoSupport 在安裝Tiebreaker軟體一週後、會將這些資訊傳送給NetApp。觸發AutoSupport 故障通知的事件包括斷路器軟體故障、MetroCluster 偵測到有關故障狀況的資訊、或是未知MetroCluster 的故障設定狀態。
 
+.開始之前
 您必須能夠直接存取才能設定AutoSupport 不必要訊息。
 
 .步驟

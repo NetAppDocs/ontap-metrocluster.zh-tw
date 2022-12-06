@@ -13,6 +13,7 @@ summary: 您必須執行MetroCluster flexconfigure -refreshtrue命令、在已�
 [role="lead"]
 您必須執行「MetroCluster flexconfigure -refreshtrue」命令、才能在已新增MetroCluster 至該組態的節點上啟動資料保護。
 
+.關於這項工作
 您在MetroCluster 新增的其中一個節點上發出「flexconfigure -refreshtrue」命令一次、以重新整理MetroCluster 該組態。您不需要在每個站台或節點上發出命令。
 
 「flexconfigure -refreshtrue」命令會自動配對兩個節點、使兩個叢集的系統ID最低、成為災難恢復（DR）合作夥伴。MetroCluster在四節點MetroCluster 的不全功能組態中、有兩個DR合作夥伴配對。第二個DR配對是從兩個具有較高系統ID的節點建立。

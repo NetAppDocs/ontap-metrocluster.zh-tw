@@ -13,6 +13,7 @@ summary: 此支援僅安裝原生（NetApp）磁碟櫃、僅限陣列LUN、或�
 
 不支援陣列LUN的系統。AFF
 
+.相關資訊
 link:task_configure_the_mcc_hardware_components_fabric.html["佈線連接架構MetroCluster 的不整合式架構組態"]
 
 link:concept_planning_for_a_mcc_configuration_with_array_luns.html["規劃及安裝MetroCluster 含有陣列LUN的功能不均的組態"]

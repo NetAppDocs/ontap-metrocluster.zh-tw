@@ -11,6 +11,7 @@ summary: 您可以下載並安裝在第三個站台MetroCluster 上、也可以�
 [role="lead"]
 您可以下載並安裝在第三個站台MetroCluster 上、也可以下載或安裝《斷位器》軟體、或是從ONTAP 《讚賞9.7》開始、ONTAP 即「《不知道如何使用」。
 
+.開始之前
 您必須有一個Linux主機、可以透過網路連線到MetroCluster 位在整個過程中的兩個叢集。具體要求請參閱MetroCluster 《斷器》ONTAP 或《資訊系統》文件。
 
 如果您要連線至現有的斷路器或ONTAP 不知如何使用的資料保護器執行個體、則需要使用者名稱、密碼和斷路器或訊務管理器服務的IP位址。
@@ -21,6 +22,7 @@ link:concept_mediator_requirements.html["針對ONTAP 非計畫性自動切換設
 
 如果您必須安裝新的Tiebreaker軟體執行個體、請遵循 link:../tiebreaker/concept_overview_of_the_tiebreaker_software.html["安裝及設定軟體的指示"]。
 
+.關於這項工作
 您無法同時使用MetroCluster 相同ONTAP 的ESITireaker軟體和ESITERator MetroCluster 、以及相同的ESITESE組態。
 
 link:../install-ip/concept_considerations_mediator.html["使用ONTAP 《不知道如何使用》或MetroCluster 《斷邊器》的考量"]

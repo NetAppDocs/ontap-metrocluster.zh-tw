@@ -13,6 +13,7 @@ summary: 您應該發出AutoSupport 一份消息、通知NetApp技術支援人�
 [role="lead"]
 您應該發出AutoSupport 一份消息、通知NetApp技術支援人員維護已完成。
 
+.關於這項工作
 此工作必須在每MetroCluster 個站台上執行。
 
 .步驟

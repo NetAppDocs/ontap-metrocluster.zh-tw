@@ -130,6 +130,7 @@ Node-A-1    Failed         MetroCluster check failed. Reason : MCC check showed 
 
 在升級之前、如果根磁碟區已加密、您必須先收集備份金鑰和其他資訊、才能以舊的加密根磁碟區來啟動新的控制器。
 
+.關於這項工作
 此工作是在現有MetroCluster 的不只是功能的基礎上執行。
 
 .步驟
@@ -263,8 +264,10 @@ dr-group-id cluster    node          node-systemid dr-partner-systemid
 
 收集資訊並恢復作業之後、自動化會繼續進行切換作業。
 
+.關於這項工作
 自動化作業會啟動切換、「修復集合體」和「修復根集合體」作業。完成這些作業之後、此作業會暫停*暫停以供使用者介入*、以便您使用先前收集的「sids」、從Flash備份將控制器機架安裝、啟動合作夥伴控制器、並將根集合體磁碟重新指派給新的控制器模組。
 
+.開始之前
 在啟動切換之前、自動化作業會暫停、以便您手動確認站台B的所有生命都是「up」如有必要、請將任何「'down」的lifs移至「up」、然後使用「system controller replace resume」命令恢復自動化作業。
 
 
@@ -275,7 +278,7 @@ dr-group-id cluster    node          node-systemid dr-partner-systemid
 
 .關於這項工作
 * 此工作必須在每個舊節點上執行。
-* 您將使用中收集的資訊  for the upgrade。
+* 您將使用中收集的資訊 <<準備升級>>。
 
 
 .步驟
@@ -593,6 +596,7 @@ FC
 
 使用先前收集的「sids」、將根Aggregate磁碟重新指派給新的控制器模組
 
+.關於這項工作
 此工作會在維護模式中執行。
 
 舊系統ID已在中識別 link:task_upgrade_controllers_system_control_commands_in_a_four_node_mcc_fc.html#gathering-information-before-the-upgrade["在升級之前收集資訊"]。
@@ -709,6 +713,7 @@ aggr0_node_b_1-root        online      raid_dp, aggr    root, nosnap=on,
 
 您可以重新設定VLAN和介面群組。如有必要、請先手動修改叢集lifs的連接埠和廣播網域詳細資料、再使用「系統控制器置換resume」命令繼續作業。
 
+.關於這項工作
 此工作必須在所有新控制器上執行。
 
 .步驟

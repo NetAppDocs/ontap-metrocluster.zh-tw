@@ -13,6 +13,7 @@ summary: 您可以從ONTAP 無法使用的知識庫IP組態中移除此「資訊
 [role="lead"]
 您可以從ONTAP 無法使用的IP組態中取消設定「無法使用的資訊」服務MetroCluster 。
 
+.開始之前
 您必須已在ONTAP 兩MetroCluster 個景點都能到達的網路位置上成功安裝及設定好《支援中心》。
 
 .步驟
