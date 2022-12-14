@@ -1987,31 +1987,22 @@
   <block id="b8aadb18f76b6dce21460aec77a1d7ad" category="paragraph">10006/ TCP與udp</block>
   <block id="72a8be4c477bcb998202c426a16c5f77" category="paragraph">硬體輔助</block>
   <block id="35e1ae865b96af2cda109734752c7983" category="paragraph">4444 / TCP</block>
-  <block id="169ba71a4cacfeff085e3e52ecd7cc5c" category="summary">從NetApp 9.7開始ONTAP 、MetroCluster 只要符合NetApp規格、即可支援未經NetApp驗證的交換器。</block>
   <block id="598ab8da90f7b08fb85eebf2cdb5b642" category="doc">使用MetroCluster相容交換器的考量事項</block>
-  <block id="436efa93c0f96363240fcf2f6fe616f3" category="paragraph">NetApp提供的NetApp IP交換器已通過NetApp驗證。MetroCluster從NetApp 9.7開始ONTAP 、MetroCluster 只要符合NetApp規格、即可支援未經NetApp驗證的交換器。</block>
-  <block id="a1a264e616e24563d4b8f8b5795ea403" category="section-title">一般要求</block>
   <block id="0fd2020965353993ca7470eaf762f030" category="paragraph">這些需求顯示如何設定符合MetroCluster的交換器、而不使用參考組態（RCF）檔案。</block>
   <block id="73c8b60f13f3d62360643fda70255745" category="list-text">連接MetroCluster 至節點的交換器可承載非MetroCluster流量。</block>
-  <block id="cf098cf2e14a69fa3c2b33958b968ef8" category="list-text">僅支援提供專用連接埠以用於無交換器式叢集互連的平台。不AFF 支援FAS2750和S4A220等平台、因為MetroCluster 無法使用相同MetroCluster 的網路連接埠來傳輸流量和進行互連。</block>
-  <block id="1aadfb9e7ccba10af1978cf9b5713b16" category="paragraph">不支援將本機叢集連線連線至符合MetroCluster的交換器。</block>
   <block id="c33e2f23b789dd4d078b0a5b51963f75" category="list-text">您可以將此介面連接至任何可設定以符合需求的交換器連接埠。MetroCluster</block>
   <block id="33205e28b19e76b7edcb7bc5cad77101" category="list-text">交換器連接埠的速度必須為25 Gbps（FAS8200 AFF 和人民幣2、300平台）、而其他所有平台（40 Gbps或100 Gbps）的速度至少必須為40 Gbps。</block>
   <block id="145dacb3237a86979e113708eea5ccbb" category="list-text">需要四個IP交換器、每個交換器架構需要兩個。</block>
   <block id="92f69bca586043acecbd273c5ea2d217" category="list-text">ISL必須為10 Gbps或更高、且必須根據MetroCluster 需求調整適當大小、才能承受整個系統的負載。</block>
-  <block id="a4818aee56ba88705889fb4cb2e4d582" category="list-text">該組態必須連線至兩個網路。MetroCluster不MetroCluster 支援將兩個支援介面連接至同一個網路或交換器。每MetroCluster 個節點都必須連接至兩個網路交換器。</block>
   <block id="2d8f234d7714dedd101fd476b6581d02" category="list-text">網路必須符合下列需求：</block>
   <block id="81469bbc8b1e22a393e56fdba3d5a1f3" category="list-text">在使用MetroCluster相容交換器的支援範本MetroCluster IP組態中、不ONTAP 支援還原至版本9.6或更早版本。</block>
   <block id="e2cccfe2013ba1930aabf09a154e5ffe" category="list-text">9216的MTU必須設定在所有傳輸MetroCluster 到此資訊的交換器上。</block>
-  <block id="b60ff3ae4eb5663308d013544c57fe67" category="section-title">交換器和纜線需求</block>
   <block id="0d3b7c7f0d8918f762dea13c0abfd697" category="list-text">交換器必須支援QoS /流量分類。</block>
   <block id="4ff5b50b72910d305ce187223bd1d86d" category="list-text">交換器必須支援明確的壅塞通知（ECN）。</block>
   <block id="d1e15e63c1fd6cbe9ab03ae500fe90cc" category="list-text">交換器必須支援L4連接埠VLAN負載平衡原則、才能保留路徑上的順序。</block>
   <block id="d40f7578a0d14b583c64b9e1238ce357" category="list-text">交換器必須支援L2流量控制（L2 FC）。</block>
   <block id="0cbb4d7d4f143fb521b8b3f87302bd06" category="list-text">連接節點與交換器的纜線必須向NetApp購買。交換器廠商必須支援我們提供的纜線。</block>
-  <block id="e646e16bee8b32e6ea29e30d01970a6c" category="section-title">限制</block>
   <block id="bd7d6c816fdd7d9da30ecc293b76db32" category="list-text">重新整理四節點MetroCluster 的靜態IP組態</block>
-  <block id="4d9a55c7ba617b9a2f2637145490e989" category="admonition">遺失值表示平台不受支援。</block>
   <block id="419f3742e6de8e0ec4b22cce005e7630" category="cell">平台</block>
   <block id="4995a003b2b1032b64bcc8805dea3b99" category="cell">網路速度（Gbps）</block>
   <block id="f899139df5e1059396431415e770c6dd" category="paragraph">100</block>
@@ -2036,7 +2027,6 @@
   <block id="1e3c8e05b670c33032815dc9f814a471" category="paragraph">所有往返連接埠65200的TCP流量都會對應至儲存設備（iSCSI）類別。連接埠10006往返的所有TCP流量都會對應至RDMA類別。</block>
   <block id="7232053d17d6d458acd3dc6a3b06e8ef" category="paragraph">您必須設定入口原則。入口原則會將分類的流量對應至不同的COS群組。在此範例中、RDMA流量會對應至COOS群組5、iSCSI流量則對應至COOS群組4。</block>
   <block id="8d099e100c2db650c7b3c9471d6c3021" category="paragraph">您必須在交換器上設定出口原則。出口原則會將流量對應至出口佇列。在此範例中、RDMA流量會對應至佇列5、iSCSI流量則對應至佇列4。</block>
-  <block id="25bc22925b2f9068c9fb64ebc4252797" category="paragraph">您需要在MetroCluster ISL上設定具有不支援的交換器、但無法連線至MetroCluster 任何的支援介面。在這種情況下、流量已分類、只需對應至適當的佇列。在下列範例中、所有的COS5流量都會對應至類別RDMA、而所有的COS4流量都會對應至類別iSCSI。請注意、這會影響*所有*的COS5和COS4流量、而不只是MetroCluster 影響到各種流量。如果您只想對應MetroCluster 此資訊流量、則必須使用上述類別地圖、使用存取群組來識別流量。</block>
   <block id="40188be7ae52fbad0eec10d341d64dca" category="section-title">設定ISL</block>
   <block id="139ee81500499fa6a20d90091e35aedf" category="paragraph">設定允許的VLAN時、您可以設定「主幹」模式連接埠。</block>
   <block id="7f46b9452d630356ab3904d38691b3f5" category="paragraph">有兩個命令：一個是*設定*允許的VLAN清單、另一個是*新增*至現有允許的VLAN清單。</block>
@@ -12822,4 +12812,25 @@
   <block id="c1902fd1f00ac0b0e269fd37dd64f7e8" category="section-title">網站A nbsp；AutoSupport 資訊</block>
   <block id="a321560b2ae4d0c708a5027ac5562270" category="section-title">站台B nbsp；AutoSupport 資訊</block>
   <block id="87713443a9395f659a438c305d6fa70d" category="section-title">站台B nbsp；SP資訊</block>
+  <block id="a43f4b9d18f498b517f7dd9eede1654d" category="inline-link-macro">NetApp Hardware Universe</block>
+  <block id="d5b877d116ca4502862349e4a1fea007" category="summary">中列為支援交換器的支援IP交換器MetroCluster <block ref="81064abf44a077ab44fc1d50feb7e8e0" category="inline-link-macro-rx"></block> NetApp提供的是NetApp驗證的。從推出支援MetroCluster的交換器開始ONTAP 、MetroCluster 即可開始使用符合MetroCluster的IP組態。這些交換器未經NetApp驗證、但符合NetApp規格。不過、NetApp並未針對任何未經驗證的交換器提供支援服務、疑難排解和/或組態。</block>
+  <block id="4275c1aa69fa12af30bea79f33b6ab8b" category="section-title">NetApp驗證的交換器</block>
+  <block id="1891f9d47aa8c3949d63aba63cfd538e" category="paragraph">如果交換器符合下列所有條件、則NetApp會驗證該交換器：</block>
+  <block id="cf8d2c69254b785016eeecea385f1512" category="list-text">交換器是由NetApp提供、做為MetroCluster 整個知識區塊IP組態的一部分</block>
+  <block id="57bc5d4a7e0c60e62b42b542a38a19d8" category="list-text">交換器列於 <block ref="81064abf44a077ab44fc1d50feb7e8e0" category="inline-link-macro-rx"></block> 作為「MetroCluster over IP連線」下的支援交換器</block>
+  <block id="44f5b263d419c190d99a3b681f245dad" category="list-text">交換器僅用於連接MetroCluster S24 IP控制器、以及在某些組態中、NS224磁碟機櫃</block>
+  <block id="643a5bb556beb7d67fd22c0d3de4c759" category="list-text">交換器是使用NetApp提供的RCF（參考組態檔案）進行設定。</block>
+  <block id="579d6ce20a4bdaad6dff3e52bc4e42ba" category="paragraph">任何不符合這些條件的交換器都是*非* NetApp驗證的交換器。</block>
+  <block id="92bf95b2bb1fdf762ca6c2507b432332" category="section-title">符合MetroCluster的交換器</block>
+  <block id="fb0fc5c459c3f4029ec7b03dd85a909a" category="paragraph">MetroCluster相容的交換器未通過NetApp驗證MetroCluster 、但若符合下列需求與組態準則、則可用於下列的列舉IP組態。</block>
+  <block id="f2153c30c0089338d3848e4eaa64fc3e" category="admonition">NetApp不提供任何未通過驗證的MetroCluster相容交換器的支援服務、疑難排解和/或組態。</block>
+  <block id="2e3b6cbd29fbe534f65b62b67e974e1a" category="section-title">MetroCluster相容交換器的一般需求</block>
+  <block id="e167cf704969390451b66b4604d89501" category="list-text">只有為無交換器叢集互連提供專用連接埠的平台、才能搭配符合MetroCluster的交換器使用。無法AFF 使用FAS2750和S4A220等平台、因為MetroCluster 無法使用相同MetroCluster 的網路連接埠、因為無法使用某些流量和不互連的流量。</block>
+  <block id="832bfdec136453c59e06674dc5b1fbfc" category="paragraph">MetroCluster相容的交換器不得用於本機叢集連線。</block>
+  <block id="cef3763dc37c86b326ba9f36674ba2b4" category="list-text">該組態必須連線至兩個網路。MetroCluster無法將此介面連線至相同的網路或交換器MetroCluster 。每MetroCluster 個節點都必須連接至兩個網路交換器。</block>
+  <block id="320aeba3423b75436241c00392964782" category="section-title">MetroCluster相容交換器的交換器和纜線需求</block>
+  <block id="00da554e6014936ea814019f7270b104" category="section-title">MetroCluster相容交換器的限制</block>
+  <block id="68d8047cbf72a612dd739f574baa912c" category="paragraph">任何需要本機叢集連線至交換器的組態或功能都無法使用。例如、下列組態和程序無法搭配MetroCluster相容的交換器使用：</block>
+  <block id="999a0234ad26235f40e860b0131203f6" category="admonition">缺少值表示平台無法搭配MetroCluster相容的交換器使用。</block>
+  <block id="e6e94fa732001e55f7fcf67c01c5f249" category="paragraph">您可能需要設定一個交換器MetroCluster 、使其在ISL上具有不實的流量、但無法連線到MetroCluster 任何的介面。在這種情況下、流量已分類、只需對應至適當的佇列。在下列範例中、所有的COS5流量都會對應至類別RDMA、而所有的COS4流量都會對應至類別iSCSI。請注意、這會影響*所有*的COS5和COS4流量、而不只是MetroCluster 影響到各種流量。如果您只想對應MetroCluster 此資訊流量、則必須使用上述類別地圖、使用存取群組來識別流量。</block>
 </blocks>
