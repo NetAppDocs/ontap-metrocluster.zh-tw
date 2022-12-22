@@ -17,8 +17,11 @@ summary: 從功能支援的9.8開始ONTAP 、您可以將MetroCluster 組態擴�
 * 執行ONTAP 支援此程序的系統支援使用支援的版本。
 * 如果您要升級IP交換器、則在執行此更新程序之前、應該先升級這些交換器。
 * 「舊節點」指您要取代的節點。
-* 此程序不支援AFF 使用Broadcom Bes - 53248交換器的32個系統。
-* FAS2750、AFF FASA220、FAS500f和A250系統不支援此程序。
+* 您只能使用MetroCluster 此程序在不含任何功能的基礎架構組態中重新整理特定的平台機型。
++
+** 如需支援何種平台升級組合的資訊、請參閱MetroCluster 中的《The不實IP更新表》 link:upgrade/concept_choosing_tech_refresh_mcc.html#supported-metrocluster-ip-tech-refresh-combinations["選擇系統重新整理方法"]。
+
+
 
 
 .步驟

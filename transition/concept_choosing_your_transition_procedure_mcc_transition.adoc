@@ -11,6 +11,22 @@ summary: 您必須根據現有MetroCluster 的不規則功能（NetApp）組態�
 
 
 [role="lead"]
+轉換至MetroCluster 靜態IP組態時、您必須結合支援的平台機型。您也應該確保MetroCluster 針對從MetroCluster 靜態FC組態轉換為MetroCluster 靜態IP組態的負載、使用適當的尺寸來調整此平台。
+
+下表顯示支援的平台組合。您可以從左欄中的平台轉換至右側欄中所列的平台、如彩色表格儲存格所示。
+
+例如MetroCluster 、支援從由AFF8060控制器模組組成的FESFC組態、轉換為AFF 由FESA400控制器模組組成的IP組態。
+
+image::../media/metrocluster_fc_ip_transition_matrix.png[光纖通道IP轉換對照表MetroCluster]
+
+* 附註1：此平台組合需要ONTAP 使用更新版本的支援。
+* 附註2：FC節點上的本機叢集介面必須使用40GbE介面。
+* 附註3：FC節點上的本機叢集介面必須使用100GbE介面。
+
+
+
+NOTE: 請勿超過平台「下限」的任何物件限制。套用兩個平台的較低物件限制。請參閱 link:https://hwu.netapp.html["Hardware Universe"^] 適用於平台限制。
+
 您必須根據現有MetroCluster 的不規則功能（NetApp）組態、選擇轉換程序。
 
 轉換程序會以IP交換器網路取代後端FC交換器網路或FC-VI連線。確切的程序取決於您的初始組態。
@@ -31,7 +47,7 @@ summary: 您必須根據現有MetroCluster 的不規則功能（NetApp）組態�
  a| 
 新平台支援新的儲存櫃。
  a| 
-link:concept_requirements_for_fc_to_ip_transition_mcc.html["不中斷地從MetroCluster 一個不中斷的支援FC移轉至MetroCluster 一個支援功能性的IP組態ONTAP （版本號：9.8及更新版本）"]
+link:concept_requirements_for_fc_to_ip_transition_mcc.html["程序連結"]
 
 
 
@@ -42,7 +58,7 @@ link:concept_requirements_for_fc_to_ip_transition_mcc.html["不中斷地從Metro
  a| 
 新的儲存櫃同時支援原始與新平台。
  a| 
-link:task_disruptively_transition_from_a_two_node_mcc_fc_to_a_four_node_mcc_ip_configuration.html["顛覆性地從雙節點MetroCluster 的不間斷地轉換為四節點MetroCluster 的不間斷地執行的不間斷運作的不間斷運作的不間斷運作的不間斷運作（ONTAP 更新版本的版本）"]
+link:task_disruptively_transition_from_a_two_node_mcc_fc_to_a_four_node_mcc_ip_configuration.html["程序連結"]
 
 
 
@@ -53,7 +69,7 @@ link:task_disruptively_transition_from_a_two_node_mcc_fc_to_a_four_node_mcc_ip_c
  a| 
 新的儲存櫃同時支援原始與新平台。必須淘汰舊的儲存櫃。
  a| 
-link:task_disruptively_transition_while_move_volumes_from_old_shelves_to_new_shelves.html["淘汰儲存櫃時、會中斷從MetroCluster 靜態FC移轉MetroCluster 至靜態IP ONTAP （適用於更新版本的版本號）"]
+link:task_disruptively_transition_while_move_volumes_from_old_shelves_to_new_shelves.html["程序連結"]
 
 
 
@@ -64,6 +80,13 @@ link:task_disruptively_transition_while_move_volumes_from_old_shelves_to_new_she
  a| 
 新平台不支援舊的儲存櫃。必須淘汰舊的儲存櫃。
  a| 
-link:task_disruptively_transition_when_exist_shelves_are_not_supported_on_new_controllers.html["當新控制器不支援現有磁碟櫃時、會中斷轉換作業（ONTAP 版本號：NetApp 9.8及更新版本）"]
+link:task_disruptively_transition_when_exist_shelves_are_not_supported_on_new_controllers.html["程序連結"]
 
 |===
+
+
+=== 轉換至Cisco 9336C-FX2共享交換器組態
+
+不支援轉換至Cisco 9336C-FX2共用交換器組態。共享交換器組態_是交換器同時提供MetroCluster 支援鏈路的地方、也是儲存櫃連線的地方。
+
+Cisco 9336C-FX2交換器僅提供MetroCluster 支援的不支援鏈路的組態。

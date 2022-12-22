@@ -17,20 +17,11 @@ summary: 您可以在MetroCluster 升級合作夥伴叢集上的控制器模組�
 
 == 支援的平台組合
 
-您可以使用MetroCluster 切換和切換功能、以支援功能支援的功能來升級特定平台。下表顯示支援哪些控制器升級組合。
+您可以使用MetroCluster 切換和切換功能、以支援功能支援的功能來升級特定平台。
 
-如果*目前平台*列和*目標平台*欄的交會不是綠色、則無法使用此程序。
+如需支援哪些平台升級組合的相關資訊、請參閱MetroCluster 中的《The不支援升級》表 link:concept_choosing_controller_upgrade_mcc.html#metrocluster-fc-controller-upgrades["選擇控制器升級程序"]。
 
 請參閱 https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["選擇升級或重新整理方法"] 以瞭解其他程序。
-
-[NOTE]
-====
-* 此AFF 表未顯示從E4A700/FAS9000控制器升級至AFF E4A900/FAS9500控制器的控制器。使用支援該組合 link:task_upgrade_A700_to_A900_in_a_four_node_mcc_fc_us_switchover_and_switchback.html["還原A700 / FAS9500切換/切換回復程序AFF"]。
-* 只AFF 有執行ONTAP 9.9之前版本的系統、才支援使用內建連接埠0e和0f作為FC-VI連線的控制器從EVA300或FAS8200平台升級。如需詳細資訊、請參閱 link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1507088["公開報告"]。
-
-
-====
-image::supported_controller_upgrades_mccfc_sosb.png[FC組態中支援的控制器升級組合]
 
 
 

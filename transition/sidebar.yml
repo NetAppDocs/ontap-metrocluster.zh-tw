@@ -4,8 +4,6 @@ title: 從MetroCluster 靜態FC移轉至MetroCluster 靜態IP
 entries:
 - title: 請選擇您的轉換程序
   url: "/transition/concept_choosing_your_transition_procedure_mcc_transition.html"
-- title: 支援不中斷營運的平台移轉
-  url: "/transition/concept_supported_platforms_for_transition.html"
 - title: 不中斷營運地從MetroCluster 一個不中斷的FC移轉至MetroCluster 一個支援功能的IP組態ONTAP （版本號：9.8及更新版本）
   entries:
   - title: 總覽

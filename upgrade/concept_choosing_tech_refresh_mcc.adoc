@@ -11,35 +11,57 @@ summary: 您所使用的更新程序取決於平台機型、升級範圍和Metro
 
 
 [role="lead"]
-您所使用的系統更新程序取決於平台機型、升級範圍及MetroCluster 版本類型。
+您使用的系統更新程序取決於平台機型和MetroCluster 類型的功能。更新程序適用於控制器和儲存櫃。在重新整理程序中、MetroCluster 系統會將新的控制器和磁碟櫃新增至該組態、建立第二個DR群組、然後將資料以不中斷營運的方式移轉至新節點。然後、原始控制器就會淘汰。
+
+
+
+=== 支援MetroCluster 的功能更新功能組合
+
+image::../media/metrocluster_fc_tech_refresh.png[NetApp技術更新MetroCluster]
+
+* 在新增負載之前、請務必完成技術更新程序。
+
+
+
+NOTE: 請勿超過平台「下限」的任何物件限制。套用兩個平台的較低物件限制。請參閱 link:https://hwu.netapp.html["Hardware Universe"^] 適用於平台限制。
+
+
+
+=== 支援MetroCluster 的支援功能：IP技術更新組合
+
+image::../media/metrocluster_ip_tech_refresh.png[更新知識產權技術MetroCluster]
+
+* 在新增負載之前、請務必完成技術更新程序。
+
+
+
+NOTE: 請勿超過平台「下限」的任何物件限制。套用兩個平台的較低物件限制。請參閱 link:https://hwu.netapp.html["Hardware Universe"^] 適用於平台限制。
 
 [cols="2,1,1,2"]
 |===
-| 範圍 | 組態類型 | 支援ONTAP | 前往... 
+| 重新整理方法 | 組態類型 | 版本ONTAP | 程序 
 
 
  a| 
-* 範圍：平台（控制器模組）和儲存櫃
 * 方法：展開MetroCluster 「資訊庫」組態、然後移除舊節點
 
  a| 
-FC
+四節點FC
  a| 
 9.6及更新版本
  a| 
-link:task_refresh_4n_mcc_fc.html["重新整理四節點MetroCluster 的不含功能的FC組態"]
+link:task_refresh_4n_mcc_fc.html["程序連結"]
 
 
 
  a| 
-* 範圍：平台（控制器模組）和儲存櫃
 * 方法：展開MetroCluster 「資訊庫」組態、然後移除舊節點
 
  a| 
-IP
+四節點IP
  a| 
-9.8
+9.8及更新版本
  a| 
-link:task_refresh_4n_mcc_ip.html["重新整理四節點MetroCluster 的靜態IP組態（ONTAP 不含更新版本的更新版本）"]
+link:task_refresh_4n_mcc_ip.html["程序連結"]
 
 |===

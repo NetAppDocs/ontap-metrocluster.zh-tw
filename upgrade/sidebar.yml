@@ -1,6 +1,6 @@
 ---
 section: upgrade
-title: 升級或擴充MetroCluster 此功能
+title: 升級、重新整理或擴充MetroCluster 此功能
 entries:
 - title: 從這裡開始-選擇您的程序
   entries:
@@ -10,6 +10,8 @@ entries:
     url: "/upgrade/concept_choosing_controller_upgrade_mcc.html"
   - title: 選擇系統重新整理程序
     url: "/upgrade/concept_choosing_tech_refresh_mcc.html"
+  - title: 選擇擴充程序
+    url: "/upgrade/concept_choosing_expansion_method_mcc.html"
 - title: 使用MetroCluster 切換和切換功能升級位於SFC的控制器
   url: "/upgrade/task_upgrade_controllers_in_a_four_node_fc_mcc_us_switchover_and_switchback_mcc_fc_4n_cu.html"
 - title: 使用切換和切換功能（更新版本：《Se 9.10.1》）、將AFF 位於SFC的更新控制器（從Se A700/FAS9000升級AFF 至Se A900/FAS9500）升級MetroCluster

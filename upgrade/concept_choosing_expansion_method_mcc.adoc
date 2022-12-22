@@ -1,0 +1,54 @@
+---
+permalink: upgrade/concept_choosing_expansion_method_mcc.html 
+sidebar: sidebar 
+keywords: metrocluster, expansion, method 
+summary: 您所使用的擴充程序取決於MetroCluster 支援的功能類型和ONTAP 版本。 
+---
+= 選擇擴充程序
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您所使用的擴充程序取決於MetroCluster 支援的功能類型和ONTAP 版本。
+
+擴充程序涉及將新的控制器和儲存設備新增MetroCluster 至The等位組態。擴充作業必須在每個站台上維持平均數量的控制器、而您使用的程序則取決於原始MetroCluster 版本的節點組態中的節點數量。
+
+[cols="2,1,1,2"]
+|===
+| 擴充方法 | 組態類型 | 版本ONTAP | 程序 
+
+
+ a| 
+方法：將雙節點MetroCluster 的不二個FC擴充至四個節點
+ a| 
+雙節點FC
+ a| 
+支援的平台必須為支援的平台、如不支援更新版本ONTAP ONTAP 、
+ a| 
+link:../upgrade/task_expand_a_two_node_mcc_fc_configuration_to_a_four_node_fc_configuration_supertask.html["程序連結"]
+
+
+
+ a| 
+方法：將四節點MetroCluster 的不含資料的FC擴充至八個節點
+ a| 
+四節點FC
+ a| 
+更新版本ONTAP
+ a| 
+link:task_refresh_4n_mcc_ip.html["程序連結"]
+
+
+
+ a| 
+方法：將四節點MetroCluster 的不全位址IP擴充至八個
+ a| 
+四節點IP
+ a| 
+更新版本ONTAP
+ a| 
+link:../upgrade/task_expand_a_four_node_mcc_ip_configuration.html["程序連結"]
+
+|===

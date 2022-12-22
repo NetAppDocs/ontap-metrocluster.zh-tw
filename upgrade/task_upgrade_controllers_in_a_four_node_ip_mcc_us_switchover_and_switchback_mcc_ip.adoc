@@ -22,23 +22,13 @@ summary: 從ONTAP 功能介紹9.8開始、您可以使用MetroCluster 功能介�
 * 不支援含有內部磁碟櫃的平台機型。
 * 您只能使用MetroCluster 此程序、在不完整的IP組態中升級特定的平台機型。
 +
-** 下表顯示支援的平台模型組合。
-** 如果*目前平台*列和*目標平台*欄的交會不是綠色、則無法使用此程序。
+** 如需支援哪些平台升級組合的相關資訊、請參閱MetroCluster 中的《The支援哪些平台升級》表 link:concept_choosing_controller_upgrade_mcc.html["選擇控制器升級程序"]。
 +
-請參閱 https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["選擇升級或重新整理方法"] 以瞭解其他程序。
+請參閱 https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_controller_upgrade_mcc.html#choosing-a-procedure-that-uses-the-switchover-and-switchback-process["選擇升級或重新整理方法"] 以瞭解其他程序。
 
 
 
 
-
-[NOTE]
-====
-* 使用BG-53248 IP交換器時、不支援升級支援使用32平台機型。AFF
-* 本表未顯示從FASA700/FAS9000控制器升級AFF 至AFF FASA900/FAS9500控制器的資訊。使用支援該組合 link:task_upgrade_A700_to_A900_in_a_four_node_mcc_fc_us_switchover_and_switchback.html["還原A700 / FAS9500切換/切換回復程序AFF"]。
-
-
-====
-image::../media/supported_controller_upgrades_mccip_sosb.png[支援的控制器升級Mccip sosb]
 
 
 
