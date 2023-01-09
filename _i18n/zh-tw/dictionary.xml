@@ -5496,7 +5496,6 @@
   <block id="29f2ad546591daf9c21a8e1e2148edae" category="list-text">驗證磁碟自動指派與分割：</block>
   <block id="f65ec829d063a64803356b190c18d5ab" category="paragraph">「展示池Pool1」</block>
   <block id="900a1c5621c4209a92d13274e1b23272" category="list-text">鏡射根Aggregate：</block>
-  <block id="f919294b56bd6736c2dacccd6ba7e8d2" category="paragraph">「torage Aggregate mirror -Aggregate aggr0_node_a_3-ip」</block>
   <block id="2494cf3ea6304f13d911614b50a2449f" category="admonition">您必須在每MetroCluster 個環節上完成此步驟。</block>
   <block id="4fbb06a55d361d0cd8cf430f9a799e67" category="list-text">驗證根集合體是否為鏡射：</block>
   <block id="566d9f9b7bf49eab87dd8768b654754e" category="section-title">完成MetroCluster 加入的不確定性IP節點</block>
@@ -12767,8 +12766,6 @@
   <block id="e6e94fa732001e55f7fcf67c01c5f249" category="paragraph">您可能需要設定一個交換器MetroCluster 、使其在ISL上具有不實的流量、但無法連線到MetroCluster 任何的介面。在這種情況下、流量已分類、只需對應至適當的佇列。在下列範例中、所有的COS5流量都會對應至類別RDMA、而所有的COS4流量都會對應至類別iSCSI。請注意、這會影響*所有*的COS5和COS4流量、而不只是MetroCluster 影響到各種流量。如果您只想對應MetroCluster 此資訊流量、則必須使用上述類別地圖、使用存取群組來識別流量。</block>
   <block id="09d852286694a04fbe67a38fda6ca956" category="image-alt">光纖通道IP轉換對照表MetroCluster</block>
   <block id="421c8863e1f7223f216aacf99393b7dd" category="list-text">附註1：此平台組合需要ONTAP 使用更新版本的支援。</block>
-  <block id="234207cc1f3002485022da1892b4559b" category="list-text">附註2：FC節點上的本機叢集介面必須使用40GbE介面。</block>
-  <block id="6ae32e231af4316f91162f3b9a761e43" category="list-text">附註3：FC節點上的本機叢集介面必須使用100GbE介面。</block>
   <block id="60ddbd1babdd945c26fbc431202fea6c" category="inline-link-macro">Hardware Universe</block>
   <block id="f90dfbd0dbb63ace6227bf8f3e75efb6" category="admonition">請勿超過平台「下限」的任何物件限制。套用兩個平台的較低物件限制。請參閱 <block ref="62911b0739c1772914819ee9e7282ee4" category="inline-link-macro-rx"></block> 適用於平台限制。</block>
   <block id="6e2ee39d0f9ccdad593782674a048e67" category="inline-link-macro">程序連結</block>
@@ -12844,4 +12841,9 @@
   <block id="81cce2035bed6113b6ccecaeb9cf25a9" category="sidebar">選擇擴充程序</block>
   <block id="6ff6555fd4c104df84532572f5435476" category="sidebar">使用切換和切換功能（更新版本：《Se 9.10.1》）、將AFF 位於SFC的更新控制器（從Se A700/FAS9000升級AFF 至Se A900/FAS9500）升級MetroCluster 至MetroCluster ONTAP</block>
   <block id="87663f3a8212644181733b0573eae80d" category="sidebar">使用MetroCluster 切換和切換功能升級SIP中的控制器（ONTAP 更新版本：S還原9.8及更新版本）</block>
+  <block id="cbfda5b02caeddc103ebee1baa66d92c" category="list-text">附註2：FC節點上的本機叢集介面必須使用40GbE介面。此平台組合需要ONTAP 使用更新版本的版本。</block>
+  <block id="55b44ccf6250ba590ce25f63cea8e958" category="list-text">附註3：FC節點上的本機叢集介面必須使用100GbE介面。此平台組合需要ONTAP 使用更新版本的版本。</block>
+  <block id="9418f262fda4ce79d51366cacd6743b2" category="list-text">除非ONTAP 附註中另有說明或個別平台要求、否則所有轉換程序都需要使用更新版本的資訊。</block>
+  <block id="90041d31025da7832d4e0b6bec8c78d3" category="paragraph"><block ref="a29b6e7e71b2408a7ef70fb423944511" prefix="" category="inline-code"></block></block>
+  <block id="1ecf45c0e50d338e165546ea9f33580d" category="paragraph">下列範例顯示在node_a_3-IP上建立Aggregate。</block>
 </blocks>
