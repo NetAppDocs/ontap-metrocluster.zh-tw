@@ -38,7 +38,7 @@ https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FA
  a| 
 只有MetroCluster 在啟用了ESITiebreaker軟體的自動切換時、兩個節點才會失敗。
  a| 
-如果MetroCluster 未啟用在Setiebreaker軟體中自動切換、請手動執行USO。
+如果MetroCluster 未啟用自動切換功能、請手動進行非計畫性切換（USO）。
 
 https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"^]
 

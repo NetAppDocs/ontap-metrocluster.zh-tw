@@ -130,7 +130,7 @@ summary: 各種MetroCluster 版本的不二組態在必要的元件上有主要�
 
 
  a| 
-支援ONTAP 不支援
+支援ONTAP 非計畫性自動切換（AUSO）
  a| 
 否
  a| 
