@@ -167,7 +167,7 @@ cluster_B::>
 .步驟
 . 將MetroCluster 「靜態IP」節點新增至現有MetroCluster 的「靜態」組態。
 +
-.. 將第一個MetroCluster 支援靜態IP的節點（node_a_1-IP）加入現有MetroCluster 的支援靜態FC組態。
+.. 將第一個MetroCluster 「靜態IP」節點（node_a_3-IP）加入現有MetroCluster 的「靜態FC」組態。
 +
 ....
 
@@ -219,10 +219,10 @@ Do you want to use this configuration? {yes, no} [yes]: yes
 .
 .
 ....
-.. 將第二MetroCluster 個「靜態IP」節點（node_a_2-IP）加入現有MetroCluster 的「靜態FC」組態。
+.. 將第二MetroCluster 個「靜態IP」節點（node_a_4-IP）加入現有MetroCluster 的「靜態FC」組態。
 
 
-. 重複這些步驟、將node_B_1-IP和node_B_2-IP連接至叢集B
+. 重複這些步驟、將node_B_3-IP和node_B_4-IP連接至叢集B
 
 
 
@@ -343,7 +343,7 @@ Group Cluster Node               State          Mirroring Mode
 
 +
 
-NOTE: 您可以從MetroCluster 任一叢集設定靜態IP介面。此外、從ONTAP 支援的支援範圍僅為1.9.1、如果您使用的是第3層組態、則在建立MetroCluster 支援範圍內的IP介面時、也必須指定「-gateway'（閘道）參數。請參閱連結：../install-ip/concite_iniation_layer_3.html。
+NOTE: 您可以從MetroCluster 任一叢集設定靜態IP介面。此外、從ONTAP 版本號為0.9.1.1開始、如果您使用的是第3層組態、也必須指定 `-gateway` 建立MetroCluster 靜態IP介面時的參數。請參閱 link:../install-ip/concept_considerations_layer_3.html["第3層廣域網路的考量"]
 
 +
 ....
@@ -520,9 +520,12 @@ Disk                   Size Shelf Bay Type    Type        Name      Owner
 2.20.10             546.9GB    20  10 SAS     aggregate   rha1_a1_aggr1 node_a_1
 ...
 43 entries were displayed.
-
 cluster_A::>
 ....
++
+
+NOTE: 在設定為進階磁碟分割（ADP）的系統上、容器類型為「共享」、而非如範例輸出所示的「遠端」。
+
 . 鏡射根Aggregate：
 +
 `storage aggregate mirror -aggregate aggr0_node_A_3_IP`

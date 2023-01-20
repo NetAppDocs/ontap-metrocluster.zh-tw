@@ -5465,9 +5465,6 @@
   <block id="6fd67a5ed9276ba994c073cf2c532faf" category="paragraph">您必須將四MetroCluster 個全新的靜態IP節點新增至現有MetroCluster 的靜態組態。</block>
   <block id="b74949b8fefb7fd6ee33defaa6372e00" category="paragraph">您必須在兩個叢集上執行此工作。</block>
   <block id="0374a6e5ac7874327546ae00b1a604d8" category="list-text">將MetroCluster 「靜態IP」節點新增至現有MetroCluster 的「靜態」組態。</block>
-  <block id="fbfd3619aa54cd6546a334791148c766" category="list-text">將第一個MetroCluster 支援靜態IP的節點（node_a_1-IP）加入現有MetroCluster 的支援靜態FC組態。</block>
-  <block id="c6bbfa16738696bfd63392cfdc4c0a5c" category="list-text">將第二MetroCluster 個「靜態IP」節點（node_a_2-IP）加入現有MetroCluster 的「靜態FC」組態。</block>
-  <block id="3bd4a265daa0ebad936e251efefd2525" category="list-text">重複這些步驟、將node_B_1-IP和node_B_2-IP連接至叢集B</block>
   <block id="d8bdae7e1444c808ab8559c95d7f81ec" category="section-title">設定叢集間的生命體、建立MetroCluster 支援資訊介面、以及鏡射根集合體</block>
   <block id="6449a68d295414acaf212ddfd7df25b2" category="paragraph">您必須建立叢集對等的生命、在MetroCluster 新MetroCluster 的物件節點上建立一個物件介面。</block>
   <block id="7e339e8333d1f898a647bba5b4b5fa97" category="paragraph">範例中使用的主連接埠是平台專屬的連接埠。您應該使用MetroCluster 特定於靜態IP節點平台的適當主連接埠。</block>
@@ -5485,7 +5482,6 @@
   <block id="333744f802db71c53ff9d4ad61fbc125" category="list-text">為MetroCluster 新加入MetroCluster 的「靜態IP」節點設定「靜態IP」介面：</block>
   <block id="b1e0fc9a28d1fbc5566a3e38e1ba8e33" category="paragraph">「功能組態設定介面create -cluster名稱」MetroCluster</block>
   <block id="2b6500c40992c83321292f4bcb8ec93d" category="paragraph">請參閱 <block ref="865643442db88296ffae2da0df72fe39" category="inline-link-macro-rx"></block> 用於設定IP介面時的考量。</block>
-  <block id="29e21146baddc462ae95a60cebbec773" category="admonition">您可以從MetroCluster 任一叢集設定靜態IP介面。此外、從ONTAP 支援的支援範圍僅為1.9.1、如果您使用的是第3層組態、則在建立MetroCluster 支援範圍內的IP介面時、也必須指定「-gateway'（閘道）參數。請參閱連結：../install-ip/concite_iniation_layer_3.html。</block>
   <block id="8c74115e4c2bebadc09e695e69b012f5" category="list-text">驗證MetroCluster 是否已建立下列的靜態IP介面：</block>
   <block id="30b6fb782c39e19cc96a63a24fc78cda" category="list-text">連接MetroCluster 下列的靜態IP介面：</block>
   <block id="636315ac7c2e7121c2eed168244e31ec" category="admonition">此命令可能需要數分鐘才能完成。</block>
@@ -12846,4 +12842,21 @@
   <block id="9e70c8a747dbcd4eb73fc72a2155c425" category="paragraph">如果MetroCluster 未啟用自動切換功能、請手動進行非計畫性切換（USO）。</block>
   <block id="03a06951389ef81ee2c73f9db6d94fbf" category="list-text">如需支援何種平台升級組合的資訊、請參閱MetroCluster 中的《The不實IP更新表》 <block ref="ca31e6122d170c1a660e1ab5d0a9430f" category="inline-link-macro-rx"></block>。</block>
   <block id="04d849614bcf7a25c057bcb4f136cfc7" category="list-text">如需支援何種平台升級組合的資訊、請參閱MetroCluster 中的《The FzFC Refresh Table》 <block ref="2026df26c379ba66a79d2229c4a71dd8" category="inline-link-macro-rx"></block>。</block>
+  <block id="7f3573698486df0e906484a42b56260a" category="list-text">將第一個MetroCluster 「靜態IP」節點（node_a_3-IP）加入現有MetroCluster 的「靜態FC」組態。</block>
+  <block id="2cc9b0ebb585ef702d75e1a9560e44ee" category="list-text">將第二MetroCluster 個「靜態IP」節點（node_a_4-IP）加入現有MetroCluster 的「靜態FC」組態。</block>
+  <block id="43978c682537332f0c17e45dcf81c394" category="list-text">重複這些步驟、將node_B_3-IP和node_B_4-IP連接至叢集B</block>
+  <block id="56276c01f8fdea330f7d547910dbe817" category="inline-link-macro">第3層廣域網路的考量</block>
+  <block id="5464631d6fd9ed12f95c271bf666c4bc" category="admonition">您可以從MetroCluster 任一叢集設定靜態IP介面。此外、從ONTAP 版本號為0.9.1.1開始、如果您使用的是第3層組態、也必須指定<block ref="50e57debf79bf52aa078c6e993f8969f" prefix=" " category="inline-code"></block> 建立MetroCluster 靜態IP介面時的參數。請參閱 <block ref="1e1496262359096cc1cfeecfa4cefcb5" category="inline-link-macro-rx"></block></block>
+  <block id="d62d7bce1fe91e6c1145e8a56018d13e" category="admonition">在設定為進階磁碟分割（ADP）的系統上、容器類型為「共享」、而非如範例輸出所示的「遠端」。</block>
+  <block id="bad8ee5726316ec5f26bb0039cbf4bc6" category="summary">將還原活動記錄在事件記錄檔中MetroCluster 。</block>
+  <block id="08b9323d7a1af549de439f419bb3096a" category="doc">事件記錄檔MetroCluster 、適用於還原者</block>
+  <block id="bbeded76bf1f0922d3c3d140c95591b9" category="paragraph">事件記錄檔包含MetroCluster 由資訊斷路器軟體執行的所有動作記錄。</block>
+  <block id="a683f94e07dea51d4fd5a8ef0f351f0a" category="paragraph">Tiebreaker軟體執行下列動作：</block>
+  <block id="4b331bdac9dc044af8ef6c6502e176f3" category="list-text">偵測站台災難</block>
+  <block id="62bb78b2baed22256e5a91c1b10b48ae" category="list-text">偵測與資料庫、其他斷路器監控器或MetroCluster 還原斷路器軟體相關的組態變更</block>
+  <block id="74e0bf9f3312e196cf0f79415f5fd557" category="list-text">偵測SSH連線和中斷連線</block>
+  <block id="e7937ee1a1ffc7f60a0d80b1dcee5b56" category="list-text">探索MetroCluster 各種需求的組態</block>
+  <block id="98c16872714765876ef7301d6b92820a" category="paragraph">這些動作會以下列格式記錄在事件記錄檔中：</block>
+  <block id="efddb3b6772ab4f446bebb2bda2d2155" category="paragraph">時間戳記嚴重性/記錄層級執行緒ID模組</block>
+  <block id="690f8ff3b8b65da4f1bc779fb507da9d" category="sidebar">還原斷路器事件記錄檔MetroCluster</block>
 </blocks>

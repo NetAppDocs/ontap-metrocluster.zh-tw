@@ -16,5 +16,7 @@ entries:
   url: "/tiebreaker/concept_risks_and_limitation_of_using_mcc_tiebreaker_in_active_mode.html"
 - title: 防火牆要求MetroCluster
   url: "/tiebreaker/reference_firewall_requirements_for_mcc_tiebreaker.html"
+- title: 還原斷路器事件記錄檔MetroCluster
+  url: "/tiebreaker/concept-mcc-tiebreaker-event-logs.html"
 - title: 何處可找到其他資訊
   url: "/tiebreaker/reference_where_to_find_additional_information_tb_icg.html"

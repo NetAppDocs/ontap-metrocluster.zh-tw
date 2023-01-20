@@ -1,0 +1,32 @@
+---
+permalink: tiebreaker/concept-mcc-tiebreaker-event-logs.html 
+sidebar: sidebar 
+keywords: metrocluster, tiebreaker, actions, events, event, log files, files, logs, file 
+summary: 將還原活動記錄在事件記錄檔中MetroCluster 。 
+---
+= 事件記錄檔MetroCluster 、適用於還原者
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+事件記錄檔包含MetroCluster 由資訊斷路器軟體執行的所有動作記錄。
+
+Tiebreaker軟體執行下列動作：
+
+* 偵測站台災難
+* 偵測與資料庫、其他斷路器監控器或MetroCluster 還原斷路器軟體相關的組態變更
+* 偵測SSH連線和中斷連線
+* 探索MetroCluster 各種需求的組態
+
+
+這些動作會以下列格式記錄在事件記錄檔中：
+
+時間戳記嚴重性/記錄層級執行緒ID模組
+
+....
+2022-09-07 06:14:30,797 INFO  [MCCTBCommandServer-16] [SslSupport] Successfully initiated SSL context. Protocol used is TLSv1.3.
+2022-09-07 06:14:34,137 INFO  [MCCTBCommandServer-16] [DataBase] Successfully read MCCTB database.
+2022-09-07 06:14:34,137 INFO  [MCCTBCommandServer-16] [ConfigurationMonitor] Debug mode disabled.
+....
