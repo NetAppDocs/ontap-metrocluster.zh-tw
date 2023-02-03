@@ -16,7 +16,7 @@ summary: 在開始轉換程序之前、您必須確定組態符合要求。
 * 它必須是四節點組態、而且所有節點都必須執行ONTAP 版本號為9、8或更新版本。
 * 現有平台和新平台必須是支援的轉換組合。
 +
-link:concept_supported_platforms_for_transition.html["支援不中斷營運的平台移轉"]
+link:concept_choosing_your_transition_procedure_mcc_transition.html["支援不中斷營運的平台移轉"]
 
 * 它必須支援交換式叢集組態。
 +

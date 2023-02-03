@@ -1888,7 +1888,6 @@
   <block id="47c5e6a166f9432ff96681fa2a62c791" category="paragraph">資訊媒體伺服器ONTAP</block>
   <block id="8cf15eeaee2b3382338ecab30027c48b" category="paragraph">REST API（HTTPS）</block>
   <block id="5395ab3ceab5345ee4a1117e436bec89" category="paragraph">3260/TCP</block>
-  <block id="dbc7df65565b4f36db0a469d1e54a440" category="paragraph">叢集ONTAP</block>
   <block id="1c44912242a1c1688be9805f25a62dbd" category="paragraph">支援iSCSI目標ONTAP</block>
   <block id="a3993ea912c0ecd6926aed69b72fd59a" category="paragraph">適用於信箱的iSCSI資料連線</block>
   <block id="63639615515d028231f302c56bab6ad7" category="section-title">升級ONTAP 以供參考組態之用的功能指南MetroCluster</block>
@@ -12859,4 +12858,7 @@
   <block id="98c16872714765876ef7301d6b92820a" category="paragraph">這些動作會以下列格式記錄在事件記錄檔中：</block>
   <block id="efddb3b6772ab4f446bebb2bda2d2155" category="paragraph">時間戳記嚴重性/記錄層級執行緒ID模組</block>
   <block id="690f8ff3b8b65da4f1bc779fb507da9d" category="sidebar">還原斷路器事件記錄檔MetroCluster</block>
+  <block id="fd8a65566a0bac859d93882f20cc0c7d" category="paragraph"><block ref="fd8a65566a0bac859d93882f20cc0c7d" category="inline-link-macro-rx"></block></block>
+  <block id="43119522ff803c1f1fa88bdbaffe20b7" category="admonition">iSCSI連接埠僅MetroCluster 在支援靜態IP組態時才需要。</block>
+  <block id="4026cb63b92cdc28e17e39a79de589f7" category="paragraph">叢集（資料LIF或資料管理LIF ONTAP ）</block>
 </blocks>
