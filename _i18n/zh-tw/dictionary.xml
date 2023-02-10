@@ -8763,7 +8763,6 @@
   <block id="a5a5f58f8b4f49c67db8ac8769e18a9e" category="paragraph">這項工作不需要在雙節點MetroCluster 的不全功能組態上執行。</block>
   <block id="eb952ac83e127d9e9c609c32989ebbf0" category="list-text">將叢集互連從一個控制器模組連接至另一個控制器模組、或是使用叢集互連交換器、從每個控制器模組連接至交換器。</block>
   <block id="72fa0ea37e0389a6c2e6107de6bbcbe8" category="summary">下表顯示AFF 了在一個32位元組系統中、Brocade交換器的ISL連接埠使用量。</block>
-  <block id="83f8b75cddaf0acd53872b333bc5d6c1" category="paragraph">6510、G620、G620-1、G720</block>
   <block id="f3089a69f0cb0a583fab7f5c1ea7226c" category="cell">6505、G610</block>
   <block id="5482b27fb601c9d5069a7533e0dd1b02" category="summary">當您設定Brocade FC交換器時、可以安裝交換器組態檔、為特定組態提供完整的交換器設定。</block>
   <block id="c2a1b1aaf420fd5fc4e694faa94de89f" category="doc">安裝Brocade FC交換器RCF檔案</block>
@@ -12261,7 +12260,6 @@
   <block id="8ec1014b27ed523596c5c910443b0827" category="paragraph">FASA900和FAS9500 AFF</block>
   <block id="87ba2462050ce75d6d9915d834efe9b7" category="doc">適用於執行版本號為SHW9.10.1或更新版本的ISL組態中的ISL之Brocade連接埠使用量AFF MetroCluster ONTAP</block>
   <block id="801938c63db0b16215aa712c6d1fd12c" category="paragraph">下表顯示AFF 了適用於整個過程中的Brocade交換器的ISL連接埠使用情況。</block>
-  <block id="5cc34fc9164e77d33b971042da17edf2" category="admonition">FASA900和FAS9500系統支援八個ISL。AFFBrocade 6510、G620、G620-1和G720交換器支援八個ISL。</block>
   <block id="1dcd768f9d116bda4a2253d295e01fb8" category="doc">Brocade連接埠使用功能適用於AFF 執行MetroCluster 檔名9.10.1或更新版本的功能組態中的32個或9個以上的FAS900控制器ONTAP</block>
   <block id="e33ab3eabb81d3db08bba17fee6ed399" category="paragraph">下表顯示Brocade交換器上的連接埠使用量。下表顯示支援的最大組態、四個DR群組中有八個控制器模組。FASA900和FAS9500系統有八個FC-VI連接埠（適用於FC-VI-1和FC-VI-2的A、b、c和d）AFF</block>
   <block id="e0477011a5767f5250fc49bfe9ab153c" category="list-text">每個架構最多可支援八個ISL的FASA700、FAS9000、FASA900和FAS9500儲存系統。AFF AFF其他儲存系統機型則支援每個架構最多四個ISL。</block>
@@ -12861,4 +12859,6 @@
   <block id="fd8a65566a0bac859d93882f20cc0c7d" category="paragraph"><block ref="fd8a65566a0bac859d93882f20cc0c7d" category="inline-link-macro-rx"></block></block>
   <block id="43119522ff803c1f1fa88bdbaffe20b7" category="admonition">iSCSI連接埠僅MetroCluster 在支援靜態IP組態時才需要。</block>
   <block id="4026cb63b92cdc28e17e39a79de589f7" category="paragraph">叢集（資料LIF或資料管理LIF ONTAP ）</block>
+  <block id="fd9b3eaeebb236fdcf40b5456ccc900e" category="admonition">FASA900和FAS9500系統支援八個ISL。AFFBrocade 6510、G620、G620-1、G630、G630-1、和G720交換器。</block>
+  <block id="81d4bf20c117cfe06c727511dd63382b" category="paragraph">6510、G620、G620-1、G630、G630-1、G720</block>
 </blocks>
