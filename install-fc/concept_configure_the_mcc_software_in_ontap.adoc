@@ -1864,6 +1864,9 @@ NOTE: 您可以在後續的工作中建立鏡射集合體。
 
 您必須對等處理叢集、鏡射根Aggregate、建立鏡射資料Aggregate、然後發出命令來實作MetroCluster 該等作業系統。
 
+.關於這項工作
+在您執行之前 `metrocluster configure`、HA模式和DR鏡像未啟用、您可能會看到與此預期行為相關的錯誤訊息。您稍後執行命令時、會啟用HA模式和DR鏡像 `metrocluster configure` 以實作組態。
+
 
 
 === 對等連接叢集

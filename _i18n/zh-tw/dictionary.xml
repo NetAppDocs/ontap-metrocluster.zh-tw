@@ -5493,7 +5493,6 @@
   <block id="4fbb06a55d361d0cd8cf430f9a799e67" category="list-text">驗證根集合體是否為鏡射：</block>
   <block id="566d9f9b7bf49eab87dd8768b654754e" category="section-title">完成MetroCluster 加入的不確定性IP節點</block>
   <block id="756f29d7bcbe7decf6b979c0706fc9a1" category="paragraph">您必須將新的DR群組整合到MetroCluster 「更新」組態中、並在新節點上建立鏡射的資料集合體。</block>
-  <block id="ab1c45cb56358465162f8f3a812e6fbe" category="list-text">設定MetroCluster 執行變更的功能：</block>
   <block id="2ae5190e09d5d39bdc4388104b1ebcd4" category="paragraph">《靜態組態》MetroCluster</block>
   <block id="2ab9c070f5e78bc6f7809e89ecd023eb" category="admonition">您必須執行「MetroCluster 靜態組態」和*「非」* MetroCluster 「靜態組態-重新整理為真」</block>
   <block id="7e6d5ec0a20a9a4499623036df823e6b" category="list-text">確認節點已新增至其DR群組：</block>
@@ -12861,4 +12860,8 @@
   <block id="4026cb63b92cdc28e17e39a79de589f7" category="paragraph">叢集（資料LIF或資料管理LIF ONTAP ）</block>
   <block id="fd9b3eaeebb236fdcf40b5456ccc900e" category="admonition">FASA900和FAS9500系統支援八個ISL。AFFBrocade 6510、G620、G620-1、G630、G630-1、和G720交換器。</block>
   <block id="81d4bf20c117cfe06c727511dd63382b" category="paragraph">6510、G620、G620-1、G630、G630-1、G720</block>
+  <block id="64cdec386f8cc50c2a2ec9316633b629" category="paragraph">在您執行之前<block ref="3b3242ced99842a6c2c16f489b78e773" prefix=" " category="inline-code"></block>、HA模式和DR鏡像未啟用、您可能會看到與此預期行為相關的錯誤訊息。您稍後執行命令時、會啟用HA模式和DR鏡像<block ref="3b3242ced99842a6c2c16f489b78e773" prefix=" " category="inline-code"></block> 以實作組態。</block>
+  <block id="929a405a00082b7cddc01ac6b47159f6" category="list-text">根據MetroCluster 其是否具有單一或多個資料集合體、設定支援功能：</block>
+  <block id="5ffd33f8dea25274cffabd9b7ab1c36e" category="paragraph">您必須回應<block ref="415290769594460e2e485922904f345d" prefix=" " category="inline-code"></block> 當系統提示您繼續進入進階模式時、您會看到進階模式提示（*）。</block>
+  <block id="1fd3081a4bf2b2b1ccafeb89c824a5d2" category="admonition">最佳實務做法是擁有多個鏡射資料集合體。當只有一個鏡射Aggregate時、保護就會減少、因為中繼資料磁碟區位於相同的Aggregate上、而非位於個別的Aggregate上。</block>
 </blocks>

@@ -1398,7 +1398,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
 
 .. 置換連接埠組態以確保正確放置LIF：
 +
-「vserver config override -command「network interface modify」-vserver _vserver_name_-home-port _active_port_after升級_-lif_lif_name_-home-node_new_norme_name_」
+"vserver config override -command "network interface modify -vserver _vserver_name_-home-port _active_port_after升級_-lif_lif_name_-home-node_new_norme_name_"
 
 +
 在「vserver config override」命令中輸入「network interface modify」命令時、您無法使用標籤自動完成功能。您可以使用autosplete建立「網路介面修改」、然後以「vserver config override」命令將其包含在內。

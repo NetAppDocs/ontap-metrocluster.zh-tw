@@ -600,22 +600,51 @@ aggr_data_a2
 您必須將新的DR群組整合到MetroCluster 「更新」組態中、並在新節點上建立鏡射的資料集合體。
 
 .步驟
-. 設定MetroCluster 執行變更的功能：
+. 根據MetroCluster 其是否具有單一或多個資料集合體、設定支援功能：
 +
-《靜態組態》MetroCluster
+|===
 
-+
+
+| 如果MetroCluster 您的組態有... | 然後執行此動作... 
+
+
+ a| 
+多個資料集合體
+ a| 
+在任何節點的提示下、設定MetroCluster 下列項目：
+
+「靜態組態節點名稱」MetroCluster
+
 
 NOTE: 您必須執行「MetroCluster 靜態組態」和*「非」* MetroCluster 「靜態組態-重新整理為真」
 
+
+
+ a| 
+單一鏡射資料Aggregate
+ a| 
+.. 在任何節點的提示下、變更為進階權限層級：
 +
-....
-cluster_A::> metrocluster configure
+"進階權限"
 
-[Job 439] Job succeeded: Configure is successful.
++
+您必須回應 `y` 當系統提示您繼續進入進階模式時、您會看到進階模式提示（*）。
 
-cluster_A::>
-....
+.. 使用MetroCluster 「-allow-with e-gregate true]參數設定此功能：
++
+「MetroCluster 配合單一Aggregate true_norme-name_」執行設定
+
+.. 返回管理權限層級：
++
+「et -priv. admin」
+
+
+
+|===
++
+
+NOTE: 最佳實務做法是擁有多個鏡射資料集合體。當只有一個鏡射Aggregate時、保護就會減少、因為中繼資料磁碟區位於相同的Aggregate上、而非位於個別的Aggregate上。
+
 . 確認節點已新增至其DR群組：
 +
 「不一樣的秀」MetroCluster
