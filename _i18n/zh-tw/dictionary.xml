@@ -6492,7 +6492,6 @@
   <block id="b3f86a877f6ea26216000f89d5bf892c" category="list-text">控制器模組以外的其他硬體故障</block>
   <block id="fd4a684eb57b47e219dba160f184d10a" category="paragraph">您應該跳過磁碟機指派的所有步驟。</block>
   <block id="dc0c368a1922eaf19a6855f5ad8d0d14" category="list-text">災難恢復群組中的多個控制器模組故障（有或無其他故障）</block>
-  <block id="9bf79a5c424f73ef9e47171ed7990f3e" category="section-title">在從FC到IP的轉換過程中、控制器模組發生故障MetroCluster</block>
   <block id="22585ab22291d597a4bba70a7c31406b" category="paragraph">如果在轉換期間發生站台故障、則可使用恢復程序。不過、只有在設定為穩定的混合式組態、同時完全設定FC DR群組和IP DR群組時、才能使用此功能。輸出的「MetroCluster flex節點show」命令應顯示兩個DR群組、所有八個節點。</block>
   <block id="5a7fd8ca0af58c99ec76faf59c614922" category="admonition">如果在轉換期間發生故障、而節點正在新增或移除、您必須聯絡技術支援部門。</block>
   <block id="ab1494884dc22965631b6a9814fe75a6" category="section-title">控制器模組故障案例、採用八節點MetroCluster 的不全功能組態</block>
@@ -12864,4 +12863,13 @@
   <block id="929a405a00082b7cddc01ac6b47159f6" category="list-text">根據MetroCluster 其是否具有單一或多個資料集合體、設定支援功能：</block>
   <block id="5ffd33f8dea25274cffabd9b7ab1c36e" category="paragraph">您必須回應<block ref="415290769594460e2e485922904f345d" prefix=" " category="inline-code"></block> 當系統提示您繼續進入進階模式時、您會看到進階模式提示（*）。</block>
   <block id="1fd3081a4bf2b2b1ccafeb89c824a5d2" category="admonition">最佳實務做法是擁有多個鏡射資料集合體。當只有一個鏡射Aggregate時、保護就會減少、因為中繼資料磁碟區位於相同的Aggregate上、而非位於個別的Aggregate上。</block>
+  <block id="3a02d8d4d0c731efe2550cb0db8b9626" category="inline-link-macro">安裝過程中的控制器模組故障情形MetroCluster</block>
+  <block id="3975d998da71c5679e24fd76827cedb3" category="paragraph">如果控制器模組在組態期間故障、請參閱 <block ref="5184dce34568aa2bdcc7cb6d2fe3f540" category="inline-link-macro-rx"></block>。</block>
+  <block id="c772808016cce686234dc8c5339463c5" category="paragraph">本表中的資訊假設安裝或轉換已完成、即表示<block ref="3b3242ced99842a6c2c16f489b78e773" prefix=" " category="inline-code"></block> 命令執行成功。</block>
+  <block id="7d677bbca4c8c648b22ad2b73d684197" category="section-title">安裝過程中的控制器模組故障情形MetroCluster</block>
+  <block id="5f07f69c69bd236d8043669ebd3a920b" category="paragraph">回應控制器模組在MetroCluster 執行支援功能組態程序期間的故障、取決於是否需要<block ref="3b3242ced99842a6c2c16f489b78e773" prefix=" " category="inline-code"></block> 命令已成功完成。</block>
+  <block id="d8230f83ef3ade7e9ba6071d54f0e853" category="list-text">如果是<block ref="3b3242ced99842a6c2c16f489b78e773" prefix=" " category="inline-code"></block> 命令尚未執行或失敗、您必須從MetroCluster 更換控制器模組開始重新啟動該程式的軟體組態程序。</block>
+  <block id="6a9c67444d70fbe1484e9983092ffff8" category="admonition">您必須執行中的步驟 <block ref="b6e3e97b1b6ab70165db8088036aef95" category="inline-link-macro-rx"></block> 在每個控制器（包括替換控制器）上、確認先前的組態已移除。</block>
+  <block id="779a44ac931df50e9ba3ac26bbca035e" category="list-text">如果是<block ref="3b3242ced99842a6c2c16f489b78e773" prefix=" " category="inline-code"></block> 命令成功完成、然後控制器模組故障、請使用上表判斷正確的恢復程序。</block>
+  <block id="57c5f3148ec34d732973b7f905f1ca84" category="section-title">在從FC到IP的轉換過程中、控制器模組發生故障MetroCluster</block>
 </blocks>
