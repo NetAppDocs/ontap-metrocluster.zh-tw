@@ -36,7 +36,7 @@ summary: 瞭解MetroCluster NetApp如何保護資料、並提供透明的故障�
 image::../media/mcc_hw_architecture_local_ha.gif[MCC HW架構本機Ha]
 
 .相關資訊
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-hacg/home.html["高可用度組態"^]
+link:https://docs.netapp.com/us-en/ontap/high-availability/index.html["高可用度組態"^]
 
 
 
@@ -225,7 +225,7 @@ image::../media/mcc_nvram_mirroring_example_dynamic_dr_aux.gif[MCC NVRAM鏡射�
 本機HA配對中的單一元件故障。
 
 +
-在四節點MetroCluster 的非核心組態中、此故障可能會導致自動或協商接管受損節點、視故障元件而定。資料恢復請參閱_高可用度組態指南_。
+在四節點MetroCluster 的非核心組態中、此故障可能會導致自動或協商接管受損節點、視故障元件而定。資料還原如所述 link:https://docs.netapp.com/us-en/ontap/high-availability/index.html["高可用度配對管理"^] 。
 
 +
 在雙節點MetroCluster 的不間斷組態中、此故障會導致自動非計畫性切換（AUSO）。
@@ -235,7 +235,7 @@ image::../media/mcc_nvram_mirroring_example_dynamic_dr_aux.gif[MCC NVRAM鏡射�
 所有的控制器模組都會在站台因電力中斷、設備更換或災難而故障。通常、無法區分故障和災難的不完整組態。MetroCluster然而MetroCluster 、諸如《斷證人軟體》等見證軟體可以區分它們。如果交換器間連結（ISL）和交換器已開啟、而且儲存設備可存取、則整個站台的控制器故障情況可能會導致自動切換。
 
 +
-_High-Availability Configuration Guide_提供更多資訊、說明如何從不含控制器故障的站台範圍控制器故障中恢復、以及包含一個或多個控制器的故障。
+link:https://docs.netapp.com/us-en/ontap/high-availability/index.html["高可用度配對管理"^] 有更多資訊可說明如何從不含控制器故障的整個站台控制器故障中恢復、以及包含一或多個控制器的故障。
 
 * ISL故障
 +
@@ -285,7 +285,7 @@ NOTE: AUSO（自動非計畫性切換）不支援MetroCluster 使用於各種IP�
 
 對於四節點和八節點MetroCluster 的支援、節點因緊急或停電而故障、可能會導致自動切換。
 
-http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-hacg/home.html["高可用度組態"^]
+link:https://docs.netapp.com/us-en/ontap/high-availability/index.html["高可用度配對管理"^]
 
 如果在本機容錯移轉之後發生第二次故障、MetroCluster 則可透過不中斷營運的情況下繼續執行此功能。同樣地、在進行切換作業之後、如果其中一個仍在運作的節點發生第二次故障、本機容錯移轉事件也會持續提供不中斷營運的作業。在這種情況下、單一可用節點可為DR群組中的其他三個節點提供資料。
 

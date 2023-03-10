@@ -52,7 +52,7 @@ ClusterB::> aggr delete -aggregate aggregate_name
 
 NOTE: 不會刪除根Aggregate。
 
-... 將資料生命量離線移動。+
+... 將資料生命量離線移動。
 `network interface modify -vserver _svm-name_ -lif _data-lif_ -status-admin down`
 ... 將所有資料LIF移轉到另一個DR群組的主節點。+「網路介面show -home-node_old_node_」
 +

@@ -5754,16 +5754,12 @@
   <block id="000918ea512f2105cbb6880aa17027ff" category="paragraph">如果災難站台節點已毀損或無法停止、請關閉節點的電源、直到在還原程序中指示至之前、才啟動替換節點。</block>
   <block id="be832f713abe208d3c2b4ab97540b471" category="section-title">執行強制切換</block>
   <block id="8d05d7bd3136c1c3d27ce612d1642b55" category="paragraph">切換程序除了在測試與維護期間提供不中斷營運、還能讓您使用單一命令從站台故障中恢復。</block>
-  <block id="e79358e0d6be348f3b30497d0f74086f" category="list-text">在執行切換之前、至少必須先啟動並執行其中一個正常運作的站台節點。</block>
   <block id="46244e26ed027de3f7dac5055551ea67" category="list-text">執行切換作業之前、必須先完成所有先前的組態變更。</block>
   <block id="2af1ec41c7e7b07f4cdb56cb47d4ebe4" category="paragraph">這是為了避免與議定的切換或切換作業競爭。</block>
   <block id="ca776b7a0f214042bab6636ff7235436" category="admonition">SnapMirror和SnapVault SnapMirror組態會自動刪除。</block>
   <block id="7adfea65bac9026340a67e4c4fbc6cf1" category="paragraph">「不完整切換」命令會在整個DR群組的節點上切換、以利執行整個過程。MetroCluster MetroCluster例如、在八節點MetroCluster 的「列舉」組態中、它會在兩個DR群組中的節點之間切換。</block>
-  <block id="f0e97f395ca7acc4142d44b8d5fcd22a" category="list-text">實作切換：</block>
   <block id="03d462e9dc47820c368c2d67f464784a" category="paragraph">《支援災難時強制切換的真實》MetroCluster</block>
-  <block id="5872a2b6450f234576cf5d48bcdde6d1" category="paragraph">此作業可能需要幾分鐘的時間才能完成。</block>
   <block id="7e2e7baa90ed02c71ec0c1aff8c2f52f" category="list-text">當系統提示您繼續切換時、請回答「y」。</block>
-  <block id="b046f473d72fa4bb3a8b003d1f1c4ca0" category="list-text">執行MetroCluster SHYSoperation show命令、確認已成功完成切換。</block>
   <block id="37a919d754d5135e54d0f9a3243827d8" category="paragraph">如果切換被否決、您可以選擇使用MetroCluster 「-overre-etoes」選項來重新發出「Ride switchover for-forced-on－ferride true」命令。如果您使用此選用參數、系統會覆寫任何軟質的審查、以防止切換。</block>
   <block id="8e2df6a076ab8c2df47dff186e779dab" category="paragraph">SnapMirror關係必須在切換後重新建立。</block>
   <block id="3f98066376e4f19519c40bfdf06de035" category="paragraph">當您在MetroCluster 執行完還原切換後執行「儲存Aggregate plex show」命令時、交換式根Aggregate的plex0狀態將會不確定、並顯示為故障。在此期間、切換根目錄不會更新。此叢的實際狀態只能在MetroCluster 還原階段之後決定。</block>
@@ -9931,11 +9927,9 @@
   <block id="09f81e5c41b5cbf59e868532256e9c4d" category="paragraph">您必須熟悉不同類型的故障和災難、才能使用MetroCluster 此功能進行適當的回應。</block>
   <block id="5bfc201d41e9f1d875dab1348c8fe184" category="list-text">單節點故障</block>
   <block id="6c628e5bd1e441cf84dbfb33c4e702fe" category="paragraph">本機HA配對中的單一元件故障。</block>
-  <block id="b3595fee10e224030fc39a6fcf960976" category="paragraph">在四節點MetroCluster 的非核心組態中、此故障可能會導致自動或協商接管受損節點、視故障元件而定。資料恢復請參閱_高可用度組態指南_。</block>
   <block id="6f22e733ca2220a1bcbe5e8c43b2b096" category="paragraph">在雙節點MetroCluster 的不間斷組態中、此故障會導致自動非計畫性切換（AUSO）。</block>
   <block id="568ff3fa260956a48e6aec64320335ec" category="list-text">整個站台的控制器故障</block>
   <block id="97a8761d85aa340fbdd48793649910be" category="paragraph">所有的控制器模組都會在站台因電力中斷、設備更換或災難而故障。通常、無法區分故障和災難的不完整組態。MetroCluster然而MetroCluster 、諸如《斷證人軟體》等見證軟體可以區分它們。如果交換器間連結（ISL）和交換器已開啟、而且儲存設備可存取、則整個站台的控制器故障情況可能會導致自動切換。</block>
-  <block id="0b5534d532d225b5627bcdb233683b18" category="paragraph">_High-Availability Configuration Guide_提供更多資訊、說明如何從不含控制器故障的站台範圍控制器故障中恢復、以及包含一個或多個控制器的故障。</block>
   <block id="de977f98763f9cb159f730adb49d54f6" category="list-text">ISL故障</block>
   <block id="9a3848005e80fb99f99cbd76fac6e3ad" category="paragraph">站台之間的連結會失敗。此功能不需執行任何動作。MetroCluster每個節點都會繼續正常提供資料、但鏡像不會寫入個別的災難恢復站台、因為無法存取這些站台。</block>
   <block id="c2b2988e42872fbbf4eff058f98ecdb3" category="list-text">多重連續故障</block>
@@ -9963,7 +9957,6 @@
   <block id="2007e152d09a6d332d797698ec41c154" category="paragraph">如果問題僅限於單一節點、則本機HA配對內的容錯移轉與還原功能可持續不中斷營運。在這種情況下MetroCluster 、不需要切換至遠端站台即可完成此功能。</block>
   <block id="c83d0163c048cc9e0e71c9162a0efc0a" category="paragraph">由於八節點或四節點MetroCluster 的不間斷組態是由每個站台的一或多個HA配對所組成、因此每個站台都能承受本機故障並執行不中斷營運、而不需要切換至合作夥伴站台。HA配對的運作方式與非MetroCluster組態中的HA配對相同。</block>
   <block id="a0dfd210408014abb5ef9129acf5fef1" category="paragraph">對於四節點和八節點MetroCluster 的支援、節點因緊急或停電而故障、可能會導致自動切換。</block>
-  <block id="2541c7fda2cb2bc37bc40ec988280653" category="paragraph"><block ref="2541c7fda2cb2bc37bc40ec988280653" category="inline-link-rx"></block></block>
   <block id="d34779432067d872b224aa7f20ba89d2" category="paragraph">如果在本機容錯移轉之後發生第二次故障、MetroCluster 則可透過不中斷營運的情況下繼續執行此功能。同樣地、在進行切換作業之後、如果其中一個仍在運作的節點發生第二次故障、本機容錯移轉事件也會持續提供不中斷營運的作業。在這種情況下、單一可用節點可為DR群組中的其他三個節點提供資料。</block>
   <block id="ad0e8ad90c5a2873a047744473c907fb" category="section-title">在進行還原轉換時切換和切換MetroCluster</block>
   <block id="08cfede6fab5790e0719b7058c81fcad" category="paragraph">從FC到IP的轉換過程包括將靜態IP節點和IP交換器新增至現有的靜態FC組態、然後淘汰該功能的各個節點。MetroCluster MetroCluster MetroCluster MetroCluster根據轉換程序的階段、MetroCluster 還原、修復及切換作業會使用不同的工作流程。</block>
@@ -12695,7 +12688,6 @@
   <block id="a417bfe3b0e85c20658fe71357feb3ef" category="paragraph">如需完整的命令語法、請參閱手冊頁。以下範例建立叢集間lifs cluster01_icl01和cluster01_icl02：</block>
   <block id="0074a60c2f111fa09e324bfc6f086bfd" category="paragraph">執行命令：<block ref="08fd4296d1145ee217b3ba481add0899" prefix=" " category="inline-code"></block></block>
   <block id="bb084c29063404b6611bde28d4ed57d3" category="paragraph">執行命令：<block ref="4686e63f75ecbb5593b9aac27ab89dd7" prefix=" " category="inline-code"></block></block>
-  <block id="52fef25c133f347af6547e0d7325285d" category="list-text">將資料生命量離線移動。+<block ref="58d060d8bc95409e743c7b8e95e72710" prefix=" " category="inline-code"></block></block>
   <block id="3c01c02ef0bb0d39aaf5f9cbc5c8ea4b" category="paragraph"><block ref="6b5ac3bb2bcffd222567cf972f8a2548" prefix="" category="inline-code"></block></block>
   <block id="f7967c2b46538ede39d7960526ce1fa4" category="list-text">將資料生命量移回線上。<block ref="c5b63f9c60f25a11e5c1cde65fb540f1" prefix=" " category="inline-code"></block></block>
   <block id="f677111a20e676139c4a865021fafa0d" category="paragraph"><block ref="850d7b5cf3d569632a8982fc791023b0" prefix="" category="inline-code"></block></block>
@@ -12872,4 +12864,16 @@
   <block id="6a9c67444d70fbe1484e9983092ffff8" category="admonition">您必須執行中的步驟 <block ref="b6e3e97b1b6ab70165db8088036aef95" category="inline-link-macro-rx"></block> 在每個控制器（包括替換控制器）上、確認先前的組態已移除。</block>
   <block id="779a44ac931df50e9ba3ac26bbca035e" category="list-text">如果是<block ref="3b3242ced99842a6c2c16f489b78e773" prefix=" " category="inline-code"></block> 命令成功完成、然後控制器模組故障、請使用上表判斷正確的恢復程序。</block>
   <block id="57c5f3148ec34d732973b7f905f1ca84" category="section-title">在從FC到IP的轉換過程中、控制器模組發生故障MetroCluster</block>
+  <block id="b79001d76282bba800ccc9b5187d2ad4" category="list-text">將資料生命量離線移動。<block ref="58d060d8bc95409e743c7b8e95e72710" prefix=" " category="inline-code"></block></block>
+  <block id="6bf7a249268f3de77afe5f47cab93371" category="list-text"><block ref="6bf7a249268f3de77afe5f47cab93371" category="inline-link-macro-rx"></block></block>
+  <block id="6a6fc2b9cb4bc74b0b6f0528b0da3e1e" category="list-text"><block ref="6a6fc2b9cb4bc74b0b6f0528b0da3e1e" category="inline-link-macro-rx"></block></block>
+  <block id="467f07382f2568a4248a6dee67437d64" category="paragraph"><block ref="467f07382f2568a4248a6dee67437d64" category="inline-link-macro-rx"></block></block>
+  <block id="d570f5d821344a6838aaa260987eafc8" category="inline-link-macro">高可用度配對管理</block>
+  <block id="519460f530eb0c6817aeafcaef72fd69" category="paragraph">在四節點MetroCluster 的非核心組態中、此故障可能會導致自動或協商接管受損節點、視故障元件而定。資料還原如所述 <block ref="098c4bee7c591ea5429ed6be6c4ddd42" category="inline-link-macro-rx"></block> 。</block>
+  <block id="9b8483df982fc88c283d98b86d41f86f" category="paragraph"><block ref="098c4bee7c591ea5429ed6be6c4ddd42" category="inline-link-macro-rx"></block> 有更多資訊可說明如何從不含控制器故障的整個站台控制器故障中恢復、以及包含一或多個控制器的故障。</block>
+  <block id="098c4bee7c591ea5429ed6be6c4ddd42" category="paragraph"><block ref="098c4bee7c591ea5429ed6be6c4ddd42" category="inline-link-macro-rx"></block></block>
+  <block id="2054a94796fbdefe9b1b24a74c1e246e" category="list-text">執行切換之前、至少必須先啟動並執行其中一個正常運作的站台節點。</block>
+  <block id="6fe56a61eacaba0f58f729f4dff36b33" category="list-text">在存續站台執行下列命令、以執行切換：</block>
+  <block id="9b6012ae921487ba43de70a4b89eea50" category="admonition">此作業可能需要幾分鐘的時間才能完成。您可以使用驗證進度<block ref="0d47d8f5f26b2a71aacf597494f0adbb" prefix=" " category="inline-code"></block> 命令。</block>
+  <block id="732b254ce7502fe430a0cca5faf72038" category="list-text">執行、確認已成功完成切換<block ref="0d47d8f5f26b2a71aacf597494f0adbb" prefix=" " category="inline-code"></block> 命令。</block>
 </blocks>
