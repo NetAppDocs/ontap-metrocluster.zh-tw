@@ -23,6 +23,7 @@ summary: 安裝了Tiebreaker軟體之後、您可以新增或修改MetroCluster 
 +
 《NetApp-MetroCluster-tiebreer-software-cli》
 
+. 安裝完成後、第一次啟動時、請輸入密碼、讓Tiebreaker使用者存取資料庫。這是您在安裝期間為資料庫使用者指定的密碼。
 
 
 
@@ -162,7 +163,7 @@ tiebreaker CLI的「debug」命令可用來變更記錄模式。
 停用記錄的偵錯模式
 
 |===
-可使用tiebreaker CLI「update-mcctb-password'」命令來更新使用者密碼。
+在執行tiebreaker 1.4及更早版本的系統中、tiebreaker CLI `update-mcctb-password` 命令可用於更新使用者密碼。此命令已在tiebreaker 1.5及更新版本中過時。
 
 [cols="30,70"]
 |===

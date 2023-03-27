@@ -6548,10 +6548,7 @@
   <block id="456a31391b752801562536d0f9695aad" category="paragraph">Copyright©2020 NetApp、Inc.版權所有。美國印製</block>
   <block id="9fb038c9fc985f95a364fbc284e66009" category="summary">若要將SNMP與Tiebreaker軟體搭配使用、您必須設定SNMP設定。</block>
   <block id="42c78bfa01522453fc42980157ef4a55" category="doc">設定斷路器軟體的SNMP設定</block>
-  <block id="e80a09d3556dbe0da16e8959c406854a" category="list-text">使用tiebreaker CLI SNMP組態精靈命令來新增MetroCluster 各種組態。</block>
   <block id="8891488ccf0af3b6c4a946824e6f0cdc" category="admonition">目前僅支援一個SNMP設陷主機。</block>
-  <block id="aa25456b4a8036cc77b127add821a979" category="paragraph">以下範例顯示支援SNMP V1的SNMP接收器組態、IP位址為10.222.210.234、設陷訊息的連接埠號碼162、以及設為Public的社群字串：</block>
-  <block id="ca3a15f1b35361e790cff5d49cca0bdf" category="paragraph">Tiebreaker軟體已準備好傳送設陷到您指定的SNMP接收器。</block>
   <block id="69b040d4f8adaa4c34e437207036c73c" category="list-text">確認已設定SNMP設定：</block>
   <block id="da82ec774885b0fd4ea7e17756ffc01b" category="paragraph">"NMP組態測試"</block>
   <block id="c4aa541ec1b33e5e76d09363d75995f8" category="paragraph">下列範例顯示、Tiebreaker軟體可傳送事件test_SNMP設陷的SNMP：</block>
@@ -6600,8 +6597,6 @@
   <block id="adb27e4fd8b408342d1fe674b200de75" category="list-text">停止或重新開機</block>
   <block id="f15bdb92238378e8a74313c186a40e64" category="list-text">災難站台FC交換器遺失</block>
   <block id="134edeae96c65c1e5f901507c80c3e5f" category="paragraph">當節點停止運作時、Tiebreaker軟體會立即觸發警示。停電時、所有連線和更新（例如叢集間對等、非易失互連和信箱磁碟）都會停止。叢集無法連線、偵測災難與觸發（包括預設的5秒無聲時間）之間所需的時間不應超過30秒。</block>
-  <block id="1aed952ba5c62f7f85363261321da2b1" category="paragraph">當站台之間的NV-互連連連連線中斷、而存續站台指出「AllLinksSevered」狀態時、斷路器軟體會觸發警示。只有在完成coredump程序之後、才會發生這種情況。在此案例中、從叢集無法到達到偵測災難所需的時間可能較長、或大約等於核心傾印程序所需的時間。在許多情況下、偵測時間超過30秒。</block>
-  <block id="a71f5af5384e7d44564d1456fc656123" category="paragraph">如果節點停止運作、但未產生用於coredump程序的檔案、則偵測時間不應超過30秒。</block>
   <block id="f604e2f49da75682fe40941d90a27870" category="paragraph">僅當節點當機、且存續站台指出「AllLinksSevered」狀態時、Tiebreaker軟體才會觸發警示。叢集無法連線至偵測災難之間所需的時間可能超過30秒。在此案例中、偵測災難所需的時間取決於災難站台節點關閉所需的時間。</block>
   <block id="49a4812102830a278e97180cb708cdda" category="section-title">在災難現場遺失FC交換器（網路附加MetroCluster 的功能不全組態）</block>
   <block id="0a8e830222c5376adabb07f776303bd6" category="paragraph">當節點停止運作時、Tiebreaker軟體會觸發警示。如果FC交換器遺失、節點會嘗試將磁碟路徑恢復約30秒。在此期間、節點會在對等網路上啟動並回應。當兩個FC交換器都當機且無法恢復磁碟路徑時、節點會產生MultiDisk故障錯誤並停止。FC交換器故障與節點產生MultiDisk故障 錯誤的次數之間所需的時間約為30秒。這額外30秒必須新增至災難偵測時間。</block>
@@ -6611,29 +6606,20 @@
   <block id="eaa918da98f1c1c51821025d29a35cf3" category="paragraph">在命令提示字元中輸入適用的命令名稱、即可在CLI中使用手冊頁。</block>
   <block id="d5e32abfbd3e5376cc7d90c1003b3516" category="summary">Tiebreaker軟體提供叢集式儲存環境的監控功能。當節點連線問題和站台災難發生時、也會傳送SNMP通知。</block>
   <block id="1e03abc52b8015d8bfda380a49a74d3d" category="doc">安裝Tiebreaker軟體</block>
-  <block id="9e44d314de95eaf08eaa23e210f083b9" category="paragraph">必須安裝並設定此軟件。MetroCluster</block>
   <block id="dfecead04927b98b4718817e8ee72b45" category="section-title">安裝或升級斷路器軟體的系統需求</block>
   <block id="995e564ca3c05e931e1da79c841f6b29" category="paragraph">Tiebreaker軟體安裝在第三個站台、可讓軟體區分交換器間連結（ISL）故障（站台間連結中斷時）與站台故障。您的主機系統必須符合特定要求、才能在本機電腦上安裝或升級斷路器軟體、以監控MetroCluster 此功能組態。</block>
   <block id="41cf1c389a424db4cc6188d92f8873e1" category="paragraph">本產品具備下列監控功能與需求：MetroCluster</block>
-  <block id="4b8277d24c612d1d23663a72977ad328" category="list-text">不需要針對不同MetroCluster 的不含資訊的組態進行特殊組態設定。</block>
   <block id="fa16f1eaa9378fa31cb55f8791abfbc4" category="list-text">監控功能MetroCluster 可同時執行多達15個的不同步組態。</block>
-  <block id="68a68579e29d4f4e1a1a17f8dc790b3c" category="admonition">每個版本的每個版本組態應只有一MetroCluster 部ESIT斷路 器監控器MetroCluster 、以避免與多部斷路器監控器發生衝突。</block>
   <block id="74c24f77157a44b3d1b75c7a631b2f1a" category="list-text">支援MetroCluster 結合使用各種不同的知識、包括知識、MetroCluster 知識、技術、MetroCluster 技術及彈性等組態。</block>
   <block id="0051a43c14e5ca151dedc81a1b8f3b8e" category="list-text">硬體與軟體：</block>
   <block id="1622cddcc8d92c2f521cf45ebeeb83b0" category="list-text">MariaDB 5.5.52 x / MySQL Server 5.6x</block>
   <block id="f211a801e18d8052b211fd5a87a83253" category="list-text">4 GB RAM</block>
-  <block id="fcf5a54aabe95484b6469eae85dc2a6a" category="list-text">開啟Java執行時間環境8.</block>
   <block id="6d6a8e3be3c8694034944ec6e631c4be" category="list-text">磁碟容量：8 GB</block>
-  <block id="2f889d7364543ea941a8c61cfb8175f4" category="list-text">使用者：root存取權</block>
   <block id="4c009b85d61ad347b56add00274e7453" category="list-text">防火牆：</block>
   <block id="3c78850f45b6edfc4af8ec0a93a2a1ab" category="list-text">直接存取以設定AutoSupport 資訊訊息</block>
   <block id="cde2b4acd898c32670d230559bc6a550" category="list-text">SSH（連接埠22/TCP）、HTTPS（連接埠443/TCP）及ping（ICMP）</block>
-  <block id="b7b51c42ece1fa71e4c6078d16fb8180" category="list-text">不支援在啟用FIPS的主機上安裝。</block>
   <block id="d622b09f9e4518b80b223d0f3d83f9cd" category="section-title">安裝MetroCluster 相依的斷點器</block>
   <block id="c484a86c621669bc61d7e0ad166de57f" category="paragraph">安裝或升級tiebreaker軟體之前、您必須先安裝MySQL或MariaDB伺服器、視主機所在的Linux作業系統而定。</block>
-  <block id="daef0ac00e1ce03149d77a238f313f40" category="list-text">安裝Java執行時間環境。</block>
-  <block id="322a14b32bb5c1132087f429aa08aa6e" category="inline-xref">安裝Java執行時間環境1.8</block>
-  <block id="5b704ee7b2ad5423137a896d4c4ab92a" category="paragraph"><block ref="706367e7c49952df4e02581bb09ed841" category="inline-xref-macro-rx"></block></block>
   <block id="b56e6f0af6a9b1b27daa95d4a36afdc4" category="list-text">安裝MySQL或MariaDB伺服器：</block>
   <block id="6d3e1ad458b8305490e7f3f555ee8c93" category="cell">如果Linux主機是</block>
   <block id="bbc93c3b548f7e6b61051cdcdda436b9" category="paragraph">Red Hat Enterprise Linux 7/CentOS 7.</block>
@@ -6644,16 +6630,10 @@
   <block id="4edc6e3711a7b2b1f3ee14f852711a72" category="paragraph">安裝MariaDB</block>
   <block id="6b415ecff4f67f832fb78f9c6ed7945a" category="inline-xref">在Red Hat Enterprise Linux 8上安裝MariaDB伺服器</block>
   <block id="8ced9fc9cddb4453095058632c12c49f" category="paragraph"><block ref="fcc472ae70179ceec6c9e23c4db15f10" category="inline-xref-macro-rx"></block></block>
-  <block id="cd349969158b43e12b83d29b04e0043d" category="paragraph">在安裝或升級Tiebreaker軟體之前、您必須先在主機系統上安裝Java執行時間環境1.8。</block>
-  <block id="72b0aab8b96a9d3fa805ed484ede7f76" category="list-text">以「root」身分登入主機系統。</block>
-  <block id="1b4e516e0d0ab981d6240b91082cdfe8" category="list-text">安裝Java執行時間環境1.8：</block>
-  <block id="b0039379b0936cf4501521fb4420f585" category="paragraph">[root@mcctb ~]# yum install Java-1.8.0-OpenJDK.x86_64</block>
   <block id="4a857d4819f55ec889deb5379b9ce9c7" category="paragraph">安裝或升級Tiebreaker軟體之前、您必須先在主機系統上安裝MySQL Server 5.5.30或更新版本及5.6.x版本。</block>
   <block id="982777ff7445d76450443abffc937386" category="list-text">將MySQL儲存庫新增至主機系統：</block>
   <block id="76597904d13ed6703126a060cc752f6b" category="paragraph">[root@mcctb ~]# yum localinstall \https://dev.mysql.com/get/mysql57-community-release-el6-11.noarch.rpm`</block>
-  <block id="081d28d21e98dffaebd19fca15fe5217" category="list-text">停用mySQL 57儲存庫：</block>
   <block id="b668a67d489eec4f62521bbd12885266" category="paragraph">[root@mcctb ~]# yum-config-manager -disablemysql57-community</block>
-  <block id="487abcba8707ef46aacc2b585b6a289b" category="list-text">啟用mySQL 56儲存庫：</block>
   <block id="b2a2bcf1d273c0fb32775eaa18c41696" category="paragraph">[root@mcctb ~]# yum-config-manager --enable mysql56-community</block>
   <block id="072e1bfd6f4abef0faf3012692bf5ea1" category="list-text">啟用儲存庫：</block>
   <block id="e7f832e3ddb40e5c83f7a6a1009ac585" category="paragraph">[root@mcctb ~]# yum repolist enabled| grep "mysql.*-community.*</block>
@@ -6669,7 +6649,6 @@
   <block id="a4fddf98cdbecd6a73cbff1c16747db4" category="paragraph">[root@mcctb ~]# mySQL -u root–p]</block>
   <block id="b1cef06f6d0dbb6b0907ba2828c01658" category="paragraph">如果MySQL登入正常運作、輸出將在「mysql&gt;」提示字元結束。</block>
   <block id="ee2d0facfca7cf9da7afc98606d041bb" category="section-title">啟用MySQL自動啟動設定</block>
-  <block id="2aebe553116141c80b33b03a6066e162" category="paragraph">您應該確定MySQL deamon的自動啟動功能已開啟。開啟MySQL精靈會在MetroCluster 系統重新開機時、自動重新啟動MySQL。如果MySQL精靈未執行、則tiebreaker軟體會繼續執行、但無法重新啟動、也無法進行組態變更。</block>
   <block id="907482e03a773bacd1197e79ad353d1a" category="list-text">驗證MySQL在開機時是否已啟用自動啟動：</block>
   <block id="9828a53574d333fd2cfd570e38922b4f" category="paragraph">[root@mcctb ~]# systemctl list-unit-filesmysqld.service`</block>
   <block id="6b78bf98fe8a405df5e22ad1b5b3a1ba" category="paragraph">如果MySQL在開機時未啟用自動啟動、請參閱MySQL文件、以啟用安裝的自動啟動功能。</block>
@@ -6679,12 +6658,9 @@
   <block id="cef7dfc261d8a8420d1938a361c69aa9" category="paragraph">[root@mcctb ~]# yum install MariaDB-server.x86_64</block>
   <block id="60d8aee94c480f814db37523f4bf4e7c" category="list-text">啟動MariaDB伺服器：</block>
   <block id="5dfdc749670b1b02e69d44bfaebcca7a" category="paragraph">[root@mcctb ~]# systemcl start MariaDB</block>
-  <block id="41e90b98524e41b5e2a730bbc11c4d68" category="list-text">確認MariaDB伺服器已啟動：</block>
   <block id="3d17e319e9e36197217af282fa99978d" category="paragraph">[root@mcctb ~]# systemctl狀態MariaDB</block>
-  <block id="66c3a52e296340b1f53b99213e63311b" category="admonition">確認MariaDB的「啟用自動啟動」設定已開啟。請參閱 <block ref="357a9b2b77cd4c5da8d2b51300246283" category="inline-xref-macro-rx"></block>。</block>
   <block id="937a7baab3806f1c4b9f6865102b0452" category="list-text">設定安全性和密碼設定：</block>
   <block id="a6a94dd70978b2b80d52534ad2ff0763" category="section-title">啟用MariaDB的自動啟動設定</block>
-  <block id="69b59a19df8a4681ca9120df41f595ea" category="paragraph">您應該確定MariaDB的自動啟動功能已開啟。如果您未啟用自動啟動功能、MetroCluster 且駐留的系統必須重新開機、則tiebreaker軟體會繼續執行、但無法重新啟動MariaDB服務、也無法進行組態變更。</block>
   <block id="3a792898663e436585860dc61b16ebbe" category="list-text">啟用自動啟動服務：</block>
   <block id="702b74d571398b97d529b92567ce42a7" category="paragraph">[root@mcctb ~]# systemctl enable mariadb.service`</block>
   <block id="5c77e1603fd1c29c92901cf08deda7ef" category="list-text">確認已啟用MariaDB、以便在開機時自動啟動：</block>
@@ -6692,20 +6668,11 @@
   <block id="998939e20c88d175779417ce100fafed" category="section-title">安裝或升級軟體套件</block>
   <block id="aa0bf4d75253e028ce83fbc2fe035e54" category="paragraph">您必須在MetroCluster 本機電腦上安裝或升級ESITirepreaker軟體、才能監控MetroCluster 各種組態。</block>
   <block id="3f18eec2af554a1393e91a90bacbc4e0" category="list-text">您的儲存系統必須執行ONTAP 不含更新版本的資訊。</block>
-  <block id="efbeea6d7850727664a7da563473bf28" category="list-text">您必須使用「yum install Java-1.8.0-OpenJDK'」命令來安裝OpenJDK.</block>
-  <block id="9be8f8020bac531bf90d3e9e43090821" category="list-text">下載MetroCluster 最新版的Eetirepreaker軟體。此範例使用1.21P3-1版。</block>
-  <block id="7cc99909d4740191f04c1e16267410f6" category="paragraph"><block ref="7cc99909d4740191f04c1e16267410f6" category="inline-link-rx"></block></block>
   <block id="0181a996142ce88d36927257090dd51b" category="list-text">以root使用者身分登入主機。</block>
-  <block id="e5c134f52f1e0a03dbbcea2a450afc6f" category="list-text">安裝或升級Tiebreaker軟體：</block>
-  <block id="f869ea7ce9a752fc1c1184b74b7c48b7" category="cell">如果您...</block>
-  <block id="e0dc43e0acdb1e44f8a2ca5c8e9d32a7" category="paragraph">執行新安裝</block>
-  <block id="91cf0413661523a86216dbb468e63b8e" category="paragraph">「rpm -ivh NetApp-MetroCluster-tiebreer-Software-1.21P3-1x86_64。rpm」</block>
   <block id="5a1ca385deb8381ffff2ed6a33fd752d" category="paragraph">系統會顯示下列輸出、以利成功安裝：</block>
   <block id="3d47e198e02ccec25cafef6cbda2ebcc" category="paragraph">升級現有的安裝</block>
-  <block id="efbc224381e9ee3b7c21a4934b2b6740" category="paragraph">「rpm -Uvh NetApp-MetroCluster-tiebreer-Software-1.21P3-1.x86_64。rpm」</block>
   <block id="dbe9b345ce63b9fd500e311eff185188" category="paragraph">系統會顯示下列輸出以成功升級：</block>
   <block id="669f62b51efaf771cdc56bbd948e67a7" category="admonition">如果您輸入錯誤的MySQL根密碼、則Tiebreaker軟體會指出已成功安裝、但會顯示「拒絕存取」訊息。若要解決此問題、您必須使用「rpm -e」命令解除安裝Tiebreaker軟體、然後使用正確的MySQL root密碼重新安裝軟體。</block>
-  <block id="8ea7e8ff291af2b5e94aaafdfe8d1824" category="list-text">開啟從斷路器主機到每個節點管理生命期和叢集管理生命期的SSH連線、以驗證與MetroCluster 該軟件的斷路器連線。</block>
   <block id="35a8ad649b3194dfec4cd801fff9f656" category="section-title">升級執行Tiebreaker監控的主機</block>
   <block id="742dc42b1fe2cbc56c22d6c1ccda0d88" category="paragraph">如果您在升級前將監視器置於觀察者模式、則可在執行斷路器監視器的主機上進行升級、而不會造成中斷。</block>
   <block id="c1b20466030a9b3540d83155ad9678ce" category="list-text">確認監視器處於觀察者模式：</block>
@@ -6732,7 +6699,6 @@
   <block id="88360ff6d6d5e3d5d618e2ab14b30049" category="summary">安裝了Tiebreaker軟體之後、您可以新增或修改MetroCluster 任何版本的物件組態、或是從Tiebreaker軟體中移除這些組態。</block>
   <block id="84b5999a36db8b18180d5b58bd61c503" category="doc">設定Tiebreaker軟體</block>
   <block id="1f160d9eb389f42ea44f6394967f985f" category="section-title">啟動Tiebreaker軟體CLI</block>
-  <block id="54b4367d6ad91431d14caba64c7ea90b" category="paragraph">安裝Tiebreaker軟體之後、您必須啟動其CLI來設定軟體。</block>
   <block id="c3dadd67840f8db5df2397f22e3266bd" category="list-text">從安裝軟體的主機提示字元啟動CLI：</block>
   <block id="cefc8e2ff0cb055845c8a3c508972733" category="paragraph">《NetApp-MetroCluster-tiebreer-software-cli》</block>
   <block id="cd3614b020be0845e7a33285fe90290c" category="paragraph">安裝完NetApp MetroCluster 斷點器軟體之後、您可以一MetroCluster 次新增更多的一套功能。</block>
@@ -6765,7 +6731,6 @@
   <block id="6f35b087f03c5152be82d7a8508f1dcc" category="paragraph">啟用記錄的偵錯模式</block>
   <block id="43b692b0742e982d619122103369fe81" category="paragraph">停用偵錯</block>
   <block id="8060efc18c89171e7bd03f884d5eb315" category="paragraph">停用記錄的偵錯模式</block>
-  <block id="d4421ede25de078e50d8f3f7b8943003" category="paragraph">可使用tiebreaker CLI「update-mcctb-password'」命令來更新使用者密碼。</block>
   <block id="8ce98798a68f5a92e2449012b2bc0d0a" category="paragraph">update-mcctb-password</block>
   <block id="4bc2d3a1736d521ef313b0b94df0b712" category="paragraph">使用者密碼已成功更新</block>
   <block id="4bb6eb436a53b66a4cce0bbf726cb740" category="paragraph">當MetroCluster 您不想再監控MetroCluster 某個非重複組態時、可以移除正在由斷路器軟體監控的非重複組態。</block>
@@ -12051,7 +12016,6 @@
   <block id="52ce4442255e41018df454294b3648fd" category="sidebar">纜線A連接架構MetroCluster 的不全配置</block>
   <block id="e43d65812abd17cff1b088f40916853a" category="sidebar">FC交換器和FC對SAS橋接器的組態工作表</block>
   <block id="dc9b5c542ff69c6d2907cae9c94a84dd" category="sidebar">安裝MetroCluster 和連接線的元件</block>
-  <block id="3cb9f86e529b8be768c61e7d3fdd16db" category="sidebar">將新控制器模組的FC-VI和HBA連接埠連接至FC交換器</block>
   <block id="52d560f5b6575a3dfa8df66e28e9d3d0" category="sidebar">在MetroCluster 各個不景點之間連接ISL</block>
   <block id="b6d684e18fbacf209337f80ec1a6dbd2" category="sidebar">適用於執行版本更新版本的控制器的VA900 Brocade連接埠使用量AFF ONTAP</block>
   <block id="20be931e6a91f7361d271248d9c2f477" category="sidebar">適用於執行版本更新版本的ISL的VA900 Brocade連接埠使用量AFF ONTAP</block>
@@ -12133,7 +12097,6 @@
   <block id="34cbf6f4c56856e1f5344cf68061a5e4" category="sidebar">關閉現有的控制器模組</block>
   <block id="01df64906814434fe4ea875b0e3ca9c0" category="sidebar">安裝並連接新的控制器模組</block>
   <block id="4662d48530b5b4895d14fda6d70a1136" category="sidebar">先決條件與安裝</block>
-  <block id="9227942c0e8496d1950743de0c2f2b18" category="sidebar">新控制器模組的叢集對等連線纜線</block>
   <block id="d413a885e4df87b75c2998fe65ce15b3" category="sidebar">開啟兩個控制器模組的電源、並顯示載入器提示</block>
   <block id="4483869994f1e668b933505db516b46e" category="sidebar">變更現有和新控制器模組的ha-config設定</block>
   <block id="a2ea5e88eaf7883c14d07a200dcbac08" category="sidebar">設定兩個控制器模組的合作夥伴系統ID</block>
@@ -12148,7 +12111,6 @@
   <block id="749a63d3e52d7d3f56116371f74f4c4c" category="sidebar">建立無鏡射的資料集合體</block>
   <block id="d55515e1ee7c8b15964a420a9c7ee7bd" category="sidebar">新增控制器模組之後、請安裝韌體</block>
   <block id="5e5e370132ae9bbe4d5067ae42f064ab" category="sidebar">使用MetroCluster 新的控制器重新整理此功能</block>
-  <block id="8d2d0964462d3961a4a8337e2416a365" category="sidebar">在控制器模組和enabl叢集HA上啟用儲存容錯移轉</block>
   <block id="5708e8d95317910a90a939a9609e669c" category="sidebar">重新啟動SVM</block>
   <block id="086918f8a02df8d6185d9161ef568597" category="sidebar">將四節點MetroCluster 的不含任何功能的FC組態擴充為八節點組態</block>
   <block id="13b1c4d4cea89ae59fe3f7b9fd95ea2d" category="sidebar">判斷新的纜線配置</block>
@@ -12174,7 +12136,6 @@
   <block id="22c9730efa04ff77f4d689d1554cb1af" category="paragraph">FAS8200/A300</block>
   <block id="44966f51999c176196bdbfe7e74f3762" category="paragraph">3、4、9、10、11、 12.</block>
   <block id="3ee537e70a06614ada97e070ef70fe96" category="paragraph">FAS8300/A400/FAS8700</block>
-  <block id="8cff99d2c284195b8638b34190ed3388" category="list-text">版本8.3.x、9.0、9.1、9.2、9.3、ONTAP 9.4、9.5、9.6、9.7、9.8、 9.9.1、9.10.1或9.11.1。</block>
   <block id="8e41be9a68008dd9f01c00807dd75f69" category="section-title">一致性群組支援MetroCluster 的不一致性組態</block>
   <block id="b36742dbca767f044c826ec8fbe9b099" category="inline-link">一致性群組</block>
   <block id="2b9902d272c75c4def3400c620342746" category="paragraph">從ONTAP 功能性的9.11.1開始、<block ref="cf613318e210a5e8a8ae9de011eafc43" category="inline-link-rx"></block> 支援的功能包括MetroCluster ：</block>
@@ -12208,7 +12169,6 @@
   <block id="a9bf0a810b5c634110cced1dcc9dd514" category="section-title">交換器連接埠的使用方式、可結合使用AFF Arf2 A250或FAS500f與AFF Arf2 A220或FAS2750系統</block>
   <block id="eab2b22490c89198b6c41f5b7c6e6104" category="image-alt">MCC IP纜線AFF 連接至Broadcom bes 53248交換器的功能為250和A220</block>
   <block id="cbb84028bf466aea1ee153b79bbe1a90" category="list-text">Red Hat Enterprise Linux 7至7.9、或CentOS 7至7.9 64位元（實體安裝或虛擬機器）</block>
-  <block id="7ddeb0fd81d52fb9d56f1689ef0faa65" category="list-text">Red Hat Enterprise Linux 8.1至8.5</block>
   <block id="af5c7720c35a6c5bbdbd9a0118f9b86a" category="list-text">MariaDB 10.x（使用使用「yum install MariaDB-server.x86_64」安裝的預設版本）</block>
   <block id="f59e44c66a463087eb80b00cc5e7867c" category="list-text">您必須在相同的NX-OS版本和授權下、使用四個相同型號的Cisco交換器。</block>
   <block id="de27fc3292cfa48f233ba5969313e590" category="list-text">您無法在Cisco FC儲存架構中使用加密或壓縮。不支援MetroCluster 此功能。</block>
@@ -12818,7 +12778,6 @@
   <block id="7c5f3ae5aa1416c77224608ca167ed4c" category="paragraph">如需支援哪些平台升級組合的相關資訊、請參閱MetroCluster 中的《The不支援升級》表 <block ref="5e51ded3128b8f60bc0b91c41dccbb25" category="inline-link-macro-rx"></block>。</block>
   <block id="524f05419622851f7f6289320cc91a6e" category="sidebar">升級、重新整理或擴充MetroCluster 此功能</block>
   <block id="81cce2035bed6113b6ccecaeb9cf25a9" category="sidebar">選擇擴充程序</block>
-  <block id="6ff6555fd4c104df84532572f5435476" category="sidebar">使用切換和切換功能（更新版本：《Se 9.10.1》）、將AFF 位於SFC的更新控制器（從Se A700/FAS9000升級AFF 至Se A900/FAS9500）升級MetroCluster 至MetroCluster ONTAP</block>
   <block id="87663f3a8212644181733b0573eae80d" category="sidebar">使用MetroCluster 切換和切換功能升級SIP中的控制器（ONTAP 更新版本：S還原9.8及更新版本）</block>
   <block id="cbfda5b02caeddc103ebee1baa66d92c" category="list-text">附註2：FC節點上的本機叢集介面必須使用40GbE介面。此平台組合需要ONTAP 使用更新版本的版本。</block>
   <block id="55b44ccf6250ba590ce25f63cea8e958" category="list-text">附註3：FC節點上的本機叢集介面必須使用100GbE介面。此平台組合需要ONTAP 使用更新版本的版本。</block>
@@ -12876,4 +12835,184 @@
   <block id="6fe56a61eacaba0f58f729f4dff36b33" category="list-text">在存續站台執行下列命令、以執行切換：</block>
   <block id="9b6012ae921487ba43de70a4b89eea50" category="admonition">此作業可能需要幾分鐘的時間才能完成。您可以使用驗證進度<block ref="0d47d8f5f26b2a71aacf597494f0adbb" prefix=" " category="inline-code"></block> 命令。</block>
   <block id="732b254ce7502fe430a0cca5faf72038" category="list-text">執行、確認已成功完成切換<block ref="0d47d8f5f26b2a71aacf597494f0adbb" prefix=" " category="inline-code"></block> 命令。</block>
+  <block id="4d2d1612af55980a51c5e5884cfe5048" category="paragraph">在SFC組態中、當站台之間的NV-互連連連連線中斷、而存續站台顯示「AllLinksSevered」狀態時、斷路器軟體會觸發警示MetroCluster 。只有在完成coredump程序之後、才會發生這種情況。在此案例中、從叢集無法到達到偵測災難所需的時間可能較長、或大約等於核心傾印程序所需的時間。在許多情況下、偵測時間超過30秒。</block>
+  <block id="e4a02bd2c4ec025de546315db10bc44f" category="paragraph">如果節點停止運作、但未產生用於coredump程序的檔案、則偵測時間不應超過30秒。在靜態IP組態中、內華達州停止通訊、而存續的站台也不知道開機傾印程序MetroCluster 。</block>
+  <block id="2d5bfb04adbed278cb35f60f17f596f2" category="paragraph">安裝Tiebreaker軟體之後、您必須啟動其CLI來設定軟體。</block>
+  <block id="ea9b2c9e4cc3caddc774579fda10f554" category="list-text">安裝完成後、第一次啟動時、請輸入密碼、讓Tiebreaker使用者存取資料庫。這是您在安裝期間為資料庫使用者指定的密碼。</block>
+  <block id="4a4d46716cd5f84b658a3a257394bbbc" category="paragraph">在執行tiebreaker 1.4及更早版本的系統中、tiebreaker CLI<block ref="8ce98798a68f5a92e2449012b2bc0d0a" prefix=" " category="inline-code"></block> 命令可用於更新使用者密碼。此命令已在tiebreaker 1.5及更新版本中過時。</block>
+  <block id="1dc3a4bfe402ed00a069d8536291ac79" category="summary">您可以設定管理員存取ONTAP 功能以存取SURE API和SSH。</block>
+  <block id="6f29ae92010ef511648a0f0deeae72a4" category="doc">設定管理員對ONTAP SURE API和SSH的存取權限</block>
+  <block id="82c961634d5efa9abb1920a04a9c2959" category="list-text">建立可ONTAP 存取API的管理員使用者：<block ref="d87e573141fcf041eb5613c691267fb5" prefix=" " category="inline-code"></block></block>
+  <block id="e0dc40ccfef10504fb91f1169d35732e" category="list-text">建立具有SSH存取權限的管理使用者：<block ref="451dc81d26d749970c113ad1ee5eb03d" prefix=" " category="inline-code"></block></block>
+  <block id="b1da335cf10c2f924dba74d5fd88d108" category="list-text">確認已建立新的管理使用者：<block ref="025c83c1a746b39471a98aa72befe950" prefix=" " category="inline-code"></block></block>
+  <block id="6ba7b5d818acb6cab3137d4c011e2db2" category="inline-link-macro">系統管理員驗證與RBAC</block>
+  <block id="e7d59a0eb3a6cfef54201efcc0c8d786" category="admonition"><block ref="7886b0aac53ba2a311aa54645e5cc1ff" category="inline-link-macro-rx"></block> 已實作。</block>
+  <block id="928cee617936aa2a4fa44c397f9242d0" category="paragraph">必須安裝並設定斷路器軟體。</block>
+  <block id="2cdf4d361a0254ca58a3bec3a13f4c97" category="admonition">您必須擁有「root」權限、才能安裝MetroCluster ESITiebreaker軟體和相依套件。</block>
+  <block id="08821d58a0ccf55fa3dc84c09844d2be" category="admonition">每個版本僅能使用一個MetroCluster ESIT斷路 器監控器來避免MetroCluster 與多個斷路器監控器發生衝突。</block>
+  <block id="32c7669c4b727c3dd30ff98a0c602bff" category="list-text">例如：8.3.x、9.0、9.1、9.2、9.3 ONTAP 、 9.4、9.5、9.6、9.7、9.8、 9.9.1、9.10.1、9.11.1或9.12.1.</block>
+  <block id="c332d926b941e2e435266f227d47f710" category="admonition">僅MetroCluster 限搭配使用VMware®的VMware®版本1.4與RHEL 7-7.9版相容。</block>
+  <block id="589527a6e982279d79d4094b9cb6a17d" category="list-text">開啟JRE 8</block>
+  <block id="b54b2f8d3b7da844c5372449a2f2e34b" category="list-text">Red Hat Enterprise Linux 8.1至8.7</block>
+  <block id="b4405cee9bd65889bb2683ee9723f1a6" category="paragraph">對於執行Tiebreaker 1.4及更早版本的系統、請執行JRE 8。對於執行tiebreaker 1.5及更新版本的系統、請執行OpenJDK 17、18或19。</block>
+  <block id="df3d50023ef4040e27c74e460fb82c76" category="section-title">保護主機和資料庫的安裝安全</block>
+  <block id="a70255bc79978e30e2226102ec52a8b4" category="paragraph">對於執行MetroCluster 還原器1.5及更新版本的組態、您可以保護並強化主機作業系統和資料庫。</block>
+  <block id="fb42bff9ef98fcd52bf0394e5b82dbc4" category="section-title">保護主機安全</block>
+  <block id="ba55431ffbe07990825776e0189349f9" category="paragraph">下列準則說明如何保護安裝了Tiebreaker軟體的主機。</block>
+  <block id="77af0d306f63f871aed8775a2fee284e" category="list-text">限制「root」使用者的存取權。</block>
+  <block id="61f7733093f25bb223a42607ca2406c1" category="list-text">您可以使用能夠提升為root存取權限的使用者來安裝及管理tiebreaker軟體。</block>
+  <block id="30550ee0195aa8c918aee8678daf6dc8" category="list-text">您可以使用無法提升為root存取權限的使用者來管理tiebreaker軟體。</block>
+  <block id="33e6988813e236adab8df9d5f7902aa5" category="admonition">在安裝期間、您應該建立名為「mcctbgrp」的群組。主機root使用者和安裝期間建立的使用者都是成員。只有此群組的成員才能完整管理Tiebreaker軟體。</block>
+  <block id="4c57532a7794b3dceffcfaa9c83555c3" category="list-text">非此群組成員的使用者無法存取Tiebreaker軟體或CLI。您可以在主機上建立其他使用者、並讓他們成為群組的成員。這些額外成員無法完全管理Tiebreaker軟體、因為他們擁有ReadOnly存取權、而且無法新增、變更或刪除監視器。</block>
+  <block id="c1f8ac8c1a56ebb5dd571d1786563ed6" category="list-text">使用磁碟加密</block>
+  <block id="b0c14dc494b591e529b0b6c13cfbd8dd" category="list-text">您可以啟用磁碟加密。這可以是FullDiskEncryption（硬體）、或由主機（軟體）或SVM主機提供的加密。</block>
+  <block id="6b1d6ed0d8e28b63b51388bb7b60fd63" category="list-text">停用允許傳入連線的未使用服務。您可以停用任何未使用的服務。Tiebreaker軟體不需要傳入連線的服務、因為來自Tiebreaker安裝的所有連線都是傳出的。預設啟用且可停用的服務包括：</block>
+  <block id="e289b4b6640e10a13a734897ab62afa5" category="list-text">HTTP / HTTPS伺服器</block>
+  <block id="2e34d93f4da607e244985623cb1d0fa8" category="list-text">FTP伺服器</block>
+  <block id="8b01afb3d17e508a84bd8058b3428a66" category="list-text">Telnet、RSH, rlogin</block>
+  <block id="729879fdf525c9667cb277d244aa7274" category="list-text">NFS、CIFS及其他傳輸協定存取</block>
+  <block id="beda15400b31ab8205bae24315e9e3c7" category="list-text">RDP（RemoteDesktopProtocol）、X11伺服器、vnc或其他遠端「桌面」服務供應商。</block>
+  <block id="ecc5f4591089da399dd184de3b89733b" category="admonition">您必須保留序列主控台存取權（若有支援）或至少啟用一個傳輸協定、才能遠端管理主機。如果停用所有傳輸協定、則需要實體存取主機以進行管理。</block>
+  <block id="0b188830f4d45166fb7cb045426789cd" category="list-text">使用FIPS保護主機安全</block>
+  <block id="94591c4a627b8be3a77cc91a7b0c39ed" category="list-text">您可以在FIPS相容模式下安裝主機作業系統、然後安裝斷路器。</block>
+  <block id="3e91f62daa13f5b54cc2bbf0a5356d5c" category="admonition">OpenJDK 19會在開機時檢查主機是否以FIPS模式安裝。不需要手動變更。</block>
+  <block id="dd3533624ea6d478890db012d2a96e07" category="list-text">基礎建議</block>
+  <block id="28f1a9422a1c43b899dff40ac21f8195" category="list-text">請勿以root使用者身分執行tiebreaker。使用專屬的無權限服務帳戶來執行Tiebreaker。</block>
+  <block id="34b38a81712963f8bc96b575fb9e9d63" category="list-text">變更「/etc/SNMP /snmpd.conf」檔案中的預設社群字串。</block>
+  <block id="22792bff9ca0a70da01bbf3a534fb0a8" category="list-text">允許最低寫入權限。無權限的tiebreaker服務帳戶不應擁有覆寫其執行檔二進位檔或任何組態檔的存取權。只有本地斷路器儲存設備（例如、用於整合式後端儲存設備）或稽核記錄的目錄和檔案、才應由斷路器使用者寫入。</block>
+  <block id="78e2f9fbccdc78c822a630b60fdb45d2" category="list-text">端點對端點傳輸層安全性（TLS）。Tiebreaker應一律搭配TLS使用。如果使用中繼負載平衡器或反向Proxy來進行前端斷路器、則應針對系統每個元件（包括後端儲存設備）之間的所有網路連線使用TLS、以確保在進出斷路器時、所有流量都會加密。如果可能、您應該使用tiebreaker的自訂回應標頭功能來設定HTTP Strict Transport Security（HSTS-）標頭。</block>
+  <block id="d793625b2b0dd5dc51e94311cfc93a64" category="list-text">您必須安裝並執行最新版本的OpenSSH。</block>
+  <block id="ce7f15a2d18ae2db0c61e3bd34a36461" category="list-text">不允許匿名使用者。</block>
+  <block id="8e69b78393ea997402c47bcf5e3dc234" category="list-text">將「允許TcpForwarding」設為「否」、或使用MATCH指令來限制匿名使用者。</block>
+  <block id="126a7d9f821252d114afe5a3bd55d49a" category="list-text">停用Shell命令歷程記錄。</block>
+  <block id="98789e20ad857b904690ce90333052d6" category="list-text">經常升級。Tiebreaker是積極開發的產品、更新頻繁對於將安全性修正程式與任何變更納入預設設定（例如金鑰長度或密碼套件）而言、非常重要。</block>
+  <block id="59c35ef819d1dde06d960624fd6fafd1" category="list-text">訂閱HashiCorp公告郵寄清單、即可接收新版本的公告、並造訪Tiebreaker Changelog、以瞭解最新版本的最新更新詳細資料。</block>
+  <block id="43a32642c83792b717745d6ba0b8ce88" category="list-text">使用正確的檔案權限。在啟動Tiebreaker軟體之前、請務必確保適當的權限已套用至檔案、尤其是含有敏感資訊的檔案。</block>
+  <block id="1aeb0f3005db6ba70bd420bae561dc5d" category="list-text">多因素驗證（MFA）可要求系統管理員使用多個使用者名稱和密碼來識別自己、藉此強化組織的安全性。雖然使用者名稱和密碼很重要、但容易遭受暴力攻擊、而且可能遭第三方竊取。RHEL 8提供MFA、要求使用者提供一項以上的資訊、以便成功驗證到帳戶或Linux主機。其他資訊可能是一次性密碼、透過SMS傳送到您的手機、或是從Google驗證程式、TWilio驗證或FreefP等應用程式傳送認證。</block>
+  <block id="92726ab5faeb2cb9208eaac9af0346bd" category="paragraph-title">使用者管理</block>
+  <block id="29e7446bddd5d43e5b134b0195974dc4" category="inline-link-macro">開始管理使用者帳戶</block>
+  <block id="e7093675e4f7ff464368a2c6885c0eff" category="paragraph"><block ref="e7093675e4f7ff464368a2c6885c0eff" category="inline-link-macro-rx"></block></block>
+  <block id="65c86c5fc3a334e5116b9bb178b8f05f" category="inline-link-macro">使用者與群組帳戶管理簡介</block>
+  <block id="8429a553dc9f96d80d372de5c7bc1dd0" category="paragraph"><block ref="8429a553dc9f96d80d372de5c7bc1dd0" category="inline-link-macro-rx"></block></block>
+  <block id="891179c93bd7a1d83445158a2a3bcf35" category="inline-link-macro">在Web主控台中管理使用者帳戶</block>
+  <block id="dcc8b60eb907ead6a2476a179c643719" category="paragraph"><block ref="dcc8b60eb907ead6a2476a179c643719" category="inline-link-macro-rx"></block></block>
+  <block id="7c557f5d7b160269fadf1af0918c0ff8" category="inline-link-macro">從命令列管理使用者</block>
+  <block id="8c153ad2f489ca7a136092d429df3c46" category="paragraph"><block ref="8c153ad2f489ca7a136092d429df3c46" category="inline-link-macro-rx"></block></block>
+  <block id="11e979f92d60857c96e7cef79b2098cd" category="inline-link-macro">使用命令列編輯使用者群組</block>
+  <block id="5182eba1834da91a1e9b917f0ba52913" category="paragraph"><block ref="5182eba1834da91a1e9b917f0ba52913" category="inline-link-macro-rx"></block></block>
+  <block id="b063c000eb4fba48d6e75b79adf42a9d" category="inline-link-macro">管理Sudo存取</block>
+  <block id="9d11eb8265b20d1b5cc3258afeee0197" category="paragraph"><block ref="9d11eb8265b20d1b5cc3258afeee0197" category="inline-link-macro-rx"></block></block>
+  <block id="c5d7be9e703097d4676ec00c2b6b552e" category="inline-link-macro">管理及重設root密碼</block>
+  <block id="6bff5b8adae91af0fd158a7e1d80c4fd" category="paragraph"><block ref="6bff5b8adae91af0fd158a7e1d80c4fd" category="inline-link-macro-rx"></block></block>
+  <block id="addb25ae677e0b8a55734ab57c09d585" category="inline-link-macro">強化安全性</block>
+  <block id="77948500a8ac32e65224ff3e88f584f7" category="paragraph"><block ref="77948500a8ac32e65224ff3e88f584f7" category="inline-link-macro-rx"></block></block>
+  <block id="7e6eb8a8fac82fdcaf2a5595f008d4f8" category="inline-link-macro">保護網路安全</block>
+  <block id="e987f366c618f88054ad128bd499b7ee" category="paragraph"><block ref="e987f366c618f88054ad128bd499b7ee" category="inline-link-macro-rx"></block></block>
+  <block id="48bf78646325b8dac0d057af95860a05" category="inline-link-macro">使用systemctl管理系統服務</block>
+  <block id="47bfa795f3168c6e7510c4c9ad03c05a" category="paragraph"><block ref="47bfa795f3168c6e7510c4c9ad03c05a" category="inline-link-macro-rx"></block></block>
+  <block id="48ff390f0fb64944dc24e6b219359ffe" category="inline-link-macro">RHEL 8文件</block>
+  <block id="810a71e7a8ed8d9a40260fe78cf59339" category="paragraph"><block ref="810a71e7a8ed8d9a40260fe78cf59339" category="inline-link-macro-rx"></block></block>
+  <block id="a0b41d356b93c9dfaa68be7187603656" category="inline-link-macro">OpenJDK 8中的預設FIPS組態</block>
+  <block id="afa39d1513aaa715d473b01160b979a5" category="paragraph"><block ref="afa39d1513aaa715d473b01160b979a5" category="inline-link-macro-rx"></block></block>
+  <block id="da450a003a78f5bc0db625b903ebe4df" category="admonition">如果保護主機安全、則必須確保主機能夠在不需使用者介入的情況下開機。如果需要使用者介入、則當主機意外重新開機時、可能無法使用斷路器功能。在這種情況下、只有在手動介入和主機完全開機之後、才能使用Tiebreaker功能。</block>
+  <block id="c22cb96c998e3ef3a46e95e20b46cc25" category="section-title">保護資料庫安裝</block>
+  <block id="dde18c163a52fbc5fd51944f7a5cc78a" category="paragraph">下列準則說明如何保護及強化MariaDB 10.x資料庫安裝。</block>
+  <block id="72cc9b23ef9181d84a5d1574a7d6b0fa" category="list-text">限制「root」使用者的存取權。</block>
+  <block id="167298beccb8405f3b75e539b4af3f80" category="list-text">Tiebreaker使用專屬帳戶。用於儲存（組態）資料的帳戶和表格是在安裝tiebreaker期間建立的。唯一需要提高資料庫存取權限的時間、是在安裝期間。</block>
+  <block id="f09d662f92ba47c6523ae0d3d4d3672c" category="list-text">安裝期間需要下列存取權限：</block>
+  <block id="24289888e3803ec70dfd766cd4e83012" category="list-text">建立資料庫和資料表的能力</block>
+  <block id="4dae4336145d630fc4ef8b36620dd040" category="list-text">能夠建立全域選項</block>
+  <block id="66995e4fcc23b009283a0ffee069bac0" category="list-text">能夠建立資料庫使用者並設定密碼</block>
+  <block id="35217fef3323400eef6c43eae284fa4f" category="list-text">可將資料庫使用者與資料庫和資料表建立關聯、並指派存取權限</block>
+  <block id="60353b50c7233098e0964ca219364fc6" category="admonition">您在Tiebreaker安裝期間指定的使用者帳戶必須擁有所有這些權限。不支援將多個使用者帳戶用於不同的工作。</block>
+  <block id="9dc09eec2f0b114fc44ada1400453e18" category="list-text">使用資料庫加密</block>
+  <block id="9061f04f4bcdcda1f9e55b752788fb3d" category="list-text">我們支援閒置資料加密</block>
+  <block id="aa6d61e03c8f89f9d032024a34407fc4" category="list-text">傳輸中的資料未加密。飛行中的資料使用本機的「SOCKS」檔案連線。</block>
+  <block id="247b92755de52d8ede5f08728ea55244" category="list-text">FIPS符合MariaDB規範：您不需要在資料庫上啟用FIPS相容性。以FIPS相容模式安裝主機已足夠。</block>
+  <block id="853fa7832b3e31e56f9427d88404dee9" category="admonition">如果您需要加密、則必須先啟用加密設定、才能安裝Tiebreaker軟體。</block>
+  <block id="26f428eaa625d88e18348654825b4df2" category="list-text">資料庫使用者管理</block>
+  <block id="65c931ac7059c8d8027b5347a2bc458a" category="inline-link-macro">存取控制與帳戶管理</block>
+  <block id="6e668ee7d7022baf28de7345f448095c" category="paragraph"><block ref="6e668ee7d7022baf28de7345f448095c" category="inline-link-macro-rx"></block></block>
+  <block id="10235005b9115be409478241320830ac" category="list-text">保護資料庫安全</block>
+  <block id="e9dccef9d910d2d69e48e8c2885d0e39" category="inline-link-macro">保護MySQL免受攻擊者攻擊</block>
+  <block id="529e037a8731bcfd360d39247cd9009f" category="paragraph"><block ref="529e037a8731bcfd360d39247cd9009f" category="inline-link-macro-rx"></block></block>
+  <block id="6c64c3998d1974786fb6c7319be77e44" category="inline-link-macro">保護MariaDB安全</block>
+  <block id="85909cec38d8e32308f892163433f22f" category="paragraph"><block ref="85909cec38d8e32308f892163433f22f" category="inline-link-macro-rx"></block></block>
+  <block id="f460d5928c4cc0c85aa0f4f16edeefb7" category="list-text">資料閒置加密</block>
+  <block id="a39641b0bac8191fa991bd279a1cb8aa" category="inline-link-macro">閒置資料加密總覽</block>
+  <block id="481b20702b29a344c7e3fbc0ed5c8cd2" category="paragraph"><block ref="481b20702b29a344c7e3fbc0ed5c8cd2" category="inline-link-macro-rx"></block></block>
+  <block id="1d262274bf6315ede4b316f1c1ac7294" category="inline-link-macro">MySQL企業透明資料加密（TDE）</block>
+  <block id="c738467feabecf5154d502220ea938b4" category="paragraph"><block ref="c738467feabecf5154d502220ea938b4" category="inline-link-macro-rx"></block></block>
+  <block id="c212b56e6344256b819057aa0ff26e93" category="list-text">確保Vault安裝安全</block>
+  <block id="adfa274b93101556376a5c1c110a25b1" category="inline-link-macro">正式作業強化</block>
+  <block id="3de794741da4d53ee89d2cfb65848ddb" category="paragraph"><block ref="3de794741da4d53ee89d2cfb65848ddb" category="inline-link-macro-rx"></block></block>
+  <block id="f2bc12f5f4eebffc4fcfe148f063406b" category="list-text">安裝JRE.</block>
+  <block id="1eb28a6954d3f0d52944773f2001d377" category="inline-xref">安裝JRE</block>
+  <block id="441101d3b94f5fe418ef67bd1081c0a6" category="paragraph"><block ref="06f50206a2b466fef1529155ff096c98" category="inline-xref-macro-rx"></block></block>
+  <block id="6641dbbe07c8e6fe53f1f58917a97776" category="list-text">安裝及設定Vault。</block>
+  <block id="f798a783218170fc044aaf03491e8c63" category="inline-xref">安裝及設定Vault</block>
+  <block id="ef1f1252873864d80f380df4f260b300" category="paragraph"><block ref="11cd3d25aa255f8670dd0bfb1bb1d11c" category="inline-xref-macro-rx"></block></block>
+  <block id="4f98b9e93c5515ca7d85806f3a0879e7" category="paragraph">安裝或升級Tiebreaker軟體之前、您必須先在主機系統上安裝JRE。對於執行Tiebreaker 1.4及更早版本的系統、請執行JRE 8。對於執行tiebreaker 1.5及更新版本的系統、請執行OpenJDK 17、18或19。範例中的輸出顯示jre 1.8.0。（JRE 8）。</block>
+  <block id="037b7d55a30f474064c10ac0edbaf6d3" category="list-text">以「root」使用者或可變更為進階權限模式的Sudo使用者身分登入。</block>
+  <block id="a5bdeb77664eccd64392e790b5c620a8" category="paragraph"><block ref="350a7ebb397b46f12bb07dab4792547e" prefix="" category="inline-code"></block></block>
+  <block id="75c3358765861dfefd4446691eccaebc" category="paragraph">如果您沒有或想要使用本機Vault伺服器、則必須安裝Vault。您可以參閱本標準程序來安裝Vault、或參閱《橋式安裝說明》以取得替代準則。</block>
+  <block id="ae861828484d4409805ec1edb73c2ede" category="admonition">如果您的網路中有Vault伺服器、您可以設定MetroCluster 使用該Vault安裝的還原斷路器主機。在此情況下、您不需要在主機上安裝Vault。</block>
+  <block id="6ab2b19db2409ff46893b7cf13d70d9d" category="list-text">下載Vault壓縮檔。</block>
+  <block id="67445ff9dcb93ae0c427e0999e64cf35" category="list-text">解壓縮Vault檔案。</block>
+  <block id="17ddf110eb6e52617c8b7cf887babcb0" category="list-text">驗證安裝。</block>
+  <block id="cc99362ed38d28fc7af6e2036222f681" category="list-text">建立Vault組態檔、並確保組態檔是在「/root」目錄下建立。</block>
+  <block id="2a87ce89d72e3f90bd878edd443d805c" category="admonition">為了保護與Vault的通訊安全、您應該使用TLS。</block>
+  <block id="e8ab497790f83f5fc3740edafdb6d723" category="list-text">啟動Vault伺服器：<block ref="853dbf1e30ce9caf7a28a537403dabef" prefix=" " category="inline-code"></block></block>
+  <block id="c3fa5062efbe5addb0b829217e486e9a" category="list-text">匯出Vault位址。</block>
+  <block id="4de432bd9c82befd87621d345b19046d" category="paragraph">根據您是否使用TLS、選取正確的選項。</block>
+  <block id="3279d9dbec65a434bbbaf6075818c7c5" category="open-title">選項1：使用TLS時</block>
+  <block id="3f8c35444ffef5a5d567e66fe6a43370" category="open-title">選項2.不使用TLS時</block>
+  <block id="91e6f0d9d3028913e9b2e534b86ef446" category="list-text">初始化Vault。</block>
+  <block id="4c540f118761cf389d03c5408a7163e8" category="list-text">匯出Vault根憑證。</block>
+  <block id="30a9676a23282e273d7f6cbe1022a6eb" category="list-text">使用所建立的三個金鑰中的任何一個來解封Vault。</block>
+  <block id="4abdc80f31b6532d800862a32fe8ed41" category="list-text">確認Vault密封狀態為假。</block>
+  <block id="6244f17ea488fb3773f5740fe78c9df2" category="list-text">驗證在開機期間、Vault服務會在主機上啟動。</block>
+  <block id="cb6b0d7f9ede942a2b4f800a3fcfa03e" category="list-text">執行下列命令：<block ref="df6090330d99fecb3392520a0dd713fe" prefix=" " category="inline-code"></block></block>
+  <block id="bccb0874ce0428092d8ca432cf7ff3dc" category="list-text">執行下列命令：<block ref="1ff331fe1baeee901f4e0e0790fc6fc3" prefix=" " category="inline-code"></block></block>
+  <block id="b25f8301169ab26c8100b788b5a04f1f" category="list-text">執行下列命令：<block ref="269b117015efb12595eebf74692e5cbc" prefix=" " category="inline-code"></block></block>
+  <block id="fe78cd97d75c844b841d778a0e4b605e" category="list-text">執行下列命令：<block ref="cbf0dd11767a9f63b03243350db0a86e" prefix=" " category="inline-code"></block></block>
+  <block id="df9fc85b72713a8a0de9939c26c83353" category="admonition">安裝MetroCluster 完ESITiebreaker時、系統會提示您使用此功能。如果您想要變更解封Vault的方法、則需要解除安裝並重新安裝MetroCluster 還原器軟體。</block>
+  <block id="c11d71d3c5b40ddd8e086180837e914e" category="list-text">以root使用者或可變更為進階權限模式的Sudo使用者身分登入。</block>
+  <block id="3bbfd04a5793d4302c4ff4e4d5c2b05e" category="list-text">停用MySQL 57儲存庫：</block>
+  <block id="7652b5e50c33dc0b91dc1b1f3b99bbae" category="list-text">啟用MySQL 56儲存庫：</block>
+  <block id="c74f17ce72c64bc3a5d3eacc0affa867" category="paragraph">您應該確認MySQL精靈的自動啟動功能已開啟。開啟MySQL精靈會在MetroCluster 系統重新開機時、自動重新啟動MySQL。如果MySQL精靈未執行、則tiebreaker軟體會繼續執行、但無法重新啟動、也無法進行組態變更。</block>
+  <block id="7b21144e83a2d9bef049269b16711fb4" category="list-text">以登入<block ref="63a9f0ea7bb98050796b649e85481845" prefix=" " category="inline-code"></block> 使用者或可Sudo進階權限模式的使用者。</block>
+  <block id="a85ec808ef0cc8f00cfefb33625bee2e" category="list-text">確認MariaDB伺服器已啟動：</block>
+  <block id="39082d88e748813ca7c4289ec8bb91b8" category="admonition">確認MariaDB的「啟用自動啟動」設定已開啟。請參閱 <block ref="357a9b2b77cd4c5da8d2b51300246283" category="inline-xref-macro-rx"></block>。</block>
+  <block id="516012473dc0564d6ae8f1bb21c934d0" category="paragraph">您應該確認MariaDB的自動啟動功能已開啟。如果您未啟用自動啟動功能、MetroCluster 且駐留的系統必須重新開機、則tiebreaker軟體會繼續執行、但無法重新啟動MariaDB服務、也無法進行組態變更。</block>
+  <block id="fe62eeb322eff90b81676630826cee46" category="list-text">您必須使用安裝OpenJDK<block ref="366f2699f7c6384b966350ad31d76b9d" prefix=" " category="inline-code"></block> 命令。對於執行Tiebreaker 1.4及更早版本的系統、請執行JRE 8。對於執行tiebreaker 1.5及更新版本的系統、請執行OpenJDK 17、18或19。範例中的輸出顯示jre 1.8.0。（JRE 8）。</block>
+  <block id="8043dd95e39830a755744f552dcbfe87" category="list-text">您可以以MetroCluster 非root使用者的身分安裝斷衝器、並擁有足夠的管理權限、以執行斷路器安裝、建立表格、使用者及設定使用者密碼等作業</block>
+  <block id="9e60d73d0ca4d4a89597b4e9640c5dab" category="list-text">下載MetroCluster 最新版的Eetirepreaker軟體。此範例使用1.5版。</block>
+  <block id="b11583eaa66ec31ee30afd4772390654" category="paragraph"><block ref="b11583eaa66ec31ee30afd4772390654" category="inline-link-rx"></block></block>
+  <block id="afe5c13e8c0820ecf86c92cb3af131ee" category="list-text">驗證RPM檔案。</block>
+  <block id="65efc23e428017c909aa7ce5f2ab429e" category="list-text">下載並匯入RPM金鑰檔：</block>
+  <block id="9374484c18bb5cc9da6bbfb9993c0386" category="list-text">檢查指紋、確認已匯入正確的金鑰。</block>
+  <block id="9c61fcb9ca42533ca71bc3967fa8d764" category="paragraph">下列範例顯示正確的金鑰指紋：</block>
+  <block id="f42c78486b9afb451e324130426f727f" category="list-text">驗證簽名：<block ref="5f80e7b98a82f4c92a3d9bd54baf6d9e" prefix=" " category="inline-code"></block></block>
+  <block id="e5dc6ecd3ca37b58ada5f81277474d69" category="admonition">您必須在成功驗證簽名之後、才能繼續安裝。</block>
+  <block id="1181eacfe8bc53d389900389ceb7d577" category="list-text">[[install-tiebreaker）]安裝或升級Tiebreaker軟體：</block>
+  <block id="fe5c4e6d23d7df5197bb3306f0890eba" category="admonition">從Tiebreaker 1.4版升級時、您只能升級至Tiebreaker 1.5版。不支援從舊版升級至Tiebreaker 1.5。</block>
+  <block id="f02f0088b75e56893084f3c6d0e11382" category="paragraph">根據您要執行新安裝或升級現有安裝、從下列選項中選取正確的程序。</block>
+  <block id="53a3299075fc91e0efbd249fca6a3b62" category="open-title">執行新安裝</block>
+  <block id="40459a63d8595edf157d373070798f30" category="list-text">執行命令：<block ref="03b215d9ee73daa38b9c74b25129b68a" prefix=" " category="inline-code"></block></block>
+  <block id="d0797ac7be86e76f779b0cdc4f75e306" category="list-text">確認已安裝受支援版本的OpenJDK、而且是主機上目前的Java版本。</block>
+  <block id="bf9295a397fc51fb6414b02eb7dce4e7" category="admonition">若要升級至Tiebreaker 1.5、您必須安裝OpenJDK 17、18或19版。</block>
+  <block id="ee7ebb7261a4f55ecf1a40b55f7ec926" category="list-text">確認Vault服務未密封且正在執行：<block ref="95a8292a01bd6ac4b1373bf95faab177" prefix=" " category="inline-code"></block></block>
+  <block id="f4db944bd7f6d3b8eaa9afbf84f4ba60" category="list-text">升級Tiebreaker軟體。</block>
+  <block id="8ac6e9edd68ffb00104a32fd0a3ef455" category="list-text">開啟從斷路器主機到每個節點管理生命期和叢集管理生命期的SSH連線、以檢查斷路器與MetroCluster 該軟件的連線。</block>
+  <block id="92d17a99a2247a42900b1a4c61e8e7d0" category="paragraph">若要將SNMP搭配Tiebreaker軟體使用、您必須設定SNMP設定。</block>
+  <block id="b108689bc1b65903b90d77f19e30d295" category="list-text">使用tiebreaker CLI<block ref="5ef546c28db0706808d8d451d5a71029" prefix=" " category="inline-code"></block> 命令以新增MetroCluster 功能。</block>
+  <block id="c852f510264f0662076b7dc87a75f8f3" category="paragraph">以下範例顯示支援SNMP V3的SNMP接收器組態、IP位址為10.240.45.66、而設陷訊息則為連接埠號碼162。Tiebreaker軟體已準備好傳送設陷到您指定的SNMP接收器。</block>
+  <block id="6eeb81da538b4f61a034b7c239d160a7" category="admonition">您應該設定v3、因為SNMPv1不安全。請確定預設的社群字串*不是*設為公用。</block>
+  <block id="a645efc9b9e1d2189f4d79d85cfaefce" category="sidebar">使用切換和切換功能（AFF 更新版本：E59.10.1或更新版本）、將控制器（從EVA700/FAS9000升級AFF 至EFC900/FAS9500）升級MetroCluster 至EFC組態ONTAP</block>
+  <block id="6f4c27e539cc3005215fed00a58a0521" category="sidebar">將新控制器模組的FC-VI和HBA連接埠連接至FC交換器</block>
+  <block id="da3f2d04a7e97d4412b48daacd47915e" category="sidebar">新控制器模組的叢集對等連線纜線</block>
+  <block id="2a077243240a3af8fdb5a2c53c8dfd93" category="sidebar">在兩個控制器模組上啟用儲存容錯移轉、並啟用叢集HA</block>
+  <block id="3ae2a51b967ff5379c07b5d59d9bb892" category="sidebar">將新的控制器模組FC-VI和HBA連接埠連接至FC交換器</block>
+  <block id="2ec9cf7fc01c78e918f2c1109d699ebd" category="sidebar">設定管理員對ONTAPI和SSH的存取權</block>
 </blocks>

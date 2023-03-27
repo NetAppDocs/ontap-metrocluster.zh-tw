@@ -50,7 +50,7 @@ entries:
     entries:
     - title: 安裝硬體元件
       url: "/install-fc/task_rack_the_hardware_components_mcc_fabric_and_ip.html"
-    - title: 將新控制器模組的FC-VI和HBA連接埠連接至FC交換器
+    - title: 將新的控制器模組FC-VI和HBA連接埠連接至FC交換器
       url: "/install-fc/task_cable_the_controller_module_s_fc_vi_hba_ports_to_the_fc_switches_controller_to_fc_sw.html"
     - title: 在MetroCluster 各個不景點之間連接ISL
       url: "/install-fc/task_cable_the_isl_between_the_mcc_sites_fabric_config.html"

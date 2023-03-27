@@ -4,6 +4,8 @@ title: 安裝及設定MetroCluster 資訊斷路器
 entries:
 - title: Tiebreaker軟體總覽
   url: "/tiebreaker/concept_overview_of_the_tiebreaker_software.html"
+- title: 設定管理員對ONTAPI和SSH的存取權
+  url: "/tiebreaker/task_configure_ssh_ontapi.html"
 - title: 安裝Tiebreaker軟體
   url: "/tiebreaker/task_install_the_tiebreaker_software.html"
 - title: 設定Tiebreaker軟體

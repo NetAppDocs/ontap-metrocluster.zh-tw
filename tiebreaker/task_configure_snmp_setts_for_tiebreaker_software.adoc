@@ -11,29 +11,32 @@ summary: 若要將SNMP與Tiebreaker軟體搭配使用、您必須設定SNMP設�
 
 
 [role="lead"]
-若要將SNMP與Tiebreaker軟體搭配使用、您必須設定SNMP設定。
+若要將SNMP搭配Tiebreaker軟體使用、您必須設定SNMP設定。
 
-. 使用tiebreaker CLI SNMP組態精靈命令來新增MetroCluster 各種組態。
+. 使用tiebreaker CLI `snmp config wizard` 命令以新增MetroCluster 功能。
 +
 
 NOTE: 目前僅支援一個SNMP設陷主機。
 
 +
-以下範例顯示支援SNMP V1的SNMP接收器組態、IP位址為10.222.210.234、設陷訊息的連接埠號碼162、以及設為Public的社群字串：
+以下範例顯示支援SNMP V3的SNMP接收器組態、IP位址為10.240.45.66、而設陷訊息則為連接埠號碼162。Tiebreaker軟體已準備好傳送設陷到您指定的SNMP接收器。
 
 +
 ....
 
 NetApp MetroCluster Tiebreaker :> snmp config wizard
-Enter SNMP Version [V1/V3]: V1
-Enter SNMP Host: 10.222.210.234
+Enter SNMP Version[V1/V3]: v3
+Enter SNMP Host: 10.240.45.66
 Enter SNMP Port: 162
-Enter SNMP V1 Community: public
+Enter SNMP V3 Security Name: v3sec
+Enter SNMP V3 Authentication password:
+Enter SNMP V3 Privacy password:
+Engine ID : 8000031504932eff571825192a6f1193b265e24593
 Successfully added SNMP properties to NetApp MetroCluster Tiebreaker software.
-NetApp MetroCluster Tiebreaker :>
 ....
 +
-Tiebreaker軟體已準備好傳送設陷到您指定的SNMP接收器。
+
+NOTE: 您應該設定v3、因為SNMPv1不安全。請確定預設的社群字串*不是*設為公用。
 
 . 確認已設定SNMP設定：
 +

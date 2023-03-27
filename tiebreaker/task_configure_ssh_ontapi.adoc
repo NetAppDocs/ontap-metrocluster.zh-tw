@@ -1,0 +1,25 @@
+---
+permalink: tiebreaker/task_configure_ssh_ontapi.html 
+sidebar: sidebar 
+keywords: admin, access, ontapi, ssh, configure 
+summary: 您可以設定管理員存取ONTAP 功能以存取SURE API和SSH。 
+---
+= 設定管理員對ONTAP SURE API和SSH的存取權限
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以設定管理員存取ONTAP 功能以存取SURE API和SSH。
+
+.步驟
+. 建立可ONTAP 存取API的管理員使用者： `security login create -user-or-group-name _mcctb_ -application ontapi -authentication-method _password_`
+. 建立具有SSH存取權限的管理使用者： `security login create -user-or-group-name _mcctb_ -application _ssh_ -authentication-method _password_`
+. 確認已建立新的管理使用者： `security login show`
+. 在合作夥伴叢集上重複這些步驟。
++
+
+NOTE: link:https://docs.netapp.com/us-en/ontap/concepts/administrator-authentication-rbac-concept.html["系統管理員驗證與RBAC"^] 已實作。
+
+
