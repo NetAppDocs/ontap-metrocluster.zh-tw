@@ -2035,7 +2035,7 @@ policy default-intercluster -home-node cluster01-02 -home-port e0e -address 192.
 執行命令： `network interface show -service-policy default-intercluster`
 
 --
-.不再是本版本的更新版本ONTAP
+.不含更新版本ONTAP
 --
 執行命令： `network interface show -role intercluster`
 
@@ -2063,10 +2063,10 @@ cluster01
 ====
 .更新版本ONTAP
 --
-Ron命令： `network interface show -service-policy default-intercluster -failover`
+執行命令： `network interface show -service-policy default-intercluster -failover`
 
 --
-.不再是本版本的更新版本ONTAP
+.不含更新版本ONTAP
 --
 執行命令： `network interface show -role intercluster -failover`
 
@@ -2078,8 +2078,7 @@ Ron命令： `network interface show -service-policy default-intercluster -failo
 +
 下列範例顯示、SVM「e0e」連接埠上的叢集間LIF「cluster01_icl01」和「cluster01_icl02」將容錯移轉至「e0f」連接埠。
 
-
-
++
 [listing]
 ----
 cluster01::> network interface show -service-policy default-intercluster –failover
@@ -2094,6 +2093,8 @@ cluster01
                             Failover Targets:  cluster01-02:e0e,
                                                cluster01-02:e0f
 ----
+
+
 .相關資訊
 link:concept_prepare_for_the_mcc_installation.html["使用專用連接埠時的考量事項"]
 
@@ -2144,7 +2145,7 @@ cluster01-02
 執行命令： `network interface create -vserver _system_SVM_ -lif _LIF_name_ -service-policy default-intercluster -home-node _node_ -home-port _port_ -address _port_IP_ -netmask _netmask_`
 
 --
-.不再是本版本的更新版本ONTAP
+.不含更新版本ONTAP
 --
 執行命令：
 `network interface create -vserver system_SVM -lif LIF_name -role intercluster -home-node node -home-port port -address port_IP -netmask netmask`
@@ -2175,7 +2176,7 @@ policy default-intercluster -home-node cluster01-02 -home-port e0c -address 192.
 執行命令： `network interface show -service-policy default-intercluster`
 
 --
-.不再是本版本的更新版本ONTAP
+.不含更新版本ONTAP
 --
 執行命令： `network interface show -role intercluster`
 
@@ -2206,7 +2207,7 @@ cluster01
 執行命令： `network interface show –service-policy default-intercluster -failover`
 
 --
-.不再是本版本的更新版本ONTAP
+.不含更新版本ONTAP
 --
 執行命令：
 `network interface show -role intercluster -failover`
@@ -3291,7 +3292,7 @@ NOTE: 支援功能有限、僅限線上使用。Config Advisor
 .步驟
 . 前往Config Advisor 「更新」頁面並下載工具。
 +
-https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"]
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"^]
 
 . 執行Config Advisor 功能、檢閱工具的輸出結果、並遵循輸出中的建議來解決發現的任何問題。
 

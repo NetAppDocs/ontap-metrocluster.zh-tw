@@ -164,24 +164,7 @@
   <block id="240c641ec7d44f443373981bb513fa5c" category="list-text">RcfFileGeneratorfor MetroCluster EscIP也提供每個交換器的每埠纜線總覽。</block>
   <block id="e13e5f806fc6cae09bcb9fed7eecf125" category="paragraph">使用此纜線總覽來驗證纜線。</block>
   <block id="9ae436c3a98ee403124b8482b69c2296" category="section-title">將兩MetroCluster 個交換器連接至交換器</block>
-  <block id="8de052b5d3d53be55c4754beccef42e7" category="paragraph">將多MetroCluster 個邊區組態纜線連接至Cisco 3132Q-V交換器時、請MetroCluster 根據適當的表格來連接各個邊區。例如、將FAS2750和A700纜線連接至同一個Cisco 3132Q-V交換器。然後依照MetroCluster 表1中的「0 2」和MetroCluster 表2中的「0 2」或MetroCluster 「0 3」、將FAS2750連接至纜線。您無法將FAS2750和A700實體連接成MetroCluster 「1」。</block>
-  <block id="57ada3c509e759653e7ddde7c86cc9bf" category="section-title">將FAS2750或AFF FASA220系統佈線至Cisco 3232C或Cisco 9336C交換器</block>
-  <block id="662b3c42563b02b87a5658cf19656bea" category="image-alt">MCC IP將AFF 一個名為A220或fas2750的纜線連接至Cisco 3232c或Cisco 9336c交換器</block>
-  <block id="841eb4684c33dfc0d4a37ae1db9156e5" category="section-title">將AFF FASA300或FAS8200纜線連接至Cisco 3232C或Cisco 9336C交換器</block>
   <block id="08c525f5d86974627253ff3c6ab1498f" category="image-alt">MCC IP纜線AFF 連接至Cisco 3232c或Cisco 9336c交換器的不支援A300或fas8200</block>
-  <block id="90acfe77ad9c44917cb37dee731f57fb" category="section-title">將AFF FASA250或FAS500f纜線連接至Cisco 3232C或Cisco 9336C交換器</block>
-  <block id="c7682c171141e21812fd0b6c46ff12b1" category="image-alt">MCC IP纜線AFF 連接至Cisco 3232c或Cisco 9336c交換器的Fasa250或fas500f</block>
-  <block id="7af9f40955e7206056660c5c457442fd" category="section-title">將Arc-A320纜線連接AFF 至Cisco 3232C或Cisco 9336C交換器</block>
-  <block id="c3b964a7ca5d4624a7d5bd6416b0f4ed" category="image-alt">將纜線AFF 連接到Cisco 3232c或Cisco 9336c交換器</block>
-  <block id="34e1842e0227b14ff640e97166eac7ef" category="section-title">將AFF FASA400、FAS8300或FAS8700纜線連接至Cisco 3232C或Cisco 9336C交換器</block>
-  <block id="2f920fd31ced03bfae7e3e25615dc6bc" category="image-alt">將MCC IP AFF 位址A400 fas8300或fas8700纜線連接至Cisco 3232c或Cisco 9336c交換器</block>
-  <block id="b2292b7fd9f3ff212f4320f7514f7a84" category="section-title">將AFF FASA700或FAS9000纜線連接至Cisco 3232C或Cisco 9336C交換器</block>
-  <block id="c3622e8c695936793cc1d144ed2a0dcd" category="image-alt">MCC IP將AFF 一個名為fasa700或fas9000的纜線連接至Cisco 3232c或Cisco 9336c交換器</block>
-  <block id="d1438768164c95178a940e0363badcd6" category="section-title">將功能組的纜線連接AFF 到Cisco 3232C或Cisco 9336C交換器</block>
-  <block id="18eee486aa8db1f9803e8ca4f2a1c002" category="image-alt">將某個交換器連接AFF 至Cisco 3232c或Cisco 9336c交換器</block>
-  <block id="5d21ef93e8cb12318e2d8486435cc6f1" category="section-title">將AFF 一個名為「Sf2 A320」AFF 、「Sf2 A400」、AFF 「Sf2 A700」或AFF 「Sf2 A800」的纜線連接至Cisco 9336C-FX2共用交換器</block>
-  <block id="8522044be3175fd7ff7606798d41836f" category="image-alt">MCC IP纜線AFF 從320 A400 a700 a800連接至Cisco 9336c共享交換器</block>
-  <block id="2b1013f1c2f3e9436213f4a43069d1f4" category="image-alt">每個平台的MCC介面9336共享</block>
   <block id="e23227abfbbf3f39097241194ae51e5e" category="summary">如果您的組態包含無鏡射的Aggregate、則必須注意切換作業後可能發生的存取問題。</block>
   <block id="6e951796cc7b3ef0b3cbdf6750702b5c" category="doc">使用無鏡射Aggregate</block>
   <block id="3867ac83522577ac1e3b5b5d7cd98009" category="section-title">進行需要關機的維護時、需要考慮無鏡射的集合體</block>
@@ -396,7 +379,6 @@
   <block id="5c1411fbd116047aebfa2b74c717f434" category="paragraph">根Aggregate中的兩個叢集分別包含下列分割區：</block>
   <block id="a2e4b367e638086b2ebc46c43eab28ff" category="list-text">三個資料分割區</block>
   <block id="9ac045d53981694ac00085732bed2ef9" category="list-text">一個備用分割區</block>
-  <block id="2fa4712d7aa37e709ad53766a17e522f" category="section-title">ADP和磁碟指派、適用於AFF Solidon A220系統</block>
   <block id="878451b3c3409179461a8121430d2819" category="paragraph">僅限內部磁碟機</block>
   <block id="5d21f0ca4249a1dd3aa1ca99ea4c1b10" category="paragraph">內部磁碟機分為四個相同群組。每個群組都會自動指派給個別的集區、而且每個集區都會指派給組態中的個別控制器。</block>
   <block id="de5c61f9b523e845d26faafc2efdf938" category="admonition">一半的內部磁碟機在MetroCluster 設定完使用功能前仍未指派。</block>
@@ -411,18 +393,15 @@
   <block id="3101be4d53f99469f2c1b39892d6d93f" category="list-text">Q2：node_a_2 Pool0</block>
   <block id="dbe07d3b0e16c3d4d765887b1b29b7bd" category="list-text">問題3：node_B_1 Pool1</block>
   <block id="36a6b2d82f1c99925006210a57878b24" category="list-text">Q4：node_B_2 Pool1</block>
-  <block id="88f336a63a2478d097af48b4a173b710" category="section-title">ADP和磁碟指派、位於AFF Solide A250系統上</block>
   <block id="f3a88820bdb6aec9f587dc31d6c8d2a5" category="paragraph">每個機櫃上的分割區都用於建立根Aggregate。根Aggregate在每個叢中包含下列分割區：</block>
   <block id="ebc41c749d217e4e33d72e9e61f637ae" category="paragraph">僅限24個內部磁碟機</block>
   <block id="5f09ad28ed34c8a5a9d9a71b6cfab3ac" category="section-title">ADP和磁碟指派、位於AFF Solida300系統上</block>
-  <block id="973a8b1aa4f84638d8c79c058abe3370" category="section-title">ADP和磁碟指派、位於AFF Solida400系統上</block>
   <block id="eef4995b2b5cb936fd39ce523f41f36e" category="paragraph">96個磁碟機</block>
   <block id="e6668b4aac77d165570602be7eb7cec3" category="paragraph">磁碟機會依機櫃自動指派。</block>
   <block id="cbe12377e4ad0771ba766a2156cee232" category="paragraph">根Aggregate中的兩個叢集分別包括：</block>
   <block id="4633d33fd87d963a27b8086f9c9221e3" category="list-text">20個資料分割區</block>
   <block id="25bc5caf83c0d709344d7afcc2319c3e" category="paragraph">磁碟機分為四個等群組（四個季度）。每個季度櫃都會自動指派給個別的資源池。</block>
   <block id="e53bff6863910b8dc61a899d411a0628" category="section-title">ADP和磁碟指派、位於AFF Solida700系統上</block>
-  <block id="fd4d73a84fa4701c5b537bde0a1e536e" category="section-title">ADP和磁碟指派、位於AFF Solida800系統上</block>
   <block id="c53b7d3a6a4dec447344623203b7118a" category="cell">根Aggregate的ADP配置</block>
   <block id="4cc79bf7b84548df7d6cedf892dab8d3" category="paragraph">內部磁碟機和96個外部磁碟機</block>
   <block id="05fce716b1daba00f41c2bed56cc5f77" category="paragraph">內部分割區分為四個相等的群組（季度）。每一季都會自動指派給個別的資源池。外部磁碟櫃上的磁碟機會依機櫃自動指派、每個磁碟櫃上的所有磁碟機都會指派MetroCluster 到位在「還原」組態中的四個節點之一。</block>
@@ -1100,11 +1079,9 @@
   <block id="8fa16a4e9a93c3ddc0f5de5f06d654b2" category="paragraph">X1146A /內建連接埠</block>
   <block id="4e420f0895c7c6aeabc962b55c31bcd4" category="paragraph">插槽1</block>
   <block id="54af8799ee92be8b48f8774ae3b5b134" category="paragraph">e0b.e1b</block>
-  <block id="be0230807be10234aa034e45c6825280" category="paragraph">FASA400和FAS8300 AFF</block>
   <block id="bdd6d5c8236c146756223f3fdbf8bc5d" category="paragraph">X1146A</block>
   <block id="c4ea0eec15aeb871f4ff708460f06623" category="paragraph">e1a、e1b</block>
   <block id="777915564b2f2870366331ca85d7d9a9" category="paragraph">X1116A</block>
-  <block id="64b4bef2f38301ebf3145c386cd6394d" category="paragraph">FASA220和FAS2750 AFF</block>
   <block id="d30fc67c2a1cee6e54e9714145270705" category="paragraph">內建連接埠</block>
   <block id="f1044ba6bab78a278fa587f690217ea7" category="paragraph">插槽0</block>
   <block id="021129e5b6cda3c7398d4240f38ab938" category="paragraph">e0a、e0b</block>
@@ -1801,21 +1778,14 @@
   <block id="1ea1224e95806d38188ac2833eef5d68" category="list-title">下表附註：</block>
   <block id="84d5df4bc00912b5bf41517f871849dc" category="list-text">對於某些平台、您可以使用連接埠49 - 54進行MetroCluster 支援或MetroCluster 連接支援。</block>
   <block id="141c241c09745923a907fa0b44d6fdc2" category="paragraph">這些連接埠需要額外授權。</block>
-  <block id="ee1c57ea8aa164533e9450c35bd1eacb" category="list-text">只能將使用A320系統的單MetroCluster 一四節點的資訊技術連接至交換器。</block>
   <block id="c7ecc9ce844e9f4491596826d0847864" category="paragraph">此組態不支援需要交換式叢集的功能、包括MetroCluster 從FFC移轉至IP的程序和技術更新程序。</block>
   <block id="101ffe4f466417c1ce75564d3cc0a3b6" category="list-text">配置Broadcom B3B-53248交換器的部分A320系統可能不支援所有功能。AFF</block>
   <block id="cc1b37b4c1dcf92c7509c109eb4c4d7d" category="paragraph">不支援任何需要將本機叢集連線連線至交換器的組態或功能。例如、下列組態和程序不受支援：</block>
   <block id="9998da0c6596ccc4b44b68b91eee576b" category="list-text">八節點MetroCluster 的不完整組態</block>
   <block id="68ce13809f636bb102d35b897931709c" category="list-text">從MetroCluster 靜態FC移轉至MetroCluster 靜態IP組態</block>
   <block id="541a17569d4a90ee94a9fd4035349deb" category="list-text">重新整理四節點MetroCluster 的靜態IP組態（ONTAP 不含更新版本的更新版本）</block>
-  <block id="447ff1837fe6e9b2fe6c2430a25a0331" category="section-title">交換器連接埠的使用、適用於AFF FASA220或FAS2750系統</block>
-  <block id="db4f64f411307a751876f1eb0470efb7" category="image-alt">MCC IP將AFF 一個名為「a 2 220」或「fas2750」的纜線連接至Broadcom bes 53248交換器</block>
-  <block id="b331f2d1731f893814b832eca5529ae2" category="section-title">交換器連接埠使用率、適用於AFF 不符合需求的A250或FAS500f系統</block>
-  <block id="d40faa36f20cf1b622ebf5067a583e1c" category="image-alt">MCC IP纜線AFF 連接至Broadcom bes 53248交換器的功能是將一個3250或fas500f</block>
-  <block id="4d03bcea2ca2c6441b30593805be9fed" category="section-title">交換器連接埠的使用情形、適用於AFF 不支援的A300或FAS8200系統</block>
   <block id="dea9eb47178beaeb21ad431dae613392" category="image-alt">MCC IP將AFF 一個名為「不實」的纜線連接至Broadcom bes 53248交換器</block>
   <block id="99abcc4b4e656e7c9d684acf6c9c05d8" category="image-alt">MCC IP將AFF 一個不含A320的纜線連接至一個Broadcom bes 53248交換器</block>
-  <block id="541872b6e84c2b3b59c34a05762c406e" category="section-title">交換器連接埠的使用、適用於AFF FASA400、FAS8300或FAS8700系統</block>
   <block id="d13ba1eac1605fed2f8d4e769d4a477e" category="image-alt">MCC IP將fas8300 A400或fas8700纜線連接至Broadcom bes 53248交換器</block>
   <block id="fdf0e783eca74a7abe3d6795a4f8efc9" category="doc">無鏡射Aggregate的考量</block>
   <block id="8e1b87e111c6a25dd28266989f14eb98" category="paragraph">組態複寫服務（CRS）中繼資料磁碟區和資料SVM根磁碟區必須位於鏡射Aggregate上。您無法將這些磁碟區移至無鏡射的Aggregate。如果它們位於無鏡射的Aggregate上、則會對協調的切換和切換回復作業加以否決。如果發生這種情況、MetroCluster 則「支援」指令會發出警告。</block>
@@ -6927,7 +6897,6 @@
   <block id="e30d5ec5eece78451cf9285cb678b934" category="summary">若要安裝以Fabric連接MetroCluster 的支援中心組態、您必須依照正確順序執行多項程序。</block>
   <block id="f2b75487be86fe362165761ed32f9169" category="list-text"><block ref="d8800598dd130bed5c7eb4a12dcecf69" category="inline-link-macro-rx"></block>。</block>
   <block id="ccf5fe3db16f3b78ede335fc8f0785d7" category="inline-link-macro">選擇正確的安裝程序</block>
-  <block id="cce6b41c17958a4ae28e2639fe5c1c1a" category="list-text"><block ref="52d00daf67aaaf387590e09043aff43a" category="inline-link-macro-rx"></block>* <block ref="49cc90fa19d302674a7ac32a31b7a0c8" category="inline-link-macro-rx"></block></block>
   <block id="11be15880eab3352c16856fa1475d4db" category="list-text"><block ref="11be15880eab3352c16856fa1475d4db" category="inline-link-macro-rx"></block></block>
   <block id="29ad4be139be5b3e7f2133bef476991d" category="list-text"><block ref="29ad4be139be5b3e7f2133bef476991d" category="inline-link-macro-rx"></block></block>
   <block id="26c467a24332bb8d92780a3eb059ce38" category="summary">您必須將參考組態（RCF）檔案下載到MetroCluster 位在整個交換器組態中的每個交換器。</block>
@@ -12166,7 +12135,6 @@
   <block id="691efed68d0449f254968b0811d65b71" category="list-text">例如、如果您連線：</block>
   <block id="2ad4e214daf4f2fbe760328984025270" category="list-text">兩MetroCluster 個僅包含FAS2750/AFF A220或FAS500f/AFF A250的支援支援組態、您必須選取MetroCluster 「支援組3和4」。</block>
   <block id="1c4e028af9d72f4e84ad919004a88581" category="list-text">兩MetroCluster 種支援不同MetroCluster 的支援對象為FAS2750/AFF A220類型、另一種是FAS500f/AFF A250、您必須為其中一種選擇連接埠群組3和4、另一種選擇連接埠群組1和2。在中<block ref="166489b3c340ece1eccb5706fda90624" category="inline-link-rx"></block>下拉式欄位1和2只會在您在下拉式欄位3和4中選取平台之後、才會填入支援的平台。請參閱 <block ref="4dfd72a31c74d2e269d1ca49dcbd7291" category="inline-link-macro-rx"></block> 如需如何使用連接埠表格的詳細資訊、</block>
-  <block id="a9bf0a810b5c634110cced1dcc9dd514" category="section-title">交換器連接埠的使用方式、可結合使用AFF Arf2 A250或FAS500f與AFF Arf2 A220或FAS2750系統</block>
   <block id="eab2b22490c89198b6c41f5b7c6e6104" category="image-alt">MCC IP纜線AFF 連接至Broadcom bes 53248交換器的功能為250和A220</block>
   <block id="cbb84028bf466aea1ee153b79bbe1a90" category="list-text">Red Hat Enterprise Linux 7至7.9、或CentOS 7至7.9 64位元（實體安裝或虛擬機器）</block>
   <block id="af5c7720c35a6c5bbdbd9a0118f9b86a" category="list-text">MariaDB 10.x（使用使用「yum install MariaDB-server.x86_64」安裝的預設版本）</block>
@@ -12218,8 +12186,6 @@
   <block id="dfed8939b1f16a32e24cbf7db94e77b4" category="paragraph">下表顯示支援的最大組態、AFF DR群組中有八個支援的FASA900或FAS9500控制器模組。</block>
   <block id="850f7b79a5d7e3532f3461f2abbf9036" category="list-text">下表顯示具有八個FC-VI連接埠的系統。FASA900和FAS9500有八個FC-VI連接埠（適用於FC-VI-1和FC-VI-2的A、b、c和d）AFF 。</block>
   <block id="756d409209ace98589705774b5011aa0" category="paragraph">FAS9500</block>
-  <block id="9c4b6feb4a0e2e1a3b0880149249570d" category="section-title">將AFF FASA900或FAS9500纜線連接至Cisco 3232C或Cisco 9336C交換器</block>
-  <block id="c12126891bd5121c9da9a05042a756ac" category="paragraph"><block ref="c12126891bd5121c9da9a05042a756ac" category="inline-image-macro-rx" type="image"></block></block>
   <block id="413a1a8040eaed9020b7af4ba6c24e5f" category="section-title">FAS9500系統上的磁碟指派</block>
   <block id="dd6721b9055a32492dda0434480da44d" category="admonition">不支援下載後修改RCF檔案。</block>
   <block id="03b9eedf57c55a2eb9b4feaa990c85f6" category="list-text">使用RcfFileGeneratorfor MetroCluster EIP、為您的組態產生RCF檔案。</block>
@@ -12494,7 +12460,6 @@
   <block id="78da571ba5b07c0449886d55d21269c6" category="paragraph">需要手動指派</block>
   <block id="361139022557555da3940779901816d7" category="paragraph">需要手動指派。</block>
   <block id="6d54b17c6700f2c764e16c85409687ad" category="sidebar">使用清除檔案升級Cisco IP交換器上的RCF檔案</block>
-  <block id="cd87d30388635f4978d5e5f84d17c64e" category="admonition">您可以選擇使用連接埠e5a和e7a做MetroCluster 為叢集間的LIF組態。</block>
   <block id="ec8b479c503bdd6824b5e3505ef1d0df" category="paragraph">下列範例顯示Agggr_data_A1離線：</block>
   <block id="aa8cd184e817ada870c8b763be695d0b" category="paragraph">下列範例顯示要刪除的Agggr_data_A1集合體。</block>
   <block id="d2038b70348bcc50135596de145913db" category="admonition">請依下列順序更新交換器：switch_a_1、switch_b_1、Switch_a_2、Switch_B_2</block>
@@ -12560,22 +12525,12 @@
   <block id="91fda6ec6c364088ae4a9e6553b26f99" category="doc">適用於NVIDIA支援SN2100 IP交換器的平台連接埠指派</block>
   <block id="1f0b82560627b660c6c6958a1df834b8" category="section-title">支援的組態</block>
   <block id="5b7679ef32240286811b416ba05c54c1" category="paragraph">目前支援下列平台：</block>
-  <block id="e1da8c334241f25c9cc939f9d9e1c5b2" category="list-text">FAS500f / AFF FASA250</block>
-  <block id="cbdc5a97c94bd42a3c869ae6831f7b04" category="list-text">FAS8300 / AFF FASA400</block>
   <block id="4c744d90883c4aab83c5469643da24c7" category="list-text">FAS9000 / AFF E4A700</block>
   <block id="b6db688996a59c9dcd63d8adb538f928" category="paragraph">目前不支援下列平台和組態：</block>
   <block id="570a8334b13f037157ca46f8cbbf662b" category="list-text">FC到IP的轉換MetroCluster</block>
   <block id="67ce3d63d94102f7ff725a6564099821" category="list-text">八節點MetroCluster 的不全功能組態</block>
   <block id="5aa692c4552b821f69bb151f7aa0f216" category="paragraph">如果您連接多MetroCluster 個支援的組態、請依照相應的表格進行。例如：</block>
-  <block id="8bcb14049f972f715f22c433283f9028" category="list-text">如果您連接兩MetroCluster 個AFF 類型為「叢集A700」的四節點位向組態、請連接MetroCluster 第一個顯示為MetroCluster 「支援1」的資訊、然後連接MetroCluster 另一個顯示為MetroCluster 「支援2」的資訊。AFF</block>
-  <block id="88a7b55f8e462f6453124192f872e512" category="admonition">連接埠13和14可在原生速度模式下使用、支援40 Gbps和100 Gbps、或在中斷模式下使用、以支援4 x 25 Gbps或4 x 10 Gbps。如果使用原生速度模式、則會顯示為連接埠13和14。如果他們使用中斷模式、即4 x 25 Gbps或4 x 10 Gbps、則表示為13s-3和14s-3。</block>
   <block id="10fe94c98083f4e751ef035d96910a62" category="paragraph">以下各節將說明實體纜線的佈線大綱。您也可以參閱<block ref="c52b4d12f68853a25c52576697c6b2b5" category="inline-link-rx"></block> 以取得詳細的纜線連接資訊。</block>
-  <block id="09a5cc95a7bf7e0d1b588340d9deb189" category="image-alt">MCC IP纜線A250 MSN2100</block>
-  <block id="189ceff67ac9718189406d45e1d9192a" category="image-alt">MCC IP纜線A400 MSN2100</block>
-  <block id="9b1abf59f2c97ca1a2592e463ceb99ff" category="section-title">交換器連接埠用途AFF 、適用於FASA700或FAS9000</block>
-  <block id="ef983d4a2755d55ad39ed1892fc3e613" category="image-alt">MCC IP纜線A700 MSN2100</block>
-  <block id="e22ae8f3e1d3ede96551e02f922872f0" category="section-title">交換器連接埠使用AFF 率</block>
-  <block id="31b0afd6a52b93da38138e53814052b1" category="image-alt">MCC IP纜線A800 MSN2100</block>
   <block id="fb66ffdb7a65b64035629ded64b78faf" category="sidebar">設定NVIDIA IP交換器</block>
   <block id="344184862169747549deee4b87dc1cf2" category="section-title">支援的平台組合</block>
   <block id="96235e4cabe659a051590175116c1e60" category="paragraph">請參閱<block ref="2c4f45f6db308a425e052afade2ba656" category="inline-link-rx"></block> 以瞭解其他程序。</block>
@@ -12638,10 +12593,8 @@
   <block id="9ecb124bd7cc72ce8836d42500ccf1c1" category="paragraph"><block ref="573c932508ccab841c5c117fb2cd2186" prefix="" category="inline-code"></block> 是網路上名稱伺服器的IP位址。</block>
   <block id="0b01a5f19097da529bc5a887225bb6d0" category="paragraph"><block ref="79e5a69f76d034adaafbb5cb6cb8fc45" prefix="" category="inline-code"></block> 為網域名稱系統（DNS）網域名稱。如果使用此選用參數、則不需要netboot伺服器URL中的完整網域名稱；您只需要伺服器的主機名稱。</block>
   <block id="bafe4bc75cd2dda40df8007d783f6a0b" category="paragraph"><block ref="bafe4bc75cd2dda40df8007d783f6a0b" category="inline-link-macro-rx"></block></block>
-  <block id="2fc63d7ef73ec51fea07c22bee9e5328" category="open-title">更新版本ONTAP</block>
   <block id="a6716741999f9bc3ac379c0b1266ee9e" category="paragraph">執行命令：<block ref="adc0f0943e919c37894a966fa46c4084" prefix=" " category="inline-code"></block></block>
   <block id="99aae08435ef4a82bc4ed2301471d60e" category="paragraph">執行命令：<block ref="b7394405b5c746164dce6dfd2501d986" prefix=" " category="inline-code"></block></block>
-  <block id="6ddde2f3f00d7171e5fc3d8622653a6e" category="paragraph">Ron命令：<block ref="fdb848f6761ac46e0ea7678b5269bd3c" prefix=" " category="inline-code"></block></block>
   <block id="9bb6c900985ca15d936c8e04295202f6" category="paragraph">執行命令：<block ref="4686e63f75ecbb5593b9aac27ab89dd7" prefix=" " category="inline-code"></block></block>
   <block id="ef272f06b8afd4c6381d192259829c5a" category="paragraph">執行命令：<block ref="e24a79e2175b07b7a27cd83a3dc6847e" prefix=" " category="inline-code"></block></block>
   <block id="bea69222028495543641d681312bfac9" category="paragraph">執行命令：<block ref="a95e2d29f4907b8b27d7a8683d428c09" prefix=" " category="inline-code"></block></block>
@@ -12705,7 +12658,6 @@
   <block id="68d8047cbf72a612dd739f574baa912c" category="paragraph">任何需要本機叢集連線至交換器的組態或功能都無法使用。例如、下列組態和程序無法搭配MetroCluster相容的交換器使用：</block>
   <block id="999a0234ad26235f40e860b0131203f6" category="admonition">缺少值表示平台無法搭配MetroCluster相容的交換器使用。</block>
   <block id="e6e94fa732001e55f7fcf67c01c5f249" category="paragraph">您可能需要設定一個交換器MetroCluster 、使其在ISL上具有不實的流量、但無法連線到MetroCluster 任何的介面。在這種情況下、流量已分類、只需對應至適當的佇列。在下列範例中、所有的COS5流量都會對應至類別RDMA、而所有的COS4流量都會對應至類別iSCSI。請注意、這會影響*所有*的COS5和COS4流量、而不只是MetroCluster 影響到各種流量。如果您只想對應MetroCluster 此資訊流量、則必須使用上述類別地圖、使用存取群組來識別流量。</block>
-  <block id="09d852286694a04fbe67a38fda6ca956" category="image-alt">光纖通道IP轉換對照表MetroCluster</block>
   <block id="421c8863e1f7223f216aacf99393b7dd" category="list-text">附註1：此平台組合需要ONTAP 使用更新版本的支援。</block>
   <block id="60ddbd1babdd945c26fbc431202fea6c" category="inline-link-macro">Hardware Universe</block>
   <block id="f90dfbd0dbb63ace6227bf8f3e75efb6" category="admonition">請勿超過平台「下限」的任何物件限制。套用兩個平台的較低物件限制。請參閱 <block ref="62911b0739c1772914819ee9e7282ee4" category="inline-link-macro-rx"></block> 適用於平台限制。</block>
@@ -12724,10 +12676,8 @@
   <block id="316cc41a2ded57b927048db5915a847f" category="section-title">選擇使用切換和切換程序的程序</block>
   <block id="310848f15048cc78b3cbee9c61235054" category="paragraph">請從下方的FC或IP表格中選取您目前的平台。如果目前平台列和目標平台欄的交會為空白、則不支援升級。</block>
   <block id="569cf9bf2c0f655af1cc3b1657f11706" category="section-title">支援MetroCluster 的支援功能升級</block>
-  <block id="540ce52d50e838f18565d459be99ad07" category="image-alt">知識產權升級表MetroCluster</block>
   <block id="871aaccc4c0a59b618736750595955e7" category="list-text">附註1：對於此升級、請使用此程序 <block ref="f668bd1de55e6e087edcf0e6120e96e3" category="inline-link-macro-rx"></block></block>
   <block id="59710baa552439a5c3866c2907720be7" category="section-title">支援MetroCluster 的支援功能。FC控制器升級</block>
-  <block id="4c3f5a4336bfad25061595eaff859835" category="image-alt">資訊通道升級表MetroCluster</block>
   <block id="9ae1fbeadb6e0efc4e024384fb8a4f8d" category="inline-link">知識庫文章</block>
   <block id="6bd20d1a4e5bd1d6bed1627ed32e934c" category="list-text">附註1：若在現有FAS8020或AFF8020節點上使用連接埠1c和1d進行FCVI連線時、要升級控制器、請參閱下列內容<block ref="058c6692589b3956d6bd485ac9c6cea6" category="inline-link-rx"></block>。</block>
   <block id="67be5a03851a4b6d9deae18ad49f328e" category="list-text">附註2：AFF 僅ONTAP 在執行更新版本的系統上、才能使用內建連接埠0e和0f作為FC-VI連線、從Efso300或FAS8200平台進行控制器升級。或更早版本。如需詳細資訊、請參閱 <block ref="54dac02f94a6488bb50eb2223b2531dc" category="inline-link-macro-rx"></block>。</block>
@@ -12771,7 +12721,6 @@
   <block id="88ea8505ba0420be98c64dcb7f91e23c" category="image-alt">NetApp技術更新MetroCluster</block>
   <block id="094d92c3e06727b6e6ff0d7a8d541bef" category="list-text">在新增負載之前、請務必完成技術更新程序。</block>
   <block id="cfd1300cd3db131e8f69dc38177b5658" category="section-title">支援MetroCluster 的支援功能：IP技術更新組合</block>
-  <block id="5a19a72f15dc5e9ad6e2a4e964365ace" category="image-alt">更新知識產權技術MetroCluster</block>
   <block id="ad06b1bad80df72d4f2fa24312c0a9bf" category="cell">重新整理方法</block>
   <block id="56ad29882b1f5aa7a765e42a0bd3ca97" category="paragraph"><block ref="56ad29882b1f5aa7a765e42a0bd3ca97" category="inline-link-macro-rx"></block></block>
   <block id="65fc2b3acec6ee29de6484f084e9ad51" category="paragraph">您可以使用MetroCluster 切換和切換功能、以支援功能支援的功能來升級特定平台。</block>
@@ -13015,4 +12964,45 @@
   <block id="2a077243240a3af8fdb5a2c53c8dfd93" category="sidebar">在兩個控制器模組上啟用儲存容錯移轉、並啟用叢集HA</block>
   <block id="3ae2a51b967ff5379c07b5d59d9bb892" category="sidebar">將新的控制器模組FC-VI和HBA連接埠連接至FC交換器</block>
   <block id="2ec9cf7fc01c78e918f2c1109d699ebd" category="sidebar">設定管理員對ONTAPI和SSH的存取權</block>
+  <block id="afc391e4f426f99e79c7db52846734a8" category="image-alt">MetroCluster IP 技術更新泛黃 1</block>
+  <block id="cc2ec6d9e6bb31f9131384ee2ea63d52" category="image-alt">MetroCluster IP 升級表黃頁 dp1</block>
+  <block id="e99d1c22871517ed64fe9bd3e59b4c85" category="image-alt">MetroCluster 光纖通道升級表黃頁 1</block>
+  <block id="6dc537d2cf87cd236dd75c2694edbea6" category="image-alt">MetroCluster 光纖通道 IP 轉接矩陣泛黃 1</block>
+  <block id="3ba18986907ef3401544960b244376ed" category="section-title">AFF A150 和 AFF A220 系統上的 ADP 和磁碟指派</block>
+  <block id="cab91f7159880630a5bee29aa55d9f8a" category="section-title">AFF C250 和 AFF A250 系統上的 ADP 和磁碟指派</block>
+  <block id="3e0a52646b307379f47860044c088d60" category="paragraph">每個外部機櫃上的磁碟機分為兩個相同的群組（一半）。每個半磁碟櫃都會自動指派給個別的資源池。</block>
+  <block id="b244c220ca2f00fdc24e97de45456f82" category="section-title">AFF C400 和 AFF A400 系統上的 ADP 和磁碟指派</block>
+  <block id="ba9bcbab50848c136d0007b25231ce1e" category="section-title">AFF C800 和 AFF A800 系統上的 ADP 和磁碟指派</block>
+  <block id="c977cafedb40d70c2be8514107ee4747" category="list-text">FAS500f / AFF C250 / AFF A250</block>
+  <block id="fc6e488d651b33ef6c6b35c501a7495f" category="list-text">FAS8300 / AFF C400 / AFF A400</block>
+  <block id="297b6e0ce5945c15596f1be2b7ce0585" category="list-text">AFF C800 / AFF A800</block>
+  <block id="8e65b308ba381d7e7d885330e749b55d" category="list-text">如果您連接兩個 AFF A700 類型的四節點 MetroCluster 組態、請連接第一個 MetroCluster （如「 MetroCluster 1 」所示）、第二個 MetroCluster （如 AFF A700 表中的「 MetroCluster 2 」所示）。</block>
+  <block id="e5c3d25338f9cf52b0644af8df5dd491" category="admonition">連接埠13和14可在原生速度模式下使用、支援40 Gbps和100 Gbps、或在中斷模式下使用、以支援4 x 25 Gbps或4 x 10 Gbps。如果他們使用原生速度模式、則會顯示為連接埠 13 和 14 。如果使用中斷模式（ 4 × 25 Gbps 或 4 × 10 Gbps ）、則會將它們表示為連接埠 13s0 － 3 和 14s0 － 3 。</block>
+  <block id="1ad95d38a718a40f57a452228a018366" category="section-title">FAS500f 、 AFF C250 或 AFF A250 的交換器連接埠使用率</block>
+  <block id="32749c9f2fe889b20a4f9ed309297f2b" category="image-alt">MCC IP 纜線 A250 C250 MSN2100</block>
+  <block id="3a1adad502af8b0ad25b006361e23ce5" category="section-title">AFF C400 、 AFF A400 、 AFF A700 或 FAS9000 、 FAS8300 或 FAS8700 AFF A800 的交換器連接埠使用量</block>
+  <block id="6f71608a9b02340c422ff3d643b4afd7" category="image-alt">MCC IP 纜線 aff250 400 700 800 cserialMSN2100</block>
+  <block id="0995dd589b8b5229e4b9e28862db9b91" category="paragraph">將多個 MetroCluster 組態連接至 Cisco 3132Q-V 交換器時、您必須根據適當的表格為每個 MetroCluster 連接纜線。例如，如果將 FAS2750 和 AFF A700 連接到同一臺 Cisco 3132Q-V 交換機。然後根據表 1 中的「 MetroCluster 1 AFF 」、以及表 2 中的「 MetroCluster 2 」或「 MetroCluster 3 」、為 FAS2750 連接纜線。您無法將 FAS2750 和 AFF A700 實體連接成「 MetroCluster 1 」。</block>
+  <block id="014322233c716b51b659a375ee0b236f" category="section-title">將 AFF A150 、 FAS2750 、 AFF A220 、 FAS500f 、 AFF C250 或 AFF A250 連接至 Cisco 3232C 或 Cisco 9336-FX2C 交換器</block>
+  <block id="b1ae03d0492f9071184bcc685e4d9008" category="image-alt">MCC IP 纜線 a150 A220 a250 至 Cisco 3232c 或 Cisco 9336c 交換器</block>
+  <block id="f4a4caf899825065a94a65355e7134d1" category="section-title">將 FAS8200 或 AFF A300 連接至 Cisco 3232C 或 Cisco 9336C 交換器</block>
+  <block id="03a4a17b1eab01f0b74373b2d602b107" category="section-title">AFF A320 、 FAS8300 、 AFF C400 、 AFF A400 、 FAS8700 、 FAS9000 、 AFF A700 、 AFF C800 、 AFF A800 、 FAS9500 或 AFF A900</block>
+  <block id="cf6033c90446afb2f2e4bf0a87384e97" category="image-alt">MCC IP 纜線 A320 A400 a700 a800 A900 Cisco 3232C 或 9336c 交換器</block>
+  <block id="354182992aa934a6b659ad8284efa43c" category="section-title">佈線 AFF A320 、 AFF C400 、 AFF A400 、 AFF A700 、 AFF C800 、 或 AFF A800 至 Cisco 9336C-FX2 共用交換器</block>
+  <block id="16212daffd6a3883636683e7ad616747" category="image-alt">MCC IP 纜線 AFF A320 C400 A400 a700 c800 a800 至 Cisco 9336c 共用交換器</block>
+  <block id="4aa636d0c8e798111a1395c5cf44abef" category="paragraph">AFF A800 、 AFF C800</block>
+  <block id="76a3e9deef2a9133b01bc4b8aa5ad045" category="paragraph">FAS8300 、 AFF A400 和 AFF C400</block>
+  <block id="2d24d8597140717b72521869e1b9643a" category="paragraph">FAS2750 、 AFF A150 和 AFF A220</block>
+  <block id="f557196ec910f221f73585a5c481f240" category="paragraph">FAS500f 、 AFF A250 和 AFF C250</block>
+  <block id="bf9729690d4b6a4daedabf36c5b5ec8c" category="list-text">只能將使用 AFF A320 系統的單一四節點 MetroCluster 連接至交換器。</block>
+  <block id="9b7cca2be0457a3d0c492f8e904df901" category="section-title">FAS2750 、 AFF 150 或 AFF A220 系統的交換器連接埠使用率</block>
+  <block id="8ee408688016c0cb16c82686873a5d8e" category="image-alt">MCC IP 將 AFF a150 A220 或 fas2750 連接至 Broadcom bes 53248 交換器</block>
+  <block id="58f2f8e1f41f44915c0a9dd64bc2bb2d" category="section-title">FAS500f 、 AFF C250 或 AFF A250 系統的交換器連接埠使用率</block>
+  <block id="358099a0b111152a484a1e05b14c7c47" category="image-alt">MCC IP 將 AFF c250 a250 或 fas500f 連接至 Broadcom bes 53248 交換器</block>
+  <block id="4dd9be0b315657693d8b4224514a84dd" category="section-title">交換器連接埠使用量、可結合使用 AFF A150 、 FAS2750 、 AFF A220 、 FAS500f 或 AFF C250 、 或 AFF A250 系統</block>
+  <block id="e4bf5275812c1279d2db37ca9929225f" category="section-title">FAS8200 或 AFF A300 系統的交換器連接埠使用率</block>
+  <block id="3e2cc26117df5be817591b49f77f1480" category="section-title">FAS8300 、 AFF C400 、 AFF A400 或 FAS8700 系統的交換器連接埠使用率</block>
+  <block id="52d00daf67aaaf387590e09043aff43a" category="list-text"><block ref="52d00daf67aaaf387590e09043aff43a" category="inline-link-macro-rx"></block></block>
+  <block id="49cc90fa19d302674a7ac32a31b7a0c8" category="list-text"><block ref="49cc90fa19d302674a7ac32a31b7a0c8" category="inline-link-macro-rx"></block></block>
+  <block id="566b66a4b36764e94944f56424f3b3ca" category="paragraph">執行命令：<block ref="fdb848f6761ac46e0ea7678b5269bd3c" prefix=" " category="inline-code"></block></block>
 </blocks>

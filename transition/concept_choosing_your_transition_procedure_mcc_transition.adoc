@@ -17,7 +17,7 @@ summary: 您必須根據現有MetroCluster 的不規則功能（NetApp）組態�
 
 例如MetroCluster 、支援從由AFF8060控制器模組組成的FESFC組態、轉換為AFF 由FESA400控制器模組組成的IP組態。
 
-image::../media/metrocluster_fc_ip_transition_matrix.png[光纖通道IP轉換對照表MetroCluster]
+image::../media/metrocluster_fc_ip_transition_matrix_yellowdogp1.png[MetroCluster 光纖通道 IP 轉接矩陣泛黃 1]
 
 * 附註1：此平台組合需要ONTAP 使用更新版本的支援。
 * 附註2：FC節點上的本機叢集介面必須使用40GbE介面。此平台組合需要ONTAP 使用更新版本的版本。

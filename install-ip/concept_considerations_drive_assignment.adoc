@@ -1,7 +1,7 @@
 ---
 permalink: install-ip/concept_considerations_drive_assignment.html 
 sidebar: sidebar 
-keywords: drive auto-assignment, drive, adp, advanced disk partitioning, root disk, unmirrored root, data partition, root partition, shelf-by-shelf, AFF A320, AFF A220, AFF A250, AFF A300, AFF A400, AFF A700, AFF A800, FAS2750, FAS8200, FAS500f, FAS9000 
+keywords: drive auto-assignment, drive, adp, advanced disk partitioning, root disk, unmirrored root, data partition, root partition, shelf-by-shelf, AFF A320, AFF A220, AFF A250, C250, AFF A300, AFF A400, C400, AFF A700, AFF A800, FAS2750, FAS8200, FAS500f, FAS9000 
 summary: 從推出《支援使用ADP的更新系統》（進階磁碟分割）的《支援更新安裝的支援範例ONTAP 》（《支援使用MetroCluster ADP的更新AFF 系統》、《支援更新的安裝程序》、 
 ---
 = 自動指派磁碟機和ONTAP ADP系統的考量事項、位於更新版本的更新版本
@@ -219,7 +219,7 @@ https://hwu.netapp.com["NetApp Hardware Universe"]
 |===
 
 
-=== ADP和磁碟指派、適用於AFF Solidon A220系統
+=== AFF A150 和 AFF A220 系統上的 ADP 和磁碟指派
 
 |===
 
@@ -282,7 +282,7 @@ NOTE: 一半的內部磁碟機在MetroCluster 設定完使用功能前仍未指�
 |===
 
 
-=== ADP和磁碟指派、位於AFF Solide A250系統上
+=== AFF C250 和 AFF A250 系統上的 ADP 和磁碟指派
 
 |===
 
@@ -368,7 +368,7 @@ NOTE: 一半的內部磁碟機在MetroCluster 設定完使用功能前仍未指�
 |===
 
 
-=== ADP和磁碟指派、位於AFF Solida400系統上
+=== AFF C400 和 AFF A400 系統上的 ADP 和磁碟指派
 
 |===
 
@@ -450,7 +450,7 @@ NOTE: 一半的內部磁碟機在MetroCluster 設定完使用功能前仍未指�
 |===
 
 
-=== ADP和磁碟指派、位於AFF Solida800系統上
+=== AFF C800 和 AFF A800 系統上的 ADP 和磁碟指派
 
 |===
 

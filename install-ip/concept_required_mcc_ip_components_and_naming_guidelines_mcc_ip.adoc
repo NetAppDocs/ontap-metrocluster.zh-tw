@@ -156,7 +156,7 @@ e5a、e5b
 
 
  a| 
-解答800 AFF
+AFF A800 、 AFF C800
  a| 
 X1146A /內建連接埠
  a| 
@@ -167,7 +167,7 @@ e0b.e1b
 
 
  a| 
-FASA400和FAS8300 AFF
+FAS8300 、 AFF A400 和 AFF C400
  a| 
 X1146A
  a| 
@@ -189,7 +189,7 @@ e1a、e1b
 
 
  a| 
-FASA220和FAS2750 AFF
+FAS2750 、 AFF A150 和 AFF A220
  a| 
 內建連接埠
  a| 
@@ -200,7 +200,7 @@ e0a、e0b
 
 
  a| 
-FASA250和FAS500f AFF
+FAS500f 、 AFF A250 和 AFF C250
  a| 
 內建連接埠
  a| 

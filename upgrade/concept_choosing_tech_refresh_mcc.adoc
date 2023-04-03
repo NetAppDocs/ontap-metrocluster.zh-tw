@@ -29,7 +29,7 @@ NOTE: 請勿超過平台「下限」的任何物件限制。套用兩個平台�
 
 === 支援MetroCluster 的支援功能：IP技術更新組合
 
-image::../media/metrocluster_ip_tech_refresh.png[更新知識產權技術MetroCluster]
+image::../media/metrocluster_ip_tech_refresh_yellowdogp1.png[MetroCluster IP 技術更新泛黃 1]
 
 * 在新增負載之前、請務必完成技術更新程序。
 

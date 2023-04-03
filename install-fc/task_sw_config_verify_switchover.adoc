@@ -1,5 +1,5 @@
 ---
-permalink: install-fc/concept_configure_the_mcc_software_in_ontap.html 
+permalink: install-fc/task_sw_config_verify_switchover.html 
 sidebar: sidebar 
 keywords: configure, configuring, metrocluster, software, ontap 
 summary: 您必須在MetroCluster 不完整的功能組態中設定每個節點ONTAP 、包括節點層級組態、以及將節點組態設定為兩個站台。您也必須在MetroCluster 這兩個站台之間實作「不二」關係。對於使用原生磁碟櫃的系統、其步驟與使用陣列LUN的系統略有不同。 

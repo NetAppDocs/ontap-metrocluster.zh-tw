@@ -29,7 +29,7 @@ summary: 您使用的升級程序取決於平台模式。
 
 === 支援MetroCluster 的支援功能升級
 
-image::../media/metrocluster_ip_upgrade_table.PNG[知識產權升級表MetroCluster]
+image::../media/metrocluster_ip_upgrade_table_yellowdogdp1.PNG[MetroCluster IP 升級表黃頁 dp1]
 
 * 附註1：對於此升級、請使用此程序 link:task_upgrade_A700_to_A900_in_a_four_node_mcc_ip_us_switchover_and_switchback.html["使用交換器和切換功能（AFF 更新版本）、將控制器從功能性的A700/FAS9000升級AFF 至功能性的S還原A900/FAS9500 MetroCluster （以不整合的IP組態）ONTAP"]
 
@@ -38,7 +38,7 @@ image::../media/metrocluster_ip_upgrade_table.PNG[知識產權升級表MetroClus
 
 === 支援MetroCluster 的支援功能。FC控制器升級
 
-image::../media/metrocluster_fc_upgrade_table.PNG[資訊通道升級表MetroCluster]
+image::../media/metrocluster_fc_upgrade_table_yellowdogp1.PNG[MetroCluster 光纖通道升級表黃頁 1]
 
 * 附註1：若在現有FAS8020或AFF8020節點上使用連接埠1c和1d進行FCVI連線時、要升級控制器、請參閱下列內容https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/Upgrading_controllers_when_FCVI_connections_on_existing_FAS8020_or_AFF8020_nodes_use_ports_1c_and_1d["知識庫文章"^]。
 * 附註2：AFF 僅ONTAP 在執行更新版本的系統上、才能使用內建連接埠0e和0f作為FC-VI連線、從Efso300或FAS8200平台進行控制器升級。或更早版本。如需詳細資訊、請參閱 link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1507088["公開報告"^]。

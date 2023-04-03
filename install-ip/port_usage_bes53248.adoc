@@ -20,7 +20,7 @@ summary: 連接埠在MetroCluster 一個靜態IP組態中的使用取決於交�
 +
 這些連接埠需要額外授權。
 
-. 只能將使用A320系統的單MetroCluster 一四節點的資訊技術連接至交換器。
+. 只能將使用 AFF A320 系統的單一四節點 MetroCluster 連接至交換器。
 +
 此組態不支援需要交換式叢集的功能、包括MetroCluster 從FFC移轉至IP的程序和技術更新程序。
 
@@ -48,25 +48,25 @@ summary: 連接埠在MetroCluster 一個靜態IP組態中的使用取決於交�
 
 
 
-== 交換器連接埠的使用、適用於AFF FASA220或FAS2750系統
+== FAS2750 、 AFF 150 或 AFF A220 系統的交換器連接埠使用率
 
-image::../media/mcc_ip_cabling_a_aff_a220_or_fas2750_to_a_broadcom_bes_53248_switch.png[MCC IP將AFF 一個名為「a 2 220」或「fas2750」的纜線連接至Broadcom bes 53248交換器]
-
-
-
-== 交換器連接埠使用率、適用於AFF 不符合需求的A250或FAS500f系統
-
-image::../media/mcc_ip_cabling_a_aff_a250_or_fas500f_to_a_broadcom_bes_53248_switch.png[MCC IP纜線AFF 連接至Broadcom bes 53248交換器的功能是將一個3250或fas500f]
+image::../media/mcc_ip_cabling_a_aff_a150_a220_or_fas2750_to_a_broadcom_bes_53248_switch.png[MCC IP 將 AFF a150 A220 或 fas2750 連接至 Broadcom bes 53248 交換器]
 
 
 
-== 交換器連接埠的使用方式、可結合使用AFF Arf2 A250或FAS500f與AFF Arf2 A220或FAS2750系統
+== FAS500f 、 AFF C250 或 AFF A250 系統的交換器連接埠使用率
+
+image::../media/mcc_ip_cabling_a_aff_c250_a250_or_fas500f_to_a_broadcom_bes_53248_switch.png[MCC IP 將 AFF c250 a250 或 fas500f 連接至 Broadcom bes 53248 交換器]
+
+
+
+== 交換器連接埠使用量、可結合使用 AFF A150 、 FAS2750 、 AFF A220 、 FAS500f 或 AFF C250 、 或 AFF A250 系統
 
 image::../media/mcc_ip_cabling_aff_a250_and_ a220_to_a_broadcom_bes_53248_switch.png[MCC IP纜線AFF 連接至Broadcom bes 53248交換器的功能為250和A220]
 
 
 
-== 交換器連接埠的使用情形、適用於AFF 不支援的A300或FAS8200系統
+== FAS8200 或 AFF A300 系統的交換器連接埠使用率
 
 image::../media/mcc_ip_cabling_a_aff_a300_or_fas8200_to_a_broadcom_bes_53248_switch.png[MCC IP將AFF 一個名為「不實」的纜線連接至Broadcom bes 53248交換器]
 
@@ -74,6 +74,6 @@ image::../media/mcc_ip_cabling_a_aff_a320_to_a_broadcom_bes_53248_switch.png[MCC
 
 
 
-== 交換器連接埠的使用、適用於AFF FASA400、FAS8300或FAS8700系統
+== FAS8300 、 AFF C400 、 AFF A400 或 FAS8700 系統的交換器連接埠使用率
 
 image::../media/mcc_ip_cabling_a_fas8300_a400_or_fas8700_to_a_broadcom_bes_53248_switch.png[MCC IP將fas8300 A400或fas8700纜線連接至Broadcom bes 53248交換器]
