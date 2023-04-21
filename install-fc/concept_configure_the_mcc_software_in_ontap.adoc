@@ -2794,6 +2794,9 @@ Remote: cluster_A         Configuration state configured
 .關於這項工作
 如果FC交換器設定為IOD、ONTAP 則必須將該軟件設定為IOD。同樣地、如果FC交換器已設定為ood、ONTAP 則必須將其設定為ood。
 
+
+NOTE: 您必須重新啟動控制器才能變更組態。
+
 .步驟
 . 設定ONTAP 執行IOD或框架等作業的功能。
 +
@@ -2863,6 +2866,7 @@ mcc4-b2      mlx4_0          IB       Up    false    192.0.2.10  	 ib2b
 mcc4-b12_siteB::*> metrocluster interconnect adapter modify -node mcc4-b1 -is-ood-enabled true
 mcc4-b12_siteB::*> metrocluster interconnect adapter modify -node mcc4-b2 -is-ood-enabled true
 ----
+... 透過雙向執行高可用度（ HA ）接管、重新啟動控制器。
 ... 驗證設定：
 +
 「顯示此介面卡的資訊」MetroCluster
