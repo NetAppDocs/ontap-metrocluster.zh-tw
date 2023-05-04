@@ -4,17 +4,22 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, refresh, four, node, ip, configuration, add, autosupport 
 summary: 您可以將四個新節點新增至MetroCluster 「靜態IP」組態、做為第二個DR群組。這會建立八節點MetroCluster 的不全功能組態。 
 ---
-= 將四節點MetroCluster 的靜態IP組態擴充至八節點組態
+= 擴充 MetroCluster IP 組態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
+視 ONTAP 版本而定、您可以將四個新節點新增為新的 DR 群組、以擴充 MetroCluster IP 組態。
+
+從 ONTAP 9.13.1 開始、您可以將四個新節點新增至 MetroCluster IP 組態、做為第三個 DR 群組。這會建立一個十二節點的 MetroCluster 組態。
+
 從更新版的支援版9.9.1開始ONTAP 、您可以將四個新節點新增到MetroCluster 作為第二個DR群組的支援版IP組態中。這會建立八節點MetroCluster 的不全功能組態。
 
 .開始之前
 * 舊節點和新節點必須執行相同版本ONTAP 的更新。
+* 本程序說明展開一個四節點 DR 群組所需的步驟。如果您有八節點組態（兩個 DR 群組）、則必須針對每個 DR 群組重複整個程序。
 * 您必須確保舊有和新的平台機型支援平台混合。
 +
 https://hwu.netapp.com["NetApp Hardware Universe"^]
@@ -64,6 +69,26 @@ Dr_group_2-new
 
 
 |===
+
+
+== 新增第二個 DR 群組時支援的平台組合
+
+下表顯示支援的八節點 IP 組態平台組合。
+
+[IMPORTANT]
+====
+* 此表中的組合僅適用於一般或永久性的 8 節點組態。
+* 如果您使用的是轉換或重新整理程序、則本表 * 請勿 * 套用平台組合。
+* 一個 DR 群組中的所有節點都必須是相同類型和組態。
+
+
+====
+image::../media/8node_comb_ip.png[8 個節點組態的平台組合]
+
+* * 附註 1* ：這些組合需要 ONTAP 9.9.1 或更新版本（或平台支援的最低 ONTAP 版本）。
+* * 附註 2 * ：這些組合需要 ONTAP 9.13.1 或更新版本（或平台支援的最低 ONTAP 版本）。
+
+
 
 
 == 在維護前傳送自訂AutoSupport 的支援訊息

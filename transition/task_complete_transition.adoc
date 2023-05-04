@@ -103,4 +103,5 @@ not-enabled
 
 cluster_B::>
 ....
+. 如果您有八個節點的組態、則必須從開始重複整個程序 link:concept_requirements_for_fc_to_ip_transition_mcc.html["準備從MetroCluster 功能不完善的FC移轉至MetroCluster 功能不完善的IP組態"] 適用於每個 FC DR 群組。
 

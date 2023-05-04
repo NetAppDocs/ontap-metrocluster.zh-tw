@@ -1,0 +1,34 @@
+= 
+:allow-uri-read: 
+
+
+您必須將交換器更新為支援新平台機型的組態。
+
+.關於這項工作
+您可以在包含目前正在升級之控制器的站台上執行此工作。在本程序所示的範例中、我們會先升級se_B。
+
+站台A的交換器將在站台A上的控制器升級時升級。
+
+.步驟
+. 準備IP交換器以應用新的RCF檔案。
++
+請依照「_EIP MetroCluster 安裝與組態_」一節中有關交換器廠商的步驟進行。
+
++
+link:../install-ip/index.html["安裝與組態MetroCluster"]
+
++
+** link:../install-ip/task_switch_config_broadcom.html#resetting-the-broadcom-ip-switch-to-factory-defaults["將Broadcom IP交換器重設為原廠預設值"]
+** link:../install-ip/task_switch_config_broadcom.html#resetting-the-cisco-ip-switch-to-factory-defaults["將Cisco IP交換器重設為原廠預設值"]
+
+
+. 下載並安裝RCF檔案。
++
+請依照中交換器廠商的一節中的步驟操作 link:../install-ip/index.html["安裝與組態MetroCluster"]。
+
++
+** link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-broadcom-rcf-files["下載並安裝Broadcom RCF檔案"]
+** link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-cisco-ip-rcf-files["下載並安裝Cisco IP RCF檔案"]
+
+
+

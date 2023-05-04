@@ -25,9 +25,14 @@ image::../media/metrocluster_fc_ip_transition_matrix_yellowdogp1.png[MetroCluste
 * 除非ONTAP 附註中另有說明或個別平台要求、否則所有轉換程序都需要使用更新版本的資訊。
 
 
+[NOTE]
+====
+* 請勿超過平台「下限」的任何物件限制。套用兩個平台的較低物件限制。
+* 如果目標平台限制低於 MetroCluster 限制、您必須重新設定 MetroCluster 、使其達到或低於目標平台限制、才能新增節點。
+* 請參閱 link:https://hwu.netapp.html["Hardware Universe"^] 適用於平台限制。
 
-NOTE: 請勿超過平台「下限」的任何物件限制。套用兩個平台的較低物件限制。請參閱 link:https://hwu.netapp.html["Hardware Universe"^] 適用於平台限制。
 
+====
 您必須根據現有MetroCluster 的不規則功能（NetApp）組態、選擇轉換程序。
 
 轉換程序會以IP交換器網路取代後端FC交換器網路或FC-VI連線。確切的程序取決於您的初始組態。

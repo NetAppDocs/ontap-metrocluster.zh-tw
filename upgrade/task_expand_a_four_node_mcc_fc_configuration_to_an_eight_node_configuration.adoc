@@ -35,3 +35,19 @@ image::../media/mcc_dr_groups_4_node.gif[MCC DR群組4個節點]
 image::../media/mcc_dr_groups_8_node.gif[MCC DR群組8節點]
 
 這兩個站台都必須平均擴充。不可以由數量不均的節點組成的不穩定FC組態。MetroCluster
+
+
+
+== 新增第二個 DR 群組時支援的平台組合
+
+下表顯示八節點 MetroCluster FC 組態支援的平台組合。
+
+[IMPORTANT]
+====
+* 此表中的組合僅適用於一般或永久性的八節點組態。
+* 如果您使用的是轉換或重新整理程序、則本表 * 請勿 * 套用平台組合。
+* 一個 DR 群組中的所有節點都必須是相同類型和組態。
+
+
+====
+image::../media/8node_comb_fc.png[8 個節點組態的平台組合]

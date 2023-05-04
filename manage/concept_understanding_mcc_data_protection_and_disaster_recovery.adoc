@@ -697,7 +697,7 @@ SP會傳送及接收來自災難恢復合作夥伴的SNMP流量、以監控其�
 
 ==== 在MetroCluster 不間斷FC組態中變更AUSO設定
 
-根據預設、AUSO設為「auso-on叢集災難」。其狀態可在MetroCluster show命令中檢視。
+依預設、 AUSO 設為「 auso-on － cluster －災難」。您可以在中檢視其狀態 `metrocluster show` 命令。
 
 
 NOTE: AUSO設定不適用於MetroCluster 不完整的IP組態。
@@ -727,6 +727,10 @@ link:task_perform_switchover_for_tests_or_maintenance.html["執行測試或維�
 === 透過協調器輔助的自動非計畫性切換MetroCluster 功能、以支援各種不完整的IP組態
 
 在S廳IP組態中MetroCluster 、系統可使用ONTAP 此功能偵測故障、並執行由內建人員輔助的自動非計畫性切換（MAUSO）。
+
+從 ONTAP 9.13.1 開始、在 MetroCluster IP 組態中、 AUSO 狀態的預設值會設定為「 auso-on-dr-group 」。對於 ONTAP 9.12.1 及更早版本、預設值會設為「 auso-on － cluster － f則 」。在八節點 MetroCluster IP 組態中、如果 HA 配對中的兩個節點都失敗、此選項將會觸發 AUSO 。
+
+您可以使用將 AUSO 網域變更為「 auso-on 叢集災難」網域 `metrocluster modify -auto-switchover-failure-domain auso-on-cluster-disaster` 命令。
 
 
 NOTE: 不支援MAUSO MetroCluster 的不支援不支援以支援不支援的功能。

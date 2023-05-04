@@ -2,7 +2,7 @@
 permalink: transition/concept_nondisruptively_transitioning_from_a_four_node_mcc_fc_to_a_mcc_ip_configuration.html 
 sidebar: sidebar 
 keywords: nondisruptive, transition, fc, ip 
-summary: 從功能不中斷的情況下ONTAP 、MetroCluster 從現有的四節點的靜態FC組態、將工作負載和資料移轉至全新MetroCluster 的靜態IP組態、即可開始使用。 
+summary: 從 ONTAP 9.13.1 開始、您可以將工作負載和資料從現有的八節點 MetroCluster FC 組態、無中斷地移轉至新的 MetroCluster IP 組態。 
 ---
 = 不中斷地從MetroCluster 一個不中斷的支援FC移轉至MetroCluster 一個支援功能性的IP組態ONTAP （版本號：9.8及更新版本）
 :allow-uri-read: 
@@ -11,16 +11,20 @@ summary: 從功能不中斷的情況下ONTAP 、MetroCluster 從現有的四節�
 
 
 [role="lead"]
-從功能不中斷的情況下ONTAP 、MetroCluster 從現有的四節點的靜態FC組態、將工作負載和資料移轉至全新MetroCluster 的靜態IP組態、即可開始使用。
+您可以在不中斷營運的情況下、將工作負載和資料從現有的 MetroCluster FC 組態轉換為新的 MetroCluster IP 組態。
 
-* 執行ONTAP 支援此程序的系統支援使用支援的版本。
+從 ONTAP 9.13.1 開始、您可以將工作負載和資料從現有的八節點 MetroCluster FC 組態、無中斷地移轉至新的 MetroCluster IP 組態。
+
+從 ONTAP 9.8 開始、您可以將工作負載和資料從現有的四節點 MetroCluster FC 組態、無中斷地移轉至新的 MetroCluster IP 組態。
+
 * 此程序不中斷營運。
 +
 在作業期間、可繼續提供資料的功能。MetroCluster
 
-* 此程序僅適用於四節點MetroCluster 的不含功能的FC組態。
+* 此程序僅適用於四節點和八節點 MetroCluster FC 組態。
 +
 如果您有雙節點MetroCluster 的不含功能的FC組態、請參閱 link:concept_choosing_your_transition_procedure_mcc_transition.html["選擇您的轉換程序"]。
 
+* 本程序說明轉換一個四節點 FC DR 群組所需的步驟。如果您有八節點組態（兩個 FC DR 群組）、則必須針對每個 FC DR 群組重複整個程序。
 * 您必須符合所有要求、並遵循程序中的所有步驟。
 

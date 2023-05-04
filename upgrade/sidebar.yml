@@ -12,6 +12,8 @@ entries:
     url: "/upgrade/concept_choosing_tech_refresh_mcc.html"
   - title: 選擇擴充程序
     url: "/upgrade/concept_choosing_expansion_method_mcc.html"
+- title: 在四節點 MetroCluster IP 中使用切換功能升級控制器、並使用「系統控制器更換」命令（ ONTAP 9.13.1 及更新版本）切換回控制器
+  url: "/upgrade/task_upgrade_controllers_system_control_commands_in_a_four_node_mcc_ip.html"
 - title: 使用MetroCluster 切換和切換功能升級位於SFC的控制器
   url: "/upgrade/task_upgrade_controllers_in_a_four_node_fc_mcc_us_switchover_and_switchback_mcc_fc_4n_cu.html"
 - title: 使用切換和切換功能（AFF 更新版本：E59.10.1或更新版本）、將控制器（從EVA700/FAS9000升級AFF 至EFC900/FAS9500）升級MetroCluster
@@ -26,7 +28,7 @@ entries:
   url: "/upgrade/task_upgrade_A700_to_A900_in_a_four_node_mcc_ip_us_switchover_and_switchback.html"
 - title: 重新整理四節點MetroCluster 的不全功能FC組態
   url: "/upgrade/task_refresh_4n_mcc_fc.html"
-- title: 重新整理四節點MetroCluster 的靜態IP組態（ONTAP 不含更新版本的更新版本）
+- title: 重新整理四節點或八節點 MetroCluster IP 組態（ ONTAP 9.8 及更新版本）
   url: "/upgrade/task_refresh_4n_mcc_ip.html"
 - title: 將雙節點MetroCluster 的不含功能的FC組態擴充為四節點組態
   entries:
@@ -154,7 +156,7 @@ entries:
     url: "/upgrade/task_send_a_custom_autosupport_message_after_add_nodes_to_the_mcc_configuration.html"
   - title: 驗證切換、修復及切換
     url: "/upgrade/task_verify_switchover_heal_and_switchback.html"
-- title: 將四節點MetroCluster 的「靜態IP」組態擴充為八節點組態
+- title: 展開 MetroCluster IP 組態
   url: "/upgrade/task_expand_a_four_node_mcc_ip_configuration.html"
 - title: 移除Disaster Recovery群組
   url: "/upgrade/concept_removing_a_disaster_recovery_group.html"
