@@ -13017,7 +13017,6 @@
   <block id="7085ef0783c3069c714c62b941d51195" category="summary">您可以使用這項引導式自動化 MetroCluster 轉換作業、針對四節點 MetroCluster IP 組態執行不中斷運作的控制器升級。</block>
   <block id="be2a104272635035d829d9eb66247a6e" category="doc">在四節點 MetroCluster IP 組態中升級控制器、使用切換功能、並使用「系統控制器更換」命令（ ONTAP 9.13.1 及更新版本）切換回控制器</block>
   <block id="7644562e2fb618084cb09ad85c576c00" category="paragraph">您可以使用此引導式自動化 MetroCluster 轉換作業、在四節點 MetroCluster IP 組態上執行不中斷的控制器升級。其他元件（例如儲存櫃或交換器）無法在此程序中進行升級。</block>
-  <block id="23006e2e0a92cb1615e8aaf31b4fa13e" category="paragraph">此程序支援 FAS8200 至 FAS9500 、以及 AFF A300 至 AFF A900 控制器升級。</block>
   <block id="db8b16f8a162b64f9227ab0fe83ffe4c" category="paragraph">如需平台升級組合的詳細資訊、請參閱中的 MetroCluster IP 升級表 <block ref="2a99f679e02927fd36d8e489a7ee9535" category="inline-link-macro-rx"></block>。</block>
   <block id="e9f3eb39072498fcd6fd79f6beb0b0f4" category="list-text">此程序適用於執行 ONTAP 9.13.1 或更新版本的四節點 MetroCluster IP 組態中的控制器模組。</block>
   <block id="d6777f90334e4deb82616ecb9b6f9fb9" category="list-text">MetroCluster 系統必須在兩個站台上執行相同的 ONTAP 版本。</block>
@@ -13025,7 +13024,6 @@
   <block id="c5825fe35515c4155fffecab1329d16f" category="admonition">四節點 MetroCluster IP 組態不支援使用 Aggregate 重定位（ ARL ）和「系統控制器置換」命令來執行升級。</block>
   <block id="77eb4e36d322d7ab218107d7c498326a" category="list-text">您必須使用自動 NSO 控制器升級程序、以連續升級兩個站台的控制器。</block>
   <block id="06b8cd9278c28e36ddc1fc586a6f840c" category="inline-link-macro">手動重新設定 ONTAP Mediator</block>
-  <block id="6647b31592f54f2deed2633fe8863ba5" category="paragraph">在預先檢查開始之前、如果已安裝 ONTAP Mediator 、系統會自動偵測並移除它。若要確認移除、系統會提示您輸入使用者名稱和密碼。當您完成升級、或預先檢查失敗、或您選擇不繼續升級時、您必須執行 <block ref="8eeedc881b874d23b9b6cbc9929c7075" category="inline-link-macro-rx"></block>。</block>
   <block id="3cc4806cb19cbb655dbea9a73d4aab85" category="paragraph"><block ref="4baef16133ebdeaa64de2abee5aaa778" prefix="" category="inline-code"></block></block>
   <block id="ad84135061ac4d026b0f6b6b0b90c976" category="list-text">如果您未執行<block ref="4baef16133ebdeaa64de2abee5aaa778" prefix=" " category="inline-code"></block> 命令、控制器升級程序會選擇 NSO 型自動切換和切換、作為 MetroCluster IP 系統的預設程序。</block>
   <block id="c37cd78225bfd28b27aba6fdb4ffdb05" category="paragraph">此工作是在現有的 MetroCluster IP 組態上執行。</block>
@@ -13150,7 +13148,6 @@
   <block id="ffd6b825c885ce7458a8f30023fc7852" category="list-text">中斷 MetroCluster IP 介面連線</block>
   <block id="67cc98572471f894a699ad039887fbf2" category="list-text">中斷 MetroCluster ISL 的連線</block>
   <block id="afbde099dc8a26a6394d60f258d7b937" category="paragraph">範例中 <block ref="6c63cd5b30d21cdd776aa75d41e55cc0" category="inline-xref-macro-rx"></block>、交換器不會變更。MetroCluster ISL 已重新定位、必須中斷連線。您不需要中斷工作表上標示為綠色的連線。</block>
-  <block id="7b9cd3f24cb1c28f865438cbd149932b" category="list-text">如果您使用新的交換器、請關閉舊的交換器、拔下纜線、然後實際移除舊的 IP 交換器 B_1 。</block>
   <block id="f5ce4d426c8852e0090ab32842d1cd09" category="inline-xref">步驟6.</block>
   <block id="a5717edbc2c781c1beaa710a27186585" category="paragraph">如果您要重複使用現有的交換器、請前往 <block ref="2e61491c69f93a4146be17b4939efb61" category="inline-xref-macro-rx"></block>。</block>
   <block id="333d2f9cc8c6ad8010d2882a39d82f4b" category="admonition">除了管理介面（如果使用）之外、請勿 * 不 * 連接新的交換器。</block>
@@ -13186,4 +13183,8 @@
   <block id="d87d22ecaeaff0e5d4bd4030a9e08302" category="sidebar">在四節點 MetroCluster IP 中使用切換功能升級控制器、並使用「系統控制器更換」命令（ ONTAP 9.13.1 及更新版本）切換回控制器</block>
   <block id="12651c133a2edc8c764efaddca32ca42" category="sidebar">重新整理四節點或八節點 MetroCluster IP 組態（ ONTAP 9.8 及更新版本）</block>
   <block id="f11af7573a10a71e1161a2099db36bcc" category="sidebar">展開 MetroCluster IP 組態</block>
+  <block id="fd069f5f1b9ec4fce867ea78d80b2049" category="paragraph">此程序僅支援 AFF A300 至 AFF A900 控制器升級。</block>
+  <block id="f60298ca20150ed82728ebbcf934dcdd" category="paragraph">在預先檢查開始之前、如果已安裝 ONTAP Mediator 、系統會自動偵測並移除它。若要確認移除、系統會提示您輸入使用者名稱和密碼。當您完成升級、或預先檢查失敗、或您選擇不繼續升級時、您必須執行 <block ref="27c582b1d219a53bd62704e35b9572aa" category="inline-xref-macro-rx"></block>。</block>
+  <block id="cf26e00f9d9d62aac6ab045ca55c7c29" category="list-text">您將使用中收集的資訊 <block ref="4349c160b4ba85d15c9d1b99e7fab03e" category="inline-xref-macro-rx"></block>。</block>
+  <block id="a6d521ed969131c6ad881b1c930a769c" category="list-text">如果您使用的是新的交換器、請關閉舊的交換器、拔下纜線、然後實際移除舊的交換器。</block>
 </blocks>

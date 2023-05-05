@@ -17,7 +17,7 @@ summary: 您可以使用這項引導式自動化 MetroCluster 轉換作業、針
 
 == 支援的平台組合
 
-此程序支援 FAS8200 至 FAS9500 、以及 AFF A300 至 AFF A900 控制器升級。
+此程序僅支援 AFF A300 至 AFF A900 控制器升級。
 
 如需平台升級組合的詳細資訊、請參閱中的 MetroCluster IP 升級表 link:concept_choosing_controller_upgrade_mcc.html#supported-metrocluster-ip-controller-upgrades["選擇控制器升級程序"]。
 
@@ -88,7 +88,7 @@ NOTE: 四節點 MetroCluster IP 組態不支援使用 Aggregate 重定位（ ARL
 
 若要準備控制器升級、您必須執行系統預先檢查並收集組態資訊。
 
-在預先檢查開始之前、如果已安裝 ONTAP Mediator 、系統會自動偵測並移除它。若要確認移除、系統會提示您輸入使用者名稱和密碼。當您完成升級、或預先檢查失敗、或您選擇不繼續升級時、您必須執行 link:task_upgrade_controllers_system_control_commands_in_a_four_node_mcc_ip.html#reconfigure-ontap-mediator["手動重新設定 ONTAP Mediator"]。
+在預先檢查開始之前、如果已安裝 ONTAP Mediator 、系統會自動偵測並移除它。若要確認移除、系統會提示您輸入使用者名稱和密碼。當您完成升級、或預先檢查失敗、或您選擇不繼續升級時、您必須執行 <<man_reconfig_mediator,手動重新設定 ONTAP Mediator>>。
 
 在升級期間的任何階段、您都可以從站台A執行「系統控制器置換show」或「系統控制器置換show-details」命令、以檢查狀態。如果命令傳回空白輸出、請等待幾分鐘、然後重新執行命令。
 
