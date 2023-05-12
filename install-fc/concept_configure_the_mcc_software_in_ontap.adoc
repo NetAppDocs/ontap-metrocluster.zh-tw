@@ -1620,7 +1620,7 @@ Boot_ONTAP
 
 您必須在ONTAP 每個控制器模組上設定此功能。
 
-如果您需要以網路方式開機新的控制器、請參閱 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-mcc-upgrade/GUID-3370EC34-310E-4F09-829F-F632EC8CDD9B.html["Netbooting新的控制器模組"] 請參閱《_ MetroCluster 升級、轉換與擴充指南》_。
+如果您需要以網路方式開機新的控制器、請參閱 http://["Netbooting新的控制器模組"] 請參閱《_ MetroCluster 升級、轉換與擴充指南》_。
 
 .選擇
 * <<setup_ontap_2node_MCC,在ONTAP 雙節點MetroCluster 的不全功能組態中設定功能>>
@@ -1643,7 +1643,7 @@ Boot_ONTAP
 
 這項工作必須在MetroCluster 整個叢集上執行、且必須採用支援功能的組態。
 
-如需設定ONTAP 方面的一般資訊、請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-ssg/home.html["設定ONTAP"]
+如需設定 ONTAP 的一般資訊、請參閱 link:https://docs.netapp.com/us-en/ontap/task_configure_ontap.html["設定ONTAP 功能"^]。
 
 .步驟
 . 開啟第一個節點的電源。
@@ -2493,7 +2493,7 @@ controller_A_1::> storage aggregate mirror aggr0_controller_A_1
 
 
 .相關資訊
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-vsmg/home.html["邏輯儲存管理"]
+link:https://docs.netapp.com/us-en/ontap/volumes/index.html["使用CLI進行邏輯儲存管理"^]
 
 
 
@@ -2504,7 +2504,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-vsmg/home.html["邏�
 * 您應該知道新的Aggregate將使用哪些磁碟機或陣列LUN。
 * 如果您的系統中有多種磁碟機類型（異質儲存設備）、您應該瞭解如何確保選取正確的磁碟機類型。
 * 磁碟機和陣列LUN由特定節點擁有；當您建立Aggregate時、該Aggregate中的所有磁碟機都必須由同一個節點擁有、而該節點會成為該Aggregate的主節點。
-* Aggregate名稱應符合您在規劃MetroCluster 時所決定的名稱配置。請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"]。
+* Aggregate名稱應符合您在規劃MetroCluster 時所決定的名稱配置。請參閱 link:https://docs.netapp.com/us-en/ontap/disks-aggregates/index.html["磁碟與Aggregate管理"^]。
 
 
 .步驟
@@ -2628,7 +2628,7 @@ controller_A_1::> storage aggregate create aggr1_controller_A_1 -diskcount 10 -n
 
 
 .相關資訊
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"]
+link:https://docs.netapp.com/us-en/ontap/disks-aggregates/index.html["磁碟與層（Aggregate）管理"^]
 
 
 
@@ -2700,7 +2700,7 @@ NOTE: 您必須*不*設定Onboard Key Manager（OKM）或外部金鑰管理、�
 |===
 +
 
-NOTE: 最佳實務做法是擁有多個資料集合體。如果第一個DR群組只有一個Aggregate、而您想要新增一個具有單一Aggregate的DR群組、則必須將中繼資料磁碟區從單一資料Aggregate中移出。如需此程序的詳細資訊、請參閱 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.hw-metrocluster-service/GUID-114DAE6E-F105-4908-ABB1-CE1D7B5C7048.html["在MetroCluster 不完整的組態中移動中繼資料磁碟區"]。
+NOTE: 最佳實務做法是擁有多個資料集合體。如果第一個DR群組只有一個Aggregate、而您想要新增一個具有單一Aggregate的DR群組、則必須將中繼資料磁碟區從單一資料Aggregate中移出。如需此程序的詳細資訊、請參閱 http://["在MetroCluster 不完整的組態中移動中繼資料磁碟區"]。
 
 +
 下列命令可在MetroCluster DR群組中包含控制器a_1的所有節點上啟用「支援」組態：
@@ -3075,7 +3075,7 @@ controller_A_1::>
 
 
 .相關資訊
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sag/home.html["系統管理"]
+https://["系統管理"]
 
 
 
@@ -3277,9 +3277,9 @@ mccint-fas9000-0304
 
 
 .相關資訊
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"]
+https://["磁碟與Aggregate管理"]
 
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/home.html["網路與LIF管理"]
+link:https://docs.netapp.com/us-en/ontap/network-management/index.html["網路與LIF管理"^]
 
 
 
@@ -3296,7 +3296,7 @@ NOTE: 支援功能有限、僅限線上使用。Config Advisor
 .步驟
 . 前往Config Advisor 「更新」頁面並下載工具。
 +
-https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"^]
+https://["NetApp下載Config Advisor"^]
 
 . 執行Config Advisor 功能、檢閱工具的輸出結果、並遵循輸出中的建議來解決發現的任何問題。
 
@@ -3407,7 +3407,7 @@ controller_A_2 controller_A_1 true     Connected to controller_A_1
 
 
 .相關資訊
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-hacg/home.html["高可用度組態"]
+link:https://docs.netapp.com/us-en/ontap/cloud/high-availability-concept.html["高可用度組態"^]
 
 
 
@@ -3416,7 +3416,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-hacg/home.html["高�
 您應該驗證MetroCluster 該組態的切換、修復及切換作業。
 
 .步驟
-. 請使用中所述的協調切換、修復及切換程序 https://docs.netapp.com/us-en/ontap-metrocluster/manage/index.html["從災難中恢復"]。
+. 請使用中所述的協調切換、修復及切換程序 https://["從災難中恢復"]。
 
 
 
@@ -3431,6 +3431,6 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-hacg/home.html["高�
 「系統組態備份設定修改_url-of destination_」
 
 +
-。 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sag/home.html["使用CLI進行叢集管理"] 在「管理組態備份」一節中包含其他資訊。
+。 https://["使用CLI進行叢集管理"] 在「管理組態備份」一節中包含其他資訊。
 
 

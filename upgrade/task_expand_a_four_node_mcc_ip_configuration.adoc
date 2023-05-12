@@ -22,11 +22,11 @@ summary: 您可以將四個新節點新增至MetroCluster 「靜態IP」組態�
 * 本程序說明展開一個四節點 DR 群組所需的步驟。如果您有八節點組態（兩個 DR 群組）、則必須針對每個 DR 群組重複整個程序。
 * 您必須確保舊有和新的平台機型支援平台混合。
 +
-https://hwu.netapp.com["NetApp Hardware Universe"^]
+https://["NetApp Hardware Universe"^]
 
 * 您必須確保IP交換器同時支援新舊的平台機型。
 +
-https://hwu.netapp.com["NetApp Hardware Universe"^]
+https://["NetApp Hardware Universe"^]
 
 * 新節點必須有足夠的儲存空間來容納舊節點的資料、以及足夠的磁碟來容納根集合體和備用磁碟。
 * FAS2750或AFF FASA220系統不支援此程序。
@@ -150,7 +150,7 @@ image::../media/8node_comb_ip.png[8 個節點組態的平台組合]
 
 .. 執行Config Advisor
 +
-https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"]
+https://["NetApp下載Config Advisor"]
 
 .. 執行Config Advisor 完功能後、請檢閱工具的輸出結果、並依照輸出中的建議來解決發現的任何問題。
 

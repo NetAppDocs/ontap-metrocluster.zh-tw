@@ -444,7 +444,7 @@ FC_switch_A_1#
 
 .. 執行Config Advisor
 +
-https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"]
+https://["NetApp下載Config Advisor"]
 
 .. 執行Config Advisor 完功能後、請檢閱工具的輸出結果、並依照輸出中的建議來解決發現的任何問題。
 

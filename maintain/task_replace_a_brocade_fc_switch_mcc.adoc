@@ -115,7 +115,7 @@ FC_switch_B_1:admin> switchshow
 
 .. 依照「_RAYInstallation MetroCluster and Configuration」（安裝與組態）中所述設定新交換器、但跳過「在Brocade FC交換器上設定分區」程序。
 +
-https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"]
+https://["Fabric附加MetroCluster 的安裝與組態"]
 
 +
 您可以稍後在本程序中設定分區。
@@ -259,7 +259,7 @@ FC_switch_B_1:admin> portcfgpersistentenable 3
 +
 「torage switchshow」
 
-.. 執行 https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["Config Advisor"]。
+.. 執行 https://["Config Advisor"]。
 .. 執行Config Advisor 完功能後、請檢閱工具的輸出結果、並依照輸出中的建議來解決發現的任何問題。
 
 

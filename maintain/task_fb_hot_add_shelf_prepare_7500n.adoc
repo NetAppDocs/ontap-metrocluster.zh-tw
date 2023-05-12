@@ -19,7 +19,7 @@ summary: 準備熱新增SAS磁碟櫃時、需要下載文件、以及磁碟機�
 您可能需要在MetroCluster 整個版本的整個BIOS組態中更新磁碟和機櫃韌體、然後再新增機櫃。
 
 +
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-ug-rdg/home.html["升級、回復或降級"]
+https://["升級、回復或降級"]
 
 
 
@@ -33,13 +33,13 @@ NOTE: 如果您的系統執行支援版本ONTAP 的支援、則同一堆疊中�
 .步驟
 . 請從NetApp支援網站下載或檢視下列文件：
 +
-** https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"]
+** https://["NetApp 互通性對照表工具"]
 ** 適用於您磁碟櫃模型的_安裝指南_。
 
 
 . 驗證是否支援熱新增的磁碟櫃。
 +
-https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"]
+https://["NetApp 互通性對照表工具"]
 
 . 下載最新的磁碟與磁碟櫃韌體：
 +
@@ -49,11 +49,11 @@ NOTE: 在此步驟中、您只要完成連結中提供的下載部分。您必�
 +
 .. 下載磁碟韌體、並複製磁碟韌體說明以供日後參考。
 +
-https://mysupport.netapp.com/site/downloads/firmware/disk-drive-firmware["NetApp下載：磁碟機韌體"]
+https://["NetApp下載：磁碟機韌體"]
 
 .. 下載磁碟櫃韌體、並複製磁碟櫃韌體說明以供日後參考。
 +
-https://mysupport.netapp.com/site/downloads/firmware/disk-shelf-firmware["NetApp下載：磁碟櫃韌體"]
+https://["NetApp下載：磁碟櫃韌體"]
 
 
 

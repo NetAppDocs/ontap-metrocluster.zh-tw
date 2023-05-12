@@ -49,7 +49,7 @@ summary: 在升級至HA配對之前、您必須確認系統符合所有需求、
 . 驗證是否有序列連接埠主控台可用於控制器模組。
 . 確認您的環境符合站台和系統需求。
 +
-https://hwu.netapp.com["NetApp Hardware Universe"^]
+https://["NetApp Hardware Universe"^]
 
 . 收集新控制器模組的所有IP位址和其他網路參數。
 

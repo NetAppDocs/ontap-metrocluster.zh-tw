@@ -19,7 +19,7 @@ summary: 您必須在每個站台新增一個控制器模組、以便在每個�
 您應該確認新控制器模組中的PCIe卡相容、並受到新控制器模組的支援。
 
 +
-https://hwu.netapp.com["NetApp Hardware Universe"]
+https://["NetApp Hardware Universe"]
 
 * 當升級至單一機箱HA配對（兩個控制器模組位於同一個機箱中的HA配對）時、您的系統必須有一個空插槽可供新的控制器模組使用。
 +

@@ -107,7 +107,7 @@ image::../media/mcc_svms_after_switchover.gif[MCC切換後的服務]
 
 
 .相關資訊
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sag/home.html["系統管理"^]
+https://["系統管理"^]
 
 
 
@@ -295,7 +295,7 @@ link:https://docs.netapp.com/us-en/ontap/high-availability/index.html["高可用
 
 從FC到IP的轉換過程包括將靜態IP節點和IP交換器新增至現有的靜態FC組態、然後淘汰該功能的各個節點。MetroCluster MetroCluster MetroCluster MetroCluster根據轉換程序的階段、MetroCluster 還原、修復及切換作業會使用不同的工作流程。
 
-請參閱 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-mcc-upgrade/GUID-1870FDC4-1774-4604-86A7-5C979C297ADA.html["轉換期間的切換、修復及切換作業"^]。
+請參閱 http://["轉換期間的切換、修復及切換作業"^]。
 
 
 

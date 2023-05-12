@@ -132,7 +132,7 @@ NOTE: 系統會自動產生您所需的新授權金鑰、並將其傳送至檔�
  a| 
 「安全金鑰管理程式內建同步」
 
-如需詳細資訊、請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-E4AB2ED4-9227-4974-A311-13036EB43A3D.html["還原內建金鑰管理加密金鑰"^]。
+如需詳細資訊、請參閱 https://["還原內建金鑰管理加密金鑰"^]。
 
 
 
@@ -141,7 +141,7 @@ NOTE: 系統會自動產生您所需的新授權金鑰、並將其傳送至檔�
  a| 
 「安全金鑰管理程式金鑰查詢節點節點名稱」
 
-如需詳細資訊、請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-32DA96C3-9B04-4401-92B8-EAF323C3C863.html["還原外部金鑰管理加密金鑰"^]。
+如需詳細資訊、請參閱 https://["還原外部金鑰管理加密金鑰"^]。
 
 |===
 . 如果根磁碟區已加密、請使用中的程序 link:../transition/task_connect_the_mcc_ip_controller_modules_2n_mcc_transition_supertask.html#recovering-key-management-if-the-root-volume-is-encrypted["如果根磁碟區已加密、則會恢復金鑰管理"]。

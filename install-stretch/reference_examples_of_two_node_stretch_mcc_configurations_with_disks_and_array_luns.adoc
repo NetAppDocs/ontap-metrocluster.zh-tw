@@ -32,4 +32,4 @@ image::../media/two_node_mcc_combined_array_luns.gif[兩個節點MCC組合陣列
 
 NOTE: 如有需要、您也可以使用相同的FC交換器、將原生磁碟和陣列LUN連接MetroCluster 至採用此功能組態的控制器。
 
-https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"]
+https://["Fabric附加MetroCluster 的安裝與組態"]

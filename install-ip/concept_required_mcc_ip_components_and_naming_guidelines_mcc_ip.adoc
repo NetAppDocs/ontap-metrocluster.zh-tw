@@ -19,7 +19,7 @@ summary: 規劃MetroCluster 您的靜態IP組態時、您必須瞭解所需及�
 
 硬體與軟體必須支援MetroCluster 才能進行支援。
 
-https://hwu.netapp.com["NetApp Hardware Universe"]
+https://["NetApp Hardware Universe"]
 
 使用AFF 不完整的系統時、MetroCluster 必須將不完整組態中的所有控制器模組設定為AFF 不完整的系統。
 
@@ -300,6 +300,6 @@ e0g、e0小時
 
 == 在堆疊中混合IOM12和IOM 6模組
 
-您的ONTAP 版本必須支援機櫃混合。請參閱 https://mysupport.netapp.com/NOW/products/interoperability["NetApp互通性對照表工具IMT （不含）"] 查看ONTAP 您的版本是否支援機櫃混合。
+您的ONTAP 版本必須支援機櫃混合。請參閱 https://["NetApp互通性對照表工具IMT （不含）"] 查看ONTAP 您的版本是否支援機櫃混合。
 
-如需機櫃混合的詳細資訊、請參閱 https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-mix-hotadd/home.html["將含有IOM12模組的熱新增磁碟櫃放到具有IOM6模組的磁碟櫃堆疊中"]
+如需機櫃混合的詳細資訊、請參閱 https://["將含有IOM12模組的熱新增磁碟櫃放到具有IOM6模組的磁碟櫃堆疊中"]

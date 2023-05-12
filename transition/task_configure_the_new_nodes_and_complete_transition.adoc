@@ -190,7 +190,7 @@ NOTE: 從ONTAP 《支援範圍》9.9.1開始、如果您使用的是第3層組�
 
 您必須在新節點node_a_2-IP和node_B_2-IP上設定資料LIF。
 
-如果尚未指派給廣播網域、您必須將新控制器上可用的任何新連接埠新增至廣播網域。如有需要、請在新連接埠上建立VLAN或介面群組。請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/home.html["網路與LIF管理"^]
+如果尚未指派給廣播網域、您必須將新控制器上可用的任何新連接埠新增至廣播網域。如有需要、請在新連接埠上建立VLAN或介面群組。請參閱 link:https://docs.netapp.com/us-en/ontap/network-management/index.html["網路管理"^]
 
 . 識別目前的連接埠使用量和廣播網域：
 +
@@ -204,7 +204,7 @@ NOTE: 從ONTAP 《支援範圍》9.9.1開始、如果您使用的是第3層組�
 
 .. 視需要建立IP空間並指派資料連接埠。
 +
-http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-69120CF0-F188-434F-913E-33ACB8751A5D.html["設定IPspaces（僅限叢集管理員）"^]
+http://["設定IPspaces（僅限叢集管理員）"^]
 
 .. 檢視廣播網域：
 +
@@ -212,17 +212,17 @@ http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-69120CF0-F18
 
 .. 視需要將任何資料連接埠新增至廣播網域。
 +
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-003BDFCD-58A3-46C9-BF0C-BA1D1D1475F9.html["從廣播網域新增或移除連接埠"^]
+https://["從廣播網域新增或移除連接埠"^]
 
 .. 視需要重新建立VLAN和介面群組。
 +
 VLAN和介面群組成員資格可能與舊節點不同。
 
 +
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-8929FCE2-5888-4051-B8C0-E27CAF3F2A63.html["建立VLAN"^]
+https://["建立VLAN"^]
 
 +
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EAB7-430A-A773-4E3420EE2AA1.html["結合實體連接埠以建立介面群組"^]
+https://["結合實體連接埠以建立介面群組"^]
 
 
 

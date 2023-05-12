@@ -41,7 +41,7 @@ summary: 連接埠在MetroCluster 一個靜態IP組態中的使用取決於交�
 
 NOTE: 連接埠13和14可在原生速度模式下使用、支援40 Gbps和100 Gbps、或在中斷模式下使用、以支援4 x 25 Gbps或4 x 10 Gbps。如果他們使用原生速度模式、則會顯示為連接埠 13 和 14 。如果使用中斷模式（ 4 × 25 Gbps 或 4 × 10 Gbps ）、則會將它們表示為連接埠 13s0 － 3 和 14s0 － 3 。
 
-以下各節將說明實體纜線的佈線大綱。您也可以參閱 https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["RcfFileGenerator"] 以取得詳細的纜線連接資訊。
+以下各節將說明實體纜線的佈線大綱。您也可以參閱 https://["RcfFileGenerator"] 以取得詳細的纜線連接資訊。
 
 
 

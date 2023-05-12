@@ -23,7 +23,7 @@ summary: 您必須將參考組態（RCF）檔案下載到MetroCluster 位在整�
 +
 RCF檔案必須套用至正確的交換器。
 
-. 從下載交換器的RCF檔案 https://mysupport.netapp.com/site/products/all/details/metrocluster-rcf/downloads-tab["下載RCF MetroCluster"] 頁面。
+. 從下載交換器的RCF檔案 https://["下載RCF MetroCluster"] 頁面。
 +
 檔案必須放置在可傳輸至交換器的位置。組成雙交換器架構的四個交換器各有一個獨立的檔案。
 

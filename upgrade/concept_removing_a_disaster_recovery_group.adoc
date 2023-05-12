@@ -17,7 +17,7 @@ summary: 從ONTAP 功能完善的9.8開始、您可以從八節點MetroCluster �
 
 link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/How_to_remove_a_DR-Group_from_a_MetroCluster["如何從MetroCluster 功能不完善的組態中移除DR群組"]
 
-https://mysupport.netapp.com/site/global/dashboard["NetApp支援"]
+https://["NetApp支援"]
 
 八節點組態包含八個節點、以兩個四節點DR群組形式組織。
 
@@ -37,7 +37,7 @@ image::../media/mcc_dr_groups_4_node.gif[MCC DR群組4個節點]
 .. 如果您尚未移除DR群組、請做好準備。
 +
 ... 將所有資料磁碟區移至另一個DR群組。
-... 將所有MDV_CRS中繼資料磁碟區移至另一個DR群組。請遵循下列程序中的步驟： https://docs.netapp.com/ontap-9/topic/com.netapp.doc.hw-metrocluster-service/task_move_a_metadata_volume_in_mcc_configurations.html["在MetroCluster 不完整的組態中移動中繼資料磁碟區"]
+... 遵循、將所有 MDV_CRS 中繼資料磁碟區移至另一個 DR 群組 link:https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/task_move_a_metadata_volume_in_mcc_configurations.html["在MetroCluster 不完整的組態中移動中繼資料磁碟區"] 程序。
 ... 刪除要移除之DR群組中可能存在的所有MDV_aud中繼資料磁碟區。
 ... 刪除DR群組中要移除的所有資料集合體、如下列範例所示：
 +

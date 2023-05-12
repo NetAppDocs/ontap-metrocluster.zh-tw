@@ -81,7 +81,7 @@ Boot_ONTAP功能表
 如需纜線連接資訊、請參閱您機型的控制器安裝與設定程序。
 
 +
-https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"^]
+https://["VMware及其技術資料中心AFF FAS"^]
 
 . 如所述、將控制器連接至IP交換器 link:../install-ip/using_rcf_generator.html["IP交換器佈線"]。
 . 準備IP交換器以應用新的RCF檔案。
@@ -199,7 +199,7 @@ MetroCluster Transition: Please confirm if this is the correct value [yes|no]:? 
  a| 
 「安全金鑰管理程式內建同步」
 
-如需詳細資訊、請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-E4AB2ED4-9227-4974-A311-13036EB43A3D.html["還原內建金鑰管理加密金鑰"^]。
+如需詳細資訊、請參閱 https://["還原內建金鑰管理加密金鑰"^]。
 
 
 
@@ -208,7 +208,7 @@ MetroCluster Transition: Please confirm if this is the correct value [yes|no]:? 
  a| 
 「安全金鑰管理程式金鑰查詢節點節點名稱」
 
-如需詳細資訊、請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-32DA96C3-9B04-4401-92B8-EAF323C3C863.html["還原外部金鑰管理加密金鑰"^]。
+如需詳細資訊、請參閱 https://["還原外部金鑰管理加密金鑰"^]。
 
 |===
 . 如果根磁碟區已加密、請使用中的程序 link:../transition/task_connect_the_mcc_ip_controller_modules_2n_mcc_transition_supertask.html#recovering-key-management-if-the-root-volume-is-encrypted["如果根磁碟區已加密、則會恢復金鑰管理"]。
@@ -393,7 +393,7 @@ NOTE: 設定完整套IP節點之後、可能需要額外的組態來啟動資料
 
 .. 視需要建立IP空間並指派叢集連接埠。
 +
-http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-69120CF0-F188-434F-913E-33ACB8751A5D.html["設定IPspaces（僅限叢集管理員）"^]
+http://["設定IPspaces（僅限叢集管理員）"^]
 
 .. 檢視廣播網域：
 +
@@ -401,17 +401,17 @@ http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-69120CF0-F18
 
 .. 視需要將任何叢集連接埠新增至廣播網域。
 +
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-003BDFCD-58A3-46C9-BF0C-BA1D1D1475F9.html["從廣播網域新增或移除連接埠"^]
+https://["從廣播網域新增或移除連接埠"^]
 
 .. 視需要重新建立VLAN和介面群組。
 +
 VLAN和介面群組成員資格可能與舊節點不同。
 
 +
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-8929FCE2-5888-4051-B8C0-E27CAF3F2A63.html["建立VLAN"^]
+https://["建立VLAN"^]
 
 +
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EAB7-430A-A773-4E3420EE2AA1.html["結合實體連接埠以建立介面群組"^]
+https://["結合實體連接埠以建立介面群組"^]
 
 
 
@@ -626,9 +626,9 @@ To accept a default or omit a question, do not enter a value. .
 +
 ** 請勿嘗試執行選項9a。
 ** 從原始MetroCluster 的支援功能FC組態（Shel_a_1、Shelfor_a_2、Shel_B_1、Shel_B_2）中、實際中斷現有包含資料的磁碟櫃的連線。
-** 請聯絡技術支援部門、參考知識庫文章 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/MetroCluster_FC_to_IP_transition_-_Option_9c_Failing["從選項9c移轉至IP的過程失敗MetroCluster"^]。
+** 請聯絡技術支援部門、參考知識庫文章 https://["從選項9c移轉至IP的過程失敗MetroCluster"^]。
 +
-https://mysupport.netapp.com/site/global/dashboard["NetApp支援"^]
+https://["NetApp支援"^]
 
 
 
@@ -730,7 +730,7 @@ join
  a| 
 「安全金鑰管理程式內建同步」
 
-如需詳細資訊、請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-E4AB2ED4-9227-4974-A311-13036EB43A3D.html["還原內建金鑰管理加密金鑰"]。
+如需詳細資訊、請參閱 https://["還原內建金鑰管理加密金鑰"]。
 
 
 
@@ -739,7 +739,7 @@ join
  a| 
 「安全金鑰管理程式金鑰查詢-node-name_」
 
-如需詳細資訊、請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-32DA96C3-9B04-4401-92B8-EAF323C3C863.html["還原外部金鑰管理加密金鑰"^]。
+如需詳細資訊、請參閱 https://["還原外部金鑰管理加密金鑰"^]。
 
 |===
 . 在第二個新的控制器模組（node_B_2-IP）上重複上述步驟。

@@ -32,14 +32,14 @@ summary:
 .開始之前
 * 您的系統必須是支援的組態、而且必須執行支援的ONTAP 版本的支援。
 +
-https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"^]
+https://["NetApp 互通性對照表工具"^]
 
 * 系統中的所有磁碟機和磁碟櫃都必須執行最新的韌體版本。
 +
 您可能需要在MetroCluster 整個版本的整個BIOS組態中更新磁碟和機櫃韌體、然後再新增機櫃。
 
 +
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-ug-rdg/home.html["升級、回復或降級"^]
+https://["升級、回復或降級"^]
 
 * 每個FC交換器都必須有一個FC連接埠可供單一橋接器連接。
 +
@@ -55,7 +55,7 @@ _Atto產品版本說明_提供最新的支援網頁瀏覽器清單。您可以�
 .步驟
 . 請從NetApp支援網站下載或檢視下列文件：
 +
-** https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"^]
+** https://["NetApp 互通性對照表工具"^]
 ** 適用於您磁碟櫃模型的_安裝與服務指南_。
 
 
@@ -90,11 +90,11 @@ NOTE: 在此步驟中、您只需完成連結中所提供的下載部分、並�
 +
 .. 下載磁碟韌體、並複製磁碟韌體說明以供日後參考。
 +
-https://mysupport.netapp.com/site/downloads/firmware/disk-drive-firmware["NetApp下載：磁碟機韌體"^]
+https://["NetApp下載：磁碟機韌體"^]
 
 .. 下載磁碟櫃韌體、並複製磁碟櫃韌體說明以供日後參考。
 +
-https://mysupport.netapp.com/site/downloads/firmware/disk-shelf-firmware["NetApp下載：磁碟櫃韌體"^]
+https://["NetApp下載：磁碟櫃韌體"^]
 
 
 
@@ -134,7 +134,7 @@ link:task_fb_hot_add_stack_of_shelves_and_bridges.html["準備熱新增一堆SAS
 
 * 如果符合所有的互通性需求、熱新增一堆SAS磁碟櫃和橋接器是不中斷營運的程序。
 +
-https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"^]
+https://["NetApp 互通性對照表工具"^]
 
 +
 link:concept_using_the_interoperability_matrix_tool_to_find_mcc_information.html["使用互通性對照表工具來尋找MetroCluster 各種資訊"]
@@ -1700,18 +1700,18 @@ NOTE: 其他橋接器可連接G620、G630、G620-1和G630-1交換器的連接埠
 您必須在兩個控制器模組上執行此命令。
 
 +
-https://mysupport.netapp.com/site/downloads/firmware/disk-drive-firmware["NetApp下載：磁碟機韌體"^]
+https://["NetApp下載：磁碟機韌體"^]
 
 . 使用下載韌體的指示、將磁碟櫃韌體更新至最新版本。
 +
 您可以從任一控制器模組的系統主控台執行程序中的命令。
 
 +
-https://mysupport.netapp.com/site/downloads/firmware/disk-shelf-firmware["NetApp下載：磁碟櫃韌體"^]
+https://["NetApp下載：磁碟櫃韌體"^]
 
 . 如果您的系統未啟用磁碟自動指派、請指派磁碟機擁有權。
 +
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"^]
+https://["磁碟與Aggregate管理"^]
 
 +
 
@@ -1732,7 +1732,7 @@ NOTE: 在更新磁碟機韌體和磁碟櫃韌體、並完成本工作中的驗�
 .. 檢查交換器上是否有任何健全狀況警示（如果有）：+「切換顯示」
 .. 執行Config Advisor
 +
-https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"^]
+https://["NetApp下載Config Advisor"^]
 
 .. 執行Config Advisor 完功能後、請檢閱工具的輸出結果、並依照輸出中的建議來解決發現的任何問題。
 

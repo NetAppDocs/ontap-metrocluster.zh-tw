@@ -75,7 +75,7 @@ system node halt -node node1_SiteA -inhibit-takeover true -ignore-quorum-warning
 ** 儲存櫃
 
 
-. 等待30分鐘、然後開啟所有控制器的電源。
+. 等待 30 分鐘、然後開啟所有儲存櫃、 MetroCluster IP 交換器和儲存控制器的電源。
 . 在控制器開機之後、請從MetroCluster 兩個站台驗證支援功能組態。
 +
 若要驗證組態、請重複步驟1。

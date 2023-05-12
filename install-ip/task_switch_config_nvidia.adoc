@@ -287,7 +287,7 @@ NOTE: 如果您在重設交換器之後以及套用RCF檔案之前執行進一�
 .步驟
 . 產生NVIDIA RCF檔案MetroCluster 以利知識IP。
 +
-.. 下載 https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["RcfFileGeneratorfor MetroCluster EfIP"^]。
+.. 下載 https://["RcfFileGeneratorfor MetroCluster EfIP"^]。
 .. 使用RcfFileGeneratorfor MetroCluster EscIP、為您的組態產生RCF檔案。
 .. 瀏覽至您的主目錄。如果您記錄為「累計」、則檔案路徑為「home/gumulus」。
 +

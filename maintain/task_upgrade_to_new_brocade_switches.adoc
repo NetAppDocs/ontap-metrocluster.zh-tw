@@ -20,7 +20,7 @@ summary: 如果您要升級至新的Brocade FC交換器、則必須更換第一�
 
 * 交換器必須執行最新支援的韌體。
 +
-https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"^]
+https://["NetApp 互通性對照表工具"^]
 
 * 此程序不中斷營運、約需兩小時完成。
 * 您需要管理員密碼、才能存取FTP或scp伺服器。
@@ -151,7 +151,7 @@ slot 0: FC Host Adapter 0g (QLogic 8324 rev. 2, N-port, <UP>)**<=== Initiator po
 交換器必須執行最新支援的韌體。
 
 +
-https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"]
+https://["NetApp 互通性對照表工具"]
 
 . 模擬切換作業：
 +

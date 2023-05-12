@@ -1082,7 +1082,7 @@ mariadb.service    enabled
 .步驟
 . 下載MetroCluster 最新版的Eetirepreaker軟體。此範例使用1.5版。
 +
-https://mysupport.netapp.com/site/["NetApp支援"^]
+https://["NetApp支援"^]
 
 . 以root使用者身分登入主機。
 . 驗證RPM檔案。
@@ -1268,7 +1268,7 @@ NOTE: 如果您輸入錯誤的MySQL根密碼、則Tiebreaker軟體會指出已�
 
 
 .相關資訊
-https://mysupport.netapp.com/site/["NetApp支援"^]
+https://["NetApp支援"^]
 
 
 

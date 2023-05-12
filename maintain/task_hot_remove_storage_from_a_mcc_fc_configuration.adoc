@@ -24,11 +24,11 @@ IMPORTANT: 如果您嘗試在您要移除的機櫃上使用Aggregate的非MetroC
 移除Aggregate時、會將鏡射的Aggregate分割到您要移除的磁碟櫃上、然後再以另一組磁碟機重新建立鏡射的Aggregate。
 
 +
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"]
+https://["磁碟與Aggregate管理"]
 
 * 從要移除的磁碟機櫃中移除集合體之後、您必須移除磁碟機擁有權。
 +
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"]
+https://["磁碟與Aggregate管理"]
 
 * 如果要從堆疊中移除一個或多個層架、您必須將距離納入考慮範圍、才能繞過您要移除的層架。
 +
@@ -65,7 +65,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁�
 
 .. 執行Config Advisor
 +
-https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"]
+https://["NetApp下載Config Advisor"]
 
 .. 執行Config Advisor 完功能後、請檢閱工具的輸出結果、並依照輸出中的建議來解決發現的任何問題。
 

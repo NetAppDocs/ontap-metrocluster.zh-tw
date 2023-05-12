@@ -11,7 +11,7 @@ summary: 在八節點或四節點MetroCluster 的「樣」組態中、您必須�
 
 
 [role="lead"]
-在八節點或四節點MetroCluster 的「樣」組態中、您必須在每個站台的本機控制器模組之間連接叢集互連。
+在八節點或四節點 MetroCluster 組態中、您必須在每個站台的本機控制器模組之間連接叢集互連纜線。
 
 .關於這項工作
 這項工作不需要在雙節點MetroCluster 的不全功能組態上執行。
@@ -23,6 +23,6 @@ summary: 在八節點或四節點MetroCluster 的「樣」組態中、您必須�
 
 
 .相關資訊
-https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"]
+https://["VMware及其技術資料中心AFF FAS"]
 
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/home.html["網路與LIF管理"]
+link:https://docs.netapp.com/us-en/ontap/network-management/index.html["網路與LIF管理"^]

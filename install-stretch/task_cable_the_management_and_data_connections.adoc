@@ -20,6 +20,6 @@ summary: 您必須將每個儲存控制器上的管理和資料連接埠纜線�
 .步驟
 . 將控制器的管理和資料連接埠連接至本機站台的管理和資料網路。
 +
-https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"]
+https://["VMware及其技術資料中心AFF FAS"]
 
 

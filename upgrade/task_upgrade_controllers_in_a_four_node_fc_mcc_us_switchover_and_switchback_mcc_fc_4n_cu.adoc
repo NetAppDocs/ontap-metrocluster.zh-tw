@@ -21,7 +21,7 @@ summary: 您可以在MetroCluster 升級合作夥伴叢集上的控制器模組�
 
 如需支援哪些平台升級組合的相關資訊、請參閱MetroCluster 中的《The不支援升級》表 link:concept_choosing_controller_upgrade_mcc.html#metrocluster-fc-controller-upgrades["選擇控制器升級程序"]。
 
-請參閱 https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["選擇升級或重新整理方法"] 以瞭解其他程序。
+請參閱 https://["選擇升級或重新整理方法"] 以瞭解其他程序。
 
 
 
@@ -42,7 +42,7 @@ summary: 您可以在MetroCluster 升級合作夥伴叢集上的控制器模組�
 
 * 您的原始與新平台必須相容且受到支援。
 +
-https://hwu.netapp.com["NetApp Hardware Universe"]
+https://["NetApp Hardware Universe"]
 
 +
 
@@ -57,7 +57,7 @@ NOTE: 如果原始或新平台是使用連接埠1c和1d的FAS8020或AFF8020系�
 * 建議預先對應原始節點與新節點之間的儲存設備、FC與乙太網路連線。
 * 如果新平台的插槽數少於原始系統、或是連接埠類型較少或不同、您可能需要在新系統中新增介面卡。
 +
-如需詳細資訊、請參閱 https://hwu.netapp.com/["NetApp Hardware Universe"^]
+如需詳細資訊、請參閱 https://["NetApp Hardware Universe"^]
 
 
 
@@ -184,7 +184,7 @@ NOTE: 如果原始或新平台是使用連接埠1c和1d的FAS8020或AFF8020系�
 +
 .. 下載並執行Config Advisor 更新。
 +
-https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"]
+https://["NetApp下載Config Advisor"]
 
 .. 執行Config Advisor 完功能後、請檢閱工具的輸出結果、並依照輸出中的建議來解決發現的任何問題。
 
@@ -474,7 +474,7 @@ dr-group-id cluster    node      node-systemid dr-partner-systemid
 
 . 如果MetroCluster 這個節點正在使用磁碟區或集合體的加密功能、請複製金鑰和複製密碼的相關資訊。
 +
-如需其他資訊、請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-1677AE0A-FEF7-45FA-8616-885AA3283BCF.html["手動備份內建金鑰管理資訊"]。
+如需其他資訊、請參閱 https://["手動備份內建金鑰管理資訊"]。
 
 +
 .. 如果已設定Onboard Key Manager：
@@ -504,7 +504,7 @@ dr-group-id cluster    node      node-systemid dr-partner-systemid
 .步驟
 . 從MetroCluster Tiebreaker軟體移除現有的部分組態。
 +
-http://docs.netapp.com/ontap-9/topic/com.netapp.doc.hw-metrocluster-tiebreaker/GUID-34C97A45-0BFF-46DD-B104-2AB2805A983D.html["移除MetroCluster 部分組態"]
+http://["移除MetroCluster 部分組態"]
 
 . 從MetroCluster 任何可啟動切換的第三方應用程式移除現有的功能。
 +
@@ -659,7 +659,7 @@ Boot_ONTAP
 例如、e0d是舊控制器上的實體連接埠、也會出現在新的控制器上。e0d不做為叢集連接埠、也不做為新控制器的其他端口。
 
 +
-如需平台機型的連接埠使用量、請參閱 https://hwu.netapp.com/["NetApp Hardware Universe"]
+如需平台機型的連接埠使用量、請參閱 https://["NetApp Hardware Universe"]
 
 .. 修改所有資料生命期、以使用通用連接埠作為主連接埠：
 +
@@ -766,7 +766,7 @@ network port ifgrp remove-port -node node1 -ifgrp a1a -port e0d
 . 請妥善接地。
 . 在機架或機櫃中安裝控制器模組。
 +
-https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"^]
+https://["VMware及其技術資料中心AFF FAS"^]
 
 . 如果新的控制器模組未隨附本身的FC-VI卡、且舊控制器的FC-VI卡與新的控制器相容、請交換FC-VI卡、並將其安裝在正確的插槽中。
 +
@@ -777,7 +777,7 @@ https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FA
 此時請勿連接任何其他與舊控制器中斷連線的纜線。
 
 +
-https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"^]
+https://["VMware及其技術資料中心AFF FAS"^]
 
 . 開啟新節點的電源、並在系統提示顯示載入器提示時按Ctrl-C。
 
@@ -791,7 +791,7 @@ https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FA
 此工作會在每個新的控制器模組上執行。
 
 .步驟
-. 存取 https://mysupport.netapp.com/site/["NetApp 支援網站"^] 可下載用於執行系統netboot的文件。
+. 存取 https://["NetApp 支援網站"^] 可下載用於執行系統netboot的文件。
 . 從ONTAP NetApp支援網站的軟體下載區段下載適當的支援軟體、並將ONTAP-VERSION _image.tgz檔案儲存在可從網路存取的目錄中。
 . 移至網路存取目錄、確認您所需的檔案可用。
 +
@@ -1330,7 +1330,7 @@ Boot_ONTAP
 
 .. 視需要將任何連接埠新增至廣播網域。
 +
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-003BDFCD-58A3-46C9-BF0C-BA1D1D1475F9.html["從廣播網域新增或移除連接埠"]
+https://["從廣播網域新增或移除連接埠"]
 
 .. 將用於託管叢集間生命體的實體連接埠新增至對應的Broadcast網域。
 .. 修改叢集間的LIF、將新的實體連接埠當作主連接埠使用。
@@ -1346,10 +1346,10 @@ link:../install-fc/concept_configure_the_mcc_software_in_ontap.html#peering-the-
 VLAN和介面群組成員資格可能與舊節點不同。
 
 +
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-8929FCE2-5888-4051-B8C0-E27CAF3F2A63.html["建立VLAN"^]
+https://["建立VLAN"^]
 
 +
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EAB7-430A-A773-4E3420EE2AA1.html["結合實體連接埠以建立介面群組"^]
+https://["結合實體連接埠以建立介面群組"^]
 
 
 
@@ -1366,7 +1366,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
  a| 
 「安全金鑰管理程式內建同步」
 
-如需詳細資訊、請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-E4AB2ED4-9227-4974-A311-13036EB43A3D.html["還原內建金鑰管理加密金鑰"^]。
+如需詳細資訊、請參閱 https://["還原內建金鑰管理加密金鑰"^]。
 
 
 
@@ -1375,7 +1375,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
  a| 
 「安全金鑰管理程式外部還原-vserver _svm_-node_node_-key-server _host_name | ip_address: port_-key-id key_id -key-tag key_tag _node-name_」
 
-如需詳細資訊、請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-32DA96C3-9B04-4401-92B8-EAF323C3C863.html["還原外部金鑰管理加密金鑰"^]。
+如需詳細資訊、請參閱 https://["還原外部金鑰管理加密金鑰"^]。
 
 |===
 
@@ -1567,5 +1567,5 @@ Failed to validate the node and cluster components before the switchover operati
 
 如果MetroCluster 先前已將此組態設定為由斷路器軟體進行監控、您可以還原斷路器連線。
 
-. 請執行中的步驟 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.hw-metrocluster-tiebreaker/GUID-7259BCA4-104C-49C6-BAD0-1068CA2A3DA5.html["新增MetroCluster 功能"^] _ MetroCluster 此為_資料斷路器安裝與組態_。
+. 請執行中的步驟 http://["新增MetroCluster 功能"^] _ MetroCluster 此為_資料斷路器安裝與組態_。
 

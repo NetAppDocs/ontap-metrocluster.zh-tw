@@ -54,7 +54,7 @@ link:../install-stretch/concept_considerations_differences.html["延伸MetroClus
 
 * 您必須確保不會超過磁碟機等的平台限制
 +
-https://hwu.netapp.com["NetApp Hardware Universe"^]
+https://["NetApp Hardware Universe"^]
 
 
 
@@ -86,7 +86,7 @@ image::../media/transition_2n_4_new_ip_nodes_on_the_shelves.png[在機櫃上移�
 此資訊適用於每種平台模式、請參閱_NetApp Hardware Universe SUR__。
 
 +
-https://hwu.netapp.com["NetApp Hardware Universe"^]
+https://["NetApp Hardware Universe"^]
 
 
 
@@ -250,7 +250,7 @@ node_B_1-FC上的第二MetroCluster 個支援IP連接埠
 控制器的連接埠使用量取決於平台機型和MetroCluster 將用於支援該IP組態的IP交換器機型。您可以從_NetApp__收集新平台的連接埠使用量Hardware Universe 。
 
 +
-https://hwu.netapp.com["NetApp Hardware Universe"^]
+https://["NetApp Hardware Universe"^]
 
 . 如果需要、請記錄node_a_1-FC和node_a_1-IP的連接埠資訊。
 +
@@ -707,7 +707,7 @@ Boot_ONTAP功能表
 
 .. 執行Config Advisor
 +
-https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"^]
+https://["NetApp下載Config Advisor"^]
 
 .. 執行Config Advisor 完功能後、請檢閱工具的輸出結果、並依照輸出中的建議來解決發現的任何問題。
 

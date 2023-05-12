@@ -1766,4 +1766,4 @@ HBA連接埠d
 
 不過、共用啟動器或目標連接埠可能會對效能造成不良影響。
 
-https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/How_to_support_Shared_Initiator_and_Shared_Target_configuration_with_Array_LUNs_in_a_MetroCluster_environment["如何在MetroCluster 支援共享的啟動器和共享的目標組態中、在整個環境中使用陣列LUN"]
+https://["如何在MetroCluster 支援共享的啟動器和共享的目標組態中、在整個環境中使用陣列LUN"]

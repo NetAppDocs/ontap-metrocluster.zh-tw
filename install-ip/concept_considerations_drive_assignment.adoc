@@ -155,7 +155,7 @@ NOTE: 從ONTAP 功能更新9.5開始、磁碟的自動指派必須使用命令�
 .相關資訊
 link:concept_required_mcc_ip_components_and_naming_guidelines_mcc_ip.html["必要MetroCluster 的知識、包括知識、知識、知識、知識、知識、知識"]
 
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"^]
+https://["磁碟與Aggregate管理"^]
 
 
 
@@ -168,7 +168,7 @@ NOTE: 在使用ADP的系統中、會使用分割區來建立集合體、將每�
 
 您必須符合MetroCluster 支援磁碟機數量上限和其他準則的要求。
 
-https://hwu.netapp.com["NetApp Hardware Universe"]
+https://["NetApp Hardware Universe"]
 
 
 

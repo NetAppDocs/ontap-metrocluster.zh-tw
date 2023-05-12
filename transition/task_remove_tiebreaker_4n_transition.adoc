@@ -15,7 +15,7 @@ summary: 如果現有的組態是以MetroCluster 可啟動切換的ESITTiebreake
 
 . 從MetroCluster Tiebreaker軟體移除現有的部分組態。
 +
-http://docs.netapp.com/ontap-9/topic/com.netapp.doc.hw-metrocluster-tiebreaker/GUID-34C97A45-0BFF-46DD-B104-2AB2805A983D.html["移除MetroCluster 部分組態"]
+http://["移除MetroCluster 部分組態"]
 
 . 從MetroCluster 任何可啟動切換的第三方應用程式移除現有的功能。
 +

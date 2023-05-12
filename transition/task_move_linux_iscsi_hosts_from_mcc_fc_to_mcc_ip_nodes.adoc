@@ -26,7 +26,7 @@ summary: 將支援節點從MetroCluster FC移轉至IP之後、您可能需要將
 
 . 在MetroCluster 支援的IP節點上建立iSCSI介面、並檢查從iSCSI用戶端到MetroCluster 支援的IP節點上新IP介面的ping連線能力。
 +
-https://docs.netapp.com/us-en/ontap/networking/create_a_lif.html["建立網路介面"^]
+https://["建立網路介面"^]
 
 +
 來自SVM的所有iSCSI介面均應可由iSCSI用戶端存取。

@@ -39,4 +39,4 @@ summary: 如果您的7-Mode Fabric MetroCluster 支援組態使用Brocade 6510�
 link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）"]
 
 .相關資訊
-http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-7mtt-dctg/home.html["複本型轉換"]
+http://["複本型轉換"]

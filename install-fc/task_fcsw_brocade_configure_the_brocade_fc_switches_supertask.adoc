@@ -17,7 +17,7 @@ summary: 您必須在MetroCluster Ef2組態中設定每個Brocade交換器架構
 * 您必須擁有可透過遠端登入或安全Shell（SSH）存取FC交換器的PC或UNIX工作站。
 * 您必須使用四個相同機型的受支援Brocade交換器、以及相同的Brocade Fabric作業系統（FOS）版本和授權。
 +
-https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"]
+https://["NetApp 互通性對照表工具"]
 
 +
 在這個解決方案領域、您可以使用儲存解決方案欄位來選擇您的解決方案。IMT MetroCluster您可以使用*元件總管*來選取元件和ONTAP 更新版本、以精簡搜尋範圍。您可以按一下「*顯示結果*」來顯示符合條件的支援組態清單。
@@ -51,7 +51,7 @@ Metro E表示乙太網路架構或訊號是透過Metro距離原生進行、或�
 * 不支援TDMS、FCR（原生FC路由）或FCIP擴充功能、以MetroCluster 利支援該交換器架構。
 * 某些交換器MetroCluster 採用支援加密或壓縮的功能、有時也支援這兩種功能。
 +
-https://mysupport.netapp.com/matrix["NetApp互通性對照表工具IMT （不含）"]
+https://["NetApp互通性對照表工具IMT （不含）"]
 
 +
 在這個解決方案領域、您可以使用儲存解決方案欄位來選擇您的解決方案。IMT MetroCluster您可以使用*元件總管*來選取元件和ONTAP 更新版本、以精簡搜尋範圍。您可以按一下「*顯示結果*」來顯示符合條件的支援組態清單。
@@ -471,7 +471,7 @@ FC_switch_A_1:admin> iodshow
 NOTE: 在ONTAP 控制器模組上設定功能時、必須在MetroCluster 每個控制器模組上明確設定ood、以供採用此功能。
 
 +
-https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/concept_configure_the_mcc_software_in_ontap.html#configuring-in-order-delivery-or-out-of-order-delivery-of-frames-on-ontap-software["設定以順序交付或不按順序交付以ONTAP 利在各種軟體上交付框架"]
+https://["設定以順序交付或不按順序交付以ONTAP 利在各種軟體上交付框架"]
 
 
 
@@ -756,7 +756,7 @@ link:concept_prepare_for_the_mcc_installation.html["使用Brocade DCX 8510-8交�
 * 交換器連接埠與小型可插拔（SFP）的組合必須支援速度。
 * 支援的ISL距離取決於FC交換器機型。
 +
-https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"]
+https://["NetApp 互通性對照表工具"]
 
 +
 在這個解決方案領域、您可以使用儲存解決方案欄位來選擇您的解決方案。IMT MetroCluster您可以使用*元件總管*來選取元件和ONTAP 更新版本、以精簡搜尋範圍。您可以按一下「*顯示結果*」來顯示符合條件的支援組態清單。

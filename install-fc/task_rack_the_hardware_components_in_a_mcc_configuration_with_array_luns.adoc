@@ -28,7 +28,7 @@ summary: 您必須確保MetroCluster 使用陣列LUN來設定一個整套組態�
 NOTE: 不支援使用陣列LUN的作業系統。AFF
 
 +
-https://docs.netapp.com/us-en/ontap-systems/["您的系統的安裝程序AFF FAS"]
+https://["您的系統的安裝程序AFF FAS"]
 
 . 在機架或機櫃中安裝FC交換器。
 

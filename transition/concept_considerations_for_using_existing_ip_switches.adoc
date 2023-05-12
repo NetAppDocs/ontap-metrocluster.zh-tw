@@ -33,4 +33,4 @@ summary: 您必須確保IP交換器受到支援。如果現有的交換器模式
 
 如Hardware Universe 需平台模式與交換器支援的相關資訊、請參閱_NetApp SUR__。
 
-https://hwu.netapp.com["NetApp Hardware Universe"]
+https://["NetApp Hardware Universe"]

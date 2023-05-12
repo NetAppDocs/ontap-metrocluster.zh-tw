@@ -22,7 +22,7 @@ NOTE: 支援功能有限、僅限線上使用。Config Advisor
 .步驟
 . 前往Config Advisor 「更新」頁面並下載工具。
 +
-https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"]
+https://["NetApp下載Config Advisor"]
 
 . 執行Config Advisor 功能、檢閱工具的輸出結果、並遵循輸出中的建議來解決發現的任何問題。
 

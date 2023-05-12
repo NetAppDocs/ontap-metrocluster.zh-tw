@@ -22,7 +22,7 @@ summary: 透過協調式切換功能、可完全關閉合作夥伴站台上的�
 「瞭解仲裁與epsilon」一節中的_系統管理參考_有更多關於叢集仲裁的資訊。
 
 +
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sag/home.html["系統管理"]
+https://["系統管理"]
 
 * 叢集對等網路必須可從兩個站台使用。
 * 在整個過程中、所有的節點MetroCluster 都必須執行相同版本ONTAP 的版本的軟件。

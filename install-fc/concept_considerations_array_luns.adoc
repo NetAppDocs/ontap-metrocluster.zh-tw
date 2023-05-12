@@ -18,4 +18,4 @@ link:task_configure_the_mcc_hardware_components_fabric.html["佈線連接架構M
 
 link:concept_planning_for_a_mcc_configuration_with_array_luns.html["規劃及安裝MetroCluster 含有陣列LUN的功能不均的組態"]
 
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.vs-irrg/home.html["介紹虛擬化安裝需求與參考資料FlexArray"]
+https://["介紹虛擬化安裝需求與參考資料FlexArray"]

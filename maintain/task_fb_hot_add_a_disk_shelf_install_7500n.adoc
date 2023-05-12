@@ -93,7 +93,7 @@ node_A_2             on           on           on           default
 ----
 . 如果您的系統未啟用磁碟自動指派、或是同一個堆疊中的磁碟機同時由兩個控制器擁有、請將磁碟機指派給適當的資源池。
 +
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"]
+https://["磁碟與Aggregate管理"]
 
 +
 [NOTE]
@@ -112,7 +112,7 @@ NOTE: 在磁碟機和磁碟櫃韌體更新之前、不得將磁碟機新增至�
 您可以從任一控制器的系統主控台執行程序中的命令。
 
 +
-https://mysupport.netapp.com/site/downloads/firmware/disk-shelf-firmware["NetApp下載：磁碟櫃韌體"]
+https://["NetApp下載：磁碟櫃韌體"]
 
 . 安裝並連接磁碟櫃：
 +
@@ -150,7 +150,7 @@ NOTE: 您必須為磁碟櫃重新開機、並讓整個儲存系統內每個SAS�
 
 . 從系統主控台將磁碟機韌體更新至最新版本。
 +
-https://mysupport.netapp.com/site/downloads/firmware/disk-drive-firmware["NetApp下載：磁碟機韌體"]
+https://["NetApp下載：磁碟機韌體"]
 
 +
 .. 變更為進階權限等級：+「*設定-權限進階*」
@@ -181,7 +181,7 @@ https://mysupport.netapp.com/site/downloads/firmware/disk-drive-firmware["NetApp
 
 .. 執行Config Advisor
 +
-https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"]
+https://["NetApp下載Config Advisor"]
 
 .. 執行Config Advisor 完功能後、請檢閱工具的輸出結果、並依照輸出中的建議來解決發現的任何問題。
 

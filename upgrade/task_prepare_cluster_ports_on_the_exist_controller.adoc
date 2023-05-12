@@ -16,12 +16,12 @@ summary: 在安裝新的控制器模組之前、您必須在現有的控制器�
 .關於這項工作
 如果您要建立雙節點無交換式叢集（沒有叢集網路交換器）、則必須啟用無交換式叢集網路模式。
 
-如需ONTAP 有關連接埠、LIF及網路組態的詳細資訊、請參閱 link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/home.html["網路管理"^]。
+如需ONTAP 有關連接埠、LIF及網路組態的詳細資訊、請參閱 link:https://docs.netapp.com/us-en/ontap/network-management/index.html["網路管理"^]。
 
 .步驟
 . 確定應使用哪些連接埠作為節點的叢集連接埠。
 +
-如需您平台的預設連接埠角色清單、請參閱 https://hwu.netapp.com/["Hardware Universe"^]
+如需您平台的預設連接埠角色清單、請參閱 https://["Hardware Universe"^]
 
 +
 NetApp支援網站上適用於您平台的_Installation and Setup Instructions（安裝與設定說明）包含叢集網路連線的連接埠相關資訊。

@@ -23,7 +23,7 @@ summary: 如果您尚未收到已安裝在機櫃中的設備、則必須裝入�
 . 請妥善接地。
 . 在機架或機櫃中安裝儲存控制器。
 +
-https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"]
+https://["VMware及其技術資料中心AFF FAS"]
 
 . 安裝磁碟櫃、開啟磁碟櫃電源、然後設定磁碟櫃ID。
 +

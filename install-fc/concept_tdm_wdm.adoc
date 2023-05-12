@@ -13,7 +13,7 @@ summary: 當您準備MetroCluster 進行此版本的安裝時、您應該瞭解M
 
 例如、TDM/WDM設備必須支援連結集合（主幹連線）功能與路由原則。框架的傳輸順序（IOD或OD）會保留在交換器內、並由有效的路由原則決定。
 
-https://hwu.netapp.com["NetApp Hardware Universe"]
+https://["NetApp Hardware Universe"]
 
 下表提供包含Brocade交換器和Cisco交換器的組態之路由原則：
 

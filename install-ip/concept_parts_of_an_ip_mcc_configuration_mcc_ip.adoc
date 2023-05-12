@@ -64,7 +64,7 @@ image::../media/mcc_dr_groups_4_node.gif[MCC DR群組4個節點]
 image::../media/mcc_ip_hardware_architecture_ha_pairs.gif[MCC IP硬體架構HA配對]
 
 .相關資訊
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-concepts/home.html["概念ONTAP"]
+https://["概念ONTAP"]
 
 
 
@@ -98,7 +98,7 @@ link:concept_considerations_mcip.html["關於靜態IP組態的考量MetroCluster
 image::../media/mcc_ip_hardware_architecture_cluster_peering_network.gif[MCC IP硬體架構叢集對等網路]
 
 .相關資訊
-http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-clus-peer/home.html["叢集與SVM對等化快速組態"]
+http://["叢集與SVM對等化快速組態"]
 
 link:concept_considerations_peering.html["設定叢集對等的考量"]
 

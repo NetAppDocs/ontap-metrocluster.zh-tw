@@ -112,7 +112,7 @@ NOTE: 支援功能有限、僅限線上使用。Config Advisor
 
 . 下載Config Advisor 此功能。
 +
-https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"^]
+https://["NetApp下載Config Advisor"^]
 
 . 執行Config Advisor 功能、檢閱輸出內容、並遵循其建議來解決任何問題。
 
@@ -149,7 +149,7 @@ https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp
 此工作必須在每MetroCluster 個站台執行。
 
 .步驟
-. 使用 https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"^] 若要判斷交換器類型的纜線配置、請使用連接埠使用方式進行八節點MetroCluster 的邊邊架構。
+. 使用 https://["Fabric附加MetroCluster 的安裝與組態"^] 若要判斷交換器類型的纜線配置、請使用連接埠使用方式進行八節點MetroCluster 的邊邊架構。
 +
 FC交換器連接埠使用量必須符合本指南所述的使用量、才能使用參考組態檔（RCFC）。
 
@@ -165,7 +165,7 @@ NOTE: 如果纜線無法使用RCT、請勿使用此程序。
 
 您必須套用適當的參考組態（RCF）檔案、才能重新設定交換器以容納新節點。套用RCF檔案之後、您就可以重新恢復交換器。
 
-FC交換器連接埠使用量必須符合中所述的使用量 https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"^] 以便能夠使用RCT。
+FC交換器連接埠使用量必須符合中所述的使用量 https://["Fabric附加MetroCluster 的安裝與組態"^] 以便能夠使用RCT。
 
 .步驟
 . 找出您組態的RCF檔案。
@@ -225,5 +225,5 @@ vsan [vsna #]no suspend
 
 您應該驗證MetroCluster 該組態的切換、修復及切換作業。
 
-. 請使用中所述的協調切換、修復及切換程序 https://docs.netapp.com/us-en/ontap-metrocluster/disaster-recovery/concept_dr_workflow.html["支援管理與災難恢復MetroCluster"^]。
+. 請使用中所述的協調切換、修復及切換程序 https://["支援管理與災難恢復MetroCluster"^]。
 

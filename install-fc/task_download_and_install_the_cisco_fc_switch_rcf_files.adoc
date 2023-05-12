@@ -21,7 +21,7 @@ summary: 您必須將RCF檔案下載到MetroCluster 以「支援」為基礎的�
 
 您必須使用支援的交換器軟體版本。
 
-https://hwu.netapp.com["NetApp Hardware Universe"]
+https://["NetApp Hardware Universe"]
 
 共有四個RCF檔案、MetroCluster 其中四個交換器的RCF設定各一個。您必須針對所使用的交換器機型使用正確的RCF檔案。
 
@@ -62,7 +62,7 @@ FC_SWIT_B_2
 NOTE: 顯示的輸出適用於Cisco IP交換器、但這些步驟也適用於Cisco FC交換器。
 
 .步驟
-. 從下載Cisco FC RCF檔案 https://mysupport.netapp.com/site/products/all/details/metrocluster-rcf/downloads-tab["RCF下載頁面MetroCluster"]。
+. 從下載Cisco FC RCF檔案 https://["RCF下載頁面MetroCluster"]。
 . 將RCF檔案複製到交換器。
 +
 .. 將RCF檔案複製到第一個交換器：

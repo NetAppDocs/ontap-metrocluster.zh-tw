@@ -39,7 +39,7 @@ summary: 連接埠在MetroCluster 一個靜態IP組態中的使用取決於交�
 ** 例如、如果您連線：
 +
 *** 兩MetroCluster 個僅包含FAS2750/AFF A220或FAS500f/AFF A250的支援支援組態、您必須選取MetroCluster 「支援組3和4」。
-*** 兩MetroCluster 種支援不同MetroCluster 的支援對象為FAS2750/AFF A220類型、另一種是FAS500f/AFF A250、您必須為其中一種選擇連接埠群組3和4、另一種選擇連接埠群組1和2。在中 https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["RcfFileGeneratorfor MetroCluster EfIP"]下拉式欄位1和2只會在您在下拉式欄位3和4中選取平台之後、才會填入支援的平台。請參閱 link:../install-ip/using_rcf_generator.html["使用連接埠表格搭配RcfFileGeneratorR工具或多MetroCluster 種支援的組態"] 如需如何使用連接埠表格的詳細資訊、
+*** 兩MetroCluster 種支援不同MetroCluster 的支援對象為FAS2750/AFF A220類型、另一種是FAS500f/AFF A250、您必須為其中一種選擇連接埠群組3和4、另一種選擇連接埠群組1和2。在中 https://["RcfFileGeneratorfor MetroCluster EfIP"]下拉式欄位1和2只會在您在下拉式欄位3和4中選取平台之後、才會填入支援的平台。請參閱 link:../install-ip/using_rcf_generator.html["使用連接埠表格搭配RcfFileGeneratorR工具或多MetroCluster 種支援的組態"] 如需如何使用連接埠表格的詳細資訊、
 
 
 

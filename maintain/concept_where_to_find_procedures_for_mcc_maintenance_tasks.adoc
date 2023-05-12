@@ -29,7 +29,7 @@ NOTE: 發行版的更新版本為《》（英文）ONTAP 、MetroCluster 更新�
  a| 
 軟體升級ONTAP
  a| 
-https://docs.netapp.com/us-en/ontap/upgrade/index.html["升級、回復或降級"^]
+https://["升級、回復或降級"^]
 
 
 
@@ -43,7 +43,7 @@ FRU更換（包括控制器模組、PCIe卡、FC-VI卡等）
 
 NOTE: 不MetroCluster 支援將儲存控制器模組或NVRAM卡移至各個不支援的儲存系統。
  a| 
-https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"]
+https://["VMware及其技術資料中心AFF FAS"]
 
 
 
@@ -90,7 +90,7 @@ FC
  a| 
 所有其他機櫃維護程序。可使用標準程序。
  a| 
-https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-sas3-service/home.html["維護DS460C DS224C和DS212C磁碟櫃"^]
+https://["維護DS460C DS224C和DS212C磁碟櫃"^]
 
 
 
@@ -99,9 +99,9 @@ IP
  a| 
 所有機櫃維護程序。可使用標準程序。
 
-如果要新增磁碟櫃以供未鏡射的Aggregate使用、請參閱 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-mcc-inst-cnfg-ip/GUID-EA385AF8-7786-4C3C-B5AE-1B4CFD3AD2EE.html["使用無鏡射Aggregate時的考量"^]
+如果要新增磁碟櫃以供未鏡射的Aggregate使用、請參閱 http://["使用無鏡射Aggregate時的考量"^]
  a| 
-https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-sas3-service/home.html["維護DS460C DS224C和DS212C磁碟櫃"^]
+https://["維護DS460C DS224C和DS212C磁碟櫃"^]
 
 
 
@@ -110,7 +110,7 @@ https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-sas3-service/home.ht
  a| 
 熱新增IOM12磁碟櫃至IOM6磁碟櫃堆疊
  a| 
-https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-mix-hotadd/home.html["將含有IOM12模組的熱新增磁碟櫃放到具有IOM6模組的磁碟櫃堆疊中"^]
+https://["將含有IOM12模組的熱新增磁碟櫃放到具有IOM6模組的磁碟櫃堆疊中"^]
 
 
 
