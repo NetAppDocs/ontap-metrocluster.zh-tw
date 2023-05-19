@@ -24,6 +24,7 @@ summary: 連接埠在MetroCluster 一個靜態IP組態中的使用取決於交�
 * FAS8700
 * FAS9000 / AFF E4A700
 * AFF C800 / AFF A800
+* FAS9500 / AFF A900
 
 
 目前不支援下列平台和組態：
@@ -51,6 +52,6 @@ image::../media/mcc_ip_cabling_A250_C250_MSN2100.png[MCC IP 纜線 A250 C250 MSN
 
 
 
-== AFF C400 、 AFF A400 、 AFF A700 或 FAS9000 、 FAS8300 或 FAS8700 AFF A800 的交換器連接埠使用量
+== AFF C400 、 AFF A400 、 AFF A700 、 FAS9000 、 FAS8300 的交換器連接埠使用量 FAS8700 、 AFF A800 、 FAS9500 或 AFF A900
 
 image::../media/mcc_ip_cabling_aff250_400_700_800_cseriesMSN2100.png[MCC IP 纜線 aff250 400 700 800 cserialMSN2100]
