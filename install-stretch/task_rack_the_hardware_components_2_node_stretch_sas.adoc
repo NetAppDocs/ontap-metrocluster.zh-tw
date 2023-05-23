@@ -23,7 +23,7 @@ summary: 如果您尚未收到已安裝在機櫃中的設備、則必須裝入�
 . 使用標準的工廠實務做法來操作電氣設備、確保您已正確接地。
 . 在機架或機櫃中安裝儲存控制器。
 +
-https://["VMware及其技術資料中心AFF FAS"]
+https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"]
 
 . 安裝磁碟櫃、以菊環鏈方式將磁碟櫃連接至每個堆疊、開啟磁碟櫃電源、以及設定磁碟櫃ID。
 +

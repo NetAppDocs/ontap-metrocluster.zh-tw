@@ -39,7 +39,7 @@ link:task_fcsw_configure_the_cisco_or_brocade_fc_switches_manually.html["手動�
 不過、共用啟動器或目標連接埠可能會對效能造成不良影響。
 
 .相關資訊
-https://["如何在MetroCluster 支援共享的啟動器和共享的目標組態中、在整個環境中使用陣列LUN"]
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/How_to_support_Shared_Initiator_and_Shared_Target_configuration_with_Array_LUNs_in_a_MetroCluster_environment["如何在MetroCluster 支援共享的啟動器和共享的目標組態中、在整個環境中使用陣列LUN"]
 
 * 交換器分區可定義連接節點之間的路徑。設定分區功能可讓您定義特定ONTAP 的哪些陣列LUN可供特定的作業系統檢視。
 +

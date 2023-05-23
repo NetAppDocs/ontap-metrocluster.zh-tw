@@ -137,12 +137,12 @@ image::../media/mcc_dr_group_c4.png[MCC DR 群組 C4]
 
 . 使用中的下列程序、將資料從舊節點移至新節點 link:https://docs.netapp.com/us-en/ontap-systems-upgrade/index.html["系統升級文件AFF FAS"^]
 +
-.. 執行中的所有步驟 http://["建立Aggregate並將磁碟區移至新節點"^]。
+.. 執行中的所有步驟 http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-upgrade-controller/GUID-AFE432F6-60AD-4A79-86C0-C7D12957FA63.html["建立Aggregate並將磁碟區移至新節點"^]。
 +
 
 NOTE: 您可以選擇在建立時或之後鏡射集合體。
 
-.. 執行中的所有步驟 http://["將非SAN資料生命期和叢集管理生命期移至新節點"]。
+.. 執行中的所有步驟 http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-upgrade-controller/GUID-95CA9262-327D-431D-81AA-C73DEFF3DEE2.html["將非SAN資料生命期和叢集管理生命期移至新節點"]。
 
 
 . 修改每個叢集之轉換節點的叢集對等端 IP 位址：

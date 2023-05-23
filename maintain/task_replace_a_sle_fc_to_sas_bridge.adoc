@@ -631,7 +631,7 @@ ATTO_10.10.20.13  atto04        true          ok              Atto   FibreBridge
 .. 檢查交換器上是否有任何健全狀況警示（如果有）：+「切換顯示」
 .. 執行Config Advisor
 +
-https://["NetApp下載Config Advisor"^]
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"^]
 
 .. 執行Config Advisor 完功能後、請檢閱工具的輸出結果、並依照輸出中的建議來解決發現的任何問題。
 
@@ -1015,7 +1015,7 @@ ATTO_10.10.20.13  atto04        true          ok              Atto   FibreBridge
 .. 檢查交換器上是否有任何健全狀況警示（如果有）：+「切換顯示」
 .. 執行Config Advisor
 +
-https://["NetApp下載Config Advisor"^]
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"^]
 
 .. 執行Config Advisor 完功能後、請檢閱工具的輸出結果、並依照輸出中的建議來解決發現的任何問題。
 
@@ -1450,7 +1450,7 @@ ATTO_10.10.20.13  atto04        true          ok              Atto   FibreBridge
 
 .. 執行Config Advisor
 +
-https://["NetApp下載Config Advisor"^]
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"^]
 
 .. 執行Config Advisor 完功能後、請檢閱工具的輸出結果、並依照輸出中的建議來解決發現的任何問題。
 

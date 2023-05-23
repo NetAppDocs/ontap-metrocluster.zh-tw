@@ -51,4 +51,4 @@ summary: 陣列LUN必須由節點擁有、才能將其新增至要用作儲存�
 
 
 .相關資訊
-https://["介紹虛擬化安裝需求與參考資料FlexArray"]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.vs-irrg/home.html["介紹虛擬化安裝需求與參考資料FlexArray"]

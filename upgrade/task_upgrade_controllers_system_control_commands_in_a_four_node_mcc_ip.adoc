@@ -21,7 +21,7 @@ summary: 您可以使用這項引導式自動化 MetroCluster 轉換作業、針
 
 如需平台升級組合的詳細資訊、請參閱中的 MetroCluster IP 升級表 link:concept_choosing_controller_upgrade_mcc.html#supported-metrocluster-ip-controller-upgrades["選擇控制器升級程序"]。
 
-請參閱 https://["選擇升級或重新整理方法"] 以瞭解其他程序。
+請參閱 https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["選擇升級或重新整理方法"] 以瞭解其他程序。
 
 
 
@@ -33,7 +33,7 @@ summary: 您可以使用這項引導式自動化 MetroCluster 轉換作業、針
 
 * 此程序適用於執行 ONTAP 9.13.1 或更新版本的四節點 MetroCluster IP 組態中的控制器模組。
 +
-https://["NetApp Hardware Universe"^]
+https://hwu.netapp.com["NetApp Hardware Universe"^]
 
 * MetroCluster 系統必須在兩個站台上執行相同的 ONTAP 版本。
 * 您可以使用此程序來升級四節點 MetroCluster IP 組態中的控制器、使用 NSO 型自動切換和切換。
@@ -223,7 +223,7 @@ dr-group-id cluster    node          node-systemid dr-partner-systemid
 
 . 如果MetroCluster 這個節點正在使用磁碟區或集合體的加密功能、請複製金鑰和複製密碼的相關資訊。
 +
-如需其他資訊、請參閱 https://["手動備份內建金鑰管理資訊"^]。
+如需其他資訊、請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-1677AE0A-FEF7-45FA-8616-885AA3283BCF.html["手動備份內建金鑰管理資訊"^]。
 
 +
 .. 如果已設定Onboard Key Manager：
@@ -255,7 +255,7 @@ dr-group-id cluster    node          node-systemid dr-partner-systemid
 如果現有的組態是以MetroCluster 可啟動切換的ESITTiebreaker組態或其他協力廠商應用程式（例如ClusterLion）來監控、您必須先從MetroCluster 斷路器或其他軟體移除此類組態、才能更換舊的控制器。
 
 .步驟
-. http://["移除現有MetroCluster 的版本資訊"^] 透過Tiebreaker軟體。
+. http://docs.netapp.com/ontap-9/topic/com.netapp.doc.hw-metrocluster-tiebreaker/GUID-34C97A45-0BFF-46DD-B104-2AB2805A983D.html["移除現有MetroCluster 的版本資訊"^] 透過Tiebreaker軟體。
 . 從MetroCluster 任何可啟動切換的第三方應用程式移除現有的功能。
 +
 請參閱應用程式的文件。
@@ -304,7 +304,7 @@ SAN和NAS等所有資料生命量都是管理員「up」（啟動）和作業「
 例如、「'e0d'」是舊控制器上的實體連接埠、也存在於新的控制器上。「e0d」不做為叢集連接埠、也不做為新控制器上的其他連接埠。
 
 +
-如需平台機型的連接埠使用量、請參閱 https://["NetApp Hardware Universe"^]
+如需平台機型的連接埠使用量、請參閱 https://hwu.netapp.com/["NetApp Hardware Universe"^]
 
 .. 修改所有資料生命期、以使用通用連接埠作為主連接埠：
 +
@@ -389,7 +389,7 @@ network port ifgrp remove-port -node node1 -ifgrp a1a -port e0d
 . 請妥善接地。
 . 在機架或機櫃中安裝控制器模組。
 +
-https://["VMware及其技術資料中心AFF FAS"^]
+https://docs.netapp.com/us-en/ontap-systems/index.html["VMware及其技術資料中心AFF FAS"^]
 
 . 如果新的控制器模組未隨附本身的FC-VI卡、且舊控制器的FC-VI卡與新的控制器相容、請交換FC-VI卡、並將其安裝在正確的插槽中。
 +
@@ -400,7 +400,7 @@ https://["VMware及其技術資料中心AFF FAS"^]
 此時請勿連接任何其他與舊控制器中斷連線的纜線。
 
 +
-https://["VMware及其技術資料中心AFF FAS"^]
+https://docs.netapp.com/us-en/ontap-systems/index.html["VMware及其技術資料中心AFF FAS"^]
 
 . 開啟新節點的電源、並在系統提示顯示載入器提示時按Ctrl-C。
 
@@ -414,7 +414,7 @@ https://["VMware及其技術資料中心AFF FAS"^]
 此工作會在每個新的控制器模組上執行。
 
 .步驟
-. 存取 https://["NetApp 支援網站"^] 可下載用於執行系統netboot的文件。
+. 存取 https://mysupport.netapp.com/site/["NetApp 支援網站"^] 可下載用於執行系統netboot的文件。
 . 從ONTAP NetApp支援網站的軟體下載區段下載適當的支援軟體、並將ONTAP-VERSION _image.tgz檔案儲存在可從網路存取的目錄中。
 . 移至網路存取目錄、確認您所需的檔案可用。
 +
@@ -1028,7 +1028,7 @@ Boot_ONTAP
 
 .. 視需要將任何連接埠新增至廣播網域。
 +
-https://["從廣播網域新增或移除連接埠"^]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-003BDFCD-58A3-46C9-BF0C-BA1D1D1475F9.html["從廣播網域新增或移除連接埠"^]
 
 .. 將將叢集間生命體所在的實體連接埠新增至對應的廣播網域。
 .. 修改叢集間的LIF、將新的實體連接埠當作主連接埠使用。
@@ -1044,10 +1044,10 @@ link:../install-ip/task_sw_config_configure_clusters.html#peering-the-clusters["
 VLAN和介面群組成員資格可能與舊節點不同。
 
 +
-https://["建立VLAN"^]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-8929FCE2-5888-4051-B8C0-E27CAF3F2A63.html["建立VLAN"^]
 
 +
-https://["結合實體連接埠以建立介面群組"^]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EAB7-430A-A773-4E3420EE2AA1.html["結合實體連接埠以建立介面群組"^]
 
 .. 確認合作夥伴叢集可連線、且組態已在合作夥伴叢集上成功重新同步：
 +
@@ -1068,7 +1068,7 @@ https://["結合實體連接埠以建立介面群組"^]
  a| 
 「安全金鑰管理程式內建同步」
 
-如需詳細資訊、請參閱 https://["還原內建金鑰管理加密金鑰"^]。
+如需詳細資訊、請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-E4AB2ED4-9227-4974-A311-13036EB43A3D.html["還原內建金鑰管理加密金鑰"^]。
 
 
 
@@ -1077,7 +1077,7 @@ https://["結合實體連接埠以建立介面群組"^]
  a| 
 「安全金鑰管理程式外部還原-vserver _svm_-node_node_-key-server _host_name | ip_address: port_-key-id key_id -key-tag key_tag _node-name_」
 
-如需詳細資訊、請參閱 https://["還原外部金鑰管理加密金鑰"^]。
+如需詳細資訊、請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-32DA96C3-9B04-4401-92B8-EAF323C3C863.html["還原外部金鑰管理加密金鑰"^]。
 
 |===
 . 在您恢復作業之前、請確認MetroCluster 已正確設定好功能。檢查節點狀態：
@@ -1135,5 +1135,5 @@ https://["結合實體連接埠以建立介面群組"^]
 
 如果MetroCluster 先前已將此組態設定為由斷路器軟體進行監控、您可以還原斷路器連線。
 
-. 請執行中的步驟 http://["新增MetroCluster 功能"]。
+. 請執行中的步驟 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.hw-metrocluster-tiebreaker/GUID-7259BCA4-104C-49C6-BAD0-1068CA2A3DA5.html["新增MetroCluster 功能"]。
 

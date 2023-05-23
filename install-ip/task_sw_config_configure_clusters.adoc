@@ -156,7 +156,7 @@ cluster_B::>
 在不支援的組態中、叢集MetroCluster 必須處於對等關係中、以便彼此通訊、並執行MetroCluster 對恢復災難至關重要的資料鏡射。
 
 .相關資訊
-http://["叢集與SVM對等化快速組態"]
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-clus-peer/home.html["叢集與SVM對等化快速組態"]
 
 link:concept_considerations_peering.html#considerations-when-using-dedicated-ports["使用專用連接埠時的考量事項"]
 
@@ -1935,7 +1935,7 @@ controller_A_1::> storage aggregate mirror aggr0_controller_A_1
 
 
 .相關資訊
-https://["邏輯儲存管理"]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-vsmg/home.html["邏輯儲存管理"]
 
 
 
@@ -1952,7 +1952,7 @@ https://["邏輯儲存管理"]
 
 * Aggregate名稱應符合您在規劃MetroCluster 時所決定的名稱配置。
 +
-https://["磁碟與Aggregate管理"]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"]
 
 
 
@@ -2206,7 +2206,7 @@ NOTE: 無鏡射的Aggregate必須是擁有它們的節點的本機集合體。
 您可以使用平台和磁碟櫃安裝與設定文件中的程序。
 
 +
-https://["VMware及其技術資料中心AFF FAS"]
+https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"]
 
 . 手動將新機櫃上的所有磁碟指派給適當的節點：
 +
@@ -2267,7 +2267,7 @@ controller_A_1::> storage aggregate create aggr1_controller_A_1 -diskcount 10 -n
 
 
 .相關資訊
-https://["磁碟與Aggregate管理"]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"]
 
 
 
@@ -2405,7 +2405,7 @@ mccint-fas9000-0304
 
 
 .相關資訊
-https://["磁碟與Aggregate管理"]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"]
 
 link:https://docs.netapp.com/us-en/ontap/network-management/index.html["網路與LIF管理"^]
 

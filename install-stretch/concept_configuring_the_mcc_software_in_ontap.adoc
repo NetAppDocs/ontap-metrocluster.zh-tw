@@ -1052,7 +1052,7 @@ cluster1-01           true    true
 在不支援的組態中、叢集MetroCluster 必須處於對等關係中、以便彼此通訊、並執行MetroCluster 對恢復災難至關重要的資料鏡射。
 
 .相關資訊
-http://["叢集與SVM對等化快速組態"^]
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-clus-peer/home.html["叢集與SVM對等化快速組態"^]
 
 link:concept_considerations_peering.html#considerations-when-using-dedicated-ports["使用專用連接埠時的考量事項"]
 
@@ -1715,9 +1715,9 @@ controller_A_1::> storage aggregate mirror aggr0_controller_A_1
 
 
 .相關資訊
-https://["邏輯儲存管理"^]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-vsmg/home.html["邏輯儲存管理"^]
 
-https://["概念ONTAP"^]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-concepts/home.html["概念ONTAP"^]
 
 
 
@@ -1734,7 +1734,7 @@ https://["概念ONTAP"^]
 * 磁碟機和陣列LUN由特定節點擁有；當您建立Aggregate時、該Aggregate中的所有磁碟機都必須由同一個節點擁有、而該節點會成為該Aggregate的主節點。
 * Aggregate名稱應符合您在規劃MetroCluster 時所決定的名稱配置。
 +
-https://["磁碟與Aggregate管理"^]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"^]
 
 
 
@@ -1923,7 +1923,7 @@ NOTE: 如果您要使用單一鏡射資料Aggregate、請參閱 link:concept_con
 |===
 +
 
-NOTE: 最佳實務做法是擁有多個資料集合體。如果第一個DR群組只有一個Aggregate、而您想要新增一個具有單一Aggregate的DR群組、則必須將中繼資料磁碟區從單一資料Aggregate中移出。如需此程序的詳細資訊、請參閱 http://["在MetroCluster 不完整的組態中移動中繼資料磁碟區"^]。
+NOTE: 最佳實務做法是擁有多個資料集合體。如果第一個DR群組只有一個Aggregate、而您想要新增一個具有單一Aggregate的DR群組、則必須將中繼資料磁碟區從單一資料Aggregate中移出。如需此程序的詳細資訊、請參閱 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.hw-metrocluster-service/GUID-114DAE6E-F105-4908-ABB1-CE1D7B5C7048.html["在MetroCluster 不完整的組態中移動中繼資料磁碟區"^]。
 
 +
 下列命令可在MetroCluster DR群組中包含「'controller _a_1'」的所有節點上啟用支援功能：
@@ -2192,7 +2192,7 @@ mccint-fas9000-0304
 
 
 .相關資訊
-https://["磁碟與Aggregate管理"^]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"^]
 
 link:https://docs.netapp.com/us-en/ontap/network-management/index.html["網路與LIF管理"^]
 
@@ -2209,7 +2209,7 @@ NOTE: 支援功能有限、僅限線上使用。Config Advisor
 
 . 前往Config Advisor 「更新」頁面並下載工具。
 +
-https://["NetApp下載Config Advisor"^]
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"^]
 
 . 執行Config Advisor 功能、檢閱工具的輸出結果、並遵循輸出中的建議來解決發現的任何問題。
 

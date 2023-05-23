@@ -105,7 +105,7 @@ link:../tiebreaker/concept_overview_of_the_tiebreaker_software.html["升級、�
 
 
  a| 
-https://["VMware及其技術文件AFF FAS"^]
+https://docs.netapp.com/us-en/ontap-systems/["VMware及其技術文件AFF FAS"^]
 
 *附註：*標準儲存櫃維護程序可搭配MetroCluster 使用。
  a| 
@@ -116,7 +116,7 @@ https://["VMware及其技術文件AFF FAS"^]
 
 
  a| 
-http://["複本型轉換"^]
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-7mtt-dctg/home.html["複本型轉換"^]
  a| 
 * 將資料從7-Mode儲存系統移轉至叢集式儲存系統
 
@@ -124,7 +124,7 @@ http://["複本型轉換"^]
 
 
  a| 
-https://["概念ONTAP"^]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-concepts/home.html["概念ONTAP"^]
  a| 
 * 鏡射Aggregate的運作方式
 

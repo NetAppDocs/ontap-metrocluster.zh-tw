@@ -52,8 +52,8 @@ Filename : NX3232_v1.80_Switch-A2.txt
 . 若要檢查特定ONTAP 的支援版本、交換器及平台的檔案、請使用RcfFileGenerator.如果您可以針對您的組態或您要升級至的組態產生RCF檔案、則會受到支援。
 . 若要驗證交換器韌體是否受支援、請參閱下列內容：
 +
-** https://["Hardware Universe"]
-** https://["NetApp互通性"]
+** https://hwu.netapp.com["Hardware Universe"]
+** https://mysupport.netapp.com/NOW/products/interoperability["NetApp互通性"]
 
 
 

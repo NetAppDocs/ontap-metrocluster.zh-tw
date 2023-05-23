@@ -16,6 +16,6 @@ summary: 新增控制器模組之後、您必須在新的控制器模組上安�
 .步驟
 . 下載適用於您系統的最新韌體版本、並依照指示下載及安裝新韌體。
 +
-https://["NetApp下載：系統韌體與診斷"]
+https://mysupport.netapp.com/site/downloads/firmware/system-firmware-diagnostics["NetApp下載：系統韌體與診斷"]
 
 

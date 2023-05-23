@@ -25,6 +25,6 @@ summary: 您必須連接用於叢集對等的控制器模組連接埠、以便�
 叢集對等作業可在專用連接埠或資料連接埠上執行。使用專用連接埠可為叢集對等流量提供更高的處理量。
 
 +
-http://["叢集與SVM對等化快速組態"]
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-clus-peer/home.html["叢集與SVM對等化快速組態"]
 
 

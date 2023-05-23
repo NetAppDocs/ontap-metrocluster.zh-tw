@@ -22,7 +22,7 @@ summary: 您必須在DR群組中的每個節點上建立鏡射資料Aggregate。
 
 * Aggregate名稱應符合您在規劃MetroCluster 時所決定的名稱配置。
 +
-https://["磁碟與Aggregate管理"]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"]
 
 
 

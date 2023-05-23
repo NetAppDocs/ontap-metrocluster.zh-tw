@@ -32,7 +32,7 @@ link:../index.html["資訊文件MetroCluster"]
 
 
  a| 
-http://["NetApp技術報告4375：NetApp MetroCluster 的《ONTAP 關於NetApp的資訊》9.3"^]
+http://www.netapp.com/us/media/tr-4375.pdf["NetApp技術報告4375：NetApp MetroCluster 的《ONTAP 關於NetApp的資訊》9.3"^]
  a| 
 * 關於整套組態和操作的技術總覽MetroCluster 。
 * 最佳實務做法MetroCluster ：
@@ -41,7 +41,7 @@ http://["NetApp技術報告4375：NetApp MetroCluster 的《ONTAP 關於NetApp�
 
 
  a| 
-https://["Fabric附加MetroCluster 的安裝與組態"]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-mcc-inst-cnfg-fabric/home.html["Fabric附加MetroCluster 的安裝與組態"]
  a| 
 * 架構附加MetroCluster 的架構
 * 組態佈線
@@ -53,7 +53,7 @@ https://["Fabric附加MetroCluster 的安裝與組態"]
 
 
  a| 
-https://["延伸MetroCluster 安裝與組態"]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-mcc-inst-cnfg-stretch/home.html["延伸MetroCluster 安裝與組態"]
  a| 
 * 延伸MetroCluster 架構
 * 組態佈線
@@ -64,7 +64,7 @@ https://["延伸MetroCluster 安裝與組態"]
 
 
  a| 
-http://["安裝與組態MetroCluster"]
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-mcc-inst-cnfg-ip/home.html["安裝與組態MetroCluster"]
  a| 
 * 知識產權架構MetroCluster
 * 組態佈線
@@ -82,7 +82,7 @@ link:../tiebreaker/concept_overview_of_the_tiebreaker_software.html["物件斷�
 
 
  a| 
-本文檔Active IQ Unified Manager https://["NetApp文件：產品指南與資源"^]
+本文檔Active IQ Unified Manager https://www.netapp.com/support-and-training/documentation/["NetApp文件：產品指南與資源"^]
  a| 
 * 監控MetroCluster 不一致的組態和效能
 
@@ -90,7 +90,7 @@ link:../tiebreaker/concept_overview_of_the_tiebreaker_software.html["物件斷�
 
 
  a| 
-http://["複本型轉換"]
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-7mtt-dctg/home.html["複本型轉換"]
  a| 
 * 將資料從7-Mode儲存系統移轉至叢集式儲存系統
 

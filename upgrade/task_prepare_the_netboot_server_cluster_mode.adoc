@@ -17,7 +17,7 @@ summary: 當您準備好準備netboot伺服器時、必須從ONTAP NetApp支援�
 * 您必須能夠在新增控制器模組之前和之後、從系統存取HTTP伺服器。
 * 您必須能夠存取NetApp支援網站、才能下載適用於您平台和ONTAP 版本的必要系統檔案。
 +
-https://["NetApp 支援網站"]
+https://mysupport.netapp.com/site/global/dashboard["NetApp 支援網站"]
 
 * HA配對中的兩個控制器模組都必須執行相同版本ONTAP 的支援。
 

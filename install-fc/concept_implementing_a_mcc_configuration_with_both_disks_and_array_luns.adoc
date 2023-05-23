@@ -15,7 +15,7 @@ summary: 若要實作MetroCluster 含有原生磁碟和陣列LUN的功能區塊�
 
 包含磁碟和陣列LUN的實體組態可以有兩個或四個節點。MetroCluster雖然四節點MetroCluster 的不全功能組態必須連接光纖、但雙節點組態可以是彈性配置、也可以連接光纖。
 
-在中 https://["NetApp互通性對照表工具IMT （不含）"]、您可以使用儲存解決方案欄位來選擇MetroCluster 您的解決方案。您可以使用*元件總管*來選取元件和ONTAP 更新版本、以精簡搜尋範圍。您可以按一下「*顯示結果*」來顯示符合條件的支援組態清單。
+在中 https://mysupport.netapp.com/matrix["NetApp互通性對照表工具IMT （不含）"]、您可以使用儲存解決方案欄位來選擇MetroCluster 您的解決方案。您可以使用*元件總管*來選取元件和ONTAP 更新版本、以精簡搜尋範圍。您可以按一下「*顯示結果*」來顯示符合條件的支援組態清單。
 
 .相關資訊
 若要使用MetroCluster 原生磁碟和陣列LUN來設定雙節點架構附加的功能、或使用四節點MetroCluster 的功能、您必須使用FC對SAS橋接器、ONTAP 透過FC交換器將含有磁碟櫃的功能不穩定系統與磁碟櫃連接起來。您可以透過FC交換器將陣列LUN連線ONTAP 至各個系統。

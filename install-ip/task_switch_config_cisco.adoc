@@ -174,12 +174,12 @@ IP_switch_A_1#
 
 您必須使用支援的交換器軟體版本。
 
-https://["NetApp Hardware Universe"]
+https://hwu.netapp.com["NetApp Hardware Universe"]
 
 .步驟
 . 下載支援的NX-OS軟體檔案。
 +
-https://["Cisco軟體下載"]
+https://software.cisco.com/download/home["Cisco軟體下載"]
 
 . 將交換器軟體複製到交換器：
 +
@@ -380,7 +380,7 @@ IP_switch_A_1#
 
 您必須使用支援的交換器軟體版本。
 
-https://["NetApp Hardware Universe"]
+https://hwu.netapp.com["NetApp Hardware Universe"]
 
 共有四個RCF檔案、MetroCluster 每個檔案分別對應於整個EIP組態中的四個交換器。您必須針對所使用的交換器機型使用正確的RCF檔案。
 

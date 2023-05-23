@@ -25,7 +25,7 @@ summary: 如果您有八節點或四節點MetroCluster 的不一致組態、而�
 .步驟
 . 如果儲存控制器的HA合作夥伴位於獨立的機箱中、請連接HA互連。
 +
-https://["VMware及其技術資料中心AFF FAS"]
+https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"]
 
 . 如果MetroCluster 該站台包含兩個HA配對、請在第二個HA配對上重複上述步驟。
 . 請在MetroCluster 「不合作夥伴」網站重複此工作。

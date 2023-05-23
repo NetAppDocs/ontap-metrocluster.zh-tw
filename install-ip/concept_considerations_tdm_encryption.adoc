@@ -17,7 +17,7 @@ summary: 在MetroCluster 使用支援多工處理設備的過程中、您應該�
 
 此功能提供一些關於TDM/xWDM設備在使用該IP組態時必須符合的需求的注意事項。Hardware Universe MetroCluster
 
-https://["NetApp Hardware Universe"]
+https://hwu.netapp.com["NetApp Hardware Universe"]
 
 
 

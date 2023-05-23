@@ -30,7 +30,7 @@ summary: 雙節點MetroCluster 的不含SAS的組態需要許多零件、包括�
 NOTE: 在使用E系列陣列LUN的系統中、儲存控制器可直接連接至E系列儲存陣列。對於其他陣列LUN、則需要透過FC交換器進行連線。
 
 +
-https://["NetApp 互通性對照表工具"]
+https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"]
 
 +
 在這個解決方案領域、您可以使用儲存解決方案欄位來選擇您的解決方案。IMT MetroCluster您可以使用*元件總管*來選取元件和ONTAP 更新版本、以精簡搜尋範圍。您可以按一下「*顯示結果*」來顯示符合條件的支援組態清單。

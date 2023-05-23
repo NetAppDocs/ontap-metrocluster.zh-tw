@@ -25,7 +25,7 @@ summary: 必須針對ISL和儲存連線、適當設定每台MetroCluster 採用�
 * 您無法在Cisco FC儲存架構中使用加密或壓縮。不支援MetroCluster 此功能。
 
 
-在中 https://["NetApp互通性對照表工具IMT （不含）"]、您可以使用儲存解決方案欄位來選擇MetroCluster 您的解決方案。您可以使用*元件總管*來選取元件和ONTAP 更新版本、以精簡搜尋範圍。您可以按一下「*顯示結果*」來顯示符合條件的支援組態清單。
+在中 https://mysupport.netapp.com/matrix["NetApp互通性對照表工具IMT （不含）"]、您可以使用儲存解決方案欄位來選擇MetroCluster 您的解決方案。您可以使用*元件總管*來選取元件和ONTAP 更新版本、以精簡搜尋範圍。您可以按一下「*顯示結果*」來顯示符合條件的支援組態清單。
 
 .關於這項工作
 下列需求適用於交換器間連結（ISL）連線：
@@ -55,7 +55,7 @@ summary: 必須針對ISL和儲存連線、適當設定每台MetroCluster 採用�
 
 
 .相關資訊
-https://["NetApp 互通性對照表工具"]
+https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"]
 
 
 

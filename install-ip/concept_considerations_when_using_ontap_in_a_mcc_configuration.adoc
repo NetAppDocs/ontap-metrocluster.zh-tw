@@ -84,7 +84,7 @@ link:https://docs.netapp.com/us-en/ontap/flexcache/index.html["使用CLI進行�
 
 從NetApp 9.7開始ONTAP 、MetroCluster 支援FabricPool 各種不含資料的儲存層組態。
 
-如需使用FabricPools的一般資訊、請參閱 https://["磁碟與層（Aggregate）管理"^]。
+如需使用FabricPools的一般資訊、請參閱 https://docs.netapp.com/us-en/ontap/disks-aggregates/index.html["磁碟與層（Aggregate）管理"^]。
 
 
 
@@ -103,14 +103,14 @@ link:https://docs.netapp.com/us-en/ontap/flexcache/index.html["使用CLI進行�
 === 設定用於鏡射FabricPool 的Aggregate
 
 
-NOTE: 在設定Aggregate之前、您必須依照FabricPool 中的「設定物件存放區以MetroCluster 供使用的物件組態」所述、設定物件存放區 https://["磁碟與Aggregate管理"^]。
+NOTE: 在設定Aggregate之前、您必須依照FabricPool 中的「設定物件存放區以MetroCluster 供使用的物件組態」所述、設定物件存放區 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"^]。
 
 .步驟
 若要設定Aggregate以供FabricPool 在整個過程中使用：
 
 . 建立Aggregate或選取現有Aggregate。
 . 將Aggregate鏡射為MetroCluster 典型的鏡射Aggregate、位於整個過程的不協調組態內。
-. 如FabricPool 所述、使用Aggregate建立鏡射 https://["磁碟與Aggregate管理"^]
+. 如FabricPool 所述、使用Aggregate建立鏡射 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"^]
 +
 .. 附加主要物件存放區。
 +
@@ -160,7 +160,7 @@ NOTE: 系統建立的排程不會複寫、您必須在合作夥伴叢集上手�
 您應該瞭MetroCluster 解如何在一套功能性的組態中建立及複寫生命。您也必須瞭解一致性需求、以便在設定網路時做出適當的決策。
 
 .相關資訊
-https://["網路與LIF管理"^]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/home.html["網路與LIF管理"^]
 
 link:concept_considerations_when_using_ontap_in_a_mcc_configuration.html#ipspace-object-replication-and-subnet-configuration-requirements["IPSpace物件複寫和子網路組態需求"]
 
@@ -402,7 +402,7 @@ image::../media/svm_dr_image_2.gif[SVM DR映像2.]
 
 
 
-請參閱中的「複寫SVM組態」 http://["資料保護"^] 如需設定SVM DR關係的詳細資訊、
+請參閱中的「複寫SVM組態」 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-dap/home.html["資料保護"^] 如需設定SVM DR關係的詳細資訊、
 
 
 

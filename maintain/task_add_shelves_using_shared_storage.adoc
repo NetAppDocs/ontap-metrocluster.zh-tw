@@ -82,7 +82,7 @@ summary: 您可能需要使用MetroCluster 共享儲存MetroCluster 功能交換
 
 .. 執行Config Advisor
 +
-https://["NetApp下載Config Advisor"]
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"]
 
 .. 執行Config Advisor 完功能後、請檢閱工具的輸出結果、並依照輸出中的建議來解決發現的任何問題。
 
@@ -395,11 +395,11 @@ IP_switch-A-1# reload
 
 您必須使用支援的交換器軟體版本。
 
-https://["NetApp Hardware Universe"]
+https://hwu.netapp.com["NetApp Hardware Universe"]
 
 . 下載支援的NX-OS軟體檔案。
 +
-https://["Cisco軟體下載"]
+https://software.cisco.com/download/home["Cisco軟體下載"]
 
 . 將交換器軟體複製到交換器：「+複製sftp//root@server-ip-address/tftpboot/NX-os-file-name bootflash: VRF管理+」
 +
@@ -591,7 +591,7 @@ NOTE: MAC秒加密只能套用至WAN ISL連接埠。
 
 === MAC的授權要求
 
-Macsec需要安全授權。如需Cisco NX-OS授權方案的完整說明、以及如何取得及申請授權、請參閱 https://["Cisco NX-OS授權指南"]
+Macsec需要安全授權。如需Cisco NX-OS授權方案的完整說明、以及如何取得及申請授權、請參閱 https://www.cisco.com/c/en/us/td/docs/switches/datacenter/sw/nx-os/licensing/guide/b_Cisco_NX-OS_Licensing_Guide/b_Cisco_NX-OS_Licensing_Guide_chapter_01.html["Cisco NX-OS授權指南"]
 
 
 

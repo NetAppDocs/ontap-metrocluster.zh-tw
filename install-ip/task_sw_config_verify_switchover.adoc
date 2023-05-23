@@ -19,6 +19,6 @@ summary: 您應該驗證MetroCluster 該組態的切換、修復及切換作業�
 .步驟
 . 請使用_ MetroCluster 《管理與災難恢復指南》_中提及的協調切換、修復及切換程序。
 +
-https://["支援管理與災難恢復MetroCluster"]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-mcc-mgmt-dr/home.html["支援管理與災難恢復MetroCluster"]
 
 

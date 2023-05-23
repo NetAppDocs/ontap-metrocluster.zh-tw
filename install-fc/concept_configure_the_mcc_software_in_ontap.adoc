@@ -1620,7 +1620,7 @@ Boot_ONTAP
 
 您必須在ONTAP 每個控制器模組上設定此功能。
 
-如果您需要以網路方式開機新的控制器、請參閱 http://["Netbooting新的控制器模組"] 請參閱《_ MetroCluster 升級、轉換與擴充指南》_。
+如果您需要以網路方式開機新的控制器、請參閱 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-mcc-upgrade/GUID-3370EC34-310E-4F09-829F-F632EC8CDD9B.html["Netbooting新的控制器模組"] 請參閱《_ MetroCluster 升級、轉換與擴充指南》_。
 
 .選擇
 * <<setup_ontap_2node_MCC,在ONTAP 雙節點MetroCluster 的不全功能組態中設定功能>>
@@ -2700,7 +2700,7 @@ NOTE: 您必須*不*設定Onboard Key Manager（OKM）或外部金鑰管理、�
 |===
 +
 
-NOTE: 最佳實務做法是擁有多個資料集合體。如果第一個DR群組只有一個Aggregate、而您想要新增一個具有單一Aggregate的DR群組、則必須將中繼資料磁碟區從單一資料Aggregate中移出。如需此程序的詳細資訊、請參閱 http://["在MetroCluster 不完整的組態中移動中繼資料磁碟區"]。
+NOTE: 最佳實務做法是擁有多個資料集合體。如果第一個DR群組只有一個Aggregate、而您想要新增一個具有單一Aggregate的DR群組、則必須將中繼資料磁碟區從單一資料Aggregate中移出。如需此程序的詳細資訊、請參閱 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.hw-metrocluster-service/GUID-114DAE6E-F105-4908-ABB1-CE1D7B5C7048.html["在MetroCluster 不完整的組態中移動中繼資料磁碟區"]。
 
 +
 下列命令可在MetroCluster DR群組中包含控制器a_1的所有節點上啟用「支援」組態：
@@ -3075,7 +3075,7 @@ controller_A_1::>
 
 
 .相關資訊
-https://["系統管理"]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sag/home.html["系統管理"]
 
 
 
@@ -3277,7 +3277,7 @@ mccint-fas9000-0304
 
 
 .相關資訊
-https://["磁碟與Aggregate管理"]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"]
 
 link:https://docs.netapp.com/us-en/ontap/network-management/index.html["網路與LIF管理"^]
 
@@ -3296,7 +3296,7 @@ NOTE: 支援功能有限、僅限線上使用。Config Advisor
 .步驟
 . 前往Config Advisor 「更新」頁面並下載工具。
 +
-https://["NetApp下載Config Advisor"^]
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"^]
 
 . 執行Config Advisor 功能、檢閱工具的輸出結果、並遵循輸出中的建議來解決發現的任何問題。
 
@@ -3416,7 +3416,7 @@ link:https://docs.netapp.com/us-en/ontap/cloud/high-availability-concept.html["�
 您應該驗證MetroCluster 該組態的切換、修復及切換作業。
 
 .步驟
-. 請使用中所述的協調切換、修復及切換程序 https://["從災難中恢復"]。
+. 請使用中所述的協調切換、修復及切換程序 https://docs.netapp.com/us-en/ontap-metrocluster/manage/index.html["從災難中恢復"]。
 
 
 
@@ -3431,6 +3431,6 @@ link:https://docs.netapp.com/us-en/ontap/cloud/high-availability-concept.html["�
 「系統組態備份設定修改_url-of destination_」
 
 +
-。 https://["使用CLI進行叢集管理"] 在「管理組態備份」一節中包含其他資訊。
+。 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sag/home.html["使用CLI進行叢集管理"] 在「管理組態備份」一節中包含其他資訊。
 
 

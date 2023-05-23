@@ -28,7 +28,7 @@ link:../index.html["本文檔MetroCluster"]
 
 
  a| 
-https://["NetApp MetroCluster 解決方案架構與設計"^]
+https://www.netapp.com/pdf.html?item=/media/13480-tr4705.pdf["NetApp MetroCluster 解決方案架構與設計"^]
  a| 
 * 關於整套組態和操作的技術總覽MetroCluster 。
 * 最佳實務做法MetroCluster ：
@@ -37,7 +37,7 @@ https://["NetApp MetroCluster 解決方案架構與設計"^]
 
 
  a| 
-https://["Fabric附加MetroCluster 的安裝與組態"]
+https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"]
  a| 
 * 架構附加MetroCluster 的架構
 * 組態佈線
@@ -49,7 +49,7 @@ https://["Fabric附加MetroCluster 的安裝與組態"]
 
 
  a| 
-https://["延伸MetroCluster 安裝與組態"]
+https://docs.netapp.com/us-en/ontap-metrocluster/install-stretch/concept_considerations_differences.html["延伸MetroCluster 安裝與組態"]
  a| 
 * 延伸MetroCluster 架構
 * 組態佈線
@@ -60,7 +60,7 @@ https://["延伸MetroCluster 安裝與組態"]
 
 
  a| 
-https://["安裝與組態MetroCluster"]
+https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/concept_considerations_differences.html["安裝與組態MetroCluster"]
  a| 
 * 知識產權架構MetroCluster
 * 連接MetroCluster 纜線連接整個過程
@@ -70,7 +70,7 @@ https://["安裝與組態MetroCluster"]
 
 
  a| 
-https://["NetApp文件：產品指南與資源"^]
+https://www.netapp.com/support-and-training/documentation/["NetApp文件：產品指南與資源"^]
  a| 
 * 監控MetroCluster 不一致的組態和效能
 
@@ -78,7 +78,7 @@ https://["NetApp文件：產品指南與資源"^]
 
 
  a| 
-https://["物件斷路器軟體安裝與組態MetroCluster"]
+https://docs.netapp.com/us-en/ontap-metrocluster/tiebreaker/concept_overview_of_the_tiebreaker_software.html["物件斷路器軟體安裝與組態MetroCluster"]
  a| 
 * 使用MetroCluster ESITiebreaker軟體監控整個系統的組態MetroCluster
 
@@ -86,7 +86,7 @@ https://["物件斷路器軟體安裝與組態MetroCluster"]
 
 
  a| 
-https://["複本型轉換"]
+https://docs.netapp.com/us-en/ontap-7mode-transition/copy-based/index.html["複本型轉換"]
  a| 
 * 將資料從7-Mode儲存系統移轉至叢集式儲存系統
 

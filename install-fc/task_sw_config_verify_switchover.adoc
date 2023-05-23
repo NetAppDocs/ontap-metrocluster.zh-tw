@@ -1705,7 +1705,7 @@ Boot_ONTAP
 
 您必須在ONTAP 每個控制器模組上設定此功能。
 
-如果您需要以網路方式開機新的控制器、請參閱 http://["Netbooting新的控制器模組"] 請參閱《_ MetroCluster 升級、轉換與擴充指南》_。
+如果您需要以網路方式開機新的控制器、請參閱 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-mcc-upgrade/GUID-3370EC34-310E-4F09-829F-F632EC8CDD9B.html["Netbooting新的控制器模組"] 請參閱《_ MetroCluster 升級、轉換與擴充指南》_。
 
 
 
@@ -1805,7 +1805,7 @@ cluster1-01           true    true
 
 
 
-https://["軟體設定"]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-ssg/home.html["軟體設定"]
 
 
 
@@ -1946,7 +1946,7 @@ NOTE: 您可以在後續的工作中建立鏡射集合體。
 在不支援的組態中、叢集MetroCluster 必須處於對等關係中、以便彼此通訊、並執行MetroCluster 對恢復災難至關重要的資料鏡射。
 
 .相關資訊
-http://["叢集與SVM對等化快速組態"]
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-clus-peer/home.html["叢集與SVM對等化快速組態"]
 
 link:concept_prepare_for_the_mcc_installation.html["使用專用連接埠時的考量事項"]
 
@@ -2595,7 +2595,7 @@ controller_A_1::> storage aggregate mirror aggr0_controller_A_1
 
 
 .相關資訊
-https://["邏輯儲存管理"^]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-vsmg/home.html["邏輯儲存管理"^]
 
 
 
@@ -2607,7 +2607,7 @@ https://["邏輯儲存管理"^]
 * 您應該知道新的Aggregate將使用哪些磁碟機或陣列LUN。
 * 如果您的系統中有多種磁碟機類型（異質儲存設備）、您應該瞭解如何確保選取正確的磁碟機類型。
 * 磁碟機和陣列LUN由特定節點擁有；當您建立Aggregate時、該Aggregate中的所有磁碟機都必須由同一個節點擁有、而該節點會成為該Aggregate的主節點。
-* Aggregate名稱應符合您在規劃MetroCluster 時所決定的名稱配置。請參閱 https://["磁碟與Aggregate管理"^]。
+* Aggregate名稱應符合您在規劃MetroCluster 時所決定的名稱配置。請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"^]。
 
 
 .步驟
@@ -2732,7 +2732,7 @@ controller_A_1::> storage aggregate create aggr1_controller_A_1 -diskcount 10 -n
 
 
 .相關資訊
-https://["磁碟與Aggregate管理"^]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"^]
 
 
 
@@ -2801,7 +2801,7 @@ NOTE: 如果您要使用單一鏡射資料Aggregate、請參閱中的步驟1 lin
 --
 [NOTE]
 ====
-最佳實務做法是擁有多個資料集合體。如果第一個DR群組只有一個Aggregate、而您想要新增一個具有單一Aggregate的DR群組、則必須將中繼資料磁碟區從單一資料Aggregate中移出。如需此程序的詳細資訊、請參閱 http://["在MetroCluster 不完整的組態中移動中繼資料磁碟區"^]。
+最佳實務做法是擁有多個資料集合體。如果第一個DR群組只有一個Aggregate、而您想要新增一個具有單一Aggregate的DR群組、則必須將中繼資料磁碟區從單一資料Aggregate中移出。如需此程序的詳細資訊、請參閱 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.hw-metrocluster-service/GUID-114DAE6E-F105-4908-ABB1-CE1D7B5C7048.html["在MetroCluster 不完整的組態中移動中繼資料磁碟區"^]。
 
 ====
 --
@@ -3171,7 +3171,7 @@ controller_A_1::>
 
 
 .相關資訊
-https://["系統管理"^]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sag/home.html["系統管理"^]
 
 
 
@@ -3369,9 +3369,9 @@ mccint-fas9000-0304
 
 
 .相關資訊
-https://["磁碟與Aggregate管理"^]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"^]
 
-https://["網路與LIF管理"^]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/home.html["網路與LIF管理"^]
 
 
 
@@ -3388,7 +3388,7 @@ NOTE: 支援功能有限、僅限線上使用。Config Advisor
 .步驟
 . 前往Config Advisor 「更新」頁面並下載工具。
 +
-https://["NetApp下載Config Advisor"^]
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"^]
 
 . 執行Config Advisor 功能、檢閱工具的輸出結果、並遵循輸出中的建議來解決發現的任何問題。
 
@@ -3499,7 +3499,7 @@ controller_A_2 controller_A_1 true     Connected to controller_A_1
 
 
 .相關資訊
-https://["高可用度組態"^]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-hacg/home.html["高可用度組態"^]
 
 
 
@@ -3508,7 +3508,7 @@ https://["高可用度組態"^]
 您應該驗證MetroCluster 該組態的切換、修復及切換作業。
 
 .步驟
-. 使用協商切換、修復及切換的程序 https://["支援管理與災難恢復MetroCluster"]
+. 使用協商切換、修復及切換的程序 https://docs.netapp.com/us-en/ontap-metrocluster/manage/index.html["支援管理與災難恢復MetroCluster"]
 
 
 
@@ -3523,9 +3523,9 @@ https://["高可用度組態"^]
 「系統組態備份設定會修改url-of目的地」
 
 +
-https://["管理組態備份"^] 包含其他資訊。
+https://docs.netapp.com/us-en/ontap/system-admin/config-backup-file-concept.html["管理組態備份"^] 包含其他資訊。
 
 
 
 .相關資訊
-https://["叢集管理"^]
+https://docs.netapp.com/us-en/ontap/cluster-admin/index.html["叢集管理"^]

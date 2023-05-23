@@ -22,19 +22,19 @@ summary: 在轉換期間、您可以將資料從MetroCluster 採用支援功能�
 
 . 將資料磁碟區移至新控制器上的集合體、一次一個磁碟區。
 +
-請使用中的程序 http://["建立Aggregate並將磁碟區移至新節點"]。
+請使用中的程序 http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-upgrade-controller/GUID-AFE432F6-60AD-4A79-86C0-C7D12957FA63.html["建立Aggregate並將磁碟區移至新節點"]。
 
 . 在最近新增的節點上建立SAN LIF。
 +
-請使用中的下列程序 http://["更新新節點的LUN路徑"^]。
+請使用中的下列程序 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-expand/GUID-E3BB89AF-6251-4210-A979-130E845BC9A1.html["更新新節點的LUN路徑"^]。
 
 . 檢查FC節點上是否有任何節點鎖定的授權、如果有的話、就必須將其新增至新增的節點。
 +
-請使用中的下列程序 http://["新增節點鎖定的授權"^]。
+請使用中的下列程序 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-expand/GUID-487FAC36-3C5C-4314-B4BD-4253CB67ABE8.html["新增節點鎖定的授權"^]。
 
 . 移轉資料生命量。
 +
-請使用中的程序  http://["將非SAN資料生命期和叢集管理生命期移至新節點"^] 但是*不要*執行最後兩個步驟來移轉叢集管理生命期。
+請使用中的程序  http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-upgrade-controller/GUID-95CA9262-327D-431D-81AA-C73DEFF3DEE2.html["將非SAN資料生命期和叢集管理生命期移至新節點"^] 但是*不要*執行最後兩個步驟來移轉叢集管理生命期。
 
 
 

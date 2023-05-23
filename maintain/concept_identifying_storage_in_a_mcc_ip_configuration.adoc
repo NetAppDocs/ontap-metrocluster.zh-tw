@@ -28,7 +28,7 @@ NOTE: 在執行《支援知識、知識、知識、技術、知識、知識、�
 
 識別磁碟機或磁碟櫃模組之後、您可以使用適當的程序來更換元件。
 
-https://["維護DS460C DS224C和DS212C磁碟櫃"]
+https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-sas3-service/home.html["維護DS460C DS224C和DS212C磁碟櫃"]
 
 
 

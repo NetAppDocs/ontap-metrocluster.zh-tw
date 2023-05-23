@@ -35,7 +35,7 @@ NOTE: 無鏡射的Aggregate必須是擁有它們的節點的本機集合體。
 您可以使用平台和磁碟櫃的_安裝與設定_文件中的程序。
 
 +
-https://["VMware及其技術資料中心AFF FAS"]
+https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"]
 
 . 手動將新機櫃上的所有磁碟指派給適當的節點：
 +
@@ -88,4 +88,4 @@ controller_A_1::> storage aggregate create aggr1_controller_A_1 -diskcount 10 -n
 
 
 .相關資訊
-https://["磁碟與Aggregate管理"]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"]

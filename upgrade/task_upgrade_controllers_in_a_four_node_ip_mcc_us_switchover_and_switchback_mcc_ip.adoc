@@ -24,7 +24,7 @@ summary: 從ONTAP 功能介紹9.8開始、您可以使用MetroCluster 功能介�
 +
 ** 如需支援哪些平台升級組合的相關資訊、請參閱MetroCluster 中的《The支援哪些平台升級》表 link:concept_choosing_controller_upgrade_mcc.html["選擇控制器升級程序"]。
 +
-請參閱 https://["選擇升級或重新整理方法"] 以瞭解其他程序。
+請參閱 https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_controller_upgrade_mcc.html#choosing-a-procedure-that-uses-the-switchover-and-switchback-process["選擇升級或重新整理方法"] 以瞭解其他程序。
 
 
 
@@ -42,7 +42,7 @@ summary: 從ONTAP 功能介紹9.8開始、您可以使用MetroCluster 功能介�
 * IP交換器必須執行支援的韌體版本。
 * 如果新平台的插槽數少於原始系統、或是連接埠類型較少或不同、您可能需要在新系統中新增介面卡。
 +
-如需詳細資訊、請參閱 https://["NetApp Hardware Universe"]。
+如需詳細資訊、請參閱 https://hwu.netapp.com/["NetApp Hardware Universe"]。
 
 * 您將在新平台上重複使用原始平台的IP位址、網路遮罩和閘道。
 * 本程序使用下列範例名稱：
@@ -383,7 +383,7 @@ SAN
 .步驟
 . 新控制器的網路開機：
 +
-.. 存取 https://["NetApp 支援網站"] 可下載用於執行系統netboot的文件。
+.. 存取 https://mysupport.netapp.com/site/["NetApp 支援網站"] 可下載用於執行系統netboot的文件。
 .. 請ONTAP 從NetApp支援網站的軟體下載區段下載適當的支援軟體、並將「ONTAP-VERW_image.tgz」檔案儲存在可從網路存取的目錄中。
 .. 切換至網路存取目錄、並確認您所需的檔案可用。
 +
@@ -456,7 +456,7 @@ DHCP
  a| 
 FAS / AFF8000系列系統
  a| 
-“netboot http://[]
+“netboot http://_web_server_ip/path_to_web-accessible_directory_/netboot/kernel`[]
 
 
 
@@ -599,7 +599,7 @@ Boot_ONTAP功能表
 +
 .. 下載並執行Config Advisor 更新。
 +
-https://["NetApp下載Config Advisor"]
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"]
 
 .. 執行Config Advisor 完功能後、請檢閱工具的輸出結果、並依照輸出中的建議來解決發現的任何問題。
 
@@ -728,7 +728,7 @@ aa9a7a7a-9a81-11e7-a4e9-00a098908c35
 
 . 如果MetroCluster 這個節點正在使用磁碟區或集合體的加密功能、請複製金鑰和複製密碼的相關資訊。
 +
-如需其他資訊、請參閱 https://["手動備份內建金鑰管理資訊"]。
+如需其他資訊、請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-1677AE0A-FEF7-45FA-8616-885AA3283BCF.html["手動備份內建金鑰管理資訊"]。
 
 +
 .. 如果已設定Onboard Key Manager：+「安全金鑰管理程式內建show-Backup」
@@ -785,7 +785,7 @@ dr-group-id cluster     node     node-systemid ha-partner-systemid dr-partner-sy
  a| 
 Tiebreaker
  a| 
-http://["移除MetroCluster 部分組態"] 請參閱《_ MetroCluster 資料斷路器安裝與組態指南_》
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.hw-metrocluster-tiebreaker/GUID-34C97A45-0BFF-46DD-B104-2AB2805A983D.html["移除MetroCluster 部分組態"] 請參閱《_ MetroCluster 資料斷路器安裝與組態指南_》
 
 
 
@@ -902,7 +902,7 @@ Boot_ONTAP
 例如、e0d是舊控制器上的實體連接埠、也會出現在新的控制器上。e0d不做為叢集連接埠、也不做為新控制器的其他端口。
 
 +
-如需平台機型的連接埠使用量、請參閱 https://["NetApp Hardware Universe"]
+如需平台機型的連接埠使用量、請參閱 https://hwu.netapp.com/["NetApp Hardware Universe"]
 
 .. 修改所有資料LIF以使用通用連接埠做為主連接埠：+「網路介面修改-vserver _Svm-name_-lif_data-lif_-home-port _port-id_」
 +
@@ -1020,7 +1020,7 @@ link:../install-ip/concept_considerations_differences.html["安裝與組態Metro
 . 請妥善接地。
 . 在機架或機櫃中安裝控制器模組。
 +
-https://["VMware及其技術資料中心AFF FAS"]
+https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"]
 
 . 如所述、將控制器連接至IP交換器 link:../install-ip/concept_considerations_differences.html["安裝與組態MetroCluster"]。
 +
@@ -1565,7 +1565,7 @@ Rebooting to load the restored env file...
  a| 
 「安全金鑰管理程式內建同步」
 
-如需詳細資訊、請參閱 https://["還原內建金鑰管理加密金鑰"]。
+如需詳細資訊、請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-E4AB2ED4-9227-4974-A311-13036EB43A3D.html["還原內建金鑰管理加密金鑰"]。
 
 
 
@@ -1574,7 +1574,7 @@ Rebooting to load the restored env file...
  a| 
 「安全金鑰管理程式外部還原-vserver _svm_-node_node_-key-server _host_name | ip_address: port_-key-id key_id -key-tag key_tag _node-name_」
 
-如需詳細資訊、請參閱 https://["還原外部金鑰管理加密金鑰"]。
+如需詳細資訊、請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-32DA96C3-9B04-4401-92B8-EAF323C3C863.html["還原外部金鑰管理加密金鑰"]。
 
 |===
 . 確認所有連接埠都位於廣播網域中：
@@ -1585,17 +1585,17 @@ Rebooting to load the restored env file...
 
 .. 視需要將任何連接埠新增至廣播網域。
 +
-https://["從廣播網域新增或移除連接埠"]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-003BDFCD-58A3-46C9-BF0C-BA1D1D1475F9.html["從廣播網域新增或移除連接埠"]
 
 .. 視需要重新建立VLAN和介面群組。
 +
 VLAN和介面群組成員資格可能與舊節點不同。
 
 +
-https://["建立VLAN"]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-8929FCE2-5888-4051-B8C0-E27CAF3F2A63.html["建立VLAN"]
 
 +
-https://["結合實體連接埠以建立介面群組"]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EAB7-430A-A773-4E3420EE2AA1.html["結合實體連接埠以建立介面群組"]
 
 
 

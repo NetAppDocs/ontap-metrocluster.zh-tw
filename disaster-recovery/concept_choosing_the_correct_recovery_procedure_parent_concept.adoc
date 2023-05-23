@@ -39,7 +39,7 @@ link:task_recover_from_a_non_controller_failure_mcc_dr.html["從非控制器故�
 
 *附註：*如果MetroCluster 沒有磁碟機或其他硬體故障、則控制器模組FRU更換程序可用於雙節點的版本。
 
-https://["VMware及其技術資料中心AFF FAS"]
+https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"]
 
 
 
@@ -114,7 +114,7 @@ IMPORTANT: 如果在轉換期間發生故障、而節點正在新增或移除、
 
 * 如果不需要更換儲存設備、您可以使用平台機型的控制器模組FRU更換程序。
 +
-https://["VMware及其技術資料中心AFF FAS"^]
+https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"^]
 
 * 如果儲存設備需要更換、您可以使用多控制器模組恢復程序。
 +
@@ -151,7 +151,7 @@ image::../media/mcc_dr_groups_8_node_with_a_multi_controller_failure.gif[MCC DR�
 FRU更換程序執行兩次、每個故障控制器模組執行一次。
 
 +
-https://["VMware及其技術資料中心AFF FAS"^]
+https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"^]
 
 * 如果儲存設備需要更換、您可以使用多控制器模組恢復程序。
 +
@@ -171,7 +171,7 @@ link:task_recover_from_a_multi_controller_and_or_storage_failure.html["從多控
 
 您可以針對DR群組二使用平台專屬的控制器模組FRU更換程序。
 
-https://["VMware及其技術資料中心AFF FAS"^]
+https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"^]
 
 image::../media/mcc_dr_groups_8_node_with_a_3_controller_failure.gif[MCC DR會將8個節點分組、並出現3個控制器故障]
 
@@ -183,7 +183,7 @@ image::../media/mcc_dr_groups_8_node_with_a_3_controller_failure.gif[MCC DR會�
 
 * 如果不需要更換儲存設備、您可以使用平台機型的控制器模組FRU更換程序。
 +
-https://["VMware及其技術資料中心AFF FAS"^]
+https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"^]
 
 * 如果儲存設備需要更換、您可以使用多控制器模組恢復程序。
 +

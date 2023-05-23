@@ -95,14 +95,14 @@ link:https://docs.netapp.com/us-en/ontap/flexcache/index.html["使用CLI進行�
 === 設定用於鏡射FabricPool 的Aggregate
 
 
-NOTE: 在設定Aggregate之前、您必須依照FabricPool 中的「設定物件存放區以MetroCluster 供使用的物件組態」所述、設定物件存放區https://["磁碟與集合體管理"]
+NOTE: 在設定Aggregate之前、您必須依照FabricPool 中的「設定物件存放區以MetroCluster 供使用的物件組態」所述、設定物件存放區https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與集合體管理"]
 
 .步驟
 若要設定Aggregate以供FabricPool 在整個過程中使用：
 
 . 建立Aggregate或選取現有Aggregate。
 . 將Aggregate鏡射為MetroCluster 典型的鏡射Aggregate、位於整個過程的不協調組態內。
-. 如FabricPool 中所述、使用Aggregate建立鏡射 https://["磁碟與集合體管理"]
+. 如FabricPool 中所述、使用Aggregate建立鏡射 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與集合體管理"]
 +
 .. 附加主要物件存放區。
 +
@@ -126,7 +126,7 @@ NOTE: 在設定Aggregate之前、您必須依照FabricPool 中的「設定物件
 
 == 一致性群組支援MetroCluster 的不一致性組態
 
-從ONTAP 功能性的9.11.1開始、 https://["一致性群組"^] 支援的功能包括MetroCluster ：
+從ONTAP 功能性的9.11.1開始、 https://docs.netapp.com/us-en/ontap/consistency-groups/index.html["一致性群組"^] 支援的功能包括MetroCluster ：
 
 
 
@@ -158,7 +158,7 @@ NOTE: 系統建立的排程不會複寫、您必須在合作夥伴叢集上手�
 您應該瞭MetroCluster 解如何在一套功能性的組態中建立及複寫生命。您也必須瞭解一致性需求、以便在設定網路時做出適當的決策。
 
 .相關資訊
-* https://["網路與LIF管理"]
+* https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/home.html["網路與LIF管理"]
 * 您應該瞭解將IPspace物件複寫到合作夥伴叢集、以及在MetroCluster 整個過程中設定子網路和IPv6的需求。
 +
 <<ipspace_obj_rep,IPSpace物件複寫和子網路組態需求>>

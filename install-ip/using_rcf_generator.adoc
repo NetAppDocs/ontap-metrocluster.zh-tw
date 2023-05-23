@@ -19,7 +19,7 @@ summary: 您必須瞭解如何使用連接埠表格中的資訊來正確產生RC
 * 下表顯示站台A的連接埠使用量站台B使用相同的纜線
 * 交換器無法設定不同速度的連接埠（例如、混合使用100 Gbps連接埠和40 Gbps連接埠）。
 * 追蹤MetroCluster 不穩定的資料群組MetroCluster （例如、支援1、MetroCluster 2等）。如本組態程序稍後所述、使用RcfFileGenerator.工具時、您將需要此資訊。
-* 。 https://["RcfFileGeneratorfor MetroCluster EfIP"] 此外、也提供每個交換器的每埠纜線配置總覽。使用此纜線總覽來驗證纜線。
+* 。 https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["RcfFileGeneratorfor MetroCluster EfIP"] 此外、也提供每個交換器的每埠纜線配置總覽。使用此纜線總覽來驗證纜線。
 
 
 

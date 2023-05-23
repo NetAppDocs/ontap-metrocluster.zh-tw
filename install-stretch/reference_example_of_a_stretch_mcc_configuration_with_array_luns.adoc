@@ -22,8 +22,8 @@ NOTE: FAS9000儲存系統控制器模組各使用四個FC-VI連接埠。
 
 對於E系列陣列LUN的組態、您可以直接附加E系列LUN。
 
-https://["直接附加支援MetroCluster NetApp E系列陣列的Stretch Eetch組態"]
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/Direct_Attach_support_for_Stretch_MetroCluster_Configuration_with_NetApp_E-Series_array["直接附加支援MetroCluster NetApp E系列陣列的Stretch Eetch組態"]
 
 除了連接FC-VI連接埠之外、本程序的其餘步驟是使用MetroCluster 陣列LUN設定一個不使用E系列陣列LUN的靜態組態。這需要FC交換器、其使用方式與在光纖網路附加組態中使用陣列LUN相同。
 
-https://["Fabric附加MetroCluster 的安裝與組態"]
+https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"]

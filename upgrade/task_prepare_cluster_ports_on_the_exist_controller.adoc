@@ -21,7 +21,7 @@ summary: 在安裝新的控制器模組之前、您必須在現有的控制器�
 .步驟
 . 確定應使用哪些連接埠作為節點的叢集連接埠。
 +
-如需您平台的預設連接埠角色清單、請參閱 https://["Hardware Universe"^]
+如需您平台的預設連接埠角色清單、請參閱 https://hwu.netapp.com/["Hardware Universe"^]
 
 +
 NetApp支援網站上適用於您平台的_Installation and Setup Instructions（安裝與設定說明）包含叢集網路連線的連接埠相關資訊。

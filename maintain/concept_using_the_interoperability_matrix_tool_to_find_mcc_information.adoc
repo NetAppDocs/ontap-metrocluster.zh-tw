@@ -13,7 +13,7 @@ summary: 設定MetroCluster 支援的支援功能時、您可以使用互通性�
 [role="lead"]
 設定MetroCluster 支援的支援功能時、您可以使用互通性工具來確保使用支援的軟體和硬體版本。
 
-https://["NetApp 互通性對照表工具"]
+https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"]
 
 開啟「互通性對照表」之後、您可以使用「儲存解決方案」欄位來選擇MetroCluster 您的解決方案。
 

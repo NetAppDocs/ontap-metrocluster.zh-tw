@@ -28,7 +28,7 @@ summary: 您必須連接用於叢集對等的控制器模組連接埠、以便�
 
 
 .相關資訊
-http://["叢集與SVM對等化快速組態"]
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-clus-peer/home.html["叢集與SVM對等化快速組態"]
 
 每MetroCluster 個站台均設定為其合作夥伴站台的對等站台。您應該熟悉設定對等關係的先決條件和準則、以及決定要使用共用或專用連接埠來建立這些關係。
 

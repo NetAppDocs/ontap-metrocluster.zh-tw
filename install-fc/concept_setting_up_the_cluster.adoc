@@ -14,4 +14,4 @@ summary: 設定叢集包括設定每個節點、在第一個節點上建立叢�
 設定叢集包括設定每個節點、在第一個節點上建立叢集、以及將任何剩餘節點加入叢集。
 
 .相關資訊
-https://["軟體設定"]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-ssg/home.html["軟體設定"]

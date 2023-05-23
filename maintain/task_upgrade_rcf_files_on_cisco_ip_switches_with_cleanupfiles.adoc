@@ -20,7 +20,7 @@ summary: 您可能需要升級Cisco IP交換器上的RCF檔案。例如ONTAP 、
 如果您的組態符合下列需求、可以使用此方法：
 
 * 套用標準RCF組態。
-* 。 https://["RcfFileGenerator"] 必須能夠建立套用的相同RCF檔案、以及相同的版本和組態（平台、VLAN）。
+* 。 https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["RcfFileGenerator"] 必須能夠建立套用的相同RCF檔案、以及相同的版本和組態（平台、VLAN）。
 * NetApp並未針對特殊組態提供所套用的RCF檔案。
 * RCF檔案在套用之前並未變更。
 * 在套用目前的RCF檔案之前、已遵循將交換器重設為原廠預設值的步驟。

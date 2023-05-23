@@ -19,7 +19,7 @@ summary: 用於各種組態的支援系統、儲存陣列和FC交換器、必須
 
 * 必須將此支援的支援系統識別為支援的不支援的不支援的組態。ONTAP MetroCluster
 +
-在中 https://["NetApp互通性對照表工具IMT （不含）"]、您可以使用儲存解決方案欄位來選擇MetroCluster 您的解決方案。您可以使用*元件總管*來選取元件和ONTAP 更新版本、以精簡搜尋範圍。您可以按一下「*顯示結果*」來顯示符合條件的支援組態清單。
+在中 https://mysupport.netapp.com/matrix["NetApp互通性對照表工具IMT （不含）"]、您可以使用儲存解決方案欄位來選擇MetroCluster 您的解決方案。您可以使用*元件總管*來選取元件和ONTAP 更新版本、以精簡搜尋範圍。您可以按一下「*顯示結果*」來顯示符合條件的支援組態清單。
 
 +
 
@@ -28,7 +28,7 @@ NOTE: 您必須參閱與您在互通性對照表中選取的任何組態相關�
 * 所有的不完整組態的不完整系統都必須採用相同的模型。ONTAP MetroCluster
 * 根據ONTAP 機型、FC-VI介面卡必須安裝在每個版本適用的插槽中。
 +
-https://["NetApp Hardware Universe"]
+https://hwu.netapp.com["NetApp Hardware Universe"]
 
 
 
@@ -38,16 +38,16 @@ https://["NetApp Hardware Universe"]
 
 * 必須將儲存陣列識別為MetroCluster 支援的不支援的不支援的不支援功能。
 +
-https://["NetApp 互通性對照表工具"]
+https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"]
 
 * 在不完整組態中的儲存陣列MetroCluster 必須對稱：
 +
 ** 這兩個儲存陣列必須來自同一個支援的廠商系列、並且安裝相同的韌體版本。
 +
-https://["NetApp E系列儲存設備的虛擬化實作FlexArray"]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.vs-ig-es/home.html["NetApp E系列儲存設備的虛擬化實作FlexArray"]
 
 +
-https://["適用於協力廠商儲存設備的虛擬化實作FlexArray"]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.vs-ig-third/home.html["適用於協力廠商儲存設備的虛擬化實作FlexArray"]
 
 ** 用於鏡射儲存設備的磁碟類型（例如SATA、SSD或SAS）必須在兩個儲存陣列上相同。
 ** 設定儲存陣列的參數（例如RAID類型和分層）必須在兩個站台之間相同。
@@ -61,7 +61,7 @@ https://["適用於協力廠商儲存設備的虛擬化實作FlexArray"]
 
 * 交換器和交換器韌體必須識別為MetroCluster 支援的支援功能、才能進行各種版本的支援。
 +
-https://["NetApp 互通性對照表工具"]
+https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"]
 
 * 每個網路都必須有兩個FC交換器。
 * 每ONTAP 個支援系統都必須使用備援元件連接至儲存設備、以便在設備和路徑故障時提供備援。

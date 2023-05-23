@@ -25,7 +25,7 @@ summary: 更新橋接韌體的程序取決於您的橋接器機型和ONTAP 版�
 * 您需要管理員密碼並存取HTTP伺服器。
 * 您必須使用支援的韌體版本。
 +
-https://["NetApp 互通性對照表工具"^]
+https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"^]
 
 +
 在這個解決方案領域、您可以使用儲存解決方案欄位來選擇您的解決方案。IMT MetroCluster您可以使用*元件總管*來選取元件和ONTAP 更新版本、以精簡搜尋範圍。您可以按一下「*顯示結果*」來顯示符合條件的支援組態清單。
@@ -53,7 +53,7 @@ NOTE: 從ONTAP 功能組別9.8開始、「最小橋接器」命令會改為「�
 
 . 前往Atto FIBreBridge頁面、並為橋接器選取適當的韌體。
 +
-https://["Atto FibreBridge韌體下載頁面"^]
+https://mysupport.netapp.com/site/products/all/details/atto-fibrebridge/downloads-tab["Atto FibreBridge韌體下載頁面"^]
 
 . 檢閱「警示/ MustRead」和「終端使用者合約」、然後按一下核取方塊以表示接受並繼續。
 . 將韌體檔案放在可由控制器模組存取的網路位置。
@@ -269,7 +269,7 @@ flashimages
 * 您需要管理員密碼、才能存取FTP或scp伺服器。
 * 您必須使用支援的韌體版本。
 +
-https://["NetApp 互通性對照表工具"^]
+https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"^]
 
 +
 在這個解決方案領域、您可以使用儲存解決方案欄位來選擇您的解決方案。IMT MetroCluster您可以使用*元件總管*來選取元件和ONTAP 更新版本、以精簡搜尋範圍。您可以按一下「*顯示結果*」來顯示符合條件的支援組態清單。
@@ -298,7 +298,7 @@ NOTE: 此程序不中斷營運、約需30分鐘完成。
 
 . 前往Atto FIBreBridge頁面、並為橋接器選取適當的韌體。
 +
-https://["Atto FibreBridge韌體下載頁面"^]
+https://mysupport.netapp.com/site/products/all/details/atto-fibrebridge/downloads-tab["Atto FibreBridge韌體下載頁面"^]
 
 . 檢閱「警示/ MustRead」和「終端使用者合約」、然後按一下核取方塊以表示接受並繼續。
 . 請使用Atto FibreBridge韌體下載頁面上程序的步驟1到3下載橋接韌體檔案。

@@ -41,11 +41,11 @@ link:concept_supported_platforms_for_transition.html["支援不中斷營運的�
 * 它必須符合中所述的所有需求和纜線 link:../install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"]。
 * 新控制器（node_a_1-IP、node_a_2-IP、node_B_1-IP和node_B_2-IP）所提供的新儲存機櫃必須受到舊控制器（node_a_1-FC和node_B_1-FC）的支援。
 +
-https://["NetApp Hardware Universe"^]
+https://hwu.netapp.com["NetApp Hardware Universe"^]
 
 * 全新MetroCluster 的SIP平台機型*不支援舊的儲存櫃。
 +
-https://["NetApp Hardware Universe"^]
+https://hwu.netapp.com["NetApp Hardware Universe"^]
 
 * 視現有磁碟櫃中可用的備用磁碟而定、必須新增額外的磁碟機。
 +
@@ -66,7 +66,7 @@ https://["NetApp Hardware Universe"^]
 此資訊適用於每種平台模式、請參閱_NetApp Hardware Universe SUR__。
 
 +
-https://["NetApp Hardware Universe"]
+https://hwu.netapp.com["NetApp Hardware Universe"]
 
 * 您必須能從MetroCluster 任何一個站台、或是依照程序的要求、對所有六個節點進行遠端主控台存取、或是規劃在站台之間的交通。
 
@@ -469,7 +469,7 @@ recreated and NGS engaged for recovery assistance.
 
 . 將資料磁碟區移轉至新控制器上的集合體、一次一個磁碟區。
 +
-請參閱 http://["建立Aggregate並將磁碟區移至新節點"^]
+請參閱 http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-upgrade-controller/GUID-AFE432F6-60AD-4A79-86C0-C7D12957FA63.html["建立Aggregate並將磁碟區移至新節點"^]
 
 . 執行中的所有步驟、淘汰舊的機櫃 link:task_disruptively_transition_while_move_volumes_from_old_shelves_to_new_shelves.html["淘汰從node_a_1-FC和node_a_2-FC移出的磁碟櫃"]。
 

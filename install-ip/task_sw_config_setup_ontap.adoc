@@ -187,10 +187,10 @@ Where is the controller located []: site_A
 您可以使用ONTAP 「靜態系統管理程式」、將網頁瀏覽器指向叢集管理IP位址 。
 
 +
-https://["使用系統管理員進行叢集管理（ ONTAP 9.7 及更早版本）"^]
+https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/index.html["使用系統管理員進行叢集管理（ ONTAP 9.7 及更早版本）"^]
 
 +
-https://["系統管理程式（9.7版及更新版本）ONTAP"]
+https://docs.netapp.com/us-en/ontap/index.html#about-ontap-system-manager["系統管理程式（9.7版及更新版本）ONTAP"]
 
 
 

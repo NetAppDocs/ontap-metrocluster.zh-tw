@@ -19,7 +19,7 @@ summary: 這個組態需要多種硬體元件。MetroCluster為了方便且清�
 
 硬體與軟體必須支援MetroCluster 以利支援不支援使用。
 
-https://["NetApp Hardware Universe"]
+https://hwu.netapp.com["NetApp Hardware Universe"]
 
 使用AFF 不完整的系統時、MetroCluster 必須將不完整組態中的所有控制器模組設定為AFF 不完整的系統。
 
@@ -100,6 +100,6 @@ SAS附加的Stretch MetroCluster Setch組態至少需要兩個SAS磁碟櫃。建
 
 == 在堆疊中混合IOM12和IOM 6模組
 
-您的ONTAP 版本必須支援機櫃混合。請參閱互通性對照表工具IMT （英文）、瞭解您的ONTAP 版本的支援機櫃混合。 https://["NetApp互通性"]
+您的ONTAP 版本必須支援機櫃混合。請參閱互通性對照表工具IMT （英文）、瞭解您的ONTAP 版本的支援機櫃混合。 https://mysupport.netapp.com/NOW/products/interoperability["NetApp互通性"]
 
-如需機櫃混合的詳細資訊、請參閱： https://["將含有IOM12模組的熱新增磁碟櫃放到具有IOM6模組的磁碟櫃堆疊中"]
+如需機櫃混合的詳細資訊、請參閱： https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-mix-hotadd/home.html["將含有IOM12模組的熱新增磁碟櫃放到具有IOM6模組的磁碟櫃堆疊中"]

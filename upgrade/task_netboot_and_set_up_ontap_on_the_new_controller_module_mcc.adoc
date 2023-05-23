@@ -21,7 +21,7 @@ summary: 將控制器模組新增至現有的更新組態時、您必須執行�
 
 * 系統會自動將兩個磁碟指派給新的控制器模組。
 +
-https://["磁碟與Aggregate管理"]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"]
 
 
 
@@ -73,14 +73,14 @@ NOTE: 您的介面可能需要其他參數。如需詳細資訊、請在載入�
  a| 
 FAS2200、FAS2500、FAS3200、FAS6200、FAS/AFF8000系列系統
  a| 
-“netboot http://[]
+“netboot http://__web_server_ip/path_to_web-accessible_directory__/netboot/kernel`[]
 
 
 
  a| 
 所有其他系統
  a| 
-“netboot http://[]
+“netboot http://__web_server_ip/path_to_web-accessible_directory__/<ontap_version>_image.tgz`[]
 
 |===
 +

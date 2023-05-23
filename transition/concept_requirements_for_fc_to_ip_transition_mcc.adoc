@@ -21,7 +21,7 @@ link:concept_choosing_your_transition_procedure_mcc_transition.html["支援不�
 
 * 它必須支援交換式叢集組態。
 +
-https://["NetApp Hardware Universe"]
+https://hwu.netapp.com["NetApp Hardware Universe"]
 
 * 它必須符合_ MetroCluster 《_》安裝與組態_程序中所述的所有需求和佈線要求。
 +

@@ -17,10 +17,10 @@ summary: 您可以將一堆SAS磁碟櫃熱新增至現有的一對配備可用�
 * 您必須下載最新的磁碟和磁碟櫃韌體。
 * 所有的磁碟櫃MetroCluster （現有磁碟櫃）都必須執行相同的韌體版本。如果一或多個磁碟或磁碟櫃未執行最新的韌體版本、請在連接新磁碟或磁碟櫃之前、先更新韌體。
 +
-https://["NetApp下載：磁碟機韌體"^]
+https://mysupport.netapp.com/site/downloads/firmware/disk-drive-firmware["NetApp下載：磁碟機韌體"^]
 
 +
-https://["NetApp下載：磁碟櫃韌體"^]
+https://mysupport.netapp.com/site/downloads/firmware/disk-shelf-firmware["NetApp下載：磁碟櫃韌體"^]
 
 * 您必須連線至光纖橋接器7500N、並具有可用的SAS連接埠。
 
@@ -187,18 +187,18 @@ Tgt VendorID ProductID        Type        SerialNumber
 您必須在兩個控制器上執行此命令。
 
 +
-https://["NetApp下載：磁碟機韌體"^]
+https://mysupport.netapp.com/site/downloads/firmware/disk-drive-firmware["NetApp下載：磁碟機韌體"^]
 
 . 使用下載韌體的指示、將磁碟櫃韌體更新至最新版本。
 +
 您可以從任一控制器的系統主控台執行程序中的命令。
 
 +
-https://["NetApp下載：磁碟櫃韌體"^]
+https://mysupport.netapp.com/site/downloads/firmware/disk-shelf-firmware["NetApp下載：磁碟櫃韌體"^]
 
 . 如果您的系統未啟用磁碟自動指派、請指派磁碟機擁有權。
 +
-https://["磁碟與Aggregate管理"^]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"^]
 
 +
 
@@ -237,7 +237,7 @@ NOTE: 在更新磁碟機韌體和磁碟櫃韌體、並完成本工作中的驗�
 
 .. 執行Config Advisor
 +
-https://["NetApp下載Config Advisor"^]
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"^]
 
 .. 執行Config Advisor 完功能後、請檢閱工具的輸出結果、並依照輸出中的建議來解決發現的任何問題。
 

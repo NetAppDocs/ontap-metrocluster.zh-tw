@@ -24,7 +24,7 @@ summary: 您可以MetroCluster 從NetApp文件中深入瞭解有關功能的組�
 
 
  a| 
-https://["供應說明文件ONTAP"^]
+https://docs.netapp.com/us-en/ontap/index.html["供應說明文件ONTAP"^]
  a| 
 * 所有MetroCluster 功能指南
 
@@ -40,7 +40,7 @@ https://["供應說明文件ONTAP"^]
 
 
  a| 
-https://["Fabric附加MetroCluster 的安裝與組態"]
+https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"]
  a| 
 * 架構附加MetroCluster 的架構
 * 組態佈線
@@ -52,7 +52,7 @@ https://["Fabric附加MetroCluster 的安裝與組態"]
 
 
  a| 
-https://["安裝與組態：各不相同的功能MetroCluster ONTAP MetroCluster"]
+https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/concept_considerations_differences.html["安裝與組態：各不相同的功能MetroCluster ONTAP MetroCluster"]
  a| 
 * 知識產權架構MetroCluster
 * 組態佈線
@@ -62,7 +62,7 @@ https://["安裝與組態：各不相同的功能MetroCluster ONTAP MetroCluster
 
 
  a| 
-https://["支援管理與災難恢復MetroCluster"]
+https://docs.netapp.com/us-en/ontap-metrocluster/manage/index.html["支援管理與災難恢復MetroCluster"]
  a| 
 * 瞭MetroCluster 解此功能的組態
 * 切換、修復及切換
@@ -86,9 +86,9 @@ link:../maintain/index.html["維護MetroCluster 元件"]
 
 
  a| 
-https://["從MetroCluster 靜態FC移轉至MetroCluster 靜態IP"]
+https://docs.netapp.com/us-en/ontap-metrocluster/transition/concept_choosing_your_transition_procedure_mcc_transition.html["從MetroCluster 靜態FC移轉至MetroCluster 靜態IP"]
 
-https://["《升級與擴充指南》MetroCluster"]
+https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["《升級與擴充指南》MetroCluster"]
  a| 
 * 升級或重新整理MetroCluster 一個功能不清的組態
 * 從MetroCluster 靜態FC組態轉換為MetroCluster 靜態IP組態
@@ -98,7 +98,7 @@ https://["《升級與擴充指南》MetroCluster"]
 
 
  a| 
-https://["物件斷路器軟體安裝與組態MetroCluster"]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.hw-metrocluster-tiebreaker/home.html["物件斷路器軟體安裝與組態MetroCluster"]
  a| 
 * 使用MetroCluster ESITiebreaker軟體監控整個系統的組態MetroCluster
 
@@ -108,7 +108,7 @@ https://["物件斷路器軟體安裝與組態MetroCluster"]
  a| 
 本文檔Active IQ Unified Manager
 
-https://["NetApp文件：產品指南與資源"^]
+https://www.netapp.com/support-and-training/documentation/["NetApp文件：產品指南與資源"^]
  a| 
 * 監控MetroCluster 不一致的組態和效能
 
@@ -116,7 +116,7 @@ https://["NetApp文件：產品指南與資源"^]
 
 
  a| 
-https://["複本型轉換"]
+https://docs.netapp.com/us-en/ontap-7mode-transition/copy-based/index.html["複本型轉換"]
  a| 
 * 將資料從7-Mode儲存系統移轉至叢集式儲存系統
 
@@ -124,7 +124,7 @@ https://["複本型轉換"]
 
 
  a| 
-https://["概念ONTAP"]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-concepts/home.html["概念ONTAP"]
  a| 
 * 鏡射Aggregate的運作方式
 

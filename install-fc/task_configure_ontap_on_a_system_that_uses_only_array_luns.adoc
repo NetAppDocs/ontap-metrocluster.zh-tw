@@ -199,7 +199,7 @@ This node has its management address assigned and is ready for cluster setup.
 
 
 .完成後
-在ONTAP 您要搭配陣列LUN使用的所有節點上設定好「功能」之後、您應該完成https://["叢集設定程序"]
+在ONTAP 您要搭配陣列LUN使用的所有節點上設定好「功能」之後、您應該完成https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-ssg/home.html["叢集設定程序"]
 
 .相關資訊
-https://["介紹虛擬化安裝需求與參考資料FlexArray"]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.vs-irrg/home.html["介紹虛擬化安裝需求與參考資料FlexArray"]
