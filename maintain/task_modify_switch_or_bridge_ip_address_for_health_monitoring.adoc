@@ -1,0 +1,85 @@
+---
+permalink: maintain/task_modify_switch_or_bridge_ip_address_for_health_monitoring.html 
+sidebar: sidebar 
+keywords: metrocluster, atto, fc, switches, bridges, modify, IP, address 
+summary: 修改 MetroCluster FC 後端交換器或 Atto 橋接器的 IP 位址之後、請更換舊的健全狀況監控 IP 位址。 
+---
+= 修改交換器或 Atto 橋接 IP 位址以進行健全狀況監控
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+修改 MetroCluster FC 後端交換器和 Atto 橋接器的 IP 位址之後、您必須以新值取代舊的健全狀況監控 IP 位址。
+
+* <<修改交換器 IP 位址>>
+* <<修改 Atto 橋接 IP 位址>>
+
+
+
+
+== 修改交換器 IP 位址
+
+更換 MetroCluster FC 後端交換器的舊健全狀況監控 IP 位址。
+
+.開始之前
+在變更健全狀況監控 IP 位址之前、請參閱交換器廠商的交換器機型文件、以變更交換器上的 IP 位址。
+
+.步驟
+. 執行 `::> storage switch show` 在命令和輸出中、記下回報錯誤的交換器。
+. 移除具有舊 IP 位址的交換器項目：
++
+`::> storage switch remove -name _switch_name_`
+
+. 使用新的 IP 位址新增交換器：
++
+`::> storage switch add -name _switch_name_ -address _new_IP_address_ -managed-by in-band`
+
+. 驗證新 IP 位址、並確認沒有錯誤：
++
+`::> storage switch show`
+
+. 如有需要、請重新整理項目：
++
+`::> set advanced`
+
++
+`::*> storage switch refresh`
+
++
+`::*> set admin`
+
+
+
+
+
+== 修改 Atto 橋接 IP 位址
+
+更換 Atto 橋接器的舊健全狀況監控 IP 位址。
+
+.步驟
+. 執行 `::> storage bridge show` 命令和輸出中、請記下回報錯誤的 Atto 橋接器。
+. 移除舊 IP 位址的 Atto 橋接項目：
++
+`::> storage bridge remove -name _ATTO_bridge_name_`
+
+. 新增具有新 IP 位址的 Atto 橋接器：
++
+`::> storage bridge add -name _ATTO_bridge_name_ -address _new_IP_address_ -managed-by in-band`
+
+. 驗證新 IP 位址、並確認沒有錯誤：
++
+`::> storage bridge show`
+
+. 如有需要、請重新整理項目：
++
+`::> set advanced`
+
++
+`::*> storage bridge refresh`
+
++
+`::*> set admin`
+
+

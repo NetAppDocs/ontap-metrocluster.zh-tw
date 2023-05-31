@@ -4672,7 +4672,6 @@
   <block id="e90434592ed415a541e2a6f03284ae2d" category="list-text">從「支援IP」節點、檢查LUN的報告節點：「LUN對應show -vserver VSA_1 -Fields reporting_nodes -osttype Linux」MetroCluster</block>
   <block id="1e7ae3480577387e1ba55438a03a4513" category="list-text">在iSCSI主機上、重新掃描SCSI匯流排：「/r/bin/rescan-scsi-bus.sh -r'</block>
   <block id="d535eedec31c0a58f698132001cbc9bb" category="paragraph">移除的路徑是FC節點的路徑。</block>
-  <block id="3f12786d4b9511cd0eec25cdac544486" category="list-text">在iSCSI主機上、確認只MetroCluster 能看到來自於該支援中心IP節點的路徑：「anlun LUN show -p'multippath -ll -d'</block>
   <block id="b6d1ddb6b8631d474ee650e1dd150c29" category="summary">您必須根據現有MetroCluster 的不規則功能（NetApp）組態、選擇轉換程序。</block>
   <block id="e420954c9496e6eb99455a2aac546e3f" category="doc">選擇您的轉換程序</block>
   <block id="7f5e75bec56cf6f3abc06e985a4c745b" category="paragraph">轉換程序會以IP交換器網路取代後端FC交換器網路或FC-VI連線。確切的程序取決於您的初始組態。</block>
@@ -7668,7 +7667,6 @@
   <block id="1c894e6b507e00c15428a59377b3edea" category="paragraph">6、2；6、6；8、2；8、6；6、10</block>
   <block id="19c4c7cbe51f9cc9c84e03e471f6929c" category="paragraph">* DRgroup 1：MC1_INIT_GRP_2_STIR_A_STK_GRP_2_BOT_FC2：*</block>
   <block id="b8f988b57682ee3866e672d627663e00" category="paragraph">bride_a_2b FC2</block>
-  <block id="03121169c4d1348b6827ea00f3922000" category="paragraph">Controller（控制器）_B_1連接埠0b\</block>
   <block id="004b482a536c1dbeb972fdbcb633914c" category="paragraph">MC1_INIT_GRP_2_STIR_A_STK_GRP_2_BOT_FC2</block>
   <block id="8a4965122e119874f47264cf47f02991" category="paragraph">6、3、6、7、8、3、8、7、6、11</block>
   <block id="7c8958ab7c622e1e6215179931fad545" category="paragraph">* DRgroup 1：MC1_INIT_GRP_1_STIR_B_STK_GRP_1_TOP _FC1：*</block>
@@ -7691,7 +7689,6 @@
   <block id="3a85d29ae69b3e31581b8b2d167a621a" category="paragraph">MC1_INIT_GRP_2_STIR_B_STK_GRP_2_BOD_FC1</block>
   <block id="208edde938c07656ddf2417fd81c409a" category="paragraph">5、3；5、7；7、3；7、7；7、11</block>
   <block id="c9e31e059604d2f6b216b114815682e5" category="paragraph">* DRgroup 1：MC1_INIT_GRP_1_STIR_B_STK_GRP_2_BOT_FC2：*</block>
-  <block id="c822bb67407542108aec4655c3b63b2b" category="paragraph">控制器a_1連接埠d</block>
   <block id="45f04d2c5b2b8b64ce9c8a96677c5437" category="paragraph">bridge _B_2a FC2</block>
   <block id="24dd159d2abea2dcd3b2e2a5e3c34813" category="paragraph">MC1_INIT_GRP_1_STIR_B_STK_GRP_2_TOP _FC2</block>
   <block id="7de585560799d109a1bfaa97c04462a0" category="paragraph">6、2、6、6、8、2、8、6、8、10</block>
@@ -13209,4 +13206,35 @@
   <block id="7794a024d3134acafeb3b112e36c9a3f" category="cell">分割區 3 ：</block>
   <block id="6129d8bcf6f4ed452d528f954ce79ee6" category="admonition">從 ONTAP 9.5 開始、必須使用啟用磁碟的自動指派功能<block ref="9518ee5351ea31dd67cceada18bfcfd6" prefix=" " category="inline-code"></block> 命令。</block>
   <block id="00427bfa7d8d8bd516409a3466e96821" category="paragraph">您必須將 ha-config 狀態設為<block ref="32b858596eeb9351eca27c2906a21da4" prefix=" " category="inline-code"></block> 在自動資源配置之前、請確定已選取正確的分割區大小、以允許適當的根磁碟區大小。如需詳細資訊、請參閱 <block ref="ee9beb37ef6441cda28497e9b5b08a94" category="inline-link-macro-rx"></block>。</block>
+  <block id="7a1a87ce99eaab2774eb1f9eacc17d53" category="list-text">在 iSCSI 主機上、確認只能看到來自 MetroCluster IP 節點的路徑：</block>
+  <block id="60b4ea9b972dc75c3aa76b2fc2aab932" category="paragraph"><block ref="41dc2c94e82e1c56ba876085acf5a974" prefix="" category="inline-code"></block></block>
+  <block id="ba27cfcb3809ba8690469645b378b4af" category="paragraph"><block ref="2fbf63deae0938cf669e6ca451f1eb2c" prefix="" category="inline-code"></block></block>
+  <block id="5338d1a8478f350f9f873b7c89a98b0f" category="summary">修改 MetroCluster FC 後端交換器或 Atto 橋接器的 IP 位址之後、請更換舊的健全狀況監控 IP 位址。</block>
+  <block id="ab82e5baf31743b1a6f1bdd378ba458b" category="doc">修改交換器或 Atto 橋接 IP 位址以進行健全狀況監控</block>
+  <block id="e3dbdae2799d2ed863a853d87ba77fd1" category="paragraph">修改 MetroCluster FC 後端交換器和 Atto 橋接器的 IP 位址之後、您必須以新值取代舊的健全狀況監控 IP 位址。</block>
+  <block id="f92e0078fdec1ffe1c4ea4aa9d6f1a1e" category="list-text"><block ref="ab2d45fba3c3f757aacec91da4cb1b70" category="inline-xref-macro-rx"></block></block>
+  <block id="165574b7ebb66de680159f8b0d4fcfc5" category="list-text"><block ref="e8667931151aa8a03a3ce375a7fb4ce1" category="inline-xref-macro-rx"></block></block>
+  <block id="23d9641e3ce1ace9d285b6d99428aa46" category="section-title">修改交換器 IP 位址</block>
+  <block id="0ce4b65dc88de631364f20a47a4c2763" category="paragraph">更換 MetroCluster FC 後端交換器的舊健全狀況監控 IP 位址。</block>
+  <block id="4007362387ed0cc5dd6adba726c520d9" category="paragraph">在變更健全狀況監控 IP 位址之前、請參閱交換器廠商的交換器機型文件、以變更交換器上的 IP 位址。</block>
+  <block id="7bbfbf566095b68040e5c4a3aceac6ac" category="list-text">執行<block ref="54cb0cc4651ed88426820f54a959f983" prefix=" " category="inline-code"></block> 在命令和輸出中、記下回報錯誤的交換器。</block>
+  <block id="cdf3b6d5f62383fc5e5b19d993938d28" category="list-text">移除具有舊 IP 位址的交換器項目：</block>
+  <block id="718e9867401dd91866fb2a987df7bc0c" category="paragraph"><block ref="f9e659c5cf89d4cd6229787d8c325744" prefix="" category="inline-code"></block></block>
+  <block id="eebd9da1099c88008c8642171a3e5ae0" category="list-text">使用新的 IP 位址新增交換器：</block>
+  <block id="d4f0cc67f8aefe1ab7966060dea16fd3" category="paragraph"><block ref="63bf3e4595e1cea2668cf6a221b6733e" prefix="" category="inline-code"></block></block>
+  <block id="7295794d4681a6b472535b162c67d854" category="list-text">驗證新 IP 位址、並確認沒有錯誤：</block>
+  <block id="17ebf08b360e23da5de17080478b5a9a" category="paragraph"><block ref="54cb0cc4651ed88426820f54a959f983" prefix="" category="inline-code"></block></block>
+  <block id="57dfb63d08478439698cd552ae3e5aaf" category="list-text">如有需要、請重新整理項目：</block>
+  <block id="938dd650e30906bfb9b2b22db00400e9" category="paragraph"><block ref="b005242c3b5e82cd0bc325b3c7aa88b5" prefix="" category="inline-code"></block></block>
+  <block id="d27195bfb9db39c84dd807f644d56035" category="paragraph"><block ref="d417edd9124181cee913e66273c75f24" prefix="" category="inline-code"></block></block>
+  <block id="baed02715ff1c68d98d96ab1f1824839" category="paragraph"><block ref="2b2245798948be76e47bf2c58b09ff70" prefix="" category="inline-code"></block></block>
+  <block id="e21a16678b580969058476d22d6dec5a" category="section-title">修改 Atto 橋接 IP 位址</block>
+  <block id="b8ba41975a83a28edcb1fc976000f8aa" category="paragraph">更換 Atto 橋接器的舊健全狀況監控 IP 位址。</block>
+  <block id="5a641276a63ef6c96ab4d424621d47a1" category="list-text">執行<block ref="c15b1a514541c60b840d997ade873f6d" prefix=" " category="inline-code"></block> 命令和輸出中、請記下回報錯誤的 Atto 橋接器。</block>
+  <block id="fe8871b8444844b0056512bac56eeb27" category="list-text">移除舊 IP 位址的 Atto 橋接項目：</block>
+  <block id="22007fc81568e5bddd49d6ef9b5f7cb0" category="paragraph"><block ref="fb0e4750f8c23a6c43224287bc7ea075" prefix="" category="inline-code"></block></block>
+  <block id="94b07ddcdeea86a3cb5e6bba21fa0102" category="list-text">新增具有新 IP 位址的 Atto 橋接器：</block>
+  <block id="c6b98eed0e9727a5dfb3f152632a0f26" category="paragraph"><block ref="abef28b214988e1f461b70d9ddd96084" prefix="" category="inline-code"></block></block>
+  <block id="5da08e80e3eab08ebb4baa8e1b142991" category="paragraph"><block ref="c15b1a514541c60b840d997ade873f6d" prefix="" category="inline-code"></block></block>
+  <block id="9c2b22a66311e51f1e1983454811963b" category="paragraph"><block ref="6253a5e48e30f72d3113196e1239627c" prefix="" category="inline-code"></block></block>
 </blocks>

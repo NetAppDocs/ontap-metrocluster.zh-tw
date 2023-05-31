@@ -364,5 +364,11 @@ OLD: Host: scsi5 Channel: 00 Id: 00 Lun: 09
 .
 .
 ----
-. 在iSCSI主機上、確認只MetroCluster 能看到來自於該支援中心IP節點的路徑：「anlun LUN show -p'multippath -ll -d'
+. 在 iSCSI 主機上、確認只能看到來自 MetroCluster IP 節點的路徑：
++
+`sanlun lun show -p`
+
++
+`multipath -ll -d`
+
 

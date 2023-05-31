@@ -2679,7 +2679,7 @@ FC_SWIT_A_2
  a| 
 2.
  a| 
-Controller（控制器）a_1連接埠0d
+Controller（控制器）a_1連接埠0b
 
 
 
@@ -2696,7 +2696,7 @@ FC_SWIT_A_2
  a| 
 6.
  a| 
-控制器_a_2連接埠0d
+Controller（控制器）_a_2連接埠0b
 
 
 
@@ -2834,7 +2834,7 @@ b
  a| 
 3.
  a| 
-Controller（控制器）_B_1連接埠0b
+Controller（控制器）_B_1連接埠0d
 
 
 
@@ -2851,7 +2851,7 @@ b
  a| 
 7.
  a| 
-Controller（控制器）_B_2連接埠0b
+Controller（控制器）_B_2連接埠0d
 
 |===
 |===
@@ -3095,7 +3095,7 @@ FC_SWIT_A_2
  a| 
 0
  a| 
-Controller（控制器）a_1連接埠0d
+Controller（控制器）a_1連接埠0b
 
 
 
@@ -3216,7 +3216,7 @@ FC_SWIT_A_2
  a| 
 7.
  a| 
-Controller（控制器）_a_2連接埠0b
+控制器_a_2連接埠0d
 
 
 
@@ -3250,7 +3250,7 @@ b
  a| 
 3.
  a| 
-Controller（控制器）_B_1連接埠0b\
+Controller（控制器）_B_1連接埠0d
 
 
 
@@ -3267,7 +3267,7 @@ b
  a| 
 7.
  a| 
-Controller（控制器）_B_2連接埠0b
+Controller（控制器）_B_2連接埠0d
 
 |===
 |===
@@ -3515,7 +3515,7 @@ FC_SWIT_A_2
  a| 
 2.
  a| 
-Controller（控制器）a_1連接埠0d
+Controller（控制器）a_1連接埠0b
 
 
 
@@ -3634,7 +3634,7 @@ FC_SWIT_A_2
  a| 
 7.
  a| 
-Controller（控制器）_a_2連接埠0b
+控制器_a_2連接埠0d
 
 
 
@@ -3651,7 +3651,7 @@ b
  a| 
 3.
  a| 
-Controller（控制器）_B_1連接埠0b
+Controller（控制器）_B_1連接埠0d
 
 
 
@@ -3668,7 +3668,7 @@ b
  a| 
 7.
  a| 
-Controller（控制器）_B_2連接埠0b
+Controller（控制器）_B_2連接埠0d
 
 
 
@@ -3933,7 +3933,7 @@ FC_SWIT_A_2
  a| 
 2.
  a| 
-控制器a_1連接埠d
+Controller（控制器）a_1連接埠0b
 
 
 
@@ -4054,7 +4054,7 @@ FC_SWIT_A_2
  a| 
 7.
  a| 
-Controller（控制器）_a_2連接埠0b
+控制器_a_2連接埠0d
 
 
 
@@ -4071,7 +4071,7 @@ b
  a| 
 3.
  a| 
-Controller（控制器）_B_1連接埠0b
+Controller（控制器）_B_1連接埠0d
 
 
 
@@ -4088,7 +4088,7 @@ b
  a| 
 7.
  a| 
-Controller（控制器）_B_2連接埠0b
+Controller（控制器）_B_2連接埠0d
 
 
 
