@@ -7046,7 +7046,6 @@
   <block id="e7acec6ea00d47c0f7752735341c6bb3" category="list-text">Extended Fabric授權（適用於ISL距離超過6公里）</block>
   <block id="9095235ccbae1acead09e083fb7b20dd" category="list-text">企業授權、適用於具有多個ISL且ISL距離大於6公里的站台</block>
   <block id="c447450429c7aa0c8fa978a8c7ab1f67" category="paragraph">企業授權包括Brocade Network Advisor及所有授權、但額外的連接埠授權除外。</block>
-  <block id="aaf82250987f97db574d1fc26bfc8c06" category="paragraph">您可以使用「授權說明」命令來驗證授權是否已安裝。如果您沒有這些授權、請在繼續之前聯絡您的銷售代表。</block>
   <block id="7264088d4f9d193f30e9a2464dab74fb" category="list-text">從災難站台開機節點。</block>
   <block id="c10eeba0526766cc3188d9039a9c0ba2" category="list-text">確認節點狀態：</block>
   <block id="90ebc734f6f18305b7dff4457ac922ed" category="list-text">確認狀態：</block>
@@ -7187,11 +7186,8 @@
   <block id="1711fdcc6944bbeddd35a626101f4b4d" category="list-text">驗證交換器是否使用動態隨需連接埠（Pod）方法。</block>
   <block id="2f3d07c01cbdac4d395d3a14b661150c" category="admonition">若為8.0之前的Brocade Fabric OS版本、您將以admin身分執行下列命令、若為8.0或更新版本、則會以root身分執行這些命令。</block>
   <block id="64fa0d568b3592806aa948b76b25721e" category="list-text">執行授權命令：</block>
-  <block id="2fc05e860677e088c66d18d9fe3bb918" category="paragraph">「licenseport - show」</block>
   <block id="d63c14f8f4da1b2f3355284117aa43d6" category="list-text">如果root使用者已被Brocade停用、請啟用root使用者。</block>
-  <block id="0495c36d7c4cd6e18740fbb344d64ab4" category="list-text">將授權方法變更為動態：</block>
   <block id="58245d98714cc00602b18f5cd698870e" category="paragraph">「licenseport -方法動態」</block>
-  <block id="dca190678a04e60a515a67708b3f0c76" category="admonition">如果動態Pod方法未在使用中（如果Pod方法是靜態的）、您必須將授權指派方法變更為動態。如果使用動態Pod方法、請跳過此步驟。</block>
   <block id="06628fac4ad175a059dea1e8992ec356" category="paragraph">《FASTBOOT》</block>
   <block id="ede0376c0e0928f0e121e5c4a17e579f" category="list-text">確認已實作預設設定：</block>
   <block id="384bb33c884dd5c4aed5b1cef7c99c53" category="list-text">確認IP位址設定正確：</block>
@@ -7246,7 +7242,6 @@
   <block id="b54ac66ca0ca34c593eeed1fe8cd4e03" category="list-text">不支援Brocade Virtual Fabric（Vf）功能。</block>
   <block id="c51b448f36df4e8b4b68e7af4df4c6b8" category="list-text">支援以網域連接埠為基礎的FC分區、但不支援以全球名稱（WWN）為基礎的分區。</block>
   <block id="5f864e9896e626c0a0c857ef2de8b1d6" category="list-text">確認已安裝授權：</block>
-  <block id="085c43e1c750634547ed6d634183b052" category="paragraph">《許可證》</block>
   <block id="4d8abf4bb34371dfeb410341732e506b" category="paragraph">如果您沒有這些授權、請在繼續之前聯絡您的銷售代表。</block>
   <block id="29beb95dbfa349b40c8e018564927306" category="section-title">將Brocade FC交換器值設為原廠預設值</block>
   <block id="bc9a8f24ac7c37a611a7d6eccad46c1a" category="paragraph">您必須將交換器設為原廠預設值、以確保組態成功。您也必須為每個交換器指派唯一的名稱。</block>
@@ -7272,7 +7267,6 @@
   <block id="e39c65b9d816e2a7741f1d5584f8ae65" category="paragraph">'切換主幹0 '</block>
   <block id="ae6d4e9d4497377541a0ac6446e39a09" category="list-text">在Brocade 6510交換器上、停用Brocade Virtual Fabrics（Vf）功能：</block>
   <block id="5592272feb1a1ba6847cf13d1a8c1474" category="list-text">清除管理網域（AD）組態：</block>
-  <block id="acb1a0aabd466b89953a635308b148ef" category="paragraph">廣告選項</block>
   <block id="a0aba6ae1d604e993dbdc4de925448a0" category="paragraph">"重新開機"</block>
   <block id="41f75670bd6513f25d1942c68f417ebb" category="section-title">設定基本交換器設定</block>
   <block id="b5200136ba99d499e1f31b6fc5df9dcc" category="paragraph">您必須為Brocade交換器設定基本的全域設定、包括網域ID。</block>
@@ -7304,11 +7298,9 @@
   <block id="53989b83805e7661f392318f958a6584" category="admonition">在ONTAP 控制器模組上設定功能時、必須在MetroCluster 每個控制器模組上明確設定ood、以供採用此功能。</block>
   <block id="555d0eb5e8f5efea1f9923360c2e1807" category="paragraph"><block ref="555d0eb5e8f5efea1f9923360c2e1807" category="inline-link-rx"></block></block>
   <block id="8e6415ee4068075bb4d9b0908c9e0ba1" category="list-text">驗證交換器是否使用動態連接埠授權方法。</block>
-  <block id="67c13f78d822be3160ea3c5b07cae707" category="paragraph">「licensePort - show」</block>
   <block id="39c3f713772acf06f906fa354070ccae" category="admonition">Brocade FabricOS 8.0之前的版本會以admin和8.0之後版本的身分執行下列命令、並以root身分執行這些命令。</block>
   <block id="bb455cc655a37d9370a7b572be5c356a" category="list-text">啟用root使用者。</block>
   <block id="9982799dc107b44357ff54b7e3b835e7" category="paragraph">如果root使用者已被Brocade停用、請啟用root使用者、如下列範例所示：</block>
-  <block id="46714aac3ad4ae91307dcd356eefab49" category="admonition">如果未使用動態授權方法（如果方法為靜態）、則必須將授權方法變更為動態。如果使用動態授權方法、請跳過此步驟。</block>
   <block id="95da9f6e517e5c030f88ab1f88a8412b" category="list-text">啟用T11-FC-ZE-ZE-Server-mib的陷阱、以成功監控ONTAP 位於下列情況的交換器：</block>
   <block id="ed4e949381c1b26b6a818efefef7af72" category="list-text">啟用T11-FC-ZE-SERVER-MIB..</block>
   <block id="30b22579f9b8f04df9b75ac978e270dc" category="paragraph">「nmpconfig --set mibCapability -mib_name T11-FC-ZON-Server-mib -bitmask 0x3f'</block>
@@ -13237,4 +13229,14 @@
   <block id="c6b98eed0e9727a5dfb3f152632a0f26" category="paragraph"><block ref="abef28b214988e1f461b70d9ddd96084" prefix="" category="inline-code"></block></block>
   <block id="5da08e80e3eab08ebb4baa8e1b142991" category="paragraph"><block ref="c15b1a514541c60b840d997ade873f6d" prefix="" category="inline-code"></block></block>
   <block id="9c2b22a66311e51f1e1983454811963b" category="paragraph"><block ref="6253a5e48e30f72d3113196e1239627c" prefix="" category="inline-code"></block></block>
+  <block id="5aec6e2f211b9dfd0cbd3f6c569bd08c" category="open-title">適用於 Fabric OS 8.2.x 及更早版本</block>
+  <block id="21a858f81918f7707fbcd7bef86f8797" category="paragraph">執行命令<block ref="c53664d593e772e240ea0e6fdcfc79e1" prefix=" " category="inline-code"></block>。</block>
+  <block id="afff4aa2c1e899c46d499fb894d82ada" category="open-title">適用於 Fabric OS 9.0 及更新版本</block>
+  <block id="39219ac241ea7f4ccb98564b8a02b92c" category="paragraph">執行命令<block ref="ee9cf2be6d80be01f66c5272dabe9164" prefix=" " category="inline-code"></block>。</block>
+  <block id="6662b782a3a75b8e31dda70ebe53c4f0" category="paragraph">執行命令<block ref="c3d759c84d82a17cd2fc31c0bbd2be02" prefix=" " category="inline-code"></block>。</block>
+  <block id="1fb30ffcb217df70eb8b61a9c76f518f" category="paragraph">執行命令<block ref="f7fd6058274b87da3f8cba419f53bb7e" prefix=" " category="inline-code"></block>。</block>
+  <block id="3c8938b87b13dff113f84a2814ddff39" category="paragraph"><block ref="f7fd6058274b87da3f8cba419f53bb7e" prefix="" category="inline-code"></block></block>
+  <block id="1ad5a70ead9bdd722df6000495e21c24" category="list-text">如果您執行的是 Fabric OS 8.2.x 及更早版本、則必須將授權方法變更為動態：</block>
+  <block id="7fafa568d6f3c9a0ee98323f64b1c01c" category="admonition">在 Fabric OS 9.0 及更新版本中、授權方法預設為動態。不支援靜態授權方法。</block>
+  <block id="0b6c4085e3a8dba280dd11e4bbbbeee1" category="paragraph">您可以使用「使用許可」命令來驗證是否已安裝使用許可。</block>
 </blocks>

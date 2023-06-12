@@ -80,8 +80,19 @@ https://mysupport.netapp.com/matrix["NetApp互通性對照表工具IMT （不含
 .步驟
 . 確認已安裝授權：
 +
-《許可證》
+[role="tabbed-block"]
+====
+.適用於 Fabric OS 8.2.x 及更早版本
+--
+執行命令 `licenseshow`。
 
+--
+.適用於 Fabric OS 9.0 及更新版本
+--
+執行命令 `license --show`。
+
+--
+====
 +
 如果您沒有這些授權、請在繼續之前聯絡您的銷售代表。
 
@@ -267,22 +278,14 @@ FC_switch_B_1:admin> fosconfig --disable vf
 ----
 . 清除管理網域（AD）組態：
 +
-廣告選項
-
-+
 以下範例顯示FC-switch_a_1上的命令：
 
 +
 [listing]
 ----
-FC_switch_A_1:admin> switch:admin> ad --select AD0
 FC_switch_A_1:> defzone --noaccess
 FC_switch_A_1:> cfgsave
 FC_switch_A_1:> exit
-FC_switch_A_1:admin> ad --clear -f
-FC_switch_A_1:admin> ad --apply
-FC_switch_A_1:admin> ad --save
-FC_switch_A_1:admin> exit
 ----
 +
 下列範例顯示FC-switch_B_1上的命令：
@@ -290,14 +293,9 @@ FC_switch_A_1:admin> exit
 +
 [listing]
 ----
-FC_switch_B_1:admin> switch:admin> ad --select AD0
 FC_switch_A_1:> defzone --noaccess
 FC_switch_A_1:> cfgsave
 FC_switch_A_1:> exit
-FC_switch_B_1:admin> ad --clear -f
-FC_switch_B_1:admin> ad --apply
-FC_switch_B_1:admin> ad --save
-FC_switch_B_1:admin> exit
 ----
 . 重新啟動交換器：
 +
@@ -481,20 +479,31 @@ https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/concept_configure_th
 +
 .. 執行授權命令：
 +
+[role="tabbed-block"]
+====
+.適用於 Fabric OS 8.2.x 及更早版本
 --
-「licensePort - show」
+執行命令 `licenseport --show`。
 
+--
+.適用於 Fabric OS 9.0 及更新版本
+--
+執行命令 `license --show -port`。
+
+--
+====
++
 [listing]
 ----
-FC_switch_A_1:admin> licenseport -show
+FC_switch_A_1:admin> license --show -port
 24 ports are available in this switch
 Full POD license is installed
 Dynamic POD method is in use
 ----
++
 
 NOTE: Brocade FabricOS 8.0之前的版本會以admin和8.0之後版本的身分執行下列命令、並以root身分執行這些命令。
 
---
 .. 啟用root使用者。
 +
 如果root使用者已被Brocade停用、請啟用root使用者、如下列範例所示：
@@ -507,23 +516,19 @@ FC_switch_A_1:admin> rootaccess --set consoleonly
 ----
 .. 執行授權命令：
 +
-「licensePort - show」
+`license --show -port`
 
 +
 [listing]
 ----
-FC_switch_A_1:root> licenseport -show
+FC_switch_A_1:root> license --show -port
 24 ports are available in this switch
 Full POD license is installed
 Dynamic POD method is in use
 ----
-.. 將授權方法變更為動態：
+.. 如果您執行的是 Fabric OS 8.2.x 及更早版本、則必須將授權方法變更為動態：
 +
 「licenseport -方法動態」
-
-+
-
-NOTE: 如果未使用動態授權方法（如果方法為靜態）、則必須將授權方法變更為動態。如果使用動態授權方法、請跳過此步驟。
 
 +
 [listing]
@@ -532,6 +537,10 @@ FC_switch_A_1:admin> licenseport --method dynamic
 The POD method has been changed to dynamic.
 Please reboot the switch now for this change to take effect
 ----
++
+
+NOTE: 在 Fabric OS 9.0 及更新版本中、授權方法預設為動態。不支援靜態授權方法。
+
 
 
 . 啟用T11-FC-ZE-ZE-Server-mib的陷阱、以成功監控ONTAP 位於下列情況的交換器：

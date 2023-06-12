@@ -120,12 +120,23 @@ NOTE: 若為8.0之前的Brocade Fabric OS版本、您將以admin身分執行下�
 +
 .. 執行授權命令：
 +
-「licenseport - show」
+[role="tabbed-block"]
+====
+.適用於 Fabric OS 8.2.x 及更早版本
+--
+執行命令 `licenseport --show`。
 
+--
+.適用於 Fabric OS 9.0 及更新版本
+--
+執行命令 `license --show -port`。
+
+--
+====
 +
 [listing]
 ----
-FC_switch_A_1:admin> licenseport -show
+FC_switch_A_1:admin> license --show -port
 24 ports are available in this switch
 Full POD license is installed
 Dynamic POD method is in use
@@ -139,23 +150,30 @@ FC_switch_A_1:admin> rootaccess --set consoleonly
 ----
 .. 執行授權命令：
 +
-「licenseport - show」
+[role="tabbed-block"]
+====
+.適用於 Fabric OS 8.2.x 及更早版本
+--
+執行命令 `licenseport --show`。
 
+--
+.適用於 Fabric OS 9.0 及更新版本
+--
+執行命令 `license --show -port`。
+
+--
+====
 +
 [listing]
 ----
-FC_switch_A_1:root> licenseport -show
+FC_switch_A_1:root> license --show -port
 24 ports are available in this switch
 Full POD license is installed
 Dynamic POD method is in use
 ----
-.. 將授權方法變更為動態：
+.. 如果您執行的是 Fabric OS 8.2.x 及更早版本、則必須將授權方法變更為動態：
 +
 「licenseport -方法動態」
-
-+
-
-NOTE: 如果動態Pod方法未在使用中（如果Pod方法是靜態的）、您必須將授權指派方法變更為動態。如果使用動態Pod方法、請跳過此步驟。
 
 +
 [listing]
@@ -164,6 +182,10 @@ FC_switch_A_1:admin> licenseport --method dynamic
 The POD method has been changed to dynamic.
 Please reboot the switch now for this change to take effect
 ----
++
+
+NOTE: 在 Fabric OS 9.0 及更新版本中、授權方法預設為動態。不支援靜態授權方法。
+
 
 
 . 重新啟動交換器：
