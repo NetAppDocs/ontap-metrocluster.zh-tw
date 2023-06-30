@@ -2,16 +2,16 @@
 permalink: maintain/task_hot_add_a_stack_to_exist_7500n_pair.html 
 sidebar: sidebar 
 keywords: metrocluster, maintain, service, hot, add, stack, sas, disk, shelves, existing, pair, fibrebridge, bridge 
-summary: 您可以將一堆SAS磁碟櫃熱新增至現有的一對配備可用連接埠的FibreBridge 7500N橋接器。 
+summary: 您可以將 SAS 磁碟櫃堆疊熱新增至現有的一對具有可用連接埠的 FiberBridge 7600N 或 7500N 橋接器。 
 ---
-= 將一堆SAS磁碟櫃熱新增至現有的一對光纖橋接器7500N
+= 將一堆 SAS 磁碟櫃熱新增至現有的一對 FiberBridge 7600N 或 7500N 橋接器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-您可以將一堆SAS磁碟櫃熱新增至現有的一對配備可用連接埠的FibreBridge 7500N橋接器。
+您可以將 SAS 磁碟櫃堆疊熱新增至現有的一對具有可用連接埠的 FiberBridge 7600N 或 7500N 橋接器。
 
 .開始之前
 * 您必須下載最新的磁碟和磁碟櫃韌體。
@@ -22,7 +22,7 @@ https://mysupport.netapp.com/site/downloads/firmware/disk-drive-firmware["NetApp
 +
 https://mysupport.netapp.com/site/downloads/firmware/disk-shelf-firmware["NetApp下載：磁碟櫃韌體"^]
 
-* 您必須連線至光纖橋接器7500N、並具有可用的SAS連接埠。
+* 必須連接 FiberBridge 7600N 或 7500N 橋接器、並具有可用的 SAS 連接埠。
 
 
 .關於這項工作
@@ -54,11 +54,6 @@ node_A_1             on           on           on           default
 node_A_2             on           on           on           default
 2 entries were displayed.
 ----
-. 停用新堆疊的交換器連接埠。
-. 更新每個橋接器上的FibreBridge韌體。
-+
-如果新橋接器的類型與合作夥伴橋接器的類型相同、請升級至與合作夥伴橋接器相同的韌體。如果新橋接器與合作夥伴橋接器的類型不同、請升級至橋接器和ONTAP 版本的更新韌體。請參閱《_ MetroCluster 資料維護指南_》中的「更新光纖橋接器上的韌體」一節。
-
 . 在配對中的每個橋接器上、啟用將連線至新堆疊的SAS連接埠：
 +
 "ASPortEnable _port-letter _"
@@ -208,7 +203,6 @@ NOTE: 如果您要在多個控制器之間分割單一磁碟櫃堆疊的擁有�
 
 NOTE: 在更新磁碟機韌體和磁碟櫃韌體、並完成本工作中的驗證步驟之前、您不得將磁碟機新增至集合體或磁碟區。
 
-. 啟用新堆疊的交換器連接埠。
 . 驗證MetroCluster 下列項目中的功能：ONTAP
 +
 .. 檢查系統是否具有多路徑：
@@ -231,9 +225,9 @@ NOTE: 在更新磁碟機韌體和磁碟櫃韌體、並完成本工作中的驗�
 +
 《不一樣的表演》MetroCluster
 
-.. 檢查交換器上是否有任何健全狀況警示（如果有）：
+.. 新增堆疊後、檢查橋接器上是否有任何健全狀況警示：
 +
-「torage switchshow」
+《龍橋秀》
 
 .. 執行Config Advisor
 +

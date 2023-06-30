@@ -20,7 +20,7 @@ summary: 更換硬體並指派磁碟之後、您可以執行MetroCluster 還原�
 ----
 cluster_B::> metrocluster heal -phase aggregates
 
-cluster_B::> metrocluster heal -phase root aggregates
+cluster_B::> metrocluster heal -phase root-aggregates
 ----
 . 監控修復並確認集合體處於重新同步或鏡射狀態：
 +

@@ -3929,10 +3929,8 @@
   <block id="9d05079a491a98497153e953bbaddaa4" category="list-text">如果您要啟用SNMP、也必須發出「Set SNMP啟用」命令：</block>
   <block id="944957367bcbba5f885d8dc885354148" category="paragraph">‘*設置SNMP enably*’</block>
   <block id="2773e82b500feb0530b8577db9c276d7" category="paragraph">SNMP是唯一需要個別啟用命令的傳輸協定。</block>
-  <block id="0ddbccff2e33cdad7e25875f8ed5047b" category="summary">您可以將一堆SAS磁碟櫃熱新增至現有的一對配備可用連接埠的FibreBridge 7500N橋接器。</block>
   <block id="695e87d61d65625619e3a56919865a2c" category="list-text">您必須下載最新的磁碟和磁碟櫃韌體。</block>
   <block id="8b82688b3d28b8ce8fbcbb8c09b13ce3" category="list-text">所有的磁碟櫃MetroCluster （現有磁碟櫃）都必須執行相同的韌體版本。如果一或多個磁碟或磁碟櫃未執行最新的韌體版本、請在連接新磁碟或磁碟櫃之前、先更新韌體。</block>
-  <block id="86c77fb0de5bbd53bda91b1946b5e7d6" category="list-text">您必須連線至光纖橋接器7500N、並具有可用的SAS連接埠。</block>
   <block id="8d372617f83f8c0b84203a0c342601a0" category="paragraph">您可以使用Atto ExpressNAV GUI來設定及管理橋接器、以及更新橋接器韌體。您可以使用Atto QuickNAV公用程式來設定橋接式乙太網路管理1連接埠。</block>
   <block id="a2a09f3d137021820b6b1b04c4a12e84" category="paragraph">如有需要、您可以使用其他管理介面。這些選項包括使用序列連接埠或Telnet來設定及管理橋接器、設定乙太網路管理1連接埠、以及使用FTP更新橋接器韌體。如果您選擇任何管理介面、則必須符合中的適用要求 <block ref="7ab0568f22b62ca0e98b3c0cd29a60a1" category="inline-link-macro-rx"></block>。</block>
   <block id="0162c27051eec554a97d6a3f03a4a746" category="list-text">從任一控制器的主控台、確認您的系統已啟用磁碟自動指派：</block>
@@ -12088,7 +12086,6 @@
   <block id="f59e44c66a463087eb80b00cc5e7867c" category="list-text">您必須在相同的NX-OS版本和授權下、使用四個相同型號的Cisco交換器。</block>
   <block id="de27fc3292cfa48f233ba5969313e590" category="list-text">您無法在Cisco FC儲存架構中使用加密或壓縮。不支援MetroCluster 此功能。</block>
   <block id="17a482b02d43109c8b8a1497839ff0b4" category="list-text">使用下列命令停止節點：「* halt *」</block>
-  <block id="fad9503a100b92ad7c54437a9309f256" category="list-text">若為四節點或八節點MetroCluster 的不全功能組態、請使用參數：「*禁止接管*」</block>
   <block id="63e64e288714d32cded7a6ed8dfec32c" category="list-text">FFC交換器（若使用中且組態並非雙節點延伸組態）MetroCluster</block>
   <block id="a2a7d27c6bf1ad121aeada48fc70ca1d" category="list-text">等待30分鐘、然後在站台上開啟下列設備：</block>
   <block id="383d92c84e46dd00caa3dbad6de7fe2f" category="paragraph"><block ref="903819e2154a41f8227f7c0192db71f6" category="inline-link-macro-rx"></block> 在「安裝MetroCluster 與組態」內容中</block>
@@ -12607,7 +12604,6 @@
   <block id="421c8863e1f7223f216aacf99393b7dd" category="list-text">附註1：此平台組合需要ONTAP 使用更新版本的支援。</block>
   <block id="60ddbd1babdd945c26fbc431202fea6c" category="inline-link-macro">Hardware Universe</block>
   <block id="6e2ee39d0f9ccdad593782674a048e67" category="inline-link-macro">程序連結</block>
-  <block id="7fcdce91feb430306391667c0a012cd7" category="paragraph"><block ref="7fcdce91feb430306391667c0a012cd7" category="inline-link-macro-rx"></block></block>
   <block id="0a623e8d3b5ae84e14f2fe4f454a3abb" category="paragraph"><block ref="0a623e8d3b5ae84e14f2fe4f454a3abb" category="inline-link-macro-rx"></block></block>
   <block id="8435af9be97e0c50b0d730d64b42f198" category="paragraph"><block ref="8435af9be97e0c50b0d730d64b42f198" category="inline-link-macro-rx"></block></block>
   <block id="f7080628c8d078c209fb6b6b18f03a3a" category="paragraph"><block ref="f7080628c8d078c209fb6b6b18f03a3a" category="inline-link-macro-rx"></block></block>
@@ -13239,4 +13235,12 @@
   <block id="1ad5a70ead9bdd722df6000495e21c24" category="list-text">如果您執行的是 Fabric OS 8.2.x 及更早版本、則必須將授權方法變更為動態：</block>
   <block id="7fafa568d6f3c9a0ee98323f64b1c01c" category="admonition">在 Fabric OS 9.0 及更新版本中、授權方法預設為動態。不支援靜態授權方法。</block>
   <block id="0b6c4085e3a8dba280dd11e4bbbbeee1" category="paragraph">您可以使用「使用許可」命令來驗證是否已安裝使用許可。</block>
+  <block id="6c05b41ac12af301a1c1201b16997220" category="paragraph">您必須同時從兩個站台執行本程序中的步驟。</block>
+  <block id="a934aebb7868eacad4999d15212ac85f" category="list-text">對於四節點或八節點 MetroCluster 組態、請使用<block ref="1f019d491fcfc3956d780ccfd54601ba" prefix=" " category="inline-code"></block> 和<block ref="6c99881ddd2f188436900ed8d41d99ba" prefix=" " category="inline-code"></block> 參數：</block>
+  <block id="28289de886d4bf23487d962fb6a696a3" category="summary">您可以將 SAS 磁碟櫃堆疊熱新增至現有的一對具有可用連接埠的 FiberBridge 7600N 或 7500N 橋接器。</block>
+  <block id="2e53212ba8ca8b35cbf4ed2b9eb52b0c" category="doc">將一堆 SAS 磁碟櫃熱新增至現有的一對 FiberBridge 7600N 或 7500N 橋接器</block>
+  <block id="e3e17f353727a0bf80bc5f781fadd978" category="list-text">必須連接 FiberBridge 7600N 或 7500N 橋接器、並具有可用的 SAS 連接埠。</block>
+  <block id="7ec840edd23c7b1a5bd3b9167d726942" category="list-text">新增堆疊後、檢查橋接器上是否有任何健全狀況警示：</block>
+  <block id="4aa202a3c65f2813f56a71404d4e0d9f" category="paragraph">八個節點</block>
+  <block id="74c873abf18bb043c43561d25adce539" category="paragraph"><block ref="74c873abf18bb043c43561d25adce539" category="inline-link-macro-rx"></block></block>
 </blocks>

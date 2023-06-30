@@ -13,9 +13,13 @@ summary: 您必須先關閉MetroCluster 整個VMware FC組態和所有設備的�
 [role="lead"]
 您必須先關閉MetroCluster 整個VMware FC組態和所有設備的電源、才能開始進行現場維護或重新配置。
 
+.關於這項工作
+您必須同時從兩個站台執行本程序中的步驟。
+
 
 NOTE: 從ONTAP Sflex9.8開始、「*儲存交換器*」命令將取代為「*系統交換器*」。下列步驟顯示「*儲存交換器*」命令、但ONTAP 如果您執行的是更新版本的資訊、則最好使用「*系統交換器*」命令。
 
+.步驟
 . 驗MetroCluster 證MetroCluster 以支援功能驗證的兩個站台的支援功能組態。
 +
 .. 確認MetroCluster 執行功能組態、並確認操作模式正常。+"* MetroCluster 《*》節目*
@@ -54,11 +58,11 @@ cluster_A_site_A::*>metrocluster modify -auto-switchover-failure-domain auso-dis
 ----
 . 使用下列命令停止節點：「* halt *」
 +
-** 若為四節點或八節點MetroCluster 的不全功能組態、請使用參數：「*禁止接管*」
+** 對於四節點或八節點 MetroCluster 組態、請使用 `*inhibit-takeover*` 和 `*skip-lif-migration-before-shutdown*` 參數：
 +
 [listing]
 ----
-system node halt -node node1_SiteA -inhibit-takeover true -ignore-quorum-warnings true
+system node halt -node node1_SiteA -inhibit-takeover true -ignore-quorum-warnings true -skip-lif-migration-before-shutdown true
 ----
 ** 如需雙節點MetroCluster 的效能不全組態、請使用以下命令：
 +
