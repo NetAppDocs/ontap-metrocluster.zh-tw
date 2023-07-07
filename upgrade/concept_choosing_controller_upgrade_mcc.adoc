@@ -134,7 +134,7 @@ link:task_upgrade_controllers_in_a_four_node_ip_mcc_us_switchover_and_switchback
  a| 
 FC
  a| 
-使用 `system controller replace` 命令並交換控制器模組和NVM（AFF 僅從還原A700升級至AFF 還原A900）
+使用「系統控制器置換」命令來升級相同機箱中的控制器機型
  a| 
 9.10.1及更新版本
  a| 

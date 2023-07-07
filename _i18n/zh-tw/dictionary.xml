@@ -390,7 +390,6 @@
   <block id="dbe07d3b0e16c3d4d765887b1b29b7bd" category="list-text">問題3：node_B_1 Pool1</block>
   <block id="36a6b2d82f1c99925006210a57878b24" category="list-text">Q4：node_B_2 Pool1</block>
   <block id="f3a88820bdb6aec9f587dc31d6c8d2a5" category="paragraph">每個機櫃上的分割區都用於建立根Aggregate。根Aggregate在每個叢中包含下列分割區：</block>
-  <block id="ebc41c749d217e4e33d72e9e61f637ae" category="paragraph">僅限24個內部磁碟機</block>
   <block id="5f09ad28ed34c8a5a9d9a71b6cfab3ac" category="section-title">ADP和磁碟指派、位於AFF Solida300系統上</block>
   <block id="eef4995b2b5cb936fd39ce523f41f36e" category="paragraph">96個磁碟機</block>
   <block id="e6668b4aac77d165570602be7eb7cec3" category="paragraph">磁碟機會依機櫃自動指派。</block>
@@ -10711,13 +10710,11 @@
   <block id="3545d6bfcbf822da47d2253b1d36541e" category="paragraph">在升級之前、您必須先收集每個節點的資訊、並視需要調整網路廣播網域、移除任何VLAN和介面群組、以及收集加密資訊。</block>
   <block id="bd644239cebf0eee7e6c7d4b4e3a0c40" category="paragraph">此工作是在現有MetroCluster 的不只是功能的基礎上執行。</block>
   <block id="e8b2b31f6129e480376a3948b9b9d73c" category="list-text">收集MetroCluster 這個功能不實的組態節點系統ID：</block>
-  <block id="3c0b6cb420c455a5a165c08c7cd7af73" category="paragraph">在更換程序期間、您將以控制器模組的系統ID來取代這些系統ID。</block>
   <block id="783c0ee630587e0a74bf53bfb650c2e7" category="paragraph">在此範例中、若為四節點MetroCluster 的SFC組態、則會擷取下列舊系統ID：</block>
   <block id="52d83d7ca0d0ff43bc0929d376512989" category="list-text">節點_a_1-A700：537037649</block>
   <block id="a0efecab010293ebd247221cd9cca871" category="list-text">節點_a_2-A700：537407030</block>
   <block id="c5c663e6628e19ffabcbcb01ecaa23e3" category="list-text">節點_B_1-A700：0537407114</block>
   <block id="447b7bdefc8e750f8d7dab18bb9172ea" category="list-text">節點_B_2-A700：537035354</block>
-  <block id="3401f9f19dd2ad33d88a3a8363ed6c9b" category="list-text">收集每個節點的連接埠和LIF資訊。</block>
   <block id="cb06300d68318f6a2b2782f2f09beaf8" category="paragraph">您應該為每個節點收集下列命令的輸出：</block>
   <block id="b789920aa34a06ff52a0a140eb8211ba" category="list-text">「網路介面show -role叢集、node-mgmt」</block>
   <block id="4fb12e23a9f5fb90c604b2b0c7dbf88a" category="list-text">「網路連接埠show -node-name_-type Physical」</block>
@@ -10983,7 +10980,6 @@
   <block id="8005ab9a73c38cc367636a0ec9e8fa35" category="paragraph">「System Controller replace show」（系統控制器更換顯示）</block>
   <block id="a0e8bd8a19cc4080f31b71bf720b5cea" category="paragraph">從合作夥伴叢集執行「show」命令下所列的命令。</block>
   <block id="3894726aa348d9a18ddd016a54497034" category="list-text">收集MetroCluster 節點的系統ID（以「Sof the Sof the Sof the nodes in the Sof the S</block>
-  <block id="3cd530184990375ba5ce23dfb543233c" category="paragraph">在更換程序期間、您將以新控制器模組的系統ID來取代這些系統ID。</block>
   <block id="1cd4744ff6d97a425af9a0e34512335b" category="list-text">node_a_1-old：40687441258</block>
   <block id="58091da607d7ce6b90f5b3bdc5df9969" category="list-text">node_a_2-old：4068741260</block>
   <block id="9bffdee166425a2a1facb56313eda964" category="list-text">node_B_1-old：40687441254</block>
@@ -11573,7 +11569,6 @@
   <block id="fb7af1863497df9dda3e65ea0159d317" category="paragraph">必須從組態中移除舊的控制器。</block>
   <block id="9cf18883abd310f0e24341194095b229" category="list-text">如果使用root加密、視ONTAP 使用的是哪個版本的資訊而定、請選取開機功能表選項、或是針對金鑰管理組態發出開機功能表命令。</block>
   <block id="716a92112769d0f62895dc8c3a9fe47f" category="list-text">從ONTAP 功能表9.8開始、選取開機功能表選項。</block>
-  <block id="52b1f5429bdd6813cde83cf7eb1f6838" category="list-text">在更新版本的版本中、發出開機功能表命令。ONTAP</block>
   <block id="8cb7388f916ea57692be4e2442a4bb6e" category="cell">在開機功能表提示字元中輸入此命令...</block>
   <block id="945a7facca1121e7c5b6eed95ea1b03a" category="paragraph">「主機蓋內建金鑰管理程式」</block>
   <block id="e606299b52f4f296d9e1024342b77a75" category="paragraph">「主機蓋外部索引管理程式」</block>
@@ -12040,7 +12035,6 @@
   <block id="41a799bcc3e4afaad880fb5ecde437ff" category="sidebar">設定FC至SAS橋接器以進行健全狀況監控</block>
   <block id="dd20522d7848c343bdb11bf7a434d0ad" category="sidebar">之後傳送自訂AutoSupport 的動態訊息、將節點新增MetroCluster 至「動態影像」組態</block>
   <block id="0344e1867e953d0d51eac7e816dee9fe" category="sidebar">移除Disaster Recovery群組</block>
-  <block id="cf5928613cf8b77d8355882cdec38712" category="paragraph">僅限16個內部磁碟機</block>
   <block id="90cd0db781b4639c1c46407e5a4f0a93" category="paragraph">+如果MetroCluster 使用的VLAN為10/20或大於100、則可將下列平台機型新增至現有的支援功能組態。如果使用任何其他VLAN、則MetroCluster 無法將這些平台新增至現有組態、因為無法設定此介面。如果您使用任何其他平台、則VLAN組態並不相關、ONTAP 因為在介紹中並不需要。</block>
   <block id="26ae7bdd1d6fb8c4886e6fde8d12601c" category="list-text">延遲</block>
   <block id="37e445da4970f1c0106716e8dba83be8" category="paragraph">如果使用的VLAN是10/20或大於100、則可將下列平台機型新增至現有MetroCluster 的支援功能組態。如果使用任何其他VLAN、則MetroCluster 無法將這些平台新增至現有組態、因為無法設定此介面。如果您使用任何其他平台、則VLAN組態並不相關、ONTAP 因為在介紹中並不需要。</block>
@@ -12633,7 +12627,6 @@
   <block id="5f290ae29562085cc0cef01e0f484b1d" category="paragraph"><block ref="5f290ae29562085cc0cef01e0f484b1d" category="inline-link-macro-rx"></block></block>
   <block id="28d9d9e03b64356e498c630e744a9cdf" category="paragraph"><block ref="28d9d9e03b64356e498c630e744a9cdf" category="inline-link-macro-rx"></block></block>
   <block id="0feef50dfeaf08303a2284d2c2ff6eb4" category="cell">Aggregate重新配置</block>
-  <block id="5c6fc64fa41aef579f27097f378325cb" category="paragraph">使用<block ref="616743bfa4fd61d558c556fe614cb2e9" prefix=" " category="inline-code"></block> 命令並交換控制器模組和NVM（AFF 僅從還原A700升級至AFF 還原A900）</block>
   <block id="38a031e8dad2eab70ea05c570be3935e" category="paragraph"><block ref="38a031e8dad2eab70ea05c570be3935e" category="inline-link-rx"></block></block>
   <block id="b80a36d83825959bd2fd92ffd36709e2" category="paragraph"><block ref="b80a36d83825959bd2fd92ffd36709e2" category="inline-link-rx"></block></block>
   <block id="ddf68ce76cf70c3d2061e221edeb7ae1" category="paragraph"><block ref="ddf68ce76cf70c3d2061e221edeb7ae1" category="inline-link-rx"></block></block>
@@ -13243,4 +13236,14 @@
   <block id="7ec840edd23c7b1a5bd3b9167d726942" category="list-text">新增堆疊後、檢查橋接器上是否有任何健全狀況警示：</block>
   <block id="4aa202a3c65f2813f56a71404d4e0d9f" category="paragraph">八個節點</block>
   <block id="74c873abf18bb043c43561d25adce539" category="paragraph"><block ref="74c873abf18bb043c43561d25adce539" category="inline-link-macro-rx"></block></block>
+  <block id="0159b80d745d9b405520a30a29416d2d" category="paragraph">在升級之前、您必須收集每個舊節點的資訊、並在必要時調整網路廣播網域、移除任何 VLAN 和介面群組、以及收集加密資訊。</block>
+  <block id="3b2740b2f65f79e770509c9b837df2de" category="paragraph">在升級過程中、您將以控制器模組的系統 ID 取代這些舊的系統 ID 。</block>
+  <block id="22891a1da512f437a0d8620852295bd7" category="list-text">收集每個舊節點的連接埠和 LIF 資訊。</block>
+  <block id="30872b2ff811f5e5d51bcf20468c730a" category="paragraph">使用「系統控制器置換」命令來升級相同機箱中的控制器機型</block>
+  <block id="e5fb04e9be2a470a838a8ae287e6100a" category="paragraph">在升級過程中、您將以新控制器模組的系統 ID 來取代這些舊系統 ID 。</block>
+  <block id="9e25219bfef39dc2d94805b599244f8d" category="open-title">更新版本ONTAP</block>
+  <block id="5a830b76ff5a71db59759b13f383410c" category="open-title">更新版本ONTAP</block>
+  <block id="5227f75c6a1f77d9623c7a089f1e3ea7" category="paragraph">對於 ONTAP 9.7 及更早版本、請發出開機功能表命令。</block>
+  <block id="3e3df3be76a18ca2c89904765d97f078" category="list-text">在兩個叢集上執行下列命令、確認可以進行接管、而且節點已連線：</block>
+  <block id="3963205d7c5d1cb2f000d61f16c10f1d" category="paragraph">24 個內部磁碟機</block>
 </blocks>

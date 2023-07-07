@@ -137,7 +137,7 @@ Node-A-1    Failed         MetroCluster check failed. Reason : MCC check showed 
 --
 「MetroCluster 這個節點顯示欄位節點系統ID、DR-Partner SystemID」
 
-在更換程序期間、您將以新控制器模組的系統ID來取代這些系統ID。
+在升級過程中、您將以新控制器模組的系統 ID 來取代這些舊系統 ID 。
 
 在此範例中、若為四節點MetroCluster 的SFC組態、則會擷取下列舊系統ID：
 
@@ -175,7 +175,7 @@ dr-group-id cluster    node          node-systemid dr-partner-systemid
 2 entries were displayed.
 ----
 --
-. 收集每個節點的連接埠和LIF資訊。
+. 收集每個舊節點的連接埠和 LIF 資訊。
 +
 您應該為每個節點收集下列命令的輸出：
 

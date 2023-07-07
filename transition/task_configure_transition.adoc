@@ -720,6 +720,22 @@ Do you want to continue? {y|n}: y
 
 cluster_A::>
 ....
+. 在兩個叢集上執行下列命令、確認可以進行接管、而且節點已連線：
++
+「容錯移轉顯示」
+
++
+[listing]
+----
+cluster_A::> storage failover show
+                                    Takeover
+Node           Partner              Possible    State Description
+-------------- -------------------- ---------   ------------------
+Node_FC_1      Node_FC_2              true      Connected to Node_FC_2
+Node_FC_2      Node_FC_1              true      Connected to Node_FC_1
+Node_IP_1      Node_IP_2              true      Connected to Node_IP_2
+Node_IP_2      Node_IP_1              true      Connected to Node_IP_1
+----
 . 以進階權限將MDV_CRS磁碟區從舊節點移至新節點。
 +
 .. 顯示用於識別MDV磁碟區的磁碟區：

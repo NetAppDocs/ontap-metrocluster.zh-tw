@@ -35,8 +35,7 @@ https://hwu.netapp.com/["NetApp Hardware Universe"^]
 +
 下表顯示控制器升級所支援的機型對照表。
 
-
-
++
 |===
 
 
@@ -44,19 +43,19 @@ https://hwu.netapp.com/["NetApp Hardware Universe"^]
 
 
  a| 
-* 部分A700 AFF
+** 部分A700 AFF
 
  a| 
-* 解答900 AFF
+** 解答900 AFF
 
 
 
 
  a| 
-* FAS9000
+** FAS9000
 
  a| 
-* FAS9500
+** FAS9500
 
 
 |===
@@ -331,7 +330,7 @@ https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp
 
 === 在升級之前收集資訊
 
-在升級之前、您必須先收集每個節點的資訊、並視需要調整網路廣播網域、移除任何VLAN和介面群組、以及收集加密資訊。
+在升級之前、您必須收集每個舊節點的資訊、並在必要時調整網路廣播網域、移除任何 VLAN 和介面群組、以及收集加密資訊。
 
 .關於這項工作
 此工作是在現有MetroCluster 的不只是功能的基礎上執行。
@@ -342,7 +341,7 @@ https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp
 「MetroCluster 這個節點顯示欄位節點系統ID、DR-Partner SystemID」
 
 +
-在更換程序期間、您將以控制器模組的系統ID來取代這些系統ID。
+在升級過程中、您將以控制器模組的系統 ID 取代這些舊的系統 ID 。
 
 +
 在此範例中、若為四節點MetroCluster 的SFC組態、則會擷取下列舊系統ID：
@@ -367,7 +366,7 @@ dr-group-id cluster    node           node-systemid ha-partner-systemid dr-partn
 
 4 entries were displayed.
 ----
-. 收集每個節點的連接埠和LIF資訊。
+. 收集每個舊節點的連接埠和 LIF 資訊。
 +
 您應該為每個節點收集下列命令的輸出：
 
