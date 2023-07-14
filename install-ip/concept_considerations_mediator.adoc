@@ -67,3 +67,9 @@ MAUSO只會在下列情況下啟動：
 
 
 
+
+*相關資訊*
+
+* link:concept-risks-limitations-automatic-switchover.html["瞭解使用 MetroCluster 自動強制切換的風險和限制"]
+* link:../manage/concept_understanding_mcc_data_protection_and_disaster_recovery.html#mediator-assisted-automatic-unplanned-switchover-in-metrocluster-ip-configurations["瞭解如何在 MetroCluster IP 組態中管理 MAUSO"]
+
