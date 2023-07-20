@@ -1119,9 +1119,7 @@
   <block id="807910399f003942a09396612760caef" category="list-text">第四季有四個磁碟機：18、19、20、21</block>
   <block id="2ad434ab593fd445c83cdbf1d5d00216" category="section-title">在堆疊中混合IOM12和IOM 6模組</block>
   <block id="697ea025ecb303d4f40d1bf3a8b4bde0" category="inline-link">NetApp互通性對照表工具IMT （不含）</block>
-  <block id="2d716fdf7c87986b17b0909afae65ddf" category="paragraph">您的ONTAP 版本必須支援機櫃混合。請參閱<block ref="20b3ed9b2f9da473a6e4768420d303b2" category="inline-link-rx"></block> 查看ONTAP 您的版本是否支援機櫃混合。</block>
   <block id="420766222a929fd9b32b65dbb060314b" category="inline-link">將含有IOM12模組的熱新增磁碟櫃放到具有IOM6模組的磁碟櫃堆疊中</block>
-  <block id="1e037233961e5101c212f4947f98f38d" category="paragraph">如需機櫃混合的詳細資訊、請參閱<block ref="96c52bfd2d59063b848ae852888ce36d" category="inline-link-rx"></block></block>
   <block id="01fe01722f1775c1b67e7b20a14951de" category="summary">從功能支援的9.9開始ONTAP 、MetroCluster 即可透過IP路由（第3層）後端連線來實作支援的IP組態。</block>
   <block id="4b7a16d6d162a666fd84016cdf343a72" category="paragraph">後端交換器可直接連線至路由IP網路、或直接連線至路由器（如下列簡化範例所示）、或透過其他介入式交換器連線。MetroCluster</block>
   <block id="39a69537fd3d24cb81ea2bc0e26adec5" category="image-alt">MCC layer3後端</block>
@@ -13251,4 +13249,70 @@
   <block id="8358918e22c23bbc5881522d821dd13e" category="list-text"><block ref="8358918e22c23bbc5881522d821dd13e" category="inline-link-macro-rx"></block></block>
   <block id="e3aa563f27ef718a2d0767e57ad2f0c2" category="inline-link-macro">瞭解如何在 MetroCluster IP 組態中管理 MAUSO</block>
   <block id="b1a9c412046cbd6accefdfa3f6f94916" category="list-text"><block ref="b1a9c412046cbd6accefdfa3f6f94916" category="inline-link-macro-rx"></block></block>
+  <block id="3ee4e0077776d9fbd0c4f6992af9bbf9" category="summary">您可以不中斷地移轉使用進階磁碟分割（ ADP ）的現有根集合體。</block>
+  <block id="74015d5b319e36b12436216a112999aa" category="doc">在 MetroCluster IP 組態中移轉使用 ADP 設定的根集合體</block>
+  <block id="24a789c2302c76cbfe854e55ad5fc147" category="paragraph">如果根集合體空間不足、或您想要從使用低容量 SSD 切換到大容量 SSD 、您可以不中斷地移轉使用進階磁碟分割（ ADP ）的現有根集合體。</block>
+  <block id="1e6ef0d7d8876fb7ad623724c319d6dc" category="list-text">必須啟用本機高可用度（ HA ）配對、才能進行儲存容錯移轉。</block>
+  <block id="7fb0823205360f944da2d5bbda7bb66c" category="list-text">組態應保持穩定狀態、並正常提供資料、不會經常中斷。</block>
+  <block id="f0df128e0728d89f636d034d20727cc3" category="list-text">在此程序中、請勿執行任何硬體升級或任何可能造成中斷的其他作業。</block>
+  <block id="dcd6c84f0be895a0014bccb3695847f8" category="list-text">您一次只能移轉一個根 Aggregate 。請勿嘗試同時移轉兩個根集合體。</block>
+  <block id="cc4ed671d086b5e6b57a7330c8b5a086" category="list-text">[[step 1 、 Verify the health of the configuration ]] 檢查組態的健全狀況。</block>
+  <block id="056a7858b288e3d7ed97852dd1108acd" category="list-text">檢查MetroCluster 每個叢集上的功能是否已設定且處於正常模式：
+ +<block ref="0d51371cbb850772d2130a36f4368df4" prefix=" " category="inline-code"></block></block>
+  <block id="25ffe8e51f1f537dafdb1676802b36a5" category="list-text">確認已啟用本機 HA 配對以進行儲存容錯移轉：</block>
+  <block id="f041b96228e7b3d71de8f1c0526b26d2" category="list-text">將備用磁碟歸零：</block>
+  <block id="e5d9d6b5400b0657d0060a2823cabd1d" category="paragraph"><block ref="20a01c07125289631f92854eb8396610" prefix="" category="inline-code"></block></block>
+  <block id="6986dfd84142c4fac27da9b3b5c3e670" category="list-text">識別根 Aggregate 大小：</block>
+  <block id="a61fbdb6104b1f10d4038d76ca03998e" category="paragraph"><block ref="9914c8f3706500d4a11aa48e975b2509" prefix="" category="inline-code"></block></block>
+  <block id="1dd1bcb3443d6b0f45f22f3f5898cb6a" category="paragraph">在以下範例中、根 Aggregate 在「 Pool0 」中有十個磁碟、在「 Pool1 」中有十個磁碟。</block>
+  <block id="6f375ad06cba5e1bf16231fe03094a5a" category="list-text">指派容器磁碟。</block>
+  <block id="f288bce4376ff298b02106d1f5c7f9ab" category="paragraph">指派磁碟之前、請確認已將建議的備用磁碟機數量指派給每個節點。這些磁碟機會在根 Aggregate 移轉之前進行分割。如需詳細資訊、請參閱 <block ref="6d810bbb5852716fcad9edf1241d237a" category="inline-link-macro-rx"></block>。</block>
+  <block id="1ef1457e8523d1b3b994840932af8c34" category="paragraph">執行下列命令來指派磁碟：</block>
+  <block id="85815306b7c321900c699ff1f4aa3aa5" category="paragraph"><block ref="8a06b22dd0db1686240683a5bb516abd" prefix="" category="inline-code"></block></block>
+  <block id="a8c587fec8f9799e9250416b424a84eb" category="list-text">識別根分割區大小。</block>
+  <block id="3920f2ea7ca6e1b4f5cf423a53bc9051" category="paragraph">根分割區大小取決於每個節點上可供分割區使用的磁碟數量。NetApp 建議每個節點至少有 12 個磁碟機可用於分割區。</block>
+  <block id="4f814dafb8c2da78db77109cfb4deca0" category="paragraph">您可以使用下表來判斷根 Aggregate 配置：</block>
+  <block id="63cb9f7c10b1721a063c8f1e59881ab1" category="cell">要分割的磁碟數</block>
+  <block id="759b9dbbcbd74f5ad1ddf35c759a3c59" category="cell">根 Aggregate 配置</block>
+  <block id="2004308892a701a728d335b9fce41368" category="cell">每個節點 4 個磁碟</block>
+  <block id="600217b9247426847aab490af6580977" category="cell">2 個資料磁碟機和 2 個同位元磁碟機</block>
+  <block id="e0304dab20a48b302ec7b0c39efc367d" category="cell">每個節點 12 個磁碟</block>
+  <block id="8d4c55399ede5d32bca57645cff078c3" category="cell">8 個資料磁碟機、 2 個同位元磁碟機和 2 個備用磁碟機</block>
+  <block id="feb2a36c1f236464e86e8560b95f695b" category="cell">每個節點 24 個磁碟</block>
+  <block id="25110366c8f2da7b56b579a6e0552bcb" category="cell">20 個資料磁碟機、 2 個同位元磁碟機和 2 個備用磁碟機</block>
+  <block id="c773eba71a70989d44e90c6022e99e6c" category="paragraph">若要識別根分割區大小、您可以在所有資料磁碟機之間平均分配 4K 區塊的總數。</block>
+  <block id="ab9988dc196a45ed6732c7cc31004d6c" category="paragraph">例如、如果您的根彙總配置是 8 個資料磁碟機、 2 個同位元磁碟機、以及 2 個根彙總大小為 112958795 區塊的備用磁碟機、則必須將 112958795 除以 8 才能取得根分割區大小。</block>
+  <block id="781da94200d9a07043815bafc29d2c3d" category="paragraph">（ 112958795 / 8 ） = 14119849.375</block>
+  <block id="9e2cac5b50187a5236c91e11f6395855" category="paragraph">此圖四捨五入後、根分割區大小為 14119850 。</block>
+  <block id="1d3e8acab7097ab9196691e4dad86e0d" category="list-text">分割根 Aggregate 中的每個磁碟：</block>
+  <block id="46f57cee9235c6230c51a255d962250c" category="paragraph"><block ref="92a47f55cb3bffcba7f27685c266eba5" prefix="" category="inline-code"></block></block>
+  <block id="105a09c5d661de6f8c24b06c0411962a" category="list-text">指派分割區。</block>
+  <block id="f03d16bce31de329c4e742292fc93b37" category="list-text">將 P3 分割區指派給擁有容器磁碟的同一個節點：</block>
+  <block id="fa70c741f02b049be375a76bd70aca71" category="paragraph"><block ref="1cf19cfaba68ec589ad709b775196d98" prefix="" category="inline-code"></block></block>
+  <block id="5bfbaf4243f6043be413593a0f7ffdf4" category="list-text">將 P1 分割區指派給 HA 配對中系統 ID 編號較低的系統：</block>
+  <block id="56e9a79cfa3eed80b5c15da245a60890" category="paragraph"><block ref="6d33ff246b76244db45f233884827afe" prefix="" category="inline-code"></block></block>
+  <block id="62ef6f7ab1c059659a81dc67d8e73e53" category="list-text">將 P2 分割區指派給 HA 配對中系統 ID 編號較高的系統：</block>
+  <block id="f96d86554fdac108c5a1432d469a729b" category="paragraph"><block ref="f25093ef7292e8988c1b58a77f8c6cb4" prefix="" category="inline-code"></block></block>
+  <block id="e2e637afa208920387f5053e40ed58d2" category="paragraph">對每個分割磁碟重複此步驟。</block>
+  <block id="05676fea1d1887cfdd6f5af68de0df0a" category="list-text">確認可以接管：</block>
+  <block id="8a85734d78fdaf400bfa62b4b651fd99" category="list-text">移轉根 Aggregate 。</block>
+  <block id="df71252ed58d68e80437563dfbd33558" category="paragraph">針對每個節點、執行移轉、指定 Pool0 中的磁碟清單、並將目標 RAID 類型指定為參數：</block>
+  <block id="e9e0447af35e7e0de4740db0f20764ed" category="paragraph"><block ref="83aa458cb02ebc1ec53a3792475063c2" prefix="" category="inline-code"></block></block>
+  <block id="cdd05231f7224a23cbac4281a2438326" category="paragraph">例如、如果「 cluster-01 」的根 Aggregate 包含十個具有「 RAID_dp 」的磁碟、則下列命令會移轉根 Aggregate ：</block>
+  <block id="cd0e059df97825ab157f1939efa364e7" category="admonition">如果磁碟數量不足、請新增更多磁碟或選擇不同的 RAID 類型。</block>
+  <block id="7d6bbe7b71b13c2b54cec2ee662fbdf1" category="paragraph">移轉程序可能需要幾分鐘的時間才能完成。在移轉期間、節點會重新開機數次、而您可能會在其他節點上看到錯誤、您可以安全地忽略這些錯誤、並等待移轉程序完成。</block>
+  <block id="d868d604f3bd20c9f9a11a2520543292" category="list-text">您也可以監控移轉進度。</block>
+  <block id="eda60734cb89d535e800dab8da6383eb" category="paragraph">從第二個站台執行：</block>
+  <block id="5881411832603d39f355beead4af51c8" category="paragraph"><block ref="7303f257f154b13cdaca05ba99fbd04f" prefix="" category="inline-code"></block></block>
+  <block id="c0d4d16bc2ccc265fcf1e6ff40c7d881" category="list-text">重新啟用所有 MetroCluster IP 節點的 RAID 自動分割：</block>
+  <block id="4ae87ec4d41caa9c10f63ab9906652fe" category="paragraph"><block ref="b3c8c569f5af61a744510d8f9bdf90bf" prefix="" category="inline-code"></block></block>
+  <block id="9a11d290badf0b1c9242a25f4679755b" category="list-text">確認移轉成功：</block>
+  <block id="8357a096ccf9fce81f2506410698452e" category="paragraph"><block ref="e297cfda2aceb4e7716b304f7e66f6cd" prefix="" category="inline-code"></block></block>
+  <block id="1ea488beca98f867b6167d03c9864f18" category="inline-xref">驗證組態的健全狀況</block>
+  <block id="6888438bdb2750b7d57e71e38ad05afd" category="list-text">重複步驟至 <block ref="02254f32065f3812e96478a40b394643" category="inline-xref-macro-rx"></block>。</block>
+  <block id="7632b8724806890acaf96c668d641251" category="inline-link-macro">瞭解 MetroCluster IP 組態中的自動磁碟機指派和 ADP 系統</block>
+  <block id="04a1df006b1c7589273df10cf6fc5ac4" category="paragraph"><block ref="04a1df006b1c7589273df10cf6fc5ac4" category="inline-link-macro-rx"></block></block>
+  <block id="85488d881ebf03beb1eca3be4b5fda44" category="paragraph">您的ONTAP 版本必須支援機櫃混合。請參閱<block ref="e78382cc6f841e7f00c97b18a2e30f41" category="inline-link-rx"></block> 查看ONTAP 您的版本是否支援機櫃混合。</block>
+  <block id="5fdc7ff67ace146413ecd7d44157aca4" category="paragraph">如需機櫃混合的詳細資訊、請參閱<block ref="532c1f47a9370f9e21538610051f3830" category="inline-link-rx"></block></block>
+  <block id="2b2a5cb87d298900008c3873faf7fc40" category="sidebar">在 MetroCluster IP 組態中移轉具有 ADP 的根 Aggregate</block>
 </blocks>

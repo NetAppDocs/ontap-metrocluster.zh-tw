@@ -220,6 +220,8 @@ e0c、e0d
 e0g、e0小時
 
 |===
+link:concept_considerations_drive_assignment.html["瞭解 MetroCluster IP 組態中的自動磁碟機指派和 ADP 系統"]
+
 
 
 == 集區與磁碟機需求（支援的最低需求）
@@ -300,6 +302,6 @@ e0g、e0小時
 
 == 在堆疊中混合IOM12和IOM 6模組
 
-您的ONTAP 版本必須支援機櫃混合。請參閱 https://mysupport.netapp.com/NOW/products/interoperability["NetApp互通性對照表工具IMT （不含）"] 查看ONTAP 您的版本是否支援機櫃混合。
+您的ONTAP 版本必須支援機櫃混合。請參閱 https://mysupport.netapp.com/NOW/products/interoperability["NetApp互通性對照表工具IMT （不含）"^] 查看ONTAP 您的版本是否支援機櫃混合。
 
-如需機櫃混合的詳細資訊、請參閱 https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-mix-hotadd/home.html["將含有IOM12模組的熱新增磁碟櫃放到具有IOM6模組的磁碟櫃堆疊中"]
+如需機櫃混合的詳細資訊、請參閱 https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-mix-hotadd/home.html["將含有IOM12模組的熱新增磁碟櫃放到具有IOM6模組的磁碟櫃堆疊中"^]
