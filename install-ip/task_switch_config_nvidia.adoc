@@ -120,6 +120,10 @@ Enter yes or no: yes
 .開始之前
 * 您必須使用序列主控台連線連接至交換器。
 * 可透過HTTP存取Cummulis交換器軟體映像。
++
+
+NOTE: 如需安裝 Cumulus Linux 的詳細資訊、請參閱 link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-nvidia-sn2100/configure-overview-sn2100-cluster.html#initial-configuration-overview["NVIDIA SN2100交換器的安裝與組態總覽"^]
+
 * 您必須擁有root密碼才能存取命令。
 
 
