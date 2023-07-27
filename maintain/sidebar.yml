@@ -98,8 +98,6 @@ entries:
   url: "/maintain/task_replace_a_shelf_nondisruptively_in_a_mcc_fc_configuration.html"
 - title: 何時將根磁碟區移轉至新目的地
   url: "/maintain/concept_migrating_root_volumes_to_a_new_destination.html"
-- title: 在 MetroCluster IP 組態中移轉具有 ADP 的根 Aggregate
-  url: "/maintain/task_migrating_root_agg_with_adp.html"
 - title: 在MetroCluster 不完整的組態中移動中繼資料磁碟區
   url: "/maintain/task_move_a_metadata_volume_in_mcc_configurations.html"
 - title: 在MetroCluster 不完整的組態中重新命名叢集

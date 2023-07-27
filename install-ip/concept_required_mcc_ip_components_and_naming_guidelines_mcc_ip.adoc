@@ -220,7 +220,7 @@ e0c、e0d
 e0g、e0小時
 
 |===
-link:concept_considerations_drive_assignment.html["瞭解 MetroCluster IP 組態中的自動磁碟機指派和 ADP 系統"]
+link:concept_considerations_drive_assignment.html["瞭解 MetroCluster IP 組態中的自動磁碟機指派和 ADP 系統"]。
 
 
 
