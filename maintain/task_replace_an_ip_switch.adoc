@@ -39,7 +39,7 @@ NOTE: 如果您更換交換器或升級至不同的交換器、則可以安裝�
 [NOTE]
 ====
 ** 如果您使用共享儲存設備 MetroCluster IP 交換器來新增或移除 MetroCluster IP 組態中的機櫃、請遵循中的步驟 link:https://docs.netapp.com/us-en/ontap-metrocluster/maintain/task_add_shelves_using_shared_storage.html["使用共享儲存 MetroCluster 交換器將機櫃新增至 MetroCluster IP"]
-** 您的 MetroCluster IP 可能已直接連線至 NS224 機櫃或專用儲存交換器。
+** 您的 MetroCluster IP 組態可能已直接連線至 NS224 機櫃或專用儲存交換器。
 
 
 ====

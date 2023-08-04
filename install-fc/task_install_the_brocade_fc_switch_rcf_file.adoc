@@ -42,18 +42,6 @@ Password: <user input>
 +
 輸入密碼後、交換器會下載並執行組態檔。
 
-. 持續啟用交換器：
-+
-「witchcfg堅持」
-
-+
-範例顯示如何持續啟用FC switch_a_1。
-
-+
-[listing]
-----
-FC_switch_A_1:admin> switchcfgpersistentenable
-----
 . 確認組態檔已設定交換器網域：
 +
 《秀》
@@ -161,6 +149,18 @@ FC_switch_A_1:admin> portcfglongdistance 21 LS 1 -distance 30
 [listing]
 ----
 FC_switch_A_1:admin> portcfglongdistance 21 LE 1
+----
+. 持續啟用交換器：
++
+「witchcfg堅持」
+
++
+範例顯示如何持續啟用FC switch_a_1。
+
++
+[listing]
+----
+FC_switch_A_1:admin> switchcfgpersistentenable
 ----
 . 確認IP位址設定是否正確：
 +
