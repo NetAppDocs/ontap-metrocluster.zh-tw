@@ -196,7 +196,7 @@ IP
  a| 
 韌體升級
  a| 
-link:maintain/task_upgrade_firmware_on_mcc_ip_switches.html["升級MetroCluster 韌體至靜態IP交換器"]
+link:task_upgrade_firmware_on_mcc_ip_switches.html["升級MetroCluster 韌體至靜態IP交換器"]
 
 
 
@@ -205,9 +205,9 @@ IP
  a| 
 RCF 檔案升級
  a| 
-link:maintain/task_upgrade_rcf_files_on_mcc_ip_switches.html["升級MetroCluster 不只是在靜態IP交換器上的RCF檔案"]
+link:task_upgrade_rcf_files_on_mcc_ip_switches.html["升級MetroCluster 不只是在靜態IP交換器上的RCF檔案"]
 
-link:maintain/task_upgrade_rcf_files_on_cisco_ip_switches_with_cleanupfiles.html["使用高效能檔案升級Cisco IP交換器上的RCF檔案"]
+link:task_upgrade_rcf_files_on_cisco_ip_switches_with_cleanupfiles.html["使用高效能檔案升級Cisco IP交換器上的RCF檔案"]
 
 
 
@@ -216,6 +216,6 @@ IP
  a| 
 重新命名交換器
  a| 
-link:maintain/task_rename_a_cisco_ip_switch.html["重新命名Cisco IP交換器"]
+link:task_rename_a_cisco_ip_switch.html["重新命名Cisco IP交換器"]
 
 |===
