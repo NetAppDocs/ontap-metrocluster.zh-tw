@@ -11675,7 +11675,6 @@
   <block id="01fd5a7c3bb1009fa8251ff0e9f26de3" category="paragraph"><block ref="01fd5a7c3bb1009fa8251ff0e9f26de3" category="inline-link-macro-rx"></block></block>
   <block id="0c6db123ffc5dea85a5d6efa7537d50b" category="paragraph"><block ref="0c6db123ffc5dea85a5d6efa7537d50b" category="inline-link-macro-rx"></block></block>
   <block id="0dd39f853425a9e387372f6c79ab0533" category="list-text">確認已建立DR群組。</block>
-  <block id="d201d18b165e21d1a9986863a5788d3c" category="admonition">您可以從MetroCluster 任一叢集設定靜態IP介面。此外、從ONTAP 版本號為32的9.1.1開始、如果您使用的是第3層組態、您也必須指定「-gateway'參數來建立MetroCluster 一個靜態IP介面。請參閱 <block ref="babfc343bda1ae07500c981be392a72d" category="inline-link-macro-rx"></block>。</block>
   <block id="5dc920411c59b1b9f32058239fb24330" category="list-text">驗證連接是否正確建立：MetroCluster 「不實組態設定連線顯示」</block>
   <block id="2dccf53d6ed326f889d8e764529b9794" category="list-text">驗證磁碟自動指派與分割：</block>
   <block id="3f95b2ea711d433e26a8b5eb63bbd17a" category="paragraph">「torage Aggregate mirror -Aggregate aggr0_node_a_1-new'」</block>
@@ -13265,4 +13264,5 @@
   <block id="3d371ae53e0538b3e0a7ddbfb529f302" category="paragraph"><block ref="3d371ae53e0538b3e0a7ddbfb529f302" category="inline-link-macro-rx"></block></block>
   <block id="d9d6b58e57305b9866d95c493eb0aa7a" category="paragraph"><block ref="d9d6b58e57305b9866d95c493eb0aa7a" category="inline-link-macro-rx"></block></block>
   <block id="2d27e76da02804de2afe9d209e5cbb1c" category="admonition">建議您至少保留 20% 的可用空間以容納鏡射的集合體、以獲得最佳的儲存效能和可用度。雖然建議非鏡射的集合體為 10% 、但檔案系統可能會使用額外 10% 的空間來吸收遞增變更。由於 ONTAP 的寫入時複製 Snapshot 架構、遞增變更會增加鏡射集合體的空間使用率。不遵守這些最佳實務做法可能會對效能造成負面影響。</block>
+  <block id="0e5e2d82a1039e41c19d2248f3b64787" category="admonition">您可以從MetroCluster 任一叢集設定靜態IP介面。</block>
 </blocks>
