@@ -17,7 +17,21 @@ summary: 您可以使用這項引導式自動化 MetroCluster 轉換作業、針
 
 == 支援的平台組合
 
-此程序僅支援 AFF A300 至 AFF A900 控制器升級。
+此程序支援在執行 ONTAP 9.13.1 及更新版本的系統上進行下列控制器升級。
+
+|===
+
+
+| 舊控制器 | 更換控制器 
+
+
+| 部分A300 AFF | 解答900 AFF 
+
+
+| FAS8200 | FAS9500 
+|===
+
+NOTE: 您可以使用上述手動升級程序、在執行 ONTAP 9.12.1 或 9.11.1 的系統上執行上表所列的控制器升級 link:task_upgrade_controllers_in_a_four_node_ip_mcc_us_switchover_and_switchback_mcc_ip.html["請按這裡"]。
 
 如需平台升級組合的詳細資訊、請參閱中的 MetroCluster IP 升級表 link:concept_choosing_controller_upgrade_mcc.html#supported-metrocluster-ip-controller-upgrades["選擇控制器升級程序"]。
 

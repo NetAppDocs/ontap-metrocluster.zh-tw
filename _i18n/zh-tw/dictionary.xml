@@ -13139,7 +13139,6 @@
   <block id="d87d22ecaeaff0e5d4bd4030a9e08302" category="sidebar">在四節點 MetroCluster IP 中使用切換功能升級控制器、並使用「系統控制器更換」命令（ ONTAP 9.13.1 及更新版本）切換回控制器</block>
   <block id="12651c133a2edc8c764efaddca32ca42" category="sidebar">重新整理四節點或八節點 MetroCluster IP 組態（ ONTAP 9.8 及更新版本）</block>
   <block id="f11af7573a10a71e1161a2099db36bcc" category="sidebar">展開 MetroCluster IP 組態</block>
-  <block id="fd069f5f1b9ec4fce867ea78d80b2049" category="paragraph">此程序僅支援 AFF A300 至 AFF A900 控制器升級。</block>
   <block id="f60298ca20150ed82728ebbcf934dcdd" category="paragraph">在預先檢查開始之前、如果已安裝 ONTAP Mediator 、系統會自動偵測並移除它。若要確認移除、系統會提示您輸入使用者名稱和密碼。當您完成升級、或預先檢查失敗、或您選擇不繼續升級時、您必須執行 <block ref="27c582b1d219a53bd62704e35b9572aa" category="inline-xref-macro-rx"></block>。</block>
   <block id="cf26e00f9d9d62aac6ab045ca55c7c29" category="list-text">您將使用中收集的資訊 <block ref="4349c160b4ba85d15c9d1b99e7fab03e" category="inline-xref-macro-rx"></block>。</block>
   <block id="a6d521ed969131c6ad881b1c930a769c" category="list-text">如果您使用的是新的交換器、請關閉舊的交換器、拔下纜線、然後實際移除舊的交換器。</block>
@@ -13265,4 +13264,11 @@
   <block id="d9d6b58e57305b9866d95c493eb0aa7a" category="paragraph"><block ref="d9d6b58e57305b9866d95c493eb0aa7a" category="inline-link-macro-rx"></block></block>
   <block id="2d27e76da02804de2afe9d209e5cbb1c" category="admonition">建議您至少保留 20% 的可用空間以容納鏡射的集合體、以獲得最佳的儲存效能和可用度。雖然建議非鏡射的集合體為 10% 、但檔案系統可能會使用額外 10% 的空間來吸收遞增變更。由於 ONTAP 的寫入時複製 Snapshot 架構、遞增變更會增加鏡射集合體的空間使用率。不遵守這些最佳實務做法可能會對效能造成負面影響。</block>
   <block id="0e5e2d82a1039e41c19d2248f3b64787" category="admonition">您可以從MetroCluster 任一叢集設定靜態IP介面。</block>
+  <block id="6212a1ad66c5ad9d3c50380aa91aab6a" category="list-text">無硬體故障</block>
+  <block id="8a1d06fd27bf0bfc6535b6a49185e591" category="paragraph">解答150 AFF</block>
+  <block id="36cbaf4511461b23b06f56ad7754e17d" category="paragraph">此程序支援在執行 ONTAP 9.13.1 及更新版本的系統上進行下列控制器升級。</block>
+  <block id="cfdade9e474e805958704ec0836f18ac" category="cell">更換控制器</block>
+  <block id="6c92285fa6d3e827b198d120ea3ac674" category="inline-link-macro">請按這裡</block>
+  <block id="4992f0045a6913a2fb77a09884c4e55c" category="admonition">您可以使用上述手動升級程序、在執行 ONTAP 9.12.1 或 9.11.1 的系統上執行上表所列的控制器升級 <block ref="4254cdc4ef28ceba663ec4031c88c9dd" category="inline-link-macro-rx"></block>。</block>
+  <block id="050dafe962829ef847f34f7607e36eb3" category="list-text"><block ref="050dafe962829ef847f34f7607e36eb3" category="inline-link-macro-rx"></block></block>
 </blocks>
