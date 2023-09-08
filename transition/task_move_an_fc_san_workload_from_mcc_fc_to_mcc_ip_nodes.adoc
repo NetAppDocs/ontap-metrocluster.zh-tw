@@ -17,9 +17,9 @@ summary: 如果從MetroCluster 支援不中斷營運的功能、從支援功能�
 +
 .. 如有需要、請MetroCluster 在靜態IP節點上修改FC連接埠、以供用戶端連線至FC目標特性設定。
 +
-這可能需要重新開機節點。
+這可能需要重新啟動節點。
 
-.. 在所有SAN Vserver的IP節點上建立FC LIP/介面。（可選）驗證新創建的FC LIF中的WWPN是否已登錄到FC SAN交換機
+.. 在 IP 節點上為所有 SAN SVM 建立 FC 生命 / 介面。或者、請確認新建立的 FC 生命期的 WWPN 已登入 FC SAN 交換器
 
 
 . 更新SAN分區組態、以便MetroCluster 在更新的支援IP節點上新增FC LIF。
@@ -34,7 +34,7 @@ summary: 如果從MetroCluster 支援不中斷營運的功能、從支援功能�
 此時、用戶端應該會看到MetroCluster 並登入到位於該功能的FC介面上、該介面同時位於該功能的支援中心MetroCluster 和支援中心IP節點上。LUN和磁碟區仍以實體方式託管於MetroCluster F地 靜止FC節點上。
 
 +
-由於LUN只會在MetroCluster 不含資源的FC節點介面上報告、因此用戶端只會顯示FC節點上的路徑。這可在sanlun LUN show -p和multipath-ll -d命令的輸出中看到。
+由於LUN只會在MetroCluster 不含資源的FC節點介面上報告、因此用戶端只會顯示FC節點上的路徑。這可在的輸出中看到 `sanlun lun show -p` 和 `multipath -ll -d` 命令。
 
 +
 [listing]
@@ -117,7 +117,8 @@ vsa_1   /vol/vsa_1_vol3/lun_linux_7   igroup_linux    A_1,A_2,B_1,B_2
 
 12 entries were displayed.
 ----
-.. 重新掃描主機上的SCSI匯流排、以探索新增的路徑：「usr/bin/rescan-scsi-bus.sh -As」
+.. 確認 `sg3-utils` 套件安裝在 Linux 主機上。如此可避免發生 `rescan-scsi-bus.sh utility not found` 使用重新掃描 Linux 主機以取得新對應的 LUN 時發生錯誤 `rescan-scsi-bus` 命令。
+.. 重新掃描主機上的 SCSI 匯流排、以探索新增的路徑： `/usr/bin/rescan-scsi-bus.sh -a`
 +
 [listing]
 ----
@@ -234,7 +235,7 @@ vsa_1 /vol/vsa_1_vol2/lun_linux_4 igroup_linux B_1,B_2
 
 12 entries were displayed.
 ----
-.. 重新掃描用戶端上的SCSI匯流排：「/usr/bin/rescan-scsi-bus.sh -r」
+.. 重新掃描用戶端上的 SCSI 匯流排： `/usr/bin/rescan-scsi-bus.sh -r`
 +
 從F精選FC節點移MetroCluster 除路徑：
 

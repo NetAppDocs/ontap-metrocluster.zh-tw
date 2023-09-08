@@ -49,8 +49,11 @@ summary: 如果您使用ONTAP 的是9.5版之前的版本、或是打算使用�
 ** ICMP
 ** Quicknav
 ** SNMP
-** 您可以使用「Get closePort」命令來檢查是否啟用或停用特定的傳輸協定。
+** 遠端登入
 
+
++
+您可以使用「Get closePort」命令來檢查是否啟用或停用特定的傳輸協定。
 
 . 如果您要啟用SNMP、也必須發出「Set SNMP啟用」命令：
 +

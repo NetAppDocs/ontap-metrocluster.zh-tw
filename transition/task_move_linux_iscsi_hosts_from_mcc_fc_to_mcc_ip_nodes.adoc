@@ -56,7 +56,7 @@ vsa_1 iscsi_lf__n2_p1_ 4 iqn.2020-01.com.netapp.englab.gdl:scspr1789621001 00:02
 
 2 entries were displayed.
 ----
-. 列出ONTAP SVM的iSCSI介面、其中包含「iSCSI介面show -vserver Svm-name」介面
+. 列出 ONTAP 中包含介面的 SVM 的 iSCSI 介面： `iscsi interface show -vserver svm-name`
 +
 [listing]
 ----
@@ -210,7 +210,8 @@ vsa_1 /vol/vsa_1_vol1/lun_linux_3 igroup_linux node_A_1-FC,node_A_2-FC,node_A_1-
 
 12 entries were displayed.
 ----
-. 在主機上、發出下列命令以重新掃描主機上的SCSI匯流排、並探索新增的路徑：（）rescan-scsi-bus.sh
+. 確認 `sg3-utils` 套件安裝在 Linux 主機上。如此可避免發生 `rescan-scsi-bus.sh utility not found` 使用重新掃描 Linux 主機以取得新對應的 LUN 時發生錯誤 `rescan-scsi-bus` 命令。
+. 在主機上、發出下列命令以重新掃描主機上的 SCSI 匯流排、並探索新增的路徑： `/usr/bin/rescan-scsi-bus.sh -a`
 +
 [listing]
 ----
@@ -331,7 +332,8 @@ vsa_1 /vol/vsa_1_vol2/lun_linux_4   group_linux   node_A_1-IP,node_A_2-IP
 
 12 entries were displayed.
 ----
-. 在iSCSI主機上、重新掃描SCSI匯流排：「/r/bin/rescan-scsi-bus.sh -r'
+. 確認 `sg3-utils` 套件安裝在 Linux 主機上。如此可避免發生 `rescan-scsi-bus.sh utility not found` 使用重新掃描 Linux 主機以取得新對應的 LUN 時發生錯誤 `rescan-scsi-bus` 命令。
+. 在 iSCSI 主機上、重新掃描 SCSI 匯流排： `/usr/bin/rescan-scsi-bus.sh -r`
 +
 移除的路徑是FC節點的路徑。
 

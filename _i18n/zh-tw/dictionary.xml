@@ -3922,7 +3922,6 @@
   <block id="1249ce19ef6180e143506b5287be8a7a" category="list-text">ICMP</block>
   <block id="19928e39d24e38d1c9928b94667fa5d5" category="list-text">Quicknav</block>
   <block id="96f9963e25520a9011c82401920794f0" category="list-text">SNMP</block>
-  <block id="0e9f0a250a9d56072ce7737a3cd51f63" category="list-text">您可以使用「Get closePort」命令來檢查是否啟用或停用特定的傳輸協定。</block>
   <block id="9d05079a491a98497153e953bbaddaa4" category="list-text">如果您要啟用SNMP、也必須發出「Set SNMP啟用」命令：</block>
   <block id="944957367bcbba5f885d8dc885354148" category="paragraph">‘*設置SNMP enably*’</block>
   <block id="2773e82b500feb0530b8577db9c276d7" category="paragraph">SNMP是唯一需要個別啟用命令的傳輸協定。</block>
@@ -4259,21 +4258,17 @@
   <block id="aba0064857c6ce89cc764da8d55ce5c1" category="doc">將FC SAN工作負載從MetroCluster 支援功能的FC移至MetroCluster 支援功能的IP節點</block>
   <block id="73f9743e086ef8ac735d8d9a5a299535" category="list-text">在MetroCluster Sing IP節點上設定新的FC介面（LIF）：</block>
   <block id="e050f35561c7894ee0a0e945c979a806" category="list-text">如有需要、請MetroCluster 在靜態IP節點上修改FC連接埠、以供用戶端連線至FC目標特性設定。</block>
-  <block id="4dbd9443241248d896c42809416cff33" category="paragraph">這可能需要重新開機節點。</block>
-  <block id="24bdd4e6fd63a2598d59b77c5076d636" category="list-text">在所有SAN Vserver的IP節點上建立FC LIP/介面。（可選）驗證新創建的FC LIF中的WWPN是否已登錄到FC SAN交換機</block>
   <block id="2ea8e9b085e6487dc8f8677dad1b2007" category="list-text">更新SAN分區組態、以便MetroCluster 在更新的支援IP節點上新增FC LIF。</block>
   <block id="46be4a0b4ce48ea62086efafc65dbbab" category="paragraph">為了協助將包含LUN的磁碟區搬移到FC SAN用戶端、請更新現有的FC交換器區域、讓FC SAN用戶端能夠存取MetroCluster 位於EzIP節點上的LUN。</block>
   <block id="7cbcf73edeac7dc26492a2312ceba51d" category="list-text">在FC SAN交換器（Cisco或Brocade）上、將新增FC SAN LIF的WWPN新增至區域。</block>
   <block id="4c3d801187dd3bd83498ab4cc39962cb" category="list-text">更新、儲存及提交分區變更。</block>
   <block id="780d54d0c3dcaee808b6d845b2755068" category="list-text">從用戶端、檢查FC啟動器是否登入MetroCluster 到位於支援中心IP節點上的新SAN LIF：「anlun LUN show -p」</block>
   <block id="7ff219f4bc061d194735ac6928a7e661" category="paragraph">此時、用戶端應該會看到MetroCluster 並登入到位於該功能的FC介面上、該介面同時位於該功能的支援中心MetroCluster 和支援中心IP節點上。LUN和磁碟區仍以實體方式託管於MetroCluster F地 靜止FC節點上。</block>
-  <block id="047884ddcb740bc854ce7ccb563642b2" category="paragraph">由於LUN只會在MetroCluster 不含資源的FC節點介面上報告、因此用戶端只會顯示FC節點上的路徑。這可在sanlun LUN show -p和multipath-ll -d命令的輸出中看到。</block>
   <block id="7903e3004ba7d039fbd00c128bd855bf" category="list-text">修改報告節點、以新增MetroCluster 「靜態IP」節點</block>
   <block id="b37c9b18c1fffc0a2c04176485cc32aa" category="list-text">列出SVM上LUN的報告節點：「LUN對應show -vserver Svm-name -Fields report-nodes -osttype Linux」</block>
   <block id="a8ac1b93cf5cb550949dfea97a05b60a" category="paragraph">顯示的報告節點為本機節點、因為LUN實體位於FC節點A_1和A_2上。</block>
   <block id="ed464784c3f6c07bdf64a809c105429b" category="list-text">新增報告節點以包含MetroCluster 不含資訊的IP節點。</block>
   <block id="c74a06acbdafccea854827ab3c1389ac" category="list-text">列出報告節點並確認新節點是否存在：</block>
-  <block id="7cb622a0ff86a1bb88637f6d85cf9f43" category="list-text">重新掃描主機上的SCSI匯流排、以探索新增的路徑：「usr/bin/rescan-scsi-bus.sh -As」</block>
   <block id="e1ee3a062911dfd9a5f37daadbab5edb" category="list-text">顯示新增的路徑：「anlun LUN show -p」</block>
   <block id="05eafc0806ed7438ec13d238537264c7" category="paragraph">每個LUN將有四個路徑。</block>
   <block id="42d2c72ed1b78cf2ef6ae94126ea459b" category="list-text">在控制器上、將包含LUN的磁碟區從MetroCluster 無法使用的功能區移至MetroCluster 無法使用的功能區節點。</block>
@@ -4285,7 +4280,6 @@
   <block id="3412078ebeec5a57c10057087d69f64e" category="list-text">從用戶端移除報告節點並重新掃描路徑。</block>
   <block id="4bb7a2cf16de0e88533fe09d20e8cacf" category="list-text">移除MetroCluster Linux LUN的遠端報告節點（支援功能的FC節點）：「LUN對應移除報告節點-vserver VSA_1 -path *-igroup igroup_Linux -reme-nodes true」</block>
   <block id="f2eed01c29702a10f9291aaa3e13f368" category="list-text">檢查LUN的報告節點：「LUN對應show -vserver VSA_1 -Fields reporting_nodes -osttype Linux」</block>
-  <block id="cb35b692ef8bc5399820e0ba83b8cb35" category="list-text">重新掃描用戶端上的SCSI匯流排：「/usr/bin/rescan-scsi-bus.sh -r」</block>
   <block id="8f8c9a65b706c1177309d44848cd6abe" category="paragraph">從F精選FC節點移MetroCluster 除路徑：</block>
   <block id="9dbd28fb326c06062ade74756b1829ab" category="list-text">驗證MetroCluster 主機上是否只能看到來自於此實體IP節點的路徑：「anlun LUN show -p」</block>
   <block id="0dcfa974a402a3458da069a245602792" category="list-text">如有需要、請從MetroCluster SisclsFC節點移除iSCSI LIF。</block>
@@ -4639,7 +4633,6 @@
   <block id="0dc491dada4885353b9e96030fce6bd3" category="paragraph">來自SVM的所有iSCSI介面均應可由iSCSI用戶端存取。</block>
   <block id="acb0e987f9b29d1eab50c31f4f95aa9a" category="list-text">在iSCSI主機或用戶端上、識別從主機到MetroCluster SFC節點的現有iSCSI連線：「iscsiadm -m工作階段」</block>
   <block id="d163a1c94db271251417ac64b011f503" category="list-text">驗證MetroCluster 從「ISCSI工作階段show -vserver Svm-name」節點建立的連線</block>
-  <block id="47e1989be910f2a95cba13df244916de" category="list-text">列出ONTAP SVM的iSCSI介面、其中包含「iSCSI介面show -vserver Svm-name」介面</block>
   <block id="a36d68710357482d2ab6a01760a3ed96" category="list-text">在iSCSI用戶端上、在SVM上的任何一個iSCSI IP位址上執行探索、以探索新的目標：「iscsiadm -m dDiscovery -t sendtimes -p iscsi-ip-address'</block>
   <block id="6d5e653b42496cb611cacbd3f1622d89" category="paragraph">探索可在SVM的任何IP位址上執行、包括非iSCSI介面。</block>
   <block id="a461f22b707612a699bc8af021961c83" category="list-text">在iSCSI用戶端上、登入所有探索到的位址：「iscsiadm -m node-L all -T node-address -p Portal-address -l」</block>
@@ -4653,7 +4646,6 @@
   <block id="ca3831196a5922b44d1bd6c3f098a76e" category="paragraph">下列報告節點是本機節點、因為LUN實體位於FC節點node_a_1-FC和node_a_2-FC上。</block>
   <block id="ada767f49af9e4d84ffa661e5dca75c7" category="list-text">在支援節點上MetroCluster 、新增報告節點：「LUN對應附加報告節點-vserver Svm-name -path /vol/VSA_1_vol*/LUN_Linux/*節點node1、node2 -igroup igroup_Linux」</block>
   <block id="7b0a84102a195b8e0f8d8953620707ba" category="list-text">在這個節點上、請確認新增的節點是否存在：「LUN對應show -vserver Svm-name -Fields reports-nodes -osttype Linux vserver path igroup reports-nodes」MetroCluster</block>
-  <block id="33a3004b4b08a0f2ce598422f5d7b5f6" category="list-text">在主機上、發出下列命令以重新掃描主機上的SCSI匯流排、並探索新增的路徑：（）rescan-scsi-bus.sh</block>
   <block id="897e36e6985e9d4eb2bed54f3762a125" category="list-text">在主機上、發出下列命令以列出新增的路徑：「anlun LUN show -p」</block>
   <block id="2a12888d763445436f29b56694f714b2" category="paragraph">每個LUN顯示四個路徑。</block>
   <block id="2511d667d00c1cb6eba362bc0093b244" category="list-text">在這個功能區上、將包含LUN的磁碟區/磁碟區從FC移至IP節點。MetroCluster</block>
@@ -4665,7 +4657,6 @@
   <block id="8ab7ca6cd6e1f79872ab4f322117ca76" category="list-text">從「支援IP」節點移除Linux LUN的遠端報告節點（「支援IP節點」）：「LUN對應移除報告節點-vserver VSA_1 -path *-igroup igroup_Linux -reme-nodes true」MetroCluster MetroCluster</block>
   <block id="05048e4fdd078ddd77168cd8270fe3f4" category="paragraph">在此情況下、遠端節點是FC節點。</block>
   <block id="e90434592ed415a541e2a6f03284ae2d" category="list-text">從「支援IP」節點、檢查LUN的報告節點：「LUN對應show -vserver VSA_1 -Fields reporting_nodes -osttype Linux」MetroCluster</block>
-  <block id="1e7ae3480577387e1ba55438a03a4513" category="list-text">在iSCSI主機上、重新掃描SCSI匯流排：「/r/bin/rescan-scsi-bus.sh -r'</block>
   <block id="d535eedec31c0a58f698132001cbc9bb" category="paragraph">移除的路徑是FC節點的路徑。</block>
   <block id="b6d1ddb6b8631d474ee650e1dd150c29" category="summary">您必須根據現有MetroCluster 的不規則功能（NetApp）組態、選擇轉換程序。</block>
   <block id="e420954c9496e6eb99455a2aac546e3f" category="doc">選擇您的轉換程序</block>
@@ -10343,7 +10334,6 @@
   <block id="b29b8c83f7d8c55b39ae87067330f426" category="list-text">[[step3-cable e-each bridge ]將每個橋接器連接至控制器模組：</block>
   <block id="4422c879aa9ea654583488de1d4d4e82" category="list-text">將橋接器的FC連接埠1纜線連接至叢集A中控制器模組上的FC連接埠</block>
   <block id="db0e7a22facf5e7460258a2022b5e9d5" category="list-text">將橋接器的FC連接埠2纜線連接至叢集B中控制器模組上的FC連接埠</block>
-  <block id="b952b3eddebea29b6169cd5bd56a3bc5" category="paragraph">如果控制器模組已設定四埠FC介面卡、請確定儲存堆疊已連接至相同ASIC上的兩個FC連接埠。連接埠A和連接埠b共用相同的ASIC、連接埠c和連接埠d共用相同的ASIC。請勿將一堆磁碟櫃連接至連接埠A和連接埠b請改用連接埠A和連接埠c、或使用連接埠b和連接埠d、以免ASIC故障時發生單點故障。</block>
   <block id="48dda5bb7b1f8b58b068fa47d9879c67" category="paragraph">如果控制器模組設定有多個FC介面卡、請勿將兩個橋接連接埠纜線連接至同一個介面卡。您應該將FC連接埠1分配給介面卡A、將FC連接埠2分配給介面卡B、以避免單點故障。</block>
   <block id="67d7a49e616a0e579f0506ada050a36b" category="image-alt">叢集對等網路</block>
   <block id="13044932159e150c28f3e3cabd33ea68" category="list-text">重複 <block ref="92a9f0aaafd1755c239f3740bca9b5f0" category="inline-xref-macro-rx"></block> 在其他橋接器上、直到所有橋接器都連接好纜線。</block>
@@ -10357,7 +10347,6 @@
   <block id="52812075c78ece551ae010bb2c3594ea" category="paragraph">從ONTAP 支援橋接器的32個版本開始、就支援橋接器的頻內管理。這表示橋接器可透過ONTAP 連接至橋接器的FC連線、從CLI進行設定和監控。不需要透過橋接式乙太網路連接埠實體存取橋接器、也不需要橋接器使用者介面。</block>
   <block id="5366fe8e6a583070b8536329d2fb2c42" category="paragraph">從ONTAP 功能表S9.8開始、預設會支援橋接器的頻內管理、頻外SNMP管理則已過時。</block>
   <block id="f4a6a04204d80f2884055d8da7f250ae" category="paragraph">「_service_（服務）”可以指定下列其中一項：</block>
-  <block id="40e7c640678c064d478e2a07e47eb68a" category="list-text">Telnet+您可以使用「Get closePort」命令來檢查是否啟用或停用特定的傳輸協定。</block>
   <block id="4db2eceaa8145339affc67a0413885ce" category="image-alt">工作流程硬體安裝與組態附加2節點橋接器</block>
   <block id="43441b39bffebee3ed9f59ea9dc91306" category="image-alt">工作流程硬體安裝與組態已附加2節點SAS</block>
   <block id="a0256b5d14d8f8e278ab1f632644ed83" category="paragraph">請先開機並等待至少10秒鐘、再連接連接埠。SAS纜線連接器採用鎖定式設計；若方向正確放入SAS連接埠、連接器會卡入定位、而磁碟櫃SAS連接埠LNK LED會亮起綠色。對於磁碟櫃、請插入SAS纜線連接器、拉片朝下（位於連接器底部）。</block>
@@ -13271,4 +13260,14 @@
   <block id="6c92285fa6d3e827b198d120ea3ac674" category="inline-link-macro">請按這裡</block>
   <block id="4992f0045a6913a2fb77a09884c4e55c" category="admonition">您可以使用上述手動升級程序、在執行 ONTAP 9.12.1 或 9.11.1 的系統上執行上表所列的控制器升級 <block ref="4254cdc4ef28ceba663ec4031c88c9dd" category="inline-link-macro-rx"></block>。</block>
   <block id="050dafe962829ef847f34f7607e36eb3" category="list-text"><block ref="050dafe962829ef847f34f7607e36eb3" category="inline-link-macro-rx"></block></block>
+  <block id="96011b4dbcd722924f3c53c7252522f8" category="list-text">列出 ONTAP 中包含介面的 SVM 的 iSCSI 介面：<block ref="3c78b9e1a9fef2eea89905b0233c19ad" prefix=" " category="inline-code"></block></block>
+  <block id="2af958a8143c65676390b5e251abe90a" category="list-text">確認<block ref="a78608714add699f555f2a66df0ee249" prefix=" " category="inline-code"></block> 套件安裝在 Linux 主機上。如此可避免發生<block ref="b0c94f1494e22d963244e235719a2582" prefix=" " category="inline-code"></block> 使用重新掃描 Linux 主機以取得新對應的 LUN 時發生錯誤<block ref="685ca42026debec2f3691cc5faae67d5" prefix=" " category="inline-code"></block> 命令。</block>
+  <block id="f4b770b44b57fa84a8b8fc29d6c6c8bb" category="list-text">在主機上、發出下列命令以重新掃描主機上的 SCSI 匯流排、並探索新增的路徑：<block ref="9e65638d5d13acb691c4bec2ede5a483" prefix=" " category="inline-code"></block></block>
+  <block id="d1b38e9b356895decf6917b400433e15" category="list-text">在 iSCSI 主機上、重新掃描 SCSI 匯流排：<block ref="06653a48f6165608045bd55ec32d95fb" prefix=" " category="inline-code"></block></block>
+  <block id="1f52bd2314f9805b0a0098b0f56a0dc4" category="paragraph">這可能需要重新啟動節點。</block>
+  <block id="ab85fd4f549c390675df901a8ef3f78e" category="list-text">在 IP 節點上為所有 SAN SVM 建立 FC 生命 / 介面。或者、請確認新建立的 FC 生命期的 WWPN 已登入 FC SAN 交換器</block>
+  <block id="cbabd53b8268cb963ad7b2c67de0b634" category="paragraph">由於LUN只會在MetroCluster 不含資源的FC節點介面上報告、因此用戶端只會顯示FC節點上的路徑。這可在的輸出中看到<block ref="41dc2c94e82e1c56ba876085acf5a974" prefix=" " category="inline-code"></block> 和<block ref="2fbf63deae0938cf669e6ca451f1eb2c" prefix=" " category="inline-code"></block> 命令。</block>
+  <block id="7162464dfaefdef75b18029dcb1bb1f1" category="list-text">重新掃描主機上的 SCSI 匯流排、以探索新增的路徑：<block ref="9e65638d5d13acb691c4bec2ede5a483" prefix=" " category="inline-code"></block></block>
+  <block id="9b3bd2afae038f8967e9373560a3b6d2" category="list-text">重新掃描用戶端上的 SCSI 匯流排：<block ref="06653a48f6165608045bd55ec32d95fb" prefix=" " category="inline-code"></block></block>
+  <block id="77139d079fd912afd88e4ca7f5623393" category="paragraph">如果控制器模組已設定四埠 FC 介面卡、請確認儲存堆疊未連接至同一個 ASIC 上的兩個 FC 連接埠。連接埠A和連接埠b共用相同的ASIC、連接埠c和連接埠d共用相同的ASIC。請勿將一堆磁碟櫃連接至連接埠A和連接埠b請改用連接埠A和連接埠c、或使用連接埠b和連接埠d、以免ASIC故障時發生單點故障。</block>
 </blocks>
