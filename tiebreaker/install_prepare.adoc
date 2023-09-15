@@ -1,0 +1,89 @@
+---
+permalink: tiebreaker/install_prepare.html 
+sidebar: sidebar 
+keywords: install, tiebreaker, software, monitor, capabilities, capability, cluster, storage, environment, snmp, notification, event, node, connectivity, issue, site, disaster, system, install, upgrade, upgrading, software, dependencies, dependency, package, ntp, requirements, requirements for tiebreaker, tiebreaker requirements, mysql, mariadb, autostart, database 
+summary: Tiebreaker軟體提供叢集式儲存環境的監控功能。當節點連線問題和站台災難發生時、也會傳送SNMP通知。 
+---
+= 檢閱要求
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Tiebreaker軟體提供叢集式儲存環境的監控功能。當節點連線問題和站台災難發生時、也會傳送SNMP通知。
+
+必須安裝並設定斷路器軟體。
+
+
+
+== 軟體需求
+
+您必須符合下列軟體需求、視您要安裝的斷路器版本而定。
+
+[cols="1,1,1,2"]
+|===
+
+
+| ONTAP tiebreaker 版本 | 支援 ONTAP 的支援版本 | 支援的Linux版本 | Java/MariaDB 需求 
+
+
+ a| 
+1.5
+ a| 
+更新版本ONTAP
+ a| 
+* Red Hat Enterprise Linux 8.1至8.7
+
+ a| 
+搭配 Red Hat Enterprise Linux 8.1 至 8.7 ：
+
+* MariaDB 10.x（使用使用「yum install MariaDB-server.x86_64」安裝的預設版本）
+* OpenJDK 17 、 18 或 19
+
+
+
+
+ a| 
+1.4.
+ a| 
+ONTAP 9.2 及更新版本
+ a| 
+* Red Hat Enterprise Linux 8.1至8.7
+* Red Hat Enterprise Linux 7 至 7.9
+* CentOS 7 至 7.9 64 位元
+
+ a| 
+使用 CentOS ：
+
+* MariaDB 5.5.52 x / MySQL Server 5.6x
+* 4 GB RAM
+* 開啟JRE 8
+
+
+搭配 Red Hat Enterprise Linux 8.1 至 8.7 ：
+
+* MariaDB 10.x （使用使用「 yum install MariaDB-server.x86_64 」安裝的預設版本）
+* JRE 8.
+
+|===
+
+
+== 其他需求
+
+您必須瞭解下列額外需求：
+
+* Tiebreaker軟體安裝在第三個站台、可讓軟體區分交換器間連結（ISL）故障（站台間連結中斷時）與站台故障。您的主機系統必須符合特定要求、才能在本機電腦上安裝或升級斷路器軟體、以監控MetroCluster 此功能組態。
+* 您必須擁有「root」權限、才能安裝MetroCluster ESITiebreaker軟體和相依套件。
+* 每個版本僅能使用一個MetroCluster ESIT斷路 器監控器來避免MetroCluster 與多個斷路器監控器發生衝突。
+* 為 tiebreaker 軟體選取網路時間傳輸協定（ NTP ）來源時、您必須使用本機 NTP 來源。tiebreaker 軟體不應使用與 tiebreaker 軟體所監控的 MetroCluster 站台相同的來源。
+
+
+* 磁碟容量：8 GB
+* 防火牆：
++
+** 直接存取以設定AutoSupport 資訊訊息
+** SSH（連接埠22/TCP）、HTTPS（連接埠443/TCP）及ping（ICMP）
+
+
+

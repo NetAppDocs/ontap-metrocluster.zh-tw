@@ -88,14 +88,42 @@ NOTE: 系統會提示您輸入「促成者管理」使用者帳戶的使用者�
       mailbox
            mediator 1.1.1.1       iqn.2012-05.local:mailbox.target.6616cd3f-9ef1-11e9-aada-00a098ccf5d8:a05e1ffb-9ef1-11e9-8f68-00a098cbca9e:1 up/up
 ....
-
-
-. 如果您想要設定MetroCluster 自動執行的靜態切換、請執行下列命令： `metrocluster modify -allow-automatic-forced-switchover true`
+.. 驗證自動非計畫性切換（ AUSO ）故障網域的狀態：
 +
-啟用此功能之前、請先檢閱 link:concept-risks-limitations-automatic-switchover.html["使用MetroCluster 不全自動強制切換的風險與限制"]。
+《不看》MetroCluster
+
++
+
+NOTE: 以下範例輸出適用於 ONTAP 9.13.1 及更新版本。對於 ONTAP 9.12.1 及更早版本、 AUSO 故障網域狀態應為 `auso-on-cluster-disaster`。
+
++
+[listing]
+----
+cluster_A::> metrocluster show
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+Local: cluster_A         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain auso-on-dr-group-disaster
+Remote: cluster_B         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain auso-on-dr-group-disaster
+----
+
+
+. 您也可以選擇設定 MetroCluster 自動強制切換。
++
+您只能在進階權限層級中使用下列命令。
+
++
+
+IMPORTANT: 使用此命令之前、請檢閱 link:concept-risks-limitations-automatic-switchover.html["使用MetroCluster 不全自動強制切換的風險與限制"]。
+
++
+`metrocluster modify -allow-auto-forced-switchover true`
 
 +
 ....
-cluster_A::*> metrocluster modify -allow-automatic-forced-switchover true
+cluster_A::*> metrocluster modify -allow-auto-forced-switchover true
 ....
 

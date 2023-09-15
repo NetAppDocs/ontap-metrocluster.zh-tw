@@ -1,0 +1,74 @@
+---
+permalink: tiebreaker/whats_new.html 
+sidebar: sidebar 
+keywords: install, tiebreaker, software, monitor, capabilities, capability, cluster, storage, environment, snmp, notification, event, node, connectivity, issue, site, disaster, system, install, upgrade, upgrading, software, dependencies, dependency, package, ntp, requirements, requirements for tiebreaker, tiebreaker requirements, mysql, mariadb, autostart, database 
+summary: Tiebreaker軟體提供叢集式儲存環境的監控功能。當節點連線問題和站台災難發生時、也會傳送SNMP通知。 
+---
+= 新功能
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+每個版本都提供 MetroCluster tiebreaker 的增強功能。以下是 MetroCluster tiebreaker 最新版本的新功能。
+
+
+
+== 增強功能
+
+[cols="25,75"]
+|===
+
+
+| ONTAP tiebreaker 版本 | 增強功能 
+
+
+ a| 
+1.5
+ a| 
+* 支援程式庫更新
+* 安全性增強功能
+
+
+
+
+ a| 
+1.4.
+ a| 
+* 支援程式庫更新
+
+
+|===
+
+
+== 作業系統支援對照表
+
+[cols="16,12,12,12"]
+|===
+
+
+| Tiebreaker 版本 | CentOS 7-7.9 | RedHat 7-7.9 | RedHat 8.1 - 8.7 
+
+
+ a| 
+1.5
+ a| 
+否
+ a| 
+否
+ a| 
+是的
+
+
+
+ a| 
+1.4.
+ a| 
+是的
+ a| 
+是的
+ a| 
+是的
+
+|===

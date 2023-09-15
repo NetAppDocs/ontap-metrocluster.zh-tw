@@ -1033,7 +1033,7 @@ FC2
 
 
  a| 
-&ast；連接埠12至15保留給MetroCluster Brocade 7840交換器上的第二個Sfor DR群組。
+42; 端口 12 到 15 保留給 Brocade 7840 交換機上的第二個 MetroCluster 或 DR 組。
 
 
 NOTE: G620、G630、G620-1和G630-1交換器中的連接埠16、17、20和21可連接其他橋接器。

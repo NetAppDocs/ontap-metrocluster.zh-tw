@@ -17,9 +17,11 @@ summary: 瞭解NetApp MetroCluster ESIT斷路 器軟體是什麼、以及它如�
 
 == 使用NetApp MetroCluster 斷點器軟體偵測故障
 
-Tiebreaker軟體位於Linux主機上。只有當您想要監控兩個叢集、以及它們之間從第三個站台的連線狀態時、才需要Tiebreaker軟體。如此一來、叢集中的每個合作夥伴就能在站台間連結中斷時、與站台故障區隔ISL故障。
+只有當您想要監控兩個叢集、以及它們之間從第三個站台的連線狀態時、才需要Tiebreaker軟體。斷路器軟體位於第三個站台的 Linux 主機上、可讓叢集中的每個合作夥伴在站台間連結中斷時、區別 ISL 故障與站台故障。
 
 在Linux主機上安裝tiebreaker軟體之後、您可以將叢集設定為MetroCluster 使用支援物件組態來監控災難情況。
+
+tiebreaker 軟體最多可同時監控 15 個 MetroCluster 組態。它支援 MetroCluster IP 、 MetroCluster FC 和 Stretch MetroCluster 組態的組合。
 
 
 

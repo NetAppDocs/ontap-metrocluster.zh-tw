@@ -1,0 +1,257 @@
+---
+permalink: tiebreaker/install_tiebreaker_package.html 
+sidebar: sidebar 
+keywords: install, tiebreaker, software, monitor, capabilities, capability, cluster, storage, environment, snmp, notification, event, node, connectivity, issue, site, disaster, system, install, upgrade, upgrading, software, dependencies, dependency, package, ntp, requirements, requirements for tiebreaker, tiebreaker requirements, mysql, mariadb, autostart, database 
+summary: Tiebreaker軟體提供叢集式儲存環境的監控功能。當節點連線問題和站台災難發生時、也會傳送SNMP通知。 
+---
+= 安裝或升級軟體套件
+:allow-uri-read: 
+
+
+您必須在MetroCluster 本機電腦上安裝或升級ESITirepreaker軟體、才能監控MetroCluster 各種組態。
+
+.關於這項工作
+* 您的儲存系統必須執行ONTAP 不含更新版本的資訊。
+* 您必須使用安裝OpenJDK `yum install java-x.x.x-openjdk` 命令。對於執行Tiebreaker 1.4及更早版本的系統、請執行JRE 8。對於執行tiebreaker 1.5及更新版本的系統、請執行OpenJDK 17、18或19。範例中的輸出顯示jre 1.8.0。（JRE 8）。
+* 您可以以MetroCluster 非root使用者的身分安裝斷衝器、並擁有足夠的管理權限、以執行斷路器安裝、建立表格、使用者及設定使用者密碼等作業
+
+
+.步驟
+. 下載MetroCluster 最新版的Eetirepreaker軟體。此範例使用1.5版。
++
+https://mysupport.netapp.com/site/["NetApp 支援網站"^]
+
+. 下載 `MetroCluster_Tiebreaker_RPM_GPG` 金鑰：
++
+https://mysupport.netapp.com/site/["NetApp 支援網站"^]
+
+. 以root使用者身分登入主機。
+. 建立非 root 使用者和 `mcctbgrp` 群組：
++
+.. 建立非 root 使用者並設定密碼。
++
+下列命令範例可建立名為的非 root 使用者 `mcctbuser1`：
+
++
+[listing]
+----
+[root@mcctb ~]# useradd mcctbuser1
+[root@mcctb ~]# passwd mcctbuser1
+Changing password for user mcctbuser1.
+New password:
+Retype new password:
+passwd: all authentication tokens updated successfully.
+----
+.. 建立名為的群組 `mcctbgrp`：
++
+`[root@mcctb ~~]# groupadd mcctbgrp`
+
+.. 將您建立的非 root 使用者新增至 `mcctbgrp` 群組：
++
+下列命令會新增 `mcctbuser1` 至 `mcctbgrp` 群組：
+
++
+`[root@mcctb ~]# usermod -a -G mcctbgrp mcctbuser1`
+
+
+
+. 驗證RPM檔案。
++
+從包含 RPM 金鑰的目錄執行下列子步驟。
+
++
+.. 下載並匯入RPM金鑰檔：
++
+[listing]
+----
+[root@mcctb ~]# rpm --import MetroCluster_Tiebreaker_RPM_GPG.key
+----
+.. 檢查指紋、確認已匯入正確的金鑰。
++
+下列範例顯示正確的金鑰指紋：
+
++
+[listing]
+----
+root@mcctb:~/signing/mcctb-rpms# gpg --show-keys --with-fingerprint MetroCluster_Tiebreaker_RPM_GPG.key
+pub   rsa3072 2022-11-17 [SCEA] [expires: 2025-11-16]
+      65AC 1562 E28A 1497 7BBD  7251 2855 EB02 3E77 FAE5
+uid                      MCCTB-RPM (mcctb RPM production signing) <mcctb-rpm@netapp.com>
+----
+.. 驗證簽名： `rpm --checksig NetApp-MetroCluster-Tiebreaker-Software-1.5-1.x86_64.rpm`
++
+[listing]
+----
+NetApp-MetroCluster-Tiebreaker-Software-1.5-1.x86_64.rpm: digests OK
+----
++
+
+NOTE: 您必須在成功驗證簽名之後、才能繼續安裝。
+
+
+
+. [[install-tiebreaker）]安裝或升級Tiebreaker軟體：
++
+
+NOTE: 從Tiebreaker 1.4版升級時、您只能升級至Tiebreaker 1.5版。不支援從舊版升級至Tiebreaker 1.5。
+
++
+根據您要執行新安裝或升級現有安裝、從下列選項中選取正確的程序。
+
++
+[role="tabbed-block"]
+====
+.執行新安裝
+--
+.. 擷取並記錄 Java 的絕對路徑：
++
+[listing]
+----
+[root@mcctb ~]# readlink -f /usr/bin/java
+/usr/lib/jvm/java-19-openjdk-19.0.0.0.36-2.rolling.el8.x86_64/bin/java
+----
+.. 執行下列命令：
+`rpm -ivh NetApp-MetroCluster-Tiebreaker-Software-1.5-1.x86_64.rpm`
++
+系統會顯示下列輸出、以利成功安裝：
+
++
+
+NOTE: 在安裝期間出現提示時、請提供您先前建立並指派給的非 root 使用者 `mcctbgrp` 群組：
+
++
+[listing]
+----
+
+Verifying...                          ################################# [100%]
+Preparing...                          ################################# [100%]
+Updating / installing...
+   1:NetApp-MetroCluster-Tiebreaker-So################################# [100%]
+Enter the absolute path for Java : /usr/lib/jvm/java-19-openjdk-19.0.0.0.36-2.rolling.el8.x86_64/bin/java
+Verifying if Java exists...
+Found Java. Proceeding with the installation.
+Enter host user account to use for the installation:
+mcctbuser1
+User account mcctbuser1 found. Proceeding with the installation
+Enter database user name:
+root
+Please enter database password for root
+Enter password:
+Sealed          false
+Do you wish to auto unseal vault(y/n)?y
+Enter the key1:
+Enter the key2:
+Enter the key3:
+Success! Uploaded policy: mcctb-policy
+Error enabling approle auth: Error making API request.
+URL: POST http://127.0.0.1:8200/v1/sys/auth/approle
+Code: 400. Errors:
+* path is already in use at approle/
+Success! Enabled the kv secrets engine at: mcctb/
+Success! Data written to: auth/approle/role/mcctb-app
+Password updated successfully in the vault.
+Synchronizing state of netapp-metrocluster-tiebreaker-software.service with SysV service script with /usr/lib/systemd/systemd-sysv-install.
+Executing: /usr/lib/systemd/systemd-sysv-install enable netapp-metrocluster-tiebreaker-software
+Created symlink /etc/systemd/system/multi-user.target.wants/netapp-metrocluster-tiebreaker-software.service → /etc/systemd/system/netapp-metrocluster-tiebreaker-software.service.
+Attempting to start NetApp MetroCluster Tiebreaker software services
+Started NetApp MetroCluster Tiebreaker software services
+Successfully installed NetApp MetroCluster Tiebreaker software version 1.5.
+
+----
+
+
+--
+.升級現有的安裝
+--
+.. 確認已安裝受支援版本的OpenJDK、而且是主機上目前的Java版本。
++
+
+NOTE: 若要升級至Tiebreaker 1.5、您必須安裝OpenJDK 17、18或19版。
+
++
+[listing]
+----
+[root@mcctb ~]# readlink -f /usr/bin/java
+/usr/lib/jvm/java-19-openjdk-19.0.0.0.36-2.rolling.el8.x86_64/bin/java
+----
+.. 確認Vault服務未密封且正在執行： `vault status`
++
+[listing]
+----
+[root@mcctb ~]# vault status
+Key             Value
+---             -----
+Seal Type       shamir
+Initialized     true
+Sealed          false
+Total Shares    5
+Threshold       3
+Version         1.12.2
+Build Date      2022-11-23T12:53:46Z
+Storage Type    file
+Cluster Name    vault
+Cluster ID      <cluster_id>
+HA Enabled      false
+----
+.. 升級Tiebreaker軟體。
++
+[listing]
+----
+[root@mcctb ~]# rpm -Uvh NetApp-MetroCluster-Tiebreaker-Software-1.5-1.x86_64.rpm
+----
++
+系統會顯示下列輸出以成功升級：
+
++
+[listing]
+----
+
+Verifying...                          ################################# [100%]
+Preparing...                          ################################# [100%]
+Updating / installing...
+   1:NetApp-MetroCluster-Tiebreaker-So################################# [ 50%]
+
+Enter the absolute path for Java : /usr/lib/jvm/java-19-openjdk-19.0.0.0.36-2.rolling.el8.x86_64/bin/java
+Verifying if Java exists...
+Found Java. Proceeding with the installation.
+Enter host user account to use for the installation:
+mcctbuser1
+User account mcctbuser1 found. Proceeding with the installation
+Sealed          false
+Do you wish to auto unseal vault(y/n)?y
+Enter the key1:
+Enter the key2:
+Enter the key3:
+Success! Uploaded policy: mcctb-policy
+Error enabling approle auth: Error making API request.
+URL: POST http://127.0.0.1:8200/v1/sys/auth/approle
+Code: 400. Errors:
+* path is already in use at approle/
+Success! Enabled the kv secrets engine at: mcctb/
+Success! Data written to: auth/approle/role/mcctb-app
+Enter database user name : root
+Please enter database password for root
+Enter password:
+Password updated successfully in the database.
+Password updated successfully in the vault.
+Synchronizing state of netapp-metrocluster-tiebreaker-software.service with SysV service script with /usr/lib/systemd/systemd-sysv-install.
+Executing: /usr/lib/systemd/systemd-sysv-install enable netapp-metrocluster-tiebreaker-software
+Attempting to start NetApp MetroCluster Tiebreaker software services
+Started NetApp MetroCluster Tiebreaker software services
+Successfully upgraded NetApp MetroCluster Tiebreaker software to version 1.5.
+Cleaning up / removing...
+   2:NetApp-MetroCluster-Tiebreaker-So################################# [100%]
+----
+
+
+--
+====
++
+
+NOTE: 如果您輸入錯誤的MySQL根密碼、則Tiebreaker軟體會指出已成功安裝、但會顯示「拒絕存取」訊息。若要解決此問題、您必須使用「rpm -e」命令解除安裝Tiebreaker軟體、然後使用正確的MySQL root密碼重新安裝軟體。
+
+. 開啟從斷路器主機到每個節點管理生命期和叢集管理生命期的SSH連線、以檢查斷路器與MetroCluster 該軟件的連線。
+
+
+.相關資訊
+https://mysupport.netapp.com/site/["NetApp支援"^]
