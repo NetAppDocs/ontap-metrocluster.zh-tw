@@ -286,7 +286,6 @@
   <block id="a72d2a4ca552186cbf62f182a7dfbe82" category="paragraph"><block ref="a72d2a4ca552186cbf62f182a7dfbe82" category="inline-link-macro-rx"></block></block>
   <block id="8bcabb3e778663882c95082b775c75b8" category="summary">從推出《支援使用ADP的更新系統》（進階磁碟分割）的《支援更新安裝的支援範例ONTAP 》（《支援使用MetroCluster ADP的更新AFF 系統》、《支援更新的安裝程序》、</block>
   <block id="25a1a5e06239d38607850869b12b3607" category="doc">自動指派磁碟機和ONTAP ADP系統的考量事項、位於更新版本的更新版本</block>
-  <block id="3299ba9863a06ef7650cf2bb56d8651c" category="paragraph">從推出《支援使用ADP的更新系統》（進階磁碟分割）的《支援更新安裝的支援範例ONTAP 》（《支援使用MetroCluster ADP的更新AFF 系統》、《支援更新的安裝程序》、在大多數的組態中、分割區和磁碟指派會在MetroCluster 初始設定的站台期間自動執行。</block>
   <block id="a4a9824ba125eba903fb3d347f4f5eb6" category="list-text">資源池0磁碟指派在原廠完成。</block>
   <block id="a1fbd6da7a08fa8c0a2a6b92a3b0a9c5" category="list-text">無鏡射根目錄是在原廠建立。</block>
   <block id="c60c48f30552c5ad7630dd7b31eb4943" category="list-text">資料分割區指派是在客戶站台的設定程序期間完成。</block>
@@ -12821,7 +12820,6 @@
   <block id="2ec9cf7fc01c78e918f2c1109d699ebd" category="sidebar">設定管理員對ONTAPI和SSH的存取權</block>
   <block id="6dc537d2cf87cd236dd75c2694edbea6" category="image-alt">MetroCluster 光纖通道 IP 轉接矩陣泛黃 1</block>
   <block id="3ba18986907ef3401544960b244376ed" category="section-title">AFF A150 和 AFF A220 系統上的 ADP 和磁碟指派</block>
-  <block id="cab91f7159880630a5bee29aa55d9f8a" category="section-title">AFF C250 和 AFF A250 系統上的 ADP 和磁碟指派</block>
   <block id="3e0a52646b307379f47860044c088d60" category="paragraph">每個外部機櫃上的磁碟機分為兩個相同的群組（一半）。每個半磁碟櫃都會自動指派給個別的資源池。</block>
   <block id="b244c220ca2f00fdc24e97de45456f82" category="section-title">AFF C400 和 AFF A400 系統上的 ADP 和磁碟指派</block>
   <block id="ba9bcbab50848c136d0007b25231ce1e" category="section-title">AFF C800 和 AFF A800 系統上的 ADP 和磁碟指派</block>
@@ -13291,7 +13289,6 @@
   <block id="4b0a6058e6a6f2eafcc1db1a3a9573fb" category="paragraph">您必須瞭解下列額外需求：</block>
   <block id="64f896c377dcdc9e0d5ae4809d1c3a73" category="list-text">為 tiebreaker 軟體選取網路時間傳輸協定（ NTP ）來源時、您必須使用本機 NTP 來源。tiebreaker 軟體不應使用與 tiebreaker 軟體所監控的 MetroCluster 站台相同的來源。</block>
   <block id="490414e0366b091220802d406e52c076" category="doc">新功能</block>
-  <block id="f68e01d366d2b521019205564511ae77" category="paragraph">每個版本都提供 MetroCluster tiebreaker 的增強功能。以下是 MetroCluster tiebreaker 最新版本的新功能。</block>
   <block id="c1748037d10cffabb8e95e4ccf77c613" category="section-title">增強功能</block>
   <block id="6a2fab1a92eaec5f3c3d9b2d28d580c4" category="list-text">支援程式庫更新</block>
   <block id="5f6c185eb38c56187fc699dfbe62654b" category="list-text">安全性增強功能</block>
@@ -13317,4 +13314,8 @@
   <block id="9adb8eb34f7ed5a25405fe6af3b01c0a" category="sidebar">確保安裝安全</block>
   <block id="357559d73c5bb22e54ab3aeafca1013b" category="sidebar">安裝軟體套件</block>
   <block id="3689ab983cde586722e4881cdbf1822a" category="sidebar">升級主機</block>
+  <block id="3a234e68f5d62ce2d6b3d068c61605c3" category="paragraph">每個版本均隨附 MetroCluster Tiebreaker 軟體的增強功能。以下是 MetroCluster tiebreaker 最新版本的新功能。</block>
+  <block id="5801d3e28a980df8d84e60a3eea8469c" category="paragraph">從 ONTAP 9.4 開始、 MetroCluster IP 組態支援使用 ADP 的新安裝（進階磁碟分割）。在大多數的組態中、分割區和磁碟指派會在MetroCluster 初始設定的站台期間自動執行。</block>
+  <block id="e6ca378bbb6d15fd110961cea50b2eb0" category="section-title">AFF C250 、 AFF A250 和 FAS500f 系統上的 ADP 和磁碟指派</block>
+  <block id="91d96627fcbee13a9d474587060d13f8" category="paragraph">AFF C250 和 AFF A250 系統的磁碟指派準則和規則也適用於 FAS500f 系統。如需 FAS500f 系統上的磁碟指派、請參閱 <block ref="62481755a241b3efc5c68e4e7dd00bb5" category="inline-xref-macro-rx"></block> 表。</block>
 </blocks>
