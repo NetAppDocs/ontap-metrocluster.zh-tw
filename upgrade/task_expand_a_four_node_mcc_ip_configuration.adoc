@@ -29,7 +29,6 @@ https://hwu.netapp.com["NetApp Hardware Universe"^]
 https://hwu.netapp.com["NetApp Hardware Universe"^]
 
 * 新節點必須有足夠的儲存空間來容納舊節點的資料、以及足夠的磁碟來容納根集合體和備用磁碟。
-* FAS2750或AFF FASA220系統不支援此程序。
 
 
 

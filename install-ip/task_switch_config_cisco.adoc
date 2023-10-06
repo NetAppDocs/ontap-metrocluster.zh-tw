@@ -585,3 +585,32 @@ IP_switch_A_1# copy running-config startup-config
 
 . 在其他三個MetroCluster 交換器上重複上述步驟、以進行「靜態IP」組態設定。
 
+
+
+
+== 停用未使用的 ISL 連接埠和連接埠通道
+
+NetApp 建議停用未使用的 ISL 連接埠和連接埠通道、以避免不必要的健全狀況警示。
+
+. 識別未使用的 ISL 連接埠和連接埠通道：
++
+「How介面簡介」
+
+. 停用未使用的 ISL 連接埠和連接埠通道。
++
+您必須針對每個識別出的未使用連接埠或連接埠通道執行下列命令。
+
++
+[listing]
+----
+SwitchA_1# config t
+Enter configuration commands, one per line. End with CNTL/Z.
+SwitchA_1(config)# int Eth1/14
+SwitchA_1(config-if)# shutdown
+SwitchA_12(config-if)# exit
+SwitchA_1(config-if)# copy running-config startup-config
+[########################################] 100%
+Copy complete, now saving to disk (please wait)...
+Copy complete.
+----
+

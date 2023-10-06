@@ -1,0 +1,110 @@
+---
+permalink: maintain/task_change_an_fc_switch.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, change, fc, switch 
+summary: 您可能需要變更 FC 交換器的廠商（ Cisco 改為 Brocade 、反之亦然）、變更交換器模式或兩者。 
+---
+= 變更 FC 交換器的廠商或型號
+:allow-uri-read: 
+
+
+[role="lead"]
+您可能需要將 FC 交換器的廠商從 Cisco 變更為 Brocade 、或是反之、變更交換器模式或兩者都變更。
+
+.關於這項工作
+* 此程序適用於使用 NetApp 驗證交換器的情況。
+* 對於組態中的兩個 Fabric 、您必須一次在一個 Fabric 上執行本程序中的步驟。
+
+
+.步驟
+. [[Step_1 、 Step 1]] 檢查組態的健全狀況。
++
+.. 檢查MetroCluster 每個叢集上的「* MetroCluster 」「*」「*」「顯示*」是否已設定成正常模式
++
+[listing]
+----
+cluster_A::> metrocluster show
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+ Local: cluster_A         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain auso-on-cluster-disaster
+Remote: cluster_B         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain auso-on-cluster-disaster
+----
+.. 檢查是否在每個節點上啟用鏡射：「* MetroCluster 鏡射節點show *」
++
+[listing]
+----
+cluster_A::> metrocluster node show
+DR                           Configuration  DR
+Group Cluster Node           State          Mirroring Mode
+----- ------- -------------- -------------- --------- --------------------
+1     cluster_A
+              node_A_1       configured     enabled   normal
+      cluster_B
+              node_B_1       configured     enabled   normal
+2 entries were displayed.
+----
+.. 請檢查MetroCluster 這些元件是否健全：「* MetroCluster 《*不實檢查路跑*》
++
+[listing]
+----
+cluster_A::> metrocluster check run
+
+Last Checked On: 10/1/2014 16:03:37
+
+Component           Result
+------------------- ---------
+nodes               ok
+lifs                ok
+config-replication  ok
+aggregates          ok
+4 entries were displayed.
+
+Command completed. Use the "metrocluster check show -instance" command or sub-commands in "metrocluster check" directory for detailed results.
+To check if the nodes are ready to do a switchover or switchback operation, run "metrocluster switchover -simulate" or "metrocluster switchback -simulate", respectively.
+----
+.. 檢查是否沒有健全狀況警示：「*系統健全狀況警示顯示*」
+
+
+. 安裝前請先設定新交換器。
++
+請依照中的步驟進行 link:https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/task_reset_the_brocade_fc_switch_to_factory_defaults.html["設定FC交換器"]。
+
+. 按照下列順序移除連線、以中斷舊交換器的連線：
++
+.. 如果本機叢集介面已連線至交換器：
++
+... 拔下本機叢集介面
+... 中斷本機叢集 ISL 的連線
+
+
+.. 中斷 MetroCluster IP 介面連線。
+.. 中斷 MetroCluster ISL 的連線。
+
+
+. 關閉舊交換器電源、拔下纜線、然後以新交換器實際更換舊交換器。
+. 依下列順序連接交換器：
++
+您必須遵循中的步驟 link:https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/task_rack_the_hardware_components_mcc_fabric_and_ip.html["安裝 MetroCluster 元件並連接纜線"]。
+
++
+.. 將 ISL 連接到遠端站台。
+.. 連接 MetroCluster IP 介面纜線。
+.. 連接本機叢集介面。
++
+如果本機叢集介面已連線至交換器：
+
++
+... 連接本機叢集介面。
+... 連接本機叢集 ISL 。
+
+
+
+
+. 開啟交換器電源。
+. 重複、確認 MetroCluster 組態正常 <<步驟1.>>。
+. 針對組態中的第二個 Fabric 重複步驟 1 至步驟 7 。
+

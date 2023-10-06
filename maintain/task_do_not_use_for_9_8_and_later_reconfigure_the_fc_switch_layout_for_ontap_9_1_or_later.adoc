@@ -151,7 +151,7 @@ https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp
 .步驟
 . 使用 https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"^] 若要判斷交換器類型的纜線配置、請使用連接埠使用方式進行八節點MetroCluster 的邊邊架構。
 +
-FC交換器連接埠使用量必須符合本指南所述的使用量、才能使用參考組態檔（RCFC）。
+FC 交換器連接埠的使用方式必須符合文件中所述的使用方式、才能使用參考組態檔案（ RCFs ）。
 
 +
 

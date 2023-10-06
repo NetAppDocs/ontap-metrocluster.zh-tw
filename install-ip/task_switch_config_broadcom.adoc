@@ -865,3 +865,44 @@ IP_switch_A_1# reload
 ----
 . 在其他三個MetroCluster 交換器上重複上述步驟、以進行REIP組態設定。
 
+
+
+
+== 停用未使用的 ISL 連接埠和連接埠通道
+
+NetApp 建議停用未使用的 ISL 連接埠和連接埠通道、以避免不必要的健全狀況警示。
+
+. 使用 RCF 檔案橫幅識別未使用的 ISL 連接埠和連接埠通道：
++
+
+NOTE: 如果連接埠處於中斷連線模式、則您在命令中指定的連接埠名稱可能與 RCF 橫幅中指定的名稱不同。您也可以使用 RCF 纜線檔案來尋找連接埠名稱。
+
++
+[role="tabbed-block"]
+====
+.以取得 ISL 連接埠詳細資料
+--
+執行命令 `show port all`。
+
+--
+.以取得連接埠通道詳細資料
+--
+執行命令 `show port-channel all`。
+
+--
+====
+. 停用未使用的 ISL 連接埠和連接埠通道。
++
+您必須針對每個識別出的未使用連接埠或連接埠通道執行下列命令。
+
++
+[listing]
+----
+(SwtichA_1)> enable
+(SwtichA_1)# configure
+(SwtichA_1)(Config)# <port_name>
+(SwtichA_1)(Interface 0/15)# shutdown
+(SwtichA_1)(Interface 0/15)# end
+(SwtichA_1)# write memory
+----
+

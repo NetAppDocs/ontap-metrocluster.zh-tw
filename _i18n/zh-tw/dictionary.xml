@@ -147,13 +147,6 @@
   <block id="8dbef93c578a2dd1a148ce7a8e7ed428" category="list-text">對其他三個交換器重複上述步驟、請務必將相符的RCF檔案複製到對應的交換器。</block>
   <block id="8ba14fdefa2d1c4e74a7235016d36d36" category="list-text">重新載入交換器：</block>
   <block id="6016a2b341113bf496b719905398ecd2" category="summary">版權</block>
-  <block id="e10b5b38785c3a24ec75723ab75b4360" category="paragraph">Copyright©2021 NetApp、Inc.版權所有。美國印製</block>
-  <block id="2275e007ee598cef266c877f9c52ee25" category="paragraph">本文所涵蓋的任何部分不得以任何形式或任何方式（包括影印、錄製、電子或機械）複製、 在未事先取得版權擁有者書面許可的情況下、在電子擷取系統中進行錄音或儲存。</block>
-  <block id="ce4ad2236c56cc11a838f29c8c261bf7" category="paragraph">衍生自受版權保護之NetApp資料的軟體必須遵守下列授權與免責聲明：</block>
-  <block id="b110bc9db113b3149cb9e2ed905d4c6c" category="paragraph">本軟體係由NetApp「依現狀」提供、不含任何明示或暗示的保證、包括但不限於適售性及特定用途適用性的暗示保證、特此聲明。在任何情況下、NetApp均不對任何直接、間接、偶發、特殊、示範、 或衍生性損害（包括但不限於採購替代商品或服務；使用損失、資料或利潤損失； 或業務中斷）、無論是在合約、嚴格責任或侵權行為（包括疏忽或其他）中、無論是因使用本軟體而產生的任何責任理論（包括疏忽或其他）、即使已被告知可能造成此類損害。</block>
-  <block id="4fc9b260d15698bbd988f76ca839c5b6" category="paragraph">NetApp保留隨時變更本文所述之任何產品的權利、恕不另行通知。除非NetApp以書面明確同意、否則NetApp不承擔因使用本文所述產品而產生的任何責任或責任。使用或購買本產品並不代表NetApp擁有任何專利權利、商標權利或任何其他智慧財產權。</block>
-  <block id="87bfcb691f34a9e3fdda83480f0acf78" category="paragraph">本手冊所述產品可能受到一或多個美國國家/地區的保護專利、國外專利或申請中。</block>
-  <block id="464821ce353b86f770de0d09b5f5aabe" category="paragraph">本文所含資料係指商業項目（定義見FAR 2.101）、為NetApp、Inc.（美國）專屬政府擁有非專屬、不可轉讓、不可再授權、全球有限且不可撤銷的授權、只能在與美國相關且支援美國的情況下使用資料交付資料所依據的政府合約。除非本文另有說明、否則不得使用、揭露、重製、修改、執行資料、 或在未事先取得NetApp、Inc.書面核准的情況下展示。美國國防部的政府授權權利僅限於DFARS條款252.227-7015(b)中所述的權利。</block>
   <block id="54744df94a6fdb7104348dee41697c48" category="summary">連接埠在MetroCluster 一個靜態IP組態中的使用取決於交換器機型和平台類型。</block>
   <block id="de42a51018ae76cdec0d5104c4b44724" category="doc">Cisco 3232C或Cisco 9336C交換器的平台連接埠指派</block>
   <block id="d74c7ca1ea000f4f70f344a02c2ae570" category="paragraph">使用表格之前、請先檢閱下列考量事項：</block>
@@ -210,7 +203,6 @@
   <block id="acaaad9afa094fcde3c31cd0610a8bdc" category="paragraph"><block ref="acaaad9afa094fcde3c31cd0610a8bdc" category="inline-link-macro-rx"></block></block>
   <block id="acb19996aff6d0b774650f9aa4d7212a" category="inline-link-macro">《IP設定工作表》、站台_B MetroCluster</block>
   <block id="08fcfce40ddd768f4ab6ad0534a40c73" category="paragraph"><block ref="08fcfce40ddd768f4ab6ad0534a40c73" category="inline-link-macro-rx"></block></block>
-  <block id="b1ff5704b48e42d700d43961dd415064" category="summary">商標</block>
   <block id="c4ce4761e466527d26b3e3d5ed1006fd" category="paragraph">NetApp 、 NetApp 標誌及 NetApp 商標頁面上列出的標章均為 NetApp 、 Inc. 的商標。其他公司與產品名稱可能為其各自所有者的商標。</block>
   <block id="f99aa604031e5049799e73b5c3748a98" category="paragraph"><block ref="f99aa604031e5049799e73b5c3748a98" category="inline-link-rx"></block></block>
   <block id="a7413038d86d8757b33477e80819b54d" category="summary">各種MetroCluster 版本的不二組態在必要的元件上有主要差異。</block>
@@ -837,7 +829,6 @@
   <block id="7f7ac805a7906e442304efa8e7dedb87" category="paragraph">「取消組態設定中介程式」MetroCluster</block>
   <block id="fb936fa23d866b3d364f6eb5c606725a" category="list-text">建立ONTAP 全新的功能鏈接至MetroCluster 架構的功能：</block>
   <block id="f8dc7177731310562718d80a3440fa9d" category="paragraph">「支援組態設定的中介者add -中介 者位址_ip-address-of中介者主機_」MetroCluster</block>
-  <block id="e9f56eb126455869bdb213c6b8827217" category="summary">版權、商標及機器翻譯</block>
   <block id="bb124d064acc3f4f119d2f39280a9588" category="summary">如果您尚未收到已安裝在機櫃中的設備、則必須裝入元件機架。</block>
   <block id="5a137932ab395fdd99750af18b127b8c" category="doc">安裝硬體元件</block>
   <block id="2f6bf7d722b6e0d3fcfba21d4a8ba970" category="paragraph">這項工作必須在MetroCluster 兩個地方執行。</block>
@@ -1813,9 +1804,6 @@
   <block id="c209703458c468cdf952f490276996a0" category="summary">您必須在MetroCluster 不完整的功能組態中設定每個節點ONTAP 、包括節點層級組態、以及將節點組態設定為兩個站台。您也必須在MetroCluster 這兩個站台之間實作「不二」關係。</block>
   <block id="780b12826a73e1109ad45282f1b731dc" category="doc">在MetroCluster 不提供的情況下設定功能ONTAP</block>
   <block id="ef6b52b87a839f50cbfacc69d34de0af" category="image-alt">工作流程MCC IP高層節點和叢集組態軟體</block>
-  <block id="6b6c87870bfc5260f4e7282bb5b52dd6" category="summary">如需當地語系化內容的重要資訊、請參閱netapp.com。</block>
-  <block id="b4de17ead867a3cf0b9d11e57e562672" category="doc">機器翻譯</block>
-  <block id="db9bfd81e26275c9db26e2db3ac172c3" category="paragraph"><block ref="db9bfd81e26275c9db26e2db3ac172c3" category="inline-link-rx"></block></block>
   <block id="c92c490b97a94b8ad700c26b41c33c18" category="summary">從Sf2 9.7開始ONTAP 、ONTAP 透過MetroCluster 提供實體獨立的儲存庫來儲存狀態資訊、該功能可協助執行不計畫性的自動切換。</block>
   <block id="a9ff5216cd4c113510a74e308ff5a81d" category="doc">準備安裝ONTAP 《不知道如何安裝》服務</block>
   <block id="c5cd3d887ef507cadc249c592410542a" category="list-text">如果您打算更新Linux版本、請在安裝最新ONTAP 的《支援者》服務之前、先進行更新。</block>
@@ -2103,7 +2091,6 @@
   <block id="6f7582d0e120db40c637399cfa1b6c6b" category="inline-link">使用CLI進行叢集管理</block>
   <block id="c467b861736195e319f9323a1f51b76d" category="paragraph">。<block ref="752795714a55b77b4bc7d5d8c99674d1" category="inline-link-rx"></block> 在「管理組態備份」一節中包含其他資訊。</block>
   <block id="7f4d4fbe08a8a895671d05c4a82b0c85" category="doc">資訊文件MetroCluster</block>
-  <block id="aa9dd1542ced8b74553b49591df08b7f" category="summary">版權所有、可維護MetroCluster 不穩定元件。</block>
   <block id="409af61506044b29e17ba065ed936a41" category="summary">您可能需要將根磁碟區移至雙節點或四節點MetroCluster 之間的另一個根Aggregate。</block>
   <block id="751d545fc5bc71e5b2323bef5e403749" category="doc">何時將根磁碟區移轉至新目的地</block>
   <block id="00aa76fa0ef150ad11418ea2b694ba07" category="section-title">在雙節點MetroCluster 的不全功能組態中移轉根磁碟區</block>
@@ -2213,7 +2200,6 @@
   <block id="a435a250565ee3763e97ae4f9479fc93" category="paragraph">「Switch_a_1# show int eth1/17、eth1/18 in需 簡介」</block>
   <block id="cf7aba35b26c53d9d39f432d24bb6b7f" category="paragraph">您應該會在命令輸出中看到ISL介面、如下列範例所示：</block>
   <block id="502351f7672bedb2e8f4f7aedd01b7bd" category="list-text">重複執行Fabric 2的程序。</block>
-  <block id="49f90e35c32b05006940aa496079571b" category="summary">維護MetroCluster 組件的商標資訊。</block>
   <block id="a57ca36aaadd79a0f7796b97ef93ea4b" category="paragraph">適用於此系統的服務程序MetroCluster 包括磁碟機櫃、IP交換器、FC交換器、FC至SAS橋接器及SAS纜線的韌體升級和硬體更換程序。</block>
   <block id="bd19bf00e1fbfd96fcc2339c755e0467" category="summary">如果您要新增或升級硬體（例如其他或更快的控制器或更快的交換器）、可能需要將ISL新增至交換器。</block>
   <block id="a6237977252c00c91d0b5db5336baec2" category="doc">將lSLs新增至Cisco交換器</block>
@@ -2361,7 +2347,6 @@
   <block id="0d687993b6b67e20ff0472f32d9693b0" category="paragraph">您必須確定新控制器模組和新磁碟櫃與現有FC交換器之間的纜線。</block>
   <block id="6485f9afbf9c5f34e988054e67e3b142" category="paragraph">此工作必須在每MetroCluster 個站台執行。</block>
   <block id="37e68b1ed6861ebdf386fc5e91c46ae5" category="list-text">使用<block ref="df3a11b0f7b8977a7ee2ae6dd464c6cb" category="inline-link-rx"></block> 若要判斷交換器類型的纜線配置、請使用連接埠使用方式進行八節點MetroCluster 的邊邊架構。</block>
-  <block id="9846b9bd1d098858cca0855cc4e56c18" category="paragraph">FC交換器連接埠使用量必須符合本指南所述的使用量、才能使用參考組態檔（RCFC）。</block>
   <block id="62f6cc0bf7eb35e158a953058ca74eca" category="section-title">套用RCF檔案並重新啟用交換器</block>
   <block id="240180de393c4a94b035628cb25892f2" category="paragraph">您必須套用適當的參考組態（RCF）檔案、才能重新設定交換器以容納新節點。套用RCF檔案之後、您就可以重新恢復交換器。</block>
   <block id="f2fa326e6e1c8de922a1dcd02e4670eb" category="paragraph">FC交換器連接埠使用量必須符合中所述的使用量<block ref="df3a11b0f7b8977a7ee2ae6dd464c6cb" category="inline-link-rx"></block> 以便能夠使用RCT。</block>
@@ -2826,7 +2811,6 @@
   <block id="ba2044d8a6c35bb667c35d13e7a3277d" category="section-title">Cisco 9148或9148S連接埠、可在MetroCluster 執行ONTAP NetApp 9.0的雙節點版功能組態上使用ISL</block>
   <block id="2bc92937819403549f510c08d8a54058" category="paragraph">下表顯示Cisco 9148或9148S交換器的ISL連接埠使用量：</block>
   <block id="e936a0e4e03d3d3120e966eca42a0b28" category="section-title">Cisco 9250i連接埠使用於MetroCluster 執行ONTAP 版本號為9.0的雙節點版塊位向功能組態上的ISL</block>
-  <block id="16573a1c176c6843c144993b6e9d5686" category="summary">維護MetroCluster VMware元件的版權、商標及機器翻譯。</block>
   <block id="0f4890949e646d00de6b9e66bd1b1968" category="summary">您可能需要更換故障的交換器、或是升級或降級交換器。當交換器故障時、新交換器可以與舊交換器相同、或者您可以變更交換器類型（升級或降級交換器）。</block>
   <block id="7fab172697215ab39d868b582f7aa8fc" category="paragraph">此程序適用於使用NetApp驗證的交換器。如果您使用的是符合MetroCluster規範的交換器、請洽詢交換器廠商。</block>
   <block id="439912781979c2137b20f407615e78f8" category="list-text">檢查MetroCluster 每個叢集上的「* MetroCluster 」「*」「*」「顯示*」是否已設定成正常模式</block>
@@ -4122,7 +4106,6 @@
   <block id="81927ec637b63156a40899d4c547908f" category="paragraph">確認儲存設備可從存續的站台看到。讓離線程序恢復上線。這會重新啟動重新同步作業、並重新建立SyncMirror 該功能。</block>
   <block id="0483b2aca795ea6933a0ab7502b4e963" category="list-text">重新建立MetroCluster 此功能組態。</block>
   <block id="44b7f701c8b22fd32471d911de4c0984" category="paragraph">依照中的指示操作 <block ref="c355f6bb3dca677defb89e8a84e6c55b" category="inline-link-macro-rx"></block> 根據MetroCluster 您的需求組態執行修復和切換作業。</block>
-  <block id="d9e400dd9ded7f29f3d83e3af80e5739" category="summary">機器翻譯可維護MetroCluster 元件的不變。</block>
   <block id="fca3ec170ce9c71081fd6e6c37f432d0" category="summary">如果您要升級至新的Brocade FC交換器、則必須更換第一個Fabric中的交換器、確認MetroCluster 該交換器組態可完全正常運作、然後更換第二個Fabric中的交換器。</block>
   <block id="472f5d690548311b55786731619a808b" category="list-text">此功能組態必須健全且正常運作。MetroCluster</block>
   <block id="c298ece2fdc0c91833d8c313094e79f6" category="list-text">這個交換器架構由四個Brocade交換器組成。MetroCluster</block>
@@ -4228,16 +4211,10 @@
   <block id="b6c8d49615b2216ec73c49f38815ee2b" category="list-text">如果您要熱新增多個磁碟櫃、請針對要熱新增的每個磁碟櫃重複上述步驟。</block>
   <block id="e9c44bbfd795a5d63d74c6a77afee70d" category="summary">法律聲明提供版權聲明、商標、專利等存取權限。</block>
   <block id="30d965eef5ba25c6b9998ae38270b43e" category="doc">法律聲明</block>
-  <block id="de6edae22bc37b97b38a15c7f8af62e2" category="paragraph"><block ref="de6edae22bc37b97b38a15c7f8af62e2" category="inline-link-rx"></block></block>
   <block id="126a02652da6de02962cf1b654fd6376" category="section-title">商標</block>
-  <block id="a93bc0a57623c2facaa010825c808507" category="paragraph"><block ref="a93bc0a57623c2facaa010825c808507" category="inline-link-rx"></block></block>
   <block id="be89498d2f8a22ce47c02ba9795fe2af" category="section-title">專利</block>
   <block id="d0b19d36be2c5f16e9aef46c8a452d3d" category="paragraph">如需最新的 NetApp 擁有專利清單、請參閱：</block>
-  <block id="547ea2e305891e64d8e744949b0aca2c" category="paragraph"><block ref="547ea2e305891e64d8e744949b0aca2c" category="inline-link-rx"></block></block>
   <block id="56c34c6410dd45c5cec44149ad0ce037" category="section-title">隱私權政策</block>
-  <block id="50921fca0d376fca62102a5e608994e2" category="paragraph"><block ref="50921fca0d376fca62102a5e608994e2" category="inline-link-rx"></block></block>
-  <block id="dd3918c571093dff2b94f7cef5066d01" category="inline-link-macro">netapp.com</block>
-  <block id="5db028f960e19ec42098e3252e4fb1e3" category="paragraph">如需當地語系化內容的重要資訊、請參閱 <block ref="7e89bb7928e951b6f80ad1dab5c58475" category="inline-link-macro-rx"></block></block>
   <block id="f4f9114b6815399e0354d08e08a983ae" category="summary">完成轉換程序後、現有MetroCluster 的功能表組態的關鍵元件已被更換或重新設定。</block>
   <block id="9f656b06c5e70137762318437b99476a" category="doc">移轉作業如何影響MetroCluster 到非同步硬體元件</block>
   <block id="5653fb30c26df8107e327cdb9788d9f6" category="list-text">*控制器模組*</block>
@@ -5565,8 +5542,6 @@
   <block id="9b285c1504808639febd849ff50e46f8" category="paragraph">「展示舊系統ID」</block>
   <block id="f7d3f58925284e72d1e27c4ecdc8c0a2" category="paragraph">遠端磁碟可由0m裝置辨識。0m表示磁碟是透過MetroCluster 不中斷iSCSI連線來連線。這些磁碟必須在稍後的恢復程序中重新指派。</block>
   <block id="f562c82a4b8457810df52dab869e618d" category="list-text">在其他替換節點上重複此步驟</block>
-  <block id="00ff6cb65975cb5036856052734543f1" category="doc">版權資訊</block>
-  <block id="b8bf3a077651caf89f45b81a997cd4f8" category="paragraph">限制權利圖例：政府使用、複製或揭露受DFARS 252.277-7103（1988年10月）和FAR 52-227-19（1987年6月）技術資料與電腦軟體權利條款（c）（1）（ii）分段所述限制。</block>
   <block id="3474d2eb041155af52154115ef055b37" category="summary">您必須在節點上設定環境變數、然後將其關機、以準備MetroCluster 好進行支援的組態設定。</block>
   <block id="b86567f5c220230acee06e876bc55b89" category="paragraph">此程序會在更換控制器模組處於維護模式時執行。</block>
   <block id="0953e5386715474e7df9073148bfa6da" category="paragraph">只有在以啟動器模式使用FC或CNA連接埠的系統上、才需要檢查連接埠組態的步驟。</block>
@@ -5637,7 +5612,6 @@
   <block id="95052b14282825e23d588959737ad63b" category="paragraph"><block ref="95052b14282825e23d588959737ad63b" category="inline-link-macro-rx"></block></block>
   <block id="256c9168a0fac26b0de86d3f5be81367" category="inline-link-macro">如何使用NetApp功能來提供資料備援MetroCluster SyncMirror</block>
   <block id="6f7d98be1b049a5ad85199b0be6c8584" category="paragraph"><block ref="6f7d98be1b049a5ad85199b0be6c8584" category="inline-link-macro-rx"></block></block>
-  <block id="abf5633c4666f2c2f9ee92883952b686" category="doc">商標資訊</block>
   <block id="ab1ff6a9f7fec79076fe5a37620c863f" category="summary">如果在災難站台更換了控制器模組或NVRAM卡、您必須將屬於根集合體的磁碟重新指派給更換的控制器模組。</block>
   <block id="12a839df1b665dc905f649011126b347" category="doc">重新指派災難站台上集區1磁碟的磁碟擁有權（MetroCluster 知識IP組態）</block>
   <block id="a80638f76a6a6dafc444e1d6a0f9cf81" category="paragraph">如果災難站台更換了一或兩個控制器模組或NVRAM卡、則系統ID已變更、您必須將屬於根Aggregate的磁碟重新指派給更換的控制器模組。</block>
@@ -6474,14 +6448,12 @@
   <block id="161c64322f806c6fa66fcfcc4f963ca2" category="list-text">將節點開機至開機功能表：</block>
   <block id="535a1b9f22b2c711bbc48344a4608a4b" category="paragraph">執行命令後、請等待開機功能表顯示。</block>
   <block id="924380a68efbb68301d2373e39ae8ac9" category="list-text">請在開機功能表提示字元中輸入「wecpionfig」、然後按Enter鍵、以清除節點組態。</block>
-  <block id="456a31391b752801562536d0f9695aad" category="paragraph">Copyright©2020 NetApp、Inc.版權所有。美國印製</block>
   <block id="9fb038c9fc985f95a364fbc284e66009" category="summary">若要將SNMP與Tiebreaker軟體搭配使用、您必須設定SNMP設定。</block>
   <block id="42c78bfa01522453fc42980157ef4a55" category="doc">設定斷路器軟體的SNMP設定</block>
   <block id="8891488ccf0af3b6c4a946824e6f0cdc" category="admonition">目前僅支援一個SNMP設陷主機。</block>
   <block id="69b040d4f8adaa4c34e437207036c73c" category="list-text">確認已設定SNMP設定：</block>
   <block id="da82ec774885b0fd4ea7e17756ffc01b" category="paragraph">"NMP組態測試"</block>
   <block id="c4aa541ec1b33e5e76d09363d75995f8" category="paragraph">下列範例顯示、Tiebreaker軟體可傳送事件test_SNMP設陷的SNMP：</block>
-  <block id="f434e67fe7c948db94749474e31b44c4" category="summary">版權與商標</block>
   <block id="0f96cd982e393bde238790eeffc45a91" category="summary">瞭解NetApp MetroCluster ESIT斷路 器軟體是什麼、以及它如何區分故障類型、MetroCluster 以便您有效監控您的故障組態、是很有幫助的。您可以使用tiebreaker CLI來管理設定、並監控MetroCluster 各種ESITE組態的狀態和運作。</block>
   <block id="6896949575280512a6bafbe8d6a34966" category="doc">Tiebreaker軟體總覽</block>
   <block id="afb7e20d234166f2551194936416feee" category="section-title">使用NetApp MetroCluster 斷點器軟體偵測故障</block>
@@ -6789,7 +6761,6 @@
   <block id="bdeabf77afacd398dedff72c9d8d51e6" category="image-alt">含磁碟和陣列LUN的MCC組態1.</block>
   <block id="df0ddc6b2606b325169b0db05e673efc" category="paragraph">下圖顯示ONTAP 瞭如何連接到不二系系統和陣列LUN、因此HBA連接埠0A到0d可用於連接陣列LUN、因為連接埠1a到1d可用於連接磁碟：</block>
   <block id="ec31df7d1f18c6948a41ebc1330adb9e" category="image-alt">此圖描述MetroCluster 一個範例：圖形會在周圍的文字中說明。</block>
-  <block id="9bc07042d75b92db9b8b24b372c11865" category="summary">Fabric附加MetroCluster 的安裝與組態版權資訊。</block>
   <block id="cf9793806e6e4a04213f68a860b2fd56" category="summary">若要設定Cisco FC交換器、您必須將交換器設定重設為原廠預設值、安裝交換器軟體、以及下載並套用參考組態（RCF）檔案、以針對特定組態提供完整的交換器設定。</block>
   <block id="64fb3fc78b6d09b80f739c2efaebdd9d" category="doc">使用RCF檔案設定Cisco FC交換器</block>
   <block id="02043b3a3b802db01041709dec8e7509" category="paragraph">若要設定Cisco FC交換器、您必須將交換器設定重設為原廠預設值、安裝交換器軟體、以及下載並套用參考組態（RCF）檔案、以針對特定組態提供完整的交換器設定。</block>
@@ -7009,7 +6980,6 @@
   <block id="11278506140805617313d6fd9ed8b0fc" category="cell">Cisco 9148、9148 S或9250i</block>
   <block id="84e23d11c4e127e49471824f2e6c9d7c" category="paragraph">下表顯示使用光纖橋接器7500橋接器時、連接埠使用量最多可達連接埠14。其他橋接器可依照相同模式連接至連接埠15至32。</block>
   <block id="a469d4f6876ebd3dc052284b5c5e7509" category="paragraph">下表顯示使用最多連接埠14的光纖橋接器6500時的橋接連接埠使用量。其他橋接器可依照相同模式連接至連接埠15至32。</block>
-  <block id="695e93d2cacba01cfb4c9024989cf992" category="summary">Fabric附加MetroCluster 版的安裝與組態、版權、商標及機器翻譯。</block>
   <block id="c283e6d33e5ab7ba05309d0bdb85144e" category="summary">您需要針對MetroCluster 交換器的某些權限才能進行整個交換器的功能。您必須在所有四個交換器上安裝這些授權。</block>
   <block id="1895119723122826713ca9b3d616a96b" category="doc">檢閱Brocade授權要求</block>
   <block id="020376a3fd370a6b9dfc23a3f92f2cba" category="paragraph">此組態具有下列Brocade授權需求：MetroCluster</block>
@@ -9181,7 +9151,6 @@
   <block id="1d670d96f2ecbfb15c4a81314e20f67d" category="list-text">FibreBridge 6500N橋接器僅支援一個SAS堆疊。</block>
   <block id="520e16a62f58f9e73a16fda005e8fe2f" category="list-text">每個堆疊都可以使用不同的IOM機型。</block>
   <block id="8db51e2a7c564cc042e840346cc8e77f" category="paragraph">支援的IOM模組取決於ONTAP 您執行的版本。</block>
-  <block id="5400fbe37f724313e0008bfdb06f2ae6" category="paragraph">本指南中所使用的建議名稱可識別橋接器所連接的控制器模組和堆疊、如下所示。</block>
   <block id="9df6f19f1ce5cd3044ae4a6c42240fb1" category="paragraph">這個組態需要在每個站台進行最低組態設定：MetroCluster</block>
   <block id="6b921594086cf3be722aefbdc64a10c1" category="paragraph">例如、在每MetroCluster 個站台有兩個節點的四節點的「樣例」組態中、每個站台都需要四個資源池。</block>
   <block id="d5d16fad39e71fb59dc90d88df5e1025" category="paragraph">您的ONTAP 版本必須支援機櫃混合。請參閱互通性對照表工具IMT （英文）、瞭解您的ONTAP 版本的支援機櫃混合。<block ref="ac420cca75b9dbbf7e4e74995a005185" category="inline-link-rx"></block></block>
@@ -10061,7 +10030,6 @@
   <block id="05202b0916eaeee59c9212a5ad2a36d2" category="list-text">請在正常站台上發出下列命令、檢查並移除屬於災難站台的任何故障磁碟：「磁碟show -disks（磁碟顯示-中斷）」</block>
   <block id="1646a615f16cd1da224d08e9d75d5a86" category="list-text">開啟或開機災難站台上的每個控制器模組。</block>
   <block id="292d0821c50758a566d72d285a633f25" category="paragraph">如果兩個plexes都存在、則當plexes未同步時、會自動進行重新同步。如果某個叢發生故障、則必須銷毀該叢、並使用儲存Aggregate mirror -Aggregate gregate名稱命令重新建立鏡射關係。</block>
-  <block id="5621b41b86ecc6119cef6c570390e2c4" category="summary">Stretch MetroCluster 的安裝與組態版權資訊。</block>
   <block id="d970522a2c535f4a798076f2c36b8af8" category="paragraph">您必須使用正確的FC對SAS橋接器來佈線這些磁碟櫃。</block>
   <block id="e0dd1e85604316427a557d67b3079843" category="summary">您必須根據使用FlexArray 的是哪些LUN、以及儲存控制器如何連接至儲存櫃、選擇正確的安裝程序。</block>
   <block id="e754262d6877963456252dcb8071c9a7" category="image-alt">工作流程選擇MetroCluster 您需要的組態延伸</block>
@@ -10149,7 +10117,6 @@
   <block id="58f664821eaeae8db29ad0777b7c207e" category="list-text">如果您不使用第二個連接埠、則必須停用連接埠：+「fcportDisable port-Number」</block>
   <block id="9903ebf5645f39363aa954b61ca67471" category="list-text">觀看橋樑的狀態：《龍橋秀》（Torage bridge show）</block>
   <block id="8707b60af4835d505959781341c58dac" category="list-text">保護橋樑：+「Recurebridge」</block>
-  <block id="a4cef338a5507901a886ba7a9f2c3930" category="summary">適用於Stretch MetroCluster 的安裝與組態設定的版權、商標及機器翻譯。</block>
   <block id="00ba2d14b7be89e77994c1a63febf02b" category="summary">利用此功能、即可管理叢集的GUI管理及監控組態。Active IQ Unified Manager ONTAP</block>
   <block id="88ff9d984c80d54e420fe8ed786e3bb0" category="doc">使用Active IQ Unified Manager 功能完善的功能和ONTAP 功能完善的系統管理程式來進一步設定和監控</block>
   <block id="186047a757cb9863fcb93d32f5c0c989" category="paragraph">利用此功能、即可管理叢集的GUI管理及監控組態。Active IQ Unified Manager ONTAP</block>
@@ -10504,7 +10471,6 @@
   <block id="ae93f8db79e804687f665cca18aeaf96" category="list-text">視需要連接叢集網路連線：</block>
   <block id="08d765882f3d558992e145feaf1e7b56" category="list-text">識別控制器模組上用於叢集連線的連接埠。</block>
   <block id="71cce47db286c6aa128117deeafa4fa5" category="list-text">如果您要設定交換式叢集、請識別要在叢集網路交換器上使用的連接埠。</block>
-  <block id="9d568d2bce9df96d5cd0c80e9752fafc" category="paragraph">請參閱Data ONTAP 《_叢集式的Cisco交換器設定指南_》、《_ NetApp 10G叢集模式交換器安裝指南_》或《_ NetApp 1G叢集模式交換器安裝指南_》、視您使用的交換器而定。</block>
   <block id="0ca1ffae445c35f0997cbf9bb3edfd18" category="list-text">將纜線連接至叢集連接埠：</block>
   <block id="ac9d5901ac51a7a9e98d7f8c6c0740f1" category="cell">如果叢集是...</block>
   <block id="fadb571b21e3b8d292a9bfb891aca2ba" category="paragraph">雙節點無交換器叢集</block>
@@ -12018,7 +11984,6 @@
   <block id="8e41be9a68008dd9f01c00807dd75f69" category="section-title">一致性群組支援MetroCluster 的不一致性組態</block>
   <block id="b36742dbca767f044c826ec8fbe9b099" category="inline-link">一致性群組</block>
   <block id="2b9902d272c75c4def3400c620342746" category="paragraph">從ONTAP 功能性的9.11.1開始、<block ref="cf613318e210a5e8a8ae9de011eafc43" category="inline-link-rx"></block> 支援的功能包括MetroCluster ：</block>
-  <block id="fe92f5934bf96194725b46db02f72324" category="list-text">FAS2750或AFF FASA220系統不支援此程序。</block>
   <block id="8a4f175190a1710cdcd52e7efde01268" category="section-title">在MetroCluster 不支援的IP組態中啟用Cisco Macsec Encryption WAN ISL</block>
   <block id="dbbfd3dd70a4d25284d890b07ad9bc31" category="section-title">設定Macsec金鑰鏈和金鑰</block>
   <block id="2903318a6fa99cbae17be8d84747e6f4" category="section-title">設定Macsec原則</block>
@@ -13318,4 +13283,52 @@
   <block id="5801d3e28a980df8d84e60a3eea8469c" category="paragraph">從 ONTAP 9.4 開始、 MetroCluster IP 組態支援使用 ADP 的新安裝（進階磁碟分割）。在大多數的組態中、分割區和磁碟指派會在MetroCluster 初始設定的站台期間自動執行。</block>
   <block id="e6ca378bbb6d15fd110961cea50b2eb0" category="section-title">AFF C250 、 AFF A250 和 FAS500f 系統上的 ADP 和磁碟指派</block>
   <block id="91d96627fcbee13a9d474587060d13f8" category="paragraph">AFF C250 和 AFF A250 系統的磁碟指派準則和規則也適用於 FAS500f 系統。如需 FAS500f 系統上的磁碟指派、請參閱 <block ref="62481755a241b3efc5c68e4e7dd00bb5" category="inline-xref-macro-rx"></block> 表。</block>
+  <block id="d39fc122b5bc72857d3bc1cb28b2528b" category="summary">您可能需要變更 FC 交換器的廠商（ Cisco 改為 Brocade 、反之亦然）、變更交換器模式或兩者。</block>
+  <block id="dc97a56f45d09eb47627be2f51eaacac" category="doc">變更 FC 交換器的廠商或型號</block>
+  <block id="588f711b0852bf6ebac518663e6bf15c" category="paragraph">您可能需要將 FC 交換器的廠商從 Cisco 變更為 Brocade 、或是反之、變更交換器模式或兩者都變更。</block>
+  <block id="34b3750efa9ad33069e758e1d20702b2" category="list-text">此程序適用於使用 NetApp 驗證交換器的情況。</block>
+  <block id="038dcdf6b816f0dea514171c0fbec340" category="list-text">對於組態中的兩個 Fabric 、您必須一次在一個 Fabric 上執行本程序中的步驟。</block>
+  <block id="12e792350f2f2a26f26efec238939f8c" category="list-text">[[Step_1 、 Step 1]] 檢查組態的健全狀況。</block>
+  <block id="2aadc0e8757be310d2a25c139de10d8a" category="paragraph">請依照中的步驟進行 <block ref="71433a7a2e7b6001aee2288bc93568fd" category="inline-link-macro-rx"></block>。</block>
+  <block id="4b0b73acfce5119dcc60f2f7b6dac2c4" category="list-text">按照下列順序移除連線、以中斷舊交換器的連線：</block>
+  <block id="5ad31ba7150f9832a818c89539b6baa5" category="list-text">中斷 MetroCluster IP 介面連線。</block>
+  <block id="66700e9b823419320bcf568412b3c8f5" category="list-text">中斷 MetroCluster ISL 的連線。</block>
+  <block id="c4f64a0c7e0a39b3f68c6c76b119f9b7" category="list-text">關閉舊交換器電源、拔下纜線、然後以新交換器實際更換舊交換器。</block>
+  <block id="39c4de53c442cd522fc67edfc4cc59c8" category="list-text">依下列順序連接交換器：</block>
+  <block id="0f192214376d7c0e958d509a331b7c82" category="inline-link-macro">安裝 MetroCluster 元件並連接纜線</block>
+  <block id="ca71188f7f4bbd1ad7fb2b3ac50145fa" category="paragraph">您必須遵循中的步驟 <block ref="f09498c56b761bf8471aa49436b9c6b5" category="inline-link-macro-rx"></block>。</block>
+  <block id="d7c72b026579f98d6108723379befa5c" category="list-text">開啟交換器電源。</block>
+  <block id="4c49ac5fd96c13efa7ddbce7575dd9e4" category="list-text">重複、確認 MetroCluster 組態正常 <block ref="70a312d559ac5bac88a63c5c7c2e52d3" category="inline-xref-macro-rx"></block>。</block>
+  <block id="b81576b1956a4793e86cfb62d8774b3f" category="list-text">針對組態中的第二個 Fabric 重複步驟 1 至步驟 7 。</block>
+  <block id="899dd799064eace0f16728f2bf38c96b" category="paragraph">FC 交換器連接埠的使用方式必須符合文件中所述的使用方式、才能使用參考組態檔案（ RCFs ）。</block>
+  <block id="c1f9897c71a9ecfa3b9c9f7cf2180518" category="paragraph">本文件中使用的建議名稱範例可識別橋接器所連接的控制器模組和堆疊、如下所示。</block>
+  <block id="498655ab09377cb9366dc958acdc9ea7" category="section-title">停用未使用的 ISL 連接埠和連接埠通道</block>
+  <block id="ff0ff0079f0279d8fee034046e8fa982" category="paragraph">NetApp 建議停用未使用的 ISL 連接埠和連接埠通道、以避免不必要的健全狀況警示。</block>
+  <block id="a9326d2f25aef48e5762f13385203981" category="list-text">識別未使用的 ISL 連接埠和連接埠通道：</block>
+  <block id="266e882d8921051df420c801a50fbf2b" category="list-text">停用未使用的 ISL 連接埠和連接埠通道。</block>
+  <block id="88cd2a16d4b9522a6fbeb03c6848465d" category="paragraph">您必須針對每個識別出的未使用連接埠或連接埠通道執行下列命令。</block>
+  <block id="24b12e7bdbffc85f965324863b16c8be" category="list-text">使用 RCF 檔案橫幅識別未使用的 ISL 連接埠和連接埠通道：</block>
+  <block id="1ebfefc73ecfb2ec17fba9f0880be790" category="admonition">如果連接埠處於中斷連線模式、則您在命令中指定的連接埠名稱可能與 RCF 橫幅中指定的名稱不同。您也可以使用 RCF 纜線檔案來尋找連接埠名稱。</block>
+  <block id="bb4c2363cad6592b2fa6d4a7007aaa06" category="open-title">以取得 ISL 連接埠詳細資料</block>
+  <block id="53b57934da9ea1d512fc2c0741e756bc" category="paragraph">執行命令<block ref="bb29d819162aea516f17802198f8faf7" prefix=" " category="inline-code"></block>。</block>
+  <block id="0c3fc93b330ba95bfe2bc5102d8089aa" category="open-title">以取得連接埠通道詳細資料</block>
+  <block id="cd26d4b6b111806e4402f9e7eead62d5" category="paragraph">執行命令<block ref="aedf88e4ada390daeb68da65170c0578" prefix=" " category="inline-code"></block>。</block>
+  <block id="4adfbc621db8b89083d474dee0f07c80" category="paragraph"><block ref="fba42a2ccc46f0a6204709f144e648ff" prefix="" category="inline-code"></block></block>
+  <block id="f9218f910e102c6bf49c5cfbc302c5ac" category="list-text">使用 RCF 檔案停用未使用的 ISL 連接埠和連接埠通道。</block>
+  <block id="68a72b41a8daefa7ca605b20a64500a8" category="paragraph">下列範例命令會停用連接埠 "swp14" ：</block>
+  <block id="b41a320410f2e03d4fb404dd5306d72d" category="paragraph"><block ref="1c2ab87af553dd288ec9c5432d9df972" prefix="" category="inline-code"></block></block>
+  <block id="82ba711aac35f0fb050f29204c66ad9b" category="paragraph">針對每個識別出未使用的連接埠或連接埠通道重複此步驟。</block>
+  <block id="aecfb0a1f8a6f4b14648ea2c18aae2ae" category="inline-link">Cisco 交換器叢集式 Data ONTAP 交換器設定指南</block>
+  <block id="b1eca50e31d6909ea55f828a37711fa1" category="inline-link">NetApp 10G 叢集模式交換器安裝指南</block>
+  <block id="96e98f400012e6584b81d57011c42c45" category="inline-link">NetApp 1G 叢集模式交換器安裝指南</block>
+  <block id="1f11a3b40ac30c6144b635a5d93b7747" category="paragraph">請參閱<block ref="237aa47d8beba176e8d1fd03c40ee412" category="inline-link-rx"></block>、<block ref="972e67585606ce2e224f1c546c9d6041" category="inline-link-rx"></block> 或<block ref="9fb6a12c499847b05bef27152fedb329" category="inline-link-rx"></block>，具體取決於您使用的交換器。</block>
+  <block id="52009bb7ee17227f566cd26a02caee56" category="inline-link-macro"><block ref="52009bb7ee17227f566cd26a02caee56" category="inline-link-rx"></block></block>
+  <block id="a1a9afcf552a769c282769271829889a" category="paragraph"><block ref="a1a9afcf552a769c282769271829889a" category="inline-link-macro-rx"></block></block>
+  <block id="5d545fe5152641e2ebe654e336e520e5" category="paragraph"><block ref="5d545fe5152641e2ebe654e336e520e5" category="inline-link-macro-rx"></block></block>
+  <block id="88e5eabd3917048b6927c42496b98f86" category="inline-link-macro"><block ref="88e5eabd3917048b6927c42496b98f86" category="inline-link-rx"></block></block>
+  <block id="dd38f906b37d412de7d1c1dcf4cbf31c" category="paragraph"><block ref="dd38f906b37d412de7d1c1dcf4cbf31c" category="inline-link-macro-rx"></block></block>
+  <block id="8acb58cbd50ef1b468a020ee0bd351d3" category="inline-link-macro"><block ref="8acb58cbd50ef1b468a020ee0bd351d3" category="inline-link-rx"></block></block>
+  <block id="2352c4e1f4d0024ade0869e00e6243f4" category="paragraph"><block ref="2352c4e1f4d0024ade0869e00e6243f4" category="inline-link-macro-rx"></block></block>
+  <block id="35c124f455f44a154eb3b514029ee58a" category="section-title">安全資訊與法規注意事項</block>
+  <block id="a6518839a3ee2f900f136494094df3cf" category="paragraph"><block ref="a6518839a3ee2f900f136494094df3cf" category="inline-link-rx"></block></block>
 </blocks>

@@ -68,7 +68,7 @@ https://library.netapp.com/ecm/ecm_download_file/ECMLP2316769["FAS8200系統安�
 
 .. 如果您要設定交換式叢集、請識別要在叢集網路交換器上使用的連接埠。
 +
-請參閱Data ONTAP 《_叢集式的Cisco交換器設定指南_》、《_ NetApp 10G叢集模式交換器安裝指南_》或《_ NetApp 1G叢集模式交換器安裝指南_》、視您使用的交換器而定。
+請參閱 https://library.netapp.com/ecm/ecm_get_file/ECMP1115327["Cisco 交換器叢集式 Data ONTAP 交換器設定指南"^]、 https://library.netapp.com/ecm/ecm_download_file/ECMP1117824["NetApp 10G 叢集模式交換器安裝指南"^] 或 https://library.netapp.com/ecm/ecm_download_file/ECMP1117853["NetApp 1G 叢集模式交換器安裝指南"^]，具體取決於您使用的交換器。
 
 .. 將纜線連接至叢集連接埠：
 

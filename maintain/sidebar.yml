@@ -52,6 +52,8 @@ entries:
     url: "/maintain/task_change_speed_of_isl_ports_on_a_cisco_fc_switch.html"
   - title: 將lSLs新增至Cisco交換器
     url: "/maintain/task_add_lsls_to_a_cisco_fc_switch.html"
+  - title: 變更 FC 交換器的廠商或型號
+    url: "/maintain/task_change_an_fc_switch.html"
 - title: IP交換器維護與更換
   entries:
   - title: 更換 IP 交換器或變更現有 MetroCluster IP 交換器的使用

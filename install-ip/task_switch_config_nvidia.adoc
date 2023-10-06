@@ -344,3 +344,56 @@ Running Step 24: Final reboot of the switch
 ... The switch will reboot if all steps applied successfully ...
 ----
 
+
+
+
+== 停用未使用的 ISL 連接埠和連接埠通道
+
+NetApp 建議停用未使用的 ISL 連接埠和連接埠通道、以避免不必要的健全狀況警示。
+
+. 使用 RCF 檔案橫幅識別未使用的 ISL 連接埠和連接埠通道：
++
+
+NOTE: 如果連接埠處於中斷連線模式、則您在命令中指定的連接埠名稱可能與 RCF 橫幅中指定的名稱不同。您也可以使用 RCF 纜線檔案來尋找連接埠名稱。
+
++
+`net show interface`
+
+. 使用 RCF 檔案停用未使用的 ISL 連接埠和連接埠通道。
++
+[listing]
+----
+cumulus@mcc1-integrity-a1:mgmt:~$ sudo python3 SN2100_v2.0_IP_Switch-A1.py runCmd
+[sudo] password for cumulus:
+    Running cumulus version  : 5.4.0
+    Running RCF file version : v2.0
+Help for runCmd:
+    To run a command execute the RCF script as follows:
+    sudo python3 <script> runCmd <option-1> <option-2> <option-x>
+    Depending on the command more or less options are required. Example to 'up' port 'swp1'
+        sudo python3 SN2100_v2.0_IP_Switch-A1.py runCmd swp1 up
+    Available commands:
+        UP / DOWN the switchport
+            sudo python3 SN2100_v2.0_IP_Switch-A1.py runCmd <switchport> state <up | down>
+        Set the switch port speed
+            sudo python3 SN2100_v2.0_Switch-A1.py runCmd <switchport> speed <10 | 25 | 40 | 100 | AN>
+        Set the fec mode on the switch port
+            sudo python3 SN2100_v2.0_Switch-A1.py runCmd <switchport> fec <default | auto | rs | baser | off>
+        Set the [localISL | remoteISL] to 'UP' or 'DOWN' state
+            sudo python3 SN2100_v2.0_Switch-A1.py runCmd [localISL | remoteISL] state [up | down]
+        Set the option on the port to support DAC cables. This option does not support port ranges.
+            You must reload the switch after changing this option for the required ports. This will disrupt traffic.
+            This setting requires Cumulus 5.4 or a later 5.x release.
+            sudo python3 SN2100_v2.0_Switch-A1.py runCmd <switchport> DacOption [enable | disable]
+cumulus@mcc1-integrity-a1:mgmt:~$
+----
++
+下列範例命令會停用連接埠 "swp14" ：
+
++
+`sudo python3 SN2100_v2.0_Switch-A1.py runCmd swp14 state down`
+
++
+針對每個識別出未使用的連接埠或連接埠通道重複此步驟。
+
+
