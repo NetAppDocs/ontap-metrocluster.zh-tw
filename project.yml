@@ -110,7 +110,3 @@ homepage:
     - title: NetApp支援知識庫
       summary: 搜尋您的支援問題答案。
       url: https://kb.netapp.com/
-product-family:
-  name: ONTAP
-  repo: ontap-family
-  sidebar_label: 所有ONTAP 產品文件
