@@ -25,6 +25,8 @@ summary: 若要升級或降級Brocade FC交換器上的韌體、您必須使用B
 
 交換器架構在韌體升級或降級期間會停用、MetroCluster 而此功能需仰賴第二個架構才能繼續運作。
 
+從 Fabric OS 9.0.1 開始、 Brocade 交換器不支援 SNMPv2 。如果您升級至 Fabric OS 9.0.1 或更新版本、則必須使用 SNMPv3 來監控健全狀況。如需詳細資訊、請參閱 link:../install-fc/concept_configure_the_mcc_software_in_ontap.html#configuring-snmpv3-in-a-metrocluster-configuration["在MetroCluster 不顯示的組態中設定v3"]。
+
 此工作必須連續在每個交換器架構上執行、以便所有交換器都執行相同的韌體版本。
 
 
