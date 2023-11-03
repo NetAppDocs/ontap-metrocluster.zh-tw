@@ -1299,9 +1299,6 @@
   <block id="38aab50f6d81fce560ddcd4349e66fc7" category="list-text">SnapMirror SVM災難恢復僅支援MetroCluster 執行ONTAP 版本為S9.5或更新版本的各種支援。</block>
   <block id="8aa8953fa014032d4074fce6f76630d4" category="section-title">執行功能MetroCluster ONTAP</block>
   <block id="a0e45cbea6afae054f370a0854ab9b4f" category="paragraph">視ONTAP 您的版本而定、有些MetroCluster專屬作業可以使用ONTAP 「系統管理程式」執行。</block>
-  <block id="ce54cea34e79331ac5a0d8398a0daeb2" category="list-text">切換及切換MetroCluster 至不完整的IP組態（從ONTAP S還原9.7開始）。</block>
-  <block id="b9dc5407731afe77b8474622a7260199" category="list-text">在MetroCluster 不完整的IP組態中配置及擴充鏡射集合體（從ONTAP 功能9.8開始）。</block>
-  <block id="dea75c52e73dcc7b5308af6dfbc8d3df" category="paragraph">System Manager不支援無鏡射Aggregate。</block>
   <block id="89bbe5f6f49d96ef3219b3e3960c33d5" category="section-title">支援的支援功能FlexCache MetroCluster</block>
   <block id="0e0fb7c8f8c90679b6de81eb83cc9c05" category="paragraph">從ONTAP 使用支援支援支援的功能為從支援的功能為支援的功能為支援的FlexCache 功能為支援的MetroCluster 功能。您應該瞭解切換或切換作業後、手動還原的需求。</block>
   <block id="25f74bbacb558877b948827961d27de6" category="section-title">當不一致的來源和快取位於相同的站台時、SVM會在切換後重新執行FlexCache MetroCluster</block>
@@ -10209,7 +10206,6 @@
   <block id="ec7770ca503ad90a46ee5c3850ef8ae5" category="list-text">銅線SAS纜線可用於較短的距離。</block>
   <block id="e510f66049d1338325f0a62dd3ffc0f4" category="list-text">光纖SAS纜線可用於較遠的距離。</block>
   <block id="6262d156e479edd8f826ba586e43575b" category="admonition">在使用E系列陣列LUN的系統中、儲存控制器可直接連接至E系列儲存陣列。對於其他陣列LUN、則需要透過FC交換器進行連線。</block>
-  <block id="f6fd567c32c1fb87872959aed0c80c2e" category="paragraph">視ONTAP 您的版本而定、部分MetroCluster 特定功能可透過ONTAP 《系統管理程式》執行。</block>
   <block id="e1a39a6f1b5c4c92045693ad6ebdd2a1" category="paragraph">切換後、SVM VS1-MC和VS1-MC會在合作夥伴站台（站台B）啟動。必須手動將它們擊退、FlexCache 才能使用「vserver對等拒絕」命令來運作。</block>
   <block id="05b1987240de2b0227bb9f6af346a70e" category="paragraph">為了FlexCache 與MetroCluster 非流通組態的叢集建立關聯、當相關叢集在切換期間處於中斷連線模式時、必須在切換後手動重新設定對等關係。</block>
   <block id="1374412b823e7a86e103d88f0c524d08" category="paragraph">如需使用FabricPools的一般資訊、請參閱 <block ref="a65430c79af53447a6078bbb1ffdf593" category="inline-link-macro-rx"></block>。</block>
@@ -13341,4 +13337,6 @@
   <block id="bd041cb07dda4e5f8fbcf9fc40cd8e53" category="open-title">使用 SNMPv3 新增交換器：</block>
   <block id="1ec64a333712792d694f6485f208d7bf" category="paragraph"><block ref="6483c1c2c512d0e62f46ddc53b9d4638" prefix="" category="inline-code"></block></block>
   <block id="ebbf46e9806730b0f0c4ca0133de2d34" category="open-title">使用 SNMPv2 新增交換器：</block>
+  <block id="10982c02dbedeb50373ef205f82ca3c8" category="inline-link-macro">使用System Manager管理MetroCluster 各種站台</block>
+  <block id="53eaf367aa3b61105b8ddce45278ab85" category="paragraph">若要深入瞭解、請參閱 <block ref="eef6283454e42ed2d47fdb00a9ff3e0c" category="inline-link-macro-rx"></block> 文件。</block>
 </blocks>

@@ -30,19 +30,6 @@ summary: 在進行不實的組態中使用ONTAP 時MetroCluster 、您應該注�
 
 
 
-== 執行功能MetroCluster ONTAP
-
-視ONTAP 您的版本而定、部分MetroCluster 特定功能可透過ONTAP 《系統管理程式》執行。
-
-* 切換及切換MetroCluster 至不完整的IP組態（從ONTAP S還原9.7開始）。
-* 在MetroCluster 不完整的IP組態中配置及擴充鏡射集合體（從ONTAP 功能9.8開始）。
-+
-System Manager不支援無鏡射Aggregate。
-
-
-
-
-
 == 支援的支援功能FlexCache MetroCluster
 
 從ONTAP 使用支援支援支援的功能為從支援的功能為支援的功能為支援的FlexCache 功能為支援的MetroCluster 功能。您應該瞭解切換或切換作業後、手動還原的需求。

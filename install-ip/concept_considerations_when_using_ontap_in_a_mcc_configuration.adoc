@@ -36,12 +36,7 @@ summary: 在進行不實的組態中使用ONTAP 時MetroCluster 、您應該注�
 
 視ONTAP 您的版本而定、有些MetroCluster專屬作業可以使用ONTAP 「系統管理程式」執行。
 
-* 切換及切換MetroCluster 至不完整的IP組態（從ONTAP S還原9.7開始）。
-* 在MetroCluster 不完整的IP組態中配置及擴充鏡射集合體（從ONTAP 功能9.8開始）。
-+
-System Manager不支援無鏡射Aggregate。
-
-
+若要深入瞭解、請參閱 link:https://docs.netapp.com/us-en/ontap/concept_metrocluster_manage_nodes.html["使用System Manager管理MetroCluster 各種站台"^] 文件。
 
 
 
