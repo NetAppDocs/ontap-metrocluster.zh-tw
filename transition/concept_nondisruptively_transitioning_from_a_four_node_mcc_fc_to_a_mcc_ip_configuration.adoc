@@ -13,6 +13,8 @@ summary: 從 ONTAP 9.13.1 開始、您可以將工作負載和資料從現有的
 [role="lead"]
 您可以在不中斷營運的情況下、將工作負載和資料從現有的 MetroCluster FC 組態轉換為新的 MetroCluster IP 組態。
 
+從 ONTAP 9.13.1 開始、此程序在 MetroCluster 和磁碟機櫃連接至相同 IP 交換器（共享儲存交換器組態）的 MetroCluster IP 組態中受到支援。
+
 從 ONTAP 9.13.1 開始、您可以將工作負載和資料從現有的八節點 MetroCluster FC 組態、無中斷地移轉至新的 MetroCluster IP 組態。
 
 從 ONTAP 9.8 開始、您可以將工作負載和資料從現有的四節點 MetroCluster FC 組態、無中斷地移轉至新的 MetroCluster IP 組態。

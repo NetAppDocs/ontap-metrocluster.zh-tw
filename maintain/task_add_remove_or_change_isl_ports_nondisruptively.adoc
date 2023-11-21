@@ -20,6 +20,9 @@ summary: 您可能需要新增、移除或變更ISL連接埠。您可以將專�
 
 下列程序假設您要以兩個連接至交換器連接埠17和18的100-GB ISL取代連接至交換器連接埠eth1/24/1的10-GB ISL。
 
+.開始之前
+請參閱的 * 切換開關 * 一節 link:https://hwu.netapp.com/["NetApp Hardware Universe"^] 驗證支援的收發器。
+
 .步驟
 . 在您要變更的光纖網路中、停用兩個交換器上ISL的ISL連接埠。
 +

@@ -51,6 +51,8 @@ entries:
       url: "/install-ip/port_usage_3132q.html"
     - title: Cisco 3232C或Cisco 9336C交換器的平台連接埠指派
       url: "/install-ip/port_usage_3232c_9336c.html"
+    - title: Cisco 9336C-FX2 共享交換器的平台連接埠指派
+      url: "/install-ip/port_usage_9336c_shared.html"
     - title: 適用於Broadcom支援的BG-53248 IP交換器的平台連接埠指派
       url: "/install-ip/port_usage_bes53248.html"
     - title: 適用於NVIDIA支援SN2100 IP交換器的平台連接埠指派

@@ -13,6 +13,11 @@ summary: 連接埠在MetroCluster 一個靜態IP組態中的使用取決於交�
 [role="lead"]
 連接埠在MetroCluster 一個靜態IP組態中的使用取決於交換器機型和平台類型。
 
+使用表格之前、請先檢閱以下準則：
+
+* 如果您將交換器設定為用於 MetroCluster FC 到 IP 的轉換、則可以使用連接埠 5 、連接埠 6 、連接埠 13 或連接埠 14 來連接 MetroCluster FC 節點的本機叢集介面。請參閱 link:https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["RcfFileGenerator"^] 以及產生的纜線檔案、以取得此組態纜線的更多詳細資料。對於所有其他連線、您可以使用表格中列出的連接埠使用方式指派。
+
+
 
 
 == FAS2750或AFF __LW_A220系統和Cisco 3132Q-V交換器的連接埠使用量
@@ -21,12 +26,12 @@ image::../media/mcc_ip_cabling_a_fas2750_or_a220_to_a_cisco_3132q_v_switch.png[M
 
 
 
-== FAS9000、AFF __LW_A700和Cisco 3132Q-V交換器的連接埠使用量
+== FAS9000 或 AFF A700 系統和 Cisco 3132Q-V 交換器的連接埠使用量
 
 image::../media/mcc_ip_cabling_a_fas9000_or_aff_a700_to_a_cisco_3132q_v_switch.png[MCC IP將fas9000或AFF fasa700纜線連接至Cisco 3132q v交換器]
 
 
 
-== 連接埠用於AFF 連接埠、適用於__LW_A800和Cisco 3132Q-V交換器
+== AFF A800 或 ASA A800 系統和 Cisco 3132Q-V 交換器的連接埠使用量
 
 image::../media/cabling_an_aff_a800_to_a_cisco_3132q_v_switch.png[將AFF 某個__LW_A800連接至Cisco 3132q v交換器]

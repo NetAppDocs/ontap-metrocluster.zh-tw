@@ -44,10 +44,11 @@ image::../media/mcc_dr_groups_8_node.gif[MCC DR群組8節點]
 
 [IMPORTANT]
 ====
+* MetroCluster 組態中的所有節點都必須執行相同的 ONTAP 版本。例如、如果您有八個節點組態、則所有八個節點都必須執行相同的 ONTAP 版本。
 * 此表中的組合僅適用於一般或永久性的八節點組態。
 * 如果您使用的是轉換或重新整理程序、則本表 * 請勿 * 套用平台組合。
 * 一個 DR 群組中的所有節點都必須是相同類型和組態。
 
 
 ====
-image::../media/8node_comb_fc.png[8 個節點組態的平台組合]
+image::../media/8node_comb_fc_914.png[8 個節點組態的平台組合]

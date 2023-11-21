@@ -15,16 +15,20 @@ summary: 連接埠在MetroCluster 一個靜態IP組態中的使用取決於交�
 
 交換器無法與不同速度的遠端ISL連接埠搭配使用（例如、連接至10 Gbps ISL連接埠的25 Gbps連接埠）。
 
-.下表附註：
-. 對於某些平台、您可以使用連接埠49 - 54進行MetroCluster 支援或MetroCluster 連接支援。
+.使用表格之前、請先檢閱此資訊：
+* 如果您設定交換器進行 MetroCluster FC 到 IP 的轉換、則會根據您選擇的目標平台使用下列連接埠：
 +
-這些連接埠需要額外授權。
+[cols="75,25"]
+|===
+| 目標平台 | 連接埠 
 
-. 只能將使用 AFF A320 系統的單一四節點 MetroCluster 連接至交換器。
-+
-此組態不支援需要交換式叢集的功能、包括MetroCluster 從FFC移轉至IP的程序和技術更新程序。
 
-. 配置Broadcom B3B-53248交換器的部分A320系統可能不支援所有功能。AFF
+| FAS500f 、 AFF C250 、 ASA C250 、 AFF A250 、 ASA A250 、 FAS8400 、 AFF C400 、 ASA C400 、 AFF A400 、 ASA A400 、 或 FAS8700 平台 | 連接埠 1 - 6 、 10Gbps 
+
+
+| FAS8200 或 AFF A300 平台 | 連接埠 3 - 4 和 9 - 12 、 10Gbps 
+|===
+* 配置Broadcom B3B-53248交換器的部分A320系統可能不支援所有功能。AFF
 +
 不支援任何需要將本機叢集連線連線至交換器的組態或功能。例如、下列組態和程序不受支援：
 
@@ -34,39 +38,31 @@ summary: 連接埠在MetroCluster 一個靜態IP組態中的使用取決於交�
 ** 重新整理四節點MetroCluster 的靜態IP組態（ONTAP 不含更新版本的更新版本）
 
 
-. 如果您連接兩MetroCluster 個支援對象的組態、並同時使用相同的控制器類型、則必須使用MetroCluster 支援對象群組3和4。如果控制器不同、則必須使用MetroCluster 任一類型的「支援埠群組3」和「4」、MetroCluster 另一類型的「支援埠群組1」和「2」。
+
+
+.表格中參照的註解：
+* * 附註 1* ：使用這些連接埠需要額外授權。
+* * 附註 2 * ：只能將使用 AFF A320 系統的單一四節點 MetroCluster 連接至交換器。
 +
-** 例如、如果您連線：
+此組態不支援需要交換式叢集的功能、包括 MetroCluster FC 到 IP 的轉換和技術更新程序。
+
+* * 附註 3* ： BS-53248 交換器需要四埠群組中的所有連接埠、才能以相同的速度運作。若要同時連接 AFF 150 、 ASA A150 、 FAS2750 、 AFF A220 和 FAS500f 、 AFF C250 、 ASA C250 、 AFF A250 和 ASA A250 平台、則必須使用位於不同四埠群組中的交換器連接埠。如果您需要這種組態類型、則適用下列項目：
 +
-*** 兩MetroCluster 個僅包含FAS2750/AFF A220或FAS500f/AFF A250的支援支援組態、您必須選取MetroCluster 「支援組3和4」。
-*** 兩MetroCluster 種支援不同MetroCluster 的支援對象為FAS2750/AFF A220類型、另一種是FAS500f/AFF A250、您必須為其中一種選擇連接埠群組3和4、另一種選擇連接埠群組1和2。在中 https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["RcfFileGeneratorfor MetroCluster EfIP"]下拉式欄位1和2只會在您在下拉式欄位3和4中選取平台之後、才會填入支援的平台。請參閱 link:../install-ip/using_rcf_generator.html["使用連接埠表格搭配RcfFileGeneratorR工具或多MetroCluster 種支援的組態"] 如需如何使用連接埠表格的詳細資訊、
+** 在中 https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["RcfFileGeneratorfor MetroCluster EfIP"]只有在您為 MetroCluster 3 或「 MetroCluster 4 」選取平台之後、才會填入「 MetroCluster 1 」和「 MetroCluster 2 」的下拉式欄位。  請參閱 link:../install-ip/using_rcf_generator.html["使用連接埠表格搭配RcfFileGeneratorR工具或多MetroCluster 種支援的組態"] 如需如何使用連接埠表格的詳細資訊、
+** 如果兩個 MetroCluster 組態都使用相同的平台、 NetApp 建議您為其中一個組態選取「 MetroCluster 3 」群組、而為另一個組態選取「 MetroCluster 4 」群組。如果平台不同、則您必須為第一個組態選取「 MetroCluster 3 」或「 MetroCluster 4 」、然後為第二個組態選取「 MetroCluster 1 」或「 MetroCluster 2 」。
 
 
 
 
 
 
+== AFF A150 、 ASA A150 、 FAS2750 、 AFF A220 、 FAS500f 、 AFF C250 、 ASA C250 、 AFF A250 或 ASA A250 至 Broadcom BS-53248 交換器
 
-
-== FAS2750 、 AFF 150 或 AFF A220 系統的交換器連接埠使用率
-
-image::../media/mcc_ip_cabling_a_aff_a150_a220_or_fas2750_to_a_broadcom_bes_53248_switch.png[MCC IP 將 AFF a150 A220 或 fas2750 連接至 Broadcom bes 53248 交換器]
-
-
-
-== FAS500f 、 AFF C250 或 AFF A250 系統的交換器連接埠使用率
-
-image::../media/mcc_ip_cabling_a_aff_c250_a250_or_fas500f_to_a_broadcom_bes_53248_switch.png[MCC IP 將 AFF c250 a250 或 fas500f 連接至 Broadcom bes 53248 交換器]
+image::../media/mcc_ip_cabling_a_aff_asa_a150_a220_c250_a250_fas2750_to_a_broadcom_bes_53248_switch.png[MCC IP 將 AFF ASA a150 A220 c250 a250 fas2750 連接至 Broadcom bes 53248 交換器]
 
 
 
-== 交換器連接埠使用量、可結合使用 AFF A150 、 FAS2750 、 AFF A220 、 FAS500f 或 AFF C250 、 或 AFF A250 系統
-
-image::../media/mcc_ip_cabling_aff_a250_and_ a220_to_a_broadcom_bes_53248_switch.png[MCC IP纜線AFF 連接至Broadcom bes 53248交換器的功能為250和A220]
-
-
-
-== FAS8200 或 AFF A300 系統的交換器連接埠使用率
+== 將 FAS8200 、 AFF A300 或 AFF A320 系統連接至 Broadcom BS-53248 交換器
 
 image::../media/mcc_ip_cabling_a_aff_a300_or_fas8200_to_a_broadcom_bes_53248_switch.png[MCC IP將AFF 一個名為「不實」的纜線連接至Broadcom bes 53248交換器]
 
@@ -74,6 +70,6 @@ image::../media/mcc_ip_cabling_a_aff_a320_to_a_broadcom_bes_53248_switch.png[MCC
 
 
 
-== FAS8300 、 AFF C400 、 AFF A400 或 FAS8700 系統的交換器連接埠使用率
+== 將 FAS8300 、 AFF C400 、 ASA C400 、 AFF A400 、 ASA A400 或 FAS8700 系統連接到 Broadcom BE-53248 交換器
 
-image::../media/mcc_ip_cabling_a_fas8300_a400_or_fas8700_to_a_broadcom_bes_53248_switch.png[MCC IP將fas8300 A400或fas8700纜線連接至Broadcom bes 53248交換器]
+image::../media/mcc_ip_cabling_a_fas8300_a400_c400_or_fas8700_to_a_broadcom_bes_53248_switch.png[MCC IP 將一個 fas8300 A400 C400 或 fas8700 連接到 Broadcom bes 53248 交換器]
