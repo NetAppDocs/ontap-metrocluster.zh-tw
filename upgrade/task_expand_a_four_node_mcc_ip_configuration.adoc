@@ -20,15 +20,19 @@ summary: 您可以將四個新節點新增至MetroCluster 「靜態IP」組態�
 .開始之前
 * 舊節點和新節點必須執行相同版本ONTAP 的更新。
 * 本程序說明展開一個四節點 DR 群組所需的步驟。如果您有八節點組態（兩個 DR 群組）、則必須針對每個 DR 群組重複整個程序。
-* 您必須確保舊有和新的平台機型支援平台混合。
+* 確認新舊平台機型支援混合平台。
 +
 https://hwu.netapp.com["NetApp Hardware Universe"^]
 
-* 您必須確保IP交換器同時支援新舊的平台機型。
+* 確認 IP 交換器支援舊的和新的平台機型。
 +
 https://hwu.netapp.com["NetApp Hardware Universe"^]
 
 * 新節點必須有足夠的儲存空間來容納舊節點的資料、以及足夠的磁碟來容納根集合體和備用磁碟。
+* 確認您在舊節點上建立了預設的廣播網域。
++
+當您將新節點新增至沒有預設廣播網域的現有叢集時、會使用通用唯一識別碼（ UUID ）而非預期名稱、為新節點建立節點管理生命期。如需詳細資訊、請參閱知識庫文章 https://kb.netapp.com/onprem/ontap/os/Node_management_LIFs_on_newly-added_nodes_generated_with_UUID_names["在以 UUID 名稱產生的新新增節點上執行節點管理階層"^]。
+
 
 
 
