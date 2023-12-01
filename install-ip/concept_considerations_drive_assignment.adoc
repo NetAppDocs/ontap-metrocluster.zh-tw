@@ -11,10 +11,14 @@ summary: 從推出《支援使用ADP的更新系統》（進階磁碟分割）�
 
 
 [role="lead"]
-從 ONTAP 9.4 開始、 MetroCluster IP 組態支援使用 ADP 的新安裝（進階磁碟分割）。在大多數的組態中、分割區和磁碟指派會在MetroCluster 初始設定的站台期間自動執行。
+從 ONTAP 9.4 開始、 MetroCluster IP 組態支援使用 ADP 的新安裝（進階磁碟分割）。
 
-ONTAP 9.4 及更新版本包含下列 ADP 支援變更：
+搭配 MetroCluster IP 組態使用 ADP 時、請注意下列考量事項：
 
+* ONTAP 9.4 及更新版本必須搭配 MetroCluster IP 組態使用 ADP 。
+* MetroCluster IP 組態支援 ADPv2 。
+* 根 Aggregate 必須位於兩個站台上所有節點的分割區 3 中。
+* 分割區和磁碟指派會在 MetroCluster 站台的初始設定期間自動執行。
 * 資源池0磁碟指派在原廠完成。
 * 無鏡射根目錄是在原廠建立。
 * 資料分割區指派是在客戶站台的設定程序期間完成。
@@ -50,7 +54,7 @@ NOTE: 從ONTAP S得9.4升級至9.5時、系統會辨識現有的磁碟指派。
 
 == 自動分割
 
-ADP會在平台初始組態期間自動執行。
+ADP 會在系統初始組態期間自動執行。
 
 
 NOTE: 從 ONTAP 9.5 開始、必須使用啟用磁碟的自動指派功能 `storage disk option modify -autoassign on` 命令。

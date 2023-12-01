@@ -20,7 +20,7 @@ summary: 儲存控制器必須以纜線連接至儲存媒體和彼此。儲存�
 完成此工作之前、必須滿足下列整體需求：
 
 * 安裝之前、您必須先熟悉安裝磁碟櫃模型的考量事項和最佳實務做法、以及如何為磁碟櫃模型進行佈線。
-* 必須支援所有的MichoCluster元件。
+* 必須支援所有 MetroCluster 元件。
 +
 https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"]
 

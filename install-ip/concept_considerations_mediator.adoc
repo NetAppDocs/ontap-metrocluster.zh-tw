@@ -55,8 +55,14 @@ MAUSO只會在下列情況下啟動：
 * 每個節點的非揮發性快取都在運作中、而且快取和鏡像會在故障時同步。SyncMirror
 * 在正常運作的站台上、沒有任何節點處於接管狀態。
 * 發生站台災難時。站台災難是同一站台 * 所有 * 節點的故障。
++
+
+NOTE: 從 ONTAP 9.13.1 開始、您可以變更在叢集故障 * 或 * HA 配對時啟動 MAUSO 的行為。對於 HA 配對、兩個節點必須同時故障。
+
 * 從 ONTAP 9.13.1 開始、如果符合上述條件、且風扇或硬體故障會啟動環境關機、例如電源供應器單元、 NVRAM 電池或服務處理器心跳故障、或高溫或低溫。
 
+
+您可以針對以上未列出的其他案例、啟動 MAUSO 。如需詳細資訊、請參閱 link:concept-risks-limitations-automatic-switchover.html["使用MetroCluster 不全自動強制切換的風險與限制"]。
 
 在下列關機案例中*未*啟動MAUSO：
 
@@ -70,6 +76,4 @@ MAUSO只會在下列情況下啟動：
 
 *相關資訊*
 
-* link:concept-risks-limitations-automatic-switchover.html["瞭解使用 MetroCluster 自動強制切換的風險和限制"]
-* link:../manage/concept_understanding_mcc_data_protection_and_disaster_recovery.html#mediator-assisted-automatic-unplanned-switchover-in-metrocluster-ip-configurations["瞭解如何在 MetroCluster IP 組態中管理 MAUSO"]
-
+link:../manage/concept_understanding_mcc_data_protection_and_disaster_recovery.html#mediator-assisted-automatic-unplanned-switchover-in-metrocluster-ip-configurations["深入瞭解 MetroCluster IP 組態中的 MAUSO"]。

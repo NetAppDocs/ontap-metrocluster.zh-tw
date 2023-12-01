@@ -283,7 +283,6 @@
   <block id="eac95d67103889e23f4fae8c79139a7a" category="list-text">在大多數情況下、磁碟機指派和分割會在設定程序期間自動完成。</block>
   <block id="bf17ab05d95b3cfd56763e2ed2c9c07d" category="admonition">從ONTAP S得9.4升級至9.5時、系統會辨識現有的磁碟指派。</block>
   <block id="5fafb49cc9fb9a65d03134ac546c84c0" category="section-title">自動分割</block>
-  <block id="bd7fdcf8e3958a26cae80f44fe7019eb" category="paragraph">ADP會在平台初始組態期間自動執行。</block>
   <block id="d80db6731d8005aabd1dad8b4bd740b7" category="paragraph">安裝期間最多可自動分割96個磁碟機。您可以在初始安裝之後新增額外的磁碟機。</block>
   <block id="8c27139a6a49272931ad3f34f0b1054e" category="section-title">機櫃自動指派的運作方式</block>
   <block id="7cf1eeb2e4f4fa2a69a78396893ace96" category="paragraph">如果每個站台有四個外部磁碟櫃、則每個磁碟櫃都會指派給不同的節點和不同的資源池、如下列範例所示：</block>
@@ -3545,8 +3544,6 @@
   <block id="c172b09d1d6e3e38ddabe6e69de61d7e" category="paragraph">您可以使用Atto FIBrebridge Description（Atto FIBrebridge說明）頁面上提供的連結、存取Atto網站上的此內容和其他內容。</block>
   <block id="e0b252916154b49ca991301bb62d8e77" category="summary">您可能需要在MetroCluster 一個不知如何的IP交換器上升級RCF檔案。例如ONTAP 、進行升級時、或是交換器韌體升級時、都需要新的RCF檔案。</block>
   <block id="56ba5c8d245e7af9f26245ccc8eddba9" category="doc">升級MetroCluster 不只是在靜態IP交換器上的RCF檔案</block>
-  <block id="442c1b0de388e5078bf1b6c0bee713d7" category="section-title">確認RCF檔案受到支援</block>
-  <block id="c5578900d835092e78f37c68ccc1b2ea" category="paragraph">如果您要變更ONTAP 交換器上執行的更新版本、您應該確定該版本支援RCF檔案。如果您使用RCF產生器、將會為您產生正確的RCF檔案。</block>
   <block id="bdff20b545d5f7f451d6cc86cddcd9d5" category="list-text">使用交換器的下列命令來驗證RCF檔案的版本：</block>
   <block id="cb1e716ab831d1ef2a5741deabd44bd7" category="cell">從這個交換器...</block>
   <block id="5c0951f5a767642dcb5de6e5878a5032" category="cell">發出此命令...</block>
@@ -10151,7 +10148,6 @@
   <block id="93eb81c5bb51f5c82069014d257d73f7" category="section-title">在您開始執行本文件中的任何程序之前</block>
   <block id="14192cce75fd2280d57cd86b8457d1e8" category="paragraph">完成此工作之前、必須滿足下列整體需求：</block>
   <block id="eec9a69f383dc26376611c0311190048" category="list-text">安裝之前、您必須先熟悉安裝磁碟櫃模型的考量事項和最佳實務做法、以及如何為磁碟櫃模型進行佈線。</block>
-  <block id="ae8995edf717de497e60100989504ef0" category="list-text">必須支援所有的MichoCluster元件。</block>
   <block id="46afce358fde8f707e4d3d83045d922c" category="paragraph">在這個解決方案領域、您可以使用儲存解決方案欄位來選擇您的解決方案。IMT MetroCluster使用*元件總管*來選取元件和ONTAP 更新版本、以精簡搜尋範圍。您可以按一下「*顯示結果*」來顯示符合條件的支援組態清單。</block>
   <block id="7f96c284d8f2fd273d3fc8f28d037b35" category="list-text">術語節點和控制器可互換使用。</block>
   <block id="9edea398610f8b9e7bf8eb4d72f75daa" category="summary">您可以從MetroCluster 災難恢復（DR）群組中的所有節點移除此支援組態。移除MetroCluster 完「支援」組態之後、所有磁碟連線和互連都應調整為支援狀態。如果您需要移除MetroCluster 該組態、請聯絡技術支援部門。</block>
@@ -12971,7 +12967,6 @@
   <block id="f624129c4d6772a2f62200de12382ad0" category="list-text">遵循、將所有 MDV_CRS 中繼資料磁碟區移至另一個 DR 群組 <block ref="9273ba8e8bd1c5c1cc0cd85662f27754" category="inline-link-macro-rx"></block> 程序。</block>
   <block id="112564590ec1ae4e651904cd571ed9d4" category="paragraph">如需ONTAP 有關連接埠、LIF及網路組態的詳細資訊、請參閱 <block ref="378e9004462b7ecfad8256f25b57fbf6" category="inline-link-macro-rx"></block>。</block>
   <block id="347bde5f3be96b6c3eab8b4a360b9028" category="list-text">等待 30 分鐘、然後開啟所有儲存櫃、 MetroCluster IP 交換器和儲存控制器的電源。</block>
-  <block id="6789cbf331ef2c9b50d45082c81e74cb" category="paragraph">ONTAP 9.4 及更新版本包含下列 ADP 支援變更：</block>
   <block id="4b72d9ad6a5a5828529f4266cc3f2713" category="list-text">磁碟及其所有分割區必須由同一高可用度（ HA ）配對中的節點擁有。單一磁碟機內的分割區或磁碟機擁有權不可在本機 HA 配對與災難恢復（ DR ）合作夥伴或 DR 輔助合作夥伴之間混合使用。</block>
   <block id="352c5d749caa22e221b7fc037fede87d" category="paragraph">支援組態範例：</block>
   <block id="cd1c00b76cbbe512b20985ec2344b5ed" category="cell">磁碟機 / 分割區</block>
@@ -13040,10 +13035,6 @@
   <block id="3e3df3be76a18ca2c89904765d97f078" category="list-text">在兩個叢集上執行下列命令、確認可以進行接管、而且節點已連線：</block>
   <block id="3963205d7c5d1cb2f000d61f16c10f1d" category="paragraph">24 個內部磁碟機</block>
   <block id="d33f2a600ba4fe43084a26e95e4908c0" category="paragraph">*相關資訊*</block>
-  <block id="33677e980c1bb7a6aad1c55805e512b3" category="inline-link-macro">瞭解使用 MetroCluster 自動強制切換的風險和限制</block>
-  <block id="8358918e22c23bbc5881522d821dd13e" category="list-text"><block ref="8358918e22c23bbc5881522d821dd13e" category="inline-link-macro-rx"></block></block>
-  <block id="e3aa563f27ef718a2d0767e57ad2f0c2" category="inline-link-macro">瞭解如何在 MetroCluster IP 組態中管理 MAUSO</block>
-  <block id="b1a9c412046cbd6accefdfa3f6f94916" category="list-text"><block ref="b1a9c412046cbd6accefdfa3f6f94916" category="inline-link-macro-rx"></block></block>
   <block id="7632b8724806890acaf96c668d641251" category="inline-link-macro">瞭解 MetroCluster IP 組態中的自動磁碟機指派和 ADP 系統</block>
   <block id="85488d881ebf03beb1eca3be4b5fda44" category="paragraph">您的ONTAP 版本必須支援機櫃混合。請參閱<block ref="e78382cc6f841e7f00c97b18a2e30f41" category="inline-link-rx"></block> 查看ONTAP 您的版本是否支援機櫃混合。</block>
   <block id="5fdc7ff67ace146413ecd7d44157aca4" category="paragraph">如需機櫃混合的詳細資訊、請參閱<block ref="532c1f47a9370f9e21538610051f3830" category="inline-link-rx"></block></block>
@@ -13186,7 +13177,6 @@
   <block id="357559d73c5bb22e54ab3aeafca1013b" category="sidebar">安裝軟體套件</block>
   <block id="3689ab983cde586722e4881cdbf1822a" category="sidebar">升級主機</block>
   <block id="3a234e68f5d62ce2d6b3d068c61605c3" category="paragraph">每個版本均隨附 MetroCluster Tiebreaker 軟體的增強功能。以下是 MetroCluster tiebreaker 最新版本的新功能。</block>
-  <block id="5801d3e28a980df8d84e60a3eea8469c" category="paragraph">從 ONTAP 9.4 開始、 MetroCluster IP 組態支援使用 ADP 的新安裝（進階磁碟分割）。在大多數的組態中、分割區和磁碟指派會在MetroCluster 初始設定的站台期間自動執行。</block>
   <block id="e6ca378bbb6d15fd110961cea50b2eb0" category="section-title">AFF C250 、 AFF A250 和 FAS500f 系統上的 ADP 和磁碟指派</block>
   <block id="91d96627fcbee13a9d474587060d13f8" category="paragraph">AFF C250 和 AFF A250 系統的磁碟指派準則和規則也適用於 FAS500f 系統。如需 FAS500f 系統上的磁碟指派、請參閱 <block ref="62481755a241b3efc5c68e4e7dd00bb5" category="inline-xref-macro-rx"></block> 表。</block>
   <block id="d39fc122b5bc72857d3bc1cb28b2528b" category="summary">您可能需要變更 FC 交換器的廠商（ Cisco 改為 Brocade 、反之亦然）、變更交換器模式或兩者。</block>
@@ -13363,4 +13353,19 @@
   <block id="fdf5e2eb479f201de0c9c62e9a32e769" category="paragraph">當您將新節點新增至沒有預設廣播網域的現有叢集時、會使用通用唯一識別碼（ UUID ）而非預期名稱、為新節點建立節點管理生命期。如需詳細資訊、請參閱知識庫文章<block ref="4808e3ddae1b3b2c14dc148b67bd36ea" category="inline-link-rx"></block>。</block>
   <block id="f6410291c32fa961402f5a821c332f6c" category="list-text">確認新舊平台機型支援混合平台。</block>
   <block id="e220a628f1c5f8fb65824aaeb387520e" category="list-text">確認 IP 交換器支援舊的和新的平台機型。</block>
+  <block id="56f1ca12910041b73ea6fcc9bc18a954" category="paragraph">從 ONTAP 9.4 開始、 MetroCluster IP 組態支援使用 ADP 的新安裝（進階磁碟分割）。</block>
+  <block id="72a38a5af8be1c706e478add3356ba90" category="paragraph">搭配 MetroCluster IP 組態使用 ADP 時、請注意下列考量事項：</block>
+  <block id="3cae0a231aac97485961fb33cea76ca2" category="list-text">ONTAP 9.4 及更新版本必須搭配 MetroCluster IP 組態使用 ADP 。</block>
+  <block id="959bb45d9851a2b3efaeb05db74e0a80" category="list-text">MetroCluster IP 組態支援 ADPv2 。</block>
+  <block id="a393732e5defe7b7a921a586e53ec51d" category="list-text">根 Aggregate 必須位於兩個站台上所有節點的分割區 3 中。</block>
+  <block id="9ef6aecb7d030435d81fe80cacca477e" category="list-text">分割區和磁碟指派會在 MetroCluster 站台的初始設定期間自動執行。</block>
+  <block id="82d98fe86a7b6dbc49abc0913b83f2ac" category="paragraph">ADP 會在系統初始組態期間自動執行。</block>
+  <block id="2785e39cd183c09c66a74a7aad221542" category="admonition">從 ONTAP 9.13.1 開始、您可以變更在叢集故障 * 或 * HA 配對時啟動 MAUSO 的行為。對於 HA 配對、兩個節點必須同時故障。</block>
+  <block id="3ea08f3e8da19255d966a6ac28c7c9cf" category="paragraph">您可以針對以上未列出的其他案例、啟動 MAUSO 。如需詳細資訊、請參閱 <block ref="a3a7e72ce1f5f993a44ac5e44397056b" category="inline-link-macro-rx"></block>。</block>
+  <block id="e0907a528c832799b0d1ad87758c5f86" category="inline-link-macro">深入瞭解 MetroCluster IP 組態中的 MAUSO</block>
+  <block id="b5a3168b79ae5368d7ec0db231f9a1fc" category="paragraph"><block ref="715b35e54e91f145a6041ef6c0fd6dbb" category="inline-link-macro-rx"></block>。</block>
+  <block id="2d183ed725bd043df73111a219fb4c10" category="list-text">必須支援所有 MetroCluster 元件。</block>
+  <block id="a6ab1915ab3c895c47d4e04f54324428" category="paragraph">您可能需要在MetroCluster 一個不知如何的IP交換器上升級RCF檔案。例如、如果您在交換器上執行的 RCF 檔案版本不受 ONTAP 版本、交換器韌體版本或兩者的支援。</block>
+  <block id="3c895cdeb8d2489a220d797e54ab8b6f" category="section-title">驗證 RCF 檔案是否受支援</block>
+  <block id="aa71e3dcbe0cdabbe4cce28385ab2fd6" category="paragraph">如果您要變更 ONTAP 版本或交換器韌體版本、則應確認您擁有支援該版本的 RCF 檔案。如果您使用RCF產生器、將會為您產生正確的RCF檔案。</block>
 </blocks>
