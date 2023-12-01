@@ -13368,4 +13368,6 @@
   <block id="a6ab1915ab3c895c47d4e04f54324428" category="paragraph">您可能需要在MetroCluster 一個不知如何的IP交換器上升級RCF檔案。例如、如果您在交換器上執行的 RCF 檔案版本不受 ONTAP 版本、交換器韌體版本或兩者的支援。</block>
   <block id="3c895cdeb8d2489a220d797e54ab8b6f" category="section-title">驗證 RCF 檔案是否受支援</block>
   <block id="aa71e3dcbe0cdabbe4cce28385ab2fd6" category="paragraph">如果您要變更 ONTAP 版本或交換器韌體版本、則應確認您擁有支援該版本的 RCF 檔案。如果您使用RCF產生器、將會為您產生正確的RCF檔案。</block>
+  <block id="9f4a5b5c7a3f862c1d0ff77f72d3eea0" category="paragraph">系統會提示您輸入 ONTAP Mediator 管理使用者帳戶的使用者名稱和密碼。</block>
+  <block id="c471c44c2f26c78f9327863d90427cb7" category="admonition">如果 ONTAP Mediator 停機、則為<block ref="1eafb93bfc40f298e60cf17e8a8c598c" prefix=" " category="inline-code"></block> 命令仍會提示您輸入 ONTAP Mediator 管理使用者帳戶的使用者名稱和密碼、並從 MetroCluster 組態中移除 ONTAP Mediator 服務。</block>
 </blocks>
