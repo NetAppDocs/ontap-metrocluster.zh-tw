@@ -20,8 +20,8 @@ summary: 您必須根據現有MetroCluster 的不規則功能（NetApp）組態�
 image::../media/metrocluster_fc_ip_transition_matrix_914.png[MetroCluster 光纖通道 IP 轉換對照表 914]
 
 * 附註1：此平台組合需要ONTAP 使用更新版本的支援。
-* 附註2：FC節點上的本機叢集介面必須使用40GbE介面。此平台組合需要ONTAP 使用更新版本的版本。
-* 附註3：FC節點上的本機叢集介面必須使用100GbE介面。此平台組合需要ONTAP 使用更新版本的版本。
+* 附註2：FC節點上的本機叢集介面必須使用40GbE介面。此平台組合需要 ONTAP 9.11.1 或更新版本。
+* 附註 3 ： FC 節點上的本機叢集介面必須有 100GbE 介面。此平台組合需要 ONTAP 9.11.1 或更新版本。
 * 除非ONTAP 附註中另有說明或個別平台要求、否則所有轉換程序都需要使用更新版本的資訊。
 * MetroCluster 組態中的所有節點都必須執行相同的 ONTAP 版本。例如、如果您有八個節點組態、則所有八個節點都必須執行相同的 ONTAP 版本。
 

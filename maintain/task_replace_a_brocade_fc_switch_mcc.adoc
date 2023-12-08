@@ -113,7 +113,7 @@ FC_switch_B_1:admin> switchshow
 +
 《Firmwarreshow》
 
-.. 依照「_RAYInstallation MetroCluster and Configuration」（安裝與組態）中所述設定新交換器、但跳過「在Brocade FC交換器上設定分區」程序。
+.. 按照 MetroCluster 安裝與組態 _ 中的說明設定新交換器、但跳過「在 Brocade FC 交換器上設定分區」程序。
 +
 https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"]
 
