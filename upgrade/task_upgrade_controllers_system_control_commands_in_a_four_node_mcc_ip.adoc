@@ -403,7 +403,7 @@ network port ifgrp remove-port -node node1 -ifgrp a1a -port e0d
 . 請妥善接地。
 . 在機架或機櫃中安裝控制器模組。
 +
-https://docs.netapp.com/us-en/ontap-systems/index.html["VMware及其技術資料中心AFF FAS"^]
+https://docs.netapp.com/us-en/ontap-systems/index.html["ONTAP 硬體系統文件"^]
 
 . 如果新的控制器模組未隨附本身的FC-VI卡、且舊控制器的FC-VI卡與新的控制器相容、請交換FC-VI卡、並將其安裝在正確的插槽中。
 +
@@ -414,7 +414,7 @@ https://docs.netapp.com/us-en/ontap-systems/index.html["VMware及其技術資料
 此時請勿連接任何其他與舊控制器中斷連線的纜線。
 
 +
-https://docs.netapp.com/us-en/ontap-systems/index.html["VMware及其技術資料中心AFF FAS"^]
+https://docs.netapp.com/us-en/ontap-systems/index.html["ONTAP 硬體系統文件"^]
 
 . 開啟新節點的電源、並在系統提示顯示載入器提示時按Ctrl-C。
 

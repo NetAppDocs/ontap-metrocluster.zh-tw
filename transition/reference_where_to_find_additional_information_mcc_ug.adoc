@@ -105,7 +105,7 @@ link:../tiebreaker/concept_overview_of_the_tiebreaker_software.html["升級、�
 
 
  a| 
-https://docs.netapp.com/us-en/ontap-systems/["VMware及其技術文件AFF FAS"^]
+https://docs.netapp.com/us-en/ontap-systems/["ONTAP 硬體系統文件"^]
 
 *附註：*標準儲存櫃維護程序可搭配MetroCluster 使用。
  a| 

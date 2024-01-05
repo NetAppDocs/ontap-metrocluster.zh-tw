@@ -23,6 +23,6 @@ summary: 在八節點或四節點MetroCluster 的「樣」組態中、您必須�
 
 
 .相關資訊
-https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"]
+https://docs.netapp.com/platstor/index.jsp["ONTAP 硬體系統文件"^]
 
 link:https://docs.netapp.com/us-en/ontap/network-management/index.html["網路與LIF管理"^]

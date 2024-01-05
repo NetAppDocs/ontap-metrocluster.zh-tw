@@ -155,7 +155,7 @@ Node_IP_2      Node_IP_1              true      Connected to Node_IP_1
 +
 執行中的步驟 link:../maintain/task_move_a_metadata_volume_in_mcc_configurations.html["在MetroCluster 不完整的組態中移動中繼資料磁碟區"]。
 
-. 使用中的下列程序、將資料從舊節點移至新節點 link:https://docs.netapp.com/us-en/ontap-systems-upgrade/index.html["系統升級文件AFF FAS"^]
+. 使用中的下列程序、將資料從舊節點移至新節點 link:https://docs.netapp.com/us-en/ontap-systems-upgrade/index.html["ONTAP 硬體系統文件"^]
 +
 .. 執行中的所有步驟 http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-upgrade-controller/GUID-AFE432F6-60AD-4A79-86C0-C7D12957FA63.html["建立Aggregate並將磁碟區移至新節點"^]。
 +

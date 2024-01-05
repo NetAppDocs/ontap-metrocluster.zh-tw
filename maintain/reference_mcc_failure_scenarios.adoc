@@ -29,7 +29,7 @@ NOTE: 如需從節點故障中恢復的其他資訊、請參閱中的「選擇�
  a| 
 組態會透過本機接管進行恢復。RAID不受影響。檢視系統訊息、並視需要更換故障的FRU。
 
-https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"^]
+https://docs.netapp.com/platstor/index.jsp["ONTAP 硬體系統文件"^]
 
 
 
@@ -40,7 +40,7 @@ https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FA
  a| 
 如果MetroCluster 未啟用自動切換功能、請手動進行非計畫性切換（USO）。
 
-https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"^]
+https://docs.netapp.com/platstor/index.jsp["ONTAP 硬體系統文件"^]
 
 
 
@@ -51,7 +51,7 @@ https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FA
  a| 
 使用第二個連接埠。健全狀況監視器會在連接埠的實體連結中斷時產生警示。檢視系統訊息、並視需要更換故障的FRU。
 
-https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"^]
+https://docs.netapp.com/platstor/index.jsp["ONTAP 硬體系統文件"^]
 
 
 
@@ -62,7 +62,7 @@ HA功能受到影響。節點的RAID SyncMirror 功能停止同步。
  a| 
 由於沒有HA接管、因此需要立即手動恢復。檢視系統訊息、並視需要更換故障的FRU。
 
-https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"^]
+https://docs.netapp.com/platstor/index.jsp["ONTAP 硬體系統文件"^]
 
 
 

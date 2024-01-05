@@ -4,14 +4,14 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, add, remove, change, isl, ports, nondisruptively 
 summary: 您可能需要新增、移除或變更ISL連接埠。您可以將專用ISL連接埠轉換成共享ISL連接埠、或變更交換器上ISL連接埠的速度。長距離行駛的ISL可能需要較低的速度來改善品質。如果您要新增或升級硬體、可能還需要提高ISL連接埠的速度、才能充分利用系統升級的優勢、並將ISL新增至Cisco IP交換器。 
 ---
-= 在不中斷營運的情況下新增、移除或變更ISL連接埠
+= 在 Cisco IP 交換器上以不中斷營運的方式新增、移除或變更 ISL 連接埠
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-您可能需要新增、移除或變更ISL連接埠。您可以將專用ISL連接埠轉換成共享ISL連接埠、或變更交換器上ISL連接埠的速度。長距離行駛的ISL可能需要較低的速度來改善品質。如果您要新增或升級硬體、可能還需要提高ISL連接埠的速度、才能充分利用系統升級的優勢、並將ISL新增至Cisco IP交換器。
+您可能需要在 Cisco IP 交換器上新增、移除或變更 ISL 連接埠。您可以將專用 ISL 連接埠轉換為共享 ISL 連接埠、或變更 Cisco IP 交換器上 ISL 連接埠的速度。長距離行駛的ISL可能需要較低的速度來改善品質。如果您要新增或升級硬體、可能需要提高 ISL 連接埠的速度、才能充分利用系統升級、並將 ISL 新增至 Cisco IP 交換器。
 
 .關於這項工作
 如果您要將專用ISL連接埠轉換成共享ISL連接埠、請確定新的連接埠符合 link:../install-ip/concept_considerations_layer_2.html["共享ISL連接埠的需求"]。

@@ -35,7 +35,7 @@ NOTE: 無鏡射的Aggregate必須是擁有它們的節點的本機集合體。
 您可以使用平台和磁碟櫃的_安裝與設定_文件中的程序。
 
 +
-https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"]
+https://docs.netapp.com/platstor/index.jsp["ONTAP 硬體系統文件"^]
 
 . 手動將新機櫃上的所有磁碟指派給適當的節點：
 +

@@ -43,7 +43,7 @@ FRU更換（包括控制器模組、PCIe卡、FC-VI卡等）
 
 NOTE: 不MetroCluster 支援將儲存控制器模組或NVRAM卡移至各個不支援的儲存系統。
  a| 
-https://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"]
+https://docs.netapp.com/platstor/index.jsp["ONTAP 硬體系統文件"^]
 
 
 

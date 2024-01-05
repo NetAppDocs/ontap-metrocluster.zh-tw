@@ -785,8 +785,6 @@
   <block id="8b7b059c92f4f38b7b88f2770bc9e405" category="list-text">確認磁碟自動指派已停用：</block>
   <block id="99202cf08ee605465b048d280b130030" category="list-text">安裝並連接將包含無鏡射集合體的磁碟櫃。</block>
   <block id="8a9f1a9fa3d7dcf9bab5aa2cdbeb6b5e" category="paragraph">您可以使用平台和磁碟櫃安裝與設定文件中的程序。</block>
-  <block id="2dece9a9495d8764b16760fe7d05d7a9" category="inline-link">VMware及其技術資料中心AFF FAS</block>
-  <block id="112864a76081118148a479a1da39eb09" category="paragraph"><block ref="112864a76081118148a479a1da39eb09" category="inline-link-rx"></block></block>
   <block id="2d1ee8760a765460b6dcc34dbf24e95d" category="list-text">手動將新機櫃上的所有磁碟指派給適當的節點：</block>
   <block id="29d368b17fa8f6a4c00f53e0b1b0ddcd" category="paragraph">「磁碟指派磁碟_disk-id_-Owner_Owner-node-name_」</block>
   <block id="6d6f602efa1b388ca6264b6013787a0e" category="paragraph">如果您已登入叢集管理介面上的叢集、則可以在叢集中的任何節點上建立集合體。若要驗證是否已在特定節點上建立Aggregate、您應該使用-nodes參數或指定該節點擁有的磁碟機。</block>
@@ -1623,8 +1621,6 @@
   <block id="5206bcb346755220c00fbc45647faca6" category="list-text">識別並連接至少兩個連接埠以供叢集對等、並驗證它們是否與合作夥伴叢集具有網路連線能力。</block>
   <block id="91570c88eb5cc19dd41fc5caf53c3a27" category="paragraph">叢集對等作業可在專用連接埠或資料連接埠上執行。使用專用連接埠可為叢集對等流量提供更高的處理量。</block>
   <block id="258ba3377e43df3da3fbda0611fd8b0c" category="list-text">將控制器的管理和資料連接埠連接至本機站台的管理和資料網路。</block>
-  <block id="16319414c65274d365d86327a61ef5dc" category="inline-link">系統文件AFF FAS</block>
-  <block id="63799698c3b4bb55f091a324342f6ef6" category="paragraph">請使用適用於您平台的安裝說明、網址為<block ref="0b3a876cb84d37c698b419ae2be696d8" category="inline-link-rx"></block>。</block>
   <block id="ca06ae8121f1cc11363fc78862822c7c" category="summary">您可以MetroCluster 從NetApp文件中深入瞭解有關靜態IP組態與操作的資訊。</block>
   <block id="4bb047f8c530785002e490ef17fa725e" category="doc">何處可找到其他資訊</block>
   <block id="cc3e055fb471a8cb2ae09b695769980f" category="paragraph">您可以深入瞭MetroCluster 解有關「資訊」組態的資訊。</block>
@@ -1669,8 +1665,6 @@
   <block id="b6f8655d9cab6bf8d32e7b0bdc6c8eef" category="inline-link-macro">升級、轉換及擴充MetroCluster</block>
   <block id="78d0e38065ed90f1fe7de25c50775110" category="paragraph"><block ref="78d0e38065ed90f1fe7de25c50775110" category="inline-link-macro-rx"></block></block>
   <block id="64a22d6aef579bef853d3771327a4ae8" category="list-text">使用MetroCluster ESITiebreaker軟體監控整個系統的組態MetroCluster</block>
-  <block id="9b69c1695f55a4595dbf315316635dc3" category="inline-link">VMware及其技術文件AFF FAS</block>
-  <block id="2847e89fee2d01cd879013b5c3c38cf6" category="paragraph"><block ref="2847e89fee2d01cd879013b5c3c38cf6" category="inline-link-rx"></block></block>
   <block id="f69e3ec9eb18b508cb9d4ee4a9a0a1cc" category="paragraph">*附註：*標準儲存櫃維護程序可搭配MetroCluster 使用。</block>
   <block id="c7c3f6690f29780dcaae9a3466cbb181" category="list-text">熱新增磁碟櫃</block>
   <block id="76a9f159672d537c708be837bfe4931f" category="list-text">熱移除磁碟櫃</block>
@@ -2103,7 +2097,6 @@
   <block id="17096fd3e1b2112e623b24d0f41047a1" category="paragraph">單一節點故障</block>
   <block id="c7776a1202ed0edc19f2bc33b7cd86aa" category="paragraph">容錯移轉已觸發。</block>
   <block id="c99b42bbc420b89b4f8581105f3dda08" category="paragraph">組態會透過本機接管進行恢復。RAID不受影響。檢視系統訊息、並視需要更換故障的FRU。</block>
-  <block id="4ab1e5de67e4fdb090409b744f44bb19" category="paragraph"><block ref="4ab1e5de67e4fdb090409b744f44bb19" category="inline-link-rx"></block></block>
   <block id="c0f8b52cb7105edfdce46c42cc98404d" category="paragraph">一個站台有兩個節點故障</block>
   <block id="406b40e78e7b6a3454f57df57e06960b" category="paragraph">只有MetroCluster 在啟用了ESITiebreaker軟體的自動切換時、兩個節點才會失敗。</block>
   <block id="67fc8bad6d748a5a7e6af6e54b0ead82" category="paragraph">靜態IP介面-單一連接埠故障MetroCluster</block>
@@ -2166,7 +2159,6 @@
   <block id="c0b0a005c66dec25318b8f77ccd43de1" category="doc">將IOM12磁碟櫃熱新增至IOM6磁碟櫃堆疊、採用橋接式MetroCluster 附加的功能</block>
   <block id="a3d256f1f161df27a47bc7770faf92e4" category="paragraph">若要執行此程序、請參閱<block ref="96c52bfd2d59063b848ae852888ce36d" category="inline-link-rx"></block>。</block>
   <block id="6397abfc307e631ca1c862e2d899a88a" category="summary">您可能需要新增、移除或變更ISL連接埠。您可以將專用ISL連接埠轉換成共享ISL連接埠、或變更交換器上ISL連接埠的速度。長距離行駛的ISL可能需要較低的速度來改善品質。如果您要新增或升級硬體、可能還需要提高ISL連接埠的速度、才能充分利用系統升級的優勢、並將ISL新增至Cisco IP交換器。</block>
-  <block id="d10e49d0bde942d5917f6688f5e0de46" category="doc">在不中斷營運的情況下新增、移除或變更ISL連接埠</block>
   <block id="d799c86ecf33c88c19b257919f3e1a0e" category="inline-link-macro">共享ISL連接埠的需求</block>
   <block id="20892c0f4a9566a296500f9e5a037ac2" category="paragraph">如果您要將專用ISL連接埠轉換成共享ISL連接埠、請確定新的連接埠符合 <block ref="85684a9c447191d458d402cc3d7d0980" category="inline-link-macro-rx"></block>。</block>
   <block id="81cb74811132f21a42025036363e5af8" category="paragraph">您必須完成兩台交換器上的所有步驟、以確保ISL連線能力。</block>
@@ -5647,7 +5639,6 @@
   <block id="d340143d5e700f5d4e8046e617b37422" category="list-text">磁碟櫃堆疊的組態應與存續站台相同。</block>
   <block id="5ecfd8db2d0a444e9b4b4b94265bd302" category="list-text">磁碟可以大小相同或更大、但必須是相同類型（SAS或SATA）。</block>
   <block id="b02caacb3894ef9842bc0aef53528d62" category="list-text">將磁碟櫃纜線連接至堆疊內的鄰近磁碟櫃、以及FC對SAS橋接器。此時請勿開啟磁碟櫃電源。</block>
-  <block id="f7569c5539a611615a6389d7051bfe9c" category="cell"><block ref="f7569c5539a611615a6389d7051bfe9c" category="inline-link-macro-rx"></block></block>
   <block id="37d313349fe563ae8b848d2dedc9b49d" category="paragraph">SAS纜線</block>
   <block id="10870f04f6e998bece63881b8c817b77" category="list-text">安裝新纜線。此時請勿開啟磁碟櫃電源。</block>
   <block id="0a8cc401310286b041be93eea053d047" category="paragraph">以不受需求的FC組態連接FC至SAS橋接器MetroCluster</block>
@@ -11733,7 +11724,6 @@
   <block id="706be03f02099b320a48663ab49614b7" category="sidebar">IP交換器維護與更換</block>
   <block id="40414fb3a79648f825985d2f107661f0" category="sidebar">升級MetroCluster 韌體至靜態IP交換器</block>
   <block id="6fc3e23fc447e1c003feca250d853db5" category="sidebar">重新命名Cisco IP交換器</block>
-  <block id="c674510981c9027bb4d0c0161679026d" category="sidebar">在不中斷營運的情況下新增、移除或變更ISL連接埠</block>
   <block id="8939a3071227e9e768ef56f5cc7f2c4d" category="sidebar">如何在MetroCluster 一個不確定IP組態中識別儲存設備</block>
   <block id="1c833178608e8e9495706619170addcc" category="sidebar">使用共享儲存設備/ MetroCluster交換器、將機櫃新增MetroCluster 至架構</block>
   <block id="806e10b1bc39f5ac90158ffc4013b751" category="sidebar">將儲存熱新增至MetroCluster 功能不集區的FC組態</block>
@@ -12788,7 +12778,6 @@
   <block id="103e238a461bced8a19653fadfc6b06f" category="paragraph">在此四節點 MetroCluster IP 組態範例中、會擷取下列舊系統 ID ：</block>
   <block id="f517753faa986ef4fe936b6ef049742a" category="paragraph">在此雙節點 MetroCluster IP 組態範例中、會擷取下列舊系統 ID ：</block>
   <block id="8351b67dee4e0c692cf4f28e83b54b0a" category="paragraph">自動化作業會啟動「跨操作」。這些作業完成後、操作會暫停於 * 暫停以供使用者介入 * 、以便您可以使用從 Flash 備份將控制器機架安裝、開機合作夥伴控制器、以及將根 Aggregate 磁碟重新指派給新的控制器模組<block ref="5fb641c5977b93de82b81e36db0454cf" prefix=" " category="inline-code"></block> 早些時候收集到。</block>
-  <block id="8582c1480060e39fb79b0996133a48d6" category="paragraph"><block ref="8582c1480060e39fb79b0996133a48d6" category="inline-link-rx"></block></block>
   <block id="956cd19055bcda776c4aa38d849f5270" category="paragraph">您的目錄列表應包含內核文件 netboot 文件夾： ontap － version － image ． tgz</block>
   <block id="d58685908c79a70d5ff1a6db6c223402" category="paragraph">您不需要解壓縮 ONTAP 版本映像 .tgz 檔案。</block>
   <block id="f3b7262f888ca591450dde27d2e71aaf" category="paragraph">下列範例設定節點 B_1 的值、第一個網路使用 VLAN 120 、第二個網路使用 VLAN 130 ：</block>
@@ -12845,8 +12834,6 @@
   <block id="7d7fd277012689535b693bcae0693459" category="image-title">暫時的八節點組態</block>
   <block id="cb3b06d4f89d32589bbce6abb75941fc" category="image-title">暫時性的十二節點組態</block>
   <block id="830d9e0f5e1de2a97686d67c2397dae5" category="image-alt">MCC DR 群組 C4</block>
-  <block id="6af6b76d592516d40ca101051c678be3" category="inline-link-macro">系統升級文件AFF FAS</block>
-  <block id="73463ea97bfc9f9e1267ea63ebdd42a3" category="list-text">使用中的下列程序、將資料從舊節點移至新節點 <block ref="292db4887d6135b1e0f2f8467d29f1d6" category="inline-link-macro-rx"></block></block>
   <block id="bbe65d15d9db73ecb088957ca54464a4" category="list-text">修改每個叢集之轉換節點的叢集對等端 IP 位址：</block>
   <block id="5f733ea5e4f1c7cf03ff4e0dcc486e49" category="list-text">請依照中的步驟進行 <block ref="e5ebde3067c5558de277c40cd868d611" category="inline-link-macro-rx"></block> 移除舊的 DR 群組。</block>
   <block id="91658906d8262381ddcdb44c01a8989d" category="list-text">如果您想要在八節點組態中同時重新整理兩個 DR 群組、則必須針對每個 DR 群組重複整個程序。</block>
@@ -13370,4 +13357,13 @@
   <block id="1aa145ddf3cafc3bf77b04a1c7069f71" category="list-text">按照 MetroCluster 安裝與組態 _ 中的說明設定新交換器、但跳過「在 Brocade FC 交換器上設定分區」程序。</block>
   <block id="21b5cf2db61fccc0ace8b80bac8b35b7" category="list-text">附註2：FC節點上的本機叢集介面必須使用40GbE介面。此平台組合需要 ONTAP 9.11.1 或更新版本。</block>
   <block id="13cdbd43c145584bcad75658a29e498d" category="list-text">附註 3 ： FC 節點上的本機叢集介面必須有 100GbE 介面。此平台組合需要 ONTAP 9.11.1 或更新版本。</block>
+  <block id="646d7d5f93b4a6d7bbbc65acf5ac1077" category="inline-link">ONTAP 硬體系統文件</block>
+  <block id="a6060d4587fc5fc5f841d3287d08316c" category="paragraph"><block ref="a6060d4587fc5fc5f841d3287d08316c" category="inline-link-rx"></block></block>
+  <block id="777cc85682fbb64f0c41aa09dccf0ca4" category="paragraph"><block ref="777cc85682fbb64f0c41aa09dccf0ca4" category="inline-link-rx"></block></block>
+  <block id="9701f608cd28914f41da9cef3b56ba90" category="paragraph">請使用適用於您平台的安裝說明、網址為<block ref="ba9533a8784109065785b5514b6caa78" category="inline-link-rx"></block>。</block>
+  <block id="1f1b4aed93819376fcceca70dcc661a8" category="paragraph"><block ref="1f1b4aed93819376fcceca70dcc661a8" category="inline-link-rx"></block></block>
+  <block id="ddd2d923df0e2b56b89593bd7e74dec1" category="list-text">使用中的下列程序、將資料從舊節點移至新節點 <block ref="4af1ab31bd03b6b171b2abfc54231e72" category="inline-link-macro-rx"></block></block>
+  <block id="13b7f77edb33af927a5eb756e92d3e1e" category="doc">在 Cisco IP 交換器上以不中斷營運的方式新增、移除或變更 ISL 連接埠</block>
+  <block id="d0b4d4a01f6fdfe6150ce107537b1a30" category="paragraph">您可能需要在 Cisco IP 交換器上新增、移除或變更 ISL 連接埠。您可以將專用 ISL 連接埠轉換為共享 ISL 連接埠、或變更 Cisco IP 交換器上 ISL 連接埠的速度。長距離行駛的ISL可能需要較低的速度來改善品質。如果您要新增或升級硬體、可能需要提高 ISL 連接埠的速度、才能充分利用系統升級、並將 ISL 新增至 Cisco IP 交換器。</block>
+  <block id="f8661864113fa686fbcb0e8305046574" category="cell"><block ref="f8661864113fa686fbcb0e8305046574" category="inline-link-macro-rx"></block></block>
 </blocks>

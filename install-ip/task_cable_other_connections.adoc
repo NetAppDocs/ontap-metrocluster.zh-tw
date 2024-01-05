@@ -28,6 +28,6 @@ http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-clus-peer/home.html["叢
 
 . 將控制器的管理和資料連接埠連接至本機站台的管理和資料網路。
 +
-請使用適用於您平台的安裝說明、網址為 https://docs.netapp.com/us-en/ontap-systems/["系統文件AFF FAS"]。
+請使用適用於您平台的安裝說明、網址為 https://docs.netapp.com/us-en/ontap-systems/["ONTAP 硬體系統文件"^]。
 
 

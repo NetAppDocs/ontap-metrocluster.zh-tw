@@ -63,7 +63,7 @@ link:../install-ip/concept_considerations_differences.html["安裝與組態：�
 
 .. 將磁碟櫃纜線連接至堆疊內的鄰近磁碟櫃、以及FC對SAS橋接器。此時請勿開啟磁碟櫃電源。
 
-| link:http://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"^] 
+| link:http://docs.netapp.com/platstor/index.jsp["ONTAP 硬體系統文件"^] 
 
 
  a| 
@@ -72,7 +72,7 @@ SAS纜線
 .. 安裝新纜線。此時請勿開啟磁碟櫃電源。
 
  a| 
-link:http://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"^]
+link:http://docs.netapp.com/platstor/index.jsp["ONTAP 硬體系統文件"^]
 
 
 
@@ -120,7 +120,7 @@ link:../install-stretch/concept_considerations_differences.html["延伸MetroClus
 
 
  a| 
-link:http://docs.netapp.com/platstor/index.jsp["VMware及其技術資料中心AFF FAS"^]
+link:http://docs.netapp.com/platstor/index.jsp["ONTAP 硬體系統文件"^]
 
 |===
 . 驗證所有元件的纜線是否正確連接至您的組態。
