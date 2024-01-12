@@ -13366,4 +13366,7 @@
   <block id="13b7f77edb33af927a5eb756e92d3e1e" category="doc">在 Cisco IP 交換器上以不中斷營運的方式新增、移除或變更 ISL 連接埠</block>
   <block id="d0b4d4a01f6fdfe6150ce107537b1a30" category="paragraph">您可能需要在 Cisco IP 交換器上新增、移除或變更 ISL 連接埠。您可以將專用 ISL 連接埠轉換為共享 ISL 連接埠、或變更 Cisco IP 交換器上 ISL 連接埠的速度。長距離行駛的ISL可能需要較低的速度來改善品質。如果您要新增或升級硬體、可能需要提高 ISL 連接埠的速度、才能充分利用系統升級、並將 ISL 新增至 Cisco IP 交換器。</block>
   <block id="f8661864113fa686fbcb0e8305046574" category="cell"><block ref="f8661864113fa686fbcb0e8305046574" category="inline-link-macro-rx"></block></block>
+  <block id="69f5f299da1076246b1de6b47387e82c" category="list-text">修改所有叢集生命來停用自動還原：</block>
+  <block id="44f3e9b14f204b411afdea78f7b0391c" category="doc">MetroCluster 版本資訊</block>
+  <block id="af8a69aa12393a4d9b6992e884f1c919" category="sidebar">文件MetroCluster</block>
 </blocks>

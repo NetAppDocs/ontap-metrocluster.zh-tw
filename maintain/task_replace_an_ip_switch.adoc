@@ -146,14 +146,16 @@ NOTE: 您只能中斷舊組態和新組態中使用不同連接埠的連線。�
 依下列順序移除連線：
 
 +
-** 如果本機叢集介面已連線至交換器：
+.. 修改所有叢集生命來停用自動還原：
 +
-*** 拔下本機叢集介面
-*** 中斷本機叢集 ISL 的連線
-
-
-** 中斷 MetroCluster IP 介面連線
-** 中斷 MetroCluster ISL 的連線
+[source, asciidoc]
+----
+net int modify -vserver <vserver_name> -lif <lif_name> -auto-revert false
+----
+.. 拔下本機叢集介面
+.. 中斷本機叢集 ISL 的連線
+.. 中斷 MetroCluster IP 介面連線
+.. 中斷 MetroCluster ISL 的連線
 +
 範例中 <<port_usage_worksheet>>、交換器不會變更。MetroCluster ISL 已重新定位、必須中斷連線。您不需要中斷工作表上標示為綠色的連線。
 
