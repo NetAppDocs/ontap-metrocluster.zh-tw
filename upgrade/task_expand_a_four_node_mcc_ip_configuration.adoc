@@ -13,13 +13,13 @@ summary: 您可以將四個新節點新增至MetroCluster 「靜態IP」組態�
 [role="lead"]
 視 ONTAP 版本而定、您可以將四個新節點新增為新的 DR 群組、以擴充 MetroCluster IP 組態。
 
-從 ONTAP 9.13.1 開始、您可以將四個新節點新增至 MetroCluster IP 組態、做為第三個 DR 群組。這會建立一個十二節點的 MetroCluster 組態。
+從 ONTAP 9.13.1 開始、您可以暫時擴充八節點 MetroCluster 組態、以重新整理控制器和儲存設備。請參閱 link:https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/task_refresh_4n_mcc_ip.html["重新整理四節點或八節點 MetroCluster IP 組態（ ONTAP 9.8 及更新版本）"] 以取得更多資訊。
 
 從更新版的支援版9.9.1開始ONTAP 、您可以將四個新節點新增到MetroCluster 作為第二個DR群組的支援版IP組態中。這會建立八節點MetroCluster 的不全功能組態。
 
 .開始之前
 * 舊節點和新節點必須執行相同版本ONTAP 的更新。
-* 本程序說明展開一個四節點 DR 群組所需的步驟。如果您有八節點組態（兩個 DR 群組）、則必須針對每個 DR 群組重複整個程序。
+* 本程序說明將一個四節點 DR 群組新增至現有 MetroCluster IP 組態所需的步驟。如果要重新整理八節點組態、您必須為每個 DR 群組重複整個程序、一次新增一個。
 * 確認新舊平台機型支援混合平台。
 +
 https://hwu.netapp.com["NetApp Hardware Universe"^]

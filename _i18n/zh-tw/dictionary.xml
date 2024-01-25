@@ -1193,7 +1193,6 @@
   <block id="6852fcac58b417258b30784060002d89" category="list-text">追蹤MetroCluster 不穩定的資料群組MetroCluster （例如、支援1、MetroCluster 2等）。如本組態程序稍後所述、使用RcfFileGenerator.工具時、您將需要此資訊。</block>
   <block id="b070262d5faad84092129cb1c7a44daa" category="list-text">。<block ref="166489b3c340ece1eccb5706fda90624" category="inline-link-rx"></block> 此外、也提供每個交換器的每埠纜線配置總覽。使用此纜線總覽來驗證纜線。</block>
   <block id="b12eae1983992a43e1aff6798c40b450" category="section-title">佈線八節點MetroCluster 的架構</block>
-  <block id="fa59de86b7e9bd4898cb6907726259d6" category="paragraph">針對執行效能不全的9.8和更早版本的執行功能、為了轉換升級作業、某些程序需要在組態中新增第二個四節點DR群組、才能建立一個暫用的八節點組態。MetroCluster ONTAP從支援永久性的8節點版本的支援、從版本號9.9開始。ONTAP MetroCluster</block>
   <block id="134c13e2a51797233ea2a5ce24406813" category="paragraph">對於這類組態、您使用的方法與上述方法相同。除了第二MetroCluster 個問題、您還需要額外的四節點災難恢復群組。</block>
   <block id="d5e8fd3a5a09a2e20b7a2ae3865f7eef" category="paragraph">例如、您的組態包括下列項目：</block>
   <block id="d05e0033e800da35d05e3a88b52e765d" category="list-text">Cisco 3132Q-V交換器</block>
@@ -3768,14 +3767,12 @@
   <block id="9e56f2203627e1f0f852b03165f1f73c" category="cell">Cisco 9148S</block>
   <block id="4d5ea9cc493e38f0bd25ce9f073330be" category="cell">Cisco 9132T</block>
   <block id="0f39a39e2e8a1309b826dae2289dd8fb" category="cell">MDS模組1</block>
-  <block id="4ae081212f8a0475febe92be5c491cbc" category="cell">MDS模組2.</block>
   <block id="14f265c9ad9a81b21c667b4042fc7575" category="admonition">下表顯示具有兩個FC-VI連接埠的系統。FASA700和FAS9000系統有四個FC-VI連接埠（a、b、c和d）AFF 。如果使用AFF 的是FASA700或FAS9000系統、則連接埠指派會逐一移動。例如、FC-VI連接埠c和d會移至交換器連接埠2、HBA連接埠a和b、然後移至交換器連接埠3。</block>
   <block id="cab785737f7e01bc6cf334a3297e22c3" category="cell">Cisco 9250i附註：Cisco 9250i交換器不支援八節點MetroCluster 的外觀組態。</block>
   <block id="7454ecd5190b690ccf9ee77f2e438c0c" category="section-title">Cisco連接埠使用功能可在MetroCluster 執行ONTAP 版本更新版本的功能區中、用於FC至SAS橋接器</block>
   <block id="68d960c549d05fc84233ef70c7a67687" category="cell">使用兩個FC連接埠的Fibre Bridge 7500</block>
   <block id="89eaf3610015ecc12505a2408ff9fda6" category="paragraph">您可以使用相同模式的連接埠17至40和57至88來連接其他橋接器。</block>
   <block id="a1d4f21ed73518b99dbbab05134b5c9a" category="paragraph">第二個DR群組或第二MetroCluster 個不實組態的其他橋接器、可以使用相同模式的連接埠33到40來連接。</block>
-  <block id="c4d2587ed11ac65a9b9af2de531f3dce" category="paragraph">第二個DR群組或第二MetroCluster 個支援功能組態的其他橋接器、可使用第二個MDS模組上相同的連接埠號碼來連接。</block>
   <block id="f656d69f7bbae519056da03a8e9e50d0" category="cell">Cisco 9250i</block>
   <block id="a6bd250708a75e43f157a7b657e654c5" category="paragraph">第二個DR群組或第二MetroCluster 個支援功能組態的其他橋接器、可以使用相同模式的連接埠25到48來連接。</block>
   <block id="ba310a61cda35bab44af31435467361f" category="paragraph">下表顯示僅使用一個FC連接埠（FC1或FC2）使用Fibre Bridge 6500橋接器或Fibre Bridge 7500橋接器時的橋接連接埠使用量。若為使用單一FC連接埠的Fibre Bridge 7500橋接器、則FC1或FC2可以纜線連接至指定為FC1的連接埠。可使用連接埠25-48連接其他橋接器。</block>
@@ -8530,7 +8527,6 @@
   <block id="9135f01e21f3378e93e8e79d77b55ba9" category="cell">LEM2-2.</block>
   <block id="fab602535b4be80321a95b9f39dfb023" category="cell">LEM2-3.</block>
   <block id="9886bd0d1558f3c4c6b4b7c6ccd6d4ca" category="cell">LEM2-4</block>
-  <block id="8aed0fcdb92053bce2340c69664e26c5" category="list-text">可使用2個LEM模組、將額外的橋接器連接至連接埠LEM2-5至LEM2-8 in 9132T交換器。</block>
   <block id="a2529b9a22421965b80dca74f0e8ac35" category="list-text">使用9132T交換器搭配1x LEM模組時、僅支援一（1）個橋接堆疊。</block>
   <block id="3da8861d57a1131794010a43bb8c0022" category="summary">在八節點或四節點MetroCluster 的「樣」組態中、您必須在每個站台的本機控制器模組之間連接叢集互連。</block>
   <block id="26a54024c23fd925658f9c07af7f45f3" category="doc">使用八節點或四節點組態來連接叢集互連</block>
@@ -11635,52 +11631,6 @@
   <block id="5dd03e8d039863e563e049be198c3fd3" category="sidebar">版本資訊</block>
   <block id="13c1fe346da53d3c9c58ab0c190eb172" category="sidebar">瞭MetroCluster 解資料保護與災難恢復</block>
   <block id="f6ded8bde676e251409725df18ef579a" category="sidebar">如何保護資料並提供災難恢復MetroCluster</block>
-  <block id="be11c74c1dd7f307bb80183a90dc2067" category="sidebar">開始使用</block>
-  <block id="2ef693575e01de24e090245f10a59777" category="sidebar">安裝MetroCluster 知識產權</block>
-  <block id="5a3b01a5bff3f06441fb7188a02f105e" category="sidebar">安裝Fabric附加MetroCluster 的功能</block>
-  <block id="fdb8b17580937ddecfddeee4298a1482" category="sidebar">安裝Stretch MetroCluster</block>
-  <block id="18bd3543357b4fa11f6a58101dfa61a5" category="sidebar">安裝斷路器</block>
-  <block id="d2875782347edc6066d3025cecc9df38" category="sidebar">安裝調解器（MetroCluster 僅限知識產權）</block>
-  <block id="ade01a5a398372194a42c36e9f5279ac" category="sidebar">維護</block>
-  <block id="7b8e5f5947a6dadc276f09b5a095667d" category="sidebar">以MetroCluster 不穩定的FC組態維護及更換FC交換器。</block>
-  <block id="7f5d1cf6b92b5f6a9e5fe290c7d568fa" category="sidebar">IP交換器</block>
-  <block id="e9e6a0d40b20996536edcfae7b0ca501" category="sidebar">維護及更換MetroCluster 採用不穩定IP組態的IP交換器。</block>
-  <block id="5360721f5d15a4a50d1c0ea177551d33" category="sidebar">Atto橋接器</block>
-  <block id="6659ad060d95c49da27c02efe70880ee" category="sidebar">維護及更換Atto FC-to SAS橋接器、採用MetroCluster 不穩定的FC組態。</block>
-  <block id="c89a58741e7240ddf3c43ec7dbb21cd7" category="sidebar">磁碟機櫃</block>
-  <block id="bb2a6473813b98ffe9edacc863bb749e" category="sidebar">熱新增和不中斷營運的更換磁碟機櫃MetroCluster 、以支援FC組態。</block>
-  <block id="9deb979aa141eacec55a34ce9dfd4cc9" category="sidebar">RCF檔案</block>
-  <block id="277ccac115bb10401c3dbe796a5fd555" category="sidebar">RCF檔案MetroCluster</block>
-  <block id="f4ff45e882d7ee5ad1b4a9e07301850d" category="sidebar">為MetroCluster 您的交換器產生或下載RCF檔案。</block>
-  <block id="d59048f21fd887ad520398ce677be586" category="sidebar">深入瞭解</block>
-  <block id="b92dd7cb5813aceca4052255be1046a0" category="sidebar">NetApp MetroCluster 解決方案架構與設計| TR-4705</block>
-  <block id="c8ed4eb56c00a193e2bf85d5a38119ee" category="sidebar">瞭MetroCluster 解功能不清的解決方案。</block>
-  <block id="d821955413ef2ce3b63ac32371a5186e" category="sidebar">《SIP解決方案架構與設計》| TR-4689 MetroCluster</block>
-  <block id="33d6c0f3568f32d65b84533fcc9dcbcb" category="sidebar">瞭MetroCluster 解此解決方案。</block>
-  <block id="3d5cf400e4fb829207d0ab81798b6587" category="sidebar">升級、擴充及轉換</block>
-  <block id="64cd3f6f5347e9d6c92e09aa1c656f87" category="sidebar">升級及更新硬體</block>
-  <block id="fdc7fb09ec4ebc533362a55d221d305f" category="sidebar">以MetroCluster 不更新組態升級控制器。</block>
-  <block id="e912938f380bdbc5125a46cb6974c985" category="sidebar">展開雙節點MetroCluster 的功能</block>
-  <block id="c495f5fb55d923c4b5bdcc9031d17504" category="sidebar">將控制器新增至MetroCluster 「架構」組態、以建立四節點或八節點組態。</block>
-  <block id="8b9fb0a48d871747071a5767bb11c3c9" category="sidebar">擴充四節點MetroCluster 的功能</block>
-  <block id="f0de1d093d27614c73e83446489eec92" category="sidebar">將控制器新增至MetroCluster 「架構」組態、以建立八節點組態。</block>
-  <block id="daf3fcb291d6eb9e42a7777197caa458" category="sidebar">將這個FC轉換MetroCluster 成靜態IP MetroCluster</block>
-  <block id="689a3f6927feed4862b6b5b03d4f0018" category="sidebar">將現有MetroCluster 的靜態IP組態轉換成MetroCluster 靜態IP組態。</block>
-  <block id="822970998ef8866cd59ed6ba8d63af83" category="sidebar">升級MetroCluster RCF檔案</block>
-  <block id="b2899a6511f7a2ac6656022f75581e5a" category="sidebar">升級MetroCluster 交換器RCF檔案、以使用各種IP組態。</block>
-  <block id="b7c02f1bc7ffc889ddb9e99702663c56" category="sidebar">Atto橋接韌體</block>
-  <block id="ddac5beff5f77bf22595caa98bac08f9" category="sidebar">光纖橋接器7600N</block>
-  <block id="7189e471dda7f4816814f7b74c6948d1" category="sidebar">下載7600橋接器的韌體。</block>
-  <block id="dcb741f9e6e5d6050aeb3d8fd347e9fd" category="sidebar">光纖橋接器7500N</block>
-  <block id="81defdfe6f2018754b9c90215acaf8c1" category="sidebar">下載適用於7500橋接器的韌體。</block>
-  <block id="dcfbd7fd6db6301d4cc61e9b319755d1" category="sidebar">光纖橋接器6500N</block>
-  <block id="230d9a7150bac60512d2faea2daf48aa" category="sidebar">下載適用於6500橋接器的韌體。</block>
-  <block id="dfcc398099d6a64026e51ab282e16253" category="sidebar">更多資源</block>
-  <block id="fa0344a10c89a05b4e9232391d5feb01" category="sidebar">NetApp Config Advisor</block>
-  <block id="7bde48e6b0d33c17d731b283a4674428" category="sidebar">驗證您的組態和纜線。</block>
-  <block id="d5552b01bf48dde88719269e524ddbb9" category="sidebar">驗證是否支援您的硬體。</block>
-  <block id="3f2b90ec5a9b43745b9c8c9fedf48d8d" category="sidebar">NetApp支援知識庫</block>
-  <block id="b2cdf9234a2dabbbb6acb6f71e098209" category="sidebar">搜尋您的支援問題答案。</block>
   <block id="d5bca41ec2c9b2bc82b68b782983610c" category="sidebar">安裝MetroCluster 一套靜態IP組態</block>
   <block id="10fb6eda16d44576f048cbbd98a21f49" category="sidebar">準備MetroCluster 進行安裝</block>
   <block id="06800b31fe5394b22e1a11163137b326" category="sidebar">決定ONTAP 使用哪一種功能MetroCluster</block>
@@ -12802,8 +12752,6 @@
   <block id="eae1d6e5dc6115799413390aecfa0c7c" category="paragraph">自動化作業會開始進行下列作業：<block ref="4bc031ebd90e06c679bed249595b6c90" prefix=" " category="inline-code"></block>和<block ref="a233091efff166ee24ee5a89d344dcdf" prefix=" " category="inline-code"></block> 營運：這些作業完成後、操作會暫停於 * 暫停以供使用者介入 * 、以便您可以使用從 Flash 備份將控制器機架安裝、開機合作夥伴控制器、以及將根 Aggregate 磁碟重新指派給新的控制器模組<block ref="5fb641c5977b93de82b81e36db0454cf" prefix=" " category="inline-code"></block> 早些時候收集到。</block>
   <block id="3d296dee09f5acd9721e7bd1f885a1ff" category="doc">擴充 MetroCluster IP 組態</block>
   <block id="f7ebd0c3919ed1a579352a95f757a9e6" category="paragraph">視 ONTAP 版本而定、您可以將四個新節點新增為新的 DR 群組、以擴充 MetroCluster IP 組態。</block>
-  <block id="bb12c6e41d92f6e4a5251b0dd54e9b0f" category="paragraph">從 ONTAP 9.13.1 開始、您可以將四個新節點新增至 MetroCluster IP 組態、做為第三個 DR 群組。這會建立一個十二節點的 MetroCluster 組態。</block>
-  <block id="1b9d79df22b9bc1c5dc1b1baa6f53e05" category="list-text">本程序說明展開一個四節點 DR 群組所需的步驟。如果您有八節點組態（兩個 DR 群組）、則必須針對每個 DR 群組重複整個程序。</block>
   <block id="5ffb6f10d2a660f5653c90be923e511a" category="section-title">新增第二個 DR 群組時支援的平台組合</block>
   <block id="c7a5837b5fbd32fe6a2e393e60dbd4a3" category="paragraph">下表顯示支援的八節點 IP 組態平台組合。</block>
   <block id="a321522d8592d70cc3e6c26d2e63f256" category="list-text">此表中的組合僅適用於一般或永久性的 8 節點組態。</block>
@@ -13369,4 +13317,34 @@
   <block id="69f5f299da1076246b1de6b47387e82c" category="list-text">修改所有叢集生命來停用自動還原：</block>
   <block id="44f3e9b14f204b411afdea78f7b0391c" category="doc">MetroCluster 版本資訊</block>
   <block id="af8a69aa12393a4d9b6992e884f1c919" category="sidebar">文件MetroCluster</block>
+  <block id="b8b5370c063dd2b4ce4021558a49ac07" category="paragraph">針對執行效能不全的9.8和更早版本的執行功能、為了轉換升級作業、某些程序需要在組態中新增第二個四節點DR群組、才能建立一個暫用的八節點組態。MetroCluster ONTAP  從 ONTAP 9.9.1 開始、支援永久性的八節點 MetroCluster 組態。</block>
+  <block id="ff66d22d6ddbc0a6a59188599728f8d1" category="paragraph">從 ONTAP 9.13.1 開始、您可以暫時擴充八節點 MetroCluster 組態、以重新整理控制器和儲存設備。請參閱 <block ref="6e6fb56321b906b7bb3a671d5fc5dfc7" category="inline-link-macro-rx"></block> 以取得更多資訊。</block>
+  <block id="0abe9117fda19697d2dbf1bd1d754e02" category="list-text">本程序說明將一個四節點 DR 群組新增至現有 MetroCluster IP 組態所需的步驟。如果要重新整理八節點組態、您必須為每個 DR 群組重複整個程序、一次新增一個。</block>
+  <block id="84d04e0c7f711ba6800f8d3bd5bc0847" category="inline-xref">在執行 ONTAP 9.4 或更新版本的 MetroCluster 組態中使用 Cisco 9132T 連接埠</block>
+  <block id="ccdfc130a534c248f558d6495323cb02" category="admonition">如需 Cisco 9132T 的詳細資訊、請參閱 <block ref="3db7a367aafc64164b814f36e8341eaa" category="inline-xref-macro-rx"></block>。</block>
+  <block id="da1fe90f1a7c8d5426c9fb653143159c" category="inline-xref">在執行 9.1 或更新版本的 MetroCluster 組態中、使用 ONTAP 9132T 的 ISL 連接埠</block>
+  <block id="ebaff03f6ed502f4a413a1ce08e7b523" category="admonition">如需 Cisco 9132T 的詳細資訊、請參閱 <block ref="745f667c2207ac60e33bebf6a26d4908" category="inline-xref-macro-rx"></block>。</block>
+  <block id="b6adc54642d6ea9466bf5956bfd90921" category="section-title">在執行 ONTAP 9.4 及更新版本的 MetroCluster 四節點和八節點組態中使用 Cisco 9132T 連接埠</block>
+  <block id="34adac1b835db756e4bda81aeab17aee" category="paragraph">下表顯示 Cisco 9132T 交換器的連接埠使用量。下表顯示兩個 DR 群組中四個和八個控制器模組的最大支援組態。</block>
+  <block id="65ac5210a13e16ff0c09cc508d39f010" category="admonition">對於八節點組態、您必須手動執行分區、因為未提供 RCFs 。</block>
+  <block id="24ce95dff7cdbe82f47d82b0c5e3c3bd" category="paragraph">LEM2-5.</block>
+  <block id="d1219ba7b45f6028da9ef53dc1d962dc" category="paragraph">LEM2-6.</block>
+  <block id="d72635ed8e78c8bf248888485d54fefc" category="paragraph">LEM2-7.</block>
+  <block id="bf56acff15a22deda5e2b827afffd42e" category="paragraph">LEM2-8.</block>
+  <block id="148fa39b011d75fbf87b5c6a6e4eb7ac" category="list-text">在四節點組態中、您可以在 9132T 交換器中使用 2 個 LEM 、將額外的橋接器連接至連接埠 LEM2-5 至 LEM2-8 。</block>
+  <block id="1b3edf8d6e61a53c159f115111d76631" category="list-text">在八節點組態中、您可以在 9132T 交換器中使用 2 個 LEM 、將額外的橋接器連接至連接埠 LEM2-13 至 LEM2-16 。</block>
+  <block id="7aff2de5bc0a96f53245830100b31a76" category="section-title">在執行 ONTAP 9.1 或更新版本的 MetroCluster 組態中、四個和八個節點組態中的 ISL 使用 Cisco 9132T 連接埠</block>
+  <block id="e919df0feb57e826b9f8b6224efe2e04" category="paragraph">下表顯示 Cisco 9132T 交換器的 ISL 連接埠使用量。</block>
+  <block id="a261c053c0fcf9998b34ce893b64a413" category="paragraph"><block ref="c0d0f2b19dc6b7f887420d5bf33adaba" prefix="" category="inline-code"></block></block>
+  <block id="8eca95447c2280ec1cef00c74fbdd026" category="paragraph"><block ref="08781b24c8be1fcc1ac4a86a67a6752f" prefix="" category="inline-code"></block></block>
+  <block id="e7b29d0915f737610eeeb345da9728aa" category="list-text">驗證叢集中的所有節點是否正常：</block>
+  <block id="bd0d55b78c7361cb6bee641b1a3f51f1" category="paragraph">輸出應會顯示<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block> 適用於<block ref="555bf8344ca0caf09b42f55e185526d8" prefix=" " category="inline-code"></block> 所有節點的欄位。</block>
+  <block id="a52d9220769f6761bf129d7261ce8c50" category="list-text">確認連接至新加入的 MetroCluster IP 節點的所有磁碟均存在：</block>
+  <block id="31fd58e5bb5b343f46192bb2a5c46678" category="list-text">執行下列命令來驗證 MetroCluster 組態的健全狀況：</block>
+  <block id="0684ea3076044d6489f161fa34d1768f" category="list-text">您可以使用 2 個 LEM 模組、將 9132T 交換器中的其他橋接器連接至連接埠 LEM2-5 至 LEM2-8 。</block>
+  <block id="2f446d31523b281d945a5fb6d94e09f7" category="cell">MetroCluster FC 組態狀態</block>
+  <block id="b25919189b4340e1b84dd00de09921d3" category="cell">MetroCluster IP 組態狀態</block>
+  <block id="e402ac65c66b96e2f07562ac550c53d8" category="paragraph">離線（附註 1 ）</block>
+  <block id="5993b684cff34ce50e30b3a1293c1f25" category="paragraph">* 附註 1* ：在 MetroCluster IP 組態中、完成移轉後、您可以手動將未鏡射的集合體上線。</block>
+  <block id="0fc1dc5210ab6635b5582671b5100aaf" category="paragraph">深入瞭解 <block ref="26007d4b0afff1c47eeefe43a1492ee9" category="inline-xref-macro-rx"></block>。</block>
 </blocks>

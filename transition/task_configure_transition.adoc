@@ -613,7 +613,7 @@ aggr_data_a2
  a| 
 在任何節點的提示下、設定MetroCluster 下列項目：
 
-「靜態組態節點名稱」MetroCluster
+`metrocluster configure <node-name>`
 
 
 NOTE: 您必須執行「MetroCluster 靜態組態」和*「非」* MetroCluster 「靜態組態-重新整理為真」
@@ -632,7 +632,7 @@ NOTE: 您必須執行「MetroCluster 靜態組態」和*「非」* MetroCluster 
 
 .. 使用MetroCluster 「-allow-with e-gregate true]參數設定此功能：
 +
-「MetroCluster 配合單一Aggregate true_norme-name_」執行設定
+`metrocluster configure -allow-with-one-aggregate true -node-name <node-name>`
 
 .. 返回管理權限層級：
 +
@@ -720,6 +720,13 @@ Do you want to continue? {y|n}: y
 
 cluster_A::>
 ....
+. 驗證叢集中的所有節點是否正常：
++
+「叢集展示」
+
++
+輸出應會顯示 `true` 適用於 `health` 所有節點的欄位。
+
 . 在兩個叢集上執行下列命令、確認可以進行接管、而且節點已連線：
 +
 「容錯移轉顯示」
@@ -736,6 +743,18 @@ Node_FC_2      Node_FC_1              true      Connected to Node_FC_1
 Node_IP_1      Node_IP_2              true      Connected to Node_IP_2
 Node_IP_2      Node_IP_1              true      Connected to Node_IP_1
 ----
+. 確認連接至新加入的 MetroCluster IP 節點的所有磁碟均存在：
++
+「尖碑秀」
+
+. 執行下列命令來驗證 MetroCluster 組態的健全狀況：
++
+.. 《不一樣的跑程》MetroCluster
+.. 《不一樣的表演》MetroCluster
+.. 《不互連鏡像秀》MetroCluster
+.. 「顯示此介面卡的資訊」MetroCluster
+
+
 . 以進階權限將MDV_CRS磁碟區從舊節點移至新節點。
 +
 .. 顯示用於識別MDV磁碟區的磁碟區：

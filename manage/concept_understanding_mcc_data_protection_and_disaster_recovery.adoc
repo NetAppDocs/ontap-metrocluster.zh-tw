@@ -120,13 +120,15 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sag/home.html["系�
 |===
 
 
-| 切換類型 | 州/省 
+| 切換類型 | MetroCluster FC 組態狀態 | MetroCluster IP 組態狀態 
 
 
  a| 
 議定切換（NSO）
  a| 
 線上
+ a| 
+離線（附註 1 ）
 
 
 
@@ -134,6 +136,8 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sag/home.html["系�
 自動非計畫性切換（AUSO）
  a| 
 線上
+ a| 
+離線（附註 1 ）
 
 
 
@@ -143,8 +147,14 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sag/home.html["系�
 * 如果儲存設備無法使用：離線
 * 如果有可用的儲存設備：線上
 
+ a| 
+離線（附註 1 ）
 
 |===
+* 附註 1* ：在 MetroCluster IP 組態中、完成移轉後、您可以手動將未鏡射的集合體上線。
+
+深入瞭解 <<切換MetroCluster 功能與不相同的功能>>。
+
 
 NOTE: 切換之後、如果未鏡射的Aggregate位於DR合作夥伴節點、而且交換器間連結（ISL）發生故障、則該本機節點可能會失敗。
 
