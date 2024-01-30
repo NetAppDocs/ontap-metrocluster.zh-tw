@@ -1,0 +1,29 @@
+---
+sidebar: sidebar 
+permalink: tiebreaker/install-tb-workflow.html 
+keywords: install, upgrade, tiebreaker, workflow, software, monitor, capabilities, capability, cluster, storage, environment, snmp, notification, event, node, connectivity, issue, site, disaster, system, upgrade 
+summary: Tiebreaker軟體提供叢集式儲存環境的監控功能。當節點連線問題和站台災難發生時、也會傳送SNMP通知。 
+---
+= tiebreaker 安裝工作流程
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Tiebreaker軟體提供叢集式儲存環境的監控功能。當節點連線問題和站台災難發生時、也會傳送SNMP通知。
+
+.關於此工作流程
+您可以使用此工作流程來安裝或升級 tiebreaker 軟體。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:install_prepare.html["準備安裝 tiebreaker 軟體"]
+[role="quick-margin-para"]
+安裝及設定斷路器軟體之前、請先確認您的系統符合特定需求。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["一"]link:install_security.html["確保安裝安全"]
+[role="quick-margin-para"]
+對於執行MetroCluster 還原器1.5及更新版本的組態、您可以保護並強化主機作業系統和資料庫。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["一"]link:install-choose-procedure.html["安裝 tiebreaker 軟體套件"]
+[role="quick-margin-para"]
+執行新安裝或升級的 tiebreaker 軟體。您遵循的安裝程序取決於您要安裝的 tiebreaker 版本。

@@ -8,18 +8,28 @@ entries:
   url: "/tiebreaker/concept_overview_of_the_tiebreaker_software.html"
 - title: 安裝Tiebreaker軟體
   entries:
-  - title: 準備安裝
+  - title: tiebreaker 安裝工作流程
+    url: "/tiebreaker/install-tb-workflow.html"
+  - title: 準備安裝 tiebreaker 軟體
     url: "/tiebreaker/install_prepare.html"
-  - title: 設定管理員對ONTAPI和SSH的存取權
-    url: "/tiebreaker/task_configure_ssh_ontapi.html"
-  - title: 安裝相依性
-    url: "/tiebreaker/install_dependencies.html"
   - title: 確保安裝安全
     url: "/tiebreaker/install_security.html"
-  - title: 安裝軟體套件
-    url: "/tiebreaker/install_tiebreaker_package.html"
-  - title: 升級主機
-    url: "/tiebreaker/upgrade_host.html"
+  - title: 安裝 tiebreaker 軟體套件
+    entries:
+    - title: 選擇您的安裝程序
+      url: "/tiebreaker/install-choose-procedure.html"
+    - title: 安裝斷路器 1.6
+      url: "/tiebreaker/tb-16-install.html"
+    - title: 安裝斷路器 1.5 或 1.4
+      entries:
+      - title: 設定管理員對ONTAPI和SSH的存取權
+        url: "/tiebreaker/task_configure_ssh_ontapi.html"
+      - title: 安裝相依性
+        url: "/tiebreaker/install_dependencies.html"
+      - title: 安裝軟體套件
+        url: "/tiebreaker/install_tiebreaker_package.html"
+- title: 升級主機
+  url: "/tiebreaker/upgrade_host.html"
 - title: 設定Tiebreaker軟體
   url: "/tiebreaker/concept_configuring_the_tiebreaker_software.html"
 - title: 設定Tiebreaker軟體的SNMP設定

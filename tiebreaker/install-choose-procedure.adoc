@@ -1,0 +1,35 @@
+---
+permalink: tiebreaker/install-choose-procedure.html 
+sidebar: sidebar 
+keywords: install, tiebreaker, software, monitor, capabilities, capability, cluster, storage, environment, snmp, notification, event, node, connectivity, issue, site, disaster, system, install, upgrade, upgrading, software, dependencies, dependency, package, ntp, requirements, requirements for tiebreaker, tiebreaker requirements, mysql, mariadb, autostart, database 
+summary: 您遵循的 tiebreaker 安裝程序取決於您要安裝的 tiebreaker 版本。 
+---
+= 選擇您的安裝程序
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您遵循的 tiebreaker 安裝程序取決於您要安裝的 tiebreaker 版本。
+
+[cols="5,5"]
+|===
+
+
+| Tiebreaker 版本 | 前往... 
+
+
+ a| 
+斷路器 1.6.
+ a| 
+link:tb-16-install.html["安裝斷路器 1.6"]
+
+
+
+ a| 
+斷路器 1.5 或 1.4
+ a| 
+link:install_dependencies.html["安裝斷路器 1.5 或 1.4"]
+
+|===

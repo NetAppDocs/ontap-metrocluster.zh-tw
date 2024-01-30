@@ -13,11 +13,11 @@ summary: Tiebreaker軟體提供叢集式儲存環境的監控功能。當節點�
 .關於這項工作
 * 您的儲存系統必須執行ONTAP 不含更新版本的資訊。
 * 您必須使用安裝OpenJDK `yum install java-x.x.x-openjdk` 命令。對於執行Tiebreaker 1.4及更早版本的系統、請執行JRE 8。對於執行tiebreaker 1.5及更新版本的系統、請執行OpenJDK 17、18或19。範例中的輸出顯示jre 1.8.0。（JRE 8）。
-* 您可以以MetroCluster 非root使用者的身分安裝斷衝器、並擁有足夠的管理權限、以執行斷路器安裝、建立表格、使用者及設定使用者密碼等作業
+* 您可以將 MetroCluster tiebreaker 安裝為非 root 使用者、並擁有足夠的管理權限來執行 tiebreaker 安裝、建立表格和使用者、以及設定使用者密碼。
 
 
 .步驟
-. 下載MetroCluster 最新版的Eetirepreaker軟體。此範例使用1.5版。
+. 下載 MetroCluster Tiebreaker 軟體。此範例使用1.5版。
 +
 https://mysupport.netapp.com/site/["NetApp 支援網站"^]
 

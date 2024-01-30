@@ -4,67 +4,23 @@ sidebar: sidebar
 keywords: install, tiebreaker, software, monitor, capabilities, capability, cluster, storage, environment, snmp, notification, event, node, connectivity, issue, site, disaster, system, install, upgrade, upgrading, software, dependencies, dependency, package, ntp, requirements, requirements for tiebreaker, tiebreaker requirements, mysql, mariadb, autostart, database 
 summary: Tiebreaker軟體提供叢集式儲存環境的監控功能。當節點連線問題和站台災難發生時、也會傳送SNMP通知。 
 ---
-= 升級執行Tiebreaker監控的主機
+= 升級正在執行 tiebreaker 監視器的主機
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-如果您在升級之前將顯示器置於觀察者模式、您可以將執行斷路器監控器的主機升級至最少中斷時間。
+您可能需要升級正在執行 tiebreaker 監視器的主機。
 
 .步驟
-. 確認監視器處於觀察者模式：
+. 解除安裝 tiebreaker 軟體：
 +
-「監視者顯示–狀態」
+`rpm -e NetApp-MetroCluster-Tiebreaker-Software`
 
+. 升級主機。如需詳細資訊、請參閱主機作業系統文件。
+. 重新安裝 tiebreaker 軟體。
 +
-[listing]
-----
-NetApp MetroCluster Tiebreaker:> monitor show -status
-MetroCluster: cluster_A
-    Disaster: false
-    Monitor State: Normal
-    Observer Mode: true
-    Silent Period: 15
-    Override Vetoes: false
-    Cluster: cluster_Ba(UUID:4d9ccf24-080f-11e4-9df2-00a098168e7c)
-        Reachable: true
-        All-Links-Severed: FALSE
-            Node: node-a1(UUID:78b44707-0809-11e4-9be1-e50dab9e83e1)
-                Reachable: true
-                All-Links-Severed: FALSE
-                State: normal
-            Node: node-a2(UUID:9a8b1059-0809-11e4-9f5e-8d97cdec7102)
-                Reachable: true
-                All-Links-Severed: FALSE
-                State: normal
-    Cluster: cluster_B(UUID:70dacd3b-0823-11e4-a7b9-00a0981693c4)
-        Reachable: true
-        All-Links-Severed: FALSE
-            Node: node-b1(UUID:961fce7d-081d-11e4-9ebf-2f295df8fcb3)
-                Reachable: true
-                All-Links-Severed: FALSE
-                State: normal
-            Node: node-b2(UUID:9393262d-081d-11e4-80d5-6b30884058dc)
-                Reachable: true
-                All-Links-Severed: FALSE
-                State: normal
-----
-. 將所有監視器變更為觀察者模式。
-+
-[listing]
-----
-NetApp MetroCluster Tiebreaker :> monitor modify -monitor-name monitor_name -observer-mode true
-----
-. 若要升級Tiebreaker主機、請依照下列程序中的所有步驟進行：
-+
-link:install_tiebreaker_package.html["安裝或升級 tiebreaker 套件"]
+請依照中的步驟執行全新安裝的 tiebreaker link:install-choose-procedure.html["安裝Tiebreaker軟體"]。
 
-. 停用觀察者模式、將所有監視器移回線上模式。
-+
-[listing]
-----
-NetApp MetroCluster Tiebreaker :> monitor modify -monitor-name monitor_name -observer-mode false
-----
 

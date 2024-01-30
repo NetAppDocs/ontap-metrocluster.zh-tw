@@ -2,30 +2,39 @@
 permalink: tiebreaker/install_prepare.html 
 sidebar: sidebar 
 keywords: install, tiebreaker, software, monitor, capabilities, capability, cluster, storage, environment, snmp, notification, event, node, connectivity, issue, site, disaster, system, install, upgrade, upgrading, software, dependencies, dependency, package, ntp, requirements, requirements for tiebreaker, tiebreaker requirements, mysql, mariadb, autostart, database 
-summary: Tiebreaker軟體提供叢集式儲存環境的監控功能。當節點連線問題和站台災難發生時、也會傳送SNMP通知。 
+summary: 在安裝和設定斷路器軟體之前、您應該先確認系統符合特定需求。 
 ---
-= 檢閱要求
+= 準備安裝 tiebreaker 軟體
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Tiebreaker軟體提供叢集式儲存環境的監控功能。當節點連線問題和站台災難發生時、也會傳送SNMP通知。
-
-必須安裝並設定斷路器軟體。
+在安裝和設定斷路器軟體之前、您應該先確認系統符合特定需求。
 
 
 
 == 軟體需求
 
-您必須符合下列軟體需求、視您要安裝的斷路器版本而定。
+您必須符合下列軟體需求、視所安裝的斷路器版本而定。
 
 [cols="1,1,1,2"]
 |===
 
 
 | ONTAP tiebreaker 版本 | 支援 ONTAP 的支援版本 | 支援的Linux版本 | Java/MariaDB 需求 
+
+
+ a| 
+1.6.
+ a| 
+更新版本ONTAP
+ a| 
+請參閱 link:whats_new.html#os-support-matrix["作業系統支援對照表"] 以取得詳細資料。
+ a| 
+無。相依性與安裝相關。
+
 
 
  a| 
