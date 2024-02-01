@@ -2813,7 +2813,6 @@
   <block id="bdf5a4145db18b2c7dd55def53b3ed55" category="list-text">此功能組態必須正常運作。MetroCluster</block>
   <block id="d5d3590e43714c27f890df20d7fb4b09" category="list-text">所有採用此功能的橋接器MetroCluster 都必須啟動並運作。</block>
   <block id="0450d35c3e42ba9d9532f666b14a8b24" category="list-text">所有儲存路徑都必須可用。</block>
-  <block id="6c84f57441ac5f9c9fc0a2b2600dbfcb" category="list-text">您需要管理員密碼並存取HTTP伺服器。</block>
   <block id="166dba728289a6a5685576331ebb01f7" category="list-text">您必須使用支援的韌體版本。</block>
   <block id="9ed4a475dd3705157a9fed8811f63ce2" category="inline-link">NetApp 互通性對照表工具</block>
   <block id="29c81145f8df4c302d2a5db797d28b64" category="paragraph"><block ref="29c81145f8df4c302d2a5db797d28b64" category="inline-link-rx"></block></block>
@@ -7087,8 +7086,6 @@
   <block id="9377aa6f276f8ec401ff97cad8c3288f" category="list-text">使用單一目標連接埠共用多個啟動器連接埠可能會導致效能問題。</block>
   <block id="4213e2e4219d8c646fb0d77e759bd1e7" category="paragraph">同樣地、以單一啟動器連接埠共用多個目標連接埠、也可能導致效能問題。</block>
   <block id="a97092f773742097739d9703f62392b9" category="list-text">您必須已執行基本的FC交換器組態、以供MetroCluster 選擇。</block>
-  <block id="9e5e027fd19574761ea3d87eebdedffa" category="inline-link-macro">手動設定Cisco或Brocade FC交換器</block>
-  <block id="d6d64090fd47c5235492fd5cc4f11ff5" category="paragraph"><block ref="d6d64090fd47c5235492fd5cc4f11ff5" category="inline-link-macro-rx"></block></block>
   <block id="ed167884ebcfbf8e54d556f8a50a60c2" category="list-text">交換器分區可定義連接節點之間的路徑。設定分區功能可讓您定義特定ONTAP 的哪些陣列LUN可供特定的作業系統檢視。</block>
   <block id="7ca3f4cc3e8719be42bc9af9a1f301e9" category="doc">從7-Mode轉換ONTAP 至VMware時的考量</block>
   <block id="d217125741b05656b3f76b2c03bf99c5" category="paragraph">在使用轉換工具、將資料從7-Mode的更新組態移至VMware組態之前、您必須MetroCluster 先完整設定並操作全新的VMware組態。MetroCluster ONTAP如果7-Mode組態使用Brocade 6510交換器、則新組態可共用現有的架構、以降低硬體需求。</block>
@@ -13383,4 +13380,10 @@
   <block id="7d04b9af5dfbfc78c7040183f68afdc4" category="cell">Red Hat 8.1 - 8.7</block>
   <block id="33ef1f5aa9b12ecd01c340c91d8f9150" category="cell">Red Hat 8.8 - 9.2</block>
   <block id="003d136e5089a4f9ae0f1df3f6fc37fa" category="cell">洛基Linux 9.0</block>
+  <block id="9d0101bb262cf2b07ff8dcfa1f6cf004" category="list-text">您需要管理員密碼、才能存取 HTTP 、 FTP 、 SFTP 或 Trivial File Transfer Protocol （ TFTP ）伺服器。</block>
+  <block id="c422062a1c7b3d9ed9b2282378699dc7" category="paragraph"><block ref="c422062a1c7b3d9ed9b2282378699dc7" category="inline-link-macro-rx"></block></block>
+  <block id="f54824b249675e35c90a450877126d13" category="inline-link-macro">手動設定 Brocade FC 交換器</block>
+  <block id="da09acdb1d2e578a9e771c592cf62afa" category="paragraph"><block ref="da09acdb1d2e578a9e771c592cf62afa" category="inline-link-macro-rx"></block></block>
+  <block id="94d0fc55d9356d3d18534836cae75c1d" category="doc">FC 交換器組態總覽</block>
+  <block id="67af9bc4271944d43da3bdca5451bf73" category="paragraph">您可以使用 RCF 檔案來設定 Cisco 和 Brocade FC 交換器、或視需要手動設定交換器。</block>
 </blocks>

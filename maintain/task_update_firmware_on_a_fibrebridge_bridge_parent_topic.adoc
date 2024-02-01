@@ -22,7 +22,7 @@ summary: 更新橋接韌體的程序取決於您的橋接器機型和ONTAP 版�
 * 此功能組態必須正常運作。MetroCluster
 * 所有採用此功能的橋接器MetroCluster 都必須啟動並運作。
 * 所有儲存路徑都必須可用。
-* 您需要管理員密碼並存取HTTP伺服器。
+* 您需要管理員密碼、才能存取 HTTP 、 FTP 、 SFTP 或 Trivial File Transfer Protocol （ TFTP ）伺服器。
 * 您必須使用支援的韌體版本。
 +
 https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"^]

@@ -1,14 +1,8 @@
 ---
 permalink: install-fc/task_fcsw_configure_the_cisco_or_brocade_fc_switches_manually.html 
-sidebar: sidebar 
-keywords: metrocluster, fabric, installation, configure, brocade, switches, manually 
-summary: 交換器組態程序和命令會因交換器廠商而異。 
+redirect: ontap-metrocluster/install-fc/concept-configure-fc-switches.html 
 ---
-= 手動設定Cisco或Brocade FC交換器
+= 
 :allow-uri-read: 
-:icons: font
-:imagesdir: ../media/
 
 
-[role="lead"]
-交換器組態程序和命令會因交換器廠商而異。

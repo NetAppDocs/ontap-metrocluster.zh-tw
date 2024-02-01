@@ -81,6 +81,8 @@ entries:
       url: "/install-fc/task_cable_the_management_and_data_connections.html"
   - title: 設定FC交換器
     entries:
+    - title: FC 交換器組態總覽
+      url: "/install-fc/concept-configure-fc-switches.html"
     - title: 使用RCF檔案設定Brocade FC交換器
       entries:
       - title: 將Brocade FC交換器重設為原廠預設值
