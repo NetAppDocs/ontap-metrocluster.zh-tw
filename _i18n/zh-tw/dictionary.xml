@@ -13386,4 +13386,5 @@
   <block id="da09acdb1d2e578a9e771c592cf62afa" category="paragraph"><block ref="da09acdb1d2e578a9e771c592cf62afa" category="inline-link-macro-rx"></block></block>
   <block id="94d0fc55d9356d3d18534836cae75c1d" category="doc">FC 交換器組態總覽</block>
   <block id="67af9bc4271944d43da3bdca5451bf73" category="paragraph">您可以使用 RCF 檔案來設定 Cisco 和 Brocade FC 交換器、或視需要手動設定交換器。</block>
+  <block id="1399637937931de009069d1a13a152fb" category="paragraph">* 附註 1 ： * 此組合需要 ONTAP 9.13.1 或更新版本。</block>
 </blocks>
