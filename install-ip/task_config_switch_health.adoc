@@ -1,0 +1,111 @@
+---
+permalink: install-ip/task_config_switch_health.html 
+sidebar: sidebar 
+keywords: ip, switch, connection, configuring, configure, broadcom, snmp, health, monitoring 
+summary: 您可以將 IP 交換器設定為使用 SNMPv3 進行健全狀況監控。 
+---
+= 設定 MetroCluster IP 交換器以進行健全狀況監控
+:allow-uri-read: 
+
+
+[role="lead"]
+在 MetroCluster IP 組態中、您可以設定 SNMPv3 來監控 IP 交換器的健全狀況。
+
+
+
+== 步驟 1 ：在 MetroCluster IP 交換器上設定 SNMPv3 使用者
+
+請使用下列步驟在 MetroCluster IP 交換器上設定 SNMPv3 使用者。
+
+
+IMPORTANT: 您必須在命令中同時使用驗證和隱私權通訊協定。不支援不使用隱私權的驗證。
+
+[role="tabbed-block"]
+====
+.適用於 Broadcom IP 交換器
+--
+.步驟
+. 如果「 network-admin 」使用者群組尚未存在、請建立：
++
+`(IP_switch_1) (Config)# snmp-server group network-admin v3 auth read "Default"`
+
+. 確認已建立「 network-admin 」群組：
++
+`(IP_switch_1) (Config)# show snmp group`
+
+. 在 Broadcom IP 交換器上設定 SNMPv3 使用者：
++
+[listing]
+----
+(IP_switch_1)# config
+(IP_switch_1) (Config)# snmp-server user <user_name> network-admin [auth-md5/auth-sha/noauth] "<auth_password>" [priv-aes128/priv-des] "<priv_password>"
+----
++
+您必須在驗證和隱私權密碼上使用引號、如下列範例所示：
+
++
+[listing]
+----
+snmp-server user admin1 network-admin auth-md5 "password" priv-des "password"
+----
+
+
+--
+.適用於 Cisco IP 交換器
+--
+.步驟
+. 執行下列命令、在 Cisco IP 交換器上設定 SNMPv3 使用者：
++
+[listing]
+----
+IP_switch_A_1 # configure terminal
+IP_switch_A_1 (config) # snmp-server user <user_name>  auth [md5/sha/sha-256] <auth_password> priv (aes-128) <priv_password>
+----
+. 驗證是否已在交換器上設定 SNMPv3 使用者：
++
+`IP_switch_A_1(config) # show snmp user <user_name>`
+
++
+以下輸出範例顯示使用者 `admin` 已針對 SNMPv3 進行設定：
+
++
+[listing]
+----
+IP_switch_A_1(config)# show snmp user admin
+User                Auth      Priv(enforce) Groups              acl_filter
+
+____                ____      _____________ ______              __________
+
+admin               md5       aes-128(no)   network-admin
+----
+
+
+--
+====
+
+
+== 步驟 2 ：在 ONTAP 中設定 SNMPv3 使用者
+
+請使用下列步驟在 ONTAP 中設定 SNMPv3 使用者。
+
+. 在 ONTAP 中設定 SNMPv3 使用者：
++
+`security login create -user-or-group-name <user_name> -application snmp -authentication-method usm -remote-switch-ipaddress <ip_address>`
+
+. 設定交換器健全狀況監控、以使用新的 SNMPv3 使用者監控交換器：
++
+`system switch ethernet modify -device <device_id> -snmp-version SNMPv3 -community-or-username <user_name>`
+
+. 驗證將使用新建立的 SNMPv3 使用者監控的裝置序號是否正確：
++
+.. 顯示交換器健全狀況監控輪詢時間：
++
+`system switch ethernet polling-interval show`
+
+.. 在輪詢時間結束後執行下列命令：
++
+`system switch ethernet show-all -instance -device <device_serial_number>`
+
+
+
+

@@ -2225,7 +2225,6 @@
   <block id="6f17ef717caa10c840154e66037357c2" category="list-text">檢查交換器的韌體版本、確認其符合其他FC交換器的版本：</block>
   <block id="138bc97385f8b992b8f25f7d2cd5c7ad" category="paragraph">《Firmwarreshow》</block>
   <block id="4980aa8a93c404e256f38b26e322faea" category="paragraph"><block ref="4980aa8a93c404e256f38b26e322faea" category="inline-link-rx"></block></block>
-  <block id="b78f0a4f76dcc1e77900d332f928827a" category="paragraph">您可以稍後在本程序中設定分區。</block>
   <block id="b8e631780d1dd27b4f2d09d46aff4b4b" category="admonition">此時、新交換器並未連接至MetroCluster 該組態的纜線。</block>
   <block id="44cc543a1a8236a9d069faa85442a84b" category="list-text">停用新交換器上的FC-VI、HBA和儲存連接埠、以及連接至FC-SAS橋接器的連接埠。</block>
   <block id="32d094a9a039fb0268cc6295ed9c3e91" category="list-text">實際更換交換器：</block>
@@ -13282,7 +13281,6 @@
   <block id="aa71e3dcbe0cdabbe4cce28385ab2fd6" category="paragraph">如果您要變更 ONTAP 版本或交換器韌體版本、則應確認您擁有支援該版本的 RCF 檔案。如果您使用RCF產生器、將會為您產生正確的RCF檔案。</block>
   <block id="9f4a5b5c7a3f862c1d0ff77f72d3eea0" category="paragraph">系統會提示您輸入 ONTAP Mediator 管理使用者帳戶的使用者名稱和密碼。</block>
   <block id="c471c44c2f26c78f9327863d90427cb7" category="admonition">如果 ONTAP Mediator 停機、則為<block ref="1eafb93bfc40f298e60cf17e8a8c598c" prefix=" " category="inline-code"></block> 命令仍會提示您輸入 ONTAP Mediator 管理使用者帳戶的使用者名稱和密碼、並從 MetroCluster 組態中移除 ONTAP Mediator 服務。</block>
-  <block id="1aa145ddf3cafc3bf77b04a1c7069f71" category="list-text">按照 MetroCluster 安裝與組態 _ 中的說明設定新交換器、但跳過「在 Brocade FC 交換器上設定分區」程序。</block>
   <block id="21b5cf2db61fccc0ace8b80bac8b35b7" category="list-text">附註2：FC節點上的本機叢集介面必須使用40GbE介面。此平台組合需要 ONTAP 9.11.1 或更新版本。</block>
   <block id="13cdbd43c145584bcad75658a29e498d" category="list-text">附註 3 ： FC 節點上的本機叢集介面必須有 100GbE 介面。此平台組合需要 ONTAP 9.11.1 或更新版本。</block>
   <block id="646d7d5f93b4a6d7bbbc65acf5ac1077" category="inline-link">ONTAP 硬體系統文件</block>
@@ -13387,4 +13385,36 @@
   <block id="94d0fc55d9356d3d18534836cae75c1d" category="doc">FC 交換器組態總覽</block>
   <block id="67af9bc4271944d43da3bdca5451bf73" category="paragraph">您可以使用 RCF 檔案來設定 Cisco 和 Brocade FC 交換器、或視需要手動設定交換器。</block>
   <block id="1399637937931de009069d1a13a152fb" category="paragraph">* 附註 1 ： * 此組合需要 ONTAP 9.13.1 或更新版本。</block>
+  <block id="9ae99044ddcd14d01b26630cedd8846d" category="list-text">請依照中的步驟來設定新交換器 <block ref="435cf525be06a494222aa18eba4f6000" category="inline-link-macro-rx"></block>。</block>
+  <block id="02d80d458a48a16bd927a203d6bb2c73" category="list-text">驗證分區組態：</block>
+  <block id="62c870995fe52ce6aa5f9fc71ef4da98" category="paragraph"><block ref="ed3badb92af3298762df5a811de2da80" prefix="" category="inline-code"></block></block>
+  <block id="79787dbf023f957de1bd4970858b26be" category="summary">您可以將 IP 交換器設定為使用 SNMPv3 進行健全狀況監控。</block>
+  <block id="3a4aa5b142f66d14a43abf77cc49c599" category="doc">設定 MetroCluster IP 交換器以進行健全狀況監控</block>
+  <block id="877caefa8e802eac248e66b46636c94b" category="paragraph">在 MetroCluster IP 組態中、您可以設定 SNMPv3 來監控 IP 交換器的健全狀況。</block>
+  <block id="b3d73929ddf74bb4c7d3cac6eeda8684" category="section-title">步驟 1 ：在 MetroCluster IP 交換器上設定 SNMPv3 使用者</block>
+  <block id="038fbd2fc792b1165c5e88791a09113a" category="paragraph">請使用下列步驟在 MetroCluster IP 交換器上設定 SNMPv3 使用者。</block>
+  <block id="f1407eaef69e4aa9948574be11c0a49b" category="admonition">您必須在命令中同時使用驗證和隱私權通訊協定。不支援不使用隱私權的驗證。</block>
+  <block id="165237cf57452c2427f247f1c6589434" category="open-title">適用於 Broadcom IP 交換器</block>
+  <block id="8d09188a2cfea4cc57e0f38750b68c97" category="list-text">如果「 network-admin 」使用者群組尚未存在、請建立：</block>
+  <block id="0f3a15963e4657a9c97ab6b3db322d27" category="paragraph"><block ref="173ceda524dbc87af297f813b0f50cd8" prefix="" category="inline-code"></block></block>
+  <block id="ec714ba3bea7bae033524709c8ddb144" category="list-text">確認已建立「 network-admin 」群組：</block>
+  <block id="a24bdf92e7d1dc2d2e5714305a56e0eb" category="paragraph"><block ref="77aa57f376fe73c9581fb729ddeb38eb" prefix="" category="inline-code"></block></block>
+  <block id="6697365f2e46593a5513af21ee61a084" category="list-text">在 Broadcom IP 交換器上設定 SNMPv3 使用者：</block>
+  <block id="3289ce0836654122a2c0d3bfd4fab942" category="paragraph">您必須在驗證和隱私權密碼上使用引號、如下列範例所示：</block>
+  <block id="9253168d7e5e9b3b8152a8ff1870743f" category="open-title">適用於 Cisco IP 交換器</block>
+  <block id="4a2ec710ab28d8f45e2fdabacdc2dfc6" category="list-text">執行下列命令、在 Cisco IP 交換器上設定 SNMPv3 使用者：</block>
+  <block id="a8b5c32b456efe8e0fcb23cd218c6b6c" category="list-text">驗證是否已在交換器上設定 SNMPv3 使用者：</block>
+  <block id="dcc1c100b3f25557081f2e0b39235331" category="paragraph"><block ref="b74f60eeed5179550ade1e96ba13e2f9" prefix="" category="inline-code"></block></block>
+  <block id="82551d68c685b978ef7462fc2759040f" category="paragraph">以下輸出範例顯示使用者<block ref="21232f297a57a5a743894a0e4a801fc3" prefix=" " category="inline-code"></block> 已針對 SNMPv3 進行設定：</block>
+  <block id="54095e9794a9fd93e475a7911543f88e" category="section-title">步驟 2 ：在 ONTAP 中設定 SNMPv3 使用者</block>
+  <block id="584b7eab2aafafcbe01855419f896b21" category="paragraph">請使用下列步驟在 ONTAP 中設定 SNMPv3 使用者。</block>
+  <block id="1bff762b431027892d402682570d40ac" category="list-text">在 ONTAP 中設定 SNMPv3 使用者：</block>
+  <block id="ddc11f6ac980cbb07f08bef9febcc0e7" category="paragraph"><block ref="d122104842549610cab7a5c1c6e791ab" prefix="" category="inline-code"></block></block>
+  <block id="c74135dc000c228de7018358eaf099e5" category="list-text">設定交換器健全狀況監控、以使用新的 SNMPv3 使用者監控交換器：</block>
+  <block id="19acda7cb8d15af8dcf62dcf74bcbe00" category="paragraph"><block ref="536a54b756351ba8978169ff37fc419d" prefix="" category="inline-code"></block></block>
+  <block id="102bc61adb74b49384536c35a485dea4" category="list-text">驗證將使用新建立的 SNMPv3 使用者監控的裝置序號是否正確：</block>
+  <block id="189afc0f727c57bbef41f18728ebe44a" category="list-text">顯示交換器健全狀況監控輪詢時間：</block>
+  <block id="4e8c2092c0a2bb40fde077763873c66c" category="paragraph"><block ref="c9e6cd6140c9d8677df821c7cce2aac1" prefix="" category="inline-code"></block></block>
+  <block id="b9035c5f27542cbf7fb14fced8e330ba" category="list-text">在輪詢時間結束後執行下列命令：</block>
+  <block id="20c4c39b07a94d810605541c0137f531" category="paragraph"><block ref="9214d4fe696fff6386a131ecee126bc4" prefix="" category="inline-code"></block></block>
 </blocks>

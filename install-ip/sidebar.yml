@@ -71,6 +71,8 @@ entries:
         url: "/install-ip/task_switch_config_cisco_macsec.html"
     - title: 設定NVIDIA IP交換器
       url: "/install-ip/task_switch_config_nvidia.html"
+    - title: 設定 MetroCluster IP 交換器以進行健全狀況監控
+      url: "/install-ip/task_config_switch_health.html"
 - title: 在MetroCluster 不提供的情況下設定此功能ONTAP
   entries:
   - title: 總覽
