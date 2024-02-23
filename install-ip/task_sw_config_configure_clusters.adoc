@@ -2303,7 +2303,6 @@ check the status of the running metrocluster check operation, use the command,
 [listing]
 ----
 cluster_A::> metrocluster check show
-Last Checked On: 9/13/2018 20:41:37
 
 Component           Result
 ------------------- ---------
@@ -2313,7 +2312,8 @@ config-replication  ok
 aggregates          ok
 clusters            ok
 connections         ok
-6 entries were displayed.
+volumes             ok
+7 entries were displayed.
 ----
 . 顯示最新MetroCluster 的執行版本資訊功能指令所產生的更詳細結果：
 +

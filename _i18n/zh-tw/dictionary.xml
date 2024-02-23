@@ -8526,7 +8526,6 @@
   <block id="f3089a69f0cb0a583fab7f5c1ea7226c" category="cell">6505、G610</block>
   <block id="5482b27fb601c9d5069a7533e0dd1b02" category="summary">當您設定Brocade FC交換器時、可以安裝交換器組態檔、為特定組態提供完整的交換器設定。</block>
   <block id="c2a1b1aaf420fd5fc4e694faa94de89f" category="doc">安裝Brocade FC交換器RCF檔案</block>
-  <block id="40a501dacb79ddf4f770555994a4dbe9" category="paragraph">這些步驟必須重複執行MetroCluster 到位在整個過程中的每個Brocade FC交換器上。</block>
   <block id="2d6424f21b7898ba895ef0e70f5c13c8" category="list-text">啟動下載與組態程序：</block>
   <block id="3ef73a7a519c5b4a03c363a138b097eb" category="paragraph">「configDownload」</block>
   <block id="d304e0e1a0c74d4f29c7bf97c9e6c845" category="paragraph">回應下列範例所示的提示。</block>
@@ -11506,7 +11505,6 @@
   <block id="b330eebf161ca27c703eccf6e8e36d29" category="summary">您可以將四個新節點新增至MetroCluster 「靜態IP」組態、做為第二個DR群組。這會建立八節點MetroCluster 的不全功能組態。</block>
   <block id="a8307b4c5fa271005a1338d5b405ca1f" category="paragraph">從更新版的支援版9.9.1開始ONTAP 、您可以將四個新節點新增到MetroCluster 作為第二個DR群組的支援版IP組態中。這會建立八節點MetroCluster 的不全功能組態。</block>
   <block id="44e7e75e628cd7549a2dac175d45b418" category="list-text">舊節點和新節點必須執行相同版本ONTAP 的更新。</block>
-  <block id="2ee2465217913ae7b455ab4ef5e995e6" category="list-text">新節點必須有足夠的儲存空間來容納舊節點的資料、以及足夠的磁碟來容納根集合體和備用磁碟。</block>
   <block id="83ea901534b27c16af49cdec25309a81" category="paragraph">Dr_group_1-old</block>
   <block id="448197086f84c0166cecdd754aa5a117" category="paragraph">Dr_group_2-new</block>
   <block id="abd5409a549dc57cdfd874a13b90ebf8" category="list-text">node_a_3-new</block>
@@ -13296,7 +13294,6 @@
   <block id="44f3e9b14f204b411afdea78f7b0391c" category="doc">MetroCluster 版本資訊</block>
   <block id="af8a69aa12393a4d9b6992e884f1c919" category="sidebar">文件MetroCluster</block>
   <block id="b8b5370c063dd2b4ce4021558a49ac07" category="paragraph">針對執行效能不全的9.8和更早版本的執行功能、為了轉換升級作業、某些程序需要在組態中新增第二個四節點DR群組、才能建立一個暫用的八節點組態。MetroCluster ONTAP  從 ONTAP 9.9.1 開始、支援永久性的八節點 MetroCluster 組態。</block>
-  <block id="ff66d22d6ddbc0a6a59188599728f8d1" category="paragraph">從 ONTAP 9.13.1 開始、您可以暫時擴充八節點 MetroCluster 組態、以重新整理控制器和儲存設備。請參閱 <block ref="6e6fb56321b906b7bb3a671d5fc5dfc7" category="inline-link-macro-rx"></block> 以取得更多資訊。</block>
   <block id="0abe9117fda19697d2dbf1bd1d754e02" category="list-text">本程序說明將一個四節點 DR 群組新增至現有 MetroCluster IP 組態所需的步驟。如果要重新整理八節點組態、您必須為每個 DR 群組重複整個程序、一次新增一個。</block>
   <block id="84d04e0c7f711ba6800f8d3bd5bc0847" category="inline-xref">在執行 ONTAP 9.4 或更新版本的 MetroCluster 組態中使用 Cisco 9132T 連接埠</block>
   <block id="ccdfc130a534c248f558d6495323cb02" category="admonition">如需 Cisco 9132T 的詳細資訊、請參閱 <block ref="3db7a367aafc64164b814f36e8341eaa" category="inline-xref-macro-rx"></block>。</block>
@@ -13417,4 +13414,15 @@
   <block id="4e8c2092c0a2bb40fde077763873c66c" category="paragraph"><block ref="c9e6cd6140c9d8677df821c7cce2aac1" prefix="" category="inline-code"></block></block>
   <block id="b9035c5f27542cbf7fb14fced8e330ba" category="list-text">在輪詢時間結束後執行下列命令：</block>
   <block id="20c4c39b07a94d810605541c0137f531" category="paragraph"><block ref="9214d4fe696fff6386a131ecee126bc4" prefix="" category="inline-code"></block></block>
+  <block id="0ca1a0fce29aa8b27d10b5cf276a5a5c" category="list-text">如果您使用 xWDM 組態、可能需要 ISL 上的其他設定。如需詳細資訊、請參閱 xWDM 廠商文件。</block>
+  <block id="e389e5759cd93883cfbee1a000ab0c47" category="list-text">您必須在 MetroCluster 架構組態中的每個 Brocade FC 交換器上重複這些步驟。</block>
+  <block id="9dc72cfc812a43dbca6ba4e6357b2b04" category="paragraph">從 ONTAP 9.13.1 開始、您可以暫時擴充八節點 MetroCluster 組態、以重新整理控制器和儲存設備。請參閱 <block ref="df5e6373f54c9330727709bb1055a079" category="inline-link-macro-rx"></block> 以取得更多資訊。</block>
+  <block id="e6f19b92e0e69fc5d74e94088b442a26" category="inline-link-macro">重新整理四節點或八節點 MetroCluster IP 組態</block>
+  <block id="ae236ebe2cd05ce4da7fe73d504f4946" category="list-text">如果您是 <block ref="54f4a86aff0fc5aba4d6e37b225734c0" category="inline-link-macro-rx"></block>、新節點必須有足夠的儲存空間來容納舊節點的資料、以及足夠的磁碟用於根集合體和備用磁碟。</block>
+  <block id="30db39dffca5d3a3ab759b48303153b1" category="list-text">如果要移除的 DR 群組包含負載共用鏡射磁碟區、則無法移動它們。  在另一個 DR 群組中重新建立所有負載共用鏡射磁碟區、然後刪除要移除的 DR 群組中的負載共用鏡射磁碟區。</block>
+  <block id="0108924065f583138162139c8d2325c4" category="list-text">一次在一個交換器上執行下列步驟： switch_a_1 、 Switch_B_1 、 Switch_a_2 、 Switch_B_2 。</block>
+  <block id="4c73c980356e24dbc4b9bfa823ff3540" category="inline-link-macro">將 NVIDIA IP SN2100 交換器重設為原廠預設值</block>
+  <block id="5ea045545da6545f166122f615c720c2" category="list-text"><block ref="5ea045545da6545f166122f615c720c2" category="inline-link-macro-rx"></block></block>
+  <block id="9d2a9152feb1a65b3472b15d2e557bca" category="inline-link-macro">下載及安裝 NVIDIA IP RCF 檔案</block>
+  <block id="3ebe02a815587b2ddedbada8c501d0ef" category="list-text"><block ref="3ebe02a815587b2ddedbada8c501d0ef" category="inline-link-macro-rx"></block></block>
 </blocks>

@@ -40,6 +40,7 @@ NOTE: 如果符合下列所有條件、您可以設定FAS8020、AFF8020、FAS820
 +
 link:concept_tdm_wdm.html["使用TDM/WDM設備搭配架構附加MetroCluster 的功能的考量"]
 
+* 如果您使用 xWDM 組態、可能需要 ISL 上的其他設定。如需詳細資訊、請參閱 xWDM 廠商文件。
 * 所有ISL在同一個Fabric中必須具有相同的長度和相同的速度。
 +
 不同的Fabric可採用不同長度。所有Fabric都必須使用相同的速度。
