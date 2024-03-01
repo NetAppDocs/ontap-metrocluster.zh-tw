@@ -21,9 +21,11 @@ summary: 在災難現場的設備完成任何必要的維護或更換、但未�
 
 
 
-== 修復MetroCluster 以不還原FC組態設定的組態
+== 在 MetroCluster 組態中修復組態
 
-切換後、您必須執行特定的修復作業、才能還原MetroCluster 還原功能。
+在 MetroCluster FC 組態中、您可以依照特定順序執行修復作業、以便在進行轉換後還原 MetroCluster 功能。
+
+在 MetroCluster IP 組態中、修復作業應該會在進行傳輸後自動開始。如果沒有、您可以手動執行修復作業。
 
 .開始之前
 * 必須執行切換、且存續站台必須提供資料。

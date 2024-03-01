@@ -25,7 +25,7 @@ summary: Tiebreaker軟體提供叢集式儲存環境的監控功能。當節點�
 
 * 限制「root」使用者的存取權。
 +
-** 您可以使用能夠提升為root存取權限的使用者來安裝及管理tiebreaker軟體。 link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/managing-sudo-access_configuring-basic-system-settings["管理Sudo存取"^]
+** 您可以使用能夠提升為root存取權限的使用者來安裝及管理tiebreaker軟體。
 ** 您可以使用無法提升為root存取權限的使用者來管理tiebreaker軟體。
 ** 安裝期間、您必須建立名為「 mcctbgrp 」的群組。安裝期間建立的主機根使用者和使用者都必須是成員。只有此群組的成員才能完整管理Tiebreaker軟體。
 +
@@ -45,27 +45,8 @@ NOTE: 非此群組成員的使用者無法存取Tiebreaker軟體或CLI。您可�
 
 
 .相關資訊
-* 使用者與帳戶管理
-+
-link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/assembly_getting-started-with-managing-user-accounts_configuring-basic-system-settings["開始管理使用者帳戶"^]
-
-+
-link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/introduction-to-managing-user-and-group-accounts_configuring-basic-system-settings["使用者與群組帳戶管理簡介"^]
-
-* 使用 Web 主控台或 CLI 管理使用者和群組
-+
-link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/managing-user-accounts-in-the-web-console-new_configuring-basic-system-settings["在Web主控台中管理使用者帳戶"^]
-
-+
-link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/managing-users-from-the-command-line_configuring-basic-system-settings["從命令列管理使用者"^]
-
-+
-link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/editing-user-groups-using-the-command-line_configuring-basic-system-settings["使用命令列編輯使用者群組"^]
-
-* 管理 root 密碼
-+
-link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/changing-and-resetting-the-root-password-from-the-command-line_configuring-basic-system-settings["管理及重設root密碼"^]
-
+* link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/["Red Hat Enterprise Linux 8 產品文件"^]
+* link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/["Red Hat Enterprise Linux 9 產品文件"^]
 
 
 
@@ -88,9 +69,6 @@ link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/ht
 
 NOTE: 您必須保留序列主控台存取權（若有支援）或至少啟用一個傳輸協定、才能遠端管理主機。如果停用所有傳輸協定、則需要實體存取主機以進行管理。
 
-+
-link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/managing-system-services-with-systemctl_configuring-basic-system-settings["瞭解如何使用 systemctl 管理系統服務"^]
-
 
 
 * 使用FIPS保護主機安全
@@ -100,9 +78,6 @@ link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/ht
 
 NOTE: OpenJDK 19會在開機時檢查主機是否以FIPS模式安裝。不需要手動變更。
 
-+
-如需詳細資料、請參閱 link:https://access.redhat.com/documentation/ru-ru/openjdk/8/html/configuring_openjdk_8_on_rhel_with_fips/openjdk-default-fips-configuration["OpenJDK 8中的預設FIPS組態"^]
-
 ** 如果您保護主機安全、則必須確保主機能夠在不需要使用者介入的情況下開機。如果需要使用者介入、如果主機意外重新開機、則斷路器功能可能無法使用。如果發生這種情況、只有在手動介入和主機完全開機之後、才能使用斷路器功能。
 
 
@@ -110,11 +85,16 @@ NOTE: OpenJDK 19會在開機時檢查主機是否以FIPS模式安裝。不需要
 * 經常升級。Tiebreaker是積極開發的產品、更新頻繁對於將安全性修正程式與任何變更納入預設設定（例如金鑰長度或密碼套件）而言、非常重要。
 * 訂閱HashiCorp公告郵寄清單、即可接收新版本的公告、並造訪Tiebreaker Changelog、以瞭解最新版本的最新更新詳細資料。
 * 使用正確的檔案權限。在啟動Tiebreaker軟體之前、請務必確保適當的權限已套用至檔案、尤其是含有敏感資訊的檔案。
-* 多因素驗證（MFA）可要求系統管理員使用多個使用者名稱和密碼來識別自己、藉此強化組織的安全性。雖然使用者名稱和密碼很重要、但容易遭受暴力攻擊、而且可能遭第三方竊取。 link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/security_hardening/index["深入瞭解安全性強化"^]
+* 多因素驗證（MFA）可要求系統管理員使用多個使用者名稱和密碼來識別自己、藉此強化組織的安全性。雖然使用者名稱和密碼很重要、但容易遭受暴力攻擊、而且可能遭第三方竊取。
 +
-** Red Hat Enterprise Linux 8 提供 MFA 、要求使用者提供多項資訊、以便成功驗證帳戶或 Linux 主機。其他資訊可能是一次性密碼、透過SMS傳送到您的手機、或是從Google驗證程式、TWilio驗證或FreefP等應用程式傳送認證。 link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/securing_networks/index["深入瞭解保護網路安全"^]
+** Red Hat Enterprise Linux 8 提供 MFA 、要求使用者提供多項資訊、以便成功驗證帳戶或 Linux 主機。其他資訊可能是一次性密碼、透過SMS傳送到您的手機、或是從Google驗證程式、TWilio驗證或FreefP等應用程式傳送認證。
 
 
+
+
+.相關資訊
+* link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/["Red Hat Enterprise Linux 8 產品文件"^]
+* link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/["Red Hat Enterprise Linux 9 產品文件"^]
 
 
 

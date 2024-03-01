@@ -123,7 +123,7 @@ NetApp MetroCluster Tiebreaker :> monitor show -status
 請參閱產品文件。
 
 |===
-. 執行中的所有步驟 link:../upgrade/task_expand_a_four_node_mcc_ip_configuration.html["擴充 MetroCluster IP 組態"] 可將新節點和儲存設備新增至組態。
+. 執行中的所有步驟 link:../upgrade/task_expand_a_four_node_mcc_ip_configuration.html["擴充 MetroCluster IP 組態"^] 可將新節點和儲存設備新增至組態。
 +
 當擴充程序完成時、會出現如下圖所示的暫存組態：
 
@@ -153,16 +153,16 @@ Node_IP_2      Node_IP_1              true      Connected to Node_IP_1
 ----
 . 移動CRS磁碟區。
 +
-執行中的步驟 link:../maintain/task_move_a_metadata_volume_in_mcc_configurations.html["在MetroCluster 不完整的組態中移動中繼資料磁碟區"]。
+執行中的步驟 link:../maintain/task_move_a_metadata_volume_in_mcc_configurations.html["在MetroCluster 不完整的組態中移動中繼資料磁碟區"^]。
 
-. 使用中的下列程序、將資料從舊節點移至新節點 link:https://docs.netapp.com/us-en/ontap-systems-upgrade/index.html["ONTAP 硬體系統文件"^]
+. 使用下列程序、將資料從舊節點移至新節點：
 +
-.. 執行中的所有步驟 http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-upgrade-controller/GUID-AFE432F6-60AD-4A79-86C0-C7D12957FA63.html["建立Aggregate並將磁碟區移至新節點"^]。
+.. 執行中的所有步驟 https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade/upgrade-create-aggregate-move-volumes.html["建立Aggregate並將磁碟區移至新節點"^]。
 +
 
 NOTE: 您可以選擇在建立時或之後鏡射集合體。
 
-.. 執行中的所有步驟 http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-upgrade-controller/GUID-95CA9262-327D-431D-81AA-C73DEFF3DEE2.html["將非SAN資料生命期和叢集管理生命期移至新節點"]。
+.. 執行中的所有步驟 https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade/upgrade-move-lifs-to-new-nodes.html["將非 SAN 資料生命體和叢集管理生命體移至新節點"^]。
 
 
 . 修改每個叢集之轉換節點的叢集對等端 IP 位址：

@@ -66,10 +66,10 @@ entries:
     url: "/maintain/task_upgrade_rcf_files_on_cisco_ip_switches_with_cleanupfiles.html"
   - title: 重新命名Cisco IP交換器
     url: "/maintain/task_rename_a_cisco_ip_switch.html"
+  - title: 在 Cisco IP 交換器上以不中斷營運的方式新增、移除或變更 ISL 連接埠
+    url: "/maintain/task_add_remove_or_change_isl_ports_nondisruptively.html"
 - title: 修改交換器或 Atto 橋接 IP 位址以進行健全狀況監控
   url: "/maintain/task_modify_switch_or_bridge_ip_address_for_health_monitoring.html"
-- title: 在 Cisco IP 交換器上以不中斷營運的方式新增、移除或變更 ISL 連接埠
-  url: "/maintain/task_add_remove_or_change_isl_ports_nondisruptively.html"
 - title: 如何在MetroCluster 一個不確定IP組態中識別儲存設備
   url: "/maintain/concept_identifying_storage_in_a_mcc_ip_configuration.html"
 - title: 使用共享儲存設備/ MetroCluster交換器、將機櫃新增MetroCluster 至架構
