@@ -312,8 +312,4 @@ NOTE: 如果存續的叢集無法再透過FC（內華達互連和儲存設備）
 
 === 如何支援自動非計畫性切換ONTAP
 
-《支援者》將有關「支援中心」主機上信箱的「支援中心」節點狀態資訊儲存在內。ONTAP MetroCluster此資訊可用於監控災難恢復合作夥伴的狀態、並在發生災難時實作由中保輔助的自動非計畫性切換（MAUSO）MetroCluster 。
-
-當節點偵測到需要切換的站台故障時、會採取步驟確認切換是否適當、如果是、則會執行切換。
-
-只有SyncMirror 當每個節點的非揮發性快取同時執行鏡射和DR鏡射、而且快取和鏡射在故障時同步時、才會啟動MAUSO。
+link:../install-ip/concept-ontap-mediator-supports-automatic-unplanned-switchover.html["瞭解 ONTAP Mediator 如何支援 MetroCluster IP 組態中的自動非計畫性切換"]。

@@ -24,7 +24,7 @@ link:https://docs.netapp.com/us-en/ontap/mediator/index.html["安裝或升級ONT
 
 
 
-CAUTION: 從ONTAP 《S廳9.12.1（支援）：MetroCluster 在MetroCluster 一套支援靜態IP的組態中、您可以啟用「自動切換」功能。此功能是由中保輔助的非計畫性切換的延伸功能。啟用此功能之前、請先檢閱 link:concept-risks-limitations-automatic-switchover.html["使用MetroCluster 不全自動強制切換的風險與限制"]。
+CAUTION: 從ONTAP 《S廳9.12.1（支援）：MetroCluster 在MetroCluster 一套支援靜態IP的組態中、您可以啟用「自動切換」功能。此功能是由中保輔助的非計畫性切換的延伸功能。啟用此功能之前、請先檢閱 link:concept-ontap-mediator-supports-automatic-unplanned-switchover.html#mauso-9-12-1["使用MetroCluster 不全自動強制切換的風險與限制"]。
 
 .關於這項工作
 * 此工作預設會啟用自動非計畫性切換。
@@ -117,7 +117,7 @@ Remote: cluster_B         Configuration state configured
 
 +
 
-IMPORTANT: 使用此命令之前、請檢閱 link:concept-risks-limitations-automatic-switchover.html["使用MetroCluster 不全自動強制切換的風險與限制"]。
+IMPORTANT: 使用此命令之前、請檢閱 link:concept-ontap-mediator-supports-automatic-unplanned-switchover.html#mauso-9-12-1["使用MetroCluster 不全自動強制切換的風險與限制"]。
 
 +
 `metrocluster modify -allow-auto-forced-switchover true`

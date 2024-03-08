@@ -14,7 +14,40 @@ summary: 您可能需要升級Cisco IP交換器上的RCF檔案。例如ONTAP 、
 您可能需要升級Cisco IP交換器上的RCF檔案。例如ONTAP 、進行升級時、或是交換器韌體升級時、都需要新的RCF檔案。
 
 .關於這項工作
-從RcfFileGenerator1.4a版開始、Cisco IP交換器上有一個新選項可以變更（升級、降級或更換）交換器組態、而不需要執行「寫入清除」。
+* 從RcfFileGenerator1.4a版開始、Cisco IP交換器上有一個新選項可以變更（升級、降級或更換）交換器組態、而不需要執行「寫入清除」。
+* Cisco 9336C-FX2 交換器有兩種不同的交換器儲存類型、在 RCF 中命名不同。請使用下表判斷您的組態適用的正確 Cisco 9336C-FX2 儲存類型：
++
+[cols="3*"]
+|===
+| 如果您要連線下列儲存設備 ... | 選擇 Cisco 9336C-FX2 儲存類型 ... | RCF 檔案橫幅 /MOTD 範例 
+
+
+ a| 
+** 直接連接的 SAS 機櫃
+** 直接連接的 NVMe 磁碟櫃
+** 連接至專用儲存交換器的 NVMe 磁碟櫃
+
+ a| 
+9336C-FX2 –僅限直接儲存
+ a| 
+`* Switch    : NX9336C (direct storage, L2 Networks, direct ISL)`
+
+
+
+ a| 
+** 直接連接的 SAS 機櫃
+** 連接至 MetroCluster IP 交換器的 NVMe 機櫃
+
+
+
+NOTE: 至少需要一個連接乙太網路的 NVMe 機櫃
+ a| 
+9336C-FX2 – SAS 與乙太網路儲存設備
+ a| 
+`* Switch    : NX9336C (SAS and Ethernet storage, L2 Networks, direct ISL)`
+
+|===
+
 
 .開始之前
 如果您的組態符合下列需求、可以使用此方法：
@@ -140,10 +173,6 @@ IP_switch_A_1#
 +
 
 NOTE: 您必須使用與RCF檔案相同版本的高效能檔案、以及完全相同的組態。使用任何高效能檔案都無法運作、可能需要完全重設交換器。
-
-+
-
-NOTE: 儲存類型可能不同、即SAS儲存設備或直接儲存設備。
 
 +
 

@@ -81,7 +81,7 @@ To check if the nodes are ready to do a switchover or switchback operation, run 
 ... 中斷本機叢集 ISL 的連線
 
 
-.. 中斷 MetroCluster IP 介面連線。
+.. 拔下 MetroCluster FC 介面。
 .. 中斷 MetroCluster ISL 的連線。
 
 
@@ -92,7 +92,7 @@ To check if the nodes are ready to do a switchover or switchback operation, run 
 
 +
 .. 將 ISL 連接到遠端站台。
-.. 連接 MetroCluster IP 介面纜線。
+.. 連接 MetroCluster FC 介面。
 .. 連接本機叢集介面。
 +
 如果本機叢集介面已連線至交換器：

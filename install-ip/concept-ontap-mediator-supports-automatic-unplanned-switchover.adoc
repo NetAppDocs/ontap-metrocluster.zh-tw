@@ -1,0 +1,74 @@
+---
+permalink: install-ip/concept-ontap-mediator-supports-automatic-unplanned-switchover.html 
+sidebar: sidebar 
+keywords: ontap, mediator, service, assist, metrocluster, ip, configuration, perform, automatic, unplan, switchover, physical, repository, status, information, configuring, configure, install, configuring, configure, forced 
+summary:  
+---
+= 如何支援自動非計畫性切換ONTAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP Mediator 提供信箱 LUN 來儲存 MetroCluster IP 節點的狀態資訊。這些LUN與ONTAP 運行於Linux主機上的《支援者》（不MetroCluster 含此功能）位於同一位置、而該主機與《支援者》（Sitites）實體區隔開。MetroCluster IP 節點可以使用信箱資訊來監控其災難恢復（ DR ）合作夥伴的狀態、並在發生災難時實作 Mediator 輔助的非計畫性轉換（ MAUSO ）。
+
+
+NOTE: 不支援MAUSO MetroCluster 的不支援不支援以支援不支援的功能。
+
+當節點偵測到需要切換的站台故障時、會採取步驟確認切換是否適當、如果是、則會執行切換。根據預設、會針對下列情況啟動 MAUSO ：
+
+* 每個節點的非揮發性快取都在運作中、而且快取和鏡像會在故障時同步。SyncMirror
+* 在正常運作的站台上、沒有任何節點處於接管狀態。
+* 發生站台災難時。站台災難是同一個站台上 _all_ 節點的故障。
+
+
+在下列關機案例中、 MAUSO 是 _ 未啟動 _ ：
+
+* 您已啟動關機。例如、當您：
++
+** 停止節點
+** 重新啟動節點
+
+
+
+
+瞭解每個 ONTAP 9 版本所提供的 MAUSO 功能。
+
+[cols="1a,5a"]
+|===
+| 開始於... | 說明 
+
+
+ a| 
+ONTAP 9.13.1.12.9.11.9.11.
+ a| 
+* 如果有、則會啟動 MAUSO <<default_scenarios,預設案例>> 發生此情況時、風扇或硬體故障會啟動環境關機。硬體故障的範例包括高溫或低溫、或電源供應器單元、 NVRAM 電池或服務處理器心跳故障。
+* 在 MetroCluster IP 組態中、故障網域的預設值設為「 auso-on-dr-group 」。對於 ONTAP 9.12.1 及更早版本、預設值設為「 auso-on － cluster-f則 災難」。
++
+在八節點的 MetroCluster IP 組態中、「 auso-on-dr-group 」會在叢集故障或一個 DR 群組中的 HA 配對時觸發 MAUSO 。對於 HA 配對、兩個節點必須同時故障。
+
++
+您也可以使用將故障網域設定變更為「 auso-on 叢集災難」網域 `metrocluster modify -auto-switchover-failure-domain auso-on-cluster-disaster` 僅當兩個 DR 群組中都有 HA 節點配對故障時、才觸發 MAUSO 的命令。
+
+* 即使在發生故障時 NVRAM 未同步、您也可以變更行為以強制 MAUSO 。
+
+
+
+
+ a| 
+[[mauso-9-12-1]] ONTAP 9.12.1
+ a| 
+您可以使用在 MetroCluster IP 組態中啟用 MetroCluster 自動強制切換功能 `metrocluster modify -allow-auto-forced-switchover true` 命令。
+
+當您啟用MetroCluster 「自動強制切換」功能時、系統會自動切換偵測站台故障。您可以使用此功能來輔助MetroCluster 使用靜態IP自動切換功能。
+
+.使用MetroCluster 不全自動強制切換的風險與限制
+當您允許 MetroCluster IP 組態在自動強制切換模式下運作時、下列已知問題可能會導致資料遺失：
+
+* 儲存控制器中的非揮發性記憶體不會鏡射到合作夥伴站台上的遠端 DR 合作夥伴。
+
+
+* 注意 * ：您可能會遇到未提及的情況。NetApp對於啟用MetroCluster 「自動強制切換」功能所造成的任何資料毀損、資料遺失或其他損害概不負責。如果您無法接受風險和限制、請勿使用MetroCluster 「無法自動切換」功能。
+
+|===

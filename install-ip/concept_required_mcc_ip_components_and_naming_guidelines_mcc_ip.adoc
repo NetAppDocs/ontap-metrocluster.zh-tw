@@ -89,28 +89,6 @@ IP交換器也能在每個叢集中的控制器模組之間提供叢集內通訊
 
 
 
-=== 控制器機型僅限四節點組態
-
-這些機型在MetroCluster 一個不含資訊的組態中限制為四個。
-
-* VA220 AFF
-* VA250 AFF
-* FAS2750
-* FAS500f
-
-
-例如、下列組態不受支援：
-
-* 八節點組態、由八AFF 個VA250控制器組成。
-* 八節點組態、由四AFF 個FAS220控制器和四個FAS500f控制器組成。
-* 兩MetroCluster 個四節點的SendeIP組態、每個組態都由AFF EfeS250控制器和共用相同的後端交換器所組成。
-* 八節點組態、由DR群組1與AFF 支援FAS9000控制器的不支援A250控制器和DR群組2組成。
-
-
-如果第二個版本不含上述任何機型、您可以使用MetroCluster 相同的後端交換器、設定兩個獨立的四節點之靜態IP組態MetroCluster 。
-
-
-
 === 範例名稱
 
 文件中使用下列範例名稱：
@@ -141,7 +119,7 @@ IP交換器也能在每個叢集中的控制器模組之間提供叢集內通訊
 | 平台模式 | 必要的Gigabit乙太網路介面卡 | 介面卡所需的插槽 | 連接埠 
 
 
-| FASA900和FAS9500 AFF | X91146A | 插槽5、插槽7 | e5b、e7b 
+| AFF A900 、 ASA A900 和 FAS9500 | X91146A | 插槽5、插槽7 | e5b、e7b 
 
 
  a| 
@@ -156,7 +134,7 @@ e5a、e5b
 
 
  a| 
-AFF A800 、 AFF C800
+AFF A800 、 AFF C800 、 ASA A800 和 ASA C800
  a| 
 X1146A /內建連接埠
  a| 
@@ -167,7 +145,7 @@ e0b.e1b
 
 
  a| 
-FAS8300 、 AFF A400 和 AFF C400
+FAS8400 、 AFF A400 、 ASA A400 、 ASA C400 和 AFF C400
  a| 
 X1146A
  a| 
@@ -189,7 +167,7 @@ e1a、e1b
 
 
  a| 
-FAS2750 、 AFF A150 和 AFF A220
+FAS2750 、 AFF A150 、 ASA A150 和 AFF A220
  a| 
 內建連接埠
  a| 
@@ -200,7 +178,7 @@ e0a、e0b
 
 
  a| 
-FAS500f 、 AFF A250 和 AFF C250
+FAS500f 、 AFF A250 、 ASA A250 、 ASA C250 和 AFF C250
  a| 
 內建連接埠
  a| 

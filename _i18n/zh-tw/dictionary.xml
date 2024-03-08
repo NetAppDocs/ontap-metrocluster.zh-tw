@@ -206,13 +206,11 @@
   <block id="f99aa604031e5049799e73b5c3748a98" category="paragraph"><block ref="f99aa604031e5049799e73b5c3748a98" category="inline-link-rx"></block></block>
   <block id="a7413038d86d8757b33477e80819b54d" category="summary">各種MetroCluster 版本的不二組態在必要的元件上有主要差異。</block>
   <block id="9a7cf14a520bc88a1cb91bca39d69926" category="doc">不一樣的地方ONTAP MetroCluster</block>
-  <block id="5dddfa582624b89f44517d6ff5b20963" category="paragraph">從ONTAP S廳9.7開始、您可以在ONTAP ESIIP組態中使用由資訊管理員輔助的自動非計畫性切換（MAUSO）MetroCluster 、也可以使用MetroCluster Setiebreaker軟體。只有這兩項服務的其中一項可搭配MetroCluster 使用。</block>
   <block id="0a5c3ac0f47ed8e3d45c2e4219d97b00" category="paragraph">不同MetroCluster 的功能組態會在不同情況下自動切換：</block>
   <block id="aaa4db48fe39708ddc84c0b74e004845" category="list-text">*使用AUSO功能的SFC組態（不存在於SIP組態中）MetroCluster MetroCluster *</block>
   <block id="54b00572b4fb9c96346da414c5a1780b" category="paragraph">在這些組態中、如果控制器故障但儲存設備（如果有橋接器）仍可運作、則會啟動AUSO。</block>
   <block id="f25509e4a4010e30eda740d9ef693bf9" category="list-text">* MetroCluster 使用ONTAP 「不完整」服務ONTAP 的「不完整IP組態」（僅限英文版）（僅限英文版）*</block>
   <block id="8a15f9f5afd6ffb27ec4a9af854624f7" category="paragraph">在這些組態中、MAUSO會在與AUSO相同的情況下啟動、如前所述、也會在完整站台故障（控制器、儲存設備和交換器）之後啟動。</block>
-  <block id="2464b025c8a02fc9a54a5cbe8a3b3041" category="admonition">只有在非揮發性快取鏡射（_DR鏡射_）和SyncMirror 鏡射在故障時同步時、才會啟動MAUSO。</block>
   <block id="e5edd8dd9b2717b8f0d5e2c5e9c4563d" category="list-text">*使用主動模式下的Tiebreaker軟體進行IP或FC組態* MetroCluster</block>
   <block id="d252bbe03c515e14d80ddc7cae716a23" category="paragraph">在這些組態中、當整個站台發生故障時、斷路器會啟動非計畫性的切換。</block>
   <block id="b935de63e2396f2d2fe997c9028969f7" category="inline-link-macro">物件斷路器軟體安裝與組態MetroCluster</block>
@@ -220,15 +218,9 @@
   <block id="a7de0eeb62026c7c8a784a9e3a44a081" category="section-title">不受任何應用程式與應用程式與應用裝置之間的互通性ONTAP</block>
   <block id="7fd453474071dccd50ff62492d227dec" category="paragraph">您無法搭配ONTAP 使用任何可觸發切換的第三方應用程式或應用裝置、以搭配使用「媒體資訊器」。此外MetroCluster 、使用「SIESITERator」時、不支援使用MetroCluster ESITERE斷路 器軟體監控任何一個ESITESE組態ONTAP 。</block>
   <block id="b4a4356f509fb6c32e40ddbcc18b8a1a" category="section-title">如何支援自動非計畫性切換ONTAP</block>
-  <block id="7480d239952f3388e1a45150c044ba8e" category="paragraph">《支援者》將有關「支援中心」主機上信箱的「支援中心」節點狀態資訊儲存在內。ONTAP MetroCluster此資訊可用於監控災難恢復合作夥伴的狀態、並在發生災難時實作由中保輔助的自動非計畫性切換（MAUSO）MetroCluster 。</block>
-  <block id="ad48fc5af22c71cdbcd7d9db9a44e632" category="paragraph">當節點偵測到需要切換的站台故障時、會採取步驟確認切換是否適當、如果是、則會執行切換。</block>
-  <block id="5c5abfeb23848eee7e1fb00c2a61db6c" category="paragraph">MAUSO只會在下列情況下啟動：</block>
   <block id="d805df154de0ed954114c0b8a30d6cf0" category="list-text">每個節點的非揮發性快取都在運作中、而且快取和鏡像會在故障時同步。SyncMirror</block>
   <block id="539aa46206b59c007151f02f46d35617" category="list-text">在正常運作的站台上、沒有任何節點處於接管狀態。</block>
-  <block id="76febd606fc24a36395547ab83980f59" category="paragraph">在下列關機案例中*未*啟動MAUSO：</block>
   <block id="1fb135b5dd970a96db5c2b3025ddcbf8" category="list-text">您已啟動關機。例如、當您：</block>
-  <block id="969ad1d775144c2dcc448c09e5467831" category="list-text">停止節點</block>
-  <block id="e417cabb8d771305beaa6b46cf7335e1" category="list-text">重新啟動節點</block>
   <block id="a88a3ffd094ac9c3e4781378daf727b2" category="summary">規劃MetroCluster 您的靜態IP組態時、您應該瞭解硬體元件及其互連方式。</block>
   <block id="131a1d95b4315c0e5bb2b356dc23edb5" category="doc">部分的靜態IP組態MetroCluster</block>
   <block id="1b80b97dc5d058d798af4c2b50efe299" category="section-title">關鍵硬體元素</block>
@@ -306,7 +298,6 @@
   <block id="314397a966e69ed15a6dc4aef51251e3" category="paragraph">磁碟槽12-17</block>
   <block id="c827f7df05c6916afe05fd36408cafb0" category="paragraph">第3季：Bay 24-035</block>
   <block id="93dcc09acf50956dd3f108153247603c" category="paragraph">托架24至29個</block>
-  <block id="fd4becc7ba4fbc457e46157c8cdbc213" category="paragraph">第4季：Bay 36-48</block>
   <block id="77c79465aa008b1bff68e784406b5273" category="paragraph">托架36-41</block>
   <block id="a66208eb43ca07208dc54b23ce6f191c" category="paragraph">如果您在每個站台使用兩個磁碟櫃、則會使用半磁碟櫃原則來指派磁碟。如果磁碟櫃未完全裝滿、請從磁碟櫃任一端平均安裝磁碟機。</block>
   <block id="dbaf1635e32fb5c1cc5e8aca3a390c3e" category="paragraph">例如、如果您要在24個磁碟機櫃中安裝12個磁碟機、請在0到5和18到23個磁碟機槽中安裝磁碟機。</block>
@@ -392,7 +383,6 @@
   <block id="6f53d85533c3e60dad3733efac10ae04" category="paragraph">根Aggregate是以內部機櫃上的12個根分割區所建立。</block>
   <block id="982a2e1944b422fa6826f45f24630643" category="paragraph">內部分割區分為四個相等的群組（季度）。每一季都會自動指派給個別的資源池。</block>
   <block id="f674c4dddbf3c8f5d8282775b8f64dfc" category="list-text">一個備用磁碟分割</block>
-  <block id="ef312d32820f8cc7d4f38a6f5049b24d" category="section-title">ADP和磁碟指派、位於AFF SolidWa 900系統</block>
   <block id="c62a718b8f06da8fda597def926b5514" category="cell">每個站台的磁碟櫃</block>
   <block id="e544ed43da5fbe5f1ff53ed83f313e27" category="section-title">FAS2750系統上的磁碟指派</block>
   <block id="348b34a8fc3bce6d3e74519d8b7e9ca3" category="paragraph">24個內部磁碟機和24個外部磁碟機</block>
@@ -1031,14 +1021,6 @@
   <block id="eaf7309def7e7136bb09e5898743d18b" category="paragraph">現有的靜態IP組態可升級至版本9.4。MetroCluster FAS ONTAP</block>
   <block id="b8f6677db24add5f2af4be56aa22ea68" category="list-text">從推出支援更新版的支援功能到更新版的支援功能、從功能性更新到ONTAP 功能MetroCluster 性更新到功能性更新FAS 。</block>
   <block id="04be3a6c5ee416a84b497452ccd41ffd" category="list-text">從支援支援針對ADP設定的控制器模組、從功能9.4開始ONTAP 。</block>
-  <block id="0a031333cf2c811fea7702892ed6eb5b" category="section-title">控制器機型僅限四節點組態</block>
-  <block id="8f6fda81c2274384a4980cc38b8e45e7" category="paragraph">這些機型在MetroCluster 一個不含資訊的組態中限制為四個。</block>
-  <block id="725684805491a7e291f9f8b54091a2c1" category="paragraph">例如、下列組態不受支援：</block>
-  <block id="0a87be6cc036c9f0de1076a02a8b8f06" category="list-text">八節點組態、由八AFF 個VA250控制器組成。</block>
-  <block id="f28dfecdb04d9fddcb6815412a00d65b" category="list-text">八節點組態、由四AFF 個FAS220控制器和四個FAS500f控制器組成。</block>
-  <block id="b67dfd517d85d4d92bbb6924d9a50347" category="list-text">兩MetroCluster 個四節點的SendeIP組態、每個組態都由AFF EfeS250控制器和共用相同的後端交換器所組成。</block>
-  <block id="66f9fb0d9e7258cc4fc93d0eb88c274d" category="list-text">八節點組態、由DR群組1與AFF 支援FAS9000控制器的不支援A250控制器和DR群組2組成。</block>
-  <block id="f30117279b81255a79cfd80114e6947b" category="paragraph">如果第二個版本不含上述任何機型、您可以使用MetroCluster 相同的後端交換器、設定兩個獨立的四節點之靜態IP組態MetroCluster 。</block>
   <block id="87b514f77df8f80e9ce684f94332fb57" category="section-title">範例名稱</block>
   <block id="b28d5f07ecc3e09cca01f61bcd89c642" category="paragraph">文件中使用下列範例名稱：</block>
   <block id="ba7daf8fded06fad682c0b21342ef324" category="list-text">控制器_a_1.</block>
@@ -9606,7 +9588,6 @@
   <block id="beca4c261f58e41e37cd354316dd0a6e" category="paragraph">Tiebreaker軟體會定期從節點擷取站台間連線的狀態。如果內華達互連連連中斷、而且叢集間對等連線無法回應ping、則叢集會假設站台已隔離、而Tiebreaker軟體會觸發警示「AllLinksSevered」（AllLinksSevered）。如果叢集識別出「AllLinksSevered」狀態、但無法透過網路連線至其他叢集、則Tiebreaker軟體會觸發警示為「災難」。</block>
   <block id="6445040915e7859f45a707546ebb0455" category="paragraph">當災難站台上的叢集（所有節點）關閉或無法連線、而存續站台上的叢集指出「AllLinksSevered」狀態時、Tiebreaker軟體會觸發警示。</block>
   <block id="283ac08265135875ca6923ff496eb23d" category="list-text">在災難站台上所有節點都關閉的叢集中、在存續站台上的一個HA配對會關閉、而在存續站台上的叢集則會指出「AllLinksSevered」狀態</block>
-  <block id="32cbf293fe64d853582c8537f6165030" category="paragraph">只有SyncMirror 當每個節點的非揮發性快取同時執行鏡射和DR鏡射、而且快取和鏡射在故障時同步時、才會啟動MAUSO。</block>
   <block id="a7b2d6358c9d443da0d732f37dbdb86d" category="summary">瞭解MetroCluster NetApp如何保護資料、並提供透明的故障恢復功能、讓您輕鬆且有效率地管理切換和切換活動、這點很有幫助。</block>
   <block id="142bc2a1d04086c1020f521690534de6" category="paragraph">使用鏡射來保護叢集中的資料。MetroCluster它透過單MetroCluster 一的支援功能來提供災難恢復功能、可在倖存者站台上啟動次要功能、以提供原本由受災難影響的主要站台所擁有的鏡射資料。</block>
   <block id="21e0e06c41f50a8a9bbaee843cd90be3" category="section-title">八節點和四節點MetroCluster 的不完整組態如何提供本機容錯移轉和切換功能</block>
@@ -9843,10 +9824,7 @@
   <block id="6466cdc759d3f24e72db990e82ef2e6e" category="inline-link-macro">執行測試或維護的切換</block>
   <block id="8d50f35507fbf2c3d543e72aaed82f75" category="paragraph"><block ref="8d50f35507fbf2c3d543e72aaed82f75" category="inline-link-macro-rx"></block></block>
   <block id="d570448dc17eb2b971433918f9fda788" category="section-title">透過協調器輔助的自動非計畫性切換MetroCluster 功能、以支援各種不完整的IP組態</block>
-  <block id="73e03c5be719fd40e437f5c019235422" category="paragraph">在S廳IP組態中MetroCluster 、系統可使用ONTAP 此功能偵測故障、並執行由內建人員輔助的自動非計畫性切換（MAUSO）。</block>
   <block id="e0dfacb7c32b66e9900ec804d3555a37" category="admonition">不支援MAUSO MetroCluster 的不支援不支援以支援不支援的功能。</block>
-  <block id="bf1d205a4e5418512184787235e4b76b" category="paragraph">此功能可為不支援的IP節點提供信箱LUN。ONTAP MetroCluster這些LUN與ONTAP 運行於Linux主機上的《支援者》（不MetroCluster 含此功能）位於同一位置、而該主機與《支援者》（Sitites）實體區隔開。</block>
-  <block id="9065c339d0aefe8c01add4abec5c6525" category="paragraph">這個節點會使用信箱資訊來判斷是否需要MAUSO。MetroCluster如果儲存控制器中的非揮發性記憶體（NVRAM或NVMEM、視平台機型而定）未鏡射至合作夥伴站台上的遠端災難恢復（DR）合作夥伴、則不會啟動MAUSO</block>
   <block id="aba053c292ccb0431a94f6b992f85614" category="section-title">修復過程中發生的情況MetroCluster （不含FC組態）</block>
   <block id="1316fded180310faa69facd0141e9243" category="paragraph">在MetroCluster 還原為SFC組態期間、鏡射Aggregate的重新同步會分階段進行、以便在修復的災難站台上準備節點以進行切換。這是一項計畫性事件、因此您可以完全掌控每個步驟、將停機時間降至最低。修復是在儲存設備和控制器元件上執行的兩步驟程序。</block>
   <block id="55ed90f41949baae887193f4670caaa7" category="section-title">資料Aggregate修復</block>
@@ -12103,7 +12081,6 @@
   <block id="5c4f1865e4bc1d73184e237f9959c388" category="list-text">使用RcfFileGenerator1.4a（或更新版本）、以您在步驟1中擷取的資訊建立RCF檔案。新版的RcfFileGenerator-會建立一組額外的高效能檔案、您可以使用這些檔案來還原部分組態、並準備交換器套用新的RCF組態。</block>
   <block id="65f306707f97b0e6528c632443da6ffa" category="list-text">比較橫幅motd與目前套用的RCF檔案。平台類型、交換器類型、連接埠和VLAN使用量必須相同。</block>
   <block id="eeca5f39015a896c3fd153b273497470" category="admonition">您必須使用與RCF檔案相同版本的高效能檔案、以及完全相同的組態。使用任何高效能檔案都無法運作、可能需要完全重設交換器。</block>
-  <block id="6d48f487507c57727138fae0e2a5e20d" category="admonition">儲存類型可能不同、即SAS儲存設備或直接儲存設備。</block>
   <block id="f7f6e369dd85b855e692642fc45404d1" category="admonition">RCF檔案所建立的版本與此無關。ONTAP只有RCF檔案版本很重要。</block>
   <block id="5ac0010e09da0a19568a51f509b47c9e" category="admonition">RCF檔案（即使是相同版本）可能會列出較少或更多平台。請確定您的平台已列出。</block>
   <block id="b801f2818024b60718ab5b68f7b2eb23" category="open-title">選項2：建立一般的高效能檔案</block>
@@ -12293,12 +12270,7 @@
   <block id="34e0a85e8dfaaeca6dadc1260cdef2ae" category="sidebar">重新整理四節點MetroCluster 的不全功能FC組態</block>
   <block id="80a030e3352fb989821aa7c6d15bcfad" category="inline-link-macro">公開報告</block>
   <block id="dda33fc9a3cc083db08123f7d7e692a8" category="inline-link-macro">使用MetroCluster 不全自動強制切換的風險與限制</block>
-  <block id="160ccce82c893f99e3f0614ca209899d" category="admonition">從ONTAP 《S廳9.12.1（支援）：MetroCluster 在MetroCluster 一套支援靜態IP的組態中、您可以啟用「自動切換」功能。此功能是由中保輔助的非計畫性切換的延伸功能。啟用此功能之前、請先檢閱 <block ref="a3a7e72ce1f5f993a44ac5e44397056b" category="inline-link-macro-rx"></block>。</block>
-  <block id="d49fffd0ec397c8f5b53fbeb1bc93ee2" category="paragraph">從ONTAP 《S廳9.12.1（支援）：MetroCluster 在MetroCluster 一套支援靜態IP的組態中、您可以啟用「自動切換」功能。這項功能是由內建人員輔助的非計畫性切換（MAUSO）功能的延伸。</block>
   <block id="a6e62874574d6ae8ffc9dc6ea98c08e7" category="paragraph">當您啟用MetroCluster 「自動強制切換」功能時、系統會自動切換偵測站台故障。您可以使用此功能來輔助MetroCluster 使用靜態IP自動切換功能。</block>
-  <block id="64aca5dcd09842ce5e26c9c9f52a5c79" category="paragraph">當您允許MetroCluster 使用自動強制切換模式來操作S不明IP組態時、下列已知問題可能會導致資料遺失：</block>
-  <block id="432fccc7d25e83271acb25e6c686d22f" category="list-text">儲存控制器中的非揮發性記憶體並未鏡射至合作夥伴站台上的遠端災難恢復（DR）合作夥伴。</block>
-  <block id="4e94608087f1df11aa020cbfe28a7876" category="admonition">您可能會遇到未提及的案例。NetApp對於啟用MetroCluster 「自動強制切換」功能所造成的任何資料毀損、資料遺失或其他損害概不負責。如果您無法接受風險和限制、請勿使用MetroCluster 「無法自動切換」功能。</block>
   <block id="80f6a6e12e6ca0304707e7a67581f248" category="paragraph">Broadcom交換器</block>
   <block id="530dbe55cb10e603b69b517d0cb2f4bc" category="list-text">在ONTAP 兩個叢集上執行下列命令、確認已從MetroCluster 「支援資訊系統組態中移除「支援資訊系統服務：</block>
   <block id="49b7410e94a7ca7d1c674a14241ebe49" category="list-text"><block ref="7200673afad174d0ff258c801fbb9def" prefix="" category="inline-code"></block></block>
@@ -12397,7 +12369,6 @@
   <block id="59710baa552439a5c3866c2907720be7" category="section-title">支援MetroCluster 的支援功能。FC控制器升級</block>
   <block id="9ae1fbeadb6e0efc4e024384fb8a4f8d" category="inline-link">知識庫文章</block>
   <block id="6bd20d1a4e5bd1d6bed1627ed32e934c" category="list-text">附註1：若在現有FAS8020或AFF8020節點上使用連接埠1c和1d進行FCVI連線時、要升級控制器、請參閱下列內容<block ref="058c6692589b3956d6bd485ac9c6cea6" category="inline-link-rx"></block>。</block>
-  <block id="67be5a03851a4b6d9deae18ad49f328e" category="list-text">附註2：AFF 僅ONTAP 在執行更新版本的系統上、才能使用內建連接埠0e和0f作為FC-VI連線、從Efso300或FAS8200平台進行控制器升級。或更早版本。如需詳細資訊、請參閱 <block ref="54dac02f94a6488bb50eb2223b2531dc" category="inline-link-macro-rx"></block>。</block>
   <block id="24e0de0a456339a0645a68e87b1bd30e" category="list-text">附註3：如需此升級、請參閱 <block ref="d4055a630aa0f5dfe07651f60a376ff8" category="inline-link-macro-rx"></block></block>
   <block id="2a4d011a1daa1baf70a0642eaa186c4b" category="cell">升級方法</block>
   <block id="5fad8e8329f6ac022801d63699f46933" category="paragraph">使用「系統控制器更換」命令進行升級</block>
@@ -12612,19 +12583,12 @@
   <block id="2a077243240a3af8fdb5a2c53c8dfd93" category="sidebar">在兩個控制器模組上啟用儲存容錯移轉、並啟用叢集HA</block>
   <block id="3ae2a51b967ff5379c07b5d59d9bb892" category="sidebar">將新的控制器模組FC-VI和HBA連接埠連接至FC交換器</block>
   <block id="2ec9cf7fc01c78e918f2c1109d699ebd" category="sidebar">設定管理員對ONTAPI和SSH的存取權</block>
-  <block id="3ba18986907ef3401544960b244376ed" category="section-title">AFF A150 和 AFF A220 系統上的 ADP 和磁碟指派</block>
   <block id="3e0a52646b307379f47860044c088d60" category="paragraph">每個外部機櫃上的磁碟機分為兩個相同的群組（一半）。每個半磁碟櫃都會自動指派給個別的資源池。</block>
-  <block id="b244c220ca2f00fdc24e97de45456f82" category="section-title">AFF C400 和 AFF A400 系統上的 ADP 和磁碟指派</block>
-  <block id="ba9bcbab50848c136d0007b25231ce1e" category="section-title">AFF C800 和 AFF A800 系統上的 ADP 和磁碟指派</block>
   <block id="8e65b308ba381d7e7d885330e749b55d" category="list-text">如果您連接兩個 AFF A700 類型的四節點 MetroCluster 組態、請連接第一個 MetroCluster （如「 MetroCluster 1 」所示）、第二個 MetroCluster （如 AFF A700 表中的「 MetroCluster 2 」所示）。</block>
   <block id="e5c3d25338f9cf52b0644af8df5dd491" category="admonition">連接埠13和14可在原生速度模式下使用、支援40 Gbps和100 Gbps、或在中斷模式下使用、以支援4 x 25 Gbps或4 x 10 Gbps。如果他們使用原生速度模式、則會顯示為連接埠 13 和 14 。如果使用中斷模式（ 4 × 25 Gbps 或 4 × 10 Gbps ）、則會將它們表示為連接埠 13s0 － 3 和 14s0 － 3 。</block>
   <block id="0995dd589b8b5229e4b9e28862db9b91" category="paragraph">將多個 MetroCluster 組態連接至 Cisco 3132Q-V 交換器時、您必須根據適當的表格為每個 MetroCluster 連接纜線。例如，如果將 FAS2750 和 AFF A700 連接到同一臺 Cisco 3132Q-V 交換機。然後根據表 1 中的「 MetroCluster 1 AFF 」、以及表 2 中的「 MetroCluster 2 」或「 MetroCluster 3 」、為 FAS2750 連接纜線。您無法將 FAS2750 和 AFF A700 實體連接成「 MetroCluster 1 」。</block>
   <block id="b1ae03d0492f9071184bcc685e4d9008" category="image-alt">MCC IP 纜線 a150 A220 a250 至 Cisco 3232c 或 Cisco 9336c 交換器</block>
   <block id="cf6033c90446afb2f2e4bf0a87384e97" category="image-alt">MCC IP 纜線 A320 A400 a700 a800 A900 Cisco 3232C 或 9336c 交換器</block>
-  <block id="4aa636d0c8e798111a1395c5cf44abef" category="paragraph">AFF A800 、 AFF C800</block>
-  <block id="76a3e9deef2a9133b01bc4b8aa5ad045" category="paragraph">FAS8300 、 AFF A400 和 AFF C400</block>
-  <block id="2d24d8597140717b72521869e1b9643a" category="paragraph">FAS2750 、 AFF A150 和 AFF A220</block>
-  <block id="f557196ec910f221f73585a5c481f240" category="paragraph">FAS500f 、 AFF A250 和 AFF C250</block>
   <block id="52d00daf67aaaf387590e09043aff43a" category="list-text"><block ref="52d00daf67aaaf387590e09043aff43a" category="inline-link-macro-rx"></block></block>
   <block id="49cc90fa19d302674a7ac32a31b7a0c8" category="list-text"><block ref="49cc90fa19d302674a7ac32a31b7a0c8" category="inline-link-macro-rx"></block></block>
   <block id="566b66a4b36764e94944f56424f3b3ca" category="paragraph">執行命令：<block ref="fdb848f6761ac46e0ea7678b5269bd3c" prefix=" " category="inline-code"></block></block>
@@ -12757,9 +12721,6 @@
   <block id="fdc1be4b61fa768dbfcc3e8f0dab2595" category="paragraph">下表顯示八節點 MetroCluster FC 組態支援的平台組合。</block>
   <block id="49782ec67fb4809f5d138aa07412fd9d" category="list-text">此表中的組合僅適用於一般或永久性的八節點組態。</block>
   <block id="ea95591996a43e78cc0b5f96cb4d8f1c" category="list-text">如果您使用的是轉換或重新整理程序、則本表 * 請勿 * 套用平台組合。</block>
-  <block id="1251b37475039ca3d9d370458002ce7c" category="paragraph">《支援者》將有關「支援中心」主機上信箱的「支援中心」節點狀態資訊儲存在內。ONTAP MetroClusterMetroCluster 節點可以使用此資訊來監控其 DR 合作夥伴的狀態、並在發生災難時實作 MAUSO 。</block>
-  <block id="8227e4d84dc1594bf85338cfe09f1747" category="list-text">發生站台災難時。站台災難是同一站台 * 所有 * 節點的故障。</block>
-  <block id="792f2e5a1dddb8ed73154e39c1bf5e77" category="list-text">從 ONTAP 9.13.1 開始、如果符合上述條件、且風扇或硬體故障會啟動環境關機、例如電源供應器單元、 NVRAM 電池或服務處理器心跳故障、或高溫或低溫。</block>
   <block id="08d29117f113494cf7bd34ddc0d0a7e0" category="doc">更換 IP 交換器或變更現有 MetroCluster IP 交換器的使用</block>
   <block id="2454620eb6c11598ab9b657181cc0f55" category="paragraph">您可能需要更換故障的交換器、升級或降級交換器、或變更現有 MetroCluster IP 交換器的使用。</block>
   <block id="057120c40cd4c9c1a072526b368d97f4" category="paragraph">此程序支援下列轉換：</block>
@@ -12823,8 +12784,6 @@
   <block id="2e782f3147ceef5a1435f26ba8fa7daa" category="inline-link-macro">重複使用儲存交換器、從交換器附加儲存設備的無交換器組態移轉</block>
   <block id="a8a61fb8a898cbbd8809029f5f6b5dba" category="list-text"><block ref="a8a61fb8a898cbbd8809029f5f6b5dba" category="inline-link-macro-rx"></block></block>
   <block id="ba8871c06c0bd003e2160207049c17d5" category="paragraph">依預設、 AUSO 設為「 auso-on － cluster －災難」。您可以在中檢視其狀態<block ref="0d51371cbb850772d2130a36f4368df4" prefix=" " category="inline-code"></block> 命令。</block>
-  <block id="c7f2465703040d1f77ba4f73cf6ce393" category="paragraph">從 ONTAP 9.13.1 開始、在 MetroCluster IP 組態中、 AUSO 狀態的預設值會設定為「 auso-on-dr-group 」。對於 ONTAP 9.12.1 及更早版本、預設值會設為「 auso-on － cluster － f則 」。在八節點 MetroCluster IP 組態中、如果 HA 配對中的兩個節點都失敗、此選項將會觸發 AUSO 。</block>
-  <block id="55e40c2e95a8c835a2e8ddca52499b33" category="paragraph">您可以使用將 AUSO 網域變更為「 auso-on 叢集災難」網域<block ref="eabe864642c195f21f3f5dd17825dd14" prefix=" " category="inline-code"></block> 命令。</block>
   <block id="d87d22ecaeaff0e5d4bd4030a9e08302" category="sidebar">在四節點 MetroCluster IP 中使用切換功能升級控制器、並使用「系統控制器更換」命令（ ONTAP 9.13.1 及更新版本）切換回控制器</block>
   <block id="12651c133a2edc8c764efaddca32ca42" category="sidebar">重新整理四節點或八節點 MetroCluster IP 組態（ ONTAP 9.8 及更新版本）</block>
   <block id="f11af7573a10a71e1161a2099db36bcc" category="sidebar">展開 MetroCluster IP 組態</block>
@@ -12923,7 +12882,6 @@
   <block id="5227f75c6a1f77d9623c7a089f1e3ea7" category="paragraph">對於 ONTAP 9.7 及更早版本、請發出開機功能表命令。</block>
   <block id="3e3df3be76a18ca2c89904765d97f078" category="list-text">在兩個叢集上執行下列命令、確認可以進行接管、而且節點已連線：</block>
   <block id="3963205d7c5d1cb2f000d61f16c10f1d" category="paragraph">24 個內部磁碟機</block>
-  <block id="d33f2a600ba4fe43084a26e95e4908c0" category="paragraph">*相關資訊*</block>
   <block id="7632b8724806890acaf96c668d641251" category="inline-link-macro">瞭解 MetroCluster IP 組態中的自動磁碟機指派和 ADP 系統</block>
   <block id="85488d881ebf03beb1eca3be4b5fda44" category="paragraph">您的ONTAP 版本必須支援機櫃混合。請參閱<block ref="e78382cc6f841e7f00c97b18a2e30f41" category="inline-link-rx"></block> 查看ONTAP 您的版本是否支援機櫃混合。</block>
   <block id="5fdc7ff67ace146413ecd7d44157aca4" category="paragraph">如需機櫃混合的詳細資訊、請參閱<block ref="532c1f47a9370f9e21538610051f3830" category="inline-link-rx"></block></block>
@@ -13039,7 +12997,6 @@
   <block id="914c0f805af7b6a979c9b14a8fca637d" category="admonition">以下範例輸出適用於 ONTAP 9.13.1 及更新版本。對於 ONTAP 9.12.1 及更早版本、 AUSO 故障網域狀態應為<block ref="8371e13c4fc64771e634f39be50ec198" prefix=" " category="inline-code"></block>。</block>
   <block id="1d2738c61f2ddb3b312cabca3378259b" category="list-text">您也可以選擇設定 MetroCluster 自動強制切換。</block>
   <block id="09bb2a0904755eb985fc0c00a8eaeb29" category="paragraph">您只能在進階權限層級中使用下列命令。</block>
-  <block id="142e30c0e2bc40260b6bba783159349f" category="admonition">使用此命令之前、請檢閱 <block ref="a3a7e72ce1f5f993a44ac5e44397056b" category="inline-link-macro-rx"></block>。</block>
   <block id="626946adf45b7bb7ff18b4ffcb520404" category="paragraph"><block ref="c3c9b152afaa4bfa0aa390b3e2063a6d" prefix="" category="inline-code"></block></block>
   <block id="33871b6190a8d5adbe8b15282054766c" category="sidebar">新增功能</block>
   <block id="bbce41d7b43eef36d5db9bed94db0495" category="sidebar">安裝相依性</block>
@@ -13047,7 +13004,6 @@
   <block id="357559d73c5bb22e54ab3aeafca1013b" category="sidebar">安裝軟體套件</block>
   <block id="3689ab983cde586722e4881cdbf1822a" category="sidebar">升級主機</block>
   <block id="3a234e68f5d62ce2d6b3d068c61605c3" category="paragraph">每個版本均隨附 MetroCluster Tiebreaker 軟體的增強功能。以下是 MetroCluster tiebreaker 最新版本的新功能。</block>
-  <block id="e6ca378bbb6d15fd110961cea50b2eb0" category="section-title">AFF C250 、 AFF A250 和 FAS500f 系統上的 ADP 和磁碟指派</block>
   <block id="91d96627fcbee13a9d474587060d13f8" category="paragraph">AFF C250 和 AFF A250 系統的磁碟指派準則和規則也適用於 FAS500f 系統。如需 FAS500f 系統上的磁碟指派、請參閱 <block ref="62481755a241b3efc5c68e4e7dd00bb5" category="inline-xref-macro-rx"></block> 表。</block>
   <block id="d39fc122b5bc72857d3bc1cb28b2528b" category="summary">您可能需要變更 FC 交換器的廠商（ Cisco 改為 Brocade 、反之亦然）、變更交換器模式或兩者。</block>
   <block id="dc97a56f45d09eb47627be2f51eaacac" category="doc">變更 FC 交換器的廠商或型號</block>
@@ -13057,7 +13013,6 @@
   <block id="12e792350f2f2a26f26efec238939f8c" category="list-text">[[Step_1 、 Step 1]] 檢查組態的健全狀況。</block>
   <block id="2aadc0e8757be310d2a25c139de10d8a" category="paragraph">請依照中的步驟進行 <block ref="71433a7a2e7b6001aee2288bc93568fd" category="inline-link-macro-rx"></block>。</block>
   <block id="4b0b73acfce5119dcc60f2f7b6dac2c4" category="list-text">按照下列順序移除連線、以中斷舊交換器的連線：</block>
-  <block id="5ad31ba7150f9832a818c89539b6baa5" category="list-text">中斷 MetroCluster IP 介面連線。</block>
   <block id="66700e9b823419320bcf568412b3c8f5" category="list-text">中斷 MetroCluster ISL 的連線。</block>
   <block id="c4f64a0c7e0a39b3f68c6c76b119f9b7" category="list-text">關閉舊交換器電源、拔下纜線、然後以新交換器實際更換舊交換器。</block>
   <block id="39c4de53c442cd522fc67edfc4cc59c8" category="list-text">依下列順序連接交換器：</block>
@@ -13230,10 +13185,6 @@
   <block id="a393732e5defe7b7a921a586e53ec51d" category="list-text">根 Aggregate 必須位於兩個站台上所有節點的分割區 3 中。</block>
   <block id="9ef6aecb7d030435d81fe80cacca477e" category="list-text">分割區和磁碟指派會在 MetroCluster 站台的初始設定期間自動執行。</block>
   <block id="82d98fe86a7b6dbc49abc0913b83f2ac" category="paragraph">ADP 會在系統初始組態期間自動執行。</block>
-  <block id="2785e39cd183c09c66a74a7aad221542" category="admonition">從 ONTAP 9.13.1 開始、您可以變更在叢集故障 * 或 * HA 配對時啟動 MAUSO 的行為。對於 HA 配對、兩個節點必須同時故障。</block>
-  <block id="3ea08f3e8da19255d966a6ac28c7c9cf" category="paragraph">您可以針對以上未列出的其他案例、啟動 MAUSO 。如需詳細資訊、請參閱 <block ref="a3a7e72ce1f5f993a44ac5e44397056b" category="inline-link-macro-rx"></block>。</block>
-  <block id="e0907a528c832799b0d1ad87758c5f86" category="inline-link-macro">深入瞭解 MetroCluster IP 組態中的 MAUSO</block>
-  <block id="b5a3168b79ae5368d7ec0db231f9a1fc" category="paragraph"><block ref="715b35e54e91f145a6041ef6c0fd6dbb" category="inline-link-macro-rx"></block>。</block>
   <block id="2d183ed725bd043df73111a219fb4c10" category="list-text">必須支援所有 MetroCluster 元件。</block>
   <block id="a6ab1915ab3c895c47d4e04f54324428" category="paragraph">您可能需要在MetroCluster 一個不知如何的IP交換器上升級RCF檔案。例如、如果您在交換器上執行的 RCF 檔案版本不受 ONTAP 版本、交換器韌體版本或兩者的支援。</block>
   <block id="3c895cdeb8d2489a220d797e54ab8b6f" category="section-title">驗證 RCF 檔案是否受支援</block>
@@ -13417,4 +13368,68 @@
   <block id="9208e559efedea4d185e467a4ad4e657" category="list-text"><block ref="9208e559efedea4d185e467a4ad4e657" category="inline-link-macro-rx"></block></block>
   <block id="c5de0a644266fc0016715f94fa5fe1e3" category="list-text">多因素驗證（MFA）可要求系統管理員使用多個使用者名稱和密碼來識別自己、藉此強化組織的安全性。雖然使用者名稱和密碼很重要、但容易遭受暴力攻擊、而且可能遭第三方竊取。</block>
   <block id="6de657c388054d5bb983a1d1351b1f89" category="list-text">Red Hat Enterprise Linux 8 提供 MFA 、要求使用者提供多項資訊、以便成功驗證帳戶或 Linux 主機。其他資訊可能是一次性密碼、透過SMS傳送到您的手機、或是從Google驗證程式、TWilio驗證或FreefP等應用程式傳送認證。</block>
+  <block id="37c5a21bd601c49050ac3301b684599c" category="list-text">Cisco 9336C-FX2 交換器有兩種不同的交換器儲存類型、在 RCF 中命名不同。請使用下表判斷您的組態適用的正確 Cisco 9336C-FX2 儲存類型：</block>
+  <block id="df31753dd5a463d7868062b7d85b4e56" category="cell">如果您要連線下列儲存設備 ...</block>
+  <block id="d78b539282fbd3ab71c056420e27d11d" category="cell">選擇 Cisco 9336C-FX2 儲存類型 ...</block>
+  <block id="b2e9c77dc19c02cc79d1cec1f3ee2fc0" category="cell">RCF 檔案橫幅 /MOTD 範例</block>
+  <block id="4123b977475c9c4828f585782db5cb61" category="list-text">直接連接的 SAS 機櫃</block>
+  <block id="e8ea5873a1121ec729327255bcb20d9a" category="list-text">直接連接的 NVMe 磁碟櫃</block>
+  <block id="415f7c0e4d1c31bd8bc9a1c226589d04" category="list-text">連接至專用儲存交換器的 NVMe 磁碟櫃</block>
+  <block id="835e845ff21a7d399948f73712506619" category="paragraph">9336C-FX2 –僅限直接儲存</block>
+  <block id="b744e858676d01c41a1f92dc2c92ce88" category="paragraph"><block ref="c88a201ac5b4f93953dedf78bec764d8" prefix="" category="inline-code"></block></block>
+  <block id="8bda241c90bb84166be9260845bd9dbd" category="list-text">連接至 MetroCluster IP 交換器的 NVMe 機櫃</block>
+  <block id="8c8b7a01f7186e24025ef8e89ee4deb8" category="admonition">至少需要一個連接乙太網路的 NVMe 機櫃</block>
+  <block id="ad87745a64591ff679affa48fe663b39" category="paragraph">9336C-FX2 – SAS 與乙太網路儲存設備</block>
+  <block id="462b36259caf681453d6d7b142217c3d" category="paragraph"><block ref="419f67b8b89585d3be41af97b158dd9e" prefix="" category="inline-code"></block></block>
+  <block id="3a9ef4ec11f1ec3fddae2461f053c31a" category="list-text">拔下 MetroCluster FC 介面。</block>
+  <block id="439c5d8621fe2376ba1455a5e5502727" category="list-text">連接 MetroCluster FC 介面。</block>
+  <block id="6a62571ce4203a1671da10509f3013e0" category="cell">AFF A900 、 ASA A900 和 FAS9500</block>
+  <block id="d7b1c9d4f2a52b2d3648ce28baa0dd5c" category="paragraph">AFF A800 、 AFF C800 、 ASA A800 和 ASA C800</block>
+  <block id="2bba389392c3b789eaa9d1c8c6fc87d2" category="paragraph">FAS8400 、 AFF A400 、 ASA A400 、 ASA C400 和 AFF C400</block>
+  <block id="2adc2b7878fdb2191078a23343a8729e" category="paragraph">FAS2750 、 AFF A150 、 ASA A150 和 AFF A220</block>
+  <block id="58783907a3fbb2ae3dd67c785764d060" category="paragraph">FAS500f 、 AFF A250 、 ASA A250 、 ASA C250 和 AFF C250</block>
+  <block id="1b2e916922e69cdb49ce0690307dd784" category="admonition">MetroCluster IP 系統沒有專用的高可用度（ HA ）連接埠。使用 ONTAP 硬體系統說明文件 _ 安裝平台時、請勿遵循指示來連接叢集和 HA 連接埠。</block>
+  <block id="689365c2d6e4fb2ffa83031a799cb8a1" category="inline-link-macro">執行手動恢復</block>
+  <block id="b6933415b566c13842c75e7153f5e0bd" category="paragraph">從ONTAP S廳9.7開始、您可以在ONTAP ESIIP組態中使用由資訊管理員輔助的自動非計畫性切換（MAUSO）MetroCluster 、也可以使用MetroCluster Setiebreaker軟體。不需要使用 MAUSO 或 Tiebreaker 軟體、但如果您選擇不使用其中任何一項服務、則必須使用 <block ref="ffc76c5e8798538fa424ea31c8f712bb" category="inline-link-macro-rx"></block> 發生災難時。</block>
+  <block id="b65bf2d95ccaa5163ee3e519ccc4f46c" category="inline-link-macro">瞭解 ONTAP Mediator 如何支援自動非計畫性切換</block>
+  <block id="79fa79dc9ecfb5181a7024131b90413f" category="paragraph"><block ref="66850f0d314a9b674fb83121fdb5639b" category="inline-link-macro-rx"></block>。</block>
+  <block id="2927bb12dad92f3aa1e9f54de7ac5c86" category="inline-link-macro">深入瞭解 MetroCluster IP 組態中的 MAUSO</block>
+  <block id="861d9a7b4136ca5c52adba1b162580b0" category="paragraph"><block ref="dedd67391845326372399eb154d21c6c" category="inline-link-macro-rx"></block>。</block>
+  <block id="88ddeb4aaff386fa8928e9ed590bcdd6" category="admonition">從ONTAP 《S廳9.12.1（支援）：MetroCluster 在MetroCluster 一套支援靜態IP的組態中、您可以啟用「自動切換」功能。此功能是由中保輔助的非計畫性切換的延伸功能。啟用此功能之前、請先檢閱 <block ref="b36331871b99d608d499593ef0805d3b" category="inline-link-macro-rx"></block>。</block>
+  <block id="6627a26235928f19183374e55b041466" category="admonition">使用此命令之前、請檢閱 <block ref="b36331871b99d608d499593ef0805d3b" category="inline-link-macro-rx"></block>。</block>
+  <block id="62dab2247ca5697a261fd865abf3712d" category="paragraph">第 4 季： Bay 36-47</block>
+  <block id="c81d9f1aaf4df29053805f321b5b089d" category="section-title">AFF A150 、 ASA A150 和 AFF A220 系統上的 ADP 和磁碟指派</block>
+  <block id="f7895982d569530633368489a09d6077" category="section-title">AFF C250 、 AFF A250 、 ASA A250 、 ASA C250 和 FAS500f 系統上的 ADP 和磁碟指派</block>
+  <block id="6a0fb9ba6a0c02751fb5fc909455894f" category="section-title">AFF C400 、 AFF A400 、 ASA C400 和 ASA A400 系統上的 ADP 和磁碟指派</block>
+  <block id="ce18baa4e98793cae29bac3255df9775" category="section-title">AFF C800 、 ASA C800 、 ASA A800 和 AFF A800 系統上的 ADP 和磁碟指派</block>
+  <block id="fbb4c9d136a3689d23c5be288b1f395e" category="section-title">AFF A900 和 ASA A900 系統上的 ADP 和磁碟指派</block>
+  <block id="fd659a09a0244eaf6b3f61e3ca61a14d" category="paragraph">ONTAP Mediator 提供信箱 LUN 來儲存 MetroCluster IP 節點的狀態資訊。這些LUN與ONTAP 運行於Linux主機上的《支援者》（不MetroCluster 含此功能）位於同一位置、而該主機與《支援者》（Sitites）實體區隔開。MetroCluster IP 節點可以使用信箱資訊來監控其災難恢復（ DR ）合作夥伴的狀態、並在發生災難時實作 Mediator 輔助的非計畫性轉換（ MAUSO ）。</block>
+  <block id="30340ec1ae42c7ca90b5fdd7fab0a4a3" category="paragraph">當節點偵測到需要切換的站台故障時、會採取步驟確認切換是否適當、如果是、則會執行切換。根據預設、會針對下列情況啟動 MAUSO ：</block>
+  <block id="44c6a8e31f1720ca268816c13cea4bb0" category="list-text">發生站台災難時。站台災難是同一個站台上 _all_ 節點的故障。</block>
+  <block id="b33abe56d950c95329c1ac6ab46d5bdc" category="paragraph">在下列關機案例中、 MAUSO 是 _ 未啟動 _ ：</block>
+  <block id="7d65c4c7a1755447eb25532fa1c05793" category="list-text">停止節點</block>
+  <block id="a31a9f4a486873e4dc3b002470885d75" category="list-text">重新啟動節點</block>
+  <block id="5839b84cc7331e1fd1cf7430c48b88bf" category="paragraph">瞭解每個 ONTAP 9 版本所提供的 MAUSO 功能。</block>
+  <block id="5959cf5fc1876c0cf2f01475b2d29319" category="cell">開始於...</block>
+  <block id="b6e60011eab2ca1cf5d6c756a1bbfc5e" category="paragraph">ONTAP 9.13.1.12.9.11.9.11.</block>
+  <block id="66d9d3437f2744347e0a591595693ad1" category="inline-xref">預設案例</block>
+  <block id="ab3336a667d96ef9c402b6a46c81bd2c" category="list-text">如果有、則會啟動 MAUSO <block ref="dde1859590d6a82ce7ac4175ed266c06" category="inline-xref-macro-rx"></block> 發生此情況時、風扇或硬體故障會啟動環境關機。硬體故障的範例包括高溫或低溫、或電源供應器單元、 NVRAM 電池或服務處理器心跳故障。</block>
+  <block id="c897ae331a6c4340c7349b2eef604de5" category="list-text">在 MetroCluster IP 組態中、故障網域的預設值設為「 auso-on-dr-group 」。對於 ONTAP 9.12.1 及更早版本、預設值設為「 auso-on － cluster-f則 災難」。</block>
+  <block id="0db9b5fe983538f75b18b32de0c2ce94" category="paragraph">在八節點的 MetroCluster IP 組態中、「 auso-on-dr-group 」會在叢集故障或一個 DR 群組中的 HA 配對時觸發 MAUSO 。對於 HA 配對、兩個節點必須同時故障。</block>
+  <block id="6d1c7c21528d53a15ceb69aaf889c3fb" category="paragraph">您也可以使用將故障網域設定變更為「 auso-on 叢集災難」網域<block ref="eabe864642c195f21f3f5dd17825dd14" prefix=" " category="inline-code"></block> 僅當兩個 DR 群組中都有 HA 節點配對故障時、才觸發 MAUSO 的命令。</block>
+  <block id="8bfc2adffc82ece0041951e3235bb8ec" category="list-text">即使在發生故障時 NVRAM 未同步、您也可以變更行為以強制 MAUSO 。</block>
+  <block id="3137bae31a11a2d4baeb8aa1cec772cb" category="paragraph">[[mauso-9-12-1]] ONTAP 9.12.1</block>
+  <block id="5c0bdfd01cd7569a98a8f9612aadbf05" category="paragraph">您可以使用在 MetroCluster IP 組態中啟用 MetroCluster 自動強制切換功能<block ref="c3c9b152afaa4bfa0aa390b3e2063a6d" prefix=" " category="inline-code"></block> 命令。</block>
+  <block id="f9de585d414ec03b35493a4744a2d4d4" category="paragraph">當您允許 MetroCluster IP 組態在自動強制切換模式下運作時、下列已知問題可能會導致資料遺失：</block>
+  <block id="154771589b1d0513667d698a89165972" category="list-text">儲存控制器中的非揮發性記憶體不會鏡射到合作夥伴站台上的遠端 DR 合作夥伴。</block>
+  <block id="6a3d2990d2a37c02edb00046af03cc1f" category="paragraph">* 注意 * ：您可能會遇到未提及的情況。NetApp對於啟用MetroCluster 「自動強制切換」功能所造成的任何資料毀損、資料遺失或其他損害概不負責。如果您無法接受風險和限制、請勿使用MetroCluster 「無法自動切換」功能。</block>
+  <block id="b5b5cc6df7a12381dec8d337a0ba502a" category="list-text">附註 2 ：只有下列系統才支援從 AFF A300 或 FAS8200 平台升級控制器、使用內建連接埠 0e 和 0f 做為 FC-VI 連線：</block>
+  <block id="865e0a67a929a26c01b4b5429126f2d7" category="list-text">ONTAP 9.9.1 及更早版本</block>
+  <block id="d0fabc1518e4f28ee6017b7168d98443" category="list-text">ONTAP 9.10.1 第 9 頁</block>
+  <block id="21493ffcb915c4b7b1c1fcd44d54a372" category="list-text">ONTAP 9.11.1P5</block>
+  <block id="dc75fcdb6131845b7d3d783394c5c6e4" category="list-text">ONTAP 9.12.1GA</block>
+  <block id="dcc3f7f0ec763ead07e62fab778e446f" category="list-text">ONTAP 9.13.1 及更新版本</block>
+  <block id="b07b13f7f6740ff05e2edecf69453d1e" category="paragraph">如需詳細資訊、請參閱 <block ref="54dac02f94a6488bb50eb2223b2531dc" category="inline-link-macro-rx"></block>。</block>
+  <block id="6c788f4f91230d4481264ef0fc97d4b2" category="inline-link-macro">瞭解 ONTAP Mediator 如何支援 MetroCluster IP 組態中的自動非計畫性切換</block>
+  <block id="83401bd8eb751fc79a9ff9e2e69be029" category="paragraph"><block ref="ff41f8886897126f1b4109a0b09cd291" category="inline-link-macro-rx"></block>。</block>
 </blocks>

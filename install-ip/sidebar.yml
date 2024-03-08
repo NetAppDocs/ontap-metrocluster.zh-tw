@@ -109,8 +109,8 @@ entries:
     url: "/install-ip/task_remove_unconfigure_mediator.html"
   - title: 將MetroCluster 一個組態連接到另ONTAP 一個不相同的「位向器」執行個體
     url: "/install-ip/task_connecting_mcc_to_different_mediator_instance.html"
-  - title: 使用MetroCluster 不全自動強制切換的風險與限制
-    url: "/install-ip/concept-risks-limitations-automatic-switchover.html"
+  - title: 如何支援自動非計畫性切換ONTAP
+    url: "/install-ip/concept-ontap-mediator-supports-automatic-unplanned-switchover.html"
 - title: 測試MetroCluster 此功能組態
   url: "/install-ip/task_test_the_mcc_configuration.html"
 - title: 移除MetroCluster 不完整組態時的考量事項

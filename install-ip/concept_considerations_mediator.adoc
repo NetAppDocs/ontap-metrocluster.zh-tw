@@ -11,7 +11,7 @@ summary: 各種MetroCluster 版本的不二組態在必要的元件上有主要�
 
 
 [role="lead"]
-從ONTAP S廳9.7開始、您可以在ONTAP ESIIP組態中使用由資訊管理員輔助的自動非計畫性切換（MAUSO）MetroCluster 、也可以使用MetroCluster Setiebreaker軟體。只有這兩項服務的其中一項可搭配MetroCluster 使用。
+從ONTAP S廳9.7開始、您可以在ONTAP ESIIP組態中使用由資訊管理員輔助的自動非計畫性切換（MAUSO）MetroCluster 、也可以使用MetroCluster Setiebreaker軟體。不需要使用 MAUSO 或 Tiebreaker 軟體、但如果您選擇不使用其中任何一項服務、則必須使用 link:../disaster-recovery/concept_dr_workflow.html["執行手動恢復"] 發生災難時。
 
 不同MetroCluster 的功能組態會在不同情況下自動切換：
 
@@ -24,8 +24,7 @@ summary: 各種MetroCluster 版本的不二組態在必要的元件上有主要�
 在這些組態中、MAUSO會在與AUSO相同的情況下啟動、如前所述、也會在完整站台故障（控制器、儲存設備和交換器）之後啟動。
 
 +
-
-NOTE: 只有在非揮發性快取鏡射（_DR鏡射_）和SyncMirror 鏡射在故障時同步時、才會啟動MAUSO。
+link:concept-ontap-mediator-supports-automatic-unplanned-switchover.html["瞭解 ONTAP Mediator 如何支援自動非計畫性切換"]。
 
 * *使用主動模式下的Tiebreaker軟體進行IP或FC組態* MetroCluster
 +
@@ -42,38 +41,5 @@ NOTE: 只有在非揮發性快取鏡射（_DR鏡射_）和SyncMirror 鏡射在�
 
 您無法搭配ONTAP 使用任何可觸發切換的第三方應用程式或應用裝置、以搭配使用「媒體資訊器」。此外MetroCluster 、使用「SIESITERator」時、不支援使用MetroCluster ESITERE斷路 器軟體監控任何一個ESITESE組態ONTAP 。
 
-
-
-== 如何支援自動非計畫性切換ONTAP
-
-《支援者》將有關「支援中心」主機上信箱的「支援中心」節點狀態資訊儲存在內。ONTAP MetroClusterMetroCluster 節點可以使用此資訊來監控其 DR 合作夥伴的狀態、並在發生災難時實作 MAUSO 。
-
-當節點偵測到需要切換的站台故障時、會採取步驟確認切換是否適當、如果是、則會執行切換。
-
-MAUSO只會在下列情況下啟動：
-
-* 每個節點的非揮發性快取都在運作中、而且快取和鏡像會在故障時同步。SyncMirror
-* 在正常運作的站台上、沒有任何節點處於接管狀態。
-* 發生站台災難時。站台災難是同一站台 * 所有 * 節點的故障。
-+
-
-NOTE: 從 ONTAP 9.13.1 開始、您可以變更在叢集故障 * 或 * HA 配對時啟動 MAUSO 的行為。對於 HA 配對、兩個節點必須同時故障。
-
-* 從 ONTAP 9.13.1 開始、如果符合上述條件、且風扇或硬體故障會啟動環境關機、例如電源供應器單元、 NVRAM 電池或服務處理器心跳故障、或高溫或低溫。
-
-
-您可以針對以上未列出的其他案例、啟動 MAUSO 。如需詳細資訊、請參閱 link:concept-risks-limitations-automatic-switchover.html["使用MetroCluster 不全自動強制切換的風險與限制"]。
-
-在下列關機案例中*未*啟動MAUSO：
-
-* 您已啟動關機。例如、當您：
-+
-** 停止節點
-** 重新啟動節點
-
-
-
-
-*相關資訊*
-
+.相關資訊
 link:../manage/concept_understanding_mcc_data_protection_and_disaster_recovery.html#mediator-assisted-automatic-unplanned-switchover-in-metrocluster-ip-configurations["深入瞭解 MetroCluster IP 組態中的 MAUSO"]。
