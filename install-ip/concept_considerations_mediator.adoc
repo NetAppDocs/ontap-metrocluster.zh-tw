@@ -40,6 +40,3 @@ link:concept-ontap-mediator-supports-automatic-unplanned-switchover.html["瞭解
 == 不受任何應用程式與應用程式與應用裝置之間的互通性ONTAP
 
 您無法搭配ONTAP 使用任何可觸發切換的第三方應用程式或應用裝置、以搭配使用「媒體資訊器」。此外MetroCluster 、使用「SIESITERator」時、不支援使用MetroCluster ESITERE斷路 器軟體監控任何一個ESITESE組態ONTAP 。
-
-.相關資訊
-link:../manage/concept_understanding_mcc_data_protection_and_disaster_recovery.html#mediator-assisted-automatic-unplanned-switchover-in-metrocluster-ip-configurations["深入瞭解 MetroCluster IP 組態中的 MAUSO"]。

@@ -12123,7 +12123,6 @@
   <block id="a7c1dc82620aa47d13a5325a92e48b8b" category="paragraph">如果您發現已設定上述任何項目、則可能無法套用新的RCF檔案組態。不過、您可以重新載入交換器*而不將執行中的組態儲存至啟動組態、以回復到先前的組態。交換器會顯示先前的組態。</block>
   <block id="b96e894aca032efb6ce18c3fee836f2e" category="list-text">套用RCF檔案並確認連接埠已上線。</block>
   <block id="57eec47f7c1d3f7c578a164a838dcb88" category="list-text">套用RCF檔案。</block>
-  <block id="f3f957cad54a09303c58187ea562c4e0" category="admonition">套用組態時會出現一些警告訊息。不需要錯誤訊息。</block>
   <block id="94f2f59cf614fa38bf778db2f227f97f" category="list-text">套用組態之後、請使用MetroCluster 下列命令之一「show interface brief」、「show cup neighbor」或「show LLDP鄰近設備」來確認叢集和列舉的各個連接埠是否已上線</block>
   <block id="36654f0d51aef3cf2ff1ad8320086412" category="admonition">如果您變更本機叢集的VLAN、並在站台升級第一台交換器、則叢集健全狀況監控可能不會將狀態報告為「健全」、因為舊組態和新組態的VLAN不相符。更新第二個交換器之後、狀態應恢復正常。</block>
   <block id="d83d3a40a56d46ffaf1367b944bbd493" category="paragraph">如果組態未正確套用、或您不想保留組態、您可以重新載入交換器*而不將執行中的組態儲存為啟動組態、以回復到先前的組態。交換器會顯示先前的組態。</block>
@@ -12975,7 +12974,6 @@
   <block id="64b48b15797ae9ce8dde94af89070b3d" category="paragraph">搭配 Red Hat Enterprise Linux 8.1 至 8.7 ：</block>
   <block id="389dbd9d6deb8eabbab651256bf77680" category="list-text">OpenJDK 17 、 18 或 19</block>
   <block id="9e605ce3bb6ad134bb55c54d861ceb6a" category="paragraph">1.4.</block>
-  <block id="d1b3737d5bc8f98b3241666f4d0cd1cf" category="paragraph">ONTAP 9.2 及更新版本</block>
   <block id="09eecd50480033ff43835a86efed6607" category="list-text">Red Hat Enterprise Linux 7 至 7.9</block>
   <block id="ae1dfcc629f4542382fd6286dbfe5a0d" category="list-text">CentOS 7 至 7.9 64 位元</block>
   <block id="3f4ac8596d411de0ef0ad341cbeb82aa" category="paragraph">使用 CentOS ：</block>
@@ -13393,8 +13391,6 @@
   <block id="b6933415b566c13842c75e7153f5e0bd" category="paragraph">從ONTAP S廳9.7開始、您可以在ONTAP ESIIP組態中使用由資訊管理員輔助的自動非計畫性切換（MAUSO）MetroCluster 、也可以使用MetroCluster Setiebreaker軟體。不需要使用 MAUSO 或 Tiebreaker 軟體、但如果您選擇不使用其中任何一項服務、則必須使用 <block ref="ffc76c5e8798538fa424ea31c8f712bb" category="inline-link-macro-rx"></block> 發生災難時。</block>
   <block id="b65bf2d95ccaa5163ee3e519ccc4f46c" category="inline-link-macro">瞭解 ONTAP Mediator 如何支援自動非計畫性切換</block>
   <block id="79fa79dc9ecfb5181a7024131b90413f" category="paragraph"><block ref="66850f0d314a9b674fb83121fdb5639b" category="inline-link-macro-rx"></block>。</block>
-  <block id="2927bb12dad92f3aa1e9f54de7ac5c86" category="inline-link-macro">深入瞭解 MetroCluster IP 組態中的 MAUSO</block>
-  <block id="861d9a7b4136ca5c52adba1b162580b0" category="paragraph"><block ref="dedd67391845326372399eb154d21c6c" category="inline-link-macro-rx"></block>。</block>
   <block id="88ddeb4aaff386fa8928e9ed590bcdd6" category="admonition">從ONTAP 《S廳9.12.1（支援）：MetroCluster 在MetroCluster 一套支援靜態IP的組態中、您可以啟用「自動切換」功能。此功能是由中保輔助的非計畫性切換的延伸功能。啟用此功能之前、請先檢閱 <block ref="b36331871b99d608d499593ef0805d3b" category="inline-link-macro-rx"></block>。</block>
   <block id="6627a26235928f19183374e55b041466" category="admonition">使用此命令之前、請檢閱 <block ref="b36331871b99d608d499593ef0805d3b" category="inline-link-macro-rx"></block>。</block>
   <block id="62dab2247ca5697a261fd865abf3712d" category="paragraph">第 4 季： Bay 36-47</block>
@@ -13432,4 +13428,11 @@
   <block id="b07b13f7f6740ff05e2edecf69453d1e" category="paragraph">如需詳細資訊、請參閱 <block ref="54dac02f94a6488bb50eb2223b2531dc" category="inline-link-macro-rx"></block>。</block>
   <block id="6c788f4f91230d4481264ef0fc97d4b2" category="inline-link-macro">瞭解 ONTAP Mediator 如何支援 MetroCluster IP 組態中的自動非計畫性切換</block>
   <block id="83401bd8eb751fc79a9ff9e2e69be029" category="paragraph"><block ref="ff41f8886897126f1b4109a0b09cd291" category="inline-link-macro-rx"></block>。</block>
+  <block id="8ee0349da94a79740c2458822156c3f3" category="paragraph">ONTAP 9.13.1 及更早版本</block>
+  <block id="58ff5f456710e2c10351958a374f1bae" category="paragraph">更新版本ONTAP</block>
+  <block id="0b0ec9f1cc28b3c19dc6c36dcd5af7cc" category="paragraph">1.3.</block>
+  <block id="7477ed6488d6dd27883a39484d4cd5f8" category="paragraph">ONTAP 9.10.1 及更早版本</block>
+  <block id="09e34111ef8649a5302b1889e0c7d303" category="list-text">JRE 8.</block>
+  <block id="d434765df1b814e459b22676bed43318" category="paragraph">1.21Px</block>
+  <block id="b3c0f57dcdb05faa9fbc38832a492a4e" category="admonition">套用組態時會出現一些警告訊息。通常不需要錯誤訊息。不過、如果您使用 SSH 登入、可能會收到下列錯誤：<block ref="f6ffe33fb36eb714adf6f81147c665f6" prefix=" " category="inline-code"></block></block>
 </blocks>
