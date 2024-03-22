@@ -1,17 +1,17 @@
 ---
-permalink: install-ip/task_modify_ip_netmask_gateway_properties.html 
+permalink: maintain/task-modify-ip-netmask-properties.html 
 sidebar: sidebar 
 keywords: vlan, ip, gateway,netmask, address, network, interface, subnet 
 summary: 您可以變更MetroCluster 下列的屬性：EIP介面、IP位址和遮罩、以及閘道。您可以使用任何參數組合來更新。 
 ---
-= 修改MetroCluster 位址、網路遮罩和閘道、使其位於一個靜態IP中
+= 在 MetroCluster IP 組態中修改位址、網路遮罩和閘道
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-從ONTAP 《E59.10.1》開始、您可以變更MetroCluster 下列的EIP介面屬性：IP位址和遮罩、以及閘道。您可以使用任何參數組合來更新。
+從ONTAP 版本號《E59.10.1》開始、您可以變更MetroCluster 下列功能：IP位址和遮罩、以及閘道。您可以使用任何參數組合來更新。
 
 例如、如果偵測到重複的IP位址、或是因為路由器組態變更而需要變更第3層網路的閘道、您可能需要更新這些內容。
 
@@ -29,25 +29,22 @@ NOTE: 這些命令會變更特定連接埠之特定節點的組態。若要還�
 == 修改IP位址、網路遮罩和閘道
 
 . 更新單一節點和介面的IP位址、網路遮罩和閘道：MetroCluster 「修改組態設定介面」
-
-
++
 下列命令顯示如何更新IP位址、網路遮罩和閘道：
 
++
 [listing]
 ----
 cluster_A::* metrocluster configuration-settings interface modify -cluster-name cluster_A -home-node node_A_1 -home-port e0a-10 -address 192.168.12.101 -gateway 192.168.12.1 -netmask 255.255.254.0
 (metrocluster configuration-settings interface modify)
-
 Warning: This operation will disconnect and reconnect iSCSI and RDMA connections used for DR protection through port “e0a-10”. Partner nodes may need modifications for port “e0a-10” in order to completely establish network connectivity.
 Do you want to continue?" yes
-
 [Job 28] Setting up iSCSI target configuration. (pass2:iscsi13:0:-1:0): xpt_action_default: CCB type 0xe XPT_DEV_ADVINFO not supported
 [Job 28] Establishing iSCSI initiator connections.
 (pass6:iscsi14:0:-1:0): xpt_action_default: CCB type 0xe XPT_DEV_ADVINFO not supported
 (pass8:iscsi15:0:-1:0): xpt_action_default: CCB type 0xe XPT_DEV_ADVINFO not supported
 (pass9:iscsi16:0:-1:0): xpt_action_default: CCB type 0xe XPT_DEV_ADVINFO not supported
 [Job 28] Job succeeded: Interface Modify is successful.
-
 cluster_A::*> metrocluster configuration-settings interface modify -cluster-name cluster_A -home-node node_A_2 -home-port e0a-10 -address 192.168.12.201 -gateway 192.168.12.1 -netmask 255.255.254.0
 (metrocluster configuration-settings interface modify)
 Warning: This operation will disconnect and reconnect iSCSI and RDMA connections used for DR protection through port “e0a-10”. Partner nodes may need modifications for port “e0a-10” in order to completely establish network connectivity.
@@ -55,10 +52,10 @@ Do you want to continue?" yes
 [Job 28] Job succeeded: Interface Modify is successful
 ----
 . [[step2]]確認所有連線功能都適用於所有介面：MetroCluster 「介紹組態設定介面」
-
-
++
 下列命令說明如何驗證所有連線功能是否適用於所有介面：
 
++
 [listing]
 ----
 cluster_A::*> metrocluster configuration-settings interface show
@@ -87,11 +84,16 @@ Group Cluster Node    Network Address Netmask         Gateway         State
                       192.168.21.250  255.255.255.0   192.168.21.1    completed
 8 entries were displayed.
 ----
-. [[step3]確認所有連線都正常運作：MetroCluster 「顯示組態設定連線」
 
 
+. [[step3]] 確認所有連線均正常運作：
++
+「組態設定連線顯示」MetroCluster
+
++
 下列命令顯示如何驗證所有連線是否正常運作：
 
++
 [listing]
 ----
 cluster_A::*> metrocluster configuration-settings connection show
@@ -126,3 +128,4 @@ Group Cluster Node    Network Address Network Address Partner Type Config State
                  Home Port: e0b-20
                       192.168.20.100  192.168.21.250  DR Auxiliary completed
 ----
+

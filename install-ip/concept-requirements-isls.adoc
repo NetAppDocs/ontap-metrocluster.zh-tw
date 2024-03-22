@@ -1,0 +1,191 @@
+---
+permalink: install-ip/concept-requirements-isls.html 
+sidebar: sidebar 
+keywords: isl, isls, layer 2, layer 3, shared switch 
+summary: 本節包含在所有 MetroCluster IP 組態和網路拓撲上傳輸 MetroCluster 流量的交換器間連結（ ISL ）需求。 
+---
+= ISL的考量
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+在所有 MetroCluster IP 組態和網路拓撲上傳輸 MetroCluster 流量的交換器間連結（ ISL ）具有特定需求。這些要求適用於所有承載 MetroCluster 流量的 ISL 、無論 ISL 是直接的還是在客戶交換器之間共用。
+
+
+
+== 一般 MetroCluster ISL 要求
+
+以下內容適用於所有 MetroCluster IP 組態上的 ISL ：
+
+* 兩個 Fabric 都必須有相同數量的 ISL 。
+* 一個 Fabric 上的 ISL 必須都是相同的速度和長度。
+* 兩種架構中的 ISL 必須相同的速度和長度。
+* Fabric 1 和 Fabric 2 之間的最大支援距離差異為 20 公里或 0.2 毫秒。
+* 一個架構上的 ISL 必須具有相同的拓撲。例如、它們都應該是直接連結、或者如果組態使用的是 WDM 、則它們都必須使用 WDM 。
+* ISL 速度必須至少為 10Gbps 。
+* 每個架構必須至少有一個 10Gbps ISL 連接埠。
+
+
+
+
+=== ISL的延遲和封包遺失限制
+
+以下內容適用於站台 _A 和站台 _B 的 MetroCluster IP 交換器之間的往返流量、 MetroCluster 組態處於穩定狀態作業：
+
+* 隨著兩MetroCluster 個不景點之間的距離增加、延遲也會增加、通常介於每100公里（62英哩）往返延遲1毫秒的範圍內。延遲也取決於網路服務層級協議（ SLA ）、例如 ISL 連結的頻寬、封包丟棄率和網路上的抖動。低頻寬、高抖動和隨機封包掉落會導致交換器或控制器模組上的 TCP 引擎產生不同的恢復機制、以成功傳輸封包。這些恢復機制可提高整體延遲。如需有關組態的往返延遲和最大距離要求的詳細資訊、請參閱 link:https://hwu.netapp.com/["系統Hardware Universe 。"^]
+* 任何造成延遲的裝置都必須列入考量。
+* 。 link:https://hwu.netapp.com/["系統Hardware Universe 。"^] 提供以公里為間隔的距離您必須每 100 公里分配 1 毫秒。最大距離是根據先達到的距離、以毫秒為單位的最大往返時間（ RTT ）、或以公里為單位的距離來定義例如：如果 _ The Hardware Universe _ 列出 300 公里的距離、轉譯為 3 毫秒、則您的 ISL 不得超過 300 公里、最大 RTT 不得超過 3 毫秒、以先達到者為準。
+* 封包遺失必須小於或等於 0.01% 。最大封包遺失量是 MetroCluster 節點之間路徑上所有連結的全部遺失和本機 MetroCluster IP 介面上的遺失總和。
+* 支援的往返抖動值為 3ms （對於單向而言為 1.5ms ）。
+* 網路應配置及維護 MetroCluster 流量所需的 SLA 頻寬量、無論流量有多少微脈衝和尖峰流量。
+* 如果您使用的是 ONTAP 9.7 或更新版本、則兩個站台之間的中間網路必須提供最低 4.5Gbps 的頻寬、才能進行 MetroCluster IP 組態。
+
+
+
+
+== 收發器和纜線考量事項
+
+任何由設備廠商支援的SFP或QSFP、都可支援MetroCluster 支援支援功能。交換器與交換器韌體必須支援 NetApp 或設備廠商所提供的 SFP 和 QSFP 。
+
+將控制器連接至交換器和本機叢集 ISL 時、您必須使用 NetApp 隨 MetroCluster 提供的收發器和纜線。
+
+
+
+== 使用 xWDM 、 TDM 和外部加密裝置
+
+當您在 MetroCluster IP 組態中使用 xWDM/TDM 裝置或提供加密的裝置時、您的環境必須符合下列需求：
+
+* 將 MetroCluster IP 交換器連線至 xWDM/TDM 時、外部加密裝置或 xWDM/TDM 設備必須經過交換器和韌體廠商的認證。認證必須涵蓋作業模式（例如主幹和加密）。
+* 端點對端點的整體延遲和抖動（包括加密）不能超過 IMT 和本文件中所述的最大值。
+
+
+
+
+== 支援的 ISL 和中斷連接線數量
+
+下表顯示可在 MetroCluster IP 交換器上使用參考組態檔案（ RCF ）組態設定的支援最大 ISL 數。
+
+|===
+
+
+| IP交換器機型MetroCluster | 連接埠類型 | ISL 的最大數量 
+
+
+ a| 
+Broadcom支援的Bes - 53248交換器
+ a| 
+原生連接埠
+ a| 
+使用 10Gbps 或 25Gbps 的 4 個 ISL
+
+
+
+ a| 
+Broadcom支援的Bes - 53248交換器
+ a| 
+原生連接埠（附註 1 ）
+ a| 
+2 個使用 40Gbps 或 100Gbps 的 ISL
+
+
+
+ a| 
+Cisco 3132Q-V
+ a| 
+原生連接埠
+ a| 
+6 ISL 使用 40Gbps
+
+
+
+ a| 
+Cisco 3132Q-V
+ a| 
+中斷連接線
+ a| 
+使用 10Gbps 的 16 個 ISL
+
+
+
+ a| 
+Cisco 3232C
+ a| 
+原生連接埠
+ a| 
+6 個 ISL 、使用 40Gbps 或 100Gbps
+
+
+
+ a| 
+Cisco 3232C
+ a| 
+中斷連接線
+ a| 
+使用 10Gbps 的 16 個 ISL
+
+
+
+ a| 
+Cisco 9336C-FX2（未連接NS224磁碟櫃）
+ a| 
+原生連接埠
+ a| 
+6 個 ISL 、使用 40Gbps 或 100Gbps
+
+
+
+ a| 
+Cisco 9336C-FX2（未連接NS224磁碟櫃）
+ a| 
+中斷連接線
+ a| 
+16 ISL 、使用 10
+
+
+
+ a| 
+Cisco 9336C-FX2（連接NS224磁碟櫃）
+ a| 
+原生連接埠（附註 2 ）
+ a| 
+4 個使用 40Gbps 或 100Gbps 的 ISL
+
+
+
+ a| 
+Cisco 9336C-FX2（連接NS224磁碟櫃）
+ a| 
+中斷連接線（附註 2 ）
+ a| 
+使用 10Gbps 的 16 個 ISL
+
+
+
+ a| 
+NVIDIA SN2100
+ a| 
+原生連接埠（附註 2 ）
+ a| 
+2 個使用 40Gbps 或 100Gbps 的 ISL
+
+
+
+ a| 
+NVIDIA SN2100
+ a| 
+中斷連接線（附註 2 ）
+ a| 
+使用 10Gbps 或 25Gbps 的 8 個 ISL
+
+|===
+* 附註 1* ：在 BS-53248 交換器上使用 40Gbps 或 100Gbps ISL 需要額外授權。
+
+* 附註 2 * ：相同的連接埠用於原生速度和中斷模式。建立 RCF 檔案時、您必須選擇以原生速度模式或中斷模式使用連接埠。
+
+* 一台 MetroCluster IP 交換器上的所有 ISL 速度必須相同。不支援同時使用速度不同的 ISL 連接埠。
+* 為了達到最佳效能、每個網路至少應使用一個 40Gbps ISL 。FAS9000 、 AFF A700 或其他高容量平台不應使用每個網路的單一 10Gbps ISL 。
+
+
+
+NOTE: NetApp 建議您設定少量的高頻寬 ISL 、而非大量的低頻寬 ISL 。例如、最好設定一個 40Gbps ISL 、而非四個 10Gbps ISL 。使用多個 ISL 時、統計負載平衡可能會影響最大處理量。不均勻的平衡可降低單一 ISL 的處理量。

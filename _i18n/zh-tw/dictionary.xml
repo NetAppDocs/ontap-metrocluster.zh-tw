@@ -393,23 +393,8 @@
   <block id="f0c4d23b82531840374581ef188b7b09" category="section-title">FAS9000系統上的磁碟指派</block>
   <block id="b31528d4d44f8ae9a9a8ee050022bd35" category="paragraph">磁碟櫃上的磁碟機分為兩個等群組（兩個半）。每個半磁碟櫃都會自動指派給個別的資源池。</block>
   <block id="be5a9d84104acabcf72390a8802c63db" category="paragraph">支援的磁碟機下限（每個站台）（主動/被動HA組態）</block>
-  <block id="19d820a9221f4c3142921037b434a337" category="summary">在MetroCluster 使用支援多工處理設備的過程中、您應該注意某些考量事項。</block>
-  <block id="879911f6e225e29ff8e098fa74f5ff53" category="doc">使用TDM/xWDM和加密設備搭配MetroCluster 使用、並提供不完整的IP組態</block>
-  <block id="c1c2a0409868d06a74bf1b3203711a03" category="paragraph">這些考量僅適用於直接、專用MetroCluster 的背後鏈結和交換器、而非與非MetroCluster流量共享的連結。</block>
-  <block id="e9557f8098c7727893e65c1b6a2e977b" category="paragraph">此功能提供一些關於TDM/xWDM設備在使用該IP組態時必須符合的需求的注意事項。Hardware Universe MetroCluster</block>
-  <block id="4a3cb00dbc665a78cfbd19ade6a9ff95" category="section-title">在WDM或外部加密裝置上使用加密</block>
-  <block id="eb2492c73c4c4ff8b6d6fa30c78306b3" category="paragraph">在採用「以靜態IP組態」的WDM裝置上使用加密MetroCluster 時、您的環境必須符合下列需求：</block>
-  <block id="8ee32e06f78f7dec719f3b73b0878e94" category="list-text">外部加密裝置或DWDWR設備必須已通過相關交換器的廠商認證。</block>
-  <block id="68d9a2569dbad6c1e8772013f1aafac9" category="paragraph">認證應涵蓋作業模式（例如主幹連線和加密）。</block>
-  <block id="086e8208bc8bdabded9057c56fa703ab" category="list-text">端點對端點的整體延遲和不穩定性（包括加密）不能超過IMT 本文檔中所述的最大值。</block>
-  <block id="4c592893625bfd66101dc3598e44db86" category="section-title">SFP考量</block>
-  <block id="16c5d56f540f017cc98cc397c77b811a" category="paragraph">任何由設備廠商支援的SFP或QSFP、都可支援MetroCluster 支援支援功能。SFP和QSFP可向NetApp或設備廠商購買。</block>
   <block id="1c2ac66406fbd86dae3a5ebc91801648" category="section-title">ISL的考量</block>
   <block id="be0b6f12de0b0ca96727b409aae71fff" category="paragraph">單一架構上的ISL應該都是相同的速度和長度。</block>
-  <block id="038405b3bd431b24c757922ba1e38abb" category="paragraph">單一架構上的ISL應該都具有相同的拓撲。例如、它們都應該是直接連結、或者如果組態使用的是WDM、則它們都應該使用WDM。</block>
-  <block id="36e19271cbd156de524b5ae13872cb4f" category="inline-link-macro">共享私有第2層網路的考量</block>
-  <block id="957f130ae934815da7e3f565a1d9e150" category="paragraph">如果您要與非MetroCluster網路共用ISL、則必須遵循一節中的準則 <block ref="dbac327de76ab613d0e2b5848ebc320c" category="inline-link-macro-rx"></block>。</block>
-  <block id="33fc3bd0047ef5d3f8fb4a1a8611e593" category="paragraph">Fabric 1與Fabric 2之間的最大支援距離差異為20公里</block>
   <block id="744dd62dbddcfc9601b7e3e7d7cfc329" category="summary">您必須對等處理叢集、鏡射根Aggregate、建立鏡射資料Aggregate、然後發出命令來實作MetroCluster 該等作業系統。</block>
   <block id="7b0d27454ef980cc3577cf44e3462c41" category="doc">將叢集設定成MetroCluster 一個不只是一個的組態</block>
   <block id="ac7917291cfd7cf0825f39be0d3818c1" category="section-title">停用自動磁碟機指派（如果在ONTAP 功能更新9.4中進行手動指派）</block>
@@ -1088,87 +1073,32 @@
   <block id="2ad434ab593fd445c83cdbf1d5d00216" category="section-title">在堆疊中混合IOM12和IOM 6模組</block>
   <block id="697ea025ecb303d4f40d1bf3a8b4bde0" category="inline-link">NetApp互通性對照表工具IMT （不含）</block>
   <block id="420766222a929fd9b32b65dbb060314b" category="inline-link">將含有IOM12模組的熱新增磁碟櫃放到具有IOM6模組的磁碟櫃堆疊中</block>
-  <block id="01fe01722f1775c1b67e7b20a14951de" category="summary">從功能支援的9.9開始ONTAP 、MetroCluster 即可透過IP路由（第3層）後端連線來實作支援的IP組態。</block>
   <block id="4b7a16d6d162a666fd84016cdf343a72" category="paragraph">後端交換器可直接連線至路由IP網路、或直接連線至路由器（如下列簡化範例所示）、或透過其他介入式交換器連線。MetroCluster</block>
   <block id="39a69537fd3d24cb81ea2bc0e26adec5" category="image-alt">MCC layer3後端</block>
   <block id="ef8a86bee8843988ee84e3ebf370fee9" category="inline-link-macro">IP交換器佈線</block>
-  <block id="190cbd15f1cbbd86a76eac6847a93472" category="admonition">NetApp僅支援NetApp驗證的交換器。這些交換器均由NetApp測試與銷售。它們會列在中 <block ref="d4ffdef7e991262a330f44b113eb81ba" category="inline-link-macro-rx"></block> 和 <block ref="d708b823ca770dd1bbb2d28ee68bd021" category="inline-link-macro-rx"></block>。</block>
   <block id="fe77866a46d2eb6a7c2af4e6da3afb40" category="inline-link-macro">設定MetroCluster 靜態硬體元件</block>
-  <block id="b16f070ef0ff70f134e9de232ff4d07d" category="paragraph">如所述、將此環境設定為標準的靜態IP組態、並以纜線連接MetroCluster MetroCluster <block ref="1f208108354e7662d904d86579319d48" category="inline-link-macro-rx"></block>。執行安裝和佈線程序時、您必須執行第3層組態的特定步驟：</block>
-  <block id="50355476e9050b2a291f3aee1615aa53" category="list-text">這個交換器可直接連接到路由器或一或多個介入交換器。MetroClusterVLAN必須延伸至閘道裝置。</block>
-  <block id="0e94eed6c84ca698067d35e27e2c2b56" category="list-text">您可以使用「-gateway]參數、以MetroCluster IP閘道位址來設定靜態IP（MCC-IP）介面位址。</block>
-  <block id="8f02ff97112ef08ffb62f88c80b6aab7" category="paragraph">設定路由器和閘道IP位址時、請確保符合下列需求：</block>
-  <block id="254c2137e0390496acb79dd0bc699a37" category="list-text">在每個節點上、兩個介面不能具有相同的閘道IP位址。</block>
   <block id="7529321ce137d7312b6e8ba5d13f21e9" category="list-text">每個站台上HA配對上的對應介面必須具有相同的閘道IP位址。</block>
   <block id="c2fdaa32e3c40d58194e8a3db0bc7230" category="list-text">節點及其DR和輔助合作夥伴上的對應介面不能具有相同的閘道IP位址。</block>
   <block id="f9444a19576866e65f0aef4edcc3a6f3" category="list-text">節點及其DR和輔助合作夥伴上的對應介面必須具有相同的VLAN ID。</block>
-  <block id="0c0528f146b2a317df8f2dcc9f042cba" category="paragraph">這個功能VLAN必須從邊緣的交換器延伸到閘道路由器、才能使路由器的資訊流量到達閘道（請參閱上圖）MetroCluster MetroCluster MetroCluster 。每個站台的「不支援VLAN」VLAN ID MetroCluster 必須相同。不過、子網路可能會有所不同。</block>
-  <block id="fbe952f2d6d84cc85d1e1f8f557ede0e" category="paragraph">您可以使用RcfFileGenerator.工具所建立的RCF檔案。在RCF節點與MetroCluster 閘道路由器之間的網路必須提供與RCF檔案中設定相同的VLAN ID。</block>
-  <block id="b9190193c292a0ff200a479f4f92d534" category="section-title">IP路由網路需求</block>
-  <block id="c6c1faa8edb04466748eaa20b9f1af27" category="paragraph">IP路由網路必須符合下列需求：</block>
-  <block id="827f9b527fbba564ef9eced1f2580e8f" category="inline-link-macro">基本功能ISL需求MetroCluster</block>
-  <block id="8bbac031447994e5b8b245f9bb913a6e" category="list-text"><block ref="8bbac031447994e5b8b245f9bb913a6e" category="inline-link-macro-rx"></block></block>
-  <block id="7b271aec8b32a0f14193aee31d2831c3" category="inline-link-macro">共享第2層網路的ISL需求</block>
-  <block id="b0a09f47597f8af9c573c32b664dfa45" category="list-text"><block ref="b0a09f47597f8af9c573c32b664dfa45" category="inline-link-macro-rx"></block></block>
   <block id="67500937686453a2388ecdf97823b682" category="inline-link-macro">中繼交換器上的必要設定</block>
-  <block id="377c20999d3a2f2bf6430aba5269fa35" category="list-text"><block ref="377c20999d3a2f2bf6430aba5269fa35" category="inline-link-macro-rx"></block></block>
   <block id="33fea8e13b43fdb7df3cb24e51cc42c4" category="list-text">不支援MetroCluster 動態路由傳送給不支援的資訊流量。</block>
-  <block id="b6a9903c2ef511ee44c51b65db292bf6" category="list-text">僅MetroCluster 支援四節點的不支援組態（每個站台有兩個節點）。</block>
   <block id="b793654a30cf8567ed25af895400affb" category="list-text">每MetroCluster 個站台都需要兩個子網路、每個網路都需要一個子網路。</block>
   <block id="4ef3b220e04ca274abbe1def1b61d2bc" category="list-text">不支援自動IP指派。</block>
   <block id="ff63653e290a8e5b339966cb9855555f" category="summary">移除MetroCluster 完「支援」組態之後、所有磁碟連線和互連都應調整為支援狀態。如果您需要移除MetroCluster 該組態、請聯絡技術支援部門。</block>
   <block id="882861c4cbc2720bbf7b9b7ae1dbada9" category="doc">移除MetroCluster 不完整組態時的考量事項</block>
   <block id="09bf7c8746b0eccb2f8b87d398db4ad3" category="doc">安裝與組態MetroCluster</block>
   <block id="62f7ef95a1a4f5a1e459930846582588" category="list-text">您想要使用命令列介面（CLI）、而非自動化指令碼工具。</block>
-  <block id="8f40f02b2069b8947b976e569e5762e5" category="summary">從ONTAP 支援MetroCluster 的Cisco交換器的支援範本支援的靜態IP組態、開始可以共享現有的ISL網路、而非使用專用MetroCluster 的功能性ISL。</block>
-  <block id="137fb6b7668b4dc771dba830f9525b67" category="paragraph">從ONTAP 支援MetroCluster 的Cisco交換器的支援範本支援的靜態IP組態、開始可以共享現有的ISL網路、而非使用專用MetroCluster 的功能性ISL。早期ONTAP 版本需要專用ISL。</block>
-  <block id="26a46433a2f75a74966a962fd286906b" category="paragraph">不支援使用支援靜態組態的IP交換器、因此無法共享。MetroCluster MetroCluster因此MetroCluster 、一組靜態IP交換器只能連接一個MetroCluster 靜態組態。只有位於靜態IP交換器上的靜態ISL連接埠可以連接至共享交換器。MetroCluster MetroCluster</block>
-  <block id="8ac8df48acb2ee9b6d05e12a33e47a64" category="admonition">如果使用共享網路、客戶必須負責滿足MetroCluster 共享網路中的需求。</block>
   <block id="967e7fe5e26ac9c522059f0a938773bb" category="section-title">ISL需求</block>
-  <block id="7785ade42189cf6d11ccb19313c44f6f" category="paragraph">您必須符合下列條件：</block>
-  <block id="2824c9af33977c76eaa395e6e43f06cf" category="paragraph">在共享網路中共享ISL流量時、客戶所提供的中繼交換器組態必須確保MetroCluster 整個MetroCluster 路徑之間的整個路徑中、均符合要求的服務層級（RDMA和儲存設備）。</block>
-  <block id="65d2eae171038871014da39c8ce5212d" category="paragraph">以下是Cisco Nexus 3000交換器和IP Broadcom交換器的範例。視交換器廠商和機型而定、您必須確保中繼交換器具有相同的組態。</block>
-  <block id="c6300f8f433dd2ce7fbf121a8739ab01" category="section-title">Cisco Nexus交換器</block>
-  <block id="97b5c02d2e6962aa18f521d8e70f5be1" category="paragraph">下圖概述當外部交換器為Cisco交換器時、所需的共用網路設定。</block>
   <block id="6c3d514454f211b4331e09486e926e74" category="image-alt">使用Cisco交換器交換流量</block>
   <block id="60878e723ef52f68f389c7c8fd6c072c" category="paragraph">在此範例中、我們會針對MetroCluster 某些流量建立下列原則和地圖：</block>
-  <block id="b167c89e35597c39657522cff264a281" category="list-text">MetroCluster ip_Ingress原則會套用至連接MetroCluster 至該IP交換器的中繼交換器上的連接埠。</block>
-  <block id="d944b4fc13286119be43ab42d06a32be" category="paragraph">MetroClusterIP_Ingress原則會將傳入標記的流量對應至中繼交換器上的適當佇列。標記會發生在節點連接埠上、而非ISL上。使用ISL上相同連接埠的非MetroCluster流量仍會保留在預設佇列中。</block>
-  <block id="e18fbf6fce702c71742e8d27a2d6a7ae" category="list-text">MetroCluster ip_Egress原則會套用至中繼交換器上連接到中繼交換器之間ISL的連接埠</block>
   <block id="69aaacac83508073d197d4bf65062708" category="paragraph">您必須設定中間交換器、使其在MetroCluster 整個過程中、都能在不同的路徑上、提供符合QoS存取對應、類別對應和原則對應。中繼交換器會將RDMA流量對應至COS5、並將儲存流量對應至COS4。</block>
-  <block id="6ddbc452227e26b7b8bc21217c891718" category="paragraph">以下範例顯示客戶提供的Cisco Nexus 3000交換器組態。如果您有Cisco交換器、您可以使用範例來設定路徑上的交換器、而不會有太大的困難。如果您沒有Cisco交換器、則必須決定並套用等效組態至中繼交換器。</block>
-  <block id="bedbf87beaf6932452b34e84aa5ee3dd" category="paragraph">以下範例顯示類別對應定義：</block>
-  <block id="dd804fb484432fe551ac3fba99fc92f0" category="admonition">此範例適用於使用Cisco MetroCluster 列舉IP交換器的組態。無論交換器類型的MetroCluster 交換器是否含有不連接MetroCluster 到該IP交換器的資訊流量、您都可以遵循此範例。</block>
-  <block id="b4327d52f05535a2882438ad4f3e25f3" category="paragraph">下列範例顯示原則對應定義：</block>
-  <block id="490e2a5ce4a3b1e54b04eacc64117857" category="section-title">IP Broadcom交換器MetroCluster</block>
-  <block id="9c6be93159d26c882e6ffd6c1598ade0" category="paragraph">下圖概述當外部交換器為IP Broadcom交換器時、所需的共用網路設定。</block>
   <block id="05b3e3fb6ac0659ae9bfe38cf0c825e9" category="image-alt">透過Broadcom交換器交換流量</block>
-  <block id="cf3219433ded79f81b130bc7d338f32d" category="paragraph">使用MetroCluster 靜態IP Broadcom交換器的組態需要額外的組態設定：</block>
-  <block id="654f12da649b915a9c194b9f37867d88" category="list-text">對於外部交換器、您必須設定存取和類別地圖、以分類進入客戶網路的流量。</block>
-  <block id="f49d57475c4de1abef662a0c701bd2df" category="admonition">使用MetroCluster 靜態IP交換器的組態不需要此功能。</block>
-  <block id="0247f45671c0550817a407f11075ad25" category="paragraph">以下範例說明如何在連接MetroCluster ISL的第一和最後一台客戶交換器上設定存取和類別對應、以供在Broadcom的介面交換器之間進行存取。</block>
-  <block id="026a4c2590405563bbb18611864325aa" category="list-text">您需要將入口原則指派給第一台客戶交換器上的ISL交換器連接埠。</block>
-  <block id="a5caef8a168ae3398b49dd56ada3c819" category="section-title">中型客戶交換器</block>
-  <block id="a6b73a04bfd2c671e7b9ad270923041b" category="list-text">對於中級客戶交換器、您必須將輸出原則指派給ISL交換器連接埠。</block>
-  <block id="68174da7b47b2116e36e80409f154967" category="list-text">對於所有其他內部交換器、請MetroCluster 依照_ Cisco Nexus 3000交換器_一節中的類別地圖和原則地圖範例進行。</block>
   <block id="37322f94dec561a9cb13c3ba1266cfd1" category="section-title">例如：網路拓撲MetroCluster</block>
-  <block id="a7730eb29505c2a902b8c2ef5fabb951" category="paragraph">從使用支援支援某些共享ISL網路組態的不含支援的不含支援的不含支援。ONTAP MetroCluster</block>
   <block id="1884419e0250b6ad508f2fd36f98d40d" category="section-title">具有直接連結的共用網路組態</block>
-  <block id="192af72fd3a6a8f8e1eed7df8b911dc4" category="paragraph">在此拓撲中、有兩個不同的站台是透過直接連結連接。這些連結可以是在Wavelengthic分部多工設備（xWdm)或交換器之間。ISL的容量並不專門用於MetroCluster 不含資訊的流量、而是與其他流量共用。</block>
-  <block id="3d46b75a9510ff3b2fc1221089b507b1" category="paragraph">ISL容量必須符合最低需求。視您使用的是xWDM裝置或交換器而定、可能會套用不同的網路組態組合。</block>
   <block id="5929fb5bb5d1ff9a7e46817ed17ab0b2" category="image-alt">MCC IP網路與共享ISL</block>
   <block id="fbf66ccc845f0c441c22f8be84b750c9" category="section-title">共享基礎架構與中繼網路</block>
-  <block id="78b1baea44bd8a7cd1e99e2d555265cb" category="paragraph">在此拓撲中MetroCluster 、透過NetApp未提供的網路傳輸的是靜態IP核心交換器流量和主機流量。網路基礎架構和連結（包括租賃的直接連結）均不在MetroCluster 功能性設定範圍之內。網路可由一系列xWDM和交換器組成、但與直接ISL的共用組態不同、這些連結並非站台之間的直接連結。視站台之間的基礎架構而定、可能會有任何網路組態組合。中間基礎架構是「雲端」（站台之間可能存在多個裝置）、但仍由客戶控制。透過這種中介基礎架構的容量並非MetroCluster 專門用於非功能型流量、而是與其他流量共享。</block>
-  <block id="a024d8d17577278b0e1443f54ce83c52" category="paragraph">VLAN和網路xWDM或交換器組態必須符合最低需求。</block>
   <block id="de47f3bace55dd3bf08de34a0ed075d6" category="image-alt">MCC IP網路與中繼私有網路</block>
-  <block id="74d2d15fdbde676ffa0713db987d6e1b" category="section-title">共享中間網路的兩MetroCluster 種架構組態</block>
-  <block id="01a462fc9c6195d0a7624ef8e043e011" category="paragraph">在此拓撲中、有兩MetroCluster 個獨立的Sing組態共享相同的中繼網路。在範例中MetroCluster 、Sfionone switch_a_1和MetroCluster Sfet2 switch_a_1都連接到相同的中繼交換器。</block>
-  <block id="6387b5c2765ea3b2679035cdac3eb1ea" category="paragraph">此範例僅供說明之用：</block>
   <block id="9111fcd943391a3325aaa7508427ee6f" category="image-alt">MCC IP兩個MCC共用相同的共用網路SX</block>
-  <block id="c1418d0a4d3dae89c1089eb73647aa7b" category="section-title">兩MetroCluster 種可直接連線至中繼網路的架構組態</block>
-  <block id="0f22a23cdeb43d757abb6d17f14c0dd8" category="paragraph">此拓撲從ONTAP 支援的問題開始、以支援使用者支援。兩MetroCluster 個獨立的「版本資訊」組態共用相同的中繼網路、一個MetroCluster 「版本資訊」節點則直接連線至中繼交換器。</block>
-  <block id="13fb17d9959e5b76dfb561a0f95edc25" category="paragraph">使用NetApp驗證的交換器、即NetApp驗證的交換器、以及共享的拓撲、即可獲得解決方案的功能。MetroCluster MetroCluster ONTAP利用符合NetApp規範的交換器和NetApp 9.7、即可實現上述功能的不全配置。MetroCluster MetroCluster ONTAP</block>
-  <block id="5ad2282d147bc627a5ce751a67599c20" category="admonition">中繼交換器必須符合NetApp規格。</block>
   <block id="c7f89880448c82e7f3ca4625488b3680" category="image-alt">MCC IP不受支援的兩個MCC直接連接至共享交換器</block>
   <block id="5b97f056c47eb55f7ac2ec585e184dd9" category="summary">您必須瞭解如何使用連接埠表格中的資訊來正確產生RCF檔案。</block>
   <block id="673f5a3eeb8366a43231216d5889b9fc" category="doc">使用連接埠表格搭配RcfFileGeneratorR工具或多MetroCluster 種支援的組態</block>
@@ -1778,7 +1708,6 @@
   <block id="1a03f6720968dfb968df6cc034114444" category="list-text">MTU</block>
   <block id="6b55a3ff2ffe6275beb9e73d58d08007" category="paragraph">MTU大小必須至少為1400。</block>
   <block id="64ddceb2cbf941d1fc93373ce9219a1f" category="list-text">封包遺失</block>
-  <block id="48826ffed53f55da6bc21c81ca1b5e8f" category="paragraph">封包遺失必須小於或等於0.01%。</block>
   <block id="7d724e4bd163fe8323200b15500517f9" category="list-text">頻寬</block>
   <block id="652f10975e44b79de998287113035fac" category="section-title">防火牆需求ONTAP</block>
   <block id="671e00f956495c99ae5aae5896e8542a" category="paragraph">利用多個連接埠與特定服務進行通訊。ONTAP</block>
@@ -1807,8 +1736,6 @@
   <block id="fe8f2bed933b5baccdaadbe566f09126" category="section-title">升級之後</block>
   <block id="ed92588fcdb50fce92fb0e01fb8449b0" category="paragraph">完成調控器和作業系統升級之後、您應該使用「shorage iscsi啟動器show」命令來確認調控器連線正常。</block>
   <block id="09cb6984bdf1b82c9749906ba1a69331" category="summary">您可以變更MetroCluster 下列的屬性：EIP介面、IP位址和遮罩、以及閘道。您可以使用任何參數組合來更新。</block>
-  <block id="bacf5875940eb96c091917a5d1b9e1ad" category="doc">修改MetroCluster 位址、網路遮罩和閘道、使其位於一個靜態IP中</block>
-  <block id="40505aafe5fd41af1999393ab341c808" category="paragraph">從ONTAP 《E59.10.1》開始、您可以變更MetroCluster 下列的EIP介面屬性：IP位址和遮罩、以及閘道。您可以使用任何參數組合來更新。</block>
   <block id="d7fffb0ac95f2fd216c5e3fd04365cca" category="paragraph">例如、如果偵測到重複的IP位址、或是因為路由器組態變更而需要變更第3層網路的閘道、您可能需要更新這些內容。</block>
   <block id="383d9b07e1ef0cfcfa9ec36fecccfe02" category="paragraph">一次只能變更一個介面。在更新其他介面並重新建立連線之前、該介面會造成流量中斷。</block>
   <block id="8450a359c3efc774857fe0f3189456e0" category="paragraph">使用「MetroCluster 靜態組態設定介面modify」命令來變更MetroCluster 任何的任何靜態IP介面屬性。</block>
@@ -1819,7 +1746,6 @@
   <block id="2f545dcb650b5848061814c5ce3b4cf4" category="paragraph">下列命令顯示如何更新IP位址、網路遮罩和閘道：</block>
   <block id="c8a08760312508ec804450cb7fad4702" category="list-text">[[step2]]確認所有連線功能都適用於所有介面：MetroCluster 「介紹組態設定介面」</block>
   <block id="3fc201ecdcbc7e37cc8a9b91bd0c01b3" category="paragraph">下列命令說明如何驗證所有連線功能是否適用於所有介面：</block>
-  <block id="464f766a72b725b51056bd23b507d8fb" category="list-text">[[step3]確認所有連線都正常運作：MetroCluster 「顯示組態設定連線」</block>
   <block id="1a8c6f33d0bdd54f26272fc3c497ec01" category="paragraph">下列命令顯示如何驗證所有連線是否正常運作：</block>
   <block id="7a56c93af328a3c1fa4e3fccdc177cb5" category="summary">在非原廠預先設定的靜態IP組態中MetroCluster 、您必須確認控制器和機箱元件的ha-config狀態已設定為mccp、以便正常開機。對於從原廠接收的系統、此值已預先設定、您不需要驗證。</block>
   <block id="6260a0c66ccd92620d9889772b65cffe" category="doc">驗證元件的ha-config狀態</block>
@@ -1894,134 +1820,28 @@
   <block id="72a8be4c477bcb998202c426a16c5f77" category="paragraph">硬體輔助</block>
   <block id="35e1ae865b96af2cda109734752c7983" category="paragraph">4444 / TCP</block>
   <block id="598ab8da90f7b08fb85eebf2cdb5b642" category="doc">使用MetroCluster相容交換器的考量事項</block>
-  <block id="0fd2020965353993ca7470eaf762f030" category="paragraph">這些需求顯示如何設定符合MetroCluster的交換器、而不使用參考組態（RCF）檔案。</block>
-  <block id="73c8b60f13f3d62360643fda70255745" category="list-text">連接MetroCluster 至節點的交換器可承載非MetroCluster流量。</block>
   <block id="c33e2f23b789dd4d078b0a5b51963f75" category="list-text">您可以將此介面連接至任何可設定以符合需求的交換器連接埠。MetroCluster</block>
-  <block id="33205e28b19e76b7edcb7bc5cad77101" category="list-text">交換器連接埠的速度必須為25 Gbps（FAS8200 AFF 和人民幣2、300平台）、而其他所有平台（40 Gbps或100 Gbps）的速度至少必須為40 Gbps。</block>
-  <block id="145dacb3237a86979e113708eea5ccbb" category="list-text">需要四個IP交換器、每個交換器架構需要兩個。</block>
-  <block id="92f69bca586043acecbd273c5ea2d217" category="list-text">ISL必須為10 Gbps或更高、且必須根據MetroCluster 需求調整適當大小、才能承受整個系統的負載。</block>
-  <block id="2d8f234d7714dedd101fd476b6581d02" category="list-text">網路必須符合下列需求：</block>
-  <block id="81469bbc8b1e22a393e56fdba3d5a1f3" category="list-text">在使用MetroCluster相容交換器的支援範本MetroCluster IP組態中、不ONTAP 支援還原至版本9.6或更早版本。</block>
-  <block id="e2cccfe2013ba1930aabf09a154e5ffe" category="list-text">9216的MTU必須設定在所有傳輸MetroCluster 到此資訊的交換器上。</block>
-  <block id="0d3b7c7f0d8918f762dea13c0abfd697" category="list-text">交換器必須支援QoS /流量分類。</block>
   <block id="4ff5b50b72910d305ce187223bd1d86d" category="list-text">交換器必須支援明確的壅塞通知（ECN）。</block>
-  <block id="d1e15e63c1fd6cbe9ab03ae500fe90cc" category="list-text">交換器必須支援L4連接埠VLAN負載平衡原則、才能保留路徑上的順序。</block>
   <block id="d40f7578a0d14b583c64b9e1238ce357" category="list-text">交換器必須支援L2流量控制（L2 FC）。</block>
-  <block id="0cbb4d7d4f143fb521b8b3f87302bd06" category="list-text">連接節點與交換器的纜線必須向NetApp購買。交換器廠商必須支援我們提供的纜線。</block>
   <block id="bd7d6c816fdd7d9da30ecc293b76db32" category="list-text">重新整理四節點MetroCluster 的靜態IP組態</block>
-  <block id="419f3742e6de8e0ec4b22cce005e7630" category="cell">平台</block>
-  <block id="4995a003b2b1032b64bcc8805dea3b99" category="cell">網路速度（Gbps）</block>
-  <block id="f899139df5e1059396431415e770c6dd" category="paragraph">100</block>
-  <block id="35b8c775f2c2f1e3186a213d6b7931b3" category="paragraph">40或100</block>
   <block id="56c7968a1d140906ab8313162854322d" category="paragraph">部分A700 AFF</block>
   <block id="d645920e395fedad7bbbed0eca3fe2e0" category="paragraph">40</block>
   <block id="8e296a067a37563370ded05f5a3bf3ec" category="paragraph">25</block>
   <block id="336d5ebc5436534e61d16e63ddfca327" category="paragraph">-</block>
   <block id="ec5c696a4bc57321a5a79c91b886d5ff" category="paragraph">FAS9000</block>
   <block id="c37feb3492d999b3f216448183986be2" category="paragraph">FAS8200</block>
-  <block id="ce345fbefe9cca9ddd58d8e672f0f91e" category="section-title">範例的假設</block>
-  <block id="85d4a8f9f28aad1082eeb4a658c7d835" category="paragraph">所提供的範例適用於Cisco NX31xx和NX32xx交換器。如果使用其他交換器、則這些命令可做為指引、但命令可能有所不同。如果範例中所示的功能在交換器上無法使用、這表示交換器不符合最低需求、因此無法用來部署MetroCluster 一個版本不全的組態。這適用於任何連接MetroCluster 了某個交換器的交換器、以及這些交換器之間路徑上的所有交換器。</block>
-  <block id="1931721e4ef4af703b868f902825c2ef" category="list-text">ISL連接埠為15和16、運作速度為40 Gbps。</block>
-  <block id="c111bb8c12e2f784f729520e744f565c" category="list-text">網路1中的VLAN為10、網路2中的VLAN為20。可能僅針對一個網路顯示範例。</block>
-  <block id="8b61600dc20618a035e4d19c78a78b09" category="list-text">此介面連接至每個交換器的連接埠9、以100 Gbps的速度運作。MetroCluster</block>
-  <block id="0058cf79c1cc371a6eee83f772cee308" category="list-text">未設定或顯示範例的完整內容。您可能需要輸入設定檔、VLAN或介面等進一步的組態資訊、才能執行命令。</block>
-  <block id="cc386b0adbc0859c1bbf9c56dbf7e711" category="section-title">一般交換器組態</block>
-  <block id="6c74eea0bd0204c5de756cb1cc1fca0e" category="paragraph">必須在每個網路中設定一個VLAN。範例顯示如何在網路10中設定VLAN。</block>
-  <block id="81eeab9506186e2dca8faefa78d54067" category="paragraph">範例：</block>
-  <block id="eb746570e6ed0bb49e25cd189acf94bb" category="paragraph">應設定負載平衡原則、以便保留順序。</block>
-  <block id="ee5374c58f192971aa6985bd24d83a9e" category="paragraph">您必須設定存取和類別對應、將RDMA和iSCSI流量對應至適當的類別。</block>
-  <block id="1e3c8e05b670c33032815dc9f814a471" category="paragraph">所有往返連接埠65200的TCP流量都會對應至儲存設備（iSCSI）類別。連接埠10006往返的所有TCP流量都會對應至RDMA類別。</block>
-  <block id="7232053d17d6d458acd3dc6a3b06e8ef" category="paragraph">您必須設定入口原則。入口原則會將分類的流量對應至不同的COS群組。在此範例中、RDMA流量會對應至COOS群組5、iSCSI流量則對應至COOS群組4。</block>
-  <block id="8d099e100c2db650c7b3c9471d6c3021" category="paragraph">您必須在交換器上設定出口原則。出口原則會將流量對應至出口佇列。在此範例中、RDMA流量會對應至佇列5、iSCSI流量則對應至佇列4。</block>
-  <block id="40188be7ae52fbad0eec10d341d64dca" category="section-title">設定ISL</block>
-  <block id="139ee81500499fa6a20d90091e35aedf" category="paragraph">設定允許的VLAN時、您可以設定「主幹」模式連接埠。</block>
-  <block id="7f46b9452d630356ab3904d38691b3f5" category="paragraph">有兩個命令：一個是*設定*允許的VLAN清單、另一個是*新增*至現有允許的VLAN清單。</block>
-  <block id="01e38d1895fd26b959a83b5e7c474615" category="paragraph">您可以*設定*允許的VLAN、如範例所示。</block>
-  <block id="a113ac43e845b37ed3c4d24db88ce41d" category="paragraph">您可以*新增* VLAN至允許的清單、如範例所示。</block>
-  <block id="68c7fc319da1886292fc942cdde96eaa" category="paragraph">在範例中、連接埠通道10已設定為VLAN 10。</block>
-  <block id="5cb440886a621a8372b845ad70883325" category="paragraph">ISL連接埠應設定為連接埠通道的一部分、並指派輸出佇列、如範例所示。</block>
-  <block id="0e140510bf85c7aa8339935669d8b836" category="section-title">設定節點連接埠</block>
-  <block id="04b15a1dc82e7721a50071d0d546bffa" category="paragraph">您可能需要將節點連接埠設定為中斷模式。在此範例中、連接埠25和26設定為4 x 25 Gbps離線模式。</block>
-  <block id="8a63315a2ffec2485df2f1442ae57ba9" category="paragraph">您可能需要設定MetroCluster 介面連接埠速度。範例顯示如何將速度設定為「自動」。</block>
-  <block id="3a1d3c6085d08ba32283ec7dca7f4f8c" category="paragraph">以下範例說明如何將速度修正為40 Gbps。</block>
-  <block id="40d09af1b4eb1caa952d1cfeedc72c6b" category="paragraph">您可能需要設定介面。在下列範例中、介面速度設定為「自動」。</block>
-  <block id="0b6fb4c3000783272b8778eb9804b9cc" category="paragraph">連接埠在VLAN 10中處於存取模式、MTU設為9216、MetroCluster 並指派了「資訊安全入侵」原則。</block>
-  <block id="7b87d868779f28cca35a9a8ba5f90614" category="paragraph">在25-Gbps連接埠上、FEC設定可能需要設定為「關」、如範例所示。</block>
-  <block id="333816f1143329ca2f87a87e778f7420" category="admonition">您必須在設定介面之後*執行此命令。可能需要插入收發器模組、命令才能正常運作。</block>
-  <block id="ea9736859da816cfcd8267f7a6c4256a" category="summary">您應該知道組態的ISL需求。</block>
-  <block id="48b322af5cc10f141bccf9319f5b9635" category="paragraph">所有MetroCluster 的知識產權配置都必須符合下列要求：</block>
-  <block id="2cf083b4052be0be399ea3ba03b033d9" category="list-text">原生速度ISL交換器連接埠必須連接至原生速度ISL交換器連接埠。</block>
-  <block id="70dbdfcc1fcf9942925567a4bb68c457" category="paragraph">例如、40 Gbps連接埠連接至40 Gbps連接埠。</block>
-  <block id="cbb950e5b5a1e828d01a30e24e878972" category="list-text">10 Gbps連接埠為原生模式（即不使用中斷連接線）、可連接至原生模式的10 Gbps連接埠。</block>
-  <block id="89bde422fe859df0cc4ffa75c63bf660" category="list-text">在不中斷的IP交換器和客戶網路之間、MetroCluster 以及中繼交換器之間的ISL、在速度方面遵循相同的規則。</block>
-  <block id="ab170f7d66135266cdcb2262d9678b17" category="list-text">不需要比對介於交換器和客戶網路交換器之間的ISL數目MetroCluster 、以及客戶網路交換器之間的ISL數目。</block>
-  <block id="fdc56c61f9ac64c24f76ec4804e7cc39" category="paragraph">例如MetroCluster 、使用兩個ISL將交換器連接至中繼交換器、而中繼交換器則可使用10個ISL彼此連線。</block>
-  <block id="275769550a9388aeaf2fa2c16427b081" category="list-text">不需要比對介於交換器和客戶網路交換器之間的ISL速度MetroCluster 、以及客戶網路交換器之間的ISL速度。</block>
-  <block id="6aab2d09edb8be7e6076e1b402176d1d" category="paragraph">例如MetroCluster 、利用40-Gbps ISL將交換器連線至中繼交換器、而中繼交換器則可使用100-Gbps ISL彼此連線。</block>
-  <block id="eec3041ce00c0146de19cb1a1ed37539" category="list-text">將每MetroCluster 個交換器連接至中繼交換器的ISL數量和速度、必須在MetroCluster 兩個站台上相同。</block>
-  <block id="4f1be337d4a681e3d7b80bec073ab5fb" category="inline-link-macro">共享共享網路中的ISL流量</block>
-  <block id="e86157d5182c2cc0ba39de2fa88b66d0" category="paragraph">何時 <block ref="901f15628992a82bc2ea044529a4cc50" category="inline-link-macro-rx"></block>，您必須確保具有適當的容量和ISL大小。低延遲是MetroCluster 在各個景點之間複寫資料的關鍵。這些連線的延遲問題可能會影響用戶端I/O</block>
-  <block id="a14dc0dfb776471bcbc1e3c1239e4bb1" category="paragraph">您應該檢閱這些章節、以正確計算ISL所需的端點對端點容量。不間斷的非揮發性快取和低延遲的儲存複寫、對於MetroCluster 各種組態而言都是至關重要的。後端網路的延遲會影響用戶端IO所看到的延遲和處理量。</block>
   <block id="449a2bdc6a969f884c1d33fb66eecea7" category="section-title">ISL的延遲和封包遺失限制</block>
-  <block id="e96606e3ebee8eeb5bb85d4955c381cb" category="paragraph">下列需求必須符合MetroCluster 站台A和站台B上的站台A和站台B之間的往返流量需求MetroCluster 、且該站台組態處於穩定狀態：</block>
-  <block id="c9bc211a49ab07521cd90557ecdd0cbb" category="paragraph">隨著兩MetroCluster 個不景點之間的距離增加、延遲也會增加、通常介於每100公里（62英哩）往返延遲1毫秒的範圍內。此延遲時間也取決於網路服務層級協議（SLA）、包括ISL連結的頻寬、封包丟棄率及網路上的不穩定性。低頻寬、高不穩定性和隨機封包丟棄會導致交換器或控制器模組上的TCP引擎產生不同的恢復機制、以利成功傳輸封包。這些恢復機制可提高整體延遲。</block>
   <block id="5b39512a68b8704473f81b0e6ba1272e" category="paragraph">任何造成延遲的裝置都必須列入考量。</block>
-  <block id="331d81871af9648aed5dcdc16b042e36" category="paragraph">封包遺失包括因壅塞或超額訂閱而導致的實體遺失或遺失。</block>
-  <block id="46c3dc1c366b76273938fe1ce08ca0de" category="paragraph">封包丟棄可能導致重新傳輸、並縮短壅塞時間。</block>
-  <block id="ad89c5a048917b4cc556bf23d46e1874" category="list-text">往返支援的不穩定性值為3毫秒（單程支援1.5毫秒）。</block>
-  <block id="8f1a0df354aadab81c22bc45d64cfe7c" category="list-text">網路應配置並維護SLA、以因應MetroCluster 資訊流量中的微脈衝和尖峰所需頻寬。</block>
-  <block id="581ca7facb47e256cb2467b52ebc32ad" category="paragraph">低頻寬可能會導致交換器上的佇列延遲和跳接中斷。如果您使用ONTAP 的是更新版本的版本、則這兩個站台之間的網路中介必須提供4.5 Gbps的最低頻寬、才能進行MetroCluster 此功能的組態設定。</block>
-  <block id="c0ce48bf5ebe05cb782d8edd4436f621" category="list-text">不應佔用完整頻寬、也不會對非MetroCluster流量造成負面影響。MetroCluster</block>
-  <block id="e8d6e7fbaeb7ee39717e31140102b2f7" category="list-text">共享網路應設定網路監控功能、以監控ISL的使用率、錯誤（丟棄、連結快照、毀損等）和故障。</block>
-  <block id="b4c0ed3196b7f0fc8d0177f2d4a47089" category="section-title">客戶交換器的連線限制和主幹連線</block>
   <block id="616cfd3e2d847183316a89a2940d8ba6" category="paragraph">由客戶提供的中介交換器必須符合下列需求：</block>
-  <block id="d4116be21d3fbe2654067267fd582693" category="list-text">中間交換器數量不受限制、MetroCluster 且支援兩個以上的交換器。</block>
-  <block id="25d74f2daccefbc881453b697d0166cf" category="paragraph">應儘可能靠近提供遠距連結的中繼交換器。MetroCluster該路由上的所有ISL連線都必須符合MetroCluster 所有的需求。</block>
-  <block id="32955279f53f3e8b806605d25c94f1b0" category="list-text">客戶網路中的ISL（客戶交換器之間的ISL）必須以提供足夠頻寬的方式進行設定、並保留交付順序。</block>
-  <block id="22d652e4993228d5b92712170fa6290f" category="paragraph">這可以透過主幹連線來完成、並強制執行負載平衡原則以維持訂單。</block>
-  <block id="b1111b151f189b85097d8f0496491fa1" category="section-title">其他網路需求</block>
-  <block id="cfa9c666a1b648f7bb3bf57be1c65b91" category="list-text">客戶網路必須在符合MetroCluster RCF檔案中設定的各個站台之間提供相同的VLAN。</block>
   <block id="1b7cbc00704b6ef833ca0edf0071abef" category="paragraph">第2層VLAN的ID必須與MetroCluster 「支援的VLAN ID」相符、而且必須跨越共用的網路。</block>
-  <block id="39cf9b2bcdacdfeb7b63d18129c991bf" category="list-text">在FAS9.7及更早版本中、FAS2750和FASA220系統需要VLAN 10和20。ONTAP AFF</block>
-  <block id="6dd7ab791ca7dbeea96f6883017c405f" category="list-text">在FAS9.8及更新版本中、FAS2750、FASA220、FAS500f、ONTAP AFF AFF FAS8300、AFF FASA400和FAS8700系統預設使用VLAN 10和20。您可以在介面建立期間設定其他VLAN、而且這些VLAN必須介於101到4096之間。對於前面提到的所有平台、您只能在介面建立期間指定VLAN。一旦建立了這個介面、就無法變更VLAN ID。MetroCluster對於先前未提及的所有其他平台、您可以使用任何VLAN、也可以隨時變更這些平台的VLAN ID、但必須建立並套用新的RCF檔案。</block>
   <block id="d4d2baddcab9cd51d2fbec64f215447e" category="paragraph">RcfFileGenerator不允許使用平台不支援的VLAN來建立RCF檔案。</block>
-  <block id="1ae258b0d1f5d352443737727b61370e" category="paragraph">RcfFileGenerators可能會限制使用某些VLAN ID（例如、如果這些ID是供未來使用）。一般而言、保留的VLAN最多可達100個（含100個）。</block>
-  <block id="44320ea25002137ed4c7ae17e4e2c3c4" category="list-text">在端點對端點網路的所有裝置上、MTU大小必須設為9216。</block>
-  <block id="89135c2bf7d6ba269eae563b2b92f041" category="list-text">其他流量的優先順序不得高於服務類別（COOS）5。</block>
-  <block id="cddd34f6d4d277285aa4639fd92f80de" category="list-text">必須在所有端點對端點路徑上設定ECN（明確的壅塞通知）。</block>
-  <block id="7417b1510f8c5a301f6398d855561505" category="section-title">使用共享ISL時的佈線需求</block>
-  <block id="a9cb6e376a12c0c6b5deb0f0438259da" category="paragraph">在使用共享ISL進行MetroCluster 支援的IP組態時、您必須瞭解端點對端MetroCluster 點的需求、這些需求是從站台A的控制器連接埠、到站台B的控制器連接埠</block>
-  <block id="af1cf569a025dd01876e4b16b86cbc5e" category="admonition">您必須遵循 <block ref="fa2050fe1fe203254b9a9c610c6240ba" category="inline-xref-macro-rx"></block>。</block>
-  <block id="a0195e692f2c0be63d231173e3a75422" category="section-title">共享網路中的ISL和中斷連接線數量</block>
-  <block id="b1ff9e42c9daa73ff3fe3b02d56090b0" category="paragraph">連接MetroCluster 到共享網路的各個ISL數目、取決於交換器機型和連接埠類型。</block>
   <block id="d16af7f5896d12cf0cd0ace2315785f4" category="cell">IP交換器機型MetroCluster</block>
   <block id="182aeb116dd563a6020ec9b2d5b6595e" category="cell">連接埠類型</block>
-  <block id="ad31a22d752d43c3309f6c3ed2021019" category="cell">ISL數量</block>
   <block id="87ac6ecba347afc9b3bfcf5a25512ddc" category="paragraph">Broadcom支援的Bes - 53248交換器</block>
   <block id="ac00d0051561ed303dd8e72e72447f4f" category="paragraph">原生連接埠</block>
-  <block id="78de8fe46d62f85d57ba50aa182fbd0f" category="paragraph">4個ISL（使用10或25 Gbps連接埠）</block>
   <block id="f606ada25615407b042f8f189d1b9fab" category="paragraph">Cisco 3132Q-V</block>
-  <block id="cd089c0b60ab24530eec57a25c3db128" category="paragraph">6個ISL（使用40 Gbps連接埠）</block>
   <block id="93f0d165366aa023f16e11d7c9adcd64" category="paragraph">中斷連接線</block>
-  <block id="61b74a953ea1f4810d962b6c3c7d0d2e" category="paragraph">16個10-Gbps ISL</block>
   <block id="c83195c9d5e5dd5960c0976c81d14ea5" category="paragraph">Cisco 3232C</block>
-  <block id="4c9949dbf0df72405925c5aa0a2567c4" category="paragraph">6個ISL（使用40或100-Gbps連接埠）</block>
-  <block id="6968ac086701343ff37d9889e7c66a54" category="list-text">Cisco交換器支援使用中斷纜線（一個實體連接埠用作4 x 10 Gbps連接埠）。</block>
-  <block id="f8fce322a8edd097d065fb99a37ff7d4" category="list-text">IP交換器的RCF檔案已設定原生連接埠和中斷模式。</block>
-  <block id="81d3c2b4ee2f461abdccb3d6cdce9095" category="paragraph">不支援以原生連接埠速度模式和中斷模式混合使用ISL連接埠。所有ISL、從MetroCluster 靜態IP交換器到同一個網路中的中繼交換器、都必須具有相同的速度和長度。</block>
-  <block id="dc42da7855100b1c361cd94167e5704b" category="list-text">只要往返延遲仍在上述需求範圍內、即可支援使用外部加密裝置（例如、外部連結加密或透過WDM裝置提供加密）。</block>
-  <block id="faca76a5b29adc7d5fa5ff7f0d9b653c" category="paragraph">若要獲得最佳效能、每個網路至少應使用1 x 40 Gbps或多個10 Gbps ISL。我們強烈建議不要在AFF 每個網路上使用單一10 Gbps ISL來支援功能。</block>
-  <block id="452528f4539349b3f1c2d6c52b377435" category="paragraph">共享ISL的最大理論處理量（例如、240 Gbps搭配6個40 Gbps ISL）是最佳案例。使用多個ISL時、統計負載平衡可能會影響最大處理量。可能會發生不均衡的平衡、並降低單一ISL的處理量。</block>
-  <block id="b64af5cd785842d6bf6cd01ead747f85" category="paragraph">如果組態使用L2 VLAN、則必須以原生方式跨越站台。不支援虛擬可延伸LAN（VXLAN）等VLAN重疊。</block>
-  <block id="29df3d2a3fbed3e329eebdafb198548b" category="paragraph">傳輸MetroCluster 不穩定流量的ISL必須是交換器之間的原生連結。不支援多重傳輸協定標籤交換（MPLS）連結等連結共用服務。</block>
-  <block id="b3c298f9bcf8ef440bfc199365b29a8e" category="section-title">支援Broadcom BSP-53248交換器上的WAN ISL</block>
-  <block id="55c5dc89f1ac68c2bcb189c6aa17ee81" category="list-text">每個架構的WAN ISL最小數量：1（10 GbE、25 GbE、40 GbE或100 GbE）</block>
-  <block id="8bfedfb9f058f538424f53d5078319d0" category="list-text">每個架構的10-GbE WAN ISL數量上限：4.</block>
-  <block id="c324e731d42e84dbec1e5b4c71d30110" category="list-text">每個架構最多可容納25 GbE WAN ISL：4.</block>
-  <block id="2a6e6f4fa9d966c23c1cb254e6a5f0e1" category="list-text">每個網路最多可有40-GbE WAN ISL：2.</block>
-  <block id="4c347bcd948e8c65dedccc01d292af64" category="list-text">每個架構的100-GbE WAN ISL數量上限：2.</block>
-  <block id="fad747cfa36fbbfa745283703977fe09" category="paragraph">40-GbE或100-GbE WAN ISL需要RCF檔案版本1.4或更新版本。</block>
-  <block id="0bb3bfbc599df59ab910863567e82b1f" category="admonition">額外的連接埠需要額外的授權。</block>
   <block id="e370314844d959f3bb5699371fb7e06c" category="summary">在一個E叢 集組態中、每個叢集的節點組態MetroCluster 與標準叢集中的節點組態類似。</block>
   <block id="f41aecb0a91801bdc9e66280bf4a17d1" category="doc">標準叢集MetroCluster 組態與不完整組態之間的相似性與差異</block>
   <block id="1bcba6e16442a0002b216eeeeb9a847f" category="paragraph">此功能是以兩個標準叢集為基礎所打造。MetroCluster實體而言、組態必須對稱、每個節點都有相同的硬體組態、MetroCluster 而且所有的元件都必須以纜線連接並設定。不過MetroCluster 、在一個Sfor E組態中、節點的基本軟體組態與在標準叢集中的節點組態相同。</block>
@@ -11589,10 +11409,6 @@
   <block id="10fb6eda16d44576f048cbbd98a21f49" category="sidebar">準備MetroCluster 進行安裝</block>
   <block id="06800b31fe5394b22e1a11163137b326" category="sidebar">決定ONTAP 使用哪一種功能MetroCluster</block>
   <block id="4ae1141d3ba10797d5f82641406d5702" category="sidebar">自動指派磁碟機、以及ONTAP 更新版本的ADP系統</block>
-  <block id="bef67646bfedc1b249d97a64ef323bcc" category="sidebar">如何使用第3層廣域網路</block>
-  <block id="876c5ee843ae5fc2720d374b7e063de5" category="sidebar">共享私有第2層網路</block>
-  <block id="a0950456b6fe5bfbedbee43b6a7dc213" category="sidebar">如何使用符合MetroCluster的交換器</block>
-  <block id="257dd382287d5979745c22ca0c1ac204" category="sidebar">如何使用TDM/xWDM和加密設備搭配MetroCluster 使用不完整的IP組態</block>
   <block id="d3afb6862c8b819caa7f03082d2af919" category="sidebar">不鏡射的Aggregate、採用MetroCluster 一套不鏡射的IP組態</block>
   <block id="b8e55c88d2ead2425b022ce67ac4bb75" category="sidebar">安裝硬體元件</block>
   <block id="5a4d16a157dad9438b527caaa9b4b2ab" category="sidebar">連接MetroCluster 至靜態IP交換器</block>
@@ -12136,19 +11952,8 @@
   <block id="0a52730597fb4ffa01fc117d9e71e3a9" category="listing-title">範例</block>
   <block id="6870468a3fe6a4b5c829d30e0702c5fd" category="paragraph">這是升級過程中控制器不相符所造成的預期行為、而且可以安全地忽略錯誤訊息。</block>
   <block id="237972ceb7096a96a9dafc4e43911024" category="section-title">適用於MetroCluster相容交換器的平台專屬網路速度和交換器連接埠模式</block>
-  <block id="1134e76c47457f3441325208e777cc69" category="paragraph">下表提供平台專屬的網路速度和交換器連接埠模式、適用於MetroCluster 符合需求的交換器。您應該依照表所述來設定交換器連接埠模式。</block>
-  <block id="0ec1914fce58a6a4d1748f3ace018fa1" category="cell">交換器連接埠模式</block>
-  <block id="cfd4780e5a733c1327748c9a30e9d03c" category="paragraph">主幹連線模式</block>
-  <block id="2c74da2e4beb4c522085a84540793b5e" category="paragraph">存取模式</block>
   <block id="939d3efe7d4070c6c8be39404639b5db" category="paragraph">Cisco 9336C-FX2（未連接NS224磁碟櫃）</block>
-  <block id="d183fa3896220b7f678ea0b9376a4b8b" category="paragraph">6個ISL（使用40或100-Gbps）</block>
-  <block id="874eb49ff41ba3748fa2b06563329fb2" category="paragraph">16個ISL（使用10-Gbps）</block>
   <block id="b94f047c1e1eaf1f0b0b1b5ef5819d6b" category="paragraph">Cisco 9336C-FX2（連接NS224磁碟櫃）</block>
-  <block id="74cb45c8e8b33478150237cb0755c4ca" category="paragraph">原生連接埠（2）</block>
-  <block id="32dd9953382a7753a2f980620effb409" category="paragraph">4個ISL（使用40或100-Gbps）</block>
-  <block id="eb4cfd99b709d0b0ddc435f063be95cf" category="paragraph">中斷纜線（2）</block>
-  <block id="e5df3565fbad5a4849fc6fb6ec79e8d1" category="list-text">在Bes至53248交換器上使用40或100-Gbps ISL連接埠需要額外授權。</block>
-  <block id="394d86b50aa384c22c3eeb7d90023e15" category="list-text">當您為Cisco 9336C-FX2建立RCF檔案（連接NS224磁碟櫃）時、必須選擇以原生*或*中斷模式設定ISL。</block>
   <block id="731380609e4acd613ed054b92fc261e6" category="list-text">使用「show FIPS STATUS」命令檢查您的EFOS版本是否符合FIPS標準或不符合FIPS標準。在下列範例中、「ip_switch_a_1」使用FIPS相容的EFOS、而「ip_switch_a_2」使用的是非FIPS相容的EFOS。</block>
   <block id="0b9982c26f9b690896e158b901c7001c" category="paragraph">*範例1*</block>
   <block id="66fcc909c7d6b29950f9da753e168312" category="paragraph">*範例2*</block>
@@ -12303,7 +12108,6 @@
   <block id="cfe5a553856e4e9131ebeda8844ee3c2" category="list-text">選取選項9a並回應<block ref="7fa3b767c460b54a2be4d49030b349c7" prefix=" " category="inline-code"></block> 出現提示時。</block>
   <block id="bc3cbfae3cfe082620539cbe61e53bb4" category="list-text">從兩個節點的開機功能表中選取選項* 4*、然後讓系統開機。</block>
   <block id="5bb182767225fa9e1ca2133f4aa4f1df" category="inline-link-macro">系統Hardware Universe 。</block>
-  <block id="e04f67144663da34a17311a720ccf0a1" category="list-text">如需有關組態的往返延遲和最大距離要求的詳細資訊、請參閱 <block ref="44be38b301d3bfae89cdec57afffd9be" category="inline-link-macro-rx"></block></block>
   <block id="5dae04759c79459bcbe855ce6759cc39" category="list-text">如果您使用的系統已設定為ADP、請選取選項<block ref="3de20f8f6d054d551e879fef0f0fc83c" prefix=" " category="inline-code"></block> 從開機功能表、然後回應<block ref="7fa3b767c460b54a2be4d49030b349c7" prefix=" " category="inline-code"></block> 出現提示時。</block>
   <block id="0bab44e07fec8808eebb4c9baedcc312" category="admonition">您必須依照下列順序更新交換器：switch_a_1、Switch_B_1、Switch_a_2、Switch_B_2。或者、您也可以同時更新交換器Switch_a_1和Switch_B_1、然後再更新Switch_a_2和Switch_B_2。</block>
   <block id="70743d1dc2a6fb8238c19b7d315abc9f" category="admonition">系統會提示您指定虛擬路由和轉送（VRF）。</block>
@@ -12329,27 +12133,14 @@
   <block id="c1902fd1f00ac0b0e269fd37dd64f7e8" category="section-title">網站A nbsp；AutoSupport 資訊</block>
   <block id="a321560b2ae4d0c708a5027ac5562270" category="section-title">站台B nbsp；AutoSupport 資訊</block>
   <block id="87713443a9395f659a438c305d6fa70d" category="section-title">站台B nbsp；SP資訊</block>
-  <block id="a43f4b9d18f498b517f7dd9eede1654d" category="inline-link-macro">NetApp Hardware Universe</block>
-  <block id="d5b877d116ca4502862349e4a1fea007" category="summary">中列為支援交換器的支援IP交換器MetroCluster <block ref="81064abf44a077ab44fc1d50feb7e8e0" category="inline-link-macro-rx"></block> NetApp提供的是NetApp驗證的。從推出支援MetroCluster的交換器開始ONTAP 、MetroCluster 即可開始使用符合MetroCluster的IP組態。這些交換器未經NetApp驗證、但符合NetApp規格。不過、NetApp並未針對任何未經驗證的交換器提供支援服務、疑難排解和/或組態。</block>
   <block id="4275c1aa69fa12af30bea79f33b6ab8b" category="section-title">NetApp驗證的交換器</block>
-  <block id="1891f9d47aa8c3949d63aba63cfd538e" category="paragraph">如果交換器符合下列所有條件、則NetApp會驗證該交換器：</block>
   <block id="cf8d2c69254b785016eeecea385f1512" category="list-text">交換器是由NetApp提供、做為MetroCluster 整個知識區塊IP組態的一部分</block>
-  <block id="57bc5d4a7e0c60e62b42b542a38a19d8" category="list-text">交換器列於 <block ref="81064abf44a077ab44fc1d50feb7e8e0" category="inline-link-macro-rx"></block> 作為「MetroCluster over IP連線」下的支援交換器</block>
   <block id="44f5b263d419c190d99a3b681f245dad" category="list-text">交換器僅用於連接MetroCluster S24 IP控制器、以及在某些組態中、NS224磁碟機櫃</block>
-  <block id="643a5bb556beb7d67fd22c0d3de4c759" category="list-text">交換器是使用NetApp提供的RCF（參考組態檔案）進行設定。</block>
-  <block id="579d6ce20a4bdaad6dff3e52bc4e42ba" category="paragraph">任何不符合這些條件的交換器都是*非* NetApp驗證的交換器。</block>
   <block id="92bf95b2bb1fdf762ca6c2507b432332" category="section-title">符合MetroCluster的交換器</block>
-  <block id="fb0fc5c459c3f4029ec7b03dd85a909a" category="paragraph">MetroCluster相容的交換器未通過NetApp驗證MetroCluster 、但若符合下列需求與組態準則、則可用於下列的列舉IP組態。</block>
-  <block id="f2153c30c0089338d3848e4eaa64fc3e" category="admonition">NetApp不提供任何未通過驗證的MetroCluster相容交換器的支援服務、疑難排解和/或組態。</block>
   <block id="2e3b6cbd29fbe534f65b62b67e974e1a" category="section-title">MetroCluster相容交換器的一般需求</block>
   <block id="e167cf704969390451b66b4604d89501" category="list-text">只有為無交換器叢集互連提供專用連接埠的平台、才能搭配符合MetroCluster的交換器使用。無法AFF 使用FAS2750和S4A220等平台、因為MetroCluster 無法使用相同MetroCluster 的網路連接埠、因為無法使用某些流量和不互連的流量。</block>
   <block id="832bfdec136453c59e06674dc5b1fbfc" category="paragraph">MetroCluster相容的交換器不得用於本機叢集連線。</block>
-  <block id="cef3763dc37c86b326ba9f36674ba2b4" category="list-text">該組態必須連線至兩個網路。MetroCluster無法將此介面連線至相同的網路或交換器MetroCluster 。每MetroCluster 個節點都必須連接至兩個網路交換器。</block>
-  <block id="320aeba3423b75436241c00392964782" category="section-title">MetroCluster相容交換器的交換器和纜線需求</block>
-  <block id="00da554e6014936ea814019f7270b104" category="section-title">MetroCluster相容交換器的限制</block>
-  <block id="68d8047cbf72a612dd739f574baa912c" category="paragraph">任何需要本機叢集連線至交換器的組態或功能都無法使用。例如、下列組態和程序無法搭配MetroCluster相容的交換器使用：</block>
   <block id="999a0234ad26235f40e860b0131203f6" category="admonition">缺少值表示平台無法搭配MetroCluster相容的交換器使用。</block>
-  <block id="e6e94fa732001e55f7fcf67c01c5f249" category="paragraph">您可能需要設定一個交換器MetroCluster 、使其在ISL上具有不實的流量、但無法連線到MetroCluster 任何的介面。在這種情況下、流量已分類、只需對應至適當的佇列。在下列範例中、所有的COS5流量都會對應至類別RDMA、而所有的COS4流量都會對應至類別iSCSI。請注意、這會影響*所有*的COS5和COS4流量、而不只是MetroCluster 影響到各種流量。如果您只想對應MetroCluster 此資訊流量、則必須使用上述類別地圖、使用存取群組來識別流量。</block>
   <block id="421c8863e1f7223f216aacf99393b7dd" category="list-text">附註1：此平台組合需要ONTAP 使用更新版本的支援。</block>
   <block id="60ddbd1babdd945c26fbc431202fea6c" category="inline-link-macro">Hardware Universe</block>
   <block id="6e2ee39d0f9ccdad593782674a048e67" category="inline-link-macro">程序連結</block>
@@ -12900,7 +12691,6 @@
   <block id="2d27e76da02804de2afe9d209e5cbb1c" category="admonition">建議您至少保留 20% 的可用空間以容納鏡射的集合體、以獲得最佳的儲存效能和可用度。雖然建議非鏡射的集合體為 10% 、但檔案系統可能會使用額外 10% 的空間來吸收遞增變更。由於 ONTAP 的寫入時複製 Snapshot 架構、遞增變更會增加鏡射集合體的空間使用率。不遵守這些最佳實務做法可能會對效能造成負面影響。</block>
   <block id="0e5e2d82a1039e41c19d2248f3b64787" category="admonition">您可以從MetroCluster 任一叢集設定靜態IP介面。</block>
   <block id="6212a1ad66c5ad9d3c50380aa91aab6a" category="list-text">無硬體故障</block>
-  <block id="8a1d06fd27bf0bfc6535b6a49185e591" category="paragraph">解答150 AFF</block>
   <block id="36cbaf4511461b23b06f56ad7754e17d" category="paragraph">此程序支援在執行 ONTAP 9.13.1 及更新版本的系統上進行下列控制器升級。</block>
   <block id="cfdade9e474e805958704ec0836f18ac" category="cell">更換控制器</block>
   <block id="6c92285fa6d3e827b198d120ea3ac674" category="inline-link-macro">請按這裡</block>
@@ -13435,4 +13225,279 @@
   <block id="09e34111ef8649a5302b1889e0c7d303" category="list-text">JRE 8.</block>
   <block id="d434765df1b814e459b22676bed43318" category="paragraph">1.21Px</block>
   <block id="b3c0f57dcdb05faa9fbc38832a492a4e" category="admonition">套用組態時會出現一些警告訊息。通常不需要錯誤訊息。不過、如果您使用 SSH 登入、可能會收到下列錯誤：<block ref="f6ffe33fb36eb714adf6f81147c665f6" prefix=" " category="inline-code"></block></block>
+  <block id="c15b62e6a5ff15a0315735efe0205145" category="doc">在 MetroCluster IP 組態中修改位址、網路遮罩和閘道</block>
+  <block id="907d0a00eecf52dcc4562775faad470a" category="paragraph">從ONTAP 版本號《E59.10.1》開始、您可以變更MetroCluster 下列功能：IP位址和遮罩、以及閘道。您可以使用任何參數組合來更新。</block>
+  <block id="5e1f7c325aa2c4eb9ee527a8279eb798" category="list-text">[[step3]] 確認所有連線均正常運作：</block>
+  <block id="cf07fc29a0bf48b43804bd5e97849449" category="summary">如果您使用的是符合 MetroCluster 標準的交換器、您應該瞭解平台特定的網路速度和交換器連接埠模式需求。</block>
+  <block id="b6c12395a961cf95058c6e4d4412ac09" category="paragraph">下表為 MetroCluster 相容的交換器提供平台專屬的網路速度和交換器連接埠模式。您應該根據表格設定交換器連接埠模式。</block>
+  <block id="f2ac555a8b496557dba2555170124225" category="image-alt">符合 MCC 標準的交換器網路速度</block>
+  <block id="8c425f952493015588fb91113b5b2dd8" category="summary">本節包含在所有 MetroCluster IP 組態和網路拓撲上傳輸 MetroCluster 流量的交換器間連結（ ISL ）需求。</block>
+  <block id="422a6c8c8d23cb29ed822adac0da8cd9" category="paragraph">在所有 MetroCluster IP 組態和網路拓撲上傳輸 MetroCluster 流量的交換器間連結（ ISL ）具有特定需求。這些要求適用於所有承載 MetroCluster 流量的 ISL 、無論 ISL 是直接的還是在客戶交換器之間共用。</block>
+  <block id="78464639db6e6acf657d9d576a0f2888" category="section-title">一般 MetroCluster ISL 要求</block>
+  <block id="a5c426f5b72cbfd96a6dec4a6e3046d2" category="paragraph">以下內容適用於所有 MetroCluster IP 組態上的 ISL ：</block>
+  <block id="f2fe3be43c081827bf52c1013416d414" category="list-text">兩個 Fabric 都必須有相同數量的 ISL 。</block>
+  <block id="baf55d93093b54950152b6be3f9bfec2" category="list-text">一個 Fabric 上的 ISL 必須都是相同的速度和長度。</block>
+  <block id="4b00dc01ca120693f1539bf736f11069" category="list-text">兩種架構中的 ISL 必須相同的速度和長度。</block>
+  <block id="ef6ab3e28db1093c7315b30edeb84730" category="list-text">Fabric 1 和 Fabric 2 之間的最大支援距離差異為 20 公里或 0.2 毫秒。</block>
+  <block id="1b6ceb9b8db71407a3be0617e754101e" category="list-text">一個架構上的 ISL 必須具有相同的拓撲。例如、它們都應該是直接連結、或者如果組態使用的是 WDM 、則它們都必須使用 WDM 。</block>
+  <block id="ddf41f2636c98d00a2698837f55a3f74" category="list-text">ISL 速度必須至少為 10Gbps 。</block>
+  <block id="cb806a9b25dfb1d4470413a3c2dd9944" category="list-text">每個架構必須至少有一個 10Gbps ISL 連接埠。</block>
+  <block id="25b13aa97e6e9eb228478bfddbcc84e9" category="paragraph">以下內容適用於站台 _A 和站台 _B 的 MetroCluster IP 交換器之間的往返流量、 MetroCluster 組態處於穩定狀態作業：</block>
+  <block id="ae36a5fd21eb894eb914590a632f59c9" category="list-text">隨著兩MetroCluster 個不景點之間的距離增加、延遲也會增加、通常介於每100公里（62英哩）往返延遲1毫秒的範圍內。延遲也取決於網路服務層級協議（ SLA ）、例如 ISL 連結的頻寬、封包丟棄率和網路上的抖動。低頻寬、高抖動和隨機封包掉落會導致交換器或控制器模組上的 TCP 引擎產生不同的恢復機制、以成功傳輸封包。這些恢復機制可提高整體延遲。如需有關組態的往返延遲和最大距離要求的詳細資訊、請參閱 <block ref="44be38b301d3bfae89cdec57afffd9be" category="inline-link-macro-rx"></block></block>
+  <block id="827d473df1489ff96dfc62d8af802566" category="list-text">。 <block ref="44be38b301d3bfae89cdec57afffd9be" category="inline-link-macro-rx"></block> 提供以公里為間隔的距離您必須每 100 公里分配 1 毫秒。最大距離是根據先達到的距離、以毫秒為單位的最大往返時間（ RTT ）、或以公里為單位的距離來定義例如：如果 _ The Hardware Universe _ 列出 300 公里的距離、轉譯為 3 毫秒、則您的 ISL 不得超過 300 公里、最大 RTT 不得超過 3 毫秒、以先達到者為準。</block>
+  <block id="22380478e64b8062eb70d91ccdd67ce7" category="list-text">封包遺失必須小於或等於 0.01% 。最大封包遺失量是 MetroCluster 節點之間路徑上所有連結的全部遺失和本機 MetroCluster IP 介面上的遺失總和。</block>
+  <block id="0b2575167b6e71da84f0682066aa5c0d" category="list-text">支援的往返抖動值為 3ms （對於單向而言為 1.5ms ）。</block>
+  <block id="b1bbb8c0e7431a301e05959762cb6be0" category="list-text">網路應配置及維護 MetroCluster 流量所需的 SLA 頻寬量、無論流量有多少微脈衝和尖峰流量。</block>
+  <block id="db5dfb006abd3b92e48ae138fe185ffb" category="list-text">如果您使用的是 ONTAP 9.7 或更新版本、則兩個站台之間的中間網路必須提供最低 4.5Gbps 的頻寬、才能進行 MetroCluster IP 組態。</block>
+  <block id="8feeeb8c24b7a524af9a025841262932" category="section-title">收發器和纜線考量事項</block>
+  <block id="667735c31f9e3d4e69adccaa68e87206" category="paragraph">任何由設備廠商支援的SFP或QSFP、都可支援MetroCluster 支援支援功能。交換器與交換器韌體必須支援 NetApp 或設備廠商所提供的 SFP 和 QSFP 。</block>
+  <block id="887966b0ad45d1598b4a9517835a9477" category="paragraph">將控制器連接至交換器和本機叢集 ISL 時、您必須使用 NetApp 隨 MetroCluster 提供的收發器和纜線。</block>
+  <block id="e85cb21e89ca9d04ba904100f2ca54dd" category="section-title">使用 xWDM 、 TDM 和外部加密裝置</block>
+  <block id="b93bd17cefcbedfcddd97a878fe619ca" category="paragraph">當您在 MetroCluster IP 組態中使用 xWDM/TDM 裝置或提供加密的裝置時、您的環境必須符合下列需求：</block>
+  <block id="5ccca3c124f21ccc9309774d650ff25a" category="list-text">將 MetroCluster IP 交換器連線至 xWDM/TDM 時、外部加密裝置或 xWDM/TDM 設備必須經過交換器和韌體廠商的認證。認證必須涵蓋作業模式（例如主幹和加密）。</block>
+  <block id="d649419649cb678c33d0b903d521e77d" category="list-text">端點對端點的整體延遲和抖動（包括加密）不能超過 IMT 和本文件中所述的最大值。</block>
+  <block id="2d4984b69db60670a112b74742b0e904" category="section-title">支援的 ISL 和中斷連接線數量</block>
+  <block id="fb107bb292185991f92a0e25ae8d6a7d" category="paragraph">下表顯示可在 MetroCluster IP 交換器上使用參考組態檔案（ RCF ）組態設定的支援最大 ISL 數。</block>
+  <block id="44f1305d14d557252a2dc140a921830d" category="cell">ISL 的最大數量</block>
+  <block id="a3a59d60bdb611e1b4c58bf4c4cf7723" category="paragraph">使用 10Gbps 或 25Gbps 的 4 個 ISL</block>
+  <block id="05f775ee7e2e9c0191349d27678ee92a" category="paragraph">原生連接埠（附註 1 ）</block>
+  <block id="7fc50d7658ce6e69450367a1566d2160" category="paragraph">2 個使用 40Gbps 或 100Gbps 的 ISL</block>
+  <block id="d92546772d08abd00db8e99ff54c7ecb" category="paragraph">6 ISL 使用 40Gbps</block>
+  <block id="0274c7930fb2689bb0d5d7900b24b372" category="paragraph">使用 10Gbps 的 16 個 ISL</block>
+  <block id="cdd7ce1b4fb53a24815dfe597e2d9bf4" category="paragraph">6 個 ISL 、使用 40Gbps 或 100Gbps</block>
+  <block id="5f464862c3ad92817ffd0d939008e569" category="paragraph">16 ISL 、使用 10</block>
+  <block id="a47530745311f9d2efa307163eb1ee61" category="paragraph">原生連接埠（附註 2 ）</block>
+  <block id="a86749ca3f0eb199f6cde6d8cc60d442" category="paragraph">4 個使用 40Gbps 或 100Gbps 的 ISL</block>
+  <block id="83462a2f17a5fa1e38b557632ec6d366" category="paragraph">中斷連接線（附註 2 ）</block>
+  <block id="94f92369bb57ec3cd50af356ac87615d" category="paragraph">NVIDIA SN2100</block>
+  <block id="e742bd9fac434ad11cb2ad1f6bf81c22" category="paragraph">使用 10Gbps 或 25Gbps 的 8 個 ISL</block>
+  <block id="57806988ce5a738c0e2a24b77927841a" category="paragraph">* 附註 1* ：在 BS-53248 交換器上使用 40Gbps 或 100Gbps ISL 需要額外授權。</block>
+  <block id="e2470e32c0e86c6c4a72a4740defccf2" category="paragraph">* 附註 2 * ：相同的連接埠用於原生速度和中斷模式。建立 RCF 檔案時、您必須選擇以原生速度模式或中斷模式使用連接埠。</block>
+  <block id="210ce8af438dddcd62166408fac706c7" category="list-text">一台 MetroCluster IP 交換器上的所有 ISL 速度必須相同。不支援同時使用速度不同的 ISL 連接埠。</block>
+  <block id="0c1686d7a527ea2db8a72392a860f59c" category="list-text">為了達到最佳效能、每個網路至少應使用一個 40Gbps ISL 。FAS9000 、 AFF A700 或其他高容量平台不應使用每個網路的單一 10Gbps ISL 。</block>
+  <block id="932fb139d393444f022abae844a0f930" category="admonition">NetApp 建議您設定少量的高頻寬 ISL 、而非大量的低頻寬 ISL 。例如、最好設定一個 40Gbps ISL 、而非四個 10Gbps ISL 。使用多個 ISL 時、統計負載平衡可能會影響最大處理量。不均勻的平衡可降低單一 ISL 的處理量。</block>
+  <block id="38c2425cd3eb3add7b70e3f33eb88ddb" category="summary">本節提供驗證 MetroCluster 組態和網路是否符合所有需求所需的資訊。</block>
+  <block id="b3afb8520c6389b800eb9ce2c45ab2ba" category="doc">NetApp 驗證且符合 MetroCluster 規範的交換器</block>
+  <block id="e28e9835ecaf16f4bdf25d7e6e04c512" category="paragraph">您的組態中使用的所有交換器（包括後端交換器）都必須通過 NetApp 驗證或 MetroCluster 相容。</block>
+  <block id="d5d85142dbdda4a696e7722b3c96dc4a" category="paragraph">如果交換器符合下列需求、則該交換器已通過 NetApp 驗證：</block>
+  <block id="c8ca446c1fea2c076d78412221cebd1b" category="list-text">交換器會列在中 <block ref="41f66f34b3a905f864500c9319fdff8f" category="inline-link-macro-rx"></block> 做為 _MetroCluster over IP 連線下支援的交換器</block>
+  <block id="14bb4f6c6d9e383cc569d9498b83c24e" category="list-text">交換器是使用 NetApp 提供的參考組態檔案（ RCF ）進行設定</block>
+  <block id="3f3f7f794ea7fa2f780388bfffd726f0" category="paragraph">任何不符合這些要求的交換器都是 * 不 * NetApp 驗證的交換器。</block>
+  <block id="6e90f0ca5975aa305331b461c0d17a10" category="paragraph">MetroCluster 相容的交換器並未通過 NetApp 驗證、但如果符合特定需求和組態準則、則可用於 MetroCluster IP 組態。</block>
+  <block id="81d0b430232d54ef8c3da154a6bb51df" category="admonition">NetApp 不為任何未通過驗證的 MetroCluster 相容交換器提供疑難排解或組態支援服務。</block>
+  <block id="e4d0658d40deb1bdd0cba2af1bb7edcc" category="summary">從 ONTAP 9.6 開始、 MetroCluster IP 組態支援一些額外的網路組態。</block>
+  <block id="d4e5769f0b30b686cad3f67f0712a4ed" category="paragraph">從 ONTAP 9.6 開始、 MetroCluster IP 組態支援一些額外的網路組態。本節提供支援的網路組態範例。並未列出所有支援的拓撲。</block>
+  <block id="f8c144d99faf0be94c6f73117182fe1c" category="paragraph">在這些拓撲中、假設 ISL 和中繼網路是根據中所述的需求進行設定 <block ref="3a1583c43d5c26bc5494a0499ae33c72" category="inline-link-macro-rx"></block>。</block>
+  <block id="3f455575634261ee88453f2b32a39574" category="admonition">如果您要與非 MetroCluster 流量共用 ISL 、則必須確認 MetroCluster 在任何時候都至少有可用的最低必要頻寬。</block>
+  <block id="714d7f26f344f1a2137ecaafa3977560" category="paragraph">在此拓撲中、有兩個不同的站台是透過直接連結連接。這些連結可以是 xWDM 和 TDM 裝置或交換器之間的連結。ISL 的容量並非專用於 MetroCluster 流量、而是與其他非 MetroCluster 流量共用。</block>
+  <block id="c6cb1b44e79b73322f9f95a6e6a856bf" category="paragraph">在此拓撲中、 MetroCluster 站台並非直接連線、而是 MetroCluster 和主機流量透過網路傳輸。
+網路可由一系列的 xWDM 和 TDM 及交換器組成、但與直接 ISL 的共用組態不同、這些連結並不直接位於站台之間。視站台之間的基礎架構而定、可能會有任何網路組態組合。</block>
+  <block id="0ebe9ae371e55183b558cb093feb8087" category="section-title">共享中間網路的多個 MetroCluster 組態</block>
+  <block id="5ba8b9c9d6b3d9754ec372dd3472dbd0" category="paragraph">在此拓撲中、有兩MetroCluster 個獨立的Sing組態共享相同的中繼網路。在範例中、 MetroCluster One switch_a_1 和 MetroCluster Two switch_a_1 都會連線到相同的中繼交換器。</block>
+  <block id="fd42ae0e289ae7349d9cb095b5baedcb" category="admonition">「 MetroCluster One 」或「 MetroCluster Two 」都可以是一個八節點 MetroCluster 組態或兩個四節點 MetroCluster 組態。</block>
+  <block id="445254de7995c8ef37155f67cff1ccd8" category="section-title">結合使用 NetApp 驗證交換器的 MetroCluster 組態、以及使用 MetroCluster 相容交換器的組態</block>
+  <block id="d0f4ebf077d350978a17afd3cf7a8bc3" category="paragraph">兩個獨立的 MetroCluster 組態共用相同的中繼交換器、其中一個 MetroCluster 是使用 NetApp 驗證的交換器在共用的第 2 層組態（ MetroCluster One ）中進行設定、另一個 MetroCluster 則是使用直接連線至中繼交換器（ MetroCluster 2 ）的 MetroCluster 相容交換器進行設定。</block>
+  <block id="15111207d6b0c0cbf958b921f4798172" category="summary">瞭解各種交換器連接埠組態。</block>
+  <block id="698eaadeb5d3fb421bccdcf1b0ab1fef" category="doc">交換器連接埠組態範例</block>
+  <block id="39c7e049077f0d9b7a1fa77f6180ea92" category="admonition">以下範例使用十進位值、並遵循適用於 Cisco 交換器的表格。視交換器廠商而定、您可能需要不同的 DSCP 值。請參閱交換器廠商對應的表格、以確認正確的值。</block>
+  <block id="35ad26d27261978449b9fa90bdfbbee1" category="cell">DSCP 值</block>
+  <block id="937504f318f04eaf0f1d701df4c4d7f3" category="cell">十進位</block>
+  <block id="92640bd72988395b326c888614f8937a" category="cell">十六進位</block>
+  <block id="7277de5f2ed6f17c61f1f25594591a82" category="cell">意義</block>
+  <block id="8b7e00eb8a358958722be8ce20193ff2" category="paragraph">101000</block>
+  <block id="7f6a417be70d8c2743207d53badb5c83" category="paragraph">0x10</block>
+  <block id="aef7a4e1b7e3fe7e4df67684dbffa9e1" category="paragraph">CS2.</block>
+  <block id="3a7057801a60578b2ed0bbaf035dfc21" category="paragraph">11 000</block>
+  <block id="b0757d5c3880247054302eee28d9d08c" category="paragraph">0x18</block>
+  <block id="8c4e56414e26520294c3b571e92e58e4" category="paragraph">CS3.</block>
+  <block id="7e0cd72ce46464b7b74a6be952e1198d" category="paragraph">10 萬</block>
+  <block id="9cb7196b9376491fb16d0db6de086efb" category="paragraph">0x20</block>
+  <block id="7009daf81333670cd06b8bb2b02054cc" category="paragraph">CS4.</block>
+  <block id="64759f4346c9c74f5744ed5781753be7" category="paragraph">0x28</block>
+  <block id="1c61feff957ecc2d50e499cbe076094c" category="paragraph">CS5.</block>
+  <block id="152ac40eab234174a4df3411ce840abc" category="list-title">連接 MetroCluster 介面的交換器連接埠</block>
+  <block id="d3739a6ca5f7881d26cd16ae0246cb66" category="list-text">遠端直接記憶體存取（ RDMA ）流量分類：</block>
+  <block id="1fbc1d9fd1cab89ba481e86cf474c0db" category="list-text">匹配： TCP 端口 10006 、來源、目的地或兩者</block>
+  <block id="a829c133d53608ae0e95e4674bf97b6b" category="list-text">選擇性配對： cos 5.</block>
+  <block id="6f8616dc7edb0ec3be10494e52645e33" category="list-text">選用配對： DSCP 40</block>
+  <block id="d8211541cda259f40aead0607233255f" category="list-text">設定 DSCP 40</block>
+  <block id="f530740ac9e609fc21d073ac7a1005eb" category="list-text">設定 COS 5.</block>
+  <block id="905698c568b08ffae010badfede2c3d9" category="list-text">選用：速率調整至 20Gbps</block>
+  <block id="6f9086eed365c3a2db1521fa98bb7fad" category="list-text">iSCSI 流量分類：</block>
+  <block id="bfee253ff06448698780744ab1762cba" category="list-text">匹配： TCP 端口 62500 、源端口、目標端口或兩者</block>
+  <block id="b6b4cd52ee0814cd111c7646f3ec71cf" category="list-text">選擇性配對： cos 4</block>
+  <block id="bc0161255c709f2bfdb09ade9fbc1364" category="list-text">選用配對： DSCP 32</block>
+  <block id="18b58e1c9302e2acb18218c02c62dab7" category="list-text">設定 DSCP 32</block>
+  <block id="9635157acb849c6a772e37e0f94858d6" category="list-text">設定 COS 4.</block>
+  <block id="0e6469e92f0a600d51275ec32be23bb1" category="list-text">L2 流程控制（暫停）、 RX 和 TX</block>
+  <block id="85a0f387d72a9b66caa12bfd8ac6c340" category="list-text">分類：</block>
+  <block id="e27bd9b5b6530f056100c85e8e3f0077" category="list-text">符合 COS 5 或 DSCP 40</block>
+  <block id="e9430458570a06bf61121dd05841e47c" category="list-text">符合 COS 4 或 DSCP 32</block>
+  <block id="5874b557eb2d616519503b3a9d5ce19c" category="list-text">出口佇列</block>
+  <block id="78456c8ab5587f32bc610877d74ef7a7" category="list-text">CoS 群組 4 的最低組態臨界值為 2000 、最大臨界值為 3000</block>
+  <block id="b4b17fa389e749d338c939d59e32db97" category="list-text">CoS 群組 5 的最低組態臨界值為 3500 、最大臨界值為 6500 。</block>
+  <block id="246d20a235e1c5c1dbb77c8dd872497b" category="admonition">組態臨界值會因環境而異。您必須根據個別環境評估組態臨界值。</block>
+  <block id="accd310df4e17b2af66b22edc9c1e947" category="list-text">ECN 已於第 4 季和第 5 季啟用</block>
+  <block id="e5d00fe64d05f1fce7d98d430a420841" category="list-text">第 4 季和第 5 季啟用紅色</block>
+  <block id="afeb146185af0336a8e15734f4d8d82b" category="list-title">頻寬分配（連接 MetroCluster 介面和 ISL 連接埠的交換器連接埠）</block>
+  <block id="4ffad2b7caeb46c571b7de01bf63c497" category="list-text">RDMA 、 COS 5 / DSCP 40 ： 60%</block>
+  <block id="fddd1eb673a9b9d4b1288a3e624d4702" category="list-text">iSCSI 、 COS 4 / DSCP 32 ： 40%</block>
+  <block id="74a0d47e246ff885c997c58ac7f5c7ef" category="list-text">每個 MetroCluster 組態和網路的最低容量需求： 10Gbps</block>
+  <block id="e14e93b70d1997123d2de410047c323f" category="admonition">如果您使用速率限制、則流量應為 * 形狀 * 、而不會造成損失。</block>
+  <block id="e53ae17087425b26dcf2c8f30e6a2f79" category="section-title">設定連接 MetroCluster 控制器的交換器連接埠的範例</block>
+  <block id="1d44ff8a3ea66c300c0fc107ab6d6979" category="paragraph">所提供的命令範例適用於 Cisco NX3232 或 Cisco NX9336 交換器。命令會因交換器類型而異。</block>
+  <block id="63459049e091924c73609b9957c4e64f" category="paragraph">如果交換器上無法使用範例所示的功能或其等效功能、則交換器不符合最低需求、因此無法用於部署 MetroCluster 組態。對於任何連接到 MetroCluster 組態的交換器、以及所有中繼交換器、都是如此。</block>
+  <block id="11eba6b520d78c3fbdee86eaa640f55e" category="admonition">下列範例可能只顯示一個網路的組態。</block>
+  <block id="416206518e27ed2ec8b8e0876078af35" category="paragraph-title">基本組態</block>
+  <block id="92960f86c54c971b6a0cf5a9c0ba173f" category="paragraph">必須在每個網路中設定虛擬 LAN （ VLAN ）。以下範例說明如何在網路 10 中設定 VLAN 。</block>
+  <block id="c26fe677a830587ef1c141567a86c86a" category="paragraph">*範例：*</block>
+  <block id="0d2aec46175773fc70efbe5d12535b0a" category="section-title">設定分類的範例</block>
+  <block id="b6743577d6311b6a886fd545eecad9ab" category="paragraph">您必須設定存取和類別對應、才能將 RDMA 和 iSCSI 流量對應至適當的類別。</block>
+  <block id="2cb92abbd15a47018d0204e9dfee4122" category="paragraph">在下列範例中、所有進出連接埠 65200 的 TCP 流量都會對應至儲存（ iSCSI ）類別。連接埠10006往返的所有TCP流量都會對應至RDMA類別。這些原則對應用於連接 MetroCluster 介面的交換器連接埠。</block>
+  <block id="f80f72892df8210cce38857cf663c2ed" category="paragraph">您必須設定入口原則。入口原則會將流量對應至不同的 COS 群組。在此範例中、RDMA流量會對應至COOS群組5、iSCSI流量則對應至COOS群組4。入口原則用於連接 MetroCluster 介面的交換器連接埠、以及傳輸 MetroCluster 流量的 ISL 連接埠。</block>
+  <block id="66a59d5a8e6aaa9cf1a591ec9c2aebb3" category="paragraph">NetApp 建議您在連接 MetroCluster 介面的交換器連接埠上調整流量、如下例所示：</block>
+  <block id="fa2cdd1d9c185220534e9a5f6e581f57" category="section-title">設定節點連接埠的範例</block>
+  <block id="6c19da68939fc2775a2a8c23908971ef" category="paragraph">您可能需要在中斷連線模式中設定節點連接埠。在下列範例中、連接埠 25 和 26 設定為 4 x 25Gbps 中斷模式。</block>
+  <block id="f9d3b2b553dd7e256aefbf7a7cb80c85" category="paragraph">您可能需要設定MetroCluster 介面連接埠速度。以下範例說明如何將速度設定為 * 自動 * 或 40Gbps 模式：</block>
+  <block id="a510a743559d6f2f71e9d8bf3b5f0f30" category="paragraph">以下範例顯示設定為連接 MetroCluster 介面的交換器連接埠。它是 VLAN 10 中的存取模式連接埠、 MTU 為 9216 、並以原生速度運作。它已啟用對稱（傳送和接收）流程控制（暫停）、並已指派 MetroCluster 入口和出口原則。</block>
+  <block id="a791c23bf43a913e9bc2dd3fbb04acf3" category="paragraph">在 25Gbps 連接埠上、您可能需要將轉送錯誤修正（ FEC ）設定設為「關閉」、如下例所示。</block>
+  <block id="c1e9e67d43bd92599acf6de487a61c65" category="section-title">整個網路中 ISL 連接埠的組態範例</block>
+  <block id="18b91592ae3775f34f65c991d793f843" category="paragraph">MetroCluster 相容的交換器被視為中間交換器、即使直接連接 MetroCluster 介面也一樣。在 MetroCluster 相容交換器上傳輸 MetroCluster 流量的 ISL 連接埠必須與中繼交換器上的 ISL 連接埠相同設定。請參閱 <block ref="d4732e32817c639c5e57cf150621c360" category="inline-link-macro-rx"></block> 以取得指引和範例。</block>
+  <block id="a05b3cdfc5cc23ee6b2d90f33be54635" category="admonition">連接 MetroCluster 介面的交換器連接埠和傳輸 MetroCluster 流量的 ISL 的部分原則對應相同。您可以針對這兩種連接埠使用方式使用相同的原則對應。</block>
+  <block id="80d1269e99768d5e883ffa70dd8f6aeb" category="summary">視您的需求而定、您可以使用共享的第 2 層或第 3 層網路來部署 MetroCluster 。</block>
+  <block id="1c46b7bbd317f603895892a646ef8b2d" category="doc">在共享第 2 層或第 3 層網路中部署 MetroCluster 時的考量事項</block>
+  <block id="2ff08728ea0124138aa06bf0f8c8ea31" category="paragraph">從 ONTAP 9.6 開始、支援 Cisco 交換器的 MetroCluster IP 組態可以共用現有的交換器間連結（ ISL ）網路、而非使用專用的 MetroCluster ISL 。此拓撲稱為 _ 共享第 2 層網路 _ 。</block>
+  <block id="cc723d7803ba423b47b353cc9dfa54ff" category="paragraph">從功能支援的9.9開始ONTAP 、MetroCluster 即可透過IP路由（第3層）後端連線來實作支援的IP組態。此拓撲稱為 _ 共享第 3 層網路 _ 。</block>
+  <block id="80a482ff4ac144c8d8c1e668a348dd67" category="list-text">您必須驗證您的網路容量是否足夠、以及 ISL 大小是否適合您的組態。低延遲是MetroCluster 在各個景點之間複寫資料的關鍵。這些連線的延遲問題可能會影響用戶端I/O</block>
+  <block id="37eee3b9ac9781ca0484f54aeef70602" category="list-text">所有關於 MetroCluster 後端交換器的參考資料、都是指 NetApp 驗證的交換器或 MetroCluster 相容的交換器。請參閱 <block ref="16daa185b92984fefaae8aa04a4cd437" category="inline-link-macro-rx"></block> 以取得更多詳細資料。</block>
+  <block id="fb51bd6bc8df92b67b0dbb637314bf54" category="section-title">ISL 對第 2 層和第 3 層網路的需求</block>
+  <block id="58137a1ac83de260ca60eccfcb17156d" category="paragraph">以下內容適用於第 2 層和第 3 層網路：</block>
+  <block id="0993d8fc99c85994b32658ca6ec6793e" category="list-text">MetroCluster 交換器和中間網路交換器之間的 ISL 速度和數量不需要相符。同樣地、中間網路交換器之間的速度也不需要相符。</block>
+  <block id="e86033c89acfedd6f1712d0fc113d65e" category="paragraph">例如、 MetroCluster 交換器可以使用一個 40Gbps ISL 連線至中繼交換器、而中繼交換器可以使用兩個 100Gbps ISL 彼此連線。</block>
+  <block id="8eb2d711b28ba52fd757990156cc9af3" category="list-text">應在中間網路上設定網路監控、以監控 ISL 的使用率、錯誤（掉落、連結快照、毀損等）、 和故障。</block>
+  <block id="f7b423d1ee713bf3285829978ce48331" category="list-text">所有傳輸 MetroCluster 端點對端點流量的連接埠上、 MTU 大小都必須設為 9216 。</block>
+  <block id="f9e9b76449caab6e71a42abee6aba4e7" category="list-text">無法將其他流量設定為高於服務等級（ COS ） 5 的優先順序。</block>
+  <block id="13b4ddbad8ca7740efa748e6262e919e" category="list-text">必須在傳輸端點對端點 MetroCluster 流量的所有路徑上設定明確壅塞通知（ ECN ）。</block>
+  <block id="0b98609b51a21604f1a00a4828047fa4" category="list-text">傳輸MetroCluster 不穩定流量的ISL必須是交換器之間的原生連結。</block>
+  <block id="d68cc50331576837c5a83b1affefcd38" category="paragraph">不支援多重傳輸協定標籤交換（MPLS）連結等連結共用服務。</block>
+  <block id="b76b15693c2f8c16c80e09ae0fe2b441" category="list-text">第 2 層 VLAN 本身必須跨越站台。不支援虛擬可延伸LAN（VXLAN）等VLAN重疊。</block>
+  <block id="2156b2d970617b3d65eafda966103652" category="list-text">中間交換器的數量不受限制。不過、 NetApp 建議您將交換器數量保持在所需的最低數量。</block>
+  <block id="b0dbac2ed11a4ffb9cf551a68744fc3b" category="list-text">MetroCluster 交換器上的 ISL 設定如下：</block>
+  <block id="5e34055a3e0591bb621f4758f8ab5c63" category="list-text">交換器連接埠模式「主幹」是 LACP 連接埠通道的一部分</block>
+  <block id="a819f04829e8d3d3f22e5c1321e7af0d" category="list-text">MTU 大小為 9216</block>
+  <block id="3276e46322c8ba3f79ce3ea27b68265d" category="list-text">未設定原生 VLAN</block>
+  <block id="c4e0b3187c97c7f37c8ce07e79b76791" category="list-text">只允許傳輸跨站台 MetroCluster 流量的 VLAN</block>
+  <block id="b6c4e1e2f2a0c06e8d9a324d954bc763" category="list-text">不允許交換器預設 VLAN</block>
+  <block id="3f3bba6728c947cfa6f369c605b7118b" category="section-title">第 2 層網路的考量</block>
+  <block id="64dd6d9e6b2c1c66728d029e3b45abd2" category="paragraph">MetroCluster 後端交換器已連線至客戶網路。</block>
+  <block id="11ab87f335ed35c8bcf058a70cebc2be" category="image-alt">MCC 第 2 層</block>
+  <block id="6acf5532efb336e0d8001419f26ef951" category="list-text">中間網路必須在站台之間提供相同的 VLAN 。這必須符合 RCF 檔案中設定的 MetroCluster VLAN 。</block>
+  <block id="ac8a1f1bfd836ba146d1ab2feb59b2fa" category="list-text">RcfFileGenerator 可能會限制某些 VLAN ID 的使用、例如、如果這些 ID 是供未來使用。一般而言、保留的VLAN最多可達100個（含100個）。</block>
+  <block id="d4a11c01614c17bddc7d41960498137a" category="paragraph-title">ONTAP 中的 VLAN 組態</block>
+  <block id="2fdb610706dea62a50ca16baa1d63c2a" category="paragraph">您只能在建立介面時指定 VLAN 。建立 MetroCluster 介面之後、就無法變更 VLAN ID 。您可以在建立介面時設定其他 VLAN 、但它們必須在 10 到 20 的範圍內、或介於 101 到 4096 的範圍內（或交換器廠商支援的號碼、以較低的數字為準）。</block>
+  <block id="5c7b46710dbc52038abeae30dc7410f8" category="admonition">有些交換器廠商可能會保留某些 VLAN 的使用。</block>
+  <block id="c42b50e941d0ad3822d8ba3c571ef6c4" category="paragraph">下列系統不需要在 ONTAP 中設定 VLAN 。VLAN 由交換器連接埠組態指定：</block>
+  <block id="24eb498f969850d03efc1a22afbc9649" category="list-text">FAS8200與AFF FASA300</block>
+  <block id="1bcc0cae878ae9cc7fa87246f0d4540c" category="list-text">FAS9000 和 AFF A700</block>
+  <block id="7d60aa55363e89f3edb95d64f7738599" category="list-text">AFF A800 、 ASA A800 、 AFF C800 和 ASA C800</block>
+  <block id="9726fef0e4dc57d416750f1437b801d2" category="admonition">以上列出的系統可能使用 VLAN 100 及以下的 VLAN 進行設定。不過、此範圍內的某些 VLAN 可能會保留供其他或未來使用。</block>
+  <block id="d113a6ed852ea26337d713450639ad33" category="paragraph">對於所有其他系統、在 ONTAP 中建立 MetroCluster 介面時、您必須設定 VLAN 。以下限制適用：</block>
+  <block id="69cb699eb5cb6fc6aac153a3486a2d02" category="list-text">預設 VLAN 為 10 和 20</block>
+  <block id="6954b86244a9da40b24d29171fe19dd2" category="list-text">如果您執行的是 ONTAP 9.7 或更早版本、則只能使用預設的 VLAN 10 和 20 。</block>
+  <block id="c3a01939286fd058fa14f456bdf7fe55" category="list-text">如果您執行的是 ONTAP 9.8 或更新版本、您可以使用預設的 VLAN 10 和 20 、也可以使用 100 以上的 VLAN （ 101 及更高版本）。</block>
+  <block id="383a9ccc3c329cd46717d48764d2a3a1" category="section-title">第 3 層網路的考量</block>
+  <block id="262180f9a3b542d7e9252ccb29c6e05a" category="paragraph">如所述、將此環境設定為標準的靜態IP組態、並以纜線連接MetroCluster MetroCluster <block ref="311f44367ad647b525912f40849bbd78" category="inline-link-macro-rx"></block>。執行安裝和佈線程序時、您必須執行第 3 層組態的特定步驟。以下內容適用於第 3 層組態：</block>
+  <block id="9754d5ef829b115c83fcfad16e037150" category="list-text">您可以將 MetroCluster 交換器直接連接到路由器或一或多個介入的交換器。</block>
+  <block id="ed94574fa9ed2387bee462bdd7cd3ba5" category="list-text">您可以將 MetroCluster IP 介面直接連接到路由器或其中一台交換器。</block>
+  <block id="f1596f206c54f2be9203577a2eff12b5" category="list-text">VLAN必須延伸至閘道裝置。</block>
+  <block id="9b0be62b5e24c67f7d0b3aa7b31b6604" category="list-text">您可以使用<block ref="952b62648c6a534516a9c3c7315a7c7d" prefix=" " category="inline-code"></block> 以 IP 閘道位址設定 MetroCluster IP 介面位址。</block>
+  <block id="f6d02847cab7cb4beb1719ebf258e2f2" category="list-text">每個站台的「不支援VLAN」VLAN ID MetroCluster 必須相同。不過、子網路可能會有所不同。</block>
+  <block id="b7b42132f8e93917eac40b208d22bece" category="list-text">不支援下列功能：</block>
+  <block id="e175f2efef635374c81a1849be567459" category="list-text">重新整理四節點 MetroCluster 組態</block>
+  <block id="737fb92f35cc9bdf093b6e69cc63f06d" category="paragraph">設定路由器和閘道 IP 位址時、您必須符合下列需求：</block>
+  <block id="a90528fa780e67a14116d1611ce717d2" category="list-text">一個節點上的兩個介面不能有相同的閘道 IP 位址。</block>
+  <block id="70bfc0d0b45a011747af6c74384efe16" category="section-title">中間交換器的必要設定</block>
+  <block id="447dfac8aa099d425869681811719a30" category="paragraph">當 MetroCluster 流量通過中繼網路中的 ISL 時、您應該確認中繼交換器的組態是否能確保 MetroCluster 流量（ RDMA 和儲存設備）符合 MetroCluster 站台之間整個路徑中所需的服務層級。</block>
+  <block id="6b8d702de4699c80d4f08e3290e0ae78" category="paragraph">下圖概述使用 NetApp 驗證的 Cisco 交換器時所需的設定：</block>
+  <block id="d64d8900b94544769fb9967383f0fd7c" category="paragraph">下圖概述當外部交換器為 Broadcom IP 交換器時、共用網路所需的設定。</block>
+  <block id="05b4b53d3b59a13fd2e65542e7891e26" category="list-text">。<block ref="f63a844b3a8b746d4843c729ac11c60a" prefix=" " category="inline-code"></block> 原則會套用至連接至 MetroCluster IP 交換器的中繼交換器上的連接埠。</block>
+  <block id="52ef9029aac6ce5ffcb9c3d6cff86d7f" category="paragraph">。<block ref="f63a844b3a8b746d4843c729ac11c60a" prefix=" " category="inline-code"></block> 原則會將傳入的標記流量對應到中繼交換器上的適當佇列。</block>
+  <block id="15ab0cd88b7fb9a6fd629378a99a2295" category="list-text">答<block ref="f9720e3c5caef8b7a1d232011f766afa" prefix=" " category="inline-code"></block> 原則會套用到中繼交換器上連接到中繼交換器之間 ISL 的連接埠。</block>
+  <block id="18d81090280ae3c4bb12ecd8a2bed4be" category="paragraph">以下範例適用於 Cisco Nexus 3232C 和 9336C-FX2 交換器。視交換器廠商和機型而定、您必須驗證中間交換器是否有適當的組態。</block>
+  <block id="dbf22513b7658f718a783a9c9ca05c25" category="paragraph-title">設定中繼交換器 ISL 連接埠的類別對應</block>
+  <block id="2f8cbfda819bd44eb1b6d0b8413c7380" category="paragraph">以下範例顯示類別對應定義、視您是否需要分類或比對入口流量而定。</block>
+  <block id="920163af25aaf3412edc4e2617944413" category="open-title">對進入流量進行分類：</block>
+  <block id="5195f66a2dd1582077857da153dfc3e7" category="open-title">符合入口流量：</block>
+  <block id="fe70aaf6db42e3ca503ed0f831ec3013" category="paragraph-title">在中繼交換器的 ISL 連接埠上建立入口原則對應：</block>
+  <block id="ed8f4f6efa89e6154543c4f612bf78ba" category="paragraph">以下範例說明如何根據您是否需要分類或比對入口流量來建立入口原則對應。</block>
+  <block id="fd2f21fa2367388327b48baf4eba2d34" category="open-title">對進入流量進行分類：</block>
+  <block id="116d60d710def294128331f31f4e99fe" category="open-title">符合入口流量：</block>
+  <block id="59b0f4b7ca0808cc39159f8f430b2a40" category="paragraph-title">設定 ISL 連接埠的出口佇列原則</block>
+  <block id="aff7033715e65e12ff4650459dd9ff39" category="paragraph">下列範例顯示如何設定出口佇列原則：</block>
+  <block id="dfb0c4a1486181d12349fddc19976e09" category="paragraph">這些設定必須套用至所有傳輸 MetroCluster 流量的交換器和 ISL 。</block>
+  <block id="b938eb18ad1590315ab79c5e36f76620" category="paragraph">在本範例中、第 4 季和第 5 季均使用進行設定<block ref="5d143ead1084d921d2b83df6e0907a26" prefix=" " category="inline-code"></block>。視您的組態而定、您可能需要設定最小和最大臨界值、如下列範例所示：</block>
+  <block id="9cc02e1ad38d785896ce26b51fb60102" category="admonition">最小值和最大值會因交換器和您的需求而異。</block>
+  <block id="6cda46b8128670310f45ae18ae21c334" category="paragraph-title">範例 1 ： Cisco</block>
+  <block id="df31e88a5390c4402f1d983b088515a0" category="paragraph">如果您的組態有 Cisco 交換器、就不需要在中間交換器的第一個入口連接埠上進行分類。接著您可以設定下列對應和原則：</block>
+  <block id="51c0b14fe2b02fc7801ff18c8af17a3d" category="list-text"><block ref="c32bdab64a5102128e49f0e258738d79" prefix="" category="inline-code"></block></block>
+  <block id="4498fe5bbba88f97458a16049737b887" category="list-text"><block ref="96565419e14f3fe6879ee17ff6782d2f" prefix="" category="inline-code"></block></block>
+  <block id="b326fb23b2e8262075e282eafc7e2b3d" category="list-text"><block ref="229440853e909add465ca7b5f5413e8b" prefix="" category="inline-code"></block></block>
+  <block id="94256cf7c85ad240f4ba47c6ced26a6c" category="paragraph">您可以指派<block ref="229440853e909add465ca7b5f5413e8b" prefix=" " category="inline-code"></block> 原則對應至傳輸 MetroCluster 流量的 ISL 連接埠。</block>
+  <block id="0ec5acbb5f8936a859017b5f986d1624" category="paragraph-title">範例 2 ： Broadcom</block>
+  <block id="d7b3d145846ddade4db7a38d17e1b38e" category="paragraph">如果您的組態有 Broadcom 交換器、則必須在中間交換器的第一個入口連接埠上進行分類。接著您可以設定下列對應和原則：</block>
+  <block id="01d873f1d9e0aba8247cb464d76ea43f" category="list-text"><block ref="75c2563b7e6183480d77905c311117ee" prefix="" category="inline-code"></block></block>
+  <block id="d964707c5bc946eced7a043ad795f097" category="list-text"><block ref="4e445a7c8509b9986edc65399089887f" prefix="" category="inline-code"></block></block>
+  <block id="56a9521c621b33f42304f5ab63fca1eb" category="list-text"><block ref="8e5d0e16f4ef973f194b24b671764f57" prefix="" category="inline-code"></block></block>
+  <block id="f5d105ae84b71f8c7b3e300d059f40dc" category="list-text"><block ref="7539fea0476c31185bf673fa66164f2d" prefix="" category="inline-code"></block></block>
+  <block id="6e73ee887ad940172c7a88d077bf0772" category="list-text"><block ref="51c0649c1214c3a7cb1b5422c6b9dd5f" prefix="" category="inline-code"></block></block>
+  <block id="9fd450aaf744ef2f0f02e43876522bfe" category="paragraph">您指派<block ref="67a94f8e22c0892a226d626753340cc4" prefix=" " category="inline-code"></block> 原則對應至連接 Broadcom 交換器的中繼交換器上的 ISL 連接埠。</block>
+  <block id="4eaf14eb10c7f173afbdacfeab39777a" category="paragraph">您可以指派<block ref="229440853e909add465ca7b5f5413e8b" prefix=" " category="inline-code"></block> 原則會對應至傳輸 MetroCluster 流量但未連接 Broadcom 交換器的中繼交換器上的 ISL 連接埠。</block>
+  <block id="5af97d9502169db37645c08f238777a6" category="summary">從推出支援MetroCluster的交換器開始ONTAP 、MetroCluster 即可開始使用符合MetroCluster的IP組態。這些交換器未經NetApp驗證、但符合NetApp規格。本主題概述 MetroCluster 相容交換器的一般需求與限制。</block>
+  <block id="47fffbd3afdf8fa76a079477bd59709f" category="doc">使用 MetroCluster 相容交換器時的需求與限制</block>
+  <block id="ed0f2729a4bf35a687f00daa041997c7" category="paragraph">從推出支援MetroCluster的交換器開始ONTAP 、MetroCluster 即可開始使用符合MetroCluster的IP組態。這些交換器未經NetApp驗證、但符合NetApp規格。不過、 NetApp 並未針對任何未經驗證的交換器提供疑難排解或組態支援服務。使用 MetroCluster 相容的交換器時、您應該瞭解一般需求和限制。</block>
+  <block id="9948bad86a0ee0273515c6ce814edbfc" category="paragraph">連接 MetroCluster IP 介面的交換器必須符合下列一般需求：</block>
+  <block id="b67e189b705bbcc9f23d7cfa3f63039e" category="list-text">交換器必須支援服務品質（ QoS ）和流量分類。</block>
+  <block id="0abd4d7fe8e048cb4f96973a179b5dee" category="list-text">交換器必須支援負載平衡原則、才能保留路徑上的順序。</block>
+  <block id="09e2c61b537dad80acb6a181f4206358" category="list-text">交換器連接埠必須提供專用速率、且不得過度配置。</block>
+  <block id="331dfa751b96c23b76a7e7322f4a12e0" category="list-text">連接節點與交換器的纜線和收發器必須由 NetApp 提供。交換器廠商必須支援這些纜線。如果您使用光纖纜線、則交換器中的收發器可能不是由 NetApp 提供。您必須確認它與控制器中的收發器相容。</block>
+  <block id="1deb959e67bae44ee05547e71ee4436a" category="list-text">連接 MetroCluster 節點的交換器可以傳輸非 MetroCluster 流量。</block>
+  <block id="196918e4613993957d5d65aa2c49625e" category="list-text">需要四個IP交換器、每個交換器架構需要兩個。如果您使用 Director 、則可以在每一側使用單一 Director 、但 MetroCluster IP 介面必須連線至該 Director 上兩個不同故障網域中的兩個不同刀鋒。</block>
+  <block id="d578b667256f73cf0054ce85e9a803c1" category="list-text">來自一個節點的 MetroCluster 介面必須連線至兩個網路交換器或刀鋒。來自一個節點的 MetroCluster 介面無法連線至相同的網路、交換器或刀鋒伺服器。</block>
+  <block id="dbc6bc08f5767f194c92081755bcebc7" category="list-text">網路必須符合下列各節所述的需求：</block>
+  <block id="3a1583c43d5c26bc5494a0499ae33c72" category="list-text"><block ref="3a1583c43d5c26bc5494a0499ae33c72" category="inline-link-macro-rx"></block></block>
+  <block id="919e8522ca559ecdaf4e3c760661ca3c" category="list-text"><block ref="919e8522ca559ecdaf4e3c760661ca3c" category="inline-link-macro-rx"></block></block>
+  <block id="80e63f439f45f04f3bd1d9233a23c06b" category="list-text">必須在所有傳輸 MetroCluster IP 流量的交換器上設定 9216 的最大傳輸單元（ MTU ）。</block>
+  <block id="1190064be457a70251f83cf8ed90fbae" category="list-text">不支援還原至 ONTAP 9.6 或更早版本。</block>
+  <block id="dded0c2f57164482346a6b6658d31507" category="paragraph">在連接兩個站台的 MetroCluster IP 介面的交換器之間使用的任何中繼交換器都必須符合需求、而且必須依照中所述進行設定 <block ref="919e8522ca559ecdaf4e3c760661ca3c" category="inline-link-macro-rx"></block>。</block>
+  <block id="6ce75f6758ededfae6e3e174dee1b0ba" category="section-title">使用 MetroCluster 相容交換器時的限制</block>
+  <block id="41fd40944ef8fe76d651f6ed528b7847" category="paragraph">您無法使用任何需要將本機叢集連線連接至交換器的組態或功能。例如、您無法在 MetroCluster 相容的交換器上使用下列組態和程序：</block>
+  <block id="09c51db2a0d87cd77a2ca402ad79db18" category="list-text">平台共用實體介面、用於本機叢集和 MetroCluster 流量。請參閱 <block ref="286286065c1258176357731fa5aef554" category="inline-link-macro-rx"></block> 以獲得支援的速度。</block>
+  <block id="dc3593c035434198a7961c4f6d12d947" category="summary">瞭解驗證 MetroCluster 組態和網路是否符合所有 ISL 要求所需的資訊。</block>
+  <block id="efd281456c0c33d38a0841ccb8331143" category="doc">ISL 需求總覽</block>
+  <block id="7c4aed3b24a800ab4c4ec111c0a0a428" category="paragraph">您應確認 MetroCluster IP 組態和網路符合所有交換器間連結（ ISL ）要求。雖然某些需求可能不適用於您的組態、但您仍應瞭解所有 ISL 需求、以便更深入瞭解整體組態。</block>
+  <block id="402532c1895565feb3dce23c34cffb5f" category="paragraph">下表提供本節所涵蓋主題的概觀。</block>
+  <block id="b78a3223503896721cca1303f776159b" category="cell">標題</block>
+  <block id="16daa185b92984fefaae8aa04a4cd437" category="cell"><block ref="16daa185b92984fefaae8aa04a4cd437" category="inline-link-macro-rx"></block></block>
+  <block id="5feb584dda6da1d0566cba066fddf124" category="cell">說明交換器需求。
+
+適用於 MetroCluster 組態中使用的所有交換器、包括後端交換器。</block>
+  <block id="a8e05c7ee6fd39022fc67143bc5251ba" category="cell">說明 ISL 要求。
+
+適用於所有 MetroCluster 組態、無論網路拓撲為何、以及您是否使用 NetApp 驗證的交換器或 MetroCluster 相容的交換器。</block>
+  <block id="6220e2336a0586f7b524ec64a336fe1c" category="inline-link-macro">在共享的第 2 層或第 3 層網路中部署 MetroCluster 時的考量事項</block>
+  <block id="466b71f8831d64eada053719fd961798" category="cell"><block ref="466b71f8831d64eada053719fd961798" category="inline-link-macro-rx"></block></block>
+  <block id="f3c54f8b1b081afe141797ddcf3459e0" category="cell">說明共用第 2 層或第 3 層網路的需求。
+
+適用於所有組態、但使用 NetApp 驗證的交換器和直接連線的 ISL 的 MetroCluster 組態除外。</block>
+  <block id="a5a4c52ad165d0f2ece1f7aefc7d482c" category="inline-link-macro">使用 MetroCluster 相容交換器時的考量事項</block>
+  <block id="469660356a0585d894a2477073c83c97" category="cell"><block ref="469660356a0585d894a2477073c83c97" category="inline-link-macro-rx"></block></block>
+  <block id="b7cda7e4a23f216c9f7830dfa3e8bc23" category="cell">說明 MetroCluster 相容交換器的需求。
+
+適用於所有未使用 NetApp 驗證交換器的 MetroCluster 組態。</block>
+  <block id="c8a876018fbb152e3e9beb9a87f3cd4e" category="cell"><block ref="c8a876018fbb152e3e9beb9a87f3cd4e" category="inline-link-macro-rx"></block></block>
+  <block id="529fcc581410686227b4df2b0fb6b6c2" category="cell">提供不同 MetroCluster 網路拓撲的範例。
+
+適用於所有 MetroCluster 組態。</block>
+  <block id="20f7078fb96bd6060a10b9fed9306941" category="sidebar">MetroCluster 相容交換器的需求與限制</block>
+  <block id="3c24829f69028dca3ac0aa982abad68d" category="sidebar">MetroCluster 相容交換器的網路速度和交換器連接埠模式</block>
 </blocks>

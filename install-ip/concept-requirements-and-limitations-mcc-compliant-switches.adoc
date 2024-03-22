@@ -1,0 +1,56 @@
+---
+permalink: install-ip/concept-requirement-and-limitations-mcc-compliant-switches.html 
+sidebar: sidebar 
+keywords: metrocluster ip, metrocluster-compliant switches, metrocluster-compliant, requirements, compliant, limitations 
+summary: 從推出支援MetroCluster的交換器開始ONTAP 、MetroCluster 即可開始使用符合MetroCluster的IP組態。這些交換器未經NetApp驗證、但符合NetApp規格。本主題概述 MetroCluster 相容交換器的一般需求與限制。 
+---
+= 使用 MetroCluster 相容交換器時的需求與限制
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+從推出支援MetroCluster的交換器開始ONTAP 、MetroCluster 即可開始使用符合MetroCluster的IP組態。這些交換器未經NetApp驗證、但符合NetApp規格。不過、 NetApp 並未針對任何未經驗證的交換器提供疑難排解或組態支援服務。使用 MetroCluster 相容的交換器時、您應該瞭解一般需求和限制。
+
+
+
+== MetroCluster相容交換器的一般需求
+
+連接 MetroCluster IP 介面的交換器必須符合下列一般需求：
+
+* 交換器必須支援服務品質（ QoS ）和流量分類。
+* 交換器必須支援明確的壅塞通知（ECN）。
+* 交換器必須支援負載平衡原則、才能保留路徑上的順序。
+* 交換器必須支援L2流量控制（L2 FC）。
+* 交換器連接埠必須提供專用速率、且不得過度配置。
+* 連接節點與交換器的纜線和收發器必須由 NetApp 提供。交換器廠商必須支援這些纜線。如果您使用光纖纜線、則交換器中的收發器可能不是由 NetApp 提供。您必須確認它與控制器中的收發器相容。
+* 連接 MetroCluster 節點的交換器可以傳輸非 MetroCluster 流量。
+* 只有為無交換器叢集互連提供專用連接埠的平台、才能搭配符合MetroCluster的交換器使用。無法AFF 使用FAS2750和S4A220等平台、因為MetroCluster 無法使用相同MetroCluster 的網路連接埠、因為無法使用某些流量和不互連的流量。
+* MetroCluster相容的交換器不得用於本機叢集連線。
+* 您可以將此介面連接至任何可設定以符合需求的交換器連接埠。MetroCluster
+* 需要四個IP交換器、每個交換器架構需要兩個。如果您使用 Director 、則可以在每一側使用單一 Director 、但 MetroCluster IP 介面必須連線至該 Director 上兩個不同故障網域中的兩個不同刀鋒。
+* 來自一個節點的 MetroCluster 介面必須連線至兩個網路交換器或刀鋒。來自一個節點的 MetroCluster 介面無法連線至相同的網路、交換器或刀鋒伺服器。
+* 網路必須符合下列各節所述的需求：
++
+** link:concept-requirements-isls.html["ISL的考量"]
+** link:concept-considerations-layer-2-layer-3.html["在共享第 2 層或第 3 層網路中部署 MetroCluster 時的考量事項"]
+
+
+* 必須在所有傳輸 MetroCluster IP 流量的交換器上設定 9216 的最大傳輸單元（ MTU ）。
+* 不支援還原至 ONTAP 9.6 或更早版本。
+
+
+在連接兩個站台的 MetroCluster IP 介面的交換器之間使用的任何中繼交換器都必須符合需求、而且必須依照中所述進行設定 link:concept-considerations-layer-2-layer-3.html["在共享第 2 層或第 3 層網路中部署 MetroCluster 時的考量事項"]。
+
+
+
+== 使用 MetroCluster 相容交換器時的限制
+
+您無法使用任何需要將本機叢集連線連接至交換器的組態或功能。例如、您無法在 MetroCluster 相容的交換器上使用下列組態和程序：
+
+* 八節點MetroCluster 的不完整組態
+* 從MetroCluster 靜態FC移轉至MetroCluster 靜態IP組態
+* 重新整理四節點MetroCluster 的靜態IP組態
+* 平台共用實體介面、用於本機叢集和 MetroCluster 流量。請參閱 link:concept-network-speeds-and-switchport-modes.html["適用於MetroCluster相容交換器的平台專屬網路速度和交換器連接埠模式"] 以獲得支援的速度。
+

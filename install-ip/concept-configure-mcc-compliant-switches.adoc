@@ -1,0 +1,280 @@
+---
+permalink: install-ip/concept-configure-mcc-compliant-switches.html 
+sidebar: sidebar 
+keywords: metrocluster ip, metrocluster-compliant switches, metrocluster-compliant, requirements, compliant, configuration 
+summary: 瞭解各種交換器連接埠組態。 
+---
+= 交換器連接埠組態範例
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+瞭解各種交換器連接埠組態。
+
+
+NOTE: 以下範例使用十進位值、並遵循適用於 Cisco 交換器的表格。視交換器廠商而定、您可能需要不同的 DSCP 值。請參閱交換器廠商對應的表格、以確認正確的值。
+
+|===
+
+
+| DSCP 值 | 十進位 | 十六進位 | 意義 
+
+
+ a| 
+101000
+ a| 
+16
+ a| 
+0x10
+ a| 
+CS2.
+
+
+
+ a| 
+11 000
+ a| 
+24
+ a| 
+0x18
+ a| 
+CS3.
+
+
+
+ a| 
+10 萬
+ a| 
+32
+ a| 
+0x20
+ a| 
+CS4.
+
+
+
+ a| 
+101000
+ a| 
+40
+ a| 
+0x28
+ a| 
+CS5.
+
+|===
+.連接 MetroCluster 介面的交換器連接埠
+* 遠端直接記憶體存取（ RDMA ）流量分類：
++
+** 匹配： TCP 端口 10006 、來源、目的地或兩者
+** 選擇性配對： cos 5.
+** 選用配對： DSCP 40
+** 設定 DSCP 40
+** 設定 COS 5.
+** 選用：速率調整至 20Gbps
+
+
+* iSCSI 流量分類：
++
+** 匹配： TCP 端口 62500 、源端口、目標端口或兩者
+** 選擇性配對： cos 4
+** 選用配對： DSCP 32
+** 設定 DSCP 32
+** 設定 COS 4.
+
+
+* L2 流程控制（暫停）、 RX 和 TX
+
+
+.ISL連接埠
+* 分類：
++
+** 符合 COS 5 或 DSCP 40
++
+*** 設定 DSCP 40
+*** 設定 COS 5.
+
+
+** 符合 COS 4 或 DSCP 32
++
+*** 設定 DSCP 32
+*** 設定 COS 4.
+
+
+
+
+* 出口佇列
++
+** CoS 群組 4 的最低組態臨界值為 2000 、最大臨界值為 3000
+** CoS 群組 5 的最低組態臨界值為 3500 、最大臨界值為 6500 。
++
+
+NOTE: 組態臨界值會因環境而異。您必須根據個別環境評估組態臨界值。
+
+** ECN 已於第 4 季和第 5 季啟用
+** 第 4 季和第 5 季啟用紅色
+
+
+
+
+.頻寬分配（連接 MetroCluster 介面和 ISL 連接埠的交換器連接埠）
+* RDMA 、 COS 5 / DSCP 40 ： 60%
+* iSCSI 、 COS 4 / DSCP 32 ： 40%
+* 每個 MetroCluster 組態和網路的最低容量需求： 10Gbps
+
+
+
+NOTE: 如果您使用速率限制、則流量應為 * 形狀 * 、而不會造成損失。
+
+
+
+== 設定連接 MetroCluster 控制器的交換器連接埠的範例
+
+所提供的命令範例適用於 Cisco NX3232 或 Cisco NX9336 交換器。命令會因交換器類型而異。
+
+如果交換器上無法使用範例所示的功能或其等效功能、則交換器不符合最低需求、因此無法用於部署 MetroCluster 組態。對於任何連接到 MetroCluster 組態的交換器、以及所有中繼交換器、都是如此。
+
+
+NOTE: 下列範例可能只顯示一個網路的組態。
+
+.基本組態
+必須在每個網路中設定虛擬 LAN （ VLAN ）。以下範例說明如何在網路 10 中設定 VLAN 。
+
+*範例：*
+
+[listing]
+----
+# vlan 10
+The load balancing policy should be set so that order is preserved.
+----
+*範例：*
+
+[listing]
+----
+# port-channel load-balance src-dst ip-l4port-vlan
+----
+
+
+== 設定分類的範例
+
+您必須設定存取和類別對應、才能將 RDMA 和 iSCSI 流量對應至適當的類別。
+
+在下列範例中、所有進出連接埠 65200 的 TCP 流量都會對應至儲存（ iSCSI ）類別。連接埠10006往返的所有TCP流量都會對應至RDMA類別。這些原則對應用於連接 MetroCluster 介面的交換器連接埠。
+
+*範例：*
+
+[listing]
+----
+ip access-list storage
+  10 permit tcp any eq 65200 any
+  20 permit tcp any any eq 65200
+ip access-list rdma
+  10 permit tcp any eq 10006 any
+  20 permit tcp any any eq 10006
+
+class-map type qos match-all storage
+  match access-group name storage
+class-map type qos match-all rdma
+match access-group name rdma
+----
+您必須設定入口原則。入口原則會將流量對應至不同的 COS 群組。在此範例中、RDMA流量會對應至COOS群組5、iSCSI流量則對應至COOS群組4。入口原則用於連接 MetroCluster 介面的交換器連接埠、以及傳輸 MetroCluster 流量的 ISL 連接埠。
+
+*範例：*
+
+[listing]
+----
+policy-map type qos MetroClusterIP_Node_Ingress
+class rdma
+  set dscp 40
+  set cos 5
+  set qos-group 5
+class storage
+  set dscp 32
+  set cos 4
+  set qos-group 4
+----
+NetApp 建議您在連接 MetroCluster 介面的交換器連接埠上調整流量、如下例所示：
+
+*範例：*
+
+[listing]
+----
+policy-map type queuing MetroClusterIP_Node_Egress
+class type queuing c-out-8q-q7
+  priority level 1
+class type queuing c-out-8q-q6
+  priority level 2
+class type queuing c-out-8q-q5
+  priority level 3
+  shape min 0 gbps max 20 gbps
+class type queuing c-out-8q-q4
+  priority level 4
+class type queuing c-out-8q-q3
+  priority level 5
+class type queuing c-out-8q-q2
+  priority level 6
+class type queuing c-out-8q-q1
+  priority level 7
+class type queuing c-out-8q-q-default
+  bandwidth remaining percent 100
+  random-detect threshold burst-optimized ecn
+----
+
+
+== 設定節點連接埠的範例
+
+您可能需要在中斷連線模式中設定節點連接埠。在下列範例中、連接埠 25 和 26 設定為 4 x 25Gbps 中斷模式。
+
+*範例：*
+
+[listing]
+----
+interface breakout module 1 port 25-26 map 25g-4x
+----
+您可能需要設定MetroCluster 介面連接埠速度。以下範例說明如何將速度設定為 * 自動 * 或 40Gbps 模式：
+
+*範例：*
+
+[listing]
+----
+	speed auto
+
+	speed 40000
+----
+以下範例顯示設定為連接 MetroCluster 介面的交換器連接埠。它是 VLAN 10 中的存取模式連接埠、 MTU 為 9216 、並以原生速度運作。它已啟用對稱（傳送和接收）流程控制（暫停）、並已指派 MetroCluster 入口和出口原則。
+
+*範例：*
+
+[listing]
+----
+interface eth1/9
+description MetroCluster-IP Node Port
+speed auto
+switchport access vlan 10
+spanning-tree port type edge
+spanning-tree bpduguard enable
+mtu 9216
+flowcontrol receive on
+flowcontrol send on
+service-policy type qos input MetroClusterIP_Node_Ingress
+service-policy type queuing output MetroClusterIP_Node_Egress
+no shutdown
+----
+在 25Gbps 連接埠上、您可能需要將轉送錯誤修正（ FEC ）設定設為「關閉」、如下例所示。
+
+*範例：*
+
+[listing]
+----
+fec off
+----
+
+
+== 整個網路中 ISL 連接埠的組態範例
+
+MetroCluster 相容的交換器被視為中間交換器、即使直接連接 MetroCluster 介面也一樣。在 MetroCluster 相容交換器上傳輸 MetroCluster 流量的 ISL 連接埠必須與中繼交換器上的 ISL 連接埠相同設定。請參閱 link:concept-considerations-layer-2-layer-3.html#required-settings-on-intermediate-switches["中繼交換器上的必要設定"] 以取得指引和範例。
+
+
+NOTE: 連接 MetroCluster 介面的交換器連接埠和傳輸 MetroCluster 流量的 ISL 的部分原則對應相同。您可以針對這兩種連接埠使用方式使用相同的原則對應。

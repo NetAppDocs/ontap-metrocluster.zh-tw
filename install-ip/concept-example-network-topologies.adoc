@@ -1,0 +1,54 @@
+---
+permalink: install-ip/concept-example-network-topologies.html 
+sidebar: sidebar 
+keywords: metrocluster ip, metrocluster-compliant switches, metrocluster-compliant, requirements, compliant, configuration 
+summary: 從 ONTAP 9.6 開始、 MetroCluster IP 組態支援一些額外的網路組態。 
+---
+= 例如：網路拓撲MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+從 ONTAP 9.6 開始、 MetroCluster IP 組態支援一些額外的網路組態。本節提供支援的網路組態範例。並未列出所有支援的拓撲。
+
+在這些拓撲中、假設 ISL 和中繼網路是根據中所述的需求進行設定 link:concept-requirements-isls.html["ISL的考量"]。
+
+
+NOTE: 如果您要與非 MetroCluster 流量共用 ISL 、則必須確認 MetroCluster 在任何時候都至少有可用的最低必要頻寬。
+
+
+
+== 具有直接連結的共用網路組態
+
+在此拓撲中、有兩個不同的站台是透過直接連結連接。這些連結可以是 xWDM 和 TDM 裝置或交換器之間的連結。ISL 的容量並非專用於 MetroCluster 流量、而是與其他非 MetroCluster 流量共用。
+
+image::../media/mcc_ip_networking_with_shared_isls.gif[MCC IP網路與共享ISL]
+
+
+
+== 共享基礎架構與中繼網路
+
+在此拓撲中、 MetroCluster 站台並非直接連線、而是 MetroCluster 和主機流量透過網路傳輸。
+網路可由一系列的 xWDM 和 TDM 及交換器組成、但與直接 ISL 的共用組態不同、這些連結並不直接位於站台之間。視站台之間的基礎架構而定、可能會有任何網路組態組合。
+
+image::../media/mcc_ip_networking_with_intermediate_private_networks.gif[MCC IP網路與中繼私有網路]
+
+
+
+== 共享中間網路的多個 MetroCluster 組態
+
+在此拓撲中、有兩MetroCluster 個獨立的Sing組態共享相同的中繼網路。在範例中、 MetroCluster One switch_a_1 和 MetroCluster Two switch_a_1 都會連線到相同的中繼交換器。
+
+
+NOTE: 「 MetroCluster One 」或「 MetroCluster Two 」都可以是一個八節點 MetroCluster 組態或兩個四節點 MetroCluster 組態。
+
+image::../media/mcc_ip_two_mccs_sharing_the_same_shared_network_sx.gif[MCC IP兩個MCC共用相同的共用網路SX]
+
+
+
+== 結合使用 NetApp 驗證交換器的 MetroCluster 組態、以及使用 MetroCluster 相容交換器的組態
+
+兩個獨立的 MetroCluster 組態共用相同的中繼交換器、其中一個 MetroCluster 是使用 NetApp 驗證的交換器在共用的第 2 層組態（ MetroCluster One ）中進行設定、另一個 MetroCluster 則是使用直接連線至中繼交換器（ MetroCluster 2 ）的 MetroCluster 相容交換器進行設定。
+
+image::../media/mcc_ip_unsupported_two_mccs_direct_to_shared_switches.png[MCC IP不受支援的兩個MCC直接連接至共享交換器]

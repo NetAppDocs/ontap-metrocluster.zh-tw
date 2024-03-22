@@ -1,0 +1,43 @@
+---
+permalink: install-ip/overview-isl-requirements.html 
+sidebar: sidebar 
+keywords: isls, ip, layer 2, layer 3, shared switch 
+summary: 瞭解驗證 MetroCluster 組態和網路是否符合所有 ISL 要求所需的資訊。 
+---
+= ISL 需求總覽
+:allow-uri-read: 
+
+
+您應確認 MetroCluster IP 組態和網路符合所有交換器間連結（ ISL ）要求。雖然某些需求可能不適用於您的組態、但您仍應瞭解所有 ISL 需求、以便更深入瞭解整體組態。
+
+下表提供本節所涵蓋主題的概觀。
+
+[cols="25,75"]
+|===
+| 標題 | 說明 
+
+
+| link:mcc-compliant-netapp-validated-switches.html["NetApp 驗證且符合 MetroCluster 規範的交換器"] | 說明交換器需求。
+
+適用於 MetroCluster 組態中使用的所有交換器、包括後端交換器。 
+
+
+| link:concept-requirements-isls.html["ISL的考量"] | 說明 ISL 要求。
+
+適用於所有 MetroCluster 組態、無論網路拓撲為何、以及您是否使用 NetApp 驗證的交換器或 MetroCluster 相容的交換器。 
+
+
+| link:concept-considerations-layer-2-layer-3.html["在共享的第 2 層或第 3 層網路中部署 MetroCluster 時的考量事項"] | 說明共用第 2 層或第 3 層網路的需求。
+
+適用於所有組態、但使用 NetApp 驗證的交換器和直接連線的 ISL 的 MetroCluster 組態除外。 
+
+
+| link:concept-requirement-and-limitations-mcc-compliant-switches.html["使用 MetroCluster 相容交換器時的考量事項"] | 說明 MetroCluster 相容交換器的需求。
+
+適用於所有未使用 NetApp 驗證交換器的 MetroCluster 組態。 
+
+
+| link:concept-example-network-topologies.html["例如：網路拓撲MetroCluster"] | 提供不同 MetroCluster 網路拓撲的範例。
+
+適用於所有 MetroCluster 組態。 
+|===
