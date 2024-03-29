@@ -2725,7 +2725,6 @@
   <block id="a8d2847903c576898fb0a7f696b03aa1" category="paragraph">若要變更ISL連接埠的距離...</block>
   <block id="ad6e34d4719cd2f503bdb298311a85e4" category="paragraph">在Fabric中的兩個交換器上使用「portcfglong平行 相距_連接埠號連接埠距離_」命令。</block>
   <block id="43a533d4a7711d238594840dabecdae9" category="paragraph">若要移除ISL ...</block>
-  <block id="0251accfd0a01d6b6678e4acc31b0511" category="paragraph">拔下連結（纜線）。</block>
   <block id="30157269456de4c3887b93d1ec060d5c" category="paragraph">若要重新部署ISL ...</block>
   <block id="aef3cfb377e896595d24bea72737dbb1" category="paragraph">重新部署ISL與移除然後新增ISL相同。首先、中斷連結以移除ISL、然後將SFP插入要新增為ISL連接埠的連接埠。</block>
   <block id="93852cc642726104756c52dbcffc5cb5" category="list-text">重新設定訂單外交付（OD）或訂單內交付（IOD）。</block>
@@ -13239,7 +13238,6 @@
   <block id="baf55d93093b54950152b6be3f9bfec2" category="list-text">一個 Fabric 上的 ISL 必須都是相同的速度和長度。</block>
   <block id="4b00dc01ca120693f1539bf736f11069" category="list-text">兩種架構中的 ISL 必須相同的速度和長度。</block>
   <block id="ef6ab3e28db1093c7315b30edeb84730" category="list-text">Fabric 1 和 Fabric 2 之間的最大支援距離差異為 20 公里或 0.2 毫秒。</block>
-  <block id="1b6ceb9b8db71407a3be0617e754101e" category="list-text">一個架構上的 ISL 必須具有相同的拓撲。例如、它們都應該是直接連結、或者如果組態使用的是 WDM 、則它們都必須使用 WDM 。</block>
   <block id="ddf41f2636c98d00a2698837f55a3f74" category="list-text">ISL 速度必須至少為 10Gbps 。</block>
   <block id="cb806a9b25dfb1d4470413a3c2dd9944" category="list-text">每個架構必須至少有一個 10Gbps ISL 連接埠。</block>
   <block id="25b13aa97e6e9eb228478bfddbcc84e9" category="paragraph">以下內容適用於站台 _A 和站台 _B 的 MetroCluster IP 交換器之間的往返流量、 MetroCluster 組態處於穩定狀態作業：</block>
@@ -13500,4 +13498,20 @@
 適用於所有 MetroCluster 組態。</block>
   <block id="20f7078fb96bd6060a10b9fed9306941" category="sidebar">MetroCluster 相容交換器的需求與限制</block>
   <block id="3c24829f69028dca3ac0aa982abad68d" category="sidebar">MetroCluster 相容交換器的網路速度和交換器連接埠模式</block>
+  <block id="61a6d655671eebbd633c1d84fae09e17" category="cell">如果您...</block>
+  <block id="9bb5e66f509f87b2056c49d88c3c1ad3" category="cell">使用程序 ...</block>
+  <block id="585259c85fa7332b7408c2bdbdccbd7e" category="cell">擁有符合您需求的 RCF</block>
+  <block id="6cd8985ef1c9ac5bb3c5ba019968286f" category="list-text"><block ref="6cd8985ef1c9ac5bb3c5ba019968286f" category="inline-link-macro-rx"></block></block>
+  <block id="876679dae881403e2f232efc9dd0bb3f" category="inline-link-macro">使用 RCF 檔案設定 Cisco FC 交換器</block>
+  <block id="eb93031c42594d52b52dea4aa8c60cc7" category="list-text"><block ref="eb93031c42594d52b52dea4aa8c60cc7" category="inline-link-macro-rx"></block></block>
+  <block id="f95c75e9e3d1a3f06e2b3b15e304cf53" category="cell">沒有 RCF 或 RCF 不符合您的要求</block>
+  <block id="a7479abd1216b38814805eeb38bdbc15" category="list-text"><block ref="a7479abd1216b38814805eeb38bdbc15" category="inline-link-macro-rx"></block></block>
+  <block id="36d1363cb78273718bac11302a6ed445" category="paragraph">中斷連結連線。</block>
+  <block id="cde774a461b1ae0ea7e1a404c874f2a4" category="admonition">當您變更 ISL 連接埠時、可能也需要套用 WDM 廠商建議的其他設定。請參閱 WDM 廠商文件以取得指引。</block>
+  <block id="05ad4e95aa7945d2b5bc1c7c8a6eb220" category="list-text">設定服務處理器（ SP ）：</block>
+  <block id="0e74984a18b6236a912a70cd78328256" category="inline-link-macro">設定SP/BMC網路</block>
+  <block id="1aea5f30cf555d730902505e498f4fd0" category="paragraph"><block ref="1aea5f30cf555d730902505e498f4fd0" category="inline-link-macro-rx"></block></block>
+  <block id="4010f2b8e90ddf85f94ac358d78075c1" category="inline-link-macro">搭配使用Service處理器搭配System Manager ONTAP -支援更新版本的更新版本</block>
+  <block id="eaa2669881cbe475b9e0b278420a4005" category="paragraph"><block ref="eaa2669881cbe475b9e0b278420a4005" category="inline-link-macro-rx"></block></block>
+  <block id="adf442d82428813618df31b5f35c8c5d" category="list-text">ISL 必須具有相同的拓撲。例如、它們都應該是直接連結、或者如果組態使用的是 WDM 、則它們都必須使用 WDM 。</block>
 </blocks>

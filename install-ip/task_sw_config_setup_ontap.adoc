@@ -192,6 +192,13 @@ https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/index.html["使
 +
 https://docs.netapp.com/us-en/ontap/index.html#about-ontap-system-manager["系統管理程式（9.7版及更新版本）ONTAP"]
 
+.. 設定服務處理器（ SP ）：
++
+link:https://docs.netapp.com/us-en/ontap/system-admin/sp-bmc-network-config-concept.html["設定SP/BMC網路"^]
+
++
+link:https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/concept_service_processors.html["搭配使用Service處理器搭配System Manager ONTAP -支援更新版本的更新版本"^]
+
 
 
 . 依照提示啟動下一個控制器並將其加入叢集。
