@@ -14,7 +14,7 @@ summary:
 您可以在MetroCluster 整個堆疊中熱新增（不中斷營運地新增）、包括橋接器、至整個系統。FC交換器上必須有可用的連接埠、您必須更新交換器分區以反映變更。
 
 .關於這項工作
-* 此程序可用於使用FibreBridge 7500N或6500N橋接器新增堆疊。
+* 此程序可用於使用 FiberBridge 7600N 或 7500N 橋接器新增堆疊。
 * 此程序是假設您使用建議的橋接管理介面：Atto ExpressNAV GUI和Atto QuickNAV公用程式。
 +
 ** 您可以使用Atto ExpressNAV GUI來設定和管理橋接器、以及更新橋接器韌體。您可以使用Atto QuickNAV公用程式來設定橋接式乙太網路管理1連接埠。
@@ -251,9 +251,8 @@ NOTE: 請勿在Atto FibreBridge 7600N或7500N上設定時間同步。Atto FIBreB
 支援的FC資料速率取決於您的機型橋接器。
 
 +
-*** 最多支援32、16或8 Gbps的FibreBridge 7600橋接器。
-*** 最多支援16、8或4 Gbps的光纖橋接器。
-*** 最多支援8、4或2 Gbps的FibreBridge 6500橋接器。
+*** FiberBridge 7600N 橋接器最多支援 32 、 16 或 8 Gbps 。
+*** FiberBridge 7500N 橋接器支援高達 16 、 8 或 4 Gbps 。
 +
 
 NOTE: 您選取的FCDataRate速度會限制為橋接器和橋接連接埠所連接的交換器所支援的最大速度。佈線距離不得超過SFP和其他硬體的限制。
@@ -266,7 +265,7 @@ NOTE: 您選取的FCDataRate速度會限制為橋接器和橋接連接埠所連�
 
 
 
-.. 如果您要設定的是FIBreBridge 7500N或6500N橋接器、請設定連接埠用於PTP的連線模式。
+.. 如果您要設定 FiberBridge 7500N 橋接器、請設定連接埠使用的連線模式以「 PTP 」。
 +
 
 NOTE: 設定FIBreBridge 7600N橋接器時、不需要FCConnMode設定。
@@ -1269,7 +1268,7 @@ NOTE: 其他橋接器可連接至G620、G630、G620-1和G-630-1交換器的連�
 |===
 
 
-12+| 使用Fibre Bridge 6500N橋接器或使用單一FC連接埠（FC1或FC2）的Fibre Bridge 7500N或7600N的組態 
+12+| 僅使用一個 FC 連接埠（ FC1 或 FC2 ）、使用 FiberBridge 7500N 或 7600N 的組態 
 
 
 12+| DR群組1 
@@ -1493,7 +1492,7 @@ NOTE: G620、G630、G620-1和G630-1交換器的連接埠12-17、20和21可連接
 |===
 
 
-10+| 使用Fibre Bridge 6500N橋接器或使用單一FC連接埠（FC1或FC2）的Fibre Bridge 7500N或7600N的組態 
+10+| 僅使用一個 FC 連接埠（ FC1 或 FC2 ）、使用 FiberBridge 7500N 或 7600N 的組態 
 
 
 10+| DR群組2. 

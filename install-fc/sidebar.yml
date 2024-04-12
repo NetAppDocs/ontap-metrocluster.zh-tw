@@ -104,7 +104,7 @@ entries:
     - title: 手動設定Cisco FC交換器
       url: "/install-fc/task_fcsw_cisco_configure_a_cisco_switch_supertask.html"
   - title: 安裝FC至SAS橋接器和SAS磁碟櫃
-    url: "/install-fc/task_fb_new_install.html"
+    url: "/install-fc/task_install_fc_sas_bridges_shelves.html"
 - title: 設定硬體、以便在轉換期間共用Brocade 6510 FC架構
   entries:
   - title: 總覽

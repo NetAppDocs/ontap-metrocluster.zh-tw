@@ -171,12 +171,12 @@ NOTE: RCF檔案會停用Telnet傳輸協定。如果您未設定SSH伺服器、�
 (Routing) #configure
 (Routing) (Config)#crypto key generate dsa
 ----
-.. 如果您使用的是FIPS相容版本的EFOS、請產生ECDSA金鑰。下列範例會建立長度為256的金鑰。有效值為256、384或521。
+.. 如果您使用的是FIPS相容版本的EFOS、請產生ECDSA金鑰。以下範例建立長度為 521 的金鑰。有效值為256、384或521。
 +
 [listing]
 ----
 (Routing) #configure
-(Routing) (Config)#crypto key generate ecdsa 256
+(Routing) (Config)#crypto key generate ecdsa 521
 ----
 .. 啟用SSH伺服器。
 +

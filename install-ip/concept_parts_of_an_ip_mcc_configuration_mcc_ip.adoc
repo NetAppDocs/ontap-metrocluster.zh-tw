@@ -74,10 +74,10 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-concepts/home.html["
 
 image::../media/mcc_ip_hardware_architecture_ip_interconnect.png[MCC IP硬體架構IP互連]
 
-在Sfor the Back-End IP網路組態中、每個節點MetroCluster 都有專屬的生命期：
+MetroCluster IP 組態中的每個節點都有專用介面、可用於連線至後端 IP 網路：
 
 * 兩MetroCluster 個介面
-* 一個叢集間LIF
+* 兩個本機叢集介面
 
 
 下圖顯示這些介面。所示的連接埠使用量適用於AFF 不含功能的A700或FAS9000系統。

@@ -28,7 +28,7 @@ NOTE: 在執行ONTAP 支援升級版本的組態中、不支援使用FibreBridge
  a| 
 您必須使用單一FC連接埠、並連接至單一堆疊、將Fibre Bridge 7500N橋接器的設定與Fibre Bridge 6500N橋接器完全相同。請勿使用Fibre Bridge 7500N上的第二個FC連接埠。
  a| 
-link:task_replace_a_sle_fc_to_sas_bridge.html["使用光纖橋接器7600N或7500N橋接器熱交換光纖橋接器6500N"]
+link:task_replace_a_sle_fc_to_sas_bridge.html#hot_swap_6500n["使用光纖橋接器7600N或7500N橋接器熱交換光纖橋接器6500N"]
 
 
 

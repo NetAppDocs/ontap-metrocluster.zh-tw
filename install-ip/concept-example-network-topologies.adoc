@@ -10,6 +10,7 @@ summary: 從 ONTAP 9.6 開始、 MetroCluster IP 組態支援一些額外的網�
 :imagesdir: ../media/
 
 
+[role="lead"]
 從 ONTAP 9.6 開始、 MetroCluster IP 組態支援一些額外的網路組態。本節提供支援的網路組態範例。並未列出所有支援的拓撲。
 
 在這些拓撲中、假設 ISL 和中繼網路是根據中所述的需求進行設定 link:concept-requirements-isls.html["ISL的考量"]。

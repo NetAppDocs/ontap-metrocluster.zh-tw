@@ -308,7 +308,6 @@ link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#commands-for
 
 == 準備新的控制器模組
 
-[role="lead"]
 您必須準備好四MetroCluster 個新的資訊節點、並安裝正確ONTAP 的版本資訊。
 
 .關於這項工作
@@ -346,7 +345,6 @@ link:../install-ip/using_rcf_generator.html["IP交換器佈線"]
 
 == 升級RCF檔案
 
-[role="lead"]
 如果您要安裝新的交換器韌體、則必須先安裝交換器韌體、才能升級RCF檔案。
 
 .關於這項工作

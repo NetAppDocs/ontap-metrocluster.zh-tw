@@ -8,6 +8,7 @@ summary: 本節提供驗證 MetroCluster 組態和網路是否符合所有需求
 :allow-uri-read: 
 
 
+[role="lead"]
 您的組態中使用的所有交換器（包括後端交換器）都必須通過 NetApp 驗證或 MetroCluster 相容。
 
 

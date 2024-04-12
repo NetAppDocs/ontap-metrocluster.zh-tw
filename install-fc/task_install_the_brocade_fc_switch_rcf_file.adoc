@@ -115,7 +115,6 @@ FC_switch_A_1:admin> portcfgspeed port number port speed
 
 +
 ** 當使用8-Gbps FC-VI介面卡且交換器連接埠速度應設定為8 Gbps時、互連交換器連接埠速度應該會改變。
-** 當Atto FibreBridge 6500N使用8-Gbps HBA介面卡時、應變更交換器連接埠速度。
 ** 當ISL無法以16 Gbps的速度執行時、必須變更ISL連接埠的速度。
 
 

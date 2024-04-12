@@ -43,7 +43,7 @@ link:task_replace_a_sle_fc_to_sas_bridge.html#hot-swapping-a-fibrebridge-7500n-w
  a| 
 您必須將光纖橋接器7600N設定為與光纖橋接器6500N完全相同。
  a| 
-link:task_replace_a_sle_fc_to_sas_bridge.html#hot-swapping-a-fibrebridge-6500n-bridge-with-a-fibrebridge-7600n-or-7500n-bridge["使用光纖橋接器7600N或7500N橋接器熱交換光纖橋接器6500N"]
+link:task_replace_a_sle_fc_to_sas_bridge.html#hot_swap_6500n["使用光纖橋接器7600N或7500N橋接器熱交換光纖橋接器6500N"]
 
 
 

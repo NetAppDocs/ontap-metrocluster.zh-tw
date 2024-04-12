@@ -107,7 +107,6 @@ Fabric附加MetroCluster 的SFC組態需要一對FC對SAS磁碟櫃堆疊群組�
 NOTE: 在執行ONTAP 支援升級版本的組態中、不支援使用FibreBridge 6500N橋接器。
 
 * 最多可支援四個SAS堆疊的FIBreBridge 7600N或7500N橋接器。
-* FibreBridge 6500N橋接器僅支援一個SAS堆疊。
 * 每個堆疊都可以使用不同的IOM機型。
 +
 同一個儲存堆疊不支援混合使用IOM12模組和IOM3模組。如果您的系統執行支援版本ONTAP 的、同一個儲存堆疊中也支援IOM12模組與IOM6模組的混合。
@@ -197,7 +196,6 @@ A或B
 +
 堆疊群組最多可包含10個儲存磁碟櫃。
 
-* FibreBridge 6500N橋接器僅支援堆疊群組中的單一堆疊。
 
  a| 
 1、2等

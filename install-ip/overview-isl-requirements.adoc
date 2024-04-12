@@ -8,6 +8,7 @@ summary: 瞭解驗證 MetroCluster 組態和網路是否符合所有 ISL 要求�
 :allow-uri-read: 
 
 
+[role="lead"]
 您應確認 MetroCluster IP 組態和網路符合所有交換器間連結（ ISL ）要求。雖然某些需求可能不適用於您的組態、但您仍應瞭解所有 ISL 需求、以便更深入瞭解整體組態。
 
 下表提供本節所涵蓋主題的概觀。

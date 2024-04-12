@@ -10,6 +10,7 @@ summary: 本節包含在所有 MetroCluster IP 組態和網路拓撲上傳輸 Me
 :imagesdir: ../media/
 
 
+[role="lead"]
 在所有 MetroCluster IP 組態和網路拓撲上傳輸 MetroCluster 流量的交換器間連結（ ISL ）具有特定需求。這些要求適用於所有承載 MetroCluster 流量的 ISL 、無論 ISL 是直接的還是在客戶交換器之間共用。
 
 

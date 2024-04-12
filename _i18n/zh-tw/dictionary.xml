@@ -34,7 +34,6 @@
   <block id="f0630dda98a33b3b99be916ac28603b0" category="admonition">RCF檔案會停用Telnet傳輸協定。如果您未設定SSH伺服器、則只能使用序列連接埠連線存取橋接器。</block>
   <block id="4cbd2061568d423e0fdf461dfa55b473" category="list-text">產生RSA金鑰。</block>
   <block id="bb618b144b7c6895aa5a8818fa66c1b2" category="list-text">產生DSA金鑰（選用）</block>
-  <block id="d034cc5a3446b99507240baca90266a0" category="list-text">如果您使用的是FIPS相容版本的EFOS、請產生ECDSA金鑰。下列範例會建立長度為256的金鑰。有效值為256、384或521。</block>
   <block id="2adc88e53d20b1a61cccff951117e58f" category="list-text">啟用SSH伺服器。</block>
   <block id="a3fec8a700961f2756fa87e70ed3f889" category="paragraph">如有必要、請結束組態內容。</block>
   <block id="b5a5b3a0219f19569613cb2962fe0ab6" category="admonition">如果金鑰已經存在、系統可能會要求您覆寫金鑰。</block>
@@ -248,9 +247,7 @@
   <block id="20d3ce5dec27f8f374403afd88aa2576" category="section-title">示意圖：「靜態IP」和「叢集互連網路」MetroCluster</block>
   <block id="57b140d2bdb4a32e43e24402fa90a87d" category="paragraph">支援叢集的叢集通常包括叢集互連網路、用於叢集中節點之間的流量。ONTAP在靜態IP組態中、此網路也可用於在各個站台之間傳輸資料複寫流量。MetroCluster MetroCluster</block>
   <block id="8884ae199fd568dc7ca11305cb40b82e" category="image-alt">MCC IP硬體架構IP互連</block>
-  <block id="decd0c57096fb74885b3c3c62892e9df" category="paragraph">在Sfor the Back-End IP網路組態中、每個節點MetroCluster 都有專屬的生命期：</block>
   <block id="5157984370bbb692d3f2d2a41727e668" category="list-text">兩MetroCluster 個介面</block>
-  <block id="5359dd5f381b734f4af8cff7b671c28f" category="list-text">一個叢集間LIF</block>
   <block id="f413ada03786bcba415f9a26d51d3699" category="paragraph">下圖顯示這些介面。所示的連接埠使用量適用於AFF 不含功能的A700或FAS9000系統。</block>
   <block id="7fa8c692d2fa9493453528081a86e668" category="image-alt">MCC IP LIF使用量</block>
   <block id="b65d630d5a52eaba7cd171cb5e3ae37d" category="inline-link-macro">關於靜態IP組態的考量MetroCluster</block>
@@ -2207,11 +2204,6 @@
   <block id="2c38bfd3e1fc55958de34b8ebc994982" category="list-text">從「支援叢集」提示字元中、移除正在進行維護的橋接器、使其不受健全狀況監控：ONTAP</block>
   <block id="b628331cdaf499ac5355da5166121f7c" category="list-text">移除橋接器：+「移除橋接器名稱_bridge-name_」</block>
   <block id="10849d1bb066212b581722aa34844d00" category="list-text">查看受監控的橋接器清單、確認移除的橋接器不存在：+「串接橋接器展示」</block>
-  <block id="646f7640c0412bb509ebc11ade2117f9" category="list-text">關閉Atto橋接器。</block>
-  <block id="f374d6cd8c51ec88c39bd91a0405a822" category="cell">如果您使用的是...</block>
-  <block id="5a19c2aa2027af8ccb87bafe6503ea56" category="paragraph">光纖橋接器7600N或7500N橋接器</block>
-  <block id="d315e369fa1477e4884dde927f66cc4c" category="paragraph">拔下連接至橋接器的電源線。</block>
-  <block id="8a8591256eac823617f5398950d60602" category="paragraph">光纖橋接器6500N橋接器</block>
   <block id="785d24e60ecad3abd011ca5dd1478bbb" category="paragraph">關閉橋接器的電源開關。</block>
   <block id="e3129e36caa5d6bf706b1a5b6b5d79c9" category="list-text">拔下連接至舊橋接器的纜線。</block>
   <block id="3e6e22b6aa776e503ebf2535dbb1e8c9" category="paragraph">您應該記下每條纜線所連接的連接埠。</block>
@@ -2253,9 +2245,6 @@
   <block id="4816c474b056c83a35173d874218184e" category="list-text">設定橋接FC連接埠。</block>
   <block id="0ae098ca81f26216088dd67e626f4774" category="list-text">設定橋接FC連接埠的資料速率/速度。</block>
   <block id="6f8fa0d15ba986a207f54e5380590b50" category="paragraph">支援的FC資料速率取決於您的機型橋接器。</block>
-  <block id="4442c01d444cdf8dfad8eee5a984041f" category="list-text">最多支援32、16或8 Gbps的FibreBridge 7600橋接器。</block>
-  <block id="d7c58cd18c76f6cce444274875661cf3" category="list-text">最多支援16、8或4 Gbps的光纖橋接器。</block>
-  <block id="794e8b1feb84d0af8dfe68bda71f2312" category="list-text">最多支援8、4或2 Gbps的FibreBridge 6500橋接器。</block>
   <block id="0f44b54f212d195c54c4bc124932499b" category="admonition">您選取的FCDataRate速度會限制為橋接器和橋接連接埠所連接的交換器所支援的最大速度。佈線距離不得超過SFP和其他硬體的限制。</block>
   <block id="24c1a0c448c4959cdafdf2e44ab0c978" category="paragraph">「et FCDataRate _port-Number port-spe__」</block>
   <block id="498cdca1ed56090dbe81c2421b2d09a8" category="list-text">如果您要設定的是FIBreBridge 7500N或6500N橋接器、請設定連接埠用於PTP的連線模式。</block>
@@ -2285,7 +2274,6 @@
   <block id="0d0c0c98576403d7d46bc7ee7fa9fa7a" category="list-text">更新每個橋接器上的FibreBridge韌體。</block>
   <block id="b2d9f80a5c71fe34bed7839914c2fd68" category="paragraph">如果新橋接器的類型與合作夥伴橋接器的類型相同、請升級至與合作夥伴橋接器相同的韌體。如果新橋接器與合作夥伴橋接器的類型不同、請升級至橋接器和ONTAP 版本的更新韌體。請參閱「_ESIFATE_ MetroCluster 」中的「更新連接到光纖橋接器上的韌體」一節。</block>
   <block id="9013c925bc3a423f843c073690ed8081" category="list-text">[[step17-elende-Newbrida]將SAS和FC纜線重新連接至新橋接器上的相同連接埠。</block>
-  <block id="f3065ac3252067556040545ba2157a25" category="paragraph">如果新的橋接器為光纖橋接器7600N或7500N、您必須更換將橋接器連接至機架堆疊頂端或底部的纜線。因為使用SAS纜線的是光纖橋接器6500N；而使用光纖橋接器7600N和7500N橋接器的這些連線需要使用Mini-SAS纜線。</block>
   <block id="3b5ef1874490ddb39e2ab56e91c15fd9" category="admonition">連接連接埠之前、請至少等待10秒鐘。SAS纜線連接器採用鎖定式設計；若方向正確放入SAS連接埠、連接器會卡入定位、而磁碟櫃SAS連接埠LNK LED會亮起綠色。若為磁碟櫃、請插入SAS纜線連接器、拉片朝下（位於連接器底部）。對於控制器、SAS連接埠的方向可能會因平台機型而異、因此SAS纜線連接器的正確方向會有所不同。</block>
   <block id="6795687b051fe5f1cb692559517648dd" category="list-text">[[step18-verify-each bridge ]確認每個橋接器都能看到橋接器所連接的所有磁碟機和磁碟櫃。</block>
   <block id="51618dab77295eddd5c15097ed80ca2d" category="cell">如果您使用...</block>
@@ -2487,7 +2475,6 @@
   <block id="d3d9446802a44259755d38e6d163e820" category="cell">10.</block>
   <block id="6512bd43d9caa6e02c990b0a82652dca" category="cell">11.</block>
   <block id="afad1c27cb5fc5d1d792e5ba791ef840" category="section-title">Brocade連接埠使用於MetroCluster 執行ONTAP 版本號為9.0的八節點版本的FC至SAS橋接器連線</block>
-  <block id="ae031054e1b7b8ac47164099dbf1db9c" category="paragraph">下表顯示使用FibreBridge 7500橋接器時的橋接連接埠使用量：</block>
   <block id="de8504b73ea228d0ea9bbce69752092e" category="cell">橋接器</block>
   <block id="fac64949de3a43257f3c8a97a35449a1" category="cell">橋接器連接埠</block>
   <block id="03832361340d7ec5d2358829016bb549" category="cell">bride_x_1a.</block>
@@ -2508,7 +2495,6 @@
   <block id="6f4922f45568161a8cdf4ad2299f6d23" category="cell">18</block>
   <block id="3aa12852277616c106b36f5670f64448" category="cell">bride_x_4b.</block>
   <block id="1f0e3dad99908345f7439f8ffabdffc4" category="cell">19</block>
-  <block id="260c4e83cf5b055da9148425e2590b41" category="paragraph">下表顯示搭配Brocade 6505、6510或DCX 8510-8交換器使用FibreBridge 6500橋接器時的橋接連接埠使用量：</block>
   <block id="f49308486cec24e5559590a8e8ab5f10" category="cell">bride_x_5a</block>
   <block id="eb5edae8fa155daf7b0c78acbc5c622e" category="cell">bride_x_5b</block>
   <block id="2f18a86c8432805a00900af0153918f1" category="cell">bride_x_6a</block>
@@ -2539,32 +2525,24 @@
   <block id="a87ff679a2f3e71d9181a67b7542122c" category="cell">4.</block>
   <block id="e4da3b7fbbce2345d7772b0674a318d5" category="cell">5.</block>
   <block id="bb98798a94eabd991690e4d98bb1e93d" category="section-title">Brocade連接埠使用於MetroCluster 執行ONTAP 版本號為9.0的四節點版架構中的橋接器</block>
-  <block id="d4c2c7d0b904292d2b869aa1f73bf0e8" category="paragraph">下表顯示使用光纖橋接器7500橋接器時、連接埠使用量最多可達連接埠17。可將其他橋接器纜線連接至連接埠18至23。</block>
   <block id="814568b4249c0114f7f5acf6d86149fb" category="cell">光纖橋接器7500橋接器</block>
   <block id="4b1342698b69db9277c10ae5d059e837" category="cell">FC_SWIT_x_1（6510或DCX 8510-8）</block>
   <block id="e49423aa401904cc19d9c93b1dba3f71" category="cell">FC_SWIT_x_2（6510或DCX 8510-8）</block>
   <block id="8e8e002bc58d3a842d05c1be7b04ba4c" category="cell">FC_SWIT_x_1（6505）</block>
   <block id="7ab09fefe83fcbd6007a5ac115dfefbc" category="cell">FC_SWIT_x_2（6505）</block>
   <block id="5cf1fa7f2c6c9825315b7608236abe2b" category="cell">可透過連接埠19連接其他橋接器、然後連接埠24至47</block>
-  <block id="a8e749c2ecbd4bf1e7224f858d4b54e2" category="paragraph">下表顯示使用FibreBridge 6500橋接器時的橋接連接埠使用量：</block>
-  <block id="8593f73dec0b8f87b6881450492db44b" category="cell">6500N橋接連接埠</block>
   <block id="c4381a0b6bf2d250fd5afa1d8db80d48" category="cell">可透過連接埠23連接其他橋接器</block>
   <block id="3f0d7bda291f9b3c6f2f35a20a63c52e" category="section-title">Brocade連接埠使用於MetroCluster ISL、採用執行ONTAP 版本9.0的四節點版功能</block>
   <block id="69862326bc727c309184d534a3f3cff8" category="paragraph">下表顯示ISL連接埠使用量：</block>
   <block id="160cef04b33948c7b91144a2fdf46988" category="section-title">Brocade連接埠用於執行MetroCluster 版本為9.0的雙節點版本的控制器ONTAP</block>
   <block id="7699bf8a4df6f7e15f159269bd8927e4" category="paragraph">交換器架構中的每個FC交換器的纜線配置相同。下表顯示Brocade 6505、6510和DCX 8510-8交換器的纜線。</block>
   <block id="4d3b4ab0ee0d27226cd4d951952dc8aa" category="section-title">Brocade連接埠使用於MetroCluster 執行ONTAP 版本9.0的雙節點版架構中的橋接器</block>
-  <block id="38eeead869e2de976d69521d9b093eb7" category="paragraph">下表顯示搭配Brocade 6505、6510和DCX 8510-8交換器使用的光纖橋接器7500橋接器時、連接埠使用量最多可達連接埠17。可將其他橋接器纜線連接至連接埠18至23。</block>
-  <block id="77758a81fbabd65f1a0cbd943aa33610" category="paragraph">下表顯示搭配Brocade 6505、6510和DCX 8510-8交換器使用FibreBridge 6500橋接器時的橋接連接埠使用量：</block>
-  <block id="72732277f710e65392cf7492a34e528a" category="cell">光纖橋接器6500橋接器</block>
   <block id="f87cb62014b08eabb93a84e435b02ea9" category="section-title">Brocade連接埠使用量：在MetroCluster 執行ONTAP 版本9.0的雙節點版本資訊功能組態中、用於ISL</block>
   <block id="851032b3e8ee16b9eb2ed6098216108e" category="paragraph">下表顯示Brocade 6505、6510和DCX 8510-8交換器的ISL連接埠使用量：</block>
   <block id="944ef169ea9b385ec2fc06c60bcdd267" category="section-title">Cisco連接埠用於MetroCluster 執行ONTAP 版本號為9.0的八節點版本的控制器</block>
   <block id="062caca7c0bb29ebff9fcc7a33a75d93" category="paragraph">下表顯示Cisco 9148和9148S交換器上的控制器連接埠使用量：</block>
   <block id="7dd0f293a7e09ad1d4ac1014f18a018a" category="section-title">Cisco連接埠使用於MetroCluster 執行ONTAP 版本號為9.0的八節點版的功能區、用於FC至SAS橋接器</block>
-  <block id="c1eac127cb565fa4817962e9f30a2046" category="paragraph">下表顯示使用Cisco 9148或9148S交換器時、使用光纖橋接器7500橋接器時、橋接器連接埠使用量最多可達連接埠23。可使用連接埠25至48連接其他橋接器。</block>
   <block id="1d8dd340273647eae3a36eff43fc547e" category="paragraph">您可以使用相同模式的連接埠25到48來連接其他橋接器。</block>
-  <block id="c55b059fa762d08399351bc6ae5ac539" category="paragraph">下表顯示搭配Cisco 9148或9148S交換器使用FIBreBridge 6500橋接器時、連接埠使用量最多可達連接埠23。可使用連接埠25-48連接其他橋接器。</block>
   <block id="c4739fa521713dbbe264a1366afde348" category="section-title">Cisco連接埠使用ISL、採用MetroCluster 執行ONTAP 版本9.0的八節點版功能</block>
   <block id="524e7c19dbf542bdc24be3909a68aa5b" category="paragraph">下表顯示Cisco 9148和9148S交換器的ISL連接埠使用量：</block>
   <block id="84a71a9e63ead8784cd365088a3be8c4" category="cell">ISL連接埠</block>
@@ -2572,9 +2550,6 @@
   <block id="bf9995231adba64383dd274717591fad" category="section-title">Cisco連接埠用於四節點MetroCluster 的控制器、以供其使用</block>
   <block id="9009bb494f588eb453c941a0f5346de2" category="paragraph">下表顯示Cisco 9148、9148 S和9250i交換器上的控制器連接埠使用量：</block>
   <block id="8a960a450c78ddb1326827d52c10a15a" category="section-title">Cisco連接埠使用於MetroCluster FC至SAS橋接器、採用執行ONTAP 版本號為9.0的四節點版功能</block>
-  <block id="57cfe04ee8907b137339177ed5bd25a5" category="paragraph">下表顯示搭配Cisco 9148、9148 S或9250i交換器使用的光纖橋接器7500橋接器時、連接埠使用量最多可達連接埠14。其他橋接器可依照相同模式連接至連接埠15至32。</block>
-  <block id="0d86a304bf0c93bbe64ea2e44e5e5870" category="paragraph">下表顯示在Cisco 9148、9148S或9250i交換器上使用最多連接埠14的FibreBridge 6500時的橋接連接埠使用量。其他橋接器可依照相同模式連接至連接埠15至32。</block>
-  <block id="56f993fb26dc8cf4262b56765d09c432" category="paragraph">其他橋接器可依照相同模式連接至連接埠15至32。</block>
   <block id="6fcd6dc740970bb42bde0c9a37d97275" category="section-title">Cisco 9148和9148S連接埠使用於MetroCluster 執行ONTAP 版本9.0的四節點版的ISL</block>
   <block id="19ca14e7ea6328a42e0eb13d585e4c22" category="cell">36</block>
   <block id="f7177163c833dff4b38fc8d2872f1ec6" category="cell">44</block>
@@ -2584,7 +2559,6 @@
   <block id="4389b93bd76334095ae6f5fdb926d4ee" category="paragraph">連接埠40至48為10 GbE連接埠、MetroCluster 不適用於整個功能組態。</block>
   <block id="fa69aa564bc90d7adecfb54c289d23be" category="section-title">Cisco連接埠用於雙節點MetroCluster 的控制器、以供其使用</block>
   <block id="762b426bcd4ea34fc55a0f899cf2086d" category="section-title">Cisco連接埠使用於MetroCluster 雙節點的執行ONTAP 版本為9.0的FC對SAS橋接器</block>
-  <block id="8fe37cc6f907399a491cf6418a4bfa16" category="paragraph">下表顯示搭配Cisco 9148、9148 S和9250i交換器使用的光纖橋接器7500橋接器時、連接埠使用量最多可達連接埠14。其他橋接器可依照相同模式連接至連接埠15至32。</block>
   <block id="ba2044d8a6c35bb667c35d13e7a3277d" category="section-title">Cisco 9148或9148S連接埠、可在MetroCluster 執行ONTAP NetApp 9.0的雙節點版功能組態上使用ISL</block>
   <block id="2bc92937819403549f510c08d8a54058" category="paragraph">下表顯示Cisco 9148或9148S交換器的ISL連接埠使用量：</block>
   <block id="e936a0e4e03d3d3120e966eca42a0b28" category="section-title">Cisco 9250i連接埠使用於MetroCluster 執行ONTAP 版本號為9.0的雙節點版塊位向功能組態上的ISL</block>
@@ -2656,16 +2630,10 @@
   <block id="aebdbdde32f31274fe9fc6e75b482c32" category="list-text">確認兩個Flash映像都已更新為相同版本。</block>
   <block id="1b7c547e0c44744faa2a37c6b0435cc2" category="paragraph">輸出應顯示兩個分割區的相同版本。</block>
   <block id="bb7439d72897f5b031319c5576c3cc67" category="list-text">重複下一橋接器的步驟5到13、直到MetroCluster 更新完所有的更新。</block>
-  <block id="58cc4f784b9aded3583b845939a81062" category="section-title">在執行ONTAP 不含更新版本或6500N橋接器的組態上、更新FIBreBridge 7500N上的韌體</block>
-  <block id="8aa44124bc18ff7af6c04005e961b310" category="paragraph">您可能需要更新您的FibreBridge橋接器上的韌體、以確保您擁有最新的功能或解決可能的問題。此程序應用於執行ONTAP 下列組態的FIBreBridge 7500N：執行支援版本ONTAP 之所有支援版本的更新版本上的支援版本。</block>
-  <block id="0bbb89fa01deac898bd6b44e2d10d4b1" category="paragraph">您可以將此工作搭配使用於FIBreBridge 7500N或6500N橋接器。從ONTAP 使用起來、您可以使用ONTAP 「flexbridge」儲存橋接器韌體更新命令來更新fIBreBridge 7500N橋接器上的橋接器韌體。</block>
   <block id="2d0700f1234a9f9dd9937555291170ec" category="paragraph">「`_maintenance：window-in-inhid_'」指定維護所需時間、最長72小時。如果維護作業在時間結束之前完成、您可以叫用AutoSupport 指示維護期間結束的資訊消息：</block>
   <block id="8c3f1a5045c47c008de3de6fa5352da3" category="list-text">請使用Atto FibreBridge韌體下載頁面上程序的步驟1到3下載橋接韌體檔案。</block>
   <block id="3083b982cc912e364f9e1bc28cc6915a" category="list-text">複製Atto FIBEBridge韌體下載頁面和版本說明、以便在指示您更新每個橋接器上的韌體時參考。</block>
   <block id="ae87d5531ab43f90dedaa89f103356a1" category="list-text">更新橋接器：</block>
-  <block id="b0d472f0b2dbe5d730a80e2962aec6de" category="list-text">在光纖橋接器上安裝韌體。</block>
-  <block id="47205d1bbe1b0ebe5f214ffe8a31f30f" category="list-text">如果您使用Atto FibreBridge 7500N橋接器、請參閱_Atto FibreBridge 7500N安裝與操作手冊_的「更新韌體」一節中所提供的指示。</block>
-  <block id="e82d508ae669816742bd73c7a3aa7f20" category="list-text">如果您使用Atto FibreBridge 6500N橋接器、請參閱_Atto FibreBridge 6500N安裝與操作手冊_的「更新韌體」一節中所提供的指示。</block>
   <block id="8458ea1c3c1ea2053887d2f331da77f4" category="paragraph">*注意：*請確定您現在已關閉個別橋接器的電源再開啟。如果您在堆疊中同時等待並重新啟動兩個橋接器、則控制器可能會失去對磁碟機的存取權、進而導致叢故障或多磁碟毀損。</block>
   <block id="6eee07f1028e6e37c9b9675c78a3ecab" category="paragraph">橋接器應重新啟動。</block>
   <block id="86b1ef008f18b43ce62a9069606c0c6d" category="list-text">從任一控制器的主控台、確認橋接器已正確重新啟動：</block>
@@ -2796,7 +2764,6 @@
   <block id="fc56e4fa678580b339facec8400a6301" category="paragraph"><block ref="fc56e4fa678580b339facec8400a6301" category="inline-link-rx"></block></block>
   <block id="875a4f63ab16d76d34a88b4b4e8e22b1" category="doc">熱新增一堆SAS磁碟櫃、並將橋接器連接MetroCluster 至一套系統</block>
   <block id="556bbef84d582c44d275b1d259773581" category="paragraph">您可以在MetroCluster 整個堆疊中熱新增（不中斷營運地新增）、包括橋接器、至整個系統。FC交換器上必須有可用的連接埠、您必須更新交換器分區以反映變更。</block>
-  <block id="0bfea2edb24bd8a4a4bbb8cda2a3e201" category="list-text">此程序可用於使用FibreBridge 7500N或6500N橋接器新增堆疊。</block>
   <block id="3bdb5b94e9e047f350ef916e04de48b0" category="list-text">此程序是假設您使用建議的橋接管理介面：Atto ExpressNAV GUI和Atto QuickNAV公用程式。</block>
   <block id="382796d45bd36c3702aa7fdd174e2a3f" category="list-text">您可以使用Atto ExpressNAV GUI來設定和管理橋接器、以及更新橋接器韌體。您可以使用Atto QuickNAV公用程式來設定橋接式乙太網路管理1連接埠。</block>
   <block id="a3d9a1252fb80a064155cc8c80974390" category="inline-link-macro">其他橋接器管理介面</block>
@@ -2931,7 +2898,6 @@
   <block id="d67d8ab4f4c10bf22aa353e27879133c" category="paragraph">39</block>
   <block id="03afdbd66e7929b125f8597834fa83a4" category="paragraph">63.</block>
   <block id="d8e18a94c6fa97d89aba5bdabe784a13" category="admonition">其他橋接器可連接至G620、G630、G620-1和G-630-1交換器的連接埠36 - 39。</block>
-  <block id="24938029e2776bfd3dacbae21e93a8b1" category="cell">使用Fibre Bridge 6500N橋接器或使用單一FC連接埠（FC1或FC2）的Fibre Bridge 7500N或7600N的組態</block>
   <block id="f6cb5eb43574b6b08acea142038b5757" category="cell">Brocade G620、Brocade G620-1、Brocade G630、Brocade G630-1</block>
   <block id="6978c57c7a7dc0a5513125f480e7e2fe" category="admonition">G620、G630、G620-1和G630-1交換器的連接埠12-17、20和21可連接其他橋接器。可將其他橋接器連接至連接埠16-17、20和21台G720交換器。</block>
   <block id="d7760a23e875716291c1c6fde455d8d4" category="paragraph">bride_x_54b</block>
@@ -2997,7 +2963,6 @@
   <block id="f5c160717de61a4450a76be740a98cf2" category="admonition">建議在停用IP存取的情況下使用頻內管理、藉由限制橋接器的實體連線能力來改善安全性。</block>
   <block id="8b694c77bd2c858a409806961b43208c" category="paragraph"><block ref="8b694c77bd2c858a409806961b43208c" category="inline-link-macro-rx"></block></block>
   <block id="b15b631599ae22ec3fadef4714275d7b" category="paragraph"><block ref="b15b631599ae22ec3fadef4714275d7b" category="inline-link-macro-rx"></block></block>
-  <block id="a2acb78d8cb4843536ea51de17566d1d" category="paragraph"><block ref="a2acb78d8cb4843536ea51de17566d1d" category="inline-link-macro-rx"></block></block>
   <block id="ad30fa95f18f21e4c8674318a12499f8" category="paragraph"><block ref="ad30fa95f18f21e4c8674318a12499f8" category="inline-link-macro-rx"></block></block>
   <block id="f8ab0ac0bcb20f9074bb5111e4de500b" category="section-title">從ONTAP 功能區管理光纖橋接器</block>
   <block id="3e364a62394cf176526399560d023208" category="paragraph">從ONTAP 功能介紹9.5開始、您可以使用ONTAP SectorCLI將FibreBridge命令傳遞至橋接器、並顯示這些命令的結果。</block>
@@ -3108,13 +3073,11 @@
   <block id="73152dad4acad3208bc063c3951344c5" category="paragraph">在這種情況下、您應該從下列步驟開始、將「'Bottom'」的FIBreBridge 6500N橋接器與FIBreBridge 7600N或7500N橋接器熱交換。</block>
   <block id="f9c1933f3b94ffee14ef186b2709352c" category="paragraph">下圖顯示初始組態的範例、其中四個連接兩個SAS儲存堆疊的FIBEBridge 6500N橋接器：</block>
   <block id="3dcba5083263c26dc21f695136013a58" category="image-alt">以前整合堆疊</block>
-  <block id="8a55d02eab45d757aa9762d06c09ae5f" category="list-text">請依照下列準則、使用中的程序、將「'TOP」（光纖橋接器）6500N橋接器與光纖橋接器7600N或7500N橋接器熱交換 <block ref="958de5ee2f25b5fa2715cdd4e27fa14c" category="inline-link-macro-rx"></block>：</block>
   <block id="dc876c7ff2512b544d84916000f3f0d0" category="list-text">將光纖橋接器7600N或7500N橋接器FC1連接埠連接至交換器或控制器。</block>
   <block id="a2ccc9b7cfd6e0b208f2ec5271001e18" category="paragraph">這是與連接到FIBiBridge 6500N橋接器FC1連接埠相同的連線。</block>
   <block id="5a5847115d5c3eb94f6db3d6e4b75064" category="list-text">此時請勿連接FibreBridge 7600N或7500N橋接FC2連接埠。下圖顯示已更換bridge _a_1a、現在是一座FibreBridge 7600N或7500N橋接器：</block>
   <block id="e16af547e6500c2c72cc764eaaaa3831" category="image-alt">在原地整合堆疊前7500n</block>
   <block id="a3f45edd16a39a61c12d4446071cba63" category="list-text">確認連線至橋接連接的磁碟、並在組態中看到新的FibreBridge 7500N：</block>
-  <block id="c160b6358f7336db6f2a26360400f661" category="list-text">依照下列準則、使用中的程序、將「Bottom」（底部）的「FibreBridge 6500N橋接器」與「FibreBridge 7600N」或「7500N橋接器」熱交換 <block ref="958de5ee2f25b5fa2715cdd4e27fa14c" category="inline-link-macro-rx"></block>：</block>
   <block id="8ff709665460262bbf6007f085751483" category="list-text">將光纖橋接器7600N或7500N橋接器FC2連接埠連接至交換器或控制器。</block>
   <block id="44f4a4edbfb8c95871fef3eb7d97957a" category="list-text">此時請勿連接FibreBridge 7600N或7500N橋接器FC1連接埠。<block ref="a06c0386e8ef594aee7be854f4de811f" category="inline-image-macro-rx" type="image"></block></block>
   <block id="f02aee1c50fae642922a5499566ecbf9" category="list-text">確認與橋接式連線磁碟的連線：</block>
@@ -3214,10 +3177,6 @@
   <block id="7692cf69e09d1b6c2d8bea7841918e4c" category="list-text">在底部FC到SAS橋接器上重複上述步驟。</block>
   <block id="0d70078385b01668ecfcc33dcc7785e4" category="summary">您可以使用AFF 單一啟動器連接埠來設定FAS8020、AFF8020、FAS8200和E4A300系統、並為每個光纖配置兩個啟動器連接埠。</block>
   <block id="8db12a7f598538a4f3273d8beec78fa9" category="doc">使用兩個啟動器連接埠的系統連接埠指派</block>
-  <block id="918697643ecb503ad41bd41cd21ad85c" category="paragraph">您只需使用一個FC連接埠（FC1或FC2）、就能遵循光纖橋接器6500N橋接器或光纖橋接器7500N或7600N橋接器的纜線。與其使用四個啟動器、只連接兩個啟動器、並將連接至交換器連接埠的其他兩個啟動器保留為空白。</block>
-  <block id="caf615d7715d92dbf30bfb0d0b1cc4d7" category="paragraph">您必須針對FIBRABridge 6500N橋接器的組態套用正確的RCF檔案。</block>
-  <block id="efce25b9409a6bd708e7c532b13e8176" category="paragraph">如果是手動執行分區、請使用一個FC連接埠（FC1或FC2）、遵循用於Fibre Bridge 6500N或Fibre Bridge 7500N或7600N橋接器的分區。在此案例中、每個架構的每個區域成員都會新增一個啟動器連接埠、而非兩個。</block>
-  <block id="2f33c0ab177d6cfd4b52b9e6472de2a0" category="paragraph">您可以使用下列程序來變更分區或執行從FIBEBridge 6500升級至FIBEBridge 7500：請從進行下列程序_熱插拔使用FIBEBridge 7500N或7600N bridge_的FIBEIBER__橋接器 <block ref="aeb2eb91b4a88826f71d1fbd30b29e7b" category="inline-link-macro-rx"></block>。</block>
   <block id="a8a2bf560173c2071776e7eb62881e05" category="paragraph">下表顯示使用ONTAP 更新版本的功能時、FC交換器的連接埠指派。</block>
   <block id="dbe4a4387a11d1625ae218ef9f43a996" category="cell">支援1或DR群組1 MetroCluster</block>
   <block id="967f94774fd0a441a676db03d0d50895" category="cell">Brocade交換器機型6505、6510、6520、7840、G620、 G610和DCX 8510-8</block>
@@ -3364,7 +3323,6 @@
   <block id="74bca6fe4f2c7fc5e1d9f259f2af6e25" category="paragraph">您必須將光纖橋接器7600N設定為與光纖橋接器7500N完全相同。</block>
   <block id="0844200ff0a1a64af612e81369c551dd" category="paragraph">以單一的光纖橋接器7600N橋接器取代單一的光纖橋接器6500N</block>
   <block id="c1b6154853d79aff3153d0360d8109e3" category="paragraph">您必須將光纖橋接器7600N設定為與光纖橋接器6500N完全相同。</block>
-  <block id="9f75c353bd4a7cb0ce6fe90b3c498736" category="paragraph"><block ref="9f75c353bd4a7cb0ce6fe90b3c498736" category="inline-link-macro-rx"></block></block>
   <block id="ad9a391d7a61680d45246cf29a54f588" category="paragraph">新增一對新的FIBreBridge 7600N橋接器來新增儲存設備</block>
   <block id="91683a88a240de71b025c11834d0b99a" category="paragraph">您必須為新橋接器的每個FC連接埠新增儲存區域。</block>
   <block id="a05dfddcdfd9dd24ca7de6d1c728d916" category="paragraph">您必須在FC交換器架構（以架構附加MetroCluster 的功能為基礎）或儲存控制器（採用延伸MetroCluster 功能的支援組態）上有可用的連接埠。每對的Fibre Bridge 7500N或7600N橋接器最多可支援四個堆疊。</block>
@@ -3567,14 +3525,10 @@
   <block id="14f265c9ad9a81b21c667b4042fc7575" category="admonition">下表顯示具有兩個FC-VI連接埠的系統。FASA700和FAS9000系統有四個FC-VI連接埠（a、b、c和d）AFF 。如果使用AFF 的是FASA700或FAS9000系統、則連接埠指派會逐一移動。例如、FC-VI連接埠c和d會移至交換器連接埠2、HBA連接埠a和b、然後移至交換器連接埠3。</block>
   <block id="cab785737f7e01bc6cf334a3297e22c3" category="cell">Cisco 9250i附註：Cisco 9250i交換器不支援八節點MetroCluster 的外觀組態。</block>
   <block id="7454ecd5190b690ccf9ee77f2e438c0c" category="section-title">Cisco連接埠使用功能可在MetroCluster 執行ONTAP 版本更新版本的功能區中、用於FC至SAS橋接器</block>
-  <block id="68d960c549d05fc84233ef70c7a67687" category="cell">使用兩個FC連接埠的Fibre Bridge 7500</block>
   <block id="89eaf3610015ecc12505a2408ff9fda6" category="paragraph">您可以使用相同模式的連接埠17至40和57至88來連接其他橋接器。</block>
   <block id="a1d4f21ed73518b99dbbab05134b5c9a" category="paragraph">第二個DR群組或第二MetroCluster 個不實組態的其他橋接器、可以使用相同模式的連接埠33到40來連接。</block>
   <block id="f656d69f7bbae519056da03a8e9e50d0" category="cell">Cisco 9250i</block>
   <block id="a6bd250708a75e43f157a7b657e654c5" category="paragraph">第二個DR群組或第二MetroCluster 個支援功能組態的其他橋接器、可以使用相同模式的連接埠25到48來連接。</block>
-  <block id="ba310a61cda35bab44af31435467361f" category="paragraph">下表顯示僅使用一個FC連接埠（FC1或FC2）使用Fibre Bridge 6500橋接器或Fibre Bridge 7500橋接器時的橋接連接埠使用量。若為使用單一FC連接埠的Fibre Bridge 7500橋接器、則FC1或FC2可以纜線連接至指定為FC1的連接埠。可使用連接埠25-48連接其他橋接器。</block>
-  <block id="5efa1f2cb5eede18bb7294c80eb0d620" category="cell">使用單一FC連接埠的Fibre Bridge 6500橋接器或Fibre Bridge 7500橋接器</block>
-  <block id="a072aae7bbb53167bbaf8606f2c6e2a0" category="cell">使用單一FC連接埠的Fibre Bridge 6500橋接器或Fibre Bridge 7500</block>
   <block id="4968e1c4a92e0df27646933918f92be2" category="section-title">Cisco連接埠使用功能可在MetroCluster 執行ONTAP 版本號為9.1或更新版本的8節點組態中使用ISL</block>
   <block id="81cc761cd2e2757421a8e9242e8e12cc" category="paragraph">下表顯示ISL連接埠使用量。在組態中的所有交換器上、ISL連接埠使用量都相同。</block>
   <block id="10ca333ef19b78048d2fedd61c4432e9" category="paragraph">ISL 1</block>
@@ -3607,7 +3561,6 @@
   <block id="702f8bfb0583ba76da1d5453b8963e67" category="paragraph">以下範例顯示Brocade交換器上停用的連接埠8和9。</block>
   <block id="327a9880f8e0dd44a44e0909f4debaf5" category="paragraph">以下範例顯示Cisco交換器上的連接埠8和9已停用。</block>
   <block id="dad7a4e2db295af2111afd1f4cce2d6a" category="list-text">如果橋接器連接兩個或多個SAS堆疊、請停用連接橋接器與目標機櫃的SAS連接埠：+「ASportDisable _port number_」</block>
-  <block id="48e4b75815ecd760177696fc4dd29dda" category="admonition">這不適用於FibreBridge 6500橋接器。</block>
   <block id="4b09ce830b72db5cca9758e1276d7e12" category="paragraph">下列範例顯示連接四個SAS堆疊的一對橋接器。SAS堆疊2包含目標機櫃：</block>
   <block id="e64c1d35a465f6a0d896f63a42127c1e" category="image-alt">含四個堆疊的MCC機櫃替換橋接器</block>
   <block id="6b968bde345a1af02381409979c014c6" category="paragraph">SAS連接埠B會將橋接器連接至目標機櫃。只要停用兩個磁碟櫃上的SAS連接埠B、其他SAS堆疊就能在更換程序期間繼續提供資料。</block>
@@ -3642,7 +3595,6 @@
   <block id="a4102d82b7f62613670eb722068786c1" category="list-text">啟用SAS連接埠、將堆疊連接至機櫃位置：</block>
   <block id="705150e4546682900466b07055ca41d7" category="paragraph">「ASportEnable _port number_」</block>
   <block id="afd1a46303765732d70810f6dd9b9dd9" category="paragraph">範例顯示正在從橋接器啟用SAS連接埠A、並驗證是否已啟用。</block>
-  <block id="a024992ec9deb1644f55dca391af6505" category="admonition">這不適用於Atto 6500光纖橋接器。</block>
   <block id="9c0ceb1f6e71f50cc0c1fd789b320bc9" category="list-text">如果您先前已停用交換器連接埠、請確認這些連接埠已啟用且已上線、而且所有裝置都已正確登入：</block>
   <block id="c744094e6b65e8f07edf32ee2e23c347" category="paragraph">此範例顯示「交換顯示」命令、用於驗證Brocade交換器是否在線上。</block>
   <block id="3e6769560c571e6b85c4571b0042668d" category="paragraph">此範例顯示「交換器顯示」命令、用於驗證Cisco交換器是否在線上。</block>
@@ -3657,7 +3609,6 @@
   <block id="c58436ceeffb789114ef5d94d2e81161" category="summary">如果您使用ONTAP 的是9.5版之前的版本、或是打算使用遠端登入或其他IP連接埠傳輸協定和服務（FTP、ExpressNAV、ICMP或QuickNAV）、使用頻外存取到FibreBridge 7600N橋接器、則可透過主控台連接埠啟用存取服務。</block>
   <block id="40fd7b7d6fe8848f1cb5a5e5acf0fd41" category="doc">如有必要、可在光纖橋接器7600N上啟用IP連接埠存取</block>
   <block id="ebda0461d9b282997db74027d2c545a7" category="paragraph">如果您使用ONTAP 9.5版之前的版本、或是打算使用遠端登入或其他IP連接埠傳輸協定和服務（FTP、ExpressNAV、ICMP或QuickNAV）、以頻外存取的方式存取到FibreBridge 7600N橋接器、您可以透過主控台連接埠來啟用存取服務。</block>
-  <block id="2db131c02bbb96341da732aef89b4993" category="paragraph">不同於Atto FIBreBridge 7500N和6500N橋接器、FIBreBridge 7600N橋接器會隨附所有停用的IP連接埠傳輸協定和服務。</block>
   <block id="51c314385c544d39d9b0b57b7e4adc0c" category="paragraph">從ONTAP 支援橋接器的32個版本開始、就支援橋接器的頻內管理。這表示橋接器可透過ONTAP 連接至橋接器的FC連線、從CLI進行設定和監控。不需要透過橋接式乙太網路連接埠實體存取橋接器、也不需要橋接器使用者介面。</block>
   <block id="4de57bb3ff326a74dbe2d8f7f29b872e" category="paragraph">從ONTAP 功能表支援的功能為32、8、8、8、5、2、2、2、3、2、2、2、2、3、2、2、3、2、3、2、3、2、3、2、3、2、</block>
   <block id="3ab84e59a44526486a6dc2185cd0b1e7" category="paragraph">如果您*未*使用頻內管理來管理橋接器、則必須執行此工作。在此情況下、您需要透過乙太網路管理連接埠來設定橋接器。</block>
@@ -3753,26 +3704,16 @@
   <block id="0b451ef20b97f230d00ccd951ed449c1" category="list-text">將NSM-B、e0b連接至交換器（Switch-A2或Switch-B2）</block>
   <block id="6479a6c19128ccb1ed55ac097ef1e1e7" category="list-text">使用由「**RcfFileGenerator*」工具產生的佈線配置、將機櫃連接至適當的連接埠。</block>
   <block id="3dc0d5b9eac0c50a790964bb3a643fa3" category="paragraph">一旦新機櫃正確連接纜線、ONTAP 即可在網路上自動偵測。</block>
-  <block id="1abb821f2b965d18052b2448ef4137ed" category="summary">您必須知道如何關閉資料中心電源、以便進行站台維護或將站台重新定位至其他位置。</block>
-  <block id="3f7ef4e6486f47719dca790d2a160ae5" category="doc">關閉資料中心電源並開啟電源</block>
-  <block id="50619d56fd21f33883011467e89403f8" category="paragraph">如果站台需要重新配置和重新設定（例如、如果您需要從四節點擴充至八節點叢集）、則無法同時完成這些工作。本程序僅涵蓋執行站台維護或重新定位站台而不變更其組態所需的步驟。</block>
-  <block id="e42120d29d88cc6c3c023d82236437a8" category="admonition">此程序適用於MetroCluster 支援靜態IP和FC組態。</block>
   <block id="13453110a818269a21fc3929d2514208" category="image-alt">關閉資料中心電源</block>
-  <block id="efe31da79ff42582640c229b718168aa" category="section-title">關閉MetroCluster 站台電源</block>
   <block id="c72683789a2c53d80a618207766d5e8e" category="paragraph">您必須先關閉站台和所有設備的電源、才能開始進行現場維護或重新配置。</block>
   <block id="4bfd66c37cd5ce244e0dfdd30c499d83" category="list-text">開始之前、請檢查站台上的任何非鏡射Aggregate是否離線。</block>
   <block id="edc7b16c34c41ad12b6699da441a1e45" category="paragraph">此作業可能需要數分鐘才能完成。</block>
   <block id="0829264e645ef456fedfb9d7d6e189a9" category="paragraph">在SFC組態中MetroCluster 、只有在可存取Aggregate中的遠端磁碟時、才能在切換後將無鏡射的Aggregate連線。如果ISL失敗、本機節點可能無法存取無鏡射遠端磁碟中的資料。Aggregate故障可能導致本機節點重新開機。</block>
   <block id="c35cb6405b316f2999613190b9a610f3" category="list-text">監控並驗證切換是否完成：</block>
   <block id="60add77cd3913e8299d20186ba7ec1e0" category="list-text">如果MetroCluster 您有執行ONTAP 支援支援支援的支援功能、請等待災難站台上線、並自動完成修復作業。</block>
-  <block id="a0d9123d4cd00ea9771184e3cc69bc3b" category="paragraph">在執行舊版支援的靜態IP組態中、災難站台節點不會自動開機至靜態、而且叢集仍會離線。MetroCluster ONTAP ONTAP對於精選FC組態、所有的彈性都會維持在線上、您不需要在線上進行彈性作業。MetroCluster</block>
   <block id="5b12aa7a5c28a3989c442d88ecafd4b3" category="list-text">視您的組態和ONTAP 版本而定、找出並移動位於災難站台（Cluster_B）的離線受影響的叢集。</block>
-  <block id="d3111cbb50ee3236823b8a9fc96146fd" category="paragraph">下列組態需要執行此步驟：</block>
-  <block id="68d41db03ba61b38417da47f63616c6b" category="list-text">所有MetroCluster 的精選FC組態。</block>
-  <block id="87da73be0cf8313cf4ae27e67515aaff" category="list-text">執行9.6版或更新版本的靜態IP組態。MetroCluster ONTAP</block>
   <block id="d728f92d15186acd3ab7bfe69c91c74a" category="paragraph">您應該離線移動下列程序：</block>
   <block id="bb1dbaa590d8d023b92b11955221364e" category="list-text">位於災難站台之磁碟上的非鏡射叢集。</block>
-  <block id="0780a4c1fe0c3501c0d025f1b600dbdc" category="paragraph">如果您未將災難站台上的非鏡射叢進行離線移動、可能會在災難站台稍後關機時導致中斷運作。</block>
   <block id="a05a5ee5c3ac194989ef258bddaa30d0" category="list-text">位於災難站台之磁碟上的鏡射叢集、用於集合鏡射。當它們離線移動之後、就無法存取叢體。</block>
   <block id="db3cf611b9905283227764c513bd7a82" category="list-text">識別受影響的叢體。</block>
   <block id="82e30d8124ea7d730cf5faa5719112de" category="paragraph">在存續站台由節點擁有的叢集由Pool1磁碟組成。災難站台節點擁有的叢集由Pool0磁碟組成。</block>
@@ -3796,47 +3737,26 @@
   <block id="edce01688e98b58b19121c93fc7ff2e1" category="paragraph">node_B_2_aggr1/plex0</block>
   <block id="d4f18ae628e27ab34b26b8a43c48ace9" category="list-text">離線移動受影響的叢體：</block>
   <block id="2a8e88f52bc016e030fb4bcd3be6617a" category="paragraph">"離線集合體叢"</block>
-  <block id="1f6dc3b671503c8d63a1afa2819b223b" category="admonition">對所有磁碟遠端連至Cluster_A的叢集執行此動作</block>
-  <block id="f380dd26f2cf185b17accd909e743fe1" category="list-text">根據交換器類型持續離線交換器連接埠。</block>
-  <block id="a919607ef6e9e47aee6ab7e80893d8c1" category="admonition">此步驟僅適用於MetroCluster 不完整的FC組態。如果您的組態MetroCluster 是使用FC MetroCluster 後端交換器進行的、則跳過此步驟。</block>
   <block id="ec101ec8f4300c01b3e83ccb567aa413" category="cell">交換器類型</block>
-  <block id="a4856b5d624fb703341d2b6cb1fd8be3" category="paragraph">如果FC交換器是Brocade交換器...</block>
-  <block id="9239ccea70d6b0bd2c5d7ed953067b9f" category="list-text">使用「portcfg堅持 停用_port_」命令持續停用連接埠、如下例所示。這必須在存續站台的兩個交換器上執行。</block>
   <block id="0a2ddd49f9e299b81cf7c5e078debcc7" category="list-text">使用以下範例所示的「show」命令來驗證連接埠是否已停用：</block>
-  <block id="7ed2005e63164c86338f8fb503fec38d" category="paragraph">如果FC交換器是Cisco交換器...</block>
   <block id="a71c1aa8359408f9d2d2ca6505749f51" category="list-text">使用「interface」命令持續停用連接埠。下列範例顯示連接埠14和15已停用：</block>
   <block id="b344f211c6ef4a7b6fabe45ee6e74946" category="list-text">使用「show interface brief」命令確認交換器連接埠已停用、如下列範例所示：</block>
-  <block id="763cdd1475f50ea62662f8b936e2c440" category="list-text">關閉站台電源。</block>
-  <block id="ad36ac8a7c949cb0a7d855a39368e1af" category="paragraph">下列設備不需依特定順序關閉：</block>
-  <block id="329805dc23b0f78ee65c229740fe0896" category="cell">要關閉的設備</block>
-  <block id="1b2764afd9aaca6231f2d49e8524a66a" category="paragraph">在靜態IP組態中、請關閉電源... MetroCluster</block>
-  <block id="b3894761dbeb99a32f1c40b05d75c5d6" category="paragraph">在不支援功能的FC組態中、請關閉電源... MetroCluster</block>
-  <block id="83815a5585829ebe6e18a93710f2ed57" category="list-text">Atto FibreBridge（若有）</block>
   <block id="e9107e97cd9f561e993f9a9105d0f969" category="section-title">重新定位MetroCluster 已關閉電源的景點</block>
   <block id="056b0a2f5b039231afdc0b079e5c0490" category="paragraph">站台關機之後、您就可以開始進行維護工作。無論是將元件重新放置在同一個資料中心內、或是重新放置到不同的資料中心、程序都是一樣MetroCluster 的。</block>
   <block id="feac0f4e1a7a3880345a6d85bc067870" category="list-text">硬體的纜線方式應與前一個站台相同。</block>
   <block id="646b1ab7b785db95e65836b91eb5f200" category="list-text">如果交換器間連結（ISL）的速度、長度或編號已變更、則所有這些都需要重新設定。</block>
-  <block id="3f76e37706c9faa6700da35111115ea4" category="list-text">請務必仔細記錄所有元件的纜線、以便在新位置正確重新連接。</block>
-  <block id="2b855db90885b553c7efa8495875eff8" category="list-text">實體重新配置所有硬體、儲存控制器、FC和IP交換器、光纖橋接器和儲存機櫃。</block>
   <block id="18019c4008d233544383989684359349" category="list-text">設定ISL連接埠並驗證站台間連線。</block>
-  <block id="bfd9b3b5b8b525583b218437100bfdb7" category="list-text">開啟FC和IP交換器的電源。</block>
   <block id="bf2ae036674fadf7b6a170a21c43abfe" category="admonition">請勿*不*啟動任何其他設備。</block>
   <block id="c524ff28ab463ec9b165bc4709db7002" category="list-text">啟用連接埠。</block>
-  <block id="542e15b008a9b862e26cf580f0b01cf8" category="admonition">此步驟僅適用於MetroCluster 不完整的FC組態。如果您的組態MetroCluster 是指不確定的IP組態、則可以跳過此步驟。</block>
   <block id="9f09d6db3803f5975352ce67ba7f717e" category="paragraph">根據下表中正確的交換器類型啟用連接埠：</block>
-  <block id="70402b2dd117113d5709d3c7ba2f6c45" category="paragraph">如果FC交換器是Brocade交換器...</block>
-  <block id="bc41076628d5d0bb91f9fb460e04ccbc" category="list-text">使用「portcfg堅持 啟用_port number_」命令持續啟用連接埠。這必須在存續站台的兩個交換器上執行。</block>
   <block id="28e464b91ab6edf27cbd69513c84c803" category="paragraph">以下範例顯示Switch_a_1上啟用的連接埠14和15。</block>
   <block id="1d2dc9ff26f81ff899df7afec43c1cff" category="list-text">驗證是否已啟用交換器連接埠：「witchshow」</block>
   <block id="2af4b9b090a7e55fa22cb9e55d504e27" category="paragraph">下列範例顯示已啟用連接埠14和15：</block>
-  <block id="8c946acc8fe7903c37ee5e36f1329425" category="paragraph">如果FC交換器是Cisco交換器...</block>
   <block id="dd0b0e83e384f79fb372176f7061dccf" category="list-text">輸入「interface」命令以啟用連接埠。</block>
   <block id="7f3383279505825a51c155d92f58aa33" category="list-text">驗證是否已啟用交換器連接埠：「How介面簡介」</block>
   <block id="7d116444c6dbfce20212f1c247ff48fd" category="list-text">使用交換器上的工具（可用時）來驗證站台間的連線能力。</block>
-  <block id="867a2618d71bca42427a1b9c72bdbf63" category="admonition">只有當連結設定正確且穩定時、才應繼續。</block>
   <block id="12ad932abeaa569fcf61513a7bd887dc" category="list-text">如果發現連結穩定、請再次停用連結。</block>
   <block id="10d03245f20596d5862d16e715e4143e" category="paragraph">根據您使用的是Brocade或Cisco交換器來停用連接埠、如下表所示：</block>
-  <block id="c11fb9d9afe8d36ff83e6aefd247c782" category="list-text">輸入「portcfg堅持 停用_port number_」命令、持續停用連接埠。</block>
   <block id="d369d42d622a7a0ff4e0309e0f9210ab" category="paragraph">這必須在存續站台的兩個交換器上執行。以下範例顯示Switch_a_1上停用的連接埠14和15：</block>
   <block id="6936ed4cbbd3fdd5e8b27a40bf2f0486" category="list-text">確認交換器連接埠已停用：「witchshow」</block>
   <block id="7cbd9438118ade59eac485cd3956718b" category="paragraph">下列範例顯示連接埠14和15已停用：</block>
@@ -3847,36 +3767,23 @@
   <block id="e86d011a6ecc19bb8059b2fa5b959f36" category="paragraph">維護完成或站台搬移之後、您必須開啟站台電源、重新建立MetroCluster 該組態。</block>
   <block id="ee0b87400ee6781862e8ee67136924ab" category="paragraph">下列步驟中的所有命令都會從您啟動的站台發出。</block>
   <block id="5b8fc7540adba4e66fd1dc8235e29807" category="list-text">開啟交換器電源。</block>
-  <block id="ccb8cc8f9fc881b0a95752e9b327ef63" category="paragraph">交換器應先開啟電源。如果站台重新放置、則可能在上一步中已開啟電源。</block>
   <block id="1e4c63725dc9c35c07a4b7c4f5a82dff" category="list-text">如有必要或未在重新配置時完成、請重新設定交換器間連結（ISL）。</block>
   <block id="21dc076a81ed6f69783e2616c1983762" category="list-text">如果隔離已完成、請啟用ISL。</block>
   <block id="dfe7a6104d1ae990704b31d6513dbfd9" category="list-text">驗證ISL。</block>
   <block id="9219cfc955e6beec81a1b4a216127064" category="list-text">開啟磁碟櫃電源、讓它們有足夠的時間完全開啟電源。</block>
   <block id="01bd20df5dc47e7a524bea9169bdedf5" category="list-text">開啟連接橋接器的電源。</block>
-  <block id="fa84d23aa5f79b2c2b1873ef1111b2a9" category="admonition">如果您的組態MetroCluster 是指不確定的IP組態、則可以跳過此步驟。</block>
   <block id="46d125b114551af83f9b4300716884e4" category="list-text">在FC交換器上、確認連接橋接器的連接埠已上線。</block>
   <block id="950372b89704e14720897b9cc9143854" category="paragraph">您可以使用諸如Brocade交換器的「show」和Cisco交換器的「show介面簡介」等命令。</block>
   <block id="4b14478bc266e73c21d8c8e1baefedf8" category="list-text">確認橋接器上的磁碟櫃和磁碟清晰可見。</block>
-  <block id="a0c802a3250ae2fb7360a23c34260ad0" category="paragraph">您可以在Atto命令列介面（CLI）上使用「sastargets」之類的命令。</block>
   <block id="d55f68c0f2018d8510fbe5ad7686fa13" category="list-text">在FC交換器上啟用ISL。</block>
-  <block id="8dbba1f3a045398fb8c2068f3d859597" category="admonition">如果您的組態MetroCluster 是指靜態IP組態、請跳過此步驟。</block>
   <block id="874b4480e5736cfb3bb267ac5127e12a" category="paragraph">根據使用的是Brocade或Cisco交換器來啟用連接埠、如下表所示：</block>
-  <block id="cb4bda83e4b475d4527a306a175f8dc5" category="list-text">輸入「portcfg堅持 啟用_port_」命令、以持續啟用連接埠。這必須在存續站台的兩個交換器上執行。</block>
   <block id="4091cccb2a9363be900b49a8123fd953" category="paragraph">以下範例顯示Switch_a_1上啟用的連接埠14和15：</block>
   <block id="2202782420c4dafcddf766370d515d92" category="list-text">使用+"shwitchshow"命令驗證是否已啟用交換器連接埠：</block>
   <block id="90249cecea11f452dc769a28231fca6b" category="list-text">使用「interface」命令來啟用連接埠。</block>
   <block id="3d3f8220d38456693795f57399e3dd66" category="paragraph">下列範例顯示交換器A_1上正在啟用連接埠FC1/14和FC1/15：</block>
   <block id="d448f82c3dc45aeef9b75bf272bc8ed4" category="list-text">確認交換器連接埠已停用：</block>
-  <block id="2164a8908dcd0889f81dd9e8f32fb414" category="list-text">驗證現在是否可以看到儲存設備。</block>
-  <block id="83a0bb2026f512c960273d4bdc10525f" category="paragraph">選擇適當的方法、根據MetroCluster 您的需求來判斷儲存設備是否可見：</block>
-  <block id="b6929e4968ce2ed48274a887d3709bf9" category="cell">如果您的組態是...</block>
-  <block id="3badf494f1e5507594701f730003f4b3" category="cell">然後執行此步驟...</block>
   <block id="cb6e41c3f8129beba0a46eb91ae56058" category="paragraph">IP組態MetroCluster</block>
-  <block id="1f826b7fd7651c127e286e0bbc129b77" category="paragraph">驗證本機儲存設備是否可從節點維護模式中看到。</block>
-  <block id="7ed92f84948f4fe94d9e740b0e479a4e" category="paragraph">精選FC組態MetroCluster</block>
-  <block id="81927ec637b63156a40899d4c547908f" category="paragraph">確認儲存設備可從存續的站台看到。讓離線程序恢復上線。這會重新啟動重新同步作業、並重新建立SyncMirror 該功能。</block>
   <block id="0483b2aca795ea6933a0ab7502b4e963" category="list-text">重新建立MetroCluster 此功能組態。</block>
-  <block id="44b7f701c8b22fd32471d911de4c0984" category="paragraph">依照中的指示操作 <block ref="c355f6bb3dca677defb89e8a84e6c55b" category="inline-link-macro-rx"></block> 根據MetroCluster 您的需求組態執行修復和切換作業。</block>
   <block id="fca3ec170ce9c71081fd6e6c37f432d0" category="summary">如果您要升級至新的Brocade FC交換器、則必須更換第一個Fabric中的交換器、確認MetroCluster 該交換器組態可完全正常運作、然後更換第二個Fabric中的交換器。</block>
   <block id="472f5d690548311b55786731619a808b" category="list-text">此功能組態必須健全且正常運作。MetroCluster</block>
   <block id="c298ece2fdc0c91833d8c313094e79f6" category="list-text">這個交換器架構由四個Brocade交換器組成。MetroCluster</block>
@@ -3918,7 +3825,6 @@
   <block id="074655e8b1cc12e66a73fa4302ee6f80" category="paragraph">支援使用FibreBridge 7500N橋接器來取代FibreBridge 6500N橋接器、或將新的儲存設備新增至MetroCluster 該系統組態。支援的組態具有分區要求、並限制橋接器的FC連接埠、堆疊和儲存櫃限制的使用。</block>
   <block id="d346c68856b5919d4bbdf850ee3e3eb7" category="paragraph">以單一的光纖橋接器7500N來取代單一的光纖橋接器6500N</block>
   <block id="d2afb86fa69717e133b24f6733d30141" category="paragraph">您必須使用單一FC連接埠、並連接至單一堆疊、將Fibre Bridge 7500N橋接器的設定與Fibre Bridge 6500N橋接器完全相同。請勿使用Fibre Bridge 7500N上的第二個FC連接埠。</block>
-  <block id="958de5ee2f25b5fa2715cdd4e27fa14c" category="paragraph"><block ref="958de5ee2f25b5fa2715cdd4e27fa14c" category="inline-link-macro-rx"></block></block>
   <block id="2e93d499857b0d9941e6363a44b6de83" category="paragraph">整合多個堆疊、將多對的光纖橋接器6500N取代為單一的一對光纖橋接器7500N</block>
   <block id="ecd7fb40107bf896d176fafc2b4a5b19" category="paragraph">在這種情況下、您會將FIBEBridge 6500N橋接器退出服務、並以單一的一對FIBEBridge 7500N橋接器取代。每對FIBEBridge 7500N或7600N橋接器最多可支援四個堆疊。</block>
   <block id="11f749dbbfcfff08a3f03687936819ad" category="paragraph">在程序結束時、堆疊的頂端和底部都必須連接至連接埠、位於連接埠為FibreBridge 7500N的橋接器上。</block>
@@ -3939,8 +3845,6 @@
   <block id="e57ca4b3df83a88b6254675613163df0" category="list-text">系統必須符合中的所有需求 <block ref="08d6c3cbf42a81a0c26843f87c874545" category="inline-link-macro-rx"></block>。</block>
   <block id="5c96ab4a94ce2c03e50e3170dc50e8be" category="list-text">您的環境必須符合下列其中一種情況、才能熱新增機櫃：</block>
   <block id="dc7e96665a67891a688cad5299c9216d" category="list-text">您有兩個連接至SAS磁碟櫃堆疊的FibreBridge 7500N橋接器。</block>
-  <block id="eece1d4d900f6ebddf86703e79ecc8e1" category="list-text">您有一個連接至SAS磁碟櫃堆疊的FIBreBridge 7500N橋接器和一個FIBreBridge 6500N橋接器。</block>
-  <block id="dd1b0f5953e1bb8988271af33d40715c" category="list-text">您有兩個連接至SAS磁碟櫃堆疊的FibreBridge 6500N橋接器。</block>
   <block id="bbe46ae98258b21267300cd00fda2d33" category="list-text">此程序適用於將磁碟櫃熱新增至堆疊中的最後一個磁碟櫃。</block>
   <block id="de765cbcb90d504e6ac736ad12d5610f" category="paragraph">這項程序是假設堆疊中的最後一個磁碟櫃是從IOM A連接到橋接器A、從IOM B連接到橋接器B</block>
   <block id="898c5906a76d3bd931a038bfaebc8419" category="list-text">這是不中斷營運的程序。</block>
@@ -3961,10 +3865,6 @@
   <block id="c6a74b565a0bfaf4ae27e4430afa45d3" category="paragraph">"storage disk option modify -node-name_-autodassign off"命令會停用磁碟自動指派。</block>
   <block id="5b63e4a9bc611666d00f442d845ec5c6" category="admonition">在磁碟機和磁碟櫃韌體更新之前、不得將磁碟機新增至集合體或磁碟區。</block>
   <block id="70a0e75e35d9914b9a2f7708da941117" category="list-text">安裝並連接磁碟櫃：</block>
-  <block id="263c15ac5674f01ff68b35e6b6e75bd3" category="paragraph">請注意下列考量事項：</block>
-  <block id="39e6f48b1de9ddbfef92e6f4fcff1ce4" category="list-text">若為光纖橋接器6500N橋接器：</block>
-  <block id="29c6af38e68b6b8bb268425f0b790887" category="paragraph">連接連接埠之前、請至少等待10秒鐘。SAS纜線連接器採用鎖定式設計；若方向正確放入SAS連接埠、連接器會卡入定位、而磁碟櫃SAS連接埠LKLED會亮起綠色。若為磁碟櫃、請插入SAS纜線連接器、拉片方向向下（位於連接器底部）。</block>
-  <block id="96c7e7c9134d64da1099df040e16e532" category="list-text">若為FibreBridge 7500N橋接器：</block>
   <block id="28f13ef1be475bc18398b06c9ee9c0ad" category="paragraph">請勿將連接器強制插入連接埠。迷你SAS纜線採用鎖定式設計；若方向正確放入SAS連接埠、SAS纜線會卡入定位、且磁碟櫃SAS連接埠LKLED會亮起綠色。若為磁碟櫃、請插入SAS纜線連接器、拉片朝上（位於連接器頂端）。</block>
   <block id="d4fa97d509c1914d4c73c7be277a3f4a" category="list-text">安裝磁碟櫃、開啟電源、然後設定機櫃ID。</block>
   <block id="d14a1bb2bac60ab5e8c6c23c719dc845" category="paragraph">磁碟櫃模型的安裝指南_提供安裝磁碟櫃的詳細資訊。</block>
@@ -5634,7 +5534,6 @@
   <block id="933883823c7d637ca7f531bf57658b6a" category="list-text">在目的地叢集上執行下列命令、確保修復作業已完成：</block>
   <block id="79a916b9b9844039e5758f1c19eaa2ea" category="list-text">開啟災難站台上的每個控制器模組。</block>
   <block id="fb8985c37d01b197930d2597b13d3014" category="list-text">引導節點後、請確認根集合體已鏡射。</block>
-  <block id="9273337a1e299dfc8dfe67a6cfac57c8" category="paragraph">如果兩個plexes都存在、任何重新同步都會自動啟動。如果某個叢發生故障、則必須銷毀該叢、並使用下列命令重新建立鏡射關係、以重新建立鏡射關係。</block>
   <block id="45f24e4f4da42e071e122e2ae4357bb7" category="paragraph">「torage Aggregate mirror -Aggregate &lt;gregate名稱&gt;」</block>
   <block id="99d347f5ee9c6d06272a3e8abad4bbfd" category="section-title">驗證系統是否已準備好進行切換</block>
   <block id="ba6c2df32f41b2c48352bb19b5534193" category="paragraph">如果您的系統已經處於切換狀態、您可以使用「-Simulate」選項來預覽切換操作的結果。</block>
@@ -6702,12 +6601,7 @@
   <block id="6ffb8f2c32009a20c314f0eeec771f81" category="cell">Brocade 6510、DCX 8510-8</block>
   <block id="a435d7a239e10d99dd0bb66c0966f44d" category="paragraph">下表顯示Cisco交換器上的控制器連接埠使用量：</block>
   <block id="b54c734a5be7921355fc2aa93b69ba59" category="cell">Cisco 9148或9148</block>
-  <block id="f0bd256ae87926dc22cadd49e5bfaf85" category="paragraph">下表顯示使用光纖橋接器7500橋接器時、連接埠使用量最多可達連接埠23。可使用連接埠25至48連接其他橋接器。</block>
-  <block id="92c57b4343387dab646670955eb22ea3" category="paragraph">下表顯示使用光纖橋接器6500橋接器時、橋接器連接埠使用量最多可達連接埠23。可使用連接埠25-48連接其他橋接器。</block>
-  <block id="1d52039f20a1cb4fe8774684260c63d7" category="cell">8節點MetroCluster</block>
   <block id="11278506140805617313d6fd9ed8b0fc" category="cell">Cisco 9148、9148 S或9250i</block>
-  <block id="84e23d11c4e127e49471824f2e6c9d7c" category="paragraph">下表顯示使用光纖橋接器7500橋接器時、連接埠使用量最多可達連接埠14。其他橋接器可依照相同模式連接至連接埠15至32。</block>
-  <block id="a469d4f6876ebd3dc052284b5c5e7509" category="paragraph">下表顯示使用最多連接埠14的光纖橋接器6500時的橋接連接埠使用量。其他橋接器可依照相同模式連接至連接埠15至32。</block>
   <block id="c283e6d33e5ab7ba05309d0bdb85144e" category="summary">您需要針對MetroCluster 交換器的某些權限才能進行整個交換器的功能。您必須在所有四個交換器上安裝這些授權。</block>
   <block id="1895119723122826713ca9b3d616a96b" category="doc">檢閱Brocade授權要求</block>
   <block id="020376a3fd370a6b9dfc23a3f92f2cba" category="paragraph">此組態具有下列Brocade授權需求：MetroCluster</block>
@@ -7131,7 +7025,6 @@
   <block id="df09a476320acebda6f08f8d250d6e6d" category="paragraph">您可以使用islShow命令來檢查E_port是否已連線、並已設定加密或壓縮並處於作用中狀態。</block>
   <block id="978fbde67977c63ea58137daf2a0c897" category="paragraph">您可以使用portEncCompShow命令查看哪些連接埠處於作用中狀態。在此範例中、您可以看到加密和壓縮已在連接埠0上設定並啟用。</block>
   <block id="e0be7ea022244db5d1c1da820a4f5ad8" category="section-title">在Brocade FC交換器上設定分區</block>
-  <block id="a303e21b6b9e9b6f6c289e91bb7d5d67" category="paragraph">您必須將交換器連接埠指派給不同的區域、以分隔控制器和儲存流量。此程序視您使用的是FIBreBridge 7500N或FIBreBridge 6500N橋接器而定。</block>
   <block id="f10d463e2d297fe413356e23e7923de9" category="section-title">FC-VI連接埠分區</block>
   <block id="caf28de9f878439a25ca8c39e1e746b5" category="paragraph">對於整個過程中的每個DR群組MetroCluster 、您必須為FC-VI連線設定兩個區域、以允許控制器對控制器的流量。這些區域包含連接至控制器模組FC-VI連接埠的FC交換器連接埠。這些區域是服務品質（QoS）區域。</block>
   <block id="c6e4ca0d92238d04023b15c34ba48994" category="paragraph">QoS區域名稱開頭為前置字元QOSHid_、後面接著使用者定義的字串、以區分它與一般區域。無論所使用的是哪種類型的光纖橋接器、這些QoS區域都是相同的。</block>
@@ -7212,8 +7105,6 @@
   <block id="875f652a8829c477d23566825a41ce2d" category="cell">FC_switch_a_2和FC_switch_B_2</block>
   <block id="03f62b19d6b9509a69d1224a5fd8e73b" category="paragraph">QOSH2_MC1_FA_2_FCVI（6510）</block>
   <block id="0ac598b4b15967045c768da6dff300ad" category="paragraph">QOSH2_MC1_FA_2_FCVI（6520）</block>
-  <block id="8924407898770c03b8e8f352362d05df" category="section-title">使用單一FC連接埠的Fibre Bridge 6500N橋接器或Fibre Bridge 7500N或7600N橋接器分區</block>
-  <block id="ed6cc2e4a5b1eb49bd98a6836c3c16e0" category="paragraph">如果您使用的是Fibre Bridge 6500N橋接器、或是使用兩個FC連接埠之一的Fibre Bridge 7500N或7600N橋接器、則需要為橋接連接埠建立儲存區域。在設定區域之前、您應該先瞭解區域和相關連接埠。</block>
   <block id="6b31232cf0b2abdcdf2b178f68104f01" category="paragraph">範例僅顯示DR群組1的分區。如果您的組態包含第二個DR群組、請使用控制器和橋接器的對應連接埠、以相同方式設定第二個DR群組的分區。</block>
   <block id="baf9712fec9aa36f25583f754fbdcc36" category="section-title">必要的區域</block>
   <block id="8498a500fccebcb4367e73fb3b617503" category="paragraph">您必須為每個FC對SAS橋接FC連接埠設定一個區域、以允許每個控制器模組上的啟動器與該FC對SAS橋接器之間的流量。</block>
@@ -7234,7 +7125,6 @@
   <block id="27c139222e5351fb34d2d62b3d965a28" category="paragraph">橋接器配對所連接的堆疊群組編號。</block>
   <block id="fdeaf3d6c981b83dd3df188d27914262" category="list-text">最多支援堆疊群組中四個堆疊的FIBreBridge 7600N或7500N橋接器。</block>
   <block id="91c3e629f683c97b0153438356cb808e" category="paragraph">堆疊群組最多可包含10個儲存磁碟櫃。</block>
-  <block id="059103bb915e843506300718b93905c4" category="list-text">FibreBridge 6500N橋接器僅支援堆疊群組中的單一堆疊。</block>
   <block id="3bedeed3aede72d127ad4893c878fb6b" category="paragraph">1、2等</block>
   <block id="faf844ce6ce8135dec1b710eb9763ba5" category="paragraph">配對位置</block>
   <block id="8d3eb4cb77ea2bbd21bb7417b5cacaca" category="paragraph">橋接器配對中的橋接器。一對橋接器會連接至特定堆疊群組。</block>
@@ -7358,7 +7248,6 @@
   <block id="dccc912da6b4072a85754c637123a97c" category="paragraph">您必須將交換器連接埠指派給不同的區域、以區隔控制器和儲存流量、並針對FC-VI連接埠和儲存連接埠的區域。</block>
   <block id="683805dbe49cdc889c788fdcb11e6927" category="paragraph">下列步驟使用適用於MetroCluster 整個過程的標準分區設定。</block>
   <block id="7dc2e1d82f3e11c1d3fa8b2712f6f307" category="paragraph"><block ref="7dc2e1d82f3e11c1d3fa8b2712f6f307" category="inline-link-macro-rx"></block></block>
-  <block id="4e28cc28dc4b1c247e9fc6b5a03ce662" category="paragraph"><block ref="4e28cc28dc4b1c247e9fc6b5a03ce662" category="inline-link-macro-rx"></block></block>
   <block id="89a61a78ea2327ff92f1148721872f22" category="paragraph"><block ref="89a61a78ea2327ff92f1148721872f22" category="inline-link-macro-rx"></block></block>
   <block id="2eae53758764e0498d8d60c075032e44" category="list-text">在每個交換器上建立FC-VI區域：</block>
   <block id="9bb5b14403063a52226996be386c7f39" category="paragraph">《區域創建者"QOSH1_FCVI_1"、成員；成員...》</block>
@@ -7872,8 +7761,6 @@
   <block id="de10b7ba4ade6acdea8774b5a68bf1ba" category="list-text">建立儲存區域、並將儲存連接埠新增至儲存區域。</block>
   <block id="fe6733f22485938d023679adc9a877ff" category="admonition">在每個Fabric中只對一個交換器執行這些步驟。</block>
   <block id="cb2a66d72ad29d5ada076628de3ea506" category="paragraph">分區取決於您所使用的FC對SAS橋接器機型。如需詳細資料、請參閱模型橋接器的一節。範例顯示Brocade交換器連接埠、因此請相應調整連接埠。</block>
-  <block id="50fe2d6c304635caf302b58bd0b6dfee" category="inline-link-macro">使用單一FC連接埠的Fibre Bridge 6500N橋接器或Fibre Bridge 7500N或7600N橋接器分區</block>
-  <block id="a86ff0af1d79628a912ac6a46ff27030" category="list-text"><block ref="a86ff0af1d79628a912ac6a46ff27030" category="inline-link-macro-rx"></block></block>
   <block id="2c0db800facff01fe96c6b0dcfc7cbbd" category="paragraph">每個儲存區域都包含來自所有控制器的HBA啟動器連接埠、以及連接FC至SAS橋接器的單一連接埠。</block>
   <block id="8dc27f662a0c89aac9333e7a3562312e" category="list-text">建立儲存區域：</block>
   <block id="27cbbe86005e8d78108cbb80ed07c81f" category="paragraph">「區域名稱_STOR-ZA-name_ vSAN _vsanid_」</block>
@@ -7996,8 +7883,6 @@
   <block id="4e14469d1b9cb5857e2b83704c8ab8d4" category="list-text"><block ref="d277051460abcb0f3a19fb6f4b09af32" category="inline-xref-macro-rx"></block></block>
   <block id="1098ebf3ac123d908705a49af90988ba" category="inline-xref">使用IOM6或IOM3模組、將連接至磁碟櫃的FIBiBridge 7600N或7500N橋接器進行纜線連接</block>
   <block id="572e966b8fd8a186b019d7c5d26ff32c" category="list-text"><block ref="f3f03af6d08c988efd686559fcd15483" category="inline-xref-macro-rx"></block></block>
-  <block id="1ff786282c561a059275f4f66fbb3c02" category="inline-xref">使用IOM6或IOM3模組、將連接至磁碟櫃的FibreBridge 6500N橋接器進行纜線連接</block>
-  <block id="6db0710ae16bb03fe4ed9188d32a68ab" category="list-text"><block ref="5ee3dd6cfd52247d8b37207cfaf13e9b" category="inline-xref-macro-rx"></block></block>
   <block id="fcf216ba8187b4017a22716585d4a6fa" category="paragraph">設定橋接器之後、您可以開始為新系統佈線。</block>
   <block id="3745e1eacc753de05da3d0afc4e15cea" category="paragraph">若為磁碟櫃、請插入SAS纜線連接器、拉片朝下（位於連接器底部）。</block>
   <block id="95a5b0b928eb5c6139f9cd2a021f72a6" category="list-text">菊環鏈連接每個堆疊中的磁碟櫃：</block>
@@ -8027,15 +7912,6 @@
   <block id="f7e3d93b4c145bf696a9e6f193ce4fb7" category="list-text">如需其他機櫃堆疊、請重複上述步驟、使用第二個堆疊使用連接埠B、第三個堆疊使用連接埠C、第四個堆疊使用連接埠D。</block>
   <block id="9111bd303b0cb06989b91c9e131eb156" category="paragraph">下圖顯示四個連接至一對FibreBridge 7600N或7500N橋接器的堆疊。</block>
   <block id="6704e0f472546c04c5cdc225c2656ec5" category="image-alt">MCC佈線橋接器和SAS堆疊、含7500n四個堆疊</block>
-  <block id="c9da011f9debc02fdab80f3b849d7f6e" category="paragraph">設定橋接器之後、您可以開始為新系統佈線。FibreBridge 6500N橋接器使用QSFP連接器。</block>
-  <block id="c05c9c89f29541a2e3cafe9c3845e3e8" category="paragraph">由於採用IOM12的磁碟機櫃不支援使用FIBRIBridge 6500N橋接器、</block>
-  <block id="7c1615c29340c6fd3d248d789343e1d1" category="paragraph">如需菊環鏈式磁碟櫃的相關資訊、請參閱磁碟櫃模型的_安裝與服務指南_。</block>
-  <block id="0180c8e3cd250ff60d40a92d46bed5f2" category="list-text">對於每個磁碟櫃堆疊、將IOM連接至第一個磁碟櫃的方形連接埠、連接至光纖橋接器A的SAS連接埠A</block>
-  <block id="3438a63fec3ca234e9dd8cac149f0aba" category="list-text">對於每個磁碟櫃堆疊、將最後一個磁碟櫃的IOM B圓形連接埠纜線連接至光纖橋接器B的SAS連接埠A</block>
-  <block id="812d5019caa5125426f0aef260c3c3e7" category="paragraph">每個橋接器都有一條通往磁碟櫃堆疊的路徑：橋接A透過第一個機櫃連接至堆疊的A側、而橋接B則透過最後一個機櫃連接至堆疊的B側。</block>
-  <block id="091991cc9aad418748a9606ea3888e0f" category="admonition">SAS連接埠B橋接器已停用。</block>
-  <block id="29e7b923f8725202565ab59fd5d6e538" category="paragraph">下圖顯示一組連接至四個磁碟櫃堆疊的橋接器：</block>
-  <block id="c44614eb148668338fa95894c5e745ae" category="image-alt">MCC纜線橋接器和SAS堆疊</block>
   <block id="8cbdbb5be51e2a78d7b472e23327b938" category="section-title">驗證橋接器的連線能力及橋接FC連接埠的纜線連接</block>
   <block id="605157b79e898676481d263489be287d" category="paragraph">您應該確認每個橋接器都能偵測到所有磁碟機、然後將每個橋接器連接至本機FC交換器。</block>
   <block id="8bfac37f0565c6922aeced47caf18f6a" category="list-text">[[step1_bridity]驗證每個橋接器是否能偵測其所連接的所有磁碟機和磁碟櫃：</block>
@@ -8043,7 +7919,6 @@
   <block id="2c289d2564b7ae64ce5ddd32d176f7d8" category="paragraph">橋接器的Atto FIBreBridge狀態頁面會出現、左側會顯示功能表。</block>
   <block id="78d586744784b57424fd44e8680647aa" category="list-text">按一下*進階*。</block>
   <block id="7584130e58d7e346035eb6eabd58a612" category="list-text">使用sastargets命令查看連接的設備，然後單擊* Submit*。</block>
-  <block id="6edb2b0baf9ed9e4cde065ac51290bc3" category="paragraph">+附註：如果輸出開頭出現「回應被截掉」文字、您可以使用Telnet連線到橋接器、然後輸入相同的命令來查看所有輸出。</block>
   <block id="540e154d4e289b6bfd793dd86036768d" category="list-text">確認命令輸出顯示橋接器已連接至堆疊中應連接的所有磁碟和磁碟櫃。</block>
   <block id="eb443924112f8c71329400ac78de9284" category="paragraph">重複 <block ref="2f9ed640880ac5dd95c2cb30edbb02d0" category="inline-xref-macro-rx"></block> 每個剩餘的橋接器。</block>
   <block id="234d9ba6039ff899b95d32b2d5738596" category="list-text">重複佈線、檢查SAS纜線是否鬆脫或修正SAS纜線。</block>
@@ -8124,7 +7999,6 @@
   <block id="eb6af5346570dfb780cfba1151b42e1c" category="list-text">如果儲存控制器的HA合作夥伴位於獨立的機箱中、請連接HA互連。</block>
   <block id="c89a6d312c9084462cae48a67011e3ef" category="list-text">如果MetroCluster 該站台包含兩個HA配對、請在第二個HA配對上重複上述步驟。</block>
   <block id="e9fe6c4e2e8c17141c00f8415039ce56" category="list-text">請在MetroCluster 「不合作夥伴」網站重複此工作。</block>
-  <block id="cdd098707a5ab09c2aacefd245a22b7d" category="paragraph">您可以使用下列程序來變更分區或執行從FIBEBridge 6500升級至FIBEBridge 7500：請從進行下列程序_熱插拔使用FIBEBridge 7500N或7600N bridge_的FIBEIBER__橋接器<block ref="01d78e686e1360972399f4e6d1d43586" category="inline-link-rx"></block>。</block>
   <block id="be4390855c7255687268115d7024953b" category="cell">*支援1或DR群組1* MetroCluster</block>
   <block id="12504d160a257d30aeee1aa86bcd4320" category="cell">* Brocade交換器機型6505、6510、6520、7840、G620、 G610和DCX 8510-8*</block>
   <block id="0617e4d07d12b0af8212c27b7e1c91bc" category="cell">*連接至FC交換器...*</block>
@@ -8341,7 +8215,6 @@
   <block id="b242408d7d7d710b9677d625caecbe2d" category="paragraph">「portcfgSpeed」</block>
   <block id="be5202b28e5b83beb808b3ac26e9742d" category="paragraph">根據預設、所有連接埠均設定為以16 Gbps運作。您可能會因為下列原因而變更連接埠速度：</block>
   <block id="ba9c767eb14e474535af6d4b9bee5496" category="list-text">當使用8-Gbps FC-VI介面卡且交換器連接埠速度應設定為8 Gbps時、互連交換器連接埠速度應該會改變。</block>
-  <block id="a0bbe76035aaa0a06b6d98046fa647be" category="list-text">當Atto FibreBridge 6500N使用8-Gbps HBA介面卡時、應變更交換器連接埠速度。</block>
   <block id="88a9be1491a219d7b5dd0ebd6de75774" category="list-text">當ISL無法以16 Gbps的速度執行時、必須變更ISL連接埠的速度。</block>
   <block id="0cde63179964e3bf0a8751afc45a15b9" category="paragraph">由於FC-VI的行為、您必須將距離設定為實際距離的1.5倍、最少10倍（LE）。ISL的距離計算方式如下、四捨五入至下一整公里：1.5 x實際距離=距離。</block>
   <block id="aadeb78696fd6130a1f507d57cf50198" category="paragraph">如果距離為3公里、則1.5 x 3公里= 4.5。這低於10；因此、您必須將ISL設為LE距離等級。</block>
@@ -8371,26 +8244,6 @@
   <block id="592c191df8a18376b1323c0c806866e6" category="paragraph">兩個輸出應顯示兩個交換器的相同組態資訊和分區資訊。</block>
   <block id="94d54d70c5d7ee5cc198da3e79246db2" category="list-text">如果使用主幹連線、請確認主幹連線：</block>
   <block id="3c4e32c4ec392d71a4445aa8de2c38a3" category="paragraph">《警示秀》</block>
-  <block id="e724cb67436f5eec5573e5a3fd4cb036" category="paragraph">橋接CLI命令（例如「串橋路執行CLI -namebridge-name-commandbridge命令-command-name'命令）可從ONTAP Isfit介面執行。</block>
-  <block id="d0ee1757d9fccb6a2088a8a3f1aede6a" category="paragraph">在確保系統符合「準備安裝」中的所有要求之後、您就可以安裝新系統。</block>
-  <block id="715af57300b5c6806072fa2c866065e6" category="list-text">如有需要、請停用服務、方法是發出「et closePort _service_」、並視需要重複執行命令、直到停用所有所需的服務為止：</block>
-  <block id="74c3270411b35dffcba4c76dadbafc6c" category="paragraph">「設為關閉連接埠」命令一次會停用單一服務。此服務可由下列其中一項指定：</block>
-  <block id="7b3efb5742ffd4881d7f445df634f9a7" category="paragraph">「et ipdhcp MP1 disabled'set ethernetspeed MP1 1000」</block>
-  <block id="53f9010a998452330c318a49a19fdad3" category="paragraph">《我的新兵》</block>
-  <block id="00e0abfb46aba6832f65f196e0f3044d" category="paragraph">「et FCDataRate port-numberport-speed」</block>
-  <block id="bef8395e82221d7acad3540cbcc25f3d" category="paragraph">設定FIBreBridge 7600N橋接器時、不需要FCConnMode設定。如果您使用CLI、則必須執行下列命令：</block>
-  <block id="acc808880efb90c6f8934d124df0c880" category="paragraph">「et FCConnMode連接埠編號PTP」</block>
-  <block id="fe3c5c4aadf855704d7af81d0dc642d9" category="paragraph">「停用SAS連接埠」</block>
-  <block id="d7513c0e570b2f3453caf0550a333d1e" category="list-text">保護橋接器的存取安全、並儲存橋接器的組態。根據ONTAP 系統執行的版本、從下列選項中選擇一個選項。</block>
-  <block id="cccc51b51ddeaf1d070119fe26d9dca4" category="list-text">[step1_verify_bridges]確認每個橋接器都能偵測到其所連接的所有磁碟機和磁碟櫃：</block>
-  <block id="350948e1948da38211704e0e632282d6" category="list-text">使用「sastarges'」命令檢視連線的裝置、然後按一下「*提交*」。</block>
-  <block id="5c1a7988cfaa2c9a1f21c9b95b652af9" category="admonition">如果輸出開頭出現截短的文字回應、您可以使用Telnet連線到橋接器、然後輸入相同的命令來查看所有輸出。</block>
-  <block id="bb5aca9716acb38283c10f2d735e3acf" category="paragraph">重複 <block ref="2814819d643b5a414bd6cc7c03f47bc3" category="inline-xref-macro-rx"></block> 每個剩餘的橋接器。</block>
-  <block id="2eb7016fb2e69bc04a0be5e44dbc69dd" category="paragraph"><block ref="2eb7016fb2e69bc04a0be5e44dbc69dd" category="inline-link-macro-rx"></block></block>
-  <block id="5107f3588b77e26edc1af80f693e8509" category="list-text">重複 <block ref="2814819d643b5a414bd6cc7c03f47bc3" category="inline-xref-macro-rx"></block>。</block>
-  <block id="a7961aec4222555642ec51ab8f3cbdb7" category="list-text">可使用「unsecurebridge」命令重新啟用乙太網路連接埠。</block>
-  <block id="5c89ff4fb068c362b464eb4fa8108a16" category="paragraph">「torage bridge run－CLI bridge bridge-name－command saveconfigur態」</block>
-  <block id="f649a33fa0f1f3fe81f64356049e86f4" category="paragraph">「torage bridge run－CLI bridge bridge bridge bridge－name－command firmwarerestart」</block>
   <block id="713771fbe82877a6f1defe1e3ba7da98" category="summary">您必須在MetroCluster 不完整的功能組態中設定每個節點ONTAP 、包括節點層級組態、以及將節點組態設定為兩個站台。您也必須在MetroCluster 這兩個站台之間實作「不二」關係。對於使用原生磁碟櫃的系統、其步驟與使用陣列LUN的系統略有不同。</block>
   <block id="ed9e684b86d9ba9268bfa7bb05da68e3" category="image-alt">工作流程高層節點和叢集組態軟體</block>
   <block id="0e10a4686c50286be43ddc081aadc85a" category="section-title">站台A的IP網路資訊工作表</block>
@@ -8872,7 +8725,6 @@
   <block id="e3ac1a6df2ee9f1157c3a5dec5883f3e" category="section-title">FC至SAS橋接器的需求</block>
   <block id="e53dc72303557c1105d977a8451912b3" category="paragraph">Fabric附加MetroCluster 的SFC組態需要一對FC對SAS磁碟櫃堆疊群組的FC橋接器。</block>
   <block id="b70216f5078d65c8860a010a7ccdbdd8" category="list-text">最多可支援四個SAS堆疊的FIBreBridge 7600N或7500N橋接器。</block>
-  <block id="1d670d96f2ecbfb15c4a81314e20f67d" category="list-text">FibreBridge 6500N橋接器僅支援一個SAS堆疊。</block>
   <block id="520e16a62f58f9e73a16fda005e8fe2f" category="list-text">每個堆疊都可以使用不同的IOM機型。</block>
   <block id="8db51e2a7c564cc042e840346cc8e77f" category="paragraph">支援的IOM模組取決於ONTAP 您執行的版本。</block>
   <block id="9df6f19f1ce5cd3044ae4a6c42240fb1" category="paragraph">這個組態需要在每個站台進行最低組態設定：MetroCluster</block>
@@ -10019,9 +9871,6 @@
   <block id="f4a6a04204d80f2884055d8da7f250ae" category="paragraph">「_service_（服務）”可以指定下列其中一項：</block>
   <block id="4db2eceaa8145339affc67a0413885ce" category="image-alt">工作流程硬體安裝與組態附加2節點橋接器</block>
   <block id="43441b39bffebee3ed9f59ea9dc91306" category="image-alt">工作流程硬體安裝與組態已附加2節點SAS</block>
-  <block id="a0256b5d14d8f8e278ab1f632644ed83" category="paragraph">請先開機並等待至少10秒鐘、再連接連接埠。SAS纜線連接器採用鎖定式設計；若方向正確放入SAS連接埠、連接器會卡入定位、而磁碟櫃SAS連接埠LNK LED會亮起綠色。對於磁碟櫃、請插入SAS纜線連接器、拉片朝下（位於連接器底部）。</block>
-  <block id="2826857d59337300555697a88fd8af6c" category="paragraph">由於採用IOM12模組的磁碟機櫃不支援使用該磁碟櫃、因此請勿使用FIBRIBridge 6500N橋接器。</block>
-  <block id="bed97cf26e962cfbadd9158043d57ebf" category="paragraph">每個橋接器都有一條路徑可通往其磁碟櫃堆疊。橋接器A會透過第一個機櫃連接至堆疊的A側、而橋接器B會透過最後一個機櫃連接至堆疊的B側。</block>
   <block id="9f7478d92348559576a9b780c5262d0e" category="summary">設定橋接器之後、您可以開始佈線系統。FibreBridge 7600N或7500N橋接器使用Mini-SAS連接器、並支援使用IOM6或IOM3模組的機櫃。</block>
   <block id="1c0a5ccd8d43c6efa0824e4f1aaa5610" category="list-text">如需其他機櫃堆疊、請使用下一個可在光纖橋接器上使用的SAS連接埠、重複上述步驟。將連接埠B用於第二個堆疊、將連接埠C用於第三個堆疊、將連接埠D用於第四個堆疊。</block>
   <block id="4edc653428a721030056cbd92bbca350" category="summary">在MetroCluster 使用陣列LUN的延伸式功能區組態中、您必須連接FC-VI連接埠、以便在控制器之間直接連線。此外、您必須將每個控制器HBA連接埠纜線連接至對應FC交換器上的交換器連接埠。除了MetroCluster E系列陣列LUN（可直接連接）之外、連接至陣列LUN的纜線與連接至光纖的功能相同。</block>
@@ -11458,7 +11307,6 @@
   <block id="6a739570036228dc1447eb1b941f12a0" category="sidebar">以架構附加MetroCluster 的功能不中斷的方式更換機櫃</block>
   <block id="8cd5672b7c6aa3bf6d484d5398e7cf35" category="sidebar">在MetroCluster 不完整的組態中移動中繼資料磁碟區</block>
   <block id="d73f3d20e01c0ae11b268d892b9c7514" category="sidebar">在MetroCluster 不完整的組態中重新命名叢集</block>
-  <block id="35c80ebe00a0f12bf75ded93997e17cb" category="sidebar">關閉資料中心電源並開啟電源</block>
   <block id="87e3fddd4347c3eea1eee68f594f1a43" category="sidebar">關閉MetroCluster 整個支援IP組態的電源</block>
   <block id="98e0abbb33a3ee2f9258bc3cb733233b" category="sidebar">關閉MetroCluster 整個支援功能</block>
   <block id="01f252af90871f7cd362d1ce68d6a434" category="sidebar">重新設定ONTAP 以不使用整套功能的FC交換器配置</block>
@@ -11668,7 +11516,6 @@
   <block id="a2a7d27c6bf1ad121aeada48fc70ca1d" category="list-text">等待30分鐘、然後在站台上開啟下列設備：</block>
   <block id="383d92c84e46dd00caa3dbad6de7fe2f" category="paragraph"><block ref="903819e2154a41f8227f7c0192db71f6" category="inline-link-macro-rx"></block> 在「安裝MetroCluster 與組態」內容中</block>
   <block id="688f019e2f851b28c81904e0acd0c450" category="paragraph"><block ref="6f99ee259693716af238b16f6b3287d3" category="inline-link-macro-rx"></block> 在「_SURFIP MetroCluster 安裝與組態」一節中。</block>
-  <block id="e3b4bec7cc0382f3d2b420e4d37da974" category="list-text">開啟儲存控制器的電源。</block>
   <block id="be8e7921b8bc696adb0f989ee98b7e9f" category="list-text">「PPEed」可以是「100」或「1000」。</block>
   <block id="e44042693910b4bd1a0494893ddc1892" category="doc">確認SVM正在執行、而且Aggregate處於線上狀態</block>
   <block id="0f6663ce923ab095e111674a6a00e20f" category="summary">您可以從ONTAP 無法使用的知識庫IP組態中移除此「資訊庫中介器」服務MetroCluster 。</block>
@@ -11792,8 +11639,6 @@
   <block id="5ac8082d208bbf03d0cce2d606e0f49f" category="paragraph">無相符的連接埠。升級後、您必須重新建立叢集連接埠。<block ref="2305a256def4f5c38d82352fac177e1d" category="inline-link-macro-rx"></block></block>
   <block id="44489e59a236bf582156026d721d7300" category="list-text">視交換器廠商而定、下載並安裝IP RCF檔案。</block>
   <block id="a208547a21e1dc907c538b655cfee7c1" category="admonition">如果您有L2共用或L3網路組態、可能需要調整中繼/客戶交換器上的ISL連接埠。switchport模式可能會從「存取」模式變更為「主幹」模式。只有在交換器A_1和B_1之間的網路連線完全正常且網路正常時、才繼續升級第二個交換器配對（A_2、B_2）。</block>
-  <block id="05cb8d64e2770620783bfd98ba2c571c" category="paragraph">下列步驟中的所有命令都會從站台發出、以維持開機狀態。</block>
-  <block id="714cb8627bb0d04d6b5d032326cab4a3" category="list-text">從您想要維持不變的站台執行切換：</block>
   <block id="e7edce3217788bc841a63851100c9164" category="list-text">離線移動無鏡射的集合體：「將Aggregate離線」</block>
   <block id="eeb4c33e80d1b1f4f321335e6c0a8948" category="list-text">停用此網路中兩個交換器上的所有VSAN。</block>
   <block id="f214faa187b0f8585d0284ecf49f3906" category="paragraph">請使用下列程序來停用VSAN：</block>
@@ -13514,4 +13359,103 @@
   <block id="4010f2b8e90ddf85f94ac358d78075c1" category="inline-link-macro">搭配使用Service處理器搭配System Manager ONTAP -支援更新版本的更新版本</block>
   <block id="eaa2669881cbe475b9e0b278420a4005" category="paragraph"><block ref="eaa2669881cbe475b9e0b278420a4005" category="inline-link-macro-rx"></block></block>
   <block id="adf442d82428813618df31b5f35c8c5d" category="list-text">ISL 必須具有相同的拓撲。例如、它們都應該是直接連結、或者如果組態使用的是 WDM 、則它們都必須使用 WDM 。</block>
+  <block id="3ac4da3c19500a46472e39b550233955" category="paragraph">與 Atto FiberBridge 7500N 橋接器不同、 FiberBridge 7600N 橋接器隨附的所有 IP 連接埠通訊協定和服務均已停用。</block>
+  <block id="cf6dca2d67d60a19d4a17cee9ded8839" category="list-text">FiberBridge 7600N 橋接器最多支援 32 、 16 或 8 Gbps 。</block>
+  <block id="eaf41f2c4105da1a7df1e2d6212b3c1f" category="list-text">FiberBridge 7500N 橋接器支援高達 16 、 8 或 4 Gbps 。</block>
+  <block id="0690be6eb1d3773f24e0f2ab2ccaa146" category="list-text">如果您要設定 FiberBridge 7500N 橋接器、請設定連接埠使用的連線模式以「 PTP 」。</block>
+  <block id="da76178e1d22c167f6a99e845374ced2" category="admonition">如果輸出開頭出現文字「回應截斷」、您可以使用 Telnet 連線到橋接器、然後輸入相同的命令來查看所有輸出。</block>
+  <block id="fe718489f73382a38802fd47209269cf" category="paragraph">您必須將交換器連接埠指派給不同的區域、以分隔控制器和儲存流量。</block>
+  <block id="2e6da062f65d036e37e8048eb1168cd1" category="section-title">使用一個 FC 連接埠的 FiberBridge 7500N 或 7600N 橋接器分區</block>
+  <block id="a4ee4d0f79fa6f1bac894cfc957089d6" category="paragraph">如果您使用的是僅使用兩個 FC 連接埠之一的 FiberBridge 7500N 或 7600N 橋接器、則需要為橋接器連接埠建立儲存區域。在設定區域之前、您應該先瞭解區域和相關連接埠。</block>
+  <block id="7e95951a529361ac1e326cd54359d011" category="paragraph"><block ref="7e95951a529361ac1e326cd54359d011" category="inline-link-macro-rx"></block></block>
+  <block id="4c79922838c9f8d530f20efcd3382822" category="cell">僅使用一個 FC 連接埠（ FC1 或 FC2 ）、使用 FiberBridge 7500N 或 7600N 的組態</block>
+  <block id="3a4842c9952a7c657d04e55a3d69b1a4" category="cell">使用兩個 FC 連接埠的 FiberBridge 7500N 或 7600N</block>
+  <block id="f9805d94598bd6a841fddbff1c6ddc7b" category="paragraph">下表顯示僅使用一個 FC 連接埠（ FC1 或 FC2 ）的 FiberBridge 7500N 或 7600N 橋接器使用橋接器連接埠的情況。對於使用一個 FC 連接埠的 FiberBridge 7500N 或 7600N 橋接器、可以將 FC1 或 FC2 纜線連接至指定為 FC1 的連接埠。可使用連接埠25-48連接其他橋接器。</block>
+  <block id="126b9e3a8501d897a2356aba96828af6" category="cell">使用一個 FC 連接埠的 FiberBridge 7500N 或 7600N 橋接器</block>
+  <block id="69abf6cf7deeba7ace2f747f7661208f" category="cell">使用一個 FC 連接埠的 FiberBridge 7500N 或 7600N</block>
+  <block id="1b3c29a52da9672be1cb789bb6d06ae8" category="cell">使用兩個 FC 連接埠的 FiberBridge 7500N</block>
+  <block id="0351289236b3260f9d0c35b64f62689c" category="paragraph">您只需使用一個 FC 連接埠（ FC1 或 FC2 ）、即可遵循 FiberBridge 7500N 或 7600N 橋接器的纜線。與其使用四個啟動器、只連接兩個啟動器、並將連接至交換器連接埠的其他兩個啟動器保留為空白。</block>
+  <block id="4883312b6c36aa2f1d5ce2e2f17638bd" category="paragraph">如果手動執行分區、請遵循使用一個 FC 連接埠（ FC1 或 FC2 ）的 FiberBridge 7500N 或 7600N 橋接器分區。在此案例中、每個架構的每個區域成員都會新增一個啟動器連接埠、而非兩個。</block>
+  <block id="1e008e69dc731ad28df3d6927462a7f3" category="paragraph">您可以使用中的程序、將分區變更或從 FiberBridge 6500N 升級至 FiberBridge 7500N <block ref="0b4bc6296d77be28e33d3b50e0ea0797" category="inline-link-macro-rx"></block>。</block>
+  <block id="803d845c069720e0ec75ee03ea5a43d4" category="paragraph">下表顯示使用 FiberBridge 7500N 和 7600N 橋接器時的橋接器連接埠用量：</block>
+  <block id="2cd1f3df6c3bbd7c9891d742ad23d04a" category="cell">FiberBridge 7500N 或 7600N 橋接器</block>
+  <block id="81b2aac60df91543fcf4f05563b1f80e" category="paragraph">下表顯示使用 FiberBridge 7500N 和 7600N 橋接器時、橋接器連接埠的使用量最高可達連接埠 17 。可將其他橋接器纜線連接至連接埠18至23。</block>
+  <block id="85878b4f87459062c8904a27720ba2be" category="paragraph">下表顯示使用 FiberBridge 7500N 或 7600N 橋接器時、橋接器連接埠的使用量最高可達連接埠 23 。可使用連接埠25至48連接其他橋接器。</block>
+  <block id="6f40fc62599b436af99e9090bcb1fe21" category="paragraph">下表顯示使用 FiberBridge 7500N 或 7600N 橋接器時、橋接器連接埠的使用率最高可達連接埠 14 。其他橋接器可依照相同模式連接至連接埠15至32。</block>
+  <block id="836f2645702f9125726ff7335ed42bd5" category="paragraph">下表顯示使用 FiberBridge 7500N 和 7600N 橋接器時、橋接器連接埠的使用量最高可達連接埠 14 。其他橋接器可依照相同模式連接至連接埠15至32。</block>
+  <block id="7f921cbd9f23de85fa3d483b640e428b" category="open-title">如果節點電源關閉：</block>
+  <block id="5f4eaac69c780a3f8ab154192e4a1a26" category="paragraph">開啟節點電源。</block>
+  <block id="2900f8420dafccee0a2692e48506c6cb" category="open-title">如果節點出現在載入程式提示字元：</block>
+  <block id="796bd1c27d5eea106367802d9fd5bd0e" category="paragraph">執行命令：<block ref="ce54ef17bebf280339d340bd40dff593" prefix=" " category="inline-code"></block></block>
+  <block id="4129cca17421055c633ccbc72f65d61f" category="list-text">節點開機完成後、請確認根集合體已鏡射。</block>
+  <block id="f691b46b240bca97e906bfb1366247a7" category="paragraph">如果兩個plexes都存在、任何重新同步都會自動啟動。如果叢發生故障、請使用下列命令來重新建立鏡射、以銷毀它並重新建立鏡射關係：</block>
+  <block id="9abd59a18f57d6cb4282adb209f8b563" category="list-text">您有兩個 FiberBridge 7600N 橋接器連接至一堆 SAS 磁碟櫃。</block>
+  <block id="fc35f0bbf60965f7ec34001ad687a3f3" category="list-text">您有一個 FiberBridge 7500N 橋接器和一個 FiberBridge 7600N 橋接器、連接至一堆 SAS 磁碟櫃。</block>
+  <block id="3ed94c5d90da7ee057d27e4a111e2d56" category="list-text">關閉 Atto 橋接器電源、並拔下連接至橋接器的電源線。</block>
+  <block id="44f214a5099f49db147696415a075d47" category="list-text">如果您要設定 FiberBridge 7500N 、請設定連接埠使用的連線模式以「 PTP 」。</block>
+  <block id="8abe3c7c95f9615fe71d95df61a4b898" category="paragraph">您必須更換連接橋接器至機櫃堆疊頂端或底部的纜線。FiberBridge 7600N 和 7500N 橋接器需要使用 Mini-SAS 纜線進行這些連線。</block>
+  <block id="b889bc5ea39fc308a80e7da9aafcd5bb" category="list-text">FiberBridge 6500N 橋接器最多支援 8 、 4 或 2 Gbps 。</block>
+  <block id="522ee388aaa608b60a7148c3f95473d7" category="paragraph">與 Atto FiberBridge 7500N 橋接器不同、 FiberBridge 7600N 橋接器隨附的所有 IP 連接埠通訊協定和服務均已停用。</block>
+  <block id="453c83b73d0ecbb9f09224937b817815" category="list-text">此程序可用於使用 FiberBridge 7600N 或 7500N 橋接器新增堆疊。</block>
+  <block id="e05381bfaa686bb26262ce132ba9d898" category="summary">您必須瞭解如何在 MetroCluster FC 組態中關閉單一站台並開啟其電源、以進行站台維護或將站台重新放置到其他位置。</block>
+  <block id="81856068a1902936a3d6d361da5c40d9" category="doc">在 MetroCluster FC 組態中、關閉單一站台的電源並開啟其電源</block>
+  <block id="d7816243d769abfab3871457907990d1" category="paragraph">如果您需要在 MetroCluster FC 組態中執行站台維護或重新定位單一站台、您必須知道如何關閉站台電源並開啟電源。</block>
+  <block id="8d4c5977271a3cb624fe080526afb7fc" category="paragraph">如果您需要重新部署和重新設定站台（例如、如果您需要從四節點擴充至八節點叢集）、則無法同時完成這些工作。本程序僅涵蓋執行站台維護或重新定位站台而不變更其組態所需的步驟。</block>
+  <block id="56d6288c5f791724a871f0f147e12032" category="section-title">關閉 MetroCluster 站台</block>
+  <block id="1045051bc489dcbac0eba7b7e828fc16" category="paragraph">下列步驟中的所有命令都是從仍處於開機狀態的站台發出的。</block>
+  <block id="3992217858a418dc708f7898927dc589" category="list-text">從您要保持正常運作的站台、執行轉換：</block>
+  <block id="de581c55e079c6aae1e67e65189afbfa" category="paragraph">只有在可存取 Aggregate 中的遠端磁碟時、未鏡射的集合體才會在進行變更之後才會上線。如果 ISL 失敗、本機節點可能無法存取未鏡射遠端磁碟中的資料。Aggregate故障可能導致本機節點重新開機。</block>
+  <block id="8786bed4623fe6698abcaad77521bad9" category="paragraph">如果您不在災難站台上離線移動非鏡射的叢、則當災難站台稍後關閉時、可能會發生中斷。</block>
+  <block id="9f3870eb3ed0a7def4c546eeae018089" category="admonition">對具有遠端磁碟至 Cluster_A 的所有叢集執行此步驟</block>
+  <block id="52aff055e8c859748fa5df921f322567" category="list-text">根據交換器類型持續離線 ISL 交換器連接埠。</block>
+  <block id="8e3f5197bd01d7914ee8e8fc65fc56e4" category="paragraph">適用於 Brocade FC 交換器 ...</block>
+  <block id="132fe2b93bc791dd643ed680d1ddaa5e" category="list-text">使用<block ref="2e7f851c1bdee09a500a083d356ad425" prefix=" " category="inline-code"></block> 命令持續停用連接埠、如下列範例所示。這必須在存續站台的兩個交換器上執行。</block>
+  <block id="06f892e706e2490e96a2a657cd6b479d" category="paragraph">對於 Cisco FC 交換器 ...</block>
+  <block id="aa4560fdf6eb931e7acf782f301837db" category="list-text">關閉災難現場的設備電源。</block>
+  <block id="a966334d5468b4c1dcb921af4d8f0060" category="paragraph">下列設備必須依所示順序關閉：</block>
+  <block id="5129cfd7ac63c37dcae900bb424246fe" category="list-text">儲存控制器 - 儲存控制器目前應位於<block ref="82b8350d28f0a14e36de1958b3be9205" prefix=" " category="inline-code"></block> 提示：您必須將其完全關機。</block>
+  <block id="eb5d4a4c0c7b75bc1b90f45b192a7523" category="list-text">Atto FiberBridges （若有）</block>
+  <block id="0924753fca83f6aa143b6eebad4e37c4" category="list-text">請確認所有元件的纜線均已仔細記錄、以便在新位置正確重新連接。</block>
+  <block id="23b7edc8743ecdff653ecd31b9ba0b49" category="list-text">將所有硬體、儲存控制器、 FC 交換器、 FiberBridges 和儲存櫃實際重新放置。</block>
+  <block id="99b1e28bd58c72b586b1c8c6740b9731" category="list-text">開啟 FC 交換器電源。</block>
+  <block id="1acfa95e8e2514763ed62036ab3fa9ed" category="list-text">使用<block ref="aa9509625b9b7a7cbd37e4dfa7a53121" prefix=" " category="inline-code"></block> 持續啟用連接埠的命令。這必須在存續站台的兩個交換器上執行。</block>
+  <block id="ad505825f73570f3e5352620da6fccac" category="admonition">只有當連結設定正確且穩定時、才應繼續進行。</block>
+  <block id="e56dd9ab2becce5cc684eaa96fadcf60" category="list-text">輸入<block ref="9ecdb594b01de9fa2c95aec87e6f82e1" prefix=" " category="inline-code"></block> 持續停用連接埠的命令。</block>
+  <block id="4fe0323b18610fc616e4b8a765b3e593" category="paragraph">您應該先開啟交換器的電源。如果站台重新放置、則可能在上一步中已開啟電源。</block>
+  <block id="2208c2a5a2ab4f46416b8dc29f446d2b" category="list-text">停用 FC 交換器上的 ISL 。</block>
+  <block id="971572bd6aba77ed87a414025a289cb9" category="list-text">開啟儲存控制器的電源、並等待您看到<block ref="82b8350d28f0a14e36de1958b3be9205" prefix=" " category="inline-code"></block> 提示。控制器不得完全開機。</block>
+  <block id="b5b517b5bd160188f72a49194aee565c" category="paragraph">如果已啟用自動開機、請按<block ref="08102569ee3581db669c9d763e14b983" prefix=" " category="inline-code"></block> 停止控制器自動開機。</block>
+  <block id="235d6d36d1eabe510af7ea0ec5e96c6b" category="paragraph">您可以使用命令、例如<block ref="2aa3751083baf48c1e1ddef8df4ddcc3" prefix=" " category="inline-code"></block> 在 Atto CLI 上。</block>
+  <block id="480cf83fd6c463ccef2ed2a9d0dce2c4" category="list-text">輸入<block ref="bedfcd4488b13f5b7062e121a6a8baa5" prefix=" " category="inline-code"></block> 持續啟用連接埠的命令。這必須在存續站台的兩個交換器上執行。</block>
+  <block id="9d1a338762e03c980c82e8098eb03744" category="list-text">確認儲存設備可從存續的站台看到。讓離線叢恢復上線。這會重新啟動重新同步作業、並重新建立SyncMirror 該功能。</block>
+  <block id="9f6a23c1abc971d714730192ce961b96" category="paragraph">依照中的指示操作 <block ref="9c0d52e0ce7a57d643217990aba10043" category="inline-link-macro-rx"></block> 根據MetroCluster 您的需求組態執行修復和切換作業。</block>
+  <block id="92833b015ed412068659d576a7df1599" category="list-text">請依照下列準則、使用中的程序、將「'TOP」（光纖橋接器）6500N橋接器與光纖橋接器7600N或7500N橋接器熱交換 <block ref="0b4bc6296d77be28e33d3b50e0ea0797" category="inline-link-macro-rx"></block>：</block>
+  <block id="3753c208918127350b444c3dc052115f" category="list-text">依照下列準則、使用中的程序、將「Bottom」（底部）的「FibreBridge 6500N橋接器」與「FibreBridge 7600N」或「7500N橋接器」熱交換 <block ref="0b4bc6296d77be28e33d3b50e0ea0797" category="inline-link-macro-rx"></block>：</block>
+  <block id="0b4bc6296d77be28e33d3b50e0ea0797" category="paragraph"><block ref="0b4bc6296d77be28e33d3b50e0ea0797" category="inline-link-macro-rx"></block></block>
+  <block id="e49bc35e0118f2b5a5904c13e1833761" category="section-title">在執行 ONTAP 9.3.x 及更早版本的組態上、更新 FiberBridge 7500N 上的韌體</block>
+  <block id="1a5e839afe7a716dd2640f7fdb69669a" category="paragraph">您可能需要更新 FiberBridge 橋接器上的韌體、以確認您擁有最新功能或解決可能的問題。在執行 ONTAP 9.3.x 的組態上、此程序應用於 FiberBridge 7500N</block>
+  <block id="ef1eae725a44cfeb66559e3d3e94f7ec" category="paragraph">從ONTAP 使用起來、您可以使用ONTAP 「flexbridge」儲存橋接器韌體更新命令來更新fIBreBridge 7500N橋接器上的橋接器韌體。</block>
+  <block id="05791e70fbe1537753bf5a023b7623eb" category="list-text">在 FiberBridge 7500N 橋接器上安裝韌體。</block>
+  <block id="c1a1962dd8879c856d3b821c9622f94c" category="paragraph">您應參閱 _Atto FiberBridge 7500N 安裝與操作手冊 _ 「更新韌體」一節中的說明。</block>
+  <block id="24ea961e35f1e60e606fd840735a7b80" category="summary">如果您需要在 MetroCluster IP 組態中執行站台維護或重新定位單一站台、您必須知道如何關閉站台電源並開啟電源。</block>
+  <block id="064c811af1591c939040fba47365213b" category="doc">在 MetroCluster IP 組態中關閉並開啟單一站台的電源</block>
+  <block id="b66411bb5022a5619d62ef25fa47b67f" category="paragraph">在執行 ONTAP 9.5 或更早版本的 MetroCluster IP 組態中、災難站台節點不會自動開機至 ONTAP 、且叢集會保持離線狀態。</block>
+  <block id="b13f7000aa5add9a5264da17e3dc4f67" category="list-text">在每個節點上執行下列命令來停止節點：</block>
+  <block id="de48c3af46bd57dad9f2ad02bbb26041" category="paragraph"><block ref="8a921c8973814d1a72edcc98a6686da9" prefix="" category="inline-code"></block></block>
+  <block id="84b0c3d7ab439004e978c709f15fc230" category="paragraph">您必須依照所示順序關閉下列設備：</block>
+  <block id="98734a3d5b75c8baf95c27fbc27a15f1" category="list-text">將所有硬體、儲存控制器、 IP 交換器、 FiberBridges 和儲存櫃實際重新放置。</block>
+  <block id="1cef707d96d59ea52cd45984a36d2f11" category="list-text">開啟 IP 交換器電源。</block>
+  <block id="ac8327044a4ce63889944095a1b6aed8" category="list-text">開啟機櫃電源、讓他們有足夠的時間完全開機。</block>
+  <block id="d5061566f9570e151daa3fd59fb31405" category="list-text">確認本機儲存設備在維護模式中可從節點看到：</block>
+  <block id="7a492d8ba3deac8ecd729c56c1058794" category="paragraph">下表顯示使用 FiberBridge 7500N 或 7600N 橋接器時的橋接器連接埠用量：</block>
+  <block id="2d5d944d1466716b339b20936cc4b7ec" category="paragraph">下表顯示使用 FiberBridge 7500N 或 7600N 橋接器時、橋接器連接埠的使用量最高可達連接埠 17 。可將其他橋接器纜線連接至連接埠18至23。</block>
+  <block id="f912eaa76cd834cbed98a7201254e72e" category="paragraph">下表顯示使用 Brocade 6505 、 6510 和 DCX 8510-8 交換器的 FiberBridge 7500N 或 7600N 橋接器時、連接埠使用量最高可達連接埠 17 。可將其他橋接器纜線連接至連接埠18至23。</block>
+  <block id="e75c88d98fec123855e6503ffa20ae16" category="paragraph">下表顯示使用 Cisco 9148 或 9148S 交換器時、使用 FiberBridge 7500N 或 7600N 橋接器時、連接埠使用量最高可達連接埠 23 。</block>
+  <block id="0d792f55f305e85c0f763a05b6d33ae1" category="paragraph">下表顯示使用光纖橋接器 7500N 或 7600N 橋接器搭配 Cisco 9148 、 9148S 或 9250i 交換器時、橋接器連接埠使用量最高可達連接埠 14 。其他橋接器可依照相同模式連接至連接埠15至32。</block>
+  <block id="972c5512c843cde59ea3263b1073efea" category="paragraph">下表顯示使用光纖橋接器 7500N 或 7600N 橋接器搭配 Cisco 9148 、 9148S 和 9250i 交換器時、橋接器連接埠使用量最高可達連接埠 14 。其他橋接器可依照相同模式連接至連接埠15至32。</block>
+  <block id="8bc67669b17eba9ca754ee74dd34564c" category="list-text">如果您使用的是FIPS相容版本的EFOS、請產生ECDSA金鑰。以下範例建立長度為 521 的金鑰。有效值為256、384或521。</block>
+  <block id="8eb0b3dc24b7128748cd767385d5a9f2" category="paragraph">MetroCluster IP 組態中的每個節點都有專用介面、可用於連線至後端 IP 網路：</block>
+  <block id="ad1b97f0744b9c154b01cc69afb505d7" category="list-text">兩個本機叢集介面</block>
+  <block id="861e1910edbd7f3e677dab91f10869b0" category="sidebar">關閉並開啟單一 MetroCluster 站台的電源</block>
+  <block id="b54f4d527d126f4e54869800ed0e43ac" category="sidebar">關閉整個 MetroCluster 組態</block>
 </blocks>

@@ -107,9 +107,8 @@ NOTE: 請勿在Atto FibreBridge 7600N或7500N上設定時間同步。Atto FIBreB
 支援的FC資料速率取決於您的機型橋接器。
 
 +
-*** 最多支援32、16或8 Gbps的FibreBridge 7600橋接器。
-*** 最多支援16、8或4 Gbps的光纖橋接器。
-*** 最多支援8、4或2 Gbps的FibreBridge 6500橋接器。
+*** FiberBridge 7600N 橋接器最多支援 32 、 16 或 8 Gbps 。
+*** FiberBridge 7500N 橋接器支援高達 16 、 8 或 4 Gbps 。
 +
 
 NOTE: 您選取的FCDataRate速度會限制為橋接器連接埠所連接之控制器模組的橋接器和FC連接埠所支援的最大速度。佈線距離不得超過SFP和其他硬體的限制。
@@ -123,7 +122,7 @@ NOTE: 您選取的FCDataRate速度會限制為橋接器連接埠所連接之控�
 --
 
 
-.. 如果您要設定的是FIBreBridge 7500N或6500N橋接器、請設定連接埠用於PTP的連線模式。
+.. 如果您要設定 FiberBridge 7500N 橋接器、請設定連接埠使用的連線模式以「 PTP 」。
 +
 
 NOTE: 設定FIBreBridge 7600N橋接器時、不需要FCConnMode設定。

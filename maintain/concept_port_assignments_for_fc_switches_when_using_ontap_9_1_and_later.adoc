@@ -70,7 +70,7 @@ summary: 當您在使用ONTAP 更新版本的版本時、使用纜線連接FC交
 |===
 
 
-5+| 使用Fibre Bridge 6500N橋接器或使用單一FC連接埠（FC1或FC2）的Fibre Bridge 7500N或7600N的組態 
+5+| 僅使用一個 FC 連接埠（ FC1 或 FC2 ）、使用 FiberBridge 7500N 或 7600N 的組態 
 
 
 5+| 支援1或DR群組1 MetroCluster 
@@ -264,7 +264,7 @@ HBA連接埠d
 |===
 
 
-5+| 使用Fibre Bridge 6500N橋接器或使用單一FC連接埠（FC1或FC2）的Fibre Bridge 7500N或7600N的組態 
+5+| 僅使用一個 FC 連接埠（ FC1 或 FC2 ）、使用 FiberBridge 7500N 或 7600N 的組態 
 
 
 5+| 支援1或DR群組1 MetroCluster 
@@ -385,7 +385,7 @@ bride_x_yb
 |===
 
 
-8+| 使用Fibre Bridge 6500N橋接器或使用單一FC連接埠（FC1或FC2）的Fibre Bridge 7500N或7600N的組態 
+8+| 僅使用一個 FC 連接埠（ FC1 或 FC2 ）、使用 FiberBridge 7500N 或 7600N 的組態 
 
 
 8+| 2或DR群組2 MetroCluster 
@@ -2793,7 +2793,7 @@ HBA連接埠d
 4+| Cisco 9396S 
 
 
-| 使用兩個FC連接埠的Fibre Bridge 7500 | 連接埠 | 交換器1 | 交換器2. 
+| 使用兩個 FC 連接埠的 FiberBridge 7500N 或 7600N | 連接埠 | 交換器1 | 交換器2. 
 
 
  a| 
@@ -2963,7 +2963,7 @@ FC2
 4+| Cisco 9148S 
 
 
-| 使用兩個FC連接埠的Fibre Bridge 7500 | 連接埠 | 交換器1 | 交換器2. 
+| 使用兩個 FC 連接埠的 FiberBridge 7500N 或 7600N | 連接埠 | 交換器1 | 交換器2. 
 
 
  a| 
@@ -3133,7 +3133,7 @@ FC2
 4+| Cisco 9250i 
 
 
-| 使用兩個FC連接埠的Fibre Bridge 7500 | 連接埠 | 交換器1 | 交換器2. 
+| 使用兩個 FC 連接埠的 FiberBridge 7500N 或 7600N | 連接埠 | 交換器1 | 交換器2. 
 
 
  a| 
@@ -3297,15 +3297,15 @@ FC2
 |===
 第二個DR群組或第二MetroCluster 個支援功能組態的其他橋接器、可以使用相同模式的連接埠25到48來連接。
 
-下表顯示僅使用一個FC連接埠（FC1或FC2）使用Fibre Bridge 6500橋接器或Fibre Bridge 7500橋接器時的橋接連接埠使用量。若為使用單一FC連接埠的Fibre Bridge 7500橋接器、則FC1或FC2可以纜線連接至指定為FC1的連接埠。可使用連接埠25-48連接其他橋接器。
+下表顯示僅使用一個 FC 連接埠（ FC1 或 FC2 ）的 FiberBridge 7500N 或 7600N 橋接器使用橋接器連接埠的情況。對於使用一個 FC 連接埠的 FiberBridge 7500N 或 7600N 橋接器、可以將 FC1 或 FC2 纜線連接至指定為 FC1 的連接埠。可使用連接埠25-48連接其他橋接器。
 
 |===
 
 
-4+| 使用單一FC連接埠的Fibre Bridge 6500橋接器或Fibre Bridge 7500橋接器 
+4+| 使用一個 FC 連接埠的 FiberBridge 7500N 或 7600N 橋接器 
 
 
-.2+| 使用單一FC連接埠的Fibre Bridge 6500橋接器或Fibre Bridge 7500 .2+| 連接埠 2+| Cisco 9396S 
+.2+| 使用一個 FC 連接埠的 FiberBridge 7500N 或 7600N .2+| 連接埠 2+| Cisco 9396S 
 
 
 | 交換器1 | 交換器2. 
@@ -3491,7 +3491,7 @@ FC1
 |===
 
 
-4+| 使用單一FC連接埠的Fibre Bridge 6500橋接器或Fibre Bridge 7500橋接器 
+4+| 使用一個 FC 連接埠的 FiberBridge 7500N 或 7600N 橋接器 
 
 
 .2+| 橋接器 .2+| 連接埠 2+| Cisco 9148S 
@@ -3683,7 +3683,7 @@ FC1
 4+| Cisco 9250i 
 
 
-| 使用單一FC連接埠的Fibre Bridge 6500橋接器或Fibre Bridge 7500 | 連接埠 | 交換器1 | 交換器2. 
+| 使用一個 FC 連接埠的 FiberBridge 7500N 或 7600N | 連接埠 | 交換器1 | 交換器2. 
 
 
  a| 
@@ -4360,7 +4360,7 @@ LEM2-8.
 4+|  2+| 四節點 | 八節點 
 
 
-2+| 使用兩個FC連接埠的Fibre Bridge 7500 | 連接埠 | 連線至FC_SWITCH ... | 9132T（1個LEM） | 9132T（2個LEM） | 9132T（2個LEM） 
+2+| 使用兩個 FC 連接埠的 FiberBridge 7500N | 連接埠 | 連線至FC_SWITCH ... | 9132T（1個LEM） | 9132T（2個LEM） | 9132T（2個LEM） 
 
 
  a| 

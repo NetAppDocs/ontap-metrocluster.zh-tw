@@ -13,20 +13,18 @@ summary: 您可以使用AFF 單一啟動器連接埠來設定FAS8020、AFF8020�
 [role="lead"]
 您可以使用AFF 單一啟動器連接埠來設定FAS8020、AFF8020、FAS8200和E4A300系統、並為每個光纖配置兩個啟動器連接埠。
 
-您只需使用一個FC連接埠（FC1或FC2）、就能遵循光纖橋接器6500N橋接器或光纖橋接器7500N或7600N橋接器的纜線。與其使用四個啟動器、只連接兩個啟動器、並將連接至交換器連接埠的其他兩個啟動器保留為空白。
+您只需使用一個 FC 連接埠（ FC1 或 FC2 ）、即可遵循 FiberBridge 7500N 或 7600N 橋接器的纜線。與其使用四個啟動器、只連接兩個啟動器、並將連接至交換器連接埠的其他兩個啟動器保留為空白。
 
-您必須針對FIBRABridge 6500N橋接器的組態套用正確的RCF檔案。
+如果手動執行分區、請遵循使用一個 FC 連接埠（ FC1 或 FC2 ）的 FiberBridge 7500N 或 7600N 橋接器分區。在此案例中、每個架構的每個區域成員都會新增一個啟動器連接埠、而非兩個。
 
-如果是手動執行分區、請使用一個FC連接埠（FC1或FC2）、遵循用於Fibre Bridge 6500N或Fibre Bridge 7500N或7600N橋接器的分區。在此案例中、每個架構的每個區域成員都會新增一個啟動器連接埠、而非兩個。
-
-您可以使用下列程序來變更分區或執行從FIBEBridge 6500升級至FIBEBridge 7500：請從進行下列程序_熱插拔使用FIBEBridge 7500N或7600N bridge_的FIBEIBER__橋接器 https://docs.netapp.com/us-en/ontap-metrocluster/maintain/index.html["維護MetroCluster 這些元件"]。
+您可以使用中的程序、將分區變更或從 FiberBridge 6500N 升級至 FiberBridge 7500N link:task_replace_a_sle_fc_to_sas_bridge.html#hot_swap_6500n["使用光纖橋接器7600N或7500N橋接器熱交換光纖橋接器6500N"]。
 
 下表顯示使用ONTAP 更新版本的功能時、FC交換器的連接埠指派。
 
 |===
 
 
-4+| 使用Fibre Bridge 6500N橋接器或使用單一FC連接埠（FC1或FC2）的Fibre Bridge 7500N或7600N的組態 
+4+| 僅使用一個 FC 連接埠（ FC1 或 FC2 ）、使用 FiberBridge 7500N 或 7600N 的組態 
 
 
 4+| *支援1或DR群組1* MetroCluster 

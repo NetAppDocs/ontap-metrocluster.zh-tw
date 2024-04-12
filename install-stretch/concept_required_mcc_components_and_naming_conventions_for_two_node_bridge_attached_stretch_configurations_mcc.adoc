@@ -86,7 +86,6 @@ https://hwu.netapp.com["NetApp Hardware Universe"]
 NOTE: 在執行ONTAP 支援升級版本的組態中、不支援使用FibreBridge 6500N橋接器。
 
 * 最多可支援四個SAS堆疊的FIBreBridge 7600N和7500N橋接器。
-* FibreBridge 6500N橋接器僅支援一個SAS堆疊。
 * 每個堆疊可以使用不同的IOM機型、但堆疊內的所有磁碟櫃都必須使用相同的機型。
 +
 支援的IOM機型取決於ONTAP 您執行的版本。

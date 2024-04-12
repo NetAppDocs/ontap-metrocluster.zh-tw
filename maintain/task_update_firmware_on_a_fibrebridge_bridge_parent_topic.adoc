@@ -258,9 +258,9 @@ flashimages
 
 
 
-== 在執行ONTAP 不含更新版本或6500N橋接器的組態上、更新FIBreBridge 7500N上的韌體
+== 在執行 ONTAP 9.3.x 及更早版本的組態上、更新 FiberBridge 7500N 上的韌體
 
-您可能需要更新您的FibreBridge橋接器上的韌體、以確保您擁有最新的功能或解決可能的問題。此程序應用於執行ONTAP 下列組態的FIBreBridge 7500N：執行支援版本ONTAP 之所有支援版本的更新版本上的支援版本。
+您可能需要更新 FiberBridge 橋接器上的韌體、以確認您擁有最新功能或解決可能的問題。在執行 ONTAP 9.3.x 的組態上、此程序應用於 FiberBridge 7500N
 
 .開始之前
 * 此功能組態必須正常運作。MetroCluster
@@ -276,7 +276,7 @@ https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"^]
 
 
 
-您可以將此工作搭配使用於FIBreBridge 7500N或6500N橋接器。從ONTAP 使用起來、您可以使用ONTAP 「flexbridge」儲存橋接器韌體更新命令來更新fIBreBridge 7500N橋接器上的橋接器韌體。
+從ONTAP 使用起來、您可以使用ONTAP 「flexbridge」儲存橋接器韌體更新命令來更新fIBreBridge 7500N橋接器上的橋接器韌體。
 
 link:task_update_firmware_on_a_fibrebridge_bridge_parent_topic.html["在執行ONTAP 版本號為9.4或更新版本的組態上、更新FIBreBridge 7600N或7500N上的韌體"]
 
@@ -305,17 +305,15 @@ https://mysupport.netapp.com/site/products/all/details/atto-fibrebridge/download
 . 複製Atto FIBEBridge韌體下載頁面和版本說明、以便在指示您更新每個橋接器上的韌體時參考。
 . 更新橋接器：
 +
-.. 在光纖橋接器上安裝韌體。
+.. 在 FiberBridge 7500N 橋接器上安裝韌體。
 +
-*** 如果您使用Atto FibreBridge 7500N橋接器、請參閱_Atto FibreBridge 7500N安裝與操作手冊_的「更新韌體」一節中所提供的指示。
-*** 如果您使用Atto FibreBridge 6500N橋接器、請參閱_Atto FibreBridge 6500N安裝與操作手冊_的「更新韌體」一節中所提供的指示。
+您應參閱 _Atto FiberBridge 7500N 安裝與操作手冊 _ 「更新韌體」一節中的說明。
+
 +
 *注意：*請確定您現在已關閉個別橋接器的電源再開啟。如果您在堆疊中同時等待並重新啟動兩個橋接器、則控制器可能會失去對磁碟機的存取權、進而導致叢故障或多磁碟毀損。
 
 +
 橋接器應重新啟動。
-
-
 
 .. 從任一控制器的主控台、確認橋接器已正確重新啟動：
 +

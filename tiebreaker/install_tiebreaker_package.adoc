@@ -8,6 +8,7 @@ summary: Tiebreaker軟體提供叢集式儲存環境的監控功能。當節點�
 :allow-uri-read: 
 
 
+[role="lead"]
 您必須在MetroCluster 本機電腦上安裝或升級ESITirepreaker軟體、才能監控MetroCluster 各種組態。
 
 .關於這項工作

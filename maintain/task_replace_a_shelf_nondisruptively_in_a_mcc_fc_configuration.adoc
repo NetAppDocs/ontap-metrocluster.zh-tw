@@ -103,10 +103,6 @@ FC_switch_A_2(config)# end
 ----
 ** 如果橋接器連接兩個或多個SAS堆疊、請停用連接橋接器與目標機櫃的SAS連接埠：+「ASportDisable _port number_」
 +
-
-NOTE: 這不適用於FibreBridge 6500橋接器。
-
-+
 下列範例顯示連接四個SAS堆疊的一對橋接器。SAS堆疊2包含目標機櫃：
 
 +
@@ -252,9 +248,6 @@ SASPortEnable A
 SAS Port A has been enabled.
 ----
 
-
-
-NOTE: 這不適用於Atto 6500光纖橋接器。
 
 |===
 . 如果您先前已停用交換器連接埠、請確認這些連接埠已啟用且已上線、而且所有裝置都已正確登入：

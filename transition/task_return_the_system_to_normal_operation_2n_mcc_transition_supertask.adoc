@@ -17,7 +17,6 @@ summary: 您必須執行最後的組態步驟、並將MetroCluster 此功能恢�
 
 == 在MetroCluster 轉換後驗證運作和指派磁碟機
 
-[role="lead"]
 您必須驗證MetroCluster 此功能是否正常運作、並將磁碟機指派給第二組新節點（node_a_2-IP和node_B_2-IP）。
 
 . 確認MetroCluster 此支援類型為「IP架構：MetroCluster 「show」
@@ -35,7 +34,6 @@ summary: 您必須執行最後的組態步驟、並將MetroCluster 此功能恢�
 
 == 安裝新控制器模組的授權
 
-[role="lead"]
 您必須為需要ONTAP 標準（節點鎖定）授權的任何支援服務新增控制器模組授權。對於具有標準授權的功能、叢集中的每個節點都必須擁有其專屬的功能金鑰。
 
 如需授權的詳細資訊、請參閱Data ONTAP NetApp支援網站上的知識庫文章301349：《支援概述與參考資料》（英文）和《系統管理參考資料》（_System Administration Reference）。
@@ -57,7 +55,6 @@ license_key長度為28位數。
 
 == 完成節點組態
 
-[role="lead"]
 在完成程序之前、您可以執行其他組態步驟。其中一些步驟為選用步驟。
 
 . 設定服務處理器：「系統服務處理器網路修改」
@@ -82,7 +79,6 @@ link:../tiebreaker/concept_overview_of_the_tiebreaker_software.html["Tiebreaker�
 
 == 維護後傳送自訂AutoSupport 的資訊
 
-[role="lead"]
 完成轉換之後、您應該傳送AutoSupport 一個不完整的訊息、指出維護作業已結束、以便繼續自動建立個案。
 
 . 若要恢復自動產生支援案例、請傳送AutoSupport 一個不完整的訊息、表示維護已完成。

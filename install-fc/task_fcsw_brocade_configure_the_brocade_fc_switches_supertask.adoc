@@ -1725,7 +1725,7 @@ Port   Configured    Active   Configured   Active  Speed
 
 == 在Brocade FC交換器上設定分區
 
-您必須將交換器連接埠指派給不同的區域、以分隔控制器和儲存流量。此程序視您使用的是FIBreBridge 7500N或FIBreBridge 6500N橋接器而定。
+您必須將交換器連接埠指派給不同的區域、以分隔控制器和儲存流量。
 
 
 
@@ -1947,9 +1947,9 @@ QOSH2_MC1_FA_2_FCVI（6520）
 |===
 
 
-=== 使用單一FC連接埠的Fibre Bridge 6500N橋接器或Fibre Bridge 7500N或7600N橋接器分區
+=== 使用一個 FC 連接埠的 FiberBridge 7500N 或 7600N 橋接器分區
 
-如果您使用的是Fibre Bridge 6500N橋接器、或是使用兩個FC連接埠之一的Fibre Bridge 7500N或7600N橋接器、則需要為橋接連接埠建立儲存區域。在設定區域之前、您應該先瞭解區域和相關連接埠。
+如果您使用的是僅使用兩個 FC 連接埠之一的 FiberBridge 7500N 或 7600N 橋接器、則需要為橋接器連接埠建立儲存區域。在設定區域之前、您應該先瞭解區域和相關連接埠。
 
 範例僅顯示DR群組1的分區。如果您的組態包含第二個DR群組、請使用控制器和橋接器的對應連接埠、以相同方式設定第二個DR群組的分區。
 
@@ -1999,7 +1999,6 @@ A或B
 +
 堆疊群組最多可包含10個儲存磁碟櫃。
 
-* FibreBridge 6500N橋接器僅支援堆疊群組中的單一堆疊。
 
  a| 
 1、2等
@@ -2443,7 +2442,6 @@ A或B
 +
 堆疊群組最多可包含10個儲存磁碟櫃。
 
-* FibreBridge 6500N橋接器僅支援堆疊群組中的單一堆疊。
 
  a| 
 1、2等
@@ -4294,7 +4292,7 @@ MC1_INIT_GRP_2_STIR_B_STK_GRP_2_BOD_FC2
 
 link:task_fcsw_brocade_configure_the_brocade_fc_switches_supertask.html["FC-VI連接埠分區"]
 
-link:task_fcsw_brocade_configure_the_brocade_fc_switches_supertask.html["使用單一FC連接埠的Fibre Bridge 6500N橋接器或Fibre Bridge 7500N或7600N橋接器分區"]
+link:task_fcsw_brocade_configure_the_brocade_fc_switches_supertask.html["使用一個 FC 連接埠的 FiberBridge 7500N 或 7600N 橋接器分區"]
 
 link:task_fcsw_brocade_configure_the_brocade_fc_switches_supertask.html["使用兩個FC連接埠的Fibre Bridge 7500N橋接器分區"]
 

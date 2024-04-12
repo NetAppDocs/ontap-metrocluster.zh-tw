@@ -17,7 +17,6 @@ summary: 您必須從現有MetroCluster 的支援中心節點收集資訊、傳�
 
 == 在轉換之前從現有的控制器模組收集資訊
 
-[role="lead"]
 在轉換之前、您必須先收集每個節點的資訊。
 
 此工作會在現有節點上執行：
@@ -100,7 +99,6 @@ summary: 您必須從現有MetroCluster 的支援中心節點收集資訊、傳�
 
 == 在維護前傳送自訂AutoSupport 的支援訊息
 
-[role="lead"]
 在執行維護之前、您應發出AutoSupport 一份不知所知的訊息、通知NetApp技術支援部門正在進行維護。這可防止他們在假設發生中斷的情況下開啟案例。
 
 此工作必須在每MetroCluster 個站台上執行。
@@ -120,7 +118,6 @@ summary: 您必須從現有MetroCluster 的支援中心節點收集資訊、傳�
 
 == 轉換、關機及移除MetroCluster 不含功能的FC節點
 
-[role="lead"]
 除了在EFCFC節點上發出命令MetroCluster 之外、這項工作還包括實體功能的啟用、以及在每個站台上移除控制器模組。
 
 此工作必須在每個舊節點上執行：
