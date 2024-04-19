@@ -109,7 +109,7 @@ slot 0: FC Host Adapter 0g (QLogic 8324 rev. 2, N-port, <UP>)**<=== Initiator po
 * 您要更換一對連接至同一堆疊SAS儲存設備的FIBreBridge 6500N橋接器。
 * 您先前已在配對中更換一台FibreBridge 6500N橋接器、而您的儲存堆疊則設定為使用一個FIBreBridge 6500N橋接器和一個FIBreBridge 7600N或7500N橋接器。
 +
-在這種情況下、您應該從下列步驟開始、將「'Bottom'」的FIBreBridge 6500N橋接器與FIBreBridge 7600N或7500N橋接器熱交換。
+在這種情況下、您應該從以下步驟開始、將底部的 FiberBridge 6500N 橋接器熱交換至 FiberBridge 7600N 或 7500N 橋接器。
 
 
 
@@ -118,7 +118,7 @@ slot 0: FC Host Adapter 0g (QLogic 8324 rev. 2, N-port, <UP>)**<=== Initiator po
 image::../media/consolidating_stacks_before.gif[以前整合堆疊]
 
 .步驟
-. 請依照下列準則、使用中的程序、將「'TOP」（光纖橋接器）6500N橋接器與光纖橋接器7600N或7500N橋接器熱交換 link:task_replace_a_sle_fc_to_sas_bridge.html#hot_swap_6500n["使用光纖橋接器7600N或7500N橋接器熱交換光纖橋接器6500N"]：
+. 依照下列準則、使用中的程序、將頂部的 FiberBridge 6500N 橋接器與 FiberBridge 7600N 或 7500N 橋接器熱交換 link:task_replace_a_sle_fc_to_sas_bridge.html#hot_swap_6500n["使用光纖橋接器7600N或7500N橋接器熱交換光纖橋接器6500N"]：
 +
 ** 將光纖橋接器7600N或7500N橋接器FC1連接埠連接至交換器或控制器。
 +
@@ -182,7 +182,7 @@ slot 0: FC Host Adapter 0g (QLogic 8324 rev. 2, N-port, <UP>)**<=== Initiator po
 		.
 		.
 ----
-. 依照下列準則、使用中的程序、將「Bottom」（底部）的「FibreBridge 6500N橋接器」與「FibreBridge 7600N」或「7500N橋接器」熱交換 link:task_replace_a_sle_fc_to_sas_bridge.html#hot_swap_6500n["使用光纖橋接器7600N或7500N橋接器熱交換光纖橋接器6500N"]：
+. 依照下列準則、使用中的程序、將底部的 FiberBridge 6500N 橋接器與 FiberBridge 7600N 或 7500N 橋接器熱交換 link:task_replace_a_sle_fc_to_sas_bridge.html#hot_swap_6500n["使用光纖橋接器7600N或7500N橋接器熱交換光纖橋接器6500N"]：
 +
 ** 將光纖橋接器7600N或7500N橋接器FC2連接埠連接至交換器或控制器。
 +

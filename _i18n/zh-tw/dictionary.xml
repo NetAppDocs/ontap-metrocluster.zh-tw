@@ -3070,7 +3070,6 @@
   <block id="4a18eaea016103675a5da405a57fbed8" category="paragraph">如果符合下列條件、您也可以使用此程序：</block>
   <block id="49304b5a3e77f6b22f9f39b8cf0e1186" category="list-text">您要更換一對連接至同一堆疊SAS儲存設備的FIBreBridge 6500N橋接器。</block>
   <block id="520879137e3e1dd05fc10803bb01fbcd" category="list-text">您先前已在配對中更換一台FibreBridge 6500N橋接器、而您的儲存堆疊則設定為使用一個FIBreBridge 6500N橋接器和一個FIBreBridge 7600N或7500N橋接器。</block>
-  <block id="73152dad4acad3208bc063c3951344c5" category="paragraph">在這種情況下、您應該從下列步驟開始、將「'Bottom'」的FIBreBridge 6500N橋接器與FIBreBridge 7600N或7500N橋接器熱交換。</block>
   <block id="f9c1933f3b94ffee14ef186b2709352c" category="paragraph">下圖顯示初始組態的範例、其中四個連接兩個SAS儲存堆疊的FIBEBridge 6500N橋接器：</block>
   <block id="3dcba5083263c26dc21f695136013a58" category="image-alt">以前整合堆疊</block>
   <block id="dc876c7ff2512b544d84916000f3f0d0" category="list-text">將光纖橋接器7600N或7500N橋接器FC1連接埠連接至交換器或控制器。</block>
@@ -13429,8 +13428,6 @@
   <block id="480cf83fd6c463ccef2ed2a9d0dce2c4" category="list-text">輸入<block ref="bedfcd4488b13f5b7062e121a6a8baa5" prefix=" " category="inline-code"></block> 持續啟用連接埠的命令。這必須在存續站台的兩個交換器上執行。</block>
   <block id="9d1a338762e03c980c82e8098eb03744" category="list-text">確認儲存設備可從存續的站台看到。讓離線叢恢復上線。這會重新啟動重新同步作業、並重新建立SyncMirror 該功能。</block>
   <block id="9f6a23c1abc971d714730192ce961b96" category="paragraph">依照中的指示操作 <block ref="9c0d52e0ce7a57d643217990aba10043" category="inline-link-macro-rx"></block> 根據MetroCluster 您的需求組態執行修復和切換作業。</block>
-  <block id="92833b015ed412068659d576a7df1599" category="list-text">請依照下列準則、使用中的程序、將「'TOP」（光纖橋接器）6500N橋接器與光纖橋接器7600N或7500N橋接器熱交換 <block ref="0b4bc6296d77be28e33d3b50e0ea0797" category="inline-link-macro-rx"></block>：</block>
-  <block id="3753c208918127350b444c3dc052115f" category="list-text">依照下列準則、使用中的程序、將「Bottom」（底部）的「FibreBridge 6500N橋接器」與「FibreBridge 7600N」或「7500N橋接器」熱交換 <block ref="0b4bc6296d77be28e33d3b50e0ea0797" category="inline-link-macro-rx"></block>：</block>
   <block id="0b4bc6296d77be28e33d3b50e0ea0797" category="paragraph"><block ref="0b4bc6296d77be28e33d3b50e0ea0797" category="inline-link-macro-rx"></block></block>
   <block id="e49bc35e0118f2b5a5904c13e1833761" category="section-title">在執行 ONTAP 9.3.x 及更早版本的組態上、更新 FiberBridge 7500N 上的韌體</block>
   <block id="1a5e839afe7a716dd2640f7fdb69669a" category="paragraph">您可能需要更新 FiberBridge 橋接器上的韌體、以確認您擁有最新功能或解決可能的問題。在執行 ONTAP 9.3.x 的組態上、此程序應用於 FiberBridge 7500N</block>
@@ -13458,4 +13455,11 @@
   <block id="ad1b97f0744b9c154b01cc69afb505d7" category="list-text">兩個本機叢集介面</block>
   <block id="861e1910edbd7f3e677dab91f10869b0" category="sidebar">關閉並開啟單一 MetroCluster 站台的電源</block>
   <block id="b54f4d527d126f4e54869800ed0e43ac" category="sidebar">關閉整個 MetroCluster 組態</block>
+  <block id="3918b9a89aceefd41e40355d1f97ba48" category="list-text">重新啟動每個新節點：</block>
+  <block id="fedca74b48d819e0ff016411f2964078" category="paragraph"><block ref="d690f5fb4faed2f81ce54caed818eaf8" prefix="" category="inline-code"></block></block>
+  <block id="0266a1f477a71d63c95d6ad418f2a596" category="paragraph">您可以使用中的程序、將分區變更或從 FiberBridge 6500N 升級至 FiberBridge 7500N <block ref="7352d8244ff0bfad7d2b5214b0bb9616" category="inline-link-macro-rx"></block>。</block>
+  <block id="72a027f2830c7a189cc919fbbc72c98b" category="paragraph">在這種情況下、您應該從以下步驟開始、將底部的 FiberBridge 6500N 橋接器熱交換至 FiberBridge 7600N 或 7500N 橋接器。</block>
+  <block id="5a74832dfdf0bb3064f1c60224b5cf2a" category="list-text">依照下列準則、使用中的程序、將頂部的 FiberBridge 6500N 橋接器與 FiberBridge 7600N 或 7500N 橋接器熱交換 <block ref="0b4bc6296d77be28e33d3b50e0ea0797" category="inline-link-macro-rx"></block>：</block>
+  <block id="ea8d3ee31ee0fcdd012de17493f6fb2c" category="list-text">依照下列準則、使用中的程序、將底部的 FiberBridge 6500N 橋接器與 FiberBridge 7600N 或 7500N 橋接器熱交換 <block ref="0b4bc6296d77be28e33d3b50e0ea0797" category="inline-link-macro-rx"></block>：</block>
+  <block id="16bdceed077292999c9190c699d66beb" category="list-text">修改所有叢集生命體以重新啟用自動還原：</block>
 </blocks>

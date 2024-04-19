@@ -137,6 +137,15 @@ NOTE: 如果要升級或降級交換器、您必須設定網路中的所有交�
 +
 「*網路連接埠show *」
 
++
+.. 修改所有叢集生命來停用自動還原：
++
+[source, asciidoc]
+----
+network interface modify -vserver <vserver_name> -lif <lif_name> -auto-revert false
+----
+
+
 . [[Existing _step4]] 中斷舊交換器的連線。
 +
 
@@ -146,12 +155,6 @@ NOTE: 您只能中斷舊組態和新組態中使用不同連接埠的連線。�
 依下列順序移除連線：
 
 +
-.. 修改所有叢集生命來停用自動還原：
-+
-[source, asciidoc]
-----
-net int modify -vserver <vserver_name> -lif <lif_name> -auto-revert false
-----
 .. 拔下本機叢集介面
 .. 中斷本機叢集 ISL 的連線
 .. 中斷 MetroCluster IP 介面連線
@@ -228,6 +231,12 @@ NOTE: 除了管理介面（如果使用）之外、請勿 * 不 * 連接新的�
 
 NOTE: 如果您升級或降級網路、請針對第二個網路重複所有步驟。
 
+. 修改所有叢集生命體以重新啟用自動還原：
++
+[source, asciidoc]
+----
+network interface modify -vserver <vserver_name> -lif <lif_name> -auto-revert true
+----
 . 或者、也可以移動 NS224 機櫃。
 +
 如果您要重新設定的 MetroCluster IP 組態無法將 NS224 機櫃連接至 MetroCluster IP 交換器、請使用適當的程序來新增或移動 NS224 機櫃：

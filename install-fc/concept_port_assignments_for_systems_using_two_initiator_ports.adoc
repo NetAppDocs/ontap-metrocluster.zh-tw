@@ -17,7 +17,7 @@ summary: 您可以使用AFF 單一啟動器連接埠來設定FAS8020、AFF8020�
 
 如果手動執行分區、請遵循使用一個 FC 連接埠（ FC1 或 FC2 ）的 FiberBridge 7500N 或 7600N 橋接器分區。在此案例中、每個架構的每個區域成員都會新增一個啟動器連接埠、而非兩個。
 
-您可以使用中的程序、將分區變更或從 FiberBridge 6500N 升級至 FiberBridge 7500N link:task_replace_a_sle_fc_to_sas_bridge.html#hot_swap_6500n["使用光纖橋接器7600N或7500N橋接器熱交換光纖橋接器6500N"]。
+您可以使用中的程序、將分區變更或從 FiberBridge 6500N 升級至 FiberBridge 7500N link:../maintain/task_replace_a_sle_fc_to_sas_bridge.html#hot_swap_6500n["使用光纖橋接器7600N或7500N橋接器熱交換光纖橋接器6500N"]。
 
 下表顯示使用ONTAP 更新版本的功能時、FC交換器的連接埠指派。
 
