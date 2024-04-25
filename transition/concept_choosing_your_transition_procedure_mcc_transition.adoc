@@ -30,7 +30,7 @@ image::../media/metrocluster_fc_ip_transition_matrix_914.png[MetroCluster 光纖
 ====
 * 請勿超過平台「下限」的任何物件限制。套用兩個平台的較低物件限制。
 * 如果目標平台限制低於 MetroCluster 限制、您必須重新設定 MetroCluster 、使其達到或低於目標平台限制、才能新增節點。
-* 請參閱 link:https://hwu.netapp.html["Hardware Universe"^] 適用於平台限制。
+* 請參閱 link:https://hwu.netapp.com["Hardware Universe"^] 適用於平台限制。
 
 
 ====

@@ -10,6 +10,7 @@ summary: 下表顯示AFF 適用於Solid-A900系統的Brocade交換器上的連�
 :imagesdir: ../media/
 
 
+[role="lead"]
 下表顯示Brocade交換器上的連接埠使用量。下表顯示支援的最大組態、四個DR群組中有八個控制器模組。FASA900和FAS9500系統有八個FC-VI連接埠（適用於FC-VI-1和FC-VI-2的A、b、c和d）AFF
 
 |===

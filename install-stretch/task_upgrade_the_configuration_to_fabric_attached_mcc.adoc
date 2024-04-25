@@ -33,7 +33,7 @@ NOTE: 您應該使用MetroCluster 的「連接網路附加的功能部件的佈�
 
 . 請MetroCluster 使用下列步驟來重新整理此功能組態。
 +
-請勿使用MetroCluster 連結https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html[Fabric-attached《安裝與組態》中「在ONTAP 其中設定功能介紹」一節中的程序MetroCluster 。
+請勿使用中「在 ONTAP 中設定 MetroCluster 軟體」一節中的程序 link:https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"]。
 
 +
 .. 進入進階權限模式：+「*設定-權限進階*」

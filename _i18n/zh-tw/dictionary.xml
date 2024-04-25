@@ -296,7 +296,6 @@
   <block id="c827f7df05c6916afe05fd36408cafb0" category="paragraph">第3季：Bay 24-035</block>
   <block id="93dcc09acf50956dd3f108153247603c" category="paragraph">托架24至29個</block>
   <block id="77c79465aa008b1bff68e784406b5273" category="paragraph">托架36-41</block>
-  <block id="a66208eb43ca07208dc54b23ce6f191c" category="paragraph">如果您在每個站台使用兩個磁碟櫃、則會使用半磁碟櫃原則來指派磁碟。如果磁碟櫃未完全裝滿、請從磁碟櫃任一端平均安裝磁碟機。</block>
   <block id="dbaf1635e32fb5c1cc5e8aca3a390c3e" category="paragraph">例如、如果您要在24個磁碟機櫃中安裝12個磁碟機、請在0到5和18到23個磁碟機槽中安裝磁碟機。</block>
   <block id="2ab5641f353f5df97a5b55aecef151f4" category="section-title">手動指派磁碟機（ONTAP S9.5）</block>
   <block id="c3d1a88e0877d50245bcf17b1d6331bb" category="paragraph">在支援S9.5的系統中ONTAP 、需要在具有下列機櫃組態的系統上手動指派磁碟機：</block>
@@ -786,7 +785,6 @@
   <block id="4f231b4fb4fb8bbd617c648b5efd351f" category="paragraph">以下範例顯示MetroCluster 「用作『用作檢查集合式show’命令輸出、以確保四節點MetroCluster 的效能正常運作：</block>
   <block id="2e012ade7bab556f0392337c78739376" category="paragraph">以下範例顯示MetroCluster 效能良好的四節點MetroCluster 功能組態的畫面檢查叢集show命令輸出。這表示叢集已準備好在必要時執行協調式切換。</block>
   <block id="4344cf9672839a368c8fd958fef1ec6a" category="inline-link">網路與LIF管理</block>
-  <block id="bc3d619cb2db28a4bb6fdf98a10e1f1f" category="paragraph"><block ref="bc3d619cb2db28a4bb6fdf98a10e1f1f" category="inline-link-rx"></block></block>
   <block id="ccc25c1a9a6f63d4acf6c9390b850b64" category="section-title">正在完成ONTAP 功能組態設定</block>
   <block id="938a9f49acfde2902a8737d1aadbf6a1" category="paragraph">設定、啟用及檢查MetroCluster 完整套組態後、您可以視ONTAP 需要新增額外的SVM、網路介面及其他功能、以繼續完成叢集組態。</block>
   <block id="fea810a7a02c4d40cd3c6c1a77cb926d" category="summary">如果您想要將MetroCluster 各個節點連線至不同ONTAP 的「位向器」執行個體、則必須取消設定、然後在ONTAP 「位向器」軟體中重新設定「位向器」連線。</block>
@@ -1181,7 +1179,6 @@
   <block id="8fdea79aece0ad1322e81be87031775a" category="list-text">不支援使用Cisco 9336C-FX2共用交換器的組態。</block>
   <block id="392719c196c4e0847676792f7c332ab2" category="section-title">支援MetroCluster 所有的SAN Array系統、採用各種不完整的組態</block>
   <block id="21cdd63bb00e685a661edb2068282e6e" category="paragraph">部分All SAN Array（ASA）在MetroCluster 各種組態中均受到支援。在本文件中、有關不適用的功能的資訊適用於相應的功能表系統。MetroCluster AFF ASA例如AFF 、所有的纜線和其他有關的資訊、也適用於ASA AFF 該系統。</block>
-  <block id="75d7363908012fa0907c5a27d0b79c63" category="paragraph">支援的平台組態列於<block ref="ed4326c3351d8ac0e334b8b4d9b37c82" category="inline-link-rx"></block>。</block>
   <block id="14681192c7f80e2d7631c3a070df9619" category="doc">Cisco 3132Q-V交換器的平台連接埠指派</block>
   <block id="3b83c4ddd89aceae283e372313711a0d" category="section-title">FAS2750或AFF __LW_A220系統和Cisco 3132Q-V交換器的連接埠使用量</block>
   <block id="0d1dedffee468c654fc7737c161a5ef6" category="image-alt">MCC IP將fas2750或A220纜線連接至Cisco 3132q v交換器</block>
@@ -1243,7 +1240,6 @@
   <block id="2b7b4187eedd1f51618a77ae78dcd5b4" category="paragraph">在本機叢集的儲存虛擬機器（SVM）上建立的LDAP用戶端組態、會複寫到遠端叢集上的合作夥伴資料SVM。例如、如果LDAP用戶端組態是在本機叢集的管理SVM上建立、則會複寫到遠端叢集上的所有管理資料SVM。此功能是刻意設計的、因此LDAP用戶端組態會在遠端叢集上的所有合作夥伴SVM上啟用。MetroCluster</block>
   <block id="68bb3c77ae0d3938cb714cb02f09e0b2" category="section-title">適用於MetroCluster 各種組態的網路與LIF建立準則</block>
   <block id="0ac1f475b7a9f3738281c9bdc175cf16" category="paragraph">您應該瞭MetroCluster 解如何在一套功能性的組態中建立及複寫生命。您也必須瞭解一致性需求、以便在設定網路時做出適當的決策。</block>
-  <block id="8dc768991d5b26a5dd964209b0336989" category="paragraph"><block ref="8dc768991d5b26a5dd964209b0336989" category="inline-link-rx"></block></block>
   <block id="49792a2ba0435fdceb8523c637044b2d" category="inline-link-macro">IPSpace物件複寫和子網路組態需求</block>
   <block id="5ad988ba21e33f2eef07904f31d92c7b" category="paragraph"><block ref="5ad988ba21e33f2eef07904f31d92c7b" category="inline-link-macro-rx"></block></block>
   <block id="6f5f4699ad0efc26fb8b554c8e359e36" category="inline-link-macro">以架構組態建立LIF的需求MetroCluster</block>
@@ -1368,7 +1364,6 @@
   <block id="334bb3a6374f5b9196a0bbf69255c7da" category="paragraph">您必須使用支援的交換器軟體版本。</block>
   <block id="45ffc94e7a6a06c5cc630808204d30c2" category="list-text">下載支援的NX-OS軟體檔案。</block>
   <block id="c00379eb260028495e53ff62fa9b3a5a" category="inline-link">Cisco軟體下載</block>
-  <block id="2e3e8617975ce08f365e434cca216c04" category="paragraph"><block ref="2e3e8617975ce08f365e434cca216c04" category="inline-link-rx"></block></block>
   <block id="696deaa8173dd6cec00abf83cfff691a" category="list-text">將交換器軟體複製到交換器：</block>
   <block id="ebe7a0ec71a29ec2457b7e515243bbdb" category="paragraph">「copy sftp：//root@server-ip-address/tftpboot/NX-os-name-name bootflash：VRF管理」</block>
   <block id="170843e6f61a9a5c90fed2eb71e3c3b1" category="paragraph">在此範例中、nxos.7.0.3.I4.6.bin檔案會從SFTP伺服器10.10.99.99複製到本機bootflash：</block>
@@ -1678,7 +1673,6 @@
   <block id="8c6652271cf9962cf25d57593f2e0998" category="list-text">新增授權、設定叢集管理SVM、並回應提示輸入DNS資訊。</block>
   <block id="529c1647bb7154274999ead05402d316" category="list-text">回應提示、啟用儲存容錯移轉並設定節點。</block>
   <block id="b842db396e001f50d74b654f1314df5d" category="list-text">完成節點的組態、但不要建立資料集合體。</block>
-  <block id="3dda58d6d9375a71c538f50ab53299f6" category="paragraph">您可以使用ONTAP 「靜態系統管理程式」、將網頁瀏覽器指向叢集管理IP位址 <block ref="a014d2689df7be806072ba0665b78ca6" category="inline-link-rx"></block>。</block>
   <block id="a20a27311b456fc6207eda19880125cd" category="inline-link">系統管理程式（9.7版及更新版本）ONTAP</block>
   <block id="1ca0d9647eb663a44ff0a5fef980ff52" category="paragraph"><block ref="1ca0d9647eb663a44ff0a5fef980ff52" category="inline-link-rx"></block></block>
   <block id="cbb4f42385447257b0524c80bc88c203" category="list-text">依照提示啟動下一個控制器並將其加入叢集。</block>
@@ -2406,7 +2400,6 @@
   <block id="3cf98495d2d0556357fd3275c2ff1c80" category="cell">使用此程序...</block>
   <block id="38d8f431ef4c9f99c8f96cd4ef60bf47" category="paragraph">Tiebreaker</block>
   <block id="865bc4874b95fc3f58d47dd569e64038" category="inline-link">移除MetroCluster 部分組態</block>
-  <block id="a244701f5abda60a99d71bfb0315fea7" category="paragraph"><block ref="0ef4432e8d7270c716b0b9fdd42f2d64" category="inline-link-rx"></block> 請參閱《_ MetroCluster 資料斷路器安裝與組態指南_》</block>
   <block id="cf7f72fb2e3e5a9df104130ba81c194e" category="paragraph">中介者</block>
   <block id="7af5201398b794df220a5a1e00a4ce06" category="paragraph">從資訊提示字元發出下列命令ONTAP ：</block>
   <block id="6e64fb396e43856b1c92c723c679a54d" category="paragraph">第三方應用程式</block>
@@ -4556,7 +4549,6 @@
   <block id="6a12946cbb81d960abd7b608085f126a" category="inline-link-macro">Tiebreaker軟體安裝與組態</block>
   <block id="e71402603f50c2282d8c7bcc53d63e72" category="paragraph"><block ref="e71402603f50c2282d8c7bcc53d63e72" category="inline-link-macro-rx"></block></block>
   <block id="99e1566c550fe0f9db0d7ecf84e5a3d6" category="list-text">若要恢復自動產生支援案例、請傳送AutoSupport 一個不完整的訊息、表示維護已完成。</block>
-  <block id="25b61bcede8b65f37afa4e4a2a2fab02" category="paragraph"><block ref="25b61bcede8b65f37afa4e4a2a2fab02" category="inline-link-rx"></block></block>
   <block id="1e5e78662df1059700ef33c3a063b1d8" category="summary">您必須從現有MetroCluster 的支援中心節點收集資訊、傳送AutoSupport 資訊以宣佈開始維護、以及轉換節點。</block>
   <block id="a689c00e028f2cdb352d96242d3b6ef8" category="section-title">在轉換之前從現有的控制器模組收集資訊</block>
   <block id="e9ae973eb11767207c758a2be40e1a6b" category="paragraph">在轉換之前、您必須先收集每個節點的資訊。</block>
@@ -6138,25 +6130,16 @@
   <block id="90057e5e4627dddcd3c317f85b5cdf1c" category="paragraph">CLI命令提示字元表示為NetApp MetroCluster ESITirepreaker：&gt;。</block>
   <block id="eaa918da98f1c1c51821025d29a35cf3" category="paragraph">在命令提示字元中輸入適用的命令名稱、即可在CLI中使用手冊頁。</block>
   <block id="d5e32abfbd3e5376cc7d90c1003b3516" category="summary">Tiebreaker軟體提供叢集式儲存環境的監控功能。當節點連線問題和站台災難發生時、也會傳送SNMP通知。</block>
-  <block id="995e564ca3c05e931e1da79c841f6b29" category="paragraph">Tiebreaker軟體安裝在第三個站台、可讓軟體區分交換器間連結（ISL）故障（站台間連結中斷時）與站台故障。您的主機系統必須符合特定要求、才能在本機電腦上安裝或升級斷路器軟體、以監控MetroCluster 此功能組態。</block>
   <block id="1622cddcc8d92c2f521cf45ebeeb83b0" category="list-text">MariaDB 5.5.52 x / MySQL Server 5.6x</block>
   <block id="f211a801e18d8052b211fd5a87a83253" category="list-text">4 GB RAM</block>
   <block id="6d6a8e3be3c8694034944ec6e631c4be" category="list-text">磁碟容量：8 GB</block>
   <block id="4c009b85d61ad347b56add00274e7453" category="list-text">防火牆：</block>
   <block id="3c78850f45b6edfc4af8ec0a93a2a1ab" category="list-text">直接存取以設定AutoSupport 資訊訊息</block>
   <block id="cde2b4acd898c32670d230559bc6a550" category="list-text">SSH（連接埠22/TCP）、HTTPS（連接埠443/TCP）及ping（ICMP）</block>
-  <block id="d622b09f9e4518b80b223d0f3d83f9cd" category="section-title">安裝MetroCluster 相依的斷點器</block>
   <block id="b56e6f0af6a9b1b27daa95d4a36afdc4" category="list-text">安裝MySQL或MariaDB伺服器：</block>
   <block id="6d3e1ad458b8305490e7f3f555ee8c93" category="cell">如果Linux主機是</block>
   <block id="bbc93c3b548f7e6b61051cdcdda436b9" category="paragraph">Red Hat Enterprise Linux 7/CentOS 7.</block>
-  <block id="2f4f94cc5a0950a910a46c35cf923e05" category="paragraph">安裝MySQL</block>
-  <block id="1635ad66e06d76cdccc25bb248323398" category="inline-xref">在Red Hat Enterprise Linux 7或CentOS 7上安裝MySQL Server 5.5.30或更新版本及5.6.x版本</block>
-  <block id="9955d510e571b5772146c4294aa083ad" category="paragraph"><block ref="dcceacb3de1856e2fea539e535a7cebb" category="inline-xref-macro-rx"></block></block>
   <block id="5508505cbdbe4c572010783025a1150d" category="paragraph">Red Hat Enterprise Linux 8</block>
-  <block id="4edc6e3711a7b2b1f3ee14f852711a72" category="paragraph">安裝MariaDB</block>
-  <block id="6b415ecff4f67f832fb78f9c6ed7945a" category="inline-xref">在Red Hat Enterprise Linux 8上安裝MariaDB伺服器</block>
-  <block id="8ced9fc9cddb4453095058632c12c49f" category="paragraph"><block ref="fcc472ae70179ceec6c9e23c4db15f10" category="inline-xref-macro-rx"></block></block>
-  <block id="4a857d4819f55ec889deb5379b9ce9c7" category="paragraph">安裝或升級Tiebreaker軟體之前、您必須先在主機系統上安裝MySQL Server 5.5.30或更新版本及5.6.x版本。</block>
   <block id="982777ff7445d76450443abffc937386" category="list-text">將MySQL儲存庫新增至主機系統：</block>
   <block id="76597904d13ed6703126a060cc752f6b" category="paragraph">[root@mcctb ~]# yum localinstall \https://dev.mysql.com/get/mysql57-community-release-el6-11.noarch.rpm`</block>
   <block id="b668a67d489eec4f62521bbd12885266" category="paragraph">[root@mcctb ~]# yum-config-manager -disablemysql57-community</block>
@@ -6174,11 +6157,9 @@
   <block id="436d3553136413496f4c1ab193b0224a" category="list-text">驗證MySQL登入是否正常運作：</block>
   <block id="a4fddf98cdbecd6a73cbff1c16747db4" category="paragraph">[root@mcctb ~]# mySQL -u root–p]</block>
   <block id="b1cef06f6d0dbb6b0907ba2828c01658" category="paragraph">如果MySQL登入正常運作、輸出將在「mysql&gt;」提示字元結束。</block>
-  <block id="ee2d0facfca7cf9da7afc98606d041bb" category="section-title">啟用MySQL自動啟動設定</block>
   <block id="907482e03a773bacd1197e79ad353d1a" category="list-text">驗證MySQL在開機時是否已啟用自動啟動：</block>
   <block id="9828a53574d333fd2cfd570e38922b4f" category="paragraph">[root@mcctb ~]# systemctl list-unit-filesmysqld.service`</block>
   <block id="6b78bf98fe8a405df5e22ad1b5b3a1ba" category="paragraph">如果MySQL在開機時未啟用自動啟動、請參閱MySQL文件、以啟用安裝的自動啟動功能。</block>
-  <block id="42effa8417ecaca249eb75ef3af93551" category="paragraph">您必須先在主機系統上安裝MariaDB伺服器、才能安裝或升級tiebreaker軟體。</block>
   <block id="f514e222790761ef9b22f805623d3f36" category="paragraph">您的主機系統必須在Red Hat Enterprise Linux（RHEL）8上執行。</block>
   <block id="cef7dfc261d8a8420d1938a361c69aa9" category="paragraph">[root@mcctb ~]# yum install MariaDB-server.x86_64</block>
   <block id="60d8aee94c480f814db37523f4bf4e7c" category="list-text">啟動MariaDB伺服器：</block>
@@ -6189,9 +6170,6 @@
   <block id="702b74d571398b97d529b92567ce42a7" category="paragraph">[root@mcctb ~]# systemctl enable mariadb.service`</block>
   <block id="5c77e1603fd1c29c92901cf08deda7ef" category="list-text">確認已啟用MariaDB、以便在開機時自動啟動：</block>
   <block id="20859c72927d81163c0ef8c70e5f5855" category="paragraph">[root@mcctb ~]# systemctl list-unit-filesmariadb.service`</block>
-  <block id="998939e20c88d175779417ce100fafed" category="section-title">安裝或升級軟體套件</block>
-  <block id="aa0bf4d75253e028ce83fbc2fe035e54" category="paragraph">您必須在MetroCluster 本機電腦上安裝或升級ESITirepreaker軟體、才能監控MetroCluster 各種組態。</block>
-  <block id="3f18eec2af554a1393e91a90bacbc4e0" category="list-text">您的儲存系統必須執行ONTAP 不含更新版本的資訊。</block>
   <block id="0181a996142ce88d36927257090dd51b" category="list-text">以root使用者身分登入主機。</block>
   <block id="5a1ca385deb8381ffff2ed6a33fd752d" category="paragraph">系統會顯示下列輸出、以利成功安裝：</block>
   <block id="3d47e198e02ccec25cafef6cbda2ebcc" category="paragraph">升級現有的安裝</block>
@@ -8619,7 +8597,6 @@
   <block id="6c434084469e8a6d440ef80517f081d2" category="list-text">重複上述子步驟、這次從控制器a_2接管控制器a_1。</block>
   <block id="3b82e46bb2d614a665de9e2c8b9c5e7c" category="list-text">在叢集B上重複上述步驟</block>
   <block id="2fb654e5399843c45685502bcc696315" category="inline-link">高可用度組態</block>
-  <block id="af49f84fdbd0ceabe619e6c96b5c3965" category="paragraph"><block ref="af49f84fdbd0ceabe619e6c96b5c3965" category="inline-link-rx"></block></block>
   <block id="d483490d3082f02c6057abcd983c34e6" category="list-text">使用協商切換、修復及切換的程序<block ref="218502de673c582fbc556024d0b3de54" category="inline-link-rx"></block></block>
   <block id="14a8fc6fe6b58444388acfef6a176529" category="inline-link">管理組態備份</block>
   <block id="f1573b913aebef18602249e23e196f67" category="paragraph"><block ref="09965663397032e7c8c3dcc98b9deca2" category="inline-link-rx"></block> 包含其他資訊。</block>
@@ -8640,7 +8617,6 @@
   <block id="3b4a0463df76b45385a0a18ebfbb5917" category="paragraph">當觸發切換時、如果站台_A和站台_C未連線、您必須在切換後、使用「vserver對等拒絕」命令、手動取消站台_B（切換叢集）和站台_C上的SVM。</block>
   <block id="fa60d55773bc424e586a8c4898b4bc9f" category="inline-link">磁碟與集合體管理</block>
   <block id="9f437bd3f304cff4e9dd7b48cc5a9500" category="paragraph">這可以是預設的IPspace、也可以是系統管理所建立的IPspace。此IPspace將用於FabricPool 物件儲存組態設定。</block>
-  <block id="302236925d66f4e5011613180b9839b1" category="admonition">在設定Aggregate之前、您必須依照FabricPool 中的「設定物件存放區以MetroCluster 供使用的物件組態」所述、設定物件存放區<block ref="6ca1f1c4f557736e9b169b0bb2581c65" category="inline-link-rx"></block></block>
   <block id="99dc2e42eb5cbad5dfa0fe00d5193924" category="list-text">如FabricPool 中所述、使用Aggregate建立鏡射<block ref="d80da76762d0e5fadaefb2c12eee2740" category="inline-link-rx"></block></block>
   <block id="17ac4e298c56ff01c8eed4b136996add" category="paragraph"><block ref="168c33302730d6ed47dbebd9e3cc10f4" category="inline-xref-macro-rx"></block></block>
   <block id="1a9f35018f9b17cd6039fe4f382f7ac3" category="paragraph"><block ref="99673e08557418afa49aba4fc6daa754" category="inline-xref-macro-rx"></block></block>
@@ -8679,11 +8655,9 @@
   <block id="5358757de9216cc29d688612a3d72fe1" category="inline-link">供應說明文件ONTAP</block>
   <block id="05d1b66800ffa31a913a6add4305e4e3" category="paragraph"><block ref="05d1b66800ffa31a913a6add4305e4e3" category="inline-link-rx"></block></block>
   <block id="8adae693d3240e468a2042cfca460ce7" category="inline-link">NetApp MetroCluster 解決方案架構與設計、TR-4705</block>
-  <block id="414fe9bb5df6ded9e2e5bb6d9f0f44f8" category="cell"><block ref="414fe9bb5df6ded9e2e5bb6d9f0f44f8" category="inline-link-rx"></block></block>
   <block id="d8846bdbb733c281d43536004fbf5a33" category="list-text">關於整套功能的技術概覽MetroCluster 。</block>
   <block id="92e0d0d1ddb8acc61fd4b420947e1e17" category="list-text">最佳實務做法MetroCluster ：</block>
   <block id="f515fca759b029639b19b471d7a2c1ed" category="inline-link">《SIP解決方案架構與設計》、MetroCluster TR-4689</block>
-  <block id="6e5c7bc246474fb731e86f864362b4fb" category="cell"><block ref="6e5c7bc246474fb731e86f864362b4fb" category="inline-link-rx"></block></block>
   <block id="8d4727f84fc5ba727eb23a4ce93c87c2" category="list-text">關於整套IP組態與操作的技術總覽MetroCluster 。</block>
   <block id="dd6ee1233d0e34b47648ba9732a67411" category="list-text">最佳實務做法MetroCluster ：</block>
   <block id="c0fe5b8c641b3e2d20403ec4aa244ff8" category="paragraph"><block ref="c0fe5b8c641b3e2d20403ec4aa244ff8" category="inline-link-rx"></block></block>
@@ -8954,7 +8928,6 @@
   <block id="bfa98b16040a9e239a71e4da0eb6a7b1" category="doc">下載並安裝Cisco FC交換器NX-OS軟體</block>
   <block id="fff6b95b10852166fc3f382ad27c765d" category="paragraph">這些步驟必須重複執行MetroCluster 到位在整個過程中的每個FC交換器上。</block>
   <block id="ed2bdca812d4a492e40bce0bf250aea0" category="inline-link">Cisco下載頁面</block>
-  <block id="2f625a7deff483a3e15edd07e62f829f" category="paragraph"><block ref="2f625a7deff483a3e15edd07e62f829f" category="inline-link-rx"></block></block>
   <block id="e0f676df07e9272737ae4f0ef7b19999" category="paragraph">在此範例中、「nxos.7.0.3.I4.6.bin」檔案會從SFTP伺服器10.99.99複製到本機bootflash：</block>
   <block id="0accadb30c276163922df0107c0ac2cc" category="paragraph">《Dir bootflash》</block>
   <block id="4c4925e228bd1e5e874e3d635b25fdc9" category="paragraph">以下範例顯示檔案位於「ip_switch_a_1」上：</block>
@@ -9116,7 +9089,6 @@
   <block id="a3100bf3334206028c894a5568ddcf09" category="summary">說明新功能、升級附註、修正問題、已知限制及已知問題。</block>
   <block id="1749d12df3df2319d3eee218a277ff83" category="doc">MetroCluster</block>
   <block id="efe451bd1c5b374a05e7d5178bb06987" category="inline-link">發行說明ONTAP</block>
-  <block id="2872394e3c89268bb37adaa024dc9195" category="paragraph">。<block ref="6e7f74aa9001f0524a965144f528bbc2" category="inline-link-rx"></block> 說明新功能、升級附註、修正問題、已知限制及已知問題。</block>
   <block id="dbd469acdcbd52648cb242bcfda6add3" category="paragraph">您必須登入NetApp支援網站、才能存取版本資訊。</block>
   <block id="64c598a52dd8cdadea545647c7d064a6" category="summary">您可以MetroCluster 在NetApp豐富的文件中深入瞭解有關功能的組態設定與操作。</block>
   <block id="1c1419a60d092179cd2d28d3fe2c36d9" category="paragraph"><block ref="1c1419a60d092179cd2d28d3fe2c36d9" category="inline-link-rx"></block></block>
@@ -9745,7 +9717,6 @@
   <block id="6a8e34b4c80df4e54d2a29a452f84682" category="list-text">安裝、連接及設定所需的交換器和FC對SAS橋接器。</block>
   <block id="b7195ecc3920afa55c50750064ed75a4" category="admonition">您應該使用MetroCluster 的「連接網路附加的功能部件的佈線」一節中的程序 <block ref="a1fd01e320574c534b3b8a75cd17d943" category="inline-link-macro-rx"></block>。</block>
   <block id="c9317ff0e4b7b54f3924e65fc0d6376a" category="list-text">請MetroCluster 使用下列步驟來重新整理此功能組態。</block>
-  <block id="481db0d99428fce199355e8490acb803" category="paragraph">請勿使用MetroCluster 連結https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html[Fabric-attached《安裝與組態》中「在ONTAP 其中設定功能介紹」一節中的程序MetroCluster 。</block>
   <block id="18231447c3931680b999f9ce6cf1666c" category="list-text">進入進階權限模式：+「*設定-權限進階*」</block>
   <block id="16a2d47b4316750cf2be8b8b4a74891b" category="list-text">重新整理MetroCluster 此靜態組態：+「* MetroCluster 」「*」「組態-重新整理true *」</block>
   <block id="97f1e8fe7462868a200d0b48ca70735a" category="paragraph">下列命令會重新整理MetroCluster DR群組中包含控制器a_1的所有節點上的支援功能組態：</block>
@@ -9980,7 +9951,6 @@
   <block id="0ba2b3e0a887666765eb2d690768c576" category="cell">適用於...</block>
   <block id="792eb4d1b571ca19a55c8073d075e399" category="paragraph">FAS2200、FAS2500、FAS3200、FAS6200、FAS/AFF8000系列系統</block>
   <block id="461d7e2424f72a59c55adf97e846017a" category="paragraph">“netboot<block ref="06f9d34e62d99a2aae0864928de56974" category="inline-link-rx"></block></block>
-  <block id="12d8187c539b6d3d79f907aa6887be93" category="paragraph">“netboot<block ref="5b83c67dc948392fb21e3e1b9f0f33e8" category="inline-link-rx"></block></block>
   <block id="cf124bc53615caa2c48815c1933e56b6" category="paragraph">「_path_to_the_web-易於 存取的目錄_」是下載的「&lt;ontap_version」&gt;_image.tgz」檔案的位置。</block>
   <block id="22c9d9a00223b907dbadee79be036b87" category="list-text">從顯示的功能表中選取*「Install new software first*（先安裝新軟體*）」選項。</block>
   <block id="adcfa58e9fef1d45cc4bd403ac68eb9f" category="paragraph">此功能表選項會下載新ONTAP 的功能表映像、並將其安裝至開機裝置。</block>
@@ -10317,7 +10287,6 @@
   <block id="85bd8aebb41cb27f7bc364e977313958" category="admonition">請勿中斷開機。</block>
   <block id="188edb9f514b65304cf0a3564a7bc692" category="list-text">從開機功能表中、選取選項「（7）Install new software first（先安裝新軟體）」。此功能表選項會下載新ONTAP 的功能表映像、並將其安裝至開機裝置。</block>
   <block id="81ff6a54875aaf720a2c324484bc2178" category="admonition">請忽略下列訊息：「HA配對不支援不中斷升級此程序。 本附註適用於不中斷營運ONTAP 的更新版軟體、不適用於控制器升級。請務必使用netboot將新節點更新為所需映像。如果您使用其他方法在新控制器上安裝映像、可能會安裝錯誤的映像。此問題適用於ONTAP 所有的版本。</block>
-  <block id="9fbd27646b729fd730070da29cb836c5" category="list-text">如果系統提示您繼續此程序、請輸入「y」、並在系統提示您輸入套件時、輸入URL：<block ref="a2ba1d0ee1c156220079edd2f4d50848" category="inline-link-rx"></block></block>
   <block id="7b3f6c26774d36cd594edf297f0f8f57" category="list-text">完成下列子步驟以重新啟動控制器模組：</block>
   <block id="61ee95ecb870c833ca0f73515cef5bce" category="list-text">當您看到以下提示時、請輸入「n」跳過備份恢復：「您現在要還原備份組態嗎？｛y | n｝</block>
   <block id="e127fec27e4f62227f578ce3dd283c35" category="list-text">當您看到下列提示時、請輸入「y」重新開機：「必須重新開機節點、才能開始使用新安裝的軟體。是否要立即重新開機？｛y | n｝</block>
@@ -10457,7 +10426,6 @@
   <block id="09a0c3b49fdf8f3d3d97fd599ba851dc" category="list-text">平台必須執行ONTAP 的是版本不支援的版本。</block>
   <block id="dfaa931cb3298c6a8b82f108a31104cb" category="list-text">您的原始與新平台必須相容且受到支援。</block>
   <block id="0e490704226a6f678e043e59eee46210" category="inline-link">使用「系統控制器更換」命令來升級執行ONTAP 效能不正常的控制器硬體</block>
-  <block id="433c23ac1d50e2f792a96846827071e3" category="list-text">您可以使用此程序、使用MetroCluster NSO型的自動切換和切換功能、在四節點的SFC組態中升級控制器。如果您要使用Aggregate重新定位（ARL）執行控制器升級、請參閱<block ref="ce0fc11b0e13b00ed4b15a0d6c2e1624" category="inline-link-rx"></block>。建議使用NSO型自動化程序。</block>
   <block id="8c6987e319eda195c069e8158e10721f" category="list-text">如果MetroCluster 您的站台實體位於兩個不同位置、您應該使用自動NSO控制器升級程序、依序升級兩個站台的控制器。</block>
   <block id="7ad155deddf063088b2af594f769192c" category="list-text">這項自動化的NSO型控制器升級程序可讓您將控制器更換至MetroCluster 還原災難恢復（DR）站台。您一次只能在一個站台啟動控制器更換。</block>
   <block id="7399fd0657c56a93aa88aad61e36136e" category="list-text">若要在站台A開始更換控制器、您需要從站台B執行控制器更換啟動命令此作業只會引導您更換站台A上兩個節點的控制器。若要更換站台B的控制器、您必須從站台A執行控制器更換啟動命令此時會顯示一則訊息、指出要更換控制器的站台。</block>
@@ -10496,7 +10464,6 @@
   <block id="d6fd449bc639f92f27b747fd5b40361d" category="paragraph">「系統控制器更換恢復」</block>
   <block id="7080e7642990f343422154f3680f5f54" category="paragraph">如果現有的組態是以MetroCluster 可啟動切換的ESITTiebreaker組態或其他協力廠商應用程式（例如ClusterLion）來監控、您必須先從MetroCluster 斷路器或其他軟體移除此類組態、才能更換舊的控制器。</block>
   <block id="61a9d2fcb1a19cf607c57206c54d6509" category="inline-link">移除現有MetroCluster 的版本資訊</block>
-  <block id="b24e63ce15f1e7e3e5cb5bd1ce3fad34" category="list-text"><block ref="89b361038893a3d43bca666b6da4721b" category="inline-link-rx"></block> 透過Tiebreaker軟體。</block>
   <block id="2cd5138ffea77134b2eaf87275680e03" category="section-title">更換舊控制器並啟動新的控制器</block>
   <block id="f7a00e5a4faa1093e067a4074671fd4f" category="paragraph">收集資訊並恢復作業之後、自動化會繼續進行切換作業。</block>
   <block id="b13266858f69c83d67ff15214dfa7a27" category="paragraph">在啟動切換之前、自動化作業會暫停、以便您手動確認站台B的所有生命都是「up」如有必要、請將任何「'down」的lifs移至「up」、然後使用「system controller replace resume」命令恢復自動化作業。</block>
@@ -10966,11 +10933,9 @@
   <block id="19e185aea92cb0890229c16489d9c4cc" category="paragraph">未執行</block>
   <block id="78da5f94688332d9080947e0f923b416" category="paragraph">在開機環境提示字元中使用下列命令手動設定連線：「ifconfige0M -addr=&lt;filer_addr&gt;-mask=&lt;netmask&gt;-gateway=- dns =&lt;dns _addr&gt; domain=&lt;dns網域&gt;」</block>
   <block id="befdb6ab41f0cd39ff57e00b0ee8c3f6" category="paragraph">'&lt;filer_addr&gt;'是儲存系統的IP位址。「網路遮罩」是儲存系統的網路遮罩。「&lt;閘道&gt;」是儲存系統的閘道。'&lt;DNs_addr&gt;'是網路上名稱伺服器的IP位址。此參數為選用項目。'&lt;DNs_domain&gt;'是網域名稱服務（DNS）網域名稱。此參數為選用項目。附註：您的介面可能需要其他參數。在韌體提示字元中輸入「Help ifconfig」以取得詳細資料。</block>
-  <block id="8cadcd3d278c7bf112a3d2eb870dfb3e" category="list-text">在node_B_1上執行netboot：「netboot」、「http://&lt;web_server_ip/path_to_web_accessible_directory&gt;/netboot/kernel`」</block>
   <block id="f9917e026c23b682e18bcd6bc125c1b9" category="paragraph">「&lt;path_to_the_web-易於 存取的目錄&gt;」應該會引導您下載「&lt;ONTAP_VERSION &gt;\_image.tgz」 <block ref="28cd24b5ecf937229eb419cc55587b9d" category="inline-xref-macro-rx"></block>。</block>
   <block id="2653300b079109b65a613fd185414faa" category="list-text">從開機功能表中、選取選項「（7）Install new software first（先安裝新軟體）」 此功能表選項會下載新ONTAP 的功能表映像、並將其安裝至開機裝置。附註：請忽略下列訊息：「HA配對不支援此程序進行不中斷升級。 本附註適用於不中斷營運ONTAP 的更新版軟體、不適用於控制器升級。</block>
   <block id="f7462137da4e89b12e82937bb5da165f" category="paragraph">請務必使用netboot將新節點更新為所需映像。如果您使用其他方法在新控制器上安裝映像、可能會安裝不正確的映像。此問題適用於ONTAP 所有的版本。</block>
-  <block id="b04e99a0adbd90ade4803bbd436b76af" category="list-text">如果系統提示您繼續此程序、請輸入「y」、然後在系統提示您輸入套件時、輸入URL：「http://&lt;web_server_ip/path_to_web-accessible_directory&gt;/&lt;ontap_version&gt;\_image.tgz`」</block>
   <block id="d7672ee0e4d46e194ae0b844a3cf32ad" category="list-text">當您看到以下提示時、請輸入「y」重新開機：「必須重新啟動節點、才能開始使用新安裝的軟體。是否要立即重新開機？｛y：n｝'控制器模組會重新開機、但會在開機功能表停止、因為開機裝置已重新格式化、而且需要還原組態資料。</block>
   <block id="c9c4b352c210e485b70af0c63a95e7fa" category="list-text">當您看到下列訊息時、請回答「yes」：「這將會刪除重要的系統組態、包括叢集成員資格。警告：請勿在已接管的HA節點上執行此選項。您確定要繼續嗎</block>
   <block id="dbfa5994b398cd0fb3a814715f0dc252" category="list-text">從開機功能表中選取「5」選項以進入維護模式。對提示回答「yes」、直到節點停止於維護模式和命令提示字元\*。</block>
@@ -11484,7 +11449,6 @@
   <block id="3ee537e70a06614ada97e070ef70fe96" category="paragraph">FAS8300/A400/FAS8700</block>
   <block id="8e41be9a68008dd9f01c00807dd75f69" category="section-title">一致性群組支援MetroCluster 的不一致性組態</block>
   <block id="b36742dbca767f044c826ec8fbe9b099" category="inline-link">一致性群組</block>
-  <block id="2b9902d272c75c4def3400c620342746" category="paragraph">從ONTAP 功能性的9.11.1開始、<block ref="cf613318e210a5e8a8ae9de011eafc43" category="inline-link-rx"></block> 支援的功能包括MetroCluster ：</block>
   <block id="8a4f175190a1710cdcd52e7efde01268" category="section-title">在MetroCluster 不支援的IP組態中啟用Cisco Macsec Encryption WAN ISL</block>
   <block id="dbbfd3dd70a4d25284d890b07ad9bc31" category="section-title">設定Macsec金鑰鏈和金鑰</block>
   <block id="2903318a6fa99cbae17be8d84747e6f4" category="section-title">設定Macsec原則</block>
@@ -11991,7 +11955,6 @@
   <block id="8435af9be97e0c50b0d730d64b42f198" category="paragraph"><block ref="8435af9be97e0c50b0d730d64b42f198" category="inline-link-macro-rx"></block></block>
   <block id="f7080628c8d078c209fb6b6b18f03a3a" category="paragraph"><block ref="f7080628c8d078c209fb6b6b18f03a3a" category="inline-link-macro-rx"></block></block>
   <block id="4975610bd246038bf0371f5dff472f85" category="list-text">您只能使用MetroCluster 此程序在不含任何功能的基礎架構組態中重新整理特定的平台機型。</block>
-  <block id="0defe01fed70ecdf301ed45ee130f658" category="list-text">如需支援哪些平台升級組合的相關資訊、請參閱MetroCluster 中的《支援哪些平台升級》表 <block ref="5e51ded3128b8f60bc0b91c41dccbb25" category="inline-link-macro-rx"></block>。</block>
   <block id="7aeedda5f35486a7239b2a68ae68fb9a" category="paragraph">視設備升級範圍而定、您可以選擇控制器升級程序、系統更新程序或擴充程序。</block>
   <block id="959c17d1eadff13225c68a5578c6da93" category="paragraph">您使用的控制器升級程序取決於平台機型和MetroCluster 類型的支援。</block>
   <block id="789c52582d523f3977d636da81e92dc0" category="list-text">在ARL型控制器升級程序中、集合體重新配置作業可用於不中斷營運地將資料從舊組態移至新的升級組態。</block>
@@ -12042,7 +12005,6 @@
   <block id="ad06b1bad80df72d4f2fa24312c0a9bf" category="cell">重新整理方法</block>
   <block id="56ad29882b1f5aa7a765e42a0bd3ca97" category="paragraph"><block ref="56ad29882b1f5aa7a765e42a0bd3ca97" category="inline-link-macro-rx"></block></block>
   <block id="65fc2b3acec6ee29de6484f084e9ad51" category="paragraph">您可以使用MetroCluster 切換和切換功能、以支援功能支援的功能來升級特定平台。</block>
-  <block id="7c5f3ae5aa1416c77224608ca167ed4c" category="paragraph">如需支援哪些平台升級組合的相關資訊、請參閱MetroCluster 中的《The不支援升級》表 <block ref="5e51ded3128b8f60bc0b91c41dccbb25" category="inline-link-macro-rx"></block>。</block>
   <block id="524f05419622851f7f6289320cc91a6e" category="sidebar">升級、重新整理或擴充MetroCluster 此功能</block>
   <block id="81cce2035bed6113b6ccecaeb9cf25a9" category="sidebar">選擇擴充程序</block>
   <block id="87663f3a8212644181733b0573eae80d" category="sidebar">使用MetroCluster 切換和切換功能升級SIP中的控制器（ONTAP 更新版本：S還原9.8及更新版本）</block>
@@ -12165,12 +12127,7 @@
   <block id="c212b56e6344256b819057aa0ff26e93" category="list-text">確保Vault安裝安全</block>
   <block id="adfa274b93101556376a5c1c110a25b1" category="inline-link-macro">正式作業強化</block>
   <block id="3de794741da4d53ee89d2cfb65848ddb" category="paragraph"><block ref="3de794741da4d53ee89d2cfb65848ddb" category="inline-link-macro-rx"></block></block>
-  <block id="f2bc12f5f4eebffc4fcfe148f063406b" category="list-text">安裝JRE.</block>
-  <block id="1eb28a6954d3f0d52944773f2001d377" category="inline-xref">安裝JRE</block>
-  <block id="441101d3b94f5fe418ef67bd1081c0a6" category="paragraph"><block ref="06f50206a2b466fef1529155ff096c98" category="inline-xref-macro-rx"></block></block>
-  <block id="6641dbbe07c8e6fe53f1f58917a97776" category="list-text">安裝及設定Vault。</block>
   <block id="f798a783218170fc044aaf03491e8c63" category="inline-xref">安裝及設定Vault</block>
-  <block id="ef1f1252873864d80f380df4f260b300" category="paragraph"><block ref="11cd3d25aa255f8670dd0bfb1bb1d11c" category="inline-xref-macro-rx"></block></block>
   <block id="037b7d55a30f474064c10ac0edbaf6d3" category="list-text">以「root」使用者或可變更為進階權限模式的Sudo使用者身分登入。</block>
   <block id="75c3358765861dfefd4446691eccaebc" category="paragraph">如果您沒有或想要使用本機Vault伺服器、則必須安裝Vault。您可以參閱本標準程序來安裝Vault、或參閱《橋式安裝說明》以取得替代準則。</block>
   <block id="6ab2b19db2409ff46893b7cf13d70d9d" category="list-text">下載Vault壓縮檔。</block>
@@ -12189,7 +12146,6 @@
   <block id="c74f17ce72c64bc3a5d3eacc0affa867" category="paragraph">您應該確認MySQL精靈的自動啟動功能已開啟。開啟MySQL精靈會在MetroCluster 系統重新開機時、自動重新啟動MySQL。如果MySQL精靈未執行、則tiebreaker軟體會繼續執行、但無法重新啟動、也無法進行組態變更。</block>
   <block id="7b21144e83a2d9bef049269b16711fb4" category="list-text">以登入<block ref="63a9f0ea7bb98050796b649e85481845" prefix=" " category="inline-code"></block> 使用者或可Sudo進階權限模式的使用者。</block>
   <block id="a85ec808ef0cc8f00cfefb33625bee2e" category="list-text">確認MariaDB伺服器已啟動：</block>
-  <block id="fe62eeb322eff90b81676630826cee46" category="list-text">您必須使用安裝OpenJDK<block ref="366f2699f7c6384b966350ad31d76b9d" prefix=" " category="inline-code"></block> 命令。對於執行Tiebreaker 1.4及更早版本的系統、請執行JRE 8。對於執行tiebreaker 1.5及更新版本的系統、請執行OpenJDK 17、18或19。範例中的輸出顯示jre 1.8.0。（JRE 8）。</block>
   <block id="b11583eaa66ec31ee30afd4772390654" category="paragraph"><block ref="b11583eaa66ec31ee30afd4772390654" category="inline-link-rx"></block></block>
   <block id="afe5c13e8c0820ecf86c92cb3af131ee" category="list-text">驗證RPM檔案。</block>
   <block id="65efc23e428017c909aa7ce5f2ab429e" category="list-text">下載並匯入RPM金鑰檔：</block>
@@ -12199,7 +12155,6 @@
   <block id="e5dc6ecd3ca37b58ada5f81277474d69" category="admonition">您必須在成功驗證簽名之後、才能繼續安裝。</block>
   <block id="1181eacfe8bc53d389900389ceb7d577" category="list-text">[[install-tiebreaker）]安裝或升級Tiebreaker軟體：</block>
   <block id="fe5c4e6d23d7df5197bb3306f0890eba" category="admonition">從Tiebreaker 1.4版升級時、您只能升級至Tiebreaker 1.5版。不支援從舊版升級至Tiebreaker 1.5。</block>
-  <block id="f02f0088b75e56893084f3c6d0e11382" category="paragraph">根據您要執行新安裝或升級現有安裝、從下列選項中選取正確的程序。</block>
   <block id="53a3299075fc91e0efbd249fca6a3b62" category="open-title">執行新安裝</block>
   <block id="d0797ac7be86e76f779b0cdc4f75e306" category="list-text">確認已安裝受支援版本的OpenJDK、而且是主機上目前的Java版本。</block>
   <block id="bf9295a397fc51fb6414b02eb7dce4e7" category="admonition">若要升級至Tiebreaker 1.5、您必須安裝OpenJDK 17、18或19版。</block>
@@ -12232,7 +12187,6 @@
   <block id="d8e49cb116ea5302a217647ce0506ea6" category="list-text">如果您有四節點組態、則所有節點都必須執行 ONTAP 9.8 或更新版本。</block>
   <block id="b8c86c478bbb73c53f5440966b9fb7d1" category="list-text">請勿超過平台「下限」的任何物件限制。套用兩個平台的較低物件限制。</block>
   <block id="c5c0eb8cddac9e2347091241dce72719" category="list-text">如果目標平台限制低於 MetroCluster 限制、您必須重新設定 MetroCluster 、使其達到或低於目標平台限制、才能新增節點。</block>
-  <block id="b6f6c085e7f98b78ea8fa6d3dd82bb6d" category="list-text">請參閱 <block ref="62911b0739c1772914819ee9e7282ee4" category="inline-link-macro-rx"></block> 適用於平台限制。</block>
   <block id="dc63943b5b97ad0f10f23219d6f93cd4" category="list-text">修改每個叢集的轉換 IP 節點叢集對等端的 IP 位址：</block>
   <block id="6ea6f99dac44cf31a220dfe1e63e9825" category="list-text">使用識別叢集對等端點<block ref="ecb6aba8bb04d2d32562d54c8601a0e1" prefix=" " category="inline-code"></block> 命令：</block>
   <block id="f01a5704368544da9ef6bb24a5a2e763" category="list-text">修改叢集 A 對等 IP 位址：</block>
@@ -12458,7 +12412,6 @@
   <block id="5e14931fa3c39251787af92197392ae0" category="cell"><block ref="b5713f91ed0348a8e6565b40d2be523a" prefix="" category="inline-code"></block></block>
   <block id="7794a024d3134acafeb3b112e36c9a3f" category="cell">分割區 3 ：</block>
   <block id="6129d8bcf6f4ed452d528f954ce79ee6" category="admonition">從 ONTAP 9.5 開始、必須使用啟用磁碟的自動指派功能<block ref="9518ee5351ea31dd67cceada18bfcfd6" prefix=" " category="inline-code"></block> 命令。</block>
-  <block id="00427bfa7d8d8bd516409a3466e96821" category="paragraph">您必須將 ha-config 狀態設為<block ref="32b858596eeb9351eca27c2906a21da4" prefix=" " category="inline-code"></block> 在自動資源配置之前、請確定已選取正確的分割區大小、以允許適當的根磁碟區大小。如需詳細資訊、請參閱 <block ref="ee9beb37ef6441cda28497e9b5b08a94" category="inline-link-macro-rx"></block>。</block>
   <block id="5338d1a8478f350f9f873b7c89a98b0f" category="summary">修改 MetroCluster FC 後端交換器或 Atto 橋接器的 IP 位址之後、請更換舊的健全狀況監控 IP 位址。</block>
   <block id="ab82e5baf31743b1a6f1bdd378ba458b" category="doc">修改交換器或 Atto 橋接 IP 位址以進行健全狀況監控</block>
   <block id="e3dbdae2799d2ed863a853d87ba77fd1" category="paragraph">修改 MetroCluster FC 後端交換器和 Atto 橋接器的 IP 位址之後、您必須以新值取代舊的健全狀況監控 IP 位址。</block>
@@ -12549,12 +12502,7 @@
   <block id="9df52fd51f68e1f0a1c54d87fbcf2d9f" category="paragraph">只有當您想要監控兩個叢集、以及它們之間從第三個站台的連線狀態時、才需要Tiebreaker軟體。斷路器軟體位於第三個站台的 Linux 主機上、可讓叢集中的每個合作夥伴在站台間連結中斷時、區別 ISL 故障與站台故障。</block>
   <block id="776aa0db93dc60ccb39a1a2bac58edd0" category="paragraph">tiebreaker 軟體最多可同時監控 15 個 MetroCluster 組態。它支援 MetroCluster IP 、 MetroCluster FC 和 Stretch MetroCluster 組態的組合。</block>
   <block id="2c6d3f6cb9e7e0273e71c2ee07e103ef" category="paragraph">視主機 Linux 作業系統而定、您必須先安裝 MySQL 或 MariaDB 伺服器、才能安裝或升級 tiebreaker 軟體。</block>
-  <block id="8844126d289515e2e309c080e84ee43c" category="paragraph">安裝或升級Tiebreaker軟體之前、您必須先在主機系統上安裝JRE。對於執行Tiebreaker 1.4及更早版本的系統、請執行JRE 8。對於執行tiebreaker 1.5及更新版本的系統、請執行OpenJDK 17、18或19。</block>
-  <block id="b5331b4efb390ddc30f3887a25420519" category="admonition">以下範例中的輸出顯示了 JRE 1.8.0 。（JRE 8）。</block>
-  <block id="154b8d6790ee60fd4d75865b3817482f" category="list-text">檢查可用的 JRE 版本：</block>
   <block id="7865dda488c185a7d613d74e7df3f15e" category="paragraph"><block ref="a99f9b32ea34805f9efcc4f331f10afc" prefix="" category="inline-code"></block></block>
-  <block id="dbdea63ff1558fc908b06e926327423d" category="list-text">針對您要安裝的 tiebreaker 版本安裝適當的 JRE 版本：</block>
-  <block id="27ed5e7119f96428586081a25adfe698" category="paragraph"><block ref="2ca50315d5ef6249cb28806653cc3bfe" prefix="" category="inline-code"></block></block>
   <block id="b90b751e14131dd4f7b6cf9757e8e97a" category="admonition">如果您的網路中有Vault伺服器、您可以設定MetroCluster 使用該Vault安裝的還原斷路器主機。如果您這麼做、就不需要在主機上安裝 Vault 。</block>
   <block id="5ecbe9b96b4eb8694b1debe91d9978db" category="list-text">瀏覽至<block ref="1e80cb7e0fbfc9f5c0509a465ecdf6cf" prefix=" " category="inline-code"></block> 目錄：</block>
   <block id="2cfe406f28049c6dd9fc09b125ac017c" category="list-text">瀏覽至<block ref="887904812217cca9bc2b9adb875daf42" prefix=" " category="inline-code"></block> 目錄：</block>
@@ -12572,7 +12520,6 @@
   <block id="e03f788bbf29419e636a27e1f472e11a" category="list-text">的<block ref="8a496517030fe431ec5836d0c8ae9ba7" prefix=" " category="inline-code"></block> 提示、複製並執行下列命令以建立 Vault 服務檔案。</block>
   <block id="9b064180fbc505f7486a763d137edca1" category="list-text">安裝 MariaDB 伺服器：</block>
   <block id="6b79acfbbc5bbc131d2f2f0095452588" category="admonition">當系統提示您輸入 root 密碼時、請將其保留空白、然後按 Enter 鍵繼續設定安全性和密碼設定。</block>
-  <block id="6f176c8a2e23e14b4e6fbf22deaea7f1" category="section-title">啟用 MariaDB 伺服器的自動啟動設定</block>
   <block id="b0d6d2175ecec830760ddc378a14c197" category="paragraph">您應該確認 MariaDB 伺服器的自動啟動功能已開啟。如果您未啟用自動啟動功能、MetroCluster 且駐留的系統必須重新開機、則tiebreaker軟體會繼續執行、但無法重新啟動MariaDB服務、也無法進行組態變更。</block>
   <block id="457e8f6231f529b8a11028ebae92d27b" category="doc">保護 tiebreaker 主機和資料庫的安裝安全</block>
   <block id="e97506311a4625245b4c7a4b57176ce3" category="section-title">使用者管理建議</block>
@@ -12585,8 +12532,6 @@
   <block id="8fdb4169cdca0d0e1f02d4b06965140f" category="inline-link-macro">瞭解 MySQL Enterprise Transparent Data Encryption （ TDE ）</block>
   <block id="8d9f6f71afbbb7fa07ef3e65a4faa015" category="paragraph"><block ref="8d9f6f71afbbb7fa07ef3e65a4faa015" category="inline-link-macro-rx"></block></block>
   <block id="287230691bdd80a939d056f48b82a01a" category="admonition">在安裝斷路器軟體之前、必須先啟用加密設定。</block>
-  <block id="74ca9f2037f85f9bee172d20503c7375" category="paragraph"><block ref="74ca9f2037f85f9bee172d20503c7375" category="inline-link-rx"></block></block>
-  <block id="6d4aa18fe97585a33f001d298b030e6f" category="list-text">下載<block ref="24c30cbfcff7f858d1a30b6193122a01" prefix=" " category="inline-code"></block> 金鑰：</block>
   <block id="bf23d230569e17dc83fe9974217175d4" category="list-text">建立非 root 使用者和<block ref="d5a9c5909d563fb968e1c3dc3e45cd64" prefix=" " category="inline-code"></block> 群組：</block>
   <block id="38197215de6dcb136775c6796090b013" category="list-text">建立非 root 使用者並設定密碼。</block>
   <block id="da3c3579b3acc10ce03265f6ec0f662b" category="paragraph">下列命令範例可建立名為的非 root 使用者<block ref="9a0193f01098d3db3f929747ecaa2bda" prefix=" " category="inline-code"></block>：</block>
@@ -12610,8 +12555,6 @@
   <block id="09eecd50480033ff43835a86efed6607" category="list-text">Red Hat Enterprise Linux 7 至 7.9</block>
   <block id="ae1dfcc629f4542382fd6286dbfe5a0d" category="list-text">CentOS 7 至 7.9 64 位元</block>
   <block id="3f4ac8596d411de0ef0ad341cbeb82aa" category="paragraph">使用 CentOS ：</block>
-  <block id="66df7c0e2a0c107715ece74d340b7499" category="paragraph">* MariaDB 10.x （使用使用「 yum install MariaDB-server.x86_64 」安裝的預設版本）
-* JRE 8.</block>
   <block id="024464eb7b3fd909a9746dff88c6b9c9" category="section-title">其他需求</block>
   <block id="4b0a6058e6a6f2eafcc1db1a3a9573fb" category="paragraph">您必須瞭解下列額外需求：</block>
   <block id="64f896c377dcdc9e0d5ae4809d1c3a73" category="list-text">為 tiebreaker 軟體選取網路時間傳輸協定（ NTP ）來源時、您必須使用本機 NTP 來源。tiebreaker 軟體不應使用與 tiebreaker 軟體所監控的 MetroCluster 站台相同的來源。</block>
@@ -12864,7 +12807,6 @@
   <block id="5993b684cff34ce50e30b3a1293c1f25" category="paragraph">* 附註 1* ：在 MetroCluster IP 組態中、完成移轉後、您可以手動將未鏡射的集合體上線。</block>
   <block id="0fc1dc5210ab6635b5582671b5100aaf" category="paragraph">深入瞭解 <block ref="26007d4b0afff1c47eeefe43a1492ee9" category="inline-xref-macro-rx"></block>。</block>
   <block id="edcdea907176b4b6176bfac47c1c23cc" category="doc">安裝斷路器 1.6</block>
-  <block id="51e78330040131fe6b93cb04e0fa15ec" category="paragraph">執行新的安裝或升級 tiebreaker 軟體。</block>
   <block id="9a9884d3e2c33b612fd52c46591cdf8b" category="list-text">您的儲存系統必須執行 ONTAP 9.12.1 或更新版本。</block>
   <block id="f616ec898f7359b274487a4c46b54cfc" category="list-text">您可以將 MetroCluster tiebreaker 安裝為非 root 使用者、並擁有足夠的管理權限來執行 tiebreaker 安裝、建立表格和使用者、以及設定使用者密碼。</block>
   <block id="e19f14d0b2d10c8920d70cbad23314da" category="list-text">下載 MetroCluster Tiebreaker 1.6 軟體。</block>
@@ -12900,10 +12842,6 @@
   <block id="686cbe9ae98dac9e3c34fe747bedda27" category="doc">選擇您的安裝程序</block>
   <block id="de537937e28d6ff9bfed73c24f238620" category="paragraph">斷路器 1.6.</block>
   <block id="3d0eb4e198ae6fd77a45e8e5eeab8df8" category="paragraph"><block ref="3d0eb4e198ae6fd77a45e8e5eeab8df8" category="inline-link-macro-rx"></block></block>
-  <block id="fc8e9fcd20abea214d32b4b417fe9ee7" category="paragraph">斷路器 1.5 或 1.4</block>
-  <block id="2ffd1c81489309e0073aecd5609369ad" category="inline-link-macro">安裝斷路器 1.5 或 1.4</block>
-  <block id="133f62a92e5c4fe1c8e0583979dbcf43" category="paragraph"><block ref="133f62a92e5c4fe1c8e0583979dbcf43" category="inline-link-macro-rx"></block></block>
-  <block id="9fc6565c0dbc4f2911a9e92430c80179" category="list-text">下載 MetroCluster Tiebreaker 軟體。此範例使用1.5版。</block>
   <block id="92c6c9c27fa6ff626915d050a03cd801" category="doc">升級正在執行 tiebreaker 監視器的主機</block>
   <block id="bb6cdee210874ecf03d44e914a8ca0e2" category="paragraph">您可能需要升級正在執行 tiebreaker 監視器的主機。</block>
   <block id="5d7ada76e0c335aff8880d70d7058de7" category="list-text">解除安裝 tiebreaker 軟體：</block>
@@ -12919,7 +12857,6 @@
   <block id="9d0101bb262cf2b07ff8dcfa1f6cf004" category="list-text">您需要管理員密碼、才能存取 HTTP 、 FTP 、 SFTP 或 Trivial File Transfer Protocol （ TFTP ）伺服器。</block>
   <block id="c422062a1c7b3d9ed9b2282378699dc7" category="paragraph"><block ref="c422062a1c7b3d9ed9b2282378699dc7" category="inline-link-macro-rx"></block></block>
   <block id="f54824b249675e35c90a450877126d13" category="inline-link-macro">手動設定 Brocade FC 交換器</block>
-  <block id="da09acdb1d2e578a9e771c592cf62afa" category="paragraph"><block ref="da09acdb1d2e578a9e771c592cf62afa" category="inline-link-macro-rx"></block></block>
   <block id="94d0fc55d9356d3d18534836cae75c1d" category="doc">FC 交換器組態總覽</block>
   <block id="67af9bc4271944d43da3bdca5451bf73" category="paragraph">您可以使用 RCF 檔案來設定 Cisco 和 Brocade FC 交換器、或視需要手動設定交換器。</block>
   <block id="1399637937931de009069d1a13a152fb" category="paragraph">* 附註 1 ： * 此組合需要 ONTAP 9.13.1 或更新版本。</block>
@@ -13061,12 +12998,7 @@
   <block id="b07b13f7f6740ff05e2edecf69453d1e" category="paragraph">如需詳細資訊、請參閱 <block ref="54dac02f94a6488bb50eb2223b2531dc" category="inline-link-macro-rx"></block>。</block>
   <block id="6c788f4f91230d4481264ef0fc97d4b2" category="inline-link-macro">瞭解 ONTAP Mediator 如何支援 MetroCluster IP 組態中的自動非計畫性切換</block>
   <block id="83401bd8eb751fc79a9ff9e2e69be029" category="paragraph"><block ref="ff41f8886897126f1b4109a0b09cd291" category="inline-link-macro-rx"></block>。</block>
-  <block id="8ee0349da94a79740c2458822156c3f3" category="paragraph">ONTAP 9.13.1 及更早版本</block>
-  <block id="58ff5f456710e2c10351958a374f1bae" category="paragraph">更新版本ONTAP</block>
-  <block id="0b0ec9f1cc28b3c19dc6c36dcd5af7cc" category="paragraph">1.3.</block>
-  <block id="7477ed6488d6dd27883a39484d4cd5f8" category="paragraph">ONTAP 9.10.1 及更早版本</block>
   <block id="09e34111ef8649a5302b1889e0c7d303" category="list-text">JRE 8.</block>
-  <block id="d434765df1b814e459b22676bed43318" category="paragraph">1.21Px</block>
   <block id="b3c0f57dcdb05faa9fbc38832a492a4e" category="admonition">套用組態時會出現一些警告訊息。通常不需要錯誤訊息。不過、如果您使用 SSH 登入、可能會收到下列錯誤：<block ref="f6ffe33fb36eb714adf6f81147c665f6" prefix=" " category="inline-code"></block></block>
   <block id="c15b62e6a5ff15a0315735efe0205145" category="doc">在 MetroCluster IP 組態中修改位址、網路遮罩和閘道</block>
   <block id="907d0a00eecf52dcc4562775faad470a" category="paragraph">從ONTAP 版本號《E59.10.1》開始、您可以變更MetroCluster 下列功能：IP位址和遮罩、以及閘道。您可以使用任何參數組合來更新。</block>
@@ -13204,7 +13136,6 @@
   <block id="a510a743559d6f2f71e9d8bf3b5f0f30" category="paragraph">以下範例顯示設定為連接 MetroCluster 介面的交換器連接埠。它是 VLAN 10 中的存取模式連接埠、 MTU 為 9216 、並以原生速度運作。它已啟用對稱（傳送和接收）流程控制（暫停）、並已指派 MetroCluster 入口和出口原則。</block>
   <block id="a791c23bf43a913e9bc2dd3fbb04acf3" category="paragraph">在 25Gbps 連接埠上、您可能需要將轉送錯誤修正（ FEC ）設定設為「關閉」、如下例所示。</block>
   <block id="c1e9e67d43bd92599acf6de487a61c65" category="section-title">整個網路中 ISL 連接埠的組態範例</block>
-  <block id="18b91592ae3775f34f65c991d793f843" category="paragraph">MetroCluster 相容的交換器被視為中間交換器、即使直接連接 MetroCluster 介面也一樣。在 MetroCluster 相容交換器上傳輸 MetroCluster 流量的 ISL 連接埠必須與中繼交換器上的 ISL 連接埠相同設定。請參閱 <block ref="d4732e32817c639c5e57cf150621c360" category="inline-link-macro-rx"></block> 以取得指引和範例。</block>
   <block id="a05b3cdfc5cc23ee6b2d90f33be54635" category="admonition">連接 MetroCluster 介面的交換器連接埠和傳輸 MetroCluster 流量的 ISL 的部分原則對應相同。您可以針對這兩種連接埠使用方式使用相同的原則對應。</block>
   <block id="80d1269e99768d5e883ffa70dd8f6aeb" category="summary">視您的需求而定、您可以使用共享的第 2 層或第 3 層網路來部署 MetroCluster 。</block>
   <block id="1c46b7bbd317f603895892a646ef8b2d" category="doc">在共享第 2 層或第 3 層網路中部署 MetroCluster 時的考量事項</block>
@@ -13462,4 +13393,119 @@
   <block id="5a74832dfdf0bb3064f1c60224b5cf2a" category="list-text">依照下列準則、使用中的程序、將頂部的 FiberBridge 6500N 橋接器與 FiberBridge 7600N 或 7500N 橋接器熱交換 <block ref="0b4bc6296d77be28e33d3b50e0ea0797" category="inline-link-macro-rx"></block>：</block>
   <block id="ea8d3ee31ee0fcdd012de17493f6fb2c" category="list-text">依照下列準則、使用中的程序、將底部的 FiberBridge 6500N 橋接器與 FiberBridge 7600N 或 7500N 橋接器熱交換 <block ref="0b4bc6296d77be28e33d3b50e0ea0797" category="inline-link-macro-rx"></block>：</block>
   <block id="16bdceed077292999c9190c699d66beb" category="list-text">修改所有叢集生命體以重新啟用自動還原：</block>
+  <block id="0b066e9ada255be8bb3edf9bbafc5857" category="paragraph">請勿使用中「在 ONTAP 中設定 MetroCluster 軟體」一節中的程序 <block ref="a1fd01e320574c534b3b8a75cd17d943" category="inline-link-macro-rx"></block>。</block>
+  <block id="bd679c1b50ef29c3a2537bd953a296b8" category="paragraph">支援的平台組態列於 <block ref="43b42c26c42f7c6fe4ef77f9f2ed17ff" category="inline-link-macro-rx"></block>。</block>
+  <block id="98bcbbda2dba004809da92e37f439632" category="list-text">請參閱 <block ref="b733b3de6818a363ac85112743571bca" category="inline-link-macro-rx"></block> 適用於平台限制。</block>
+  <block id="88f5df506ae767ece15283ecefae4507" category="paragraph"><block ref="033cb4615d688419178b9228444df52e" prefix="" category="inline-code"></block></block>
+  <block id="99b40f9970dd46441776d7fc691341bd" category="paragraph">瞭解如何設定 FC 對 SAS 橋接器以進行健全狀況監控。</block>
+  <block id="89ce1e648a3661d4fdaf064dad88bb5a" category="list-text">在 node_B_1 上執行 netboot ：<block ref="83a4445bcfef2bd179eaffaabe3b3c20" prefix=" " category="inline-code"></block><block ref="61d04e9e86f00700e5224db919a90d37" prefix=" " category="inline-code"></block></block>
+  <block id="c9c51a398271de7dac80eb6ae49f5a4a" category="list-text">如果系統提示您繼續此程序、請輸入<block ref="415290769594460e2e485922904f345d" prefix=" " category="inline-code"></block>，當系統提示您輸入套件時，請輸入 URL ：<block ref="e882cf97975cf7cbc82946fdfbfc50d7" prefix=" " category="inline-code"></block></block>
+  <block id="453251ed281496384c5feb5900cc31ba" category="paragraph">如需支援哪些平台升級組合的相關資訊、請參閱MetroCluster 中的《The不支援升級》表  <block ref="9595cfad5a4deb04d4a443245fae3f76" category="inline-link-macro-rx"></block>。</block>
+  <block id="3929d13da5d4b97eff76f8a6ec8c5501" category="list-text">存取 <block ref="a42716fdd3c80ae75cadfb8024b65de0" category="inline-link-macro-rx"></block> 可下載用於執行系統netboot的文件。</block>
+  <block id="94416aa661a92cc8d67b1bd6459ef472" category="list-text">如需支援哪些平台升級組合的相關資訊、請參閱MetroCluster 中的《支援哪些平台升級》表  <block ref="9595cfad5a4deb04d4a443245fae3f76" category="inline-link-macro-rx"></block>。</block>
+  <block id="636a367cc04fb36c02707f67c1a70771" category="paragraph">請參閱 <block ref="ff174d1e305f5f579b29dcdb0a617c23" category="inline-link-macro-rx"></block> 以瞭解其他程序。</block>
+  <block id="332fe4e638c485c04f214b0a13747f6d" category="list-text">您可以使用此程序、使用MetroCluster NSO型的自動切換和切換功能、在四節點的SFC組態中升級控制器。如果您要使用Aggregate重新定位（ARL）執行控制器升級、請參閱 <block ref="0fe967effd4f0eaf84576f897dbfd368" category="inline-link-macro-rx"></block>。建議使用NSO型自動化程序。</block>
+  <block id="75132a926df50e23a26bd72dde0371b7" category="list-text"><block ref="46f4c9c8d582aa241b60c75ea3bcb2c9" category="inline-link-macro-rx"></block> 透過Tiebreaker軟體。</block>
+  <block id="3f37428974fb63458f8dd07028049c05" category="paragraph">請參閱 <block ref="9fe99ab9f2ddf89daf4666d8f9010550" category="inline-link-macro-rx"></block> 以瞭解其他程序。</block>
+  <block id="d1f739b347487947f18d3ad9cfbc668e" category="paragraph">如需平台機型的連接埠使用量、請參閱 <block ref="41f66f34b3a905f864500c9319fdff8f" category="inline-link-macro-rx"></block></block>
+  <block id="0b22fb8d0feec85055f45c8c4a298766" category="list-text">如果系統提示您繼續此程序、請輸入<block ref="415290769594460e2e485922904f345d" prefix=" " category="inline-code"></block>，當系統提示您輸入套件時，請輸入 URL ：</block>
+  <block id="84ea00dba7c6a1cf0426e58385307e4f" category="paragraph"><block ref="5b9047ebb0d87499d679fd69fbda42cf" prefix="" category="inline-code"></block></block>
+  <block id="b57c06e6dad65cb8a7fb01050706349f" category="paragraph">您可以使用 ONTAP 系統管理員、將網頁瀏覽器指向叢集管理 IP 位址（ \https://172.17.12.153). ）</block>
+  <block id="29b27683e4b3c944e67201fc18022943" category="paragraph">使用 QSFP-SFP 介面卡時、無論您是將連接埠設定為中斷或原生速度模式、都取決於交換器機型和韌體。例如、在執行 NX-OS 韌體 9.x 或 1.x 的 Cisco 9336C 交換器上使用 QSFP-SFP 介面卡時、您必須將連接埠設定為原生速度模式。</block>
+  <block id="55caf57bfe7d9bc28b6ffc6c7d49f237" category="admonition">如果您設定 RCF 、請確認您選擇了正確的速度模式、或使用具有適當速度模式的連接埠。</block>
+  <block id="46dd6914bcca3c3b8a2609c6a420dc0c" category="paragraph"><block ref="46dd6914bcca3c3b8a2609c6a420dc0c" category="inline-link-macro-rx"></block></block>
+  <block id="aaf601495cda3687aff1783b9f086561" category="paragraph">MetroCluster 相容的交換器被視為中間交換器、即使直接連接 MetroCluster 介面也一樣。在 MetroCluster 相容交換器上傳輸 MetroCluster 流量的 ISL 連接埠必須與中繼交換器上的 ISL 連接埠相同設定。請參閱 <block ref="a55ec765b3e97100c983e617f9d68e39" category="inline-link-macro-rx"></block> 以取得指引和範例。</block>
+  <block id="7c1481d1c9b970b7d299c0c5dad3d8b5" category="paragraph">您必須將 ha-config 狀態設為<block ref="32b858596eeb9351eca27c2906a21da4" prefix=" " category="inline-code"></block> 在自動資源配置之前、請確定已選取正確的分割區大小、以允許適當的根磁碟區大小。如需詳細資訊、請參閱 <block ref="6b54dfc1103fb8ab70a56160f0fd8161" category="inline-link-macro-rx"></block>。</block>
+  <block id="688da24e96580a94ac368ba20c7993eb" category="paragraph">如果您使用的是內部和外部磁碟機、請先使用 ADP 來初始化 MetroCluster 、但僅使用內部磁碟機。完成安裝或設定工作後、您可以手動連接外部機櫃。</block>
+  <block id="724b35256a117cacc7c70cc2777472fb" category="inline-xref">系統的 ADP 和磁碟指派差異</block>
+  <block id="b97518c4a28d7962f4cab20f62a9403c" category="paragraph">您必須確保內部磁碟櫃具有建議的最低磁碟機數量、如中所述 <block ref="ededfefc169c9cc0e0251fda89f5bc17" category="inline-xref-macro-rx"></block>。</block>
+  <block id="e704d09991934a15e8d23053550c2b89" category="paragraph">對於內部和外部磁碟機、您必須依照中所述、填入部分滿的磁碟櫃 <block ref="ecc5b42a6ea0f9e8652c9de01d6a9fd8" category="inline-xref-macro-rx"></block>。</block>
+  <block id="4566c4fa13f90f4737cd5d791e5fb12e" category="paragraph">下表顯示如何將 16 個磁碟放入 24 個磁碟機內部機櫃的範例。</block>
+  <block id="76fc4cbf8ed1ecf271a1492d3a7004eb" category="cell">24 個磁碟機支架分為四季：</block>
+  <block id="fde574379c71eb09acde49d6562d4638" category="cell">在每季的前四個托架中安裝四個磁碟機 ...</block>
+  <block id="8456de52cfbc9bf31f8ec12ada868660" category="paragraph">第 1 季： 0-5 個 Bay</block>
+  <block id="06be898ea2064ea890d25f80d955e244" category="paragraph">托架 0-3.</block>
+  <block id="6933f32f73e1ecebba5ce7f14d601258" category="paragraph">第 2 季：托架 6-11</block>
+  <block id="19190dbecce756f4c55169a24c17d3ca" category="paragraph">托架 6-9.</block>
+  <block id="5192974bc80c661fde58a493fc941742" category="paragraph">第 3 季： Bay 12-17</block>
+  <block id="db6232695faa98029dec20606cea2f02" category="paragraph">托架 12-15.</block>
+  <block id="abff8504421e7d3697d654877cde8fcb" category="paragraph">第 4 季： Bay 18-23</block>
+  <block id="df01ff151b76cec5843a2eccb978e938" category="paragraph">托架 18-21.</block>
+  <block id="ad20882646761a02dd54414dbeca9ccb" category="paragraph">如果您在每個站台使用兩個外部機櫃、則會使用半機櫃原則來指派磁碟。如果磁碟櫃未完全裝滿、請從磁碟櫃任一端平均安裝磁碟機。</block>
+  <block id="48b5b1437ce3b483bb5ca8daf97655ff" category="summary">在主機 Linux 作業系統上執行新的安裝或升級至 tiebreaker 1.5 、以監控 MetroCluster 組態。</block>
+  <block id="f8d2f649ab74ec933c327952e8bb2928" category="doc">安裝或升級至 tiebreaker 1.5</block>
+  <block id="d0326b8b5ab3d73f0c473a86657f8120" category="list-text">您的儲存系統必須執行支援的 ONTAP 版本。請參閱 <block ref="baa1c8503450ae393332ce081dcd2dcb" category="inline-link-macro-rx"></block> 詳細資料請見下表。</block>
+  <block id="9dcb328e6e745d546e4551bec0b851f5" category="list-text">您必須使用安裝OpenJDK<block ref="366f2699f7c6384b966350ad31d76b9d" prefix=" " category="inline-code"></block> 命令。Tiebreaker 1.5 及更新版本支援 OpenJDK 17 、 18 或 19 。</block>
+  <block id="96894f4b4543e59d1a0f367969a6dde7" category="list-text">下載 MetroCluster tiebreaker 軟體和 MetroCluster 的 tiebreaker 、 RPM_GPG 金鑰。</block>
+  <block id="a5bed4d92c3921863940826187da9e98" category="admonition">MetroCluster_tiebreer_RPM_GPG 金鑰可從您在 NetApp 支援網站 下載 tiebreaker 1.5 軟體套件的同一頁下載。</block>
+  <block id="912c701bea2a07b0f2e994ecbbfe39bb" category="inline-link">MetroCluster Tiebreaker （下載） - NetApp 支援網站</block>
+  <block id="c91ec8afdbbb8c5302115832907272a9" category="paragraph"><block ref="c91ec8afdbbb8c5302115832907272a9" category="inline-link-rx"></block></block>
+  <block id="a02a46a02dea350b2d7c3fe6c8195784" category="paragraph">根據您是執行新安裝還是升級現有安裝、選擇正確的程序。</block>
+  <block id="42a6071f1b74c23c6f01ed4ee83e84a9" category="summary">在主機 Linux 作業系統上執行新的安裝或升級至 tiebreaker 1.4 、以監控 MetroCluster 組態。</block>
+  <block id="fb40d4c34084890fcaf25f365a76ac12" category="doc">安裝或升級至 tiebreaker 1.4</block>
+  <block id="ac6b423e5ba71dfd63c97271456a6104" category="list-text">您必須使用安裝OpenJDK<block ref="366f2699f7c6384b966350ad31d76b9d" prefix=" " category="inline-code"></block> 命令。Tiebreaker 1.4 及更早版本支援 JDK 1.8.0 （ JRE 8 ）。</block>
+  <block id="4eb7fa04b05f83fec825fec60b3d37e2" category="list-text">下載 MetroCluster Tiebreaker 軟體。</block>
+  <block id="17506b44d3cfa6cc5f2f179b8cbb9798" category="list-text">執行以下項目來安裝 tiebreaker 軟體：</block>
+  <block id="6007545ec605289d47e5a070851a6ae7" category="paragraph"><block ref="805b9922cac1dbcb1d1759c3f16ff8c5" prefix="" category="inline-code"></block></block>
+  <block id="9cd57fceaa8db70100b7208b29c2c079" category="open-title">升級現有安裝</block>
+  <block id="3dca3d249f3a84b4f5a55036870e7d54" category="summary">Tiebreaker 1.5 軟體可為叢集式儲存環境提供監控功能。當節點連線問題和站台災難發生時、也會傳送SNMP通知。</block>
+  <block id="610f72644dc6ccb3bdc02753fac9e40d" category="doc">安裝 MetroCluster tiebreaker 1.5 相依性</block>
+  <block id="6a3551c9dec48fcefff0bc798b26377a" category="inline-xref">安裝 JDK</block>
+  <block id="54adfea66c44ae53db53d861cde177b3" category="list-text"><block ref="a9e34c1f0eacc89d99d89ac6db5755f3" category="inline-xref-macro-rx"></block></block>
+  <block id="64fadfb89c70aba2596b6e898f7407c0" category="list-text"><block ref="13bc549387f74fffb9fb85518815a4cf" category="inline-xref-macro-rx"></block></block>
+  <block id="6b2a10b36edc245209f8197126ad892c" category="inline-xref">在 Red Hat Enterprise Linux 7 或 CentOS 7 上安裝 MySQL Server 5.5.30 或更新版本和 5.6.x 版本</block>
+  <block id="b05c84f48a507c37a035eb90f1b6c263" category="paragraph"><block ref="74ab92a4a42a2343cbaea196d9ceb7fd" category="inline-xref-macro-rx"></block></block>
+  <block id="130d22d651a0bfe0d3bffb9a78c07b35" category="inline-xref">在 Red Hat Enterprise Linux 8 上安裝 MariaDB 伺服器</block>
+  <block id="88f1b3322487dc544fa1497636c53c3f" category="paragraph"><block ref="38f5e34ed2b52836f2486dd4da76671d" category="inline-xref-macro-rx"></block></block>
+  <block id="8631612f56a0f0da48ccb69a5eea4dea" category="paragraph">在安裝或升級 tiebreaker 軟體之前、您必須在主機系統上安裝 JDK 。Tiebreaker 1.5 及更新版本支援 OpenJDK 17 、 18 或 19 。</block>
+  <block id="5b98f0672601b4637ec30dd3a1bf5971" category="list-text">檢查可用的 JDK 版本：</block>
+  <block id="4611184615658a82d926bbdd22cead09" category="list-text">安裝 JDK 17 、 18 或 19 。</block>
+  <block id="788e6d81c6159e5597665dfbda001f3b" category="paragraph">下列命令會安裝 JDK 17 ：</block>
+  <block id="1a2fcbb7ed3658f96924e4c40d25238f" category="paragraph"><block ref="65a8cc094f7c9bd3e6406d7b03afe579" prefix="" category="inline-code"></block></block>
+  <block id="fac4447e0ea2e4cd1a2d9e2fefeab694" category="list-text">驗證安裝：</block>
+  <block id="d349bda8382351b9fe435583c56eca3b" category="paragraph"><block ref="5d7f69486483ec9123c78fb391309819" prefix="" category="inline-code"></block></block>
+  <block id="710a5de3b1bfbb26f90cb380ca34843a" category="paragraph">成功安裝時會顯示下列輸出：</block>
+  <block id="bce356412a95327bfdb1db19b9151953" category="inline-xref">安裝 MariaDB 伺服器</block>
+  <block id="3f808a8a84dbaf66d2b1d4ec08d41caa" category="paragraph">安裝或升級Tiebreaker軟體之前、您必須先在主機系統上安裝MySQL Server 5.5.30或更新版本及5.6.x版本。對於 Red Hat Enterprise Linux 8 、 <block ref="cce1670a787ab2bd35f1046a8f26c68f" category="inline-xref-macro-rx"></block>。</block>
+  <block id="532310374e7793ddf9ac8cbed30210c8" category="section-title">啟用 MySQL 自動啟動設定</block>
+  <block id="6db66be6094d7b7ca07b0b3051e97f54" category="inline-xref">安裝 MySQL Server</block>
+  <block id="6b1d36d5ec1c94e1eec93df2718edee7" category="paragraph">您必須先在主機系統上安裝MariaDB伺服器、才能安裝或升級tiebreaker軟體。對於 Red Hat Enterprise Linux 7 或 CentOS 7 、 <block ref="d6e81ea95129f7cd9f785433c5e134df" category="inline-xref-macro-rx"></block>。</block>
+  <block id="fa386ba9d241750f0dd45fd600a79941" category="section-title">啟用 MariaDB 伺服器的自動啟動設定</block>
+  <block id="adbb94f0ccbbe34d5296dc1c35a84726" category="summary">Tiebreaker 1.4 軟體可為叢集式儲存環境提供監控功能。當節點連線問題和站台災難發生時、也會傳送SNMP通知。</block>
+  <block id="1e9941e8f30babc5f8d431af23393f7b" category="doc">安裝 MetroCluster Tiebreaker 1.4 相依性</block>
+  <block id="b42aef8e8328a4c8ad2b06e4b83e7881" category="paragraph">安裝或升級 tiebreaker 軟體之前、請先安裝 MySQL 或 MariaDB 伺服器、視您的主機 Linux 作業系統而定。</block>
+  <block id="d657089a50577a75e88660c58f4d436a" category="list-text"><block ref="096ececee6bc95e521d7c85980720207" category="inline-xref-macro-rx"></block>。</block>
+  <block id="76cb36f0dbb8e7d76743141613cda859" category="paragraph">在安裝或升級 tiebreaker 軟體之前、您必須在主機系統上安裝 JDK 。Tiebreaker 1.4 及更早版本支援 JDK 1.8.0 。（JRE 8）。</block>
+  <block id="10636ba52a9f69969f1baeff2e8772ce" category="list-text">以「 root 」使用者身分登入。</block>
+  <block id="45ce42c9ad0e5706beb13690d8d1c528" category="list-text">安裝 JDK 1.8.0 ：</block>
+  <block id="a5bdeb77664eccd64392e790b5c620a8" category="paragraph"><block ref="350a7ebb397b46f12bb07dab4792547e" prefix="" category="inline-code"></block></block>
+  <block id="433d65bdb306eb4928e6ae75fb7922c9" category="inline-xref">安裝 MariaDB 伺服器</block>
+  <block id="fccf81e975f1d68aff179d395513ad66" category="paragraph">安裝或升級Tiebreaker軟體之前、您必須先在主機系統上安裝MySQL Server 5.5.30或更新版本及5.6.x版本。  對於 Red Hat Enterprise Linux 8 、 <block ref="5d0470d05292387d11d62aa5fd312b3d" category="inline-xref-macro-rx"></block>。</block>
+  <block id="34ddff2815f871a4f2a5c1843943d259" category="list-text">以root使用者身分登入。</block>
+  <block id="7a695adbd64da12b14f0e04ae1c198fb" category="paragraph">當 MySQL 登入如預期般運作時、輸出會在結束<block ref="ed49d1cb9ebac71351e6bbd4d88ef634" prefix=" " category="inline-code"></block> 提示。</block>
+  <block id="aa8305dc53f7db3e2d15d3f5d4b0fd91" category="paragraph">您必須先在主機系統上安裝MariaDB伺服器、才能安裝或升級tiebreaker軟體。  對於 Red Hat Enterprise Linux 7 或 CentOS 7 、 <block ref="d6e81ea95129f7cd9f785433c5e134df" category="inline-xref-macro-rx"></block>。</block>
+  <block id="7ccb3226f303f524c6a3b00fc264270f" category="list-text">以登入<block ref="63a9f0ea7bb98050796b649e85481845" prefix=" " category="inline-code"></block> 使用者：</block>
+  <block id="9cd256a82b5d6fd3425bcd9646641d4b" category="paragraph">ONTAP 9.8 至 ONTAP 9.14.1</block>
+  <block id="a6f5218693cab1cdc7285498cbdf0ce8" category="paragraph">ONTAP 9.1 至 ONTAP 9.9.1</block>
+  <block id="80dd536fbb98ad1689bfbebc73338f0e" category="list-text">Tiebreaker軟體安裝在第三個站台、可讓軟體區分交換器間連結（ISL）故障（站台間連結中斷時）與站台故障。您的主機系統必須符合特定需求、才能安裝或升級 tiebreaker 軟體以監控 MetroCluster 組態。</block>
+  <block id="b4c29468243fd329e285a7eb342829dc" category="paragraph">斷路器 1.5</block>
+  <block id="4f5b54f9c941cadc92b42e83ba2d625f" category="inline-link-macro">安裝斷路器 1.5</block>
+  <block id="53bf421364084851b0e9802944474422" category="paragraph"><block ref="53bf421364084851b0e9802944474422" category="inline-link-macro-rx"></block></block>
+  <block id="7dfc6eda1cb7a514db22096a11fb5874" category="paragraph">斷路器 1.4</block>
+  <block id="06aef4d1d6158c53520054dd04cc3a52" category="inline-link-macro">安裝斷路器 1.4</block>
+  <block id="bd7d740c7178aa2df12a81e3a095cf7a" category="paragraph"><block ref="bd7d740c7178aa2df12a81e3a095cf7a" category="inline-link-macro-rx"></block></block>
+  <block id="afd755a1fe90c01febccbd2e397b9780" category="summary">在主機 Linux 作業系統上執行新的安裝或升級至 tiebreaker 1.6 、以監控 MetroCluster 組態。</block>
+  <block id="92cf4933e9c8bfb818863f455e477af5" category="paragraph"><block ref="92cf4933e9c8bfb818863f455e477af5" category="inline-link-macro-rx"></block></block>
+  <block id="00395061ba5a721f2a906e4ac75f9fde" category="inline-link-macro">設定FabricPool 物件存放區、以MetroCluster 供以物件區為區的組態進行擴充</block>
+  <block id="e0e300856a5e4a2a419fdf0d5fb20e62" category="admonition">在設定 Aggregate 之前、您必須依照中所述設定物件存放區 <block ref="bf6f1feb5dfb0381998cf99478ab26ea" category="inline-link-macro-rx"></block>。</block>
+  <block id="39998026607048d04a8bc09fac18fa8f" category="paragraph">從ONTAP 功能性的9.11.1開始、 <block ref="7a1a77fa3bd3a175233cd6cdfe493836" category="inline-link-macro-rx"></block> 支援的功能包括MetroCluster ：</block>
+  <block id="664f9c52f93e2fbf6e801148b0f573ad" category="inline-link-macro">HA配對管理</block>
+  <block id="fc0b22bb38f11521c03de86c56643d5d" category="paragraph"><block ref="fc0b22bb38f11521c03de86c56643d5d" category="inline-link-macro-rx"></block></block>
+  <block id="0f87578f11104e3d1178b1b6a73f5684" category="paragraph"><block ref="0f87578f11104e3d1178b1b6a73f5684" category="inline-link-macro-rx"></block></block>
+  <block id="3973235e869d719328cf4b37e59562e5" category="paragraph"><block ref="3973235e869d719328cf4b37e59562e5" category="inline-link-macro-rx"></block></block>
+  <block id="c5d34bb560e327e8975a1da2f0e0c0fe" category="cell"><block ref="c5d34bb560e327e8975a1da2f0e0c0fe" category="inline-link-macro-rx"></block></block>
+  <block id="25f1ab87c0a26d25aae4f64158a13958" category="cell"><block ref="25f1ab87c0a26d25aae4f64158a13958" category="inline-link-macro-rx"></block></block>
+  <block id="43b42c26c42f7c6fe4ef77f9f2ed17ff" category="paragraph"><block ref="43b42c26c42f7c6fe4ef77f9f2ed17ff" category="inline-link-macro-rx"></block></block>
+  <block id="2a35142a0e6eda28748cdf00899dc98b" category="paragraph">。 <block ref="0c7bf211a7cb9712977652add2e31f3e" category="inline-link-macro-rx"></block> 說明新功能、升級附註、修正問題、已知限制及已知問題。</block>
+  <block id="0f25553cdf8eb8de83ad715008d4617b" category="paragraph">執行必要的工作、以完成從多控制器或儲存設備故障中恢復的工作。</block>
 </blocks>

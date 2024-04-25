@@ -233,4 +233,4 @@ summary: 各種MetroCluster 版本的不二組態在必要的元件上有主要�
 
 部分All SAN Array（ASA）在MetroCluster 各種組態中均受到支援。在本文件中、有關不適用的功能的資訊適用於相應的功能表系統。MetroCluster AFF ASA例如AFF 、所有的纜線和其他有關的資訊、也適用於ASA AFF 該系統。
 
-支援的平台組態列於 https://hwu.netapp.com["NetApp Hardware Universe"]。
+支援的平台組態列於 link:https://hwu.netapp.com["NetApp Hardware Universe"^]。

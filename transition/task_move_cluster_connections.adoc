@@ -17,7 +17,6 @@ summary: 在檢閱所有要求並準備進行轉換之後、您將執行轉換�
 
 == 將叢集連線移到MetroCluster 不含資訊的FC節點上
 
-[role="lead"]
 您必須將MetroCluster 叢集連線移至不中斷的FC節點、再移至IP交換器。這些步驟取決於您是使用現有的IP交換器、還是使用新的IP交換器。
 
 您必須在這兩MetroCluster 個站台上執行此工作。

@@ -274,7 +274,7 @@ fec off
 
 == 整個網路中 ISL 連接埠的組態範例
 
-MetroCluster 相容的交換器被視為中間交換器、即使直接連接 MetroCluster 介面也一樣。在 MetroCluster 相容交換器上傳輸 MetroCluster 流量的 ISL 連接埠必須與中繼交換器上的 ISL 連接埠相同設定。請參閱 link:concept-considerations-layer-2-layer-3.html#required-settings-on-intermediate-switches["中繼交換器上的必要設定"] 以取得指引和範例。
+MetroCluster 相容的交換器被視為中間交換器、即使直接連接 MetroCluster 介面也一樣。在 MetroCluster 相容交換器上傳輸 MetroCluster 流量的 ISL 連接埠必須與中繼交換器上的 ISL 連接埠相同設定。請參閱 link:concept-considerations-layer-2-layer-3.html#required-settings-for-intermediate-switches["中繼交換器上的必要設定"] 以取得指引和範例。
 
 
 NOTE: 連接 MetroCluster 介面的交換器連接埠和傳輸 MetroCluster 流量的 ISL 的部分原則對應相同。您可以針對這兩種連接埠使用方式使用相同的原則對應。

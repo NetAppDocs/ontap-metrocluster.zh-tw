@@ -1,0 +1,113 @@
+---
+permalink: tiebreaker/install-tiebreaker-package-14.html 
+sidebar: sidebar 
+keywords: install, tiebreaker, software, monitor, capabilities, capability, cluster, storage, environment, snmp, notification, event, node, connectivity, issue, site, disaster, system, install, upgrade, upgrading, software, dependencies, dependency, package, ntp, requirements, requirements for tiebreaker, tiebreaker requirements, mysql, mariadb, autostart, database 
+summary: 在主機 Linux 作業系統上執行新的安裝或升級至 tiebreaker 1.4 、以監控 MetroCluster 組態。 
+---
+= 安裝或升級至 tiebreaker 1.4
+:allow-uri-read: 
+
+
+[role="lead"]
+在主機 Linux 作業系統上執行新的安裝或升級至 tiebreaker 1.4 、以監控 MetroCluster 組態。
+
+.關於這項工作
+* 您的儲存系統必須執行支援的 ONTAP 版本。請參閱 link:install_prepare.html#software-requirements["軟體需求"] 詳細資料請見下表。
+* 您必須使用安裝OpenJDK `yum install java-x.x.x-openjdk` 命令。Tiebreaker 1.4 及更早版本支援 JDK 1.8.0 （ JRE 8 ）。
+
+
+.步驟
+. 下載 MetroCluster Tiebreaker 軟體。
++
+https://mysupport.netapp.com/site/products/all/details/metrocluster-tiebreaker/downloads-tab["MetroCluster Tiebreaker （下載） - NetApp 支援網站"^]
+
+. 以root使用者身分登入主機。
+. [[install-tiebreaker）]安裝或升級Tiebreaker軟體：
++
+根據您是執行新安裝還是升級現有安裝、選擇正確的程序。
+
++
+[role="tabbed-block"]
+====
+.執行新安裝
+--
+.. 執行以下項目來安裝 tiebreaker 軟體：
++
+`rpm -ivh NetApp-MetroCluster-Tiebreaker-Software-1.4-1.x86_64.rpm`
+
++
+系統會顯示下列輸出、以利成功安裝：
+
++
+[listing]
+----
+
+Verifying...                          ################################# [100%]
+Preparing...                          ################################# [100%]
+Updating / installing...
+   1:NetApp-MetroCluster-Tiebreaker-So################################# [100%]
+Post installation start Fri Apr  5 02:28:09 EDT 2024
+Enter MetroCluster Tiebreaker user password:
+
+Please enter mysql root password when prompted
+Enter password:
+Synchronizing state of netapp-metrocluster-tiebreaker-software.service with SysV service script with /usr/lib/systemd/systemd-sysv-install.
+Executing: /usr/lib/systemd/systemd-sysv-install enable netapp-metrocluster-tiebreaker-software
+Created symlink /etc/systemd/system/multi-user.target.wants/netapp-metrocluster-tiebreaker-software.service → /etc/systemd/system/netapp-metrocluster-tiebreaker-software.service.
+Attempting to start NetApp MetroCluster Tiebreaker software services
+Started NetApp MetroCluster Tiebreaker software services
+Enabled autostart of NetApp MetroCluster Tiebreaker software daemon during boot
+Created symbolic link for NetApp MetroCluster Tiebreaker software CLI
+Post installation end Fri Apr  5 02:28:22 EDT 2024
+Successfully installed NetApp MetroCluster Tiebreaker software version 1.4.
+----
+
+
+--
+.升級現有安裝
+--
+.. 升級Tiebreaker軟體。
++
+[listing]
+----
+[root@mcctb ~]# rpm -Uvh NetApp-MetroCluster-Tiebreaker-Software-1.4-1.x86_64.rpm
+----
++
+系統會顯示下列輸出以成功升級：
+
++
+[listing]
+----
+
+Verifying...                          ################################# [100%]
+Preparing...                          ################################# [100%]
+Upgrading NetApp MetroCluster Tiebreaker software....
+Stopping NetApp MetroCluster Tiebreaker software services before upgrade.
+Updating / installing...
+   1:NetApp-MetroCluster-Tiebreaker-So################################# [ 50%]
+Post installation start Mon Apr  8 06:29:51 EDT 2024
+Synchronizing state of netapp-metrocluster-tiebreaker-software.service with SysV service script with /usr/lib/systemd/systemd-sysv-install.
+Executing: /usr/lib/systemd/systemd-sysv-install enable netapp-metrocluster-tiebreaker-software
+Attempting to start NetApp MetroCluster Tiebreaker software services
+Started NetApp MetroCluster Tiebreaker software services
+Enabled autostart of NetApp MetroCluster Tiebreaker software daemon during boot
+Created symbolic link for NetApp MetroCluster Tiebreaker software CLI
+Post upgrade end Mon Apr  8 06:29:51 EDT 2024
+Successfully upgraded NetApp MetroCluster Tiebreaker software to version 1.4.
+Cleaning up / removing...
+   2:NetApp-MetroCluster-Tiebreaker-So################################# [100%]
+
+----
+
+
+--
+====
++
+
+NOTE: 如果您輸入錯誤的MySQL根密碼、則Tiebreaker軟體會指出已成功安裝、但會顯示「拒絕存取」訊息。若要解決此問題、您必須使用「rpm -e」命令解除安裝Tiebreaker軟體、然後使用正確的MySQL root密碼重新安裝軟體。
+
+. 開啟從斷路器主機到每個節點管理生命期和叢集管理生命期的SSH連線、以檢查斷路器與MetroCluster 該軟件的連線。
+
+
+.相關資訊
+https://mysupport.netapp.com/site/["NetApp支援"^]

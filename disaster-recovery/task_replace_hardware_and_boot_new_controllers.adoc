@@ -10,11 +10,12 @@ summary: 如果硬體元件必須更換、您必須使用各自的硬體更換�
 :imagesdir: ../media/
 
 
+[role="lead"]
+如果硬體元件必須更換、您必須使用各自的硬體更換與安裝指南來更換。
+
 
 
 == 更換災難站台的硬體
-
-如果硬體元件必須更換、您必須使用各自的硬體更換與安裝指南來更換。
 
 .開始之前
 儲存控制器必須關閉電源或保持暫停狀態（顯示載入器提示）。
@@ -419,7 +420,7 @@ https://mysupport.netapp.com/site/global/dashboard["NetApp支援"^]
 
 
 .步驟
-. 存取 https://mysupport.netapp.com/site/["NetApp 支援網站"^] 可下載用於執行系統netboot的文件。
+. 存取 link:https://mysupport.netapp.com/site/["NetApp 支援網站"^] 可下載用於執行系統netboot的文件。
 . 從ONTAP NetApp支援網站的軟體下載區段下載適當的支援軟體、並將ONTAP-VERSION _image.tgz檔案儲存在可從網路存取的目錄中。
 . 移至網路存取目錄、確認您所需的檔案可用。
 +

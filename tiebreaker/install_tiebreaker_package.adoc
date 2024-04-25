@@ -2,29 +2,29 @@
 permalink: tiebreaker/install_tiebreaker_package.html 
 sidebar: sidebar 
 keywords: install, tiebreaker, software, monitor, capabilities, capability, cluster, storage, environment, snmp, notification, event, node, connectivity, issue, site, disaster, system, install, upgrade, upgrading, software, dependencies, dependency, package, ntp, requirements, requirements for tiebreaker, tiebreaker requirements, mysql, mariadb, autostart, database 
-summary: Tiebreaker軟體提供叢集式儲存環境的監控功能。當節點連線問題和站台災難發生時、也會傳送SNMP通知。 
+summary: 在主機 Linux 作業系統上執行新的安裝或升級至 tiebreaker 1.5 、以監控 MetroCluster 組態。 
 ---
-= 安裝或升級軟體套件
+= 安裝或升級至 tiebreaker 1.5
 :allow-uri-read: 
 
 
 [role="lead"]
-您必須在MetroCluster 本機電腦上安裝或升級ESITirepreaker軟體、才能監控MetroCluster 各種組態。
+在主機 Linux 作業系統上執行新的安裝或升級至 tiebreaker 1.5 、以監控 MetroCluster 組態。
 
 .關於這項工作
-* 您的儲存系統必須執行ONTAP 不含更新版本的資訊。
-* 您必須使用安裝OpenJDK `yum install java-x.x.x-openjdk` 命令。對於執行Tiebreaker 1.4及更早版本的系統、請執行JRE 8。對於執行tiebreaker 1.5及更新版本的系統、請執行OpenJDK 17、18或19。範例中的輸出顯示jre 1.8.0。（JRE 8）。
+* 您的儲存系統必須執行支援的 ONTAP 版本。請參閱 link:install_prepare.html#software-requirements["軟體需求"] 詳細資料請見下表。
+* 您必須使用安裝OpenJDK `yum install java-x.x.x-openjdk` 命令。Tiebreaker 1.5 及更新版本支援 OpenJDK 17 、 18 或 19 。
 * 您可以將 MetroCluster tiebreaker 安裝為非 root 使用者、並擁有足夠的管理權限來執行 tiebreaker 安裝、建立表格和使用者、以及設定使用者密碼。
 
 
 .步驟
-. 下載 MetroCluster Tiebreaker 軟體。此範例使用1.5版。
+. 下載 MetroCluster tiebreaker 軟體和 MetroCluster 的 tiebreaker 、 RPM_GPG 金鑰。
 +
-https://mysupport.netapp.com/site/["NetApp 支援網站"^]
 
-. 下載 `MetroCluster_Tiebreaker_RPM_GPG` 金鑰：
+NOTE: MetroCluster_tiebreer_RPM_GPG 金鑰可從您在 NetApp 支援網站 下載 tiebreaker 1.5 軟體套件的同一頁下載。
+
 +
-https://mysupport.netapp.com/site/["NetApp 支援網站"^]
+https://mysupport.netapp.com/site/products/all/details/metrocluster-tiebreaker/downloads-tab["MetroCluster Tiebreaker （下載） - NetApp 支援網站"^]
 
 . 以root使用者身分登入主機。
 . 建立非 root 使用者和 `mcctbgrp` 群組：
@@ -97,7 +97,7 @@ NOTE: 您必須在成功驗證簽名之後、才能繼續安裝。
 NOTE: 從Tiebreaker 1.4版升級時、您只能升級至Tiebreaker 1.5版。不支援從舊版升級至Tiebreaker 1.5。
 
 +
-根據您要執行新安裝或升級現有安裝、從下列選項中選取正確的程序。
+根據您是執行新安裝還是升級現有安裝、選擇正確的程序。
 
 +
 [role="tabbed-block"]
@@ -123,7 +123,6 @@ NOTE: 在安裝期間出現提示時、請提供您先前建立並指派給的�
 +
 [listing]
 ----
-
 Verifying...                          ################################# [100%]
 Preparing...                          ################################# [100%]
 Updating / installing...

@@ -71,7 +71,7 @@ https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"]
 link:task_fcsw_cisco_configure_a_cisco_switch_supertask.html["手動設定Cisco FC交換器"]
 
 +
-link:ask_fcsw_brocade_configure_the_brocade_fc_switches_supertask.html["手動設定 Brocade FC 交換器"]
+link:task_fcsw_brocade_configure_the_brocade_fc_switches_supertask.html["手動設定 Brocade FC 交換器"]
 
 
 

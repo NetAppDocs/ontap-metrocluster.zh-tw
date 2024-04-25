@@ -10,6 +10,7 @@ summary: 下表顯示AFF 了在一個32位元組系統中、Brocade交換器的I
 :imagesdir: ../media/
 
 
+[role="lead"]
 下表顯示AFF 了適用於整個過程中的Brocade交換器的ISL連接埠使用情況。
 
 

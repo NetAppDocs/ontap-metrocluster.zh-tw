@@ -28,8 +28,15 @@ link:tb-16-install.html["安裝斷路器 1.6"]
 
 
  a| 
-斷路器 1.5 或 1.4
+斷路器 1.5
  a| 
-link:install_dependencies.html["安裝斷路器 1.5 或 1.4"]
+link:task_configure_ssh_ontapi.html["安裝斷路器 1.5"]
+
+
+
+ a| 
+斷路器 1.4
+ a| 
+link:install-dependencies-14.html["安裝斷路器 1.4"]
 
 |===

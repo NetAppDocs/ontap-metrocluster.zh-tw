@@ -10,6 +10,7 @@ summary: 您必須從MetroCluster 正常運作的節點還原無法運作的iSCS
 :imagesdir: ../media/
 
 
+[role="lead"]
 您必須從MetroCluster 正常運作的節點還原無法運作的iSCSI啟動器連線。
 
 .關於這項工作

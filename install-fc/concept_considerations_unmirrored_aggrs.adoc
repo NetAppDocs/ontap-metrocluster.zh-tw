@@ -6,6 +6,8 @@ summary: 如果您的組態包含無鏡射的Aggregate、則必須注意切換�
 ---
 = 使用無鏡射Aggregate時的考量
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
 
 

@@ -1,5 +1,6 @@
 ---
 permalink: disaster-recovery/concept_dr_workflow.html 
+sidebar: sidebar 
 keywords: workflow, perform, disaster, recovery 
 summary: 使用工作流程來執行災難恢復。 
 ---

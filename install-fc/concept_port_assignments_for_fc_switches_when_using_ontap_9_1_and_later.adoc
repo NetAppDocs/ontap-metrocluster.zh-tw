@@ -6,8 +6,11 @@ summary: 當您在使用ONTAP 更新版本的版本時、使用纜線連接FC交
 ---
 = FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
 
+[role="lead"]
 當您使用ONTAP 更新版本的資訊功能更新至FC交換器時、您需要確認您使用的是指定的連接埠指派。
 
 未用於連接啟動器連接埠、FC-VI連接埠或ISL的連接埠、可重新設定為作為儲存連接埠。但是、如果使用支援的RCFS、則必須相應地變更分區。

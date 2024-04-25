@@ -20,7 +20,7 @@ entries:
       url: "/tiebreaker/install-choose-procedure.html"
     - title: 安裝斷路器 1.6
       url: "/tiebreaker/tb-16-install.html"
-    - title: 安裝斷路器 1.5 或 1.4
+    - title: 安裝斷路器 1.5
       entries:
       - title: 設定管理員對ONTAPI和SSH的存取權
         url: "/tiebreaker/task_configure_ssh_ontapi.html"
@@ -28,6 +28,12 @@ entries:
         url: "/tiebreaker/install_dependencies.html"
       - title: 安裝軟體套件
         url: "/tiebreaker/install_tiebreaker_package.html"
+    - title: 安裝斷路器 1.4
+      entries:
+      - title: 安裝相依性
+        url: "/tiebreaker/install-dependencies-14.html"
+      - title: 安裝軟體套件
+        url: "/tiebreaker/install-tiebreaker-package-14.html"
 - title: 升級主機
   url: "/tiebreaker/upgrade_host.html"
 - title: 設定Tiebreaker軟體

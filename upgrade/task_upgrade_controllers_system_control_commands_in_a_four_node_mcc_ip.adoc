@@ -35,7 +35,7 @@ NOTE: 您可以使用上述手動升級程序、在執行 ONTAP 9.12.1 或 9.11.
 
 如需平台升級組合的詳細資訊、請參閱中的 MetroCluster IP 升級表 link:concept_choosing_controller_upgrade_mcc.html#supported-metrocluster-ip-controller-upgrades["選擇控制器升級程序"]。
 
-請參閱 https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["選擇升級或重新整理方法"] 以瞭解其他程序。
+請參閱 link:https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["選擇升級或重新整理方法"] 以瞭解其他程序。
 
 
 
@@ -269,7 +269,7 @@ dr-group-id cluster    node          node-systemid dr-partner-systemid
 如果現有的組態是以MetroCluster 可啟動切換的ESITTiebreaker組態或其他協力廠商應用程式（例如ClusterLion）來監控、您必須先從MetroCluster 斷路器或其他軟體移除此類組態、才能更換舊的控制器。
 
 .步驟
-. http://docs.netapp.com/ontap-9/topic/com.netapp.doc.hw-metrocluster-tiebreaker/GUID-34C97A45-0BFF-46DD-B104-2AB2805A983D.html["移除現有MetroCluster 的版本資訊"^] 透過Tiebreaker軟體。
+. link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#removing-metrocluster-configurations["移除現有MetroCluster 的版本資訊"] 透過Tiebreaker軟體。
 . 從MetroCluster 任何可啟動切換的第三方應用程式移除現有的功能。
 +
 請參閱應用程式的文件。
@@ -318,7 +318,7 @@ SAN和NAS等所有資料生命量都是管理員「up」（啟動）和作業「
 例如、「'e0d'」是舊控制器上的實體連接埠、也存在於新的控制器上。「e0d」不做為叢集連接埠、也不做為新控制器上的其他連接埠。
 
 +
-如需平台機型的連接埠使用量、請參閱 https://hwu.netapp.com/["NetApp Hardware Universe"^]
+如需平台機型的連接埠使用量、請參閱 link:https://hwu.netapp.com/["NetApp Hardware Universe"^]
 
 .. 修改所有資料生命期、以使用通用連接埠作為主連接埠：
 +
@@ -428,7 +428,7 @@ https://docs.netapp.com/us-en/ontap-systems/index.html["ONTAP 硬體系統文件
 此工作會在每個新的控制器模組上執行。
 
 .步驟
-. 存取 https://mysupport.netapp.com/site/["NetApp 支援網站"^] 可下載用於執行系統netboot的文件。
+. 存取 link:https://mysupport.netapp.com/site/["NetApp 支援網站"^] 可下載用於執行系統netboot的文件。
 . 從ONTAP NetApp支援網站的軟體下載區段下載適當的支援軟體、並將ONTAP-VERSION _image.tgz檔案儲存在可從網路存取的目錄中。
 . 移至網路存取目錄、確認您所需的檔案可用。
 +

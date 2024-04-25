@@ -24,21 +24,21 @@ summary: 您可以MetroCluster 從NetApp文件中深入瞭解有關功能的組�
 
 
  a| 
-https://docs.netapp.com/us-en/ontap/index.html["供應說明文件ONTAP"^]
+link:https://docs.netapp.com/us-en/ontap/index.html["供應說明文件ONTAP"^]
  a| 
 * 所有MetroCluster 資訊
 
 
 
 
-| https://www.netapp.com/pdf.html?item=/media/13480-tr4705.pdf["NetApp MetroCluster 解決方案架構與設計、TR-4705"^]  a| 
+| link:https://www.netapp.com/pdf.html?item=/media/13480-tr4705.pdf["NetApp MetroCluster 解決方案架構與設計、TR-4705"^]  a| 
 * 關於整套功能的技術概覽MetroCluster 。
 * 最佳實務做法MetroCluster ：
 
 
 
 
-| https://www.netapp.com/pdf.html?item=/media/13481-tr4689.pdf["《SIP解決方案架構與設計》、MetroCluster TR-4689"^]  a| 
+| link:https://www.netapp.com/pdf.html?item=/media/13481-tr4689.pdf["《SIP解決方案架構與設計》、MetroCluster TR-4689"^]  a| 
 * 關於整套IP組態與操作的技術總覽MetroCluster 。
 * 最佳實務做法MetroCluster ：
 

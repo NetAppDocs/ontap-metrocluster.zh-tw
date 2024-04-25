@@ -19,7 +19,7 @@ summary: 您可以在MetroCluster 升級合作夥伴叢集上的控制器模組�
 
 您可以使用MetroCluster 切換和切換功能、以支援功能支援的功能來升級特定平台。
 
-如需支援哪些平台升級組合的相關資訊、請參閱MetroCluster 中的《The不支援升級》表 link:concept_choosing_controller_upgrade_mcc.html#metrocluster-fc-controller-upgrades["選擇控制器升級程序"]。
+如需支援哪些平台升級組合的相關資訊、請參閱MetroCluster 中的《The不支援升級》表  link:concept_choosing_controller_upgrade_mcc.html#supported-metrocluster-fc-controller-upgrades["選擇控制器升級程序"]。
 
 請參閱 https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["選擇升級或重新整理方法"] 以瞭解其他程序。
 
@@ -504,7 +504,7 @@ dr-group-id cluster    node      node-systemid dr-partner-systemid
 .步驟
 . 從MetroCluster Tiebreaker軟體移除現有的部分組態。
 +
-http://docs.netapp.com/ontap-9/topic/com.netapp.doc.hw-metrocluster-tiebreaker/GUID-34C97A45-0BFF-46DD-B104-2AB2805A983D.html["移除MetroCluster 部分組態"]
+link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#removing-metrocluster-configurations["移除MetroCluster 部分組態"]
 
 . 從MetroCluster 任何可啟動切換的第三方應用程式移除現有的功能。
 +
@@ -791,7 +791,7 @@ https://docs.netapp.com/platstor/index.jsp["ONTAP 硬體系統文件"^]
 此工作會在每個新的控制器模組上執行。
 
 .步驟
-. 存取 https://mysupport.netapp.com/site/["NetApp 支援網站"^] 可下載用於執行系統netboot的文件。
+. 存取 link:https://mysupport.netapp.com/site/["NetApp 支援網站"^] 可下載用於執行系統netboot的文件。
 . 從ONTAP NetApp支援網站的軟體下載區段下載適當的支援軟體、並將ONTAP-VERSION _image.tgz檔案儲存在可從網路存取的目錄中。
 . 移至網路存取目錄、確認您所需的檔案可用。
 +

@@ -759,7 +759,10 @@ Selection (1-11)?
 
 NOTE: 請忽略下列訊息：「HA配對不支援不中斷升級此程序。 本附註適用於不中斷營運ONTAP 的更新版軟體、不適用於控制器升級。請務必使用netboot將新節點更新為所需映像。如果您使用其他方法在新控制器上安裝映像、可能會安裝錯誤的映像。此問題適用於ONTAP 所有的版本。
 
-. 如果系統提示您繼續此程序、請輸入「y」、並在系統提示您輸入套件時、輸入URL：http://<web_server_ip/path_to_web-accessible_directory>/<ontap_version>_image.tgz[]
+. 如果系統提示您繼續此程序、請輸入 `y`，當系統提示您輸入套件時，請輸入 URL ：
++
+`\http://<web_server_ip/path_to_web-accessible_directory>/<ontap_version>_image.tgz`
+
 . 完成下列子步驟以重新啟動控制器模組：
 +
 .. 當您看到以下提示時、請輸入「n」跳過備份恢復：「您現在要還原備份組態嗎？｛y | n｝

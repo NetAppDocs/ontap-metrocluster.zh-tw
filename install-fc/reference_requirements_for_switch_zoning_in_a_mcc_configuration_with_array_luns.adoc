@@ -27,7 +27,7 @@ summary: 在MetroCluster 使用含有陣列LUN的交換器分區時、您必須�
 * 您必須已執行基本的FC交換器組態、以供MetroCluster 選擇。
 +
 ** link:task_fcsw_cisco_configure_a_cisco_switch_supertask.html["手動設定Cisco FC交換器"]
-** link:ask_fcsw_brocade_configure_the_brocade_fc_switches_supertask.html["手動設定 Brocade FC 交換器"]
+** link:task_fcsw_brocade_configure_the_brocade_fc_switches_supertask.html["手動設定 Brocade FC 交換器"]
 
 
 

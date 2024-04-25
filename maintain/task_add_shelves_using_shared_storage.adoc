@@ -393,11 +393,11 @@ IP_switch-A-1# reload
 
 您必須使用支援的交換器軟體版本。
 
-https://hwu.netapp.com["NetApp Hardware Universe"]
+link:https://hwu.netapp.com["NetApp Hardware Universe"^]
 
 . 下載支援的NX-OS軟體檔案。
 +
-https://software.cisco.com/download/home["Cisco軟體下載"]
+link:https://software.cisco.com/download/home["Cisco軟體下載"^]
 
 . 將交換器軟體複製到交換器：「+複製sftp//root@server-ip-address/tftpboot/NX-os-file-name bootflash: VRF管理+」
 +

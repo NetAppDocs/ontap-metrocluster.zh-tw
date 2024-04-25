@@ -10,6 +10,7 @@ summary: 下表顯示支援的最大組態、AFF DR群組中有八個支援的Ar
 :imagesdir: ../media/
 
 
+[role="lead"]
 下表顯示支援的最大組態、AFF DR群組中有八個支援的FASA900或FAS9500控制器模組。
 
 [NOTE]

@@ -10,6 +10,7 @@ summary: 下表顯示ISL連接埠使用量。
 :imagesdir: ../media/
 
 
+[role="lead"]
 下表顯示ISL連接埠使用量。在組態中的所有交換器上、ISL連接埠使用量都相同。
 
 |===

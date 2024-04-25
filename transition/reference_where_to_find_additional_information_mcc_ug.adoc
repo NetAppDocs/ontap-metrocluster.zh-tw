@@ -10,7 +10,7 @@ summary: 您可以MetroCluster 從NetApp文件中深入瞭解有關功能的組�
 :imagesdir: ../media/
 
 
-[role="lead"]
+[role="lead lead"]
 您可以深入瞭MetroCluster 解有關「資訊」組態的資訊。
 
 

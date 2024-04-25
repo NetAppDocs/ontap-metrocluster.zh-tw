@@ -10,6 +10,9 @@ summary: 如果FabricPool 一個物件儲存在一個鏡射中、與MetroCluster
 :imagesdir: ../media/
 
 
+[role="lead"]
+執行必要的工作、以完成從多控制器或儲存設備故障中恢復的工作。
+
 
 
 == 重新建立物件存放區以供FabricPool 進行物件組態

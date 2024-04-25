@@ -6,7 +6,12 @@ summary: 當您準備MetroCluster 進行此版本的安裝時、您應該瞭解M
 ---
 = 使用Brocade DCX 8510-8交換器的需求
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
+
+[role="lead"]
+當您準備MetroCluster 進行此版本的安裝時、您應該瞭解MetroCluster 到該系統的硬體架構和必要元件。
 
 * 若要使用DCX 8510-8交換器MetroCluster 進行非必要的組態設定、必須向NetApp購買。
 * 為了擴充性、MetroCluster 如果在4個48埠模組中只佈線兩個MetroCluster、則應在各個支援區組態之間保留一個連接埠區塊。這可讓您在MetroCluster 不重新啟用的情況下、在不啟用的情況下、擴充以支援支援的情況下使用連接埠

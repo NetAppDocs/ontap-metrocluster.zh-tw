@@ -21,7 +21,7 @@ summary: 您必須將交換器作業系統檔案和RCF檔案下載到MetroCluste
 
 您必須使用支援的交換器軟體版本。
 
-https://hwu.netapp.com["NetApp Hardware Universe"]
+https://hwu.netapp.com["NetApp Hardware Universe"^]
 
 
 NOTE: 顯示的輸出適用於Cisco IP交換器、但這些步驟也適用於Cisco FC交換器。
@@ -29,7 +29,7 @@ NOTE: 顯示的輸出適用於Cisco IP交換器、但這些步驟也適用於Cis
 .步驟
 . 下載支援的NX-OS軟體檔案。
 +
-https://software.cisco.com/download/home["Cisco下載頁面"]
+link:https://software.cisco.com/download/home["Cisco下載頁面"^]
 
 . 將交換器軟體複製到交換器：
 +
