@@ -1942,9 +1942,6 @@
   <block id="838f9a3aa0c54c620c1dab5cccc98ca5" category="paragraph">「系統健全狀況警示顯示」</block>
   <block id="a755a72f514254c41e2fe4747c117fd7" category="list-text">在第一台交換器上安裝軟體。</block>
   <block id="8385ca59dee772c25d8029fd40151e4e" category="admonition">您必須依照下列順序在交換器上安裝交換器軟體：switch_a_1、switch_b_1、switch_a_2、switch_b_2。</block>
-  <block id="4aa7e4d6b953bc95aa19b29e1c0020aa" category="paragraph">根據MetroCluster 交換器類型是Broadcom或Cisco、請依照「_EIP安裝與組態_」資訊的相關主題中的步驟安裝交換器軟體：</block>
-  <block id="05ac71f0be33c2ad0cfeeb90e5f985a7" category="list-text"><block ref="05ac71f0be33c2ad0cfeeb90e5f985a7" category="inline-link-macro-rx"></block></block>
-  <block id="a0a108afed95784cbb847a6b3ff2ea68" category="list-text"><block ref="a0a108afed95784cbb847a6b3ff2ea68" category="inline-link-macro-rx"></block></block>
   <block id="220d6c1bfe741784a72c631856e0b298" category="list-text">針對每個交換器重複上述步驟。</block>
   <block id="24b79d1109d169b3428eb16d56510160" category="list-text">重複步驟1以檢查組態的健全狀況。</block>
   <block id="d57e84b8163149c21e12029ec296e524" category="summary">視ONTAP 您的版本而定、您可以將IOM12磁碟櫃熱新增至IOM6磁碟櫃堆疊的橋接MetroCluster 式功能的更新組態。</block>
@@ -11523,8 +11520,6 @@
   <block id="03b9eedf57c55a2eb9b4feaa990c85f6" category="list-text">使用RcfFileGeneratorfor MetroCluster EIP、為您的組態產生RCF檔案。</block>
   <block id="52ad3b024ecc6eae02e8415cef1140ba" category="summary">您必須設定IP交換器、才能提供後端MetroCluster 的不中斷IP連線功能。</block>
   <block id="9e93b10c56fcff9e0d1564e5ad629c03" category="doc">設定交換器</block>
-  <block id="e3af9bb8aab2257a1ad4ff7a5c3ecd15" category="list-text"><block ref="e3af9bb8aab2257a1ad4ff7a5c3ecd15" category="inline-link-macro-rx"></block></block>
-  <block id="72f9c6aaf4948fa7910f533f9d8355a5" category="list-text"><block ref="72f9c6aaf4948fa7910f533f9d8355a5" category="inline-link-macro-rx"></block></block>
   <block id="8c6cfac074d0567f4c5a941062f42343" category="paragraph">此程序在ONTAP 支援更新版本的版本上提供支援。如需執行ONTAP 效能不均9.7或更低版本的系統、請參閱知識庫文章</block>
   <block id="d5d6932337b2af2eda1bd96fd5aa3832" category="inline-link-macro">如何從MetroCluster 功能不完善的組態中移除DR群組</block>
   <block id="44fa5f61d97cbf15ad67ee9c5aedc1c6" category="paragraph"><block ref="44fa5f61d97cbf15ad67ee9c5aedc1c6" category="inline-link-macro-rx"></block></block>
@@ -11810,12 +11805,10 @@
   <block id="b6446010a605d2f225bc5b4a651d77f6" category="admonition">輸出內容可以顯示備份檔案、保留檔案或兩者。如果輸出中沒有出現備份檔案或保留的檔案、您就無法使用此程序。</block>
   <block id="50fc7f4fc4780b7f326a480f73bd0267" category="list-text">使用選項執行RCF檔案以還原預設值：「恢復預設值」</block>
   <block id="389656231e83b20cf8f1080911ace092" category="list-text">對提示回應「是」。交換器會還原為原始組態並重新開機。</block>
-  <block id="9c7625742f7f1ccd999df088ad4a3ae7" category="paragraph">交換器會重設並保留初始組態、例如管理網路組態和目前認證、然後再套用RCF檔案。重新開機之後、您可以使用相同或不同版本的RCF檔案來套用新組態。</block>
   <block id="8ea07ce14527ee98182ee1d95fed9b57" category="paragraph">如果您想要套用Cummuls映像來完全重設交換器、請使用這些步驟。</block>
   <block id="7ad863bb2a72d36c0234f4f6bfc2e19f" category="list-text">可透過HTTP存取Cummulis交換器軟體映像。</block>
   <block id="f230e571a49fa16f56965586613d2b79" category="list-text">您必須擁有root密碼才能存取命令。</block>
   <block id="c67ce273436af6008876bf44654fd767" category="list-text">從Cummulo主控台下載交換器軟體、然後使用命令「onie-install -A -i」排入安裝佇列、接著再輸入交換器軟體的檔案路徑：</block>
-  <block id="c6f62465ade5eb8bf0739b3b9e260823" category="paragraph">在此範例中、會將韌體檔案「累計至Linux -4.4.2-mlx-amd64.bin」從HTTP伺服器「50.50.50」複製到本機交換器。</block>
   <block id="0271d2dea0397f75aa8c0d5cd4c35209" category="list-text">在下載並驗證映像時、請回應提示「y」以確認安裝。</block>
   <block id="efb5ccaab9d7fe2b2ab5b9f178475a7a" category="list-text">重新啟動交換器以安裝新軟體：「Udo reboot...」</block>
   <block id="1f66fcbdc3a63bbe8e57cebc96e1d8a9" category="admonition">交換器會重新開機並進入交換器軟體安裝、這需要一些時間。安裝完成後、交換器會重新開機、並保持「登入」提示。</block>
@@ -11823,7 +11816,6 @@
   <block id="c6f0365546c55b3f9de31ce3118ed962" category="list-text">當交換器開機並出現登入提示時、請登入並變更密碼。</block>
   <block id="9d837b283737463bc96b390a448572da" category="admonition">使用者名稱為「累計」、預設密碼為「累計」。</block>
   <block id="462a12e5e5fc8a8f0f2503ac82e01e16" category="list-text">設定管理網路介面。</block>
-  <block id="404f235a0e668325747a3bbe34a85550" category="admonition">以下範例說明如何使用命令設定主機名稱（ip_switch_a_1）、IP位址（10.10.10.10）、網路遮罩（255．255．255．255．0（24））和閘道（10．10．10）：「net add hostname&gt;'、「net add interface eth0 ip address&lt;IPAddress/mask&gt;'、「net add interface eth0 ip gateway &lt;gateway&gt;」（網路新增介面eth0 IP閘道&lt;gateway&gt;）。</block>
   <block id="fd56421b5278bf3b069d8729f920f29e" category="list-text">使用「show reboot"命令重新啟動交換器。</block>
   <block id="c55cbcd30055e2eecf2070469bd7907a" category="paragraph">當交換器重新開機時、您可以使用中的步驟套用新的組態 <block ref="67df29514d3fd31c6e0b92fb5ef28c21" category="inline-xref-macro-rx"></block>。</block>
   <block id="62217055050b5f95ab3ac1b301982bec" category="list-text">交換器軟體已安裝且管理網路已設定完成。</block>
@@ -11835,7 +11827,6 @@
   <block id="a68522a1adf950d13a0dab9b74d36669" category="list-text">下載<block ref="b3f8a8564bd91efeacbc3b6197426c6e" category="inline-link-rx"></block>。</block>
   <block id="38325ef6d268e93ab480af3cd0b3bd5f" category="list-text">使用RcfFileGeneratorfor MetroCluster EscIP、為您的組態產生RCF檔案。</block>
   <block id="7332a56dad899da7a26afe16c9ca077a" category="list-text">瀏覽至您的主目錄。如果您記錄為「累計」、則檔案路徑為「home/gumulus」。</block>
-  <block id="323d6ef10b6c3c66d13f049670cbdb83" category="list-text">將RCF檔案下載至此目錄。以下範例顯示、您可以使用scp將檔案「M f2 2100 v1.0」_ip_switch_a_1.txt'從伺服器「50、50」下載到您的主目錄、並將其儲存為「M f2 2100、v1.0、ip_switch_a_1.py」：</block>
   <block id="59c778d760eb930375b77337b3ee45b9" category="list-text">執行RCF檔案。RCF檔案需要選項才能套用一或多個步驟。除非技術支援人員指示、否則請在不使用命令列選項的情況下執行RCF檔案。若要驗證RCF檔案各個步驟的完成狀態、請使用選項「-1」或「ALL」來套用所有（擱置中）步驟。</block>
   <block id="91fda6ec6c364088ae4a9e6553b26f99" category="doc">適用於NVIDIA支援SN2100 IP交換器的平台連接埠指派</block>
   <block id="1f0b82560627b660c6c6958a1df834b8" category="section-title">支援的組態</block>
@@ -11921,7 +11912,6 @@
   <block id="bd965e38a0c9cf27aa1bde099308e23f" category="paragraph-title">完成後</block>
   <block id="ebf8099b0d57d09213f64014fd257ea1" category="section-title">[Reset-the switch]將NVIDIA IP SN2100交換器重設為原廠預設值</block>
   <block id="841793e4a1e005b1b9596c374804395a" category="section-title">[[RCF-file-option]]使用RCF檔案選項重設交換器</block>
-  <block id="261e7c7b4c25948690ce095224937522" category="section-title">[[Cummule-install-option]]使用Cummuls安裝選項重設交換器</block>
   <block id="66dfac56c9206023b345746e3fd92eae" category="section-title">[[Download-and -install]]下載並安裝NVIDIA RCF檔案</block>
   <block id="c938b5cfd075c2f653372f886805b37a" category="paragraph-title">使用組態表之前、請先檢閱這些考量事項</block>
   <block id="3f710cadb0123c693533da68aaf5b596" category="paragraph-title">接下來該怎麼做</block>
@@ -12017,8 +12007,6 @@
   <block id="7f3573698486df0e906484a42b56260a" category="list-text">將第一個MetroCluster 「靜態IP」節點（node_a_3-IP）加入現有MetroCluster 的「靜態FC」組態。</block>
   <block id="2cc9b0ebb585ef702d75e1a9560e44ee" category="list-text">將第二MetroCluster 個「靜態IP」節點（node_a_4-IP）加入現有MetroCluster 的「靜態FC」組態。</block>
   <block id="43978c682537332f0c17e45dcf81c394" category="list-text">重複這些步驟、將node_B_3-IP和node_B_4-IP連接至叢集B</block>
-  <block id="56276c01f8fdea330f7d547910dbe817" category="inline-link-macro">第3層廣域網路的考量</block>
-  <block id="5464631d6fd9ed12f95c271bf666c4bc" category="admonition">您可以從MetroCluster 任一叢集設定靜態IP介面。此外、從ONTAP 版本號為0.9.1.1開始、如果您使用的是第3層組態、也必須指定<block ref="50e57debf79bf52aa078c6e993f8969f" prefix=" " category="inline-code"></block> 建立MetroCluster 靜態IP介面時的參數。請參閱 <block ref="1e1496262359096cc1cfeecfa4cefcb5" category="inline-link-macro-rx"></block></block>
   <block id="d62d7bce1fe91e6c1145e8a56018d13e" category="admonition">在設定為進階磁碟分割（ADP）的系統上、容器類型為「共享」、而非如範例輸出所示的「遠端」。</block>
   <block id="bad8ee5726316ec5f26bb0039cbf4bc6" category="summary">將還原活動記錄在事件記錄檔中MetroCluster 。</block>
   <block id="08b9323d7a1af549de439f419bb3096a" category="doc">事件記錄檔MetroCluster 、適用於還原者</block>
@@ -13415,7 +13403,6 @@
   <block id="55caf57bfe7d9bc28b6ffc6c7d49f237" category="admonition">如果您設定 RCF 、請確認您選擇了正確的速度模式、或使用具有適當速度模式的連接埠。</block>
   <block id="46dd6914bcca3c3b8a2609c6a420dc0c" category="paragraph"><block ref="46dd6914bcca3c3b8a2609c6a420dc0c" category="inline-link-macro-rx"></block></block>
   <block id="aaf601495cda3687aff1783b9f086561" category="paragraph">MetroCluster 相容的交換器被視為中間交換器、即使直接連接 MetroCluster 介面也一樣。在 MetroCluster 相容交換器上傳輸 MetroCluster 流量的 ISL 連接埠必須與中繼交換器上的 ISL 連接埠相同設定。請參閱 <block ref="a55ec765b3e97100c983e617f9d68e39" category="inline-link-macro-rx"></block> 以取得指引和範例。</block>
-  <block id="7c1481d1c9b970b7d299c0c5dad3d8b5" category="paragraph">您必須將 ha-config 狀態設為<block ref="32b858596eeb9351eca27c2906a21da4" prefix=" " category="inline-code"></block> 在自動資源配置之前、請確定已選取正確的分割區大小、以允許適當的根磁碟區大小。如需詳細資訊、請參閱 <block ref="6b54dfc1103fb8ab70a56160f0fd8161" category="inline-link-macro-rx"></block>。</block>
   <block id="688da24e96580a94ac368ba20c7993eb" category="paragraph">如果您使用的是內部和外部磁碟機、請先使用 ADP 來初始化 MetroCluster 、但僅使用內部磁碟機。完成安裝或設定工作後、您可以手動連接外部機櫃。</block>
   <block id="724b35256a117cacc7c70cc2777472fb" category="inline-xref">系統的 ADP 和磁碟指派差異</block>
   <block id="b97518c4a28d7962f4cab20f62a9403c" category="paragraph">您必須確保內部磁碟櫃具有建議的最低磁碟機數量、如中所述 <block ref="ededfefc169c9cc0e0251fda89f5bc17" category="inline-xref-macro-rx"></block>。</block>
@@ -13508,4 +13495,31 @@
   <block id="43b42c26c42f7c6fe4ef77f9f2ed17ff" category="paragraph"><block ref="43b42c26c42f7c6fe4ef77f9f2ed17ff" category="inline-link-macro-rx"></block></block>
   <block id="2a35142a0e6eda28748cdf00899dc98b" category="paragraph">。 <block ref="0c7bf211a7cb9712977652add2e31f3e" category="inline-link-macro-rx"></block> 說明新功能、升級附註、修正問題、已知限制及已知問題。</block>
   <block id="0f25553cdf8eb8de83ad715008d4617b" category="paragraph">執行必要的工作、以完成從多控制器或儲存設備故障中恢復的工作。</block>
+  <block id="77252e9ff1622351efd32757cb7fd9a1" category="paragraph">根據交換器類型是 Broadcom 、 Cisco 或 NVIDIA 、請依照 _ MetroCluster IP 安裝與組態 _ 相關主題中的步驟安裝交換器軟體：</block>
+  <block id="4b6132c87b7872df013c5b52ce9f608e" category="inline-link-macro">下載並安裝 Broadcom 交換器 EFOS 軟體</block>
+  <block id="25fec8f604c77fe35ba611e08af94f79" category="list-text"><block ref="25fec8f604c77fe35ba611e08af94f79" category="inline-link-macro-rx"></block></block>
+  <block id="fc5c2b5017628187d434fc142f96b244" category="inline-link-macro">下載並安裝 Cisco 交換器 NX-OS 軟體</block>
+  <block id="80fb3b0595ae64cb5753d8098a1999cd" category="list-text"><block ref="80fb3b0595ae64cb5753d8098a1999cd" category="inline-link-macro-rx"></block></block>
+  <block id="75b44b50a5c15f2121717071fc8e9fc0" category="inline-link-macro">下載並安裝 NVIDIA SN2100 交換器 Cumulus 軟體</block>
+  <block id="99534ab88dcf6802b885593070964693" category="list-text"><block ref="99534ab88dcf6802b885593070964693" category="inline-link-macro-rx"></block></block>
+  <block id="5b2fc0c613f01db3129e4c4e07ac3dfe" category="list-text"><block ref="5b2fc0c613f01db3129e4c4e07ac3dfe" category="inline-link-macro-rx"></block></block>
+  <block id="b482922c3bf6cd48549cdf23465ffee6" category="list-text"><block ref="b482922c3bf6cd48549cdf23465ffee6" category="inline-link-macro-rx"></block></block>
+  <block id="31108c872023e7ac673e45c455e290ec" category="list-text"><block ref="31108c872023e7ac673e45c455e290ec" category="inline-link-macro-rx"></block></block>
+  <block id="d28f21bcfe7f0ae76389ce8cf95e1346" category="paragraph">交換器會重設並保留初始組態、例如管理網路組態和目前認證、然後再套用RCF檔案。重新開機後、您可以使用相同或不同版本的 RCF 檔案來套用新組態。</block>
+  <block id="2d0212aab3adea9540211da211dead7b" category="section-title">[[Cumuler-install-option]] 下載並安裝 Cumulus 軟體</block>
+  <block id="db1e46070818ae5017128cd6bc947832" category="paragraph">在此範例中、為韌體檔案<block ref="4ccf3b2a33cad12d73e94030666c8a82" prefix=" " category="inline-code"></block> 從 HTTP 伺服器 '50.50.50.50' 複製到本機交換器。</block>
+  <block id="b222983bdfd49d6eaf81c6bdad295f48" category="paragraph">您使用的命令取決於您正在執行的交換器韌體版本。</block>
+  <block id="c037a3297de5abc94037c3a2e03f541b" category="admonition">以下命令範例將主機名稱設定為 ip_switch_a_1 、 IP 位址設定為 10.10.10.10 、網路遮罩設定為 255.255.255.0 （ 24 ）、閘道位址設定為 10.10.10.1 。</block>
+  <block id="994152d74e48a466138cc94ea00d9544" category="open-title">Cumulus 4.4.x</block>
+  <block id="00426c3291d7b46b67f032205cd267e2" category="paragraph">以下命令範例可在執行 Cumulus 4.4.x 的交換器上設定主機名稱、 IP 位址、網路遮罩和閘道</block>
+  <block id="061b61b3da356e61661b659f583cab6c" category="open-title">Cumulus 5.4.x 及更新版本</block>
+  <block id="8e9e9451c7eaa7165ca329f12d4b9496" category="paragraph">以下命令範例可在執行 Cumulus 5.4.x 的交換器上設定主機名稱、 IP 位址、網路遮罩和閘道或更新版本。</block>
+  <block id="9a7c2416d2a958ffd9fdf601590c46f3" category="list-text">將RCF檔案下載至此目錄。
+下列範例顯示您使用 SCP 下載檔案<block ref="56eaf0568fc86b865db040080e6d9d87" prefix=" " category="inline-code"></block> 從伺服器 '50.50.50.50' 到您的主目錄、然後另存為<block ref="3fa5a0083455c62011c0be341b6d2a84" prefix=" " category="inline-code"></block>：</block>
+  <block id="2c0880b7d8a4269afa516ff7c87aeea3" category="list-text">如果您的組態使用 DAC 纜線、請在交換器連接埠上啟用 DAC 選項：</block>
+  <block id="0eef844c9af7a72ab3dd5887ff9918d4" category="paragraph">以下範例啟用連接埠的 DAC 選項<block ref="e9c5c6daf1a059d5e7448ef86c2b728e" prefix=" " category="inline-code"></block>：</block>
+  <block id="b8ef1f0c843b6612ef80c11ce9a1ae3b" category="list-text">在交換器連接埠上啟用 DAC 選項後、重新啟動交換器：</block>
+  <block id="a7684986aa13d220654f08fd150ba1b1" category="paragraph"><block ref="06d12c03aa485826b7f204affe755aa8" prefix="" category="inline-code"></block></block>
+  <block id="2cd7949ba857b629dd50d21989a67ec7" category="admonition">當您為多個交換器連接埠設定 DAC 選項時、只需要重新啟動交換器一次。</block>
+  <block id="0b2bf1a9f2d59771c09560dc455e2f55" category="paragraph">您必須將 ha-config 狀態設為<block ref="32b858596eeb9351eca27c2906a21da4" prefix=" " category="inline-code"></block> 在自動資源配置之前、請確定已選取正確的分割區大小、以允許適當的根磁碟區大小。如需詳細資訊、請參閱 <block ref="bcb6d9c56d14cbd4808073431b182e91" category="inline-link-macro-rx"></block>。</block>
 </blocks>

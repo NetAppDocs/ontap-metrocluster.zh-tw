@@ -343,7 +343,7 @@ Group Cluster Node               State          Mirroring Mode
 
 +
 
-NOTE: 您可以從MetroCluster 任一叢集設定靜態IP介面。此外、從ONTAP 版本號為0.9.1.1開始、如果您使用的是第3層組態、也必須指定 `-gateway` 建立MetroCluster 靜態IP介面時的參數。請參閱 link:../install-ip/concept_considerations_layer_3.html["第3層廣域網路的考量"]
+NOTE: 您可以從MetroCluster 任一叢集設定靜態IP介面。
 
 +
 ....

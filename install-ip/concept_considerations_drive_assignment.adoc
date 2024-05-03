@@ -59,7 +59,7 @@ ADP 會在系統初始組態期間自動執行。
 
 NOTE: 從 ONTAP 9.5 開始、必須使用啟用磁碟的自動指派功能 `storage disk option modify -autoassign on` 命令。
 
-您必須將 ha-config 狀態設為 `mccip` 在自動資源配置之前、請確定已選取正確的分割區大小、以允許適當的根磁碟區大小。如需詳細資訊、請參閱 link:install-ip/task_sw_config_verify_haconfig.html["驗證元件的ha-config狀態"]。
+您必須將 ha-config 狀態設為 `mccip` 在自動資源配置之前、請確定已選取正確的分割區大小、以允許適當的根磁碟區大小。如需詳細資訊、請參閱 link:task_sw_config_verify_haconfig.html["驗證元件的ha-config狀態"]。
 
 安裝期間最多可自動分割96個磁碟機。您可以在初始安裝之後新增額外的磁碟機。
 
