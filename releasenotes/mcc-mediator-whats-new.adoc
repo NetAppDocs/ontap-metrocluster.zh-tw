@@ -1,0 +1,47 @@
+---
+permalink: releasenotes/mcc-mediator-whats-new.html 
+sidebar: sidebar 
+keywords: metrocluster, mediator, new, release, update, install, 
+summary: 每個版本都提供 ONTAP Mediator 的新功能。  最新功能。 
+---
+= ONTAP Mediator 支援的新功能
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+每個版本都提供 ONTAP Mediator 的新增強功能。  最新功能。
+
+[cols="75,25"]
+|===
+
+
+| ONTAP Mediator 版本 / 功能 | 版本ONTAP 
+
+
+ a| 
+ONTAP Mediator 1.5 可用於監控 MetroCluster IP 組態。
+
+link:https://docs.netapp.com/us-en/ontap/mediator/index.html["安裝或升級ONTAP 《不知道如何使用》服務"^]
+ a| 
+ONTAP 9.12.1
+
+
+
+ a| 
+MetroCluster IP 組態支援 ONTAP Mediator 1.4 版軟體。
+
+link:https://docs.netapp.com/us-en/ontap/mediator/index.html["安裝或升級ONTAP 《不知道如何使用》服務"^]
+ a| 
+零點9.11.1. ONTAP
+
+
+
+ a| 
+ONTAP Mediator 服務可提供實體獨立的狀態資訊儲存庫、協助 MetroCluster IP 組態執行自動非計畫性切換。
+針對ONTAP 非計畫性自動切換設定「功能不全」服務
+ a| 
+更新ONTAP
+
+|===

@@ -1,0 +1,44 @@
+---
+permalink: releasenotes/mcc-fc-config-platform-support.html 
+sidebar: sidebar 
+keywords: metrocluster, fc configuration, platform, support 
+summary:  
+---
+= MetroCluster FC 平台支援的新功能
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[cols="2*"]
+|===
+| MetroCluster FC 組態中支援的平台 | 可用的開始 
+
+
+ a| 
+解答900 AFF
+ a| 
+零點9.10.1 ONTAP
+
+
+
+ a| 
+ASA AFF A700 與 ASA AFF A400
+ a| 
+ONTAP 9.7P5
+
+
+
+ a| 
+FASA400和FAS8300 AFF
+ a| 
+更新ONTAP
+
+
+
+ a| 
+適用於A300和FAS8200 AFF
+ a| 
+版本9.5 ONTAP
+
+|===

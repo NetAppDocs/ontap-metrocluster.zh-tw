@@ -13522,4 +13522,170 @@
   <block id="a7684986aa13d220654f08fd150ba1b1" category="paragraph"><block ref="06d12c03aa485826b7f204affe755aa8" prefix="" category="inline-code"></block></block>
   <block id="2cd7949ba857b629dd50d21989a67ec7" category="admonition">當您為多個交換器連接埠設定 DAC 選項時、只需要重新啟動交換器一次。</block>
   <block id="0b2bf1a9f2d59771c09560dc455e2f55" category="paragraph">您必須將 ha-config 狀態設為<block ref="32b858596eeb9351eca27c2906a21da4" prefix=" " category="inline-code"></block> 在自動資源配置之前、請確定已選取正確的分割區大小、以允許適當的根磁碟區大小。如需詳細資訊、請參閱 <block ref="bcb6d9c56d14cbd4808073431b182e91" category="inline-link-macro-rx"></block>。</block>
+  <block id="b0ef37dfa15ebf32b4dbd0ae9b0d9954" category="doc">MetroCluster FC 支援 Brocade 交換器的新功能</block>
+  <block id="b7cc806082929b5b8f498af052398f01" category="cell">Brocade FC 交換器</block>
+  <block id="198fc1af468509094e8d40e07916c836" category="cell">可用的開始</block>
+  <block id="2abfff2974f589f7a217325f304e0ec5" category="paragraph">部分9.8 ONTAP</block>
+  <block id="1fc1c42abe6e66843d72990324979a36" category="paragraph">G620-1 、 G630-1</block>
+  <block id="b611d537ec3462ead9e641968d17d570" category="paragraph">G630</block>
+  <block id="7dd2a92fd3f41a5334edf46f95d77e71" category="paragraph">ONTAP 9.6</block>
+  <block id="2429e1917793f4046beb8fe2642382e4" category="doc">MetroCluster IP 平台支援的新功能</block>
+  <block id="1297db8be9c9c9dc4b4ddc3d4655b2a0" category="paragraph">陣列 LUN 不支援 MetroCluster IP 組態。</block>
+  <block id="7616cb7bf661fe6377270c352ec2ff82" category="cell">MetroCluster IP 組態中支援的平台</block>
+  <block id="8a1d06fd27bf0bfc6535b6a49185e591" category="paragraph">解答150 AFF</block>
+  <block id="f57f1967d5e316f5c38c14ea29884a9a" category="paragraph">ONTAP 9.13.1 及更新版本的 ONTAP 版本</block>
+  <block id="f3975a91159eff9969dbd4feb2dec392" category="paragraph">ONTAP 9.12.1P1</block>
+  <block id="ee64dfb34bd2ed3e08d63eaf38462ec7" category="paragraph">ONTAP 9.11.1P8</block>
+  <block id="fc0954dc49e631cf41dcb343d7e02893" category="paragraph">ONTAP 9.10.1P12</block>
+  <block id="7c3d41bb91a832b194d140ed72b101e7" category="paragraph">AFF C250 、 AFF C400 、 AFF C800</block>
+  <block id="f2bdeb410b49732e0c1482361af1d1d5" category="paragraph">ONTAP 9.13.1 GA 與更新版本的 ONTAP 版本。</block>
+  <block id="839c501c003baf01642160068d3b89ee" category="paragraph">ONTAP 9.13.1 RC1 不支援這些平台。</block>
+  <block id="ab8296c5ef7a7b056b384680f89a9379" category="paragraph">零點9.10.1 ONTAP</block>
+  <block id="e86c8b5cecd7918c55b2a357c7668d30" category="paragraph">All Flash SAN Array 平台</block>
+  <block id="2ba4f1a86eaaf58dbde1ea31ab19c1c5" category="paragraph">在本文件中、有關不適用的功能的資訊適用於相應的功能表系統。MetroCluster AFF ASA例如AFF 、所有的纜線和其他有關的資訊、也適用於ASA AFF 該系統。</block>
+  <block id="3447b91e516e4fc6b5dba827fcb68bee" category="paragraph">更新ONTAP</block>
+  <block id="b9893a4b8d000616198b04d3642b5fb8" category="paragraph">ONTAP 9.6P3</block>
+  <block id="0fcf2ee62acd9eae83b609a0e7ecaa72" category="paragraph">版本9.5 ONTAP</block>
+  <block id="bce17534235ea414fd168aec560670ba" category="doc">MetroCluster 組態支援 ONTAP 功能的新功能</block>
+  <block id="f5b97315b83664b2fb6d5828cead7c04" category="cell">MetroCluster 組態中支援的功能</block>
+  <block id="983ef706fb7088bc127ca2ea08447cd2" category="paragraph">S3 物件儲存支援鏡射和無鏡射的集合體</block>
+  <block id="9200b87f425cf8ffb4a16ea10431a73e" category="paragraph">您可以在 MetroCluster IP 和 FC 組態中的鏡射或無鏡射集合體中、在 SVM 上啟用 S3 物件儲存伺服器。</block>
+  <block id="c89f9fd1a8019dc4d7a2559a982d3aa8" category="inline-link">S3組態總覽</block>
+  <block id="ef9047c785e1f9b26fe99b3bcf88bd4d" category="paragraph"><block ref="ef9047c785e1f9b26fe99b3bcf88bd4d" category="inline-link-rx"></block></block>
+  <block id="8020ad245e7cbc2ac49c84b7f4ace684" category="paragraph">ONTAP 9.14.1.</block>
+  <block id="1e4cf16edaf417e94a695644f4089a2f" category="paragraph">支援在 MetroCluster 叢集中的鏡射和非鏡射集合體上佈建 S3 儲存區</block>
+  <block id="54c9cab829044acca6994285d3185409" category="paragraph">您可以在 MetroCluster 組態中的鏡射或無鏡射集合體上建立貯體。</block>
+  <block id="ea0c90724ad3d5959704fb91a048c28c" category="inline-link">在 MetroCluster 組態中的鏡射或無鏡射 Aggregate 上建立貯體</block>
+  <block id="7a5d298867b0efc5adf88dfe965f7137" category="paragraph"><block ref="7a5d298867b0efc5adf88dfe965f7137" category="inline-link-rx"></block></block>
+  <block id="43b4c6f5c6770a1f4cd11cb10516ccf4" category="paragraph">MetroCluster IP 組態支援 ONTAP Mediator 1.5</block>
+  <block id="8b81da9bca97d2bd0f5a62805a363707" category="paragraph">ONTAP Mediator 1.5 可用於監控 MetroCluster IP 組態。</block>
+  <block id="cd18beb67ffb0ec95fecaca021fc2541" category="paragraph"><block ref="cd18beb67ffb0ec95fecaca021fc2541" category="inline-link-rx"></block></block>
+  <block id="594e1ec3daa27e540baa061f731f028f" category="paragraph">ONTAP 9.12.1</block>
+  <block id="6eaae443849a6746c6ace7f4204bd085" category="paragraph">支援 MetroCluster IP 和 MetroCluster 網路附加組態中的前端主機傳輸協定</block>
+  <block id="d70d383ef18fafd59eb655545c1017bd" category="paragraph">支援前端主機傳輸協定（例如 NFS 和 iSCSI ）的 IPsec 可在 MetroCluster IP 和 MetroCluster 網路附加組態中使用。</block>
+  <block id="3d84ccfa2f8722220108717d5cfdc457" category="inline-link">透過有線加密設定IP安全性（IPsec）</block>
+  <block id="ad8910c15c5709955bf29783dc65c7b6" category="paragraph"><block ref="ad8910c15c5709955bf29783dc65c7b6" category="inline-link-rx"></block></block>
+  <block id="21b1af0acdaa98f7c573b54a229cef88" category="paragraph">ONTAP Mediator 1.4</block>
+  <block id="df3517bd826ee685104e3f6cbe1cdbf9" category="paragraph">MetroCluster IP 組態支援 ONTAP Mediator 1.4 版軟體。</block>
+  <block id="b59cced8914a5ae4b2997c54c8cfeb8d" category="paragraph">零點9.11.1. ONTAP</block>
+  <block id="6165c4352e1504dbaeef34d0cc50c187" category="paragraph">一致性群組</block>
+  <block id="3fb697436dcc4f2ae2cdd29dc91fd043" category="paragraph">MetroCluster 組態支援一致性群組。</block>
+  <block id="cbaad17e9e28a1ce42215011f9596b78" category="paragraph">MetroCluster IP 組態支援 ONTAP Mediator</block>
+  <block id="47dbbe9898ba28cfece0cd9485a165eb" category="paragraph">ONTAP Mediator 服務可提供實體獨立的狀態資訊儲存庫、協助 MetroCluster IP 組態執行自動非計畫性切換。</block>
+  <block id="ef75c59ee0b21aa5485c12ab2eb869a7" category="paragraph"><block ref="ef75c59ee0b21aa5485c12ab2eb869a7" category="inline-link-rx"></block></block>
+  <block id="7b25d54164390a979173c966708bcd3e" category="paragraph">可鏡射到各種組態FabricPool MetroCluster</block>
+  <block id="456a60d3d7f70b899491cde66c53e366" category="paragraph">您可以在 MetroCluster 組態上設定鏡射 FabricPool 、將冷資料分層至兩個不同的故障區域。</block>
+  <block id="50adf775e4799022cdc6de484f49f3f1" category="inline-link">設定物件存放區以FabricPool 供在MetroCluster 一個不確定的組態中使用</block>
+  <block id="64d61908c9d9a568c06988ad32aea4f4" category="paragraph"><block ref="64d61908c9d9a568c06988ad32aea4f4" category="inline-link-rx"></block></block>
+  <block id="4bac6a2c11bf11dd13d68729ea0a8869" category="paragraph">SVM 災難恢復</block>
+  <block id="757efaf9f255f5bc7d684262790601ff" category="paragraph">MetroCluster 組態中的作用中儲存虛擬機器（ SVM ）可作為 SnapMirror SVM 災難恢復功能的來源。</block>
+  <block id="47d81ac708cab22da7ea952550b6f757" category="summary">每個版本都提供 ONTAP Mediator 的新功能。  最新功能。</block>
+  <block id="3261bd656e2112e78b0313c87c039420" category="doc">ONTAP Mediator 支援的新功能</block>
+  <block id="9d01d502466559c8d4ff8682b3e00d92" category="paragraph">每個版本都提供 ONTAP Mediator 的新增強功能。  最新功能。</block>
+  <block id="1cbc22a4f6eb33175d313f6ebcd56fd9" category="cell">ONTAP Mediator 版本 / 功能</block>
+  <block id="e8467e9b509c4924668c01eb7ab2adde" category="cell">版本ONTAP</block>
+  <block id="cee4df42e3e78ea996ff39fd7cfe320a" category="paragraph">ONTAP Mediator 服務可提供實體獨立的狀態資訊儲存庫、協助 MetroCluster IP 組態執行自動非計畫性切換。
+針對ONTAP 非計畫性自動切換設定「功能不全」服務</block>
+  <block id="63b6c1d0d10ce89604932c62d9b6f4d7" category="doc">MetroCluster 功能的新功能</block>
+  <block id="3100460fa3d7ba2ea001abefda93f3bc" category="cell">說明及深入瞭解的地方</block>
+  <block id="677eca4ee8daca8d2b9156735c70729b" category="paragraph">使用 MetroCluster IP 和乙太網路附加儲存設備的共用交換器、從 MetroCluster FC 移轉至 MetroCluster IP</block>
+  <block id="d935deb4654475cd01823b1943de7d00" category="paragraph">您可以使用共用交換器、在不中斷營運的情況下、從 MetroCluster FC 移轉至 MetroCluster IP 組態（ ONTAP 9.8 及更新版本）。</block>
+  <block id="9b9a95d11d51a9dc8ad8f89b7072a66d" category="paragraph"><block ref="9b9a95d11d51a9dc8ad8f89b7072a66d" category="inline-link-rx"></block></block>
+  <block id="c8c7ff2d320bb817b5265b97fc451f0b" category="paragraph">從八節點 MetroCluster FC 組態到 MetroCluster IP 組態的不中斷轉換</block>
+  <block id="5b9e0c49b03f990a762696dc03ba2d75" category="paragraph">您可以不中斷地將工作負載和資料從現有的八節點 MetroCluster FC 組態移轉至新的 MetroCluster IP 組態。</block>
+  <block id="01040b05589b1144c8bc3e40d5ea5c26" category="inline-link">不中斷地從 MetroCluster FC 移轉至 MetroCluster IP 組態</block>
+  <block id="6a542f8c97dec2202fc9175dffd6bfb4" category="paragraph"><block ref="6a542f8c97dec2202fc9175dffd6bfb4" category="inline-link-rx"></block></block>
+  <block id="473923750a8b861aba12a03eef005b32" category="paragraph">使用切換和切換功能進行四節點 MetroCluster IP 組態升級</block>
+  <block id="511f52f2a9874038d0730dcea8df8663" category="paragraph">您可以使用切換和切換來升級四節點 MetroCluster IP 組態中的控制器<block ref="616743bfa4fd61d558c556fe614cb2e9" prefix=" " category="inline-code"></block> 命令。</block>
+  <block id="ac725f3c9959f745d971d1c4af95544e" category="inline-link">升級四節點 MetroCluster IP 組態中的控制器</block>
+  <block id="b57d94c823165bcbbdd40797c37fc13a" category="paragraph"><block ref="b57d94c823165bcbbdd40797c37fc13a" category="inline-link-rx"></block></block>
+  <block id="de19903f1baec8a806f09acbc21c609c" category="paragraph">在環境關機時觸發中介協助的自動非計畫性切換（ MAUSO ）</block>
+  <block id="8a6db987355c97228c7eda746c7aab92" category="paragraph">如果某個站台因環境關機而正常關機、則會觸發 MAUSO 。</block>
+  <block id="0b97e7c3b0f44c35cdd69948234f7fcc" category="paragraph"><block ref="0b97e7c3b0f44c35cdd69948234f7fcc" category="inline-link-rx"></block></block>
+  <block id="2baf765df55a69e9c032792bec126f2c" category="paragraph">支援八節點 MetroCluster IP 組態</block>
+  <block id="5e3aa18041f614fb450ca9a1c9ff1a5b" category="paragraph">您可以在八節點 MetroCluster IP 組態中升級控制器和儲存設備、方法是將組態擴充為暫時性的十二節點組態、然後移除舊的 DR 群組。</block>
+  <block id="ee794ce3325c3c2b6f8e58083826be5a" category="paragraph"><block ref="ee794ce3325c3c2b6f8e58083826be5a" category="inline-link-rx"></block></block>
+  <block id="117c4d63306680989486fb689a87e954" category="paragraph">MetroCluster IP 組態轉換為共用儲存 MetroCluster 交換器組態</block>
+  <block id="8cbc10058d52d83f095c5e9f4f0e7163" category="paragraph">您可以將 MetroCluster IP 組態轉換為共用儲存 MetroCluster 交換器組態。</block>
+  <block id="fd60e91c0a23b684d9542fc4b71afedc" category="paragraph"><block ref="fd60e91c0a23b684d9542fc4b71afedc" category="inline-link-rx"></block></block>
+  <block id="f9a53f3d74b05e12c790f44f7befc006" category="paragraph">MetroCluster IP 組態中的 MetroCluster 自動強制切換功能</block>
+  <block id="df40423b91d8f5580bf9273c58f9b677" category="paragraph">您可以在 MetroCluster IP 組態中啟用 MetroCluster 自動強制切換功能。這項功能是由內建人員輔助的非計畫性切換（MAUSO）功能的延伸。</block>
+  <block id="413fbf2b200b0928cca102b1a4ec778b" category="inline-link">自動切換限制</block>
+  <block id="a7a1dcf05ac1a96ad6f234699be20abf" category="paragraph"><block ref="a7a1dcf05ac1a96ad6f234699be20abf" category="inline-link-rx"></block></block>
+  <block id="d360f541ca25e1873e9d4a8b54ae8934" category="paragraph">SVM 上的 S3 、位於 MetroCluster IP 組態中未鏡射的 Aggregate 上</block>
+  <block id="4e1e81f02f6df5acb5f22c116f354c5e" category="paragraph">您可以在 MetroCluster IP 組態中的未鏡射集合體上、在 SVM 上啟用 ONTAP Simple Storage Service （ S3 ）物件儲存伺服器。</block>
+  <block id="ebe82213f65d472c79a3846e6c8ee62e" category="inline-link">S3組態搭配System Manager和ONTAP Stri CLI</block>
+  <block id="6e0af3dea79051e350502451cc600f87" category="paragraph"><block ref="6e0af3dea79051e350502451cc600f87" category="inline-link-rx"></block></block>
+  <block id="1f9fcd1010f1e0dd33b166603da0ce84" category="paragraph">從 MetroCluster FC 組態轉換至 AFF A250 或 FAS500f MetroCluster IP 組態</block>
+  <block id="56d5901b9c1bf4f73e626ae675e092f1" category="paragraph">您可以從 MetroCluster FC 組態轉換為 AFF A250 或 FAS500f MetroCluster IP 組態。</block>
+  <block id="082e2199f2e8e7e6ff724185b8487f99" category="paragraph"><block ref="082e2199f2e8e7e6ff724185b8487f99" category="inline-link-rx"></block></block>
+  <block id="1e18e1f9085022bf9b99cbfaf58ab4d5" category="paragraph">在 MetroCluster IP 組態中設定第 3 層 MetroCluster IP 位址</block>
+  <block id="6b289b60214afb640cb3b88389dfe97e" category="paragraph">您可以編輯第 3 層組態中節點的 MetroCluster IP 位址、網路遮罩和閘道。</block>
+  <block id="bacf5875940eb96c091917a5d1b9e1ad" category="inline-link">修改MetroCluster 位址、網路遮罩和閘道、使其位於一個靜態IP中</block>
+  <block id="bf130f5d7d338872a9f3b57415d62749" category="paragraph"><block ref="bf130f5d7d338872a9f3b57415d62749" category="inline-link-rx"></block></block>
+  <block id="cdafe0852c5285bf1f5846616c50f62d" category="paragraph">簡化 MetroCluster FC 組態中節點的控制器升級</block>
+  <block id="407ce0bae822f5f1b99e4d9c2a25b062" category="paragraph">使用切換和切換功能的升級程序已簡化。</block>
+  <block id="f897370f92c3d8ec5324c468747e4210" category="paragraph"><block ref="f897370f92c3d8ec5324c468747e4210" category="inline-link-rx"></block></block>
+  <block id="8cdd736be069554622c436a2c599a593" category="paragraph">第 3 層共享鏈路的 IP 支援</block>
+  <block id="691914a2d679340737342aafb1bffe11" category="paragraph">MetroCluster IP 組態可透過 IP 路由（第 3 層）後端連線來實作。</block>
+  <block id="45186ad241074d94a133e683abb6f70a" category="paragraph"><block ref="45186ad241074d94a133e683abb6f70a" category="inline-link-rx"></block></block>
+  <block id="74eb178224c5fa701fbcd96998feaafe" category="paragraph">部分9.9.1 ONTAP</block>
+  <block id="e31476825cd043b784508d2973f3d14a" category="paragraph">支援 8 節點叢集</block>
+  <block id="60d69de6171dd30823b37f82c71230f8" category="paragraph">IP 和光纖附加組態支援永久性的 8 節點叢集。</block>
+  <block id="40d7404018dc8febaca6bd91e9b48ba8" category="inline-link">安裝和佈線 MetroCluster 元件</block>
+  <block id="6af2dc37753a5e6e029fb0ae7fc66f1a" category="paragraph"><block ref="6af2dc37753a5e6e029fb0ae7fc66f1a" category="inline-link-rx"></block></block>
+  <block id="0e0332eeed51af7c88c71e42325f06d2" category="paragraph">簡化介面、可透過系統管理員管理 IP MetroCluster 作業</block>
+  <block id="3d8c9252712eac4aee5f46e1eaf70281" category="paragraph">您可以使用系統管理員來管理 IP MetroCluster 作業、包括設定 IP MetroCluster 站台、配對站台及設定叢集。</block>
+  <block id="d73a7b2e9d0b560c8788684e080bfb89" category="inline-link">管理 MetroCluster 站台</block>
+  <block id="7aec141904db9fbd637afcee9e7edf50" category="paragraph"><block ref="7aec141904db9fbd637afcee9e7edf50" category="inline-link-rx"></block></block>
+  <block id="2fb515b84203369df8a6c693c7612d7a" category="paragraph">IP MetroCluster 可透過系統管理員切換和切換</block>
+  <block id="0a96686e2876927129d1d5aef0571af3" category="paragraph">您可以使用系統管理員來執行 IP MetroCluster 組態的所有規劃或非計畫性切換和切換程序步驟。</block>
+  <block id="bb1a898150cba9c435ba241d8cba4ec7" category="inline-link">還原切換與切換MetroCluster</block>
+  <block id="d39d075b61e472ef8c54018caefa8511" category="paragraph"><block ref="d39d075b61e472ef8c54018caefa8511" category="inline-link-rx"></block></block>
+  <block id="8e9be644315ddadb5944dcbc8bf1384e" category="paragraph">支援將工作負載和資料從現有的四節點 MetroCluster FC 組態移轉至新的 MetroCluster IP 組態。</block>
+  <block id="a9824cae56fb744858ebac6acf84c1e6" category="paragraph"><block ref="a9824cae56fb744858ebac6acf84c1e6" category="inline-link-rx"></block></block>
+  <block id="1a68d4a78f68931df0fce4010d4df302" category="paragraph">全新升級與更新程序</block>
+  <block id="b3288bd86ff4e4636941ad1ebfeb011c" category="paragraph">支援四節點 MetroCluster FC 和 IP 組態的硬體升級或重新整理。</block>
+  <block id="1beabd2bf8c89043837550cdc3d49b42" category="paragraph">無鏡射的集合體</block>
+  <block id="44852896b9c6d494436e90ceaa1b720f" category="paragraph">MetroCluster IP 組態支援無鏡射的集合體。</block>
+  <block id="0900886d76d15efaa0e570bd07d1dc1b" category="paragraph"><block ref="0900886d76d15efaa0e570bd07d1dc1b" category="inline-link-rx"></block></block>
+  <block id="e8bfb35048c0270a42b5363420d8d06e" category="paragraph">符合 MetroCluster 標準的交換器</block>
+  <block id="dda2ae45f83910f519a8c4d7c9f92c9c" category="paragraph">MetroCluster IP 組態可支援未經 NetApp 驗證的交換器、但前提是它們必須符合 NetApp 規格。</block>
+  <block id="e86b2272e3f7c48e112d32e70c0b4f1c" category="paragraph"><block ref="e86b2272e3f7c48e112d32e70c0b4f1c" category="inline-link-rx"></block></block>
+  <block id="b4f5e35865c61d6fc5091755a3ab97ea" category="paragraph">私有第 2 層網路共用</block>
+  <block id="8975f88edd1882cbd2188fe69d435802" category="paragraph">支援 Cisco 交換器的 MetroCluster IP 組態可以共用 ISL 的現有網路、而非使用專用 MetroCluster ISL 。早期ONTAP 版本需要專用ISL。</block>
+  <block id="83e1d9204a2f1962f867f2b891422e9b" category="paragraph">MetroCluster IP 交換器專用於 MetroCluster 組態、無法共用。只有位於靜態IP交換器上的靜態ISL連接埠可以連接至共享交換器。MetroCluster MetroCluster</block>
+  <block id="8ac8df48acb2ee9b6d05e12a33e47a64" category="paragraph">如果使用共享網路、客戶必須負責滿足MetroCluster 共享網路中的需求。</block>
+  <block id="684d63e7608a9651e2d8bee21d68cf7f" category="paragraph"><block ref="684d63e7608a9651e2d8bee21d68cf7f" category="inline-link-rx"></block></block>
+  <block id="19aa48eac8765adacdffd4326cf95a85" category="paragraph">您可以允許一個叢集站台接管另一個叢集站台的工作。此功能可讓您協助進行災難的維護或恢復。</block>
+  <block id="5b8155e42c3d2db8152488c62b6cf9ea" category="paragraph"><block ref="5b8155e42c3d2db8152488c62b6cf9ea" category="inline-link-rx"></block></block>
+  <block id="c93a01651caeb8f0903789f4e2c6ca82" category="paragraph">使用 ONTAP 系統管理員進行叢集更新</block>
+  <block id="4ea7a398beabdb4718811003918eda21" category="paragraph">您可以在 MetroCluster 組態中更新叢集。對於 MetroCluster 組態中的叢集、除了更新叢集之外、您必須在兩個叢集上執行每項作業。</block>
+  <block id="c7e90c4bd08c796e50d8af0c6b346a93" category="inline-link">使用System Manager進行叢集管理</block>
+  <block id="785cf49e3cfc99670cc23b949297cd4c" category="paragraph"><block ref="785cf49e3cfc99670cc23b949297cd4c" category="inline-link-rx"></block></block>
+  <block id="cee937d02b9156f604109cd50b3658d1" category="doc">MetroCluster IP 支援 Broadcom 、 Cisco 和 NVIDIA 交換器的最新功能</block>
+  <block id="5575ad3a333d0c5383b802ef33e4e17a" category="cell">Broadcom IP 交換器</block>
+  <block id="db639aacb326d316570b69a39011f1b2" category="paragraph">Quanta IX8.</block>
+  <block id="a28a8f1b6ed98f7c514003193e44ac48" category="cell">Cisco IP 交換器</block>
+  <block id="f0936c8d947d6fc9958bb86b9f3f74f8" category="paragraph">Nexus 9336C-FX2</block>
+  <block id="aff36115ba8ba0cb671d3dfa2208bed1" category="paragraph">9336C</block>
+  <block id="ef0b6886d8755e5cb21c0bd5f9f81c01" category="cell">NVIDIA 交換器</block>
+  <block id="d4acd79e74a2b88899e53bc903561aae" category="paragraph">在同一個 NVIDIA SN2100 交換器上設定多個 MC IP 組態</block>
+  <block id="155bba03249764c61fd72335fd0c56c8" category="paragraph">SN2100</block>
+  <block id="cc1b247a7668beb64785f6df1f981bd6" category="doc">MetroCluster FC 平台支援的新功能</block>
+  <block id="0aa28fce3490c51be9c1cc5c337f1c9d" category="cell">MetroCluster FC 組態中支援的平台</block>
+  <block id="f0291c0e14447de291af4fef3e275d43" category="paragraph">ASA AFF A700 與 ASA AFF A400</block>
+  <block id="3fb7588c5c073b8764e9fba5e74f631a" category="paragraph">ONTAP 9.7P5</block>
+  <block id="be0230807be10234aa034e45c6825280" category="paragraph">FASA400和FAS8300 AFF</block>
+  <block id="0cf4c92a4ea3edbf66b4866978237ff3" category="doc">MetroCluster tiebreaker 支援的新功能</block>
+  <block id="e90d1c6a70648051cbe5131fdb8a8227" category="paragraph">每個 ONTAP 9 資料管理軟體版本都提供全新且增強的功能、可改善 ONTAP MetroCluster 組態的功能、管理能力及效能。</block>
+  <block id="8c1bba32ed1c0d98d05106a264d07469" category="paragraph">如需所有 ONTAP 9 版本中的硬體平台和交換器支援、已知問題和限制、或 ONTAP 9.9.1 之前版本中所推出功能的詳細資訊、請參閱<block ref="6e7f74aa9001f0524a965144f528bbc2" category="inline-link-rx"></block>。您必須使用 NetApp 帳戶登入、或建立帳戶才能存取版本資訊。</block>
+  <block id="a4c25ce93017fa1e39ea1f02e454b5dd" category="sidebar">支援 ONTAP 功能的新功能</block>
+  <block id="3cc716dba68d44285ae03d4a0e650afb" category="sidebar">MetroCluster 功能的新功能</block>
+  <block id="7a9ee1321dd82cefa7736a4643b1d4cb" category="sidebar">MetroCluster IP 組態支援的新功能</block>
+  <block id="d793294f059b1014ac708a3a85a786cb" category="sidebar">MetroCluster FC 組態支援的新功能</block>
+  <block id="f53be3830567c46eb450137d81abd1eb" category="sidebar">MetroCluster FC 中 Brocade 交換器的新功能</block>
+  <block id="c50301ea3686b38b168720b817903229" category="sidebar">MetroCluster IP 支援 Broadcom 、 Cisco 、 NVIDIA 交換器的新功能</block>
+  <block id="986acab97d190ab2df45c246e97ca539" category="sidebar">ONTAP Mediator 支援的新功能</block>
+  <block id="72b08fce3cdf931f9f180e97f8508090" category="sidebar">MetroCluster Tiebreaker 支援的新功能</block>
 </blocks>

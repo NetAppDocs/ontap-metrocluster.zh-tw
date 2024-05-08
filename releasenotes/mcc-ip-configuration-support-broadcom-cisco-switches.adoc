@@ -1,0 +1,59 @@
+---
+permalink: releasenotes/mcc-ip-configuration-support-broadcom-cisco-nvidia-switches.html 
+sidebar: sidebar 
+keywords: metrocluster, ip configuration, support for broadcom, cisco, NVIDIA switches 
+summary:  
+---
+= MetroCluster IP 支援 Broadcom 、 Cisco 和 NVIDIA 交換器的最新功能
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[cols="2*"]
+|===
+| Broadcom IP 交換器 | 可用的開始 
+
+
+ a| 
+Quanta IX8.
+ a| 
+ONTAP 9.6
+
+|===
+[cols="2*"]
+|===
+| Cisco IP 交換器 | 可用的開始 
+
+
+ a| 
+Nexus 9336C-FX2
+ a| 
+部分9.9.1 ONTAP
+
+
+
+ a| 
+9336C
+ a| 
+部分9.8 ONTAP
+
+|===
+[cols="2*"]
+|===
+| NVIDIA 交換器 | 可用的開始 
+
+
+ a| 
+在同一個 NVIDIA SN2100 交換器上設定多個 MC IP 組態
+ a| 
+ONTAP 9.14.1.
+
+
+
+ a| 
+SN2100
+ a| 
+ONTAP 9.12.1
+
+|===

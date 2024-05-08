@@ -1,0 +1,113 @@
+---
+permalink: releasenotes/mcc-config-support-features.html 
+sidebar: sidebar 
+keywords: metrocluster, configuration, support for ontap features 
+summary:  
+---
+= MetroCluster 組態支援 ONTAP 功能的新功能
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[cols="20,65,15"]
+|===
+| MetroCluster 組態中支援的功能 | 說明 | 可用的開始 
+
+
+ a| 
+S3 物件儲存支援鏡射和無鏡射的集合體
+ a| 
+您可以在 MetroCluster IP 和 FC 組態中的鏡射或無鏡射集合體中、在 SVM 上啟用 S3 物件儲存伺服器。
+
+https://docs.netapp.com/us-en/ontap/s3-config/index.html["S3組態總覽"]
+ a| 
+ONTAP 9.14.1.
+
+
+
+ a| 
+支援在 MetroCluster 叢集中的鏡射和非鏡射集合體上佈建 S3 儲存區
+ a| 
+您可以在 MetroCluster 組態中的鏡射或無鏡射集合體上建立貯體。
+
+https://docs.netapp.com/us-en/ontap/s3-config/create-bucket-mcc-task.html["在 MetroCluster 組態中的鏡射或無鏡射 Aggregate 上建立貯體"]
+ a| 
+ONTAP 9.14.1.
+
+
+
+ a| 
+MetroCluster IP 組態支援 ONTAP Mediator 1.5
+ a| 
+ONTAP Mediator 1.5 可用於監控 MetroCluster IP 組態。
+
+https://docs.netapp.com/us-en/ontap/mediator/index.html["安裝或升級ONTAP 《不知道如何使用》服務"]
+ a| 
+ONTAP 9.12.1
+
+
+
+ a| 
+支援 MetroCluster IP 和 MetroCluster 網路附加組態中的前端主機傳輸協定
+ a| 
+支援前端主機傳輸協定（例如 NFS 和 iSCSI ）的 IPsec 可在 MetroCluster IP 和 MetroCluster 網路附加組態中使用。
+
+https://docs.netapp.com/us-en/ontap/networking/configure_ip_security_@ipsec@_over_wire_encryption.html["透過有線加密設定IP安全性（IPsec）"]
+ a| 
+ONTAP 9.12.1
+
+
+
+ a| 
+ONTAP Mediator 1.4
+ a| 
+MetroCluster IP 組態支援 ONTAP Mediator 1.4 版軟體。
+
+https://docs.netapp.com/us-en/ontap/mediator/index.html["安裝或升級ONTAP 《不知道如何使用》服務"]
+ a| 
+零點9.11.1. ONTAP
+
+
+
+ a| 
+一致性群組
+ a| 
+MetroCluster 組態支援一致性群組。
+
+https://docs.netapp.com/us-en/ontap/mediator/index.html["安裝或升級ONTAP 《不知道如何使用》服務"]
+ a| 
+零點9.11.1. ONTAP
+
+
+
+ a| 
+MetroCluster IP 組態支援 ONTAP Mediator
+ a| 
+ONTAP Mediator 服務可提供實體獨立的狀態資訊儲存庫、協助 MetroCluster IP 組態執行自動非計畫性切換。
+
+https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/task_configuring_the_ontap_mediator_service_from_a_metrocluster_ip_configuration.html["針對ONTAP 非計畫性自動切換設定「功能不全」服務"]
+ a| 
+更新ONTAP
+
+
+
+ a| 
+可鏡射到各種組態FabricPool MetroCluster
+ a| 
+您可以在 MetroCluster 組態上設定鏡射 FabricPool 、將冷資料分層至兩個不同的故障區域。
+
+https://docs.netapp.com/us-en/ontap/fabricpool/setup-object-stores-mcc-task.html["設定物件存放區以FabricPool 供在MetroCluster 一個不確定的組態中使用"]
+ a| 
+更新ONTAP
+
+
+
+ a| 
+SVM 災難恢復
+ a| 
+MetroCluster 組態中的作用中儲存虛擬機器（ SVM ）可作為 SnapMirror SVM 災難恢復功能的來源。
+ a| 
+版本9.5 ONTAP
+
+|===

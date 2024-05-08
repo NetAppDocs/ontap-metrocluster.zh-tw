@@ -13,8 +13,7 @@ sidebar:
   entries:
   - title: 文件MetroCluster
     url: "/index.html"
-  - title: 版本資訊
-    url: "/releasenotes.html"
+  - section: releasenotes
   - section: install-fc
   - section: install-ip
   - section: install-stretch
