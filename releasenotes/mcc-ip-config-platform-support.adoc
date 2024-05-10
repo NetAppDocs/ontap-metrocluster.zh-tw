@@ -10,8 +10,9 @@ summary:
 :imagesdir: ./media/
 
 
-[role="lead"]
-陣列 LUN 不支援 MetroCluster IP 組態。
+
+
+== 平台支援
 
 [cols="2*"]
 |===
@@ -38,11 +39,6 @@ ONTAP 9.12.1P1
 
 ONTAP 9.13.1 GA 與更新版本的 ONTAP 版本。
 
-[NOTE]
-====
-ONTAP 9.13.1 RC1 不支援這些平台。
-
-====
 
 
  a| 
@@ -93,5 +89,56 @@ ONTAP 9.6
 適用於A300和FAS8200 AFF
  a| 
 版本9.5 ONTAP
+
+|===
+
+
+== 交換器支援
+
+[cols="2*"]
+|===
+| Broadcom IP 交換器 | 可用的開始 
+
+
+ a| 
+Quanta IX8.
+ a| 
+ONTAP 9.6
+
+|===
+[cols="2*"]
+|===
+| Cisco IP 交換器 | 可用的開始 
+
+
+ a| 
+Nexus 9336C-FX2
+ a| 
+部分9.9.1 ONTAP
+
+
+
+ a| 
+9336C
+ a| 
+部分9.8 ONTAP
+
+|===
+[cols="2*"]
+|===
+| NVIDIA 交換器 | 可用的開始 
+
+
+ a| 
+在同一個 NVIDIA SN2100 交換器上設定多個 MC IP 組態
+ a| 
+ONTAP 9.14.1.
+
+
+
+ a| 
+SN2100
+ a| 
+ONTAP 9.12.1
 
 |===

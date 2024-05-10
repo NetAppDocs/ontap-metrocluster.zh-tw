@@ -20,7 +20,7 @@ summary: 您必須設定NVIDIA IP交換器作為叢集互連和後端MetroCluste
 您可以選擇下列方法、將交換器重設為原廠預設值。
 
 * <<RCF-file-option,使用RCF檔案選項重設交換器>>
-* <<Cumulus-install-option,使用Cummuls安裝選項重設交換器>>
+* <<Cumulus-install-option,下載並安裝 Cumulus 軟體>>
 
 
 

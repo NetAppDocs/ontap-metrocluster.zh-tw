@@ -12,10 +12,6 @@ entries:
   url: "/releasenotes/mcc-ip-config-platform-support.html"
 - title: MetroCluster FC 組態支援的新功能
   url: "/releasenotes/mcc-fc-config-platform-support.html"
-- title: MetroCluster FC 中 Brocade 交換器的新功能
-  url: "/releasenotes/mcc-fc-config-support-brocade-cisco-switches.html"
-- title: MetroCluster IP 支援 Broadcom 、 Cisco 、 NVIDIA 交換器的新功能
-  url: "/releasenotes/mcc-ip-configuration-support-broadcom-cisco-nvidia-switches.html"
 - title: ONTAP Mediator 支援的新功能
   url: "/releasenotes/mcc-mediator-whats-new.html"
 - title: MetroCluster Tiebreaker 支援的新功能

@@ -18,7 +18,7 @@ summary:
  a| 
 使用 MetroCluster IP 和乙太網路附加儲存設備的共用交換器、從 MetroCluster FC 移轉至 MetroCluster IP
  a| 
-您可以使用共用交換器、在不中斷營運的情況下、從 MetroCluster FC 移轉至 MetroCluster IP 組態（ ONTAP 9.8 及更新版本）。
+您可以使用共用儲存交換器、在不中斷營運的情況下、從 MetroCluster FC 移轉至 MetroCluster IP 組態。
 
 https://docs.netapp.com/us-en/ontap-metrocluster/transition/concept_nondisruptively_transitioning_from_a_four_node_mcc_fc_to_a_mcc_ip_configuration.html["不中斷地從MetroCluster 一個不中斷的支援FC移轉至MetroCluster 一個支援功能性的IP組態ONTAP （版本號：9.8及更新版本）"]
  a| 
@@ -254,16 +254,5 @@ ONTAP 9.6
 https://docs.netapp.com/us-en/ontap-metrocluster/manage/index.html["還原切換與切換MetroCluster"]
  a| 
 ONTAP 9.6
-
-
-
- a| 
-使用 ONTAP 系統管理員進行叢集更新
- a| 
-您可以在 MetroCluster 組態中更新叢集。對於 MetroCluster 組態中的叢集、除了更新叢集之外、您必須在兩個叢集上執行每項作業。
-
-https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/index.html["使用System Manager進行叢集管理"]
- a| 
-版本9.5 ONTAP
 
 |===

@@ -10,6 +10,11 @@ summary:
 :imagesdir: ./media/
 
 
+[role="lead"]
+每個 ONTAP 9 資料管理軟體版本都提供全新且增強的功能、可改善 ONTAP MetroCluster 組態的功能、管理能力及效能。
+
+如需影響 ONTAP MetroCluster 組態的已知問題、限制和升級注意事項詳細資料、請參閱 https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508["發行說明ONTAP"^]。您必須使用 NetApp 帳戶登入、或建立帳戶才能存取版本資訊。
+
 [cols="20,65,15"]
 |===
 | MetroCluster 組態中支援的功能 | 說明 | 可用的開始 
@@ -33,17 +38,6 @@ ONTAP 9.14.1.
 
 https://docs.netapp.com/us-en/ontap/s3-config/create-bucket-mcc-task.html["在 MetroCluster 組態中的鏡射或無鏡射 Aggregate 上建立貯體"]
  a| 
-ONTAP 9.14.1.
-
-
-
- a| 
-MetroCluster IP 組態支援 ONTAP Mediator 1.5
- a| 
-ONTAP Mediator 1.5 可用於監控 MetroCluster IP 組態。
-
-https://docs.netapp.com/us-en/ontap/mediator/index.html["安裝或升級ONTAP 《不知道如何使用》服務"]
- a| 
 ONTAP 9.12.1
 
 
@@ -55,17 +49,6 @@ ONTAP 9.12.1
 
 https://docs.netapp.com/us-en/ontap/networking/configure_ip_security_@ipsec@_over_wire_encryption.html["透過有線加密設定IP安全性（IPsec）"]
  a| 
-ONTAP 9.12.1
-
-
-
- a| 
-ONTAP Mediator 1.4
- a| 
-MetroCluster IP 組態支援 ONTAP Mediator 1.4 版軟體。
-
-https://docs.netapp.com/us-en/ontap/mediator/index.html["安裝或升級ONTAP 《不知道如何使用》服務"]
- a| 
 零點9.11.1. ONTAP
 
 
@@ -76,17 +59,6 @@ https://docs.netapp.com/us-en/ontap/mediator/index.html["安裝或升級ONTAP �
 MetroCluster 組態支援一致性群組。
 
 https://docs.netapp.com/us-en/ontap/mediator/index.html["安裝或升級ONTAP 《不知道如何使用》服務"]
- a| 
-零點9.11.1. ONTAP
-
-
-
- a| 
-MetroCluster IP 組態支援 ONTAP Mediator
- a| 
-ONTAP Mediator 服務可提供實體獨立的狀態資訊儲存庫、協助 MetroCluster IP 組態執行自動非計畫性切換。
-
-https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/task_configuring_the_ontap_mediator_service_from_a_metrocluster_ip_configuration.html["針對ONTAP 非計畫性自動切換設定「功能不全」服務"]
  a| 
 更新ONTAP
 

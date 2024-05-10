@@ -15,6 +15,7 @@ summary: 升級MetroCluster 靜態IP交換器上的韌體。
 
 您必須在每個交換器上連續重複此工作。
 
+[[step_1_fw_upgrade]]
 .步驟
 . 檢查組態的健全狀況。
 +
@@ -86,7 +87,7 @@ To check if the nodes are ready to do a switchover or switchback operation, run 
 NOTE: 您必須依照下列順序在交換器上安裝交換器軟體：switch_a_1、switch_b_1、switch_a_2、switch_b_2。
 
 +
-根據交換器類型是 Broadcom 、 Cisco 或 NVIDIA 、請依照 _ MetroCluster IP 安裝與組態 _ 相關主題中的步驟安裝交換器軟體：
+根據交換機類型是 Broadcom 、 Cisco 還是 NVIDIA 、請依照相關主題中的步驟安裝交換器軟體：
 
 +
 ** link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-broadcom-switch-efos-software["下載並安裝 Broadcom 交換器 EFOS 軟體"]
@@ -94,8 +95,6 @@ NOTE: 您必須依照下列順序在交換器上安裝交換器軟體：switch_a
 ** link:../install-ip/task_switch_config_nvidia.html#download-and-install-the-cumulus-software["下載並安裝 NVIDIA SN2100 交換器 Cumulus 軟體"]
 
 
-
-
 . 針對每個交換器重複上述步驟。
-. 重複步驟1以檢查組態的健全狀況。
+. 重複 <<step_1_fw_upgrade,步驟1.>> 檢查組態的健全狀況。
 

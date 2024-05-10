@@ -4,11 +4,15 @@ sidebar: sidebar
 keywords: metrocluster, fc configuration, platform, support 
 summary:  
 ---
-= MetroCluster FC 平台支援的新功能
+= MetroCluster FC 平台與交換器支援的新功能
 :allow-uri-read: 
 :icons: font
 :imagesdir: ./media/
 
+
+
+
+== 平台支援
 
 [cols="2*"]
 |===
@@ -40,5 +44,34 @@ FASA400和FAS8300 AFF
 適用於A300和FAS8200 AFF
  a| 
 版本9.5 ONTAP
+
+|===
+
+
+== 交換器支援
+
+[cols="2*"]
+|===
+| Brocade FC 交換器 | 可用的開始 
+
+
+ a| 
+G720
+ a| 
+部分9.8 ONTAP
+
+
+
+ a| 
+G620-1 、 G630-1
+ a| 
+部分9.8 ONTAP
+
+
+
+ a| 
+G630
+ a| 
+ONTAP 9.6
 
 |===

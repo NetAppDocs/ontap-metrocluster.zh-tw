@@ -1943,7 +1943,6 @@
   <block id="a755a72f514254c41e2fe4747c117fd7" category="list-text">在第一台交換器上安裝軟體。</block>
   <block id="8385ca59dee772c25d8029fd40151e4e" category="admonition">您必須依照下列順序在交換器上安裝交換器軟體：switch_a_1、switch_b_1、switch_a_2、switch_b_2。</block>
   <block id="220d6c1bfe741784a72c631856e0b298" category="list-text">針對每個交換器重複上述步驟。</block>
-  <block id="24b79d1109d169b3428eb16d56510160" category="list-text">重複步驟1以檢查組態的健全狀況。</block>
   <block id="d57e84b8163149c21e12029ec296e524" category="summary">視ONTAP 您的版本而定、您可以將IOM12磁碟櫃熱新增至IOM6磁碟櫃堆疊的橋接MetroCluster 式功能的更新組態。</block>
   <block id="c0b0a005c66dec25318b8f77ccd43de1" category="doc">將IOM12磁碟櫃熱新增至IOM6磁碟櫃堆疊、採用橋接式MetroCluster 附加的功能</block>
   <block id="a3d256f1f161df27a47bc7770faf92e4" category="paragraph">若要執行此程序、請參閱<block ref="96c52bfd2d59063b848ae852888ce36d" category="inline-link-rx"></block>。</block>
@@ -10874,18 +10873,14 @@
   <block id="ff5d77e021373149d767a30d7a2c23eb" category="list-text">在MetroCluster 其中一個新節點上重新整理此功能的靜態組態：+「MetroCluster 更新為真實的靜態組態」</block>
   <block id="50457dca5a837dbab5a5d65f7d4bcf58" category="paragraph">以下範例顯示MetroCluster 兩個DR群組上重新整理的支援功能組態：</block>
   <block id="1a19a64f583970049a90e38276e4d459" category="list-text">驗MetroCluster 證MetroCluster 支援的功能：</block>
-  <block id="070a06c68e9e4e7cecc2e9719193b28c" category="summary">BYou可在MetroCluster 升級合作夥伴叢集上的控制器模組時、使用「不中斷切換」作業來為用戶端提供不中斷的服務。其他元件（例如儲存櫃或交換器）無法在此程序中進行升級。</block>
   <block id="93b195f498a318e8891093dd91595a9f" category="list-text">站台_A</block>
   <block id="3c673528b64c2295b1c285da9cfcc7a6" category="list-text">站台_B</block>
   <block id="d6a05f216ff3e2d50b361bbcdff5ee3d" category="section-title">升級MetroCluster 以供升級的控制器之用的流程、採用一套不需更新的IP組態</block>
   <block id="a38c8b65ec97b4e54f007517a94544d5" category="section-title">在升級控制器之前、請先更新MetroCluster RCF交換器檔案</block>
   <block id="381666f515959bb42f36179e1ccf18b0" category="inline-link-macro">RcfFileGenerator</block>
   <block id="01624fead9baaddc3669cdd47ad795ed" category="list-text">如果交換器未設定支援的最小RCF檔案版本、您必須更新RCF檔案。如需正確的交換器機型RCF檔案版本、請參閱 <block ref="da64f60a95327a9651de90bff4a67cd3" category="inline-link-macro-rx"></block>。下列步驟適用於RCF檔案應用程式。</block>
-  <block id="590efa3b2ef6486e61048a848e166d21" category="inline-link-macro">安裝與組態MetroCluster</block>
-  <block id="1f41258ab009387cbd7e42b144372d55" category="paragraph">請依照中交換器廠商的一節中的步驟操作 <block ref="1a8a3204a30c37aed38d8cb8818b0107" category="inline-link-macro-rx"></block> 內容：</block>
   <block id="35b541137c97f0d986b3779c7a322603" category="list-text"><block ref="35b541137c97f0d986b3779c7a322603" category="inline-link-macro-rx"></block></block>
   <block id="7781c27327814c0f7935ce903ca1101f" category="list-text"><block ref="7781c27327814c0f7935ce903ca1101f" category="inline-link-macro-rx"></block></block>
-  <block id="e886156cd00bbd9320ba94c39cce2772" category="paragraph">請遵循中的步驟 <block ref="1a8a3204a30c37aed38d8cb8818b0107" category="inline-link-macro-rx"></block> 內容：</block>
   <block id="8e077a574605e13d75ee083e7cd96f27" category="list-text"><block ref="8e077a574605e13d75ee083e7cd96f27" category="inline-link-macro-rx"></block></block>
   <block id="5860040c16ad914f0dc769bbc79c2a6d" category="list-text"><block ref="5860040c16ad914f0dc769bbc79c2a6d" category="inline-link-macro-rx"></block></block>
   <block id="dadca3d57b191a678f23de76f79b283e" category="section-title">將舊節點的連接埠對應至新節點</block>
@@ -11790,8 +11785,6 @@
   <block id="7c3ceaca0865f6c6621d894d5c1f5274" category="paragraph">您可以選擇下列方法、將交換器重設為原廠預設值。</block>
   <block id="61168c45da9c3d852ce200a8e6fe5441" category="inline-xref">使用RCF檔案選項重設交換器</block>
   <block id="f39c98e742374a832c3bc1976a82c99a" category="list-text"><block ref="4d1a1da583a14975a026f863f46efa9e" category="inline-xref-macro-rx"></block></block>
-  <block id="2905d1a656f6dd8b76df3793ca9d808a" category="inline-xref">使用Cummuls安裝選項重設交換器</block>
-  <block id="07e63a61b44e7110afc73ee228b45e9f" category="list-text"><block ref="c5c4030964ab0fc53589e1f003b13a41" category="inline-xref-macro-rx"></block></block>
   <block id="465c9065d10e2d00f4f4116734ac1084" category="paragraph">在安裝新的RCF組態之前、您必須還原NVIDIA交換器設定。</block>
   <block id="4cc34c69d718b06fff00dea4b3e4a9d7" category="paragraph">若要將交換器還原為預設設定、請使用「restoreDefaults」選項來執行RCF檔案。此選項會將原始備份檔案複製到原始位置、然後重新啟動交換器。重新開機之後、交換器會與您第一次執行RCF檔案來設定交換器時的原始組態一起上線。</block>
   <block id="2678e0ba955ea31dc3a2b8d425811dfc" category="paragraph">下列組態詳細資料不會重設：</block>
@@ -13495,7 +13488,6 @@
   <block id="43b42c26c42f7c6fe4ef77f9f2ed17ff" category="paragraph"><block ref="43b42c26c42f7c6fe4ef77f9f2ed17ff" category="inline-link-macro-rx"></block></block>
   <block id="2a35142a0e6eda28748cdf00899dc98b" category="paragraph">。 <block ref="0c7bf211a7cb9712977652add2e31f3e" category="inline-link-macro-rx"></block> 說明新功能、升級附註、修正問題、已知限制及已知問題。</block>
   <block id="0f25553cdf8eb8de83ad715008d4617b" category="paragraph">執行必要的工作、以完成從多控制器或儲存設備故障中恢復的工作。</block>
-  <block id="77252e9ff1622351efd32757cb7fd9a1" category="paragraph">根據交換器類型是 Broadcom 、 Cisco 或 NVIDIA 、請依照 _ MetroCluster IP 安裝與組態 _ 相關主題中的步驟安裝交換器軟體：</block>
   <block id="4b6132c87b7872df013c5b52ce9f608e" category="inline-link-macro">下載並安裝 Broadcom 交換器 EFOS 軟體</block>
   <block id="25fec8f604c77fe35ba611e08af94f79" category="list-text"><block ref="25fec8f604c77fe35ba611e08af94f79" category="inline-link-macro-rx"></block></block>
   <block id="fc5c2b5017628187d434fc142f96b244" category="inline-link-macro">下載並安裝 Cisco 交換器 NX-OS 軟體</block>
@@ -13522,7 +13514,6 @@
   <block id="a7684986aa13d220654f08fd150ba1b1" category="paragraph"><block ref="06d12c03aa485826b7f204affe755aa8" prefix="" category="inline-code"></block></block>
   <block id="2cd7949ba857b629dd50d21989a67ec7" category="admonition">當您為多個交換器連接埠設定 DAC 選項時、只需要重新啟動交換器一次。</block>
   <block id="0b2bf1a9f2d59771c09560dc455e2f55" category="paragraph">您必須將 ha-config 狀態設為<block ref="32b858596eeb9351eca27c2906a21da4" prefix=" " category="inline-code"></block> 在自動資源配置之前、請確定已選取正確的分割區大小、以允許適當的根磁碟區大小。如需詳細資訊、請參閱 <block ref="bcb6d9c56d14cbd4808073431b182e91" category="inline-link-macro-rx"></block>。</block>
-  <block id="b0ef37dfa15ebf32b4dbd0ae9b0d9954" category="doc">MetroCluster FC 支援 Brocade 交換器的新功能</block>
   <block id="b7cc806082929b5b8f498af052398f01" category="cell">Brocade FC 交換器</block>
   <block id="198fc1af468509094e8d40e07916c836" category="cell">可用的開始</block>
   <block id="2abfff2974f589f7a217325f304e0ec5" category="paragraph">部分9.8 ONTAP</block>
@@ -13530,7 +13521,6 @@
   <block id="b611d537ec3462ead9e641968d17d570" category="paragraph">G630</block>
   <block id="7dd2a92fd3f41a5334edf46f95d77e71" category="paragraph">ONTAP 9.6</block>
   <block id="2429e1917793f4046beb8fe2642382e4" category="doc">MetroCluster IP 平台支援的新功能</block>
-  <block id="1297db8be9c9c9dc4b4ddc3d4655b2a0" category="paragraph">陣列 LUN 不支援 MetroCluster IP 組態。</block>
   <block id="7616cb7bf661fe6377270c352ec2ff82" category="cell">MetroCluster IP 組態中支援的平台</block>
   <block id="8a1d06fd27bf0bfc6535b6a49185e591" category="paragraph">解答150 AFF</block>
   <block id="f57f1967d5e316f5c38c14ea29884a9a" category="paragraph">ONTAP 9.13.1 及更新版本的 ONTAP 版本</block>
@@ -13539,7 +13529,6 @@
   <block id="fc0954dc49e631cf41dcb343d7e02893" category="paragraph">ONTAP 9.10.1P12</block>
   <block id="7c3d41bb91a832b194d140ed72b101e7" category="paragraph">AFF C250 、 AFF C400 、 AFF C800</block>
   <block id="f2bdeb410b49732e0c1482361af1d1d5" category="paragraph">ONTAP 9.13.1 GA 與更新版本的 ONTAP 版本。</block>
-  <block id="839c501c003baf01642160068d3b89ee" category="paragraph">ONTAP 9.13.1 RC1 不支援這些平台。</block>
   <block id="ab8296c5ef7a7b056b384680f89a9379" category="paragraph">零點9.10.1 ONTAP</block>
   <block id="e86c8b5cecd7918c55b2a357c7668d30" category="paragraph">All Flash SAN Array 平台</block>
   <block id="2ba4f1a86eaaf58dbde1ea31ab19c1c5" category="paragraph">在本文件中、有關不適用的功能的資訊適用於相應的功能表系統。MetroCluster AFF ASA例如AFF 、所有的纜線和其他有關的資訊、也適用於ASA AFF 該系統。</block>
@@ -13557,22 +13546,15 @@
   <block id="54c9cab829044acca6994285d3185409" category="paragraph">您可以在 MetroCluster 組態中的鏡射或無鏡射集合體上建立貯體。</block>
   <block id="ea0c90724ad3d5959704fb91a048c28c" category="inline-link">在 MetroCluster 組態中的鏡射或無鏡射 Aggregate 上建立貯體</block>
   <block id="7a5d298867b0efc5adf88dfe965f7137" category="paragraph"><block ref="7a5d298867b0efc5adf88dfe965f7137" category="inline-link-rx"></block></block>
-  <block id="43b4c6f5c6770a1f4cd11cb10516ccf4" category="paragraph">MetroCluster IP 組態支援 ONTAP Mediator 1.5</block>
-  <block id="8b81da9bca97d2bd0f5a62805a363707" category="paragraph">ONTAP Mediator 1.5 可用於監控 MetroCluster IP 組態。</block>
   <block id="cd18beb67ffb0ec95fecaca021fc2541" category="paragraph"><block ref="cd18beb67ffb0ec95fecaca021fc2541" category="inline-link-rx"></block></block>
   <block id="594e1ec3daa27e540baa061f731f028f" category="paragraph">ONTAP 9.12.1</block>
   <block id="6eaae443849a6746c6ace7f4204bd085" category="paragraph">支援 MetroCluster IP 和 MetroCluster 網路附加組態中的前端主機傳輸協定</block>
   <block id="d70d383ef18fafd59eb655545c1017bd" category="paragraph">支援前端主機傳輸協定（例如 NFS 和 iSCSI ）的 IPsec 可在 MetroCluster IP 和 MetroCluster 網路附加組態中使用。</block>
   <block id="3d84ccfa2f8722220108717d5cfdc457" category="inline-link">透過有線加密設定IP安全性（IPsec）</block>
   <block id="ad8910c15c5709955bf29783dc65c7b6" category="paragraph"><block ref="ad8910c15c5709955bf29783dc65c7b6" category="inline-link-rx"></block></block>
-  <block id="21b1af0acdaa98f7c573b54a229cef88" category="paragraph">ONTAP Mediator 1.4</block>
-  <block id="df3517bd826ee685104e3f6cbe1cdbf9" category="paragraph">MetroCluster IP 組態支援 ONTAP Mediator 1.4 版軟體。</block>
   <block id="b59cced8914a5ae4b2997c54c8cfeb8d" category="paragraph">零點9.11.1. ONTAP</block>
   <block id="6165c4352e1504dbaeef34d0cc50c187" category="paragraph">一致性群組</block>
   <block id="3fb697436dcc4f2ae2cdd29dc91fd043" category="paragraph">MetroCluster 組態支援一致性群組。</block>
-  <block id="cbaad17e9e28a1ce42215011f9596b78" category="paragraph">MetroCluster IP 組態支援 ONTAP Mediator</block>
-  <block id="47dbbe9898ba28cfece0cd9485a165eb" category="paragraph">ONTAP Mediator 服務可提供實體獨立的狀態資訊儲存庫、協助 MetroCluster IP 組態執行自動非計畫性切換。</block>
-  <block id="ef75c59ee0b21aa5485c12ab2eb869a7" category="paragraph"><block ref="ef75c59ee0b21aa5485c12ab2eb869a7" category="inline-link-rx"></block></block>
   <block id="7b25d54164390a979173c966708bcd3e" category="paragraph">可鏡射到各種組態FabricPool MetroCluster</block>
   <block id="456a60d3d7f70b899491cde66c53e366" category="paragraph">您可以在 MetroCluster 組態上設定鏡射 FabricPool 、將冷資料分層至兩個不同的故障區域。</block>
   <block id="50adf775e4799022cdc6de484f49f3f1" category="inline-link">設定物件存放區以FabricPool 供在MetroCluster 一個不確定的組態中使用</block>
@@ -13582,14 +13564,10 @@
   <block id="47d81ac708cab22da7ea952550b6f757" category="summary">每個版本都提供 ONTAP Mediator 的新功能。  最新功能。</block>
   <block id="3261bd656e2112e78b0313c87c039420" category="doc">ONTAP Mediator 支援的新功能</block>
   <block id="9d01d502466559c8d4ff8682b3e00d92" category="paragraph">每個版本都提供 ONTAP Mediator 的新增強功能。  最新功能。</block>
-  <block id="1cbc22a4f6eb33175d313f6ebcd56fd9" category="cell">ONTAP Mediator 版本 / 功能</block>
   <block id="e8467e9b509c4924668c01eb7ab2adde" category="cell">版本ONTAP</block>
-  <block id="cee4df42e3e78ea996ff39fd7cfe320a" category="paragraph">ONTAP Mediator 服務可提供實體獨立的狀態資訊儲存庫、協助 MetroCluster IP 組態執行自動非計畫性切換。
-針對ONTAP 非計畫性自動切換設定「功能不全」服務</block>
   <block id="63b6c1d0d10ce89604932c62d9b6f4d7" category="doc">MetroCluster 功能的新功能</block>
   <block id="3100460fa3d7ba2ea001abefda93f3bc" category="cell">說明及深入瞭解的地方</block>
   <block id="677eca4ee8daca8d2b9156735c70729b" category="paragraph">使用 MetroCluster IP 和乙太網路附加儲存設備的共用交換器、從 MetroCluster FC 移轉至 MetroCluster IP</block>
-  <block id="d935deb4654475cd01823b1943de7d00" category="paragraph">您可以使用共用交換器、在不中斷營運的情況下、從 MetroCluster FC 移轉至 MetroCluster IP 組態（ ONTAP 9.8 及更新版本）。</block>
   <block id="9b9a95d11d51a9dc8ad8f89b7072a66d" category="paragraph"><block ref="9b9a95d11d51a9dc8ad8f89b7072a66d" category="inline-link-rx"></block></block>
   <block id="c8c7ff2d320bb817b5265b97fc451f0b" category="paragraph">從八節點 MetroCluster FC 組態到 MetroCluster IP 組態的不中斷轉換</block>
   <block id="5b9e0c49b03f990a762696dc03ba2d75" category="paragraph">您可以不中斷地將工作負載和資料從現有的八節點 MetroCluster FC 組態移轉至新的 MetroCluster IP 組態。</block>
@@ -13659,11 +13637,6 @@
   <block id="684d63e7608a9651e2d8bee21d68cf7f" category="paragraph"><block ref="684d63e7608a9651e2d8bee21d68cf7f" category="inline-link-rx"></block></block>
   <block id="19aa48eac8765adacdffd4326cf95a85" category="paragraph">您可以允許一個叢集站台接管另一個叢集站台的工作。此功能可讓您協助進行災難的維護或恢復。</block>
   <block id="5b8155e42c3d2db8152488c62b6cf9ea" category="paragraph"><block ref="5b8155e42c3d2db8152488c62b6cf9ea" category="inline-link-rx"></block></block>
-  <block id="c93a01651caeb8f0903789f4e2c6ca82" category="paragraph">使用 ONTAP 系統管理員進行叢集更新</block>
-  <block id="4ea7a398beabdb4718811003918eda21" category="paragraph">您可以在 MetroCluster 組態中更新叢集。對於 MetroCluster 組態中的叢集、除了更新叢集之外、您必須在兩個叢集上執行每項作業。</block>
-  <block id="c7e90c4bd08c796e50d8af0c6b346a93" category="inline-link">使用System Manager進行叢集管理</block>
-  <block id="785cf49e3cfc99670cc23b949297cd4c" category="paragraph"><block ref="785cf49e3cfc99670cc23b949297cd4c" category="inline-link-rx"></block></block>
-  <block id="cee937d02b9156f604109cd50b3658d1" category="doc">MetroCluster IP 支援 Broadcom 、 Cisco 和 NVIDIA 交換器的最新功能</block>
   <block id="5575ad3a333d0c5383b802ef33e4e17a" category="cell">Broadcom IP 交換器</block>
   <block id="db639aacb326d316570b69a39011f1b2" category="paragraph">Quanta IX8.</block>
   <block id="a28a8f1b6ed98f7c514003193e44ac48" category="cell">Cisco IP 交換器</block>
@@ -13672,7 +13645,6 @@
   <block id="ef0b6886d8755e5cb21c0bd5f9f81c01" category="cell">NVIDIA 交換器</block>
   <block id="d4acd79e74a2b88899e53bc903561aae" category="paragraph">在同一個 NVIDIA SN2100 交換器上設定多個 MC IP 組態</block>
   <block id="155bba03249764c61fd72335fd0c56c8" category="paragraph">SN2100</block>
-  <block id="cc1b247a7668beb64785f6df1f981bd6" category="doc">MetroCluster FC 平台支援的新功能</block>
   <block id="0aa28fce3490c51be9c1cc5c337f1c9d" category="cell">MetroCluster FC 組態中支援的平台</block>
   <block id="f0291c0e14447de291af4fef3e275d43" category="paragraph">ASA AFF A700 與 ASA AFF A400</block>
   <block id="3fb7588c5c073b8764e9fba5e74f631a" category="paragraph">ONTAP 9.7P5</block>
@@ -13684,8 +13656,78 @@
   <block id="3cc716dba68d44285ae03d4a0e650afb" category="sidebar">MetroCluster 功能的新功能</block>
   <block id="7a9ee1321dd82cefa7736a4643b1d4cb" category="sidebar">MetroCluster IP 組態支援的新功能</block>
   <block id="d793294f059b1014ac708a3a85a786cb" category="sidebar">MetroCluster FC 組態支援的新功能</block>
-  <block id="f53be3830567c46eb450137d81abd1eb" category="sidebar">MetroCluster FC 中 Brocade 交換器的新功能</block>
-  <block id="c50301ea3686b38b168720b817903229" category="sidebar">MetroCluster IP 支援 Broadcom 、 Cisco 、 NVIDIA 交換器的新功能</block>
   <block id="986acab97d190ab2df45c246e97ca539" category="sidebar">ONTAP Mediator 支援的新功能</block>
   <block id="72b08fce3cdf931f9f180e97f8508090" category="sidebar">MetroCluster Tiebreaker 支援的新功能</block>
+  <block id="9ae85011061f6a07b3199cc6631e205d" category="paragraph">請依照您的交換器廠商章節中的步驟進行：</block>
+  <block id="5a3808eade7ae7dfc1128e76ac8a6b87" category="inline-link-macro">將Broadcom IP交換器重設為原廠預設值</block>
+  <block id="c1d5e0b646c085cbf6cc97f215844ce8" category="list-text"><block ref="c1d5e0b646c085cbf6cc97f215844ce8" category="inline-link-macro-rx"></block></block>
+  <block id="10d9704804fc9a126c35cc824525113d" category="inline-link-macro">將 Cisco IP 交換器重設為原廠預設值</block>
+  <block id="7665201fdf545ef872524ea717a6b5e4" category="list-text"><block ref="7665201fdf545ef872524ea717a6b5e4" category="inline-link-macro-rx"></block></block>
+  <block id="159f95fdae86e1ad5e17a192aee59c43" category="inline-link-macro">將 NVIDIA IP 交換器重設為原廠預設值</block>
+  <block id="5548bb09ca13f0f29cfa2b29502f1f32" category="list-text"><block ref="5548bb09ca13f0f29cfa2b29502f1f32" category="inline-link-macro-rx"></block></block>
+  <block id="c3ea36c26671f8c16b968aeffbf12c7d" category="inline-link-macro">下載並安裝 Broadcom RCF 檔案</block>
+  <block id="368aaabd8ccd78edfaeb1e279944bf6d" category="list-text"><block ref="368aaabd8ccd78edfaeb1e279944bf6d" category="inline-link-macro-rx"></block></block>
+  <block id="76dff903c42af8953fcd64558dc34099" category="inline-link-macro">下載並安裝 Cisco IP RCF 檔案</block>
+  <block id="89fdba60efe33dd9621db371306f12e5" category="list-text"><block ref="89fdba60efe33dd9621db371306f12e5" category="inline-link-macro-rx"></block></block>
+  <block id="8fa6539999f2d3aff134c30600c80e41" category="inline-link-macro">下載並安裝NVIDIA RCF檔案</block>
+  <block id="2812633e4be142ea6fef81aa2fc3b357" category="list-text"><block ref="2812633e4be142ea6fef81aa2fc3b357" category="inline-link-macro-rx"></block></block>
+  <block id="ea9534759740df7ca366f32a3eb8a0ec" category="inline-xref">下載並安裝 Cumulus 軟體</block>
+  <block id="a6c37e682cfc0729046dd2e498ad461c" category="list-text"><block ref="ef78584b865ab255d612a5aa6725b10d" category="inline-xref-macro-rx"></block></block>
+  <block id="4d8d9056b62fc01f5cd3f0898c551fde" category="section-title">平台支援</block>
+  <block id="9b6c50e7cbf80c446a0078ceb63104d0" category="section-title">交換器支援</block>
+  <block id="9342c35c4399c8e6faf7c07d8bae26c5" category="paragraph">如需影響 ONTAP MetroCluster 組態的已知問題、限制和升級注意事項詳細資料、請參閱<block ref="6e7f74aa9001f0524a965144f528bbc2" category="inline-link-rx"></block>。您必須使用 NetApp 帳戶登入、或建立帳戶才能存取版本資訊。</block>
+  <block id="542203888545c733d7713856ba607788" category="paragraph">如需在 MetroCluster 組態中安裝或升級 ONTAP Mediator 的詳細資訊、您可以前往 <block ref="98d8e0da2148573045cbd111c9373b18" category="inline-link-macro-rx"></block>。</block>
+  <block id="ab67c4c2b9b0f6070e68d79d3a0b6c63" category="cell">ONTAP Mediator 功能</block>
+  <block id="5793a46a4020e2b9d210afaa14008d67" category="paragraph">在環境關機的情況下、支援中介協助的自動非計畫性切換（ MAUSO ）。</block>
+  <block id="4765407452f01930deae2b9481b69e36" category="paragraph">在 MetroCluster IP 組態中初始支援 ONTAP Mediator 服務</block>
+  <block id="de09b0e8b75c62ac84c620713e05647b" category="paragraph">您可以使用共用儲存交換器、在不中斷營運的情況下、從 MetroCluster FC 移轉至 MetroCluster IP 組態。</block>
+  <block id="76a27f1dad18a5de567d4849d3e76b69" category="doc">MetroCluster FC 平台與交換器支援的新功能</block>
+  <block id="0f40216c1ad47c12e8ccc087d555570f" category="doc">發行說明ONTAP</block>
+  <block id="2dfc17cf61c3aebedc1a1f7f467baa26" category="paragraph">根據交換機類型是 Broadcom 、 Cisco 還是 NVIDIA 、請依照相關主題中的步驟安裝交換器軟體：</block>
+  <block id="9caf870a1494e70481403791fcece589" category="list-text">重複 <block ref="b2da07bc854b8a63875843471604110c" category="inline-xref-macro-rx"></block> 檢查組態的健全狀況。</block>
+  <block id="67d7197766de9fc9cf6113211650818b" category="sidebar">NetApp MetroCluster 組態結合了陣列型叢集與同步複寫功能、可提供持續可用度、並以每筆交易為基礎、立即複製所有關鍵任務資料。MetroCluster 組態可強化 NetApp 硬體和 ONTAP 儲存軟體的內建高可用度和不中斷營運、為整個儲存和主機環境提供額外的保護層。</block>
+  <block id="be11c74c1dd7f307bb80183a90dc2067" category="sidebar">開始使用</block>
+  <block id="2ef693575e01de24e090245f10a59777" category="sidebar">安裝MetroCluster 知識產權</block>
+  <block id="5a3b01a5bff3f06441fb7188a02f105e" category="sidebar">安裝Fabric附加MetroCluster 的功能</block>
+  <block id="fdb8b17580937ddecfddeee4298a1482" category="sidebar">安裝Stretch MetroCluster</block>
+  <block id="18bd3543357b4fa11f6a58101dfa61a5" category="sidebar">安裝斷路器</block>
+  <block id="d2875782347edc6066d3025cecc9df38" category="sidebar">安裝調解器（MetroCluster 僅限知識產權）</block>
+  <block id="ade01a5a398372194a42c36e9f5279ac" category="sidebar">維護</block>
+  <block id="7b8e5f5947a6dadc276f09b5a095667d" category="sidebar">以MetroCluster 不穩定的FC組態維護及更換FC交換器。</block>
+  <block id="7f5d1cf6b92b5f6a9e5fe290c7d568fa" category="sidebar">IP 交換器</block>
+  <block id="e9e6a0d40b20996536edcfae7b0ca501" category="sidebar">維護及更換MetroCluster 採用不穩定IP組態的IP交換器。</block>
+  <block id="5360721f5d15a4a50d1c0ea177551d33" category="sidebar">Atto橋接器</block>
+  <block id="6659ad060d95c49da27c02efe70880ee" category="sidebar">維護及更換Atto FC-to SAS橋接器、採用MetroCluster 不穩定的FC組態。</block>
+  <block id="c89a58741e7240ddf3c43ec7dbb21cd7" category="sidebar">磁碟機櫃</block>
+  <block id="bb2a6473813b98ffe9edacc863bb749e" category="sidebar">熱新增和不中斷營運的更換磁碟機櫃MetroCluster 、以支援FC組態。</block>
+  <block id="9deb979aa141eacec55a34ce9dfd4cc9" category="sidebar">RCF檔案</block>
+  <block id="277ccac115bb10401c3dbe796a5fd555" category="sidebar">RCF檔案MetroCluster</block>
+  <block id="f4ff45e882d7ee5ad1b4a9e07301850d" category="sidebar">為MetroCluster 您的交換器產生或下載RCF檔案。</block>
+  <block id="d59048f21fd887ad520398ce677be586" category="sidebar">深入瞭解</block>
+  <block id="b92dd7cb5813aceca4052255be1046a0" category="sidebar">NetApp MetroCluster 解決方案架構與設計| TR-4705</block>
+  <block id="c8ed4eb56c00a193e2bf85d5a38119ee" category="sidebar">瞭MetroCluster 解功能不清的解決方案。</block>
+  <block id="d821955413ef2ce3b63ac32371a5186e" category="sidebar">《SIP解決方案架構與設計》| TR-4689 MetroCluster</block>
+  <block id="33d6c0f3568f32d65b84533fcc9dcbcb" category="sidebar">瞭MetroCluster 解此解決方案。</block>
+  <block id="3d5cf400e4fb829207d0ab81798b6587" category="sidebar">升級、擴充及轉換</block>
+  <block id="64cd3f6f5347e9d6c92e09aa1c656f87" category="sidebar">升級及更新硬體</block>
+  <block id="fdc7fb09ec4ebc533362a55d221d305f" category="sidebar">以MetroCluster 不更新組態升級控制器。</block>
+  <block id="e912938f380bdbc5125a46cb6974c985" category="sidebar">展開雙節點MetroCluster 的功能</block>
+  <block id="c495f5fb55d923c4b5bdcc9031d17504" category="sidebar">將控制器新增至MetroCluster 「架構」組態、以建立四節點或八節點組態。</block>
+  <block id="8b9fb0a48d871747071a5767bb11c3c9" category="sidebar">擴充四節點MetroCluster 的功能</block>
+  <block id="f0de1d093d27614c73e83446489eec92" category="sidebar">將控制器新增至MetroCluster 「架構」組態、以建立八節點組態。</block>
+  <block id="daf3fcb291d6eb9e42a7777197caa458" category="sidebar">將 MetroCluster FC 轉換為 MetroCluster IP</block>
+  <block id="689a3f6927feed4862b6b5b03d4f0018" category="sidebar">將現有MetroCluster 的靜態IP組態轉換成MetroCluster 靜態IP組態。</block>
+  <block id="822970998ef8866cd59ed6ba8d63af83" category="sidebar">升級MetroCluster RCF檔案</block>
+  <block id="b2899a6511f7a2ac6656022f75581e5a" category="sidebar">升級MetroCluster 交換器RCF檔案、以使用各種IP組態。</block>
+  <block id="b7c02f1bc7ffc889ddb9e99702663c56" category="sidebar">Atto橋接韌體</block>
+  <block id="ddac5beff5f77bf22595caa98bac08f9" category="sidebar">光纖橋接器7600N</block>
+  <block id="7189e471dda7f4816814f7b74c6948d1" category="sidebar">下載7600橋接器的韌體。</block>
+  <block id="dcb741f9e6e5d6050aeb3d8fd347e9fd" category="sidebar">FiberBridge 7500N</block>
+  <block id="81defdfe6f2018754b9c90215acaf8c1" category="sidebar">下載適用於7500橋接器的韌體。</block>
+  <block id="dfcc398099d6a64026e51ab282e16253" category="sidebar">更多資源</block>
+  <block id="fa0344a10c89a05b4e9232391d5feb01" category="sidebar">NetApp Config Advisor</block>
+  <block id="7bde48e6b0d33c17d731b283a4674428" category="sidebar">驗證您的組態和纜線。</block>
+  <block id="d5552b01bf48dde88719269e524ddbb9" category="sidebar">驗證是否支援您的硬體。</block>
+  <block id="3f2b90ec5a9b43745b9c8c9fedf48d8d" category="sidebar">NetApp支援知識庫</block>
+  <block id="b2cdf9234a2dabbbb6acb6f71e098209" category="sidebar">搜尋您的支援問題答案。</block>
 </blocks>
