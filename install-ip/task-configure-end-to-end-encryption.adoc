@@ -1,0 +1,260 @@
+---
+permalink: install-ip/task-configure-end-to-end-encryption.html 
+sidebar: sidebar 
+keywords: metrocluster, ip, encryption, end-to-end, backend, aff a400, fas8300, fas8700, encrypt, enable, disable 
+summary:  
+---
+= 設定端點對端點加密
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+從 ONTAP 9.15.1 開始、您可以設定端點對端點加密、以加密 MetroCluster IP 組態中站台之間的後端流量、例如 NVlog 和儲存複寫資料。
+
+.關於這項工作
+* 您必須是叢集管理員才能執行此工作。
+* 在設定端點對端點加密之前、您必須先設定 link:https://docs.netapp.com/us-en/ontap/encryption-at-rest/configure-external-key-management-concept.html["設定外部金鑰管理"^]。
+* 檢閱在 MetroCluster IP 組態中設定端點對端點加密所需的支援系統和最低 ONTAP 版本：
++
+|===
+
+
+| 最低 ONTAP 版本 | 支援的系統 
+
+
+ a| 
+ONTAP 9.15.1.1
+ a| 
+** 解答400 AFF
+** FAS8300
+** FAS8700
+
+
+|===
+
+
+
+
+== 啟用端點對端點加密
+
+請執行下列步驟以啟用端點對端點加密。
+
+.步驟
+. 驗MetroCluster 證整個過程的效能狀況。
++
+.. 驗證MetroCluster 這些元件是否正常運作：
++
+[source, cli]
+----
+metrocluster check run
+----
++
+[listing]
+----
+cluster_A::*> metrocluster check run
+----
++
+此作業會在背景執行。
+
+.. 之後 `metrocluster check run` 作業完成、執行：
++
+[source, cli]
+----
+metrocluster check show
+----
++
+大約五分鐘後、會顯示下列結果：
+
++
+[listing]
+----
+cluster_A:::*> metrocluster check show
+
+Component           Result
+------------------- ---------
+nodes               ok
+lifs                ok
+config-replication  ok
+aggregates          ok
+clusters            ok
+connections         not-applicable
+volumes             ok
+7 entries were displayed.
+----
+.. 檢查執行MetroCluster 中的檢查作業狀態：
++
+[source, cli]
+----
+metrocluster operation history show -job-id <id>
+----
+.. 確認沒有健全狀況警示：
++
+[source, cli]
+----
+system health alert show
+----
+
+
+. 確認兩個叢集上都已設定外部金鑰管理：
++
+[source, cli]
+----
+security key-manager external show-status
+----
+. 為每個 DR 群組啟用端點對端點加密：
++
+[source, cli]
+----
+metrocluster modify -is-encryption-enabled true -dr-group-id <dr_group_id>
+----
++
+* 範例 *
+
++
+[listing]
+----
+cluster_A::*> metrocluster modify -is-encryption-enabled true -dr-group-id 1
+Warning: Enabling encryption for a DR Group will secure NVLog and Storage
+         replication data sent between MetroCluster nodes and have an impact on
+         performance. Do you want to continue? {y|n}: y
+[Job 244] Job succeeded: Modify is successful.
+----
++
+對組態中的每個 DR 群組重複此步驟。
+
+. 確認已啟用端點對端點加密：
++
+[source, cli]
+----
+metrocluster node show -fields is-encryption-enabled
+----
++
+* 範例 *
+
++
+[listing]
+----
+cluster_A::*> metrocluster node show -fields is-encryption-enabled
+
+dr-group-id cluster    node      configuration-state is-encryption-enabled
+----------- ---------- --------  ------------------- -----------------
+1           cluster_A  node_A_1  configured          true
+1           cluster_A  node_A_2  configured          true
+1           cluster_B  node_B_1  configured          true
+1           cluster_B  node_B_2  configured          true
+4 entries were displayed.
+----
+
+
+
+
+== 停用端點對端點加密
+
+執行下列步驟以停用端點對端點加密。
+
+.步驟
+. 驗MetroCluster 證整個過程的效能狀況。
++
+.. 驗證MetroCluster 這些元件是否正常運作：
++
+[source, cli]
+----
+metrocluster check run
+----
++
+[listing]
+----
+cluster_A::*> metrocluster check run
+
+----
++
+此作業會在背景執行。
+
+.. 之後 `metrocluster check run` 作業完成、執行：
++
+[source, cli]
+----
+metrocluster check show
+----
++
+大約五分鐘後、會顯示下列結果：
+
++
+[listing]
+----
+cluster_A:::*> metrocluster check show
+
+Component           Result
+------------------- ---------
+nodes               ok
+lifs                ok
+config-replication  ok
+aggregates          ok
+clusters            ok
+connections         not-applicable
+volumes             ok
+7 entries were displayed.
+----
+.. 檢查執行MetroCluster 中的檢查作業狀態：
++
+[source, cli]
+----
+metrocluster operation history show -job-id <id>
+----
+.. 確認沒有健全狀況警示：
++
+[source, cli]
+----
+system health alert show
+----
+
+
+. 確認兩個叢集上都已設定外部金鑰管理：
++
+[source, cli]
+----
+security key-manager external show-status
+----
+. 在每個 DR 群組上停用端點對端點加密：
++
+[source, cli]
+----
+metrocluster modify -is-encryption-enabled false -dr-group-id <dr_group_id>
+----
++
+* 範例 *
+
++
+[listing]
+----
+cluster_A::*> metrocluster modify -is-encryption-enabled false -dr-group-id 1
+[Job 244] Job succeeded: Modify is successful.
+----
++
+對組態中的每個 DR 群組重複此步驟。
+
+. 確認端點對端點加密已停用：
++
+[source, cli]
+----
+metrocluster node show -fields is-encryption-enabled
+----
++
+* 範例 *
+
++
+[listing]
+----
+cluster_A::*> metrocluster node show -fields is-encryption-enabled
+
+dr-group-id cluster    node      configuration-state is-encryption-enabled
+----------- ---------- --------  ------------------- -----------------
+1           cluster_A  node_A_1  configured          false
+1           cluster_A  node_A_2  configured          false
+1           cluster_B  node_B_1  configured          false
+1           cluster_B  node_B_2  configured          false
+4 entries were displayed.
+----
+

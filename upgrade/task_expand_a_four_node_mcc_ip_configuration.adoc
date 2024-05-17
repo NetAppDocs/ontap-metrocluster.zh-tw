@@ -1202,4 +1202,5 @@ node_A_4-new      false
 ----
 
 
+. 如果您的系統支援端點對端點加密、您可以 link:../maintain/task-configure-encryption.html#enable-end-to-end-encryption["啟用端點對端點加密"] 在新的 DR 群組上。
 

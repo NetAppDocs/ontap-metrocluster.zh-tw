@@ -73,6 +73,7 @@ image::../media/mcc_dr_groups_8_node.gif[MCC DR群組8節點]
 .. 在合作夥伴叢集上重複執行命令。
 
 
+. 如果已啟用端點對端點加密、請依照的步驟執行 link:../maintain/task-configure-encryption.html#disable-end-to-end-encryption["停用端點對端點加密"]。
 . 移除MetroCluster 可啟動切換功能的斷路器、調解器或其他軟體中現有的物件組態。
 +
 [cols="2*"]
@@ -301,6 +302,7 @@ image::../media/mcc_dr_group_c5.png[MCC DR 群組 C5]
 
 
 
+. 如果您在新增節點之前已停用端點對端點加密、則可依照中的步驟重新啟用 link:../maintain/task-configure-encryption.html#enable-end-to-end-encryption["啟用端點對端點加密"]。
 . 如有必要、請使用您的組態程序來還原監控功能。
 +
 [cols="2*"]

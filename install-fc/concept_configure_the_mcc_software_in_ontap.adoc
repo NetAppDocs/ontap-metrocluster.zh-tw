@@ -2972,10 +2972,21 @@ node_A_1 SVM 4 snmpv3user     snmp        usm                   10.10.10.13
 ----
 . 在交換器提示字元的交換器上設定v3：
 +
+[role="tabbed-block"]
+====
+.Brocade 交換器
+--
 「nmpconfig - set v3」
 
+--
+.Cisco交換器
+--
+`snmp-server user <user_name>  auth [md5/sha/sha-256] <auth_password> priv (aes-128) <priv_password>`
+
+--
+====
 +
-如果您需要RO存取權限、請在「User（ro）：」之後指定「snmpv3user」、如範例所示：
+如果您需要存取 RO 、請在「 User （ ro ）：」之後指定「 snmpv3user 」。以下範例使用 Brocade 交換器：
 
 +
 [listing]

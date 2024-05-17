@@ -514,6 +514,10 @@ setenv bootarg.mcc.lun_part true
 ----
 
 
+. 如果原始系統設定為端點對端點加密、請在每個替換節點的載入程式提示字元中設定下列開機：
++
+`setenv bootarg.mccip.encryption_enabled 1`
+
 . 如果原始系統已設定為ADP、請在每個替換節點的載入器提示字元中、設定原始系統ID（*非*替換控制器模組的系統ID）和節點DR合作夥伴的系統ID：
 +
 「etenv bootarg.mCs.local_config_id原始sysid」

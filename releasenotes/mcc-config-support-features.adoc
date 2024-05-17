@@ -21,6 +21,17 @@ summary:
 
 
  a| 
+MetroCluster IP 支援 NVMe
+ a| 
+四節點 MetroCluster IP 組態支援 NVMe / TCP 前端主機傳輸協定。
+
+link:https://docs.netapp.com/us-en/ontap/san-admin/san-config-mcc-concept.html["SAN組態MetroCluster"^]
+ a| 
+ONTAP 9.15.1.1
+
+
+
+ a| 
 S3 物件儲存支援鏡射和無鏡射的集合體
  a| 
 您可以在 MetroCluster IP 和 FC 組態中的鏡射或無鏡射集合體中、在 SVM 上啟用 S3 物件儲存伺服器。
@@ -43,6 +54,17 @@ ONTAP 9.12.1
 
 
  a| 
+MetroCluster IP 支援 NVMe
+ a| 
+四節點 MetroCluster IP 組態支援 NVMe / FC 傳輸協定。
+
+link:https://docs.netapp.com/us-en/ontap/san-admin/san-config-mcc-concept.html["SAN組態MetroCluster"^]
+ a| 
+ONTAP 9.12.1
+
+
+
+ a| 
 支援 MetroCluster IP 和 MetroCluster 網路附加組態中的前端主機傳輸協定
  a| 
 支援前端主機傳輸協定（例如 NFS 和 iSCSI ）的 IPsec 可在 MetroCluster IP 和 MetroCluster 網路附加組態中使用。
@@ -57,8 +79,6 @@ https://docs.netapp.com/us-en/ontap/networking/configure_ip_security_@ipsec@_ove
 一致性群組
  a| 
 MetroCluster 組態支援一致性群組。
-
-https://docs.netapp.com/us-en/ontap/mediator/index.html["安裝或升級ONTAP 《不知道如何使用》服務"]
  a| 
 更新ONTAP
 

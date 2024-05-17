@@ -5298,8 +5298,6 @@
   <block id="5da008293f97642c13b8ce99da980ab2" category="inline-link-macro">使用NVFIL監控及保護資料庫有效性</block>
   <block id="6ab5e4feeee2903bd0495714443b11a6" category="paragraph"><block ref="6ab5e4feeee2903bd0495714443b11a6" category="inline-link-macro-rx"></block></block>
   <block id="6b1a2eef5ea82e265caa75d1009aaae1" category="summary">如果硬體元件必須更換、您必須使用各自的硬體更換與安裝指南來更換。</block>
-  <block id="b3847c80d357e0d5d221ce737320c2b4" category="doc">更換硬體並啟動新的控制器</block>
-  <block id="217c96dcd79e3325e1857aed771a5c40" category="section-title">更換災難站台的硬體</block>
   <block id="83a10d9e95eee16293468c7f346cce1e" category="paragraph">儲存控制器必須關閉電源或保持暫停狀態（顯示載入器提示）。</block>
   <block id="b5de74a1fd2187d9589df11fe3f78707" category="list-text">視需要更換元件。</block>
   <block id="f62bcce98f7e25ff88aa77d67a701b6b" category="admonition">在此步驟中、您可以完全依照災難發生前的接線方式來更換和連接元件。您不得開啟元件電源。</block>
@@ -5367,7 +5365,6 @@
   <block id="5791a8e499bd6374b69018568f374756" category="paragraph">《不互連秀》MetroCluster</block>
   <block id="a299904397c0c53d0dff20464bb5a6fb" category="paragraph">VLAN ID包含在輸出的介面卡欄位中顯示的介面卡名稱中。</block>
   <block id="53e60741b7dea71b0fc08dfdab30d92c" category="paragraph">在此範例中、VLAN ID為120和130：</block>
-  <block id="d57d00f698e8ac4eaa665b2d710b970a" category="section-title">將替換磁碟機與正常運作的站台隔離（MetroCluster 知識產權組態）</block>
   <block id="faf1b2de9b3420669edf161ef2d98b43" category="paragraph">您必須從MetroCluster 正常運作的節點中斷連接到任何更換磁碟機、以隔離這些磁碟機。</block>
   <block id="36e6d0da6dd22d30492f26d039f7b332" category="paragraph">此程序僅適用於MetroCluster 不完整的IP組態。</block>
   <block id="79899d65096477dbbe2b3da6bfd80528" category="list-text">從任一正常節點的提示字元、變更為進階權限層級：</block>
@@ -8757,7 +8754,6 @@
   <block id="177f79b7f42518cbd6ed3a48de1f222b" category="paragraph">如果FC交換器設定為IOD、ONTAP 則必須將該軟件設定為IOD。同樣地、如果FC交換器已設定為ood、ONTAP 則必須將其設定為ood。</block>
   <block id="0a9b432f5f5621ba3d2bafdaa8d5be41" category="paragraph">「MetroCluster 支援此功能的零件介面卡修改-node_node_name_-is：啟用此功能的true」</block>
   <block id="b88127542a36dbd88f1d9b0eb0e66dc0" category="paragraph">目前支援AES-128加密。ONTAP</block>
-  <block id="f9f9baab7ad1908bd1cdbdf27a3f1041" category="paragraph">如果您需要RO存取權限、請在「User（ro）：」之後指定「snmpv3user」、如範例所示：</block>
   <block id="7c36b0e12ce814681762efb6b2ec6cc4" category="paragraph">範例顯示如何設定唯讀使用者。您可以視需要調整RW使用者。</block>
   <block id="046a4dbe28831449e896740fded1c064" category="paragraph">您也應該為未使用的帳戶設定密碼、以確保密碼安全、並使用ONTAP 您的版本資訊系統所提供的最佳加密功能。</block>
   <block id="1b58c8498876b494bed537a676c855cc" category="paragraph"><block ref="1b58c8498876b494bed537a676c855cc" category="inline-link-rx"></block></block>
@@ -11206,7 +11202,6 @@
   <block id="b8f9279dc6303b21cf32cf73636c595c" category="paragraph">下列輸出顯示MetroCluster 、在不正常模式下、存在於不正常組態中的節點：</block>
   <block id="7283128d41b0f2c5bcce7fbaf3cae22c" category="list-text">檢查MetroCluster 下列各項的情況：</block>
   <block id="224cf26f1f556319905e555894318f36" category="paragraph">下列輸出顯示叢集A上的Aggregate已連線並鏡射：</block>
-  <block id="5dd03e8d039863e563e049be198c3fd3" category="sidebar">版本資訊</block>
   <block id="13c1fe346da53d3c9c58ab0c190eb172" category="sidebar">瞭MetroCluster 解資料保護與災難恢復</block>
   <block id="f6ded8bde676e251409725df18ef579a" category="sidebar">如何保護資料並提供災難恢復MetroCluster</block>
   <block id="d5bca41ec2c9b2bc82b68b782983610c" category="sidebar">安裝MetroCluster 一套靜態IP組態</block>
@@ -13546,7 +13541,6 @@
   <block id="54c9cab829044acca6994285d3185409" category="paragraph">您可以在 MetroCluster 組態中的鏡射或無鏡射集合體上建立貯體。</block>
   <block id="ea0c90724ad3d5959704fb91a048c28c" category="inline-link">在 MetroCluster 組態中的鏡射或無鏡射 Aggregate 上建立貯體</block>
   <block id="7a5d298867b0efc5adf88dfe965f7137" category="paragraph"><block ref="7a5d298867b0efc5adf88dfe965f7137" category="inline-link-rx"></block></block>
-  <block id="cd18beb67ffb0ec95fecaca021fc2541" category="paragraph"><block ref="cd18beb67ffb0ec95fecaca021fc2541" category="inline-link-rx"></block></block>
   <block id="594e1ec3daa27e540baa061f731f028f" category="paragraph">ONTAP 9.12.1</block>
   <block id="6eaae443849a6746c6ace7f4204bd085" category="paragraph">支援 MetroCluster IP 和 MetroCluster 網路附加組態中的前端主機傳輸協定</block>
   <block id="d70d383ef18fafd59eb655545c1017bd" category="paragraph">支援前端主機傳輸協定（例如 NFS 和 iSCSI ）的 IPsec 可在 MetroCluster IP 和 MetroCluster 網路附加組態中使用。</block>
@@ -13579,7 +13573,6 @@
   <block id="b57d94c823165bcbbdd40797c37fc13a" category="paragraph"><block ref="b57d94c823165bcbbdd40797c37fc13a" category="inline-link-rx"></block></block>
   <block id="de19903f1baec8a806f09acbc21c609c" category="paragraph">在環境關機時觸發中介協助的自動非計畫性切換（ MAUSO ）</block>
   <block id="8a6db987355c97228c7eda746c7aab92" category="paragraph">如果某個站台因環境關機而正常關機、則會觸發 MAUSO 。</block>
-  <block id="0b97e7c3b0f44c35cdd69948234f7fcc" category="paragraph"><block ref="0b97e7c3b0f44c35cdd69948234f7fcc" category="inline-link-rx"></block></block>
   <block id="2baf765df55a69e9c032792bec126f2c" category="paragraph">支援八節點 MetroCluster IP 組態</block>
   <block id="5e3aa18041f614fb450ca9a1c9ff1a5b" category="paragraph">您可以在八節點 MetroCluster IP 組態中升級控制器和儲存設備、方法是將組態擴充為暫時性的十二節點組態、然後移除舊的 DR 群組。</block>
   <block id="ee794ce3325c3c2b6f8e58083826be5a" category="paragraph"><block ref="ee794ce3325c3c2b6f8e58083826be5a" category="inline-link-rx"></block></block>
@@ -13651,11 +13644,7 @@
   <block id="be0230807be10234aa034e45c6825280" category="paragraph">FASA400和FAS8300 AFF</block>
   <block id="0cf4c92a4ea3edbf66b4866978237ff3" category="doc">MetroCluster tiebreaker 支援的新功能</block>
   <block id="e90d1c6a70648051cbe5131fdb8a8227" category="paragraph">每個 ONTAP 9 資料管理軟體版本都提供全新且增強的功能、可改善 ONTAP MetroCluster 組態的功能、管理能力及效能。</block>
-  <block id="8c1bba32ed1c0d98d05106a264d07469" category="paragraph">如需所有 ONTAP 9 版本中的硬體平台和交換器支援、已知問題和限制、或 ONTAP 9.9.1 之前版本中所推出功能的詳細資訊、請參閱<block ref="6e7f74aa9001f0524a965144f528bbc2" category="inline-link-rx"></block>。您必須使用 NetApp 帳戶登入、或建立帳戶才能存取版本資訊。</block>
-  <block id="a4c25ce93017fa1e39ea1f02e454b5dd" category="sidebar">支援 ONTAP 功能的新功能</block>
   <block id="3cc716dba68d44285ae03d4a0e650afb" category="sidebar">MetroCluster 功能的新功能</block>
-  <block id="7a9ee1321dd82cefa7736a4643b1d4cb" category="sidebar">MetroCluster IP 組態支援的新功能</block>
-  <block id="d793294f059b1014ac708a3a85a786cb" category="sidebar">MetroCluster FC 組態支援的新功能</block>
   <block id="986acab97d190ab2df45c246e97ca539" category="sidebar">ONTAP Mediator 支援的新功能</block>
   <block id="72b08fce3cdf931f9f180e97f8508090" category="sidebar">MetroCluster Tiebreaker 支援的新功能</block>
   <block id="9ae85011061f6a07b3199cc6631e205d" category="paragraph">請依照您的交換器廠商章節中的步驟進行：</block>
@@ -13682,7 +13671,6 @@
   <block id="4765407452f01930deae2b9481b69e36" category="paragraph">在 MetroCluster IP 組態中初始支援 ONTAP Mediator 服務</block>
   <block id="de09b0e8b75c62ac84c620713e05647b" category="paragraph">您可以使用共用儲存交換器、在不中斷營運的情況下、從 MetroCluster FC 移轉至 MetroCluster IP 組態。</block>
   <block id="76a27f1dad18a5de567d4849d3e76b69" category="doc">MetroCluster FC 平台與交換器支援的新功能</block>
-  <block id="0f40216c1ad47c12e8ccc087d555570f" category="doc">發行說明ONTAP</block>
   <block id="2dfc17cf61c3aebedc1a1f7f467baa26" category="paragraph">根據交換機類型是 Broadcom 、 Cisco 還是 NVIDIA 、請依照相關主題中的步驟安裝交換器軟體：</block>
   <block id="9caf870a1494e70481403791fcece589" category="list-text">重複 <block ref="b2da07bc854b8a63875843471604110c" category="inline-xref-macro-rx"></block> 檢查組態的健全狀況。</block>
   <block id="67d7197766de9fc9cf6113211650818b" category="sidebar">NetApp MetroCluster 組態結合了陣列型叢集與同步複寫功能、可提供持續可用度、並以每筆交易為基礎、立即複製所有關鍵任務資料。MetroCluster 組態可強化 NetApp 硬體和 ONTAP 儲存軟體的內建高可用度和不中斷營運、為整個儲存和主機環境提供額外的保護層。</block>
@@ -13730,4 +13718,68 @@
   <block id="d5552b01bf48dde88719269e524ddbb9" category="sidebar">驗證是否支援您的硬體。</block>
   <block id="3f2b90ec5a9b43745b9c8c9fedf48d8d" category="sidebar">NetApp支援知識庫</block>
   <block id="b2cdf9234a2dabbbb6acb6f71e098209" category="sidebar">搜尋您的支援問題答案。</block>
+  <block id="67ed9530c4069b662839f89c94d4a160" category="inline-link-macro">停用端點對端點加密</block>
+  <block id="ade87983ca16ac3bdbf2b32cf6e9b0d5" category="list-text">如果您的系統已啟用、 <block ref="8a6f29aee2b87dab72caa4c63be583f5" category="inline-link-macro-rx"></block> 執行控制器升級之前。</block>
+  <block id="3d8fb38a661b136fb35b34201d24ef76" category="section-title">設定端點對端點加密</block>
+  <block id="df4377d05c61041e2e8ae85ae5db4fad" category="paragraph">如果您的系統支援此功能、您可以在 MetroCluster IP 站台之間加密後端流量、例如 NVlog 和儲存複寫資料。請參閱 <block ref="ffcb318089fda8d2418bcd406342779d" category="inline-link-macro-rx"></block> 以取得更多資訊。</block>
+  <block id="8f883162e124fc09a7ae40b02d457abc" category="list-text">如果您的系統已啟用、 <block ref="8a6f29aee2b87dab72caa4c63be583f5" category="inline-link-macro-rx"></block> 執行升級之前。</block>
+  <block id="5aa9df9bfe2a9d3dcb9eaf7420818fac" category="inline-link-macro">啟用端點對端點加密</block>
+  <block id="bd7a871cd772a6f8f044f086ccc3ed68" category="list-text">如果您的系統支援端點對端點加密、您可以 <block ref="2fd1db8c2a0ebb290526de8f46b28acd" category="inline-link-macro-rx"></block> 在新的 DR 群組上。</block>
+  <block id="0088c1e15cccccdb2e3dc23e762335e0" category="list-text">如果已啟用端點對端點加密、請依照的步驟執行 <block ref="8a6f29aee2b87dab72caa4c63be583f5" category="inline-link-macro-rx"></block>。</block>
+  <block id="7b27e86dbf07563fca6c99e2fca83549" category="list-text">如果您在新增節點之前已停用端點對端點加密、則可依照中的步驟重新啟用 <block ref="2fd1db8c2a0ebb290526de8f46b28acd" category="inline-link-macro-rx"></block>。</block>
+  <block id="149bff96621a57d63b9a824d96957df7" category="open-title">Brocade 交換器</block>
+  <block id="250f3098aa37d3a08b48b8157db8a62e" category="open-title">Cisco交換器</block>
+  <block id="6204028fd0e3ba079ca2fce4bb224e24" category="paragraph"><block ref="010303eb2e404f6eb49cc314fc8aa294" prefix="" category="inline-code"></block></block>
+  <block id="a1032909a057927264a07294a53b91b5" category="paragraph">如果您需要存取 RO 、請在「 User （ ro ）：」之後指定「 snmpv3user 」。以下範例使用 Brocade 交換器：</block>
+  <block id="b4656d073f9b3064260089f7e9a12e66" category="paragraph">從 ONTAP 9.15.1 開始、您可以設定端點對端點加密、以加密 MetroCluster IP 組態中站台之間的後端流量、例如 NVlog 和儲存複寫資料。</block>
+  <block id="ddaa39224424042ba35394afbe714a70" category="list-text">您必須是叢集管理員才能執行此工作。</block>
+  <block id="ffe47e3eda7ee0a88fa1a1b82a09899e" category="inline-link-macro">設定外部金鑰管理</block>
+  <block id="ca6ec36bc37ffec6b208710049cf5f93" category="list-text">在設定端點對端點加密之前、您必須先設定 <block ref="16044a12704308be53c493c61be8d30c" category="inline-link-macro-rx"></block>。</block>
+  <block id="04070a9cbaae869f3877454cee7e3949" category="list-text">檢閱在 MetroCluster IP 組態中設定端點對端點加密所需的支援系統和最低 ONTAP 版本：</block>
+  <block id="59489a60854fece7ae72228144da61ce" category="cell">最低 ONTAP 版本</block>
+  <block id="933247e0be7796a309cfa4c95bd34938" category="cell">支援的系統</block>
+  <block id="8cd7d5cbedf290a9b729cc263d9b289c" category="paragraph">ONTAP 9.15.1.1</block>
+  <block id="e93d47f017ad237de98b35aad9fcb874" category="paragraph">請執行下列步驟以啟用端點對端點加密。</block>
+  <block id="837070b3add2f869a83c272371c71943" category="list-text">之後<block ref="c2966f2f3bfc7e81dae5df7c44ce66ea" prefix=" " category="inline-code"></block> 作業完成、執行：</block>
+  <block id="cc69fb16e9b5f75fc5721d1ad8277443" category="list-text">確認兩個叢集上都已設定外部金鑰管理：</block>
+  <block id="689610e955be8fb22e796c52df915481" category="list-text">為每個 DR 群組啟用端點對端點加密：</block>
+  <block id="655bf96cae9bcf362fa2b9cb1dc6329b" category="paragraph">對組態中的每個 DR 群組重複此步驟。</block>
+  <block id="c5298fbea590442bc5dccc0f0c0a42ce" category="list-text">確認已啟用端點對端點加密：</block>
+  <block id="450b20a9e1e9a7c24bdce85480153300" category="paragraph">執行下列步驟以停用端點對端點加密。</block>
+  <block id="77b90866eb30c2c119140e82f8c5f4d2" category="list-text">在每個 DR 群組上停用端點對端點加密：</block>
+  <block id="882fe58a6392388c2ce927c31a93371f" category="list-text">確認端點對端點加密已停用：</block>
+  <block id="db03999c5b24c225561e85043c8ca2c1" category="paragraph">MetroCluster IP 支援 NVMe</block>
+  <block id="0c9f8df361f16ae4ec9468c24acaafae" category="paragraph">四節點 MetroCluster IP 組態支援 NVMe / TCP 前端主機傳輸協定。</block>
+  <block id="21f44b7d67ca22b4dfdc5b37402d6176" category="inline-link-macro">SAN組態MetroCluster</block>
+  <block id="0523cf29ce37abad9282f80ffd3f533e" category="paragraph"><block ref="0523cf29ce37abad9282f80ffd3f533e" category="inline-link-macro-rx"></block></block>
+  <block id="f09a5dc7d9c973e1f6ab3e9ffa36921c" category="paragraph">四節點 MetroCluster IP 組態支援 NVMe / FC 傳輸協定。</block>
+  <block id="581b029a5b5e612bbb2ff34e6b1ff9ad" category="paragraph"><block ref="581b029a5b5e612bbb2ff34e6b1ff9ad" category="inline-link-rx"></block></block>
+  <block id="629ea23148e9d8c2d0f002e89411b05a" category="paragraph">瞭解 MetroCluster 的新功能。</block>
+  <block id="efd20e2b544e4614b2e657ac6783ec0a" category="paragraph">支援端點對端點加密的 MetroCluster IP</block>
+  <block id="4a4b85199291f3e23fc84fb47fb5ca30" category="paragraph">AFF A400 、 FAS8300 和 FAS8700 系統支援端點對端點加密、可在 MetroCluster IP 組態中的站台之間加密後端流量、例如 NVlog 和儲存複寫資料。</block>
+  <block id="a9734ca6d9ffb317f9b6a802b2dbb3aa" category="inline-link-macro">在 MetroCluster IP 組態中設定端點對端點加密</block>
+  <block id="c39138b0d883de358017e1fce7fa55a9" category="paragraph"><block ref="c39138b0d883de358017e1fce7fa55a9" category="inline-link-macro-rx"></block></block>
+  <block id="aec0d8caac35e70ca6b42831fa957b4d" category="paragraph">AFF A800 和 AFF C800 系統上四節點 MetroCluster IP 組態的磁碟區限制增加</block>
+  <block id="cbd27762af6b4c6335bac75a098542ce" category="paragraph">在四節點 MetroCluster IP 組態中、 AFF A800 和 AFF C800 系統的下列磁碟區限制已增加：</block>
+  <block id="2c18214fb090b3346dccf036f48c7f39" category="list-text">每個集合體的 FlexVol 磁碟區數量上限從 200 個增加到 625 個。</block>
+  <block id="3f35c7e20a8d7d81feeb64eb6d5afa09" category="list-text">每個節點的 FlexVol 磁碟區數量上限從 800 個增加至 1250 個。</block>
+  <block id="b30d9c31e8ee4ad2f0b8474d6a8c7b5d" category="list-text">每個高可用度（ HA ）配對的 FlexVol 磁碟區數量上限從 1600 個增加至 2500 個。</block>
+  <block id="34211e4d6128da1dfdf7db696c0d2aad" category="paragraph">AFF A900 系統上四節點 MetroCluster IP 組態的磁碟區限制增加</block>
+  <block id="84e9aa8f760c1f5f0f19cf4fc3153c4b" category="paragraph">在四節點 MetroCluster IP 組態中、 AFF A900 系統的下列磁碟區限制已增加：</block>
+  <block id="69cd959e02d2a7b70720f5426f4f0888" category="list-text">如果原始系統設定為端點對端點加密、請在每個替換節點的載入程式提示字元中設定下列開機：</block>
+  <block id="635e42fd721973aab43465fb05d0c976" category="paragraph"><block ref="62c037d8665e336dd114412a0b756bfc" prefix="" category="inline-code"></block></block>
+  <block id="5a8c7594ee8269dda78a3c94154a49fc" category="doc">更換硬體並啟動新的控制器</block>
+  <block id="81a393ca01b7355292a9de6a418b7506" category="section-title">更換災難現場的硬體</block>
+  <block id="341755fab7492718abaee90d7addc0e1" category="section-title">確定舊控制器模組的系統 ID 和 VLAN ID</block>
+  <block id="7783c9328f785a62c6d922c7aee5f5bf" category="section-title">將替換磁碟機與仍在運作的站台隔離（ MetroCluster IP 組態）</block>
+  <block id="2b8101509ea4735a4334fe0f417a56e5" category="section-title">以網路開機新的控制器模組</block>
+  <block id="e766bf7ee3198b936508b04c961bee1c" category="section-title">確定更換控制器模組的系統 ID</block>
+  <block id="853b9b549a9a87e8693e5e1457ccc627" category="section-title">判斷原始系統上是否已啟用端點對端點加密</block>
+  <block id="b6f65762cf35ba4ac4c9366142731eb4" category="paragraph">您應該確認原始系統是否已設定為端點對端點加密。</block>
+  <block id="f900ea78fef7de22abe3c887295c3554" category="list-text">從存續的網站執行下列命令：</block>
+  <block id="c1604d057494bf6abab3a40147fecf7c" category="paragraph"><block ref="eea57ee5f23bab30ed50dbeb23a75f4f" prefix="" category="inline-code"></block></block>
+  <block id="bd000f3bd62ff510f9146882628ce226" category="paragraph">如果啟用加密、則會顯示下列輸出：</block>
+  <block id="98db7bcad911ca4f97f6c512fd15dba5" category="admonition">請參閱 <block ref="21cf3ec43c40018cebe1c66cf55306b2" category="inline-link-macro-rx"></block> 適用於支援的系統。</block>
+  <block id="03e22cbc7470f9e3b1bc635479554ca9" category="sidebar">MetroCluster 支援 ONTAP 功能的新功能</block>
+  <block id="89753eb00eabd16383d2c616cc908230" category="sidebar">MetroCluster IP 平台與交換器支援的新功能</block>
 </blocks>

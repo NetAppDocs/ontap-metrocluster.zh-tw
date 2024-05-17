@@ -26,6 +26,8 @@ summary: 每個版本都提供 ONTAP Mediator 的新功能。  最新功能。
 在環境關機的情況下、支援中介協助的自動非計畫性切換（ MAUSO ）。
 
 如果某個站台因環境關機而正常關機、則會觸發 MAUSO 。
+
+https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/concept-ontap-mediator-supports-automatic-unplanned-switchover.html["如何支援自動非計畫性切換ONTAP"]
  a| 
 ONTAP 9.13.1.12.9.11.9.11.
 

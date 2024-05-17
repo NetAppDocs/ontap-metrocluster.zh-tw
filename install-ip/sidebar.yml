@@ -100,6 +100,8 @@ entries:
     url: "/install-ip/task_sw_config_setup_ontap.html"
   - title: 將叢集設定為MetroCluster 一個靜態組態
     url: "/install-ip/task_sw_config_configure_clusters.html"
+  - title: 設定端點對端點加密
+    url: "/install-ip/task-configure-end-to-end-encryption.html"
   - title: 驗證切換、修復及切換
     url: "/install-ip/task_sw_config_verify_switchover.html"
   - title: 設定MetroCluster 「斷器」或ONTAP 「資訊安全」軟體

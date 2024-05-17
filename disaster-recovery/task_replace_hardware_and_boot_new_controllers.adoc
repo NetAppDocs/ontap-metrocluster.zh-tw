@@ -15,7 +15,7 @@ summary: 如果硬體元件必須更換、您必須使用各自的硬體更換�
 
 
 
-== 更換災難站台的硬體
+== 更換災難現場的硬體
 
 .開始之前
 儲存控制器必須關閉電源或保持暫停狀態（顯示載入器提示）。
@@ -134,7 +134,7 @@ link:http://docs.netapp.com/platstor/index.jsp["ONTAP 硬體系統文件"^]
 
 
 
-== 確定舊控制器模組的系統ID和VLAN ID
+== 確定舊控制器模組的系統 ID 和 VLAN ID
 
 在您更換災難站台的所有硬體之後、您必須判斷更換的控制器模組的系統ID。將磁碟重新指派給新的控制器模組時、您需要舊的系統ID。如果系統AFF 是不只是功能性的A220、AFF 不只是功能性的A250、AFF 還包括功能AFF 性的 FAS500f、FAS8300或FAS8700機型、您也必須判斷MetroCluster 出由Sing IP介面所使用的VLAN ID。
 
@@ -328,7 +328,7 @@ Node_A_2 Node_A_1 HA      enabled  online
 
 
 
-== 將替換磁碟機與正常運作的站台隔離（MetroCluster 知識產權組態）
+== 將替換磁碟機與仍在運作的站台隔離（ MetroCluster IP 組態）
 
 您必須從MetroCluster 正常運作的節點中斷連接到任何更換磁碟機、以隔離這些磁碟機。
 
@@ -407,7 +407,7 @@ Boot_ONTAP功能表
 
 
 
-== Netbooting新的控制器模組
+== 以網路開機新的控制器模組
 
 如果新的控制器模組的ONTAP 版本不同於正常運作的控制器模組版本、則必須以netboot新的控制器模組。
 
@@ -483,7 +483,7 @@ The node must be rebooted to start using the newly installed software. Do you wa
 
 
 
-== 確定更換控制器模組的系統ID
+== 確定更換控制器模組的系統 ID
 
 在您更換災難站台上的所有硬體之後、必須判斷新安裝的儲存控制器模組或模組的系統ID。
 
@@ -725,4 +725,33 @@ IP組態MetroCluster
 
 |===
 . 在其他替換節點上重複這些步驟。
+
+
+
+
+== 判斷原始系統上是否已啟用端點對端點加密
+
+您應該確認原始系統是否已設定為端點對端點加密。
+
+.步驟
+. 從存續的網站執行下列命令：
++
+`metrocluster node show -fields is-encryption-enabled`
+
++
+如果啟用加密、則會顯示下列輸出：
+
++
+[listing]
+----
+1 cluster_A node_A_1 true
+1 cluster_A node_A_2 true
+1 cluster_B node_B_1 true
+1 cluster_B node_B_2 true
+4 entries were displayed.
+----
++
+
+NOTE: 請參閱 link:../install-ip/task-configure-end-to-end-encryption.html["設定端點對端點加密"] 適用於支援的系統。
+
 

@@ -44,6 +44,7 @@ summary: 從ONTAP 功能介紹9.8開始、您可以使用MetroCluster 功能介�
 +
 如需詳細資訊、請參閱 https://hwu.netapp.com/["NetApp Hardware Universe"]。
 
+* 如果您的系統已啟用、 link:../maintain/task-configure-encryption.html#disable-end-to-end-encryption["停用端點對端點加密"] 執行控制器升級之前。
 * 您將在新平台上重複使用原始平台的IP位址、網路遮罩和閘道。
 * 本程序使用下列範例名稱：
 +
@@ -1817,3 +1818,9 @@ link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#adding-metro
 
 
 
+
+
+
+== 設定端點對端點加密
+
+如果您的系統支援此功能、您可以在 MetroCluster IP 站台之間加密後端流量、例如 NVlog 和儲存複寫資料。請參閱 link:../maintain/task-configure-encryption.html["設定端點對端點加密"] 以取得更多資訊。

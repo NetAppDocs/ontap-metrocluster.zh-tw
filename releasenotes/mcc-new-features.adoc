@@ -10,9 +10,51 @@ summary:
 :imagesdir: ./media/
 
 
+[role="lead"]
+瞭解 MetroCluster 的新功能。
+
 [cols="20,65,15"]
 |===
 | MetroCluster 組態中支援的功能 | 說明及深入瞭解的地方 | 可用的開始 
+
+
+ a| 
+支援端點對端點加密的 MetroCluster IP
+ a| 
+AFF A400 、 FAS8300 和 FAS8700 系統支援端點對端點加密、可在 MetroCluster IP 組態中的站台之間加密後端流量、例如 NVlog 和儲存複寫資料。
+
+link:../maintain//task-configure-encryption.html["在 MetroCluster IP 組態中設定端點對端點加密"]
+ a| 
+ONTAP 9.15.1.1
+
+
+
+ a| 
+AFF A800 和 AFF C800 系統上四節點 MetroCluster IP 組態的磁碟區限制增加
+ a| 
+在四節點 MetroCluster IP 組態中、 AFF A800 和 AFF C800 系統的下列磁碟區限制已增加：
+
+* 每個集合體的 FlexVol 磁碟區數量上限從 200 個增加到 625 個。
+* 每個節點的 FlexVol 磁碟區數量上限從 800 個增加至 1250 個。
+* 每個高可用度（ HA ）配對的 FlexVol 磁碟區數量上限從 1600 個增加至 2500 個。
+
+ a| 
+ONTAP 9.15.1.1
+
+
+
+ a| 
+AFF A900 系統上四節點 MetroCluster IP 組態的磁碟區限制增加
+ a| 
+在四節點 MetroCluster IP 組態中、 AFF A900 系統的下列磁碟區限制已增加：
+
+* 每個集合體的 FlexVol 磁碟區數量上限從 200 個增加到 625 個。
+* 每個節點的 FlexVol 磁碟區數量上限從 800 個增加至 1250 個。
+* 每個高可用度（ HA ）配對的 FlexVol 磁碟區數量上限從 1600 個增加至 2500 個。
+
+ a| 
+ONTAP 9.14.1.
+
 
 
  a| 
@@ -53,7 +95,7 @@ ONTAP 9.13.1.12.9.11.9.11.
  a| 
 如果某個站台因環境關機而正常關機、則會觸發 MAUSO 。
 
-https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/concept_considerations_mediator.html#interoperability-of-ontap-mediator-with-other-applications-and-appliances["不受任何應用程式與應用程式與應用裝置之間的互通性ONTAP"]
+https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/concept-ontap-mediator-supports-automatic-unplanned-switchover.html["如何支援自動非計畫性切換ONTAP"]
  a| 
 ONTAP 9.13.1.12.9.11.9.11.
 

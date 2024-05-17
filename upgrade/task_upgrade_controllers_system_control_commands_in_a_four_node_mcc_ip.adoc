@@ -55,6 +55,7 @@ https://hwu.netapp.com["NetApp Hardware Universe"^]
 
 NOTE: 四節點 MetroCluster IP 組態不支援使用 Aggregate 重定位（ ARL ）和「系統控制器置換」命令來執行升級。
 
+* 如果您的系統已啟用、 link:../maintain/task-configure-encryption.html#disable-end-to-end-encryption["停用端點對端點加密"] 執行升級之前。
 * 您必須使用自動 NSO 控制器升級程序、以連續升級兩個站台的控制器。
 * 這項自動化的NSO型控制器升級程序可讓您將控制器更換至MetroCluster 還原災難恢復（DR）站台。您一次只能在一個站台啟動控制器更換。
 * 若要在站台A開始更換控制器、您需要從站台B執行控制器更換啟動命令此作業只會引導您更換站台A上兩個節點的控制器。若要更換站台B的控制器、您必須從站台A執行控制器更換啟動命令此時會顯示一則訊息、指出要更換控制器的站台。
@@ -1151,3 +1152,9 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
 
 . 請執行中的步驟 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.hw-metrocluster-tiebreaker/GUID-7259BCA4-104C-49C6-BAD0-1068CA2A3DA5.html["新增MetroCluster 功能"]。
 
+
+
+
+=== 設定端點對端點加密
+
+如果您的系統支援此功能、您可以在 MetroCluster IP 站台之間加密後端流量、例如 NVlog 和儲存複寫資料。請參閱 link:../maintain/task-configure-encryption.html["設定端點對端點加密"] 以取得更多資訊。
