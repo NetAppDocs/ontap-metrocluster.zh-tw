@@ -331,10 +331,10 @@ NOTE: 對具有遠端磁碟至 Cluster_A 的所有叢集執行此步驟
 下列設備必須依所示順序關閉：
 
 +
-** 精選FC交換器MetroCluster
 ** 儲存控制器 - 儲存控制器目前應位於 `LOADER` 提示：您必須將其完全關機。
-** 儲存櫃
+** 精選FC交換器MetroCluster
 ** Atto FiberBridges （若有）
+** 儲存櫃
 
 
 
@@ -567,10 +567,6 @@ switch_A_1# copy running-config startup-config
 
 
 . 停用 FC 交換器上的 ISL 。
-. 開啟儲存控制器的電源、並等待您看到 `LOADER` 提示。控制器不得完全開機。
-+
-如果已啟用自動開機、請按 `Ctrl+C` 停止控制器自動開機。
-
 . 開啟磁碟櫃電源、讓它們有足夠的時間完全開啟電源。
 . 開啟連接橋接器的電源。
 +
@@ -669,7 +665,15 @@ switch_A_1#
 
 
 |===
-. 確認儲存設備可從存續的站台看到。讓離線叢恢復上線。這會重新啟動重新同步作業、並重新建立SyncMirror 該功能。
+. 確認儲存設備可見。
++
+.. 確認儲存設備可從存續的站台看到。將離線叢恢復上線、重新啟動重新同步作業、然後重新建立 SyncMirror 。
+.. 確認本機儲存設備在維護模式中可從節點看到：
++
+「展示-v」
+
+
+
 . 重新建立MetroCluster 此功能組態。
 +
 依照中的指示操作 link:../disaster-recovery/task_recover_from_a_non_controller_failure_mcc_dr.html#verifying-that-your-system-is-ready-for-a-switchback["驗證系統是否已準備好進行切換"] 根據MetroCluster 您的需求組態執行修復和切換作業。

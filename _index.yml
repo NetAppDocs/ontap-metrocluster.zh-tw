@@ -1,7 +1,6 @@
 ---
 indexpage:
   title: 資訊文件MetroCluster
-  summary: NetApp MetroCluster 組態結合了陣列型叢集與同步複寫功能、可提供持續可用度、並以每筆交易為基礎、立即複製所有關鍵任務資料。
   keywords: metrocluster configuration, array-based, clustering, synchronous, replication,
     duplicating, mission critical data
   lead: NetApp MetroCluster 組態結合了陣列型叢集與同步複寫功能、可提供持續可用度、並以每筆交易為基礎、立即複製所有關鍵任務資料。MetroCluster
@@ -22,63 +21,46 @@ indexpage:
   - title: 維護
     links:
     - title: FC交換器
-      summary: 以MetroCluster 不穩定的FC組態維護及更換FC交換器。
       url: "/maintain/task_upgrade_or_downgrad_the_firmware_on_a_brocade_fc_switch_mcc.html"
     - title: IP 交換器
-      summary: 維護及更換MetroCluster 採用不穩定IP組態的IP交換器。
       url: "/maintain/task_replace_an_ip_switch.html"
     - title: Atto橋接器
-      summary: 維護及更換Atto FC-to SAS橋接器、採用MetroCluster 不穩定的FC組態。
       url: "/maintain/concept_using_fibrebridge_7600n_bridges_in_mcc_configurations.html"
     - title: 磁碟機櫃
-      summary: 熱新增和不中斷營運的更換磁碟機櫃MetroCluster 、以支援FC組態。
       url: "/maintain/index.html"
   - title: RCF檔案
     links:
     - title: RCF檔案MetroCluster
-      summary: 為MetroCluster 您的交換器產生或下載RCF檔案。
       url: https://mysupport.netapp.com/site/products/all/details/metrocluster-rcf/docsandkb-tab
   - title: 深入瞭解
     links:
     - title: NetApp MetroCluster 解決方案架構與設計| TR-4705
-      summary: 瞭MetroCluster 解功能不清的解決方案。
       url: https://www.netapp.com/pdf.html?item=/media/13480-tr4705.pdf
     - title: "《SIP解決方案架構與設計》| TR-4689 MetroCluster"
-      summary: 瞭MetroCluster 解此解決方案。
       url: https://www.netapp.com/pdf.html?item=/media/13481-tr4689.pdf
   - title: 升級、擴充及轉換
     links:
     - title: 升級及更新硬體
-      summary: 以MetroCluster 不更新組態升級控制器。
       url: "/upgrade/concept_choosing_an_upgrade_method_mcc.html"
     - title: 展開雙節點MetroCluster 的功能
-      summary: 將控制器新增至MetroCluster 「架構」組態、以建立四節點或八節點組態。
       url: "/upgrade/task_expand_a_two_node_mcc_fc_configuration_to_a_four_node_fc_configuration_supertask.html"
     - title: 擴充四節點MetroCluster 的功能
-      summary: 將控制器新增至MetroCluster 「架構」組態、以建立八節點組態。
       url: "/upgrade/task_expand_a_four_node_mcc_fc_configuration_to_an_eight_node_configuration.html"
     - title: 將 MetroCluster FC 轉換為 MetroCluster IP
-      summary: 將現有MetroCluster 的靜態IP組態轉換成MetroCluster 靜態IP組態。
       url: "/transition/concept_choosing_your_transition_procedure_mcc_transition.html"
     - title: 升級MetroCluster RCF檔案
-      summary: 升級MetroCluster 交換器RCF檔案、以使用各種IP組態。
       url: "/maintain/task_upgrade_rcf_files_on_mcc_ip_switches.html"
   - title: Atto橋接韌體
     links:
     - title: 光纖橋接器7600N
-      summary: 下載7600橋接器的韌體。
       url: https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Protocol+Bridge&platform=ATTO+FibreBridge+7600N
     - title: FiberBridge 7500N
-      summary: 下載適用於7500橋接器的韌體。
       url: https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Protocol+Bridge&platform=ATTO+FibreBridge+7500N
   - title: 更多資源
     links:
     - title: NetApp Config Advisor
-      summary: 驗證您的組態和纜線。
       url: https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor
     - title: NetApp Hardware Universe
-      summary: 驗證是否支援您的硬體。
       url: https://hwu.netapp.com/
     - title: NetApp支援知識庫
-      summary: 搜尋您的支援問題答案。
       url: https://kb.netapp.com/

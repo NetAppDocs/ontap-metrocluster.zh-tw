@@ -10,7 +10,7 @@ summary: Tiebreaker軟體提供叢集式儲存環境的監控功能。當節點�
 :imagesdir: ../media/
 
 
-[role="lead"]
+[role="lead lead"]
 每個版本均隨附 MetroCluster Tiebreaker 軟體的增強功能。以下是 MetroCluster tiebreaker 最新版本的新功能。
 
 

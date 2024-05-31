@@ -58,6 +58,8 @@ entries:
   entries:
   - title: 更換 IP 交換器或變更現有 MetroCluster IP 交換器的使用
     url: "/maintain/task_replace_an_ip_switch.html"
+  - title: 線上或離線 MetroCluster IP 介面連接埠
+    url: "/maintain/task_online_or_offline_the_mcc_ip_interface.html"
   - title: 升級MetroCluster 韌體至靜態IP交換器
     url: "/maintain/task_upgrade_firmware_on_mcc_ip_switches.html"
   - title: 升級MetroCluster 不只是在靜態IP交換器上的RCF檔案

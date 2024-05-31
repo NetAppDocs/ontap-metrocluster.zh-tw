@@ -23,7 +23,7 @@ summary:
  a| 
 AFF A400 、 FAS8300 和 FAS8700 系統支援端點對端點加密、可在 MetroCluster IP 組態中的站台之間加密後端流量、例如 NVlog 和儲存複寫資料。
 
-link:../maintain//task-configure-encryption.html["在 MetroCluster IP 組態中設定端點對端點加密"]
+link:../maintain/task-configure-encryption.html["在 MetroCluster IP 組態中設定端點對端點加密"]
  a| 
 ONTAP 9.15.1.1
 
