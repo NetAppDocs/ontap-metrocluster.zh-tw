@@ -3980,392 +3980,18 @@ NOTE: 對於八節點組態、您必須手動執行分區、因為未提供 RCFs
 |===
 
 
-7+| 使用光纖通道連接埠（FC1和FC2）的Fibre Bridge 7500N或7600N組態 
+4+| Cisco 9132T搭配1個LEM 
 
 
-7+| 支援1或DR群組1 MetroCluster 
+4+| 支援1或DR群組1 MetroCluster 
 
 
-4+|  2+| 四節點 | 八節點 
+3+|  | 四節點 
 
 
-2+| 元件 | 連接埠 | 連線至FC_SWITCH ... | 9132T（1個LEM） | 9132T（2個LEM） | 9132T（2個LEM） 
+| 使用兩個 FC 連接埠的 FiberBridge 7500N 或 7600N | 連接埠 | 連線至FC_SWITCH ... | 9132T（1個LEM） 
 
 
- a| 
-控制器_x_1
- a| 
-FC-VI連接埠A
- a| 
-1.
- a| 
-LEM1-1.
- a| 
-LEM1-1.
- a| 
-LEM1-1.
-
-
-
- a| 
-FC-VI連接埠b
- a| 
-2.
- a| 
-LEM1-1.
- a| 
-LEM1-1.
- a| 
-LEM1-1.
-
-
-
- a| 
-FC-VI連接埠c
- a| 
-1.
- a| 
-LEM1-2
- a| 
-LEM1-2
- a| 
-LEM1-2
-
-
-
- a| 
-FC-VI連接埠d
- a| 
-2.
- a| 
-LEM1-2
- a| 
-LEM1-2
- a| 
-LEM1-2
-
-
-
- a| 
-HBA連接埠A
- a| 
-1.
- a| 
-LEM1-5
- a| 
-LEM1-5
- a| 
-LEM1-3
-
-
-
- a| 
-HBA連接埠b
- a| 
-2.
- a| 
-LEM1-5
- a| 
-LEM1-5
- a| 
-LEM1-3
-
-
-
- a| 
-HBA連接埠c
- a| 
-1.
- a| 
-LEM1-6
- a| 
-LEM1-6
- a| 
-LEM1-4
-
-
-
- a| 
-HBA連接埠d
- a| 
-2.
- a| 
-LEM1-6
- a| 
-LEM1-6
- a| 
-LEM1-4
-
-
-
- a| 
-Controller（控制器）_x_2
- a| 
-FC-VI連接埠A
- a| 
-1.
- a| 
-LEM1-7.
- a| 
-LEM1-7.
- a| 
-LEM1-5
-
-
-
- a| 
-FC-VI連接埠b
- a| 
-2.
- a| 
-LEM1-7.
- a| 
-LEM1-7.
- a| 
-LEM1-5
-
-
-
- a| 
-FC-VI連接埠c
- a| 
-1.
- a| 
-LEM1-8
- a| 
-LEM1-8
- a| 
-LEM1-6
-
-
-
- a| 
-FC-VI連接埠d
- a| 
-2.
- a| 
-LEM1-8
- a| 
-LEM1-8
- a| 
-LEM1-6
-
-
-
- a| 
-HBA連接埠A
- a| 
-1.
- a| 
-LEM1-11.
- a| 
-LEM1-11.
- a| 
-LEM1-7.
-
-
-
- a| 
-HBA連接埠b
- a| 
-2.
- a| 
-LEM1-11.
- a| 
-LEM1-11.
- a| 
-LEM1-7.
-
-
-
- a| 
-HBA連接埠c
- a| 
-1.
- a| 
-LEM1-12
- a| 
-LEM1-12
- a| 
-LEM1-8
-
-
-
- a| 
-HBA連接埠d
- a| 
-2.
- a| 
-LEM1-12
- a| 
-LEM1-12
- a| 
-LEM1-8
-
-
-
-7+| 2或DR群組2 MetroCluster 
-
-
- a| 
-Controller（控制器）_x_3
- a| 
-FC-VI連接埠A
- a| 
-1.
-|  |   a| 
-LEM2-1.
-
-
-
- a| 
-FC-VI連接埠b
- a| 
-2.
-|  |   a| 
-LEM2-1.
-
-
-
- a| 
-FC-VI連接埠c
- a| 
-1.
-|  |   a| 
-LEM2-2.
-
-
-
- a| 
-FC-VI連接埠d
- a| 
-2.
-|  |   a| 
-LEM2-2.
-
-
-
- a| 
-HBA連接埠A
- a| 
-1.
-|  |   a| 
-LEM2-3.
-
-
-
- a| 
-HBA連接埠b
- a| 
-2.
-|  |   a| 
-LEM2-3.
-
-
-
- a| 
-HBA連接埠c
- a| 
-1.
-|  |   a| 
-LEM2-4
-
-
-
- a| 
-HBA連接埠d
- a| 
-2.
-|  |   a| 
-LEM2-4
-
-
-
- a| 
-Controller（控制器）_x_4
- a| 
-FC-VI-1連接埠A
- a| 
-1.
-|  |   a| 
-LEM2-5.
-
-
-
- a| 
-FC-VI-1連接埠b
- a| 
-2.
-|  |   a| 
-LEM2-5.
-
-
-
- a| 
-FC-VI-1連接埠c
- a| 
-1.
-|  |   a| 
-LEM2-6.
-
-
-
- a| 
-FC-VI-1連接埠d
- a| 
-2.
-|  |   a| 
-LEM2-6.
-
-
-
- a| 
-HBA連接埠A
- a| 
-1.
-|  |   a| 
-LEM2-7.
-
-
-
- a| 
-HBA連接埠b
- a| 
-2.
-|  |   a| 
-LEM2-7.
-
-
-
- a| 
-HBA連接埠c
- a| 
-1.
-|  |   a| 
-LEM2-8.
-
-
-
- a| 
-HBA連接埠d
- a| 
-2.
-|  |   a| 
-LEM2-8.
-
-
-
-7+| 支援1或DR群組1 MetroCluster 
-
-
-4+|  2+| 四節點 | 八節點 
-
-
-2+| 使用兩個 FC 連接埠的 FiberBridge 7500N | 連接埠 | 連線至FC_SWITCH ... | 9132T（1個LEM） | 9132T（2個LEM） | 9132T（2個LEM） 
-
-
- a| 
-堆疊1
  a| 
 bride_x_1a.
  a| 
@@ -4374,10 +4000,6 @@ FC1
 1.
  a| 
 LEM1-13
- a| 
-LEM1-13
- a| 
-LEM1-9.
 
 
 
@@ -4387,8 +4009,235 @@ FC2
 2.
  a| 
 LEM1-13
+
+
+
+ a| 
+bride_x_1b.
+ a| 
+FC1
+ a| 
+1.
+ a| 
+LEM1-14
+
+
+
+ a| 
+FC2
+ a| 
+2.
+ a| 
+LEM1-14
+
+|===
+
+NOTE: 使用9132T交換器搭配1x LEM模組時、僅支援一（1）個橋接堆疊。
+
+|===
+
+
+4+| Cisco 9132T 、含 2 個 LEM 和 1 個四節點 MetroCluster 或 DR 群組 
+
+
+4+| 支援1或DR群組1 MetroCluster 
+
+
+3+|  | 四節點 
+
+
+| 使用兩個 FC 連接埠的 FiberBridge 7500N 或 7600N | 連接埠 | 連線至FC_SWITCH ... | 9132T（2個LEM） 
+
+
+ a| 
+bride_x_1a.
+ a| 
+FC1
+ a| 
+1.
  a| 
 LEM1-13
+
+
+
+ a| 
+FC2
+ a| 
+2.
+ a| 
+LEM1-13
+
+
+
+ a| 
+bride_x_1b.
+ a| 
+FC1
+ a| 
+1.
+ a| 
+LEM1-14
+
+
+
+ a| 
+FC2
+ a| 
+2.
+ a| 
+LEM1-14
+
+
+
+ a| 
+bride_x_2a
+ a| 
+FC1
+ a| 
+1.
+ a| 
+LEM1-15
+
+
+
+ a| 
+FC2
+ a| 
+2.
+ a| 
+LEM1-15
+
+
+
+ a| 
+bride_x_2b
+ a| 
+FC1
+ a| 
+1.
+ a| 
+LEM1-16
+
+
+
+ a| 
+FC2
+ a| 
+2.
+ a| 
+LEM1-16
+
+
+
+ a| 
+bride_x_3a
+ a| 
+FC1
+ a| 
+1.
+ a| 
+LEM2-1.
+
+
+
+ a| 
+FC2
+ a| 
+2.
+ a| 
+LEM2-1.
+
+
+
+ a| 
+bride_x_3b
+ a| 
+FC1
+ a| 
+1.
+ a| 
+LEM2-2.
+
+
+
+ a| 
+FC2
+ a| 
+2.
+ a| 
+LEM2-2.
+
+
+
+ a| 
+bride_x_ya
+ a| 
+FC1
+ a| 
+1.
+ a| 
+LEM2-3.
+
+
+
+ a| 
+FC2
+ a| 
+2.
+ a| 
+LEM2-3.
+
+
+
+ a| 
+bride_x_yb
+ a| 
+FC1
+ a| 
+1.
+ a| 
+LEM2-4
+
+
+
+ a| 
+FC2
+ a| 
+2.
+ a| 
+LEM2-4
+
+|===
+
+NOTE: 在四節點組態中、您可以在 9132T 交換器中使用 2 個 LEM 、將額外的橋接器連接至連接埠 LEM2-5 至 LEM2-8 。
+
+|===
+
+
+4+| Cisco 9132T 、含兩個四節點 MetroCluster 、或一個八節點 MetroCluster 、含兩個 DR 群組 
+
+
+4+| 支援1或DR群組1 MetroCluster 
+
+
+| 使用兩個 FC 連接埠的 FiberBridge 7500N 或 7600N | 連接埠 | 連線至FC_SWITCH ... | 9132T（2個LEM） 
+
+
+ a| 
+bride_x_1a.
+ a| 
+FC1
+ a| 
+1.
+ a| 
+LEM1-9.
+
+
+
+ a| 
+FC2
+ a| 
+2.
  a| 
 LEM1-9.
 
@@ -4401,10 +4250,6 @@ FC1
  a| 
 1.
  a| 
-LEM1-14
- a| 
-LEM1-14
- a| 
 LEM1-10.
 
 
@@ -4414,24 +4259,16 @@ FC2
  a| 
 2.
  a| 
-LEM1-14
- a| 
-LEM1-14
- a| 
 LEM1-10.
 
 
 
- a| 
-堆疊2.
  a| 
 bride_x_2a
  a| 
 FC1
  a| 
 1.
-|   a| 
-LEM1-15
  a| 
 LEM1-11.
 
@@ -4441,8 +4278,6 @@ LEM1-11.
 FC2
  a| 
 2.
-|   a| 
-LEM1-15
  a| 
 LEM1-11.
 
@@ -4454,8 +4289,6 @@ bride_x_2b
 FC1
  a| 
 1.
-|   a| 
-LEM1-16
  a| 
 LEM1-12
 
@@ -4465,23 +4298,23 @@ LEM1-12
 FC2
  a| 
 2.
-|   a| 
-LEM1-16
  a| 
 LEM1-12
 
 
 
- a| 
-堆疊3
+4+| 2或DR群組2 MetroCluster 
+
+
+| 使用兩個 FC 連接埠的 FiberBridge 7500N 或 7600N | 連接埠 | 連線至FC_SWITCH ... | 9132T（2個LEM） 
+
+
  a| 
 bride_x_3a
  a| 
 FC1
  a| 
 1.
-|   a| 
-LEM2-1.
  a| 
 LEM2-9.
 
@@ -4491,8 +4324,6 @@ LEM2-9.
 FC2
  a| 
 2.
-|   a| 
-LEM2-1.
  a| 
 LEM2-9.
 
@@ -4504,8 +4335,6 @@ bride_x_3b
 FC1
  a| 
 1.
-|   a| 
-LEM2-2.
  a| 
 LEM2-10.
 
@@ -4515,23 +4344,17 @@ LEM2-10.
 FC2
  a| 
 2.
-|   a| 
-LEM2-2.
  a| 
 LEM2-10.
 
 
 
  a| 
-堆疊y
- a| 
 bride_x_ya
  a| 
 FC1
  a| 
 1.
-|   a| 
-LEM2-3.
  a| 
 LEM2-11.
 
@@ -4541,8 +4364,6 @@ LEM2-11.
 FC2
  a| 
 2.
-|   a| 
-LEM2-3.
  a| 
 LEM2-11.
 
@@ -4554,8 +4375,6 @@ bride_x_yb
 FC1
  a| 
 1.
-|   a| 
-LEM2-4
  a| 
 LEM2-12
 
@@ -4565,20 +4384,13 @@ LEM2-12
 FC2
  a| 
 2.
-|   a| 
-LEM2-4
  a| 
 LEM2-12
 
 |===
-[NOTE]
-====
-* 在四節點組態中、您可以在 9132T 交換器中使用 2 個 LEM 、將額外的橋接器連接至連接埠 LEM2-5 至 LEM2-8 。
-* 在八節點組態中、您可以在 9132T 交換器中使用 2 個 LEM 、將額外的橋接器連接至連接埠 LEM2-13 至 LEM2-16 。
-* 使用9132T交換器搭配1x LEM模組時、僅支援一（1）個橋接堆疊。
 
+NOTE: 在八節點組態中、您可以在 9132T 交換器中使用 2 個 LEM 、將額外的橋接器連接至連接埠 LEM2-13 至 LEM2-16 。
 
-====
 
 
 == 在執行 ONTAP 9.1 或更新版本的 MetroCluster 組態中、四個和八個節點組態中的 ISL 使用 Cisco 9132T 連接埠

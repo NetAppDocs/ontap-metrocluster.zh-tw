@@ -12755,12 +12755,7 @@
   <block id="da1fe90f1a7c8d5426c9fb653143159c" category="inline-xref">在執行 9.1 或更新版本的 MetroCluster 組態中、使用 ONTAP 9132T 的 ISL 連接埠</block>
   <block id="ebaff03f6ed502f4a413a1ce08e7b523" category="admonition">如需 Cisco 9132T 的詳細資訊、請參閱 <block ref="745f667c2207ac60e33bebf6a26d4908" category="inline-xref-macro-rx"></block>。</block>
   <block id="b6adc54642d6ea9466bf5956bfd90921" category="section-title">在執行 ONTAP 9.4 及更新版本的 MetroCluster 四節點和八節點組態中使用 Cisco 9132T 連接埠</block>
-  <block id="34adac1b835db756e4bda81aeab17aee" category="paragraph">下表顯示 Cisco 9132T 交換器的連接埠使用量。下表顯示兩個 DR 群組中四個和八個控制器模組的最大支援組態。</block>
   <block id="65ac5210a13e16ff0c09cc508d39f010" category="admonition">對於八節點組態、您必須手動執行分區、因為未提供 RCFs 。</block>
-  <block id="24ce95dff7cdbe82f47d82b0c5e3c3bd" category="paragraph">LEM2-5.</block>
-  <block id="d1219ba7b45f6028da9ef53dc1d962dc" category="paragraph">LEM2-6.</block>
-  <block id="d72635ed8e78c8bf248888485d54fefc" category="paragraph">LEM2-7.</block>
-  <block id="bf56acff15a22deda5e2b827afffd42e" category="paragraph">LEM2-8.</block>
   <block id="148fa39b011d75fbf87b5c6a6e4eb7ac" category="list-text">在四節點組態中、您可以在 9132T 交換器中使用 2 個 LEM 、將額外的橋接器連接至連接埠 LEM2-5 至 LEM2-8 。</block>
   <block id="1b3edf8d6e61a53c159f115111d76631" category="list-text">在八節點組態中、您可以在 9132T 交換器中使用 2 個 LEM 、將額外的橋接器連接至連接埠 LEM2-13 至 LEM2-16 。</block>
   <block id="7aff2de5bc0a96f53245830100b31a76" category="section-title">在執行 ONTAP 9.1 或更新版本的 MetroCluster 組態中、四個和八個節點組態中的 ISL 使用 Cisco 9132T 連接埠</block>
@@ -13274,7 +13269,6 @@
   <block id="f9805d94598bd6a841fddbff1c6ddc7b" category="paragraph">下表顯示僅使用一個 FC 連接埠（ FC1 或 FC2 ）的 FiberBridge 7500N 或 7600N 橋接器使用橋接器連接埠的情況。對於使用一個 FC 連接埠的 FiberBridge 7500N 或 7600N 橋接器、可以將 FC1 或 FC2 纜線連接至指定為 FC1 的連接埠。可使用連接埠25-48連接其他橋接器。</block>
   <block id="126b9e3a8501d897a2356aba96828af6" category="cell">使用一個 FC 連接埠的 FiberBridge 7500N 或 7600N 橋接器</block>
   <block id="69abf6cf7deeba7ace2f747f7661208f" category="cell">使用一個 FC 連接埠的 FiberBridge 7500N 或 7600N</block>
-  <block id="1b3c29a52da9672be1cb789bb6d06ae8" category="cell">使用兩個 FC 連接埠的 FiberBridge 7500N</block>
   <block id="0351289236b3260f9d0c35b64f62689c" category="paragraph">您只需使用一個 FC 連接埠（ FC1 或 FC2 ）、即可遵循 FiberBridge 7500N 或 7600N 橋接器的纜線。與其使用四個啟動器、只連接兩個啟動器、並將連接至交換器連接埠的其他兩個啟動器保留為空白。</block>
   <block id="4883312b6c36aa2f1d5ce2e2f17638bd" category="paragraph">如果手動執行分區、請遵循使用一個 FC 連接埠（ FC1 或 FC2 ）的 FiberBridge 7500N 或 7600N 橋接器分區。在此案例中、每個架構的每個區域成員都會新增一個啟動器連接埠、而非兩個。</block>
   <block id="1e008e69dc731ad28df3d6927462a7f3" category="paragraph">您可以使用中的程序、將分區變更或從 FiberBridge 6500N 升級至 FiberBridge 7500N <block ref="0b4bc6296d77be28e33d3b50e0ea0797" category="inline-link-macro-rx"></block>。</block>
@@ -13774,4 +13768,7 @@
   <block id="e387b7f8f98fe6ef00364ba0984c08a9" category="paragraph">舊的和新的系統ID已在中識別 <block ref="ce17cf746f0f051ba197f9e3096bf7f5" category="inline-link-macro-rx"></block>。</block>
   <block id="124ba57298a92342f8aec06ebcfb6415" category="inline-link-macro">確定舊控制器模組的系統 ID</block>
   <block id="3ac27de4b4347c98785ff06870fe7221" category="paragraph"><block ref="3ac27de4b4347c98785ff06870fe7221" category="inline-link-macro-rx"></block></block>
+  <block id="478093bd7e01c5abe587038bf808af00" category="paragraph">下表顯示 Cisco 9132T 交換器的連接埠使用量。下表顯示兩個 DR 群組中四個和八個控制器模組的最大支援組態。</block>
+  <block id="9e667988f536ce55f0a4c5cf0908d042" category="cell">Cisco 9132T 、含 2 個 LEM 和 1 個四節點 MetroCluster 或 DR 群組</block>
+  <block id="7d83eb0736445dbf18519e99146d2fff" category="cell">Cisco 9132T 、含兩個四節點 MetroCluster 、或一個八節點 MetroCluster 、含兩個 DR 群組</block>
 </blocks>
