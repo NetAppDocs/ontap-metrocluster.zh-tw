@@ -128,8 +128,6 @@ entries:
   entries:
   - title: 使用兩個啟動器連接埠的系統連接埠指派
     url: "/maintain/concept_port_assignments_for_systems_using_two_initiator_ports.html"
-  - title: FC交換器的連接埠指派（使用ONTAP 功能）9.0
-    url: "/maintain/concept_port_assignments_for_fc_switches_when_using_ontap_9_0.html"
   - title: FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）
     url: "/maintain/concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html"
 - title: 如何使用互通性對照表工具來尋找MetroCluster 各種資訊

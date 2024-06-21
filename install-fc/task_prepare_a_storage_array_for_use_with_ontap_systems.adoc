@@ -16,7 +16,7 @@ summary: 在使用ONTAP 陣列LUN開始MetroCluster 以VMware組態設定時、�
 .開始之前
 您打算在組態中使用的儲存陣列、韌體和交換器、必須由特定ONTAP 的版本支援。
 
-* https://mysupport.netapp.com/NOW/products/interoperability["NetApp互通性IMT （僅限部分）"]
+* https://imt.netapp.com/matrix/["NetApp互通性IMT （僅限部分）"^]
 +
 在這個解決方案領域、您可以使用儲存解決方案欄位來選擇您的解決方案。IMT MetroCluster您可以使用*元件總管*來選取元件和ONTAP 更新版本、以精簡搜尋範圍。您可以按一下「*顯示結果*」來顯示符合條件的支援組態清單。
 

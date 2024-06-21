@@ -56,8 +56,6 @@ entries:
       url: "/install-fc/task_cable_the_isl_between_the_mcc_sites_fabric_config.html"
     - title: 使用兩個啟動器連接埠的系統連接埠指派
       url: "/install-fc/concept_port_assignments_for_systems_using_two_initiator_ports.html"
-    - title: FC交換器的連接埠指派（使用ONTAP 功能）9.0
-      url: "/install-fc/concept_port_assignments_for_fc_switches_when_using_ontap_9_0.html"
     - title: FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）
       url: "/install-fc/concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html"
     - title: FC交換器的連接埠指派（使用AFF Arfe A900系統時）

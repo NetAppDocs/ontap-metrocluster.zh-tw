@@ -2431,9 +2431,7 @@
   <block id="14afcc8b85712a75a7cf7514c1e75983" category="paragraph">’*顯示版本*</block>
   <block id="dd1f8f01d9031d6f872bb2ee4aca20cc" category="paragraph"><block ref="dd1f8f01d9031d6f872bb2ee4aca20cc" category="inline-link-rx"></block></block>
   <block id="5d0aacff762759dbda6dfa013df2be6e" category="list-text">對第二個交換器網路重複此程序。</block>
-  <block id="a89a5b71cb60acbd82724db1a629420a" category="summary">在連接FC交換器纜線時、您需要確認您使用的是指定的連接埠指派。在更新版本的《》中、連接埠的指派與ONTAP 《ONTAP 》中的《》（英文）不一樣。</block>
   <block id="2688c925fec0ab4e936ae385ba142c24" category="paragraph">未用於連接啟動器連接埠、FC-VI連接埠或ISL的連接埠、可重新設定為作為儲存連接埠。但是、如果使用支援的RCFS、則必須相應地變更分區。</block>
-  <block id="3db4017b12769c890b399a8cee60dfb5" category="paragraph">如果使用支援的RCF檔案、則ISL連接埠可能無法連接到此處顯示的相同連接埠、可能需要手動重新設定。</block>
   <block id="a45eb6ab149dfb9c88ab3dcd2184e695" category="section-title">整體佈線準則</block>
   <block id="c41d521acb0fc63853fafb5270777e87" category="paragraph">使用佈線表格時、請注意下列準則：</block>
   <block id="85efea09b8971fa839b814e34e5b06b9" category="list-text">Brocade和Cisco交換器使用不同的連接埠編號：</block>
@@ -2443,8 +2441,6 @@
   <block id="fa15cd6e7a73a7cac602236af691b901" category="list-text">您可以訂購支援FC-VI連線的2種選項之一、以利訂購支援A300和FAS8200儲存系統：AFF</block>
   <block id="f8ead55cd533754df60e1d996c261dcc" category="list-text">以FC-VI模式設定的內建連接埠0e和0f。</block>
   <block id="f39eec234d6cdc6ec6c13fbe95529ebe" category="list-text">插槽1中FC-VI卡上的連接埠1A和1b。</block>
-  <block id="7cdeeb5d6c1afe20f2835793af3716df" category="section-title">Brocade連接埠使用於MetroCluster 執行ONTAP 版本9.0的八節點版本的架構中、用於控制器連線</block>
-  <block id="4c400b3f7160abe1ed688a9b8979589e" category="paragraph">下表顯示Brocade機型Brocade 6505、6510或DCX 8510-8上的控制器連接埠使用量：</block>
   <block id="2cb05e4bb7830be982f0922fed86b4cd" category="cell">元件</block>
   <block id="60aaf44d4b562252c04db7f98497e9aa" category="cell">連接埠</block>
   <block id="2a6ce6ad185ff3e30d6b4377d106ed67" category="cell">FC_SWIT_x_1</block>
@@ -2463,9 +2459,7 @@
   <block id="45c48cce2e2d7fbdea1afc51c7c6ad26" category="cell">9.</block>
   <block id="d3d9446802a44259755d38e6d163e820" category="cell">10.</block>
   <block id="6512bd43d9caa6e02c990b0a82652dca" category="cell">11.</block>
-  <block id="afad1c27cb5fc5d1d792e5ba791ef840" category="section-title">Brocade連接埠使用於MetroCluster 執行ONTAP 版本號為9.0的八節點版本的FC至SAS橋接器連線</block>
   <block id="de8504b73ea228d0ea9bbce69752092e" category="cell">橋接器</block>
-  <block id="fac64949de3a43257f3c8a97a35449a1" category="cell">橋接器連接埠</block>
   <block id="03832361340d7ec5d2358829016bb549" category="cell">bride_x_1a.</block>
   <block id="d752b12b0fc874dddc6f67101b900706" category="cell">FC1</block>
   <block id="c20ad4d76fe97759aa27a0c99bff6710" category="cell">12.</block>
@@ -2492,8 +2486,6 @@
   <block id="f5bad2a06048272d8713fb8303c967a5" category="cell">bride_x_7b</block>
   <block id="968f63536cc26e1ac460060836284646" category="cell">bride_x_8a</block>
   <block id="4409c993164a314b23d52edf9f7ddb07" category="cell">bride_x_8b</block>
-  <block id="ecbaae7ed0bf3689e37afedee8f6c249" category="section-title">Brocade連接埠使用於MetroCluster ISL、採用執行ONTAP 版本9.0的八節點版功能</block>
-  <block id="394f60a83bf45a2e06134eded4e6adc2" category="paragraph">下表顯示Brocade 6505、6510或DCX 8510-8交換器的ISL連接埠使用量：</block>
   <block id="780738b38ccf649c36173b77e28ff349" category="cell">ISL連接埠</block>
   <block id="771258dc7c4b533338a8b8c444330806" category="cell">ISL連接埠1</block>
   <block id="98f13708210194c475687be6106a3b84" category="cell">20</block>
@@ -2503,8 +2495,6 @@
   <block id="b6d767d2f8ed5d21a44b0e5886680cb9" category="cell">22</block>
   <block id="7baac79c2a4b41b76452ed707ff7f4a8" category="cell">ISL連接埠4.</block>
   <block id="37693cfc748049e45d87b8c7d8b9aacd" category="cell">23</block>
-  <block id="720e1fb07c36d94aa69e0ee7eb5cb7f3" category="section-title">Brocade連接埠使用於MetroCluster 執行ONTAP 版本號為9.0的四節點版本的控制器</block>
-  <block id="253a9adeaa7038a2700f39aad347d73d" category="paragraph">交換器架構中的每個FC交換器的纜線配置相同。下表顯示Brocade 6505、6510和DCX 8510-8交換器的使用量。</block>
   <block id="85e2ca58f06c6fc43bb1278027917574" category="cell">控制器_x_1</block>
   <block id="cfcd208495d565ef66e7dff9f98764da" category="cell">0</block>
   <block id="c4ca4238a0b923820dcc509a6f75849b" category="cell">1.</block>
@@ -2513,44 +2503,13 @@
   <block id="eccbc87e4b5ce2fe28308fd9f2a7baf3" category="cell">3.</block>
   <block id="a87ff679a2f3e71d9181a67b7542122c" category="cell">4.</block>
   <block id="e4da3b7fbbce2345d7772b0674a318d5" category="cell">5.</block>
-  <block id="bb98798a94eabd991690e4d98bb1e93d" category="section-title">Brocade連接埠使用於MetroCluster 執行ONTAP 版本號為9.0的四節點版架構中的橋接器</block>
-  <block id="814568b4249c0114f7f5acf6d86149fb" category="cell">光纖橋接器7500橋接器</block>
-  <block id="4b1342698b69db9277c10ae5d059e837" category="cell">FC_SWIT_x_1（6510或DCX 8510-8）</block>
-  <block id="e49423aa401904cc19d9c93b1dba3f71" category="cell">FC_SWIT_x_2（6510或DCX 8510-8）</block>
-  <block id="8e8e002bc58d3a842d05c1be7b04ba4c" category="cell">FC_SWIT_x_1（6505）</block>
-  <block id="7ab09fefe83fcbd6007a5ac115dfefbc" category="cell">FC_SWIT_x_2（6505）</block>
-  <block id="5cf1fa7f2c6c9825315b7608236abe2b" category="cell">可透過連接埠19連接其他橋接器、然後連接埠24至47</block>
-  <block id="c4381a0b6bf2d250fd5afa1d8db80d48" category="cell">可透過連接埠23連接其他橋接器</block>
-  <block id="3f0d7bda291f9b3c6f2f35a20a63c52e" category="section-title">Brocade連接埠使用於MetroCluster ISL、採用執行ONTAP 版本9.0的四節點版功能</block>
-  <block id="69862326bc727c309184d534a3f3cff8" category="paragraph">下表顯示ISL連接埠使用量：</block>
-  <block id="160cef04b33948c7b91144a2fdf46988" category="section-title">Brocade連接埠用於執行MetroCluster 版本為9.0的雙節點版本的控制器ONTAP</block>
-  <block id="7699bf8a4df6f7e15f159269bd8927e4" category="paragraph">交換器架構中的每個FC交換器的纜線配置相同。下表顯示Brocade 6505、6510和DCX 8510-8交換器的纜線。</block>
-  <block id="4d3b4ab0ee0d27226cd4d951952dc8aa" category="section-title">Brocade連接埠使用於MetroCluster 執行ONTAP 版本9.0的雙節點版架構中的橋接器</block>
-  <block id="f87cb62014b08eabb93a84e435b02ea9" category="section-title">Brocade連接埠使用量：在MetroCluster 執行ONTAP 版本9.0的雙節點版本資訊功能組態中、用於ISL</block>
-  <block id="851032b3e8ee16b9eb2ed6098216108e" category="paragraph">下表顯示Brocade 6505、6510和DCX 8510-8交換器的ISL連接埠使用量：</block>
-  <block id="944ef169ea9b385ec2fc06c60bcdd267" category="section-title">Cisco連接埠用於MetroCluster 執行ONTAP 版本號為9.0的八節點版本的控制器</block>
-  <block id="062caca7c0bb29ebff9fcc7a33a75d93" category="paragraph">下表顯示Cisco 9148和9148S交換器上的控制器連接埠使用量：</block>
-  <block id="7dd0f293a7e09ad1d4ac1014f18a018a" category="section-title">Cisco連接埠使用於MetroCluster 執行ONTAP 版本號為9.0的八節點版的功能區、用於FC至SAS橋接器</block>
   <block id="1d8dd340273647eae3a36eff43fc547e" category="paragraph">您可以使用相同模式的連接埠25到48來連接其他橋接器。</block>
-  <block id="c4739fa521713dbbe264a1366afde348" category="section-title">Cisco連接埠使用ISL、採用MetroCluster 執行ONTAP 版本9.0的八節點版功能</block>
-  <block id="524e7c19dbf542bdc24be3909a68aa5b" category="paragraph">下表顯示Cisco 9148和9148S交換器的ISL連接埠使用量：</block>
   <block id="84a71a9e63ead8784cd365088a3be8c4" category="cell">ISL連接埠</block>
   <block id="1ff1de774005f8da13f42943881c655f" category="cell">24</block>
-  <block id="bf9995231adba64383dd274717591fad" category="section-title">Cisco連接埠用於四節點MetroCluster 的控制器、以供其使用</block>
-  <block id="9009bb494f588eb453c941a0f5346de2" category="paragraph">下表顯示Cisco 9148、9148 S和9250i交換器上的控制器連接埠使用量：</block>
-  <block id="8a960a450c78ddb1326827d52c10a15a" category="section-title">Cisco連接埠使用於MetroCluster FC至SAS橋接器、採用執行ONTAP 版本號為9.0的四節點版功能</block>
-  <block id="6fcd6dc740970bb42bde0c9a37d97275" category="section-title">Cisco 9148和9148S連接埠使用於MetroCluster 執行ONTAP 版本9.0的四節點版的ISL</block>
   <block id="19ca14e7ea6328a42e0eb13d585e4c22" category="cell">36</block>
   <block id="f7177163c833dff4b38fc8d2872f1ec6" category="cell">44</block>
   <block id="642e92efb79421734881b53e1e1b18b6" category="cell">48</block>
-  <block id="d8547f2a1e0767433bffe41b5c4ca3bc" category="section-title">Cisco 9250i連接埠使用於MetroCluster 執行ONTAP NetApp 9.0的四節點版功能組態上的ISL</block>
-  <block id="183f17b261b81d0d886cf2452983cce8" category="paragraph">Cisco 9250i交換器使用FCIP連接埠作為ISL。</block>
   <block id="4389b93bd76334095ae6f5fdb926d4ee" category="paragraph">連接埠40至48為10 GbE連接埠、MetroCluster 不適用於整個功能組態。</block>
-  <block id="fa69aa564bc90d7adecfb54c289d23be" category="section-title">Cisco連接埠用於雙節點MetroCluster 的控制器、以供其使用</block>
-  <block id="762b426bcd4ea34fc55a0f899cf2086d" category="section-title">Cisco連接埠使用於MetroCluster 雙節點的執行ONTAP 版本為9.0的FC對SAS橋接器</block>
-  <block id="ba2044d8a6c35bb667c35d13e7a3277d" category="section-title">Cisco 9148或9148S連接埠、可在MetroCluster 執行ONTAP NetApp 9.0的雙節點版功能組態上使用ISL</block>
-  <block id="2bc92937819403549f510c08d8a54058" category="paragraph">下表顯示Cisco 9148或9148S交換器的ISL連接埠使用量：</block>
-  <block id="e936a0e4e03d3d3120e966eca42a0b28" category="section-title">Cisco 9250i連接埠使用於MetroCluster 執行ONTAP 版本號為9.0的雙節點版塊位向功能組態上的ISL</block>
   <block id="0f4890949e646d00de6b9e66bd1b1968" category="summary">您可能需要更換故障的交換器、或是升級或降級交換器。當交換器故障時、新交換器可以與舊交換器相同、或者您可以變更交換器類型（升級或降級交換器）。</block>
   <block id="7fab172697215ab39d868b582f7aa8fc" category="paragraph">此程序適用於使用NetApp驗證的交換器。如果您使用的是符合MetroCluster規範的交換器、請洽詢交換器廠商。</block>
   <block id="439912781979c2137b20f407615e78f8" category="list-text">檢查MetroCluster 每個叢集上的「* MetroCluster 」「*」「*」「顯示*」是否已設定成正常模式</block>
@@ -3288,8 +3247,6 @@
   <block id="c7534d571d84fdfe4912d24b4f1f30bf" category="list-text">若要檢查特定ONTAP 的支援版本、交換器及平台的檔案、請使用RcfFileGenerator.如果您可以針對您的組態或您要升級至的組態產生RCF檔案、則會受到支援。</block>
   <block id="282bc05e82ec2895ab48f3f9377e06d3" category="list-text">若要驗證交換器韌體是否受支援、請參閱下列內容：</block>
   <block id="da160308e3b4b4a80bf1b72b5bdbedb8" category="inline-link">Hardware Universe</block>
-  <block id="10f02f59043b28fac9ff50a9e24e6044" category="inline-link">NetApp互通性</block>
-  <block id="8ae1a8b6dc4a3df150f27ca419fb9a6c" category="list-text"><block ref="8ae1a8b6dc4a3df150f27ca419fb9a6c" category="inline-link-rx"></block></block>
   <block id="bde0605fb74695c23ddd122685cfc65e" category="section-title">升級RCF檔案</block>
   <block id="1ac88e41a3fe5cd70b12c660a33460a7" category="paragraph">如果您要安裝新的交換器韌體、則必須先安裝交換器韌體、才能升級RCF檔案。</block>
   <block id="e301a104c554483554dbecab048bf670" category="paragraph">此程序會中斷升級RCF檔案的交換器流量。一旦套用新的RCF檔案、流量就會恢復。</block>
@@ -3820,7 +3777,6 @@
   <block id="5cb7ce670094889d3c954b543759f688" category="summary">準備熱新增SAS磁碟櫃時、需要下載文件、以及磁碟機和磁碟櫃韌體。</block>
   <block id="85c019b69442635697fc1b5b3f6cfad3" category="doc">準備熱新增SAS磁碟櫃</block>
   <block id="c3204e26e12ab80395709eeaa0f8642d" category="paragraph"><block ref="c3204e26e12ab80395709eeaa0f8642d" category="inline-link-rx"></block></block>
-  <block id="c073c8226440025a816eb4efa16a17a3" category="admonition">如果您的系統執行支援版本ONTAP 的支援、則同一堆疊中支援IOM12模組和IOM6模組的混合組合。若要確定您的ONTAP 版本是否支援機櫃混合、 請參閱互通性對照表工具（IMT）。https://mysupport.netapp.com/NOW/products/interoperability[NetApp互通性]如果ONTAP 不支援您的版本、而且您無法升級或降級現有堆疊上的IOM模組、或是將新增至受支援的IOM模組組合的新機櫃、 您需要執行下列其中一項：</block>
   <block id="64974d0b5eb2e258428a89835ce229c9" category="list-text">在新的SAS連接埠上啟動新堆疊（如果橋接配對支援）。</block>
   <block id="ad45a06e82c1f0983fdfd0e3d30dc8f8" category="list-text">在額外的橋接配對上啟動新的堆疊。</block>
   <block id="8e916218cb72668e639a5859eade4041" category="list-text">適用於您磁碟櫃模型的_安裝指南_。</block>
@@ -3993,7 +3949,6 @@
   <block id="ea7ae12637786fd2df51e9007bb6f639" category="doc">還原斷路器或中保監控</block>
   <block id="36588e2aa5ad4fcf60167b3daa06db5a" category="list-text">請根據您的組態使用適當的程序。</block>
   <block id="7efa6fc838c006d396e42638b4ff25d1" category="paragraph"><block ref="7efa6fc838c006d396e42638b4ff25d1" category="inline-link-macro-rx"></block></block>
-  <block id="fe45fe811f6f58baafc88df1114b43df" category="paragraph">連結：../install-ip/concept_mediator_requirements.html #configuring the -the ONTAP中介程序服務-from a MetroCluster-IP組態[從ONTAP 一個SectionIP組態設定此功能MetroCluster</block>
   <block id="80161bd3062933aab7f174ce293237dc" category="summary">在檢閱所有要求並準備進行轉換之後、您將執行轉換程序。您必須依序執行每項工作、完成每項工作中的所有步驟、然後再移至下一項工作。除非有指示、否則請勿將新的控制器或儲存櫃連接至現有組態。</block>
   <block id="96ff13f92c4ce7113cad61adcc09704f" category="doc">移動本機叢集連線</block>
   <block id="68ca4c8699281e1858977752c796cd45" category="paragraph">您必須將MetroCluster 靜態FC組態的叢集介面移至IP交換器。</block>
@@ -6560,14 +6515,6 @@
   <block id="76171250896c5dfe6901a6c8c3fb3f68" category="paragraph"><block ref="76171250896c5dfe6901a6c8c3fb3f68" category="inline-link-macro-rx"></block></block>
   <block id="0690a5c4248a898ac79d4ea42b64f808" category="list-text">使用下列程序建立叢集對等關係：</block>
   <block id="dc4f0f08d29c6f89700794f3a34384f2" category="paragraph"><block ref="dc4f0f08d29c6f89700794f3a34384f2" category="inline-link-macro-rx"></block></block>
-  <block id="1070ce9e7bae97d7e7228e149c0b9eb4" category="paragraph">下表顯示Brocade交換器上的控制器連接埠使用量：</block>
-  <block id="cd45205e4fc2077e0c4d75cfa092a45c" category="cell">八節點組態MetroCluster</block>
-  <block id="8fa7af407bf3527ae51a64903584fb97" category="cell">4節點組態MetroCluster</block>
-  <block id="b568f2bc70056e5c549443721bcfb52b" category="cell">Brocade 6510或DCX 8510-8</block>
-  <block id="6ffb8f2c32009a20c314f0eeec771f81" category="cell">Brocade 6510、DCX 8510-8</block>
-  <block id="a435d7a239e10d99dd0bb66c0966f44d" category="paragraph">下表顯示Cisco交換器上的控制器連接埠使用量：</block>
-  <block id="b54c734a5be7921355fc2aa93b69ba59" category="cell">Cisco 9148或9148</block>
-  <block id="11278506140805617313d6fd9ed8b0fc" category="cell">Cisco 9148、9148 S或9250i</block>
   <block id="c283e6d33e5ab7ba05309d0bdb85144e" category="summary">您需要針對MetroCluster 交換器的某些權限才能進行整個交換器的功能。您必須在所有四個交換器上安裝這些授權。</block>
   <block id="1895119723122826713ca9b3d616a96b" category="doc">檢閱Brocade授權要求</block>
   <block id="020376a3fd370a6b9dfc23a3f92f2cba" category="paragraph">此組態具有下列Brocade授權需求：MetroCluster</block>
@@ -8691,7 +8638,6 @@
   <block id="8db51e2a7c564cc042e840346cc8e77f" category="paragraph">支援的IOM模組取決於ONTAP 您執行的版本。</block>
   <block id="9df6f19f1ce5cd3044ae4a6c42240fb1" category="paragraph">這個組態需要在每個站台進行最低組態設定：MetroCluster</block>
   <block id="6b921594086cf3be722aefbdc64a10c1" category="paragraph">例如、在每MetroCluster 個站台有兩個節點的四節點的「樣例」組態中、每個站台都需要四個資源池。</block>
-  <block id="d5d16fad39e71fb59dc90d88df5e1025" category="paragraph">您的ONTAP 版本必須支援機櫃混合。請參閱互通性對照表工具IMT （英文）、瞭解您的ONTAP 版本的支援機櫃混合。<block ref="ac420cca75b9dbbf7e4e74995a005185" category="inline-link-rx"></block></block>
   <block id="d963cd5338d788b5f26861ebd6ae6f27" category="paragraph">如需機櫃混合的詳細資訊、請參閱：<block ref="96c52bfd2d59063b848ae852888ce36d" category="inline-link-rx"></block></block>
   <block id="2577b62ff20a44feeb798ea94e578a0b" category="section-title">橋接器命名慣例</block>
   <block id="9683bc886e03bf0b6fb2555eb820a5b9" category="paragraph">橋接器使用下列命名範例：</block>
@@ -8783,7 +8729,6 @@
   <block id="0298c9d72aff4562d5434fe4a448c6a1" category="doc">準備搭配ONTAP 使用的儲存陣列</block>
   <block id="6ceeef6f6fdaf06b95cae87e460cfe9b" category="paragraph">您打算在組態中使用的儲存陣列、韌體和交換器、必須由特定ONTAP 的版本支援。</block>
   <block id="a011aa6047381b9696e67c3b40f1802e" category="inline-link">NetApp互通性IMT （僅限部分）</block>
-  <block id="adbd7f6da5b8c687e8c9973fbac44739" category="list-text"><block ref="adbd7f6da5b8c687e8c9973fbac44739" category="inline-link-rx"></block></block>
   <block id="567997ebab95ad5c797a8c2164e69988" category="paragraph">您必須與儲存陣列管理員協調、才能在儲存陣列上執行此工作。</block>
   <block id="c6d70523707016c24377e7ebb500eef1" category="list-text">視MetroCluster 乎整個系統組態中的節點數量、在儲存陣列上建立LUN。</block>
   <block id="b30da40dcd4e32f00364fe223122c3ab" category="paragraph">在不必要的組態中、每個節點MetroCluster 都需要陣列LUN來執行根Aggregate、資料Aggregate和備用磁碟。</block>
@@ -9620,7 +9565,6 @@
   <block id="f230aa9272cfae103f41403290ae21df" category="list-text">機櫃_a_1_2</block>
   <block id="3045f5f4f1093cf13cd0757dba1576cb" category="list-text">機櫃_B_1_1</block>
   <block id="1a10354dd8ac3ce1f01a352c0c19ac1d" category="list-text">機櫃_B_1_2</block>
-  <block id="76379c0e7357a2749284a8099ed9c896" category="paragraph">您的ONTAP 版本必須支援機櫃混合。請參閱互通性對照表工具IMT （英文）、瞭解您的ONTAP 版本的支援機櫃混合。<block ref="02d7a1e934f8b62a0243dc749b1b650b" category="inline-link-rx"></block></block>
   <block id="40478efcbffc865e999b3e1e2108a0cc" category="paragraph">如需機櫃混合的詳細資訊、請參閱：<block ref="532c1f47a9370f9e21538610051f3830" category="inline-link-rx"></block></block>
   <block id="5380d63de85a85219611f8b45f5c6e20" category="summary">每個控制器的FC-VI介面卡必須直接連接至其合作夥伴。</block>
   <block id="c30a34e27a8f90d73144f28a874b413d" category="doc">將控制器彼此連接</block>
@@ -12441,7 +12385,6 @@
   <block id="3e3df3be76a18ca2c89904765d97f078" category="list-text">在兩個叢集上執行下列命令、確認可以進行接管、而且節點已連線：</block>
   <block id="3963205d7c5d1cb2f000d61f16c10f1d" category="paragraph">24 個內部磁碟機</block>
   <block id="7632b8724806890acaf96c668d641251" category="inline-link-macro">瞭解 MetroCluster IP 組態中的自動磁碟機指派和 ADP 系統</block>
-  <block id="85488d881ebf03beb1eca3be4b5fda44" category="paragraph">您的ONTAP 版本必須支援機櫃混合。請參閱<block ref="e78382cc6f841e7f00c97b18a2e30f41" category="inline-link-rx"></block> 查看ONTAP 您的版本是否支援機櫃混合。</block>
   <block id="5fdc7ff67ace146413ecd7d44157aca4" category="paragraph">如需機櫃混合的詳細資訊、請參閱<block ref="532c1f47a9370f9e21538610051f3830" category="inline-link-rx"></block></block>
   <block id="e868bded76541295e018b74bb15a7920" category="inline-link-macro">NVIDIA SN2100交換器的安裝與組態總覽</block>
   <block id="b86c7f3554d9472f6a1e417c7f70fb18" category="admonition">如需安裝 Cumulus Linux 的詳細資訊、請參閱 <block ref="ac21c0d53d9fcd547ee85e9d73d53854" category="inline-link-macro-rx"></block></block>
@@ -12723,9 +12666,7 @@
   <block id="fdf5e2eb479f201de0c9c62e9a32e769" category="paragraph">當您將新節點新增至沒有預設廣播網域的現有叢集時、會使用通用唯一識別碼（ UUID ）而非預期名稱、為新節點建立節點管理生命期。如需詳細資訊、請參閱知識庫文章<block ref="4808e3ddae1b3b2c14dc148b67bd36ea" category="inline-link-rx"></block>。</block>
   <block id="f6410291c32fa961402f5a821c332f6c" category="list-text">確認新舊平台機型支援混合平台。</block>
   <block id="e220a628f1c5f8fb65824aaeb387520e" category="list-text">確認 IP 交換器支援舊的和新的平台機型。</block>
-  <block id="56f1ca12910041b73ea6fcc9bc18a954" category="paragraph">從 ONTAP 9.4 開始、 MetroCluster IP 組態支援使用 ADP 的新安裝（進階磁碟分割）。</block>
   <block id="72a38a5af8be1c706e478add3356ba90" category="paragraph">搭配 MetroCluster IP 組態使用 ADP 時、請注意下列考量事項：</block>
-  <block id="3cae0a231aac97485961fb33cea76ca2" category="list-text">ONTAP 9.4 及更新版本必須搭配 MetroCluster IP 組態使用 ADP 。</block>
   <block id="959bb45d9851a2b3efaeb05db74e0a80" category="list-text">MetroCluster IP 組態支援 ADPv2 。</block>
   <block id="a393732e5defe7b7a921a586e53ec51d" category="list-text">根 Aggregate 必須位於兩個站台上所有節點的分割區 3 中。</block>
   <block id="9ef6aecb7d030435d81fe80cacca477e" category="list-text">分割區和磁碟指派會在 MetroCluster 站台的初始設定期間自動執行。</block>
@@ -13272,12 +13213,6 @@
   <block id="0351289236b3260f9d0c35b64f62689c" category="paragraph">您只需使用一個 FC 連接埠（ FC1 或 FC2 ）、即可遵循 FiberBridge 7500N 或 7600N 橋接器的纜線。與其使用四個啟動器、只連接兩個啟動器、並將連接至交換器連接埠的其他兩個啟動器保留為空白。</block>
   <block id="4883312b6c36aa2f1d5ce2e2f17638bd" category="paragraph">如果手動執行分區、請遵循使用一個 FC 連接埠（ FC1 或 FC2 ）的 FiberBridge 7500N 或 7600N 橋接器分區。在此案例中、每個架構的每個區域成員都會新增一個啟動器連接埠、而非兩個。</block>
   <block id="1e008e69dc731ad28df3d6927462a7f3" category="paragraph">您可以使用中的程序、將分區變更或從 FiberBridge 6500N 升級至 FiberBridge 7500N <block ref="0b4bc6296d77be28e33d3b50e0ea0797" category="inline-link-macro-rx"></block>。</block>
-  <block id="803d845c069720e0ec75ee03ea5a43d4" category="paragraph">下表顯示使用 FiberBridge 7500N 和 7600N 橋接器時的橋接器連接埠用量：</block>
-  <block id="2cd1f3df6c3bbd7c9891d742ad23d04a" category="cell">FiberBridge 7500N 或 7600N 橋接器</block>
-  <block id="81b2aac60df91543fcf4f05563b1f80e" category="paragraph">下表顯示使用 FiberBridge 7500N 和 7600N 橋接器時、橋接器連接埠的使用量最高可達連接埠 17 。可將其他橋接器纜線連接至連接埠18至23。</block>
-  <block id="85878b4f87459062c8904a27720ba2be" category="paragraph">下表顯示使用 FiberBridge 7500N 或 7600N 橋接器時、橋接器連接埠的使用量最高可達連接埠 23 。可使用連接埠25至48連接其他橋接器。</block>
-  <block id="6f40fc62599b436af99e9090bcb1fe21" category="paragraph">下表顯示使用 FiberBridge 7500N 或 7600N 橋接器時、橋接器連接埠的使用率最高可達連接埠 14 。其他橋接器可依照相同模式連接至連接埠15至32。</block>
-  <block id="836f2645702f9125726ff7335ed42bd5" category="paragraph">下表顯示使用 FiberBridge 7500N 和 7600N 橋接器時、橋接器連接埠的使用量最高可達連接埠 14 。其他橋接器可依照相同模式連接至連接埠15至32。</block>
   <block id="7f921cbd9f23de85fa3d483b640e428b" category="open-title">如果節點電源關閉：</block>
   <block id="5f4eaac69c780a3f8ab154192e4a1a26" category="paragraph">開啟節點電源。</block>
   <block id="2900f8420dafccee0a2692e48506c6cb" category="open-title">如果節點出現在載入程式提示字元：</block>
@@ -13339,12 +13274,6 @@
   <block id="1cef707d96d59ea52cd45984a36d2f11" category="list-text">開啟 IP 交換器電源。</block>
   <block id="ac8327044a4ce63889944095a1b6aed8" category="list-text">開啟機櫃電源、讓他們有足夠的時間完全開機。</block>
   <block id="d5061566f9570e151daa3fd59fb31405" category="list-text">確認本機儲存設備在維護模式中可從節點看到：</block>
-  <block id="7a492d8ba3deac8ecd729c56c1058794" category="paragraph">下表顯示使用 FiberBridge 7500N 或 7600N 橋接器時的橋接器連接埠用量：</block>
-  <block id="2d5d944d1466716b339b20936cc4b7ec" category="paragraph">下表顯示使用 FiberBridge 7500N 或 7600N 橋接器時、橋接器連接埠的使用量最高可達連接埠 17 。可將其他橋接器纜線連接至連接埠18至23。</block>
-  <block id="f912eaa76cd834cbed98a7201254e72e" category="paragraph">下表顯示使用 Brocade 6505 、 6510 和 DCX 8510-8 交換器的 FiberBridge 7500N 或 7600N 橋接器時、連接埠使用量最高可達連接埠 17 。可將其他橋接器纜線連接至連接埠18至23。</block>
-  <block id="e75c88d98fec123855e6503ffa20ae16" category="paragraph">下表顯示使用 Cisco 9148 或 9148S 交換器時、使用 FiberBridge 7500N 或 7600N 橋接器時、連接埠使用量最高可達連接埠 23 。</block>
-  <block id="0d792f55f305e85c0f763a05b6d33ae1" category="paragraph">下表顯示使用光纖橋接器 7500N 或 7600N 橋接器搭配 Cisco 9148 、 9148S 或 9250i 交換器時、橋接器連接埠使用量最高可達連接埠 14 。其他橋接器可依照相同模式連接至連接埠15至32。</block>
-  <block id="972c5512c843cde59ea3263b1073efea" category="paragraph">下表顯示使用光纖橋接器 7500N 或 7600N 橋接器搭配 Cisco 9148 、 9148S 和 9250i 交換器時、橋接器連接埠使用量最高可達連接埠 14 。其他橋接器可依照相同模式連接至連接埠15至32。</block>
   <block id="8bc67669b17eba9ca754ee74dd34564c" category="list-text">如果您使用的是FIPS相容版本的EFOS、請產生ECDSA金鑰。以下範例建立長度為 521 的金鑰。有效值為256、384或521。</block>
   <block id="8eb0b3dc24b7128748cd767385d5a9f2" category="paragraph">MetroCluster IP 組態中的每個節點都有專用介面、可用於連線至後端 IP 網路：</block>
   <block id="ad1b97f0744b9c154b01cc69afb505d7" category="list-text">兩個本機叢集介面</block>
@@ -13771,4 +13700,15 @@
   <block id="478093bd7e01c5abe587038bf808af00" category="paragraph">下表顯示 Cisco 9132T 交換器的連接埠使用量。下表顯示兩個 DR 群組中四個和八個控制器模組的最大支援組態。</block>
   <block id="9e667988f536ce55f0a4c5cf0908d042" category="cell">Cisco 9132T 、含 2 個 LEM 和 1 個四節點 MetroCluster 或 DR 群組</block>
   <block id="7d83eb0736445dbf18519e99146d2fff" category="cell">Cisco 9132T 、含兩個四節點 MetroCluster 、或一個八節點 MetroCluster 、含兩個 DR 群組</block>
+  <block id="a786547181c9c8f446791420d2be691f" category="paragraph">您的ONTAP 版本必須支援機櫃混合。請參閱<block ref="f93341e63c1888be05256ff042174623" category="inline-link-rx"></block> 查看ONTAP 您的版本是否支援機櫃混合。</block>
+  <block id="27211cf5d485f8491ca9b566aefe2d6d" category="paragraph">從 ONTAP 9.4 開始、 MetroCluster IP 組態支援使用自動磁碟指派和 ADP （進階磁碟分割）進行新安裝。</block>
+  <block id="e528d26e96f91b34e70a35c4661d620d" category="list-text">在 AFF 和 ASA 系統上、 ONTAP 9.4 及更新版本必須搭配 MetroCluster IP 組態使用 ADP 。</block>
+  <block id="bacc4dbebf17d22c9a0361ded0994067" category="paragraph"><block ref="bacc4dbebf17d22c9a0361ded0994067" category="inline-link-macro-rx"></block></block>
+  <block id="bc8be72fdc9d6054f356bb2b7f80fd12" category="inline-link">NetApp 互通性對照表</block>
+  <block id="769db6797bc8c70f9ceb0ea238fcfef2" category="list-text"><block ref="769db6797bc8c70f9ceb0ea238fcfef2" category="inline-link-rx"></block></block>
+  <block id="c9dd6bad4c7d561872f2e2d498a990bf" category="inline-link-macro">互通性對照表工具IMT （不含）</block>
+  <block id="520ac91f29d97371c4fac829efc70617" category="admonition">如果您的系統執行支援版本ONTAP 的支援、則同一堆疊中支援IOM12模組和IOM6模組的混合組合。若要確定您的 ONTAP 版本是否支援機櫃混合、請參閱 <block ref="cd3982462c40dc1b1a511ada7c72bab9" category="inline-link-macro-rx"></block>。如果您的 ONTAP 版本不受支援、而且您無法升級或降級現有堆疊上的 IOM 模組、或是要新增至 IOM 模組支援組合的新機櫃、則您必須執行下列其中一項：</block>
+  <block id="c5dcd35af16918a17ee9c3a5c153f0af" category="inline-link">IMT</block>
+  <block id="24d65add9a27d74b80e9a9cebdfc8e56" category="paragraph">您的ONTAP 版本必須支援機櫃混合。請參閱互通性對照表工具IMT （英文）、瞭解您的ONTAP 版本的支援機櫃混合。<block ref="30796bf173a80af0dc9c120f98ffaed6" category="inline-link-rx"></block></block>
+  <block id="8872b0d09737dfd9b6fcafd4e8c2356b" category="list-text"><block ref="8872b0d09737dfd9b6fcafd4e8c2356b" category="inline-link-rx"></block></block>
 </blocks>

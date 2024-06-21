@@ -24,7 +24,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-ug-rdg/home.html["�
 
 
 
-NOTE: 如果您的系統執行支援版本ONTAP 的支援、則同一堆疊中支援IOM12模組和IOM6模組的混合組合。若要確定您的ONTAP 版本是否支援機櫃混合、 請參閱互通性對照表工具（IMT）。https://mysupport.netapp.com/NOW/products/interoperability[NetApp互通性]如果ONTAP 不支援您的版本、而且您無法升級或降級現有堆疊上的IOM模組、或是將新增至受支援的IOM模組組合的新機櫃、 您需要執行下列其中一項：
+NOTE: 如果您的系統執行支援版本ONTAP 的支援、則同一堆疊中支援IOM12模組和IOM6模組的混合組合。若要確定您的 ONTAP 版本是否支援機櫃混合、請參閱 link:https://imt.netapp.com/matrix/["互通性對照表工具IMT （不含）"^]。如果您的 ONTAP 版本不受支援、而且您無法升級或降級現有堆疊上的 IOM 模組、或是要新增至 IOM 模組支援組合的新機櫃、則您必須執行下列其中一項：
 
 * 在新的SAS連接埠上啟動新堆疊（如果橋接配對支援）。
 * 在額外的橋接配對上啟動新的堆疊。
