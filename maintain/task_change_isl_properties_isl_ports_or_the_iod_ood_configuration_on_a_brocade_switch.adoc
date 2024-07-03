@@ -19,7 +19,7 @@ summary: 如果您要新增或升級硬體（例如其他或更快的控制器�
 如果ISL鏈路上的設備發生變更、而新的連結組態不再支援目前的組態（即主幹連線和訂購式傳輸）、則需要重新設定網路架構、使其符合正確的路由原則：「訂單傳送」（IOD）或「訂單外交付」（OD）。
 
 
-NOTE: 若要從ONTAP 更新軟體中變更ood、請執行下列步驟： link:../install-fc/concept_configure_the_mcc_software_in_ontap.html#configuring-in-order-delivery-or-out-of-order-delivery-of-frames-on-ontap-software#configuring-in-order-delivery-or-out-of-order-delivery-of-frames-on-ontap-software["設定以順序交付或不按順序交付以ONTAP 利在各種軟體上交付框架"]
+NOTE: 若要從 ONTAP 軟體變更至 Good 、請使用下列步驟： link:../install-fc/concept_configure_the_mcc_software_in_ontap.html#configuring-in-order-delivery-or-out-of-order-delivery-of-frames-on-ontap-software["設定以順序交付或不按順序交付以ONTAP 利在各種軟體上交付框架"]
 
 .步驟
 . 停用FCVI和儲存HBA連接埠：

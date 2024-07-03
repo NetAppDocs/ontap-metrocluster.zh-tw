@@ -2221,7 +2221,7 @@ https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp
 
 您應該驗證MetroCluster 該組態的切換、修復及切換作業。
 
-. 請使用中所述的協調切換、修復及切換程序 link:https:../manage/index.html["從災難中恢復"]。
+. 使用中提到的程序來進行交涉切換、修復及切換 link:../manage/task_perform_switchover_for_tests_or_maintenance.html["執行切換、修復及切換"]。
 
 
 

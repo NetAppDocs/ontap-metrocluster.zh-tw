@@ -12,23 +12,22 @@
 .步驟
 . 準備IP交換器以應用新的RCF檔案。
 +
-請依照「_EIP MetroCluster 安裝與組態_」一節中有關交換器廠商的步驟進行。
-
-+
-link:../install-ip/index.html["安裝與組態MetroCluster"]
+請依照您的交換器廠商章節中的步驟進行：
 
 +
 ** link:../install-ip/task_switch_config_broadcom.html#resetting-the-broadcom-ip-switch-to-factory-defaults["將Broadcom IP交換器重設為原廠預設值"]
-** link:../install-ip/task_switch_config_broadcom.html#resetting-the-cisco-ip-switch-to-factory-defaults["將Cisco IP交換器重設為原廠預設值"]
+** link:../install-ip/task_switch_config_broadcom.html#resetting-the-cisco-ip-switch-to-factory-defaults["將 Cisco IP 交換器重設為原廠預設值"]
+** link:../install-ip/task_switch_config_nvidia.html["將NVIDIA IP SN2100交換器重設為原廠預設值"]
 
 
 . 下載並安裝RCF檔案。
 +
-請依照中交換器廠商的一節中的步驟操作 link:../install-ip/index.html["安裝與組態MetroCluster"]。
+請依照您的交換器廠商章節中的步驟進行：
 
 +
-** link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-broadcom-rcf-files["下載並安裝Broadcom RCF檔案"]
-** link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-cisco-ip-rcf-files["下載並安裝Cisco IP RCF檔案"]
+** link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-broadcom-rcf-files["下載並安裝 Broadcom RCF 檔案"]
+** link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-cisco-ip-rcf-files["下載並安裝 Cisco IP RCF 檔案"]
+** link:../install-ip/task_switch_config_nvidia.html#download-and-install-the-nvidia-rcf-files["下載並安裝 NVIDIA IP RCF 檔案"]
 
 
 

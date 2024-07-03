@@ -398,6 +398,52 @@ NOTE: 當您為多個交換器連接埠設定 DAC 選項時、只需要重新啟
 
 
 
+== 設定 MetroCluster IP 介面的交換器連接埠速度
+
+.關於這項工作
+使用此程序可將下列系統的交換器連接埠速度設定為 100g ：
+
+* AFF A70
+* AFF A90
+* AFF A1K
+
+
+.步驟
+. 使用具有選項的 RCF 檔案 `runCmd` 來設定速度。這會套用設定並儲存組態。
++
+以下命令可設定 MetroCluster 介面的速度 `swp7` 、以及 `swp8`：
+
++
+[source, cli]
+----
+sudo python3 SN2100_v2.20 _Switch-A1.py runCmd swp7 speed 100
+----
++
+[source, cli]
+----
+sudo python3 SN2100_v2.20 _Switch-A1.py runCmd swp8 speed 100
+----
++
+* 範例 *
+
++
+[listing]
+----
+cumulus@Switch-A-1:mgmt:~$ sudo python3 SN2100_v2.20_Switch-A1.py runCmd swp7 speed 100
+[sudo] password for cumulus: <password>
+    Running cumulus version  : 5.4.0
+    Running RCF file version : v2.20
+    Running command: Setting switchport swp7 to 100G speed
+    runCmd: 'nv set interface swp7 link auto-negotiate off', ret: 0
+    runCmd: 'nv set interface swp7 link speed 100G', ret: 0
+    runCmd: committed, ret: 0
+    Completion: SUCCESS
+cumulus@Switch-A-1:mgmt:~$
+----
+
+
+
+
 == 停用未使用的 ISL 連接埠和連接埠通道
 
 NetApp 建議停用未使用的 ISL 連接埠和連接埠通道、以避免不必要的健全狀況警示。

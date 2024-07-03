@@ -17,23 +17,36 @@ summary: 您可以使用這項引導式自動化 MetroCluster 轉換作業、針
 
 == 支援的平台組合
 
-此程序支援在執行 ONTAP 9.13.1 及更新版本的系統上進行下列控制器升級。
+開始升級之前、請先檢閱下列考量事項、確認您的組態是否受到支援。
 
-|===
+* 如果未列出您的平台、則沒有支援的控制器升級組合。
+* 當您執行控制器升級時、舊的和新的平台類型 * 必須 * 相符：
++
+** 您可以將 FAS 系統升級至 FAS 系統、或將 AFF A 系列升級至 AFF A 系列。
+** 您無法將 FAS 系統升級至 AFF A 系列、或將 AFF A 系列升級至 AFF C 系列。
++
+例如、如果您想要升級的平台是 FAS8200 、您可以升級至 FAS9000 。您無法將 FAS8200 系統升級至 AFF A700 系統。
 
 
-| 舊控制器 | 更換控制器 
+
+* MetroCluster 組態中的所有節點（新舊節點）都必須執行相同的 ONTAP 版本。
 
 
-| 部分A300 AFF | 解答900 AFF 
+.支援的 AFF 和 FAS MetroCluster IP 控制器升級
+下表顯示在 MetroCluster IP 組態中升級 AFF 或 FAS 系統所支援的平台組合：
 
 
-| FAS8200 | FAS9500 
-|===
+NOTE: AFF A90 、 AFF A70 和 AFF A1K 系統需要 ONTAP 9.15.1 或更新版本。
 
-NOTE: 您可以使用上述手動升級程序、在執行 ONTAP 9.12.1 或 9.11.1 的系統上執行上表所列的控制器升級 link:task_upgrade_controllers_in_a_four_node_ip_mcc_us_switchover_and_switchback_mcc_ip.html["請按這裡"]。
+image::../media/mcc_ip_system_controller_replace_aff_fas.png[MCC IP 系統控制器取代 AFF FAS]
 
-如需平台升級組合的詳細資訊、請參閱中的 MetroCluster IP 升級表 link:concept_choosing_controller_upgrade_mcc.html#supported-metrocluster-ip-controller-upgrades["選擇控制器升級程序"]。
+* 附註 1 ：執行 ONTAP 9.13.1 或更新版本的系統支援控制器升級。
+* 附註 2 ：目標平台必須等到控制器升級完成後、才能擁有內部磁碟機。您可以在升級後新增內部磁碟機。
+* 附註 3 ：需要更換控制器模組。
+
+
+.支援的 ASA MetroCluster IP 控制器升級
+不支援在 ASA 系統上使用命令來升級控制器 `system controller replace` 。
 
 請參閱 link:https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["選擇升級或重新整理方法"] 以瞭解其他程序。
 
@@ -45,9 +58,9 @@ NOTE: 您可以使用上述手動升級程序、在執行 ONTAP 9.12.1 或 9.11.
 +
 組態中的其他元件（例如儲存櫃或交換器）無法同時升級。
 
-* 此程序適用於執行 ONTAP 9.13.1 或更新版本的四節點 MetroCluster IP 組態中的控制器模組。
+* 您的升級組態中的現有和新控制器必須支援 MetroCluster IP 交換器（交換器類型、廠商和機型）和韌體版本。
 +
-https://hwu.netapp.com["NetApp Hardware Universe"^]
+如需支援的交換器和韌體版本、請參閱 link:https://hwu.netapp.com["NetApp Hardware Universe"^] 或 link:https://imt.netapp.com/matrix/["IMT"^] 。
 
 * MetroCluster 系統必須在兩個站台上執行相同的 ONTAP 版本。
 * 您可以使用此程序來升級四節點 MetroCluster IP 組態中的控制器、使用 NSO 型自動切換和切換。
@@ -55,7 +68,7 @@ https://hwu.netapp.com["NetApp Hardware Universe"^]
 
 NOTE: 四節點 MetroCluster IP 組態不支援使用 Aggregate 重定位（ ARL ）和「系統控制器置換」命令來執行升級。
 
-* 如果您的系統已啟用、 link:../maintain/task-configure-encryption.html#disable-end-to-end-encryption["停用端點對端點加密"] 執行升級之前。
+* 如果您的系統已啟用此功能、 link:../maintain/task-configure-encryption.html#disable-end-to-end-encryption["停用端點對端點加密"] 請在執行升級之前先執行。
 * 您必須使用自動 NSO 控制器升級程序、以連續升級兩個站台的控制器。
 * 這項自動化的NSO型控制器升級程序可讓您將控制器更換至MetroCluster 還原災難恢復（DR）站台。您一次只能在一個站台啟動控制器更換。
 * 若要在站台A開始更換控制器、您需要從站台B執行控制器更換啟動命令此作業只會引導您更換站台A上兩個節點的控制器。若要更換站台B的控制器、您必須從站台A執行控制器更換啟動命令此時會顯示一則訊息、指出要更換控制器的站台。
@@ -95,6 +108,41 @@ NOTE: 四節點 MetroCluster IP 組態不支援使用 Aggregate 重定位（ ARL
 
 
 
+
+
+
+
+== 在現有系統上設定所需的 bootarg
+
+如果您要升級至 AFF A70 、 AFF A90 或 AFF A1K 系統、請依照步驟設定 `hw.cxgbe.toe_keepalive_disable=1` bootarg 。
+
+
+CAUTION: 如果您要升級至 AFF A70 、 AFF A90 或 AFF A1K 系統、您 * 必須 * 完成此工作、才能執行升級。此工作 * 僅 * 適用於從支援的系統升級至 AFF A70 、 AFF A90 或 AFF A1K 系統。對於所有其他升級，您可以跳過此任務並直接轉至 <<prepare_system_replace_upgrade,準備升級>>。
+
+.步驟
+. 在每個站台停止一個節點、並允許其 HA 合作夥伴對節點執行儲存接管：
++
+`halt  -node <node_name>`
+
+. 在 `LOADER` 停止節點的提示下、輸入下列內容：
++
+`setenv hw.cxgbe.toe_keepalive_disable 1`
+
++
+「aveenv」
+
++
+`printenv hw.cxgbe.toe_keepalive_disable`
+
+. 開機節點：
++
+Boot_ONTAP
+
+. 當節點開機時、請在提示下執行節點的恢復：
++
+`storage failover giveback -ofnode <node_name>`
+
+. 在要升級的 DR 群組中的每個節點上重複這些步驟。
 
 
 
@@ -210,15 +258,23 @@ dr-group-id cluster    node          node-systemid dr-partner-systemid
 
 +
 ** 「網路介面show -role叢集、node-mgmt」
-** 「網路連接埠show -node-name_-type Physical」
-** 「網路連接埠VLAN show -node-name_」
-** 「網路連接埠ifgrp show -node_node_name_-instance」
+** `network port show -node <node-name> -type physical`
+** `network port vlan show -node <node-name>`
+** `network port ifgrp show -node <node-name> -instance`
 ** 「網路連接埠廣播網域節目」
 ** 「網路連接埠連線能力顯示-詳細資料」
 ** 「網路IPSpace節目」
 ** 「Volume show」
 ** 《集合體展》
-** 「系統節點執行節點_norme-name_ sysconfig -A」
+** `system node run -node <node-name> sysconfig -a`
+** `aggr show -r`
+** 「尖碑秀」
+** `system node run <node-name> disk show`
+** `vol show -fields type`
+** `vol show -fields type , space-guarantee`
+** 「Vserver FCP啟動器顯示」
+** 「磁碟展示」
+** 「顯示組態設定介面」MetroCluster
 
 
 . 如果MetroCluster 支援SAN組態、請收集相關資訊。
@@ -279,7 +335,7 @@ dr-group-id cluster    node          node-systemid dr-partner-systemid
 
 
 
-== 更換舊控制器並啟動新的控制器
+== 更換舊的控制器、並啟動新的控制器
 
 收集資訊並恢復作業之後、自動化會繼續進行切換作業。
 
@@ -297,7 +353,7 @@ dr-group-id cluster    node          node-systemid dr-partner-systemid
 
 .關於這項工作
 * 此工作必須在每個舊節點上執行。
-* 您將使用中收集的資訊 <<準備升級>>。
+* 您將使用中收集的資訊 <<prepare_system_replace_upgrade,準備升級>>。
 
 
 .步驟
@@ -323,7 +379,7 @@ SAN和NAS等所有資料生命量都是管理員「up」（啟動）和作業「
 
 .. 修改所有資料生命期、以使用通用連接埠作為主連接埠：
 +
-「網路介面修改-vserver _svm-name_-lif_data-lif_-home-port _port-id_」
+`network interface modify -vserver <svm-name> -lif <data-lif> -home-port <port-id>`
 
 +
 在下列範例中、這是「e0d」。
@@ -340,7 +396,7 @@ network interface modify -vserver vs0 -lif datalif1 -home-port e0d
 
 . 修改廣播網域以移除需要刪除的VLAN和實體連接埠：
 +
-「廣播網域移除連接埠-broadcast網域_broadcast網域名稱_-ports _norme-name:port-id_」
+`broadcast-domain remove-ports -broadcast-domain <broadcast-domain-name>-ports <node-name:port-id>`
 
 +
 對所有VLAN和實體連接埠重複此步驟。
@@ -349,7 +405,7 @@ network interface modify -vserver vs0 -lif datalif1 -home-port e0d
 +
 .. 刪除VLAN連接埠：
 +
-「網路連接埠VLAN刪除-node-name_-vlan-name _portID-vlanid_'
+`network port vlan delete -node <node-name> -vlan-name <portid-vlandid>`
 
 +
 例如：
@@ -361,7 +417,7 @@ network port vlan delete -node node1 -vlan-name e1c-80
 ----
 .. 從介面群組移除實體連接埠：
 +
-「網路連接埠ifgrp remove-port -node-name_-ifgrp _interface-group-name_-port _portID_」
+`network port ifgrp remove-port -node <node-name> -ifgrp <interface-group-name> -port <portid>`
 
 +
 例如：
@@ -371,23 +427,29 @@ network port vlan delete -node node1 -vlan-name e1c-80
 ----
 network port ifgrp remove-port -node node1 -ifgrp a1a -port e0d
 ----
-.. 從廣播網域移除VLAN和介面群組連接埠：
+.. 從廣播網域移除 VLAN 和介面群組連接埠：
 +
-「網路連接埠廣播網域移除連接埠-IPSpace _IPspacity_-broadcast網域_broadcast網域名稱_-連接埠_nodename：連接埠名稱、節點名稱：連接埠名稱_、...」
+`network port broadcast-domain remove-ports -ipspace <ipspace> -broadcast-domain <broadcast-domain-name>-ports <nodename:portname,nodename:portname>,..`
 
 .. 根據需要修改介面群組連接埠、以使用其他實體連接埠作為成員：
 +
-"ifgrp add-port -node-name_-ifgrp _interface-group名稱_-port _port-id_"
+`ifgrp add-port -node <node-name> -ifgrp <interface-group-name> -port <port-id>`
 
 
 
 . 停止節點：
 +
-「halt -distrake-takeover true -node-name_」
+`halt -inhibit-takeover true -node <node-name>`
 
 +
 此步驟必須在兩個節點上執行。
 
+. 驗證節點是否出現在提示符處 `LOADER` 、並收集和保留目前的環境變數。
+. 收集bootag值：
++
+《王子》
+
+. 關閉要升級控制器的站台上的節點和機櫃。
 
 
 
@@ -402,27 +464,49 @@ network port ifgrp remove-port -node node1 -ifgrp a1a -port e0d
 機架空間取決於控制器模組的平台模式、交換器類型、以及組態中的儲存櫃數量。
 
 . 請妥善接地。
-. 在機架或機櫃中安裝控制器模組。
+. 如果您的升級需要更換控制器模組、例如從 AFF 800 升級至 AFF A90 系統、則在更換控制器模組時、您必須從機箱中移除控制器模組。對於所有其他升級，請跳至 <<ip_upgrades_replace_4,步驟4.>>。
 +
-https://docs.netapp.com/us-en/ontap-systems/index.html["ONTAP 硬體系統文件"^]
+在機箱正面、用您的拇指將每個磁碟機穩固推入、直到您感覺到有正面的停止為止。這證實磁碟機已穩固地安裝在機箱中板上。
 
-. 如果新的控制器模組未隨附本身的FC-VI卡、且舊控制器的FC-VI卡與新的控制器相容、請交換FC-VI卡、並將其安裝在正確的插槽中。
 +
-請參閱 link:https://hwu.netapp.com["NetApp Hardware Universe"^] 以取得FC-VI卡的插槽資訊。
+image::../media/drw_a800_drive_seated.png[顯示從機箱中移除控制器模組]
 
-. 如《_ MetroCluster 》《安裝與組態指南_》所述、連接控制器的電源、序列主控台和管理連線。
+. [[IP 升級 _REPLACE _4]] 安裝控制器模組。
++
+
+NOTE: 您遵循的安裝步驟取決於升級是否需要更換控制器模組、例如從 AFF 800 升級至 AFF A90 系統。
+
++
+[role="tabbed-block"]
+====
+.需要更換控制器模組的升級
+--
+單獨安裝新控制器不適用於在同一機箱中使用磁碟和控制器的整合式系統升級、例如從 AFF A800 系統升級至 AFF A90 系統。新的控制器模組和 I/O 卡必須在關閉舊控制器電源後交換、如下圖所示。
+
+以下範例影像僅供示範、控制器模組和 I/O 卡可能會因系統而異。
+
+image::../media/a90_a70_pcm_swap.png[顯示控制器模組交換]
+
+--
+.所有其他升級
+--
+在機架或機櫃中安裝控制器模組。
+
+--
+====
+. 按照中所述、連接控制器的電源、序列主控台和管理連線 link:../install-ip/using_rcf_generator.html["MetroCluster IP 交換器佈線"]
 +
 此時請勿連接任何其他與舊控制器中斷連線的纜線。
 
 +
 https://docs.netapp.com/us-en/ontap-systems/index.html["ONTAP 硬體系統文件"^]
 
-. 開啟新節點的電源、並在系統提示顯示載入器提示時按Ctrl-C。
+. 開啟新節點的電源、並在出現提示時按 Ctrl-C `LOADER` 。
 
 
 
 
-=== 新控制器的Netbooting
+=== 以網路開機新的控制器
 
 安裝新節點之後、您需要netboot才能確保新節點執行的ONTAP 版本與原始節點相同。「netboot」一詞是指您從ONTAP 儲存在遠端伺服器上的不實映像進行開機。準備網路開機時、您必須將ONTAP 一份《支援》9開機映像複本放到系統可以存取的網路伺服器上。
 
@@ -438,7 +522,7 @@ https://docs.netapp.com/us-en/ontap-systems/index.html["ONTAP 硬體系統文件
 +
 您不需要解壓縮 ONTAP 版本映像 .tgz 檔案。
 
-. 在載入程式提示下、設定管理LIF的netboot連線：
+. 在 `LOADER` 提示字元下、設定管理 LIF 的 netboot 連線：
 +
 ** 如果IP定址為DHCP、請設定自動連線：
 +
@@ -452,15 +536,7 @@ https://docs.netapp.com/us-en/ontap-systems/index.html["ONTAP 硬體系統文件
 
 . 執行netboot。
 +
-** 如果平台是80xx系列系統、請使用下列命令：
-+
-“netboot \http://web_server_ip/path_to_web-accessible_directory/netboot/kernel`
-
-** 如果平台是任何其他系統、請使用下列命令：
-+
 “netboot \http://web_server_ip/path_to_web-accessible_directory/ontap-version_image.tgz`
-
-
 
 . 從開機功能表中、選取選項*（7）Install new software first*（先安裝新軟體*）、將新的軟體映像下載並安裝至開機裝置。
 +
@@ -545,28 +621,28 @@ Boot_ONTAP功能表
  a| 
 CNA FC
  a| 
-「ucadmin modify -m光纖信道-t啟動器_adapter-name_」
+`ucadmin modify -m fc -t initiator <adapter-name>`
 
 
 
  a| 
 CNA乙太網路
  a| 
-「ucadmin modify -mode cna _adapter-name_」
+`ucadmin modify -mode cna <adapter-name>`
 
 
 
  a| 
 FC目標
  a| 
-「fcadmin config -t target _adapter-name_」
+`fcadmin config -t target <adapter-name>`
 
 
 
  a| 
 FC啟動器
  a| 
-「fcadmin config -t啟動器_adapter-name_」
+`fcadmin config -t initiator <adapter-name>`
 
 |===
 . 結束維護模式：
@@ -574,7 +650,7 @@ FC啟動器
 《停止》
 
 +
-執行命令之後、請等到節點停止在載入程式提示字元。
+執行命令後、請等待節點在提示字元下停止 `LOADER` 。
 
 . 將節點開機回「維護」模式、使組態變更生效：
 +
@@ -624,6 +700,41 @@ FC
 +
 「ha-config modify機箱mccip」
 
+. 驗證並修改連接至 NS224 機櫃或儲存交換器的乙太網路連接埠。
++
+.. 驗證連接至 NS224 機櫃或儲存交換器的乙太網路連接埠：
++
+`storage port show`
+
+.. 將連接至乙太網路機櫃或儲存交換器的所有乙太網路連接埠（包括儲存設備和叢集的共用交換器）設定為 `storage` 模式：
++
+`storage port modify -p <port> -m storage`
+
++
+範例：
+
++
+[listing]
+----
+*> storage port modify -p e5b -m storage
+Changing NVMe-oF port e5b to storage mode
+----
++
+
+NOTE: 必須在所有受影響的連接埠上設定此選項、才能成功升級。
+
++
+輸出中會報告連接至乙太網路連接埠的磁碟櫃中的磁碟 `sysconfig -v` 。
+
++
+如需您要升級之系統的儲存連接埠資訊、請參閱 link:https://hwu.netapp.com["NetApp Hardware Universe"^] 。
+
+..  `storage`確認已設定模式、並確認連接埠處於線上狀態：
++
+`storage port show`
+
+
+
 . 停止節點：「halt」
 +
 節點應在「loader>」提示字元停止。
@@ -650,23 +761,22 @@ FC
 .步驟
 . 準備IP交換器以應用新的RCF檔案。
 +
-請依照「_EIP MetroCluster 安裝與組態_」一節中有關交換器廠商的步驟進行。
-
-+
-link:../install-ip/index.html["安裝與組態MetroCluster"]
+請依照您的交換器廠商章節中的步驟進行：
 
 +
 ** link:../install-ip/task_switch_config_broadcom.html#resetting-the-broadcom-ip-switch-to-factory-defaults["將Broadcom IP交換器重設為原廠預設值"]
-** link:../install-ip/task_switch_config_broadcom.html#resetting-the-cisco-ip-switch-to-factory-defaults["將Cisco IP交換器重設為原廠預設值"]
+** link:../install-ip/task_switch_config_broadcom.html#resetting-the-cisco-ip-switch-to-factory-defaults["將 Cisco IP 交換器重設為原廠預設值"]
+** link:../install-ip/task_switch_config_nvidia.html["將NVIDIA IP SN2100交換器重設為原廠預設值"]
 
 
 . 下載並安裝RCF檔案。
 +
-請依照中交換器廠商的一節中的步驟操作 link:../install-ip/index.html["安裝與組態MetroCluster"]。
+請依照您的交換器廠商章節中的步驟進行：
 
 +
-** link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-broadcom-rcf-files["下載並安裝Broadcom RCF檔案"]
-** link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-cisco-ip-rcf-files["下載並安裝Cisco IP RCF檔案"]
+** link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-broadcom-rcf-files["下載並安裝 Broadcom RCF 檔案"]
+** link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-cisco-ip-rcf-files["下載並安裝 Cisco IP RCF 檔案"]
+** link:../install-ip/task_switch_config_nvidia.html#download-and-install-the-nvidia-rcf-files["下載並安裝 NVIDIA IP RCF 檔案"]
 
 
 
@@ -678,15 +788,15 @@ link:../install-ip/index.html["安裝與組態MetroCluster"]
 必須MetroCluster 在新的控制器模組上設定特定的靜態IP bootarg值。這些值必須與舊控制器模組上設定的值相符。
 
 .關於這項工作
-在此工作中、您將使用先前在升級程序中所識別的UUID和系統ID link:task_upgrade_controllers_in_a_four_node_ip_mcc_us_switchover_and_switchback_mcc_ip.html#gathering-information-before-the-upgrade["在升級之前收集資訊"]。
+在此任務中，您將使用中升級過程前面確定的 UUID 和系統 ID <<gather_info_system_replace,在升級之前收集資訊>>。
 
 .步驟
 . 在「loader>」提示字元中、在s加 載點B的新節點上設定下列bootargs：
 +
-「etenv bootarg.mC.port_a_ip_config _local-ip-address/local-ip-mask,0、HA合作夥伴-ip-address、DR-partner-ip-address,DR-aux-partnersip-address,vlan-id_」
+`setenv bootarg.mcc.port_a_ip_config <local-IP-address/local-IP-mask,0,HA-partner-IP-address,DR-partner-IP-address,DR-aux-partnerIP-address,vlan-id>`
 
 +
-「etenv bootarg.mC.port_b_ip_config _local-ip-address/local-ip-mask,0、HA合作夥伴-ip-address,DR-partner-ip-address,DR-aux-partnersip-address,vlan-id_'」
+`setenv bootarg.mcc.port_b_ip_config <local-IP-address/local-IP-mask,0,HA-partner-IP-address,DR-partner-IP-address,DR-aux-partnerIP-address,vlan-id>`
 
 +
 下列範例設定節點 B_1 的值、第一個網路使用 VLAN 120 、第二個網路使用 VLAN 130 ：
@@ -706,21 +816,43 @@ setenv bootarg.mcc.port_b_ip_config 172.17.27.10/23,0,172.17.27.11,172.17.27.13,
 setenv bootarg.mcc.port_a_ip_config 172.17.26.11/23,0,172.17.26.10,172.17.26.12,172.17.26.13,120
 setenv bootarg.mcc.port_b_ip_config 172.17.27.11/23,0,172.17.27.10,172.17.27.12,172.17.27.13,130
 ----
++
+下列範例使用預設 VLAN 為所有 MetroCluster IP DR 連線設定 node_B_1 的值：
+
++
+[listing]
+----
+setenv bootarg.mcc.port_a_ip_config
+172.17.26.10/23,0,172.17.26.11,172.17.26.13,172.17.26.12
+setenv bootarg.mcc.port_b_ip_config
+172.17.27.10/23,0,172.17.27.11,172.17.27.13,172.17.27.12
+----
++
+下列範例設定節點 B_2 的值、並使用預設 VLAN 進行所有 MetroCluster IP DR 連線：
+
++
+[listing]
+----
+setenv bootarg.mcc.port_a_ip_config
+172.17.26.11/23,0,172.17.26.10,172.17.26.12,172.17.26.13
+setenv bootarg.mcc.port_b_ip_config
+172.17.27.11/23,0,172.17.27.10,172.17.27.12,172.17.27.13
+----
 . 在新節點的「載入器」提示下、設定UUID：
 +
-"etenv bootarg.mgwd.PARTNER_叢 集_uuid _PARTNER-叢 集-UUID_"
+`setenv bootarg.mgwd.partner_cluster_uuid <partner-cluster-UUID>`
 
 +
-「etenv bootarg.mgwd.cluster _uuid _local-cluster -UUID」
+`setenv bootarg.mgwd.cluster_uuid <local-cluster-UUID>`
 
 +
-「etenv bootarg.mCpr_PARTNER_uuid _DR-PARTNER-node-UUUID_」
+`setenv bootarg.mcc.pri_partner_uuid <DR-partner-node-UUID>`
 
 +
-「bootarg.mcc.aux_partner_uuid _DR-aux-合作 夥伴節點-UUUID_」
+`setenv bootarg.mcc.aux_partner_uuid <DR-aux-partner-node-UUID>`
 
 +
-「bootarg.mcc_iscsi.node_uuid _local-node-UUID」
+`setenv bootarg.mcc_iscsi.node_uuid <local-node-UUID>`
 
 +
 .. 在 node_B_1 上設定 UUID 。
@@ -751,16 +883,37 @@ setenv bootarg.mcc_iscsi.node_uuid aa9a7a7a-9a81-11e7-a4e9-00a098908c35
 ----
 
 
-. 如果原始系統已設定為ADP、請在每個替換節點的載入器提示字元中、啟用ADP：
+. 從啟動的站台執行下列命令、判斷原始系統是否已設定為進階磁碟分割（ ADP ）：
++
+「尖碑秀」
+
++
+如果已設定 ADP 、則「容器類型」欄會在輸出中顯示「共享」 `disk show` 。如果「容器類型」有任何其他值、系統上就不會設定 ADP 。下列輸出範例顯示已設定 ADP 的系統：
+
++
+[listing]
+----
+::> disk show
+                    Usable               Disk    Container   Container
+Disk                Size       Shelf Bay Type    Type        Name      Owner
+
+Info: This cluster has partitioned disks. To get a complete list of spare disk
+      capacity use "storage aggregate show-spare-disks".
+----------------    ---------- ----- --- ------- ----------- --------- --------
+1.11.0              894.0GB    11    0   SSD      shared     testaggr  node_A_1
+1.11.1              894.0GB    11    1   SSD      shared     testaggr  node_A_1
+1.11.2              894.0GB    11    2   SSD      shared     testaggr  node_A_1
+----
+. 如果原始系統已設定為 ADP 、請在每個更換節點的 `LOADER` 提示字元中、啟用 ADP ：
 +
 「etenv bootarg.mCa.adp_enabledtrue」
 
 . 設定下列變數：
 +
-「etenv bootarg.mCs.local_config_id _entite-sys-id_」
+`setenv bootarg.mcc.local_config_id <original-sys-id>`
 
 +
-「etenv bootarg.mCd.dr_PARTNER_DR-PARTNER-sys-id_」
+`setenv bootarg.mcc.dr_partner <dr-partner-sys-id>`
 
 +
 
@@ -813,7 +966,7 @@ bootarg.kmip.kmip.init.interface`
 .關於這項工作
 此工作會在維護模式中執行。
 
-舊系統ID已在中識別 link:task_upgrade_controllers_system_control_commands_in_a_four_node_mcc_ip.html#gathering-information-before-the-upgrade["在升級之前收集資訊"]。
+舊的系統 ID 在中識別 <<gather_info_system_replace,在升級之前收集資訊>>。
 
 本程序中的範例使用具有下列系統ID的控制器：
 
@@ -833,7 +986,7 @@ bootarg.kmip.kmip.init.interface`
 |===
 .步驟
 . 將所有其他連線連接至新的控制器模組（FC-VI、儲存設備、叢集互連等）。
-. 停止系統、並從載入程式提示字元開機至維護模式：
+. 停止系統、並從「loader"（載入器）提示字元開機至維護模式：
 +
 Boot_ONTAP maint
 
@@ -843,6 +996,10 @@ Boot_ONTAP maint
 
 +
 命令輸出顯示新控制器模組的系統ID（1574774970）。不過、根Aggregate磁碟仍為舊系統ID（40687441254）所有。此範例並未顯示MetroCluster 由其他節點所擁有的磁碟機、以供使用。
+
++
+
+CAUTION: 在繼續磁碟重新分配之前、您必須確認屬於節點根集合的 Pool0 和 Pool1 磁碟會顯示在輸出中 `disk show` 。在以下範例中、輸出會列出 node_B_1-old 所擁有的 Pool0 和 Pool1 磁碟。
 
 +
 [listing]
@@ -863,7 +1020,7 @@ rr18:9.126L27 node_B_1-old(4068741254)   Pool0  S0M1PSDW         node_B_1-old(40
 ----
 . 將磁碟機櫃上的根Aggregate磁碟重新指派給新的控制器：
 +
-"Disk reassign-s _old-sysid_-d _new－sysid_"
+`disk reassign -s <old-sysid> -d <new-sysid>`
 
 +
 
@@ -925,7 +1082,7 @@ aggr0_node_b_1-root        online      raid_dp, aggr    root, nosnap=on,
 
 
 
-=== 啟動新的控制器
+=== 開機新的控制器
 
 您必須從開機功能表重新啟動控制器、才能更新控制器Flash映像。如果已設定加密、則需要執行其他步驟。
 
@@ -941,16 +1098,16 @@ aggr0_node_b_1-root        online      raid_dp, aggr    root, nosnap=on,
 
 . 如果已設定外部金鑰管理程式、請設定相關的bootargs：
 +
-「bootarg.kmip.init.ipaddr _ip-address_」
+`setenv bootarg.kmip.init.ipaddr <ip-address>`
 
 +
-「bootarg.kmip.init.netmask網路遮罩_」
+`setenv bootarg.kmip.init.netmask <netmask>`
 
 +
-「bootarg.kmip.init.gateway gateway-address_」
+`setenv bootarg.kmip.init.gateway <gateway-address>`
 
 +
-"etenv bootarg.kmip.init.interface _interface-id_"
+`setenv bootarg.kmip.init.interface <interface-id>`
 
 . 顯示開機功能表：
 +
@@ -1041,6 +1198,14 @@ Boot_ONTAP
 +
 「網路連接埠廣播網域節目」
 
+.. 如果為新升級的控制器上的資料連接埠建立新的廣播網域、請刪除廣播網域：
++
+
+NOTE: 只刪除新的廣播網域。開始升級之前、請勿刪除任何已存在的廣播網域。
+
++
+`broadcast-domain delete -broadcast-domain <broadcast_domain_name>`
+
 .. 視需要將任何連接埠新增至廣播網域。
 +
 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-003BDFCD-58A3-46C9-BF0C-BA1D1D1475F9.html["從廣播網域新增或移除連接埠"^]
@@ -1090,7 +1255,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
  a| 
 外部金鑰管理
  a| 
-「安全金鑰管理程式外部還原-vserver _svm_-node_node_-key-server _host_name | ip_address: port_-key-id key_id -key-tag key_tag _node-name_」
+`security key-manager external restore -vserver <svm-name> -node <node-name> -key-server <host_name|IP_address:port> -key-id <key_id> -key-tag key_tag <node-name>`
 
 如需詳細資訊、請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-32DA96C3-9B04-4401-92B8-EAF323C3C863.html["還原外部金鑰管理加密金鑰"^]。
 

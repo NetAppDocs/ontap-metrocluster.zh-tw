@@ -32,6 +32,6 @@ http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-clus-peer/home.html["叢
 
 +
 
-NOTE: MetroCluster IP 系統沒有專用的高可用度（ HA ）連接埠。使用 ONTAP 硬體系統說明文件 _ 安裝平台時、請勿遵循指示來連接叢集和 HA 連接埠。
+NOTE: MetroCluster IP 系統沒有專用的高可用度（ HA ）連接埠。根據您的平台而定、 HA 流量會使用 MetroCluster 、本機叢集或共用叢集 / MetroCluster 介面來處理。使用 ONTAP 硬體系統說明文件 _ 安裝平台時、請勿遵循指示來連接叢集和 HA 連接埠。
 
 

@@ -21,52 +21,73 @@ summary: 您使用的升級程序取決於平台模式。
 
 
 
-== 選擇使用切換和切換程序的程序
+== 支援的控制器升級
 
 請從下方的FC或IP表格中選取您目前的平台。如果目前平台列和目標平台欄的交會為空白、則不支援升級。
+
+
+NOTE: 如需在四節點 MetroCluster IP 組態中使用命令進行支援的升級 `system controller replace` 、請參閱中的表格 link:task_upgrade_controllers_system_control_commands_in_a_four_node_mcc_ip.html["在四節點 MetroCluster IP 組態中升級控制器、使用切換功能、並使用「系統控制器更換」命令（ ONTAP 9.13.1 及更新版本）切換回控制器"]
 
 
 
 === 支援MetroCluster 的支援功能升級
 
-如果未列出您的平台、則沒有支援的控制器升級組合。
-
-[IMPORTANT]
-====
-當您執行控制器升級時、舊的和新的平台類型 * 必須 * 相符。
-
-* 您可以將 FAS 系統升級至 FAS 系統、或將 AFF A 系列升級至 AFF A 系列。
-* 您無法將 FAS 系統升級至 AFF A 系列、或將 AFF A 系列升級至 AFF C 系列。
-
-
+* 如果未列出您的平台、則沒有支援的控制器升級組合。
+* 當您執行控制器升級時、舊的和新的平台類型 * 必須 * 相符：
++
+** 您可以將 FAS 系統升級至 FAS 系統、或將 AFF A 系列升級至 AFF A 系列。
+** 您無法將 FAS 系統升級至 AFF A 系列、或將 AFF A 系列升級至 AFF C 系列。
++
 例如、如果您想要升級的平台是 FAS8200 、您可以升級至 FAS9000 。您無法將 FAS8200 系統升級至 AFF A700 系統。
 
-====
-image::../media/metrocluster_ip_upgrade_table_914.png[MetroCluster IP 升級表 914]
+
+
+* MetroCluster 組態中的所有節點（新舊節點）都必須執行相同的 ONTAP 版本。
+
+
+.支援的 AFF 和 FAS MetroCluster IP 控制器升級
+下表顯示在 MetroCluster IP 組態中升級 AFF 或 FAS 系統所支援的平台組合：
+
+
+NOTE: AFF A90 、 AFF A70 和 AFF A1K 系統需要 ONTAP 9.15.1 或更新版本。
+
+image::../media/metrocluster_ip_upgrade_so_sb_aff_fas.png[MetroCluster IP 升級 sb AFF FAS]
 
 * 附註1：對於此升級、請使用此程序 link:task_upgrade_A700_to_A900_in_a_four_node_mcc_ip_us_switchover_and_switchback.html["使用交換器和切換功能（AFF 更新版本）、將控制器從功能性的A700/FAS9000升級AFF 至功能性的S還原A900/FAS9500 MetroCluster （以不整合的IP組態）ONTAP"]
 * 附註 2 ：執行 ONTAP 9.13.1 或更新版本的系統支援控制器升級。
-* MetroCluster 組態中的所有節點都必須執行相同的 ONTAP 版本。例如、新控制器必須執行與舊控制器相同的 ONTAP 版本。
+* 附註 3 ：目標平台必須等到控制器升級完成後、才能擁有內部磁碟機。您可以在升級後新增內部磁碟機。
+* 附註 4 ：需要更換控制器模組。
+
+
+.支援的 ASA MetroCluster IP 控制器升級
+下表顯示在 MetroCluster IP 組態中升級 ASA 系統所支援的平台組合：
+
+image::../media/metrocluster_ip_upgrade_so_sb_asa_fas.png[MetroCluster IP 升級 sb ASA FAS]
+
+* 附註 1 ：執行 ONTAP 9.13.1 或更新版本的系統支援控制器升級。
 
 
 
 
 === 支援MetroCluster 的支援功能。FC控制器升級
 
-如果未列出您的平台、則沒有支援的控制器升級組合。
-
-[IMPORTANT]
-====
-當您執行控制器升級時、舊的和新的平台類型 * 必須 * 相符。
-
-* 您可以將 FAS 系統升級至 FAS 系統、或將 AFF A 系列升級至 AFF A 系列。
-* 您無法將 FAS 系統升級至 AFF A 系列、或將 AFF A 系列升級至 AFF C 系列。
-
-
+* 如果未列出您的平台、則沒有支援的控制器升級組合。
+* 當您執行控制器升級時、舊的和新的平台類型 * 必須 * 相符：
++
+** 您可以將 FAS 系統升級至 FAS 系統、或將 AFF A 系列升級至 AFF A 系列。
+** 您無法將 FAS 系統升級至 AFF A 系列、或將 AFF A 系列升級至 AFF C 系列。
++
 例如、如果您想要升級的平台是 FAS8200 、您可以升級至 FAS9000 。您無法將 FAS8200 系統升級至 AFF A700 系統。
 
-====
-image::../media/metrocluster_fc_upgrade_table_914.png[MetroCluster 光纖通道升級表 914]
+
+
+* MetroCluster 組態中的所有節點（新舊節點）都必須執行相同的 ONTAP 版本。
+
+
+.支援的 AFF 和 FAS MetroCluster FC 控制器升級
+下表顯示在 MetroCluster FC 組態中升級 AFF 或 FAS 系統所支援的平台組合：
+
+image::../media/metrocluster_fc_upgrade_table_aff_fas.png[MetroCluster 光纖通道升級表 AFF FAS]
 
 * 附註1：若在現有FAS8020或AFF8020節點上使用連接埠1c和1d進行FCVI連線時、要升級控制器、請參閱下列內容https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/Upgrading_controllers_when_FCVI_connections_on_existing_FAS8020_or_AFF8020_nodes_use_ports_1c_and_1d["知識庫文章"^]。
 * 附註 2 ：只有下列系統才支援從 AFF A300 或 FAS8200 平台升級控制器、使用內建連接埠 0e 和 0f 做為 FC-VI 連線：
@@ -83,9 +104,35 @@ image::../media/metrocluster_fc_upgrade_table_914.png[MetroCluster 光纖通道�
 
 * 附註3：如需此升級、請參閱 link:task_upgrade_A700_to_A900_in_a_four_node_mcc_fc_us_switchover_and_switchback.html["使用切換和切換功能（AFF 更新版本）、將控制器從功能不實的A700/FAS9000升級AFF 至功能不實的A900/FAS9500 MetroCluster （以功能不實的FC組態）ONTAP"]
 * 附註 4 ：執行 ONTAP 9.13.1 或更新版本的系統支援控制器升級。
-* 附註 5 ：執行 ONTAP 9.14.1 或更新版本的系統支援控制器升級。
-* MetroCluster 組態中的所有節點都必須執行相同的 ONTAP 版本。例如、新控制器必須執行與舊控制器相同的 ONTAP 版本。
 
+
+.支援的 ASA MetroCluster FC 控制器升級
+下表顯示在 MetroCluster FC 組態中升級 ASA 系統所支援的平台組合：
+
+[cols="3*"]
+|===
+| 來源 MetroCluster FC 平台 | 目的地 MetroCluster FC 平台 | 是否支援？ 
+
+
+.2+| 解答400 ASA | 解答400 ASA | 是的 
+
+
+| ASA A900 | 否 
+
+
+.2+| ASA A900 | 解答400 ASA | 否 
+
+
+| ASA A900 | 是（請參閱附註 1 ） 
+|===
+* 附註 1 ：執行 ONTAP 9.14.1 或更新版本的系統支援控制器升級。
+
+
+
+
+== 選擇使用切換和切換程序的程序
+
+檢閱支援的升級組合之後、請針對您的組態選擇正確的控制器升級程序。
 
 [cols="2,1,1,2"]
 |===

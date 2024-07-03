@@ -10,6 +10,9 @@ summary:
 :imagesdir: ./media/
 
 
+[role="lead"]
+瞭解 MetroCluster IP 平台支援的新功能。
+
 
 
 == 平台支援
@@ -20,9 +23,23 @@ summary:
 
 
  a| 
+AFF A70 、 AFF A90 、 AFF A1K
+ a| 
+ONTAP 9.15.1 及更新版本
+
+
+
+ a| 
+ASA A150 、 ASA A250 、 ASA A400 、 ASA A800 、 ASA A900 、 ASA C250 、 ASA C400 、 ASA C800
+ a| 
+ONTAP 9.14.1 及更新版本
+
+
+
+ a| 
 解答150 AFF
  a| 
-ONTAP 9.13.1 及更新版本的 ONTAP 版本
+ONTAP 9.13.1 及更新版本
 
 ONTAP 9.12.1P1
 
@@ -37,7 +54,7 @@ AFF C250 、 AFF C400 、 AFF C800
  a| 
 ONTAP 9.12.1P1
 
-ONTAP 9.13.1 GA 與更新版本的 ONTAP 版本。
+ONTAP 9.13.1 GA 及更新版本
 
 
 
@@ -63,9 +80,7 @@ FAS500f
 
 
  a| 
-All Flash SAN Array 平台
-
-在本文件中、有關不適用的功能的資訊適用於相應的功能表系統。MetroCluster AFF ASA例如AFF 、所有的纜線和其他有關的資訊、也適用於ASA AFF 該系統。
+ASA AFF A220 、 ASA AFF A250 、 ASA AFF A400 、 ASA AFF A700 、 ASA AFF A800
  a| 
 更新ONTAP
 
@@ -79,14 +94,14 @@ ONTAP 9.6P3
 
 
  a| 
-解答A220和FAS2750 AFF
+AFF A220 、 FAS2750
  a| 
 ONTAP 9.6
 
 
 
  a| 
-適用於A300和FAS8200 AFF
+AFF A300 、 FAS8200
  a| 
 版本9.5 ONTAP
 

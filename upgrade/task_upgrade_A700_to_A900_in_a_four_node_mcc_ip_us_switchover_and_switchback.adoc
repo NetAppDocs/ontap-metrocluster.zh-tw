@@ -583,7 +583,7 @@ image::../media/drw_9500_remove_PCM.png[控制器模組]
 .. 將e5a連線移至e5b。
 +
 
-NOTE: 叢集所有節點上的插槽7應為空白、如所述 <<將舊節點的連接埠對應至新節點>> 區段。
+NOTE: 叢集所有節點上的插槽 7 應為空的、如一節所述 <<upgrade_a700_a900_ip_map,將舊節點的連接埠對應至新節點>> 。
 
 
 
@@ -821,23 +821,22 @@ FC
 .步驟
 . 準備IP交換器以應用新的RCF檔案。
 +
-請依照「_EIP MetroCluster 安裝與組態_」一節中有關交換器廠商的步驟進行。
-
-+
-link:../install-ip/index.html["安裝與組態MetroCluster"]
+請依照您的交換器廠商章節中的步驟進行：
 
 +
 ** link:../install-ip/task_switch_config_broadcom.html#resetting-the-broadcom-ip-switch-to-factory-defaults["將Broadcom IP交換器重設為原廠預設值"]
-** link:../install-ip/task_switch_config_broadcom.html#resetting-the-cisco-ip-switch-to-factory-defaults["將Cisco IP交換器重設為原廠預設值"]
+** link:../install-ip/task_switch_config_broadcom.html#resetting-the-cisco-ip-switch-to-factory-defaults["將 Cisco IP 交換器重設為原廠預設值"]
+** link:../install-ip/task_switch_config_nvidia.html["將NVIDIA IP SN2100交換器重設為原廠預設值"]
 
 
 . 下載並安裝RCF檔案。
 +
-請依照中交換器廠商的一節中的步驟操作 link:../install-ip/index.html["安裝與組態MetroCluster"]。
+請依照您的交換器廠商章節中的步驟進行：
 
 +
-** link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-broadcom-rcf-files["下載並安裝Broadcom RCF檔案"]
-** link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-cisco-ip-rcf-files["下載並安裝Cisco IP RCF檔案"]
+** link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-broadcom-rcf-files["下載並安裝 Broadcom RCF 檔案"]
+** link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-cisco-ip-rcf-files["下載並安裝 Cisco IP RCF 檔案"]
+** link:../install-ip/task_switch_config_nvidia.html#download-and-install-the-nvidia-rcf-files["下載並安裝 NVIDIA IP RCF 檔案"]
 
 
 
@@ -855,7 +854,7 @@ link:../install-ip/index.html["安裝與組態MetroCluster"]
 必須MetroCluster 在新的控制器模組上設定特定的靜態IP bootarg值。這些值必須與舊控制器模組上設定的值相符。
 
 .關於這項工作
-在此工作中、您將使用先前在升級程序中所識別的UUID和系統ID link:task_upgrade_controllers_in_a_four_node_ip_mcc_us_switchover_and_switchback_mcc_ip.html#gathering-information-before-the-upgrade["在升級之前收集資訊"]。
+在此任務中，您將使用中升級過程前面確定的 UUID 和系統 ID <<在升級之前收集資訊>>。
 
 .步驟
 . 在「loader>」提示字元中、在s加 載點B的新節點上設定下列bootargs：
@@ -1266,7 +1265,7 @@ https://docs.netapp.com/us-en/ontap/networking/combine_physical_ports_to_create_
 
 .關於這項工作
 * 此工作是在ssite B上執行
-* 請參閱您在中建立的連接埠對應計畫 link:task_upgrade_controllers_in_a_four_node_ip_mcc_us_switchover_and_switchback_mcc_ip.html#mapping-ports-from-the-old-nodes-to-the-new-nodes["將連接埠從舊節點對應至新節點"]。
+* 請參閱您在中建立的連接埠對應規劃 <<upgrade_a700_a900_ip_map,將舊節點的連接埠對應至新節點>>
 
 
 .步驟
@@ -1416,7 +1415,7 @@ Remote: cluster_A         Configuration state configured
 您必須在se_A上重複執行升級工作
 
 .步驟
-. 重複步驟、從開始升級se_a上的節點 link:task_upgrade_controllers_in_a_four_node_ip_mcc_us_switchover_and_switchback_mcc_ip.html#preparing-for-the-upgrade["準備升級"]。
+. 重複步驟以升級 so_a 上的節點、從開始 <<upgrade_a700_a900_ip_prepare,準備升級>>。
 +
 執行工作時、所有站台和節點的參考範例都會反轉。例如、當範例是從sente_a切換時、您將從sente_B切換
 

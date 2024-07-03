@@ -216,6 +216,9 @@ node_a_1
 
 
  a| 
+* AFF A70
+* AFF A90
+* AFF A1K
 * VA220 AFF
 * VA250 AFF
 * 解答400 AFF
@@ -237,9 +240,48 @@ node_a_1
 所需的地址為*目的地網路位址*欄中所示的DR合作夥伴位址。
 
 +
-下列輸出顯示AFF 使用端MetroCluster 口e5a和e5b上的ESITE IP介面、搭配使用ESIEA700和FAS9000系統組態的IP位址。介面視平台類型而異。
+命令輸出會因您的平台機型而異。
 
 +
+[role="tabbed-block"]
+====
+.ONTAP 9.15.1 或更新版本中推出的系統
+--
+ONTAP 9.15.1 或更新版本（ AFF A70 、 AFF A90 和 AFF A1K ）中引進的系統、具有獨立的 HA 和 DR 連接埠、如下列輸出範例所示：
+
+[listing]
+----
+cluster_B::*> metrocluster configuration-settings connection show
+DR                    Source          Destination
+DR                    Source          Destination
+Group Cluster Node    Network Address Network Address Partner Type Config State
+----- ------- ------- --------------- --------------- ------------ ------------
+1     cluster_B
+              node_B_1
+                 Home Port: e5a
+                      172.17.26.13    172.17.26.10    DR Partner   completed
+                 Home Port: e5a
+                      172.17.26.13    172.17.26.11    DR Auxiliary completed
+                 Home Port: e5b
+                      172.17.27.13    172.17.27.10    DR Partner   completed
+                 Home Port: e5b
+                      172.17.27.13    172.17.27.11    DR Auxiliary completed
+              node_B_2
+                 Home Port: e5a
+                      172.17.26.12    172.17.26.11    DR Partner   completed
+                 Home Port: e5a
+                      172.17.26.12    172.17.26.10    DR Auxiliary completed
+                 Home Port: e5b
+                      172.17.27.12    172.17.27.11    DR Partner   completed
+                 Home Port: e5b
+                      172.17.27.12    172.17.27.10    DR Auxiliary completed
+12 entries were displayed.
+----
+--
+.所有其他系統
+--
+下列輸出顯示AFF 使用端MetroCluster 口e5a和e5b上的ESITE IP介面、搭配使用ESIEA700和FAS9000系統組態的IP位址。介面可能會因平台類型而異。
+
 [listing]
 ----
 cluster_B::*> metrocluster configuration-settings connection show
@@ -276,12 +318,14 @@ Group Cluster Node    Network Address Network Address Partner Type Config State
                       172.17.27.12    172.17.27.10    DR Auxiliary completed
 12 entries were displayed.
 ----
+--
+====
 . 如果您需要判斷介面的VLAN ID或閘道位址、請從正常運作的站台判斷VLAN ID：
 +
 「顯示組態設定介面」MetroCluster
 
 +
-** 如果平台機型使用VLAN ID（請參閱上表）、而且您未使用預設的VLAN ID、則需要VLAN ID。
+** 如果平台機型使用 VLAN ID （請參閱上表）、而且您不使用預設的 VLAN ID 、則需要 VLAN ID 。
 ** 如果使用、則需要閘道位址 link:../install-ip/concept_considerations_layer_3.html["第3層廣域網路"]。
 +
 VLAN ID包含在輸出的*網路位址*欄中。「*閘道*」欄顯示閘道IP位址。
@@ -306,27 +350,56 @@ Group Cluster Node     Network Address Netmask         Gateway         State
 ----
 
 
-. 如果災難站台節點使用VLAN ID（請參閱上述清單）、請在每個災難站台節點的載入器提示字元中、設定下列bootargs：
+. 在每個災難站台節點的載入程式提示下、根據平台模型設定 bootarg 值：
 +
+[NOTE]
+====
+** 如果介面使用的是預設 VLAN 、或平台機型不使用 VLAN ID （請參閱上表）、則無需使用 _vlan-id_ 。
+** 如果組態未使用 link:../install-ip/concept_considerations_layer_3.html["第3層廣域網路"]，_gateway-ip-address_的值為* 0*（零）。
+
+
+====
++
+[role="tabbed-block"]
+====
+.ONTAP 9.15.1 或更新版本中推出的系統
 --
+在 ONTAP 9.15.1 或更新版本中推出的系統上、 _HA-Partner IP 位址 _ 的值必須設為 * 0* （零）、因為它們有獨立的 DR 和 HA 連接埠。
+
+設定下列 bootarg ：
+
+[listing]
+----
+setenv bootarg.mcc.port_a_ip_config local-IP-address/local-IP-mask,gateway-IP-address,HA-partner-IP-address,DR-partner-IP-address,DR-aux-partnerIP-address,vlan-id
+
+setenv bootarg.mcc.port_b_ip_config local-IP-address/local-IP-mask,gateway-IP-address,HA-partner-IP-address,DR-partner-IP-address,DR-aux-partnerIP-address,vlan-id
+----
+下列命令會針對第一個網路設定使用VLAN 120的node_a_1值、針對第二個網路設定VLAN 130值：
+
+....
+setenv bootarg.mcc.port_a_ip_config 172.17.26.10/23,0,0,172.17.26.13,172.17.26.12,120
+
+setenv bootarg.mcc.port_b_ip_config 172.17.27.10/23,0,0,172.17.27.13,172.17.27.12,130
+....
+下列範例顯示節點_a_1的命令、但不含VLAN ID：
+
+[listing]
+----
+setenv bootarg.mcc.port_a_ip_config 172.17.26.10/23,0,0,172.17.26.13,172.17.26.12
+
+setenv bootarg.mcc.port_b_ip_config 172.17.27.10/23,0,0,172.17.27.13,172.17.27.12
+----
+--
+.所有其他系統
+--
+設定下列 bootarg ：
+
 ....
 setenv bootarg.mcc.port_a_ip_config local-IP-address/local-IP-mask,gateway-IP-address,HA-partner-IP-address,DR-partner-IP-address,DR-aux-partnerIP-address,vlan-id
 
 setenv bootarg.mcc.port_b_ip_config local-IP-address/local-IP-mask,gateway-IP-address,HA-partner-IP-address,DR-partner-IP-address,DR-aux-partnerIP-address,vlan-id
 ....
-[NOTE]
-====
-** 如果介面使用預設VLAN、或平台模式不需要VLAN（請參閱上表）、則不需要_vlan-id_。
-** 如果組態未使用 link:../install-ip/concept_considerations_layer_3.html["第3層廣域網路"]，_gateway-ip-address_的值為* 0*（零）。
-
-
-====
-** 如果介面使用預設VLAN、或平台模式不需要VLAN（請參閱上表）、則不需要_vlan-id_。
-** 如果組態未使用 link:../install-ip/concept_considerations_layer_3.html["第3層後端連線"]，_gateway-ip-address_的值為* 0*（零）。
-+
 下列命令會針對第一個網路設定使用VLAN 120的node_a_1值、針對第二個網路設定VLAN 130值：
-
-
 
 ....
 setenv bootarg.mcc.port_a_ip_config 172.17.26.10/23,0,172.17.26.11,172.17.26.13,172.17.26.12,120
@@ -335,37 +408,14 @@ setenv bootarg.mcc.port_b_ip_config 172.17.27.10/23,0,172.17.27.11,172.17.27.13,
 ....
 下列範例顯示節點_a_1的命令、但不含VLAN ID：
 
-....
+[listing]
+----
 setenv bootarg.mcc.port_a_ip_config 172.17.26.10/23,0,172.17.26.11,172.17.26.13,172.17.26.12
 
 setenv bootarg.mcc.port_b_ip_config 172.17.27.10/23,0,172.17.27.11,172.17.27.13,172.17.27.12
-....
+----
 --
-. 如果災難站台節點不是使用VLAN ID的系統、請在每個災難節點的載入器提示字元中、使用local_ip/mask,gateway設定下列bootargs：
-+
-....
-setenv bootarg.mcc.port_a_ip_config local-IP-address/local-IP-mask,0,HA-partner-IP-address,DR-partner-IP-address,DR-aux-partnerIP-address
-
-
-setenv bootarg.mcc.port_b_ip_config local-IP-address/local-IP-mask,0,HA-partner-IP-address,DR-partner-IP-address,DR-aux-partnerIP-address
-....
-+
-[NOTE]
 ====
-** 如果介面使用預設VLAN、或平台模式不需要VLAN（請參閱上表）、則不需要_vlan-id_。
-** 如果組態未使用 link:../install-ip/concept_considerations_layer_3.html["第3層廣域網路"]，_gateway-ip-address_的值為* 0*（零）。
-
-
-====
-+
-下列命令會設定node_a_1的值。在此範例中、不使用_gateway-ip-address_和_vlan-id_值。
-
-+
-....
-setenv bootarg.mcc.port_a_ip_config 172.17.26.10/23,0,172.17.26.11,172.17.26.13,172.17.26.12
-
-setenv bootarg.mcc.port_b_ip_config 172.17.27.10/23,0,172.17.27.11,172.17.27.13,172.17.27.12
-....
 . 從存續站台收集災難站台的UUID：
 +
 「MetroCluster 節點show -功能 變數node-叢 集-uuid、node-uuid」

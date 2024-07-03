@@ -20,18 +20,36 @@ summary: 連接埠在MetroCluster 一個靜態IP組態中的使用取決於交�
 
 
 
-== FAS2750或AFF __LW_A220系統和Cisco 3132Q-V交換器的連接埠使用量
+== 請為您的組態選擇正確的纜線配置表
 
-image::../media/mcc_ip_cabling_a_fas2750_or_a220_to_a_cisco_3132q_v_switch.png[MCC IP將fas2750或A220纜線連接至Cisco 3132q v交換器]
+請使用下表來判斷您應遵循的纜線表。
 
-
-
-== FAS9000 或 AFF A700 系統和 Cisco 3132Q-V 交換器的連接埠使用量
-
-image::../media/mcc_ip_cabling_a_fas9000_or_aff_a700_to_a_cisco_3132q_v_switch.png[MCC IP將fas9000或AFF fasa700纜線連接至Cisco 3132q v交換器]
+[cols="2*"]
+|===
+| 如果您的系統 ... | 使用此纜線表 ... 
 
 
+ a| 
+FAS2750 、 AFF A220
+| <<table_1_cisco_3132q,Cisco 3132Q-V 平台連接埠指派（群組 1 ）>> 
 
-== AFF A800 或 ASA A800 系統和 Cisco 3132Q-V 交換器的連接埠使用量
 
-image::../media/cabling_an_aff_a800_to_a_cisco_3132q_v_switch.png[將AFF 某個__LW_A800連接至Cisco 3132q v交換器]
+| FAS9000 、 AFF A700 | <<table_2_cisco_3132q,Cisco 3132Q-V 平台連接埠指派（群組 2 ）>> 
+
+
+| AFF A800 、 ASA A800 | <<table_3_cisco_3132q,Cisco 3132Q-V 平台連接埠指派（群組 3 ）>> 
+|===
+.Cisco 3132Q-V 平台連接埠指派（群組 1 ）
+檢閱平台連接埠指派、將 FAS2750 或 AFF A220 系統連接至 Cisco 3132Q-V 交換器：
+
+image::../media/mcc_ip_cabling_a_fas2750_or_a220_to_a_cisco_3132q_v_switch.png[顯示 Cisco 3132Q-V 平台連接埠指派]
+
+.Cisco 3132Q-V 平台連接埠指派（群組 2 ）
+檢閱平台連接埠指派、將 FAS9000 或 AFF A700 系統連接至 Cisco 3132Q-V 交換器：
+
+image::../media/mcc_ip_cabling_a_fas9000_or_aff_a700_to_a_cisco_3132q_v_switch.png[顯示 Cisco 3132Q-V 平台連接埠指派]
+
+.Cisco 3132Q-V 平台連接埠指派（群組 3 ）
+檢閱平台連接埠指派、將 AFF A800 或 ASA A800 系統連接至 Cisco 3132Q-V 交換器：
+
+image::../media/cabling_an_aff_a800_to_a_cisco_3132q_v_switch.png[顯示 Cisco 3132Q-V 平台連接埠指派]

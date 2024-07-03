@@ -76,7 +76,7 @@ Dr_group_2-new
 
 == 新增第二個 DR 群組時支援的平台組合
 
-下表顯示支援的八節點 IP 組態平台組合。
+下表顯示八節點 MetroCluster IP 組態支援的平台組合。
 
 [IMPORTANT]
 ====
@@ -87,11 +87,22 @@ Dr_group_2-new
 
 
 ====
-image::../media/8node_comb_ip_914.png[8 個節點組態的平台組合]
+.支援的 AFF 和 FAS MetroCluster IP 擴充組合
+下表顯示在 MetroCluster IP 組態中擴充 AFF 或 FAS 系統所支援的平台組合：
+
+
+NOTE: AFF A70 、 AFF A90 和 AFF A1K 系統需要 ONTAP 9.15.1 或更新版本。
+
+image::../media/8node_comb_ip_aff_fas.png[8 個節點組態的平台組合]
 
 * * 附註 1* ：這些組合需要 ONTAP 9.9.1 或更新版本（或平台支援的最低 ONTAP 版本）。
 * * 附註 2 * ：這些組合需要 ONTAP 9.13.1 或更新版本（或平台支援的最低 ONTAP 版本）。
 
+
+.支援的 ASA MetroCluster IP 擴充組合
+下表顯示 MetroCluster IP 組態中擴充 ASA 系統所支援的平台組合：
+
+image::../media/8node_comb_ip_asa.png[8 個節點組態的平台組合]
 
 
 

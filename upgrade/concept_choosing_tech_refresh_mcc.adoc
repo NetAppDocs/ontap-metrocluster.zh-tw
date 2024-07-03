@@ -15,9 +15,33 @@ summary: 您所使用的更新程序取決於平台機型、升級範圍和Metro
 
 
 
-=== 支援MetroCluster 的功能更新功能組合
+== 支援MetroCluster 的支援功能：IP技術更新組合
 
-image::../media/metrocluster_fc_tech_refresh_914.png[MetroCluster 光纖通道技術更新 914]
+* 新增負載之前、您必須先完成技術更新程序。
+* MetroCluster 組態中的所有節點都必須執行相同的 ONTAP 版本。例如、如果您有八個節點組態、則所有八個節點都必須執行相同的 ONTAP 版本。
+* 請勿超過平台「下限」的任何物件限制。套用兩個平台的較低物件限制。
+* 如果目標平台限制低於 MetroCluster 限制、您必須將 MetroCluster 重新設定為目標平台限制、然後再新增節點。
+* 請參閱 link:https://hwu.netapp.com["Hardware Universe"^] 適用於平台限制。
+
+
+.支援的 AFF 和 FAS MetroCluster IP 技術更新組合
+下表顯示 MetroCluster IP 組態中用於重新整理 AFF 或 FAS 系統的支援平台組合：
+
+
+NOTE: AFF A70 、 AFF A90 和 AFF A1K 系統需要 ONTAP 9.15.1 或更新版本。
+
+image::../media/metrocluster_techref_ip.png[MetroCluster IP 技術更新組合]
+
+* 附註 1 ： * 此組合需要 ONTAP 9.13.1 或更新版本。
+
+.支援的 ASA MetroCluster IP 技術更新組合
+下表顯示在 MetroCluster IP 組態中重新整理 ASA 系統所支援的平台組合：
+
+image::../media/metrocluster_techref_ip_asa.png[MetroCluster IP ASA 技術更新組合]
+
+
+
+== 支援MetroCluster 的功能更新功能組合
 
 * 新增負載之前、您必須先完成技術更新程序。
 * MetroCluster 組態中的所有節點都必須執行相同的 ONTAP 版本。例如、如果您有八個節點組態、則所有八個節點都必須執行相同的 ONTAP 版本。
@@ -26,20 +50,35 @@ image::../media/metrocluster_fc_tech_refresh_914.png[MetroCluster 光纖通道�
 * 請參閱 link:https://hwu.netapp.com["Hardware Universe"^] 適用於平台限制。
 
 
+.支援的 AFF 和 FAS MetroCluster FC 技術更新組合
+下表顯示 MetroCluster FC 組態中用於重新整理 AFF 或 FAS 系統的支援平台組合：
+
+image::../media/metrocluster_fc_tech_refresh.png[NetApp技術更新MetroCluster]
+
+.支援的 ASA MetroCluster FC 技術更新組合
+下表顯示在 MetroCluster FC 組態中重新整理 ASA 系統所支援的平台組合：
+
+[cols="3*"]
+|===
+| 來源 MetroCluster FC 平台 | 目的地 MetroCluster FC 平台 | 是否支援？ 
 
 
-=== 支援MetroCluster 的支援功能：IP技術更新組合
+.2+| 解答400 ASA | 解答400 ASA | 是的 
 
-image::../media/metrocluster_techref_ip_914.png[MetroCluster IP 技術更新組合]
 
-* 附註 1 ： * 此組合需要 ONTAP 9.13.1 或更新版本。
+| ASA A900 | 否 
 
-* 新增負載之前、您必須先完成技術更新程序。
-* MetroCluster 組態中的所有節點都必須執行相同的 ONTAP 版本。例如、如果您有八個節點組態、則所有八個節點都必須執行相同的 ONTAP 版本。
-* 請勿超過平台「下限」的任何物件限制。套用兩個平台的較低物件限制。
-* 如果目標平台限制低於 MetroCluster 限制、您必須將 MetroCluster 重新設定為目標平台限制、然後再新增節點。
-* 請參閱 link:https://hwu.netapp.com["Hardware Universe"^] 適用於平台限制。
 
+.2+| ASA A900 | 解答400 ASA | 否 
+
+
+| ASA A900 | 是的 
+|===
+
+
+== 選擇重新整理程序
+
+從下表中選擇組態的重新整理程序：
 
 [cols="2,1,1,2"]
 |===
