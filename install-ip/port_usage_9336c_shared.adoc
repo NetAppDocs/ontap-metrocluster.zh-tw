@@ -94,7 +94,7 @@ image::../media/mcc_ip_cabling_a70_a90_a1k_to_cisco_9336c_shared_switch.png[顯�
 | FAS8200 、 AFF A300 | <<table_6_cisco_9336c_fx2,Cisco 9336C-FX2 共享交換器平台連接埠指派（第 6 章）>> 
 
 
-| AFF A320 FAS8300 、 AFF C400 、 ASA C400 、 FAS8700 AFF A900 、 ASA A900 | <<table_7_cisco_9336c_fx2,Cisco 9336C-FX2 共享交換器平台連接埠指派（第 7 章）>> 
+| AFF A320 FAS8300 、 AFF C400 、 ASA C400 、 FAS8700 AFF A400 、 ASA A400 | <<table_7_cisco_9336c_fx2,Cisco 9336C-FX2 共享交換器平台連接埠指派（第 7 章）>> 
 
 
 | FAS9000 、 AFF A700 AFF C800 、 ASA C800 、 AFF A800 、 ASA A800 FAS9500 、 AFF A900 、 ASA A900 | <<table_8_cisco_9336c_fx2,Cisco 9336C-FX2 共享交換器平台連接埠指派（第 8 章）>> 
@@ -105,20 +105,20 @@ image::../media/mcc_ip_cabling_a70_a90_a1k_to_cisco_9336c_shared_switch.png[顯�
 .Cisco 9336C-FX2 共享交換器平台連接埠指派（第 4 章）
 檢閱平台連接埠指派、以將未連接交換器連接的 NSS24 機櫃連接至 Cisco 9336C-FX2 共用交換器的 AFF A150 、 ASA A150 、 FAS2750 或 AFF A220 系統連接線：
 
-image::../media/mcc_ip_cabling_a_aff_a150_asa_a150_fas27500_aff_a220_to_a_cisco_9336c_shared_switch.png[顯示 Cisco 9336C-FX2 共享交換器平台連接埠指派]
+image::../media/mcc-ip-cabling-a-aff-a150-asa-a150-fas2750-aff-a220-to-a-cisco-9336c-shared-switch.png[顯示 Cisco 9336C-FX2 共享交換器平台連接埠指派]
 
 .Cisco 9336C-FX2 共享交換器平台連接埠指派（第 5 章）
 檢閱平台連接埠指派、以連接未將交換器附加 NSS24 機櫃連接至 Cisco 9336C-FX2 共用交換器的 FAS500f 、 AFF C250 、 ASA C250 、 AFF A250 或 ASA A250 系統：
 
-image::../media/mcc_ip_cabling_c250_asa_c250_a250_asa_a250_to_cisco_9336c_shared_switch.png[顯示 Cisco 9336C-FX2 共享交換器平台連接埠指派]
+image::../media/mcc-ip-cabling-c250-asa-c250-a250-asa-a250-to-cisco-9336c-shared-switch.png[顯示 Cisco 9336C-FX2 共享交換器平台連接埠指派]
 
 .Cisco 9336C-FX2 共享交換器平台連接埠指派（第 6 章）
 檢閱平台連接埠指派、以連接未將交換器附加 NSS24 機櫃連接至 Cisco 9336C-FX2 共用交換器的 FAS8200 或 AFF A300 系統：
 
-image::../media/mcc_ip_cabling_fas8200_affa300_to_cisco_9336c_shared_switch.png[顯示 Cisco 9336C-FX2 共享交換器平台連接埠指派]
+image::../media/mcc-ip-cabling-fas8200-affa300-to-cisco-9336c-shared-switch.png[顯示 Cisco 9336C-FX2 共享交換器平台連接埠指派]
 
 .Cisco 9336C-FX2 共享交換器平台連接埠指派（第 7 章）
-檢閱平台連接埠指派、以連接 AFF A320 、 FAS8300 、 AFF C400 、 ASA C400 、 FAS8700 、 未將交換器連接的 NSS24 機櫃連接至 Cisco 9336C-FX2 共用交換器的 AFF A900 或 ASA A900 系統：
+檢閱平台連接埠指派、以連接 AFF A320 、 FAS8300 、 AFF C400 、 ASA C400 、 FAS8700 、 未將交換器連接的 NSS24 機櫃連接至 Cisco 9336C-FX2 共用交換器的 AFF A400 或 ASA A400 系統：
 
 image::../media/mcc_ip_cabling_a320_fas8300_a400_fas8700_to_a_cisco_9336c_shared_switch.png[顯示 Cisco 9336C-FX2 共享交換器平台連接埠指派]
 

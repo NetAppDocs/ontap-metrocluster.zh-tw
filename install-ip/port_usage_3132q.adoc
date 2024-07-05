@@ -52,4 +52,4 @@ image::../media/mcc_ip_cabling_a_fas9000_or_aff_a700_to_a_cisco_3132q_v_switch.p
 .Cisco 3132Q-V 平台連接埠指派（群組 3 ）
 檢閱平台連接埠指派、將 AFF A800 或 ASA A800 系統連接至 Cisco 3132Q-V 交換器：
 
-image::../media/cabling_an_aff_a800_to_a_cisco_3132q_v_switch.png[顯示 Cisco 3132Q-V 平台連接埠指派]
+image::../media/cabling-an-aff-a800-to-a-cisco-3132q-v-switch.png[顯示 Cisco 3132Q-V 平台連接埠指派]

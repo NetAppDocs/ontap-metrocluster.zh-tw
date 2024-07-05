@@ -67,12 +67,12 @@ FAS500f 、 AFF C250 、 ASA C250 、 AFF A250 、 ASA A250
 .Cisco 3232C 或 Cisco 9336C 平台連接埠指派（第 1 章）
 檢閱平台連接埠指派以連接 AFF A150 、 ASA A150 、 FAS2750 、 AFF A220 、 FAS500f 、 AFF C250 、 ASA C250 、 AFF A250 或 ASA A250 系統至 Cisco 3232C 或 9336C 交換器：
 
-image::../media/mcc_ip_cabling_a150_a220_a250_to_a_cisco_3232c_or_cisco_9336c_switch.png[顯示 Cisco 3232C 或 Cisco 9336C 平台連接埠指派]
+image::../media/mcc-ip-cabling-a150-a220-a250-to-a-cisco-3232c-or-cisco-9336c-switch.png[顯示 Cisco 3232C 或 Cisco 9336C 平台連接埠指派]
 
 .Cisco 3232C 或 Cisco 9336C 平台連接埠指派（第 2 章）
 檢閱平台連接埠指派、將 FAS8200 或 AFF A300 系統連接至 Cisco 3232C 或 9336C 交換器：
 
-image::../media/mcc_ip_cabling_a_aff_a300_or_fas8200_to_a_cisco_3232c_or_cisco_9336c_switch.png[顯示 Cisco 3232C 或 Cisco 9336C 平台連接埠指派]
+image::../media/mcc-ip-cabling-a-aff-a300-or-fas8200-to-a-cisco-3232c-or-cisco-9336c-switch.png[顯示 Cisco 3232C 或 Cisco 9336C 平台連接埠指派]
 
 如果您是從舊版 RCF 檔案升級、則纜線組態可能會使用「 MetroCluster 4 」群組中的連接埠（連接埠 25/26 和 29/30 ）。
 
