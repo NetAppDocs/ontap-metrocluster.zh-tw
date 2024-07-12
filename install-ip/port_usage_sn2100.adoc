@@ -24,6 +24,12 @@ summary: 連接埠在MetroCluster 一個靜態IP組態中的使用取決於交�
 
 .使用組態表之前、請先檢閱這些考量事項
 * 連接八節點或兩個四節點 MetroCluster 組態需要 ONTAP 9.14.1 或更新版本、以及 RCF 檔案 2.00 版或更新版本。
++
+
+NOTE: RCF 檔案版本與用於產生檔案的 RCFfilegenerator 工具版本不同。例如、您可以使用 RCFfilegenerator v1.6c 產生 RCF 檔案版本 2.00 。
+
+
+
 * 如果您連接多MetroCluster 個支援的組態、請依照相應的表格進行。例如：
 +
 ** 如果您連接兩個 AFF A700 類型的四節點 MetroCluster 組態、請連接第一個 MetroCluster （如「 MetroCluster 1 」所示）、第二個 MetroCluster （如 AFF A700 表中的「 MetroCluster 2 」所示）。

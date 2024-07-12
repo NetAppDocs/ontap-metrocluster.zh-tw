@@ -30,6 +30,9 @@ summary: 連接埠在MetroCluster 一個靜態IP組態中的使用取決於交�
 
 
 
+NOTE: RCF 檔案版本與用於產生檔案的 RCFfilegenerator 工具版本不同。例如、您可以使用 RCFfilegenerator v1.6c 產生 RCF 檔案版本 2.00 。
+
+
 
 == 將兩MetroCluster 個交換器連接至交換器
 

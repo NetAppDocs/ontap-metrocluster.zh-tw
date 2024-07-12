@@ -953,8 +953,6 @@ DR合作夥伴的資源池1
 .關於這項工作
 此工作適用於MetroCluster 使用原生NetApp儲存設備的雙節點效能不整組態。
 
-全新MetroCluster 的功能已預先設定好、您不需要執行這些步驟。不過、您應該設定AutoSupport 好用的功能。
-
 這項工作必須在MetroCluster 整個叢集上執行、且必須採用支援功能的組態。
 
 如需設定ONTAP 方面的一般資訊、請參閱 link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-ssg/home.html["設定ONTAP"]

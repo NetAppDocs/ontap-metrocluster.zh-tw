@@ -293,7 +293,7 @@ cumulus@cumulus:~$ sudo reboot
 
 == [[Download-and -install]]下載並安裝NVIDIA RCF檔案
 
-您必須將交換器RCF檔案下載並安裝到MetroCluster 各個交換器、以供採用此功能的介面IP組態。
+您必須在 MetroCluster IP 組態中產生交換器 RCF 檔案、並將其安裝至每台交換器。
 
 .開始之前
 * 您必須擁有root密碼才能存取命令。

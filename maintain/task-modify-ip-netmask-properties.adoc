@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: vlan, ip, gateway,netmask, address, network, interface, subnet 
 summary: 您可以變更MetroCluster 下列的屬性：EIP介面、IP位址和遮罩、以及閘道。您可以使用任何參數組合來更新。 
 ---
-= 在 MetroCluster IP 組態中修改位址、網路遮罩和閘道
+= 修改 MetroCluster IP 介面的內容
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -15,19 +15,23 @@ summary: 您可以變更MetroCluster 下列的屬性：EIP介面、IP位址和�
 
 例如、如果偵測到重複的IP位址、或是因為路由器組態變更而需要變更第3層網路的閘道、您可能需要更新這些內容。
 
-一次只能變更一個介面。在更新其他介面並重新建立連線之前、該介面會造成流量中斷。
-
-使用「MetroCluster 靜態組態設定介面modify」命令來變更MetroCluster 任何的任何靜態IP介面屬性。
-
+.關於這項工作
+* 一次只能變更一個介面。在更新其他介面並重新建立連線之前、該介面會造成流量中斷。
+* 使用「MetroCluster 靜態組態設定介面modify」命令來變更MetroCluster 任何的任何靜態IP介面屬性。
++
 
 NOTE: 這些命令會變更特定連接埠之特定節點的組態。若要還原完整的網路連線能力、其他連接埠也需要類似的命令。同樣地、網路交換器也需要更新其組態。例如、如果閘道已更新、則理想情況下會在HA配對的兩個節點上變更閘道、因為它們相同。此外、連接至這些節點的交換器也需要更新其閘道。
 
-使用「MetroCluster 畫面組態設定介面show」、「MetroCluster 畫面連線」檢查和「MetroCluster 畫面顯示」命令、確認所有連線功能都能在所有介面上運作。
+* 使用 `metrocluster configuration-settings interface show`、 `metrocluster connection check`和 `metrocluster connection show` 命令來驗證所有的連線功能是否都能在所有介面中運作。
+
 
 
 
 == 修改IP位址、網路遮罩和閘道
 
+執行下列步驟修改 MetroCluster IP 介面的 IP 位址、網路遮罩和閘道。
+
+.步驟
 . 更新單一節點和介面的IP位址、網路遮罩和閘道：MetroCluster 「修改組態設定介面」
 +
 下列命令顯示如何更新IP位址、網路遮罩和閘道：

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, refresh, four, node, ip, configuration, add, autosupport 
 summary: 您可以將四個新節點新增至MetroCluster 「靜態IP」組態、做為第二個DR群組。這會建立八節點MetroCluster 的不全功能組態。 
 ---
-= 擴充 MetroCluster IP 組態
+= 展開 MetroCluster IP 組態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -90,9 +90,6 @@ Dr_group_2-new
 .支援的 AFF 和 FAS MetroCluster IP 擴充組合
 下表顯示在 MetroCluster IP 組態中擴充 AFF 或 FAS 系統所支援的平台組合：
 
-
-NOTE: AFF A70 、 AFF A90 和 AFF A1K 系統需要 ONTAP 9.15.1 或更新版本。
-
 image::../media/8node_comb_ip_aff_fas.png[8 個節點組態的平台組合]
 
 * * 附註 1* ：這些組合需要 ONTAP 9.9.1 或更新版本（或平台支援的最低 ONTAP 版本）。
@@ -118,7 +115,7 @@ image::../media/8node_comb_ip_asa.png[8 個節點組態的平台組合]
 +
 .. 發出下列命令：
 +
-「系統節點AutoSupport 不完整地叫用節點*-type all -most "MAn=10h正在將_Oold-modem_升級為_new模型」_」
+`system node autosupport invoke -node * -type all -message "MAINT=10h Upgrading <old-model> to <new-model>`
 
 +
 此範例指定10小時的維護時間。您可能需要額外的時間、視您的計畫而定。
@@ -136,16 +133,82 @@ image::../media/8node_comb_ip_asa.png[8 個節點組態的平台組合]
 
 
 
+== 新增 DR 群組時 VLAN 的考量事項
+
+* 擴充 MetroCluster IP 組態時、適用下列 VLAN 考量：
++
+某些平台會使用VLAN作為MetroCluster 支援靜態IP介面。根據預設、這兩個連接埠各自使用不同的VLAN：10和20。
+
++
+如果支援、您也可以使用命令中的參數、指定大於 100 （介於 101 和 4095 之間）的不同（非預設） VLAN `-vlan-id` `metrocluster configuration-settings interface create` 。
+
++
+下列平台 * 不 * 支援此 `-vlan-id` 參數：
+
++
+** FAS8200與AFF FASA300
+** 解答320 AFF
+** FAS9000 和 AFF A700
+** AFF C800 、 ASA C800 、 AFF A800 和 ASA A800
++
+所有其他平台都支援此 `-vlan-id` 參數。
+
++
+預設和有效的 VLAN 指派取決於平台是否支援此 `-vlan-id` 參數：
+
++
+[role="tabbed-block"]
+====
+.支援 <code> 的平台 - VLAN - </code>
+--
+預設 VLAN ：
+
+*** 如果 `-vlan-id` 未指定參數、則會使用 VLAN 10 建立介面、用於「 A 」連接埠、而 VLAN 20 則用於「 B 」連接埠。
+*** 指定的 VLAN 必須符合 RCF 中選取的 VLAN 。
+
+
+有效 VLAN 範圍：
+
+*** 預設 VLAN 10 和 20
+*** VLAN 101 及更高版本（介於 101 和 4095 之間）
+
+
+--
+.不支援 <code> 的平台 -vlan--卻 不支援 </code>
+--
+預設 VLAN ：
+
+*** 不適用。介面不需要在 MetroCluster 介面上指定 VLAN 。交換器連接埠會定義所使用的 VLAN 。
+
+
+有效 VLAN 範圍：
+
+*** 產生 RCF 時未明確排除所有 VLAN 。RCF 會在 VLAN 無效時發出警示。
+
+
+--
+====
+
+
+
+
+* 當您從四節點擴充至八節點 MetroCluster 組態時、兩個 DR 群組都會使用相同的 VLAN 。
+* 如果兩個 DR 群組都無法使用相同的 VLAN 進行設定、您必須升級不支援參數的 DR 群組 `vlan-id` 、才能使用其他 DR 群組所支援的 VLAN 。
+* 根據您的 ONTAP 版本、您可以在初始設定後變更某些 MetroCluster IP 介面內容。如需支援項目的詳細資訊、請參閱 link:../maintain/task-modify-ip-netmask-properties.html["修改 MetroCluster IP 介面的內容"] 。
+
+
+
+
 == 驗MetroCluster 證資訊功能組態的健全狀況
 
-在執行轉換之前、您必須先驗證MetroCluster 整個流程的健全狀況和連線能力
+在執行擴充之前、您必須先確認 MetroCluster 組態的健全狀況和連線能力。
 
 .步驟
 . 驗證MetroCluster 下列項目中的功能：ONTAP
 +
 .. 檢查系統是否具有多路徑：
 +
-「節點執行節點_norme-name_ sysconfig -A」
+`node run -node <node-name> sysconfig -a`
 
 .. 檢查兩個叢集上的任何健全狀況警示：
 +
@@ -334,16 +397,13 @@ link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#commands-for
 
 .步驟
 . 安裝新的控制器。
-. 將新MetroCluster 的靜態IP節點連接至IP交換器、如_Ef2 MetroCluster 安裝與組態所示
-+
-link:../install-ip/using_rcf_generator.html["IP交換器佈線"]
-
-. 請MetroCluster 使用下列_Estrustri MetroCluster 安裝與組態區段來設定SURFIP節點
+. 將新的 MetroCluster IP 節點連接至 IP 交換器、如所示 link:../install-ip/using_rcf_generator.html["連接 IP 交換器纜線"]。
+. 使用下列程序設定 MetroCluster IP 節點：
 +
 .. link:../install-ip/task_sw_config_gather_info.html["收集必要資訊"]
 .. link:../install-ip/task_sw_config_restore_defaults.html["還原控制器模組的系統預設值"]
 .. link:../install-ip/task_sw_config_verify_haconfig.html["驗證元件的ha-config狀態"]
-.. link:../install-ip/task_sw_config_assign_pool0.html#manually-assigning-drives-for-pool-0-ontap-9-4-and-later["手動指派集區0的磁碟機（ONTAP 適用於更新版本的更新版本）"]
+.. link:../install-ip/task_sw_config_assign_pool0.html#manually-assigning-drives-for-pool-0-ontap-9-4-and-later["手動指派集區 0 的磁碟機（ ONTAP 9.4 及更新版本）"]
 
 
 . 在維護模式下、發出halt命令以結束維護模式、然後發出boot_ONTAP命令以啟動系統並進入叢集設定。
@@ -395,7 +455,7 @@ Component           Result
 nodes               ok
 lifs                ok
 config-replication  ok
-aggregates          warning
+aggregates          ok
 clusters            ok
 connections         not-applicable
 volumes             ok
@@ -416,8 +476,9 @@ volumes             ok
 請依照交換器廠商的步驟進行：
 
 +
-** link:../install-ip/task_switch_config_broadcom.html["將Broadcom IP交換器重設為原廠預設值"^]
-** link:../install-ip/task_switch_config_cisco.html["將Cisco IP交換器重設為原廠預設值"^]
+** link:../install-ip/task_switch_config_broadcom.html["將Broadcom IP交換器重設為原廠預設值"]
+** link:../install-ip/task_switch_config_cisco.html["將 Cisco IP 交換器重設為原廠預設值"]
+** link:../install-ip/task_switch_config_nvidia.html["將NVIDIA IP SN2100交換器重設為原廠預設值"]
 
 
 . 視交換器廠商而定、下載並安裝IP RCF檔案。
@@ -426,11 +487,12 @@ volumes             ok
 NOTE: 請依下列順序更新交換器：switch_a_1、switch_b_1、Switch_a_2、Switch_B_2
 
 +
-** link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-broadcom-rcf-files["下載並安裝Broadcom IP RCF檔案"]
-** link:../install-ip/task_switch_config_cisco.html#downloading-and-installing-the-cisco-ip-rcf-files["下載並安裝Cisco IP RCF檔案"]
+** link:../install-ip/task_switch_config_broadcom.html["下載並安裝 Broadcom IP RCF 檔案"]
+** link:../install-ip/task_switch_config_cisco.html["下載並安裝 Cisco IP RCF 檔案"]
+** link:../install-ip/task_switch_config_nvidia.html["下載並安裝 NVIDIA IP RCF 檔案"]
 +
 
-NOTE: 如果您有L2共用或L3網路組態、可能需要調整中繼/客戶交換器上的ISL連接埠。switchport模式可能會從「存取」模式變更為「主幹」模式。只有在交換器A_1和B_1之間的網路連線完全正常且網路正常時、才繼續升級第二個交換器配對（A_2、B_2）。
+NOTE: 如果您有L2共用或L3網路組態、可能需要調整中繼/客戶交換器上的ISL連接埠。交換器連接埠模式可能會從「存取」模式變更為「主幹」模式。只有在交換器A_1和B_1之間的網路連線完全正常且網路正常時、才繼續升級第二個交換器配對（A_2、B_2）。
 
 
 
@@ -526,7 +588,9 @@ Do you want to use this configuration? {yes, no} [yes]: yes
 您必須建立叢集對等的生命、在MetroCluster 新MetroCluster 的物件節點上建立一個物件介面。
 
 .關於這項工作
-範例中使用的主連接埠是平台專屬的連接埠。您應該使用MetroCluster 特定於靜態IP節點平台的適當主連接埠。
+* 範例中使用的主連接埠是平台專屬的連接埠。您應該使用 MetroCluster IP 節點平台專屬的主連接埠。
+* 執行此工作之前、請先檢閱中的資訊 <<新增 DR 群組時 VLAN 的考量事項>> 。
+
 
 .步驟
 . 在新MetroCluster 的SURE IP節點上、使用下列程序來設定叢集間LIF：
@@ -613,47 +677,16 @@ cluster_A::>
 ----
 . 為MetroCluster 新加入MetroCluster 的「靜態IP」節點設定「靜態IP」介面：
 +
-「功能組態設定介面create -cluster名稱」MetroCluster
-
-+
---
 [NOTE]
 ====
-** 某些平台會使用VLAN作為MetroCluster 支援靜態IP介面。根據預設、這兩個連接埠各自使用不同的VLAN：10和20。您也可以使用「MetroCluster 還原組態設定介面create」命令中的「-vlan-id參數」、指定高於100（介於101和4095之間）的不同（非預設）VLAN。
-** 從ONTAP 《支援範圍》9.9.1開始、如果您使用的是第3層組態、則在建立MetroCluster 支援範圍介面時、也必須指定「閘道」參數。請參閱 link:../install-ip/concept_considerations_layer_3.html["第3層廣域網路的考量"]。
+** 如果支援、您可以使用命令中的參數、指定大於 100 （介於 101 和 4095 之間）的不同（非預設） VLAN `-vlan-id` `metrocluster configuration-settings interface create` 。如需支援的平台資訊、請參閱 <<新增 DR 群組時 VLAN 的考量事項>> 。
+** 您可以從MetroCluster 任一叢集設定靜態IP介面。
 
 
 ====
---
 +
-如果使用的VLAN是10/20或大於100、則可將下列平台機型新增至現有MetroCluster 的支援功能組態。如果使用任何其他VLAN、則MetroCluster 無法將這些平台新增至現有組態、因為無法設定此介面。如果您使用任何其他平台、則VLAN組態並不相關、ONTAP 因為在介紹中並不需要。
+「功能組態設定介面create -cluster名稱」MetroCluster
 
-+
-|===
-
-
-| 支援各種平台AFF | 支援各種平台FAS 
-
-
- a| 
-** VA220 AFF
-** VA250 AFF
-** 解答400 AFF
-
- a| 
-** FAS2750
-** FAS500f
-** FAS8300
-** FAS8700
-
-
-|===
-+
---
-
-NOTE: 您可以從MetroCluster 任一叢集設定靜態IP介面。
-
---
 +
 [listing]
 ----
@@ -1028,7 +1061,7 @@ cluster_A::*> metrocluster configure -refresh true
 
 . 在每MetroCluster 個新的EFlash節點上建立鏡射的資料集合體：
 +
-「torage Aggregate create -Aggregate _gregate名稱_-node-name_-diskcount_no of磁碟_-mirror true」
+`storage aggregate create -aggregate <aggregate-name> -node <node-name> -diskcount <no-of-disks> -mirror true`
 
 +
 
@@ -1135,7 +1168,7 @@ cluster_A   MDV_CRS_d6b0b313ff5611e9837100a098544e51_B
 
 .. 一次移動一個MDV磁碟區：
 +
-「Volume move start -volume _MDV-volume _-destination-aggregate _agger-on-new節點_-vserver _vserver-name_」
+`volume move start -volume <mdv-volume> -destination-aggregate <aggr-on-new-node> -vserver <svm-name>`
 
 +
 下列範例顯示將「MDV_CRS_d6b0b313ff5611e9837100a098544e51_A」移至「node_a_3」上的Aggregate「data_A3」的命令和輸出。
@@ -1153,7 +1186,7 @@ Warning: You are about to modify the system volume
 ----
 .. 使用volume show命令檢查是否已成功移動MDV磁碟區：
 +
-「Volume show _MDV-name_」
+`volume show <mdv-name>`
 
 +
 下列輸出顯示已成功移動MDV Volume。
@@ -1189,11 +1222,11 @@ node_A_4-new      false
 ----
 .. 將舊節點（node_a_1-old）上的epsilon設為假：
 +
-「叢集修改-node-old-nod_-epsilon假*」
+`cluster modify -node <old-node> -epsilon false*`
 
 .. 在新節點（node_a_3-new）上將epsilon設為true：
 +
-「cluster modify -node-new節點_-epsilon true」
+`cluster modify -node <new-node> -epsilon true`
 
 .. 確認epsilon已移至正確的節點：
 +

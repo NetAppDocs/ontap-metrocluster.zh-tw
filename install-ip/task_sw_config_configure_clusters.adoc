@@ -30,7 +30,7 @@ link:concept_considerations_drive_assignment.html["自動指派磁碟機和ONTAP
 .步驟
 . 停用自動磁碟指派：
 +
-「torage disk option modify -node_node_name_-autodassign Off」
+`storage disk option modify -node <node_name> -autoassign off`
 
 . 您需要在MetroCluster 所有節點上發出此命令、以供使用。
 
@@ -238,7 +238,7 @@ cluster01
 ----
 . 為專用連接埠建立容錯移轉群組：
 +
-「網路介面容錯移轉群組可建立-vserver _system_svm_-容 錯移轉群組_容 錯移轉群組_-鎖 定_forby_OR_logical_ports _」
+`network interface failover-groups create -vserver <system_svm> -failover-group <failover_group> -targets <physical_or_logical_ports>`
 
 +
 下列範例將連接埠「e0e」和「e0f」指派給系統「SVMcluster01」上的容錯移轉群組「intercluster01」：
@@ -280,25 +280,19 @@ cluster01
 ----
 . 在系統SVM上建立叢集間LIF、並將它們指派給容錯移轉群組。
 +
-|===
+[role="tabbed-block"]
+====
+.在 ONTAP 9.6 及更新版本中、執行：
+--
+`network interface create -vserver <system_svm> -lif <lif_name> -service-policy default-intercluster -home-node <node_name> -home-port <port_name> -address <port_ip_address> -netmask <netmask_address> -failover-group <failover_group>`
 
+--
+.在 ONTAP 9.5 或更早版本中、執行：
+--
+`network interface create -vserver <system_svm> -lif <lif_name> -role intercluster -home-node <node_name> -home-port <port_name> -address <port_ip_address> -netmask <netmask_address> -failover-group <failover_group>`
 
-| 版本ONTAP | 命令 
-
-
- a| 
-9.6及更新版本
- a| 
-「網路介面create -vserver _system_svm_-lif_lif_name_-service-policy default-intercluster -home-node_-home-port _port_-address _port_ip_-netask _netask_-容 錯移轉群組_容 錯移轉_group_」
-
-
-
- a| 
-9.5及更早版本
- a| 
-「網路介面create -vserver _system_svm_-lif_lif_name_-role inter-cluster -home-node_node_-home-port _port_-address _port_ip_-netask_-over-group _furobet_group _」
-
-|===
+--
+====
 +
 如需完整的命令語法、請參閱手冊頁。
 
@@ -318,24 +312,19 @@ policy default-intercluster -home-node cluster01-02 -home-port e0e -address 192.
 ----
 . 驗證是否已建立叢集間的LIF：
 +
-|===
-
-
-| * ONTAP 在S69.6及更新版本中：* 
-
-
- a| 
+[role="tabbed-block"]
+====
+.在 ONTAP 9.6 及更新版本中、執行：
+--
 「網路介面show -service-policy default-intercluster」
 
-
-
-| * ONTAP 在《S19.5及更早版本》中：* 
-
-
- a| 
+--
+.在 ONTAP 9.5 或更早版本中、執行：
+--
 「網路介面show -role intercluster」
 
-|===
+--
+====
 +
 如需完整的命令語法、請參閱手冊頁。
 
@@ -354,24 +343,19 @@ cluster01
 ----
 . 驗證叢集間的LIF是否為備援：
 +
-|===
-
-
-| * ONTAP 在S69.6及更新版本中：* 
-
-
- a| 
+[role="tabbed-block"]
+====
+.在 ONTAP 9.6 及更新版本中、執行：
+--
 「網路介面show -service-policy default-intercluster -容 錯移轉」
 
-
-
-| * ONTAP 在《S19.5及更早版本》中：* 
-
-
- a| 
+--
+.在 ONTAP 9.5 或更早版本中、執行：
+--
 「網路介面show -role intercluster -容 錯移轉」
 
-|===
+--
+====
 +
 如需完整的命令語法、請參閱手冊頁。
 
@@ -436,24 +420,19 @@ cluster01-02
 ----
 . 在系統SVM上建立叢集間LIF：
 +
-|===
+[role="tabbed-block"]
+====
+.在 ONTAP 9.6 及更新版本中、執行：
+--
+`network interface create -vserver <system_svm> -lif <lif_name> -service-policy default-intercluster -home-node <node_name> -home-port <port_name> -address <port_ip_address> -netmask <netmask>`
 
+--
+.在 ONTAP 9.5 或更早版本中、執行：
+--
+`network interface create -vserver <system_svm> -lif <lif_name> -role intercluster -home-node <node_name> -home-port <port_name> -address <port_ip_address> -netmask <netmask>`
 
-| * ONTAP 在S69.6及更新版本中：* 
-
-
- a| 
-「網路介面create -vserver _system_Svm_-lif_lif_name_-service-policy default-intercluster -home-node_-home-port _port_-address_port_ip_-netask _netask_」
-
-
-
-| * ONTAP 在《S19.5及更早版本》中：* 
-
-
- a| 
-「網路介面create -vserver _system_Svm_-lif_lif_name_-role inter-cluster -home-node_node_-home-port _port_-address_port_ip_-netask_netask_」
-
-|===
+--
+====
 +
 如需完整的命令語法、請參閱手冊頁。
 
@@ -474,24 +453,19 @@ policy default-intercluster -home-node cluster01-02 -home-port e0c -address 192.
 ----
 . 驗證是否已建立叢集間的LIF：
 +
-|===
-
-
-| * ONTAP 在S69.6及更新版本中：* 
-
-
- a| 
+[role="tabbed-block"]
+====
+.在 ONTAP 9.6 及更新版本中、執行：
+--
 「網路介面show -service-policy default-intercluster」
 
-
-
-| * ONTAP 在《S19.5及更早版本》中：* 
-
-
- a| 
+--
+.在 ONTAP 9.5 或更早版本中、執行：
+--
 「網路介面show -role intercluster」
 
-|===
+--
+====
 +
 如需完整的命令語法、請參閱手冊頁。
 
@@ -510,24 +484,19 @@ cluster01
 ----
 . 驗證叢集間的LIF是否為備援：
 +
-|===
-
-
-| * ONTAP 在S69.6及更新版本中：* 
-
-
- a| 
+[role="tabbed-block"]
+====
+.在 ONTAP 9.6 及更新版本中、執行：
+--
 「網路介面show–service-policy default-intercluster -faulty」
 
-
-
-| * ONTAP 在《S19.5及更早版本》中：* 
-
-
- a| 
+--
+.在 ONTAP 9.5 或更早版本中、執行：
+--
 「網路介面show -role intercluster -容 錯移轉」
 
-|===
+--
+====
 +
 如需完整的命令語法、請參閱手冊頁。
 
@@ -568,7 +537,7 @@ link:concept_considerations_peering.html#considerations-when-sharing-data-ports[
 .步驟
 . 在目的地叢集上、建立與來源叢集的對等關係：
 +
-「叢集對等端點建立-產生密碼-優惠到期日_mm/DD/YYYY hh：mm:ss|1...7天|1...168hours_-對等 端點位元組_Peer_LIF_IP_-IPspace _IPspace_」
+`cluster peer create -generate-passphrase -offer-expiration <MM/DD/YYYY HH:MM:SS|1...7days|1...168hours> -peer-addrs <peer_lif_ip_addresses> -ipspace <ipspace>`
 
 +
 如果您同時指定「-genere-phrase」和「-peer-addrs」、則只有在「-per-addrs」中指定叢集間生命體的叢集才能使用所產生的密碼。
@@ -594,7 +563,7 @@ Warning: make a note of the passphrase - it cannot be displayed again.
 ----
 . 在來源叢集上、驗證來源叢集到目的地叢集的驗證：
 +
-「叢集對等端點create -對等 端點addrs _Peer_LIF_IPS_-IPSpace _IPspace_」
+`cluster peer create -peer-addrs <peer_lif_ip_addresses> -ipspace <ipspace>`
 
 +
 如需完整的命令語法、請參閱手冊頁。
@@ -711,7 +680,7 @@ cluster_B                  node_B_1      ready for DR group create
 ----
 . 建立DR群組：
 +
-「組態設定DR-group create -合作 夥伴叢集_合作夥伴叢集名稱_-local-node-node-name_-reme-node-node-node-name_」MetroCluster
+`metrocluster configuration-settings dr-group create -partner-cluster <partner_cluster_name> -local-node <local_node_name> -remote-node <remote_node_name>`
 
 +
 此命令只發出一次。不需要在合作夥伴叢集上重複執行。在命令中、您可以指定遠端叢集的名稱、以及合作夥伴叢集上的一個本機節點和一個節點的名稱。
@@ -742,49 +711,68 @@ Cluster_A::> metrocluster configuration-settings dr-group create -partner-cluste
 您必須設定MetroCluster 用於複寫每個節點儲存和非揮發性快取的Eshow IP介面。然後、您就可以使用MetroCluster 靜態IP介面建立連線。這會建立用於儲存複寫的iSCSI連線。
 
 .關於這項工作
---
-
-NOTE: 您必須MetroCluster 謹慎選擇不完整的IP位址、因為在初始組態之後、您無法變更這些位址。
-
---
 * 您必須為每個節點建立兩個介面。這些介面必須與MetroCluster 在RESRCF檔案中定義的VLAN相關聯。
+* 根據您的 ONTAP 版本、您可以在初始設定後變更某些 MetroCluster IP 介面內容。如需支援項目的詳細資訊、請參閱 link:../maintain/task-modify-ip-netmask-properties.html["修改 MetroCluster IP 介面的內容"] 。
 * 您必須在MetroCluster 同一個VLAN中建立所有的SID IP介面「A」連接埠、並在MetroCluster 另一個VLAN中建立所有的SID IP介面「B」連接埠。請參閱 link:concept_considerations_mcip.html["關於靜態IP組態的考量MetroCluster"]。
+* 從ONTAP 《支援範圍》9.9.1開始、如果您使用的是第3層組態、則在建立MetroCluster 支援範圍介面時、也必須指定「閘道」參數。請參閱 link:../install-ip/concept_considerations_layer_3.html["第3層廣域網路的考量"]。
 +
---
-[NOTE]
+某些平台會使用VLAN作為MetroCluster 支援靜態IP介面。根據預設、這兩個連接埠各自使用不同的VLAN：10和20。
+
++
+如果支援、您也可以使用命令中的參數、指定大於 100 （介於 101 和 4095 之間）的不同（非預設） VLAN `-vlan-id` `metrocluster configuration-settings interface create` 。
+
++
+下列平台 * 不 * 支援此 `-vlan-id` 參數：
+
++
+** FAS8200與AFF FASA300
+** 解答320 AFF
+** FAS9000 和 AFF A700
+** AFF C800 、 ASA C800 、 AFF A800 和 ASA A800
++
+所有其他平台都支援此 `-vlan-id` 參數。
+
++
+預設和有效的 VLAN 指派取決於平台是否支援此 `-vlan-id` 參數：
+
++
+[role="tabbed-block"]
 ====
-** 某些平台會使用VLAN作為MetroCluster 支援靜態IP介面。根據預設、這兩個連接埠各自使用不同的VLAN：10和20。您也可以使用「MetroCluster 還原組態設定介面create」命令中的「-vlan-id參數」、指定高於100（介於101和4095之間）的不同（非預設）VLAN。
-** 從ONTAP 《支援範圍》9.9.1開始、如果您使用的是第3層組態、則在建立MetroCluster 支援範圍介面時、也必須指定「閘道」參數。請參閱 link:../install-ip/concept_considerations_layer_3.html["第3層廣域網路的考量"]。
-
-
-====
+.支援 <code> 的平台 - VLAN - </code>
 --
-+
-如果使用的VLAN是10/20或大於100、則可將下列平台機型新增至現有MetroCluster 的支援功能組態。如果使用任何其他VLAN、則MetroCluster 無法將這些平台新增至現有組態、因為無法設定此介面。如果您使用任何其他平台、則VLAN組態並不相關、ONTAP 因為在介紹中並不需要。
+預設 VLAN ：
 
-+
-|===
-
-
-| 支援各種平台AFF | 支援各種平台FAS 
+*** 如果 `-vlan-id` 未指定參數、則會使用 VLAN 10 建立介面、用於「 A 」連接埠、而 VLAN 20 則用於「 B 」連接埠。
+*** 指定的 VLAN 必須符合 RCF 中選取的 VLAN 。
 
 
- a| 
-** VA220 AFF
-** VA250 AFF
-** 解答400 AFF
+有效 VLAN 範圍：
 
- a| 
-** FAS2750
-** FAS500f
-** FAS8300
-** FAS8700
+*** 預設 VLAN 10 和 20
+*** VLAN 101 及更高版本（介於 101 和 4095 之間）
 
 
-|===
-+
-範例中使用下列IP位址和子網路：
+--
+.不支援 <code> 的平台 -vlan--卻 不支援 </code>
+--
+預設 VLAN ：
 
+*** 不適用。介面不需要在 MetroCluster 介面上指定 VLAN 。交換器連接埠會定義所使用的 VLAN 。
+
+
+有效 VLAN 範圍：
+
+*** 產生 RCF 時未明確排除所有 VLAN 。RCF 會在 VLAN 無效時發出警示。
+
+
+--
+====
+
+
+
+
+* MetroCluster IP 介面使用的實體連接埠取決於平台模式。如需系統的連接埠使用情形、請參閱 link:../install-ip/using_rcf_generator.html["連接MetroCluster 至靜態IP交換器"] 。
+* 範例中使用下列IP位址和子網路：
 +
 |===
 
@@ -871,134 +859,17 @@ IP介面2. MetroCluster
 10.1.2/24
 
 |===
+* 本程序使用下列範例：
 +
-根據平台模式、由下列表格所示、由站台介面使用的實體連接埠MetroCluster 。
+AFF A700 或 FAS9000 系統（ e5a 和 e5b ）的連接埠。
 
 +
-|===
-| 平台模式 | IP連接埠MetroCluster | 附註 
+AFF A220 系統的連接埠、顯示如何在支援的平台上使用 `-vlan-id` 參數。
+
++
+針對您的平台機型、在正確的連接埠上設定介面。
 
 
- a| 
-FASA900和FAS9500 AFF
- a| 
-e5b.
- a| 
-
-
-
- a| 
-e7b.
-
-
-
- a| 
-解答800 AFF
- a| 
-e0b.
- a| 
-
-
-
- a| 
-e1b
-
-
-
- a| 
-以利A700和FAS9000 AFF
- a| 
-e5a
- a| 
-
-
-
- a| 
-e5b.
-
-
-
- a| 
-解答400 AFF
- a| 
-e1a.
- a| 
-
-
-
- a| 
-e1b
-
-
-
- a| 
-解答320 AFF
- a| 
-e0g
- a| 
-
-
-
- a| 
-電子0小時
-
-
-
- a| 
-適用於A300和FAS8200 AFF
- a| 
-e1a.
- a| 
-
-
-
- a| 
-e1b
-
-
-
- a| 
-解答A220和FAS2750 AFF
- a| 
-e0a
- a| 
-在這些系統上、這些實體連接埠也會用作叢集介面。
-
-
-
- a| 
-e0b.
-
-
-
- a| 
-FASA250和FAS500f AFF
- a| 
-e0c
- a| 
-
-
-
- a| 
-e0d
-
-
-
- a| 
-FAS8300和FAS8700
- a| 
-e1a.
- a| 
-
-
-
- a| 
-e1b
-
-|===
-
-
-下列範例中的連接埠用途適用於AFF 不含任何功能的FASA700或FAS9000系統。
 
 .步驟
 . 確認每個節點都已啟用磁碟自動指派：
@@ -1044,20 +915,9 @@ cluster_B
 ----
 . 在node_a_1上建立介面。
 +
---
-[NOTE]
-====
-** 以下範例中的連接埠用途是AFF 針對某個不完善的A700或FAS9000系統（e5a和e5b）。您必須依照上述說明、在正確的連接埠上為您的平台模式設定介面。
-** 從ONTAP 《支援範圍》9.9.1開始、如果您使用的是第3層組態、則在建立MetroCluster 支援範圍介面時、也必須指定「閘道」參數。請參閱 link:concept_considerations_layer_3.html["第3層廣域網路的考量"]。
-** 如果您MetroCluster 不想使用預設的VLAN ID、則可在支援VLAN for the Suse IP介面的平台機型上、加入「-vlan-id」參數。
-
-
-====
---
-+
 .. 在「node_a_1」的連接埠「e5a」上設定介面：
 +
-「靜態組態設定介面create -cluster名稱_cluster名稱_-home-node-node-name_-home-port e5a -address_-netask_` MetroCluster
+`metrocluster configuration-settings interface create -cluster-name <cluster_name> -home-node <node_name> -home-port e5a -address <ip_address> -netmask <netmask>`
 
 +
 下列範例顯示在IP位址為「10.1.1.1」的「node_a_1」上、在連接埠「e5a」上建立介面：
@@ -1069,9 +929,19 @@ cluster_A::> metrocluster configuration-settings interface create -cluster-name 
 [Job 28] Job succeeded: Interface Create is successful.
 cluster_A::>
 ----
++
+如果您MetroCluster 不想使用預設的VLAN ID、則可在支援VLAN for the Suse IP介面的平台機型上、加入「-vlan-id」參數。以下範例顯示AFF 適用於VLAN ID為120的32位元組系統的命令：
+
++
+[listing]
+----
+cluster_A::> metrocluster configuration-settings interface create -cluster-name cluster_A -home-node node_A_2 -home-port e0a -address 10.1.1.2 -netmask 255.255.255.0 -vlan-id 120
+[Job 28] Job succeeded: Interface Create is successful.
+cluster_A::>
+----
 .. 在「node_a_1」的連接埠「e5b」上設定介面：
 +
-「靜態組態設定介面」會建立-cluster名稱_cluster名稱_-home-node-node-name_-home-port e5b -address_-netask_` MetroCluster
+`metrocluster configuration-settings interface create -cluster-name <cluster_name> -home-node <node_name> -home-port e5b -address <ip_address> -netmask <netmask>`
 
 +
 下列範例顯示在IP位址為「10.1.2.1」的「node_a_1」上、在連接埠「e5b」上建立介面：
@@ -1091,20 +961,9 @@ NOTE: 您可以使用「MetroCluster flex-configuration interface show」命令�
 
 . 在node_a_2上建立介面。
 +
---
-[NOTE]
-====
-** 以下範例中的連接埠用途是AFF 針對某個不完善的A700或FAS9000系統（e5a和e5b）。您必須依照上述說明、在正確的連接埠上為您的平台模式設定介面。
-** 從ONTAP 《支援範圍》9.9.1開始、如果您使用的是第3層組態、則在建立MetroCluster 支援範圍介面時、也必須指定「閘道」參數。請參閱 link:concept_considerations_layer_3.html["第3層廣域網路的考量"]。
-** 如果您MetroCluster 不想使用預設的VLAN ID、則可在支援VLAN for the Suse IP介面的平台機型上、加入「-vlan-id」參數。
-
-
-====
---
-+
 .. 在「node_a_2」的連接埠「e5a」上設定介面：
 +
-「靜態組態設定介面create -cluster名稱_cluster名稱_-home-node-node-name_-home-port e5a -address_-netask_` MetroCluster
+`metrocluster configuration-settings interface create -cluster-name <cluster_name> -home-node <node_name> -home-port e5a -address <ip_address> -netmask <netmask>`
 
 +
 下列範例顯示在IP位址為「10.1.1.2」的「node_a_2」上、在連接埠「e5a」上建立介面：
@@ -1116,19 +975,9 @@ cluster_A::> metrocluster configuration-settings interface create -cluster-name 
 [Job 28] Job succeeded: Interface Create is successful.
 cluster_A::>
 ----
-+
-如果您MetroCluster 不想使用預設的VLAN ID、則可在支援VLAN for the Suse IP介面的平台機型上、加入「-vlan-id」參數。以下範例顯示AFF 適用於VLAN ID為120的32位元組系統的命令：
-
-+
-[listing]
-----
-cluster_A::> metrocluster configuration-settings interface create -cluster-name cluster_A -home-node node_A_2 -home-port e0a -address 10.1.1.2 -netmask 255.255.255.0 -vlan-id 120
-[Job 28] Job succeeded: Interface Create is successful.
-cluster_A::>
-----
 .. 在「node_a_2」的連接埠「e5b」上設定介面：
 +
-「靜態組態設定介面」會建立-cluster名稱_cluster名稱_-home-node-node-name_-home-port e5b -address_-netask_` MetroCluster
+`metrocluster configuration-settings interface create -cluster-name <cluster_name> -home-node <node_name> -home-port e5b -address <ip_address> -netmask <netmask>`
 
 +
 下列範例顯示在IP位址為「10.1.2.2」的「node_a_2」上、在連接埠「e5b」上建立介面：
@@ -1154,20 +1003,9 @@ cluster_A::>
 
 . 在「node_B_1」上建立介面。
 +
---
-[NOTE]
-====
-** 以下範例中的連接埠用途是AFF 針對某個不完善的A700或FAS9000系統（e5a和e5b）。您必須依照上述說明、在正確的連接埠上為您的平台模式設定介面。
-** 從ONTAP 《支援範圍》9.9.1開始、如果您使用的是第3層組態、則在建立MetroCluster 支援範圍介面時、也必須指定「閘道」參數。請參閱 link:concept_considerations_layer_3.html["第3層廣域網路的考量"]。
-** 如果您MetroCluster 不想使用預設的VLAN ID、則可在支援VLAN for the Suse IP介面的平台機型上、加入「-vlan-id」參數。
-
-
-====
---
-+
 .. 在「node_B_1」上的連接埠「e5a」上設定介面：
 +
-「靜態組態設定介面create -cluster名稱_cluster名稱_-home-node-node-name_-home-port e5a -address_-netask_` MetroCluster
+`metrocluster configuration-settings interface create -cluster-name <cluster_name> -home-node <node_name> -home-port e5a -address <ip_address> -netmask <netmask>`
 
 +
 下列範例顯示在IP位址為「10.1.1.3」的「node_B_1」上、在連接埠「e5a」上建立介面：
@@ -1180,7 +1018,7 @@ cluster_A::> metrocluster configuration-settings interface create -cluster-name 
 ----
 .. 在「node_B_1」上的連接埠「e5b」上設定介面：
 +
-「靜態組態設定介面create -cluster名稱_cluster名稱_-home-node-node-name_-home-port e5a -address_-netask_` MetroCluster
+`metrocluster configuration-settings interface create -cluster-name <cluster_name> -home-node <node_name> -home-port e5b -address <ip_address> -netmask <netmask>`
 
 +
 下列範例顯示在IP位址為「10.1.2.3」的「node_B_1」上、在連接埠「e5b」上建立介面：
@@ -1195,20 +1033,9 @@ cluster_A::> metrocluster configuration-settings interface create -cluster-name 
 
 . 在「node_B_2」上建立介面。
 +
---
-[NOTE]
-====
-** 以下範例中的連接埠用途是AFF 針對某個不完善的A700或FAS9000系統（e5a和e5b）。您必須依照上述說明、在正確的連接埠上為您的平台模式設定介面。
-** 從ONTAP 《支援範圍》9.9.1開始、如果您使用的是第3層組態、則在建立MetroCluster 支援範圍介面時、也必須指定「閘道」參數。請參閱 link:concept_considerations_layer_3.html["第3層廣域網路的考量"]。
-** 如果您MetroCluster 不想使用預設的VLAN ID、則可在支援VLAN for the Suse IP介面的平台機型上、加入「-vlan-id」參數。
-
-
-====
---
-+
 .. 在node_B_2上的連接埠e5a上設定介面：
 +
-「靜態組態設定介面create -cluster名稱_cluster名稱_-home-node-node-name_-home-port e5a -address_-netask_` MetroCluster
+`metrocluster configuration-settings interface create -cluster-name <cluster_name> -home-node <node_name> -home-port e5a -address <ip_address> -netmask <netmask>`
 
 +
 下列範例顯示在IP位址為「10.1.1.4」的「node_B_2」上、在連接埠「e5a」上建立介面：
@@ -1221,7 +1048,7 @@ cluster_B::>metrocluster configuration-settings interface create -cluster-name c
 ----
 .. 在「node_B_2」的連接埠「e5b」上設定介面：
 +
-「靜態組態設定介面」會建立-cluster名稱_cluster名稱_-home-node-node-name_-home-port e5b -address_-netask_` MetroCluster
+`metrocluster configuration-settings interface create -cluster-name <cluster_name> -home-node <node_name> -home-port e5b -address <ip_address> -netmask <netmask>`
 
 +
 下列範例顯示在IP位址為「10.1.2.4」的「node_b_2」上、在連接埠「e5b」上建立介面：
@@ -1295,7 +1122,7 @@ cluster_B
 ----
 . 建立連線：MetroCluster 「不中斷組態設定連線」
 +
-您發出此命令後、無法變更IP位址。
+如果您執行的版本早於 ONTAP 9.10.1 、則在您發出此命令之後、就無法變更 IP 位址。
 
 +
 以下範例顯示叢集A已成功連線：
@@ -1723,10 +1550,10 @@ cluster_A::>
 ----
 .. 將遠端磁碟機的擁有權（0m）指派給第一個節點的集區1（例如node_a_1）：
 +
-「磁碟指派磁碟_disk-id_-pool 1 -OOwner_node-name_」
+`disk assign -disk <disk-id> -pool 1 -owner <owner_node_name>`
 
 +
-「磁碟ID」必須識別遠端磁碟櫃上的磁碟機「Owner-node-name」。
+`disk-id` 必須在的遠端機櫃上識別磁碟機 `owner_node_name`。
 
 .. 確認磁碟機已指派給資源池1：
 +
@@ -1820,10 +1647,10 @@ cluster_A::>
 ----
 .. 選取遠端磁碟（0m）、然後將磁碟的擁有權指派給第一個節點的集區1（例如「node_a_1」）：
 +
-「磁碟指派磁碟_disk-id_-pool 1 -OOwner_node-name_」
+`disk assign -disk <disk_id> -pool 1 -owner <owner_node_name>`
 
 +
-「磁碟ID」必須識別遠端機櫃上的磁碟「Owner-node-name」。
+ `disk-id`必須在的遠端機櫃上識別磁碟 `owner_node_name`。
 
 +
 此功能可自動指派包含指定磁碟之遠端機櫃上的所有磁碟。ONTAP
@@ -1894,7 +1721,7 @@ link:concept_considerations_drive_assignment.html["自動指派磁碟機和ONTAP
 .步驟
 . 啟用自動磁碟指派：
 +
-「torage disk option modify -node_node_name_-autodassign on」
+`storage disk option modify -node <node_name> -autoassign on`
 
 +
 您必須在MetroCluster 所有節點上發出此命令、以供使用。
@@ -1910,7 +1737,7 @@ link:concept_considerations_drive_assignment.html["自動指派磁碟機和ONTAP
 .關於這項工作
 根據預設、根Aggregate會建立為RAID-DP類型Aggregate。您可以將根Aggregate從RAID-DP變更為RAID4類型Aggregate。下列命令會修改RAID4類型Aggregate的根Aggregate：
 
-"torage Aggregate modify–aggreg_name_-raidtype RAID4"
+`storage aggregate modify –aggregate <aggr_name> -raidtype raid4`
 
 
 NOTE: 在非ADP系統上、可在鏡射Aggregate之前或之後、將Aggregate的RAID類型從預設RAID-DP修改為RAID4。
@@ -1918,7 +1745,7 @@ NOTE: 在非ADP系統上、可在鏡射Aggregate之前或之後、將Aggregate�
 .步驟
 . 鏡射根Aggregate：
 +
-"儲存Aggregate mirror _aggreg_name_"
+`storage aggregate mirror <aggr_name>`
 
 +
 下列命令會鏡射「控制器_a_1」的根Aggregate：
@@ -1959,7 +1786,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁�
 .步驟
 . 顯示可用備援磁碟機清單：
 +
-「torage disk show -spare -Ownernode_name」
+`storage disk show -spare -owner <node_name>`
 
 . 建立Aggregate：
 +
@@ -2001,7 +1828,7 @@ cluster_A::> storage aggregate create aggr1_node_A_1 -diskcount 10 -node node_A_
 
 . 驗證新Aggregate的RAID群組和磁碟機：
 +
-「torage Aggregate show-STATUS -Aggregate _gregate名稱_」
+`storage aggregate show-status -aggregate <aggregate-name>`
 
 
 
@@ -2044,7 +1871,7 @@ NOTE: 您必須*不*設定Onboard Key Manager（OKM）或外部金鑰管理、�
  a| 
 在任何節點的提示下、設定MetroCluster 下列項目：
 
-「靜態組態節點名稱」MetroCluster
+`metrocluster configure <node_name>`
 
 
 
@@ -2060,7 +1887,7 @@ NOTE: 您必須*不*設定Onboard Key Manager（OKM）或外部金鑰管理、�
 
 .. 使用MetroCluster 「-allow-with e-gregate true]參數設定此功能：
 +
-「MetroCluster 配合單一Aggregate true_norme-name_」執行設定
+`metrocluster configure -allow-with-one-aggregate true <node_name>`
 
 .. 返回管理權限層級：
 +
@@ -2159,7 +1986,7 @@ Remote: cluster_A         Configuration state configured
 
 . 為了避免非揮發性記憶體鏡射可能發生的問題、請重新啟動四個節點中的每個節點：
 +
-「節點重新開機-節點_norme-name_-real-takeover true」
+`node reboot -node <node_name> -inhibit-takeover true`
 
 . 在MetroCluster 兩個叢集上發出「show」命令、以再次驗證組態。
 
@@ -2210,7 +2037,7 @@ https://docs.netapp.com/platstor/index.jsp["ONTAP 硬體系統文件"^]
 
 . 手動將新機櫃上的所有磁碟指派給適當的節點：
 +
-「磁碟指派磁碟_disk-id_-Owner_Owner-node-name_」
+`disk assign -disk <disk_id> -owner <owner_node_name>`
 
 . 建立Aggregate：
 +
@@ -2254,7 +2081,7 @@ controller_A_1::> storage aggregate create aggr1_controller_A_1 -diskcount 10 -n
 
 . 驗證新Aggregate的RAID群組和磁碟機：
 +
-「torage Aggregate show-STATUS -Aggregate _gregate名稱_」
+`storage aggregate show-status -aggregate <aggregate_name>`
 
 . 停用無鏡射Aggregate部署：
 +
@@ -2345,7 +2172,7 @@ NOTE: 「示例檢查show」命令顯示最近執行的「示例檢查run」命�
 ----
 cluster_A::> metrocluster check aggregate show
 
-Last Checked On: 8/5/2014 00:42:58
+
 
 Node                  Aggregate                  Check                      Result
 ---------------       --------------------       ---------------------      ---------
@@ -2384,7 +2211,7 @@ controller_A_2        controller_A_2_aggr0
 +
 [listing]
 ----
-Last Checked On: 9/13/2017 20:47:04
+
 
 Cluster               Check                           Result
 --------------------- ------------------------------- ---------

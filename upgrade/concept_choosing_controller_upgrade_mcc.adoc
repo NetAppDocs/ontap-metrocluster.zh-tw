@@ -48,9 +48,6 @@ NOTE: 如需在四節點 MetroCluster IP 組態中使用命令進行支援的升
 .支援的 AFF 和 FAS MetroCluster IP 控制器升級
 下表顯示在 MetroCluster IP 組態中升級 AFF 或 FAS 系統所支援的平台組合：
 
-
-NOTE: AFF A90 、 AFF A70 和 AFF A1K 系統需要 ONTAP 9.15.1 或更新版本。
-
 image::../media/metrocluster_ip_upgrade_so_sb_aff_fas.png[MetroCluster IP 升級 sb AFF FAS]
 
 * 附註1：對於此升級、請使用此程序 link:task_upgrade_A700_to_A900_in_a_four_node_mcc_ip_us_switchover_and_switchback.html["使用交換器和切換功能（AFF 更新版本）、將控制器從功能性的A700/FAS9000升級AFF 至功能性的S還原A900/FAS9500 MetroCluster （以不整合的IP組態）ONTAP"]

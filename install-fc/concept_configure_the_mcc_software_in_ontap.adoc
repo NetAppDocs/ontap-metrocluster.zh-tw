@@ -1639,8 +1639,6 @@ Boot_ONTAP
 .關於這項工作
 此工作適用於MetroCluster 使用原生NetApp儲存設備的雙節點效能不整組態。
 
-全新MetroCluster 的功能已預先設定好、您不需要執行這些步驟。不過、您應該設定AutoSupport 好用的功能。
-
 這項工作必須在MetroCluster 整個叢集上執行、且必須採用支援功能的組態。
 
 如需設定 ONTAP 的一般資訊、請參閱 link:https://docs.netapp.com/us-en/ontap/task_configure_ontap.html["設定ONTAP 功能"^]。

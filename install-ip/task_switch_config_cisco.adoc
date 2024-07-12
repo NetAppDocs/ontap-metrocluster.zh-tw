@@ -370,7 +370,7 @@ IP_switch_A_1#
 
 == 下載並安裝Cisco IP RCF檔案
 
-您必須將RCF檔案下載MetroCluster 到各個交換器、以供使用。
+您必須在 MetroCluster IP 組態中產生 RCF 檔案並將其安裝至每台交換器。
 
 .關於這項工作
 此工作需要檔案傳輸軟體、例如FTP、TFTP、SFTP或scp。 將檔案複製到交換器。
@@ -417,10 +417,15 @@ NX3232_v1.80_Switch-B2.txt
 
 |===
 .步驟
-. 下載MetroCluster 《RCF》檔案。
+. 為 MetroCluster IP 產生 Cisco RCF 檔案。
++
+.. 下載 https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["RcfFileGeneratorfor MetroCluster EfIP"^]
+.. 使用RcfFileGeneratorfor MetroCluster EIP、為您的組態產生RCF檔案。
 +
 
 NOTE: 不支援下載後修改RCF檔案。
+
+
 
 . 將RCF檔案複製到交換器：
 +

@@ -70,7 +70,7 @@ entries:
     url: "/maintain/task_rename_a_cisco_ip_switch.html"
   - title: 在 Cisco IP 交換器上以不中斷營運的方式新增、移除或變更 ISL 連接埠
     url: "/maintain/task_add_remove_or_change_isl_ports_nondisruptively.html"
-- title: 在 MetroCluster IP 組態中修改位址、網路遮罩和閘道
+- title: 修改 MetroCluster IP 介面的內容
   url: "/maintain/task-modify-ip-netmask-properties.html"
 - title: 修改交換器或 Atto 橋接 IP 位址以進行健全狀況監控
   url: "/maintain/task_modify_switch_or_bridge_ip_address_for_health_monitoring.html"

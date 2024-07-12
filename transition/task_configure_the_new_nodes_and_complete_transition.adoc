@@ -19,57 +19,75 @@ summary: 新增節點之後、您必須完成轉換步驟、並設定MetroCluste
 
 您必須實作MetroCluster 靜態IP連線、重新整理MetroCluster 靜態組態、以及停用轉換模式。
 
+.步驟
 . 從控制器node_a_1-IP發出下列命令、將新節點組成DR群組：
 +
-「功能組態設定DR-group create -合作 夥伴叢集對等叢集名稱-local-Node local-控制 器名稱-reme-node-控制 器名稱」MetroCluster
+`metrocluster configuration-settings dr-group create -partner-cluster <peer_cluster_name> -local-node <local_controller_name> -remote-node <remote_controller_name>`
 
 +
 「組態設定DR群組顯示」MetroCluster
 
 . 建立MetroCluster 支援IP介面（node_a_1-ip、node_a_2-ip、node_b_1-ip、node_b_2-ip）-每個控制器需要建立兩個介面、總共需要八個介面：
 +
-「靜態組態設定介面create -cluster名稱cluster名稱-home-node-name -home-port port -address ip-address -netmask -vlan-id vlan-id '"metrocluster configuration -settings interface show" MetroCluster
+`metrocluster configuration-settings interface create -cluster-name <cluster_name> -home-node <controller_name> -home-port <port_name> -address <ip_address> -netmask <netmask_address> -vlan-id <vlan_id>`
 
 +
-
-NOTE: 從ONTAP 《支援範圍》9.9.1開始、如果您使用的是第3層組態、則在建立MetroCluster 支援範圍介面時、也必須指定「閘道」參數。請參閱 link:../install-ip/concept_considerations_layer_3.html["第3層廣域網路的考量"]。
-
-+
-僅當您未使用預設的VLAN ID時、才需要使用-vlan-id參數。只有某些系統支援非預設的VLAN ID。
+「顯示組態設定介面」MetroCluster
 
 +
---
-[NOTE]
+某些平台會使用VLAN作為MetroCluster 支援靜態IP介面。根據預設、這兩個連接埠各自使用不同的VLAN：10和20。
+
++
+如果支援、您也可以使用命令中的參數、指定大於 100 （介於 101 和 4095 之間）的不同（非預設） VLAN `-vlan-id` `metrocluster configuration-settings interface create` 。
+
++
+下列平台 * 不 * 支援此 `-vlan-id` 參數：
+
++
+** FAS8200與AFF FASA300
+** 解答320 AFF
+** FAS9000 和 AFF A700
+** AFF C800 、 ASA C800 、 AFF A800 和 ASA A800
++
+所有其他平台都支援此 `-vlan-id` 參數。
+
++
+預設和有效的 VLAN 指派取決於平台是否支援此 `-vlan-id` 參數：
+
++
+[role="tabbed-block"]
 ====
-** 某些平台會使用VLAN作為MetroCluster 支援靜態IP介面。根據預設、這兩個連接埠各自使用不同的VLAN：10和20。您也可以使用「MetroCluster 還原組態設定介面create」命令中的「-vlan-id參數」、指定高於100（介於101和4095之間）的不同（非預設）VLAN。
-** 從ONTAP 《支援範圍》9.9.1開始、如果您使用的是第3層組態、則在建立MetroCluster 支援範圍介面時、也必須指定「閘道」參數。請參閱 link:../install-ip/concept_considerations_layer_3.html["第3層廣域網路的考量"]。
-
-
-====
+.支援 <code> 的平台 - VLAN - </code>
 --
-+
-如果使用的VLAN是10/20或大於100、則可將下列平台機型新增至現有MetroCluster 的支援功能組態。如果使用任何其他VLAN、則MetroCluster 無法將這些平台新增至現有組態、因為無法設定此介面。如果您使用任何其他平台、則VLAN組態並不相關、ONTAP 因為在介紹中並不需要。
+預設 VLAN ：
 
-+
-|===
-
-
-| 支援各種平台AFF | 支援各種平台FAS 
+*** 如果 `-vlan-id` 未指定參數、則會使用 VLAN 10 建立介面、用於「 A 」連接埠、而 VLAN 20 則用於「 B 」連接埠。
+*** 指定的 VLAN 必須符合 RCF 中選取的 VLAN 。
 
 
- a| 
-** VA220 AFF
-** VA250 AFF
-** 解答400 AFF
+有效 VLAN 範圍：
 
- a| 
-** FAS2750
-** FAS500f
-** FAS8300
-** FAS8700
+*** 預設 VLAN 10 和 20
+*** VLAN 101 及更高版本（介於 101 和 4095 之間）
 
 
-|===
+--
+.不支援 <code> 的平台 -vlan--卻 不支援 </code>
+--
+預設 VLAN ：
+
+*** 不適用。介面不需要在 MetroCluster 介面上指定 VLAN 。交換器連接埠會定義所使用的 VLAN 。
+
+
+有效 VLAN 範圍：
+
+*** 產生 RCF 時未明確排除所有 VLAN 。RCF 會在 VLAN 無效時發出警示。
+
+
+--
+====
+
+
 
 
 . 從MetroCluster 控制器節點_a_1-IP執行「鏈接」作業、以連接MetroCluster 到各個景點、此作業可能需要幾分鐘的時間才能完成：
@@ -237,11 +255,11 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
 
 .. 如有必要、請修改LIF組態：
 +
-「vserver config override -command「network interface modify -vserver vserver_name -home-port active_port_after升級-liflif_name -home-Node new_node_name」
+`vserver config override -command "network interface modify -vserver <svm_name> -home-port <active_port_after_upgrade> -lif <lif_name> -home-node <new_node_name>`
 
 .. 將LIF還原至其主連接埠：
 +
-「網路介面回復*-vserver _vserver_name_」
+`network interface revert * -vserver <svm_name>`
 
 
 
@@ -260,7 +278,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
 
 . 在沒有「`-MC」字尾的叢集A上重新啟動SVM：
 +
-「vserver start -vserver svm-name -force true」
+`vserver start -vserver <svm_name> -force true`
 
 . 在合作夥伴叢集上重複上述步驟。
 . 檢查所有SVM是否都處於正常狀態：
@@ -289,7 +307,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
 +
 .. 在控制器節點_a_2-IP上建立鏡射Aggregate、以容納系統磁碟區：
 +
-「aggr create -Aggregate new_node_a_2-ip_aggr -diskcount10 -mirror true -Node nodename_node_a_2-ip'」
+`aggr create -aggregate new_node_A_2-IP_aggr -diskcount 10 -mirror true -node node_A_2-IP`
 
 +
 「Aggr show」
@@ -305,7 +323,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
 「Vserver show」
 
 +
-「Volume show -vserver _admin-vserver-name_」
+`volume show -vserver <admin_svm_name>`
 
 +
 您應該識別站台A擁有的集合體所包含的磁碟區也會顯示站台B系統磁碟區。
@@ -316,7 +334,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
 +
 .. 檢查可能的目的地集合體：
 +
-「Volume Move target aggr show -vserver _admin-vserver_name_-volume system_vol_MDV_B」
+`volume move target-aggr show -vserver <admin_svm_name> -volume MDV_CRS_*_B`
 
 +
 應列出節點_a_2-IP上新建立的Aggregate。
@@ -326,18 +344,18 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
 《進階設定》
 
 +
-「Volume Move start -vserver _admin-vserver_-volume system_vol_MDV_B -destination-Aggregate new_node_a_2-ip_aggr -cover -window40」
+`volume move start -vserver <admin_svm_name> -volume MDV_CRS_*_B -destination-aggregate new_node_A_2-IP_aggr -cutover-window 40`
 
 .. 檢查移動作業的狀態：
 +
-「Volume Move show -vserver _admin-vserver_name_-volume system_vvol_MDV_B」
+`volume move show -vserver <admin_svm_name> -volume MDV_CRS_*_B`
 
 .. 當移動作業完成時、請確認節點_a_2-IP上的新Aggregate是否包含MDV_CRS_*_B系統：
 +
 「et admin」
 
 +
-「Volume show -vserver _admin-vserver_」
+`volume show -vserver <admin_svm_name>`
 
 
 

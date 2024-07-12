@@ -27,9 +27,6 @@ summary: 您所使用的更新程序取決於平台機型、升級範圍和Metro
 .支援的 AFF 和 FAS MetroCluster IP 技術更新組合
 下表顯示 MetroCluster IP 組態中用於重新整理 AFF 或 FAS 系統的支援平台組合：
 
-
-NOTE: AFF A70 、 AFF A90 和 AFF A1K 系統需要 ONTAP 9.15.1 或更新版本。
-
 image::../media/metrocluster_techref_ip.png[MetroCluster IP 技術更新組合]
 
 * 附註 1 ： * 此組合需要 ONTAP 9.13.1 或更新版本。

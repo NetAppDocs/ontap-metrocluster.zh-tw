@@ -70,7 +70,7 @@ image::../media/MCC_layer2.png[MCC 第 2 層]
 
 
 .ONTAP 中的 VLAN 組態
-您只能在建立介面時指定 VLAN 。建立 MetroCluster 介面之後、就無法變更 VLAN ID 。您可以在建立介面時設定其他 VLAN 、但它們必須在 10 到 20 的範圍內、或介於 101 到 4096 的範圍內（或交換器廠商支援的號碼、以較低的數字為準）。
+您只能在建立介面時指定 VLAN 。您可以設定預設的 VLAN 10 和 20 、或介於 101 到 4096 之間的 VLAN （或交換器廠商支援的號碼、取較低的數字）。建立 MetroCluster 介面之後、您就無法變更 VLAN ID 。
 
 
 NOTE: 有些交換器廠商可能會保留某些 VLAN 的使用。

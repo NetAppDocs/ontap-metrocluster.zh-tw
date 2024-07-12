@@ -18,4 +18,4 @@ summary: 如果您使用的是符合 MetroCluster 標準的交換器、您應該
 
 NOTE: 缺少值表示平台無法搭配MetroCluster相容的交換器使用。
 
-image::../media/mcc_compliant_switch_network_speed.png[符合 MCC 標準的交換器網路速度]
+image::../media/mcc-compliant-switches-network-speed-9151.png[顯示了與 MetroCluster 相容交換器的平台特定網路速度和交換器連接埠模式。]

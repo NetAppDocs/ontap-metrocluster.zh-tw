@@ -42,12 +42,12 @@ FAS2750 、 AFF A220
 .Cisco 3132Q-V 平台連接埠指派（群組 1 ）
 檢閱平台連接埠指派、將 FAS2750 或 AFF A220 系統連接至 Cisco 3132Q-V 交換器：
 
-image::../media/mcc_ip_cabling_a_fas2750_or_a220_to_a_cisco_3132q_v_switch.png[顯示 Cisco 3132Q-V 平台連接埠指派]
+image::../media/mcc-ip-cabling-a-fas2750-or-a220-to-a-cisco-3132q-v-switch.png[顯示 Cisco 3132Q-V 平台連接埠指派]
 
 .Cisco 3132Q-V 平台連接埠指派（群組 2 ）
 檢閱平台連接埠指派、將 FAS9000 或 AFF A700 系統連接至 Cisco 3132Q-V 交換器：
 
-image::../media/mcc_ip_cabling_a_fas9000_or_aff_a700_to_a_cisco_3132q_v_switch.png[顯示 Cisco 3132Q-V 平台連接埠指派]
+image::../media/mcc-ip-cabling-a-fas9000-or-aff-a700-to-a-cisco-3132q-v-switch.png[顯示 Cisco 3132Q-V 平台連接埠指派]
 
 .Cisco 3132Q-V 平台連接埠指派（群組 3 ）
 檢閱平台連接埠指派、將 AFF A800 或 ASA A800 系統連接至 Cisco 3132Q-V 交換器：
