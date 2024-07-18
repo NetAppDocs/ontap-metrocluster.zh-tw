@@ -105,4 +105,4 @@ NOTE: 使用「 MetroCluster 4 」群組中的連接埠需要 ONTAP 9.13.1 或�
 
 NOTE: 本表中的系統需要 ONTAP 9.15.1 或更新版本。
 
-image::../media/mcc_ip_cabling_a90_a70_a1k_cisco_3232C_or_9336c_switch.png[顯示 Cisco 3232C 或 Cisco 9336C 平台連接埠指派]
+image:../media/mcc-ip-cabling-a90-a70-a1k-cisco-3232C-or-9336c-switch.png["顯示 Cisco 3232C 或 Cisco 9336C 平台連接埠指派"]

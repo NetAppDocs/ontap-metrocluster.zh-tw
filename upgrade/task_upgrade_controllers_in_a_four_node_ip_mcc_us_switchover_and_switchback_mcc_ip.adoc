@@ -889,7 +889,57 @@ image::../media/mcc_upgrade_cluster_a_in_switchover.png[MCC升級叢集A（在�
 +
 Boot_ONTAP
 
-. 將舊控制器上所有資料LIF的主連接埠指派給舊控制器模組和新控制器模組上相同的通用連接埠。
+. 修改舊控制器上的叢集間生命體、以使用不同於新控制器上用於 HA 互連或 MetroCluster IP DR 互連的連接埠。
++
+
+NOTE: 成功升級需要此步驟。
+
++
+舊控制器上的叢集間生命體必須使用不同於新控制器上用於 HA 互連或 MetroCluster IP DR 互連的連接埠。例如、當您升級至 AFF A90 控制器時、 HA 互連連接埠為 e1a 和 e7a 、 MetroCluster IP DR 互連連接埠為 e2b 和 e3b 。如果舊控制器上的叢集間生命體位於連接埠 e1a 、 e7a 、 e2b 或 e3b 上、則必須移動它們。
+
++
+有關新節點上的端口分配和分配，請參閱 https://hwu.netapp.com["NetApp Hardware Universe"]。
+
++
+.. 在舊控制器上、檢視叢集間的生命體：
++
+`network interface show  -role intercluster`
+
++
+根據舊控制器上的叢集間生命體是否使用與新控制器上用於 HA 互連或 MetroCluster IP DR 互連的連接埠相同的連接埠、請採取下列其中一項動作。
+
++
+[cols="2*"]
+|===
+| 如果叢集間的生命 ... | 前往... 
+
+
+| 使用相同的主連接埠 | <<controller_manual_upgrade_prepare_network_ports_2b,子步驟 b>> 
+
+
+| 使用不同的主連接埠 | <<controller_manual_upgrade_prepare_network_ports_3,步驟3.>> 
+|===
+.. [[controller 手冊升級準備網路連接埠 _2b]] 修改叢集間的生命體以使用不同的主連接埠：
++
+`network interface modify -vserver <vserver> -lif <intercluster_lif> -home-port <port-not-used-for-ha-interconnect-or-mcc-ip-dr-interconnect-on-new-nodes>`
+
+.. 確認所有叢集間的生命體位於新的主連接埠上：
++
+`network interface show -role intercluster -is-home  false`
+
++
+命令輸出應為空白、表示所有叢集間的生命體位於各自的主連接埠上。
+
+.. 如果有任何不在其主連接埠上的生命、請使用下列命令將其還原：
++
+`network interface revert -lif <intercluster_lif>`
+
++
+針對不在主連接埠上的每個叢集間 LIF 重複此命令。
+
+
+
+. [[controller 手冊升級準備網路連接埠 _3] 將舊控制器上所有資料生命體的主連接埠指派給舊控制器模組和新控制器模組上相同的通用連接埠。
 +
 .. 顯示生命：
 +

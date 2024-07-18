@@ -1301,7 +1301,7 @@ Pool 0始終包含與擁有這些磁碟的儲存系統位於同一個站台的�
 +
 .. 在第一個節點上、系統地將每個機櫃上的一半磁碟指派給資源池0、另一半指派給HA合作夥伴的資源池0：
 +
-「磁碟指派磁碟_disk-name_-p _pool _-n _number-of磁碟_」
+`disk assign -shelf <shelf-name> -p <pool> -n <number-of-disks>`
 
 +
 如果儲存控制器Controller_a_1有四個磁碟櫃、每個磁碟櫃各有8個SSD、您會發出下列命令：
