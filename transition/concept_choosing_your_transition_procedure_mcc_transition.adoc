@@ -4,23 +4,21 @@ sidebar: sidebar
 keywords: select, transition, procedure, depend, exist, metrocluster, fc, configuration, choosing, choose 
 summary: 您必須根據現有MetroCluster 的不規則功能（NetApp）組態、選擇轉換程序。 
 ---
-= 選擇您的轉換程序
+= 請選擇您的轉換程序
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-轉換至MetroCluster 靜態IP組態時、您必須結合支援的平台機型。您也應該確保MetroCluster 針對從MetroCluster 靜態FC組態轉換為MetroCluster 靜態IP組態的負載、使用適當的尺寸來調整此平台。
+轉換至MetroCluster 靜態IP組態時、您必須結合支援的平台機型。
 
-下表顯示支援的平台組合。您可以從左欄中的平台轉換至右側欄中所列的平台、如彩色表格儲存格所示。
+您也應該確保MetroCluster 針對從MetroCluster 靜態FC組態轉換為MetroCluster 靜態IP組態的負載、使用適當的尺寸來調整此平台。
 
-例如MetroCluster 、支援從由AFF8060控制器模組組成的FESFC組態、轉換為AFF 由FESA400控制器模組組成的IP組態。
 
-image::../media/four_node_transition_mcc_9151.png[顯示 IP 轉 FC 轉換支援的平台組合]
 
-* 附註 1 ：此平台組合需要 ONTAP 9.13.1 或更新版本。
-* 附註 2 ： FC 節點上的本機叢集介面必須有 100GbE 介面。此平台組合需要 ONTAP 9.11.1 或更新版本。
+== 支援的平台組合
+
 * 除非ONTAP 附註中另有說明或個別平台要求、否則所有轉換程序都需要使用更新版本的資訊。
 * MetroCluster 組態中的所有節點都必須執行相同的 ONTAP 版本。例如、如果您有八個節點組態、則所有八個節點都必須執行相同的 ONTAP 版本。
 
@@ -33,6 +31,41 @@ image::../media/four_node_transition_mcc_9151.png[顯示 IP 轉 FC 轉換支援�
 
 
 ====
+.支援的 AFF 和 FAS 轉換組合
+下表顯示支援的平台組合。您可以從左欄中的平台轉換至右側欄中所列的平台、如彩色表格儲存格所示。
+
+例如MetroCluster 、支援從由AFF8060控制器模組組成的FESFC組態、轉換為AFF 由FESA400控制器模組組成的IP組態。
+
+image::../media/4node-transition-9151-update.png[顯示 IP 轉 FC 轉換支援的平台組合]
+
+* 附註 1 ：此平台組合需要 ONTAP 9.11.1 或更新版本。
+* 附註 2 ： FC 節點上的本機叢集介面必須有 40GbE 介面。
+* 附註 3 ： FC 節點上的本機叢集介面必須有 100GbE 介面。
+
+
+.支援的 ASA 轉換平台組合
+下表顯示 ASA 系統支援的平台組合。
+
+[cols="3*"]
+|===
+| 來源 MetroCluster FC 平台 | 目標 MetroCluster IP 平台 | 是否支援？ 
+
+
+.2+| 解答400 ASA | 解答400 ASA | 是的 
+
+
+| ASA A900 | 否 
+
+
+.2+| ASA A900 | 解答400 ASA | 否 
+
+
+| ASA A900 | 是的 
+|===
+
+
+== 請選擇您的轉換程序
+
 您必須根據現有MetroCluster 的不規則功能（NetApp）組態、選擇轉換程序。
 
 轉換程序會以IP交換器網路取代後端FC交換器網路或FC-VI連線。確切的程序取決於您的初始組態。

@@ -11,12 +11,13 @@ summary: 視您的需求而定、您可以使用共享的第 2 層或第 3 層�
 [role="lead"]
 視您的需求而定、您可以使用共享的第 2 層或第 3 層網路來部署 MetroCluster 。
 
-從 ONTAP 9.6 開始、支援 Cisco 交換器的 MetroCluster IP 組態可以共用現有的交換器間連結（ ISL ）網路、而非使用專用的 MetroCluster ISL 。此拓撲稱為 _ 共享第 2 層網路 _ 。
+從 ONTAP 9.6 開始、支援交換器的 MetroCluster IP 組態可以共用現有的交換器間連結（ ISL ）網路、而非使用專用的 MetroCluster ISL 。此拓撲稱為 _ 共享第 2 層網路 _ 。
 
 從功能支援的9.9開始ONTAP 、MetroCluster 即可透過IP路由（第3層）後端連線來實作支援的IP組態。此拓撲稱為 _ 共享第 3 層網路 _ 。
 
 [NOTE]
 ====
+* 並非所有網路拓撲都支援所有功能。
 * 您必須驗證您的網路容量是否足夠、以及 ISL 大小是否適合您的組態。低延遲是MetroCluster 在各個景點之間複寫資料的關鍵。這些連線的延遲問題可能會影響用戶端I/O
 * 所有關於 MetroCluster 後端交換器的參考資料、都是指 NetApp 驗證的交換器或 MetroCluster 相容的交換器。請參閱 link:mcc-compliant-netapp-validated-switches.html["NetApp 驗證且符合 MetroCluster 規範的交換器"] 以取得更多詳細資料。
 

@@ -9,7 +9,7 @@ summary: 您可能需要變更 FC 交換器的廠商（ Cisco 改為 Brocade 、
 
 
 [role="lead"]
-您可能需要將 FC 交換器的廠商從 Cisco 變更為 Brocade 、或是反之、變更交換器模式或兩者都變更。
+您可能需要將 FC 交換器的廠商從 Cisco 變更為 Brocade 、或從 Cisco 變更為 Brocade 、變更交換器模式或兩者都變更。
 
 .關於這項工作
 * 此程序適用於使用 NetApp 驗證交換器的情況。
@@ -53,8 +53,6 @@ Group Cluster Node           State          Mirroring Mode
 ----
 cluster_A::> metrocluster check run
 
-Last Checked On: 10/1/2014 16:03:37
-
 Component           Result
 ------------------- ---------
 nodes               ok
@@ -69,39 +67,26 @@ To check if the nodes are ready to do a switchover or switchback operation, run 
 .. 檢查是否沒有健全狀況警示：「*系統健全狀況警示顯示*」
 
 
-. 安裝前請先設定新交換器。
+. 在安裝前設定新交換器。
 +
-請依照中的步驟進行 link:https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/task_reset_the_brocade_fc_switch_to_factory_defaults.html["設定FC交換器"]。
+請依照中的步驟進行 link:../install-fc/concept-configure-fc-switches.html["設定FC交換器"]。
 
-. 按照下列順序移除連線、以中斷舊交換器的連線：
+. 按照下列順序移除舊交換器的連線、以中斷舊交換器的連線：
 +
-.. 如果本機叢集介面已連線至交換器：
-+
-... 拔下本機叢集介面
-... 中斷本機叢集 ISL 的連線
-
-
-.. 拔下 MetroCluster FC 介面。
+.. 拔下 MetroCluster FC 和 FCVI 介面。
+.. 中斷 Atto FiberBridge 橋接器的連線。
 .. 中斷 MetroCluster ISL 的連線。
 
 
-. 關閉舊交換器電源、拔下纜線、然後以新交換器實際更換舊交換器。
+. 關閉舊的交換器、拔下纜線、然後以新的交換器實際更換舊的交換器。
 . 依下列順序連接交換器：
 +
-您必須遵循中的步驟 link:https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/task_rack_the_hardware_components_mcc_fabric_and_ip.html["安裝 MetroCluster 元件並連接纜線"]。
+您必須遵循中的步驟 link:../install-fc/task_configure_the_mcc_hardware_components_fabric.html["佈線連接架構MetroCluster 的不整合式架構組態"]。
 
 +
 .. 將 ISL 連接到遠端站台。
-.. 連接 MetroCluster FC 介面。
-.. 連接本機叢集介面。
-+
-如果本機叢集介面已連線至交換器：
-
-+
-... 連接本機叢集介面。
-... 連接本機叢集 ISL 。
-
-
+.. 連接 Atto FiberBridge 橋接器。
+.. 連接 MetroCluster FC 和 FCVI 介面。
 
 
 . 開啟交換器電源。

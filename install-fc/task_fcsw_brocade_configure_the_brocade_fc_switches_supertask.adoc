@@ -783,8 +783,6 @@ https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"]
 
 下表顯示不同交換器的ISL連接埠、以及執行ONTAP 版本號為9.1或9.2的組態中不同數量的ISL。本節所示範例適用於Brocade 6505交換器。您應該修改範例、以使用適用於您交換器類型的連接埠。
 
-如果您的組態執行ONTAP 的是NetApp 9.0或更早版本、請參閱 link:concept_port_assignments_for_fc_switches_when_using_ontap_9_0.html["FC交換器的連接埠指派（使用ONTAP 功能）9.0"]。
-
 您的組態必須使用所需的ISL數。
 
 |===

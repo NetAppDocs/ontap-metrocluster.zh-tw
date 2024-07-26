@@ -648,10 +648,6 @@ link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.htm
 
 當您在使用ONTAP 更新版本的版本時、使用纜線連接FC交換器時、必須確認您使用的是指定的連接埠指派。
 
-link:concept_port_assignments_for_fc_switches_when_using_ontap_9_0.html["FC交換器的連接埠指派（使用ONTAP 功能）9.0"]
-
-在連接FC交換器纜線時、您需要確認您使用的是指定的連接埠指派。在更新版本的《》中、連接埠的指派功能與ONTAP 《ONTAP 》中的《》有所不同。
-
 
 
 == 保護或取消保護光纖橋接器

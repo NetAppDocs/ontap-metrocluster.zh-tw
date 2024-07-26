@@ -14,8 +14,6 @@ summary: 如果您已更換災難站台中的FC交換器、則必須使用廠商
 如果您已更換災難站台中的FC交換器、則必須使用廠商專屬的程序來設定。您必須設定一個交換器、確認存續站台上的儲存存取不受影響、然後設定第二個交換器。
 
 .相關工作
-link:../install-fc/concept_port_assignments_for_fc_switches_when_using_ontap_9_0.html["使用9.0時FC交換器的連接埠指派"]
-
 link:../install-fc/concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）"]
 
 
@@ -37,7 +35,6 @@ link:../install-fc/concept_port_assignments_for_fc_switches_when_using_ontap_9_1
 
 當您連接FC交換器纜線時、必須確認您使用的是指定的連接埠指派：
 
-* link:../install-fc/concept_port_assignments_for_fc_switches_when_using_ontap_9_0.html["FC交換器的連接埠指派（使用ONTAP 功能）9.0"]
 * link:../install-fc/concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）"]
 
 

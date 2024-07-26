@@ -36,7 +36,7 @@ entries:
     url: "/upgrade/task_expand_a_two_node_mcc_fc_configuration_to_a_four_node_fc_configuration_supertask.html"
   - title: 驗MetroCluster 證不實組態的狀態
     url: "/upgrade/task_verify_the_state_of_the_mcc_configuration_mcc_expansion.html"
-  - title: 在AutoSupport 將節點新增MetroCluster 至該組態之前、請先傳送自訂的功能資訊
+  - title: 將節點新增至 MetroCluster 組態之前、請先傳送自訂的 AutoSupport 訊息
     url: "/upgrade/task_send_a_custom_autosupport_message_before_add_nodes_to_the_mcc_configuration_2_node_to_4_node.html"
   - title: 新控制器連接埠的區域、當在光纖附加MetroCluster 的功能區組態中新增控制器模組時
     url: "/upgrade/task_zone_for_the_new_controller_ports_in_a_fabric_attached_mcc_configuration_four_node_expansion.html"

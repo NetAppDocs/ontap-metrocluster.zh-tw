@@ -1963,8 +1963,6 @@
   <block id="eaa7be715337440d6738c831edffae0a" category="paragraph">這些範例顯示兩個FC對SAS橋接器。如果您有更多連接埠、則必須停用及啟用其他連接埠。</block>
   <block id="c1858bba9a3921efe5dba366c65f958c" category="admonition">此程序不中斷營運、約需兩小時完成。</block>
   <block id="cd9342dcbd7e8a0e5ac9164df55e6fe9" category="paragraph">您的交換器連接埠使用量應遵循建議的指派。</block>
-  <block id="b061acf9e57b52553e1039e7a5289a52" category="inline-link-macro">FC交換器的連接埠指派（使用ONTAP 功能）9.0</block>
-  <block id="249227e2d8f8114c9bdc6db2520e9445" category="list-text"><block ref="249227e2d8f8114c9bdc6db2520e9445" category="inline-link-macro-rx"></block></block>
   <block id="9eecb7c801dc57fbe6e2bb323f2ab061" category="inline-link-macro">FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）</block>
   <block id="fb60c06f4120cd75fc9ac39720fd32d8" category="list-text"><block ref="fb60c06f4120cd75fc9ac39720fd32d8" category="inline-link-macro-rx"></block></block>
   <block id="670c82721eda362e6fbddff0dd85e845" category="list-text">關閉正在更換的交換器、停用網路中正常交換器上的ISL連接埠、以及受損交換器上的FC-VI和HBA連接埠（如果受損交換器仍在運作）：</block>
@@ -5529,8 +5527,6 @@
   <block id="5133a626e09df7fc69c5d34ca2b588f5" category="paragraph">下列命令可指派22個磁碟機：</block>
   <block id="b04cfca24a6159d3846c140fb98e810d" category="summary">如果您已更換災難站台中的FC交換器、則必須使用廠商專屬的程序來設定。</block>
   <block id="6fc1ae41ce34d8dbe0674eae90086def" category="paragraph">如果您已更換災難站台中的FC交換器、則必須使用廠商專屬的程序來設定。您必須設定一個交換器、確認存續站台上的儲存存取不受影響、然後設定第二個交換器。</block>
-  <block id="914dab9fff1417a4f447a3feac720983" category="inline-link-macro">使用9.0時FC交換器的連接埠指派</block>
-  <block id="6c720f524797154130f39ef291f10146" category="paragraph"><block ref="6c720f524797154130f39ef291f10146" category="inline-link-macro-rx"></block></block>
   <block id="0984e83667fc512bfc1adc48478ded1c" category="paragraph"><block ref="0984e83667fc512bfc1adc48478ded1c" category="inline-link-macro-rx"></block></block>
   <block id="ebfcfc0cdc71cf93176408da80c45caa" category="section-title">在站台發生災難後設定Brocade FC交換器</block>
   <block id="550c787ba4aa16cc8545b89a8c4aaf2f" category="paragraph">您必須使用此Brocade專屬程序來設定替換交換器並啟用ISL連接埠。</block>
@@ -5539,7 +5535,6 @@
   <block id="c74d65ce7533a3eaad64399ac890c9d7" category="list-text">FC_SWIT_B_1正常運作。</block>
   <block id="4bc15ba4a069cab27481833acd9bb27b" category="list-text">FC_SWIT_B_2正常運作。</block>
   <block id="d368b9a876decfc4013cf824df52f471" category="paragraph">當您連接FC交換器纜線時、必須確認您使用的是指定的連接埠指派：</block>
-  <block id="314a33d74f4f0a6e853b23a18224e122" category="list-text"><block ref="314a33d74f4f0a6e853b23a18224e122" category="inline-link-macro-rx"></block></block>
   <block id="b17c000a9e41cbbe17f5f1e1e345a85b" category="paragraph">這些範例顯示兩個FC對SAS橋接器。如果您有更多橋接器、則必須停用並隨後啟用其他連接埠。</block>
   <block id="bd7cebfd0d4899123488e8d095ef408f" category="list-text">開機並預先設定新交換器：</block>
   <block id="155c169278f557467a3570fc93000a19" category="list-text">檢查交換器的韌體版本、確認其與其他FC交換器的版本相符：</block>
@@ -6763,7 +6758,6 @@
   <block id="aa83d3900b8d93c3644be1ebd01007a1" category="paragraph">在使用xWM/TDM設備時、切勿在發出「portCfgLong Distance」命令時使用LD設定。您應該改用LE或LS設定來設定Brocade交換器的距離。</block>
   <block id="b5ef89cda7a6eb4294365f3706a02a43" category="paragraph">您必須為每個FC交換器架構執行此工作。</block>
   <block id="94da8788598889667c43cfcc1f24c729" category="paragraph">下表顯示不同交換器的ISL連接埠、以及執行ONTAP 版本號為9.1或9.2的組態中不同數量的ISL。本節所示範例適用於Brocade 6505交換器。您應該修改範例、以使用適用於您交換器類型的連接埠。</block>
-  <block id="83e579bcd33d25206730a931a64a84a1" category="paragraph">如果您的組態執行ONTAP 的是NetApp 9.0或更早版本、請參閱 <block ref="249227e2d8f8114c9bdc6db2520e9445" category="inline-link-macro-rx"></block>。</block>
   <block id="3e4d0fd63cc5f1956547ff33cc403609" category="paragraph">您的組態必須使用所需的ISL數。</block>
   <block id="009309d700e9083e55803dc01b559155" category="cell">Brocade 7840 *注意：* Brocade 7840交換器支援兩個40 Gbps VE-port或每個交換器最多四個10 Gbps VE-port、以建立FCIP ISL。</block>
   <block id="70909e1e40c0c3eea76a5ac896ef5a88" category="list-text">[[step1_Brocade組態]設定連接埠速度：</block>
@@ -7783,7 +7777,6 @@
   <block id="cbf21b0a1a6cb9d0bb203c817705311a" category="admonition">在完成分區之前、請勿使用光纖橋接器7500N上的第二個FC連接埠連線。</block>
   <block id="6ccf095006c1d816e28e52dc0e9bd0f6" category="paragraph">請參閱ONTAP 您的版本的《連接埠指派》。</block>
   <block id="62610238a732474c3b050bbde67a6d1e" category="list-text">在合作夥伴網站的橋上重複上述步驟。</block>
-  <block id="979780f3d72e1e779c1418145ea73bcb" category="paragraph">在連接FC交換器纜線時、您需要確認您使用的是指定的連接埠指派。在更新版本的《》中、連接埠的指派功能與ONTAP 《ONTAP 》中的《》有所不同。</block>
   <block id="9f39b4378a3d44f4f0a500c832ddf6b3" category="list-text">可以使用「unsecurebridge」命令來重新啟用乙太網路連接埠。</block>
   <block id="92ce9352258f4fd51a93e19057e163df" category="list-text">在NetApp 9.7及更早版本中、在Atto FibreBridge上執行「Recurebridge」命令可能無法正確更新合作夥伴叢集上的橋接器狀態。ONTAP如果發生這種情況、請從合作夥伴叢集執行「Recurebridge」命令。</block>
   <block id="896822419043c00441403336af7e4108" category="paragraph">「cluster _a&gt;儲存橋接器run－CLI -bridge bridge bridge bridge _a_1－command securebridge」</block>
@@ -11221,7 +11214,6 @@
   <block id="e6d0ce0dfa94d1d55d2905e953d60ead" category="sidebar">將控制器彼此連接</block>
   <block id="6e1b901662872166ef0e661d1481924c" category="sidebar">將雙節點MetroCluster 的不含功能的FC組態擴充為四節點組態</block>
   <block id="fbda6a351e5c32b65583383006360afa" category="sidebar">驗MetroCluster 證不實組態的狀態</block>
-  <block id="c3f3140743256f4b3b23e2414dda5987" category="sidebar">在AutoSupport 將節點新增MetroCluster 至該組態之前、請先傳送自訂的功能資訊</block>
   <block id="b8e92406eb7a6fca550b1d6570cceffc" category="sidebar">新控制器連接埠的區域、當在光纖附加MetroCluster 的功能區組態中新增控制器模組時</block>
   <block id="5718f7671797ad3f1f095d0aebd2f2df" category="sidebar">將新的控制器模組新增至每個叢集</block>
   <block id="b29a91a2b18a5fff75e62a034da2c030" category="sidebar">清除控制器模組上的組態</block>
@@ -11280,7 +11272,6 @@
   <block id="dc58a5917fbb05da0e560a4cbcb1f72c" category="list-text">移除介面上設定的金鑰鏈和原則、以移除Macsec組態：</block>
   <block id="c988e8ca5d6e6bb62b67254721e13586" category="paragraph">「沒有Macsec keychain keychain keychain名稱policy原則名稱」</block>
   <block id="8d0f34f00997c62960ad51adbe64457d" category="list-text"><block ref="8d0f34f00997c62960ad51adbe64457d" category="inline-link-rx"></block></block>
-  <block id="2687b88898e3642fcc69aaef6be8e73c" category="paragraph">轉換至MetroCluster 靜態IP組態時、您必須結合支援的平台機型。您也應該確保MetroCluster 針對從MetroCluster 靜態FC組態轉換為MetroCluster 靜態IP組態的負載、使用適當的尺寸來調整此平台。</block>
   <block id="d9599a6265b31306f6c79d760a47a9aa" category="paragraph">下表顯示支援的平台組合。您可以從左欄中的平台轉換至右側欄中所列的平台、如彩色表格儲存格所示。</block>
   <block id="d84d4239724af43bfdc3b74836c335fe" category="paragraph">設定完成後、V0a（v0b等）會持續驗證連線能力、以確保LIF移轉或容錯移轉成功（不像L2、只有在停機後才能看到毀損的組態）。</block>
   <block id="222561f9cba21343a81a9b2ee1890d68" category="paragraph"><block ref="222561f9cba21343a81a9b2ee1890d68" category="inline-link-macro-rx"></block></block>
@@ -12369,18 +12360,11 @@
   <block id="91d96627fcbee13a9d474587060d13f8" category="paragraph">AFF C250 和 AFF A250 系統的磁碟指派準則和規則也適用於 FAS500f 系統。如需 FAS500f 系統上的磁碟指派、請參閱 <block ref="62481755a241b3efc5c68e4e7dd00bb5" category="inline-xref-macro-rx"></block> 表。</block>
   <block id="d39fc122b5bc72857d3bc1cb28b2528b" category="summary">您可能需要變更 FC 交換器的廠商（ Cisco 改為 Brocade 、反之亦然）、變更交換器模式或兩者。</block>
   <block id="dc97a56f45d09eb47627be2f51eaacac" category="doc">變更 FC 交換器的廠商或型號</block>
-  <block id="588f711b0852bf6ebac518663e6bf15c" category="paragraph">您可能需要將 FC 交換器的廠商從 Cisco 變更為 Brocade 、或是反之、變更交換器模式或兩者都變更。</block>
   <block id="34b3750efa9ad33069e758e1d20702b2" category="list-text">此程序適用於使用 NetApp 驗證交換器的情況。</block>
   <block id="038dcdf6b816f0dea514171c0fbec340" category="list-text">對於組態中的兩個 Fabric 、您必須一次在一個 Fabric 上執行本程序中的步驟。</block>
   <block id="12e792350f2f2a26f26efec238939f8c" category="list-text">[[Step_1 、 Step 1]] 檢查組態的健全狀況。</block>
-  <block id="2aadc0e8757be310d2a25c139de10d8a" category="paragraph">請依照中的步驟進行 <block ref="71433a7a2e7b6001aee2288bc93568fd" category="inline-link-macro-rx"></block>。</block>
-  <block id="4b0b73acfce5119dcc60f2f7b6dac2c4" category="list-text">按照下列順序移除連線、以中斷舊交換器的連線：</block>
   <block id="66700e9b823419320bcf568412b3c8f5" category="list-text">中斷 MetroCluster ISL 的連線。</block>
-  <block id="c4f64a0c7e0a39b3f68c6c76b119f9b7" category="list-text">關閉舊交換器電源、拔下纜線、然後以新交換器實際更換舊交換器。</block>
   <block id="39c4de53c442cd522fc67edfc4cc59c8" category="list-text">依下列順序連接交換器：</block>
-  <block id="0f192214376d7c0e958d509a331b7c82" category="inline-link-macro">安裝 MetroCluster 元件並連接纜線</block>
-  <block id="ca71188f7f4bbd1ad7fb2b3ac50145fa" category="paragraph">您必須遵循中的步驟 <block ref="f09498c56b761bf8471aa49436b9c6b5" category="inline-link-macro-rx"></block>。</block>
-  <block id="d7c72b026579f98d6108723379befa5c" category="list-text">開啟交換器電源。</block>
   <block id="4c49ac5fd96c13efa7ddbce7575dd9e4" category="list-text">重複、確認 MetroCluster 組態正常 <block ref="70a312d559ac5bac88a63c5c7c2e52d3" category="inline-xref-macro-rx"></block>。</block>
   <block id="b81576b1956a4793e86cfb62d8774b3f" category="list-text">針對組態中的第二個 Fabric 重複步驟 1 至步驟 7 。</block>
   <block id="899dd799064eace0f16728f2bf38c96b" category="paragraph">FC 交換器連接埠的使用方式必須符合文件中所述的使用方式、才能使用參考組態檔案（ RCFs ）。</block>
@@ -12691,8 +12675,6 @@
   <block id="8c8b7a01f7186e24025ef8e89ee4deb8" category="admonition">至少需要一個連接乙太網路的 NVMe 機櫃</block>
   <block id="ad87745a64591ff679affa48fe663b39" category="paragraph">9336C-FX2 – SAS 與乙太網路儲存設備</block>
   <block id="462b36259caf681453d6d7b142217c3d" category="paragraph"><block ref="419f67b8b89585d3be41af97b158dd9e" prefix="" category="inline-code"></block></block>
-  <block id="3a9ef4ec11f1ec3fddae2461f053c31a" category="list-text">拔下 MetroCluster FC 介面。</block>
-  <block id="439c5d8621fe2376ba1455a5e5502727" category="list-text">連接 MetroCluster FC 介面。</block>
   <block id="6a62571ce4203a1671da10509f3013e0" category="cell">AFF A900 、 ASA A900 和 FAS9500</block>
   <block id="d7b1c9d4f2a52b2d3648ce28baa0dd5c" category="paragraph">AFF A800 、 AFF C800 、 ASA A800 和 ASA C800</block>
   <block id="2bba389392c3b789eaa9d1c8c6fc87d2" category="paragraph">FAS8400 、 AFF A400 、 ASA A400 、 ASA C400 和 AFF C400</block>
@@ -12876,7 +12858,6 @@
   <block id="a05b3cdfc5cc23ee6b2d90f33be54635" category="admonition">連接 MetroCluster 介面的交換器連接埠和傳輸 MetroCluster 流量的 ISL 的部分原則對應相同。您可以針對這兩種連接埠使用方式使用相同的原則對應。</block>
   <block id="80d1269e99768d5e883ffa70dd8f6aeb" category="summary">視您的需求而定、您可以使用共享的第 2 層或第 3 層網路來部署 MetroCluster 。</block>
   <block id="1c46b7bbd317f603895892a646ef8b2d" category="doc">在共享第 2 層或第 3 層網路中部署 MetroCluster 時的考量事項</block>
-  <block id="2ff08728ea0124138aa06bf0f8c8ea31" category="paragraph">從 ONTAP 9.6 開始、支援 Cisco 交換器的 MetroCluster IP 組態可以共用現有的交換器間連結（ ISL ）網路、而非使用專用的 MetroCluster ISL 。此拓撲稱為 _ 共享第 2 層網路 _ 。</block>
   <block id="cc723d7803ba423b47b353cc9dfa54ff" category="paragraph">從功能支援的9.9開始ONTAP 、MetroCluster 即可透過IP路由（第3層）後端連線來實作支援的IP組態。此拓撲稱為 _ 共享第 3 層網路 _ 。</block>
   <block id="80a482ff4ac144c8d8c1e668a348dd67" category="list-text">您必須驗證您的網路容量是否足夠、以及 ISL 大小是否適合您的組態。低延遲是MetroCluster 在各個景點之間複寫資料的關鍵。這些連線的延遲問題可能會影響用戶端I/O</block>
   <block id="37eee3b9ac9781ca0484f54aeef70602" category="list-text">所有關於 MetroCluster 後端交換器的參考資料、都是指 NetApp 驗證的交換器或 MetroCluster 相容的交換器。請參閱 <block ref="16daa185b92984fefaae8aa04a4cd437" category="inline-link-macro-rx"></block> 以取得更多詳細資料。</block>
@@ -14008,8 +13989,6 @@
   <block id="df0de59a7d82bfac9aeb4c3a4d0ff3d5" category="paragraph"><block ref="593e2b872fdc863863b3175980b503ee" prefix="" category="inline-code"></block></block>
   <block id="ce4d776f761276cab4718597907e9b25" category="paragraph"><block ref="ce4d776f761276cab4718597907e9b25" category="inline-image-macro-rx" type="image"></block></block>
   <block id="4bbabfb39bdaa67802b5f83f085672a9" category="image-alt">顯示 IP 轉 FC 轉換支援的平台組合</block>
-  <block id="32571d30b5ea67a42d51725233459057" category="list-text">附註 1 ：此平台組合需要 ONTAP 9.13.1 或更新版本。</block>
-  <block id="c6a7b9b858b4fca6a11eb81808875db0" category="list-text">附註 2 ： FC 節點上的本機叢集介面必須有 100GbE 介面。此平台組合需要 ONTAP 9.11.1 或更新版本。</block>
   <block id="5a4027b63d6ed294211392e256667c2c" category="list-text">修改舊控制器上的叢集間生命體、以使用不同於新控制器上用於 HA 互連或 MetroCluster IP DR 互連的連接埠。</block>
   <block id="931a74601edef3262a75c3d8d8e6acda" category="admonition">成功升級需要此步驟。</block>
   <block id="f7f8cd16da4423b24e25a4d21cb4bc83" category="paragraph">舊控制器上的叢集間生命體必須使用不同於新控制器上用於 HA 互連或 MetroCluster IP DR 互連的連接埠。例如、當您升級至 AFF A90 控制器時、 HA 互連連接埠為 e1a 和 e7a 、 MetroCluster IP DR 互連連接埠為 e2b 和 e3b 。如果舊控制器上的叢集間生命體位於連接埠 e1a 、 e7a 、 e2b 或 e3b 上、則必須移動它們。</block>
@@ -14036,4 +14015,28 @@
   <block id="b0b6d9c342452ad19a9b24e1caf2ff35" category="cell"><block ref="e7896f2437c8c50a74bfea383fc26eb3" category="inline-xref-macro-rx"></block></block>
   <block id="3872acc735c86484cf5289e6f36d9d09" category="list-text">[[controller 取代升級 _prepy_network_ports_2b]] 修改叢集間的生命體以使用不同的主連接埠：</block>
   <block id="bd14e125f8f9035fe1f7a46be559035d" category="list-text">[[controller 取代升級 _prepy_network_ports_3]] 將舊控制器上所有資料生命體的主連接埠指派給舊控制器模組和新控制器模組上相同的通用連接埠。</block>
+  <block id="bf8ab32fb11672e6514cae71dc5fafe7" category="paragraph">從 ONTAP 9.6 開始、支援交換器的 MetroCluster IP 組態可以共用現有的交換器間連結（ ISL ）網路、而非使用專用的 MetroCluster ISL 。此拓撲稱為 _ 共享第 2 層網路 _ 。</block>
+  <block id="ecf6e6f3fcedd63b625249365c65593c" category="list-text">並非所有網路拓撲都支援所有功能。</block>
+  <block id="8358ac5f612a66f1c1de4d949b9a86ae" category="doc">變更 FC 交換器的廠商或型號</block>
+  <block id="52fe3712857160698c1b014e83579ba9" category="paragraph">您可能需要將 FC 交換器的廠商從 Cisco 變更為 Brocade 、或從 Cisco 變更為 Brocade 、變更交換器模式或兩者都變更。</block>
+  <block id="32e3da7a69b04d14731b2ee761e658ba" category="list-text">在安裝前設定新交換器。</block>
+  <block id="26f5dee585e3373bb2d4d532d8840b7a" category="paragraph">請依照中的步驟進行 <block ref="8891b6de7b2070c584bdeb67b522b51b" category="inline-link-macro-rx"></block>。</block>
+  <block id="da05a72c6769f77035f88e9c4a38fa5f" category="list-text">按照下列順序移除舊交換器的連線、以中斷舊交換器的連線：</block>
+  <block id="02ee3aa1129af6cfff90a9db0232239e" category="list-text">拔下 MetroCluster FC 和 FCVI 介面。</block>
+  <block id="f4682cedd049931c51d74f398ef3fb36" category="list-text">中斷 Atto FiberBridge 橋接器的連線。</block>
+  <block id="450cb91595a8d54efc773a3e450fd1f3" category="list-text">關閉舊的交換器、拔下纜線、然後以新的交換器實際更換舊的交換器。</block>
+  <block id="a139b1c04214aec0693f828d23631fcf" category="paragraph">您必須遵循中的步驟 <block ref="37a983721e8c37719820fe5091c30d35" category="inline-link-macro-rx"></block>。</block>
+  <block id="0695aadd5e22ca576036ee74e37a609e" category="list-text">連接 Atto FiberBridge 橋接器。</block>
+  <block id="bc1e1a74eeb5d30d0aec52f0e7d3fc2c" category="list-text">連接 MetroCluster FC 和 FCVI 介面。</block>
+  <block id="0498d59ca3d1dcff64193b28d0aad43b" category="list-text">開啟交換器電源。</block>
+  <block id="7e78f2c6ef0bb1c644bf13957f799b3e" category="paragraph">轉換至MetroCluster 靜態IP組態時、您必須結合支援的平台機型。</block>
+  <block id="4c3904f4170d85c115c47ba3f7c7991f" category="paragraph">您也應該確保MetroCluster 針對從MetroCluster 靜態FC組態轉換為MetroCluster 靜態IP組態的負載、使用適當的尺寸來調整此平台。</block>
+  <block id="b58285eb9b24d9fe796b9063f265bfb5" category="paragraph-title">支援的 AFF 和 FAS 轉換組合</block>
+  <block id="c1e51816977e0a0a7222c23da2cc2cb9" category="list-text">附註 1 ：此平台組合需要 ONTAP 9.11.1 或更新版本。</block>
+  <block id="234207cc1f3002485022da1892b4559b" category="list-text">附註 2 ： FC 節點上的本機叢集介面必須有 40GbE 介面。</block>
+  <block id="6ae32e231af4316f91162f3b9a761e43" category="list-text">附註 3 ： FC 節點上的本機叢集介面必須有 100GbE 介面。</block>
+  <block id="2e16237b0ca66b75b7c3d7fdd40e4d39" category="paragraph-title">支援的 ASA 轉換平台組合</block>
+  <block id="5feb826151198d290926a00c8f0166bd" category="paragraph">下表顯示 ASA 系統支援的平台組合。</block>
+  <block id="26f5174a535725c2475715c5b1747824" category="cell">目標 MetroCluster IP 平台</block>
+  <block id="315289188a5b2b11bb8fe0c80160e8d4" category="sidebar">將節點新增至 MetroCluster 組態之前、請先傳送自訂的 AutoSupport 訊息</block>
 </blocks>

@@ -18,7 +18,6 @@ summary: 如果您要使用MetroCluster 陣列LUN設定雙節點架構附加的�
 * 如果您計畫MetroCluster 在您的需求配置中除了使用陣列LUN之外、還要使用磁碟、則必須使用指定的HBA連接埠和交換器連接埠、以便使用磁碟進行組態設定。
 +
 ** link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）"]
-** link:concept_port_assignments_for_fc_switches_when_using_ontap_9_0.html["FC交換器的連接埠指派（使用ONTAP 功能）9.0"]
 
 
 
