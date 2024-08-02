@@ -15,6 +15,25 @@ summary: 從推出支援MetroCluster的交換器開始ONTAP 、MetroCluster 即�
 
 
 
+== MetroCluster 相容於 NetApp 驗證的交換器
+
+如果交換器符合下列需求、則該交換器已通過 NetApp 驗證：
+
+* 交換器是由NetApp提供、做為MetroCluster 整個知識區塊IP組態的一部分
+* 交換器會列在中 link:https://hwu.netapp.com/["NetApp Hardware Universe"^] 做為 _MetroCluster over IP 連線下支援的交換器
+* 交換器僅用於連接MetroCluster S24 IP控制器、以及在某些組態中、NS224磁碟機櫃
+* 交換器是使用 NetApp 提供的參考組態檔案（ RCF ）進行設定
+
+
+任何不符合這些要求的交換器都是 * 不 * NetApp 驗證的交換器。
+
+MetroCluster 相容的交換器並未通過 NetApp 驗證、但如果符合特定需求和組態準則、則可用於 MetroCluster IP 組態。
+
+
+NOTE: NetApp 不為任何未通過驗證的 MetroCluster 相容交換器提供疑難排解或組態支援服務。
+
+
+
 == MetroCluster相容交換器的一般需求
 
 連接 MetroCluster IP 介面的交換器必須符合下列一般需求：

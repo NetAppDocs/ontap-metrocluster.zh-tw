@@ -15,7 +15,7 @@ summary: 每個節點開機後、系統會提示您執行基本節點和叢集�
 * 您必須使用纜線連接MetroCluster 的the不可用的功能組態。
 
 
-如果您需要以網路方式開機新的控制器、請參閱 link:../upgrade/task_upgrade_controllers_in_a_four_node_ip_mcc_us_switchover_and_switchback_mcc_ip.html#netbooting-the-new-controllers["Netbooting新的控制器模組"]。
+如果您需要以網路開機新的控制器、請參閱 link:../upgrade/task_upgrade_controllers_in_a_four_node_ip_mcc_us_switchover_and_switchback_mcc_ip.html#netboot-the-new-controllers["以網路開機新的控制器模組"]。
 
 .關於這項工作
 這項工作必須在MetroCluster 整個叢集上執行、且必須採用支援功能的組態。

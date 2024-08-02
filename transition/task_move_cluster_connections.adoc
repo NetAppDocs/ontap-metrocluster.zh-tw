@@ -278,7 +278,7 @@ link:../install-ip/concept_considerations_differences.html["安裝與組態Metro
 .. 準備IP交換器以應用新的RCF檔案。
 +
 *** link:../install-ip/task_switch_config_broadcom.html["將Broadcom IP交換器重設為原廠預設值"] 。
-*** link:https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/task_switch_config_broadcom.html["將Cisco IP交換器重設為原廠預設值"]
+*** link:../install-ip/task_switch_config_cisco.html["將Cisco IP交換器重設為原廠預設值"]
 
 
 .. 視交換器廠商而定、下載並安裝IP RCF檔案。

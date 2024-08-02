@@ -59,8 +59,9 @@ entries:
     - title: FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）
       url: "/install-fc/concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html"
     - title: FC交換器的連接埠指派（使用AFF Arfe A900系統時）
-      url: "/install-fc/concept_AFF_A900_port_assign_fc_switches_ontap_9_1.html"
       entries:
+      - title: 使用AFF FASA900或FAS9500系統時、FC交換器的連接埠指派
+        url: "/install-fc/concept_AFF_A900_port_assign_fc_switches_ontap_9_1.html"
       - title: 適用於執行版本更新版本的控制器的VA900 Brocade連接埠使用量AFF ONTAP
         url: "/install-fc/concept_AFF_A900_brocade_port_config.html"
       - title: 適用於執行版本更新版本的ISL的VA900 Brocade連接埠使用量AFF ONTAP

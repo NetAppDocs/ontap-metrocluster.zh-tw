@@ -124,16 +124,16 @@ volumes             ok
 請依照交換器廠商的步驟進行：
 
 +
-** link:../install-ip/task_switch_config_broadcom.html["將Broadcom IP交換器重設為原廠預設值"]
-** link:../install-ip/task_switch_config_cisco.html["將Cisco IP交換器重設為原廠預設值"]
-** link:../install-ip/task_switch_config_nvidia.html["將 NVIDIA IP SN2100 交換器重設為原廠預設值"]
+** link:../install-ip/task_switch_config_broadcom.html#resetting-the-broadcom-ip-switch-to-factory-defaults["將Broadcom IP交換器重設為原廠預設值"]
+** link:../install-ip/task_switch_config_cisco.html#resetting-the-cisco-ip-switch-to-factory-defaults["將 Cisco IP 交換器重設為原廠預設值"]
+** link:../install-ip/task_switch_config_nvidia.html#reset-the-nvidia-ip-sn2100-switch-to-factory-defaults["將NVIDIA IP SN2100交換器重設為原廠預設值"]
 
 
 . 視交換器廠商而定、下載並安裝IP RCF檔案。
 +
-** link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-broadcom-rcf-files["下載並安裝Broadcom IP RCF檔案"]
-** link:../install-ip/task_switch_config_cisco.html#downloading-and-installing-the-cisco-ip-rcf-files["下載並安裝Cisco IP RCF檔案"]
-** link:../install-ip/task_switch_config_nvidia.html#download-and-install-the-nvidia-rcf-files["下載及安裝 NVIDIA IP RCF 檔案"]
+** link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-broadcom-rcf-files["下載並安裝 Broadcom IP RCF 檔案"]
+** link:../install-ip/task_switch_config_cisco.html#downloading-and-installing-the-cisco-ip-rcf-files["下載並安裝 Cisco IP RCF 檔案"]
+** link:../install-ip/task_switch_config_nvidia.html#download-and-install-the-nvidia-rcf-files["下載並安裝 NVIDIA IP RCF 檔案"]
 +
 
 NOTE: 如果您有L2共用或L3網路組態、可能需要調整中繼/客戶交換器上的ISL連接埠。switchport模式可能會從「存取」模式變更為「主幹」模式。只有在交換器A_1和B_1之間的網路連線完全正常且網路正常時、才繼續升級第二個交換器配對（A_2、B_2）。

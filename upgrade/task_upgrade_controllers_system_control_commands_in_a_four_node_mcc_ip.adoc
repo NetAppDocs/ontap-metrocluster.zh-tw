@@ -15,7 +15,9 @@ summary: 您可以使用這項引導式自動化 MetroCluster 轉換作業、針
 
 
 
-== 支援的平台組合
+== 使用「系統控制器置換」命令支援的 MetroCluster IP 控制器升級
+
+從本節的 MetroCluster 控制器升級表中找到您的 * 來源 * 平台。如果 *Source* 平台列與 *Target* 平台欄的交會為空白、則不支援升級。
 
 開始升級之前、請先檢閱下列考量事項、確認您的組態是否受到支援。
 
@@ -33,7 +35,7 @@ summary: 您可以使用這項引導式自動化 MetroCluster 轉換作業、針
 
 
 .支援的 AFF 和 FAS MetroCluster IP 控制器升級
-下表顯示在 MetroCluster IP 組態中升級 AFF 或 FAS 系統所支援的平台組合：
+下表顯示使用「系統控制器置換」命令在 MetroCluster IP 組態中升級 AFF 或 FAS 系統所支援的平台組合：
 
 image::../media/mcc_ip_system_controller_replace_aff_fas.png[MCC IP 系統控制器取代 AFF FAS]
 
@@ -812,8 +814,8 @@ NOTE: 必須在所有受影響的連接埠上設定此選項、才能成功升�
 
 +
 ** link:../install-ip/task_switch_config_broadcom.html#resetting-the-broadcom-ip-switch-to-factory-defaults["將Broadcom IP交換器重設為原廠預設值"]
-** link:../install-ip/task_switch_config_broadcom.html#resetting-the-cisco-ip-switch-to-factory-defaults["將 Cisco IP 交換器重設為原廠預設值"]
-** link:../install-ip/task_switch_config_nvidia.html["將NVIDIA IP SN2100交換器重設為原廠預設值"]
+** link:../install-ip/task_switch_config_cisco.html#resetting-the-cisco-ip-switch-to-factory-defaults["將 Cisco IP 交換器重設為原廠預設值"]
+** link:../install-ip/task_switch_config_nvidia.html#reset-the-nvidia-ip-sn2100-switch-to-factory-defaults["將NVIDIA IP SN2100交換器重設為原廠預設值"]
 
 
 . 下載並安裝RCF檔案。
@@ -822,7 +824,7 @@ NOTE: 必須在所有受影響的連接埠上設定此選項、才能成功升�
 
 +
 ** link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-broadcom-rcf-files["下載並安裝 Broadcom RCF 檔案"]
-** link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-cisco-ip-rcf-files["下載並安裝 Cisco IP RCF 檔案"]
+** link:../install-ip/task_switch_config_cisco.html#downloading-and-installing-the-cisco-ip-rcf-files["下載並安裝 Cisco IP RCF 檔案"]
 ** link:../install-ip/task_switch_config_nvidia.html#download-and-install-the-nvidia-rcf-files["下載並安裝 NVIDIA IP RCF 檔案"]
 
 

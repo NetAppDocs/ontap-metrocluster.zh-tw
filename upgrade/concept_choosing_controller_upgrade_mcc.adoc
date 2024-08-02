@@ -23,14 +23,19 @@ summary: 您使用的升級程序取決於平台模式。
 
 == 支援的控制器升級
 
-請從下方的FC或IP表格中選取您目前的平台。如果目前平台列和目標平台欄的交會為空白、則不支援升級。
-
-
-NOTE: 如需在四節點 MetroCluster IP 組態中使用命令進行支援的升級 `system controller replace` 、請參閱中的表格 link:task_upgrade_controllers_system_control_commands_in_a_four_node_mcc_ip.html["在四節點 MetroCluster IP 組態中升級控制器、使用切換功能、並使用「系統控制器更換」命令（ ONTAP 9.13.1 及更新版本）切換回控制器"]
+瞭解支援的 MetroCluster IP 和 FC 控制器升級組合。
 
 
 
-=== 支援MetroCluster 的支援功能升級
+=== 使用「系統控制器置換」命令支援的 MetroCluster IP 控制器升級
+
+如需支援的平台、請參閱中的表格 link:task_upgrade_controllers_system_control_commands_in_a_four_node_mcc_ip.html["在四節點 MetroCluster IP 組態中升級控制器、使用切換功能、並使用「系統控制器更換」命令（ ONTAP 9.13.1 及更新版本）切換回控制器"] 。
+
+
+
+=== 所有其他支援的 MetroCluster IP 控制器升級
+
+從本節的 MetroCluster 控制器升級表中找到您的 * 來源 * 平台。如果 *Source* 平台列與 *Target* 平台欄的交會為空白、則不支援升級。
 
 * 如果未列出您的平台、則沒有支援的控制器升級組合。
 * 當您執行控制器升級時、舊的和新的平台類型 * 必須 * 相符：
@@ -46,7 +51,7 @@ NOTE: 如需在四節點 MetroCluster IP 組態中使用命令進行支援的升
 
 
 .支援的 AFF 和 FAS MetroCluster IP 控制器升級
-下表顯示在 MetroCluster IP 組態中升級 AFF 或 FAS 系統所支援的平台組合：
+下表顯示在 MetroCluster IP 組態中手動升級 AFF 或 FAS 系統所支援的平台組合：
 
 image::../media/metrocluster_ip_upgrade_so_sb_aff_fas.png[MetroCluster IP 升級 sb AFF FAS]
 
@@ -57,7 +62,7 @@ image::../media/metrocluster_ip_upgrade_so_sb_aff_fas.png[MetroCluster IP 升級
 
 
 .支援的 ASA MetroCluster IP 控制器升級
-下表顯示在 MetroCluster IP 組態中升級 ASA 系統所支援的平台組合：
+下表顯示在 MetroCluster IP 組態中手動升級 ASA 系統所支援的平台組合：
 
 image::../media/metrocluster_ip_upgrade_so_sb_asa_fas.png[MetroCluster IP 升級 sb ASA FAS]
 
@@ -67,6 +72,8 @@ image::../media/metrocluster_ip_upgrade_so_sb_asa_fas.png[MetroCluster IP 升級
 
 
 === 支援MetroCluster 的支援功能。FC控制器升級
+
+從本節的 MetroCluster 控制器升級表中找到您的 * 來源 * 平台。如果 *Source* 平台列與 *Target* 平台欄的交會為空白、則不支援升級。
 
 * 如果未列出您的平台、則沒有支援的控制器升級組合。
 * 當您執行控制器升級時、舊的和新的平台類型 * 必須 * 相符：

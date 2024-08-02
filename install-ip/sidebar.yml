@@ -26,16 +26,16 @@ entries:
       url: "/install-ip/concept-requirements-isls.html"
     - title: 在共享第 2 層或第 3 層網路中部署 MetroCluster 時的考量事項
       url: "/install-ip/concept-considerations-layer-2-layer-3.html"
-    - title: 使用MetroCluster相容交換器的考量事項
-      entries:
-      - title: MetroCluster 相容交換器的需求與限制
-        url: "/install-ip/concept-requirement-and-limitations-mcc-compliant-switches.html"
-      - title: MetroCluster 相容交換器的網路速度和交換器連接埠模式
-        url: "/install-ip/concept-network-speeds-and-switchport-modes.html"
-      - title: 交換器連接埠組態範例
-        url: "/install-ip/concept-configure-mcc-compliant-switches.html"
     - title: 例如：網路拓撲MetroCluster
       url: "/install-ip/concept-example-network-topologies.html"
+  - title: 使用MetroCluster相容交換器的考量事項
+    entries:
+    - title: MetroCluster 相容交換器的需求與限制
+      url: "/install-ip/concept-requirement-and-limitations-mcc-compliant-switches.html"
+    - title: MetroCluster 相容交換器的網路速度和交換器連接埠模式
+      url: "/install-ip/concept-network-speeds-and-switchport-modes.html"
+    - title: 交換器連接埠組態範例
+      url: "/install-ip/concept-configure-mcc-compliant-switches.html"
   - title: 不鏡射的Aggregate、採用MetroCluster 一套不鏡射的IP組態
     url: "/install-ip/concept_considerations_unmirrored_aggrs.html"
   - title: 在景點使用防火牆MetroCluster

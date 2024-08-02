@@ -12,6 +12,6 @@ summary: 您必須設定IP交換器、才能提供後端MetroCluster 的不中�
 您必須設定IP交換器、才能提供後端MetroCluster 的不中斷IP連線功能。
 
 * link:../install-ip/task_switch_config_broadcom.html["設定Broadcom IP交換器"]
-* link:../install-ip/task_switch_config_broadcom.html["設定Cisco IP交換器"]
+* link:../install-ip/task_switch_config_cisco.html["設定Cisco IP交換器"]
 * link:../install-ip/task_switch_config_nvidia.html["設定NVIDIA IP交換器"]
 

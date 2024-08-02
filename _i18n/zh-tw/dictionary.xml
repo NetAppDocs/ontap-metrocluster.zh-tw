@@ -1626,7 +1626,6 @@
   <block id="1fc34dc1a2bf40981cbdbe67372e71b6" category="list-text">您必須使用纜線連接MetroCluster 的the不可用的功能組態。</block>
   <block id="2dafecd33d1bcc030e5a4330614efcc0" category="list-text">您不得設定服務處理器。</block>
   <block id="54c72213164ddf62947d8c886cbf1580" category="inline-link-macro">Netbooting新的控制器模組</block>
-  <block id="da6a152013b01d35131c7e6a0a834b28" category="paragraph">如果您需要以網路方式開機新的控制器、請參閱 <block ref="3b790cf59184cbd534b9cbce1ed9244d" category="inline-link-macro-rx"></block>。</block>
   <block id="f82209ba761a7a3841706c46b4b7c662" category="paragraph">這項工作必須在MetroCluster 整個叢集上執行、且必須採用支援功能的組態。</block>
   <block id="6ac62fa13c69ad320702cd9a98f97b12" category="list-text">如果您尚未啟動本機站台上的每個節點、請將其全部開機。</block>
   <block id="c77851b696911673647cb7bed20ed179" category="paragraph">如果系統處於維護模式、您需要發出halt命令以結束維護模式、然後發出「boot_ontap」命令來啟動系統並進入叢集設定。</block>
@@ -3963,7 +3962,6 @@
   <block id="ffaeaa66271f98acd0156b9dadf03b5b" category="list-text"><block ref="ffaeaa66271f98acd0156b9dadf03b5b" category="inline-link-macro-rx"></block></block>
   <block id="1a031f58441757494134fdebb9c1beb1" category="list-text"><block ref="1a031f58441757494134fdebb9c1beb1" category="inline-link-macro-rx"></block></block>
   <block id="343c2d0dbf210b79686912b38bd4f45d" category="list-text"><block ref="680a4f630b21eab8e23842ce1e77c536" category="inline-link-macro-rx"></block> 。</block>
-  <block id="d618e096c793dc69ae5eecca55aed391" category="list-text"><block ref="d618e096c793dc69ae5eecca55aed391" category="inline-link-macro-rx"></block></block>
   <block id="b9fc40955441f593ff27513c0973dab6" category="list-text">視交換器廠商而定、下載並安裝IP RCF檔案。</block>
   <block id="9ce923539fb1123fe118101d429941ae" category="list-text"><block ref="9ce923539fb1123fe118101d429941ae" category="inline-link-macro-rx"></block></block>
   <block id="9b2c056caaa39d420a60a6eafd686719" category="list-text"><block ref="9b2c056caaa39d420a60a6eafd686719" category="inline-link-macro-rx"></block></block>
@@ -5145,8 +5143,6 @@
   <block id="a80638f76a6a6dafc444e1d6a0f9cf81" category="paragraph">如果災難站台更換了一或兩個控制器模組或NVRAM卡、則系統ID已變更、您必須將屬於根Aggregate的磁碟重新指派給更換的控制器模組。</block>
   <block id="e15b0161757a3ccf3600819bf65e09fa" category="paragraph">由於節點處於切換模式、因此在此工作中只會重新指派包含災難站台Pool1根集合體的磁碟。它們是目前唯一仍由舊系統ID擁有的磁碟。</block>
   <block id="22916732ba49d4a12ff6d80e0cc481a4" category="paragraph">這些範例假設如下：</block>
-  <block id="20898dec082f98c2108752693993068d" category="inline-link-macro">確定更換控制器模組的新系統ID</block>
-  <block id="5e1cb1cee330d4cf39f42acae38f029c" category="paragraph">舊的和新的系統ID已在中識別 <block ref="47d4637528cdda0f4f546dfe2a3e35e6" category="inline-link-macro-rx"></block>。</block>
   <block id="ad3d8189e8e55c3028771da773eed75a" category="paragraph">本程序中的範例使用具有下列系統ID的控制器：</block>
   <block id="959f559d380ae4cad20f5e8bb59190c9" category="cell">新系統ID</block>
   <block id="5044817e631ea533d8d80b535c92072c" category="paragraph">1574774970</block>
@@ -11587,8 +11583,6 @@
   <block id="ec8b479c503bdd6824b5e3505ef1d0df" category="paragraph">下列範例顯示Agggr_data_A1離線：</block>
   <block id="aa8cd184e817ada870c8b763be695d0b" category="paragraph">下列範例顯示要刪除的Agggr_data_A1集合體。</block>
   <block id="d2038b70348bcc50135596de145913db" category="admonition">請依下列順序更新交換器：switch_a_1、switch_b_1、Switch_a_2、Switch_B_2</block>
-  <block id="c1e630c896fe7378e2dd05cd5272a6ff" category="list-text"><block ref="c1e630c896fe7378e2dd05cd5272a6ff" category="inline-link-macro-rx"></block></block>
-  <block id="e36e202b6cdca1dbc2cdea18cfdd7bdb" category="list-text"><block ref="e36e202b6cdca1dbc2cdea18cfdd7bdb" category="inline-link-macro-rx"></block></block>
   <block id="f6d453c97574893aee9bca0a4faee686" category="paragraph">「torage容錯移轉修改-node-name_-enable假」</block>
   <block id="f91adcd268075ddcfabf631a5a33611e" category="list-text">將每個資料集合體離線、然後刪除：</block>
   <block id="d4fbfd12406441eb6b750cde2dcb9137" category="list-text">確認站台間交換器間連結（ISL）正常運作、且連接埠通道正常運作：</block>
@@ -11757,8 +11751,6 @@
   <block id="7aeedda5f35486a7239b2a68ae68fb9a" category="paragraph">視設備升級範圍而定、您可以選擇控制器升級程序、系統更新程序或擴充程序。</block>
   <block id="959c17d1eadff13225c68a5578c6da93" category="paragraph">您使用的控制器升級程序取決於平台機型和MetroCluster 類型的支援。</block>
   <block id="789c52582d523f3977d636da81e92dc0" category="list-text">在ARL型控制器升級程序中、集合體重新配置作業可用於不中斷營運地將資料從舊組態移至新的升級組態。</block>
-  <block id="310848f15048cc78b3cbee9c61235054" category="paragraph">請從下方的FC或IP表格中選取您目前的平台。如果目前平台列和目標平台欄的交會為空白、則不支援升級。</block>
-  <block id="569cf9bf2c0f655af1cc3b1657f11706" category="section-title">支援MetroCluster 的支援功能升級</block>
   <block id="871aaccc4c0a59b618736750595955e7" category="list-text">附註1：對於此升級、請使用此程序 <block ref="f668bd1de55e6e087edcf0e6120e96e3" category="inline-link-macro-rx"></block></block>
   <block id="59710baa552439a5c3866c2907720be7" category="section-title">支援MetroCluster 的支援功能。FC控制器升級</block>
   <block id="9ae1fbeadb6e0efc4e024384fb8a4f8d" category="inline-link">知識庫文章</block>
@@ -11956,8 +11948,6 @@
   <block id="8ac6e9edd68ffb00104a32fd0a3ef455" category="list-text">開啟從斷路器主機到每個節點管理生命期和叢集管理生命期的SSH連線、以檢查斷路器與MetroCluster 該軟件的連線。</block>
   <block id="92d17a99a2247a42900b1a4c61e8e7d0" category="paragraph">若要將SNMP搭配Tiebreaker軟體使用、您必須設定SNMP設定。</block>
   <block id="b108689bc1b65903b90d77f19e30d295" category="list-text">使用tiebreaker CLI<block ref="5ef546c28db0706808d8d451d5a71029" prefix=" " category="inline-code"></block> 命令以新增MetroCluster 功能。</block>
-  <block id="c852f510264f0662076b7dc87a75f8f3" category="paragraph">以下範例顯示支援SNMP V3的SNMP接收器組態、IP位址為10.240.45.66、而設陷訊息則為連接埠號碼162。Tiebreaker軟體已準備好傳送設陷到您指定的SNMP接收器。</block>
-  <block id="6eeb81da538b4f61a034b7c239d160a7" category="admonition">您應該設定v3、因為SNMPv1不安全。請確定預設的社群字串*不是*設為公用。</block>
   <block id="a645efc9b9e1d2189f4d79d85cfaefce" category="sidebar">使用切換和切換功能（AFF 更新版本：E59.10.1或更新版本）、將控制器（從EVA700/FAS9000升級AFF 至EFC900/FAS9500）升級MetroCluster 至EFC組態ONTAP</block>
   <block id="6f4c27e539cc3005215fed00a58a0521" category="sidebar">將新控制器模組的FC-VI和HBA連接埠連接至FC交換器</block>
   <block id="da3f2d04a7e97d4412b48daacd47915e" category="sidebar">新控制器模組的叢集對等連線纜線</block>
@@ -12624,10 +12614,6 @@
   <block id="ae236ebe2cd05ce4da7fe73d504f4946" category="list-text">如果您是 <block ref="54f4a86aff0fc5aba4d6e37b225734c0" category="inline-link-macro-rx"></block>、新節點必須有足夠的儲存空間來容納舊節點的資料、以及足夠的磁碟用於根集合體和備用磁碟。</block>
   <block id="30db39dffca5d3a3ab759b48303153b1" category="list-text">如果要移除的 DR 群組包含負載共用鏡射磁碟區、則無法移動它們。  在另一個 DR 群組中重新建立所有負載共用鏡射磁碟區、然後刪除要移除的 DR 群組中的負載共用鏡射磁碟區。</block>
   <block id="0108924065f583138162139c8d2325c4" category="list-text">一次在一個交換器上執行下列步驟： switch_a_1 、 Switch_B_1 、 Switch_a_2 、 Switch_B_2 。</block>
-  <block id="4c73c980356e24dbc4b9bfa823ff3540" category="inline-link-macro">將 NVIDIA IP SN2100 交換器重設為原廠預設值</block>
-  <block id="5ea045545da6545f166122f615c720c2" category="list-text"><block ref="5ea045545da6545f166122f615c720c2" category="inline-link-macro-rx"></block></block>
-  <block id="9d2a9152feb1a65b3472b15d2e557bca" category="inline-link-macro">下載及安裝 NVIDIA IP RCF 檔案</block>
-  <block id="3ebe02a815587b2ddedbada8c501d0ef" category="list-text"><block ref="3ebe02a815587b2ddedbada8c501d0ef" category="inline-link-macro-rx"></block></block>
   <block id="61cdeb097cfdf5250ae69244ebf01a62" category="list-text">如果您使用 xWDM 組態、可能需要 ISL 上的其他設定。如需詳細資訊、請參閱 xWDM 廠商文件。</block>
   <block id="91debec19d39d0379223807f0659efab" category="section-title">在 MetroCluster 組態中修復組態</block>
   <block id="40a0ce393bbc07b8791fe3c093d906bf" category="paragraph">在 MetroCluster FC 組態中、您可以依照特定順序執行修復作業、以便在進行轉換後還原 MetroCluster 功能。</block>
@@ -13217,7 +13203,6 @@
   <block id="75b44b50a5c15f2121717071fc8e9fc0" category="inline-link-macro">下載並安裝 NVIDIA SN2100 交換器 Cumulus 軟體</block>
   <block id="99534ab88dcf6802b885593070964693" category="list-text"><block ref="99534ab88dcf6802b885593070964693" category="inline-link-macro-rx"></block></block>
   <block id="5b2fc0c613f01db3129e4c4e07ac3dfe" category="list-text"><block ref="5b2fc0c613f01db3129e4c4e07ac3dfe" category="inline-link-macro-rx"></block></block>
-  <block id="b482922c3bf6cd48549cdf23465ffee6" category="list-text"><block ref="b482922c3bf6cd48549cdf23465ffee6" category="inline-link-macro-rx"></block></block>
   <block id="31108c872023e7ac673e45c455e290ec" category="list-text"><block ref="31108c872023e7ac673e45c455e290ec" category="inline-link-macro-rx"></block></block>
   <block id="d28f21bcfe7f0ae76389ce8cf95e1346" category="paragraph">交換器會重設並保留初始組態、例如管理網路組態和目前認證、然後再套用RCF檔案。重新開機後、您可以使用相同或不同版本的 RCF 檔案來套用新組態。</block>
   <block id="2d0212aab3adea9540211da211dead7b" category="section-title">[[Cumuler-install-option]] 下載並安裝 Cumulus 軟體</block>
@@ -13381,8 +13366,6 @@
   <block id="368aaabd8ccd78edfaeb1e279944bf6d" category="list-text"><block ref="368aaabd8ccd78edfaeb1e279944bf6d" category="inline-link-macro-rx"></block></block>
   <block id="76dff903c42af8953fcd64558dc34099" category="inline-link-macro">下載並安裝 Cisco IP RCF 檔案</block>
   <block id="89fdba60efe33dd9621db371306f12e5" category="list-text"><block ref="89fdba60efe33dd9621db371306f12e5" category="inline-link-macro-rx"></block></block>
-  <block id="8fa6539999f2d3aff134c30600c80e41" category="inline-link-macro">下載並安裝NVIDIA RCF檔案</block>
-  <block id="2812633e4be142ea6fef81aa2fc3b357" category="list-text"><block ref="2812633e4be142ea6fef81aa2fc3b357" category="inline-link-macro-rx"></block></block>
   <block id="ea9534759740df7ca366f32a3eb8a0ec" category="inline-xref">下載並安裝 Cumulus 軟體</block>
   <block id="a6c37e682cfc0729046dd2e498ad461c" category="list-text"><block ref="ef78584b865ab255d612a5aa6725b10d" category="inline-xref-macro-rx"></block></block>
   <block id="4d8d9056b62fc01f5cd3f0898c551fde" category="section-title">平台支援</block>
@@ -13471,7 +13454,6 @@
   <block id="84e9aa8f760c1f5f0f19cf4fc3153c4b" category="paragraph">在四節點 MetroCluster IP 組態中、 AFF A900 系統的下列磁碟區限制已增加：</block>
   <block id="69cd959e02d2a7b70720f5426f4f0888" category="list-text">如果原始系統設定為端點對端點加密、請在每個替換節點的載入程式提示字元中設定下列開機：</block>
   <block id="635e42fd721973aab43465fb05d0c976" category="paragraph"><block ref="62c037d8665e336dd114412a0b756bfc" prefix="" category="inline-code"></block></block>
-  <block id="5a8c7594ee8269dda78a3c94154a49fc" category="doc">更換硬體並啟動新的控制器</block>
   <block id="81a393ca01b7355292a9de6a418b7506" category="section-title">更換災難現場的硬體</block>
   <block id="341755fab7492718abaee90d7addc0e1" category="section-title">確定舊控制器模組的系統 ID 和 VLAN ID</block>
   <block id="7783c9328f785a62c6d922c7aee5f5bf" category="section-title">將替換磁碟機與仍在運作的站台隔離（ MetroCluster IP 組態）</block>
@@ -13498,7 +13480,6 @@
   <block id="fdc6d534c52f6619e898db680403f69b" category="list-text">驗證 MetroCluster IP 介面是否離線。</block>
   <block id="2d393525a6ebfc702ca856ed72512167" category="list-text">將 MetroCluster IP 介面連接埠上線。</block>
   <block id="0ab751f551b18333e82474f5ca9b4122" category="list-text">驗證 MetroCluster IP 介面連接埠是否在線上。</block>
-  <block id="e387b7f8f98fe6ef00364ba0984c08a9" category="paragraph">舊的和新的系統ID已在中識別 <block ref="ce17cf746f0f051ba197f9e3096bf7f5" category="inline-link-macro-rx"></block>。</block>
   <block id="124ba57298a92342f8aec06ebcfb6415" category="inline-link-macro">確定舊控制器模組的系統 ID</block>
   <block id="3ac27de4b4347c98785ff06870fe7221" category="paragraph"><block ref="3ac27de4b4347c98785ff06870fe7221" category="inline-link-macro-rx"></block></block>
   <block id="478093bd7e01c5abe587038bf808af00" category="paragraph">下表顯示 Cisco 9132T 交換器的連接埠使用量。下表顯示兩個 DR 群組中四個和八個控制器模組的最大支援組態。</block>
@@ -13515,10 +13496,8 @@
   <block id="c5dcd35af16918a17ee9c3a5c153f0af" category="inline-link">IMT</block>
   <block id="24d65add9a27d74b80e9a9cebdfc8e56" category="paragraph">您的ONTAP 版本必須支援機櫃混合。請參閱互通性對照表工具IMT （英文）、瞭解您的ONTAP 版本的支援機櫃混合。<block ref="30796bf173a80af0dc9c120f98ffaed6" category="inline-link-rx"></block></block>
   <block id="8872b0d09737dfd9b6fcafd4e8c2356b" category="list-text"><block ref="8872b0d09737dfd9b6fcafd4e8c2356b" category="inline-link-rx"></block></block>
-  <block id="fe06217dfe728a4663456cded8fa4095" category="list-text"><block ref="fe06217dfe728a4663456cded8fa4095" category="inline-link-macro-rx"></block></block>
   <block id="80d79e74efb3cf7c2ad45e7e1c96223d" category="inline-link-macro">將NVIDIA IP SN2100交換器重設為原廠預設值</block>
   <block id="9dce4db3e352a666d92ce25dd5f94a51" category="list-text"><block ref="9dce4db3e352a666d92ce25dd5f94a51" category="inline-link-macro-rx"></block></block>
-  <block id="4f586337d2fd3e18706fce945038a04a" category="list-text"><block ref="4f586337d2fd3e18706fce945038a04a" category="inline-link-macro-rx"></block></block>
   <block id="59908dc1540a829f2e5b2241e8bda0cd" category="inline-link-macro">下載並安裝 NVIDIA IP RCF 檔案</block>
   <block id="73f5dfd8823a821a2efabbc978e0229c" category="list-text"><block ref="73f5dfd8823a821a2efabbc978e0229c" category="inline-link-macro-rx"></block></block>
   <block id="c61e96543ff55077f64d8dd03940c2c6" category="list-text">AFF A70</block>
@@ -13682,16 +13661,13 @@
   <block id="e4d3a0569925dd58f4e2c0c40b889993" category="paragraph">AFF A220 、 FAS2750</block>
   <block id="fc028e3a959d5040cb2c7b0ceac73cf8" category="paragraph">AFF A300 、 FAS8200</block>
   <block id="28cf84e4b9c7d19ba37159218fdea6f0" category="section-title">支援的控制器升級</block>
-  <block id="df9d5dab8402039e8e49491ea2b155f4" category="admonition">如需在四節點 MetroCluster IP 組態中使用命令進行支援的升級<block ref="616743bfa4fd61d558c556fe614cb2e9" prefix=" " category="inline-code"></block> 、請參閱中的表格 <block ref="cdc5d26dd7214bbc9da99c730f208713" category="inline-link-macro-rx"></block></block>
   <block id="00422b8712ec5454364e6489bb81ba29" category="list-text">當您執行控制器升級時、舊的和新的平台類型 * 必須 * 相符：</block>
   <block id="ea246a6495df1b87df40d7c322d23942" category="list-text">MetroCluster 組態中的所有節點（新舊節點）都必須執行相同的 ONTAP 版本。</block>
   <block id="5505f24f1b03305d31aacdd035c7f251" category="paragraph-title">支援的 AFF 和 FAS MetroCluster IP 控制器升級</block>
-  <block id="fcb21df516134bd5563b8b7bef30f98b" category="paragraph">下表顯示在 MetroCluster IP 組態中升級 AFF 或 FAS 系統所支援的平台組合：</block>
   <block id="7b8670a76cf1dc8cbe357ce34cc11736" category="image-alt">MetroCluster IP 升級 sb AFF FAS</block>
   <block id="ae189029f72cc261fbad1afff41d9552" category="list-text">附註 3 ：目標平台必須等到控制器升級完成後、才能擁有內部磁碟機。您可以在升級後新增內部磁碟機。</block>
   <block id="39eb8422a5f49fae94f0335febb78701" category="list-text">附註 4 ：需要更換控制器模組。</block>
   <block id="2d5d2a9ece12ce430adc9f20c9e9464d" category="paragraph-title">支援的 ASA MetroCluster IP 控制器升級</block>
-  <block id="1fdcb939cb28cfa6612abe5d949f5cdb" category="paragraph">下表顯示在 MetroCluster IP 組態中升級 ASA 系統所支援的平台組合：</block>
   <block id="6d340f03110b449d466e554ef5a4a7af" category="image-alt">MetroCluster IP 升級 sb ASA FAS</block>
   <block id="9311605dda14c8d475dd817b196dbe33" category="list-text">附註 1 ：執行 ONTAP 9.13.1 或更新版本的系統支援控制器升級。</block>
   <block id="e201b3063a835c6ab815286f4d0dc126" category="paragraph-title">支援的 AFF 和 FAS MetroCluster FC 控制器升級</block>
@@ -13755,7 +13731,6 @@
   <block id="c5b67774bb32fdf25c42ebcc33f3e43d" category="list-text">在要升級的 DR 群組中的每個節點上重複這些步驟。</block>
   <block id="6986e6230a992abf2372b5ddb288c1ec" category="list-text"><block ref="6986e6230a992abf2372b5ddb288c1ec" category="inline-link-macro-rx"></block></block>
   <block id="9cf1b9d10ebe2c0f0ae4072a054220a3" category="list-text"><block ref="9cf1b9d10ebe2c0f0ae4072a054220a3" category="inline-link-macro-rx"></block></block>
-  <block id="0bc8e4789fc33f4aefa1d33adc11eb9f" category="list-text"><block ref="0bc8e4789fc33f4aefa1d33adc11eb9f" category="inline-link-macro-rx"></block></block>
   <block id="d71cd39faa20e04542bb87bdbf15456a" category="list-text"><block ref="d71cd39faa20e04542bb87bdbf15456a" category="inline-link-macro-rx"></block></block>
   <block id="a3b6bdcb84b2fd3938bbc199daa24115" category="section-title">以網路開機新的控制器</block>
   <block id="1d6634f1d19b7ad582264acf3f3975d4" category="list-text">檢查節點是否為多路徑： +<block ref="395c8c225a0f5ec95ae5122ac1899d9b" prefix=" " category="inline-code"></block></block>
@@ -13806,7 +13781,6 @@
   <block id="ef53a1465284a8eba202285b88ef0eb2" category="section-title">更新交換器 RCFs 以容納新平台</block>
   <block id="8aedcbe06dc4ee85bfbfe46c6a62713c" category="paragraph">您可以在包含目前正在升級之控制器的站台上執行此工作。在本程序所示的範例中、我們會先升級 site_B 。</block>
   <block id="097b5e4a3935e7904f9e57e130711c8b" category="inline-link-macro">下載並安裝 NVIDIA IP SN2100 交換器 RCF 檔案</block>
-  <block id="28e2bd4eabf6ae375e91c35fdc2b3bde" category="list-text"><block ref="28e2bd4eabf6ae375e91c35fdc2b3bde" category="inline-link-macro-rx"></block></block>
   <block id="a0738c0401f656b59d11c3e37bee47f0" category="paragraph">在此任務中，您將使用中升級過程前面確定的 UUID 和系統 ID <block ref="a74b37b1135e46e1745610d5ef77ba43" category="inline-xref-macro-rx"></block>。</block>
   <block id="080c153c3d5c3f5a7519058826d07cb8" category="paragraph"><block ref="579363eabf2a70eb9e6c8d9b1bca9609" prefix="" category="inline-code"></block></block>
   <block id="ba2a7c5e352255c376b6b0d315a1ffc1" category="paragraph"><block ref="3edfeb45325920fedac6b21b22c6872d" prefix="" category="inline-code"></block></block>
@@ -14039,4 +14013,56 @@
   <block id="5feb826151198d290926a00c8f0166bd" category="paragraph">下表顯示 ASA 系統支援的平台組合。</block>
   <block id="26f5174a535725c2475715c5b1747824" category="cell">目標 MetroCluster IP 平台</block>
   <block id="315289188a5b2b11bb8fe0c80160e8d4" category="sidebar">將節點新增至 MetroCluster 組態之前、請先傳送自訂的 AutoSupport 訊息</block>
+  <block id="dff95cb9e5adc8c22082286195b9c18b" category="list-text"><block ref="dff95cb9e5adc8c22082286195b9c18b" category="inline-link-macro-rx"></block></block>
+  <block id="86e4bcdd91ae737b95a3cf066dd128f7" category="paragraph">舊的和新的系統 ID 在中進行了識別 <block ref="e3858d0d76295d35179b2ac088c574f3" category="inline-link-macro-rx"></block>。</block>
+  <block id="f411a218519aacec5088cc5a3d23eb64" category="paragraph">舊的和新的系統 ID 在中進行了識別 <block ref="372daca62ea6308294fd70c00fcc8af2" category="inline-link-macro-rx"></block>。</block>
+  <block id="11ceccfd751fe28a61b558ba07583aff" category="section-title">FiberBridge 7600N 和 7500N 橋接器上支援的磁碟和磁碟櫃數量</block>
+  <block id="ff2961229b46cc89dffec4aab67d010d" category="paragraph">下表顯示一對 FiberBridge 7600N 和 7500N 橋接器支援的磁碟和機櫃數量。</block>
+  <block id="b8cbb75a8c2b1413bcddd7c532ccc064" category="list-text">您達到的第一個限制適用。</block>
+  <block id="2a3f0c8b0ca6744889b3ffa76d4b9f5b" category="list-text">如果您使用的是 DS460C 機櫃、最多只能使用 240 個磁碟機、相當於 4 個機櫃。</block>
+  <block id="5ccf1f9193b673f77fa0a023f0c64238" category="list-text">如果您使用的是 DS212C 機櫃、最多只能使用 120 個磁碟機、相當於 10 個機櫃。</block>
+  <block id="402fb729f11d0452c518d4172b605b2c" category="paragraph-title">支援的磁碟數量</block>
+  <block id="c75f82dd210bf38bdd42ff246823dd9e" category="paragraph">檢閱一對 FiberBridge 7600N 或 7500N 橋接器支援的磁碟數量：</block>
+  <block id="3baa66bdd3ca9158478ad78d6079db1c" category="cell">磁碟組</block>
+  <block id="3d0bf05155f3dfd0eeccf9e953d46156" category="cell">磁碟類型</block>
+  <block id="eda8b8dec444e51f3afb1c089a183afc" category="cell">每個橋接器配對的磁碟總數</block>
+  <block id="4a761ba24826218f4585e8feddc64d7c" category="cell">所有 SSD</block>
+  <block id="34df20bab5e85dc75bfc94ef569cced9" category="cell">SSD</block>
+  <block id="b0df25be54449fa53d1180d01ad8bdc5" category="cell">所有 HDD</block>
+  <block id="9c2dc227590d4220750b52b21b0aeb99" category="cell">HDD</block>
+  <block id="335f5352088d7d9bf74191e006d8e24c" category="cell">240</block>
+  <block id="de97ed9eb6dc112873264b693e05c88c" category="cell">混合（ 96 個 SSD ）</block>
+  <block id="0a09c8844ba8f0936c20bd791130d6b6" category="cell">144</block>
+  <block id="1b48b5dfad482eb966c69b885c217e13" category="cell">混合式（ 72 個 SSD ）</block>
+  <block id="006f52e9102a8d3be2fe5614f42ba989" category="cell">168</block>
+  <block id="79fa5a72c63f064bf5ae4709ac221926" category="cell">混合式（ 48 個 SSD ）</block>
+  <block id="58a2fc6ed39fd083f55d4182bf88826d" category="cell">192</block>
+  <block id="1c151db89d2679449be5c45bb7b8d994" category="cell">混合式（ 24 個 SSD ）</block>
+  <block id="45fbc6d3e05ebd93369ce542e8f2322d" category="cell">216</block>
+  <block id="c742d6affaef84b501d784319fca6de4" category="paragraph-title">支援的機櫃數量</block>
+  <block id="22daa6b9c9c5e98028929434af5223de" category="paragraph">檢閱一對 FiberBridge 7600N 和 7500N 橋接器背後支援的機櫃數量：</block>
+  <block id="ca7ac3a83947da614de147e934674475" category="cell">機櫃總數</block>
+  <block id="699b4f79215d191584653efebf156e52" category="cell">混合</block>
+  <block id="04e334293a29a0fcdf98b56004e27edc" category="section-title">MetroCluster 相容於 NetApp 驗證的交換器</block>
+  <block id="5c5c34d5e7843e9424f3ca2380ae18ea" category="list-text"><block ref="5c5c34d5e7843e9424f3ca2380ae18ea" category="inline-link-macro-rx"></block></block>
+  <block id="a629fe794ff2e51df541a99e4468ebb2" category="paragraph">如果您需要以網路開機新的控制器、請參閱 <block ref="a7e3b7fa9390de21e9e66df9d4048c53" category="inline-link-macro-rx"></block>。</block>
+  <block id="910d0f6661c3968f4e7402c808d31b3f" category="list-text"><block ref="910d0f6661c3968f4e7402c808d31b3f" category="inline-link-macro-rx"></block></block>
+  <block id="740c0d0f6d37afa212fad2bd272a4212" category="list-text">Tiebreaker 1.6 僅支援 SNMPv3 。</block>
+  <block id="a98720fe58fe46f2a22c59d172b69fbf" category="list-text">雖然 tiebreaker 1.5 和 1.4 支援 SNMPv1 和 SNMPv3 、但 NetApp 強烈建議您設定 SNMPv3 以獲得最佳安全性。</block>
+  <block id="c93871f59c253b2d1ca21a1ce2a00ff8" category="paragraph"><block ref="5ef546c28db0706808d8d451d5a71029" prefix=" " category="inline-code"></block>命令回應取決於您所執行的 tiebreaker 版本。</block>
+  <block id="bb4e2064b1b9dc64a3fb5d4bbdce1c6d" category="paragraph">以下範例顯示 SNMP 接收器的組態、該接收器支援 IP 位址為 192.0.2.255 的 SNMPv3 、以及設陷訊息的連接埠編號 162 。Tiebreaker軟體已準備好傳送設陷到您指定的SNMP接收器。</block>
+  <block id="17a3b20a7dea5f1be315df3d2d4ba571" category="admonition">Tiebreaker 1.6 僅支援 SNMPv3</block>
+  <block id="837173a04a89631774aea0ce8c3f374d" category="open-title">斷路器 1.5 和 1.4</block>
+  <block id="b2962497ee34ee0b78461915f42ef154" category="admonition">您應該設定v3、因為SNMPv1不安全。驗證預設社群字串是否設定為 * 非 * 公開。</block>
+  <block id="b30066626a2a1f5bfd537d010ce36f51" category="paragraph">瞭解支援的 MetroCluster IP 和 FC 控制器升級組合。</block>
+  <block id="8babc09a7497ad4c2756db165bd8cd5c" category="section-title">使用「系統控制器置換」命令支援的 MetroCluster IP 控制器升級</block>
+  <block id="190421b938f84b927163204510df7319" category="paragraph">如需支援的平台、請參閱中的表格 <block ref="cdc5d26dd7214bbc9da99c730f208713" category="inline-link-macro-rx"></block> 。</block>
+  <block id="8e30d2803b603d7bc1c9f3584b57c881" category="section-title">所有其他支援的 MetroCluster IP 控制器升級</block>
+  <block id="17c7cb78cf2f2286d3034a3959bc800e" category="paragraph">從本節的 MetroCluster 控制器升級表中找到您的 * 來源 * 平台。如果 *Source* 平台列與 *Target* 平台欄的交會為空白、則不支援升級。</block>
+  <block id="ece07deebff7293937869fc01fd521f0" category="paragraph">下表顯示在 MetroCluster IP 組態中手動升級 AFF 或 FAS 系統所支援的平台組合：</block>
+  <block id="8430e377fbc83f194587bd875ac99b4b" category="paragraph">下表顯示在 MetroCluster IP 組態中手動升級 ASA 系統所支援的平台組合：</block>
+  <block id="13457800bf31e25265b68e75f49b98c7" category="inline-link-macro">[ 將 Broadcom IP 交換器重設為原廠預設值</block>
+  <block id="0f664d89fa7312c24449004d102db687" category="list-text"><block ref="0f664d89fa7312c24449004d102db687" category="inline-link-macro-rx"></block></block>
+  <block id="8a97a528989bc12cbf81ee0102a889dc" category="list-text"><block ref="8a97a528989bc12cbf81ee0102a889dc" category="inline-link-macro-rx"></block></block>
+  <block id="5517f0f4079cbe32b861155b72575d78" category="paragraph">下表顯示使用「系統控制器置換」命令在 MetroCluster IP 組態中升級 AFF 或 FAS 系統所支援的平台組合：</block>
 </blocks>

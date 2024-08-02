@@ -30,7 +30,7 @@ summary: 如果在災難站台更換了控制器模組或NVRAM卡、您必須將
 * node_B_2正常。
 
 
-舊的和新的系統ID已在中識別 link:../disaster-recovery/task_replace_hardware_and_boot_new_controllers.html#determining-the-system-ids-of-the-replacement-controller-modules["確定更換控制器模組的新系統ID"]。
+舊的和新的系統 ID 在中進行了識別 link:../disaster-recovery/task_replace_hardware_and_boot_new_controllers.html["更換硬體並啟動新的控制器"]。
 
 本程序中的範例使用具有下列系統ID的控制器：
 
