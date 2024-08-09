@@ -6055,7 +6055,6 @@
   <block id="26a1b5abfaa8d36a512417a3da776baf" category="summary">您可以深入瞭MetroCluster 解有關功能的組態設定與操作。</block>
   <block id="be66634f5c72a17ac1efdaa2b09a1da6" category="paragraph"><block ref="be66634f5c72a17ac1efdaa2b09a1da6" category="inline-link-macro-rx"></block></block>
   <block id="2839ce8da1b91633a5faa834ae8e86da" category="inline-link">NetApp技術報告4375：NetApp MetroCluster 的《ONTAP 關於NetApp的資訊》9.3</block>
-  <block id="01f9eb8f1fd390bc11c63296bd1aa6ad" category="paragraph"><block ref="01f9eb8f1fd390bc11c63296bd1aa6ad" category="inline-link-rx"></block></block>
   <block id="9a0dfb0af7717632c4b3bc7de1ff2fff" category="paragraph"><block ref="9a0dfb0af7717632c4b3bc7de1ff2fff" category="inline-link-rx"></block></block>
   <block id="93243b0f6b4acb465eab6ea852cda287" category="list-text">關於進行支援的準則MetroCluster</block>
   <block id="a799b6621a4b77ae4bd1ff7a98dd52da" category="list-text">在光纖附加或延伸MetroCluster 的支援架構組態中熱新增磁碟櫃</block>
@@ -14065,4 +14064,5 @@
   <block id="0f664d89fa7312c24449004d102db687" category="list-text"><block ref="0f664d89fa7312c24449004d102db687" category="inline-link-macro-rx"></block></block>
   <block id="8a97a528989bc12cbf81ee0102a889dc" category="list-text"><block ref="8a97a528989bc12cbf81ee0102a889dc" category="inline-link-macro-rx"></block></block>
   <block id="5517f0f4079cbe32b861155b72575d78" category="paragraph">下表顯示使用「系統控制器置換」命令在 MetroCluster IP 組態中升級 AFF 或 FAS 系統所支援的平台組合：</block>
+  <block id="0ef5c60e365bf027441cd538ad7f03c9" category="paragraph"><block ref="0ef5c60e365bf027441cd538ad7f03c9" category="inline-link-rx"></block></block>
 </blocks>
