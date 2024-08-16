@@ -13,8 +13,12 @@ summary: 您可能需要變更交換器上ISL連接埠的速度、以改善ISL�
 [role="lead"]
 您可能需要變更交換器上ISL連接埠的速度、以改善ISL的品質。長距離行駛的ISL可能需要降低速度以改善品質。
 
-您必須完成兩台交換器上的所有步驟、以確保ISL連線能力。
+.關於這項工作
+* 完成兩台交換器上的所有步驟、以確保 ISL 連線。
+* link:enable-console-logging-before-maintenance.html["啟用主控台記錄"] 在執行此工作之前。
 
+
+.步驟
 . 停用ISL的ISL連接埠、以變更Fabric中兩個交換器的速度：
 +
 f_switch_a_1#組態t*

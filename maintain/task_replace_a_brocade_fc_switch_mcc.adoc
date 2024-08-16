@@ -13,7 +13,10 @@ summary: 您必須使用此Brocade專屬程序來更換故障的交換器。
 [role="lead"]
 您必須使用此Brocade專屬程序來更換故障的交換器。
 
+.關於這項工作
 您需要管理員密碼、才能存取FTP或scp伺服器。
+
+link:enable-console-logging-before-maintenance.html["啟用主控台記錄"] 在執行此工作之前。
 
 在下列範例中、FC_switch_a_1是正常的交換器、FC_switch_B_1是功能受損的交換器。下表顯示範例中的交換器連接埠使用量：
 

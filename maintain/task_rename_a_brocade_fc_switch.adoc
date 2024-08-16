@@ -13,6 +13,9 @@ summary: 您可能需要重新命名Brocade FC交換器、以確保在整個組�
 [role="lead"]
 您可能需要重新命名Brocade FC交換器、以確保在整個組態中一致的命名。
 
+.關於這項工作
+link:enable-console-logging-before-maintenance.html["啟用主控台記錄"] 在執行此工作之前。
+
 .步驟
 . 持續停用單一網路架構中的交換器：
 +

@@ -8,6 +8,8 @@ entries:
   url: "/maintain/reference_mcc_failure_scenarios.html"
 - title: 在ONTAP 執行維護工作之前、請先移除「協調器」或「斷路器監控」
   url: "/maintain/concept_remove_mediator_or_tiebreaker_when_performing_maintenance_tasks.html"
+- title: 在執行維護工作之前、請先啟用主控台記錄
+  url: "/maintain/enable-console-logging-before-maintenance.html"
 - title: FC至SAS橋接器維護
   entries:
   - title: 支援MetroCluster 採用支援的FIBreBridge 7600N橋接器、採用各種不完整的組態

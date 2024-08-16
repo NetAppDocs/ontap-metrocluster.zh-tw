@@ -13,7 +13,10 @@ summary: 升級MetroCluster 靜態IP交換器上的韌體。
 [role="lead"]
 您可能需要在MetroCluster 一個無法更新的IP交換器上升級韌體。
 
+.關於這項工作
 您必須在每個交換器上連續重複此工作。
+
+link:enable-console-logging-before-maintenance.html["啟用主控台記錄"] 在執行此工作之前。
 
 [[step_1_fw_upgrade]]
 .步驟

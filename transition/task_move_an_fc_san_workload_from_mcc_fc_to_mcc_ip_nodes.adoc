@@ -13,6 +13,11 @@ summary: 如果從MetroCluster 支援不中斷營運的功能、從支援功能�
 [role="lead"]
 如果從MetroCluster 支援不中斷營運的功能、從支援功能的FC移轉至IP節點、您必須不中斷營運地將FC SAN主機物件從MetroCluster 支援功能的支援中心移轉至IP節點。
 
+
+
+== 將FC SAN工作負載從MetroCluster 支援功能的FC移至MetroCluster 支援功能的IP節點
+
+.步驟
 . 在MetroCluster Sing IP節點上設定新的FC介面（LIF）：
 +
 .. 如有需要、請MetroCluster 在靜態IP節點上修改FC連接埠、以供用戶端連線至FC目標特性設定。

@@ -38,6 +38,20 @@ image::../media/mcc_dr_groups_8_node.gif[MCC DR群組8節點]
 
 
 
+== 啟用主控台記錄
+
+NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在執行此程序時採取下列動作：
+
+* 在維護期間保持啟用 AutoSupport 。
+* 在維護之前和之後觸發維護 AutoSupport 訊息、以在維護活動期間停用案例建立。
++
+請參閱知識庫文章 link:https://kb.netapp.com/Support_Bulletins/Customer_Bulletins/SU92["如何在排程的維護期間、隱藏自動建立個案"^]。
+
+* 啟用任何 CLI 工作階段的工作階段記錄。有關如何啓用會話日誌記錄的說明，請查看知識庫文章中的“日誌記錄會話輸出”部分 link:https://kb.netapp.com/on-prem/ontap/Ontap_OS/OS-KBs/How_to_configure_PuTTY_for_optimal_connectivity_to_ONTAP_systems["如何設定 Putty 以最佳化連線至 ONTAP 系統"^]。
+
+
+
+
 == 新增第二個 DR 群組時支援的平台組合
 
 下表顯示八節點 MetroCluster FC 組態支援的平台組合。

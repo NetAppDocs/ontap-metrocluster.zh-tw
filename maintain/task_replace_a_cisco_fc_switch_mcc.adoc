@@ -16,6 +16,8 @@ summary: 您必須使用Cisco專屬的步驟來更換故障的Cisco FC交換器�
 .開始之前
 您需要管理員密碼、才能存取FTP或scp伺服器。
 
+link:enable-console-logging-before-maintenance.html["啟用主控台記錄"] 在執行此工作之前。
+
 .關於這項工作
 此程序不中斷營運、約需兩小時完成。
 

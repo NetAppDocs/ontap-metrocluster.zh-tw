@@ -13,6 +13,7 @@ summary: 您可能需要變更 FC 交換器的廠商（ Cisco 改為 Brocade 、
 
 .關於這項工作
 * 此程序適用於使用 NetApp 驗證交換器的情況。
+* link:enable-console-logging-before-maintenance.html["啟用主控台記錄"] 在執行此工作之前。
 * 對於組態中的兩個 Fabric 、您必須一次在一個 Fabric 上執行本程序中的步驟。
 
 

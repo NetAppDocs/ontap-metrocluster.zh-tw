@@ -13,9 +13,12 @@ summary: 執行維護時、您可能需要關閉 MetroCluster IP 介面連接埠
 [role="lead"]
 執行維護工作時、您可能需要將 MetroCluster IP 介面連接埠離線或上線。
 
-您可以使用下列步驟離線或線上 MetroCluster IP 介面連接埠。
+.關於這項工作
+link:enable-console-logging-before-maintenance.html["啟用主控台記錄"] 在執行此工作之前。
 
 .步驟
+您可以使用下列步驟將 MetroCluster IP 介面連接埠上線或離線。
+
 . 將權限層級設為進階。
 +
 [source, cli]

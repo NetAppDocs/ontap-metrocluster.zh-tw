@@ -26,6 +26,8 @@ NOTE: 如果您在連接 NS224 機櫃的共享組態中使用 Cisco 9336C-FX2 �
 .開始之前
 請參閱的 * 切換開關 * 一節 link:https://hwu.netapp.com/["NetApp Hardware Universe"^] 驗證支援的收發器。
 
+link:enable-console-logging-before-maintenance.html["啟用主控台記錄"] 在執行此工作之前。
+
 .步驟
 . 在您要變更的光纖網路中、停用兩個交換器上ISL的ISL連接埠。
 +

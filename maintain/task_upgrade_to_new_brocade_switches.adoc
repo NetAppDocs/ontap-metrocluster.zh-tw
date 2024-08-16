@@ -24,6 +24,7 @@ https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"^]
 
 * 此程序不中斷營運、約需兩小時完成。
 * 您需要管理員密碼、才能存取FTP或scp伺服器。
+* link:enable-console-logging-before-maintenance.html["啟用主控台記錄"] 在執行此工作之前。
 
 
 交換器架構一次升級一個。

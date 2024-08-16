@@ -12,6 +12,8 @@ entries:
   entries:
   - title: 開始之前
     url: "/disaster-recovery/task_recover_from_a_multi_controller_and_or_storage_failure.html"
+  - title: 啟用主控台記錄
+    url: "/disaster-recovery/task-enable-console-logging.html"
   - title: 更換硬體並啟動新的控制器
     url: "/disaster-recovery/task_replace_hardware_and_boot_new_controllers.html"
   - title: 準備MetroCluster 在不還原IP組態中進行切換

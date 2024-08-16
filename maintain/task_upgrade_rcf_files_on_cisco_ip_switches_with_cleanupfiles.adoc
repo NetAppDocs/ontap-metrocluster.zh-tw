@@ -15,6 +15,9 @@ summary: 您可能需要升級Cisco IP交換器上的RCF檔案。例如ONTAP 、
 
 .關於這項工作
 * 從RcfFileGenerator1.4a版開始、Cisco IP交換器上有一個新選項可以變更（升級、降級或更換）交換器組態、而不需要執行「寫入清除」。
+* link:enable-console-logging-before-maintenance.html["啟用主控台記錄"] 在執行此工作之前。
+
+
 * Cisco 9336C-FX2 交換器有兩種不同的交換器儲存類型、在 RCF 中命名不同。請使用下表判斷您的組態適用的正確 Cisco 9336C-FX2 儲存類型：
 +
 [cols="3*"]

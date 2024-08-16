@@ -67,6 +67,7 @@ Filename : NX3232_v1.80_Switch-A2.txt
 .關於這項工作
 * 此程序會中斷升級RCF檔案的交換器流量。一旦套用新的RCF檔案、流量就會恢復。
 * 一次在一個交換器上執行下列步驟： switch_a_1 、 Switch_B_1 、 Switch_a_2 、 Switch_B_2 。
+* link:enable-console-logging-before-maintenance.html["啟用主控台記錄"] 在執行此工作之前。
 
 
 .步驟

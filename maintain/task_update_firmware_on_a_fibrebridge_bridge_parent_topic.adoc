@@ -13,6 +13,9 @@ summary: 更新橋接韌體的程序取決於您的橋接器機型和ONTAP 版�
 [role="lead"]
 更新橋接韌體的程序取決於您的橋接器機型和ONTAP 版本。
 
+.關於這項工作
+link:enable-console-logging-before-maintenance.html["啟用主控台記錄"] 在執行此工作之前。
+
 
 
 == 在執行ONTAP 版本號為9.4或更新版本的組態上、更新FIBreBridge 7600N或7500N上的韌體

@@ -19,6 +19,7 @@ summary: 您可能需要使用MetroCluster 共享儲存MetroCluster 功能交換
 * 節點必須執行ONTAP 的是無法正常運作的版本。
 * 所有目前連線的NS224磁碟櫃都必須連接到MetroCluster 與該處理器相同的交換器（共享儲存/ MetroCluster 交換器組態）。
 * 此程序無法用於將直接連接NS224磁碟櫃或NS224磁碟櫃連接至專用乙太網路交換器的組態、轉換成使用共享儲存/ MetroCluster 交換器的組態。
+* link:enable-console-logging-before-maintenance.html["啟用主控台記錄"] 在執行此工作之前。
 
 
 

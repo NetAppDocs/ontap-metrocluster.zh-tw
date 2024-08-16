@@ -13,8 +13,12 @@ summary: 您可能需要重新命名Cisco IP交換器、以便在整個組態中
 [role="lead"]
 您可能需要重新命名Cisco IP交換器、以便在整個組態中提供一致的命名。
 
-在此工作範例中、交換器名稱會從「mytswitch」變更為「ip_switch_a_1」。
+.關於這項工作
+* 在此工作範例中、交換器名稱會從「mytswitch」變更為「ip_switch_a_1」。
+* link:enable-console-logging-before-maintenance.html["啟用主控台記錄"] 在執行此工作之前。
 
+
+.步驟
 . 進入全域組態模式：
 +
 ’*組態終端機*

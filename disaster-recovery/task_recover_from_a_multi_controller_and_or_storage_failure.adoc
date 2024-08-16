@@ -13,19 +13,25 @@ summary: 如果控制器故障延伸至DR群組一側的所有控制器模組Met
 [role="lead"]
 如果控制器故障延伸到DR群組一側的所有控制器模組MetroCluster （包括雙節點MetroCluster 的一個組態中的單一控制器）、或是儲存設備已更換、則您必須更換設備並重新指派磁碟機的擁有權、以便從災難中恢復。
 
-* 在決定使用此程序之前、您應該先檢閱可用的恢復程序。
+在使用此程序之前、請確認您已檢查並執行下列工作：
+
+* 在決定使用此程序之前、請先檢閱可用的還原程序。
 +
 link:concept_choosing_the_correct_recovery_procedure_parent_concept.html["選擇正確的恢復程序"]
 
-* 災難現場必須圍起來。
+* 確認您的裝置已啟用主控台記錄。
++
+link:task-enable-console-logging.html["啟用主控台記錄"]
+
+* 請確定災難站台已隔離。
 +
 link:task_perform_a_forced_switchover_after_a_disaster.html#fencing-off-the-disaster-site["隔離災難站台"]。
 
-* 必須已執行切換。
+* 驗證是否已執行了操作。
 +
 link:task_perform_a_forced_switchover_after_a_disaster.html#performing-a-forced-switchover["執行強制切換"]。
 
-* 更換磁碟機和控制器模組必須是新的、而且之前不得指派所有權。
+* 確認更換磁碟機和控制器模組是新的、而且之前不得指派所有權。
 * 本程序中的範例顯示兩個或四個節點的組態。如果您有八節點組態（兩個DR群組）、則必須考量任何故障、並在其他控制器模組上執行所需的恢復工作。
 
 

@@ -34,6 +34,8 @@ entries:
   entries:
   - title: 總覽
     url: "/upgrade/task_expand_a_two_node_mcc_fc_configuration_to_a_four_node_fc_configuration_supertask.html"
+  - title: 啟用主控台記錄
+    url: "/upgrade/task-enable-console-logging-expand-fc.html"
   - title: 驗MetroCluster 證不實組態的狀態
     url: "/upgrade/task_verify_the_state_of_the_mcc_configuration_mcc_expansion.html"
   - title: 將節點新增至 MetroCluster 組態之前、請先傳送自訂的 AutoSupport 訊息
@@ -79,11 +81,7 @@ entries:
     - title: 鏡射新控制器上的根Aggregate
       url: "/upgrade/task_mirror_the_root_aggregates_mcc_expansion_procedure.html"
     - title: 設定叢集間LIF
-      entries:
-      - title: 在專用連接埠上設定叢集間LIF
-        url: "/upgrade/task_configure_intercluster_lifs_to_use_dedicated_intercluster_ports.html"
-      - title: 在共享的資料連接埠上設定叢集間LIF
-        url: "/upgrade/task_configure_intercluster_lifs_to_share_data_ports.html"
+      url: "/upgrade/task-configure-intercluster-lifs.html"
     - title: 在每個節點上建立鏡射資料Aggregate
       url: "/upgrade/task_create_a_mirrored_data_aggregate_on_each_node_mcc.html"
     - title: 安裝新控制器模組的授權
@@ -102,6 +100,8 @@ entries:
   entries:
   - title: 總覽
     url: "/upgrade/task_expand_a_four_node_mcc_fc_configuration_to_an_eight_node_configuration.html"
+  - title: 啟用主控台記錄
+    url: "/upgrade/task-enable-console-logging-expand-fc-four-node.html"
   - title: 判斷新的纜線配置
     url: "/upgrade/task_determin_the_new_cable_layout_mcc_expansion.html"
   - title: 裝上新設備
