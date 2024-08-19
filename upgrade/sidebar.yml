@@ -133,11 +133,7 @@ entries:
     - title: 將叢集設定為MetroCluster 一個靜態組態
       entries:
       - title: 設定叢集間LIF
-        entries:
-        - title: 在專用連接埠上設定叢集間LIF
-          url: "/upgrade/task_configure_intercluster_lifs_to_use_dedicated_intercluster_ports.html"
-        - title: 在共享的資料連接埠上設定叢集間LIF
-          url: "/upgrade/task_configure_intercluster_lifs_to_share_data_ports.html"
+        url: "/upgrade/task-configure-intercluster-lifs-4node.html"
       - title: 鏡射根Aggregate
         url: "/upgrade/task_mirror_the_root_aggregates_mcc.html"
       - title: 實作MetroCluster 這個組態
