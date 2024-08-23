@@ -2223,9 +2223,7 @@
   <block id="147fd0500c6c6d57f507339941c4ecdb" category="paragraph">系統會提示您重新啟動橋接器。</block>
   <block id="0d0c0c98576403d7d46bc7ee7fa9fa7a" category="list-text">更新每個橋接器上的FibreBridge韌體。</block>
   <block id="b2d9f80a5c71fe34bed7839914c2fd68" category="paragraph">如果新橋接器的類型與合作夥伴橋接器的類型相同、請升級至與合作夥伴橋接器相同的韌體。如果新橋接器與合作夥伴橋接器的類型不同、請升級至橋接器和ONTAP 版本的更新韌體。請參閱「_ESIFATE_ MetroCluster 」中的「更新連接到光纖橋接器上的韌體」一節。</block>
-  <block id="9013c925bc3a423f843c073690ed8081" category="list-text">[[step17-elende-Newbrida]將SAS和FC纜線重新連接至新橋接器上的相同連接埠。</block>
   <block id="3b5ef1874490ddb39e2ab56e91c15fd9" category="admonition">連接連接埠之前、請至少等待10秒鐘。SAS纜線連接器採用鎖定式設計；若方向正確放入SAS連接埠、連接器會卡入定位、而磁碟櫃SAS連接埠LNK LED會亮起綠色。若為磁碟櫃、請插入SAS纜線連接器、拉片朝下（位於連接器底部）。對於控制器、SAS連接埠的方向可能會因平台機型而異、因此SAS纜線連接器的正確方向會有所不同。</block>
-  <block id="6795687b051fe5f1cb692559517648dd" category="list-text">[[step18-verify-each bridge ]確認每個橋接器都能看到橋接器所連接的所有磁碟機和磁碟櫃。</block>
   <block id="51618dab77295eddd5c15097ed80ca2d" category="cell">如果您使用...</block>
   <block id="8d7a98cf0e3de35b46f4b4e7fca074f1" category="paragraph">Atto ExpressNAV GUI</block>
   <block id="cf6dbfa4f0192b540abc550aae0f260f" category="list-text">在支援的網頁瀏覽器中、於瀏覽器方塊中輸入橋接器的IP位址。</block>
@@ -2244,11 +2242,8 @@
   <block id="29219bad186be0330f9ec59a1f483a14" category="cell">如果輸出是...</block>
   <block id="d0a3892a5b340ce4f3472dc7595dce02" category="paragraph">正確</block>
   <block id="b9da98e99c8057fc3b9a54d9d19ff501" category="inline-xref">步驟18</block>
-  <block id="828e19cfb619dbe3f082c13af71c8804" category="paragraph">重複 <block ref="eecb3f0fe03b243e2ecc1f82fe37ecc5" category="inline-xref-macro-rx"></block> 每個剩餘的橋接器。</block>
   <block id="03f13166de52c74a41327e27684b674e" category="paragraph">不正確</block>
   <block id="9c709df0d0930ada3ab147bf9abe8f06" category="inline-xref">步驟17</block>
-  <block id="78cffeb475b967afce30e7091b0a7aec" category="list-text">檢查SAS纜線是否鬆脫、或重複修正SAS纜線 <block ref="34712c7e0b7391b53f3aade40f6e2ba2" category="inline-xref-macro-rx"></block>。</block>
-  <block id="daae67946266f0e5177fa51a3f38fec3" category="list-text">重複 <block ref="eecb3f0fe03b243e2ecc1f82fe37ecc5" category="inline-xref-macro-rx"></block>。</block>
   <block id="2273b85e84dfebeb5a21bbd359461d0f" category="list-text">如果橋接器採用網路連接MetroCluster 的功能區、請重新啟用您在本程序開始時停用的FC交換器連接埠。</block>
   <block id="9a20682ddc8cef489d77b087b78b3e16" category="paragraph">這應該是連接到橋接器的連接埠。</block>
   <block id="253278bf8807d2fb353066f7109cc7f2" category="list-text">從兩個控制器模組的系統主控台、確認所有的控制器模組都能透過新的橋接器存取磁碟櫃（也就是系統已連接多重路徑HA的纜線）：</block>
@@ -14098,4 +14093,14 @@
   <block id="764a523cf339780ca4471f143c5ae04c" category="paragraph"><block ref="d1f7a93b5f0792c01647ca314d5d7e27" prefix="" category="inline-code"></block></block>
   <block id="6e7eea4bc90b7da31497a85ace82eec8" category="paragraph"><block ref="751a8e9d76de229f9092fac6fb23b628" prefix="" category="inline-code"></block></block>
   <block id="f1fe27301697eb21073abfcd231c91ab" category="section-title">執行重新整理程序</block>
+  <block id="a713923def413049fcd7bd32d239c3b4" category="list-text">將 FC 纜線連接至新橋接器上的相同連接埠。</block>
+  <block id="c09b16f8a5b97a430a942e2624c2ffc8" category="paragraph">如果新橋接器與合作夥伴橋接器類型相同、請升級至與合作夥伴橋接器相同的韌體。如果新橋接器與合作夥伴橋接器的類型不同、請升級至橋接器和ONTAP 版本的更新韌體。請參閱 <block ref="55e804464be1a7c24451c93244c66ff0" category="inline-link-macro-rx"></block></block>
+  <block id="b5a56495c6cd7b15008b12f44e1c09f9" category="list-text">[[step18-Reconnect-Newbridge] 將 SAS 纜線重新連接至新橋接器上的相同連接埠。</block>
+  <block id="1bf1e8417c00edaec85599df5b47ee94" category="list-text">[[step19-verify-each bridge ]確認每個橋接器都能看到橋接器所連接的所有磁碟機和磁碟櫃。</block>
+  <block id="287bc804244a679c73d0cac4cb0c0b2c" category="inline-xref">步驟 19</block>
+  <block id="c582e7ac4118500a1aaf382ea318eeeb" category="paragraph"><block ref="1c41b1b96665f865995fbed1d8884dfe" category="inline-xref-macro-rx"></block>對其餘的每個橋接器重複上述步驟</block>
+  <block id="2788b7f6b6e21bc5a33df0d4aebf4730" category="list-text">重複檢查 SAS 纜線是否鬆脫<block ref="4f69a23cfa1cdd17cebbee3d88ffc0e9" category="inline-xref-macro-rx"></block>、或是修正 SAS 纜線。</block>
+  <block id="dd59329be100bd10605cd63312522627" category="list-text">重複。<block ref="1c41b1b96665f865995fbed1d8884dfe" category="inline-xref-macro-rx"></block></block>
+  <block id="0b9029dad5ded8eb8b9621381b59b85b" category="paragraph">請使用下列步驟重新整理 MetroCluster FC 組態。</block>
+  <block id="e80b737c5dcc4e6b9a5a4eecb2dc9582" category="paragraph">請使用下列步驟重新整理 MetroCluster IP 組態。</block>
 </blocks>
