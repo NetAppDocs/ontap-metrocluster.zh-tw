@@ -13,8 +13,14 @@ summary: 執行MetroCluster 硬體維護工作時、請務必選擇正確的程�
 [role="lead"]
 執行MetroCluster 硬體維護工作時、請務必選擇正確的程序。
 
+.不同類型 MetroCluster 組態的維護程序
+* 如果您有 MetroCluster IP 組態、請參閱中的程序link:task-modify-ip-netmask-properties.html["MetroCluster IP 組態的維護程序"]。
+* 如果您有 MetroCluster FC 組態、請參閱中的程序link:task_modify_switch_or_bridge_ip_address_for_health_monitoring.html["MetroCluster FC 組態的維護程序"]。
+* 如果您在設定的特定章節中找不到程序，請參閱中的程序link:task_replace_a_shelf_nondisruptively_in_a_stretch_mcc_configuration.html["所有 MetroCluster 組態的維護程序"]。
 
-NOTE: 發行版的更新版本為《》（英文）ONTAP 、MetroCluster 更新及擴充程序已移至《》（英文） link:../upgrade/concept_choosing_an_upgrade_method_mcc.html["升級與擴充MetroCluster"] 和 link:../transition/concept_choosing_your_transition_procedure_mcc_transition.html["從MetroCluster 靜態FC移轉至MetroCluster 靜態IP"]。
+
+.所有其他維護程序
+下表提供與 MetroCluster 維護相關的程序連結、這些程序不在上述三節中列出：
 
 |===
 
@@ -66,28 +72,6 @@ link:../transition/concept_choosing_your_transition_procedure_mcc_transition.htm
  a| 
 FC
  a| 
-機櫃新增（含橋接器或個別機櫃的堆疊）
- a| 
-link:task_hot_add_a_stack_to_exist_7500n_pair.html["將一堆SAS磁碟櫃熱新增至現有的一對光纖橋接器7500N"]
-
-link:task_fb_hot_add_stack_of_shelves_and_bridges.html["熱新增一堆SAS磁碟櫃、並將橋接器連接MetroCluster 至一套系統"]
-
-link:task_fb_hot_add_shelf_prepare_7500n.html["將SAS磁碟櫃熱新增至SAS磁碟櫃堆疊"]
-
-
-
- a| 
-FC
- a| 
-機櫃移除
- a| 
-link:task_hot_remove_storage_from_a_mcc_fc_configuration.html["將儲存設備熱移除MetroCluster 至不需使用的FC組態"]
-
-
-
- a| 
-FC
- a| 
 所有其他機櫃維護程序。可使用標準程序。
  a| 
 https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-sas3-service/home.html["維護DS460C DS224C和DS212C磁碟櫃"^]
@@ -111,111 +95,5 @@ https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-sas3-service/home.ht
 熱新增IOM12磁碟櫃至IOM6磁碟櫃堆疊
  a| 
 https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-mix-hotadd/home.html["將含有IOM12模組的熱新增磁碟櫃放到具有IOM6模組的磁碟櫃堆疊中"^]
-
-
-
- a| 
-FC至SAS橋接器
- a| 
-FC
- a| 
-橋接器更換
- a| 
-link:task_replace_a_sle_fc_to_sas_bridge.html["更換單一FC對SAS橋接器"]
-
-link:task_fb_consolidate_replace_a_pair_of_fibrebridge_6500n_bridges_with_7500n_bridges.html["以7600N或7500N橋接器取代一對FibreBridge 6500N橋接器"]
-
-link:task_replace_a_sle_fc_to_sas_bridge.html#hot-swapping-a-fibrebridge-7500n-with-a-7600n-bridge["以7600N橋接器熱交換使用FibreBridge 7500N"]
-
-
-
- a| 
-FC
- a| 
-韌體升級
- a| 
-link:task_update_firmware_on_a_fibrebridge_bridge_parent_topic.html["更新光纖橋接器上的韌體"]
-
-
-
- a| 
-FC
- a| 
-更換故障的電源供應器模組
- a| 
-link:reference_fb_replace_a_power_supply.html["熱更換故障的電源供應器模組"]
-
-
-
- a| 
-FC交換器
- a| 
-FC
- a| 
-交換器升級
- a| 
-link:task_upgrade_to_new_brocade_switches.html["升級至新的Brocade FC交換器"]
-
-
-
- a| 
-FC
- a| 
-更換交換器
- a| 
-link:task_replace_a_brocade_fc_switch_mcc.html["更換Brocade FC交換器MetroCluster （插座）"]
-
-link:task_replace_a_cisco_fc_switch_mcc.html["更換Cisco FC交換器"]
-
-
-
- a| 
-FC
- a| 
-韌體升級
- a| 
-link:task_upgrade_or_downgrad_the_firmware_on_a_brocade_fc_switch_mcc.html["更新Brocade FC交換器上的韌體"]
-
-link:task_upgrade_or_downgrad_the_firmware_on_a_cisco_fc_switch_mcc.html["正在更新Cisco FC交換器上的韌體"]
-
-
-
- a| 
-IP 交換器
- a| 
-IP
- a| 
-交換器更換或變更使用
- a| 
-link:task_replace_an_ip_switch.html["更換 IP 交換器或變更現有 MetroCluster IP 交換器的使用"]
-
-
-
- a| 
-IP
- a| 
-韌體升級
- a| 
-link:task_upgrade_firmware_on_mcc_ip_switches.html["升級MetroCluster 韌體至靜態IP交換器"]
-
-
-
- a| 
-IP
- a| 
-RCF 檔案升級
- a| 
-link:task_upgrade_rcf_files_on_mcc_ip_switches.html["升級MetroCluster 不只是在靜態IP交換器上的RCF檔案"]
-
-link:task_upgrade_rcf_files_on_cisco_ip_switches_with_cleanupfiles.html["使用高效能檔案升級Cisco IP交換器上的RCF檔案"]
-
-
-
- a| 
-IP
- a| 
-重新命名交換器
- a| 
-link:task_rename_a_cisco_ip_switch.html["重新命名Cisco IP交換器"]
 
 |===

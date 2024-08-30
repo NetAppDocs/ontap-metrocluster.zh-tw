@@ -124,94 +124,120 @@ summary: 您必須從現有MetroCluster 的支援中心節點收集資訊、傳�
 
 * node_a_1-FC
 * node_B_1-FC
-+
-.. 停止所有用戶端流量。
-.. 在任一MetroCluster 個支援功能不全的FC節點上、例如node_a_1-FC、啟用轉換功能。
-+
-... 設定進階權限等級：「et -priv進階」
-... 實現轉換：MetroCluster 「支援「不間斷的轉換」
-... 返回管理模式：「et -priv admin」
 
 
-.. 刪除根Aggregate的遠端叢集、以取消鏡射根Aggregate。
+.步驟
+. 停止所有用戶端流量。
+. 在任一MetroCluster 個支援功能不全的FC節點上、例如node_a_1-FC、啟用轉換功能。
 +
-... 識別根集合體：「torage Aggregate show -root true」
-... 顯示Pool1集合體：「torage Aggregate plex show -pool 1」
-... 刪除根Aggregate的本機叢：「aggr plex刪除agg-name -plex名稱」
-... 離線根Aggregate的遠端叢：「aggr plex offline root-aggregate -plex reme-plex for root aggregate」
+.. 設定進階權限等級：「et -priv進階」
+.. 實現轉換：MetroCluster 「支援「不間斷的轉換」
+.. 返回管理模式：「et -priv admin」
+
+
+. 刪除根Aggregate的遠端叢集、以取消鏡射根Aggregate。
++
+.. 識別根集合體：「torage Aggregate show -root true」
+.. 顯示Pool1集合體：「torage Aggregate plex show -pool 1」
+.. 離線並刪除根 Aggregate 的遠端叢： +
+`aggr plex offline <root-aggregate> -plex <remote-plex-for-root-aggregate>`
++
+`aggr plex delete <root-aggregate> -plex <remote-plex-for-root-aggregate>`
+
 +
 例如：
 
 +
 [listing]
 ----
- # aggr plex offline aggr0_node_A_1-FC_01 -plex plex4
+ # aggr plex offline aggr0_node_A_1-FC_01 -plex remoteplex4
+----
++
+[listing]
+----
+# aggr plex delete aggr0_node_A_1-FC_01 -plex remoteplex4
 ----
 
 
-.. 在每個控制器上使用下列命令之前、請先確認信箱數、磁碟自動指派和轉換模式：
+. 在每個控制器上使用下列命令之前、請先確認信箱數、磁碟自動指派和轉換模式：
 +
-... 設定進階權限等級：「et -priv進階」
-... 確認每個控制器模組只顯示三個信箱磁碟機：「儲存容錯移轉信箱磁碟顯示」
-... 返回管理模式：「et -priv admin」
-... 確認轉換模式會中斷運作：MetroCluster 畫面上顯示「升級」
+.. 設定進階權限等級：「et -priv進階」
+.. 確認每個控制器模組只顯示三個信箱磁碟機：「儲存容錯移轉信箱磁碟顯示」
+.. 返回管理模式：「et -priv admin」
+.. 確認轉換模式會中斷運作：MetroCluster 畫面上顯示「升級」
 
 
-.. 檢查是否有任何損壞的磁碟：「磁碟顯示-中斷」
-.. 移除或更換任何損壞的磁碟
-.. 在node_a_1-FC和node_B_1-FC上使用以下命令確認Aggregate是否正常：'shorage Aggregate show'shorage gregate plex show'
+. 檢查是否有任何損壞的磁碟：「磁碟顯示-中斷」
+. 移除或更換任何損壞的磁碟
+. 在 node_a_1-FC 和 node_B_1-FC 上使用下列命令來確認集合體是否健全：
++
+《集合體展》
+
++
+「集合體展示」
+
 +
 storage Aggregate show命令表示根Aggregate未鏡射。
 
-.. 檢查是否有任何VLAN或介面群組：「network port ifgrp show」（網路連接埠VLAN show）
+. 檢查是否有任何 VLAN 或介面群組：
++
+`network port ifgrp show`
+
++
+`network port vlan show`
+
 +
 如果沒有、請跳過下列兩個步驟。
 
-.. 使用VLAN或ifgrps顯示LIF清單：「network interface show -field home-port、curr-port'、network port show -type if-group | vlan」
-.. 移除任何VLAN和介面群組。
+. 顯示使用 VLAN 或 ifgrps 的生命清單：
++
+「網路介面show -field home-port、curr-port」
+
++
+`network port show -type if-group | vlan`
+
+. 移除任何VLAN和介面群組。
 +
 您必須為所有SVM中的所有LIF執行這些步驟、包括具有-MC字尾的SVM。
 
 +
-... 使用VLAN或介面群組將任何LIF移至可用的連接埠：「網路介面修改-vserver vserver-name -lif_name -home-port連接埠」
-... 顯示不在其主連接埠上的LIF：「network interface show -is-home"
-... 將所有LIF還原至各自的主連接埠：「網路介面還原-vserver vserver_name -lIF lif_name」
-... 驗證所有生命體是否都在其主端口上：「network interface show -is home-false」（網路介面show -is主目錄錯誤）
+.. 使用VLAN或介面群組將任何LIF移至可用的連接埠：「網路介面修改-vserver vserver-name -lif_name -home-port連接埠」
+.. 顯示不在其主連接埠上的LIF：「network interface show -is-home"
+.. 將所有LIF還原至各自的主連接埠：「網路介面還原-vserver vserver_name -lIF lif_name」
+.. 驗證所有生命體是否都在其主端口上：「network interface show -is home-false」（網路介面show -is主目錄錯誤）
 +
 輸出中不應顯示任何生命。
 
-... 從廣播網域移除VLAN和ifgrp連接埠：「網路連接埠廣播網域移除連接埠-IPSpace -廣播網域廣播網域名稱-連接埠節點名稱：連接埠名稱、節點名稱：連接埠名稱、...」
-... 驗證是否未將所有VLAN和ifgrp連接埠指派給廣播網域：「network port show -type if-group | vlan」
-... 刪除所有VLAN：「網路連接埠VLAN刪除-節點節點節點名稱-vlan-name vlan-name」
-... 刪除介面群組：「network port ifgrp delete -nodename -ifgrp ifgrp-name」
+.. 從廣播網域移除 VLAN 和 ifgrp 連接埠： `network port broadcast-domain remove-ports -ipspace ipspace -broadcast-domain broadcast-domain-name -ports nodename:portname,nodename:portname,..`
+.. 驗證是否未將所有VLAN和ifgrp連接埠指派給廣播網域：「network port show -type if-group | vlan」
+.. 刪除所有VLAN：「網路連接埠VLAN刪除-節點節點節點名稱-vlan-name vlan-name」
+.. 刪除介面群組：「network port ifgrp delete -nodename -ifgrp ifgrp-name」
 
 
-.. 視需要移動任何生命期、以解決MetroCluster 與該功能之間的衝突。
+. 視需要移動任何生命期、以解決MetroCluster 與該功能之間的衝突。
 +
 您必須移動的步驟1中識別的生命週期 link:concept_requirements_for_fc_to_ip_transition_2n_mcc_transition.html["將連接埠從MetroCluster 靜態FC節點對應至MetroCluster 靜態IP節點"]。
 
 +
-... 將所需連接埠上裝載的任何LIF移至另一個連接埠：「網路介面修改-liflifname -vserver vserver-name -home-port new－homebport」（網路介面還原-liflifname -vserver vservername`）
-... 如有必要、請將目的地連接埠移至適當的IPspace和廣播網域。「網路連接埠廣播網域移除連接埠-IPSpace電流-IPSpace -broadcast網域電流廣播網域-port控制器名稱：電流連接埠'network port broadcast網域附加連接埠-IPSpace NET-IPSpace -broadcast網域new廣播網域-ports控制器名稱：new連接埠'
+.. 將所需連接埠上裝載的任何LIF移至另一個連接埠：「網路介面修改-liflifname -vserver vserver-name -home-port new－homebport」（網路介面還原-liflifname -vserver vservername`）
+.. 如有必要、請將目的地連接埠移至適當的IPspace和廣播網域。「網路連接埠廣播網域移除連接埠-IPSpace電流-IPSpace -broadcast網域電流廣播網域-port控制器名稱：電流連接埠'network port broadcast網域附加連接埠-IPSpace NET-IPSpace -broadcast網域new廣播網域-ports控制器名稱：new連接埠'
 
 
-.. 停止MetroCluster 支援功能的FC控制器（node_a_1-FC和node_B_1-FC）：「System Node halt」（系統節點停止）
-.. 在載入程式提示下、同步FC與IP控制器模組之間的硬體時鐘。
+. 停止MetroCluster 支援功能的FC控制器（node_a_1-FC和node_B_1-FC）：「System Node halt」（系統節點停止）
+. 在載入程式提示下、同步FC與IP控制器模組之間的硬體時鐘。
 +
-... 在舊MetroCluster 版的支援節點（node_a_1-FC）上、顯示日期：「How date（顯示日期）」
-... 在新MetroCluster 的支援IP控制器（node_a_1-IP和node_B_1-IP）上、設定原始控制器上顯示的日期：「Set date mm/dd/y'（設定日期：月/日/年）」
-... 在新MetroCluster 的支援IP控制器（node_a_1-IP和node_B_1-IP）上、確認日期：「How date（顯示日期）」
+.. 在舊MetroCluster 版的支援節點（node_a_1-FC）上、顯示日期：「How date（顯示日期）」
+.. 在新MetroCluster 的支援IP控制器（node_a_1-IP和node_B_1-IP）上、設定原始控制器上顯示的日期：「Set date mm/dd/y'（設定日期：月/日/年）」
+.. 在新MetroCluster 的支援IP控制器（node_a_1-IP和node_B_1-IP）上、確認日期：「How date（顯示日期）」
 
 
-.. 停止並關閉MetroCluster 連接至這些節點的SESSFC控制器模組（node_a_1-FC和node_B_1-FC）、FC至SAS橋接器（若有）、FC交換器（若有）和每個儲存櫃。
-.. 將磁碟櫃從MetroCluster EFC控制器上拔下、並記錄每個叢集的本機儲存磁碟櫃。
+. 停止並關閉MetroCluster 連接至這些節點的SESSFC控制器模組（node_a_1-FC和node_B_1-FC）、FC至SAS橋接器（若有）、FC交換器（若有）和每個儲存櫃。
+. 將磁碟櫃從MetroCluster EFC控制器上拔下、並記錄每個叢集的本機儲存磁碟櫃。
 +
 如果組態使用FC對SAS橋接器或FC後端交換器、請中斷連線並將其移除。
 
-.. 在「維護」模式中、於MetroCluster 支援中心節點（node_a_1-FC和node_b_1-FC）上確認未連接磁碟：「磁碟show -v」
-.. 關閉電源並移除MetroCluster 不支援的FC節點。
-
-
+. 在「維護」模式中、於MetroCluster 支援中心節點（node_a_1-FC和node_b_1-FC）上確認未連接磁碟：「磁碟show -v」
+. 關閉電源並移除MetroCluster 不支援的FC節點。
 
 
 此時MetroCluster 、已移除完不相連的不相連磁碟櫃、將其從所有控制器上拔下。
