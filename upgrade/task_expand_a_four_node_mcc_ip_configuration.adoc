@@ -1063,20 +1063,32 @@ aggr_data_a2
 +
 "進階權限"
 
-.. 在MetroCluster 其中一個新節點上重新整理此功能：
+.. 重新整理任何節點上的 MetroCluster 組態：
 +
-《靜態組態》MetroCluster
+[cols="30,70"]
+|===
 
-+
-以下範例顯示MetroCluster 兩個DR群組上重新整理的支援功能組態：
 
-+
-[listing]
-----
-cluster_A::*> metrocluster configure -refresh true
+| 如果MetroCluster 您的組態有... | 然後執行此動作... 
 
-[Job 726] Job succeeded: Configure is successful.
-----
+
+ a| 
+多個資料集合體
+ a| 
+在任何節點的提示下、執行：
+
+`metrocluster configure <node-name>`
+
+
+
+ a| 
+一個或兩個站台的單一鏡射資料集合體
+ a| 
+在任何節點的提示下、使用 `-allow-with-one-aggregate true`下列參數設定 MetroCluster ：
+
+`metrocluster configure -allow-with-one-aggregate true <node-name>`
+
+|===
 .. 重新啟動每個新節點：
 +
 `node reboot -node <node_name> -inhibit-takeover true`
@@ -1093,7 +1105,7 @@ cluster_A::*> metrocluster configure -refresh true
 
 +
 
-NOTE: 每個站台至少必須建立一個鏡射資料Aggregate。建議MetroCluster 每個站台在支援每個站台的兩個鏡射資料集合體、以裝載MDV磁碟區、不過每個站台只支援一個集合體（但不建議）。支援MetroCluster 的是、其中一個站台具有單一鏡射資料集合體、另一個站台則有多個鏡射資料集合體。
+NOTE: 每個站台至少必須建立一個鏡射資料Aggregate。建議MetroCluster 每個站台在支援每個站台的兩個鏡射資料集合體、以裝載MDV磁碟區、不過每個站台只支援一個集合體（但不建議）。MetroCluster 的一個站台只有一個鏡射的資料集合體、另一個站台則有多個鏡射的資料集合體、這是可以接受的。
 
 +
 下列範例顯示在node_a_1-new上建立Aggregate。
@@ -1161,12 +1173,14 @@ Group Cluster Node               State          Mirroring Mode
 
 cluster_A::*>
 ----
-. 以進階權限將MDV_CRS磁碟區從舊節點移至新節點。
+. 以進階權限模式移動 MDV_CRS 磁碟區。
 +
 .. 顯示用於識別MDV磁碟區的磁碟區：
 +
+如果每個站台有單一鏡射資料Aggregate、請將兩個MDV磁碟區移到此單一Aggregate。如果您有兩個以上的鏡射資料集合體、請將每個MDV磁碟區移至不同的集合體。
 
-NOTE: 如果每個站台有單一鏡射資料Aggregate、請將兩個MDV磁碟區移到此單一Aggregate。如果您有兩個以上的鏡射資料集合體、請將每個MDV磁碟區移至不同的集合體。
++
+如果您要將四節點 MetroCluster 組態擴充為永久性的八節點組態、則應將其中一個 MDV 磁碟區移至新的 DR 群組。
 
 +
 以下範例顯示「Volume show」輸出中的MDV磁碟區：

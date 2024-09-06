@@ -4826,12 +4826,10 @@
   <block id="4fbb06a55d361d0cd8cf430f9a799e67" category="list-text">驗證根集合體是否為鏡射：</block>
   <block id="566d9f9b7bf49eab87dd8768b654754e" category="section-title">完成MetroCluster 加入的不確定性IP節點</block>
   <block id="756f29d7bcbe7decf6b979c0706fc9a1" category="paragraph">您必須將新的DR群組整合到MetroCluster 「更新」組態中、並在新節點上建立鏡射的資料集合體。</block>
-  <block id="2ae5190e09d5d39bdc4388104b1ebcd4" category="paragraph">《靜態組態》MetroCluster</block>
   <block id="2ab9c070f5e78bc6f7809e89ecd023eb" category="admonition">您必須執行「MetroCluster 靜態組態」和*「非」* MetroCluster 「靜態組態-重新整理為真」</block>
   <block id="7e6d5ec0a20a9a4499623036df823e6b" category="list-text">確認節點已新增至其DR群組：</block>
   <block id="b24de9180a5deb759a394eebcd1a0305" category="list-text">在每MetroCluster 個新的EFlash節點上建立鏡射的資料集合體：</block>
   <block id="a8f0490385b664bc34aae209741dbdce" category="paragraph">「torage Aggregate create -Aggregate gregate名稱-node-name -diskcount無磁碟-mirror true」</block>
-  <block id="aabce8f4cea0092b527adf5c08e57ba7" category="admonition">每個站台至少必須建立一個鏡射資料Aggregate。建議MetroCluster 每個站台在支援每個站台的兩個鏡射資料集合體、以裝載MDV磁碟區、不過每個站台只支援一個集合體（但不建議）。支援MetroCluster 的是、其中一個站台具有單一鏡射資料集合體、另一個站台則有多個鏡射資料集合體。</block>
   <block id="7062dd7205e5ed0cba84efd4203bc9cc" category="paragraph">下列範例顯示在node_a_1-new上建立Aggregate。</block>
   <block id="d607e1acecde451facff1ac4a2c32440" category="list-text">以進階權限將MDV_CRS磁碟區從舊節點移至新節點。</block>
   <block id="ec4e7a3ff9894fa6a469a40a07dfca12" category="list-text">顯示用於識別MDV磁碟區的磁碟區：</block>
@@ -10859,7 +10857,6 @@
   <block id="2dccf53d6ed326f889d8e764529b9794" category="list-text">驗證磁碟自動指派與分割：</block>
   <block id="3f95b2ea711d433e26a8b5eb63bbd17a" category="paragraph">「torage Aggregate mirror -Aggregate aggr0_node_a_1-new'」</block>
   <block id="6c46e592d5f16891d3a16e5f364e031b" category="section-title">完成新節點的新增作業</block>
-  <block id="f00a8c2c5126c8a92b929c756950f0f8" category="list-text">在MetroCluster 其中一個新節點上重新整理此功能：</block>
   <block id="7d7a3fc828a61ba2a0ef14619b7c2ccb" category="list-text">確認節點已新增至其DR群組。</block>
   <block id="b0d21d87e852192022d32882c31d8709" category="paragraph">以下範例顯示「Volume show」輸出中的MDV磁碟區：</block>
   <block id="aacab676cefc900d32e2155650f1b66e" category="paragraph">下列範例顯示將「MDV_CRS_d6b0b313ff5611e9837100a098544e51_A」移至「node_a_3」上的Aggregate「data_A3」的命令和輸出。</block>
@@ -14030,4 +14027,12 @@
   <block id="4ac7d2ae8e04576a892556ab9a493959" category="list-text">從廣播網域移除 VLAN 和 ifgrp 連接埠：<block ref="bd72bbf935a7a9d39c21cf3731500f70" prefix=" " category="inline-code"></block></block>
   <block id="07b3edb46d2774fa411b0f9a1b01bead" category="sidebar">準備 MetroCluster 維護</block>
   <block id="053564114ce5591908a1b29312289c15" category="sidebar">使用共享儲存 MetroCluster 交換器將機櫃新增至 MetroCluster IP 組態</block>
+  <block id="59a029b0a65d8928b8afd42fd7a5bfe2" category="admonition">每個站台至少必須建立一個鏡射資料Aggregate。建議MetroCluster 每個站台在支援每個站台的兩個鏡射資料集合體、以裝載MDV磁碟區、不過每個站台只支援一個集合體（但不建議）。MetroCluster 的一個站台只有一個鏡射的資料集合體、另一個站台則有多個鏡射的資料集合體、這是可以接受的。</block>
+  <block id="478e4322f0111cf3e7bdad12bea24701" category="list-text">重新整理任何節點上的 MetroCluster 組態：</block>
+  <block id="4ad402ea3fb0bcfdc921fd3083047f45" category="paragraph">在任何節點的提示下、執行：</block>
+  <block id="28d0a71b806dfc9c57cc495498c72954" category="paragraph">一個或兩個站台的單一鏡射資料集合體</block>
+  <block id="d419812c67afb77388be54f4cb41eb86" category="paragraph">在任何節點的提示下、使用<block ref="d972f8bbe9b04d39b8b96b699cf921e9" prefix=" " category="inline-code"></block>下列參數設定 MetroCluster ：</block>
+  <block id="3635681631407e08104ac78c0039ed70" category="paragraph"><block ref="0825cd88596408a485ffc279f70b9da9" prefix="" category="inline-code"></block></block>
+  <block id="753303bac17f77fab4f01ca22a7ff80e" category="list-text">以進階權限模式移動 MDV_CRS 磁碟區。</block>
+  <block id="4e934a5efc9ac0d78daef92737cd79bf" category="paragraph">如果您要將四節點 MetroCluster 組態擴充為永久性的八節點組態、則應將其中一個 MDV 磁碟區移至新的 DR 群組。</block>
 </blocks>
