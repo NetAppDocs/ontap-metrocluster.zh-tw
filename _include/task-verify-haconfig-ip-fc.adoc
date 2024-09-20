@@ -1,15 +1,6 @@
----
-permalink: install-ip/task_sw_config_verify_haconfig.html 
-sidebar: sidebar 
-keywords: metrocluster, ha-config, mccip, haconfig, verify, high-availability 
-summary: 在非原廠預先設定的靜態IP組態中MetroCluster 、您必須確認控制器和機箱元件的ha-config狀態已設定為mccp、以便正常開機。對於從原廠接收的系統、此值已預先設定、您不需要驗證。 
----
-= 驗證元件的ha-config狀態
+= 
 :allow-uri-read: 
 
-
-[role="lead"]
-在 MetroCluster IP 組態中、您必須驗證控制器和機箱元件的 ha-config 狀態是否設定為「 mCCIP 」、以便正確開機。雖然此值應預先設定在從原廠收到的系統上、但仍應在繼續之前確認設定。
 
 [CAUTION]
 ====

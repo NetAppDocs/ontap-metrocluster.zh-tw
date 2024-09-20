@@ -674,6 +674,122 @@ Proxy伺服器
 |===
 
 
+== 在維護模式中驗證及設定元件的HA狀態
+
+在 MetroCluster FC 組態中設定儲存系統時、您必須確定控制器模組和機箱元件的高可用度（ HA ）狀態為 MCC 或 MCC-2n 、以便這些元件能正常開機。雖然此值應預先設定在從原廠收到的系統上、但仍應在繼續之前確認設定。
+
+[CAUTION]
+====
+如果控制器模組和機箱的 HA 狀態不正確、則必須重新初始化節點、才能設定 MetroCluster 。您必須使用此程序修正設定、然後使用下列其中一個程序來初始化系統：
+
+* 在 MetroCluster IP 組態中，請遵循中的步驟link:https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/task_sw_config_verify_haconfig.html["還原控制器模組的系統預設值"]。
+* 在 MetroCluster FC 組態中，請遵循中的步驟link:https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/concept_configure_the_mcc_software_in_ontap.html#restoring-system-defaults-and-configuring-the-hba-type-on-a-controller-module["在控制器模組上還原系統預設值並設定 HBA 類型"]。
+
+
+====
+.開始之前
+確認系統處於維護模式。
+
+.步驟
+. 在維護模式中、顯示控制器模組和機箱的HA狀態：
++
+《ha-config show》
+
++
+HA狀態是否正確取決MetroCluster 於您的使用情況組態。
+
++
+|===
+
+
+| MetroCluster 組態類型 | 所有元件的 HA 狀態 ... 
+
+
+ a| 
+八個或四個節點 MetroCluster FC 組態
+ a| 
+MCC
+
+
+
+ a| 
+雙節點MetroCluster 的不含功能的FC組態
+ a| 
+MCC-2n
+
+
+
+ a| 
+八或四個節點 MetroCluster IP 組態
+ a| 
+Mccip
+
+|===
+. 如果控制器的顯示系統狀態不正確、請針對控制器模組上的組態設定正確的 HA 狀態：
++
+|===
+
+
+| MetroCluster 組態類型 | 命令 
+
+
+ a| 
+八個或四個節點 MetroCluster FC 組態
+ a| 
+「ha-config modify控制器MCC」
+
+
+
+ a| 
+雙節點MetroCluster 的不含功能的FC組態
+ a| 
+「ha-config modify控制器MCC-2n」
+
+
+
+ a| 
+八或四個節點 MetroCluster IP 組態
+ a| 
+「ha-config modify控制器mccip」
+
+|===
+. 如果機箱的顯示系統狀態不正確、請針對機箱上的組態設定正確的 HA 狀態：
++
+|===
+
+
+| MetroCluster 組態類型 | 命令 
+
+
+ a| 
+八個或四個節點 MetroCluster FC 組態
+ a| 
+「ha-config modify機箱MCC」
+
+
+
+ a| 
+雙節點MetroCluster 的不含功能的FC組態
+ a| 
+「ha-config modify機箱MCC-2n」
+
+
+
+ a| 
+八或四個節點 MetroCluster IP 組態
+ a| 
+「ha-config modify機箱mccip」
+
+|===
+. 將節點開機ONTAP 至以下項目：
++
+Boot_ONTAP
+
+. 重複此整個程序、以驗證 MetroCluster 組態中每個節點的 HA 狀態。
+
+
+
+
 == 還原系統預設值、並在控制器模組上設定HBA類型
 
 .關於這項工作
@@ -1502,116 +1618,6 @@ DR合作夥伴的資源池1
 
 
 
-
-
-
-
-== 在維護模式中驗證及設定元件的HA狀態
-
-在MetroCluster 以支援功能組態設定儲存系統時、您必須確定控制器模組和機箱元件的高可用度（HA）狀態為MCC或MCC-2n、以便這些元件能夠正常開機。
-
-.開始之前
-系統必須處於維護模式。
-
-.關於這項工作
-從原廠接收的系統不需要執行此工作。
-
-.步驟
-. 在維護模式中、顯示控制器模組和機箱的HA狀態：
-+
-《ha-config show》
-
-+
-HA狀態是否正確取決MetroCluster 於您的使用情況組態。
-
-+
-|===
-
-
-| 在整個過程中使用的控制器數量MetroCluster | 所有元件的HA狀態應為... 
-
-
- a| 
-八節點或四節點MetroCluster 的不全功能FC組態
- a| 
-MCC
-
-
-
- a| 
-雙節點MetroCluster 的不含功能的FC組態
- a| 
-MCC-2n
-
-
-
- a| 
-IP組態MetroCluster
- a| 
-Mccip
-
-|===
-. 如果控制器的顯示系統狀態不正確、請設定控制器模組的HA狀態：
-+
-|===
-
-
-| 在整個過程中使用的控制器數量MetroCluster | 命令 
-
-
- a| 
-八節點或四節點MetroCluster 的不全功能FC組態
- a| 
-HA-config修改控制器MCC
-
-
-
- a| 
-雙節點MetroCluster 的不含功能的FC組態
- a| 
-HA-config修改控制器MCC-2n
-
-
-
- a| 
-IP組態MetroCluster
- a| 
-HA-config修改控制器Mccip
-
-|===
-. 如果機箱顯示的系統狀態不正確、請設定機箱的HA狀態：
-+
-|===
-
-
-| 在整個過程中使用的控制器數量MetroCluster | 命令 
-
-
- a| 
-八節點或四節點MetroCluster 的不全功能FC組態
- a| 
-HA-config修改機箱MCC
-
-
-
- a| 
-雙節點MetroCluster 的不含功能的FC組態
- a| 
-HA-config修改機箱MCC-2n
-
-
-
- a| 
-IP組態MetroCluster
- a| 
-HA-config修改機箱Mccip
-
-|===
-. 將節點開機ONTAP 至以下項目：
-+
-Boot_ONTAP
-
-. 在MetroCluster 整個過程中的每個節點上重複上述步驟。
 
 
 

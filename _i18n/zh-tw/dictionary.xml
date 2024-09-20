@@ -1703,14 +1703,9 @@
   <block id="1a8c6f33d0bdd54f26272fc3c497ec01" category="paragraph">下列命令顯示如何驗證所有連線是否正常運作：</block>
   <block id="7a56c93af328a3c1fa4e3fccdc177cb5" category="summary">在非原廠預先設定的靜態IP組態中MetroCluster 、您必須確認控制器和機箱元件的ha-config狀態已設定為mccp、以便正常開機。對於從原廠接收的系統、此值已預先設定、您不需要驗證。</block>
   <block id="6260a0c66ccd92620d9889772b65cffe" category="doc">驗證元件的ha-config狀態</block>
-  <block id="b09496e62afe76db185677ab92dd3695" category="paragraph">在非原廠預先設定的靜態IP組態中MetroCluster 、您必須驗證控制器和機箱元件的ha-config狀態是否設定為「mCCIP」、以便正常開機。對於從原廠接收的系統、此值已預先設定、您不需要驗證。</block>
   <block id="3293f2fb312a722f96251c9029636630" category="paragraph">系統必須處於維護模式。</block>
-  <block id="d0dddd5779102f5b72e8edf336fef717" category="list-text">顯示控制器模組和機箱的HA狀態：</block>
   <block id="70cfb57c22486ea2d08d331675532dce" category="paragraph">《ha-config show》</block>
-  <block id="c1420c708cdb03e8e6259f7cb1285a08" category="paragraph">控制器模組和機箱應顯示「mCCIP」值。</block>
-  <block id="717daacc38ffb11ae03c79a7871ba94a" category="list-text">如果控制器的顯示系統狀態不是「mCCIP」、請設定控制器的HA狀態：</block>
   <block id="5878093a3e92b9c4d3e64a93fc927a8a" category="paragraph">「ha-config modify控制器mccip」</block>
-  <block id="1be7c4ddc79016b4335125e64b368241" category="list-text">如果機箱的顯示系統狀態不是「mCCIP」、請設定機箱的HA狀態：</block>
   <block id="b687dd86b8db3b030c46a3fbc2a2d024" category="paragraph">「ha-config modify機箱mccip」</block>
   <block id="49eb5704f61afb2484b6cc1439fa40de" category="list-text">在MetroCluster 整個過程中的每個節點上重複上述步驟。</block>
   <block id="f753a91b4868b4d2d7ad06fa15958542" category="paragraph">"torage容錯移轉修改-mode ha -nod_norlocalhost_"</block>
@@ -10934,7 +10929,6 @@
   <block id="bc2027184e27075969cdcd60662c6642" category="sidebar">設定Cisco IP交換器</block>
   <block id="84a335bc70808c0497de1c62a99aaf43" category="sidebar">設定基本設定</block>
   <block id="175313fe612a432e5a51082817a697f1" category="sidebar">在Cisco 9336C交換器上設定Macsec加密</block>
-  <block id="2e513789c4a513cc3bc3dbb07880d342" category="sidebar">如何設定八節點組態</block>
   <block id="41aa5998b40e00d8eb4f7bb40bb2bc22" category="sidebar">收集必要資訊</block>
   <block id="4497ab40f5579cccfc00e6aed35cdae9" category="sidebar">驗證元件的ha-config狀態</block>
   <block id="aa9c71b40476a8ccda9213b9a9416d55" category="sidebar">將叢集設定為MetroCluster 一個靜態組態</block>
@@ -14035,4 +14029,19 @@
   <block id="3635681631407e08104ac78c0039ed70" category="paragraph"><block ref="0825cd88596408a485ffc279f70b9da9" prefix="" category="inline-code"></block></block>
   <block id="753303bac17f77fab4f01ca22a7ff80e" category="list-text">以進階權限模式移動 MDV_CRS 磁碟區。</block>
   <block id="4e934a5efc9ac0d78daef92737cd79bf" category="paragraph">如果您要將四節點 MetroCluster 組態擴充為永久性的八節點組態、則應將其中一個 MDV 磁碟區移至新的 DR 群組。</block>
+  <block id="dbe62ccc612e92f8dc68e42a4661fecb" category="paragraph">如果控制器模組和機箱的 HA 狀態不正確、則必須重新初始化節點、才能設定 MetroCluster 。您必須使用此程序修正設定、然後使用下列其中一個程序來初始化系統：</block>
+  <block id="a86b0de4e0b4c477962412e4fb878fa1" category="list-text">在 MetroCluster IP 組態中，請遵循中的步驟<block ref="46904e83320ab310261c288a6a607871" category="inline-link-macro-rx"></block>。</block>
+  <block id="73fa02989b9da1f069817272869a683b" category="inline-link-macro">在控制器模組上還原系統預設值並設定 HBA 類型</block>
+  <block id="20e47a9aa4ad4f6197046707d54204fc" category="list-text">在 MetroCluster FC 組態中，請遵循中的步驟<block ref="61b5232c30227f4608eee40560fc97c5" category="inline-link-macro-rx"></block>。</block>
+  <block id="db298781944827895a870278a91cf51d" category="paragraph">確認系統處於維護模式。</block>
+  <block id="8043a3bf6cce640e7454f2cd339995d4" category="cell">MetroCluster 組態類型</block>
+  <block id="b2044c373529567844418af6b99b9c47" category="cell">所有元件的 HA 狀態 ...</block>
+  <block id="3ec28b19df1922ba15c732a6c9ce26e7" category="paragraph">八個或四個節點 MetroCluster FC 組態</block>
+  <block id="02c92aa95863fe523d726679c13e1c11" category="paragraph">八或四個節點 MetroCluster IP 組態</block>
+  <block id="8d1f63834a0230ca4c300e584f887131" category="list-text">如果控制器的顯示系統狀態不正確、請針對控制器模組上的組態設定正確的 HA 狀態：</block>
+  <block id="46be68db9978eb3b9ac4054e394c92ce" category="list-text">如果機箱的顯示系統狀態不正確、請針對機箱上的組態設定正確的 HA 狀態：</block>
+  <block id="330acb0fa4964235e5dabc85b0488f57" category="list-text">重複此整個程序、以驗證 MetroCluster 組態中每個節點的 HA 狀態。</block>
+  <block id="84afb0fe12dfc2a5fa1e2e978393b33c" category="paragraph">在 MetroCluster FC 組態中設定儲存系統時、您必須確定控制器模組和機箱元件的高可用度（ HA ）狀態為 MCC 或 MCC-2n 、以便這些元件能正常開機。雖然此值應預先設定在從原廠收到的系統上、但仍應在繼續之前確認設定。</block>
+  <block id="cbc29e9b371b7013e6625c2fa3c7ec20" category="paragraph">在 MetroCluster IP 組態中、您必須驗證控制器和機箱元件的 ha-config 狀態是否設定為「 mCCIP 」、以便正確開機。雖然此值應預先設定在從原廠收到的系統上、但仍應在繼續之前確認設定。</block>
+  <block id="b6eb7f38a057c8f63ffc29f23e6be071" category="sidebar">如何設定八節點組態</block>
 </blocks>
