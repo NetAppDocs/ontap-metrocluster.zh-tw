@@ -31,9 +31,9 @@ summary: 您必須準備四MetroCluster 個全新的靜態IP節點、並安裝�
 . 請MetroCluster 使用下列區段來設定「靜態IP節點」：
 +
 .. link:../install-ip/task_sw_config_gather_info.html["收集必要資訊"]
-.. link:../install-ip/task_sw_config_restore_defaults.html["清除控制器模組上的組態"]
+.. link:../install-ip/task_sw_config_restore_defaults.html["還原控制器模組的系統預設值"]
 .. link:../install-ip/task_sw_config_verify_haconfig.html["驗證元件的ha-config狀態"]
-.. link:../install-ip/task_sw_config_assign_pool0.html["手動指派集區0的磁碟機（ONTAP 適用於更新版本的更新版本）"]
+.. link:../install-ip/task_sw_config_assign_pool0.html["手動指派集區 0 的磁碟機（ ONTAP 9.4 及更新版本）"]
 
 
 . 在維護模式下、發出halt命令以結束維護模式、然後發出boot_ONTAP命令以啟動系統並進入叢集設定。

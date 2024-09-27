@@ -6,6 +6,8 @@ summary: 說明新功能、升級附註、修正問題、已知限制及已知�
 ---
 = MetroCluster 版本資訊
 :allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
 
 
 [role="lead"]

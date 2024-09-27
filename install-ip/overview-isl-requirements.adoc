@@ -6,6 +6,8 @@ summary: 瞭解驗證 MetroCluster 組態和網路是否符合所有 ISL 要求�
 ---
 = ISL 需求總覽
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
 
 [role="lead"]

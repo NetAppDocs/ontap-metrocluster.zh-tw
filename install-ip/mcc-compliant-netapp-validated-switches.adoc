@@ -6,6 +6,8 @@ summary: 本節提供驗證 MetroCluster 組態和網路是否符合所有需求
 ---
 = NetApp 驗證且符合 MetroCluster 規範的交換器
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
 
 [role="lead"]

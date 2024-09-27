@@ -6,6 +6,8 @@ summary: 當您準備MetroCluster 進行此版本的安裝時、您應該瞭解M
 ---
 = 使用TDM/WDM設備搭配架構附加MetroCluster 的功能的考量
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
 
 [role="lead"]

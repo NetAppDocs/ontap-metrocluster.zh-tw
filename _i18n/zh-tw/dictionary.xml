@@ -1080,8 +1080,6 @@
   <block id="5eee8a123c93417db687e76b152f6ef0" category="list-text">支援2：功能完善的支援平台（這些平台將新增為第二個四節點DR群組）MetroCluster AFF</block>
   <block id="7169e1403b175332b81d333c6e2af6ab" category="list-text">對於僅有的部分、請使用FAS2750平台的表格、以及用作支援1介面的資料列、來連接Cisco 3132Q-V交換器。MetroCluster MetroCluster</block>
   <block id="0dc1c4c70bff26c7c3ae5646d99a32f7" category="list-text">對於2（第二個DR群組）、請使用表格連接Cisco 3132Q-V交換器、以利執行該平台、並將資料列連接至2個介面。MetroCluster AFF MetroCluster</block>
-  <block id="c94a009c5a39824e241500e9f7d49cad" category="summary">從支援使用支援第3層連線功能的《支援使用虛擬IP（VIP）和邊界閘道傳輸協定（BGP）》（ONTAP Border ONTAP Gateway Protocol、BGP）開始、</block>
-  <block id="23b070f17dffe8e66479102b1681ffad" category="doc">使用虛擬IP和邊界閘道傳輸協定搭配MetroCluster 使用、並採用不實的組態</block>
   <block id="7dec0067013edb1b7d2d18b5bc21f4a8" category="paragraph">從支援使用支援第3層連線功能的《支援使用虛擬IP（VIP）和邊界閘道傳輸協定（BGP）》（ONTAP Border ONTAP Gateway Protocol、BGP）開始、結合VIP與BGP、可在前端網路中提供備援功能、搭配後端MetroCluster 的可靠性備援功能、提供第3層災難恢復解決方案。</block>
   <block id="3c17e9573f8b45dda43321f58bfcd2bf" category="paragraph">規劃第3層解決方案時、請檢閱下列準則和圖例。如需實作ONTAP BGP和BGP的詳細資訊、請參閱下列章節：</block>
   <block id="e8c0139663de0f382f275109978b357d" category="inline-link">*設定虛擬IP（VIP）lifs*</block>
@@ -1098,7 +1096,6 @@
   <block id="a63e8da5ab0d323dfa2d8c1590db4fed" category="paragraph">視ONTAP 您的版本而定、您必須在節點SVM中設定BGP對等生命量、而非在系統或資料SVM中設定。在9.8版中、BGP LIF會顯示在叢集（系統）SVM中、而節點SVM則不再存在。</block>
   <block id="d82838a19649e1da12902c98b4ee5149" category="paragraph">每個資料SVM都需要設定所有可能的第一跳閘道位址（通常是BGP路由器對等IP位址）、以便在LIF移轉或MetroCluster 進行故障復原時、傳回資料路徑可供使用。</block>
   <block id="5f88fc6eb6dcc7e2d28378195f6e0208" category="paragraph">BGP lifs與叢集間lifs類似、每個節點都有獨特的組態、不需要複寫到DR站台節點。</block>
-  <block id="e3bb1ae61b6d4dc1b02fdb23cab46189" category="paragraph">設定後、V0a（v0b等）會持續驗證連線能力、以確保LIF移轉或容錯移轉成功（不像L2、只有在停機後才能看到毀損的組態）。</block>
   <block id="b9654173e237320a0dc69e69fd436e4f" category="paragraph">架構上的一大差異在於、用戶端不應再與資料SVM的VIP共用相同的IP子網路。啟用適當企業級恢復能力和備援功能（例如、VRP/HSRP）的L3路由器、應位於儲存設備和用戶端之間的路徑上、VIP才能正常運作。</block>
   <block id="298fef8c148afa4bfa7475e494967b57" category="paragraph">BGP的可靠更新程序可讓LIF移轉作業更順暢、因為這些移轉速度稍微加快、而且對某些用戶端造成中斷的機率較低</block>
   <block id="53c5da85c9b955107fabdb0323fc0619" category="paragraph">您可以設定BGP偵測某些類別的網路或交換器錯誤行為、速度比LACP快（若有相應設定）。</block>
@@ -3607,16 +3604,12 @@
   <block id="e485e2a29b3e88e7af57a872271ec004" category="list-text">拔下並移除停用的交換器。</block>
   <block id="6ab8d2ea7c4ab8de2d0240533675a5ba" category="list-text">在機架中安裝新的交換器。</block>
   <block id="9db38090d74d3c900ffdd688465bb5e8" category="image-alt">Brocade升級至g620取代1</block>
-  <block id="a0c9a11807b32c8820a3f0a43340ed14" category="list-text">停用新交換器：</block>
   <block id="4028a8e16d4b841012a85c08963c7c51" category="paragraph">「witchCfgPeristentDisable」</block>
-  <block id="7b78e18dcd3185c34c9f26454f6f184a" category="paragraph">命令會停用交換器架構中的兩個交換器。</block>
   <block id="d0ec9e05561bfe12c0306959eddf56c8" category="list-text">使用建議的連接埠指派來連接新交換器。</block>
   <block id="98865fdc5c9769318f840c5f626b7ec2" category="list-text">在合作夥伴MetroCluster 的支援網站重複這些子步驟、以更換第一個交換器架構中的第二個交換器。</block>
   <block id="5a5070abc66ad4ba93c9599236c17675" category="paragraph">已更換Fabric 1中的兩個交換器。</block>
   <block id="9359b4d4c7ebe7a35b725df2addeaf7b" category="image-alt">Brocade升級至g620取代b 1</block>
   <block id="0fd8560791ae174b08c82bd0ee74f32e" category="list-text">開啟新交換器的電源、讓它們開機。</block>
-  <block id="54f59ef2ee1220bd27c7e59f620f7e4a" category="list-text">下載新交換器的RCF檔案。</block>
-  <block id="b71b5bca0bcdc72655be357f3c8b1c42" category="list-text">依照下載頁面上的指示、將RCF檔案套用至Fabric中的兩個新交換器。</block>
   <block id="44a651ee20f59b8ff5887857d2eb80dc" category="list-text">儲存交換器組態：</block>
   <block id="94b65d5fa74397726f3654769576d293" category="paragraph">「cfgSave」</block>
   <block id="8baaacde06cbd685134e16e9023a6e85" category="list-text">等待10分鐘、讓組態穩定下來。</block>
@@ -3764,11 +3757,7 @@
   <block id="012f755687424dd2475cf31eee8a99ff" category="paragraph">目前、該功能可繼續使用纜線連接至不含纜線的FC節點（node_a_x-FC和node_b_x-FC）MetroCluster 。</block>
   <block id="b42bad79baad4f4f943c81fc37bedccd" category="list-text">如MetroCluster 所示、將靜態IP節點連接至IP交換器 <block ref="657bcb6c51639854c4fdede551507755" category="inline-link-macro-rx"></block>。</block>
   <block id="4852598a3e684943b3bfcba06307b21d" category="list-text">請MetroCluster 使用下列區段來設定「靜態IP節點」：</block>
-  <block id="1cbfeb82dbc642ca3cfc8e2db84c469c" category="list-text"><block ref="1cbfeb82dbc642ca3cfc8e2db84c469c" category="inline-link-macro-rx"></block></block>
   <block id="9d288331dcbf3df246af2a35300324d8" category="inline-link-macro">清除控制器模組上的組態</block>
-  <block id="87389a8ef852aa6f8fecae947cf8fd86" category="list-text"><block ref="87389a8ef852aa6f8fecae947cf8fd86" category="inline-link-macro-rx"></block></block>
-  <block id="251fa3a6289ecafe7b95d67056605968" category="list-text"><block ref="251fa3a6289ecafe7b95d67056605968" category="inline-link-macro-rx"></block></block>
-  <block id="42aa3219583515464abe8c61ef6c61d3" category="list-text"><block ref="42aa3219583515464abe8c61ef6c61d3" category="inline-link-macro-rx"></block></block>
   <block id="d93785c679dd9ecbbe55df9329146a8d" category="list-text">在維護模式下、發出halt命令以結束維護模式、然後發出boot_ONTAP命令以啟動系統並進入叢集設定。</block>
   <block id="ccaa4e34c729aaba9db9c5a44c41381f" category="paragraph">此時請勿完成叢集精靈或節點精靈。</block>
   <block id="fbb3c6ac39d170b58b6e9006735f762f" category="list-text">在其他MetroCluster 的不含知識的IP節點上重複這些步驟。</block>
@@ -14030,7 +14019,6 @@
   <block id="753303bac17f77fab4f01ca22a7ff80e" category="list-text">以進階權限模式移動 MDV_CRS 磁碟區。</block>
   <block id="4e934a5efc9ac0d78daef92737cd79bf" category="paragraph">如果您要將四節點 MetroCluster 組態擴充為永久性的八節點組態、則應將其中一個 MDV 磁碟區移至新的 DR 群組。</block>
   <block id="dbe62ccc612e92f8dc68e42a4661fecb" category="paragraph">如果控制器模組和機箱的 HA 狀態不正確、則必須重新初始化節點、才能設定 MetroCluster 。您必須使用此程序修正設定、然後使用下列其中一個程序來初始化系統：</block>
-  <block id="a86b0de4e0b4c477962412e4fb878fa1" category="list-text">在 MetroCluster IP 組態中，請遵循中的步驟<block ref="46904e83320ab310261c288a6a607871" category="inline-link-macro-rx"></block>。</block>
   <block id="73fa02989b9da1f069817272869a683b" category="inline-link-macro">在控制器模組上還原系統預設值並設定 HBA 類型</block>
   <block id="20e47a9aa4ad4f6197046707d54204fc" category="list-text">在 MetroCluster FC 組態中，請遵循中的步驟<block ref="61b5232c30227f4608eee40560fc97c5" category="inline-link-macro-rx"></block>。</block>
   <block id="db298781944827895a870278a91cf51d" category="paragraph">確認系統處於維護模式。</block>
@@ -14044,4 +14032,9 @@
   <block id="84afb0fe12dfc2a5fa1e2e978393b33c" category="paragraph">在 MetroCluster FC 組態中設定儲存系統時、您必須確定控制器模組和機箱元件的高可用度（ HA ）狀態為 MCC 或 MCC-2n 、以便這些元件能正常開機。雖然此值應預先設定在從原廠收到的系統上、但仍應在繼續之前確認設定。</block>
   <block id="cbc29e9b371b7013e6625c2fa3c7ec20" category="paragraph">在 MetroCluster IP 組態中、您必須驗證控制器和機箱元件的 ha-config 狀態是否設定為「 mCCIP 」、以便正確開機。雖然此值應預先設定在從原廠收到的系統上、但仍應在繼續之前確認設定。</block>
   <block id="b6eb7f38a057c8f63ffc29f23e6be071" category="sidebar">如何設定八節點組態</block>
+  <block id="37887b7927053bae8056fe215242ac04" category="list-text">在 MetroCluster IP 組態中，請遵循中的步驟<block ref="e39e92837d61810422f20d9c0acf650b" category="inline-link-macro-rx"></block>。</block>
+  <block id="654458233d1a8772886f997ae2b46c7c" category="paragraph">v0a （ v0b 等）的存在會持續驗證連線能力、確保 LIF 移轉或容錯移轉成功（與 L2 不同、 L2 只有在中斷後才能看到中斷的組態）。</block>
+  <block id="705abb444ac66e0442a9ae4646471061" category="list-text">在兩台交換器上執行下列命令、以停用新的交換器：</block>
+  <block id="f67761c61087dd0914ed518ef2c5f8e3" category="list-text">使用下列其中一個程序來設定 Brocade FC 交換器：</block>
+  <block id="4aa62d2d0cdae8fdaf47d41d558bac24" category="list-text"><block ref="4aa62d2d0cdae8fdaf47d41d558bac24" category="inline-link-macro-rx"></block></block>
 </blocks>

@@ -6,6 +6,8 @@ summary: 此支援僅安裝原生（NetApp）磁碟櫃、僅限陣列LUN、或�
 ---
 = 使用原生磁碟櫃或陣列LUN進行的不完整組態考量MetroCluster
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
 
 [role="lead"]

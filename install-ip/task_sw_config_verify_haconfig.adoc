@@ -6,6 +6,8 @@ summary: 在非原廠預先設定的靜態IP組態中MetroCluster 、您必須�
 ---
 = 驗證元件的ha-config狀態
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -15,7 +17,7 @@ summary: 在非原廠預先設定的靜態IP組態中MetroCluster 、您必須�
 ====
 如果控制器模組和機箱的 HA 狀態不正確、則必須重新初始化節點、才能設定 MetroCluster 。您必須使用此程序修正設定、然後使用下列其中一個程序來初始化系統：
 
-* 在 MetroCluster IP 組態中，請遵循中的步驟link:https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/task_sw_config_verify_haconfig.html["還原控制器模組的系統預設值"]。
+* 在 MetroCluster IP 組態中，請遵循中的步驟link:https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/task_sw_config_restore_defaults.html["還原控制器模組的系統預設值"]。
 * 在 MetroCluster FC 組態中，請遵循中的步驟link:https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/concept_configure_the_mcc_software_in_ontap.html#restoring-system-defaults-and-configuring-the-hba-type-on-a-controller-module["在控制器模組上還原系統預設值並設定 HBA 類型"]。
 
 

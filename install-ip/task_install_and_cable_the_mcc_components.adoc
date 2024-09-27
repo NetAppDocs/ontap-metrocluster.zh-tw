@@ -6,6 +6,8 @@ summary: 您必須設定IP交換器、才能提供後端MetroCluster 的不中�
 ---
 = 設定交換器
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
 
 [role="lead"]

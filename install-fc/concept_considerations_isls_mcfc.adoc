@@ -6,6 +6,8 @@ summary: 您必須決定MetroCluster 在支援的基礎架構中、每個FC交�
 ---
 = ISL的考量
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -6,6 +6,8 @@ summary: 開始組態程序之前、您必須先收集控制器模組所需的IP
 ---
 = 收集必要資訊
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -6,6 +6,8 @@ summary: 每個節點開機後、系統會提示您執行基本節點和叢集�
 ---
 = 設定ONTAP 功能
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
 
 [role="lead"]

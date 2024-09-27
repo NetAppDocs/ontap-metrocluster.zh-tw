@@ -6,6 +6,8 @@ summary: 在一個E叢 集組態中、每個叢集的節點組態MetroCluster �
 ---
 = 標準叢集MetroCluster 組態與不完整組態之間的相似性與差異
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
 
 [role="lead"]

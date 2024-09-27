@@ -7,7 +7,7 @@ summary:
 = MetroCluster 組態支援 ONTAP 功能的新功能
 :allow-uri-read: 
 :icons: font
-:imagesdir: ./media/
+:imagesdir: ../media/
 
 
 [role="lead"]

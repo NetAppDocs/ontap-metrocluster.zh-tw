@@ -6,6 +6,8 @@ summary: 您必須設定Cisco IP交換器作為叢集互連和後端MetroCluster
 ---
 = 設定Cisco IP交換器
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
 
 [role="lead"]

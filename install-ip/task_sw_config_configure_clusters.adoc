@@ -6,6 +6,8 @@ summary: 您必須對等處理叢集、鏡射根Aggregate、建立鏡射資料Ag
 ---
 = 將叢集設定成MetroCluster 一個不只是一個的組態
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
 
 [role="lead"]

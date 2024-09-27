@@ -6,6 +6,8 @@ summary: 在轉換期間、您可以將資料從MetroCluster 採用支援功能�
 ---
 = 將資料移至新的磁碟機櫃
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
 
 [role="lead"]

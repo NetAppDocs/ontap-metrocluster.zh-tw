@@ -6,6 +6,8 @@ summary: 您可以指定遠端URL（HTTP或FTP）來上傳組態備份檔案、�
 ---
 = 保護組態備份檔案
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
 
 [role="lead"]

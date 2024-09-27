@@ -6,6 +6,8 @@ summary: 您必須設定FC交換器、以提供後端MetroCluster 的F精選FC�
 ---
 = 設定交換器
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
 
 [role="lead"]

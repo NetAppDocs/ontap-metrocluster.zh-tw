@@ -6,6 +6,8 @@ summary: 您可以下載並安裝在第三個站台MetroCluster 上、也可以�
 ---
 = 設定MetroCluster 斷功能器或ONTAP 不含資料的資訊
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
 
 [role="lead"]

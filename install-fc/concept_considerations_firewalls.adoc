@@ -6,6 +6,8 @@ summary: 當您準備MetroCluster 進行此版本的安裝時、您應該瞭解M
 ---
 = 在景點使用防火牆MetroCluster
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
 
 
