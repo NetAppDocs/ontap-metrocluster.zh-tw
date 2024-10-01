@@ -18,7 +18,7 @@ entries:
     entries:
     - title: 選擇您的安裝程序
       url: "/tiebreaker/install-choose-procedure.html"
-    - title: 安裝斷路器 1.6
+    - title: 安裝 Tiebreaker 1.6 或更新版本
       url: "/tiebreaker/tb-16-install.html"
     - title: 安裝斷路器 1.5
       entries:

@@ -82,32 +82,42 @@ entries:
       url: "/install-ip/task_config_switch_health.html"
 - title: 在MetroCluster 不提供的情況下設定此功能ONTAP
   entries:
-  - title: 總覽
-    url: "/install-ip/concept_configure_the_mcc_software_in_ontap.html"
-  - title: 如何設定八節點組態
-    url: "/install-ip/task_sw_config_8n.html"
-  - title: 收集必要資訊
-    url: "/install-ip/task_sw_config_gather_info.html"
-  - title: 標準叢集MetroCluster 組態與不完整組態之間的相似性與差異
-    url: "/install-ip/task_sw_config_differences.html"
-  - title: 驗證元件的ha-config狀態
-    url: "/install-ip/task_sw_config_verify_haconfig.html"
-  - title: 還原控制器模組的系統預設值
-    url: "/install-ip/task_sw_config_restore_defaults.html"
-  - title: 手動指派磁碟機至集區0
-    url: "/install-ip/task_sw_config_assign_pool0.html"
-  - title: 設定ONTAP 功能
-    url: "/install-ip/task_sw_config_setup_ontap.html"
-  - title: 將叢集設定為MetroCluster 一個靜態組態
-    url: "/install-ip/task_sw_config_configure_clusters.html"
-  - title: 設定端點對端點加密
-    url: "/install-ip/task-configure-end-to-end-encryption.html"
-  - title: 驗證切換、修復及切換
-    url: "/install-ip/task_sw_config_verify_switchover.html"
-  - title: 設定MetroCluster 「斷器」或ONTAP 「資訊安全」軟體
-    url: "/install-ip/task_sw_config_configure_mediator.html"
-  - title: 保護組態備份檔案
-    url: "/install-ip/task_sw_config_protect_backup.html"
+  - title: 使用 CLI 設定 MetroCluster 軟體
+    entries:
+    - title: 總覽
+      url: "/install-ip/concept_configure_the_mcc_software_in_ontap.html"
+    - title: 如何設定八節點組態
+      url: "/install-ip/task_sw_config_8n.html"
+    - title: 收集必要資訊
+      url: "/install-ip/task_sw_config_gather_info.html"
+    - title: 標準叢集MetroCluster 組態與不完整組態之間的相似性與差異
+      url: "/install-ip/task_sw_config_differences.html"
+    - title: 驗證元件的ha-config狀態
+      url: "/install-ip/task_sw_config_verify_haconfig.html"
+    - title: 還原控制器模組的系統預設值
+      url: "/install-ip/task_sw_config_restore_defaults.html"
+    - title: 手動指派磁碟機至集區0
+      url: "/install-ip/task_sw_config_assign_pool0.html"
+    - title: 設定ONTAP 功能
+      url: "/install-ip/task_sw_config_setup_ontap.html"
+    - title: 將叢集設定為MetroCluster 一個靜態組態
+      url: "/install-ip/task_sw_config_configure_clusters.html"
+    - title: 設定端點對端點加密
+      url: "/install-ip/task-configure-end-to-end-encryption.html"
+    - title: 驗證切換、修復及切換
+      url: "/install-ip/task_sw_config_verify_switchover.html"
+    - title: 設定MetroCluster 「斷器」或ONTAP 「資訊安全」軟體
+      url: "/install-ip/task_sw_config_configure_mediator.html"
+    - title: 保護組態備份檔案
+      url: "/install-ip/task_sw_config_protect_backup.html"
+  - title: 使用系統管理員設定 MetroCluster 軟體
+    entries:
+    - title: 設定 MetroCluster IP 站台
+      url: "/install-ip/set-up-mcc-site-system-manager.html"
+    - title: 設定 MetroCluster IP 對等關係
+      url: "/install-ip/set-up-mcc-peering-system-manager.html"
+    - title: 設定 MetroCluster IP 站台
+      url: "/install-ip/configure-mcc-site-system-manager.html"
 - title: 針對ONTAP 非計畫性自動切換設定「功能」服務
   entries:
   - title: 準備安裝ONTAP 《不知道如何安裝》服務
@@ -120,6 +130,8 @@ entries:
     url: "/install-ip/task_connecting_mcc_to_different_mediator_instance.html"
   - title: 如何支援自動非計畫性切換ONTAP
     url: "/install-ip/concept-ontap-mediator-supports-automatic-unplanned-switchover.html"
+  - title: 使用系統管理員管理 ONTAP Mediator
+    url: "/install-ip/task-sm-mediator.html"
 - title: 測試MetroCluster 此功能組態
   url: "/install-ip/task_test_the_mcc_configuration.html"
 - title: 移除MetroCluster 不完整組態時的考量事項

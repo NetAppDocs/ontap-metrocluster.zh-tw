@@ -32,6 +32,8 @@ entries:
     url: "/manage/task_verify_a_successful_switchback.html"
 - title: 切換、修復及切換的命令
   url: "/manage/reference_commands_for_switchover_healing_and_switchback.html"
+- title: 使用系統管理員執行切換和切換（僅限 MetroCluster IP 組態）
+  url: "/manage/system-manager-switchover-healing-switchback.html"
 - title: 監控MetroCluster 此功能的組態
   url: "/manage/concept_monitoring_the_mcc_configuration.html"
 - title: 使用NVFIL監控及保護檔案系統一致性

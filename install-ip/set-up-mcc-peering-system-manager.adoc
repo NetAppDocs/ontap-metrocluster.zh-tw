@@ -1,0 +1,66 @@
+---
+sidebar: sidebar 
+permalink: install-ip/set-up-mcc-peering-system-manager.html 
+keywords: metrocluster, peer, peering, pair, pairing, configuration, config, mcc, HA 
+summary: 從 ONTAP 9 開始、您可以使用系統管理員來管理 MetroCluster IP 站台作業。這包括設定兩個叢集和執行叢集對等關係。 
+---
+= 設定 MetroCluster IP 對等關係
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+從 ONTAP 9 開始、您可以使用系統管理員來管理 MetroCluster IP 組態作業。設定兩個叢集之後、您可以在它們之間設定對等關係。
+
+.開始之前
+設定兩個叢集。請參閱link:set-up-mcc-site-system-manager.html["設定 MetroCluster IP 站台"]程序。
+
+此程序的某些步驟是由位於每個叢集地理站台的不同系統管理員執行。為了說明此程序、叢集稱為「站台A叢集」和「站台B叢集」。
+
+
+
+== 從站台 A 執行對等程序
+
+此程序由站台A的系統管理員執行
+
+.步驟
+. 登入站台A叢集。
+. 在System Manager中、從左導覽欄中選取*儀表板*、以顯示叢集概觀。
++
+儀表板會顯示此叢集（站台A）的詳細資料。在* MetroCluster 《*》（*《*》）區段中、左側會顯示站台叢集。
+
+. 按一下*附加合作夥伴叢集*。
+. 輸入網路介面的詳細資料、讓站台A叢集中的節點能夠與站台B叢集中的節點通訊。
+. 按一下*儲存並繼續*。
+. 在 * 附加合作夥伴叢集 * 視窗中、選取 * 我沒有密碼 * 。這可讓您產生複雜密碼。
+. 複製產生的通關密碼、並與站台B的系統管理員分享
+. 選擇*關閉*。
+
+
+
+
+== 從站台 B 執行對等程序
+
+此程序由站台B的系統管理員執行
+
+.步驟
+. 登入站台B叢集。
+. 在System Manager中、選取* Dashboard *以顯示叢集總覽。
++
+儀表板會顯示此叢集（站台B）的詳細資料。在「功能表」區段中、站台B叢集會顯示在左側。MetroCluster
+
+. 按一下*附加合作夥伴叢集*以開始對等處理程序。
+. 輸入網路介面的詳細資料、以允許站台B叢集中的節點與站台A叢集中的節點進行通訊。
+. 按一下*儲存並繼續*。
+. 在 * 附加合作夥伴叢集 * 視窗中、選取 * 我有密碼 * 。這可讓您輸入從站台 A 的系統管理員收到的密碼
+. 選取* Pee*以完成對等程序。
+
+
+.接下來呢？
+在對等程序成功完成後、您可以設定叢集。請參閱。 link:configure-mcc-site-system-manager.html["設定 MetroCluster IP 站台"]

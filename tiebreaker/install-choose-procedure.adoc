@@ -21,9 +21,9 @@ summary: 您遵循的 tiebreaker 安裝程序取決於您要安裝的 tiebreaker
 
 
  a| 
-斷路器 1.6.
+Tiebreaker 1.6 或更新版本
  a| 
-link:tb-16-install.html["安裝斷路器 1.6"]
+link:tb-16-install.html["安裝 Tiebreaker 1.6 或更新版本"]
 
 
 

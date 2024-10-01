@@ -1,7 +1,7 @@
 ---
 permalink: maintain/task-modify-ip-netmask-properties.html 
 sidebar: sidebar 
-keywords: vlan, ip, gateway,netmask, address, network, interface, subnet 
+keywords: vlan, ip, gateway,netmask, address, network, interface, subnet,metrocluster, layer 3, edit, net mask, configuration, configure,cli, system, manager 
 summary: 您可以變更MetroCluster 下列的屬性：EIP介面、IP位址和遮罩、以及閘道。您可以使用任何參數組合來更新。 
 ---
 = 修改 MetroCluster IP 介面的內容
@@ -15,21 +15,35 @@ summary: 您可以變更MetroCluster 下列的屬性：EIP介面、IP位址和�
 
 例如、如果偵測到重複的IP位址、或是因為路由器組態變更而需要變更第3層網路的閘道、您可能需要更新這些內容。
 
+
+
+== 修改IP位址、網路遮罩和閘道
+
+您所遵循的程序取決於您是使用 ONTAP 系統管理員還是使用 CLI 。
+
+[role="tabbed-block"]
+====
+.系統管理員
+--
+使用 System Manager 修改 IP 位址、網路遮罩和閘道內容。
+
+.步驟
+更新每個節點和介面的 IP 位址、網路遮罩和閘道。
+
+--
+.CLI
+--
+使用 CLI 修改 IP 位址、網路遮罩和閘道內容。
+
 .關於這項工作
 * 一次只能變更一個介面。在更新其他介面並重新建立連線之前、該介面會造成流量中斷。
 * 使用「MetroCluster 靜態組態設定介面modify」命令來變更MetroCluster 任何的任何靜態IP介面屬性。
 +
 
-NOTE: 這些命令會變更特定連接埠之特定節點的組態。若要還原完整的網路連線能力、其他連接埠也需要類似的命令。同樣地、網路交換器也需要更新其組態。例如、如果閘道已更新、則理想情況下會在HA配對的兩個節點上變更閘道、因為它們相同。此外、連接至這些節點的交換器也需要更新其閘道。
+NOTE: 這些命令會變更特定連接埠之特定節點的組態。若要還原完整的網路連線能力、其他連接埠也需要類似的命令。同樣地、網路交換器也需要更新其組態。例如、如果閘道已更新、則理想情況下會在HA配對的兩個節點上變更閘道、因為它們相同。連接到這些節點的交換器也需要更新其閘道。
 
 * 使用 `metrocluster configuration-settings interface show`、 `metrocluster connection check`和 `metrocluster connection show` 命令來驗證所有的連線功能是否都能在所有介面中運作。
 
-
-
-
-== 修改IP位址、網路遮罩和閘道
-
-執行下列步驟修改 MetroCluster IP 介面的 IP 位址、網路遮罩和閘道。
 
 .步驟
 . 更新單一節點和介面的IP位址、網路遮罩和閘道：MetroCluster 「修改組態設定介面」
@@ -133,3 +147,6 @@ Group Cluster Node    Network Address Network Address Partner Type Config State
                       192.168.20.100  192.168.21.250  DR Auxiliary completed
 ----
 
+
+--
+====

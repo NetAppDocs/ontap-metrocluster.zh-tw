@@ -1,0 +1,128 @@
+---
+permalink: maintain/verify-health-mcc-config.html 
+sidebar: sidebar 
+keywords: metrocluster, ip, fc, verify, health, troubleshoot, cli, system manager, error, event, problem, maintenance, fix, correction, check 
+summary: 瞭解如何驗證 MetroCluster 元件是否正常運作。 
+---
+= 驗證 MetroCluster 組態的健全狀況
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+瞭解如何驗證 MetroCluster 元件是否正常運作。
+
+.關於這項工作
+* 在 MetroCluster IP 和 FC 組態中、您可以使用 CLI 執行健全狀況檢查命令、並驗證 MetroCluster 元件的狀態。
+* 在執行 ONTAP 9 8 或更新版本的 MetroCluster IP 組態中、您也可以使用 ONTAP 系統管理員來監控和疑難排解健全狀況檢查警示。
+
+
+.步驟
+根據您使用的是 CLI 或系統管理員、確認 MetroCluster 組態的健全狀況。
+
+[role="tabbed-block"]
+====
+.CLI
+--
+請使用下列步驟、使用 CLI 檢查 MetroCluster 組態的健全狀況。
+
+.步驟
+. 驗證MetroCluster 這些元件是否正常運作：
++
+[source, cli]
+----
+metrocluster check run
+----
++
+[listing]
+----
+cluster_A::*> metrocluster check run
+----
++
+此作業會在背景執行。
+
+. 作業完成後 `metrocluster check run`、顯示結果：
++
+[source, cli]
+----
+metrocluster check show
+----
++
+大約五分鐘後、會顯示下列結果：
+
++
+[listing]
+----
+cluster_A:::*> metrocluster check show
+
+Component           Result
+------------------- ---------
+nodes               ok
+lifs                ok
+config-replication  ok
+aggregates          ok
+clusters            ok
+connections         not-applicable
+volumes             ok
+7 entries were displayed.
+----
+. 檢查執行MetroCluster 中的檢查作業狀態：
++
+[source, cli]
+----
+metrocluster operation history show -job-id <id>
+----
+. 確認沒有健全狀況警示：
++
+[source, cli]
+----
+system health alert show
+----
+
+
+--
+.ONTAP 系統管理員（僅限 MetroCluster IP ）
+--
+從 ONTAP 9 8 開始、系統管理員會監控 MetroCluster IP 組態的健全狀況、並協助您識別及修正可能發生的問題。
+
+System Manager 會定期檢查 MetroCluster IP 組態的健全狀況。當您在MetroCluster 儀表板中檢視「介紹」區段時、通常會出現「MetroCluster 介紹系統狀況良好」的訊息。
+
+不過、發生問題時、訊息會顯示事件數量。您可以按一下此訊息、檢視下列元件的健全狀況檢查結果：
+
+* 節點
+* 網路介面
+* 階層（儲存設備）
+* 叢集
+* 連線
+* Volume
+* 組態複寫
+
+
+「*狀態*」欄會指出哪些元件有問題、「*詳細資料*」欄則會建議您如何修正問題。
+
+.步驟
+. 在System Manager中、選取* Dashboard *。
+. 查看 MetroCluster 部分中的消息：
++
+.. 如果訊息顯示MetroCluster 您的「不健全」組態、且叢集與ONTAP 「不健全」（以核取符號顯示）之間的連線正常、則您沒有問題可以修正。
+.. 如果訊息中列出事件數目、或連線中斷（顯示為「X」）、請繼續下一步。
+
+
+. 按一下顯示事件數目的訊息。
++
+畫面上會顯示「系統健全狀況報告」MetroCluster 。
+
+. 使用「*詳細資料*」欄中的建議、疑難排解報告中出現的問題。
+. 當所有問題都已修正後、請按一下*檢查MetroCluster 「不健全狀況」*。
++
+
+NOTE: 執行檢查前、您應該先執行所有疑難排解工作、因為 MetroCluster 健全狀況檢查使用大量資源。
+
++
+執行「系統健全狀況檢查」的背景。MetroCluster您可以在等待其他工作完成的同時、處理其他工作。
+
+
+
+--
+====

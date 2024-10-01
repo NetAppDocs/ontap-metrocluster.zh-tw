@@ -1,0 +1,143 @@
+---
+permalink: manage/system-manager-switchover-healing-switchback.html 
+sidebar: sidebar 
+keywords: switchover, perform, switchback, system, manager, operation, restore, metrocluster, functionality, ip, configuration 
+summary: 切換後、您必須執行特定的修復作業、才能還原MetroCluster 還原功能。 
+---
+= 使用系統管理員執行切換和切換（僅限 MetroCluster IP 組態）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以將控制權從一個 MetroCluster IP 站台切換到另一個站台、以執行維護或從問題中恢復。
+
+
+NOTE: 切換和切換程序僅支援 MetroCluster IP 組態。
+
+
+
+== 切換與切換概述
+
+切換可在兩個執行個體中執行：
+
+* *計畫性切換*
++
+此切換是由系統管理員使用System Manager來啟動。規劃的切換功能可讓本機叢集的系統管理員切換控制、以便遠端叢集的資料服務由本機叢集處理。然後、位於遠端叢集位置的系統管理員可以在遠端叢集上執行維護作業。
+
+* *非計畫性切換*
++
+在某些情況下、當 MetroCluster 叢集當機或叢集之間的連線中斷時、 ONTAP 會自動啟動切換、以便仍在執行的叢集能夠處理當機叢集的資料處理責任。
+
++
+在其他情況下、當 ONTAP 無法判斷其中一個叢集的狀態時、正在工作的站台系統管理員會起始轉換、以控制另一個站台的資料處理責任。
+
+
+
+對於任何類型的切換程序、資料服務功能都會使用_switchback程序傳回叢集。
+
+您可以針對ONTAP 下列項目執行不同的切換和切換程序：
+
+* <<sm97-sosb,使用《系統管理程式ONTAP 》（in S還原9.7）進行切換和切換>>
+* <<sm98-sosb,使用《系統管理程式ONTAP 》（in S還原9.8）進行切換和切換>>
+
+
+
+
+== 使用《系統管理程式ONTAP 》（in S還原9.7）進行切換和切換
+
+.步驟
+. 登入 ONTAP 9 7 中的系統管理員。
+. 按一下*（返回傳統版本）*。
+. 按一下*「組態」> MetroCluster 「更新*」。
++
+System Manager會驗證是否有可能進行協調式切換。
+
+. 驗證程序完成時、請執行下列其中一項子步驟：
++
+.. 如果驗證失敗、但站台B已啟動、則發生錯誤。例如、子系統可能有問題、或NVRAM鏡射可能未同步。
++
+... 修正導致錯誤的問題、按一下*關閉*、然後在步驟2重新開始。
+... 停止站台 B 節點、按一下 * 關閉 * 、然後執行中的步驟 link:https://docs.netapp.com/us-en/ontap-system-manager-classic/online-help-96-97/task_performing_unplanned_switchover.html["執行非計畫性切換"^]。
+
+
+.. 如果驗證失敗、且站台 B 關閉、則很可能是連線問題。驗證站點 B 是否已關閉，然後執行中的步驟link:https://docs.netapp.com/us-en/ontap-system-manager-classic/online-help-96-97/task_performing_unplanned_switchover.html["執行非計畫性切換"^]。
+
+
+. 按一下*從站台B切換至站台A*以啟動切換程序。
+. 按一下*「切換至新體驗」*。
+
+
+
+
+== 使用《系統管理程式ONTAP 》（in S還原9.8）進行切換和切換
+
+
+
+=== 執行計畫性切換（ONTAP S498）
+
+.步驟
+. 登入ONTAP System Manager、請使用NetApp功能表9.8。
+. 選擇*儀表板*。在* MetroCluster 《*》（*《*》）區段中、兩個叢集會以連線方式顯示。
+. 在本機叢集（如左側所示）中、按一下 image:icon_kabob.gif["烤串圖示"]、然後選取 * 切換遠端資料服務到本機站台 * 。
++
+在驗證轉換要求之後、控制權會從遠端站台傳輸到本機站台。本機站台會為兩個叢集執行資料服務要求。
+
++
+遠端叢集會重新開機、但儲存元件並未作用、而且叢集不會處理資料要求。現在可用於計畫性維護。
+
+
+
+
+NOTE: 在您執行切換回復之前、不應使用遠端叢集進行資料服務。
+
+
+
+=== 執行非計畫性切換（ONTAP S498）
+
+非計畫性的切換功能可能會由ONTAP 功能更新自動啟動。如果ONTAP 無法判斷是否需要切換、MetroCluster 則仍在執行的該站台的系統管理員會以下列步驟啟動切換：
+
+.步驟
+. 登入ONTAP System Manager、請使用NetApp功能表9.8。
+. 選擇*儀表板*。
++
+在 * MetroCluster * 區段中、兩個叢集之間的連線會顯示在其中、並顯示「 X 」。這表示無法偵測到連線、而且連線或叢集已關閉。
+
+. 在本機叢集（如左側所示）中、按一下 image:icon_kabob.gif["烤串圖示"]、然後選取 * 切換遠端資料服務到本機站台 * 。
++
+如果切換失敗並出現錯誤、請按一下錯誤訊息中的「View details」（檢視詳細資料）連結、然後確認非計畫性的切換。
+
++
+在驗證轉換要求之後、控制權會從遠端站台傳輸到本機站台。本機站台會為兩個叢集執行資料服務要求。
+
++
+叢集必須先修復、才能重新上線。
+
+
+
+
+NOTE: 遠端叢集上線後、在您執行切換之前、不應將它用於資料服務。
+
+
+
+=== 執行切換（ONTAP 還原9.8）
+
+.開始之前
+如果遠端叢集因規劃的維護或災難而關閉、則現在應該已啟動並執行、並等待切換。
+
+.步驟
+. 在本機叢集上、登入ONTAP 《System Manager》（系統管理程式）、請使用《》（功能表）。
+. 選擇*儀表板*。
++
+在* MetroCluster 《*》（*《*》）區段中、會顯示這兩個叢集。
+
+. 在本機叢集（如左側所示）中、按一下 image:icon_kabob.gif["烤串圖示"]、然後選取 * 取回 control* 。
++
+資料會先 _ 修復 _ 、以驗證兩個叢集之間的資料是否同步並鏡射。
+
+. 資料修復完成後、按一下 image:icon_kabob.gif["烤串圖示"]、然後選取 * 起始切換回復 * 。
++
+當切換完成時、兩個叢集都會處於作用中狀態、並會處理資料要求。此外、叢集之間的資料正在進行鏡射與同步處理。
+
+

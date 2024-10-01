@@ -32,12 +32,6 @@ indexpage:
     links:
     - title: RCF檔案MetroCluster
       url: https://mysupport.netapp.com/site/products/all/details/metrocluster-rcf/docsandkb-tab
-  - title: 深入瞭解
-    links:
-    - title: NetApp MetroCluster 解決方案架構與設計| TR-4705
-      url: https://www.netapp.com/pdf.html?item=/media/13480-tr4705.pdf
-    - title: "《SIP解決方案架構與設計》| TR-4689 MetroCluster"
-      url: https://www.netapp.com/pdf.html?item=/media/13481-tr4689.pdf
   - title: 升級、擴充及轉換
     links:
     - title: 升級及更新硬體
@@ -50,6 +44,16 @@ indexpage:
       url: "/transition/concept_choosing_your_transition_procedure_mcc_transition.html"
     - title: 升級MetroCluster RCF檔案
       url: "/maintain/task_upgrade_rcf_files_on_mcc_ip_switches.html"
+    - title: 在ONTAP 叢集上升級功能MetroCluster
+      url: https://docs.netapp.com/us-en/ontap/task_metrocluster_ANDU_upgrade.html
+  - title: 使用 MetroCluster 保護資料
+    links:
+    - title: 瞭MetroCluster 解資料保護與災難恢復
+      url: "/manage/concept_understanding_mcc_data_protection_and_disaster_recovery.html"
+    - title: 執行切換、修復及切換
+      url: "/manage/task_perform_switchover_for_tests_or_maintenance.html"
+    - title: 從災難中恢復
+      url: "/disaster-recovery/concept_dr_workflow.html"
   - title: Atto橋接韌體
     links:
     - title: 光纖橋接器7600N
@@ -64,3 +68,9 @@ indexpage:
       url: https://hwu.netapp.com/
     - title: NetApp支援知識庫
       url: https://kb.netapp.com/
+  - title: 深入瞭解
+    links:
+    - title: NetApp MetroCluster 解決方案架構與設計| TR-4705
+      url: https://www.netapp.com/pdf.html?item=/media/13480-tr4705.pdf
+    - title: "《SIP解決方案架構與設計》| TR-4689 MetroCluster"
+      url: https://www.netapp.com/pdf.html?item=/media/13481-tr4689.pdf

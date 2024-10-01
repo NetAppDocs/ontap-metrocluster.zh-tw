@@ -130,5 +130,7 @@ entries:
     url: "/maintain/task_move_a_metadata_volume_in_mcc_configurations.html"
   - title: 在MetroCluster 不完整的組態中重新命名叢集
     url: "/maintain/task_rename_the_cluster_for_mcc_configuration.html"
+  - title: 檢查 MetroCluster 組態的健全狀況
+    url: "/maintain/verify-health-mcc-config.html"
   - title: 何處可找到其他資訊
     url: "/maintain/reference_where_to_find_additional_information_mcc_service_guide.html"
