@@ -712,6 +712,9 @@ Cluster_A::> metrocluster configuration-settings dr-group create -partner-cluste
 
 您必須設定MetroCluster 用於複寫每個節點儲存和非揮發性快取的Eshow IP介面。然後、您就可以使用MetroCluster 靜態IP介面建立連線。這會建立用於儲存複寫的iSCSI連線。
 
+
+NOTE: 建立 MetroCluster IP 介面之後、 MetroCluster IP 和連接的交換器連接埠才會上線。
+
 .關於這項工作
 * 您必須為每個節點建立兩個介面。這些介面必須與MetroCluster 在RESRCF檔案中定義的VLAN相關聯。
 * 根據您的 ONTAP 版本、您可以在初始設定後變更某些 MetroCluster IP 介面內容。如需支援項目的詳細資訊、請參閱 link:../maintain/task-modify-ip-netmask-properties.html["修改 MetroCluster IP 介面的內容"] 。

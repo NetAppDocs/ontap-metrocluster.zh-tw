@@ -1967,7 +1967,7 @@ link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#adding-metro
  a| 
 中介者
  a| 
-連結：../install-ip/concept_mediator_requirements.html [從ONTAP 一套靜態IP組態設定此功能的「組態」中設定此功能。MetroCluster
+link:../install-ip/concept_mediator_requirements.html["從ONTAP 一套不實的IP組態設定「不實不作」MetroCluster 服務"]。
 
 
 

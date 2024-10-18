@@ -4070,7 +4070,6 @@
   <block id="0bc360ed08fdc8afeea8f81d91928a49" category="cell">正在啟動組態</block>
   <block id="1a6ef31c02bc656e4fbac4327c5198d9" category="cell">不中斷營運或不中斷營運</block>
   <block id="5a2ebfb8baa378cfcfcba58bbb1380c2" category="cell">需求</block>
-  <block id="ae4bcbe3a4d8a4dd251ebc90c0689dc3" category="paragraph">四個節點</block>
   <block id="b8910962b1d031cc1eb8e8ad588c4c48" category="paragraph">不中斷營運</block>
   <block id="b1967383562a98a66ed0eff3ea640595" category="paragraph">新平台支援新的儲存櫃。</block>
   <block id="2380f44f4dcec1f84b76f71d467c0c65" category="inline-link-macro">不中斷地從MetroCluster 一個不中斷的支援FC移轉至MetroCluster 一個支援功能性的IP組態ONTAP （版本號：9.8及更新版本）</block>
@@ -10582,7 +10581,6 @@
   <block id="19c6ec23fb83ad84775f1d2419c27ab9" category="paragraph">完成MetroCluster 升級版的ESIE組態之後、您可以使用斷路器或調解器公用程式繼續監控。</block>
   <block id="b8f4d9367862f5c87fb645221621118e" category="list-text">如有必要、請使用您的組態程序來還原監控功能。</block>
   <block id="ff8648705a32483b6efc36e81f3ff6c9" category="paragraph"><block ref="7efa6fc838c006d396e42638b4ff25d1" category="inline-link-macro-rx"></block>。</block>
-  <block id="455aeb5b6e6bb2c51d7485e26da56e30" category="paragraph">連結：../install-ip/concept_mediator_requirements.html [從ONTAP 一套靜態IP組態設定此功能的「組態」中設定此功能。MetroCluster</block>
   <block id="38327b7824e5a35266d03145c15c04f9" category="list-text">發出下列命令：+"System node" AutoSupport （系統節點）"esfinvoke -node"（節點*）-type all -mMessage MAn=end"（輸入all -m郵件 維護=結束）</block>
   <block id="7920d90ee592a17d9f5e14893fc3140e" category="summary">您必須執行MetroCluster flexconfigure -refreshtrue命令、在已新增MetroCluster 至該組態的節點上啟動資料保護。</block>
   <block id="83027cd3a866a71b7f29247604ca6bae" category="paragraph">您必須執行「MetroCluster flexconfigure -refreshtrue」命令、才能在已新增MetroCluster 至該組態的節點上啟動資料保護。</block>
@@ -11001,7 +10999,6 @@
   <block id="5093d7a3406fcb273a4b32d2338f80bb" category="sidebar">在混合式組態中準備節點以進行切換（轉換期間的還原）</block>
   <block id="ce2f7fb1e25dd173f705b41f9ecd6b7a" category="sidebar">完整恢復</block>
   <block id="8bb3ab6324e94f37660f5001c121e21d" category="sidebar">從非控制器故障中恢復</block>
-  <block id="b25d5935c651d85fc394ce7858eb2c60" category="sidebar">安裝及設定MetroCluster 資訊斷路器</block>
   <block id="38484792ce18e1ac90df07df1cbe4040" category="sidebar">安裝Tiebreaker軟體</block>
   <block id="77d873129b2551d3791bd53918453706" category="sidebar">設定Tiebreaker軟體</block>
   <block id="842ed7dcbaa63b60b53e91a89a33e02c" category="sidebar">設定Tiebreaker軟體的SNMP設定</block>
@@ -12101,7 +12098,6 @@
   <block id="2e53212ba8ca8b35cbf4ed2b9eb52b0c" category="doc">將一堆 SAS 磁碟櫃熱新增至現有的一對 FiberBridge 7600N 或 7500N 橋接器</block>
   <block id="e3e17f353727a0bf80bc5f781fadd978" category="list-text">必須連接 FiberBridge 7600N 或 7500N 橋接器、並具有可用的 SAS 連接埠。</block>
   <block id="7ec840edd23c7b1a5bd3b9167d726942" category="list-text">新增堆疊後、檢查橋接器上是否有任何健全狀況警示：</block>
-  <block id="4aa202a3c65f2813f56a71404d4e0d9f" category="paragraph">八個節點</block>
   <block id="74c873abf18bb043c43561d25adce539" category="paragraph"><block ref="74c873abf18bb043c43561d25adce539" category="inline-link-macro-rx"></block></block>
   <block id="0159b80d745d9b405520a30a29416d2d" category="paragraph">在升級之前、您必須收集每個舊節點的資訊、並在必要時調整網路廣播網域、移除任何 VLAN 和介面群組、以及收集加密資訊。</block>
   <block id="3b2740b2f65f79e770509c9b837df2de" category="paragraph">在升級過程中、您將以控制器模組的系統 ID 取代這些舊的系統 ID 。</block>
@@ -13192,7 +13188,6 @@
   <block id="19aa48eac8765adacdffd4326cf95a85" category="paragraph">您可以允許一個叢集站台接管另一個叢集站台的工作。此功能可讓您協助進行災難的維護或恢復。</block>
   <block id="5b8155e42c3d2db8152488c62b6cf9ea" category="paragraph"><block ref="5b8155e42c3d2db8152488c62b6cf9ea" category="inline-link-rx"></block></block>
   <block id="5575ad3a333d0c5383b802ef33e4e17a" category="cell">Broadcom IP 交換器</block>
-  <block id="db639aacb326d316570b69a39011f1b2" category="paragraph">Quanta IX8.</block>
   <block id="a28a8f1b6ed98f7c514003193e44ac48" category="cell">Cisco IP 交換器</block>
   <block id="f0936c8d947d6fc9958bb86b9f3f74f8" category="paragraph">Nexus 9336C-FX2</block>
   <block id="aff36115ba8ba0cb671d3dfa2208bed1" category="paragraph">9336C</block>
@@ -14269,4 +14264,9 @@
   <block id="ae58261cc60a8a566f51001fa9647cc8" category="sidebar">使用系統管理員設定 MetroCluster 軟體</block>
   <block id="7dbb00295563db0482d1cd647c85ce79" category="sidebar">使用系統管理員管理 ONTAP Mediator</block>
   <block id="08df7de62062ac541a6aa573389a0bff" category="sidebar">檢查 MetroCluster 組態的健全狀況</block>
+  <block id="bcaee96b0ab793907da56767503991e2" category="admonition">建立 MetroCluster IP 介面之後、 MetroCluster IP 和連接的交換器連接埠才會上線。</block>
+  <block id="6db27f68adde7b6578b513891108402f" category="paragraph">BES-53248</block>
+  <block id="c71b2061a1720b5d01c7a9a079938384" category="paragraph">四個或八個節點</block>
+  <block id="be0859f362012838e5040b2ef44bc04b" category="paragraph"><block ref="bacc4dbebf17d22c9a0361ded0994067" category="inline-link-macro-rx"></block>。</block>
+  <block id="04615ba020125ab8e6efd72006cee7b6" category="sidebar">安裝及設定 MetroCluster tiebreaker</block>
 </blocks>

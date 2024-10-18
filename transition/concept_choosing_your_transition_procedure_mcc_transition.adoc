@@ -80,18 +80,7 @@ image::../media/4node-transition-9151-update.png[顯示 IP 轉 FC 轉換支援�
 
 
  a| 
-八個節點
- a| 
-不中斷營運
- a| 
-新平台支援新的儲存櫃。
- a| 
-link:concept_nondisruptively_transitioning_from_a_four_node_mcc_fc_to_a_mcc_ip_configuration.html["程序連結"]
-
-
-
- a| 
-四個節點
+四個或八個節點
  a| 
 不中斷營運
  a| 
