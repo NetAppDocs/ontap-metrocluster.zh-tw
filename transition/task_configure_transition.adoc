@@ -645,6 +645,14 @@ NOTE: 您必須執行「MetroCluster 靜態組態」和*「非」* MetroCluster 
 
 NOTE: 最佳實務做法是擁有多個鏡射資料集合體。當只有一個鏡射Aggregate時、保護就會減少、因為中繼資料磁碟區位於相同的Aggregate上、而非位於個別的Aggregate上。
 
+. 重新啟動每個新節點：
++
+`node reboot -node <node_name> -inhibit-takeover true`
+
++
+
+NOTE: 您不需要以特定順序重新開機節點、但應該等到一個節點完全開機、所有連線都已建立、然後再重新啟動下一個節點。
+
 . 確認節點已新增至其DR群組：
 +
 「不一樣的秀」MetroCluster

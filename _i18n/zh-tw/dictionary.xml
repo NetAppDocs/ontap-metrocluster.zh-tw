@@ -12596,7 +12596,6 @@
   <block id="d92546772d08abd00db8e99ff54c7ecb" category="paragraph">6 ISL 使用 40Gbps</block>
   <block id="0274c7930fb2689bb0d5d7900b24b372" category="paragraph">使用 10Gbps 的 16 個 ISL</block>
   <block id="cdd7ce1b4fb53a24815dfe597e2d9bf4" category="paragraph">6 個 ISL 、使用 40Gbps 或 100Gbps</block>
-  <block id="5f464862c3ad92817ffd0d939008e569" category="paragraph">16 ISL 、使用 10</block>
   <block id="a47530745311f9d2efa307163eb1ee61" category="paragraph">原生連接埠（附註 2 ）</block>
   <block id="a86749ca3f0eb199f6cde6d8cc60d442" category="paragraph">4 個使用 40Gbps 或 100Gbps 的 ISL</block>
   <block id="83462a2f17a5fa1e38b557632ec6d366" category="paragraph">中斷連接線（附註 2 ）</block>
@@ -14269,4 +14268,6 @@
   <block id="c71b2061a1720b5d01c7a9a079938384" category="paragraph">四個或八個節點</block>
   <block id="be0859f362012838e5040b2ef44bc04b" category="paragraph"><block ref="bacc4dbebf17d22c9a0361ded0994067" category="inline-link-macro-rx"></block>。</block>
   <block id="04615ba020125ab8e6efd72006cee7b6" category="sidebar">安裝及設定 MetroCluster tiebreaker</block>
+  <block id="f292b4f87450c271c690d67e1d3a03e8" category="paragraph">使用 10Gbps 或 25Gbps 的 16 個 ISL</block>
+  <block id="d20d5c9d070e6369690ed4a79cf3c4bd" category="admonition">您不需要以特定順序重新開機節點、但應該等到一個節點完全開機、所有連線都已建立、然後再重新啟動下一個節點。</block>
 </blocks>

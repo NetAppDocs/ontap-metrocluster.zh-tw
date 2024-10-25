@@ -128,7 +128,7 @@ Cisco 3232C
  a| 
 中斷連接線
  a| 
-使用 10Gbps 的 16 個 ISL
+使用 10Gbps 或 25Gbps 的 16 個 ISL
 
 
 
@@ -146,7 +146,7 @@ Cisco 9336C-FX2（未連接NS224磁碟櫃）
  a| 
 中斷連接線
  a| 
-16 ISL 、使用 10
+使用 10Gbps 或 25Gbps 的 16 個 ISL
 
 
 
@@ -164,7 +164,7 @@ Cisco 9336C-FX2（連接NS224磁碟櫃）
  a| 
 中斷連接線（附註 2 ）
  a| 
-使用 10Gbps 的 16 個 ISL
+使用 10Gbps 或 25Gbps 的 16 個 ISL
 
 
 
