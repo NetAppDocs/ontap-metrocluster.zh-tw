@@ -21,6 +21,28 @@ summary:
 
 
  a| 
+SVM 資料移動性支援，可移轉 MetroCluster 組態
+ a| 
+ONTAP 支援將 SVM 從非 MetroCluster HA 配對移轉至 MetroCluster 組態，或從 MetroCluster 組態移轉至非 MetroCluster HA 配對。您無法在 MetroCluster 組態之間移轉 SVM 。
+
+link:https://docs.netapp.com/us-en/ontap/svm-migrate/index.html["SVM資料移動性"^]
+ a| 
+ONTAP 9.16.1.
+
+
+
+ a| 
+BGP 對等群組的 MD5 驗證支援
+ a| 
+ONTAP 支援 BGP 對等群組上的 MD5 驗證，以保護 BGP 工作階段。啟用 MD5 時， BGP 工作階段只能在獲授權的對等點之間建立和處理，以防止未獲授權的使用者可能中斷工作階段。
+
+link:https://docs.netapp.com/us-en/ontap/networking/configure_virtual_ip_@vip@_lifs.html["設定虛擬IP（VIP）LIF"^]
+ a| 
+ONTAP 9.16.1.
+
+
+
+ a| 
 MetroCluster IP 支援 NVMe
  a| 
 四節點 MetroCluster IP 組態支援 NVMe / TCP 前端主機傳輸協定。

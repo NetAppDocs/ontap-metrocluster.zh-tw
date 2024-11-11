@@ -2442,10 +2442,8 @@
   <block id="0eb57575de5c7f4d680f1a39b29ec2b1" category="paragraph">您可以從任一控制器模組的主控台、在其餘步驟中輸入命令。</block>
   <block id="1f06fb185175c42c17ad8392e330767e" category="paragraph">當系統提示您繼續進入進階模式、並看到進階模式提示（*&gt;）時、您必須使用「y」回應。</block>
   <block id="3240aad2738f70e3ab16c6dadcff4f64" category="list-text">更新橋接器韌體：</block>
-  <block id="661e2204cb2e8d5d76cdeb2ec6dd4c82" category="paragraph">「torage bridge韌體更新-橋接器名稱-uri _url-of韌體套件_」</block>
   <block id="4b3afe92d6efd942da2f6c9cc0193156" category="list-text">確認韌體升級已完成：</block>
   <block id="e8ecfd692141a2af654944f772388550" category="paragraph">「jobshow -name "_job-name_"」</block>
-  <block id="c91321ecefb3f3097824082b2b8ad47e" category="paragraph">以下範例顯示「靜態橋接韌體更新」工作仍在執行中：</block>
   <block id="57218ce2b3683cc3d220300cdb1a5112" category="paragraph">大約10分鐘後、新韌體就會完全安裝、工作狀態將會是「成功」：</block>
   <block id="1023e499127e1c9705dbc019dc65ffca" category="list-text">請根據是否啟用頻內管理、ONTAP 以及系統執行的版本來完成步驟：</block>
   <block id="ad4a04ec96320f2893d5f6989086846f" category="list-text">如果您執行ONTAP 的是支援使用支援內頻管理的功能、則必須從橋接主控台發出命令：</block>
@@ -2453,9 +2451,7 @@
   <block id="26fdc702129a16aafe7405c5c6bbf046" category="admonition">範例顯示主要Flash映像顯示新的韌體映像、而次要Flash映像則顯示舊映像。</block>
   <block id="fc586f4b0980908d4372323e410963a4" category="list-text">從橋接器執行「firmwarerestart」命令、重新啟動橋接器。</block>
   <block id="d47da404b64fa7f223a274546a4f333a" category="list-text">如果您執行ONTAP 的是版本號為2、9.5或更新版本、則支援頻內管理、並可從叢集提示字元發出命令：</block>
-  <block id="dae4d2e67917b362ddd1f681a84bbf3c" category="list-text">執行「storage bridge run－CLI -name _bridge-name_－command FlashImages」命令。</block>
   <block id="5bd4b5b50c5ac874303a8d602e07a3df" category="list-text">如有必要、請重新啟動橋接器：</block>
-  <block id="58a8b36ecd6128fba6f2a930d1870915" category="paragraph">「torage bridge run－CLI -name Ato_7500N_IB_1 -command FirmwareRestart'」</block>
   <block id="befb8d9c3b9caecfce0121a43afa3ce1" category="admonition">從Atto韌體2.95版開始、橋接器將自動重新啟動、不需要執行此步驟。</block>
   <block id="2667ea3cde22695f6975f497f96d298f" category="list-text">確認橋接器已正確重新啟動：</block>
   <block id="6ecfdc621994ad7a88af8d731165c43a" category="paragraph">"syssconfig"</block>
@@ -13499,10 +13495,7 @@
   <block id="65bd6763ac7ddd88c7008054cb6bc624" category="admonition">若要從 ONTAP 軟體變更至 Good 、請使用下列步驟： <block ref="b0ca457fe34ed30c44119bccf9b89d7d" category="inline-link-macro-rx"></block></block>
   <block id="7b195fd8d412843052bdca8035a73b9b" category="paragraph">瞭解 MetroCluster IP 平台支援的新功能。</block>
   <block id="5fa70989a3e04b27c407da750f3d94fe" category="paragraph">AFF A70 、 AFF A90 、 AFF A1K</block>
-  <block id="4b96de8aec25594d2021f91d86aa38cb" category="paragraph">ONTAP 9.15.1 及更新版本</block>
   <block id="09165c2d4ac9e01ef347c57ffcbe1ce5" category="paragraph">ASA A150 、 ASA A250 、 ASA A400 、 ASA A800 、 ASA A900 、 ASA C250 、 ASA C400 、 ASA C800</block>
-  <block id="fafe6583a668a5a00cfd6d5e611b9ce3" category="paragraph">ONTAP 9.14.1 及更新版本</block>
-  <block id="f8f1cacc3272f3e60fb1b860d1134be6" category="paragraph">ONTAP 9.13.1 GA 及更新版本</block>
   <block id="2f709669cbfb385626cf55d7c80120be" category="paragraph">ASA AFF A220 、 ASA AFF A250 、 ASA AFF A400 、 ASA AFF A700 、 ASA AFF A800</block>
   <block id="e4d3a0569925dd58f4e2c0c40b889993" category="paragraph">AFF A220 、 FAS2750</block>
   <block id="fc028e3a959d5040cb2c7b0ceac73cf8" category="paragraph">AFF A300 、 FAS8200</block>
@@ -14270,4 +14263,28 @@
   <block id="04615ba020125ab8e6efd72006cee7b6" category="sidebar">安裝及設定 MetroCluster tiebreaker</block>
   <block id="f292b4f87450c271c690d67e1d3a03e8" category="paragraph">使用 10Gbps 或 25Gbps 的 16 個 ISL</block>
   <block id="d20d5c9d070e6369690ed4a79cf3c4bd" category="admonition">您不需要以特定順序重新開機節點、但應該等到一個節點完全開機、所有連線都已建立、然後再重新啟動下一個節點。</block>
+  <block id="65a32997b66c0fa9964c46d8ce3023c5" category="admonition">從 ONTAP 9 ． 8 開始，該<block ref="81f0734b378bc1ed5fb99125faf1d47a" prefix=" " category="inline-code"></block>命令將替換<block ref="c5c5939ad24a4bc4cca8c77f5105d463" prefix=" " category="inline-code"></block> .下列步驟會顯示<block ref="81f0734b378bc1ed5fb99125faf1d47a" prefix=" " category="inline-code"></block>命令，但如果您執行的版本早於 ONTAP 9 8 ，則應該使用<block ref="c5c5939ad24a4bc4cca8c77f5105d463" prefix=" " category="inline-code"></block>命令。</block>
+  <block id="e0b676f47094dac51c79372806a1021a" category="list-text">更新橋接器韌體。</block>
+  <block id="1e8d4e4a0ce5b464f6997d0bbb8d8ba2" category="paragraph">從 ONTAP 9 。 16.1 開始，如果伺服器需要橋接器韌體來下載韌體套件，您可以使用認證來更新橋接器韌體。</block>
+  <block id="38cbc38ca036975e59d1ee4168bc50a2" category="open-title">如果不需要認證：</block>
+  <block id="db7fff50b13f73830f7aaaf34fd5371e" category="open-title">如果需要認證：</block>
+  <block id="c540a55c1af8888d4507b7c80af2d372" category="list-text">更新橋接器韌體並指定所需的使用者名稱：</block>
+  <block id="e9b9a2eac9e5ccde661c85666e1bebfc" category="list-text">在輸出中出現提示時輸入密碼，如下列範例所示：</block>
+  <block id="9f81eba7dfa3609b17894df364395597" category="paragraph">以下範例顯示「系統橋接器韌體更新」工作仍在執行中：</block>
+  <block id="92289ea5a47b731862869f48712c9527" category="list-text">執行<block ref="e595c34083a230fd789d64c7de21c72a" prefix=" " category="inline-code"></block>命令。</block>
+  <block id="52e06a42c952a2b1bdb77dfc0f6f90ff" category="paragraph"><block ref="a51df89c214b1838fdbc8273e8704555" prefix="" category="inline-code"></block></block>
+  <block id="968258a4c4370a9f6fe8b87ce4255cca" category="paragraph"><block ref="6604a22a7f45489dfc4b36fa6c37c036" prefix="" category="inline-code"></block></block>
+  <block id="afdf08fe53823e29ce4e277959c64b1e" category="paragraph">SVM 資料移動性支援，可移轉 MetroCluster 組態</block>
+  <block id="61576ee193ce4ae8f8a1aea237cc4781" category="paragraph">ONTAP 支援將 SVM 從非 MetroCluster HA 配對移轉至 MetroCluster 組態，或從 MetroCluster 組態移轉至非 MetroCluster HA 配對。您無法在 MetroCluster 組態之間移轉 SVM 。</block>
+  <block id="aeaa758085c5e2389b9072b1ced2dc57" category="inline-link-macro">SVM資料移動性</block>
+  <block id="deff601e347d3753345e223f0dece2ac" category="paragraph"><block ref="deff601e347d3753345e223f0dece2ac" category="inline-link-macro-rx"></block></block>
+  <block id="31272abf1c9209ab4acd0bf10f129338" category="paragraph">ONTAP 9.16.1.</block>
+  <block id="b186fa8da6778f3ac2d4aa8499deffeb" category="paragraph">BGP 對等群組的 MD5 驗證支援</block>
+  <block id="a74281ed4b15e1a42fc798b20f31018b" category="paragraph">ONTAP 支援 BGP 對等群組上的 MD5 驗證，以保護 BGP 工作階段。啟用 MD5 時， BGP 工作階段只能在獲授權的對等點之間建立和處理，以防止未獲授權的使用者可能中斷工作階段。</block>
+  <block id="ef78f11e7aec890f1dc53f6a0176cdf4" category="inline-link-macro">設定虛擬IP（VIP）LIF</block>
+  <block id="43d93948b7becfd15462e91085fd63cc" category="paragraph"><block ref="43d93948b7becfd15462e91085fd63cc" category="inline-link-macro-rx"></block></block>
+  <block id="94ffd34b73e540c50265688d834cea45" category="paragraph">ONTAP 9 。 13.1 GA</block>
+  <block id="0cb8709673d91d9b41f7a2d9110be6db" category="paragraph">使用認證更新 Fiberbridge 韌體</block>
+  <block id="cca6b3113bea250bb0e5ecb42fcd1f6b" category="paragraph">如果伺服器需要使用認證來下載韌體套件，您可以使用認證來更新 Fiberbridge 橋接器上的韌體。</block>
+  <block id="7f35c16e72037a8dea668c5bb0e6327d" category="paragraph"><block ref="7f35c16e72037a8dea668c5bb0e6327d" category="inline-link-macro-rx"></block></block>
 </blocks>

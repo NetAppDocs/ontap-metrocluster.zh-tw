@@ -41,7 +41,7 @@ https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"^]
 NOTE: 此程序不中斷營運、約需30分鐘完成。
 
 
-NOTE: 從ONTAP 功能組別9.8開始、「最小橋接器」命令會改為「系統橋接器」。以下步驟顯示了「shorage bridge」命令、但ONTAP 如果您執行的是更新版本的版本、最好使用「系統橋接器」命令。
+NOTE: 從 ONTAP 9 ． 8 開始，該 `system bridge`命令將替換 `storage bridge` .下列步驟會顯示 `system bridge`命令，但如果您執行的版本早於 ONTAP 9 8 ，則應該使用 `storage bridge`命令。
 
 .步驟
 . 叫出AutoSupport 指示維護開始的消息：
@@ -70,15 +70,52 @@ https://mysupport.netapp.com/site/products/all/details/atto-fibrebridge/download
 +
 當系統提示您繼續進入進階模式、並看到進階模式提示（*>）時、您必須使用「y」回應。
 
-. 更新橋接器韌體：
+. 更新橋接器韌體。
 +
-「torage bridge韌體更新-橋接器名稱-uri _url-of韌體套件_」
+從 ONTAP 9 。 16.1 開始，如果伺服器需要橋接器韌體來下載韌體套件，您可以使用認證來更新橋接器韌體。
 
 +
+[role="tabbed-block"]
+====
+.如果不需要認證：
+--
+.. 更新橋接器韌體：
+
+
+[source, cli]
+----
+system bridge firmware update -bridge <name> -uri <URL-of-firmware-package>
+----
+.範例
 [listing]
 ----
-cluster_A> storage bridge firmware update -bridge bridge_A_1a -uri http://192.168.132.97/firmware.ZBD
+cluster_A> system bridge firmware update -bridge bridge_A_1a -uri http://192.168.132.97/firmware.ZBD
 ----
+--
+.如果需要認證：
+--
+.. 更新橋接器韌體並指定所需的使用者名稱：
++
+[source, cli]
+----
+system bridge firmware update -bridge <name> -uri <URL-of-firmware-package> -username <name>
+----
+.. 在輸出中出現提示時輸入密碼，如下列範例所示：
+
+
+.範例
+[listing]
+----
+cluster_A> system bridge firmware update -bridge bridge_A_1a -uri http://192.168.132.97/firmware.ZBD -username abc
+
+(system bridge)
+
+Enter the password:
+
+[Job 70] Job is queued: System bridge firmware update job.
+----
+--
+====
 . 返回管理權限層級：
 +
 「et -priv. admin」
@@ -88,12 +125,12 @@ cluster_A> storage bridge firmware update -bridge bridge_A_1a -uri http://192.16
 「jobshow -name "_job-name_"」
 
 +
-以下範例顯示「靜態橋接韌體更新」工作仍在執行中：
+以下範例顯示「系統橋接器韌體更新」工作仍在執行中：
 
 +
 [listing]
 ----
-cluster_A> job show -name "storage bridge firmware update"
+cluster_A> job show -name "system bridge firmware update"
 Owning
 
 Job ID Name                 Vserver    Node           State
@@ -102,7 +139,7 @@ Job ID Name                 Vserver    Node           State
                             cluster_A
                                        node_A_1
                                                       Running
-Description: Storage bridge firmware update job
+Description: System bridge firmware update job
 ----
 +
 大約10分鐘後、新韌體就會完全安裝、工作狀態將會是「成功」：
@@ -110,16 +147,16 @@ Description: Storage bridge firmware update job
 +
 [listing]
 ----
-cluster_A> job show -name "storage bridge firmware update"
+cluster_A> job show -name "system bridge firmware update"
 
                             Owning
 Job ID Name                 Vserver    Node           State
 ------ -------------------- ---------- -------------- ----------
-2246   Storage bridge firmware update
+2246   System bridge firmware update
                             cluster_A
                                        node_A_1
                                                       Success
-Description: Storage bridge firmware update job
+Description: System bridge firmware update job
 ----
 . 請根據是否啟用頻內管理、ONTAP 以及系統執行的版本來完成步驟：
 +
@@ -151,7 +188,7 @@ Ready.
 *** 如果您執行ONTAP 的是版本號為2、9.5或更新版本、則支援頻內管理、並可從叢集提示字元發出命令：
 
 
-.. 執行「storage bridge run－CLI -name _bridge-name_－command FlashImages」命令。
+.. 執行 `system bridge run-cli -name _bridge-name_ -command FlashImages`命令。
 +
 
 NOTE: 範例顯示主要Flash映像顯示新的韌體映像、而次要Flash映像則顯示舊映像。
@@ -159,7 +196,7 @@ NOTE: 範例顯示主要Flash映像顯示新的韌體映像、而次要Flash映�
 +
 [listing]
 ----
-cluster_A> storage bridge run-cli -name ATTO_7500N_IB_1 -command FlashImages
+cluster_A> system bridge run-cli -name ATTO_7500N_IB_1 -command FlashImages
 
 [Job 2257]
 
@@ -174,7 +211,7 @@ Ready.
 ----
 .. 如有必要、請重新啟動橋接器：
 +
-「torage bridge run－CLI -name Ato_7500N_IB_1 -command FirmwareRestart'」
+`system bridge run-cli -name ATTO_7500N_IB_1 -command FirmwareRestart`
 
 +
 
@@ -201,12 +238,12 @@ System Storage Configuration: Quad-Path HA
 ----
 . 驗證是否已更新過FIBreBridge韌體：
 +
-「torage bridge show -功能 變數fW-version、symbol-name」
+`system bridge show -fields fw-version,symbolic-name`
 
 +
 [listing]
 ----
-cluster_A> storage bridge show -fields fw-version,symbolic-name
+cluster_A> system bridge show -fields fw-version,symbolic-name
 name fw-version symbolic-name
 ----------------- ----------------- -------------
 ATTO_20000010affeaffe 3.10 A06X bridge_A_1a

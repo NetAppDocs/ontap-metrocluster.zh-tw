@@ -19,6 +19,17 @@ summary:
 
 
  a| 
+使用認證更新 Fiberbridge 韌體
+ a| 
+如果伺服器需要使用認證來下載韌體套件，您可以使用認證來更新 Fiberbridge 橋接器上的韌體。
+
+link:../maintain/task_update_firmware_on_a_fibrebridge_bridge_parent_topic.html["更新光纖橋接器上的韌體"]
+ a| 
+ONTAP 9.16.1.
+
+
+
+ a| 
 支援端點對端點加密的 MetroCluster IP
  a| 
 AFF A400 、 FAS8300 和 FAS8700 系統支援端點對端點加密、可在 MetroCluster IP 組態中的站台之間加密後端流量、例如 NVlog 和儲存複寫資料。

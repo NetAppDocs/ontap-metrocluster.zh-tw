@@ -25,21 +25,21 @@ summary:
  a| 
 AFF A70 、 AFF A90 、 AFF A1K
  a| 
-ONTAP 9.15.1 及更新版本
+ONTAP 9.15.1.1
 
 
 
  a| 
 ASA A150 、 ASA A250 、 ASA A400 、 ASA A800 、 ASA A900 、 ASA C250 、 ASA C400 、 ASA C800
  a| 
-ONTAP 9.14.1 及更新版本
+ONTAP 9.14.1.
 
 
 
  a| 
 解答150 AFF
  a| 
-ONTAP 9.13.1 及更新版本
+ONTAP 9.13.1.12.9.11.9.11.
 
 ONTAP 9.12.1P1
 
@@ -54,7 +54,7 @@ AFF C250 、 AFF C400 、 AFF C800
  a| 
 ONTAP 9.12.1P1
 
-ONTAP 9.13.1 GA 及更新版本
+ONTAP 9 。 13.1 GA
 
 
 
