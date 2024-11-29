@@ -2242,7 +2242,6 @@
   <block id="a30979175999bc3f18e8d51521e83241" category="list-text">在控制器提示字元中、檢查橋接器的狀態：</block>
   <block id="58526b08e7cdc669652273e38d20baba" category="paragraph">您必須執行下列命令：+</block>
   <block id="e7013fdf65a177830d12725f4024101f" category="inline-link-macro">在執行ONTAP 版本號為9.4或更新版本的組態上、更新FIBreBridge 7600N或7500N上的韌體</block>
-  <block id="2ff283b5fcea4bdb853d6b9da8d8948c" category="paragraph"><block ref="2ff283b5fcea4bdb853d6b9da8d8948c" category="inline-link-macro-rx"></block></block>
   <block id="9f08d83ff8539a60ce02d5d7293917e8" category="list-text">確認每個橋接器都能看到橋接器所連接的所有磁碟機和磁碟櫃：</block>
   <block id="34b31b511691b7714789cb330c0bb039" category="paragraph">針對其餘的每個橋接重複上一步。</block>
   <block id="30e93ef6aed941f2711c93aadc09b0fb" category="list-text">重複上一步。</block>
@@ -2443,7 +2442,6 @@
   <block id="1f06fb185175c42c17ad8392e330767e" category="paragraph">當系統提示您繼續進入進階模式、並看到進階模式提示（*&gt;）時、您必須使用「y」回應。</block>
   <block id="3240aad2738f70e3ab16c6dadcff4f64" category="list-text">更新橋接器韌體：</block>
   <block id="4b3afe92d6efd942da2f6c9cc0193156" category="list-text">確認韌體升級已完成：</block>
-  <block id="e8ecfd692141a2af654944f772388550" category="paragraph">「jobshow -name "_job-name_"」</block>
   <block id="57218ce2b3683cc3d220300cdb1a5112" category="paragraph">大約10分鐘後、新韌體就會完全安裝、工作狀態將會是「成功」：</block>
   <block id="1023e499127e1c9705dbc019dc65ffca" category="list-text">請根據是否啟用頻內管理、ONTAP 以及系統執行的版本來完成步驟：</block>
   <block id="ad4a04ec96320f2893d5f6989086846f" category="list-text">如果您執行ONTAP 的是支援使用支援內頻管理的功能、則必須從橋接主控台發出命令：</block>
@@ -2457,7 +2455,6 @@
   <block id="6ecfdc621994ad7a88af8d731165c43a" category="paragraph">"syssconfig"</block>
   <block id="6e4b7fcf9090d34cd27cab087264a169" category="paragraph">系統應以纜線連接、以獲得多重路徑的高可用度（兩個控制器均可透過橋接器存取每個堆疊中的磁碟櫃）。</block>
   <block id="67fe76fc6c243ad7a07dba1bedbd68be" category="list-text">驗證是否已更新過FIBreBridge韌體：</block>
-  <block id="871912239094dc44baa2ec93ffb8d632" category="paragraph">「torage bridge show -功能 變數fW-version、symbol-name」</block>
   <block id="f7600c022afd87e76a4e915ac9399e45" category="list-text">確認磁碟分割已從橋接器的提示字元更新：</block>
   <block id="06e7ec6ae7f944544771022d467d0496" category="paragraph">《Flash映像》</block>
   <block id="98e693f628e7057fb87edf44897d2df1" category="paragraph">主要Flash映像會顯示新的韌體映像、次要Flash映像則會顯示舊映像。</block>
@@ -2465,17 +2462,6 @@
   <block id="aebdbdde32f31274fe9fc6e75b482c32" category="list-text">確認兩個Flash映像都已更新為相同版本。</block>
   <block id="1b7c547e0c44744faa2a37c6b0435cc2" category="paragraph">輸出應顯示兩個分割區的相同版本。</block>
   <block id="bb7439d72897f5b031319c5576c3cc67" category="list-text">重複下一橋接器的步驟5到13、直到MetroCluster 更新完所有的更新。</block>
-  <block id="2d0700f1234a9f9dd9937555291170ec" category="paragraph">「`_maintenance：window-in-inhid_'」指定維護所需時間、最長72小時。如果維護作業在時間結束之前完成、您可以叫用AutoSupport 指示維護期間結束的資訊消息：</block>
-  <block id="8c3f1a5045c47c008de3de6fa5352da3" category="list-text">請使用Atto FibreBridge韌體下載頁面上程序的步驟1到3下載橋接韌體檔案。</block>
-  <block id="3083b982cc912e364f9e1bc28cc6915a" category="list-text">複製Atto FIBEBridge韌體下載頁面和版本說明、以便在指示您更新每個橋接器上的韌體時參考。</block>
-  <block id="ae87d5531ab43f90dedaa89f103356a1" category="list-text">更新橋接器：</block>
-  <block id="8458ea1c3c1ea2053887d2f331da77f4" category="paragraph">*注意：*請確定您現在已關閉個別橋接器的電源再開啟。如果您在堆疊中同時等待並重新啟動兩個橋接器、則控制器可能會失去對磁碟機的存取權、進而導致叢故障或多磁碟毀損。</block>
-  <block id="6eee07f1028e6e37c9b9675c78a3ecab" category="paragraph">橋接器應重新啟動。</block>
-  <block id="86b1ef008f18b43ce62a9069606c0c6d" category="list-text">從任一控制器的主控台、確認橋接器已正確重新啟動：</block>
-  <block id="7eb8d2db2d90e516a56d7472a56b99bd" category="list-text">從任一控制器的主控台、確認已更新過FIBreBridge韌體：</block>
-  <block id="ed0f0385ac6d639a877dbd50ffe09fc9" category="list-text">在同一橋接器上重複上述子步驟、以更新第二個分割區。</block>
-  <block id="c1e404b965bd033d8d0a2284a04382d6" category="list-text">確認兩個分割區都已更新：</block>
-  <block id="f716521a03deca3c493b0dbaa94f969c" category="list-text">在下一個橋接器上重複上一步、直到MetroCluster 更新完所有的更新版本為止。</block>
   <block id="5bbfbe956d6dad1e34c1a96c4ed91491" category="summary">您可以將磁碟機櫃熱移除（從磁碟機上移除集合體的實體移除磁碟櫃）、從MetroCluster 運作中的不支援資料的功能區組態中移除磁碟機櫃。您可以將一個或多個磁碟櫃從磁碟櫃堆疊內的任何位置熱移除、或是移除磁碟櫃堆疊。</block>
   <block id="ccc8650df45f9c2ac84f26916116810a" category="doc">將儲存設備熱移除MetroCluster 至不需使用的FC組態</block>
   <block id="536e5a37c7ed375aaf614a3c5aef399c" category="paragraph">您可以熱移除磁碟機櫃、從MetroCluster 實體移除已從磁碟機移除集合體的磁碟櫃、從運作中的支援資料的功能不支援使用。您可以將一個或多個磁碟櫃從磁碟櫃堆疊內的任何位置熱移除、或是移除磁碟櫃堆疊。</block>
@@ -12901,11 +12887,6 @@
   <block id="480cf83fd6c463ccef2ed2a9d0dce2c4" category="list-text">輸入<block ref="bedfcd4488b13f5b7062e121a6a8baa5" prefix=" " category="inline-code"></block> 持續啟用連接埠的命令。這必須在存續站台的兩個交換器上執行。</block>
   <block id="9f6a23c1abc971d714730192ce961b96" category="paragraph">依照中的指示操作 <block ref="9c0d52e0ce7a57d643217990aba10043" category="inline-link-macro-rx"></block> 根據MetroCluster 您的需求組態執行修復和切換作業。</block>
   <block id="0b4bc6296d77be28e33d3b50e0ea0797" category="paragraph"><block ref="0b4bc6296d77be28e33d3b50e0ea0797" category="inline-link-macro-rx"></block></block>
-  <block id="e49bc35e0118f2b5a5904c13e1833761" category="section-title">在執行 ONTAP 9.3.x 及更早版本的組態上、更新 FiberBridge 7500N 上的韌體</block>
-  <block id="1a5e839afe7a716dd2640f7fdb69669a" category="paragraph">您可能需要更新 FiberBridge 橋接器上的韌體、以確認您擁有最新功能或解決可能的問題。在執行 ONTAP 9.3.x 的組態上、此程序應用於 FiberBridge 7500N</block>
-  <block id="ef1eae725a44cfeb66559e3d3e94f7ec" category="paragraph">從ONTAP 使用起來、您可以使用ONTAP 「flexbridge」儲存橋接器韌體更新命令來更新fIBreBridge 7500N橋接器上的橋接器韌體。</block>
-  <block id="05791e70fbe1537753bf5a023b7623eb" category="list-text">在 FiberBridge 7500N 橋接器上安裝韌體。</block>
-  <block id="c1a1962dd8879c856d3b821c9622f94c" category="paragraph">您應參閱 _Atto FiberBridge 7500N 安裝與操作手冊 _ 「更新韌體」一節中的說明。</block>
   <block id="24ea961e35f1e60e606fd840735a7b80" category="summary">如果您需要在 MetroCluster IP 組態中執行站台維護或重新定位單一站台、您必須知道如何關閉站台電源並開啟電源。</block>
   <block id="064c811af1591c939040fba47365213b" category="doc">在 MetroCluster IP 組態中關閉並開啟單一站台的電源</block>
   <block id="b66411bb5022a5619d62ef25fa47b67f" category="paragraph">在執行 ONTAP 9.5 或更早版本的 MetroCluster IP 組態中、災難站台節點不會自動開機至 ONTAP 、且叢集會保持離線狀態。</block>
@@ -13854,33 +13835,6 @@
   <block id="dff95cb9e5adc8c22082286195b9c18b" category="list-text"><block ref="dff95cb9e5adc8c22082286195b9c18b" category="inline-link-macro-rx"></block></block>
   <block id="86e4bcdd91ae737b95a3cf066dd128f7" category="paragraph">舊的和新的系統 ID 在中進行了識別 <block ref="e3858d0d76295d35179b2ac088c574f3" category="inline-link-macro-rx"></block>。</block>
   <block id="f411a218519aacec5088cc5a3d23eb64" category="paragraph">舊的和新的系統 ID 在中進行了識別 <block ref="372daca62ea6308294fd70c00fcc8af2" category="inline-link-macro-rx"></block>。</block>
-  <block id="11ceccfd751fe28a61b558ba07583aff" category="section-title">FiberBridge 7600N 和 7500N 橋接器上支援的磁碟和磁碟櫃數量</block>
-  <block id="ff2961229b46cc89dffec4aab67d010d" category="paragraph">下表顯示一對 FiberBridge 7600N 和 7500N 橋接器支援的磁碟和機櫃數量。</block>
-  <block id="b8cbb75a8c2b1413bcddd7c532ccc064" category="list-text">您達到的第一個限制適用。</block>
-  <block id="2a3f0c8b0ca6744889b3ffa76d4b9f5b" category="list-text">如果您使用的是 DS460C 機櫃、最多只能使用 240 個磁碟機、相當於 4 個機櫃。</block>
-  <block id="5ccf1f9193b673f77fa0a023f0c64238" category="list-text">如果您使用的是 DS212C 機櫃、最多只能使用 120 個磁碟機、相當於 10 個機櫃。</block>
-  <block id="402fb729f11d0452c518d4172b605b2c" category="paragraph-title">支援的磁碟數量</block>
-  <block id="c75f82dd210bf38bdd42ff246823dd9e" category="paragraph">檢閱一對 FiberBridge 7600N 或 7500N 橋接器支援的磁碟數量：</block>
-  <block id="3baa66bdd3ca9158478ad78d6079db1c" category="cell">磁碟組</block>
-  <block id="3d0bf05155f3dfd0eeccf9e953d46156" category="cell">磁碟類型</block>
-  <block id="eda8b8dec444e51f3afb1c089a183afc" category="cell">每個橋接器配對的磁碟總數</block>
-  <block id="4a761ba24826218f4585e8feddc64d7c" category="cell">所有 SSD</block>
-  <block id="34df20bab5e85dc75bfc94ef569cced9" category="cell">SSD</block>
-  <block id="b0df25be54449fa53d1180d01ad8bdc5" category="cell">所有 HDD</block>
-  <block id="9c2dc227590d4220750b52b21b0aeb99" category="cell">HDD</block>
-  <block id="335f5352088d7d9bf74191e006d8e24c" category="cell">240</block>
-  <block id="de97ed9eb6dc112873264b693e05c88c" category="cell">混合（ 96 個 SSD ）</block>
-  <block id="0a09c8844ba8f0936c20bd791130d6b6" category="cell">144</block>
-  <block id="1b48b5dfad482eb966c69b885c217e13" category="cell">混合式（ 72 個 SSD ）</block>
-  <block id="006f52e9102a8d3be2fe5614f42ba989" category="cell">168</block>
-  <block id="79fa5a72c63f064bf5ae4709ac221926" category="cell">混合式（ 48 個 SSD ）</block>
-  <block id="58a2fc6ed39fd083f55d4182bf88826d" category="cell">192</block>
-  <block id="1c151db89d2679449be5c45bb7b8d994" category="cell">混合式（ 24 個 SSD ）</block>
-  <block id="45fbc6d3e05ebd93369ce542e8f2322d" category="cell">216</block>
-  <block id="c742d6affaef84b501d784319fca6de4" category="paragraph-title">支援的機櫃數量</block>
-  <block id="22daa6b9c9c5e98028929434af5223de" category="paragraph">檢閱一對 FiberBridge 7600N 和 7500N 橋接器背後支援的機櫃數量：</block>
-  <block id="ca7ac3a83947da614de147e934674475" category="cell">機櫃總數</block>
-  <block id="699b4f79215d191584653efebf156e52" category="cell">混合</block>
   <block id="04e334293a29a0fcdf98b56004e27edc" category="section-title">MetroCluster 相容於 NetApp 驗證的交換器</block>
   <block id="5c5c34d5e7843e9424f3ca2380ae18ea" category="list-text"><block ref="5c5c34d5e7843e9424f3ca2380ae18ea" category="inline-link-macro-rx"></block></block>
   <block id="a629fe794ff2e51df541a99e4468ebb2" category="paragraph">如果您需要以網路開機新的控制器、請參閱 <block ref="a7e3b7fa9390de21e9e66df9d4048c53" category="inline-link-macro-rx"></block>。</block>
@@ -14271,7 +14225,6 @@
   <block id="c540a55c1af8888d4507b7c80af2d372" category="list-text">更新橋接器韌體並指定所需的使用者名稱：</block>
   <block id="e9b9a2eac9e5ccde661c85666e1bebfc" category="list-text">在輸出中出現提示時輸入密碼，如下列範例所示：</block>
   <block id="9f81eba7dfa3609b17894df364395597" category="paragraph">以下範例顯示「系統橋接器韌體更新」工作仍在執行中：</block>
-  <block id="92289ea5a47b731862869f48712c9527" category="list-text">執行<block ref="e595c34083a230fd789d64c7de21c72a" prefix=" " category="inline-code"></block>命令。</block>
   <block id="52e06a42c952a2b1bdb77dfc0f6f90ff" category="paragraph"><block ref="a51df89c214b1838fdbc8273e8704555" prefix="" category="inline-code"></block></block>
   <block id="968258a4c4370a9f6fe8b87ce4255cca" category="paragraph"><block ref="6604a22a7f45489dfc4b36fa6c37c036" prefix="" category="inline-code"></block></block>
   <block id="afdf08fe53823e29ce4e277959c64b1e" category="paragraph">SVM 資料移動性支援，可移轉 MetroCluster 組態</block>
@@ -14287,4 +14240,30 @@
   <block id="0cb8709673d91d9b41f7a2d9110be6db" category="paragraph">使用認證更新 Fiberbridge 韌體</block>
   <block id="cca6b3113bea250bb0e5ecb42fcd1f6b" category="paragraph">如果伺服器需要使用認證來下載韌體套件，您可以使用認證來更新 Fiberbridge 橋接器上的韌體。</block>
   <block id="7f35c16e72037a8dea668c5bb0e6327d" category="paragraph"><block ref="7f35c16e72037a8dea668c5bb0e6327d" category="inline-link-macro-rx"></block></block>
+  <block id="dd5e73f11c8453deab39cc51184b718c" category="admonition">建議在停用 IP 存取的情況下使用頻內管理，藉由限制與橋接器的實體連線來改善安全性。</block>
+  <block id="794172cd90da1900d6103d0859717cae" category="section-title">FiberBridge 7600N 與 7500N 橋接器限制與附加規則</block>
+  <block id="6640e784b645fe9fb8ac2e43bbd6435c" category="paragraph">在連接 FiberBridge 7600N 和 7500N 橋接器時，請檢閱限制和考量事項。</block>
+  <block id="2578541f645016c0cd8de75379c88d3e" category="list-title">FiberBridge 7600N 和 7500N 橋接器限制</block>
+  <block id="33993760dba186d29e6c1b1c4a5a9eb6" category="list-text">HDD 和 SSD 磁碟機的最大組合數為 240 個。</block>
+  <block id="0ea95754c61ccceaa6093ef60f306589" category="list-text">SSD 磁碟機的最大數量是 96 個。</block>
+  <block id="6aa9ec42d5ec998ae8c42e6ff59ac177" category="list-text">每個 SAS 連接埠的 SSD 數量上限為 48 個。</block>
+  <block id="3443a5a71e5726152a93cb7f1222c252" category="list-text">每個 SAS 連接埠的最大機櫃數量為 10 個。</block>
+  <block id="c15552ec0e1dcd2dc0268b8f8853f8b0" category="list-title">FiberBridge 7600N 和 7500N 橋接器附加規則</block>
+  <block id="cd4785cfe3cc59dcc3af8a0b3d1c2d26" category="list-text">請勿在同一個 SAS 連接埠上混用 SSD 和 HDD 磁碟機。</block>
+  <block id="bfbbc9e02b02d4cba470cc14b2b71995" category="list-text">在 SAS 連接埠之間平均分配機櫃。</block>
+  <block id="b2d9a3d2403921e9bad0f2de39898557" category="list-text">DS460 機櫃不應與其他機櫃類型（例如 DS212 或 DS224 機櫃）位於同一個 SAS 連接埠上。</block>
+  <block id="881aa664fe300b14a430d83d71657f1b" category="paragraph-title">組態範例</block>
+  <block id="4849ab8ff2c4f06051acea06836aec90" category="paragraph">以下是將四個 DS224 機櫃與 SSD 磁碟機連接的範例組態，以及六個 DS224 機櫃與 HDD 磁碟機連接的範例：</block>
+  <block id="b13899cc9055a7a129cc3597a28caf33" category="cell">SAS 連接埠</block>
+  <block id="b559966ca417caecbc925fd04a9d4253" category="cell">磁碟櫃和磁碟機</block>
+  <block id="a56114e15d97418161a772996c894a0c" category="cell">SAS 連接埠 A</block>
+  <block id="823cebd40c22009076dea45c51d568b3" category="cell">2 個 DS224 機櫃，含 SSD 磁碟機</block>
+  <block id="d375b409cacda3ce9f6afe9379e101ce" category="cell">SAS 連接埠 B</block>
+  <block id="0b7b249cf6a212613080ac29d6eda992" category="cell">SAS 連接埠 C</block>
+  <block id="c394385c28e9969eb81c66b053fd009c" category="cell">3 個 DS224 機櫃，含 HDD 磁碟機</block>
+  <block id="f7cdd2784709f45955fc9f25497956ae" category="cell">SAS 連接埠 D</block>
+  <block id="e5246bcdb743ec1c543a9253bc3a20f0" category="inline-link-macro">Broadcom 支援網站</block>
+  <block id="7e8efc833fbde0ff722d85e00415edec" category="list-text">從下載交換器韌體<block ref="7b0bfad9e7dd6186ed0f14c867034109" category="inline-link-macro-rx"></block>。</block>
+  <block id="e6d64e0eb5e781bce7f755d1457a9170" category="paragraph"><block ref="b2f8990b0f3f5de2520bc483556b14eb" prefix="" category="inline-code"></block></block>
+  <block id="b0782c02cc2d2b20315a3f6a825b3fbe" category="list-text">執行<block ref="2586ba33015a99bfc10dda523f819039" prefix=" " category="inline-code"></block>命令。</block>
 </blocks>
