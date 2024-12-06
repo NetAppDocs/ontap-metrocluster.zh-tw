@@ -39,7 +39,7 @@ https://docs.netapp.com/platstor/index.jsp["ONTAP 硬體系統文件"^]
 
 . 手動將新機櫃上的所有磁碟指派給適當的節點：
 +
-「磁碟指派磁碟_disk-id_-Owner_Owner-node-name_」
+`disk assign -disk <disk-id> -owner <owner-node-name>`
 
 . 建立Aggregate：
 +
@@ -49,7 +49,7 @@ https://docs.netapp.com/platstor/index.jsp["ONTAP 硬體系統文件"^]
 如果您已登入叢集管理介面上的叢集、則可以在叢集中的任何節點上建立集合體。若要驗證是否已在特定節點上建立Aggregate、您應該使用「-node-」參數、或指定該節點擁有的磁碟機。
 
 +
-您也必須確保只將未鏡射磁碟櫃上的磁碟機納入到集合體中。
+確認您只將未鏡射機櫃上的磁碟機納入 Aggregate 。
 
 +
 您可以指定下列選項：
@@ -79,11 +79,15 @@ controller_A_1::> storage aggregate create aggr1_controller_A_1 -diskcount 10 -n
 [Job 15] The job is starting.
 [Job 15] Job succeeded: DONE
 ----
++
+
+NOTE: 您也可以使用 `-disklist`命令中的參數來指定要用於集合的磁碟。
+
 
 
 . 驗證新Aggregate的RAID群組和磁碟機：
 +
-「torage Aggregate show-STATUS -Aggregate _gregate名稱_」
+`storage aggregate show-status -aggregate <aggregate-name>`
 
 
 

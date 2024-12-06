@@ -730,7 +730,6 @@
   <block id="99202cf08ee605465b048d280b130030" category="list-text">安裝並連接將包含無鏡射集合體的磁碟櫃。</block>
   <block id="8a9f1a9fa3d7dcf9bab5aa2cdbeb6b5e" category="paragraph">您可以使用平台和磁碟櫃安裝與設定文件中的程序。</block>
   <block id="2d1ee8760a765460b6dcc34dbf24e95d" category="list-text">手動將新機櫃上的所有磁碟指派給適當的節點：</block>
-  <block id="29d368b17fa8f6a4c00f53e0b1b0ddcd" category="paragraph">「磁碟指派磁碟_disk-id_-Owner_Owner-node-name_」</block>
   <block id="6d6f602efa1b388ca6264b6013787a0e" category="paragraph">如果您已登入叢集管理介面上的叢集、則可以在叢集中的任何節點上建立集合體。若要驗證是否已在特定節點上建立Aggregate、您應該使用-nodes參數或指定該節點擁有的磁碟機。</block>
   <block id="c867a6fd725cedea57bb7663de5a37c2" category="paragraph">您也必須確保只將未鏡射磁碟櫃上的磁碟機納入到集合體中。</block>
   <block id="a6480a829f17700a2c732897b3a46dd7" category="list-text">要新增至集合體的特定磁碟機或陣列LUN清單</block>
@@ -999,7 +998,6 @@
   <block id="c4ea0eec15aeb871f4ff708460f06623" category="paragraph">e1a、e1b</block>
   <block id="777915564b2f2870366331ca85d7d9a9" category="paragraph">X1116A</block>
   <block id="d30fc67c2a1cee6e54e9714145270705" category="paragraph">內建連接埠</block>
-  <block id="f1044ba6bab78a278fa587f690217ea7" category="paragraph">插槽0</block>
   <block id="021129e5b6cda3c7398d4240f38ab938" category="paragraph">e0a、e0b</block>
   <block id="976dfaa29917d0a4edcbb9a22b57a8e5" category="paragraph">e0c、e0d</block>
   <block id="b05a1e68af8885ea43084ad2698d8a02" category="paragraph">e0g、e0小時</block>
@@ -14266,4 +14264,9 @@
   <block id="7e8efc833fbde0ff722d85e00415edec" category="list-text">從下載交換器韌體<block ref="7b0bfad9e7dd6186ed0f14c867034109" category="inline-link-macro-rx"></block>。</block>
   <block id="e6d64e0eb5e781bce7f755d1457a9170" category="paragraph"><block ref="b2f8990b0f3f5de2520bc483556b14eb" prefix="" category="inline-code"></block></block>
   <block id="b0782c02cc2d2b20315a3f6a825b3fbe" category="list-text">執行<block ref="2586ba33015a99bfc10dda523f819039" prefix=" " category="inline-code"></block>命令。</block>
+  <block id="a32cead873928387fe22f14cfa816430" category="admonition">內建連接埠內建於控制器硬體（插槽 0 ），無法更換，因此介面卡所需的插槽不適用。</block>
+  <block id="ca024a4ac8a10799527aecc96451c4ce" category="paragraph">插槽 1/ 不適用於內建連接埠</block>
+  <block id="ad084693a846cdc2cf77ad2bb2e7382a" category="paragraph"><block ref="1c61f86d2f111f8c80a5d8ff728df70d" prefix="" category="inline-code"></block></block>
+  <block id="5f9a9e91fc7e98f1998a1dcee4eab83f" category="paragraph">確認您只將未鏡射機櫃上的磁碟機納入 Aggregate 。</block>
+  <block id="6f1eb898d916ac10201421006f5406e2" category="admonition">您也可以使用<block ref="2ee4c97cd7e2dff2e12ae3225818c09b" prefix=" " category="inline-code"></block>命令中的參數來指定要用於集合的磁碟。</block>
 </blocks>
