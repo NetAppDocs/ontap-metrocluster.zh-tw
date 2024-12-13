@@ -2444,8 +2444,6 @@ FC_switch_B_1# show zoneset active
 +
 *** VSAN 10中FC_switch_a_1上的ZonSet_a
 *** VSAN 20中FC_switch_B_1上的ZonSet_B
-
-
 +
 [listing]
 ----
@@ -2453,6 +2451,8 @@ FC_switch_A_1# no zoneset activate name ZoneSet_A vsan 10
 
 FC_switch_B_1# no zoneset activate name ZoneSet_B vsan 20
 ----
+
+
 .. 停用所有區域集之後、請清除區域資料庫：
 +
 「清除區域資料庫_區域名稱_」

@@ -14269,4 +14269,5 @@
   <block id="ad084693a846cdc2cf77ad2bb2e7382a" category="paragraph"><block ref="1c61f86d2f111f8c80a5d8ff728df70d" prefix="" category="inline-code"></block></block>
   <block id="5f9a9e91fc7e98f1998a1dcee4eab83f" category="paragraph">確認您只將未鏡射機櫃上的磁碟機納入 Aggregate 。</block>
   <block id="6f1eb898d916ac10201421006f5406e2" category="admonition">您也可以使用<block ref="2ee4c97cd7e2dff2e12ae3225818c09b" prefix=" " category="inline-code"></block>命令中的參數來指定要用於集合的磁碟。</block>
+  <block id="668c968f31daa1f3b0b86ddf4b09543e" category="list-text">您應該先建立子網路物件，然後再建立 LIF 。子網路物件可讓 ONTAP 判斷目的地叢集上的容錯移轉目標，因為它具有相關的廣播網域。</block>
 </blocks>

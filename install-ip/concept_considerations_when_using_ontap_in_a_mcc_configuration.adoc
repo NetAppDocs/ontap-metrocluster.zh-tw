@@ -237,6 +237,7 @@ link:concept_considerations_when_using_ontap_in_a_mcc_configuration.html#lif-rep
 * ARP廣播：您必須在兩個叢集之間啟用ARP廣播
 * 重複的lifs：不能在IPspace中使用相同的IP位址（重複的lifs）建立多個lifs
 * NFS與SAN組態：您必須針對無鏡射與鏡射的Aggregate使用不同的儲存虛擬機器（SVM）
+* 您應該先建立子網路物件，然後再建立 LIF 。子網路物件可讓 ONTAP 判斷目的地叢集上的容錯移轉目標，因為它具有相關的廣播網域。
 
 
 
