@@ -6,6 +6,8 @@ entries:
   entries:
   - title: 總覽
     url: "/manage/task_perform_switchover_for_tests_or_maintenance.html"
+  - title: 系統在進行作業系統的「正在進行」時的限制
+    url: "/manage/switchover-limitations.html"
   - title: 確認系統已準備好進行切換
     url: "/manage/task_verifiy_that_your_system_is_ready_for_a_switchover.html"
   - title: 在協商切換之前傳送自訂AutoSupport 的消息

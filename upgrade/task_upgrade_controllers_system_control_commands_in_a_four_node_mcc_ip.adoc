@@ -362,7 +362,7 @@ dr-group-id cluster    node          node-systemid dr-partner-systemid
 
 === 準備舊控制器的網路組態
 
-為了確保新控制器上的網路能正常恢復、您必須將LIF移至通用連接埠、然後移除舊控制器的網路組態。
+若要讓網路能夠在新控制器上正常恢復，請確認 LIF 位置正確，並移除舊控制器的網路組態。
 
 .關於這項工作
 * 此工作必須在每個舊節點上執行。
@@ -426,6 +426,10 @@ NOTE: 成功升級需要此步驟。
 
 . [[controller 取代升級 _prepy_network_ports_3]] 將舊控制器上所有資料生命體的主連接埠指派給舊控制器模組和新控制器模組上相同的通用連接埠。
 +
+
+CAUTION: 如果新舊控制器沒有通用連接埠，您就不需要修改資料生命期。跳過此步驟並直接前往<<upgrades_assisted_without_matching_ports,步驟4.>>。
+
++
 .. 顯示生命：
 +
 「網路介面展示」
@@ -457,7 +461,7 @@ network interface modify -vserver vs0 -lif datalif1 -home-port e0d
 ----
 
 
-. 修改廣播網域以移除需要刪除的VLAN和實體連接埠：
+. [[newization_assisted_without _matching_ports ] 修改廣播網域，移除需要刪除的 VLAN 和實體連接埠：
 +
 `broadcast-domain remove-ports -broadcast-domain <broadcast-domain-name>-ports <node-name:port-id>`
 
@@ -1323,12 +1327,68 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
 如需詳細資訊、請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-32DA96C3-9B04-4401-92B8-EAF323C3C863.html["還原外部金鑰管理加密金鑰"^]。
 
 |===
-. 在您恢復作業之前、請確認MetroCluster 已正確設定好功能。檢查節點狀態：
+. 確認 MetroCluster 設定正確。檢查節點狀態：
 +
 「不一樣的秀」MetroCluster
 
 +
 確認新節點（站台B）處於*等待站台A的切換狀態*
+
+
+
+
+
+=== 驗證並還原LIF組態
+
+在您繼續執行自動切換作業之前，請先確認已在適當的節點上裝載了生命。
+
+.關於這項工作
+* 此工作是在ssite B上執行
+
+
+
+CAUTION: 在執行切換之前，您必須確認新節點上的資料生命負載位置正確。當您切換組態時， ONTAP 會嘗試恢復由生命所使用的主連接埠上的流量。當主連接埠連線至交換器連接埠和 VLAN 不正確時，可能會發生 I/O 故障。
+
+.步驟
+. 在切換之前，請先確認已在適當的節點和連接埠上裝載了生命負載。
++
+.. 變更為進階權限層級：
++
+"進階權限"
+
+.. 顯示生命，並確認每個資料 LIF 使用正確的主連接埠：
++
+「網路介面展示」
+
+.. 修改任何未使用正確主連接埠的生命：
++
+`network interface modify -vserver <svm-name> -lif <data-lif> -home-port <port-id>`
+
++
+如果命令傳回錯誤，您可以覆寫連接埠組態：
+
++
+`vserver config override -command "network interface modify -vserver <svm-name> -home-port <active_port_after_upgrade> -lif <lif_name> -home-node <new_node_name>"`
+
++
+在「vserver config override」命令中輸入network interface modify命令時、您無法使用分頁自動完成功能。您可以使用autosplete建立網路「介面修改」、然後將其括在「vserver config override」命令中。
+
+.. 確認所有資料生命現在都位於正確的主連接埠：
++
+「網路介面展示」
+
+.. 返回管理權限層級：
++
+「et -priv. admin」
+
+
+
+. 將介面還原至其主節點：
++
+`network interface revert * -vserver <svm-name>`
+
++
+視需要在所有SVM上執行此步驟。
 
 . 恢復作業：
 +

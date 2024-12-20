@@ -112,7 +112,8 @@ _Atto產品版本說明_提供最新的支援網頁瀏覽器清單。您可以�
 
 .步驟
 . 下載適用於您磁碟櫃模式的安裝與服務指南：
-. 使用您的光纖橋模型所提供的連結存取Atto網站、並下載手冊和QuickNAV公用程式。
++
+.. 使用您的光纖橋模型所提供的連結存取Atto網站、並下載手冊和QuickNAV公用程式。
 +
 [NOTE]
 ====
@@ -121,6 +122,8 @@ _Atto產品版本說明_提供最新的支援網頁瀏覽器清單。您可以�
 您可以使用Atto FIBrebridge Description（Atto FIBrebridge說明）頁面上提供的連結、存取Atto網站上的此內容和其他內容。
 
 ====
+
+
 . 收集使用建議的橋接管理介面、Atto ExpressNAV GUI和Atto QuickNAV公用程式所需的硬體和資訊：
 +
 .. 判斷非預設的使用者名稱和密碼（用於存取橋接器）。
@@ -139,7 +142,7 @@ _Atto產品版本說明_提供最新的支援網頁瀏覽器清單。您可以�
 
 
 
-== 安裝FC對SAS橋接器和SAS磁碟櫃
+== 安裝 FC 至 SAS 橋接器和 SAS 機櫃
 
 在確保系統符合「準備安裝」中的所有要求之後、您就可以安裝新系統。
 
@@ -173,7 +176,7 @@ NOTE: 不支援ACP纜線的SAS架構MetroCluster 。
 
 
 
-=== 如有必要、可在光纖橋接器7600N上啟用IP連接埠存取
+=== 如有必要、請在光纖橋接器7600N上啟用IP連接埠存取
 
 如果您使用ONTAP 9.5版之前的版本、或是打算使用遠端登入或其他IP連接埠傳輸協定和服務（FTP、ExpressNAV、ICMP或QuickNAV）、以頻外存取的方式存取到FibreBridge 7600N橋接器、您可以透過主控台連接埠來啟用存取服務。
 
@@ -187,7 +190,7 @@ NOTE: 不支援ACP纜線的SAS架構MetroCluster 。
 如果您*未*使用頻內管理來管理橋接器、則必須執行此工作。在此情況下、您需要透過乙太網路管理連接埠來設定橋接器。
 
 .步驟
-. 將序列纜線連接至光纖橋接器7600N橋接器上的序列連接埠、即可存取橋接器的主控台介面。
+. 將序列纜線連接至 FiberBridge 7600N 橋接器上的序列連接埠，即可存取橋接器主控台介面。
 . 使用主控台啟用存取服務、然後儲存組態：
 +
 「et closePort無」
@@ -233,7 +236,7 @@ SNMP是唯一需要個別啟用命令的傳輸協定。
 
 
 
-=== 設定FC對SAS橋接器
+=== 設定 FC 對 SAS 橋接器
 
 在連接FC至SAS橋接器的模型纜線之前、您必須先在Fibre Bridge軟體中設定設定。
 
@@ -358,7 +361,7 @@ NOTE: 您選取的FCDataRate速度會限制為橋接器連接埠所連接之控�
 
 如果使用CLI、您必須執行下列命令：
 
-「et FCDataRate _port-number__port-spe__」
+`set FCDataRate <port-number> <port-speed>`
 
 --
 .. 如果您要設定 FiberBridge 7500N 橋接器、請設定連接埠使用的連線模式以「 PTP 」。
@@ -370,14 +373,14 @@ NOTE: 設定FIBreBridge 7600N橋接器時、不需要FCConnMode設定。
 如果使用CLI、您必須執行下列命令：
 
 +
-「et FCConnMode _port-number_ PTP」
+`set FCConnMode <port-number> ptp`
 
 .. 如果您要設定的是FIBreBridge 7600N或7500N橋接器、則必須設定或停用FC2連接埠。
 +
 *** 如果您使用第二個連接埠、則必須針對FC2連接埠重複上述子步驟。
 *** 如果您不使用第二個連接埠、則必須停用連接埠：
 +
-「fcportDisable _port-number_」
+`FCPortDisable <port-number>`
 
 +
 下列範例顯示停用FC連接埠2：
@@ -484,9 +487,6 @@ link:../maintain/index.html["維護MetroCluster 元件"]
 
 
 
-.相關資訊
-link:task_fb_new_install.html["FC至SAS橋接器的頻內管理"]
-
 
 
 === 將磁碟櫃連接至橋接器
@@ -494,13 +494,13 @@ link:task_fb_new_install.html["FC至SAS橋接器的頻內管理"]
 您必須使用正確的FC對SAS橋接器來連接磁碟櫃的纜線。
 
 .選擇
-* <<cabling_fb_7600N_7500N_with_iom12,使用IOM12模組、將連接至磁碟櫃的FIBLBridge 7600N或7500N橋接器進行纜線連接>>
-* <<cabling_fb_7600N_7500N_with_iom6_iom3,使用IOM6或IOM3模組、將連接至磁碟櫃的FIBiBridge 7600N或7500N橋接器進行纜線連接>>
+* <<cabling_fb_7600N_7500N_with_iom12,使用 IOM12 模組將 FiberBridge 7600N 或 7500N 橋接器與磁碟櫃連接起來>>
+* <<cabling_fb_7600N_7500N_with_iom6_iom3,使用 IOM6 或 IOM3 模組，將 FiberBridge 7600N 或 7500N 橋接器與磁碟櫃連接>>
 
 
 
 
-==== 使用IOM12模組、將連接至磁碟櫃的FIBLBridge 7600N或7500N橋接器進行纜線連接
+==== 使用 IOM12 模組將 FiberBridge 7600N 或 7500N 橋接器與磁碟櫃連接起來
 
 設定橋接器之後、您可以開始為新系統佈線。
 
@@ -510,7 +510,7 @@ link:task_fb_new_install.html["FC至SAS橋接器的頻內管理"]
 .步驟
 . 菊環鏈連接每個堆疊中的磁碟櫃：
 +
-.. 從堆疊中的邏輯第一個機櫃開始、將IOM A連接埠3連接到下一個機櫃的IOM A連接埠1、直到堆疊中的每個IOM A都連接。
+.. 從堆疊中的第一個邏輯機櫃開始，將 IOM A 連接埠 3 連接至下一個機櫃上的 IOM A 連接埠 1 ，直到堆疊中的每個 IOM A 都連接為止。
 .. 針對IOM B重複上一個子步驟
 .. 針對每個堆疊重複上述子步驟。
 
@@ -545,7 +545,7 @@ image::../media/mcc_cabling_bridge_and_sas3_stack_with_7500n_and_multiple_stacks
 
 
 
-==== 使用IOM6或IOM3模組、將連接至磁碟櫃的FIBiBridge 7600N或7500N橋接器進行纜線連接
+==== 使用 IOM6 或 IOM3 模組，將 FiberBridge 7600N 或 7500N 橋接器與機櫃連接
 
 設定橋接器之後、您可以開始為新系統佈線。FibreBridge 7600N或7500N橋接器使用Mini-SAS連接器、並支援使用IOM6或IOM3模組的機櫃。
 
@@ -582,7 +582,7 @@ image::../media/mcc_cabling_bridge_and_sas_stack_with_7500n_four_stacks.gif[MCC�
 
 
 
-=== 驗證橋接器的連線能力及橋接FC連接埠的纜線連接
+=== 驗證橋接器連線及橋接 FC 連接埠的纜線
 
 您應該確認每個橋接器都能偵測到所有磁碟機、然後將每個橋接器連接至本機FC交換器。
 
@@ -682,9 +682,9 @@ IMPORTANT: 在完成分區之前、請勿使用光纖橋接器7500N上的第二�
 
 
 .相關資訊
-link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）"]
-
 當您在使用ONTAP 更新版本的版本時、使用纜線連接FC交換器時、必須確認您使用的是指定的連接埠指派。
+
+link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）"]
 
 
 

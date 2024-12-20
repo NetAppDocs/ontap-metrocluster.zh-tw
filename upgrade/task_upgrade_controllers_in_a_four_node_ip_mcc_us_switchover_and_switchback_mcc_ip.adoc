@@ -891,7 +891,7 @@ image::../media/mcc_upgrade_cluster_a_in_switchover.png[MCC升級叢集A（在�
 
 == 移除介面組態並解除安裝舊的控制器
 
-您必須將資料LIF移至通用連接埠、移除舊控制器上的VLAN和介面群組、然後實際解除安裝控制器。
+確認 LIF 放置正確。然後移除舊控制器上的 VLAN 和介面群組，並實際解除安裝控制器。
 
 .關於這項工作
 * 這些步驟會在舊的控制器（node_B_1-old、node_B_2-old）上執行。
@@ -955,6 +955,10 @@ NOTE: 成功升級需要此步驟。
 
 . [[controller 手冊升級準備網路連接埠 _3] 將舊控制器上所有資料生命體的主連接埠指派給舊控制器模組和新控制器模組上相同的通用連接埠。
 +
+
+CAUTION: 如果新舊控制器沒有通用連接埠，您就不需要修改資料生命期。跳過此步驟並直接前往<<upgrades_manual_without_matching_ports,步驟4.>>。
+
++
 .. 顯示生命：
 +
 「網路介面展示」
@@ -984,7 +988,7 @@ network interface modify -vserver vs0 -lif datalif1 -home-port e0d
 ----
 
 
-. 修改廣播網域以移除需要刪除的VLAN和實體連接埠：
+. [[vimization_manual ， no_matching_ports ]] 修改廣播網域以移除需要刪除的 VLAN 和實體連接埠：
 +
 `broadcast-domain remove-ports -broadcast-domain <broadcast-domain-name> -ports <node-name:port-id>`
 
@@ -1791,19 +1795,36 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
 * 請參閱您在中建立的連接埠對應計畫 link:task_upgrade_controllers_in_a_four_node_ip_mcc_us_switchover_and_switchback_mcc_ip.html["將連接埠從舊節點對應至新節點"]。
 
 
+
+CAUTION: 在執行切換之前，您必須確認新節點上的資料生命負載位置正確。當您切換組態時， ONTAP 會嘗試恢復由生命所使用的主連接埠上的流量。當主連接埠連線至交換器連接埠和 VLAN 不正確時，可能會發生 I/O 故障。
+
 .步驟
-. 在進行切換之前、請先確認正式作業存放在適當的節點和連接埠上。
+. 在切換之前，請先確認已在適當的節點和連接埠上裝載了生命負載。
 +
 .. 變更為進階權限層級：
 +
 "進階權限"
 
-.. 置換連接埠組態以確保正確放置LIF：
+.. 顯示生命，並確認每個資料 LIF 使用正確的主連接埠：
 +
-`vserver config override -command "network interface modify -vserver <svm-name> -home-port <active_port_after_upgrade> -lif <lif_name> -home-node <new_node_name>`
+「網路介面展示」
+
+.. 修改任何未使用正確主連接埠的生命：
++
+`network interface modify -vserver <svm-name> -lif <data-lif> -home-port <port-id>`
+
++
+如果命令傳回錯誤，您可以覆寫連接埠組態：
+
++
+`vserver config override -command "network interface modify -vserver <svm-name> -home-port <active_port_after_upgrade> -lif <lif_name> -home-node <new_node_name>"`
 
 +
 在「vserver config override」命令中輸入network interface modify命令時、您無法使用分頁自動完成功能。您可以使用autosplete建立網路「介面修改」、然後將其括在「vserver config override」命令中。
+
+.. 確認所有資料生命現在都位於正確的主連接埠：
++
+「網路介面展示」
 
 .. 返回管理權限層級：
 +

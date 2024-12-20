@@ -7523,7 +7523,6 @@
   <block id="76545d4e8668be942098ed242d25351a" category="image-alt">工作流程橋接器安裝與組態</block>
   <block id="b83a1cd537853a437db10ee32011ca04" category="paragraph">從採用FIBEBridge 7500N或7600N橋接器ONTAP 的SUR9.5開始、橋接器的頻內管理（_in-band management）可作為橋接器IP管理的替代方案。從功能不完善的9.8開始ONTAP 、頻外管理已不再適用。</block>
   <block id="e824a21e3028938aa47fe624ef80f849" category="paragraph">橋接CLI命令可從ONTAP 位於Isetical介面的「sorage bridge run－CLI -name _brider_name_-command _bridge命令_command_name_」命令發出ONTAP 。</block>
-  <block id="6f47fdb0056f04198e0f13d4914a9c42" category="section-title">準備安裝</block>
   <block id="b9af642f4c94393d1d86928e1df7b939" category="paragraph">當您準備將橋接器安裝為新MetroCluster 版的環節時、必須確保系統符合特定要求、包括橋接器的設定與組態要求。其他需求包括下載必要文件、Atto QuickNAV公用程式和橋接韌體。</block>
   <block id="58eb0a3f95df2104f4ac005bbd51d244" category="list-text">如果系統未裝入系統機櫃、則必須將系統安裝在機架中。</block>
   <block id="f824444af694573f23438938a9e1aa1e" category="list-text">您的組態必須使用支援的硬體機型和軟體版本。</block>
@@ -7565,7 +7564,6 @@
   <block id="698baf99e373b8d4f943031badc7d3e7" category="paragraph">"et ipsubnetmaskMP1 subnet-mask"</block>
   <block id="d239a1837adf4e352883e5bb91938a87" category="paragraph">《et bridgename _bride_name_》</block>
   <block id="489a36de5fc8a9824314b5b3d0c0c069" category="admonition">您選取的FCDataRate速度會限制為橋接器連接埠所連接之控制器模組的橋接器和FC連接埠所支援的最大速度。佈線距離不得超過SFP和其他硬體的限制。</block>
-  <block id="63f92d601e0f07d76d9c59bbdcfeed47" category="paragraph">「et FCDataRate _port-number__port-spe__」</block>
   <block id="453bd21769254b2a444b21461f5adec1" category="paragraph">如果只使用SAS連接埠A、則必須停用SAS連接埠B、C和D。下列範例顯示停用SAS連接埠B同樣地、您必須停用SAS連接埠C和D：</block>
   <block id="b52235828e8d086526db0b2c428d9b5b" category="list-text">安全存取橋接器並儲存橋接器的組態。根據ONTAP 系統執行的版本、從下列選項中選擇一個選項。</block>
   <block id="e3596d29b6642dbb73b34c44fad701ec" category="paragraph">*《*》（*）9.5或更新版本* ONTAP</block>
@@ -7575,18 +7573,12 @@
   <block id="981db1aa49a6ebb733f68a8d0f82b483" category="paragraph">*《*》9.4或更早版本* ONTAP</block>
   <block id="29431d66f3109c0b5ee445b6502a5c33" category="list-text">如果已啟用乙太網路連接埠MP1、請執行：</block>
   <block id="6d6d091bdd8c4127ee8d80f23b429e80" category="list-text">完成MetroCluster 支援的功能組態後、請使用「flashimaged」命令檢查您的版本的網路橋接器韌體、如果橋接器未使用支援的最新版本、請更新組態中所有橋接器上的韌體。</block>
-  <block id="98e83072472ff49bb361fe30e4df171e" category="paragraph"><block ref="98e83072472ff49bb361fe30e4df171e" category="inline-link-macro-rx"></block></block>
-  <block id="9e67b76e63359167fbde69e351c8b8b0" category="section-title">將磁碟櫃連接至橋接器</block>
   <block id="dddcbe39d238e711998c52c432aeaa31" category="paragraph">您必須使用正確的FC對SAS橋接器來連接磁碟櫃的纜線。</block>
   <block id="6ef697f11922be2e4de0971f7d70997f" category="list-title">選擇</block>
   <block id="c53ab245e3b357260ea30380dfbae527" category="inline-xref">使用IOM12模組、將連接至磁碟櫃的FIBLBridge 7600N或7500N橋接器進行纜線連接</block>
-  <block id="4e14469d1b9cb5857e2b83704c8ab8d4" category="list-text"><block ref="d277051460abcb0f3a19fb6f4b09af32" category="inline-xref-macro-rx"></block></block>
-  <block id="1098ebf3ac123d908705a49af90988ba" category="inline-xref">使用IOM6或IOM3模組、將連接至磁碟櫃的FIBiBridge 7600N或7500N橋接器進行纜線連接</block>
-  <block id="572e966b8fd8a186b019d7c5d26ff32c" category="list-text"><block ref="f3f03af6d08c988efd686559fcd15483" category="inline-xref-macro-rx"></block></block>
   <block id="fcf216ba8187b4017a22716585d4a6fa" category="paragraph">設定橋接器之後、您可以開始為新系統佈線。</block>
   <block id="3745e1eacc753de05da3d0afc4e15cea" category="paragraph">若為磁碟櫃、請插入SAS纜線連接器、拉片朝下（位於連接器底部）。</block>
   <block id="95a5b0b928eb5c6139f9cd2a021f72a6" category="list-text">菊環鏈連接每個堆疊中的磁碟櫃：</block>
-  <block id="779c08e01ec265d0aff357c180fceb48" category="list-text">從堆疊中的邏輯第一個機櫃開始、將IOM A連接埠3連接到下一個機櫃的IOM A連接埠1、直到堆疊中的每個IOM A都連接。</block>
   <block id="dd2732570ab5d206b7d405c05f7d2831" category="list-text">針對IOM B重複上一個子步驟</block>
   <block id="3e57f4f14607c1133fa7931d611d438f" category="list-text">針對每個堆疊重複上述子步驟。</block>
   <block id="46fee005531651ebcbae735c06b5ef74" category="list-text">開啟磁碟櫃電源、然後設定磁碟櫃ID。</block>
@@ -7612,7 +7604,6 @@
   <block id="f7e3d93b4c145bf696a9e6f193ce4fb7" category="list-text">如需其他機櫃堆疊、請重複上述步驟、使用第二個堆疊使用連接埠B、第三個堆疊使用連接埠C、第四個堆疊使用連接埠D。</block>
   <block id="9111bd303b0cb06989b91c9e131eb156" category="paragraph">下圖顯示四個連接至一對FibreBridge 7600N或7500N橋接器的堆疊。</block>
   <block id="6704e0f472546c04c5cdc225c2656ec5" category="image-alt">MCC佈線橋接器和SAS堆疊、含7500n四個堆疊</block>
-  <block id="8cbdbb5be51e2a78d7b472e23327b938" category="section-title">驗證橋接器的連線能力及橋接FC連接埠的纜線連接</block>
   <block id="605157b79e898676481d263489be287d" category="paragraph">您應該確認每個橋接器都能偵測到所有磁碟機、然後將每個橋接器連接至本機FC交換器。</block>
   <block id="8bfac37f0565c6922aeced47caf18f6a" category="list-text">[[step1_bridity]驗證每個橋接器是否能偵測其所連接的所有磁碟機和磁碟櫃：</block>
   <block id="bf532d59144bc55a10c7ae835f098f56" category="paragraph">您會被帶到您輸入IP位址的橋接器Atto FibreBridge首頁、其中有一個連結。</block>
@@ -7622,7 +7613,6 @@
   <block id="540e154d4e289b6bfd793dd86036768d" category="list-text">確認命令輸出顯示橋接器已連接至堆疊中應連接的所有磁碟和磁碟櫃。</block>
   <block id="eb443924112f8c71329400ac78de9284" category="paragraph">重複 <block ref="2f9ed640880ac5dd95c2cb30edbb02d0" category="inline-xref-macro-rx"></block> 每個剩餘的橋接器。</block>
   <block id="234d9ba6039ff899b95d32b2d5738596" category="list-text">重複佈線、檢查SAS纜線是否鬆脫或修正SAS纜線。</block>
-  <block id="0aeba4fd83ea38faeb00ddbf389be6ad" category="paragraph"><block ref="48f604bdf2d3bf06f58ee9f10e668948" category="inline-xref-macro-rx"></block></block>
   <block id="2c0892c11c37aec07e0a746c4c7fbe0d" category="list-text">重複 <block ref="2f9ed640880ac5dd95c2cb30edbb02d0" category="inline-xref-macro-rx"></block>。</block>
   <block id="22fa5db9179793221a81bd3cfceea63a" category="list-text">使用表中的佈線來連接每個橋接器與本機FC交換器、以利設定和交換器機型、以及FC對SAS橋接器機型：</block>
   <block id="cbf21b0a1a6cb9d0bb203c817705311a" category="admonition">在完成分區之前、請勿使用光纖橋接器7500N上的第二個FC連接埠連線。</block>
@@ -8887,7 +8877,6 @@
   <block id="4a5d310b918422071950c1fcecc07f4f" category="paragraph">下列範例顯示在模擬切換作業時發生的錯誤：</block>
   <block id="882cc651d6e4857669eb4eede90211bf" category="admonition">在您更換所有故障磁碟之前、協調式切換和切換都會失敗。您可以在更換故障磁碟之後執行災難恢復。如果您想忽略故障磁碟的警告、可以針對議定的切換和切換新增軟式否決功能。</block>
   <block id="7814aadb42b148f35b4d559e400b4895" category="summary">執行切換後、您要確認所有的集合體和儲存虛擬機器（SVMs）都已切換回線上。</block>
-  <block id="7b173496e8f6041144abc83f7e17506f" category="list-text">驗證在正常運作的叢集上的所有同步目的地SVM都處於休眠狀態（顯示「最新」的管理狀態）、且災難叢集上的同步來源SVM都已啟動並正在執行：</block>
   <block id="90755aace4dbf79660e4f610c3481e12" category="paragraph">Sync-destinate Aggregate在MetroCluster 其名稱中會自動加上「`-MC」字尾、以協助識別它們。</block>
   <block id="af43e56e33ecd52eb98fb08d4dfa593c" category="summary">執行功能不全的災難恢復程序時、會ONTAP 有特定的支援功能。MetroCluster</block>
   <block id="2f62ab65f62b1649dd3236c3681c9173" category="doc">切換、修復及切換的命令</block>
@@ -9290,7 +9279,6 @@
   <block id="05202b0916eaeee59c9212a5ad2a36d2" category="list-text">請在正常站台上發出下列命令、檢查並移除屬於災難站台的任何故障磁碟：「磁碟show -disks（磁碟顯示-中斷）」</block>
   <block id="1646a615f16cd1da224d08e9d75d5a86" category="list-text">開啟或開機災難站台上的每個控制器模組。</block>
   <block id="292d0821c50758a566d72d285a633f25" category="paragraph">如果兩個plexes都存在、則當plexes未同步時、會自動進行重新同步。如果某個叢發生故障、則必須銷毀該叢、並使用儲存Aggregate mirror -Aggregate gregate名稱命令重新建立鏡射關係。</block>
-  <block id="d970522a2c535f4a798076f2c36b8af8" category="paragraph">您必須使用正確的FC對SAS橋接器來佈線這些磁碟櫃。</block>
   <block id="e0dd1e85604316427a557d67b3079843" category="summary">您必須根據使用FlexArray 的是哪些LUN、以及儲存控制器如何連接至儲存櫃、選擇正確的安裝程序。</block>
   <block id="e754262d6877963456252dcb8071c9a7" category="image-alt">工作流程選擇MetroCluster 您需要的組態延伸</block>
   <block id="4925c3e92cbc558459ac4884fe1553e3" category="paragraph">雙節點擴充組態、含FC至SAS橋接器</block>
@@ -9422,7 +9410,6 @@
   <block id="5ddac338fa0803205a82e38309aa44f9" category="list-text">您無法在發生接管之後、修改故障節點或合作夥伴節點的時區設定。</block>
   <block id="1233b18bcf0b766fe8554df5722d0b10" category="list-text">每個MetroCluster 叢集在EFCFC組態中、都應該有各自獨立的NTP伺服器或伺服器供節點使用、以及MetroCluster （如果有）該站台的FC對SAS橋接器。</block>
   <block id="f187886704aceb7f6cb59f5184330063" category="list-text">確認您在「日期與時間」視窗中對日期與時間設定所做的變更。</block>
-  <block id="d08fe7e603a9a3906a2ac376ce5a88c1" category="summary">當您準備將橋接器安裝為新MetroCluster 版的作業系統的一部分時、您必須確保系統符合特定要求。這包括滿足橋接器的設定與組態需求。其他需求包括下載必要文件、Atto QuickNAV公用程式和橋接韌體。</block>
   <block id="4e588a29bf7a5758c2948246b9400ed6" category="summary">在架構附加MetroCluster 的支援功能中、節點位於不同的位置。這種地理差異會增加災難保護。若要從延伸MetroCluster 配置轉換為光纖附加的功能、您必須在組態中新增FC交換器、並視需要新增FC至SAS橋接器。</block>
   <block id="1042cc8a57642a50cc069324d117567c" category="doc">從彈性轉換成以網路為基礎MetroCluster 的功能性的不全配置</block>
   <block id="f889df12ea9fb88367e834a6ea3528cf" category="list-text">您必須在兩個叢集上執行「MetroCluster 停止自動切換-自動切換-故障-網域自動停用」命令、以停用自動切換功能。</block>
@@ -9487,8 +9474,6 @@
   <block id="5371e95fe07850551246ecd1987010d5" category="paragraph">bridge _B_1b使用者名稱</block>
   <block id="b7ea0803dbd642d0e5327dc2439d3171" category="paragraph">bride_b_1b密碼</block>
   <block id="e3e199b7ae425cf085e49fc59cee2346" category="paragraph">您可以將控制器和叢集交換器管理連接埠連接至網路中的現有交換器。此外、您也可以將控制器連接至新的專用網路交換器、例如NetApp CN1601叢集管理交換器。</block>
-  <block id="632ac78de4a389af16d655089761a651" category="paragraph">此程序假設您使用建議的橋接管理介面：Atto ExpressNAV GUI和Atto QuickNAV公用程式。</block>
-  <block id="132ab6e1ba78a445b535028fd5d74260" category="paragraph">使用Atto ExpressNAV GUI來設定及管理橋接器、以及更新橋接器韌體。您可以使用Atto QuickNAV公用程式來設定橋接式乙太網路管理1連接埠。</block>
   <block id="b36b0e6d0a0719b38c9e504200700edd" category="summary">從支援VMware 9.5開始ONTAP 、ONTAP 支援使用虛擬IP（VIP）和邊界閘道傳輸協定（BGP）進行第3層連線。結合VIP與BGP、可在前端網路中提供備援功能、搭配後端MetroCluster 的可靠性備援功能、提供第3層災難恢復解決方案。</block>
   <block id="8d3d41bad87a31195e4ce8080361725c" category="paragraph">視ONTAP 您的版本而定、您必須在節點SVM中設定BGP對等生命量、而非在系統或資料SVM中設定。在S9.8中ONTAP 、BGP LIF會顯示在叢集（系統）SVM中、而節點SVM則不再存在。</block>
   <block id="06e503b938af1986ad6b869ecf063f9b" category="paragraph">V0a（v0b等）的存在會持續驗證連線能力、確保LIF移轉或容錯移轉成功（不像L2、只有在停機後才能看到毀損的組態）。</block>
@@ -9525,25 +9510,10 @@
   <block id="b38ee4e0ef85030df13c9983cc2db8fe" category="summary">在MetroCluster 使用陣列LUN的延伸式功能區組態中、您必須跨控制器連接FC-VI連接埠。控制器與E系列儲存陣列之間支援直接連線。對於所有其他陣列LUN組態、您必須在組態中使用FC交換器。</block>
   <block id="3abb76413b81aeec2b1531b8193b98d1" category="paragraph">在延伸MetroCluster 的部分組態中、使用陣列LUN時、您必須跨控制器連接FC-VI連接埠。控制器與E系列儲存陣列之間支援直接連線。對於所有其他LUN組態陣列、您必須在組態中使用FC交換器。</block>
   <block id="3d13d30ef61321e1bd349933232825f8" category="paragraph">您也可以同時使用MetroCluster 磁碟和陣列LUN來設定延伸的等位配置。在此類組態中、您必須使用FC對SAS橋接器或SAS光纖纜線、將控制器連接至磁碟。</block>
-  <block id="4b82b05e56bc303e7e70ebb815ebfc6c" category="summary">您必須使用雙節點橋接MetroCluster 式的連接式功能、將橋接器連接至控制器模組。</block>
-  <block id="468824e6d6059f37612b1e891b27c464" category="doc">以雙節點橋接MetroCluster 式的連接式功能、將FC至SAS橋接器連接至控制器模組</block>
-  <block id="a977177241046fa392e812a609420ace" category="list-text">[[step1-verify-detect]驗證每個橋接器都能偵測到橋接器所連接的所有磁碟機和磁碟櫃。</block>
-  <block id="3a23706b743b24f9521e22417f1d30d0" category="paragraph">您將會被帶到橋接器連結的Atto FibreBridge首頁、以取得輸入的IP位址。</block>
-  <block id="6a711c2982ba094c44be794ffb3bf1a2" category="list-text">按一下連結、然後輸入您在設定橋接器時所指定的使用者名稱和密碼。</block>
-  <block id="13174ed6300232fa48d1a5b59eb7e2f4" category="list-text">執行下列命令、然後按一下「*提交*：+「最小化」</block>
-  <block id="337d79852891a37d41285c9101c3fff4" category="paragraph">執行下列命令：</block>
   <block id="3fff43b275954b2824b3aee6836ae256" category="paragraph">「sastargets」命令輸出會顯示連接到橋接器的裝置（磁碟和磁碟櫃）。輸出線會依序編號、以便您快速計算裝置數量。</block>
-  <block id="3d40cc4f5f094dc369c0eb1e445aecea" category="admonition">如果輸出開頭出現「文字回應被截短」、您可以使用Telnet連線到橋接器、然後執行相同的命令來檢視所有輸出。</block>
-  <block id="4948cb8b3eded5b39ec6d64f06687462" category="list-text">確認命令輸出顯示橋接器已連接至堆疊中應連接的所有磁碟和磁碟櫃。</block>
   <block id="065575055836b7cada67fa8852ea3ef7" category="paragraph">重複 <block ref="760439458840ee59fb7794af4bb5b199" category="inline-xref-macro-rx"></block> 每個剩餘的橋接器。</block>
   <block id="1d1fa4befa7e2188095e2cc64c17fc9e" category="list-text">檢查SAS纜線是否鬆脫、或將磁碟櫃重新連接至橋接器、以修正SAS纜線。</block>
-  <block id="4c86d491f2865662ab58a2679a13b3ab" category="paragraph"><block ref="4c86d491f2865662ab58a2679a13b3ab" category="inline-link-macro-rx"></block></block>
   <block id="fa5d02c46c643a9eedee519211b4d9d4" category="list-text">重複 <block ref="760439458840ee59fb7794af4bb5b199" category="inline-xref-macro-rx"></block> 每個剩餘的橋接器。</block>
-  <block id="b29b8c83f7d8c55b39ae87067330f426" category="list-text">[[step3-cable e-each bridge ]將每個橋接器連接至控制器模組：</block>
-  <block id="4422c879aa9ea654583488de1d4d4e82" category="list-text">將橋接器的FC連接埠1纜線連接至叢集A中控制器模組上的FC連接埠</block>
-  <block id="db0e7a22facf5e7460258a2022b5e9d5" category="list-text">將橋接器的FC連接埠2纜線連接至叢集B中控制器模組上的FC連接埠</block>
-  <block id="48dda5bb7b1f8b58b068fa47d9879c67" category="paragraph">如果控制器模組設定有多個FC介面卡、請勿將兩個橋接連接埠纜線連接至同一個介面卡。您應該將FC連接埠1分配給介面卡A、將FC連接埠2分配給介面卡B、以避免單點故障。</block>
-  <block id="67d7a49e616a0e579f0506ada050a36b" category="image-alt">叢集對等網路</block>
   <block id="13044932159e150c28f3e3cabd33ea68" category="list-text">重複 <block ref="92a9f0aaafd1755c239f3740bca9b5f0" category="inline-xref-macro-rx"></block> 在其他橋接器上、直到所有橋接器都連接好纜線。</block>
   <block id="547ba73dc7a2f4ba675a33d38364c3f9" category="paragraph">您可以深入瞭解MetroCluster 有關此功能的組態設定與操作。</block>
   <block id="a89d71cea914c12a8560cf535aa946c5" category="list-text">所有MetroCluster 功能指南</block>
@@ -10447,7 +10417,6 @@
   <block id="803c81253d05dfea0833a4f1be138dea" category="image-alt">MCC升級叢集A（在切換中）</block>
   <block id="84662b9fedef1d258fb8d10005e76090" category="list-text">在叢集_A上發出下列命令：</block>
   <block id="982f6eba58d95bda2318d44b2dcea2e3" category="paragraph">在控制器升級期間、會停用協調式切換後的Aggregate自動修復功能。</block>
-  <block id="0486f17c3c2c0ba93636ea2cc6f050dd" category="paragraph">您必須將資料LIF移至通用連接埠、移除舊控制器上的VLAN和介面群組、然後實際解除安裝控制器。</block>
   <block id="895a79b8b51d133ae9c32d8cb48b9eb7" category="list-text">這些步驟會在舊的控制器（node_B_1-old、node_B_2-old）上執行。</block>
   <block id="4339dfdd37f410724931874e2a95e452" category="list-text">開機舊節點並登入節點：</block>
   <block id="a435dd2235e07057dcaedb205b5512bc" category="paragraph">所有的資料生命期間（包括SAN和NAS）都會在切換站台（叢集_A）啟動、因此系統將會啟動並運作。</block>
@@ -12105,7 +12074,6 @@
   <block id="cbabd53b8268cb963ad7b2c67de0b634" category="paragraph">由於LUN只會在MetroCluster 不含資源的FC節點介面上報告、因此用戶端只會顯示FC節點上的路徑。這可在的輸出中看到<block ref="41dc2c94e82e1c56ba876085acf5a974" prefix=" " category="inline-code"></block> 和<block ref="2fbf63deae0938cf669e6ca451f1eb2c" prefix=" " category="inline-code"></block> 命令。</block>
   <block id="7162464dfaefdef75b18029dcb1bb1f1" category="list-text">重新掃描主機上的 SCSI 匯流排、以探索新增的路徑：<block ref="9e65638d5d13acb691c4bec2ede5a483" prefix=" " category="inline-code"></block></block>
   <block id="9b3bd2afae038f8967e9373560a3b6d2" category="list-text">重新掃描用戶端上的 SCSI 匯流排：<block ref="06653a48f6165608045bd55ec32d95fb" prefix=" " category="inline-code"></block></block>
-  <block id="77139d079fd912afd88e4ca7f5623393" category="paragraph">如果控制器模組已設定四埠 FC 介面卡、請確認儲存堆疊未連接至同一個 ASIC 上的兩個 FC 連接埠。連接埠A和連接埠b共用相同的ASIC、連接埠c和連接埠d共用相同的ASIC。請勿將一堆磁碟櫃連接至連接埠A和連接埠b請改用連接埠A和連接埠c、或使用連接埠b和連接埠d、以免ASIC故障時發生單點故障。</block>
   <block id="9df52fd51f68e1f0a1c54d87fbcf2d9f" category="paragraph">只有當您想要監控兩個叢集、以及它們之間從第三個站台的連線狀態時、才需要Tiebreaker軟體。斷路器軟體位於第三個站台的 Linux 主機上、可讓叢集中的每個合作夥伴在站台間連結中斷時、區別 ISL 故障與站台故障。</block>
   <block id="776aa0db93dc60ccb39a1a2bac58edd0" category="paragraph">tiebreaker 軟體最多可同時監控 15 個 MetroCluster 組態。它支援 MetroCluster IP 、 MetroCluster FC 和 Stretch MetroCluster 組態的組合。</block>
   <block id="2c6d3f6cb9e7e0273e71c2ee07e103ef" category="paragraph">視主機 Linux 作業系統而定、您必須先安裝 MySQL 或 MariaDB 伺服器、才能安裝或升級 tiebreaker 軟體。</block>
@@ -13626,7 +13594,6 @@
   <block id="fb0d5feb3def76f90b6408f32f99f4b7" category="list-text">如果為新升級的控制器上的資料連接埠建立新的廣播網域、請刪除廣播網域：</block>
   <block id="3ab5e50e5fd6dc477690730212c6785f" category="admonition">只刪除新的廣播網域。開始升級之前、請勿刪除任何已存在的廣播網域。</block>
   <block id="8cb8d05546274856c8c2cb56b7cd62ac" category="paragraph"><block ref="7bbb7f17a19e67be5ebaaa8410749ad2" prefix="" category="inline-code"></block></block>
-  <block id="c46b37082c4b8a5ecb54ed082719f5fa" category="paragraph"><block ref="6ed2488c75aad6332e02665ab7c30031" prefix="" category="inline-code"></block></block>
   <block id="a51de836d51a26774e16aa7066519185" category="paragraph"><block ref="6a6db1083e2f8c53b07cc196dec3cafb" prefix="" category="inline-code"></block></block>
   <block id="641cba091515001a3bb48d030bddd608" category="section-title">升級叢集 A 上的節點</block>
   <block id="2ce39beb4bd7e0662d271e0be20e56c4" category="paragraph">開始升級之前、請先檢閱下列考量事項、確認您的組態是否受到支援。</block>
@@ -14270,4 +14237,94 @@
   <block id="5f9a9e91fc7e98f1998a1dcee4eab83f" category="paragraph">確認您只將未鏡射機櫃上的磁碟機納入 Aggregate 。</block>
   <block id="6f1eb898d916ac10201421006f5406e2" category="admonition">您也可以使用<block ref="2ee4c97cd7e2dff2e12ae3225818c09b" prefix=" " category="inline-code"></block>命令中的參數來指定要用於集合的磁碟。</block>
   <block id="668c968f31daa1f3b0b86ddf4b09543e" category="list-text">您應該先建立子網路物件，然後再建立 LIF 。子網路物件可讓 ONTAP 判斷目的地叢集上的容錯移轉目標，因為它具有相關的廣播網域。</block>
+  <block id="6d42a1c65d48ed3ec77f037a50004258" category="list-text">如果您使用專用網路進行健全狀況監控，則每個節點在該專用網路中都必須有節點管理 LIF 。</block>
+  <block id="b729f80ba307f8a8e8ea6189b1ed6313" category="paragraph">NetApp 僅支援下列工具來監控 MetroCluster FC 組態中的元件：</block>
+  <block id="f60d1385c75cfef525be8497e2137ee8" category="list-text">Brocade網路顧問（BNA）</block>
+  <block id="138e272b0320fc1ffcdc8dee378b177b" category="list-text">Brocade SANnav</block>
+  <block id="865e9b4ef52f3b0d3050c8b3c14eb660" category="list-text">Active IQ Config Advisor</block>
+  <block id="5ed4e53c285d1a7046c38f429a94ef7b" category="list-text">NetApp 健全狀況監控（ ONTAP ）</block>
+  <block id="fb4d5d69523a984853a5295db93de123" category="list-text">MetroCluster 資料收集器（ MC_DC ）</block>
+  <block id="0d48c29aadd238b08bcb06f357acd9d8" category="section-title">準備安裝</block>
+  <block id="e30f0ace1e7e67755e7318eeab1b0204" category="section-title">安裝 FC 至 SAS 橋接器和 SAS 機櫃</block>
+  <block id="0dc04f427f83d4c5afa311fe8042eddc" category="list-text">將序列纜線連接至 FiberBridge 7600N 橋接器上的序列連接埠，即可存取橋接器主控台介面。</block>
+  <block id="2323990b6fbb7b7ee5ee14dbdb21eaf0" category="section-title">設定 FC 對 SAS 橋接器</block>
+  <block id="ff48ad0dc104d3885573fa0f45161299" category="paragraph"><block ref="77d54c8e2e9adc9e2bc031facbe82b7c" prefix="" category="inline-code"></block></block>
+  <block id="a21e2af264b592c03f6b1f88af93dd36" category="paragraph"><block ref="a32ef1a4f91191b408d6aa3ceeed03a8" prefix="" category="inline-code"></block></block>
+  <block id="49cc2eac13c61da60904b157e05ec5dc" category="paragraph"><block ref="e9580cd86794b774ad27b65b0a805b73" prefix="" category="inline-code"></block></block>
+  <block id="b2c196d04c27ee6d1c55877714d8d6f9" category="section-title">將磁碟櫃連接至橋接器</block>
+  <block id="4273704f66fca16606c90100e4c57808" category="inline-xref">使用 IOM12 模組將 FiberBridge 7600N 或 7500N 橋接器與磁碟櫃連接起來</block>
+  <block id="242108261e892329ec8e41357fad0678" category="list-text"><block ref="57fecdddd64dc6d4f5e9d97874ea43bc" category="inline-xref-macro-rx"></block></block>
+  <block id="e3136c071e40d473a2ed2f7295c2ead2" category="inline-xref">使用 IOM6 或 IOM3 模組，將 FiberBridge 7600N 或 7500N 橋接器與磁碟櫃連接</block>
+  <block id="e88d980772f7b12fbca752322a5e5307" category="list-text"><block ref="e59f261da41fd9be2eaf7f1b955dc162" category="inline-xref-macro-rx"></block></block>
+  <block id="e42bb9af7fd1e3b1641a18782a424fb0" category="list-text">從堆疊中的第一個邏輯機櫃開始，將 IOM A 連接埠 3 連接至下一個機櫃上的 IOM A 連接埠 1 ，直到堆疊中的每個 IOM A 都連接為止。</block>
+  <block id="df728bff4207a1d17e007189ab445eaa" category="section-title">使用 IOM6 或 IOM3 模組，將 FiberBridge 7600N 或 7500N 橋接器與機櫃連接</block>
+  <block id="8a6b192e89e003168a9dec4c4b9059a7" category="section-title">驗證橋接器連線及橋接 FC 連接埠的纜線</block>
+  <block id="1127370baf663b49c7993f8a6ab9f41e" category="paragraph"><block ref="eba7ba40406886cad3add195d043cd08" category="inline-xref-macro-rx"></block></block>
+  <block id="d277bf5cc4237c95ff26e4f98eefaf07" category="paragraph">將新儲存設備新增至組態時，請安裝並連接 Atto FiberBridge 橋接器和 SAS 磁碟櫃。</block>
+  <block id="760e34100c7db8b067f655d415a342c1" category="paragraph">使用頻內管理時，可以使用 FC 連線至橋接器，從 ONTAP CLI 管理和監控橋接器。不需要透過橋接乙太網路連接埠實體存取橋接器，可降低橋接器的安全性弱點。</block>
+  <block id="74f6533c5153d90867b32b519b275c65" category="list-text">在 ONTAP 9.5 之前，僅支援頻外 SNMP 管理。</block>
+  <block id="967c96558959e91e943843e6263ec970" category="paragraph">橋接器 CLI 命令可透過 ONTAP 介面上的 ONTAP 介面命令發出<block ref="52f6597c8dcf79b6137c2435b9c9efcb" prefix=" " category="inline-code"></block>。</block>
+  <block id="d22ab9487f4f57c6ecf56a0875e0c070" category="paragraph">當您準備將橋接器安裝為新 MetroCluster 系統的一部分時，您必須確認系統符合特定需求，包括橋接器的設定和組態需求。其他需求包括下載必要文件、Atto QuickNAV公用程式和橋接韌體。</block>
+  <block id="9d46de9346ca8af89ab03ed382fc9ab1" category="paragraph">在<block ref="a5900d751cd970c3de875b616ebb9e28" category="inline-link-rx"></block>中，您可以使用 * 儲存解決方案 * 欄位來選取您的 MetroCluster 解決方案。您可以使用 * 元件檔案總管 * 來選取元件和 ONTAP 版本來精簡搜尋。您可以選取 * 顯示結果 * 來顯示符合條件的支援組態清單。</block>
+  <block id="1654c802242a5762f6e28996b1f5e854" category="list-text">每個 FC 控制器都必須有一個 FC 連接埠，才能讓一個橋接器連線到該連接埠。</block>
+  <block id="4178aa1558026aafc5b0376eacf267e6" category="list-text">您必須熟悉如何處理 SAS 纜線，以及安裝和佈線磁碟櫃的考量與最佳實務做法。</block>
+  <block id="e0661cfc6d44d7098774766995e5913c" category="list-text">對於使用 50 微米多模光纖纜線的磁碟櫃， FC 控制器和備份磁帶裝置，其最大距離的系統連線需求也適用於 FiberBridge 橋接器。</block>
+  <block id="7bcf16804afe2d3ed86d658c4f355f74" category="paragraph"><block ref="eece6350c77c4c173bc5eac22d38a3d8" prefix="" category="inline-code"></block></block>
+  <block id="8f94293e801572ab9458b1e91111b45b" category="list-text">從堆疊中的第一個邏輯機櫃開始，將 IOM A 連接埠 3 連接至下一個機櫃上的 IOM A 連接埠 1 ，直到堆疊中的每個 IOM A 都連接為止。</block>
+  <block id="a73aaf062bae9a1d7a52d1bdd78a1927" category="section-title">驗證橋接器連線能力，並將 FC 對 SAS 橋接器連接至控制器 FC 連接埠</block>
+  <block id="40eba83ddff63a60c0f3132156cbb034" category="paragraph">您必須在雙節點橋接附加 MetroCluster 組態中，將橋接器連接至控制器 FC 連接埠。</block>
+  <block id="3ce46fc9a15b5c37d69e1d5ae43448c1" category="list-text">[[step1-verify-detect]] 確認每個橋接器都能偵測到橋接器所連接的所有磁碟機和磁碟櫃：</block>
+  <block id="78d9123f52b553c11386801c7e6ee30c" category="list-text">確認命令輸出顯示橋接器已連接至堆疊中正確的磁碟和磁碟櫃。</block>
+  <block id="84be3f4668a661e6d6ab8a9c8e8b7640" category="list-text">[[step3-cable － each － bridge] 將每個橋接器連接至控制器 FC 連接埠：</block>
+  <block id="1832e58c6444b28a1738bf5e7d5f4bad" category="list-text">將橋接器的 FC 連接埠 1 連接至叢集 A 中控制器上的 FC 連接埠</block>
+  <block id="147fb5a8c36cf6f6239310bbf3fbd96d" category="list-text">將橋接器的 FC 連接埠 2 連接至叢集 _B 中控制器上的 FC 連接埠</block>
+  <block id="620ef8e255d79ca87184c0f6bd5b96c6" category="list-text">如果控制器設定有四埠 FC 介面卡，請確定儲存堆疊任一端的橋接器未連接到同一個 ASIC 上的兩個 FC 連接埠。例如：</block>
+  <block id="7def08188c3514b9c48ff9e90fc4b0e8" category="list-text">連接埠 A 和連接埠 b 共用相同的 ASIC 。</block>
+  <block id="02ab53167e774ae8d9d95cd3bfbfc09a" category="list-text">連接埠 c 和連接埠 d 共用相同的 ASIC 。</block>
+  <block id="00476bfdbf527b84c0b7fbcbde326f75" category="paragraph">在此範例中，將 FC_bridge_a_1 連接到連接埠 A ，將 FC_bridge_A2 連接到連接埠 C</block>
+  <block id="db25c93b70e2d449bc0eacd997bc5392" category="list-text">如果控制器設定有多個 FC 介面卡，請勿將儲存堆疊任一端的橋接器連接至同一個介面卡。</block>
+  <block id="860a61ba6dae3941046ced6d468fe4e9" category="paragraph">在這種情況下，您應該將 FC_bridge_a_1 連接到內建的 FC 連接埠，並將 FC_bridge_a_2 連接到擴充插槽中介面卡上的 FC 連接埠。</block>
+  <block id="fdd11dfe0e9d69317902be2abf4845cf" category="inline-image-macro">叢集對等網路的圖例</block>
+  <block id="56571215fb83a5614f4f1ed3deb7e93c" category="paragraph"><block ref="56571215fb83a5614f4f1ed3deb7e93c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c451d21d9b1e4faa6b241f172e690c0b" category="paragraph"><block ref="deceade8c0d17544f65a6ede664b23e2" prefix="" category="inline-code"></block></block>
+  <block id="be4fd0012ddc006ea303591c9df6f76d" category="paragraph"><block ref="39b06b9a26b49c3db6d9409a6abaa9d8" prefix="" category="inline-code"></block></block>
+  <block id="9e1d9b9e8b88355df08194559af6865a" category="summary">在切入期間，不應執行某些作業。</block>
+  <block id="fa33dcb38c0cd6e15dd757f1ef3072ee" category="doc">MetroCluster 組態在進行之間的限制</block>
+  <block id="5722cde27dfa05f795a5466b6d0859c9" category="paragraph">當系統切入時，不應執行某些作業。瞭解系統在進行作業系統的關係時，受到限制的作業。</block>
+  <block id="b72a4837907e7fef0771c42da901c811" category="section-title">受限的作業正在進行</block>
+  <block id="1b5f91752d52b3bac4319cf07ea0efb8" category="paragraph">系統切入時不支援下列作業：</block>
+  <block id="272c8dfc8e0821088d85ed5d0fe037a8" category="list-text">建立或刪除集合體和磁碟區</block>
+  <block id="d825dd35fde2fe33a56ef95c52f545a0" category="list-text">建立或刪除 SVM</block>
+  <block id="8c120d60e412429a6f43b748c02dc233" category="list-text">建立或刪除生命</block>
+  <block id="9cc6607cba1650bc799439425f9b085e" category="list-text">新增或移除磁碟（僅當您將磁碟更換為還原程序的一部分時）</block>
+  <block id="8fe0d36b4759e6e40b887b096584644e" category="list-text">對 SnapMirror SVM DR 執行組態變更</block>
+  <block id="d6509169a6409458c70d9934cd8159d0" category="list-text">修改現有的廣播網域或建立新的廣播網域</block>
+  <block id="0e4fc6663e95531e1c48cb8fcdc5fc7c" category="list-text">修改網路子網路</block>
+  <block id="be2a1f6ebcf2096180a7211fc2d40f49" category="section-title">硬體更換在交換中</block>
+  <block id="1bf38e1e76b1ffa01784928faef533bd" category="paragraph">當系統處於轉換狀態時，請使用下列程序來更換控制器硬體：</block>
+  <block id="35ee9e73034b599a0e2236f1e215fb3d" category="list-text">如果您需要更換同一類型的控制器，請在站台而非切換中，遵循程序至<block ref="9b067f6cfdd46edd11b6f92353f05956" category="inline-link-macro-rx"></block>。</block>
+  <block id="787b5b0c67b18976c91dc3f6628778e0" category="list-text">如果您需要在節點在正常運作的站台切換時更換控制器模組和機箱，請關閉兩個控制器，然後執行程序至<block ref="9b067f6cfdd46edd11b6f92353f05956" category="inline-link-macro-rx"></block>。</block>
+  <block id="49ad2bb3d2de07281d3d8fd2e16644ed" category="list-text">如果您需要用不同類型的控制器來更換控制器，請按照中的設定程序進行<block ref="1bee30f9c5932b39ca60631e46d351c4" category="inline-link-macro-rx"></block>。</block>
+  <block id="e9e319505f06fc728bd8dcb2a9b67412" category="list-text">如果您的系統因為控制器故障或在切換時遇到控制器故障而切換，則必須先更換控制器硬體，執行切換，然後執行控制器升級：</block>
+  <block id="d54ffc167bc880d77acd9d1b6d020080" category="list-text">若要更換控制器硬體並執行切換<block ref="9b067f6cfdd46edd11b6f92353f05956" category="inline-link-macro-rx"></block>，請遵循。</block>
+  <block id="f63242f4292325b063838517abc2c1a1" category="list-text">更換硬體後，請使用中的程序執行控制器升級<block ref="1bee30f9c5932b39ca60631e46d351c4" category="inline-link-macro-rx"></block>。</block>
+  <block id="1dc725a140606a258f54d59d9ad3d9bd" category="list-text">驗證存續叢集上的所有同步目的地 SVM 是否都處於休眠狀態（顯示操作狀態為「停止」）：</block>
+  <block id="5dfed22feb54647dbd9e9ae827290f6b" category="paragraph"><block ref="67611e9f528c6078257c414670af6b52" prefix="" category="inline-code"></block></block>
+  <block id="1225fe0de146a130add7eeefae9e0925" category="list-text">確認災難叢集上的同步來源 SVM 已啟動並執行：</block>
+  <block id="ad29c49a8377862a59f9aae0ab4431cd" category="paragraph">確認 LIF 放置正確。然後移除舊控制器上的 VLAN 和介面群組，並實際解除安裝控制器。</block>
+  <block id="253982549e381b6f58f66b3e289a0a83" category="admonition">如果新舊控制器沒有通用連接埠，您就不需要修改資料生命期。跳過此步驟並直接前往<block ref="45cc57eb3654a2ae89efabc6fb9d271a" category="inline-xref-macro-rx"></block>。</block>
+  <block id="ba20cbe478ea7b912f1d044734df2884" category="list-text">[[vimization_manual ， no_matching_ports ]] 修改廣播網域以移除需要刪除的 VLAN 和實體連接埠：</block>
+  <block id="ae359c5763df3f6130f697d17d090551" category="admonition">在執行切換之前，您必須確認新節點上的資料生命負載位置正確。當您切換組態時， ONTAP 會嘗試恢復由生命所使用的主連接埠上的流量。當主連接埠連線至交換器連接埠和 VLAN 不正確時，可能會發生 I/O 故障。</block>
+  <block id="1c780702501fd89538731057505e0a04" category="list-text">在切換之前，請先確認已在適當的節點和連接埠上裝載了生命負載。</block>
+  <block id="bc12d3bc2a2c1526b655930b56efc183" category="list-text">顯示生命，並確認每個資料 LIF 使用正確的主連接埠：</block>
+  <block id="b98ffe19185977668c0712d9626bb6b1" category="list-text">修改任何未使用正確主連接埠的生命：</block>
+  <block id="823bc5ae6e724dd8994efcc4dbeb49d2" category="paragraph">如果命令傳回錯誤，您可以覆寫連接埠組態：</block>
+  <block id="ec14487a214982a1ea6572636724761f" category="paragraph"><block ref="afdc229346561af3e5aba3a6d67eea09" prefix="" category="inline-code"></block></block>
+  <block id="c9ba655979127851f6a6f01489815e47" category="list-text">確認所有資料生命現在都位於正確的主連接埠：</block>
+  <block id="fd7b222b3cb6aff1e0aef0b1e7a16998" category="paragraph">若要讓網路能夠在新控制器上正常恢復，請確認 LIF 位置正確，並移除舊控制器的網路組態。</block>
+  <block id="ef1038ce81a2c9d70181057dd381a59a" category="admonition">如果新舊控制器沒有通用連接埠，您就不需要修改資料生命期。跳過此步驟並直接前往<block ref="186451ebe57c46550834233237ebac90" category="inline-xref-macro-rx"></block>。</block>
+  <block id="3432abc562d1049e115fc0bcb6f569ab" category="list-text">[[newization_assisted_without _matching_ports ] 修改廣播網域，移除需要刪除的 VLAN 和實體連接埠：</block>
+  <block id="07bfa9093a8ef293dfd6099e38fde255" category="list-text">確認 MetroCluster 設定正確。檢查節點狀態：</block>
+  <block id="d64694bac02c7b4eea890e175a53a0c7" category="paragraph">在您繼續執行自動切換作業之前，請先確認已在適當的節點上裝載了生命。</block>
+  <block id="db85d3fd5e7d7beaa319d4ebe299145b" category="sidebar">系統在進行作業系統的「正在進行」時的限制</block>
 </blocks>

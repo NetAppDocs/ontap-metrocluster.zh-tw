@@ -31,34 +31,41 @@ aggr_b2    227.1GB   227.1GB    0% online       0 node_B_2   raid_dp,
                                                                    mirrored,
                                                                    normal
 ----
-. 驗證在正常運作的叢集上的所有同步目的地SVM都處於休眠狀態（顯示「最新」的管理狀態）、且災難叢集上的同步來源SVM都已啟動並正在執行：
+. 驗證存續叢集上的所有同步目的地 SVM 是否都處於休眠狀態（顯示操作狀態為「停止」）：
++
+`vserver show -subtype sync-destination`
+
++
+[listing]
+----
+node_B_1::> vserver show -subtype sync-destination
+                                 Admin    Operational  Root
+Vserver       Type    Subtype    State    State        Volume    Aggregate
+-----------   ------- ---------- -------- ----------   --------  ----------
+...
+cluster_A-vs1a-mc data sync-destination
+                               running    stopped    vs1a_vol   aggr_b2
+
+----
++
+Sync-destinate Aggregate在MetroCluster 其名稱中會自動加上「`-MC」字尾、以協助識別它們。
+
+. 確認災難叢集上的同步來源 SVM 已啟動並執行：
 +
 「vserver show -subtype sync-source-
 
 +
 [listing]
 ----
-node_B_1::> vserver show -subtype sync-source
-                               Admin      Root                       Name    Name
-Vserver     Type    Subtype    State      Volume     Aggregate       Service Mapping
------------ ------- ---------- ---------- ---------- ----------      ------- -------
+node_A_1::> vserver show -subtype sync-source
+                                  Admin    Operational  Root
+Vserver        Type    Subtype    State    State        Volume     Aggregate
+-----------    ------- ---------- -------- ----------   --------   ----------
 ...
-vs1a        data    sync-source
-                               running    vs1a_vol   node_B_2        file    file
-                                                                     aggr_b2
+vs1a           data    sync-source
+                                  running  running    vs1a_vol  aggr_b2
 
-node_A_1::> vserver show -subtype sync-destination
-                               Admin      Root                         Name    Name
-Vserver            Type    Subtype    State      Volume     Aggregate  Service Mapping
------------        ------- ---------- ---------- ---------- ---------- ------- -------
-...
-cluster_A-vs1a-mc  data    sync-destination
-                                      stopped    vs1a_vol   sosb_      file    file
-                                                                       aggr_b2
 ----
-+
-Sync-destinate Aggregate在MetroCluster 其名稱中會自動加上「`-MC」字尾、以協助識別它們。
-
 . 使用「MetroCluster 還原作業show」命令來確認切換作業是否成功。
 +
 |===

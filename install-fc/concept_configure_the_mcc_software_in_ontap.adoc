@@ -3029,10 +3029,19 @@ Priv Protocol [DES(1)/noPriv(2)/AES128(3)/AES256(4)]): (2..2) [3]
 [NOTE]
 ====
 * 您應該將橋接器和節點管理LIF放在專用網路中、以避免來自其他來源的干擾。
-* 如果您使用專屬的網路進行健全狀況監控、則每個節點都必須在該專屬網路中擁有節點管理LIF。
+* 如果您使用專用網路進行健全狀況監控，則每個節點在該專用網路中都必須有節點管理 LIF 。
 
 
 ====
+NetApp 僅支援下列工具來監控 MetroCluster FC 組態中的元件：
+
+* Brocade網路顧問（BNA）
+* Brocade SANnav
+* Active IQ Config Advisor
+* NetApp 健全狀況監控（ ONTAP ）
+* MetroCluster 資料收集器（ MC_DC ）
+
+
 
 
 ==== 設定MetroCluster 用於健全狀況監控的功能

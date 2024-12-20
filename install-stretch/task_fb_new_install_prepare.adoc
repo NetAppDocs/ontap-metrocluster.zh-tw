@@ -1,64 +1,8 @@
 ---
 permalink: install-stretch/task_fb_new_install_prepare.html 
-sidebar: sidebar 
-keywords: metrocluster, stretch, installation, prepare 
-summary: 當您準備將橋接器安裝為新MetroCluster 版的作業系統的一部分時、您必須確保系統符合特定要求。這包括滿足橋接器的設定與組態需求。其他需求包括下載必要文件、Atto QuickNAV公用程式和橋接韌體。 
+redirect: ontap-metrocluster/install-stretch/task_fb_new_install.html 
 ---
-= 準備安裝
+= 
 :allow-uri-read: 
-:icons: font
-:imagesdir: ../media/
-
-
-[role="lead"]
-當您準備將橋接器安裝為新MetroCluster 版的作業系統的一部分時、您必須確保系統符合特定要求。這包括滿足橋接器的設定與組態需求。其他需求包括下載必要文件、Atto QuickNAV公用程式和橋接韌體。
-
-
-
-== 開始之前
-
-* 如果系統未裝入系統機櫃、則必須將系統安裝在機架中。
-* 您的組態必須使用支援的硬體機型和軟體版本。
-+
-https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"]
-
-+
-在這個解決方案領域、您可以使用儲存解決方案欄位來選擇您的解決方案。IMT MetroCluster您可以使用*元件總管*來選取元件和ONTAP 更新版本、以精簡搜尋範圍。您可以按一下「*顯示結果*」來顯示符合條件的支援組態清單。
-
-* 每個FC交換器都必須有一個FC連接埠可供單一橋接器連接。
-* 您必須熟悉SAS纜線的處理方式、以及安裝和佈線磁碟櫃的考量與最佳實務做法。
-+
-磁碟櫃模型的安裝與服務指南_說明考量事項與最佳實務做法。
-
-* 您用來設定橋接器的電腦必須執行Atto支援的網頁瀏覽器、才能使用Atto ExpressNAV GUI。
-+
-_Atto產品版本說明_提供最新的支援網頁瀏覽器清單。您可以從Atto網站存取本文件、如下列步驟所述。
-
-
-
-.步驟
-. 下載適用於您磁碟櫃模式的安裝與服務指南：
-. 使用您的光纖橋模型所提供的連結存取Atto網站、並下載手冊和QuickNAV公用程式。
-+
-[NOTE]
-====
-適用於您的模型橋接器的_Atto FibreBridge安裝與操作手冊_有更多管理介面的相關資訊。
-
-您可以使用Atto FIBrebridge Description（Atto FIBrebridge說明）頁面上提供的連結、存取Atto網站上的此內容和其他內容。
-
-====
-. 收集使用建議的橋接管理介面、Atto ExpressNAV GUI和Atto QuickNAV公用程式所需的硬體和資訊：
-+
-.. 判斷非預設的使用者名稱和密碼（用於存取橋接器）。
-+
-您應該變更預設的使用者名稱和密碼。
-
-.. 如果設定橋接器的IP管理、則需要橋接器隨附的保護乙太網路纜線（從橋接器乙太網路管理1連接埠連接至網路）。
-.. 如果設定橋接器的IP管理、您需要每個橋接器上的乙太網路管理1連接埠的IP位址、子網路遮罩和閘道資訊。
-.. 在您要設定的電腦上停用VPN用戶端。
-+
-作用中的VPN用戶端會使橋接器的QuickNAV掃描失敗。
-
-
 
 
