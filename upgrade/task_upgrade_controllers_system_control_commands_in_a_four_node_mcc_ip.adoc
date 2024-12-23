@@ -855,10 +855,125 @@ NOTE: 必須在所有受影響的連接埠上設定此選項、才能成功升�
 必須MetroCluster 在新的控制器模組上設定特定的靜態IP bootarg值。這些值必須與舊控制器模組上設定的值相符。
 
 .關於這項工作
-在此任務中，您將使用中升級過程前面確定的 UUID 和系統 ID <<gather_info_system_replace,在升級之前收集資訊>>。
+* 您需要在中的升級程序稍早識別的 UUID 和系統 ID <<gather_info_so_sb,在升級之前收集資訊>>。
+* 視您的平台模式而定，您可以使用參數指定 VLAN ID `-vlan-id` 。下列平台不支援此 `-vlan-id`參數：
++
+** FAS8200與AFF FASA300
+** 解答320 AFF
+** FAS9000 和 AFF A700
+** AFF C800 、 ASA C800 、 AFF A800 和 ASA A800
++
+所有其他平台都支援此 `-vlan-id` 參數。
+
+
+
+* 您設定的 MetroCluster bootarg 值取決於您的新系統是使用共用叢集 / HA 連接埠，還是使用共用的 MetroCluster / HA 連接埠。
++
+下表所列的系統使用 * 共用的 MetroCluster / HA 連接埠 * 。
+
++
+所有其他系統都使用 * 共享叢集 / HA 連接埠 * 。
+
++
+[cols="2*"]
+|===
+| 使用共享的 MetroCluster / HA 連接埠的 AFF 和 ASA 系統 | 使用共用 MetroCluster / HA 連接埠的 FAS 系統 
+
+
+ a| 
+** AFF A150 、 ASA A150
+** VA220 AFF
+** AFF C250 、 ASA C250
+** AFF A250 、 ASA A250
+** 部分A300 AFF
+** 解答320 AFF
+** AFF C400 、 ASA C400
+** AFF A400 、 ASA A400
+** 部分A700 AFF
+** AFF C800 、 ASA C800
+** AFF A800 、 ASA A800
+** AFF A900 、 ASA A900
+
+ a| 
+** FAS2750
+** FAS500f
+** FAS8200
+** FAS8300
+** FAS8700
+** FAS9000
+** FAS9500
+
+
+|===
+
 
 .步驟
 . 在「loader>」提示字元中、在s加 載點B的新節點上設定下列bootargs：
++
+您遵循的步驟取決於新平台機型所使用的連接埠。
+
++
+[role="tabbed-block"]
+====
+.使用共享叢集 / HA 連接埠的系統
+--
+.. 設定下列 bootargs ：
++
+`setenv bootarg.mcc.port_a_ip_config <local-IP-address/local-IP-mask,0,0,DR-partner-IP-address,DR-aux-partnerIP-address,vlan-id>`
+
++
+`setenv bootarg.mcc.port_b_ip_config <local-IP-address/local-IP-mask,0,0,DR-partner-IP-address,DR-aux-partnerIP-address,vlan-id>`
+
++
+
+NOTE: 如果介面使用預設的 VLAN ID ，則不需要此 `vlan-id`參數。
+
++
+以下範例設定 node_B_1-new 的值，第一個網路使用 VLAN 120 ，第二個網路使用 VLAN 130 ：
+
++
+[listing]
+----
+setenv bootarg.mcc.port_a_ip_config 172.17.26.10/23,0,0,172.17.26.13,172.17.26.12,120
+setenv bootarg.mcc.port_b_ip_config 172.17.27.10/23,0,0,172.17.27.13,172.17.27.12,130
+----
++
+以下範例設定 node_B_2-new 的值，第一個網路使用 VLAN 120 ，第二個網路使用 VLAN 130 ：
+
++
+[listing]
+----
+setenv bootarg.mcc.port_a_ip_config 172.17.26.11/23,0,0,172.17.26.12,172.17.26.13,120
+setenv bootarg.mcc.port_b_ip_config 172.17.27.11/23,0,0,172.17.27.12,172.17.27.13,130
+----
++
+下列範例設定節點 B_1-new 的值，並使用所有 MetroCluster IP DR 連線的預設 VLAN ：
+
++
+[listing]
+----
+setenv bootarg.mcc.port_a_ip_config
+172.17.26.10/23,0,0,172.17.26.13,172.17.26.12
+setenv bootarg.mcc.port_b_ip_config
+172.17.27.10/23,0,0,172.17.27.13,172.17.27.12
+----
++
+下列範例設定節點 B_2-new 的值，並使用所有 MetroCluster IP DR 連線的預設 VLAN ：
+
++
+[listing]
+----
+setenv bootarg.mcc.port_a_ip_config
+172.17.26.11/23,0,0,172.17.26.12,172.17.26.13
+setenv bootarg.mcc.port_b_ip_config
+172.17.27.11/23,0,0,172.17.27.12,172.17.27.13
+----
+
+
+--
+.使用共享的 MetroCluster / HA 連接埠的系統
+--
+.. 設定下列 bootargs ：
 +
 `setenv bootarg.mcc.port_a_ip_config <local-IP-address/local-IP-mask,0,HA-partner-IP-address,DR-partner-IP-address,DR-aux-partnerIP-address,vlan-id>`
 
@@ -866,7 +981,11 @@ NOTE: 必須在所有受影響的連接埠上設定此選項、才能成功升�
 `setenv bootarg.mcc.port_b_ip_config <local-IP-address/local-IP-mask,0,HA-partner-IP-address,DR-partner-IP-address,DR-aux-partnerIP-address,vlan-id>`
 
 +
-下列範例設定節點 B_1 的值、第一個網路使用 VLAN 120 、第二個網路使用 VLAN 130 ：
+
+NOTE: 如果介面使用預設的 VLAN ID ，則不需要此 `vlan-id`參數。
+
++
+以下範例設定 node_B_1-new 的值，第一個網路使用 VLAN 120 ，第二個網路使用 VLAN 130 ：
 
 +
 [listing]
@@ -875,7 +994,7 @@ setenv bootarg.mcc.port_a_ip_config 172.17.26.10/23,0,172.17.26.11,172.17.26.13,
 setenv bootarg.mcc.port_b_ip_config 172.17.27.10/23,0,172.17.27.11,172.17.27.13,172.17.27.12,130
 ----
 +
-下列範例設定節點 B_2 的值、第一個網路使用 VLAN 120 、第二個網路使用 VLAN 130 ：
+以下範例設定 node_B_2-new 的值，第一個網路使用 VLAN 120 ，第二個網路使用 VLAN 130 ：
 
 +
 [listing]
@@ -884,7 +1003,7 @@ setenv bootarg.mcc.port_a_ip_config 172.17.26.11/23,0,172.17.26.10,172.17.26.12,
 setenv bootarg.mcc.port_b_ip_config 172.17.27.11/23,0,172.17.27.10,172.17.27.12,172.17.27.13,130
 ----
 +
-下列範例使用預設 VLAN 為所有 MetroCluster IP DR 連線設定 node_B_1 的值：
+下列範例設定節點 B_1-new 的值，並使用所有 MetroCluster IP DR 連線的預設 VLAN ：
 
 +
 [listing]
@@ -895,7 +1014,7 @@ setenv bootarg.mcc.port_b_ip_config
 172.17.27.10/23,0,172.17.27.11,172.17.27.13,172.17.27.12
 ----
 +
-下列範例設定節點 B_2 的值、並使用預設 VLAN 進行所有 MetroCluster IP DR 連線：
+下列範例設定節點 B_2-new 的值，並使用所有 MetroCluster IP DR 連線的預設 VLAN ：
 
 +
 [listing]
@@ -905,6 +1024,10 @@ setenv bootarg.mcc.port_a_ip_config
 setenv bootarg.mcc.port_b_ip_config
 172.17.27.11/23,0,172.17.27.10,172.17.27.12,172.17.27.13
 ----
+
+
+--
+====
 . 在新節點的「載入器」提示下、設定UUID：
 +
 `setenv bootarg.mgwd.partner_cluster_uuid <partner-cluster-UUID>`
@@ -922,9 +1045,9 @@ setenv bootarg.mcc.port_b_ip_config
 `setenv bootarg.mcc_iscsi.node_uuid <local-node-UUID>`
 
 +
-.. 在 node_B_1 上設定 UUID 。
+.. 在node_B_1-new上設定UUID。
 +
-下列範例顯示在 node_B_1 上設定 UUID 的命令：
+下列範例顯示在node_B_1-new上設定UUID的命令：
 
 +
 [listing]
@@ -935,9 +1058,9 @@ setenv bootarg.mcc.pri_partner_uuid f37b240b-9ac1-11e7-9b42-00a098c9e55d
 setenv bootarg.mcc.aux_partner_uuid bf8e3f8f-9ac4-11e7-bd4e-00a098ca379f
 setenv bootarg.mcc_iscsi.node_uuid f03cb63c-9a7e-11e7-b68b-00a098908039
 ----
-.. 在 node_B_2 上設定 UUID ：
+.. 在node_B_2-new上設定UUID：
 +
-下列範例顯示在 node_B_2 上設定 UUID 的命令：
+下列範例顯示在node_B_2-new上設定UUID的命令：
 
 +
 [listing]
@@ -984,12 +1107,12 @@ Info: This cluster has partitioned disks. To get a complete list of spare disk
 
 +
 
-NOTE: 。 `setenv bootarg.mcc.local_config_id` 變數必須設為 * 原始 * 控制器模組 node_B_1 的 sys-id 。
+NOTE: 必須將'Setenv bootarg.mc.local_config_id'變數設定為*原始*控制器模組node_B_1-old的sys-id。
 
 +
-.. 在 node_B_1 上設定變數。
+.. 在node_B_1-new上設定變數。
 +
-下列範例顯示在 node_B_1 上設定值的命令：
+下列範例顯示在node_B_1-new上設定值的命令：
 
 +
 [listing]
@@ -997,9 +1120,9 @@ NOTE: 。 `setenv bootarg.mcc.local_config_id` 變數必須設為 * 原始 * 控
 setenv bootarg.mcc.local_config_id 537403322
 setenv bootarg.mcc.dr_partner 537403324
 ----
-.. 在 node_B_2 上設定變數。
+.. 在node_B_2-new上設定變數。
 +
-下列範例顯示在 node_B_2 上設定值的命令：
+下列範例顯示在node_B_2-new上設定值的命令：
 
 +
 [listing]
