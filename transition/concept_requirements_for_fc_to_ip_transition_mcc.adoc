@@ -11,19 +11,28 @@ summary: 在開始轉換程序之前、您必須確定組態符合要求。
 
 
 [role="lead"]
-在開始轉換程序之前、您必須確定組態符合要求。
+開始轉換程序之前，請確認組態符合需求。
 
-* 如果您有八節點組態、則所有節點都必須執行 ONTAP 9.13.1 或更新版本。
-* 如果您有四節點組態、則所有節點都必須執行 ONTAP 9.8 或更新版本。
-* 現有平台和新平台必須是支援的轉換組合。
+如果您的組態符合下列需求，您可以執行不中斷的 FC 對 IP 轉換：
+
+* 如果您有八節點組態，則所有節點都會執行 ONTAP 9.13.1 或更新版本。
+* 如果您有四節點組態，則所有節點都會執行 ONTAP 9.8 或更新版本。
+* 現有和新平台是支援的轉換組合。
 +
 link:concept_choosing_your_transition_procedure_mcc_transition.html["支援不中斷營運的平台移轉"]
 
-* 它必須支援交換式叢集組態。
+* 您的組態支援交換式叢集組態。
 +
-https://hwu.netapp.com["NetApp Hardware Universe"]
+https://hwu.netapp.com["Hardware Universe"^]
 
-* 它必須符合_ MetroCluster 《_》安裝與組態_程序中所述的所有需求和佈線要求。
+
+
+[CAUTION]
+====
+如果您使用的是共享儲存 MetroCluster 交換器，則只能轉換為四節點 MetroCluster IP 組態。不支援使用共用儲存設備 MetroCluster 交換器轉換至八節點 MetroCluster IP 組態。在完成到四節點 MetroCluster IP 組態的轉換之後link:../upgrade/task_expand_a_four_node_mcc_ip_configuration.html["擴充至八節點 MetroCluster IP 組態"]，您可以。
+
+====
+* 您的組態符合所有需求，並依照下列 _ MetroCluster 安裝與組態 _ 程序中的說明進行纜線連接。
 +
 link:../install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"]
 

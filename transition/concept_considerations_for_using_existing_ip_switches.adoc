@@ -31,6 +31,9 @@ summary: 您必須確保IP交換器受到支援。如果現有的交換器模式
 
 
 
-如Hardware Universe 需平台模式與交換器支援的相關資訊、請參閱_NetApp SUR__。
+[CAUTION]
+====
+如果您使用的是共享儲存 MetroCluster 交換器，則只能轉換為四節點 MetroCluster IP 組態。不支援使用共用儲存設備 MetroCluster 交換器轉換至八節點 MetroCluster IP 組態。在完成到四節點 MetroCluster IP 組態的轉換之後link:../upgrade/task_expand_a_four_node_mcc_ip_configuration.html["擴充至八節點 MetroCluster IP 組態"]，您可以。
 
-https://hwu.netapp.com["NetApp Hardware Universe"]
+====
+如需平台機型與交換器支援的相關資訊，請參閱 https://hwu.netapp.com["Hardware Universe"^]。

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, upgrade, firmware. ip, switches, cisco, broadcom, efos, nxos, nx-os, software, install 
 summary: 升級MetroCluster 靜態IP交換器上的韌體。 
 ---
-= 升級MetroCluster 靜態IP交換器上的韌體
+= 升級MetroCluster 韌體至靜態IP交換器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -63,9 +63,22 @@ Group Cluster Node           State          Mirroring Mode
 +
 [listing]
 ----
-cluster_A::> metrocluster check run
+cluster_A::*> metrocluster check run
+----
++
+此作業會在背景執行。
 
-Last Checked On: 10/1/2014 16:03:37
+.. 之後 `metrocluster check run` 作業完成、執行：
++
+《不一樣的表演》MetroCluster
+
++
+大約五分鐘後、會顯示下列結果：
+
++
+[listing]
+----
+cluster_A:::*> metrocluster check show
 
 Component           Result
 ------------------- ---------
@@ -73,10 +86,10 @@ nodes               ok
 lifs                ok
 config-replication  ok
 aggregates          ok
-4 entries were displayed.
-
-Command completed. Use the "metrocluster check show -instance" command or sub-commands in "metrocluster check" directory for detailed results.
-To check if the nodes are ready to do a switchover or switchback operation, run "metrocluster switchover -simulate" or "metrocluster switchback -simulate", respectively.
+clusters            ok
+connections         ok
+volumes             ok
+7 entries were displayed.
 ----
 .. 檢查是否沒有健全狀況警示：
 +

@@ -3714,7 +3714,6 @@
   <block id="ab15e3a0446aa2c30baef0a6d039dff1" category="list-text">現有平台和新平台必須是支援的轉換組合。</block>
   <block id="c5ca83d0e723113560fb2c95b33b532b" category="inline-link-macro">支援不中斷營運的平台移轉</block>
   <block id="c810f42d19e2ccb28c4ba2385d911476" category="paragraph"><block ref="c810f42d19e2ccb28c4ba2385d911476" category="inline-link-macro-rx"></block></block>
-  <block id="1c80ea06ae866b6e42e9d266e0cb8906" category="list-text">它必須支援交換式叢集組態。</block>
   <block id="2b114f6498e5132b0cbcc04ccda11d53" category="list-text">它必須符合_ MetroCluster 《_》安裝與組態_程序中所述的所有需求和佈線要求。</block>
   <block id="ee4957fd1b2278c172ab2c174b366bd6" category="summary">您可能會在轉換期間注意到警示訊息。這些警示可以安全地忽略。此外、有些工具在轉換期間無法使用。</block>
   <block id="28787c2222f3804bae5ca71ee7fa0280" category="doc">轉換期間的警示訊息和工具支援</block>
@@ -4658,7 +4657,6 @@
   <block id="ee6ed7097775dc1dd54c183bab7fabca" category="list-text">由於此為無交換器叢集、因此需要新的交換器。MetroCluster</block>
   <block id="f6ee19cc42b9955140e50bd5845ab941" category="list-text">該功能是交換式叢集、MetroCluster 但目前的IP交換器不支援MetroCluster 該功能。</block>
   <block id="f2e4f8254f9371aba3bca00c7ae823a3" category="list-text">您想要使用不同的交換器來MetroCluster 進行靜態IP組態。</block>
-  <block id="4ee1b040d263e389d67330e3d505f6c5" category="paragraph">如Hardware Universe 需平台模式與交換器支援的相關資訊、請參閱_NetApp SUR__。</block>
   <block id="14b3de5cc3b7ebe82cf797d4c070ce27" category="list-text">此程序不中斷營運。</block>
   <block id="c360a01208e0f0cebb82608c945309e8" category="paragraph">在作業期間、可繼續提供資料的功能。MetroCluster</block>
   <block id="dd29cf7134047c7a311edc4776b9021e" category="paragraph">如果您有雙節點MetroCluster 的不含功能的FC組態、請參閱 <block ref="ef88855c7d052c0aa5ce46e187d01954" category="inline-link-macro-rx"></block>。</block>
@@ -11771,8 +11769,6 @@
   <block id="65cc666ecd4a5bdf3c624b12e425c91f" category="admonition">您必須重新啟動控制器才能變更組態。</block>
   <block id="57d89ae0fa9051439d76f5f61398fa16" category="list-text">透過雙向執行高可用度（ HA ）接管、重新啟動控制器。</block>
   <block id="ee587f5bd979b8f81d1cbf341f0b2470" category="list-text">如果您有八個節點的組態、則必須從開始重複整個程序 <block ref="e821f1828723ededc57f2e891aea4a6a" category="inline-link-macro-rx"></block> 適用於每個 FC DR 群組。</block>
-  <block id="bb6c47f32358fe5242b175ac608f7d32" category="list-text">如果您有八節點組態、則所有節點都必須執行 ONTAP 9.13.1 或更新版本。</block>
-  <block id="d8e49cb116ea5302a217647ce0506ea6" category="list-text">如果您有四節點組態、則所有節點都必須執行 ONTAP 9.8 或更新版本。</block>
   <block id="b8c86c478bbb73c53f5440966b9fb7d1" category="list-text">請勿超過平台「下限」的任何物件限制。套用兩個平台的較低物件限制。</block>
   <block id="c5c0eb8cddac9e2347091241dce72719" category="list-text">如果目標平台限制低於 MetroCluster 限制、您必須重新設定 MetroCluster 、使其達到或低於目標平台限制、才能新增節點。</block>
   <block id="dc63943b5b97ad0f10f23219d6f93cd4" category="list-text">修改每個叢集的轉換 IP 節點叢集對等端的 IP 位址：</block>
@@ -14327,4 +14323,16 @@
   <block id="f4c0383379a5ae93d0b5e4c4f8586e47" category="open-title">使用共享叢集 / HA 連接埠的系統</block>
   <block id="fce1683696c48d3d34e98e19d634ae19" category="open-title">使用共享的 MetroCluster / HA 連接埠的系統</block>
   <block id="eabf799ca909dc7fa9808c3abb476773" category="paragraph">出現提示時輸入驗證密碼。</block>
+  <block id="8c62b33499e87d946c3be674c109e802" category="inline-link-macro">擴充至八節點 MetroCluster IP 組態</block>
+  <block id="d3f54bf5e1d7bcb93c8d615f71713d7f" category="paragraph">如果您使用的是共享儲存 MetroCluster 交換器，則只能轉換為四節點 MetroCluster IP 組態。不支援使用共用儲存設備 MetroCluster 交換器轉換至八節點 MetroCluster IP 組態。在完成到四節點 MetroCluster IP 組態的轉換之後<block ref="6dee49609367b51155e32a3a9526bace" category="inline-link-macro-rx"></block>，您可以。</block>
+  <block id="2e6fac9e7be327118126470b28ac80e9" category="paragraph">如需平台機型與交換器支援的相關資訊，請參閱<block ref="16a6d09025d51cb8dd3516798b3fee8a" category="inline-link-rx"></block>。</block>
+  <block id="e77208401ec89552ec5e85789d235879" category="paragraph">開始轉換程序之前，請確認組態符合需求。</block>
+  <block id="1229d62fc62771990d4aca35e86babbb" category="paragraph">如果您的組態符合下列需求，您可以執行不中斷的 FC 對 IP 轉換：</block>
+  <block id="c93eb5b603c598e0771b611b95a1f13a" category="list-text">如果您有八節點組態，則所有節點都會執行 ONTAP 9.13.1 或更新版本。</block>
+  <block id="fbe14351123598a8a64fee33aa1a2a2b" category="list-text">如果您有四節點組態，則所有節點都會執行 ONTAP 9.8 或更新版本。</block>
+  <block id="d7b625bf0290f633deca10fab483feb9" category="list-text">現有和新平台是支援的轉換組合。</block>
+  <block id="449f221b85b0830ccbe6f932311166dc" category="list-text">您的組態支援交換式叢集組態。</block>
+  <block id="ec4312d0db3bce928129e7e5c3a58d73" category="paragraph"><block ref="ec4312d0db3bce928129e7e5c3a58d73" category="inline-link-rx"></block></block>
+  <block id="c42a1c17fcba2c3f1c614f6d301144e6" category="paragraph">如果您使用的是共享儲存 MetroCluster 交換器，則只能轉換為四節點 MetroCluster IP 組態。不支援使用共用儲存設備 MetroCluster 交換器轉換至八節點 MetroCluster IP 組態。在完成到四節點 MetroCluster IP 組態的轉換之後<block ref="6dee49609367b51155e32a3a9526bace" category="inline-link-macro-rx"></block>，您可以。</block>
+  <block id="fb9168c2e293c1ba8ecd781a9f35d00f" category="list-text">您的組態符合所有需求，並依照下列 _ MetroCluster 安裝與組態 _ 程序中的說明進行纜線連接。</block>
 </blocks>
