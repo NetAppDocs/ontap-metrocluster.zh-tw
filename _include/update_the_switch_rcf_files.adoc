@@ -10,7 +10,7 @@
 站台A的交換器將在站台A上的控制器升級時升級。
 
 .步驟
-. 準備IP交換器以應用新的RCF檔案。
+. 準備 IP 交換器以應用新的 RCFs 。
 +
 請依照您的交換器廠商章節中的步驟進行：
 
@@ -20,14 +20,14 @@
 ** link:../install-ip/task_switch_config_nvidia.html#reset-the-nvidia-ip-sn2100-switch-to-factory-defaults["將NVIDIA IP SN2100交換器重設為原廠預設值"]
 
 
-. 下載並安裝RCF檔案。
+. 下載並安裝 RCFs 。
 +
 請依照您的交換器廠商章節中的步驟進行：
 
 +
-** link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-broadcom-rcf-files["下載並安裝 Broadcom RCF 檔案"]
-** link:../install-ip/task_switch_config_cisco.html#downloading-and-installing-the-cisco-ip-rcf-files["下載並安裝 Cisco IP RCF 檔案"]
-** link:../install-ip/task_switch_config_nvidia.html#download-and-install-the-nvidia-rcf-files["下載並安裝 NVIDIA IP RCF 檔案"]
+** link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-broadcom-rcf-files["下載並安裝 Broadcom RCFs"]
+** link:../install-ip/task_switch_config_cisco.html#downloading-and-installing-the-cisco-ip-rcf-files["下載並安裝 Cisco IP RCFs"]
+** link:../install-ip/task_switch_config_nvidia.html#download-and-install-the-nvidia-rcf-files["下載並安裝 NVIDIA IP RCFs"]
 
 
 

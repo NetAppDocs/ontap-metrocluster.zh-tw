@@ -1,0 +1,255 @@
+---
+permalink: upgrade/upgrade-mcc-ip-manual-boot-new-controllers.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, controllers, switchover, switchback, ip, configuration, net, boot, root, aggregate, system, commands, mcc 
+summary: 啟動新的控制器，並驗證是否將生命託管在適當的節點和連接埠上。 
+---
+= 啟動新的 MetroCluster IP 控制器並還原 LIF 組態
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+啟動新的控制器，並驗證是否將生命託管在適當的節點和連接埠上。
+
+
+
+== 啟動新控制器
+
+您必須啟動新的控制器、並注意確保bootarg變數正確無誤、並視需要執行加密還原步驟。
+
+.步驟
+. 停止新節點：
++
+《停止》
+
+. 如果已設定外部金鑰管理程式、請設定相關的bootargs：
++
+`setenv bootarg.kmip.init.ipaddr <ip-address>`
+
++
+`setenv bootarg.kmip.init.netmask <netmask>`
+
++
+`setenv bootarg.kmip.init.gateway <gateway-addres>`
+
++
+`setenv bootarg.kmip.init.interface <interface-id>`
+
+. 檢查合作夥伴sysid是否為目前的：
++
+《prontenv合作夥伴sysid》
+
++
+如果合作夥伴sysid不正確、請設定：
+
++
+`setenv partner-sysid <partner-sysID>`
+
+. 顯示ONTAP 功能表：
++
+Boot_ONTAP功能表
+
+. 如果使用root加密、請選取金鑰管理組態的開機功能表選項。
++
+|===
+
+
+| 如果您使用... | 選取此開機功能表選項... 
+
+
+ a| 
+內建金鑰管理
+ a| 
+選項"10"
+
+依照提示提供必要的輸入、以恢復及還原金鑰管理程式組態。
+
+
+
+ a| 
+外部金鑰管理
+ a| 
+選項"11"
+
+依照提示提供必要的輸入、以恢復及還原金鑰管理程式組態。
+
+|===
+. 從開機功能表中、選取「（6）Update flash from Backup config（從備份組態更新Flash）」。
++
+
+NOTE: 選項 6 會在程序完成之前重新啟動節點兩次。
+
++
+請以「 y 」回應系統 ID 變更提示。等待第二個重新開機訊息：
+
++
+[listing]
+----
+Successfully restored env file from boot media...
+
+Rebooting to load the restored env file...
+----
+. 在 `LOADER`提示字元下，確認 bootarg 值並視需要更新值。
++
+使用中的步驟link:upgrade-mcc-ip-manual-apply-rcf-set-bootarg.html#set-the-metrocluster-ip-bootarg-variables["設定MetroCluster 靜態IP bootarg變數"]。
+
+. 確認合作夥伴系統是正確的：
++
+《prontenv合作夥伴sysid》
+
++
+如果合作夥伴sysid不正確、請設定：
+
++
+`setenv partner-sysid <partner-sysID>`
+
+. 如果使用root加密、請針對金鑰管理組態再次選取開機功能表選項。
++
+|===
+
+
+| 如果您使用... | 選取此開機功能表選項... 
+
+
+ a| 
+內建金鑰管理
+ a| 
+選項"10"
+
+依照提示提供必要的輸入、以恢復及還原金鑰管理程式組態。
+
+
+
+ a| 
+外部金鑰管理
+ a| 
+選項「'11'」
+
+依照提示提供必要的輸入、以恢復及還原金鑰管理程式組態。
+
+|===
++
+視金鑰管理程式設定而定、請選取選項「10」或選項「11」、然後在第一個開機功能表提示字元中選取選項「6」、以執行恢復程序。若要完全開機節點、您可能需要重複選項「1」（正常開機）的恢復程序。
+
+. 等待更換的節點開機。
++
+如果任一節點處於接管模式、請使用「儲存容錯移轉恢復」命令執行恢復。
+
+. 如果使用加密、請使用適用於金鑰管理組態的正確命令來還原金鑰。
++
+|===
+
+
+| 如果您使用... | 使用此命令... 
+
+
+ a| 
+內建金鑰管理
+ a| 
+「安全金鑰管理程式內建同步」
+
+如需更多資訊、請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-E4AB2ED4-9227-4974-A311-13036EB43A3D.html["還原內建金鑰管理加密金鑰"^]。
+
+
+
+ a| 
+外部金鑰管理
+ a| 
+`security key-manager external restore -vserver <SVM> -node <node> -key-server <host_name|IP_address:port> -key-id key_id -key-tag key_tag <node_name>`
+
+如需更多資訊、請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-32DA96C3-9B04-4401-92B8-EAF323C3C863.html["還原外部金鑰管理加密金鑰"^]。
+
+|===
+. 確認所有連接埠都位於廣播網域中：
++
+.. 檢視廣播網域：
++
+「網路連接埠廣播網域節目」
+
+.. 如果為新升級的控制器上的資料連接埠建立新的廣播網域、請刪除廣播網域：
++
+
+NOTE: 只刪除新的廣播網域。開始升級之前，請勿刪除任何已存在的廣播網域。
+
++
+`broadcast-domain delete -broadcast-domain <broadcast_domain_name>`
+
+.. 視需要將連接埠新增至廣播網域。
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-003BDFCD-58A3-46C9-BF0C-BA1D1D1475F9.html["新增或移除廣播網域中的連接埠"^]
+
+.. 視需要重新建立VLAN和介面群組。
++
+VLAN 和介面群組成員資格可能與舊節點不同。
+
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-8929FCE2-5888-4051-B8C0-E27CAF3F2A63.html["建立 VLAN"^]
+
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EAB7-430A-A773-4E3420EE2AA1.html["用於建立介面群組的 Combinine 實體連接埠"^]
+
+
+
+
+
+
+
+== 驗證並還原LIF組態
+
+驗證在升級程序開始時所對應的適當節點和連接埠上、是否裝載了生命點。
+
+.關於這項工作
+* 此工作是在ssite B上執行
+* 請參閱您在中建立的連接埠對應規劃link:upgrade-mcc-ip-prepare-system.html#map-ports-from-the-old-nodes-to-the-new-nodes["將舊節點的連接埠對應至新節點"]。
+
+
+
+CAUTION: 在執行切換之前，您必須確認新節點上的資料生命負載位置正確。當您切換組態時， ONTAP 會嘗試恢復由生命所使用的主連接埠上的流量。當主連接埠連線至交換器連接埠和 VLAN 不正確時，可能會發生 I/O 故障。
+
+.步驟
+. 在切換之前，請先確認已在適當的節點和連接埠上裝載了生命負載。
++
+.. 變更為進階權限層級：
++
+"進階權限"
+
+.. 顯示生命，並確認每個資料 LIF 使用正確的主連接埠：
++
+「網路介面展示」
+
+.. 修改任何未使用正確主連接埠的生命：
++
+`network interface modify -vserver <svm-name> -lif <data-lif> -home-port <port-id>`
+
++
+如果命令傳回錯誤，您可以覆寫連接埠組態：
+
++
+`vserver config override -command "network interface modify -vserver <svm-name> -home-port <active_port_after_upgrade> -lif <lif_name> -home-node <new_node_name>"`
+
++
+在「vserver config override」命令中輸入network interface modify命令時、您無法使用分頁自動完成功能。您可以使用autosplete建立網路「介面修改」、然後將其括在「vserver config override」命令中。
+
+.. 確認所有資料生命現在都位於正確的主連接埠：
++
+「網路介面展示」
+
+.. 返回管理權限層級：
++
+「et -priv. admin」
+
+
+
+. 將介面還原至其主節點：
++
+`network interface revert * -vserver <svm-name>`
+
++
+視需要在所有SVM上執行此步驟。
+
+
+
+.接下來呢？
+link:upgrade-mcc-ip-manual-switchback.html["切換 MetroCluster 組態"]。

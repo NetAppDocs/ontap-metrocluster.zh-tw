@@ -1,0 +1,351 @@
+---
+permalink: upgrade/upgrade-mcc-ip-system-controller-replace-apply-rcf-set-bootarg.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, controllers, switchover, switchback, ip, configuration, net, boot, root, aggregate, system, commands, mcc 
+summary: 為新平台更新交換器 RCFs ，並在控制器模組上設定 MetroCluster IP bootarg 值。 
+---
+= 更新交換器 RCFs 並設定 MetroCluster IP bootarg 值
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+更新新平台的交換器參考組態檔（ RCFs ），並在控制器模組上設定 MetroCluster IP bootarg 值。
+
+
+
+== 更新交換器 RCFs 以容納新平台
+
+您必須將交換器更新為支援新平台機型的組態。
+
+.關於這項工作
+您可以在包含目前正在升級之控制器的站台上執行此工作。在本程序所示的範例中、我們會先升級se_B。
+
+站台A的交換器將在站台A上的控制器升級時升級。
+
+.步驟
+. 準備 IP 交換器以應用新的 RCFs 。
++
+請依照您的交換器廠商章節中的步驟進行：
+
++
+** link:../install-ip/task_switch_config_broadcom.html#resetting-the-broadcom-ip-switch-to-factory-defaults["將Broadcom IP交換器重設為原廠預設值"]
+** link:../install-ip/task_switch_config_cisco.html#resetting-the-cisco-ip-switch-to-factory-defaults["將 Cisco IP 交換器重設為原廠預設值"]
+** link:../install-ip/task_switch_config_nvidia.html#reset-the-nvidia-ip-sn2100-switch-to-factory-defaults["將NVIDIA IP SN2100交換器重設為原廠預設值"]
+
+
+. 下載並安裝 RCFs 。
++
+請依照您的交換器廠商章節中的步驟進行：
+
++
+** link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-broadcom-rcf-files["下載並安裝 Broadcom RCFs"]
+** link:../install-ip/task_switch_config_cisco.html#downloading-and-installing-the-cisco-ip-rcf-files["下載並安裝 Cisco IP RCFs"]
+** link:../install-ip/task_switch_config_nvidia.html#download-and-install-the-nvidia-rcf-files["下載並安裝 NVIDIA IP RCFs"]
+
+
+
+
+
+
+== 設定MetroCluster 靜態IP bootarg變數
+
+必須MetroCluster 在新的控制器模組上設定特定的靜態IP bootarg值。這些值必須與舊控制器模組上設定的值相符。
+
+.關於這項工作
+* 您需要在中的升級程序稍早識別的 UUID 和系統 ID link:upgrade-mcc-ip-system-controller-replace-prechecks.html#gather-information-before-the-upgrade["在升級之前收集資訊"]。
+* 視您的平台模式而定，您可以使用參數指定 VLAN ID `-vlan-id` 。下列平台不支援此 `-vlan-id`參數：
++
+** FAS8200與AFF FASA300
+** 解答320 AFF
+** FAS9000 和 AFF A700
+** AFF C800 、 ASA C800 、 AFF A800 和 ASA A800
++
+所有其他平台都支援此 `-vlan-id` 參數。
+
+
+
+* 您設定的 MetroCluster bootarg 值取決於您的新系統是使用共用叢集 / HA 連接埠，還是使用共用的 MetroCluster / HA 連接埠。
++
+下表所列的系統使用 * 共用的 MetroCluster / HA 連接埠 * 。
+
++
+所有其他系統都使用 * 共享叢集 / HA 連接埠 * 。
+
++
+[cols="2*"]
+|===
+| 使用共享的 MetroCluster / HA 連接埠的 AFF 和 ASA 系統 | 使用共用 MetroCluster / HA 連接埠的 FAS 系統 
+
+
+ a| 
+** AFF A150 、 ASA A150
+** VA220 AFF
+** AFF C250 、 ASA C250
+** AFF A250 、 ASA A250
+** 部分A300 AFF
+** 解答320 AFF
+** AFF C400 、 ASA C400
+** AFF A400 、 ASA A400
+** 部分A700 AFF
+** AFF C800 、 ASA C800
+** AFF A800 、 ASA A800
+** AFF A900 、 ASA A900
+
+ a| 
+** FAS2750
+** FAS500f
+** FAS8200
+** FAS8300
+** FAS8700
+** FAS9000
+** FAS9500
+
+
+|===
+
+
+.步驟
+. 在「loader>」提示字元中、在s加 載點B的新節點上設定下列bootargs：
++
+您遵循的步驟取決於新平台機型所使用的連接埠。
+
++
+[role="tabbed-block"]
+====
+.使用共享叢集 / HA 連接埠的系統
+--
+.. 設定下列 bootargs ：
++
+`setenv bootarg.mcc.port_a_ip_config <local-IP-address/local-IP-mask,0,0,DR-partner-IP-address,DR-aux-partnerIP-address,vlan-id>`
+
++
+`setenv bootarg.mcc.port_b_ip_config <local-IP-address/local-IP-mask,0,0,DR-partner-IP-address,DR-aux-partnerIP-address,vlan-id>`
+
++
+
+NOTE: 如果介面使用預設的 VLAN ID ，則不需要此 `vlan-id`參數。
+
++
+以下範例設定 node_B_1-new 的值，第一個網路使用 VLAN 120 ，第二個網路使用 VLAN 130 ：
+
++
+[listing]
+----
+setenv bootarg.mcc.port_a_ip_config 172.17.26.10/23,0,0,172.17.26.13,172.17.26.12,120
+setenv bootarg.mcc.port_b_ip_config 172.17.27.10/23,0,0,172.17.27.13,172.17.27.12,130
+----
++
+以下範例設定 node_B_2-new 的值，第一個網路使用 VLAN 120 ，第二個網路使用 VLAN 130 ：
+
++
+[listing]
+----
+setenv bootarg.mcc.port_a_ip_config 172.17.26.11/23,0,0,172.17.26.12,172.17.26.13,120
+setenv bootarg.mcc.port_b_ip_config 172.17.27.11/23,0,0,172.17.27.12,172.17.27.13,130
+----
++
+下列範例設定節點 B_1-new 的值，並使用所有 MetroCluster IP DR 連線的預設 VLAN ：
+
++
+[listing]
+----
+setenv bootarg.mcc.port_a_ip_config
+172.17.26.10/23,0,0,172.17.26.13,172.17.26.12
+setenv bootarg.mcc.port_b_ip_config
+172.17.27.10/23,0,0,172.17.27.13,172.17.27.12
+----
++
+下列範例設定節點 B_2-new 的值，並使用所有 MetroCluster IP DR 連線的預設 VLAN ：
+
++
+[listing]
+----
+setenv bootarg.mcc.port_a_ip_config
+172.17.26.11/23,0,0,172.17.26.12,172.17.26.13
+setenv bootarg.mcc.port_b_ip_config
+172.17.27.11/23,0,0,172.17.27.12,172.17.27.13
+----
+
+
+--
+.使用共用的 MetroCluster / HA 連接埠的系統
+.. 設定下列 bootargs ：
++
+`setenv bootarg.mcc.port_a_ip_config <local-IP-address/local-IP-mask,0,HA-partner-IP-address,DR-partner-IP-address,DR-aux-partnerIP-address,vlan-id>`
+
++
+`setenv bootarg.mcc.port_b_ip_config <local-IP-address/local-IP-mask,0,HA-partner-IP-address,DR-partner-IP-address,DR-aux-partnerIP-address,vlan-id>`
+
++
+
+NOTE: 如果介面使用預設的 VLAN ID ，則不需要此 `vlan-id`參數。
+
++
+以下範例設定 node_B_1-new 的值，第一個網路使用 VLAN 120 ，第二個網路使用 VLAN 130 ：
+
++
+[listing]
+----
+setenv bootarg.mcc.port_a_ip_config 172.17.26.10/23,0,172.17.26.11,172.17.26.13,172.17.26.12,120
+setenv bootarg.mcc.port_b_ip_config 172.17.27.10/23,0,172.17.27.11,172.17.27.13,172.17.27.12,130
+----
++
+以下範例設定 node_B_2-new 的值，第一個網路使用 VLAN 120 ，第二個網路使用 VLAN 130 ：
+
++
+[listing]
+----
+setenv bootarg.mcc.port_a_ip_config 172.17.26.11/23,0,172.17.26.10,172.17.26.12,172.17.26.13,120
+setenv bootarg.mcc.port_b_ip_config 172.17.27.11/23,0,172.17.27.10,172.17.27.12,172.17.27.13,130
+----
++
+下列範例設定節點 B_1-new 的值，並使用所有 MetroCluster IP DR 連線的預設 VLAN ：
+
++
+[listing]
+----
+setenv bootarg.mcc.port_a_ip_config
+172.17.26.10/23,0,172.17.26.11,172.17.26.13,172.17.26.12
+setenv bootarg.mcc.port_b_ip_config
+172.17.27.10/23,0,172.17.27.11,172.17.27.13,172.17.27.12
+----
++
+下列範例設定節點 B_2-new 的值，並使用所有 MetroCluster IP DR 連線的預設 VLAN ：
+
++
+[listing]
+----
+setenv bootarg.mcc.port_a_ip_config
+172.17.26.11/23,0,172.17.26.10,172.17.26.12,172.17.26.13
+setenv bootarg.mcc.port_b_ip_config
+172.17.27.11/23,0,172.17.27.10,172.17.27.12,172.17.27.13
+----
+
+
+--
+
+--
+====
+. 在新節點的載入器提示下、設定UUID：
++
+`setenv bootarg.mgwd.partner_cluster_uuid <partner-cluster-UUID>`
+
++
+`setenv bootarg.mgwd.cluster_uuid <local-cluster-UUID>`
+
++
+`setenv bootarg.mcc.pri_partner_uuid <DR-partner-node-UUID>`
+
++
+`setenv bootarg.mcc.aux_partner_uuid <DR-aux-partner-node-UUID>`
+
++
+`setenv bootarg.mcc_iscsi.node_uuid <local-node-UUID>`
+
++
+.. 在node_B_1-new上設定UUID。
++
+下列範例顯示在node_B_1-new上設定UUID的命令：
+
++
+[listing]
+----
+setenv bootarg.mgwd.cluster_uuid ee7db9d5-9a82-11e7-b68b-00a098908039
+setenv bootarg.mgwd.partner_cluster_uuid 07958819-9ac6-11e7-9b42-00a098c9e55d
+setenv bootarg.mcc.pri_partner_uuid f37b240b-9ac1-11e7-9b42-00a098c9e55d
+setenv bootarg.mcc.aux_partner_uuid bf8e3f8f-9ac4-11e7-bd4e-00a098ca379f
+setenv bootarg.mcc_iscsi.node_uuid f03cb63c-9a7e-11e7-b68b-00a098908039
+----
+.. 在node_B_2-new上設定UUID：
++
+下列範例顯示在node_B_2-new上設定UUID的命令：
+
++
+[listing]
+----
+setenv bootarg.mgwd.cluster_uuid ee7db9d5-9a82-11e7-b68b-00a098908039
+setenv bootarg.mgwd.partner_cluster_uuid 07958819-9ac6-11e7-9b42-00a098c9e55d
+setenv bootarg.mcc.pri_partner_uuid bf8e3f8f-9ac4-11e7-bd4e-00a098ca379f
+setenv bootarg.mcc.aux_partner_uuid f37b240b-9ac1-11e7-9b42-00a098c9e55d
+setenv bootarg.mcc_iscsi.node_uuid aa9a7a7a-9a81-11e7-a4e9-00a098908c35
+----
+
+
+. 從啟動的站台執行下列命令、判斷原始系統是否已設定為進階磁碟分割（ ADP ）：
++
+「尖碑秀」
+
++
+如果已設定 ADP 、則「容器類型」欄會在輸出中顯示「共享」 `disk show` 。如果「容器類型」有任何其他值、系統上就不會設定 ADP 。下列輸出範例顯示已設定 ADP 的系統：
+
++
+[listing]
+----
+::> disk show
+                    Usable               Disk    Container   Container
+Disk                Size       Shelf Bay Type    Type        Name      Owner
+
+Info: This cluster has partitioned disks. To get a complete list of spare disk
+      capacity use "storage aggregate show-spare-disks".
+----------------    ---------- ----- --- ------- ----------- --------- --------
+1.11.0              894.0GB    11    0   SSD      shared     testaggr  node_A_1
+1.11.1              894.0GB    11    1   SSD      shared     testaggr  node_A_1
+1.11.2              894.0GB    11    2   SSD      shared     testaggr  node_A_1
+----
+. 如果原始系統已針對 ADP 設定分割磁碟、請在每個更換節點的提示下啟用 `LOADER` ：
++
+「etenv bootarg.mCa.adp_enabledtrue」
+
+. 設定下列變數：
++
+`setenv bootarg.mcc.local_config_id <original-sys-id>`
+
++
+`setenv bootarg.mcc.dr_partner <dr-partner-sys-id>`
+
++
+
+NOTE: 必須將'Setenv bootarg.mc.local_config_id'變數設定為*原始*控制器模組node_B_1-old的sys-id。
+
++
+.. 在node_B_1-new上設定變數。
++
+下列範例顯示在node_B_1-new上設定值的命令：
+
++
+[listing]
+----
+setenv bootarg.mcc.local_config_id 537403322
+setenv bootarg.mcc.dr_partner 537403324
+----
+.. 在node_B_2-new上設定變數。
++
+下列範例顯示在node_B_2-new上設定值的命令：
+
++
+[listing]
+----
+setenv bootarg.mcc.local_config_id 537403321
+setenv bootarg.mcc.dr_partner 537403323
+----
+
+
+. 如果使用加密搭配外部金鑰管理程式、請設定所需的bootargs：
++
+bootarg.kmip.init.ipaddr`
+
++
+bootarg.kmip.kmip.init.netmask`
+
++
+bootarg.kmip.kmip.init.gateway`
+
++
+bootarg.kmip.kmip.init.interface`
+
+
+
+.接下來呢？
+link:upgrade-mcc-ip-system-controller-replace-reassign-root-agg.html["重新分配根 Aggregate 磁碟"]。

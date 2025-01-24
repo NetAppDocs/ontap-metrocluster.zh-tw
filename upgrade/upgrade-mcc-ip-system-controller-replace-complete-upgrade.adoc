@@ -1,0 +1,78 @@
+---
+permalink: upgrade/upgrade-mcc-ip-system-controller-replace-complete-upgrade.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, controllers, switchover, switchback, ip, configuration, net, boot, root, aggregate, system, commands, mcc 
+summary: 驗證網路連線能力並還原任何監控組態，以完成自動化控制器升級程序。 
+---
+= 完成 MetroCluster IP 控制器升級
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+驗證網路連線能力並還原任何監控組態，以完成自動化控制器升級程序。
+
+
+
+== 驗證網路連線能力
+
+自動化作業會執行驗證系統檢查、然後暫停、以便您驗證網路連線能力。驗證之後、資源重新取得階段便會啟動、自動化作業會在站台A切換回、並在升級後檢查時暫停。在您恢復自動化作業之後、它會執行升級後檢查、如果未偵測到錯誤、則會將升級標示為完成。
+
+.步驟
+. 請依照主控台訊息來驗證網路連線能力。
+. 完成驗證後、請繼續操作：
++
+「系統控制器更換恢復」
+
+. 自動化作業會執行 `heal-aggregate`、 `heal-root-aggregate`以及在站台 A 切換作業、以及升級後檢查。當作業暫停時、請手動檢查SAN LIF狀態、並依照主控台訊息來驗證網路組態。
+. 完成驗證後、請繼續操作：
++
+「系統控制器更換恢復」
+
+. 檢查升級後檢查狀態：
++
+「System Controller replace show」（系統控制器更換顯示）
+
++
+如果升級後的檢查沒有回報任何錯誤，表示升級已完成。
+
+. 完成控制器升級之後、請登入站台B、確認已正確設定更換的控制器。
+
+
+
+
+== 升級叢集 A 上的節點
+
+您必須重複升級工作，才能在站台 A 的叢集 A 上升級節點
+
+.步驟
+. 重複步驟以升級叢集 A 上的節點，從開始link:upgrade-mcc-ip-system-controller-replace-supported-platforms.html["準備升級"]。
++
+執行工作時、所有叢集和節點的參考範例都會反轉。
+
+
+
+
+
+== 重新設定 ONTAP Mediator
+
+手動設定 ONTAP Mediator 、此程式會在您開始升級之前自動移除。
+
+. 請執行中的步驟 link:../install-ip/task_configuring_the_ontap_mediator_service_from_a_metrocluster_ip_configuration.html["從ONTAP 一套不實的IP組態設定「不實不作」MetroCluster 服務"]。
+
+
+
+
+== 還原斷路器監控
+
+如果MetroCluster 先前已將此組態設定為由斷路器軟體進行監控、您可以還原斷路器連線。
+
+. 使用中的步驟 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.hw-metrocluster-tiebreaker/GUID-7259BCA4-104C-49C6-BAD0-1068CA2A3DA5.html["新增MetroCluster 功能"]。
+
+
+
+
+== 設定端點對端點加密
+
+如果您的系統支援此功能、您可以在 MetroCluster IP 站台之間加密後端流量、例如 NVlog 和儲存複寫資料。請參閱 link:../maintain/task-configure-encryption.html["設定端點對端點加密"] 以取得更多資訊。

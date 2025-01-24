@@ -1,0 +1,206 @@
+---
+permalink: upgrade/upgrade-mcc-ip-system-controller-replace-setup-new-controllers.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, controllers, switchover, switchback, ip, configuration, net, boot, root, aggregate, system, commands, mcc 
+summary: 在以網路開機之前，請先設定新的控制器，以確認新節點執行的 ONTAP 版本與原始節點相同。 
+---
+= 設定並以網路開機新的 MetroCluster IP 控制器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在以網路開機之前，請先設定新的控制器，以確認新節點執行的 ONTAP 版本與原始節點相同。
+
+
+
+== 設定新的控制器
+
+您必須將新的控制器裝入機架並連接纜線。
+
+.步驟
+. 視需要規劃新控制器模組和儲存櫃的定位。
++
+機架空間取決於控制器模組的平台模式、交換器類型、以及組態中的儲存櫃數量。
+
+. 請妥善接地。
+. 如果您的升級需要更換控制器模組，例如從 AFF A800 系統升級至 AFF A90 系統，或從 AFF C800 升級至 AFF C80 系統，則在更換控制器模組時，您必須從機箱中移除控制器模組。對於所有其他升級，請跳至 <<ip_upgrades_replace_4,步驟4.>>。
++
+在機箱正面、用您的拇指將每個磁碟機穩固推入、直到您感覺到有正面的停止為止。這證實磁碟機已穩固地安裝在機箱中板上。
+
++
+image::../media/drw-a800-drive-seated.png[顯示從機箱中移除控制器模組]
+
+. [[IP 升級 _REPLACE _4]] 安裝控制器模組。
++
+您所遵循的安裝步驟取決於您的升級是否需要更換控制器模組，或是否需要移轉移轉器模組來將舊控制器轉換為外部機櫃。
+
++
+[cols="2*"]
+|===
+| 如果您正在升級 ... | 請依照下列步驟進行 ... 
+
+
+ a| 
+** AFF A150 至 AFF A20 系統
+** AFF A220 至 AFF A20 系統
+
+| 控制器至外部機櫃轉換 
+
+
+ a| 
+** AFF A90 系統的 AFF A800
+** AFF C80 系統的 AFF C800
+
+| 更換控制器模組 
+
+
+| 任何其他控制器升級組合 | 所有其他升級 
+|===
++
+[role="tabbed-block"]
+====
+.控制器至外部機櫃轉換
+--
+如果您的原始 MetroCluster IP 控制器是 AFF A150 或 AFF A220 機型，您可以將 AFF A150 或 AFF A220 HA 配對轉換為 DS224C 磁碟機櫃，然後將其連接至新節點。
+
+例如，從 AFF A150 或 AFF A220 系統升級至 AFF A20 系統時，您可以將 AFF A150 或 AFF A220 HA 配對轉換為 DS224C 機櫃，方法是將 AFF A150 或 AFF A220 控制器模組與 IOM12 模組交換。
+
+.步驟
+.. 更換要轉換的節點中的控制器模組，並使用 IOM12 機櫃模組。
++
+https://hwu.netapp.com["Hardware Universe"^]
+
+.. 設定磁碟機櫃ID。
++
+每個磁碟機櫃（包括機箱）都需要一個唯一的ID。
+
+.. 視需要重設其他磁碟機櫃ID。
+.. 關閉機櫃電源。
+.. 將轉換後的磁碟機櫃纜線連接至新系統上的SAS連接埠、如果您使用頻外ACP纜線、請將纜線連接至新節點上的ACP連接埠。
+.. 開啟轉換後磁碟機櫃和連接至新節點的任何其他磁碟機櫃的電源。
+.. 開啟新節點的電源、然後按Ctrl-C存取開機環境提示字元、中斷每個節點的開機程序。
+
+
+--
+.更換控制器模組
+--
+單獨安裝新控制器不適用於在同一機箱中使用磁碟和控制器的整合式系統升級、例如從 AFF A800 系統升級至 AFF A90 系統。關閉舊控制器電源後，您必須交換新的控制器模組和 I/O 卡，如下圖所示。
+
+以下範例影像僅供示範、控制器模組和 I/O 卡可能會因系統而異。
+
+image::../media/a90-a70-pcm-swap.png[顯示控制器模組交換]
+
+--
+.所有其他升級
+--
+在機架或機櫃中安裝控制器模組。
+
+--
+====
+. 按照中所述、連接控制器的電源、序列主控台和管理連線 link:../install-ip/using_rcf_generator.html["連接MetroCluster 至靜態IP交換器"]
++
+此時請勿連接任何其他與舊控制器中斷連線的纜線。
+
++
+https://docs.netapp.com/us-en/ontap-systems/index.html["ONTAP 硬體系統文件"^]
+
+. 開啟新節點的電源、並在出現提示時按 Ctrl-C `LOADER` 。
+
+
+
+
+== 以網路開機新的控制器
+
+安裝新節點之後、您需要netboot才能確保新節點執行的ONTAP 版本與原始節點相同。「netboot」一詞是指您從ONTAP 儲存在遠端伺服器上的不實映像進行開機。準備網路開機時、您必須將ONTAP 一份《支援》9開機映像複本放到系統可以存取的網路伺服器上。
+
+此工作會在每個新的控制器模組上執行。
+
+.步驟
+. 存取 link:https://mysupport.netapp.com/site/["NetApp 支援網站"^] 可下載用於執行系統netboot的文件。
+. 請ONTAP 從NetApp支援網站的軟體下載區段下載適當的支援軟體、並將「ONTAP-VERW_image.tgz」檔案儲存在可從網路存取的目錄中。
+. 移至網路存取目錄、確認您所需的檔案可用。
++
+您的目錄清單應包含一個內核文件的 netboot 文件夾： `ontap-version_image.tgz`
+
++
+您不需要解壓縮 `ontap-version_image.tgz`檔案。
+
+. 在 `LOADER` 提示字元下、設定管理 LIF 的 netboot 連線：
++
+** 如果IP定址為DHCP、請設定自動連線：
++
+「ifconfige0M -auto」
+
+** 如果IP定址為靜態、請設定手動連線：
++
+"ifconfige0M -addr=ip_addr -mask=netmask"'-gateway=gateway"
+
+
+
+. 執行netboot。
++
+“netboot \http://web_server_ip/path_to_web-accessible_directory/ontap-version_image.tgz`
+
+. 從開機功能表中、選取選項*（7）Install new software first*（先安裝新軟體*）、將新的軟體映像下載並安裝至開機裝置。
++
+ Disregard the following message: "This procedure is not supported for Non-Disruptive Upgrade on an HA pair". It applies to nondisruptive upgrades of software, not to upgrades of controllers.
+. 如果系統提示您繼續此程序、請輸入「y」、並在系統提示您輸入套件時、輸入映像檔的URL：「http://web_server_ip/path_to_web-accessible_directory/ontap-version_image.tgz`」
++
+....
+Enter username/password if applicable, or press Enter to continue.
+....
+. 當您看到類似下列的提示時、請務必輸入「n」以跳過備份恢復：
++
+....
+Do you want to restore the backup configuration now? {y|n}
+....
+. 當您看到類似於以下內容的提示時、輸入「y」重新開機：
++
+....
+The node must be rebooted to start using the newly installed software. Do you want to reboot now? {y|n}
+....
+
+
+
+
+== 清除控制器模組上的組態
+
+在使用全新的控制器模組MetroCluster 進行整個過程之前、您必須先清除現有的組態。
+
+.步驟
+. 如有必要，請停止節點以顯示 `LOADER`提示：
++
+《停止》
+
+. 在 `LOADER`提示字元下，將環境變數設為預設值：
++
+「預設值」
+
+. 儲存環境：
++
+「aveenv」
+
+. 在 `LOADER`提示字元下，啟動開機功能表：
++
+Boot_ONTAP功能表
+
+. 在開機功能表提示字元中、清除組態：
++
+《無花果》
+
++
+請對確認提示回應「是」。
+
++
+節點會重新開機、並再次顯示開機功能表。
+
+. 在開機功能表中、選取選項* 5*以將系統開機至維護模式。
++
+請對確認提示回應「是」。
+
+
+
+.接下來呢？
+link:upgrade-mcc-ip-system-controller-replace-restore-hba-set-ha.html["還原 HBA 組態並設定 HA 狀態"]。

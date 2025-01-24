@@ -23,7 +23,12 @@ summary:
  a| 
 SVM 資料移動性支援，可移轉 MetroCluster 組態
  a| 
-ONTAP 支援將 SVM 從非 MetroCluster HA 配對移轉至 MetroCluster 組態，或從 MetroCluster 組態移轉至非 MetroCluster HA 配對。您無法在 MetroCluster 組態之間移轉 SVM 。
+ONTAP 支援下列 MetroCluster SVM 移轉：
+
+* 在非 MetroCluster HA 配對和 MetroCluster IP 組態之間移轉 SVM
+* 在兩個 MetroCluster IP 組態之間移轉 SVM
+* 在 MetroCluster FC 組態和 MetroCluster IP 組態之間移轉 SVM
+
 
 link:https://docs.netapp.com/us-en/ontap/svm-migrate/index.html["SVM資料移動性"^]
  a| 
@@ -58,7 +63,7 @@ S3 物件儲存支援鏡射和無鏡射的集合體
  a| 
 您可以在 MetroCluster IP 和 FC 組態中的鏡射或無鏡射集合體中、在 SVM 上啟用 S3 物件儲存伺服器。
 
-https://docs.netapp.com/us-en/ontap/s3-config/index.html["S3組態總覽"]
+https://docs.netapp.com/us-en/ontap/s3-config/index.html["S3組態總覽"^]
  a| 
 ONTAP 9.14.1.
 
@@ -69,7 +74,7 @@ ONTAP 9.14.1.
  a| 
 您可以在 MetroCluster 組態中的鏡射或無鏡射集合體上建立貯體。
 
-https://docs.netapp.com/us-en/ontap/s3-config/create-bucket-mcc-task.html["在 MetroCluster 組態中的鏡射或無鏡射 Aggregate 上建立貯體"]
+https://docs.netapp.com/us-en/ontap/s3-config/create-bucket-mcc-task.html["在 MetroCluster 組態中的鏡射或無鏡射 Aggregate 上建立貯體"^]
  a| 
 ONTAP 9.12.1
 
@@ -91,7 +96,7 @@ ONTAP 9.12.1
  a| 
 支援前端主機傳輸協定（例如 NFS 和 iSCSI ）的 IPsec 可在 MetroCluster IP 和 MetroCluster 網路附加組態中使用。
 
-https://docs.netapp.com/us-en/ontap/networking/configure_ip_security_@ipsec@_over_wire_encryption.html["透過有線加密設定IP安全性（IPsec）"]
+https://docs.netapp.com/us-en/ontap/networking/configure_ip_security_@ipsec@_over_wire_encryption.html["透過有線加密設定IP安全性（IPsec）"^]
  a| 
 零點9.11.1. ONTAP
 
@@ -111,7 +116,7 @@ MetroCluster 組態支援一致性群組。
  a| 
 您可以在 MetroCluster 組態上設定鏡射 FabricPool 、將冷資料分層至兩個不同的故障區域。
 
-https://docs.netapp.com/us-en/ontap/fabricpool/setup-object-stores-mcc-task.html["設定物件存放區以FabricPool 供在MetroCluster 一個不確定的組態中使用"]
+https://docs.netapp.com/us-en/ontap/fabricpool/setup-object-stores-mcc-task.html["設定物件存放區以FabricPool 供在MetroCluster 一個不確定的組態中使用"^]
  a| 
 更新ONTAP
 

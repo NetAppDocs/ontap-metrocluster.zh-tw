@@ -1,0 +1,125 @@
+---
+permalink: upgrade/upgrade-mcc-ip-manual-complete-upgrade.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, controllers, switchover, switchback, ip, configuration, net, boot, root, aggregate, system, commands, mcc, complete 
+summary: 升級控制器模組之後，請執行必要的工作以完成控制器升級。 
+---
+= 完成 MetroCluster IP 控制器升級
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+升級控制器模組之後，請執行必要的工作以完成控制器升級。
+
+
+
+== 檢查MetroCluster 資訊系統的健全狀況
+
+升級控制器模組之後、您必須確認MetroCluster 該組態的健全狀況。
+
+.關於這項工作
+您可以在 MetroCluster 組態中的任何節點上執行此工作。
+
+.步驟
+. 驗MetroCluster 證下列各項的功能：
++
+.. 確認MetroCluster 此功能的組態、並確認操作模式正常：+「MetroCluster show」
+.. 執行MetroCluster 功能不全：+ MetroCluster 「功能不全」
+.. 顯示MetroCluster 檢查結果：
++
+《不一樣的表演》MetroCluster
+
+
+
+. 確認MetroCluster 不中斷連線及狀態。
++
+.. 檢查MetroCluster 靜態IP連線：
++
+「iSCSI啟動器展示」
+
+.. 檢查節點是否正在運作：
++
+「不一樣的秀」MetroCluster
+
+.. 檢查MetroCluster 是否有啟動的靜態IP介面：
++
+「顯示組態設定介面」MetroCluster
+
+.. 檢查本機容錯移轉是否已啟用：
++
+「容錯移轉顯示」
+
+
+
+
+
+
+
+== 升級叢集 A 上的節點
+
+您必須重複升級工作，才能在站台 A 的叢集 A 上升級節點
+
+.步驟
+. 重複步驟以升級叢集 A 上的節點，從開始link:upgrade-mcc-ip-manual-requirements.html["準備升級"]。
++
+執行工作時、所有叢集和節點的參考範例都會反轉。例如、當範例是從叢集_A切換時、您將從叢集_B切換
+
+
+
+
+
+== 還原斷路器或中保監控
+
+完成MetroCluster 升級版的ESIE組態之後、您可以使用斷路器或調解器公用程式繼續監控。
+
+.步驟
+. 如有必要、請使用您的組態程序來還原監控功能。
++
+|===
+| 如果您使用... | 請使用此程序 
+
+
+ a| 
+Tiebreaker
+ a| 
+link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#adding-metrocluster-configurations["新增MetroCluster 功能"]。
+
+
+
+ a| 
+中介者
+ a| 
+link:../install-ip/concept_mediator_requirements.html["從ONTAP 一套不實的IP組態設定「不實不作」MetroCluster 服務"]。
+
+
+
+ a| 
+第三方應用程式
+ a| 
+請參閱產品文件。
+
+|===
+
+
+
+
+== 維護後傳送自訂AutoSupport 的資訊
+
+完成升級之後、您應該傳送AutoSupport 一個不完整的訊息、指出維護已結束、以便繼續自動建立個案。
+
+.步驟
+. 若要恢復自動產生支援案例、請傳送AutoSupport 一個不完整的訊息、表示維護已完成。
++
+.. 發出下列命令：+"System node" AutoSupport （系統節點）"esfinvoke -node"（節點*）-type all -mMessage MAn=end"（輸入all -m郵件 維護=結束）
+.. 在合作夥伴叢集上重複執行命令。
+
+
+
+
+
+
+== 設定端點對端點加密
+
+如果您的系統支援此功能、您可以在 MetroCluster IP 站台之間加密後端流量、例如 NVlog 和儲存複寫資料。請參閱 link:../maintain/task-configure-encryption.html["設定端點對端點加密"] 以取得更多資訊。

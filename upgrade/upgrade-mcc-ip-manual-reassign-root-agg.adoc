@@ -1,0 +1,131 @@
+---
+permalink: upgrade/upgrade-mcc-ip-manual-reassign-root-agg.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, controllers, switchover, switchback, ip, configuration, net, boot, root, aggregate, system, commands, mcc 
+summary: 使用您先前收集的系統 ID ，將根 Aggregate 磁碟重新指派給新的控制器模組。 
+---
+= 將根 Aggregate 磁碟重新指派給新的 MetroCluster IP 控制器模組
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用您先前收集的系統 ID ，將根 Aggregate 磁碟重新指派給新的控制器模組。
+
+.關於這項工作
+舊的系統 ID 在中識別 link:upgrade-mcc-ip-prepare-system.html#gather-information-before-the-upgrade["在升級之前收集資訊"]。
+
+您可以在維護模式中執行步驟。
+
+
+NOTE: 根 Aggregate 磁碟是控制器升級程序中唯一必須重新指派的磁碟。資料集合體的磁碟擁有權是切換 / 切換作業的一部分。
+
+.步驟
+. 將系統開機至維護模式：
++
+Boot_ONTAP maint
+
+. 在「維護模式」提示字元中、顯示node_B_1-new上的磁碟：
++
+「展示-A'」
+
++
+
+CAUTION: 在您繼續重新指派磁碟之前，請確認屬於節點根集合的 Pool0 和 Pool1 磁碟顯示在輸出中 `disk show`。在以下範例中、輸出會列出 node_B_1-old 所擁有的 Pool0 和 Pool1 磁碟。
+
++
+命令輸出顯示新控制器模組的系統ID（1574774970）。不過，舊系統 ID （ 537403322 ）仍擁有根 Aggregate 磁碟。此範例不會顯示 MetroCluster 組態中其他節點擁有的磁碟機。
+
++
+[listing]
+----
+*> disk show -a
+Local System ID: 1574774970
+DISK                  OWNER                 POOL   SERIAL NUMBER   HOME                  DR HOME
+------------          ---------             -----  -------------   -------------         -------------
+prod3-rk18:9.126L44   node_B_1-old(537403322)  Pool1  PZHYN0MD     node_B_1-old(537403322)  node_B_1-old(537403322)
+prod4-rk18:9.126L49   node_B_1-old(537403322)  Pool1  PPG3J5HA     node_B_1-old(537403322)  node_B_1-old(537403322)
+prod4-rk18:8.126L21   node_B_1-old(537403322)  Pool1  PZHTDSZD     node_B_1-old(537403322)  node_B_1-old(537403322)
+prod2-rk18:8.126L2    node_B_1-old(537403322)  Pool0  S0M1J2CF     node_B_1-old(537403322)  node_B_1-old(537403322)
+prod2-rk18:8.126L3    node_B_1-old(537403322)  Pool0  S0M0CQM5     node_B_1-old(537403322)  node_B_1-old(537403322)
+prod1-rk18:9.126L27   node_B_1-old(537403322)  Pool0  S0M1PSDW     node_B_1-old(537403322)  node_B_1-old(537403322)
+.
+.
+.
+----
+. 將磁碟機櫃上的根Aggregate磁碟重新指派給新的控制器。
++
+|===
+
+
+| 如果您使用ADP ... | 然後使用此命令... 
+
+
+ a| 
+是的
+ a| 
+`disk reassign -s <old-sysid> -d <new-sysid> -r <dr-partner-sysid>`
+
+
+
+ a| 
+否
+ a| 
+`disk reassign -s <old-sysid> -d <new-sysid>`
+
+|===
+. 將磁碟機櫃上的根Aggregate磁碟重新指派給新的控制器：
++
+`disk reassign -s <old-sysid> -d <new-sysid>`
+
++
+以下範例顯示在非ADP組態中重新指派磁碟機：
+
++
+[listing]
+----
+*> disk reassign -s 537403322 -d 1574774970
+Partner node must not be in Takeover mode during disk reassignment from maintenance mode.
+Serious problems could result!!
+Do not proceed with reassignment if the partner is in takeover mode. Abort reassignment (y/n)? n
+
+After the node becomes operational, you must perform a takeover and giveback of the HA partner node to ensure disk reassignment is successful.
+Do you want to continue (y/n)? y
+Disk ownership will be updated on all disks previously belonging to Filer with sysid 537403322.
+Do you want to continue (y/n)? y
+----
+. 確認根 Aggregate 的磁碟已正確重新指派：
++
+「尖碑秀」
+
++
+「torage aggr Status」（狀態）
+
++
+[listing]
+----
+
+*> disk show
+Local System ID: 537097247
+
+  DISK                    OWNER                    POOL   SERIAL NUMBER   HOME                     DR HOME
+------------              -------------            -----  -------------   -------------            -------------
+prod03-rk18:8.126L18 node_B_1-new(537097247)  Pool1  PZHYN0MD        node_B_1-new(537097247)   node_B_1-new(537097247)
+prod04-rk18:9.126L49 node_B_1-new(537097247)  Pool1  PPG3J5HA        node_B_1-new(537097247)   node_B_1-new(537097247)
+prod04-rk18:8.126L21 node_B_1-new(537097247)  Pool1  PZHTDSZD        node_B_1-new(537097247)   node_B_1-new(537097247)
+prod02-rk18:8.126L2  node_B_1-new(537097247)  Pool0  S0M1J2CF        node_B_1-new(537097247)   node_B_1-new(537097247)
+prod02-rk18:9.126L29 node_B_1-new(537097247)  Pool0  S0M0CQM5        node_B_1-new(537097247)   node_B_1-new(537097247)
+prod01-rk18:8.126L1  node_B_1-new(537097247)  Pool0  S0M1PSDW        node_B_1-new(537097247)   node_B_1-new(537097247)
+::>
+::> aggr status
+           Aggr          State           Status                Options
+aggr0_node_B_1           online          raid_dp, aggr         root, nosnap=on,
+                                         mirrored              mirror_resync_priority=high(fixed)
+                                         fast zeroed
+                                         64-bit
+----
+
+
+.接下來呢？
+link:upgrade-mcc-ip-manual-boot-new-controllers.html["啟動新控制器並還原 LIF 組態"]。

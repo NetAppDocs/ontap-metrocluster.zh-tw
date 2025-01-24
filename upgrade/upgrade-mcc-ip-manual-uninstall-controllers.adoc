@@ -1,0 +1,167 @@
+---
+permalink: upgrade/upgrade-mcc-ip-manual-uninstall-controllers.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, controllers, switchover, switchback, ip, configuration, net, boot, root, aggregate, system, commands, mcc 
+summary: 將資料生命體移到通用連接埠，移除舊控制器上的 VLAN 和介面群組，然後實際解除安裝控制器。 
+---
+= 移除介面組態，然後解除安裝舊的 MetroCluster IP 控制器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+確認 LIF 放置正確。然後移除舊控制器上的 VLAN 和介面群組，並實際解除安裝控制器。
+
+.關於這項工作
+* 您可以在舊控制器（ node_B_1-old ， node_B_2-old ）上執行這些步驟。
+* 您需要收集的資訊link:upgrade-mcc-ip-prepare-system.html#map-ports-from-the-old-nodes-to-the-new-nodes["將舊節點的連接埠對應至新節點"]，以供本程序使用。
+
+
+.步驟
+. 開機舊節點並登入節點：
++
+Boot_ONTAP
+
+. 修改舊控制器上的叢集間生命體、以使用不同於新控制器上用於 HA 互連或 MetroCluster IP DR 互連的連接埠。
++
+
+NOTE: 成功升級需要此步驟。
+
++
+舊控制器上的叢集間生命體必須使用不同於新控制器上用於 HA 互連或 MetroCluster IP DR 互連的連接埠。例如、當您升級至 AFF A90 控制器時、 HA 互連連接埠為 e1a 和 e7a 、 MetroCluster IP DR 互連連接埠為 e2b 和 e3b 。如果舊控制器上的叢集間生命體位於連接埠 e1a 、 e7a 、 e2b 或 e3b 上、則必須移動它們。
+
++
+有關新節點上的端口分配和分配，請參閱 https://hwu.netapp.com["Hardware Universe"]。
+
++
+.. 在舊控制器上、檢視叢集間的生命體：
++
+`network interface show  -role intercluster`
+
++
+根據舊控制器上的叢集間生命體是否使用與新控制器上用於 HA 互連或 MetroCluster IP DR 互連的連接埠相同的連接埠、請採取下列其中一項動作。
+
++
+[cols="2*"]
+|===
+| 如果叢集間的生命 ... | 前往... 
+
+
+| 使用相同的主連接埠 | <<controller_manual_upgrade_prepare_network_ports_2b,子步驟 b>> 
+
+
+| 使用不同的主連接埠 | <<controller_manual_upgrade_prepare_network_ports_3,步驟3.>> 
+|===
+.. [[controller 手冊升級準備網路連接埠 _2b]] 修改叢集間的生命體以使用不同的主連接埠：
++
+`network interface modify -vserver <vserver> -lif <intercluster_lif> -home-port <port-not-used-for-ha-interconnect-or-mcc-ip-dr-interconnect-on-new-nodes>`
+
+.. 確認所有叢集間的生命體位於新的主連接埠上：
++
+`network interface show -role intercluster -is-home  false`
+
++
+命令輸出應為空白、表示所有叢集間的生命體位於各自的主連接埠上。
+
+.. 回復不在其主連接埠上的任何生命：
++
+`network interface revert -lif <intercluster_lif>`
+
++
+針對主連接埠上的每個叢集間 LIF 重複此命令。
+
+
+
+. [[controller 手冊升級準備網路連接埠 _3] 將舊控制器上所有資料生命體的主連接埠指派給舊控制器模組和新控制器模組上相同的通用連接埠。
++
+
+CAUTION: 如果新舊控制器沒有通用連接埠，您就不需要修改資料生命期。跳過此步驟並直接前往<<upgrades_manual_without_matching_ports,步驟4.>>。
+
++
+.. 顯示生命：
++
+「網路介面展示」
+
++
+包括 SAN 和 NAS 在內的所有資料生命都是管理上線和作業下線，因為這些資料在切入站台（叢集 A ）上線。
+
+.. 檢閱輸出、找出舊控制器和新控制器上相同的通用實體網路連接埠、而這些控制器並未用作叢集連接埠。
++
+例如、e0d是舊控制器上的實體連接埠、也會出現在新的控制器上。e0d不做為叢集連接埠、也不做為新控制器的其他端口。
+
++
+如需平台機型的連接埠使用情形，請參閱 https://hwu.netapp.com/["Hardware Universe"]
+
+.. 修改所有資料生命、以使用通用連接埠做為主連接埠： +
+`network interface modify -vserver <svm-name> -lif <data-lif> -home-port <port-id>`
++
+在下列範例中、此為「e0d」。
+
++
+例如：
+
++
+[listing]
+----
+network interface modify -vserver vs0 -lif datalif1 -home-port e0d
+----
+
+
+. [[shiping_manual_without _matching_ports ]] 修改廣播網域以移除需要刪除的 VLAN 和實體連接埠：
++
+`broadcast-domain remove-ports -broadcast-domain <broadcast-domain-name> -ports <node-name:port-id>`
+
++
+對所有VLAN和實體連接埠重複此步驟。
+
+. 使用叢集連接埠作為成員連接埠、使用叢集連接埠作為成員連接埠和介面群組、移除任何VLAN連接埠。
++
+.. 刪除 VLAN 連接埠： +
+`network port vlan delete -node <node_name> -vlan-name <portid-vlandid>`
++
+例如：
+
++
+[listing]
+----
+network port vlan delete -node node1 -vlan-name e1c-80
+----
+.. 從介面群組移除實體連接埠：
++
+`network port ifgrp remove-port -node <node_name> -ifgrp <interface-group-name> -port <portid>`
+
++
+例如：
+
++
+[listing]
+----
+network port ifgrp remove-port -node node1 -ifgrp a1a -port e0d
+----
+.. 從廣播網域移除 VLAN 和介面群組連接埠：
++
+`network port broadcast-domain remove-ports -ipspace <ipspace> -broadcast-domain <broadcast-domain-name> -ports <nodename:portname,nodename:portnamee>,..`
+
+.. 視需要修改介面群組連接埠、以使用其他實體連接埠作為成員：
++
+`ifgrp add-port -node <node_name> -ifgrp <interface-group-name> -port <port-id>`
+
+
+
+. 停止節點進入 `LOADER`提示：
++
+「halt -禁止 接管是真的」
+
+. 連線到站台 B 上舊控制器（ node_B_1-old 和 node_B_2-old ）的序列主控台，並確認它顯示 `LOADER`提示。
+. 收集bootag值：
++
+《王子》
+
+. 中斷 node_B_1-old 和 node_B_2-old 上的儲存設備和網路連線。標記纜線，以便將其重新連接至新節點。
+. 從node_B_1-old和node_B_2-old拔下電源線。
+. 從機架中移除node_B_1-old和node_B_2-old控制器。
+
+
+.接下來呢？
+link:upgrade-mcc-ip-manual-setup-controllers.html["設定新的控制器"]。

@@ -231,7 +231,7 @@ e0a、e0b
  a| 
 E3A、e3b
  a| 
-無相符的連接埠。升級後、您必須重新建立叢集連接埠。link:task_prepare_cluster_ports_on_the_exist_controller.html["準備現有控制器模組上的叢集連接埠"]
+無相符的連接埠。升級後，重新建立叢集連接埠。link:task_prepare_cluster_ports_on_the_exist_controller.html["準備現有控制器模組上的叢集連接埠"]
 
 
 
@@ -868,15 +868,14 @@ The node must be rebooted to start using the newly installed software. Do you wa
 
 === 清除控制器模組上的組態
 
-[role="lead"]
 在使用全新的控制器模組MetroCluster 進行整個過程之前、您必須先清除現有的組態。
 
 .步驟
-. 如有必要、請停止節點以顯示載入程式提示：
+. 如有必要，請停止節點以顯示 `LOADER`提示：
 +
 《停止》
 
-. 在載入程式提示下、將環境變數設定為預設值：
+. 在 `LOADER`提示字元下，將環境變數設為預設值：
 +
 「預設值」
 
@@ -884,7 +883,7 @@ The node must be rebooted to start using the newly installed software. Do you wa
 +
 「aveenv」
 
-. 在載入程式提示下、啟動開機功能表：
+. 在 `LOADER`提示字元下，啟動開機功能表：
 +
 Boot_ONTAP功能表
 

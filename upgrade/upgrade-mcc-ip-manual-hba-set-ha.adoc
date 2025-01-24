@@ -1,0 +1,166 @@
+---
+permalink: upgrade/upgrade-mcc-ip-manual-hba-set-ha.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, controllers, switchover, switchback, ip, configuration, net, boot, root, aggregate, system, commands, mcc 
+summary: 在控制器模組中設定 HBA 卡，並驗證及設定控制器和機箱的 HA 狀態。 
+---
+= 還原 HBA 組態，並設定 MetroCluster IP 控制器和機箱的 HA 狀態
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在控制器模組中設定 HBA 卡，並驗證及設定控制器和機箱的 HA 狀態。
+
+
+
+== 還原HBA組態
+
+視控制器模組中是否存在 HBA 卡及其組態而定，您需要為站台正確設定這些卡。
+
+.步驟
+. 在維護模式中，設定系統中任何 HBA 的設定：
++
+.. 檢查連接埠的目前設定：「ucadmin show」
+.. 視需要更新連接埠設定。
+
+
++
+|===
+
+
+| 如果您有此類型的HBA和所需模式... | 使用此命令... 
+
+
+ a| 
+CNA FC
+ a| 
+`ucadmin modify -m fc -t initiator <adapter-name>`
+
+
+
+ a| 
+CNA乙太網路
+ a| 
+`ucadmin modify -mode cna <adapter-name>`
+
+
+
+ a| 
+FC目標
+ a| 
+`fcadmin config -t target <adapter-name>`
+
+
+
+ a| 
+FC啟動器
+ a| 
+`fcadmin config -t initiator <adapter-name>`
+
+|===
+. 結束維護模式：
++
+《停止》
+
++
+執行命令後、請等待節點在提示字元下停止 `LOADER` 。
+
+. 將節點開機回維護模式，以套用組態變更：
++
+Boot_ONTAP maint
+
+. 驗證變更：
++
+|===
+
+
+| 如果您有這種HBA類型... | 使用此命令... 
+
+
+ a| 
+CNA
+ a| 
+「ucadmin show」
+
+
+
+ a| 
+FC
+ a| 
+「fcadmin show」
+
+|===
+
+
+
+
+== 在新的控制器和機箱上設定HA狀態
+
+您必須驗證控制器和機箱的HA狀態、並視需要更新狀態以符合您的系統組態。
+
+.步驟
+. 在維護模式中、顯示控制器模組和機箱的HA狀態：
++
+《ha-config show》
+
++
+所有元件的HA狀態都應該是「mCCIP」。
+
+. 如果控制器或機箱的顯示系統狀態不正確，請設定 HA 狀態：
++
+「ha-config modify控制器mccip」
+
++
+「ha-config modify機箱mccip」
+
+. 驗證並修改連接至 NS224 機櫃或儲存交換器的乙太網路連接埠。
++
+.. 驗證連接至 NS224 機櫃或儲存交換器的乙太網路連接埠：
++
+`storage port show`
+
+.. 將連接至乙太網路機櫃或儲存交換器的所有乙太網路連接埠（包括儲存設備和叢集的共用交換器）設定為 `storage` 模式：
++
+`storage port modify -p <port> -m storage`
+
++
+範例：
+
++
+[listing]
+----
+*> storage port modify -p e5b -m storage
+Changing NVMe-oF port e5b to storage mode
+----
++
+
+NOTE: 必須在所有受影響的連接埠上設定此選項、才能成功升級。
+
++
+輸出中會報告連接至乙太網路連接埠的磁碟櫃中的磁碟 `sysconfig -v` 。
+
++
+如需您要升級之系統的儲存連接埠資訊、請參閱 link:https://hwu.netapp.com["Hardware Universe"^] 。
+
+..  `storage`確認已設定模式、並確認連接埠處於線上狀態：
++
+`storage port show`
+
+
+
+. 停止節點：「halt」
++
+節點應在「loader>」提示字元停止。
+
+. 在每個節點上、檢查系統日期、時間和時區：「顯示日期」
+. 如有必要、請以UTC或格林尼治標準時間：「et date <mm/dd/ed/yed>'（設定日期<mm/dd/ym/西元年>）」設定日期
+. 請在開機環境提示字元中使用下列命令檢查時間：「How Time」（顯示時間）
+. 如有必要、請以UTC或格林尼治標準時間設定時間：「設定時間<hh：mm：ss>」
+. 儲存設定：「aveenv」
+. 收集環境變數：「prontenv」
+
+
+.接下來呢？
+link:upgrade-mcc-ip-manual-apply-rcf-set-bootarg.html["更新交換器 RCFs 並設定 MetroCluster IP bootarg 值"]。

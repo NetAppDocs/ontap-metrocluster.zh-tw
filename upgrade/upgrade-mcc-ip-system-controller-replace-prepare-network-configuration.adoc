@@ -1,0 +1,177 @@
+---
+permalink: upgrade/upgrade-mcc-ip-system-controller-replace-prepare-network-configuration.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, controllers, switchover, switchback, ip, configuration, net, boot, root, aggregate, system, commands, mcc 
+summary: 收集資訊並恢復作業後，自動化作業會繼續進行。 
+---
+= 準備舊 MetroCluster IP 控制器的網路組態
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+收集資訊並恢復作業後，自動化作業會繼續進行。
+
+.開始之前
+在啟動切換之前、自動化作業會暫停、以便您手動確認站台B的所有生命都是「up」如有必要、請將任何「'down」的lifs移至「up」、然後使用「system controller replace resume」命令恢復自動化作業。
+
+自動化作業會啟動「跨操作」。這些作業完成後，操作會暫停於 * 暫停以供使用者介入 * ，以便您可以使用先前收集的快閃備份，從快閃備份將控制器機架安裝，開機合作夥伴控制器，並將根 Aggregate 磁碟重新指派給新的控制器模組 `sysids`。
+
+.關於這項工作
+* 此工作必須在每個舊節點上執行。
+* 您可以使用中收集link:upgrade-mcc-ip-system-controller-replace-prechecks.html#gather-information-before-the-upgrade["在升級之前收集資訊"]的資訊。
+
+
+.步驟
+. 開機舊節點、然後登入節點：
++
+Boot_ONTAP
+
+. 修改舊控制器上的叢集間生命體、以使用不同於新控制器上用於 HA 互連或 MetroCluster IP DR 互連的連接埠。
++
+
+NOTE: 成功升級需要此步驟。
+
++
+舊控制器上的叢集間生命體必須使用不同於新控制器上用於 HA 互連或 MetroCluster IP DR 互連的連接埠。例如、當您升級至 AFF A90 控制器時、 HA 互連連接埠為 e1a 和 e7a 、 MetroCluster IP DR 互連連接埠為 e2b 和 e3b 。如果舊控制器上的叢集間生命體位於連接埠 e1a 、 e7a 、 e2b 或 e3b 上、則必須移動它們。
+
++
+有關新節點上的端口分配和分配，請參閱 https://hwu.netapp.com["Hardware Universe"]。
+
++
+.. 在舊控制器上、檢視叢集間的生命體：
++
+`network interface show  -role intercluster`
+
++
+根據舊控制器上的叢集間生命體是否使用與新控制器上用於 HA 互連或 MetroCluster IP DR 互連的連接埠相同的連接埠、請採取下列其中一項動作。
+
++
+[cols="2*"]
+|===
+| 如果叢集間的生命 ... | 前往... 
+
+
+| 使用相同的主連接埠 | <<controller_replace_upgrade_prepare_network_ports_2b,子步驟 b>> 
+
+
+| 使用不同的主連接埠 | <<controller_replace_upgrade_prepare_network_ports_3,步驟3.>> 
+|===
+.. [[controller 取代升級 _prepy_network_ports_2b]] 修改叢集間的生命體以使用不同的主連接埠：
++
+`network interface modify -vserver <vserver> -lif <intercluster_lif> -home-port <port-not-used-for-ha-interconnect-or-mcc-ip-dr-interconnect-on-new-nodes>`
+
+.. 確認所有叢集間的生命體位於新的主連接埠上：
++
+`network interface show -role intercluster -is-home  false`
+
++
+命令輸出應為空白、表示所有叢集間的生命體位於各自的主連接埠上。
+
+.. 回復不在其主連接埠上的任何生命：
++
+`network interface revert -lif <intercluster_lif>`
+
++
+針對不在主連接埠上的每個叢集間 LIF 重複此命令。
+
+
+
+. [[controller 取代升級 _prepy_network_ports_3]] 將舊控制器上所有資料生命體的主連接埠指派給舊控制器模組和新控制器模組上相同的通用連接埠。
++
+
+CAUTION: 如果新舊控制器沒有通用連接埠，您就不需要修改資料生命期。跳過此步驟並直接前往<<upgrades_assisted_without_matching_ports,步驟4.>>。
+
++
+.. 顯示生命：
++
+「網路介面展示」
+
++
+SAN和NAS等所有資料生命量都是管理員「up」（啟動）和作業「down」（保留）、因為這些資料都是在切換站台（叢集_A）上啟動。
+
+.. 檢閱輸出、找出舊控制器和新控制器上相同的通用實體網路連接埠、而這些控制器並未用作叢集連接埠。
++
+例如、「'e0d'」是舊控制器上的實體連接埠、也存在於新的控制器上。「e0d」不做為叢集連接埠、也不做為新控制器上的其他連接埠。
+
++
+請參閱，link:https://hwu.netapp.com/["Hardware Universe"^]以瞭解每種平台機型的連接埠使用情形。
+
+.. 修改所有資料生命期、以使用通用連接埠作為主連接埠：
++
+`network interface modify -vserver <svm-name> -lif <data-lif> -home-port <port-id>`
+
++
+在下列範例中、這是「e0d」。
+
++
+例如：
+
++
+[listing]
+----
+network interface modify -vserver vs0 -lif datalif1 -home-port e0d
+----
+
+
+. [[newization_assisted_without _matching_ports ] 修改廣播網域，移除需要刪除的 VLAN 和實體連接埠：
++
+`broadcast-domain remove-ports -broadcast-domain <broadcast-domain-name>-ports <node-name:port-id>`
+
++
+對所有VLAN和實體連接埠重複此步驟。
+
+. 使用叢集連接埠作為成員連接埠、使用叢集連接埠作為成員連接埠和介面群組、移除任何VLAN連接埠。
++
+.. 刪除VLAN連接埠：
++
+`network port vlan delete -node <node-name> -vlan-name <portid-vlandid>`
+
++
+例如：
+
++
+[listing]
+----
+network port vlan delete -node node1 -vlan-name e1c-80
+----
+.. 從介面群組移除實體連接埠：
++
+`network port ifgrp remove-port -node <node-name> -ifgrp <interface-group-name> -port <portid>`
+
++
+例如：
+
++
+[listing]
+----
+network port ifgrp remove-port -node node1 -ifgrp a1a -port e0d
+----
+.. 從廣播網域移除 VLAN 和介面群組連接埠：
++
+`network port broadcast-domain remove-ports -ipspace <ipspace> -broadcast-domain <broadcast-domain-name>-ports <nodename:portname,nodename:portname>,..`
+
+.. 根據需要修改介面群組連接埠，以使用其他實體連接埠作為成員：
++
+`ifgrp add-port -node <node-name> -ifgrp <interface-group-name> -port <port-id>`
+
+
+
+. 停止節點：
++
+`halt -inhibit-takeover true -node <node-name>`
+
++
+此步驟必須在兩個節點上執行。
+
+. 確認節點出現 `LOADER`提示，並收集並保留目前的環境變數。
+. 收集bootag值：
++
+《王子》
+
+. 關閉要升級控制器的站台上的節點和機櫃。
+
+
+.接下來呢？
+link:upgrade-mcc-ip-system-controller-replace-setup-new-controllers.html["設定並以網路開機新的控制器"]。

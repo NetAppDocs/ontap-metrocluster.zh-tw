@@ -47,24 +47,25 @@ summary: 您使用的升級程序取決於平台模式。
 
 
 
-* MetroCluster 組態中的所有節點（新舊節點）都必須執行相同的 ONTAP 版本。
+* MetroCluster 組態中的所有節點（新舊節點）都必須執行相同的 ONTAP 版本。請參閱link:https://hwu.netapp.com["Hardware Universe"^]以取得您的組合所支援的最低 ONTAP 版本。
 
 
 .支援的 AFF 和 FAS MetroCluster IP 控制器升級
 下表顯示在 MetroCluster IP 組態中手動升級 AFF 或 FAS 系統所支援的平台組合：
 
-image::../media/metrocluster_ip_upgrade_so_sb_aff_fas.png[MetroCluster IP 升級 sb AFF FAS]
+image:../media/mccip_manual_controller_upgrade_comb.png["顯示支援的 AFF 和 FAS 平台，以使用切換和切換來手動升級控制器"]
 
 * 附註1：對於此升級、請使用此程序 link:task_upgrade_A700_to_A900_in_a_four_node_mcc_ip_us_switchover_and_switchback.html["使用交換器和切換功能（AFF 更新版本）、將控制器從功能性的A700/FAS9000升級AFF 至功能性的S還原A900/FAS9500 MetroCluster （以不整合的IP組態）ONTAP"]
 * 附註 2 ：執行 ONTAP 9.13.1 或更新版本的系統支援控制器升級。
 * 附註 3 ：目標平台必須等到控制器升級完成後、才能擁有內部磁碟機。您可以在升級後新增內部磁碟機。
 * 附註 4 ：需要更換控制器模組。
+* 附註 5 ：需要 IOM 模組將舊控制器轉換為外部 SAS 機櫃。如需支援的 IOM 模組，請參閱link:https://hwu.netapp.com/["Hardware Universe"^]。
 
 
 .支援的 ASA MetroCluster IP 控制器升級
 下表顯示在 MetroCluster IP 組態中手動升級 ASA 系統所支援的平台組合：
 
-image::../media/metrocluster_ip_upgrade_so_sb_asa_fas.png[MetroCluster IP 升級 sb ASA FAS]
+image:../media/mcc-ip-upgrade-asa-comb-9161.png["顯示 ASA 支援的 MetroCluster IP 控制器升級平台組合"]
 
 * 附註 1 ：執行 ONTAP 9.13.1 或更新版本的系統支援控制器升級。
 
@@ -85,7 +86,7 @@ image::../media/metrocluster_ip_upgrade_so_sb_asa_fas.png[MetroCluster IP 升級
 
 
 
-* MetroCluster 組態中的所有節點（新舊節點）都必須執行相同的 ONTAP 版本。
+* MetroCluster 組態中的所有節點（新舊節點）都必須執行相同的 ONTAP 版本。請參閱link:https://hwu.netapp.com["Hardware Universe"^]以取得您的組合所支援的最低 ONTAP 版本。
 
 
 .支援的 AFF 和 FAS MetroCluster FC 控制器升級

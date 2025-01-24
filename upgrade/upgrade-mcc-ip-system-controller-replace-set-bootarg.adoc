@@ -1,0 +1,113 @@
+---
+permalink: upgrade/upgrade-mcc-ip-system-controller-replace-set-bootarg.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, controllers, switchover, switchback, ip, configuration, net, boot, root, aggregate, system, commands, mcc 
+summary: 升級至 ONTAP 9.15.1 或更新版本所推出的系統時，您必須先設定引導程序，才能繼續升級。 
+---
+= 設定所需的 bootarg （用於將 MetroCluster IP 升級至 ONTAP 9.15.1 或更新版本所推出的系統）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+升級至 ONTAP 9.15.1 或更新版本所推出的系統時，您必須先設定引導程序，才能繼續升級。
+
+
+
+== 步驟 1 ：確定需要在舊控制器上設置的引導程序
+
+在執行控制器升級之前，所有支援的下列系統升級都需要在舊控制器上設定開機檔：
+
+* AFF A70 、 AFF A90 、 AFF A1K
+* FAS70 、 FAS90
+* AFF C80
+* AFF A50 、 AFF A20 、 AFF A30
+* AFF C30 、 AFF C60
+
+
+
+CAUTION: 如果您要升級至列出的任何系統，則 * 必須 * 在執行升級之前，在現有系統上設定必要的開機檔。對於所有其他升級，您可以跳過此任務並直接轉至 link:upgrade-mcc-ip-system-controller-replace-prechecks.html["準備系統以進行升級"]。
+
+大多數對 ONTAP 9.15.1 或更新版本所推出的系統進行升級，都需要在舊版控制器上設定 `hw.cxgbe.toe_keepalive_disable`開機。不過，某些升級路徑會要求您改為設定 `bootarg.siw.interop_enabled` bootarg 。
+
+請使用下表來判斷您需要為特定升級組合設定哪些 bootarg 。
+
+[cols="2*"]
+|===
+| 針對此升級 ... | 設定 bootarg... 
+
+
+| 從 AFF A250 到 AFF A30 | `bootarg.siw.interop_enabled` 
+
+
+| 從 AFF C250 到 AFF C30 | `bootarg.siw.interop_enabled` 
+
+
+| 從 AFF A150 到 AFF A20 | `bootarg.siw.interop_enabled` 
+
+
+| 從 AFF A220 到 AFF A20 | `bootarg.siw.interop_enabled` 
+
+
+| 所有其他支援升級至 AFF A70 ， AFF A90 ， AFF A1K ， FAS70 ， FAS90 ， AFF C80 ， AFF A50 ， AFF A20 ， AFF A30 ， AFF C30 或 AFF C60 系統 | `hw.cxgbe.toe_keepalive_disable` 
+|===
+
+
+== 步驟 2 ：在舊控制器上設定所需的開機檔
+
+當您升級至 AFF A70 ， AFF A90 ， AFF A1K ， FAS70 ， FAS90 ， AFF C80 ， AFF A50 ， AFF A20 ， AFF A30 ， AFF C30 或 AFF C60 系統時，此工作為 * 僅 * 必要的。
+
+.步驟
+. 在每個站台停止一個節點、並允許其 HA 合作夥伴對節點執行儲存接管：
++
+`halt  -node <node_name>`
+
+. 為您的升級組合設定所需的 bootarg 。您已經確定了需要使用中的表設置的 bootarg <<upgrade_paths_bootarg_assisted,判斷您需要設定的 bootarg>>。
++
+[role="tabbed-block"]
+====
+.HW.cxgbe 。 Toe_keepalive_disable
+--
+.. 在 `LOADER` 停止節點的提示下、輸入下列內容：
++
+`setenv hw.cxgbe.toe_keepalive_disable 1`
+
++
+「aveenv」
+
++
+`printenv hw.cxgbe.toe_keepalive_disable`
+
+
+
+--
+.bootarg.siw.interop_enabled
+--
+.. 在 `LOADER` 停止節點的提示下、輸入下列內容：
++
+`setenv bootarg.siw.interop_enabled 1`
+
++
+「aveenv」
+
++
+`printenv bootarg.siw.interop_enabled`
+
+
+
+--
+====
+. 開機節點：
++
+Boot_ONTAP
+
+. 當節點開機時、請在提示下執行節點的恢復：
++
+`storage failover giveback -ofnode <node_name>`
+
+. 在要升級的 DR 群組中的每個節點上重複這些步驟。
+
+
+.下一步
+link:upgrade-mcc-ip-system-controller-replace-prechecks.html["準備系統以進行升級"]。

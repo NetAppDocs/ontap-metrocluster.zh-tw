@@ -1,0 +1,29 @@
+---
+permalink: upgrade/upgrade-mcc-ip-manual.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, controllers, switchover, switchback, ip, configuration, net, boot, root, aggregate, system, commands, mcc 
+summary: 從ONTAP 功能介紹9.8開始、您可以使用MetroCluster 功能介紹切換作業、在升級合作夥伴叢集上的控制器模組時、為用戶端提供不中斷的服務。 
+---
+= 使用切換和切換功能（ ONTAP 9.8 及更新版本）進行 MetroCluster IP 控制器升級的工作流程
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+從ONTAP 功能介紹9.8開始、您可以使用MetroCluster 功能介紹切換作業、在升級合作夥伴叢集上的控制器模組時、為用戶端提供不中斷的服務。其他元件（例如儲存櫃或交換器）無法在此程序中進行升級。
+
+.關於此工作流程
+您可以使用此工作流程，在執行 ONTAP 9.8 或更新版本的系統上，使用切換和切換功能來升級 MetroCluster IP 控制器。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:upgrade-mcc-ip-manual-requirements.html["準備升級"]
+[role="quick-margin-para"]
+檢閱支援的升級組合和需求，並完成必要的工作，為您的系統做好升級控制器的準備。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]link:upgrade-mcc-ip-manual-switchover.html["升級控制器"]
+[role="quick-margin-para"]
+切換 MetroCluster 組態，以便從舊控制器移除組態，機架並安裝新控制器，重新分配根 Aggregate 磁碟，以及在執行切換之前啟動新控制器。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:upgrade-mcc-ip-manual-complete-upgrade.html["完成升級"]
+[role="quick-margin-para"]
+在第二個站台重複升級工作，並還原任何監控組態，以完成控制器升級。

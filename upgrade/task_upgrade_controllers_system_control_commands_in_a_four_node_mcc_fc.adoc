@@ -477,15 +477,14 @@ The node must be rebooted to start using the newly installed software. Do you wa
 
 === 清除控制器模組上的組態
 
-[role="lead"]
 在使用全新的控制器模組MetroCluster 進行整個過程之前、您必須先清除現有的組態。
 
 .步驟
-. 如有必要、請停止節點以顯示載入程式提示：
+. 如有必要，請停止節點以顯示 `LOADER`提示：
 +
 《停止》
 
-. 在載入程式提示下、將環境變數設定為預設值：
+. 在 `LOADER`提示字元下，將環境變數設為預設值：
 +
 「預設值」
 
@@ -493,7 +492,7 @@ The node must be rebooted to start using the newly installed software. Do you wa
 +
 「aveenv」
 
-. 在載入程式提示下、啟動開機功能表：
+. 在 `LOADER`提示字元下，啟動開機功能表：
 +
 Boot_ONTAP功能表
 

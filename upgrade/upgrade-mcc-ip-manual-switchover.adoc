@@ -1,0 +1,57 @@
+---
+permalink: upgrade/upgrade-mcc-ip-manual-switchover.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, controllers, switchover, switchback, ip, configuration, net, boot, root, aggregate, system, commands, mcc 
+summary: 您可以將組態切換至站台 A ，以便站台 B 上的平台可以升級。 
+---
+= 透過 MetroCluster IP 組態切換
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以將組態切換至站台 A ，以便站台 B 上的平台可以升級。
+
+.關於這項工作
+此工作必須在sSite _A上執行
+
+完成此工作後：
+
+* 叢集 A 處於作用中狀態，可為兩個站台提供資料。
+* 叢集 _B 處於非使用中狀態，並準備好開始升級程序。
+
+
+image::../media/mcc_upgrade_cluster_a_in_switchover.png[顯示叢集 _A 已準備好進行升級，且叢集 _B 正在進行待處理]
+
+.步驟
+. 切換MetroCluster 到站台A的支援、以便站台B的節點升級：
++
+.. 在叢集_A上發出下列命令：
++
+「不需要更換控制器」MetroCluster
+
++
+此作業可能需要數分鐘才能完成。
+
+.. 監控切換作業：
++
+《不穩定營運展》MetroCluster
+
+.. 作業完成後、請確認節點處於切換狀態：
++
+《不看》MetroCluster
+
+.. 檢查MetroCluster 不實節點的狀態：
++
+「不一樣的秀」MetroCluster
+
++
+在控制器升級期間，會停用交涉切換後的集合體自動修復功能。
+
+
+
+
+
+.接下來呢？
+link:upgrade-mcc-ip-manual-uninstall-controllers.html["移除介面組態並解除安裝舊的控制器"]。

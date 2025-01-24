@@ -1,0 +1,77 @@
+---
+permalink: upgrade/upgrade-mcc-ip-system-controller-replace-requirements.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, controllers, switchover, switchback, ip, configuration, net, boot, root, aggregate, system, commands, mcc 
+summary: 在執行控制器升級之前，請先確認您的系統符合所有需求。 
+---
+= 使用此 MetroCluster IP 升級程序的需求
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在執行控制器升級之前，請先確認您的系統符合所有需求。
+
+* 您只能將此程序用於控制器升級。
++
+組態中的其他元件（例如儲存櫃或交換器）無法同時升級。
+
+* 您的升級組態中的現有和新控制器必須支援 MetroCluster IP 交換器（交換器類型、廠商和機型）和韌體版本。
++
+如需支援的交換器和韌體版本、請參閱 link:https://hwu.netapp.com["Hardware Universe"^] 或 link:https://imt.netapp.com/matrix/["IMT"^] 。
+
+* MetroCluster IP 系統必須在兩個站台上執行相同的 ONTAP 版本。
+* 當您從插槽或連接埠比新系統多的系統升級時，您需要確認新系統上有足夠的插槽和連接埠。
++
+開始升級之前，請參閱，link:https://hwu.netapp.com["Hardware Universe"^]以確認新系統上的插槽和連接埠數量。
+
+* 您可以使用此程序來升級四節點 MetroCluster IP 組態中的控制器、使用 NSO 型自動切換和切換。
++
+
+NOTE: 使用 Aggregate 重定位（ ARL ）和「系統控制器置換」命令來執行升級，不支援四節點 MetroCluster IP 組態。
+
+* 如果您的系統已啟用此功能、 link:../maintain/task-configure-encryption.html#disable-end-to-end-encryption["停用端點對端點加密"] 請在執行升級之前先執行。
+* 您必須使用自動 NSO 控制器升級程序、以連續升級兩個站台的控制器。
+* 這項自動化的NSO型控制器升級程序可讓您將控制器更換至MetroCluster 還原災難恢復（DR）站台。您一次只能在一個站台啟動控制器更換。
+* 若要在站台A開始更換控制器、您需要從站台B執行控制器更換啟動命令此作業只會引導您更換站台A上兩個節點的控制器。若要更換站台B的控制器、您必須從站台A執行控制器更換啟動命令此時會顯示一則訊息、指出要更換控制器的站台。
+
+
+本程序使用下列範例名稱：
+
+* 叢集_A位於站台_A
++
+** 升級前：
++
+*** node_a_1-old
+*** node_a_2-old
+
+
+** 升級後：
++
+*** node_a_1-new
+*** node_a_2-new
+
+
+
+
+* 站台B的叢集B
++
+** 升級前：
++
+*** node_B_1-old
+*** node_B_2-old
+
+
+** 升級後：
++
+*** node_B_1-new
+*** node_B_2-new
+
+
+
+
+
+
+.接下來呢？
+link:upgrade-mcc-ip-system-controller-replace-console-logging.html["啟用主控台記錄"]。

@@ -1,0 +1,107 @@
+---
+permalink: upgrade/upgrade-mcc-ip-manual-setup-controllers.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, controllers, switchover, switchback, ip, configuration, net, boot, root, aggregate, system, commands, mcc 
+summary: 為新的 MetroCluster IP 控制器提供機架與纜線。 
+---
+= 設定新的 MetroCluster IP 控制器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+為新的 MetroCluster IP 控制器提供機架與纜線。
+
+.步驟
+. 視需要規劃新控制器模組和儲存櫃的定位。
++
+機架空間取決於控制器模組的平台模式、交換器類型、以及組態中的儲存櫃數量。
+
+. 請妥善接地。
+. 如果您的升級需要更換控制器模組，例如從 AFF A800 系統升級至 AFF A90 系統，或從 AFF C800 升級至 AFF C80 系統，則在更換控制器模組時，您必須從機箱中移除控制器模組。對於所有其他升級，請跳至 <<ip_upgrades_so_sb_4,步驟4.>>。
++
+在機箱正面、用您的拇指將每個磁碟機穩固推入、直到您感覺到有正面的停止為止。這證實磁碟機已穩固地安裝在機箱中板上。
+
++
+image::../media/drw-a800-drive-seated.png[顯示從機箱中移除控制器模組]
+
+. [[IP 升級 _so_sa_4]] 安裝控制器模組。
++
+您所遵循的安裝步驟取決於您的升級是否需要更換控制器模組，或是否需要移轉移轉器模組來將舊控制器轉換為外部機櫃。
+
++
+[cols="2*"]
+|===
+| 如果您正在升級 ... | 請依照下列步驟進行 ... 
+
+
+ a| 
+** AFF A150 至 AFF A20 系統
+** AFF A220 至 AFF A20 系統
+
+| 控制器至外部機櫃轉換 
+
+
+ a| 
+** AFF A90 系統的 AFF A800
+** AFF C80 系統的 AFF C800
+
+| 更換控制器模組 
+
+
+| 任何其他控制器升級組合 | 所有其他升級 
+|===
++
+[role="tabbed-block"]
+====
+.控制器至外部機櫃轉換
+--
+如果您的原始 MetroCluster IP 控制器是 AFF A150 或 AFF A220 機型，您可以將 AFF A150 或 AFF A220 HA 配對轉換為 DS224C 磁碟機櫃，然後將其連接至新節點。
+
+例如，從 AFF A150 或 AFF A220 系統升級至 AFF A20 系統時，您可以將 AFF A150 或 AFF A220 HA 配對轉換為 DS224C 機櫃，方法是將 AFF A150 或 AFF A220 控制器模組與 IOM12 模組交換。
+
+.步驟
+.. 更換要轉換的節點中的控制器模組，並使用 IOM12 機櫃模組。
++
+https://hwu.netapp.com["Hardware Universe"^]
+
+.. 設定磁碟機櫃ID。
++
+每個磁碟機櫃（包括機箱）都需要一個唯一的ID。
+
+.. 視需要重設其他磁碟機櫃ID。
+.. 關閉機櫃電源。
+.. 將轉換後的磁碟機櫃纜線連接至新系統上的SAS連接埠、如果您使用頻外ACP纜線、請將纜線連接至新節點上的ACP連接埠。
+.. 開啟轉換後磁碟機櫃和連接至新節點的任何其他磁碟機櫃的電源。
+.. 開啟新節點的電源、然後按Ctrl-C存取開機環境提示字元、中斷每個節點的開機程序。
+
+
+--
+.更換控制器模組
+--
+單獨安裝新控制器不適用於在同一機箱中使用磁碟和控制器的整合式系統升級、例如從 AFF A800 系統升級至 AFF A90 系統。關閉舊控制器電源後，您必須交換新的控制器模組和 I/O 卡，如下圖所示。
+
+以下範例影像僅供示範、控制器模組和 I/O 卡可能會因系統而異。
+
+image::../media/a90-a70-pcm-swap.png[顯示控制器模組交換]
+
+--
+.所有其他升級
+--
+在機架或機櫃中安裝控制器模組。
+
+--
+====
+. 按照中所述，連接控制器的電源，串行控制檯和管理連接link:../install-ip/using_rcf_generator.html["連接MetroCluster 至靜態IP交換器"]。
++
+此時請勿連接任何與舊控制器中斷連線的其他纜線。
+
++
+https://docs.netapp.com/us-en/ontap-systems/index.html["ONTAP 硬體系統文件"^]
+
+. 開啟新節點的電源、然後將其開機至維護模式。
+
+
+.接下來呢？
+link:upgrade-mcc-ip-manual-hba-set-ha.html["還原 HBA 組態並設定 HA 狀態"]。

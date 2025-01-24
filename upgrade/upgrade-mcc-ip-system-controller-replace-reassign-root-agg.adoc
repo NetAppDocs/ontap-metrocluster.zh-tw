@@ -1,0 +1,134 @@
+---
+permalink: upgrade/upgrade-mcc-ip-system-controller-replace-reassign-root-agg.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, controllers, switchover, switchback, ip, configuration, net, boot, root, aggregate, system, commands, mcc 
+summary: 使用您先前收集的系統 ID ，將根 Aggregate 磁碟重新指派給新的控制器模組。 
+---
+= 將根 Aggregate 磁碟重新指派給新的 MetroCluster IP 控制器模組
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用您先前收集的系統 ID ，將根 Aggregate 磁碟重新指派給新的控制器模組。
+
+.關於這項工作
+此工作會在維護模式中執行。
+
+舊的系統 ID 在中識別 link:upgrade-mcc-ip-system-controller-replace-prechecks.html#gather-information-before-the-upgrade["在升級之前收集資訊"]。
+
+本程序中的範例使用具有下列系統ID的控制器：
+
+|===
+
+
+| 節點 | 舊系統ID | 新系統ID 
+
+
+ a| 
+節點_B_1
+ a| 
+4068741254
+ a| 
+1574774970
+
+|===
+.步驟
+. 將所有其他連線連接至新的控制器模組（ FC-VI ，儲存設備，叢集互連等）。
+. 停止系統、並從「loader"（載入器）提示字元開機至維護模式：
++
+Boot_ONTAP maint
+
+. 顯示node_B_1-old擁有的磁碟：
++
+「展示-A'」
+
++
+命令輸出顯示新控制器模組的系統ID（1574774970）。不過，根 Aggregate 磁碟仍歸舊系統 ID （ 4068741254 ）所有。此範例不會顯示 MetroCluster 組態中其他節點擁有的磁碟機。
+
++
+
+CAUTION: 在您繼續重新指派磁碟之前，請確認屬於節點根集合的 Pool0 和 Pool1 磁碟顯示在輸出中 `disk show`。在以下範例中、輸出會列出 node_B_1-old 所擁有的 Pool0 和 Pool1 磁碟。
+
++
+[listing]
+----
+*> disk show -a
+Local System ID: 1574774970
+
+  DISK         OWNER                     POOL   SERIAL NUMBER    HOME                      DR HOME
+------------   -------------             -----  -------------    -------------             -------------
+...
+rr18:9.126L44 node_B_1-old(4068741254)   Pool1  PZHYN0MD         node_B_1-old(4068741254)  node_B_1-old(4068741254)
+rr18:9.126L49 node_B_1-old(4068741254)   Pool1  PPG3J5HA         node_B_1-old(4068741254)  node_B_1-old(4068741254)
+rr18:8.126L21 node_B_1-old(4068741254)   Pool1  PZHTDSZD         node_B_1-old(4068741254)  node_B_1-old(4068741254)
+rr18:8.126L2  node_B_1-old(4068741254)   Pool0  S0M1J2CF         node_B_1-old(4068741254)  node_B_1-old(4068741254)
+rr18:8.126L3  node_B_1-old(4068741254)   Pool0  S0M0CQM5         node_B_1-old(4068741254)  node_B_1-old(4068741254)
+rr18:9.126L27 node_B_1-old(4068741254)   Pool0  S0M1PSDW         node_B_1-old(4068741254)  node_B_1-old(4068741254)
+...
+----
+. 將磁碟機櫃上的根Aggregate磁碟重新指派給新的控制器：
++
+`disk reassign -s <old-sysid> -d <new-sysid>`
+
++
+
+NOTE: 如果您的 MetroCluster IP 系統已設定進階磁碟分割，則必須執行命令來包含 DR 合作夥伴系統 ID `disk reassign -s old-sysid -d new-sysid -r dr-partner-sysid` 。
+
++
+以下範例顯示磁碟機的重新指派：
+
++
+[listing]
+----
+*> disk reassign -s 4068741254 -d 1574774970
+Partner node must not be in Takeover mode during disk reassignment from maintenance mode.
+Serious problems could result!!
+Do not proceed with reassignment if the partner is in takeover mode. Abort reassignment (y/n)? n
+
+After the node becomes operational, you must perform a takeover and giveback of the HA partner node to ensure disk reassignment is successful.
+Do you want to continue (y/n)? Jul 14 19:23:49 [localhost:config.bridge.extra.port:error]: Both FC ports of FC-to-SAS bridge rtp-fc02-41-rr18:9.126L0 S/N [FB7500N107692] are attached to this controller.
+y
+Disk ownership will be updated on all disks previously belonging to Filer with sysid 4068741254.
+Do you want to continue (y/n)? y
+----
+. 檢查是否已按照預期重新指派所有磁碟：
++
+「尖碑秀」
+
++
+[listing]
+----
+*> disk show
+Local System ID: 1574774970
+
+  DISK        OWNER                      POOL   SERIAL NUMBER   HOME                      DR HOME
+------------  -------------              -----  -------------   -------------             -------------
+rr18:8.126L18 node_B_1-new(1574774970)   Pool1  PZHYN0MD        node_B_1-new(1574774970)  node_B_1-new(1574774970)
+rr18:9.126L49 node_B_1-new(1574774970)   Pool1  PPG3J5HA        node_B_1-new(1574774970)  node_B_1-new(1574774970)
+rr18:8.126L21 node_B_1-new(1574774970)   Pool1  PZHTDSZD        node_B_1-new(1574774970)  node_B_1-new(1574774970)
+rr18:8.126L2  node_B_1-new(1574774970)   Pool0  S0M1J2CF        node_B_1-new(1574774970)  node_B_1-new(1574774970)
+rr18:9.126L29 node_B_1-new(1574774970)   Pool0  S0M0CQM5        node_B_1-new(1574774970)  node_B_1-new(1574774970)
+rr18:8.126L1  node_B_1-new(1574774970)   Pool0  S0M1PSDW        node_B_1-new(1574774970)  node_B_1-new(1574774970)
+*>
+----
+. 顯示Aggregate狀態：
++
+「aggr狀態」
+
++
+[listing]
+----
+*> aggr status
+           Aggr            State       Status           Options
+aggr0_node_b_1-root        online      raid_dp, aggr    root, nosnap=on,
+                           mirrored                     mirror_resync_priority=high(fixed)
+                           fast zeroed
+                           64-bit
+----
+. 在合作夥伴節點（node_B_2-new）上重複上述步驟。
+
+
+.接下來呢？
+link:upgrade-mcc-ip-system-controller-replace-boot-new-controllers.html["啟動新控制器並還原 LIF 組態"]。

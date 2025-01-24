@@ -1,0 +1,80 @@
+---
+permalink: upgrade/upgrade-mcc-ip-manual-switchback.html 
+sidebar: sidebar 
+keywords: metrocluster, upgrade, controllers, switchover, switchback, ip, configuration, net, boot, root, aggregate, system, commands, mcc 
+summary: 執行切換作業，將 MetroCluster 組態恢復為正常作業。站台上的節點仍在等待升級。 
+---
+= 切換回 MetroCluster IP 組態
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+執行切換作業，將 MetroCluster 組態恢復為正常作業。站台上的節點仍在等待升級。
+
+image::../media/mcc_upgrade_cluster_a_switchback.png[MCC升級叢集A切換回復]
+
+.步驟
+. 在se_B上輸入「MetroCluster flexnodeshow」命令、然後檢查輸出。
++
+.. 驗證新節點的顯示是否正確。
+.. 確認新節點處於「等待切換回復狀態」。
+
+
+. 從作用中叢集中的任何節點（未進行升級的叢集）執行必要的命令、以執行修復和切換。
++
+.. 修復資料集合體：+ MetroCluster 「恢復集合體」
+.. 修復根Aggregate：
++
+《恢復根》MetroCluster
+
+.. 切換叢集：
++
+《還原》MetroCluster
+
+
+
+. 檢查切換回復作業的進度：
++
+《不看》MetroCluster
+
++
+當輸出顯示「waiting for switchback」（等待切換）時、切換作業仍在進行中：
+
++
+[listing]
+----
+cluster_B::> metrocluster show
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+ Local: cluster_B         Configuration state configured
+                          Mode                switchover
+                          AUSO Failure Domain -
+Remote: cluster_A         Configuration state configured
+                          Mode                waiting-for-switchback
+                          AUSO Failure Domain -
+----
++
+當輸出顯示正常時、即完成切換作業：
+
++
+[listing]
+----
+cluster_B::> metrocluster show
+Cluster                   Entry Name          State
+------------------------- ------------------- -----------
+ Local: cluster_B         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain -
+Remote: cluster_A         Configuration state configured
+                          Mode                normal
+                          AUSO Failure Domain -
+----
++
+如果切換需要很長時間才能完成、您可以使用「MetroCluster 更新組態複寫重新同步狀態show」命令來檢查進行中基準的狀態。此命令處於進階權限層級。
+
+
+
+.接下來呢？
+link:upgrade-mcc-ip-manual-complete-upgrade.html["完成升級"]。
