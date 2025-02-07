@@ -1962,7 +1962,6 @@
   <block id="7f0177fcba9bcda7b09c757e98f2f535" category="list-text">在機架中安裝替換交換器。</block>
   <block id="cb7dd255a00caeb3656fc12d26dfd266" category="list-text">將替換交換器的纜線與舊交換器的纜線完全相同。</block>
   <block id="0b8991fc8b1b16fde79b335d5036fc22" category="list-text">開啟新的FC交換器。</block>
-  <block id="e31d24f4c7323385ac2a49d1fd0bb0e7" category="list-text">若要啟用ISL加密、請在中完成適用的工作 <block ref="a1fd01e320574c534b3b8a75cd17d943" category="inline-link-macro-rx"></block>。</block>
   <block id="5b691943b638699219228555b1403d22" category="paragraph">如果您要啟用ISL加密、則必須完成下列工作：</block>
   <block id="656775e20786e6a8e6b7aa630d1d08a0" category="list-text">停用虛擬架構</block>
   <block id="ba6eab3f1d8d6e906b6a15425ba84446" category="list-text">設定有效負載</block>
@@ -12289,7 +12288,6 @@
   <block id="94d0fc55d9356d3d18534836cae75c1d" category="doc">FC 交換器組態總覽</block>
   <block id="67af9bc4271944d43da3bdca5451bf73" category="paragraph">您可以使用 RCF 檔案來設定 Cisco 和 Brocade FC 交換器、或視需要手動設定交換器。</block>
   <block id="1399637937931de009069d1a13a152fb" category="paragraph">* 附註 1 ： * 此組合需要 ONTAP 9.13.1 或更新版本。</block>
-  <block id="9ae99044ddcd14d01b26630cedd8846d" category="list-text">請依照中的步驟來設定新交換器 <block ref="435cf525be06a494222aa18eba4f6000" category="inline-link-macro-rx"></block>。</block>
   <block id="02d80d458a48a16bd927a203d6bb2c73" category="list-text">驗證分區組態：</block>
   <block id="62c870995fe52ce6aa5f9fc71ef4da98" category="paragraph"><block ref="ed3badb92af3298762df5a811de2da80" prefix="" category="inline-code"></block></block>
   <block id="79787dbf023f957de1bd4970858b26be" category="summary">您可以將 IP 交換器設定為使用 SNMPv3 進行健全狀況監控。</block>
@@ -14622,4 +14620,8 @@
   <block id="17c2940e7b2cfcc2faa4d1ef00e56d9e" category="sidebar">切換回組態</block>
   <block id="11174a5afd588b4b0362df983b5f76c6" category="sidebar">使用切換和切換功能（ ONTAP 9.10.1 或更新版本）升級 MetroCluster IP 中的控制器（ AFF A700 至 AFF A900 ， FAS9000 至 FAS9500 ）</block>
   <block id="9154ca816ab69e291b499f5a2579f66c" category="sidebar">使用切換和切換功能（ ONTAP 9.10.1 或更新版本），在 MetroCluster FC 組態中升級控制器（ AFF A700 至 AFF A900 ， FAS9000 至 FAS9500 ）</block>
+  <block id="cb037476ec4486d51b86d5dbeede8008" category="inline-link-macro">設定記錄收集</block>
+  <block id="661221d64894eb71f90ac5ef75331837" category="paragraph">您也可以依照步驟執行<block ref="d3ee677e2efae042d4f3199a44815074" category="inline-link-macro-rx"></block>。</block>
+  <block id="3931310703263c726d52a1768504781f" category="list-text"><block ref="8891b6de7b2070c584bdeb67b522b51b" category="inline-link-macro-rx"></block>請遵循中的 Brocade 程序來設定新的交換器。</block>
+  <block id="a01a953cf57a4a3591be7c4dd9dd14fa" category="list-text">若要啟用 ISL 加密，請參閱<block ref="fb6e086ddbfd6d800d2c601996554df4" category="inline-link-macro-rx"></block>。</block>
 </blocks>

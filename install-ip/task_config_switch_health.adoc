@@ -111,3 +111,6 @@ admin               md5       aes-128(no)   network-admin
 
 
 
+
+.完成後
+您也可以依照步驟執行link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-cshm/config-log-collection.html["設定記錄收集"^]。

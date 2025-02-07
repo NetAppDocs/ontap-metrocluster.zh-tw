@@ -115,7 +115,7 @@ FC_switch_B_1:admin> switchshow
 +
 《Firmwarreshow》
 
-.. 請依照中的步驟來設定新交換器 link:https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/task_fcsw_brocade_configure_the_brocade_fc_switches_supertask.html["手動設定Brocade FC交換器"]。
+.. link:../install-fc/concept-configure-fc-switches.html["設定FC交換器"]請遵循中的 Brocade 程序來設定新的交換器。
 +
 
 NOTE: 此時、新交換器並未連接至MetroCluster 該組態的纜線。
@@ -146,7 +146,7 @@ FC_switch_B_1:admin> portcfgpersistentdisable 7
 .. 開啟新的FC交換器。
 
 
-. 若要啟用ISL加密、請在中完成適用的工作 link:https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/index.html["Fabric附加MetroCluster 的安裝與組態"]。
+. 若要啟用 ISL 加密，請參閱link:../install-fc/task_fcsw_brocade_configure_the_brocade_fc_switches_supertask.html#setting-isl-encryption-on-brocade-6510-or-g620-switches["手動設定Brocade FC交換器"]。
 +
 如果您要啟用ISL加密、則必須完成下列工作：
 
