@@ -230,6 +230,44 @@ node_a_1
 
 
 |===
+* 您設定的 MetroCluster bootarg 值取決於您的新系統是使用共用叢集 / HA 連接埠，還是使用共用的 MetroCluster / HA 連接埠。請使用下列資訊來判斷系統的連接埠。
++
+下表所列的系統使用 * 共用的 MetroCluster / HA 連接埠 * 。
+
++
+所有其他系統都使用 * 共享叢集 / HA 連接埠 * 。
+
++
+[cols="2*"]
+|===
+| 使用共享的 MetroCluster / HA 連接埠的 AFF 和 ASA 系統 | 使用共用 MetroCluster / HA 連接埠的 FAS 系統 
+
+
+ a| 
+** AFF A150 、 ASA A150
+** VA220 AFF
+** AFF C250 、 ASA C250
+** AFF A250 、 ASA A250
+** 部分A300 AFF
+** 解答320 AFF
+** AFF C400 、 ASA C400
+** AFF A400 、 ASA A400
+** 部分A700 AFF
+** AFF C800 、 ASA C800
+** AFF A800 、 ASA A800
+** AFF A900 、 ASA A900
+
+ a| 
+** FAS2750
+** FAS500f
+** FAS8200
+** FAS8300
+** FAS8700
+** FAS9000
+** FAS9500
+
+
+|===
 
 
 .步驟
@@ -241,15 +279,13 @@ node_a_1
 所需的地址為*目的地網路位址*欄中所示的DR合作夥伴位址。
 
 +
-命令輸出會因您的平台機型而異。
+命令輸出會因您的平台模式使用共享叢集 / HA 連接埠或共享的 MetroCluster / HA 連接埠而異。
 
 +
 [role="tabbed-block"]
 ====
-.ONTAP 9.15.1 或更新版本中推出的系統
+.使用共享叢集 / HA 連接埠的系統
 --
-ONTAP 9.15.1 或更新版本（ AFF A70 、 AFF A90 和 AFF A1K ）中引進的系統、具有獨立的 HA 和 DR 連接埠、如下列輸出範例所示：
-
 [listing]
 ----
 cluster_B::*> metrocluster configuration-settings connection show
@@ -279,7 +315,7 @@ Group Cluster Node    Network Address Network Address Partner Type Config State
 12 entries were displayed.
 ----
 --
-.所有其他系統
+.使用共享的 MetroCluster / HA 連接埠的系統
 --
 下列輸出顯示AFF 使用端MetroCluster 口e5a和e5b上的ESITE IP介面、搭配使用ESIEA700和FAS9000系統組態的IP位址。介面可能會因平台類型而異。
 
@@ -351,7 +387,7 @@ Group Cluster Node     Network Address Netmask         Gateway         State
 ----
 
 
-. 在每個災難站台節點的載入程式提示下、根據平台模型設定 bootarg 值：
+. 在 `LOADER`每個災難站台節點的提示下，根據您的平台模式是使用共用叢集 / HA 連接埠還是共用的 MetroCluster / HA 連接埠，設定 bootarg 值：
 +
 [NOTE]
 ====
@@ -363,17 +399,15 @@ Group Cluster Node     Network Address Netmask         Gateway         State
 +
 [role="tabbed-block"]
 ====
-.ONTAP 9.15.1 或更新版本中推出的系統
+.使用共享叢集 / HA 連接埠的系統
 --
-在 ONTAP 9.15.1 或更新版本中推出的系統上、 _HA-Partner IP 位址 _ 的值必須設為 * 0* （零）、因為它們有獨立的 DR 和 HA 連接埠。
-
 設定下列 bootarg ：
 
 [listing]
 ----
-setenv bootarg.mcc.port_a_ip_config local-IP-address/local-IP-mask,gateway-IP-address,HA-partner-IP-address,DR-partner-IP-address,DR-aux-partnerIP-address,vlan-id
+setenv bootarg.mcc.port_a_ip_config local-IP-address/local-IP-mask,0,0,DR-partner-IP-address,DR-aux-partnerIP-address,vlan-id
 
-setenv bootarg.mcc.port_b_ip_config local-IP-address/local-IP-mask,gateway-IP-address,HA-partner-IP-address,DR-partner-IP-address,DR-aux-partnerIP-address,vlan-id
+setenv bootarg.mcc.port_b_ip_config local-IP-address/local-IP-mask,0,0,DR-partner-IP-address,DR-aux-partnerIP-address,vlan-id
 ----
 下列命令會針對第一個網路設定使用VLAN 120的node_a_1值、針對第二個網路設定VLAN 130值：
 
@@ -391,14 +425,14 @@ setenv bootarg.mcc.port_a_ip_config 172.17.26.10/23,0,0,172.17.26.13,172.17.26.1
 setenv bootarg.mcc.port_b_ip_config 172.17.27.10/23,0,0,172.17.27.13,172.17.27.12
 ----
 --
-.所有其他系統
+.使用共享的 MetroCluster / HA 連接埠的系統
 --
 設定下列 bootarg ：
 
 ....
-setenv bootarg.mcc.port_a_ip_config local-IP-address/local-IP-mask,gateway-IP-address,HA-partner-IP-address,DR-partner-IP-address,DR-aux-partnerIP-address,vlan-id
+setenv bootarg.mcc.port_a_ip_config local-IP-address/local-IP-mask,0,HA-partner-IP-address,DR-partner-IP-address,DR-aux-partnerIP-address,vlan-id
 
-setenv bootarg.mcc.port_b_ip_config local-IP-address/local-IP-mask,gateway-IP-address,HA-partner-IP-address,DR-partner-IP-address,DR-aux-partnerIP-address,vlan-id
+setenv bootarg.mcc.port_b_ip_config local-IP-address/local-IP-mask,0,HA-partner-IP-address,DR-partner-IP-address,DR-aux-partnerIP-address,vlan-id
 ....
 下列命令會針對第一個網路設定使用VLAN 120的node_a_1值、針對第二個網路設定VLAN 130值：
 

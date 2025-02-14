@@ -28,13 +28,13 @@ summary: 如果您的7-Mode Fabric MetroCluster 支援組態使用Brocade 6510�
 
 * 在四個Brocade 6510交換器上、連接埠24到45必須可用、才能連接新MetroCluster 的支援元件的連接埠。
 * 您應該確認現有的交換器間連結（ISL）位於連接埠46和47上。
-* Brocade 6510交換器必須執行7-Mode Fabric MetroCluster VMware和叢集ONTAP MetroCluster 式VMware組態所支援的FOS韌體版本。
+* Brocade 6510 交換器必須執行 7-Mode Fabric MetroCluster 和 ONTAP MetroCluster 組態都支援的 FOS 韌體版本。
 
 
 .完成後
 在分享架構並完成MetroCluster 支援功能後、您可以從7-Mode Fabric MetroCluster 支援組態轉換資料。
 
-轉換資料之後、您可以移除7-Mode Fabric MetroCluster 資訊纜線、並視需要將叢集ONTAP MetroCluster 式的VMware纜線移至先前用於7-Mode MetroCluster 資訊纜線的編號較低的連接埠。連接埠顯示在「檢閱FC交換器連接埠指派以供四節點MetroCluster 使用」一節中。 您必須調整重新排列連接埠的分區。
+在轉換資料之後，您可以移除 7-Mode Fabric MetroCluster 纜線，並視需要將 ONTAP MetroCluster 纜線移至先前用於 7-Mode MetroCluster 纜線的編號較低的連接埠。這些連接埠如「檢閱四節點 MetroCluster 的 FC 交換器連接埠指派」一節所示。您必須調整重新排列連接埠的分區。
 
 link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）"]
 

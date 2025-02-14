@@ -114,4 +114,4 @@ image::../media/mcc_ip_cabling_fas8300_aff_asa_a800_a900_fas9500_MSN2100.png[顯
 .NVIDIA SN2100 平台連接埠指派（群組 7 ）
 檢閱平台連接埠指派，將 FAS70 ， AFF A70 ， AFF C80 ， FAS90 ， AFF A90 或 AFF A1K 系統連接至 NVIDIA SN2100 交換器：
 
-image::../media/mccip-cabling-fas90-fas70-aff-a70--a90-c80-a1k-nvidia-sn2100.png[顯示 NVIDIA SN2100 平台連接埠指派]
+image::../media/mccip-cabling-fas90-fas70-aff-a70--a90-c80-a1k-nvidia-sn2100-updated.png[顯示 NVIDIA SN2100 平台連接埠指派]

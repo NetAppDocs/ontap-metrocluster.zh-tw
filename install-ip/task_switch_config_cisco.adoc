@@ -84,6 +84,10 @@ to skip the remaining dialogs.
 您可以在下一組提示中輸入基本資訊、包括交換器名稱、管理位址和閘道、然後選取SSH with RSA。
 
 +
+
+NOTE: 此範例顯示設定 RCF 所需的最低資訊，可在套用 RCF 之後設定其他選項。例如，您可以在套用 RCF 之後，設定 SNMPv3 ， NTP 或 SCP/SFTP 。
+
++
 [listing]
 ----
 Would you like to enter the basic configuration dialog (yes/no): yes

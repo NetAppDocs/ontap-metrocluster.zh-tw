@@ -11,7 +11,7 @@ summary: 在叢集ONTAP MetroCluster 式的各個控制器上、FC-VI介面卡�
 
 
 [role="lead"]
-在叢集ONTAP MetroCluster 式的各個控制器上、FC-VI介面卡和HBA必須連接至現有FC交換器上的特定連接埠。
+在 ONTAP MetroCluster 組態中的每個控制器上， FC-VI 介面卡和 HBA 必須連接至現有 FC 交換器上的特定連接埠。
 
 .步驟
 . 按照下表連接FC-VI和HBA連接埠：

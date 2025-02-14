@@ -30,7 +30,7 @@ NOTE: 此程序僅適用於以網路連接MetroCluster 的功能為基礎的功�
 "aggr offline _plex名稱_"
 
 +
-範例顯示執行叢集式OTNAP之控制器的離線叢集化命令。
+範例顯示執行 ONTAP 之控制器的離線 Plex 命令。
 
 +
 [listing]

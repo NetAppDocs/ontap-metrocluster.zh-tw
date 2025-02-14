@@ -78,7 +78,9 @@ NOTE: RCF 檔案版本與用於產生檔案的 RCFfilegenerator 工具版本不�
 image:../media/mcc-ip-cabling-a150-a220-a250-to-a-cisco-3232c-or-cisco-9336c-switch-9161.png["顯示 Cisco 3232C 或 Cisco 9336C 平台連接埠指派"]
 
 .Cisco 3232C 或 Cisco 9336C 平台連接埠指派（第 2 章）
-檢閱平台連接埠指派，將 AFF A20 系統連接至 Cisco 3232C 或 9336C 交換器：image:../media/mcc-ip-cabling-aff-a20-9161.png["顯示 Cisco 3232C 或 Cisco 9336C 平台連接埠指派"]
+檢閱平台連接埠指派，將 AFF A20 系統連接至 Cisco 3232C 或 9336C 交換器：
+
+image:../media/mcc-ip-cabling-aff-a20-9161.png["顯示 Cisco 3232C 或 Cisco 9336C 平台連接埠指派"]
 
 .Cisco 3232C 或 Cisco 9336C 平台連接埠指派（第 3 章）
 檢閱平台連接埠指派、將 AFF A30 、 AFF C30 或 AFF C60 系統連接至 Cisco 3232C 或 9336C 交換器：
@@ -118,4 +120,4 @@ NOTE: 使用「 MetroCluster 4 」群組中的連接埠需要 ONTAP 9.13.1 或�
 .Cisco 3232C 或 Cisco 9336C 平台連接埠指派（第 8 章）
 檢閱平台連接埠指派，將 AFF A70 ， FAS70 ， AFF C80 ， FAS90 ， AFF A90 或 AFF A1K 系統連接至 Cisco 3232C 或 9336C 交換器：
 
-image:../media/mcc-ip-cabling-a90-fas90-c80-fas70-a70-a1k-cisco-3232C-or-9336c-switch.png["顯示 Cisco 3232C 或 Cisco 9336C 平台連接埠指派"]
+image:../media/mcc-ip-cabling-a90-fas90-c80-fas70-a70-a1k-cisco-3232C-or-9336c-switch-updated.png["顯示 Cisco 3232C 或 Cisco 9336C 平台連接埠指派"]
