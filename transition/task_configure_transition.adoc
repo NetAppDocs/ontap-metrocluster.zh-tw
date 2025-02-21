@@ -336,6 +336,10 @@ Group Cluster Node               State          Mirroring Mode
 ....
 . 為MetroCluster 新加入MetroCluster 的「靜態IP」節點設定「靜態IP」介面：
 +
+
+CAUTION: 建立 MetroCluster IP 介面時，請勿使用 169.254.17.x 或 169.254.18-x IP 位址，以免與相同範圍內的系統自動產生介面 IP 位址衝突。
+
++
 「功能組態設定介面create -cluster名稱」MetroCluster
 
 +

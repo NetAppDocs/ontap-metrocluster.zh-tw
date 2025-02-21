@@ -1110,7 +1110,6 @@
   <block id="237e9199acfc2099c6fdb2422149d307" category="cell">*雙節點橋接*</block>
   <block id="6154b5bc195e8c515f02ba57209f1335" category="cell">*雙節點直接附加*</block>
   <block id="e5e45159e2d2510782860c93c2e99b08" category="paragraph">控制器數量</block>
-  <block id="ea90d32d257870c8f91747a3c4a8f0d5" category="paragraph">四或八*</block>
   <block id="7e3e02d13212719c3d8773beef5f7abe" category="paragraph">四或八個</block>
   <block id="aada29daee1d64ed0fe907043855cb7e" category="paragraph">二</block>
   <block id="242a70418ad236145729860e4eb9b40d" category="paragraph">使用FC交換器儲存網路</block>
@@ -1132,13 +1131,9 @@
   <block id="f002a8ca79e81570742f83664f1ef8c0" category="paragraph">是（不搭配ONTAP 使用「資訊媒體」）</block>
   <block id="531b50f22671e8795591ed8a4dc6f932" category="inline-xref">所有SAN陣列</block>
   <block id="fac065b7050351a30490ea7f2e2b6ef4" category="cell">支援 <block ref="695031be3524d896e2d9482b9b2c38c3" category="inline-xref-macro-rx"></block></block>
-  <block id="2dc54bb9a28c3c1cdc37fbc81153563b" category="paragraph">*重要*</block>
-  <block id="c01b9d68c1a553405e5fe6d96621e245" category="paragraph">請注意以下八節點MetroCluster 的「靜態IP組態設定考量事項：</block>
   <block id="b9afd1726285b60db7d467ad0820e411" category="list-text">從支援的範圍ONTAP 從支援的範圍從支援的範圍從支援的範圍從</block>
   <block id="1f6f2e3f30d4f600718cbbaa7e3ab6f1" category="list-text">僅支援經NetApp驗證MetroCluster 的功能性交換器（向NetApp訂購）。</block>
   <block id="defba62f473a0ece29de1061c423edbd" category="list-text">不支援使用IP路由（第3層）後端連線的組態。</block>
-  <block id="9a4e34d604d657bc7d946d4a0a4e96e4" category="list-text">不支援使用共享私有第2層網路的組態。</block>
-  <block id="8fdea79aece0ad1322e81be87031775a" category="list-text">不支援使用Cisco 9336C-FX2共用交換器的組態。</block>
   <block id="392719c196c4e0847676792f7c332ab2" category="section-title">支援MetroCluster 所有的SAN Array系統、採用各種不完整的組態</block>
   <block id="21cdd63bb00e685a661edb2068282e6e" category="paragraph">部分All SAN Array（ASA）在MetroCluster 各種組態中均受到支援。在本文件中、有關不適用的功能的資訊適用於相應的功能表系統。MetroCluster AFF ASA例如AFF 、所有的纜線和其他有關的資訊、也適用於ASA AFF 該系統。</block>
   <block id="14681192c7f80e2d7631c3a070df9619" category="doc">Cisco 3132Q-V交換器的平台連接埠指派</block>
@@ -1678,16 +1673,6 @@
   <block id="70fef59fffa5df67d10b024d11f37399" category="paragraph"><block ref="70fef59fffa5df67d10b024d11f37399" category="inline-link-macro-rx"></block></block>
   <block id="fe8f2bed933b5baccdaadbe566f09126" category="section-title">升級之後</block>
   <block id="ed92588fcdb50fce92fb0e01fb8449b0" category="paragraph">完成調控器和作業系統升級之後、您應該使用「shorage iscsi啟動器show」命令來確認調控器連線正常。</block>
-  <block id="09cb6984bdf1b82c9749906ba1a69331" category="summary">您可以變更MetroCluster 下列的屬性：EIP介面、IP位址和遮罩、以及閘道。您可以使用任何參數組合來更新。</block>
-  <block id="d7fffb0ac95f2fd216c5e3fd04365cca" category="paragraph">例如、如果偵測到重複的IP位址、或是因為路由器組態變更而需要變更第3層網路的閘道、您可能需要更新這些內容。</block>
-  <block id="383d9b07e1ef0cfcfa9ec36fecccfe02" category="paragraph">一次只能變更一個介面。在更新其他介面並重新建立連線之前、該介面會造成流量中斷。</block>
-  <block id="8450a359c3efc774857fe0f3189456e0" category="paragraph">使用「MetroCluster 靜態組態設定介面modify」命令來變更MetroCluster 任何的任何靜態IP介面屬性。</block>
-  <block id="700215bf58e5cc6edce60155aeb7c44a" category="section-title">修改IP位址、網路遮罩和閘道</block>
-  <block id="2747f7ff86cce509295bfb4ba2b1c4fa" category="list-text">更新單一節點和介面的IP位址、網路遮罩和閘道：MetroCluster 「修改組態設定介面」</block>
-  <block id="2f545dcb650b5848061814c5ce3b4cf4" category="paragraph">下列命令顯示如何更新IP位址、網路遮罩和閘道：</block>
-  <block id="c8a08760312508ec804450cb7fad4702" category="list-text">[[step2]]確認所有連線功能都適用於所有介面：MetroCluster 「介紹組態設定介面」</block>
-  <block id="3fc201ecdcbc7e37cc8a9b91bd0c01b3" category="paragraph">下列命令說明如何驗證所有連線功能是否適用於所有介面：</block>
-  <block id="1a8c6f33d0bdd54f26272fc3c497ec01" category="paragraph">下列命令顯示如何驗證所有連線是否正常運作：</block>
   <block id="7a56c93af328a3c1fa4e3fccdc177cb5" category="summary">在非原廠預先設定的靜態IP組態中MetroCluster 、您必須確認控制器和機箱元件的ha-config狀態已設定為mccp、以便正常開機。對於從原廠接收的系統、此值已預先設定、您不需要驗證。</block>
   <block id="6260a0c66ccd92620d9889772b65cffe" category="doc">驗證元件的ha-config狀態</block>
   <block id="3293f2fb312a722f96251c9029636630" category="paragraph">系統必須處於維護模式。</block>
@@ -4301,7 +4286,6 @@
   <block id="d5c7b5758935e090373e3105cfac7ea4" category="list-text">視需要設定監控服務。</block>
   <block id="bef95e9ae70e84ecacc09d17b5b2d101" category="inline-link-macro">內化員的考量</block>
   <block id="7900124947b526ad60ee913634068229" category="paragraph"><block ref="7900124947b526ad60ee913634068229" category="inline-link-macro-rx"></block></block>
-  <block id="353f64efd56caa103dcbf2b9e24c3129" category="paragraph">連結：../install-ip/concept_mediator_requirements.html</block>
   <block id="6a12946cbb81d960abd7b608085f126a" category="inline-link-macro">Tiebreaker軟體安裝與組態</block>
   <block id="e71402603f50c2282d8c7bcc53d63e72" category="paragraph"><block ref="e71402603f50c2282d8c7bcc53d63e72" category="inline-link-macro-rx"></block></block>
   <block id="99e1566c550fe0f9db0d7ecf84e5a3d6" category="list-text">若要恢復自動產生支援案例、請傳送AutoSupport 一個不完整的訊息、表示維護已完成。</block>
@@ -12396,8 +12380,6 @@
   <block id="83401bd8eb751fc79a9ff9e2e69be029" category="paragraph"><block ref="ff41f8886897126f1b4109a0b09cd291" category="inline-link-macro-rx"></block>。</block>
   <block id="09e34111ef8649a5302b1889e0c7d303" category="list-text">JRE 8.</block>
   <block id="b3c0f57dcdb05faa9fbc38832a492a4e" category="admonition">套用組態時會出現一些警告訊息。通常不需要錯誤訊息。不過、如果您使用 SSH 登入、可能會收到下列錯誤：<block ref="f6ffe33fb36eb714adf6f81147c665f6" prefix=" " category="inline-code"></block></block>
-  <block id="907d0a00eecf52dcc4562775faad470a" category="paragraph">從ONTAP 版本號《E59.10.1》開始、您可以變更MetroCluster 下列功能：IP位址和遮罩、以及閘道。您可以使用任何參數組合來更新。</block>
-  <block id="5e1f7c325aa2c4eb9ee527a8279eb798" category="list-text">[[step3]] 確認所有連線均正常運作：</block>
   <block id="cf07fc29a0bf48b43804bd5e97849449" category="summary">如果您使用的是符合 MetroCluster 標準的交換器、您應該瞭解平台特定的網路速度和交換器連接埠模式需求。</block>
   <block id="b6c12395a961cf95058c6e4d4412ac09" category="paragraph">下表為 MetroCluster 相容的交換器提供平台專屬的網路速度和交換器連接埠模式。您應該根據表格設定交換器連接埠模式。</block>
   <block id="8c425f952493015588fb91113b5b2dd8" category="summary">本節包含在所有 MetroCluster IP 組態和網路拓撲上傳輸 MetroCluster 流量的交換器間連結（ ISL ）需求。</block>
@@ -13500,8 +13482,6 @@
   <block id="80dcc4edac2d765045f64b4c38d1d603" category="paragraph"><block ref="8e2d8ef88fdca0c2d84f0bc37a725a61" prefix="" category="inline-code"></block></block>
   <block id="51f368c2c1d8b5478b6282cb7c1d5750" category="paragraph"><block ref="d80e7838e2fc707884fbff7e375981c9" prefix="" category="inline-code"></block></block>
   <block id="4ae2f4a2aef26662b47c70763eb4279d" category="paragraph"><block ref="90a8f7d7f597974a89c88091d170056f" prefix="" category="inline-code"></block></block>
-  <block id="ddf0bc53a0486fe472c9c2802cb8a024" category="inline-link-macro">修改 MetroCluster IP 介面的內容</block>
-  <block id="c2101bcd2959ec896c34ad3ac441e668" category="list-text">根據您的 ONTAP 版本、您可以在初始設定後變更某些 MetroCluster IP 介面內容。如需支援項目的詳細資訊、請參閱 <block ref="b5882dba0d9962f87b1ec9d2a9ef135c" category="inline-link-macro-rx"></block> 。</block>
   <block id="fdc2f9c59b3906cedb6920c830ed095c" category="paragraph">如果支援、您也可以使用命令中的參數、指定大於 100 （介於 101 和 4095 之間）的不同（非預設） VLAN<block ref="6790c40b1680557da1f80536ae186301" prefix=" " category="inline-code"></block><block ref="f2986433c79fe84ff207e72d4ed9fd6f" prefix=" " category="inline-code"></block> 。</block>
   <block id="eb2b66b1668ae6b216f98bedcd551ca7" category="paragraph">下列平台 * 不 * 支援此<block ref="6790c40b1680557da1f80536ae186301" prefix=" " category="inline-code"></block> 參數：</block>
   <block id="b98986071c014fdcc3eb14230209b05d" category="paragraph">所有其他平台都支援此<block ref="6790c40b1680557da1f80536ae186301" prefix=" " category="inline-code"></block> 參數。</block>
@@ -13531,7 +13511,6 @@
   <block id="a7ecf6e9de3b493515ff606fc0532227" category="list-text">下載<block ref="b3f8a8564bd91efeacbc3b6197426c6e" category="inline-link-rx"></block></block>
   <block id="b0e1fb1b9093a23db84f9fe9ec414a05" category="paragraph">您必須在 MetroCluster IP 組態中產生 RCF 檔案並將其安裝至每台交換器。</block>
   <block id="5f6300d6cef757d6670c2170d0ee50fb" category="list-text">為 MetroCluster IP 產生 Cisco RCF 檔案。</block>
-  <block id="f0af72ee7b95606742238881f6d3d746" category="list-text">使用<block ref="0dea99cd92a8ce54e8bf65bd553a3e89" prefix=" " category="inline-code"></block>、<block ref="05f7f2ea3536c78a494ee9ec91b6fef9" prefix=" " category="inline-code"></block>和<block ref="1fb1e9c05efc96eb745333b035ce6d59" prefix=" " category="inline-code"></block> 命令來驗證所有的連線功能是否都能在所有介面中運作。</block>
   <block id="164748ab1cab79cb53ebb8d067fb41df" category="paragraph"><block ref="3b73cc9aa0167fa80aa8a786a4871e88" prefix="" category="inline-code"></block></block>
   <block id="8c8de216c09126479bba8f0a636ceac7" category="paragraph"><block ref="34b1158d44c89ca8031563bdf424ba84" prefix="" category="inline-code"></block></block>
   <block id="711aa9967b438e020ee72c9773739e5d" category="paragraph"><block ref="c7462aa9b4e3acfeadac46864ab81636" prefix="" category="inline-code"></block></block>
@@ -13584,7 +13563,6 @@
   <block id="ed8c1f612253f0c38c2a68c1be34ff71" category="inline-xref">子步驟 b</block>
   <block id="27efb084ea8cfb0b1acbce0b33637bf2" category="cell"><block ref="310c42a30486c061e617f12669b1cb31" category="inline-xref-macro-rx"></block></block>
   <block id="667c8b04e1c765d2ac10d6029d6c4a67" category="cell">使用不同的主連接埠</block>
-  <block id="97508d4e4a3b7631b6c05c3f42e9f3c7" category="cell"><block ref="177a8a15f5f4315b71d3ece7c721a178" category="inline-xref-macro-rx"></block></block>
   <block id="d19c71c5a36e79bee005548e97a3430a" category="list-text">[[controller 手冊升級準備網路連接埠 _2b]] 修改叢集間的生命體以使用不同的主連接埠：</block>
   <block id="ecc099ad90b879286453572c6448dca3" category="paragraph"><block ref="7d49fda2e15c7e56a195e4a13068da53" prefix="" category="inline-code"></block></block>
   <block id="67feed2eb0a24db24a92109ddf08b1d3" category="list-text">確認所有叢集間的生命體位於新的主連接埠上：</block>
@@ -13594,7 +13572,6 @@
   <block id="39b8c0f5fb5a1532d766cc2a0500ae92" category="paragraph">針對不在主連接埠上的每個叢集間 LIF 重複此命令。</block>
   <block id="270f1324a7b7f1a7e5f85816e9ee67a1" category="list-text">[[controller 手冊升級準備網路連接埠 _3] 將舊控制器上所有資料生命體的主連接埠指派給舊控制器模組和新控制器模組上相同的通用連接埠。</block>
   <block id="fc655e61a175b85fccd1c37c00f3ccaa" category="cell"><block ref="ea90f75ed68d4ddf4266e92157cc0fae" category="inline-xref-macro-rx"></block></block>
-  <block id="b0b6d9c342452ad19a9b24e1caf2ff35" category="cell"><block ref="e7896f2437c8c50a74bfea383fc26eb3" category="inline-xref-macro-rx"></block></block>
   <block id="3872acc735c86484cf5289e6f36d9d09" category="list-text">[[controller 取代升級 _prepy_network_ports_2b]] 修改叢集間的生命體以使用不同的主連接埠：</block>
   <block id="bd14e125f8f9035fe1f7a46be559035d" category="list-text">[[controller 取代升級 _prepy_network_ports_3]] 將舊控制器上所有資料生命體的主連接埠指派給舊控制器模組和新控制器模組上相同的通用連接埠。</block>
   <block id="bf8ab32fb11672e6514cae71dc5fafe7" category="paragraph">從 ONTAP 9.6 開始、支援交換器的 MetroCluster IP 組態可以共用現有的交換器間連結（ ISL ）網路、而非使用專用的 MetroCluster ISL 。此拓撲稱為 _ 共享第 2 層網路 _ 。</block>
@@ -13883,13 +13860,7 @@
   <block id="95232b2668851dd7e6d065abeee1ed20" category="inline-link-macro">使用系統管理員執行切換和切換（僅限 MetroCluster IP 組態）</block>
   <block id="94728a8f449ff84b5ac878653ab4ad67" category="paragraph">執行中的步驟<block ref="5b3a204b8bc535419d3d88f0ef6f3046" category="inline-link-macro-rx"></block>。</block>
   <block id="a4d7653998b91da503a24fc71e65ad4f" category="list-text">確認已啟用自動切換功能：</block>
-  <block id="b03614d885f56be6dafeebbbaa010a5f" category="paragraph">您所遵循的程序取決於您是使用 ONTAP 系統管理員還是使用 CLI 。</block>
-  <block id="26ed02718973e705cd69ee6e109400e0" category="open-title">系統管理員</block>
-  <block id="a8f22e0a130b300278ead25d693a43d5" category="paragraph">使用 System Manager 修改 IP 位址、網路遮罩和閘道內容。</block>
-  <block id="7cdf282c18fa11c6df4d9d55af90d450" category="paragraph">更新每個節點和介面的 IP 位址、網路遮罩和閘道。</block>
   <block id="91af5705f16502125e8b2187e64202c0" category="open-title">CLI</block>
-  <block id="f9a65892b48ad466104ac3eb33403881" category="paragraph">使用 CLI 修改 IP 位址、網路遮罩和閘道內容。</block>
-  <block id="0efcd0c9061820674001fdd91f087bf1" category="admonition">這些命令會變更特定連接埠之特定節點的組態。若要還原完整的網路連線能力、其他連接埠也需要類似的命令。同樣地、網路交換器也需要更新其組態。例如、如果閘道已更新、則理想情況下會在HA配對的兩個節點上變更閘道、因為它們相同。連接到這些節點的交換器也需要更新其閘道。</block>
   <block id="1e7bea8d62062fd522d5f5c2523a3c72" category="summary">瞭解如何驗證 MetroCluster 元件是否正常運作。</block>
   <block id="f505230c63d40beb8fbcb47fba267ed7" category="list-text">在 MetroCluster IP 和 FC 組態中、您可以使用 CLI 執行健全狀況檢查命令、並驗證 MetroCluster 元件的狀態。</block>
   <block id="8b0de0e20dd0b02520681f56e79ebae0" category="list-text">在執行 ONTAP 9 8 或更新版本的 MetroCluster IP 組態中、您也可以使用 ONTAP 系統管理員來監控和疑難排解健全狀況檢查警示。</block>
@@ -13927,12 +13898,6 @@
   <block id="7ee58ef1472684aca1fe0fe874b6d592" category="paragraph">在某些情況下、當 MetroCluster 叢集當機或叢集之間的連線中斷時、 ONTAP 會自動啟動切換、以便仍在執行的叢集能夠處理當機叢集的資料處理責任。</block>
   <block id="97ea4ec8c53cbd7aa2f77e41af35214d" category="paragraph">在其他情況下、當 ONTAP 無法判斷其中一個叢集的狀態時、正在工作的站台系統管理員會起始轉換、以控制另一個站台的資料處理責任。</block>
   <block id="b04fc1c1a947340b6295bca4e15296fa" category="paragraph">對於任何類型的切換程序、資料服務功能都會使用_switchback程序傳回叢集。</block>
-  <block id="3a6a5031743305019642718d6b386a76" category="paragraph">您可以針對ONTAP 下列項目執行不同的切換和切換程序：</block>
-  <block id="e6930e280c751418022003bf9fa97d63" category="inline-xref">使用《系統管理程式ONTAP 》（in S還原9.7）進行切換和切換</block>
-  <block id="fbb89290a9f0639df9fd99dd91afccee" category="list-text"><block ref="256c277ba57abb095e4dc34a115bfd87" category="inline-xref-macro-rx"></block></block>
-  <block id="90984242656b59b4ec4bc8b2dc652b47" category="inline-xref">使用《系統管理程式ONTAP 》（in S還原9.8）進行切換和切換</block>
-  <block id="7bf20936df7319e027dcb25cf3be240e" category="list-text"><block ref="b26721d6058aa62e04e032c9956f0274" category="inline-xref-macro-rx"></block></block>
-  <block id="84e994bcb8ec0880899d43da827eb4f8" category="list-text">登入 ONTAP 9 7 中的系統管理員。</block>
   <block id="ef676a956a1111a97c4b6d5a5313ec0c" category="list-text">按一下*（返回傳統版本）*。</block>
   <block id="c6b17260f6c04748cb3b263e07841d9c" category="list-text">按一下*「組態」&gt; MetroCluster 「更新*」。</block>
   <block id="9512c15d06f8ebc094a9ff5468e46042" category="paragraph">System Manager會驗證是否有可能進行協調式切換。</block>
@@ -13944,24 +13909,19 @@
   <block id="47cb9ca4992d157c03e7725803af8e2a" category="list-text">如果驗證失敗、且站台 B 關閉、則很可能是連線問題。驗證站點 B 是否已關閉，然後執行中的步驟<block ref="fb6c16196bc2d21511884d5617718b51" category="inline-link-macro-rx"></block>。</block>
   <block id="f40d6676f14af4f7006dc55f7866a8cc" category="list-text">按一下*從站台B切換至站台A*以啟動切換程序。</block>
   <block id="3fa63b2ebfe34a52015afed9c4be0676" category="list-text">按一下*「切換至新體驗」*。</block>
-  <block id="a0bbb21498df4682785de3ad118d2112" category="section-title">執行計畫性切換（ONTAP S498）</block>
-  <block id="7032cb0fb8b2c734e0b3330b170287a8" category="list-text">登入ONTAP System Manager、請使用NetApp功能表9.8。</block>
   <block id="d86b98757fa72a3091b65699a17b3724" category="list-text">選擇*儀表板*。在* MetroCluster 《*》（*《*》）區段中、兩個叢集會以連線方式顯示。</block>
   <block id="b7833a52299d966f41b82417259c5239" category="inline-image-macro">烤串圖示</block>
   <block id="6b466076a02d34c371b188caa9b5a5ea" category="list-text">在本機叢集（如左側所示）中、按一下 <block ref="2f6e127087f9ef4b927e204474c5d0b2" category="inline-image-macro-rx" type="image"></block>、然後選取 * 切換遠端資料服務到本機站台 * 。</block>
   <block id="aa0bfd6a3a3db9e5b0409213f48708d9" category="paragraph">在驗證轉換要求之後、控制權會從遠端站台傳輸到本機站台。本機站台會為兩個叢集執行資料服務要求。</block>
   <block id="3c8328130d9ea4793e2bc9f3551b90e0" category="paragraph">遠端叢集會重新開機、但儲存元件並未作用、而且叢集不會處理資料要求。現在可用於計畫性維護。</block>
   <block id="6f83354e8ce958bae1f9ffca3c39c278" category="admonition">在您執行切換回復之前、不應使用遠端叢集進行資料服務。</block>
-  <block id="defaf88320e88f259a284fdbcd5986c2" category="section-title">執行非計畫性切換（ONTAP S498）</block>
   <block id="ef7ccb5f4ce99dc2e349e8c6c47a3d17" category="paragraph">非計畫性的切換功能可能會由ONTAP 功能更新自動啟動。如果ONTAP 無法判斷是否需要切換、MetroCluster 則仍在執行的該站台的系統管理員會以下列步驟啟動切換：</block>
   <block id="612770839809215b203a58fa260be49e" category="list-text">選擇*儀表板*。</block>
   <block id="940768454917470cad252dfa341a9bae" category="paragraph">在 * MetroCluster * 區段中、兩個叢集之間的連線會顯示在其中、並顯示「 X 」。這表示無法偵測到連線、而且連線或叢集已關閉。</block>
   <block id="0b85c3b32c8fd95dfef8906dc740c0b2" category="paragraph">如果切換失敗並出現錯誤、請按一下錯誤訊息中的「View details」（檢視詳細資料）連結、然後確認非計畫性的切換。</block>
   <block id="b2a8c150e46a4d6da48aa21c7035a5ec" category="paragraph">叢集必須先修復、才能重新上線。</block>
   <block id="dacd599c11508c590c3afe8309bc777e" category="admonition">遠端叢集上線後、在您執行切換之前、不應將它用於資料服務。</block>
-  <block id="b7066bce35bcdc9bde30393cfe83bbdd" category="section-title">執行切換（ONTAP 還原9.8）</block>
   <block id="83d20468f433e569baf2f41de2670745" category="paragraph">如果遠端叢集因規劃的維護或災難而關閉、則現在應該已啟動並執行、並等待切換。</block>
-  <block id="a91ed0fc67b86b9a97667032dc887550" category="list-text">在本機叢集上、登入ONTAP 《System Manager》（系統管理程式）、請使用《》（功能表）。</block>
   <block id="e722eda52729a565e292380da3b9cd9e" category="paragraph">在* MetroCluster 《*》（*《*》）區段中、會顯示這兩個叢集。</block>
   <block id="3964a12029e4869f90c22d4b7b86e4d7" category="list-text">在本機叢集（如左側所示）中、按一下 <block ref="2f6e127087f9ef4b927e204474c5d0b2" category="inline-image-macro-rx" type="image"></block>、然後選取 * 取回 control* 。</block>
   <block id="9650db837519c6f15dca6f446f677c65" category="paragraph">資料會先 _ 修復 _ 、以驗證兩個叢集之間的資料是否同步並鏡射。</block>
@@ -14131,7 +14091,6 @@
   <block id="5dfed22feb54647dbd9e9ae827290f6b" category="paragraph"><block ref="67611e9f528c6078257c414670af6b52" prefix="" category="inline-code"></block></block>
   <block id="1225fe0de146a130add7eeefae9e0925" category="list-text">確認災難叢集上的同步來源 SVM 已啟動並執行：</block>
   <block id="ad29c49a8377862a59f9aae0ab4431cd" category="paragraph">確認 LIF 放置正確。然後移除舊控制器上的 VLAN 和介面群組，並實際解除安裝控制器。</block>
-  <block id="253982549e381b6f58f66b3e289a0a83" category="admonition">如果新舊控制器沒有通用連接埠，您就不需要修改資料生命期。跳過此步驟並直接前往<block ref="45cc57eb3654a2ae89efabc6fb9d271a" category="inline-xref-macro-rx"></block>。</block>
   <block id="ae359c5763df3f6130f697d17d090551" category="admonition">在執行切換之前，您必須確認新節點上的資料生命負載位置正確。當您切換組態時， ONTAP 會嘗試恢復由生命所使用的主連接埠上的流量。當主連接埠連線至交換器連接埠和 VLAN 不正確時，可能會發生 I/O 故障。</block>
   <block id="1c780702501fd89538731057505e0a04" category="list-text">在切換之前，請先確認已在適當的節點和連接埠上裝載了生命負載。</block>
   <block id="bc12d3bc2a2c1526b655930b56efc183" category="list-text">顯示生命，並確認每個資料 LIF 使用正確的主連接埠：</block>
@@ -14139,7 +14098,6 @@
   <block id="823bc5ae6e724dd8994efcc4dbeb49d2" category="paragraph">如果命令傳回錯誤，您可以覆寫連接埠組態：</block>
   <block id="ec14487a214982a1ea6572636724761f" category="paragraph"><block ref="afdc229346561af3e5aba3a6d67eea09" prefix="" category="inline-code"></block></block>
   <block id="c9ba655979127851f6a6f01489815e47" category="list-text">確認所有資料生命現在都位於正確的主連接埠：</block>
-  <block id="ef1038ce81a2c9d70181057dd381a59a" category="admonition">如果新舊控制器沒有通用連接埠，您就不需要修改資料生命期。跳過此步驟並直接前往<block ref="186451ebe57c46550834233237ebac90" category="inline-xref-macro-rx"></block>。</block>
   <block id="3432abc562d1049e115fc0bcb6f569ab" category="list-text">[[newization_assisted_without _matching_ports ] 修改廣播網域，移除需要刪除的 VLAN 和實體連接埠：</block>
   <block id="07bfa9093a8ef293dfd6099e38fde255" category="list-text">確認 MetroCluster 設定正確。檢查節點狀態：</block>
   <block id="d64694bac02c7b4eea890e175a53a0c7" category="paragraph">在您繼續執行自動切換作業之前，請先確認已在適當的節點上裝載了生命。</block>
@@ -14446,7 +14404,6 @@
   <block id="cd171858353ac5afefcde1a10ecc4d2b" category="paragraph">有關新節點上的端口分配和分配，請參閱<block ref="e8018b6e740a667345f4bcc94e4023fc" category="inline-link-rx"></block>。</block>
   <block id="609705d960d3eb8865688141bee64514" category="list-text">回復不在其主連接埠上的任何生命：</block>
   <block id="2c33fd0cf23bb7e3394bbefc985bb336" category="paragraph">針對主連接埠上的每個叢集間 LIF 重複此命令。</block>
-  <block id="5d017d18dffe9ea2002cf58c5028e761" category="paragraph">包括 SAN 和 NAS 在內的所有資料生命都是管理上線和作業下線，因為這些資料在切入站台（叢集 A ）上線。</block>
   <block id="6f4692f84dcb13549704950c86285bed" category="paragraph">如需平台機型的連接埠使用情形，請參閱<block ref="5e0886f1b46d76ea4adb1e1719b4ddb5" category="inline-link-rx"></block></block>
   <block id="404849d025b51f7a9b000948be830642" category="list-text">[[shiping_manual_without _matching_ports ]] 修改廣播網域以移除需要刪除的 VLAN 和實體連接埠：</block>
   <block id="b5232e117010c63512e6646cdcc5b782" category="list-text">停止節點進入<block ref="82b8350d28f0a14e36de1958b3be9205" prefix=" " category="inline-code"></block>提示：</block>
@@ -14648,4 +14605,33 @@
   <block id="f6c5a69060b62d046efbd190570cf383" category="admonition">此範例顯示設定 RCF 所需的最低資訊，可在套用 RCF 之後設定其他選項。例如，您可以在套用 RCF 之後，設定 SNMPv3 ， NTP 或 SCP/SFTP 。</block>
   <block id="6ca034f6a518722187e6a10bfc2df9e6" category="admonition">在開啟控制器電源之前，請勿開啟機櫃電源。這可防止控制器意外開機進入 ONTAP 。</block>
   <block id="604b473cd250fb4d83bbbab434f091fb" category="paragraph">範例顯示執行 ONTAP 之控制器的離線 Plex 命令。</block>
+  <block id="936bfa47a2c0392f1aef9da55dad3561" category="paragraph">四個或八個 ^1^</block>
+  <block id="28f44037af103f0c930309365629f8ef" category="paragraph">*附註*</block>
+  <block id="a4bfae8e34cf1d1bbf19c5b03ef542b9" category="list-text">請檢閱下列八節點 MetroCluster IP 組態的考量事項：</block>
+  <block id="b00f9fea7b2da4a95f4ab93fed2362de" category="admonition">建立 MetroCluster IP 介面時，請勿使用 169.254.17.x 或 169.254.18-x IP 位址，以免與相同範圍內的系統自動產生介面 IP 位址衝突。</block>
+  <block id="bd9583bc7d13557a4fd4255bd92c14c6" category="paragraph">您遵循的切換和切換程序取決於您的 ONTAP 版本：</block>
+  <block id="701536f308a46b56b600117d2f954760" category="inline-xref">在 ONTAP 9.6 或 9.7 中使用系統管理程式進行切換和切換</block>
+  <block id="c5ae21487220da0e90bc5df3979248c6" category="list-text"><block ref="40e2b7a5ccaae357ec2a83e7dbfc7121" category="inline-xref-macro-rx"></block></block>
+  <block id="a5d16be6688eb5e01f6f153d46483384" category="inline-xref">使用 ONTAP 9.8 或更新版本中的系統管理員進行切換和切換</block>
+  <block id="96d0b994840dcc9602e98d75b1d7dc37" category="list-text"><block ref="d169c24aedb9d9132bec54ece222a51c" category="inline-xref-macro-rx"></block></block>
+  <block id="6aafb5589dbe30793ebafd1bf5623b9f" category="list-text">登入 ONTAP 9.6 或 9.7 中的系統管理員。</block>
+  <block id="988579e6530038a6bc87a8dffa9be811" category="section-title">執行計畫性的重新操作（ ONTAP 9.8 或更新版本）</block>
+  <block id="33fef937840ce57f6a4070e352228fd4" category="list-text">登入 ONTAP 9.8 或更新版本中的系統管理員。</block>
+  <block id="70de6eed617bf2598c428ab602bacd20" category="section-title">執行非計畫性的重新操作（ ONTAP 9.8 或更新版本）</block>
+  <block id="2441e03051d41aa2f6f9d9e39c577a3e" category="section-title">執行切換（ ONTAP 9.8 或更新版本）</block>
+  <block id="2a6e3f78c9b73af2855a7bc5191bf5b1" category="list-text">在本機叢集上，登入 ONTAP 9.8 或更新版本中的系統管理員。</block>
+  <block id="22049fef22b0ddad50caf9ded819a4f1" category="paragraph"><block ref="22049fef22b0ddad50caf9ded819a4f1" category="inline-link-macro-rx"></block></block>
+  <block id="a6a86c7d4711a3d450ec4121102de402" category="list-text">如果您要升級的系統不在下表中，請確認 MetroCluster IP 介面使用支援的 IP 位址。</block>
+  <block id="8210c1e569b4a7f0d685a838881f7f66" category="cell">AFF 和 ASA 系統</block>
+  <block id="d5d4923aa83e46af2152de920946ba41" category="cell">系統FAS</block>
+  <block id="fa8ce860967d0ec751385e3e150d223a" category="list-text">驗證舊控制器上 MetroCluster 介面的 IP 位址：</block>
+  <block id="09542928ac9f09905359ce0cdc32a079" category="inline-link-macro">知識庫文件「如何修改 MetroCluster IP 介面的內容」</block>
+  <block id="f80e9f0a9fba665f77ab307a250b7fd3" category="list-text">如果 MetroCluster 介面使用的是 169.254.17.x 或 169.254.18-x IP 位址，請參閱<block ref="d1c038803b45479df32bbfd628b2e8b5" category="inline-link-macro-rx"></block>以修改介面 IP 位址，然後再繼續升級。</block>
+  <block id="400bb3d32423e6384fb4cfe6867b0ccc" category="admonition">如果 MetroCluster 介面設定為 169.254.17.x 或 169.254.18.x IP 位址，則不支援升級至表格中未列出的任何系統。</block>
+  <block id="e7997597817a3facf42bc030e3a35309" category="cell"><block ref="92a96fa95be44bd76fa573ac0e371c6f" category="inline-xref-macro-rx"></block></block>
+  <block id="6165ea79c58238b8f7f4d2edcab21f29" category="admonition">如果新舊控制器沒有通用連接埠，您就不需要修改資料生命期。跳過此步驟並直接前往<block ref="19d16029d22befc9cf5c2bffaac61331" category="inline-xref-macro-rx"></block>。</block>
+  <block id="abcdb4b4b1872daf29ecc9031115f937" category="paragraph">包括 SAN 和 NAS 在內的所有資料生命都是管理上線和作業下線，因為這些資料在切入站台（叢集 A ）上線。</block>
+  <block id="6750be268fde99a8fc70da3cae96763b" category="cell"><block ref="dc13cd459e510658615266395ba927b0" category="inline-xref-macro-rx"></block></block>
+  <block id="3485285ca38e1ca4c0a680f9bcf47989" category="admonition">如果新舊控制器沒有通用連接埠，您就不需要修改資料生命期。跳過此步驟並直接前往<block ref="d2fd743661c244ff041df8d51a55b2b7" category="inline-xref-macro-rx"></block>。</block>
+  <block id="57e1aa86ef1214c6b5a618674a806136" category="paragraph">SAN 和 NAS 等所有資料生命都是管理的「 up 」（開機），而且在作業上是「 down 」（自動開機），因為這些資料是在切入站台（ cluster_A ）上執行。</block>
 </blocks>

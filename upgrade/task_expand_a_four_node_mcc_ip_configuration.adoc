@@ -104,7 +104,7 @@ Dr_group_2-new
 .支援的 AFF 和 FAS MetroCluster IP 擴充組合
 下表顯示在 MetroCluster IP 組態中擴充 AFF 或 FAS 系統所支援的平台組合：
 
-image::../media/mccip_expand_ip_8node_9161.png[8 個節點組態的平台組合]
+image::../media/mccip_expand_ip_8node_9161-updated.png[8 個節點組態的平台組合]
 
 * * 附註 1* ：這些組合需要 ONTAP 9.9.1 或更新版本（或平台支援的最低 ONTAP 版本）。
 * * 附註 2 * ：這些組合需要 ONTAP 9.13.1 或更新版本（或平台支援的最低 ONTAP 版本）。
@@ -208,7 +208,6 @@ image::../media/8node_comb_ip_asa.png[8 個節點組態的平台組合]
 
 * 當您從四節點擴充至八節點 MetroCluster 組態時、兩個 DR 群組都會使用相同的 VLAN 。
 * 如果兩個 DR 群組都無法使用相同的 VLAN 進行設定、您必須升級不支援參數的 DR 群組 `vlan-id` 、才能使用其他 DR 群組所支援的 VLAN 。
-* 根據您的 ONTAP 版本、您可以在初始設定後變更某些 MetroCluster IP 介面內容。如需支援項目的詳細資訊、請參閱 link:../maintain/task-modify-ip-netmask-properties.html["修改 MetroCluster IP 介面的內容"] 。
 
 
 
@@ -693,6 +692,7 @@ cluster_A::>
 +
 [NOTE]
 ====
+** 建立 MetroCluster IP 介面時，請勿使用 169.254.17.x 或 169.254.18-x IP 位址，以免與相同範圍內的系統自動產生介面 IP 位址衝突。
 ** 如果支援、您可以使用命令中的參數、指定大於 100 （介於 101 和 4095 之間）的不同（非預設） VLAN `-vlan-id` `metrocluster configuration-settings interface create` 。如需支援的平台資訊、請參閱 <<新增 DR 群組時 VLAN 的考量事項>> 。
 ** 您可以從MetroCluster 任一叢集設定靜態IP介面。
 

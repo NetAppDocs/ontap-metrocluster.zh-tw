@@ -29,6 +29,10 @@ summary: 新增節點之後、您必須完成轉換步驟、並設定MetroCluste
 
 . 建立MetroCluster 支援IP介面（node_a_1-ip、node_a_2-ip、node_b_1-ip、node_b_2-ip）-每個控制器需要建立兩個介面、總共需要八個介面：
 +
+
+CAUTION: 建立 MetroCluster IP 介面時，請勿使用 169.254.17.x 或 169.254.18-x IP 位址，以免與相同範圍內的系統自動產生介面 IP 位址衝突。
+
++
 `metrocluster configuration-settings interface create -cluster-name <cluster_name> -home-node <controller_name> -home-port <port_name> -address <ip_address> -netmask <netmask_address> -vlan-id <vlan_id>`
 
 +

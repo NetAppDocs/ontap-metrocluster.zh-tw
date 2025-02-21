@@ -717,7 +717,6 @@ NOTE: 建立 MetroCluster IP 介面之後、 MetroCluster IP 和連接的交換�
 
 .關於這項工作
 * 您必須為每個節點建立兩個介面。這些介面必須與MetroCluster 在RESRCF檔案中定義的VLAN相關聯。
-* 根據您的 ONTAP 版本、您可以在初始設定後變更某些 MetroCluster IP 介面內容。如需支援項目的詳細資訊、請參閱 link:../maintain/task-modify-ip-netmask-properties.html["修改 MetroCluster IP 介面的內容"] 。
 * 您必須在MetroCluster 同一個VLAN中建立所有的SID IP介面「A」連接埠、並在MetroCluster 另一個VLAN中建立所有的SID IP介面「B」連接埠。請參閱 link:concept_considerations_mcip.html["關於靜態IP組態的考量MetroCluster"]。
 * 從ONTAP 《支援範圍》9.9.1開始、如果您使用的是第3層組態、則在建立MetroCluster 支援範圍介面時、也必須指定「閘道」參數。請參閱 link:../install-ip/concept_considerations_layer_3.html["第3層廣域網路的考量"]。
 +
@@ -921,6 +920,10 @@ cluster_B
 . 在node_a_1上建立介面。
 +
 .. 在「node_a_1」的連接埠「e5a」上設定介面：
++
+
+CAUTION: 建立 MetroCluster IP 介面時，請勿使用 169.254.17.x 或 169.254.18-x IP 位址，以免與相同範圍內的系統自動產生介面 IP 位址衝突。
+
 +
 `metrocluster configuration-settings interface create -cluster-name <cluster_name> -home-node <node_name> -home-port e5a -address <ip_address> -netmask <netmask>`
 

@@ -28,6 +28,51 @@ summary: 收集資訊並恢復作業後，自動化作業會繼續進行。
 +
 Boot_ONTAP
 
+. 如果您要升級的系統不在下表中，請確認 MetroCluster IP 介面使用支援的 IP 位址。
++
+|===
+
+
+| AFF 和 ASA 系統 | 系統FAS 
+
+
+ a| 
+** AFF A150 、 ASA A150
+** VA220 AFF
+** AFF C250 、 ASA C250
+** AFF A250 、 ASA A250
+** 部分A300 AFF
+** 解答320 AFF
+** AFF C400 、 ASA C400
+** AFF A400 、 ASA A400
+** 部分A700 AFF
+** AFF C800 、 ASA C800
+** AFF A800 、 ASA A800
+** AFF A900 、 ASA A900
+
+ a| 
+** FAS2750
+** FAS500f
+** FAS8200
+** FAS8300
+** FAS8700
+** FAS9000
+** FAS9500
+
+
+|===
++
+.. 驗證舊控制器上 MetroCluster 介面的 IP 位址：
++
+「顯示組態設定介面」MetroCluster
+
+.. 如果 MetroCluster 介面使用的是 169.254.17.x 或 169.254.18-x IP 位址，請參閱link:https://kb.netapp.com/on-prem/ontap/mc/MC-KBs/How_to_modify_the_properties_of_a_MetroCluster_IP_interface["知識庫文件「如何修改 MetroCluster IP 介面的內容」"^]以修改介面 IP 位址，然後再繼續升級。
++
+
+CAUTION: 如果 MetroCluster 介面設定為 169.254.17.x 或 169.254.18.x IP 位址，則不支援升級至表格中未列出的任何系統。
+
+
+
 . 修改舊控制器上的叢集間生命體、以使用不同於新控制器上用於 HA 互連或 MetroCluster IP DR 互連的連接埠。
 +
 
@@ -56,7 +101,7 @@ NOTE: 成功升級需要此步驟。
 | 使用相同的主連接埠 | <<controller_replace_upgrade_prepare_network_ports_2b,子步驟 b>> 
 
 
-| 使用不同的主連接埠 | <<controller_replace_upgrade_prepare_network_ports_3,步驟3.>> 
+| 使用不同的主連接埠 | <<controller_replace_upgrade_prepare_network_ports_3,步驟4.>> 
 |===
 .. [[controller 取代升級 _prepy_network_ports_2b]] 修改叢集間的生命體以使用不同的主連接埠：
 +
@@ -81,7 +126,7 @@ NOTE: 成功升級需要此步驟。
 . [[controller 取代升級 _prepy_network_ports_3]] 將舊控制器上所有資料生命體的主連接埠指派給舊控制器模組和新控制器模組上相同的通用連接埠。
 +
 
-CAUTION: 如果新舊控制器沒有通用連接埠，您就不需要修改資料生命期。跳過此步驟並直接前往<<upgrades_assisted_without_matching_ports,步驟4.>>。
+CAUTION: 如果新舊控制器沒有通用連接埠，您就不需要修改資料生命期。跳過此步驟並直接前往<<upgrades_assisted_without_matching_ports,步驟5.>>。
 
 +
 .. 顯示生命：
@@ -89,7 +134,7 @@ CAUTION: 如果新舊控制器沒有通用連接埠，您就不需要修改資�
 「網路介面展示」
 
 +
-SAN和NAS等所有資料生命量都是管理員「up」（啟動）和作業「down」（保留）、因為這些資料都是在切換站台（叢集_A）上啟動。
+SAN 和 NAS 等所有資料生命都是管理的「 up 」（開機），而且在作業上是「 down 」（自動開機），因為這些資料是在切入站台（ cluster_A ）上執行。
 
 .. 檢閱輸出、找出舊控制器和新控制器上相同的通用實體網路連接埠、而這些控制器並未用作叢集連接埠。
 +
