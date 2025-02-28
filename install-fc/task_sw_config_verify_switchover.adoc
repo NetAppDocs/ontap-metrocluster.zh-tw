@@ -3117,7 +3117,7 @@ Priv Protocol [DES(1)/noPriv(2)/AES128(3)/AES256(4)]): (2..2) [3]
 在架構附加MetroCluster 的非結構性組態中、您必須執行一些額外的組態步驟來監控FC交換器。
 
 
-NOTE: 從ONTAP 功能組別9.8開始、將「儲存切換」命令換成「系統切換」。以下步驟顯示了「shorage switch'」命令、但ONTAP 如果您執行的是更新版本的資訊、最好使用「系統切換」命令。
+NOTE: 從 ONTAP 9.8 開始， `storage switch`命令將替換爲 `system switch fibre-channel`。下列步驟顯示 `storage switch`命令，但如果您執行的是 ONTAP 9.8 或更新版本，則建議使用該 `system switch fibre-channel`命令。
 
 .步驟
 . 將IP位址的交換器新增至每MetroCluster 個節點：

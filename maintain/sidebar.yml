@@ -77,11 +77,7 @@ entries:
       - title: 熱新增一堆SAS磁碟櫃、並將橋接器連接MetroCluster 至一套系統
         url: "/maintain/task_fb_hot_add_stack_of_shelves_and_bridges.html"
       - title: 熱新增SAS磁碟櫃至SAS磁碟櫃堆疊
-        entries:
-        - title: 準備熱新增SAS磁碟櫃
-          url: "/maintain/task_fb_hot_add_shelf_prepare_7500n.html"
-        - title: 熱新增磁碟櫃
-          url: "/maintain/task_fb_hot_add_a_disk_shelf_install_7500n.html"
+        url: "/maintain/task_fb_hot_add_a_disk_shelf_install_7500n.html"
       - title: 熱新增IOM12磁碟櫃至IOM6磁碟櫃堆疊、採用連接橋MetroCluster 接的功能
         url: "/maintain/task_hot_add_an_iom12_disk_shelf_to_a_stack_of_iom6_disk_shelves.html"
   - title: 將儲存設備熱移除MetroCluster 至不受需求的FC組態

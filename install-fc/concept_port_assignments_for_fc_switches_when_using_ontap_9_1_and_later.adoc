@@ -4311,7 +4311,7 @@ FC1
 
 
 
-== Cisco連接埠使用功能可在MetroCluster 執行ONTAP 版本號為9.1或更新版本的8節點組態中使用ISL
+== 在執行 ONTAP 9.1 或更新版本的八節點 MetroCluster 組態中， ISL 的 Cisco 連接埠使用量
 
 下表顯示ISL連接埠使用量。在組態中的所有交換器上、ISL連接埠使用量都相同。
 

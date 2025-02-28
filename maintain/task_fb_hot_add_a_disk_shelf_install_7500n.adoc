@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, hot, add, disk, shelf 
 summary: 您可以在不降低效能的情況下、隨時熱新增磁碟櫃來增加儲存容量。 
 ---
-= 熱新增磁碟櫃
+= 熱新增SAS磁碟櫃至SAS磁碟櫃堆疊
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -13,14 +13,79 @@ summary: 您可以在不降低效能的情況下、隨時熱新增磁碟櫃來�
 [role="lead"]
 您可以在不降低效能的情況下、隨時熱新增磁碟櫃來增加儲存容量。
 
-* 系統必須符合中的所有需求 link:task_fb_hot_add_shelf_prepare_7500n.html["準備熱新增SAS磁碟櫃"]。
-* 您的環境必須符合下列其中一種情況、才能熱新增機櫃：
+
+
+== 步驟 1 ：準備熱新增 SAS 磁碟櫃
+
+若要準備熱新增 SAS 磁碟櫃，您需要下載文件，以及磁碟機和磁碟機架韌體。
+
+.開始之前
+* 確認您的系統是支援的組態，且正在執行支援的 ONTAP 版本。
+* 確認系統中的所有磁碟機和磁碟櫃都執行最新的韌體版本。
++
+您可能想要在新增機櫃之前，在整個 MetroCluster 組態中更新磁碟和機櫃韌體。
+
++
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-ug-rdg/home.html["升級、回復或降級"]
+
+
+
+[NOTE]
+====
+如果您的系統執行支援的 ONTAP 版本，則可在同一個堆疊中混合支援 IOM12 模組和 IOM6 模組。若要確定您的 ONTAP 版本是否支援機櫃混合link:https://imt.netapp.com/matrix/["互通性對照表工具IMT （不含）"^]，請參閱。如果您的 ONTAP 版本不受支援、而且您無法升級或降級現有堆疊上的 IOM 模組、或是要新增至 IOM 模組支援組合的新機櫃、則您必須執行下列其中一項：
+
+* 在新的SAS連接埠上啟動新堆疊（如果橋接配對支援）。
+* 在額外的橋接配對上啟動新的堆疊。
+
+
+====
+.步驟
+. 請從NetApp支援網站下載或檢視下列文件：
++
+** https://mysupport.netapp.com/matrix["互通性對照表工具"]
+** 適用於您磁碟櫃模型的_安裝指南_。
+
+
+. 驗證是否支援熱新增的磁碟櫃。
++
+https://mysupport.netapp.com/matrix["互通性對照表工具"^]
+
+. 下載最新的磁碟與磁碟櫃韌體：
++
+
+NOTE: 在此步驟中，您只需完成指示的下載部分。您必須遵循中的步驟<<step_2_hot_add_shelf,熱新增磁碟櫃>>來安裝磁碟櫃。
+
++
+.. 下載磁碟韌體、並複製磁碟韌體說明以供日後參考。
++
+https://mysupport.netapp.com/site/downloads/firmware/disk-drive-firmware["NetApp下載：磁碟機韌體"^]
+
+.. 下載磁碟櫃韌體、並複製磁碟櫃韌體說明以供日後參考。
++
+https://mysupport.netapp.com/site/downloads/firmware/disk-shelf-firmware["NetApp下載：磁碟櫃韌體"^]
+
+
+
+
+
+
+
+== 步驟 2 ：熱新增磁碟櫃
+
+請使用下列程序將磁碟櫃熱新增至堆疊。
+
+.開始之前
+* 驗證系統是否符合中的所有要求<<prepare_to_hot_add_disk,準備熱新增 SAS 磁碟櫃>>。
+* 在熱新增機櫃之前，請先確認您的環境符合下列其中一個案例：
 +
 ** 您有兩個連接至SAS磁碟櫃堆疊的FibreBridge 7500N橋接器。
 ** 您有兩個 FiberBridge 7600N 橋接器連接至一堆 SAS 磁碟櫃。
 ** 您有一個 FiberBridge 7500N 橋接器和一個 FiberBridge 7600N 橋接器、連接至一堆 SAS 磁碟櫃。
 
 
+
+
+.關於這項工作
 * 此程序適用於將磁碟櫃熱新增至堆疊中的最後一個磁碟櫃。
 +
 這項程序是假設堆疊中的最後一個磁碟櫃是從IOM A連接到橋接器A、從IOM B連接到橋接器B
@@ -29,22 +94,22 @@ summary: 您可以在不降低效能的情況下、隨時熱新增磁碟櫃來�
 * 您應該在每個站台熱新增相同數量的磁碟櫃。
 * 如果您要熱新增多個磁碟櫃、則必須一次熱新增一個磁碟櫃。
 +
-
-NOTE: 每對一對的FIBEBridge 7500N或7600N橋接器最多可支援四個堆疊。
-
+每對一對的FIBEBridge 7500N或7600N橋接器最多可支援四個堆疊。
 
 
 
-IMPORTANT: 若要熱新增磁碟櫃、您必須在進階模式中執行「儲存磁碟韌體更新」命令、以更新熱新增磁碟櫃上的磁碟機韌體。如果系統中現有磁碟機的韌體版本較舊、執行此命令可能會造成中斷。
+[CAUTION]
+====
+若要熱新增磁碟櫃、您必須在進階模式中執行「儲存磁碟韌體更新」命令、以更新熱新增磁碟櫃上的磁碟機韌體。如果系統中現有磁碟機的韌體版本較舊、執行此命令可能會造成中斷。
 
+如果將 SAS 纜線插入錯誤的連接埠，則從 SAS 連接埠拔下纜線之後，必須等待至少 120 秒，才能將纜線插入不同的 SAS 連接埠。如果您無法這麼做，系統將無法辨識您已將纜線移至其他連接埠。
 
-IMPORTANT: 如果您將SAS纜線插入錯誤的連接埠、從SAS連接埠拔下纜線時、必須等待至少120秒、才能將纜線插入其他SAS連接埠。如果您無法這麼做、系統將無法辨識纜線是否已移至其他連接埠。
-
+====
 .步驟
 . 請妥善接地。
 . 從任一控制器的系統主控台驗證磁碟櫃連線能力：
 +
-"*sysconfig -v*
+"syssconfig -v"
 
 +
 輸出類似於下列內容：
@@ -76,10 +141,10 @@ cisco_A_1-1:9.126L2   : NETAPP   X421_HCOBD450A10 NA01 418.0GB (879097968 520B/s
 
 . 檢查您的系統是否已從任一控制器的主控台啟用磁碟自動指派：
 +
-「*儲存磁碟選項」顯示*
+「顯示磁碟選項」
 
 +
-自動指派原則會顯示在自動指派欄中。
+自動指派原則會顯示在「自動指派」欄中。
 
 +
 [listing]
@@ -91,22 +156,21 @@ node_A_1             on           on           on           default
 node_A_2             on           on           on           default
 2 entries were displayed.
 ----
-. 如果您的系統未啟用磁碟自動指派、或是同一個堆疊中的磁碟機同時由兩個控制器擁有、請將磁碟機指派給適當的資源池。
+. 如果您的系統未啟用磁碟自動指派功能，或如果同一堆疊中的磁碟機屬於兩個控制器，請將磁碟機指派給適當的集區。
 +
 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"]
 
 +
 [NOTE]
 ====
-如果您要在兩個控制器之間分割單一磁碟櫃堆疊、則必須先停用磁碟自動指派、才能指派磁碟擁有權；否則、當您指派任何單一磁碟機時、其餘的磁碟機可能會自動指派給同一個控制器和集區。
+** 如果您要在兩個控制器之間分割單一磁碟櫃堆疊，則必須先停用磁碟自動指派，然後再指派磁碟擁有權；否則，當您指派任何單一磁碟機時，其餘的磁碟機可能會自動指派給相同的控制器和集區。
++
+命令會 `storage disk option modify -node <node-name> -autoassign off`停用磁碟自動指派。
 
-"storage disk option modify -node-name_-autodassign off"命令會停用磁碟自動指派。
+** 在更新磁碟機和磁碟櫃韌體之前，您無法將磁碟機新增至集合體或磁碟區。
+
 
 ====
-+
-
-NOTE: 在磁碟機和磁碟櫃韌體更新之前、不得將磁碟機新增至集合體或磁碟區。
-
 . 使用下載韌體的指示、將磁碟櫃韌體更新至最新版本。
 +
 您可以從任一控制器的系統主控台執行程序中的命令。
@@ -143,12 +207,14 @@ NOTE: 您必須為磁碟櫃重新開機、並讓整個儲存系統內每個SAS�
 https://mysupport.netapp.com/site/downloads/firmware/disk-drive-firmware["NetApp下載：磁碟機韌體"]
 
 +
-.. 變更為進階權限等級：+「*設定-權限進階*」
+.. 變更為進階權限等級： +
+`set -privilege advanced`
 +
 當系統提示您繼續進入進階模式並查看進階模式提示字元（*>）時、您需要使用「* y*」來回應。
 
-.. 從系統主控台將磁碟機韌體更新至最新版本：+「*儲存磁碟韌體更新*」
-.. 返回管理權限等級：+`* set -priv榮幸admin*
+.. 從系統主控台將磁碟機韌體更新至最新版本： +
+`storage disk firmware update`
+.. 返回管理員權限等級：+「設置權限管理」
 .. 在其他控制器上重複上述子步驟。
 
 
@@ -156,25 +222,25 @@ https://mysupport.netapp.com/site/downloads/firmware/disk-drive-firmware["NetApp
 +
 .. 檢查系統是否具有多路徑：
 +
-‘*節點執行節點_norme-name_ sysconfig -A*’
+`node run -node <node-name> sysconfig -a`
 
-.. 檢查兩個叢集上是否有任何健全狀況警示：+「*系統健全狀況警示顯示*」
-.. 確認MetroCluster 此功能的組態、並確認操作模式正常：+「* MetroCluster 」「*」「show *」
-.. 執行MetroCluster 功能不全：+「* MetroCluster 效能不全*」
+.. 檢查兩個叢集上是否有任何健全狀況警示：+「系統健全狀況警示顯示」
+.. 確認MetroCluster 此功能的組態、並確認操作模式正常：+「MetroCluster show」
+.. 執行MetroCluster 功能不全：+ MetroCluster 「功能不全」
 .. 顯示MetroCluster 檢查結果：
 +
-《* MetroCluster 》*《*》《*》《*》《*》
+《不一樣的表演》MetroCluster
 
 .. 檢查交換器上是否有任何健全狀況警示（如果有）：
 +
-「*儲存交換器show *」
+「torage switchshow」
 
-.. 執行Config Advisor
+.. 執行 Active IQ Config Advisor 。
 +
 https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp下載Config Advisor"]
 
 .. 執行Config Advisor 完功能後、請檢閱工具的輸出結果、並依照輸出中的建議來解決發現的任何問題。
 
 
-. 如果您要熱新增多個磁碟櫃、請針對要熱新增的每個磁碟櫃重複上述步驟。
+. 如果您要熱新增多個磁碟櫃，請針對您要熱新增的每個磁碟櫃重複上述步驟。
 
