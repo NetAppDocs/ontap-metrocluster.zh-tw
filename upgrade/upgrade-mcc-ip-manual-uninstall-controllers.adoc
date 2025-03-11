@@ -23,11 +23,46 @@ summary: 將資料生命體移到通用連接埠，移除舊控制器上的 VLAN
 +
 Boot_ONTAP
 
-. 如果您要升級的系統不在下表中，請確認 MetroCluster IP 介面使用支援的 IP 位址。
+. 如果您要升級的系統使用 * 共享叢集 / HA 連接埠 * ，請確認 MetroCluster IP 介面使用支援的 IP 位址。
 +
+請使用下列資訊來判斷新系統是否使用共用叢集 / HA 連接埠：
+
++
+[role="tabbed-block"]
+====
+.共享叢集 / HA 連接埠
+--
+下表所列的系統使用共享的叢集 / HA 連接埠：
+
+[cols="2*"]
 |===
+| AFF 和 ASA 系統 | 系統FAS 
 
 
+ a| 
+** AFF A20
+** AFF A30
+** AFF C30
+** AFF A50
+** AFF C60
+** AFF C80
+** AFF A70
+** AFF A90
+** AFF A1K
+
+ a| 
+** FAS70
+** FAS90
+
+
+|===
+--
+.共享的 MetroCluster / HA 連接埠
+--
+下表列出的系統使用共享的 MetroCluster / HA 連接埠：
+
+[cols="2*"]
+|===
 | AFF 和 ASA 系統 | 系統FAS 
 
 
@@ -56,6 +91,8 @@ Boot_ONTAP
 
 
 |===
+--
+====
 +
 .. 驗證舊控制器上 MetroCluster 介面的 IP 位址：
 +
@@ -64,7 +101,7 @@ Boot_ONTAP
 .. 如果 MetroCluster 介面使用的是 169.254.17.x 或 169.254.18-x IP 位址，請參閱link:https://kb.netapp.com/on-prem/ontap/mc/MC-KBs/How_to_modify_the_properties_of_a_MetroCluster_IP_interface["知識庫文件「如何修改 MetroCluster IP 介面的內容」"^]以修改介面 IP 位址，然後再繼續升級。
 +
 
-CAUTION: 如果 MetroCluster 介面設定為 169.254.17.x 或 169.254.18.x IP 位址，則不支援升級至表格中未列出的任何系統。
+CAUTION: 如果 MetroCluster 介面設定為 169.254.17.x 或 169.254.18.x IP 位址，則不支援升級至任何使用 * 共用叢集 / HA 連接埠 * 的系統。
 
 
 

@@ -58,10 +58,8 @@ entries:
       url: "/maintain/task_change_isl_properties_isl_ports_or_the_iod_ood_configuration_on_a_brocade_switch.html"
     - title: 更換Cisco FC交換器
       url: "/maintain/task_replace_a_cisco_fc_switch_mcc.html"
-    - title: 變更Cisco FC交換器上ISL連接埠的速度
-      url: "/maintain/task_change_speed_of_isl_ports_on_a_cisco_fc_switch.html"
-    - title: 將lSLs新增至Cisco交換器
-      url: "/maintain/task_add_lsls_to_a_cisco_fc_switch.html"
+    - title: 變更 Cisco FC 交換器上的 ISL 內容或 IOD/ood 組態
+      url: "/maintain/task-change-isl-properties-iod-ood-ciso-fc.html"
     - title: 變更 FC 交換器的廠商或型號
       url: "/maintain/task_change_an_fc_switch.html"
   - title: 以架構附加MetroCluster 的功能不中斷的方式更換機櫃

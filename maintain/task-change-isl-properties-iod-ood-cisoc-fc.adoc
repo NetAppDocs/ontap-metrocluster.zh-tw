@@ -1,0 +1,288 @@
+---
+permalink: maintain/task-change-isl-properties-iod-ood-ciso-fc.html 
+sidebar: sidebar 
+keywords: metrocluster, maintain, service, change, isl, properties, isl, ports, iod, ood,configuration, cisco, switch 
+summary: 您可以在 Cisco FC 交換器上新增交換器間連結（ ISL ），變更 ISL 速度，以及重新設定訂單內送（ IOD ）或訂單外送（ OD ）設定。 
+---
+= 變更 Cisco FC 交換器上的 ISL 內容和 IOD/ood 組態
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以在 Cisco FC 交換器上新增交換器間連結（ ISL ），變更 ISL 速度，以及重新設定訂單內送（ IOD ）或訂單外送（ OD ）設定。
+
+
+
+== 將 ISL 新增至 Cisco FC 交換器
+
+如果您要新增或升級硬體，例如新增或升級至更快的控制器或更快的交換器，則可能需要將 ISL 新增至交換器。
+
+.關於這項工作
+在 Fabric 中的兩台交換器上執行這些步驟，以驗證 ISL 連線能力。
+
+.步驟
+. 停用要新增至光纖網路中兩個交換器的ISL連接埠：
++
+`FC_switch_A_1#config t`
+
++
+輸入下列組態命令，每行一條。輸入所有組態命令後，請輸入 CTRL-Z 。
+
++
+[listing]
+----
+
+	FC_switch_A_1(config)# interface fc1/36
+	FC_switch_A_1(config-if)# shut
+	FC_switch_A_1(config)# end
+----
+. 將 SFP 插入您要新增為 ISL 連接埠的連接埠link:../install-fc/task_configure_the_mcc_hardware_components_fabric.html["纜線A連接架構MetroCluster 的不全配置"]，然後根據連接線。
++
+請確認這些連接埠已列在您要新增的交換器機型的纜線文件中。
+
+. 按照中的步驟配置 ISL 端口link:../install-fc/task_cable_the_isl_between_the_mcc_sites_fabric_config.html["將ISL佈線至MetroCluster 各個不景點"]。
+. 在光纖網路中的兩個交換器上啟用所有ISL連接埠（若未啟用）：
++
+`FC_switch_A_1# config t`
+
++
+輸入下列組態命令，每行一條。輸入所有組態命令後、以A-Z結束。
+
++
+[listing]
+----
+
+ FC_switch_A_1# interface fc1/36
+	FC_switch_A_1(config-if)# no shut
+	FC_switch_A_1(config)# end
+----
+. 驗證是否在兩個交換器之間建立ISL：
++
+`show topology isl`
+
+. 在第二個Fabric上重複此程序：
++
+[listing]
+----
+--------------------------------------------------------------------------------
+	__________Local_________ _________Remote_________ VSAN Cost I/F  PC    I/F  Band
+	 PC Domain SwName   Port  Port   SwName Domain PC          Stat Stat Speed width
+	--------------------------------------------------------------------------------
+	  1   0x11 cisco9 fc1/36  fc1/36 cisco9 0xbc    1    1   15 up   up    16g   64g
+	  1   0x11 cisco9 fc1/40  fc1/40 cisco9 0xbc    1    1   15 up   up    16g   64g
+	  1   0x11 cisco9 fc1/44  fc1/44 cisco9 0xbc    1    1   15 up   up    16g   64g
+	  1   0x11 cisco9 fc1/48  fc1/48 cisco9 0xbc    1    1   15 up   up    16g   64g
+----
+
+
+
+
+== 變更 Cisco FC 交換器上的 ISL 連接埠速度
+
+您可以變更交換器上 ISL 連接埠的速度，以改善 ISL 的品質，例如降低 ISL 在更遠距離上的傳輸速度。
+
+.關於這項工作
+在 Fabric 中的兩台交換器上執行這些步驟，以驗證 ISL 連線能力。
+
+.步驟
+. 停用 ISL 的 ISL 連接埠，以變更 Fabric 中兩台交換器的速度：
++
+`FC_switch_A_1# config t`
+
++
+輸入下列組態命令，每行一條。輸入所有組態命令後、以A-Z結束。
+
++
+[listing]
+----
+
+ FC_switch_A_1(config)# interface fc1/36
+	FC_switch_A_1(config-if)# shut
+	FC_switch_A_1(config)# end
+----
+. 變更網路中兩台交換器上ISL連接埠的速度：
++
+`FC_switch_A_1# config t`
+
++
+輸入下列組態命令，每行一條。輸入所有組態命令後、以A-Z結束。
+
++
+[listing]
+----
+
+ FC_switch_A_1(config)# interface fc1/36
+	FC_switch_A_1(config-if)# switchport speed 16000
+----
++
+
+NOTE: 連接埠的速度為 16 = 16 ， 000 Gbps ， 8 = 8 ， 000 Gbps ， 4 = 4 ， 000 Gbps 。
+
++
+驗證中是否列出了交換機的 ISL 端口link:../install-fc/index.html["安裝與 Fabric 附加的 MetroCluster 組態"]。
+
+. 在光纖網路中的兩個交換器上啟用所有ISL連接埠（若未啟用）：
++
+`FC_switch_A_1# config t`
+
++
+輸入下列組態命令，每行一條。輸入所有組態命令後、以A-Z結束。
+
++
+[listing]
+----
+
+ FC_switch_A_1(config)# interface fc1/36
+	FC_switch_A_1(config-if)# no shut
+	FC_switch_A_1(config)# end
+----
+. 驗證是否在兩個交換器之間建立ISL：
++
+`show topology isl`
+
++
+[listing]
+----
+--------------------------------------------------------------------------------
+	__________Local_________ _________Remote_________ VSAN Cost I/F  PC    I/F  Band
+	 PC Domain SwName   Port  Port   SwName Domain PC          Stat Stat Speed width
+	--------------------------------------------------------------------------------
+	  1   0x11 cisco9 fc1/36  fc1/36 cisco9 0xbc    1    1   15 up   up    16g   64g
+	  1   0x11 cisco9 fc1/40  fc1/40 cisco9 0xbc    1    1   15 up   up    16g   64g
+	  1   0x11 cisco9 fc1/44  fc1/44 cisco9 0xbc    1    1   15 up   up    16g   64g
+	  1   0x11 cisco9 fc1/48  fc1/48 cisco9 0xbc    1    1   15 up   up    16g   64g
+----
+. 對第二個交換器網路重複此程序。
+
+
+
+
+== 重新設定 VSAN 以保證 IOD 或正常的框架
+
+建議使用標準IOD設定。您只能在必要時重新設定 Good 。
+
+
+
+=== 重新設定 IOD
+
+執行下列步驟以重新設定框架的 IOD 。
+
+.步驟
+. 進入組態模式：
++
+"conft"
+
+. 為VSAN提供訂單交換保證：
++
+`in-order-guarantee vsan <vsan-ID>`
+
++
+
+IMPORTANT: 對於FC-VI VSAN（FCVI_1_10和FCVI_2_30）、您必須依序啟用僅在VSAN 10上的框架和交換保證。
+
++
+.. 啟用VSAN的負載平衡：
++
+`vsan <vsan-ID> loadbalancing src-dst-id`
+
+.. 結束組態模式：
++
+《結束》
+
+.. 將執行組態複製到啟動組態：
++
+「copy running-config startup-config」
+
++
+在 FC_switch_a_1 上設定框架 IOD 的命令：
+
++
+[listing]
+----
+FC_switch_A_1# config t
+FC_switch_A_1(config)# in-order-guarantee vsan 10
+FC_switch_A_1(config)# vsan database
+FC_switch_A_1(config-vsan-db)# vsan 10 loadbalancing src-dst-id
+FC_switch_A_1(config-vsan-db)# end
+FC_switch_A_1# copy running-config startup-config
+----
++
+在 FC_switch_B_1 上設定框架 IOD 的命令：
+
++
+[listing]
+----
+FC_switch_B_1# config t
+FC_switch_B_1(config)# in-order-guarantee vsan 10
+FC_switch_B_1(config)# vsan database
+FC_switch_B_1(config-vsan-db)# vsan 10 loadbalancing src-dst-id
+FC_switch_B_1(config-vsan-db)# end
+FC_switch_B_1# copy running-config startup-config
+----
+
+
+
+
+
+
+=== 重新設定
+
+執行下列步驟以重新設定良好的框架。
+
+.步驟
+. 進入組態模式：
++
+"conft"
+
+. 停用VSAN的訂單交換保證：
++
+`no in-order-guarantee vsan <vsan-ID>`
+
+. 啟用VSAN的負載平衡：
++
+`vsan <vsan-ID> loadbalancing src-dst-id`
+
+. 結束組態模式：
++
+《結束》
+
+. 將執行組態複製到啟動組態：
++
+「copy running-config startup-config」
+
++
+在 FC_switch_a_1 上設定好框架的命令：
+
++
+[listing]
+----
+FC_switch_A_1# config t
+FC_switch_A_1(config)# no in-order-guarantee vsan 10
+FC_switch_A_1(config)# vsan database
+FC_switch_A_1(config-vsan-db)# vsan 10 loadbalancing src-dst-id
+FC_switch_A_1(config-vsan-db)# end
+FC_switch_A_1# copy running-config startup-config
+----
++
+在 FC_switch_B_1 上設定好框架的命令：
+
++
+[listing]
+----
+FC_switch_B_1# config t
+FC_switch_B_1(config)# no in-order-guarantee vsan 10
+FC_switch_B_1(config)# vsan database
+FC_switch_B_1(config-vsan-db)# vsan 10 loadbalancing src-dst-id
+FC_switch_B_1(config-vsan-db)# end
+FC_switch_B_1# copy running-config startup-config
+----
++
+
+NOTE: 在ONTAP 控制器模組上設定功能時、必須在MetroCluster 每個控制器模組上明確設定ood、以供採用此功能。
+
++
+link:../install-fc/concept_configure_the_mcc_software_in_ontap.html#configuring-in-order-delivery-or-out-of-order-delivery-of-frames-on-ontap-software["瞭解如何在 ONTAP 軟體上設定 IOD 或 Good of Frame"]。
+
+

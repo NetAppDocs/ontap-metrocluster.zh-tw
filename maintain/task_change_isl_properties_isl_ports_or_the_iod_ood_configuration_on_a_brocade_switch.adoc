@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, change, isl, properties, isl, ports, iod, configuration, brocade, switch 
 summary: 如果您要新增或升級硬體（例如其他或更快的控制器或交換器）、可能需要將ISL新增至交換器。 
 ---
-= 變更Brocade交換器上的ISL內容、ISL連接埠或IOD/ood組態
+= 變更 Brocade 交換器上的 ISL 內容， ISL 連接埠或 IOD/ood 組態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

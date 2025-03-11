@@ -68,15 +68,42 @@ summary: 為新平台更新交換器 RCFs ，並在控制器模組上設定 Metr
 
 * 您設定的 MetroCluster bootarg 值取決於您的新系統是使用共用叢集 / HA 連接埠，還是使用共用的 MetroCluster / HA 連接埠。
 +
-下表所列的系統使用 * 共用的 MetroCluster / HA 連接埠 * 。
+[role="tabbed-block"]
+====
+.共享叢集 / HA 連接埠
+--
+下表所列的系統使用共享的叢集 / HA 連接埠：
 
-+
-所有其他系統都使用 * 共享叢集 / HA 連接埠 * 。
-
-+
 [cols="2*"]
 |===
-| 使用共享的 MetroCluster / HA 連接埠的 AFF 和 ASA 系統 | 使用共用 MetroCluster / HA 連接埠的 FAS 系統 
+| AFF 和 ASA 系統 | 系統FAS 
+
+
+ a| 
+** AFF A20
+** AFF A30
+** AFF C30
+** AFF A50
+** AFF C60
+** AFF C80
+** AFF A70
+** AFF A90
+** AFF A1K
+
+ a| 
+** FAS70
+** FAS90
+
+
+|===
+--
+.共享的 MetroCluster / HA 連接埠
+--
+下表列出的系統使用共享的 MetroCluster / HA 連接埠：
+
+[cols="2*"]
+|===
+| AFF 和 ASA 系統 | 系統FAS 
 
 
  a| 
@@ -104,6 +131,8 @@ summary: 為新平台更新交換器 RCFs ，並在控制器模組上設定 Metr
 
 
 |===
+--
+====
 
 
 .步驟
