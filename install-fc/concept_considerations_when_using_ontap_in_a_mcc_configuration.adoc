@@ -74,7 +74,11 @@ link:https://docs.netapp.com/us-en/ontap/flexcache/index.html["使用CLI進行�
 +
 這可以是預設的IPspace、也可以是系統管理所建立的IPspace。此IPspace將用於FabricPool 物件儲存組態設定。
 
-* 對於所選的IPspace、每個叢集都必須定義叢集間LIF、才能連到外部物件存放區
+* 對於所選的 IPspace ，每個叢集都必須定義一個可到達外部物件存放區的叢集間 LIF 。
+* 當來源或目的地是 MetroCluster 叢集時， FabricPool 不支援 SVM 移轉。
++
+link:https://docs.netapp.com/us-en/ontap/svm-migrate/index.html["深入瞭解 SVM 資料移動性"^]。
+
 
 
 

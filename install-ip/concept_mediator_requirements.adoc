@@ -23,6 +23,7 @@ summary: 從Sf2 9.7開始ONTAP 、ONTAP 透過MetroCluster 提供實體獨立的
 
 * 「支援器」服務最多可同時支援五種支援的「支援架構」組態。ONTAP MetroCluster
 * 支援自動非計畫性的切換ONTAP 功能、可在更新版本的更新版本中使用。
+* ONTAP Mediator 不支援 IPv6 。
 
 
 
@@ -89,19 +90,38 @@ MTU大小必須至少為1400。
 
 下表列出防火牆中必須允許的連接埠：
 
+[NOTE]
+====
+* iSCSI連接埠僅MetroCluster 在支援靜態IP組態時才需要。
+* 正常作業不需要使用 22/TCP 連接埠，但您可以暫時啟用該連接埠進行維護，並在維護工作階段結束時停用。
 
-NOTE: iSCSI連接埠僅MetroCluster 在支援靜態IP組態時才需要。
 
+====
 |===
 
 
-| 連接埠/服務 | 來源 | 目的地 | 目的 
+| 連接埠/服務 | 來源 | 方向 | 目的地 | 目的 
+
+
+ a| 
+22/TCP
+ a| 
+管理主機
+ a| 
+傳入
+ a| 
+資訊媒體ONTAP
+ a| 
+SSH/ ONTAP Mediator 管理
+
 
 
  a| 
 31784/TCP
  a| 
-叢集管理介面ONTAP
+叢集管理生命
+ a| 
+傳入
  a| 
 資訊媒體伺服器ONTAP
  a| 
@@ -112,7 +132,9 @@ REST API（HTTPS）
  a| 
 3260/TCP
  a| 
-叢集（資料LIF或資料管理LIF ONTAP ）
+叢集管理生命
+ a| 
+雙向
  a| 
 支援iSCSI目標ONTAP
  a| 

@@ -1170,7 +1170,6 @@
   <block id="cb2882d39ecc345874a2172a679345a0" category="list-text">叢集必須具有FabricPool 容量限制相符的不完整版授權。</block>
   <block id="da1d8a158d031df0c087914bc717f807" category="list-text">叢集必須具有名稱相符的IPspaces。</block>
   <block id="84225993604927d7b2805e680fc6afb7" category="paragraph">這可以是預設的IPspace、也可以是系統管理所建立的IP空間。此IPspace將用於FabricPool 物件儲存組態設定。</block>
-  <block id="eadb8b792e9f449e89ae54e27988217b" category="list-text">對於所選的IPspace、每個叢集都必須定義叢集間LIF、才能連到外部物件存放區</block>
   <block id="b6f8b39e7216b4698097318b7db733fa" category="section-title">設定用於鏡射FabricPool 的Aggregate</block>
   <block id="d3478949021db31ee899464708ca14ab" category="admonition">在設定Aggregate之前、您必須依照FabricPool 中的「設定物件存放區以MetroCluster 供使用的物件組態」所述、設定物件存放區<block ref="46a180d322a34c1f2719942dadd3e4fb" category="inline-link-rx"></block>。</block>
   <block id="8d0251be64ec85684b5dfb469e20ba1c" category="paragraph">若要設定Aggregate以供FabricPool 在整個過程中使用：</block>
@@ -1659,7 +1658,6 @@
   <block id="12007e1d59f4d09c87dbe2c438256244" category="cell">目的地</block>
   <block id="261addf78c7b2c961032b3dd08ba0b1f" category="cell">目的</block>
   <block id="5946d090ccc9cc4eb9c55cf3e9e8d35a" category="paragraph">31784/TCP</block>
-  <block id="39af2fc562277654190ca9b83e431189" category="paragraph">叢集管理介面ONTAP</block>
   <block id="47c5e6a166f9432ff96681fa2a62c791" category="paragraph">資訊媒體伺服器ONTAP</block>
   <block id="8cf15eeaee2b3382338ecab30027c48b" category="paragraph">REST API（HTTPS）</block>
   <block id="5395ab3ceab5345ee4a1117e436bec89" category="paragraph">3260/TCP</block>
@@ -2939,7 +2937,6 @@
   <block id="19f611abece5f1bd72ab068b8053b563" category="paragraph">FC-VI連接埠d</block>
   <block id="5cbc856360b7f465a0b074d28f0718d0" category="paragraph">下表顯示使用ONTAP NETAPP 9.0時FC交換器的連接埠指派。</block>
   <block id="e5fe800fef736c2c8af1453a59683d3c" category="summary">若要升級或降級Brocade FC交換器上的韌體、您必須使用Brocade專屬命令來停用交換器、執行並驗證韌體變更、以及重新開機並重新啟用交換器。</block>
-  <block id="1ab0f1fa27ba43bfea0e9de2529316c8" category="doc">升級或降級Brocade FC交換器上的韌體</block>
   <block id="db6e0c8057b108f77da141b83e047b8d" category="paragraph">交換器架構在韌體升級或降級期間會停用、MetroCluster 而此功能需仰賴第二個架構才能繼續運作。</block>
   <block id="6751765455c440079966f9a59475b0bc" category="paragraph">此工作必須連續在每個交換器架構上執行、以便所有交換器都執行相同的韌體版本。</block>
   <block id="caa7d61db1eb82b4e70aa0ad9d519b89" category="paragraph">下列步驟中的範例使用交換器「FC_switch_a_1」。</block>
@@ -11501,7 +11498,6 @@
   <block id="690f8ff3b8b65da4f1bc779fb507da9d" category="sidebar">還原斷路器事件記錄檔MetroCluster</block>
   <block id="fd8a65566a0bac859d93882f20cc0c7d" category="paragraph"><block ref="fd8a65566a0bac859d93882f20cc0c7d" category="inline-link-macro-rx"></block></block>
   <block id="43119522ff803c1f1fa88bdbaffe20b7" category="admonition">iSCSI連接埠僅MetroCluster 在支援靜態IP組態時才需要。</block>
-  <block id="4026cb63b92cdc28e17e39a79de589f7" category="paragraph">叢集（資料LIF或資料管理LIF ONTAP ）</block>
   <block id="fd9b3eaeebb236fdcf40b5456ccc900e" category="admonition">FASA900和FAS9500系統支援八個ISL。AFFBrocade 6510、G620、G620-1、G630、G630-1、和G720交換器。</block>
   <block id="81d4bf20c117cfe06c727511dd63382b" category="paragraph">6510、G620、G620-1、G630、G630-1、G720</block>
   <block id="64cdec386f8cc50c2a2ec9316633b629" category="paragraph">在您執行之前<block ref="3b3242ced99842a6c2c16f489b78e773" prefix=" " category="inline-code"></block>、HA模式和DR鏡像未啟用、您可能會看到與此預期行為相關的錯誤訊息。您稍後執行命令時、會啟用HA模式和DR鏡像<block ref="3b3242ced99842a6c2c16f489b78e773" prefix=" " category="inline-code"></block> 以實作組態。</block>
@@ -14680,4 +14676,31 @@
   <block id="11f90eb1d0dccabe5ea84d5795fc2ef7" category="paragraph">請使用下列資訊來判斷新系統是否使用共用叢集 / HA 連接埠：</block>
   <block id="fb1ce5d087cc4c4bd39c43bc3af7058b" category="admonition">如果 MetroCluster 介面設定為 169.254.17.x 或 169.254.18.x IP 位址，則不支援升級至任何使用 * 共用叢集 / HA 連接埠 * 的系統。</block>
   <block id="25b129509e36ff88d2beb94d08667a62" category="sidebar">變更 Cisco FC 交換器上的 ISL 內容或 IOD/ood 組態</block>
+  <block id="8b578a27fe20d5a32a06b05afeaa5b16" category="list-text">對於所選的 IPspace ，每個叢集都必須定義一個可到達外部物件存放區的叢集間 LIF 。</block>
+  <block id="d98545518df18c073a4a75d72759ddfe" category="list-text">當來源或目的地是 MetroCluster 叢集時， FabricPool 不支援 SVM 移轉。</block>
+  <block id="de60962ea114e8e20b41343aa7431cbf" category="inline-link-macro">深入瞭解 SVM 資料移動性</block>
+  <block id="cb692d9778a8fa1464d6b442ab90722f" category="paragraph"><block ref="53c488ccbc80272b509e45a126fd033b" category="inline-link-macro-rx"></block>。</block>
+  <block id="b4911e786bbd878f489a84835fcee570" category="list-text">ONTAP Mediator 不支援 IPv6 。</block>
+  <block id="d247a27201590148c4ea6bf493729fd1" category="list-text">正常作業不需要使用 22/TCP 連接埠，但您可以暫時啟用該連接埠進行維護，並在維護工作階段結束時停用。</block>
+  <block id="02674a4ef33e11c879283629996c8ff8" category="cell">方向</block>
+  <block id="c5df47f9068f6d11f238ec77908abf18" category="paragraph">22/TCP</block>
+  <block id="6c7e3200049198face0d2648e9d1a27d" category="paragraph">傳入</block>
+  <block id="58dc7db50a2e11a9de9e6cc092c59d4d" category="paragraph">資訊媒體ONTAP</block>
+  <block id="348d25e332990b97eda5823a9561cd76" category="paragraph">SSH/ ONTAP Mediator 管理</block>
+  <block id="abd4328c725637aabedbd02d3b7ffd40" category="paragraph">雙向</block>
+  <block id="7df18ff4393ac59f9af7b68478828591" category="inline-link-macro">Brocade Fabric OS 軟體升級指南， 9.2.x</block>
+  <block id="81095da37e6499e1af51ce2d0316b8c1" category="paragraph">如果您要升級至 Fabric OS v 9.2.x 或更新版本，則必須安裝 Brocade TruFOS 憑證，如需詳細資訊，請參閱<block ref="0c25af31b20d46ca79e55fb8f6beb4c9" category="inline-link-macro-rx"></block>。</block>
+  <block id="b2fe7ec3c609e490e177268be9c6a2c7" category="open-title">移除 FC 至 SAS 橋接器</block>
+  <block id="1c5eaf0274c09872a2287c430ed75a60" category="list-text">識別橋接器：</block>
+  <block id="4d100b8e119ce2e8a98e720e612260d2" category="paragraph"><block ref="5c2aa4362fb9d40ad679411e69f26e74" prefix="" category="inline-code"></block></block>
+  <block id="679425df5c12f3f894799666283b2fcd" category="list-text">移除橋接器：</block>
+  <block id="ee90b235e787cdea487ac811b405275d" category="paragraph"><block ref="6ecfba135a48bcb7f43c03b5132edab0" prefix="" category="inline-code"></block></block>
+  <block id="2d3a681bfca3f3afa13da28bbcb3d157" category="list-text">確認橋接器已移除：</block>
+  <block id="457c5fa19fe4bf31989022bf10e2133b" category="paragraph">下列範例顯示橋接器已移除：</block>
+  <block id="9a752ae21c1569c1e94c2b3c0c4ec816" category="open-title">移除 FC 交換器</block>
+  <block id="07c2ed77d8d4a66a9da7bc64642f43ac" category="list-text">識別交換器：</block>
+  <block id="6ac0707c59f9a8bac7c112671ebed890" category="paragraph"><block ref="2fb4e63397068939776b11238421ef0d" prefix="" category="inline-code"></block></block>
+  <block id="a7bb11a2d517e74f775b8aefe3c16638" category="list-text">移除交換器：</block>
+  <block id="027e94eee8bf21f30bcb532977a993c1" category="paragraph"><block ref="4f1415de9c82b1c8c8506139320b0115" prefix="" category="inline-code"></block></block>
+  <block id="fdb1649f24689923739f1476888a8957" category="list-text">確認已移除交換器：</block>
 </blocks>

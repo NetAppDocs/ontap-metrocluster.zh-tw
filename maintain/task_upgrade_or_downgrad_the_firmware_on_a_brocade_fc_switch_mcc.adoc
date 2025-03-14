@@ -34,6 +34,8 @@ link:enable-console-logging-before-maintenance.html["啟用主控台記錄"]
 
 從 Fabric OS 9.0.1 開始、 Brocade 交換器不支援 SNMPv2 。如果您升級至 Fabric OS 9.0.1 或更新版本、則必須使用 SNMPv3 來監控健全狀況。如需詳細資訊、請參閱 link:../install-fc/concept_configure_the_mcc_software_in_ontap.html#configuring-snmpv3-in-a-metrocluster-configuration["在MetroCluster 不顯示的組態中設定v3"]。
 
+如果您要升級至 Fabric OS v 9.2.x 或更新版本，則必須安裝 Brocade TruFOS 憑證，如需詳細資訊，請參閱link:https://techdocs.broadcom.com/us/en/fibre-channel-networking/fabric-os/fabric-os-software-upgrade/9-2-x/Obtaining-Firmware/download-prerequisites-new/brocade-trufos-certificates.html["Brocade Fabric OS 軟體升級指南， 9.2.x"^]。
+
 此工作必須連續在每個交換器架構上執行、以便所有交換器都執行相同的韌體版本。
 
 
