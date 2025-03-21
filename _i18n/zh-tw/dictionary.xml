@@ -14516,8 +14516,6 @@
   <block id="3692c9ba1350a63df24145cf798b7a8d" category="paragraph-title">MetroCluster 2 或 DR 群組 2</block>
   <block id="3931538ae618e65321b4b3317e9b03d1" category="paragraph">下表顯示 MetroCluster 2 或 DR 群組 2 中支援的機櫃組態，僅適用於使用一個 FC 連接埠（ FC1 或 FC2 ）的 FiberBridge 7500N 或 7600N 橋接器。使用此組態表時，請注意下列事項：</block>
   <block id="2903ceed0cbc44b8b559bfff7873b906" category="list-text">在 6520 台交換器上，您可以將額外的橋接器連接至連接埠 64-69 和 72-93 。</block>
-  <block id="38429f80adfb1ee89a7fbf6f07f19fd5" category="section-title">使用 FiberBridge 7500N 或 7600N 的機櫃組態，同時使用兩個 FC 連接埠（ FC1 或 FC2 ）</block>
-  <block id="6a72af091f5308d35341ed6e94d995c3" category="paragraph">下表顯示 MetroCluster 1 或 DR Group 1 中支援的儲存架組態，適用於使用兩個 FC 連接埠（ FC1 或 FC2 ）的 FiberBridge 7500N 或 7600N 橋接器。使用此組態表時，請注意下列事項：</block>
   <block id="90630a6ca649afd90e4b45c9af3d157d" category="paragraph">下表顯示 MetroCluster 2 或 DR 群組 2 中支援的使用兩個 FC 連接埠（ FC1 或 FC2 ）的 FiberBridge 7500N 或 7600N 橋接器機櫃組態。使用此組態表時，請注意下列事項：</block>
   <block id="742bcddd5d6452c898c549e1b60cd513" category="paragraph">您可以使用連接埠 17 到 40 和 57 到 88 ，依照相同模式連接其他橋接器。</block>
   <block id="391ee14bc6581827dc4f2d88ff91afcf" category="paragraph">您可以使用相同模式下的連接埠 33 至 40 ，為第二個 DR 群組或第二個 MetroCluster 組態附加其他橋接器。</block>
@@ -14703,4 +14701,7 @@
   <block id="a7bb11a2d517e74f775b8aefe3c16638" category="list-text">移除交換器：</block>
   <block id="027e94eee8bf21f30bcb532977a993c1" category="paragraph"><block ref="4f1415de9c82b1c8c8506139320b0115" prefix="" category="inline-code"></block></block>
   <block id="fdb1649f24689923739f1476888a8957" category="list-text">確認已移除交換器：</block>
+  <block id="02637489efdd2722934159348bf04810" category="section-title">使用 FiberBridge 7500N 或 7600N 的機櫃組態，同時使用兩個 FC 連接埠（ FC1 和 FC2 ）</block>
+  <block id="19c5470fc0cd91ca38fde0aea868fce3" category="paragraph">下表顯示 MetroCluster 1 或 DR 群組 1 中支援的儲存架組態，適用於使用兩個 FC 連接埠（ FC1 和 FC2 ）的 FiberBridge 7500N 或 7600N 橋接器。使用此組態表時，請注意下列事項：</block>
+  <block id="844fb1aaef97c4328b587658a21a78d2" category="paragraph">如果您使用的是 QSFP 至 SFP+ 介面卡，則可能需要將 ISL 連接埠設定為原生速度模式，而非中斷速度模式。請參閱交換器廠商文件，以判斷 ISL 連接埠速度模式。</block>
 </blocks>

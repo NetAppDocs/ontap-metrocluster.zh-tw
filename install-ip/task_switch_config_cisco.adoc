@@ -387,6 +387,8 @@ IP_switch_A_1#
 
 https://hwu.netapp.com["NetApp Hardware Universe"]
 
+如果您使用的是 QSFP 至 SFP+ 介面卡，則可能需要將 ISL 連接埠設定為原生速度模式，而非中斷速度模式。請參閱交換器廠商文件，以判斷 ISL 連接埠速度模式。
+
 共有四個RCF檔案、MetroCluster 每個檔案分別對應於整個EIP組態中的四個交換器。您必須針對所使用的交換器機型使用正確的RCF檔案。
 
 |===
