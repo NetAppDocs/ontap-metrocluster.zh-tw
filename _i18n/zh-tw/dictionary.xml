@@ -6413,8 +6413,6 @@
   <block id="6eadef8f58c5652471c6fde6bd5bcea0" category="list-text">不支援Metro E和TDM（SONET/SDH）、也不支援任何非FC原生架構或訊號。</block>
   <block id="50e3a52a02d2d225339b996dd2aae728" category="paragraph">Metro E表示乙太網路架構或訊號是透過Metro距離原生進行、或是透過特定的分時多工（TDM）、多重傳輸協定標籤交換（MPLS）、或是透過Waveler-部門 多工（WDM）進行。</block>
   <block id="fcdc08d4065e5763ed7b6bf90f0fa228" category="list-text">不支援TDMS、FCR（原生FC路由）或FCIP擴充功能、以MetroCluster 利支援該交換器架構。</block>
-  <block id="13032557b3a76e59b63458b53f6d1410" category="list-text">某些交換器MetroCluster 採用支援加密或壓縮的功能、有時也支援這兩種功能。</block>
-  <block id="82224eb6f53e517d9764730a573763df" category="paragraph"><block ref="82224eb6f53e517d9764730a573763df" category="inline-link-rx"></block></block>
   <block id="b54ac66ca0ca34c593eeed1fe8cd4e03" category="list-text">不支援Brocade Virtual Fabric（Vf）功能。</block>
   <block id="c51b448f36df4e8b4b68e7af4df4c6b8" category="list-text">支援以網域連接埠為基礎的FC分區、但不支援以全球名稱（WWN）為基礎的分區。</block>
   <block id="5f864e9896e626c0a0c857ef2de8b1d6" category="list-text">確認已安裝授權：</block>
@@ -12906,10 +12904,6 @@
   <block id="1f9fcd1010f1e0dd33b166603da0ce84" category="paragraph">從 MetroCluster FC 組態轉換至 AFF A250 或 FAS500f MetroCluster IP 組態</block>
   <block id="56d5901b9c1bf4f73e626ae675e092f1" category="paragraph">您可以從 MetroCluster FC 組態轉換為 AFF A250 或 FAS500f MetroCluster IP 組態。</block>
   <block id="082e2199f2e8e7e6ff724185b8487f99" category="paragraph"><block ref="082e2199f2e8e7e6ff724185b8487f99" category="inline-link-rx"></block></block>
-  <block id="1e18e1f9085022bf9b99cbfaf58ab4d5" category="paragraph">在 MetroCluster IP 組態中設定第 3 層 MetroCluster IP 位址</block>
-  <block id="6b289b60214afb640cb3b88389dfe97e" category="paragraph">您可以編輯第 3 層組態中節點的 MetroCluster IP 位址、網路遮罩和閘道。</block>
-  <block id="bacf5875940eb96c091917a5d1b9e1ad" category="inline-link">修改MetroCluster 位址、網路遮罩和閘道、使其位於一個靜態IP中</block>
-  <block id="bf130f5d7d338872a9f3b57415d62749" category="paragraph"><block ref="bf130f5d7d338872a9f3b57415d62749" category="inline-link-rx"></block></block>
   <block id="cdafe0852c5285bf1f5846616c50f62d" category="paragraph">簡化 MetroCluster FC 組態中節點的控制器升級</block>
   <block id="407ce0bae822f5f1b99e4d9c2a25b062" category="paragraph">使用切換和切換功能的升級程序已簡化。</block>
   <block id="f897370f92c3d8ec5324c468747e4210" category="paragraph"><block ref="f897370f92c3d8ec5324c468747e4210" category="inline-link-rx"></block></block>
@@ -14704,4 +14698,6 @@
   <block id="02637489efdd2722934159348bf04810" category="section-title">使用 FiberBridge 7500N 或 7600N 的機櫃組態，同時使用兩個 FC 連接埠（ FC1 和 FC2 ）</block>
   <block id="19c5470fc0cd91ca38fde0aea868fce3" category="paragraph">下表顯示 MetroCluster 1 或 DR 群組 1 中支援的儲存架組態，適用於使用兩個 FC 連接埠（ FC1 和 FC2 ）的 FiberBridge 7500N 或 7600N 橋接器。使用此組態表時，請注意下列事項：</block>
   <block id="844fb1aaef97c4328b587658a21a78d2" category="paragraph">如果您使用的是 QSFP 至 SFP+ 介面卡，則可能需要將 ISL 連接埠設定為原生速度模式，而非中斷速度模式。請參閱交換器廠商文件，以判斷 ISL 連接埠速度模式。</block>
+  <block id="1894908b5d36f7ab21f7b1b1afcc630c" category="list-text">下列 Brocade FC 交換器支援 MetroCluster FC 後端架構的 WAN ISL 加密與壓縮：</block>
+  <block id="0df6785d5da501ba31bbeb3f6ee67c24" category="list-text">Brocade G630.</block>
 </blocks>

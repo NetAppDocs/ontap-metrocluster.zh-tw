@@ -50,12 +50,15 @@ link:concept_tdm_wdm.html["使用TDM/WDM設備搭配架構附加MetroCluster 的
 Metro E表示乙太網路架構或訊號是透過Metro距離原生進行、或是透過特定的分時多工（TDM）、多重傳輸協定標籤交換（MPLS）、或是透過Waveler-部門 多工（WDM）進行。
 
 * 不支援TDMS、FCR（原生FC路由）或FCIP擴充功能、以MetroCluster 利支援該交換器架構。
-* 某些交換器MetroCluster 採用支援加密或壓縮的功能、有時也支援這兩種功能。
+* 下列 Brocade FC 交換器支援 MetroCluster FC 後端架構的 WAN ISL 加密與壓縮：
 +
-https://mysupport.netapp.com/matrix["NetApp互通性對照表工具IMT （不含）"]
+** Brocade G720
+** Brocade G630.
+** Brocade G620
+** Brocade 6520
 
-+
-在這個解決方案領域、您可以使用儲存解決方案欄位來選擇您的解決方案。IMT MetroCluster您可以使用*元件總管*來選取元件和ONTAP 更新版本、以精簡搜尋範圍。您可以按一下「*顯示結果*」來顯示符合條件的支援組態清單。
+
+
 
 * 不支援Brocade Virtual Fabric（Vf）功能。
 * 支援以網域連接埠為基礎的FC分區、但不支援以全球名稱（WWN）為基礎的分區。

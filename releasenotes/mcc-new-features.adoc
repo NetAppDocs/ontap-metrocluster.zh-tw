@@ -168,17 +168,6 @@ https://docs.netapp.com/us-en/ontap-metrocluster/transition/task_move_cluster_co
 
 
  a| 
-在 MetroCluster IP 組態中設定第 3 層 MetroCluster IP 位址
- a| 
-您可以編輯第 3 層組態中節點的 MetroCluster IP 位址、網路遮罩和閘道。
-
-https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/task_modify_ip_netmask_gateway_properties.html["修改MetroCluster 位址、網路遮罩和閘道、使其位於一個靜態IP中"]
- a| 
-零點9.10.1 ONTAP
-
-
-
- a| 
 簡化 MetroCluster FC 組態中節點的控制器升級
  a| 
 使用切換和切換功能的升級程序已簡化。
