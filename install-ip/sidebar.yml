@@ -56,9 +56,9 @@ entries:
       url: "/install-ip/using_rcf_generator.html"
     - title: Cisco 3132Q-V交換器的平台連接埠指派
       url: "/install-ip/port_usage_3132q.html"
-    - title: Cisco 3232C或Cisco 9336C交換器的平台連接埠指派
+    - title: Cisco 3232C或Cisco 9336C-FX2交換器的平台連接埠指派
       url: "/install-ip/port_usage_3232c_9336c.html"
-    - title: Cisco 9336C-FX2 共享交換器的平台連接埠指派
+    - title: Cisco 9336C-FX2 交換器的平台連接埠指派，連接 NS224 儲存設備
       url: "/install-ip/port_usage_9336c_shared.html"
     - title: 適用於Broadcom支援的BG-53248 IP交換器的平台連接埠指派
       url: "/install-ip/port_usage_bes53248.html"
@@ -138,5 +138,11 @@ entries:
   url: "/install-ip/concept_considerations_when_removing_mcc_configurations.html"
 - title: 在一個邊的組態中使用ONTAP 邊的考量MetroCluster
   url: "/install-ip/concept_considerations_when_using_ontap_in_a_mcc_configuration.html"
+- title: 如何使用Active IQ Unified Manager 功能不全的系統ONTAP 管理程式來進一步設定及監控
+  entries:
+  - title: 瞭解如何使用 Active IQ Unified Manager 和系統管理員進行進一步的組態和監控
+    url: "/install-ip/concept_using_the_oncommand_management_tools_for_further_configuration_and_monitoring.html"
+  - title: 使用 NTP 同步系統時間
+    url: "/install-ip/task-synchronize-the-system-time-us-ntp.html"
 - title: 何處可找到其他資訊
   url: "/install-ip/reference_where_to_find_additional_information_mccip_icg.html"

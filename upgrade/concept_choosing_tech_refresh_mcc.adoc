@@ -24,14 +24,42 @@ summary: 您所使用的更新程序取決於平台機型、升級範圍和Metro
 * 請參閱 link:https://hwu.netapp.com["Hardware Universe"^] 適用於平台限制。
 
 
-.支援的 AFF 和 FAS MetroCluster IP 技術更新組合
-下表顯示 MetroCluster IP 組態中用於重新整理 AFF 或 FAS 系統的支援平台組合：
 
-image::../media/mcc-ip-techrefresh-comb-9161.png[MetroCluster IP 技術更新組合]
 
-* 附註 1 ： * 此組合需要 ONTAP 9.13.1 或更新版本。
+=== 支援的 AFF 和 FAS MetroCluster IP 技術更新組合
 
-.支援的 ASA MetroCluster IP 技術更新組合
+下表顯示 MetroCluster IP 組態中用於重新整理 AFF 或 FAS 系統的支援平台組合。表格分成兩個群組：
+
+* * 群組 1* 顯示 AFF A150 ， AFF A20 ，， AFF A220 ， FAS500f ， AFF C250 ， FAS8200 ， FAS50 ， AFF C400 C30 ， FAS2750 A30 ， AFF A250 ， AFF A300 ， AFF A400 ， FAS8300 ， AFF ， AFF A320 ， AFF 和 FAS8700 系統的組合。
+* * 群組 2* 顯示 C60 ， AFF A50 ， FAS70 ， FAS9000 ， AFF A700 ， AFF A70 ， AFF C800 ， AFF ， FAS9500 ， AFF A900 ， AFF ， AFF A800 C80 ， FAS90 ， AFF A90 和 AFF A1K 系統的組合。
+
+
+下列注意事項適用於這兩個群組：
+
+* 附註 1 ：此組合需要 ONTAP 9.13.1 或更新版本。
+
+
+[role="tabbed-block"]
+====
+.AFF 和 FAS 組合群組 1
+--
+檢閱 AFF A150 ， A20 ，， AFF A220 ， FAS500f ，， FAS8200 ， FAS50 ， AFF C30 ， AFF C250 A30 ， AFF A250 ， AFF C400 ， FAS2750 ， FAS8300 ， AFF A300 ， AFF A400 ， AFF A320 ， AFF ， AFF 和 FAS8700 系統的系統更新組合。
+
+image:../media/tech-refresh-ip-group-1.png[""]
+
+--
+.AFF 和 FAS 組合群組 2
+--
+檢閱 C60 ， A50 ， FAS70 ， FAS9000 ， AFF A700 ， AFF A90 ， AFF A900 ， AFF ， FAS9500 ， AFF A70 ， AFF C800 ， AFF ， AFF A800 C80 ， FAS90 ， AFF 和 AFF A1K 系統的系統更新組合。
+
+image:../media/tech-refresh-ip-group-2.png[""]
+
+--
+====
+
+
+=== 支援的 ASA MetroCluster IP 技術更新組合
+
 下表顯示在 MetroCluster IP 組態中重新整理 ASA 系統所支援的平台組合：
 
 image::../media/mcc-ip-techrefresh-asa-9161.png[MetroCluster IP ASA 技術更新組合]
@@ -47,12 +75,18 @@ image::../media/mcc-ip-techrefresh-asa-9161.png[MetroCluster IP ASA 技術更新
 * 請參閱 link:https://hwu.netapp.com["Hardware Universe"^] 適用於平台限制。
 
 
-.支援的 AFF 和 FAS MetroCluster FC 技術更新組合
+
+
+=== 支援的 AFF 和 FAS MetroCluster FC 技術更新組合
+
 下表顯示 MetroCluster FC 組態中用於重新整理 AFF 或 FAS 系統的支援平台組合：
 
 image::../media/metrocluster_fc_tech_refresh.png[NetApp技術更新MetroCluster]
 
-.支援的 ASA MetroCluster FC 技術更新組合
+
+
+=== 支援的 ASA MetroCluster FC 技術更新組合
+
 下表顯示在 MetroCluster FC 組態中重新整理 ASA 系統所支援的平台組合：
 
 [cols="3*"]

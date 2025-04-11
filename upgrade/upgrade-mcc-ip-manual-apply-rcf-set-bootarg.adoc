@@ -91,6 +91,7 @@ summary: 更新新平台的交換器 RCF 檔案，並在控制器模組上設定
 ** AFF A1K
 
  a| 
+** FAS50
 ** FAS70
 ** FAS90
 

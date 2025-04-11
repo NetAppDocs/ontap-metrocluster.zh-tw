@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation, active, iq, unified, manager, system, configuration 
 summary: 利用此功能、即可管理叢集的GUI管理及監控組態。Active IQ Unified Manager ONTAP 
 ---
-= 使用Active IQ Unified Manager 功能完善的功能和ONTAP 功能完善的系統管理程式來進一步設定和監控
+= 使用 Active IQ Unified Manager and ONTAP System Manager 進行進一步的組態和監控
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -18,4 +18,4 @@ summary: 利用此功能、即可管理叢集的GUI管理及監控組態。Activ
 您也可以使用Active IQ Unified Manager 功能資訊功能來監控MetroCluster 整個功能。
 
 .相關資訊
-http://docs.netapp.com["系統管理程式文件Active IQ Unified Manager ONTAP"^]
+link:https://docs.netapp.com/us-en/active-iq-unified-manager/["資訊文件Active IQ Unified Manager"^]

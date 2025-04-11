@@ -46,7 +46,7 @@ summary: 連接埠在MetroCluster 一個靜態IP組態中的使用取決於交�
 
 請使用下表來判斷您應遵循的纜線表。
 
-[cols="2*"]
+[cols="25,75"]
 |===
 | 如果您的系統 ... | 使用此纜線表 ... 
 
@@ -63,16 +63,19 @@ VA220 AFF
 | FAS500f AFF C250 、 ASA C250 AFF A250 、 ASA A250 | <<table_2_bes_53248,Broadcom BS-53248 平台連接埠指派（群組 2 ）>> 
 
 
-| AFF A20 AFF C30 ， AFF A30 AFF C60 | <<table_3_bes_53248,Broadcom BS-53248 平台連接埠指派（群組 3 ）>> 
+| AFF A20 | <<table_3_bes_53248,Broadcom BS-53248 平台連接埠指派（群組 3 ）>> 
 
 
-| FAS8200 、 AFF A300 | <<table_4_bes_53248,Broadcom BS-53248 平台連接埠指派（群組 4 ）>> 
+| AFF C30 ， AFF A30 FAS50 AFF C60 | <<table_4_bes_53248,Broadcom BS-53248 平台連接埠指派（群組 4 ）>> 
 
 
-| 解答320 AFF | <<table_5_bes_53248,Broadcom BS-53248 平台連接埠指派（第 5 組）>> 
+| FAS8200 、 AFF A300 | <<table_5_bes_53248,Broadcom BS-53248 平台連接埠指派（第 5 組）>> 
 
 
-| FAS8300 AFF C400 、 ASA C400 AFF A400 、 ASA A400 FAS8700 | <<table_6_bes_53248,Broadcom BS-53248 平台連接埠指派（群組 6 ）>> 
+| 解答320 AFF | <<table_6_bes_53248,Broadcom BS-53248 平台連接埠指派（群組 6 ）>> 
+
+
+| FAS8300 AFF C400 、 ASA C400 AFF A400 、 ASA A400 FAS8700 | <<table_7_bes_53248,Broadcom BS-53248 平台連接埠指派（群組 7 ）>> 
 |===
 .Broadcom BS-53248 平台連接埠指派（群組 1 ）
 檢閱平台連接埠指派、將 AFF A150 、 ASA A150 、 FAS2750 或 AFF A220 系統連接至 Broadcom BS-53248 交換器：
@@ -93,14 +96,29 @@ image::../media/mcc_ip_cabling_a_aff_asa_c250_a250_fas500f_to_a_broadcom_bes_532
 
 
 .Broadcom BS-53248 平台連接埠指派（群組 3 ）
-檢閱平台連接埠指派，將 AFF A20 ， AFF C30 ， AFF A30 或 AFF C60 系統連接至 Broadcom BS-53248 交換器：
+檢閱平台連接埠指派、將 AFF A20 系統連接至 Broadcom BS-53248 交換器：
 
-image:../media/mcc-ip-cabling-aff-a20-a30-c30-c60-to-a-broadcom-bes-53248-switch.png["顯示 Broadcom BS-53248 平台連接埠指派"]
+image:../media/mccip-cabling-bes-a20-updated.png["顯示 Broadcom BS-53248 平台連接埠指派"]
 
 * * 附註 1* ：使用這些連接埠需要額外授權。
 
 
 .Broadcom BS-53248 平台連接埠指派（群組 4 ）
+檢閱平台連接埠指派，將 AFF A30 ， AFF C30 ， AFF C60 或 FAS50 系統連接至使用四埠 25G 乙太網路卡的 Broadcom BS-53248 交換器。
+
+[NOTE]
+====
+* 此組態需要插槽 4 中的四埠 25G 乙太網路卡，才能連接本機叢集和 HA 介面。
+* 此組態需要控制器卡中的 QSFP 至 SFP+ 介面卡，才能支援 25Gbps 的網路速度。
+
+
+====
+image:../media/mccip-cabling-bes-a30-c30-fas50-c60-25G.png["顯示 Broadcom BS-53248 平台連接埠指派"]
+
+* * 附註 1* ：使用這些連接埠需要額外授權。
+
+
+.Broadcom BS-53248 平台連接埠指派（第 5 組）
 查看平台連接埠指派、將 FAS8200 或 AFF A300 系統連接至 Broadcom BS-53248 交換器：
 
 image::../media/mcc-ip-cabling-a-aff-a300-or-fas8200-to-a-broadcom-bes-53248-switch-9161.png[顯示 Broadcom BS-53248 平台連接埠指派]
@@ -108,7 +126,7 @@ image::../media/mcc-ip-cabling-a-aff-a300-or-fas8200-to-a-broadcom-bes-53248-swi
 * * 附註 1* ：使用這些連接埠需要額外授權。
 
 
-.Broadcom BS-53248 平台連接埠指派（第 5 組）
+.Broadcom BS-53248 平台連接埠指派（群組 6 ）
 檢閱平台連接埠指派、將 AFF A320 系統連接至 Broadcom BS-53248 交換器：
 
 image::../media/mcc-ip-cabling-a-aff-a320-to-a-broadcom-bes-53248-switch.png[顯示 Broadcom BS-53248 平台連接埠指派]
@@ -120,7 +138,7 @@ image::../media/mcc-ip-cabling-a-aff-a320-to-a-broadcom-bes-53248-switch.png[顯
 
 
 
-.Broadcom BS-53248 平台連接埠指派（群組 6 ）
+.Broadcom BS-53248 平台連接埠指派（群組 7 ）
 檢閱平台連接埠指派以連接 FAS8400 、 AFF C400 、 ASA C400 、 AFF A400 、 ASA A400 、 或 FAS8700 系統轉到 Broadcom BE-53248 交換器：
 
 image::../media/mcc-ip-cabling-a-fas8300-a400-c400-or-fas8700-to-a-broadcom-bes-53248-switch.png[顯示 Broadcom BS-53248 平台連接埠指派]

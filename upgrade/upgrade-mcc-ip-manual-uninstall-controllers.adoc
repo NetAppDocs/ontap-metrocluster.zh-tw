@@ -51,6 +51,7 @@ Boot_ONTAP
 ** AFF A1K
 
  a| 
+** FAS50
 ** FAS70
 ** FAS90
 

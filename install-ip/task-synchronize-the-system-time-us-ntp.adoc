@@ -1,0 +1,66 @@
+---
+permalink: install-ip/task-synchronize-the-system-time-us-ntp.html 
+sidebar: sidebar 
+keywords: metrocluster, fabric, installation, synchronize, system, time, ntp 
+summary: 每個叢集都需要自己的網路時間傳輸協定（NTP）伺服器、才能在節點與其用戶端之間同步時間。 
+---
+= 使用 NTP 同步系統時間
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+每個叢集都需要自己的網路時間傳輸協定（NTP）伺服器、才能在節點與其用戶端之間同步時間。
+
+.關於這項工作
+* 您無法在發生接管之後、修改故障節點或合作夥伴節點的時區設定。
+* MetroCluster IP 組態中的每個叢集都應該有自己的個別 NTP 伺服器，或是該 MetroCluster 站台上的節點和 IP 交換器所使用的伺服器。
+* 如果您使用的是 MetroCluster tiebreaker 或 ONTAP Mediator ，則它也應該有自己的獨立 NTP 伺服器。
+* 本程序說明如何在設定 MetroCluster IP 叢集之後設定 NTP 。如果您使用 System Manager 來設定叢集，則應該已經在叢集設定中設定 NTP 伺服器。如需詳細資訊、請參閱 link:../install-ip/set-up-mcc-site-system-manager.html["設定 MetroCluster IP 站台"] 。
+
+
+根據您的 ONTAP 版本，您可以在系統管理員 UI 的 * 叢集 * 或 * Insights * 標籤中設定 NTP 。
+
+[role="tabbed-block"]
+====
+.叢集
+--
+在 System Manager 中，您可以使用兩個不同選項，從 * 叢集 * 索引標籤設定 NTP ，視您的 ONTAP 版本而定：
+
+.ONTAP 9.8 或更新版本：
+請使用下列步驟，從 ONTAP 9.8 或更新版本的 * 叢集 * 索引標籤同步 NTP 。
+
+.步驟
+. 前往 * 叢集 > 總覽 *
+. 然後選擇image:icon-more-kebab-blue-bg.jpg["更多資訊"]選項並選擇 * 編輯 * 。
+. 在 * 編輯叢集詳細資料 * 視窗中，選取 NTP 伺服器下方的 * + 新增 * 選項。
+. 新增名稱，位置，並指定時間伺服器的 IP 位址。
+. 然後選取 * 儲存 * 。
+. 針對任何其他時間伺服器重複這些步驟。
+
+
+.ONTAP 9.11.1 或更新版本：
+請使用下列步驟，從 ONTAP 9.11.1 或更新版本 * 叢集 * 標籤的 * Insights * 視窗同步 NTP 。
+
+.步驟
+. 前往 * 叢集 > 總覽 *
+. 向下捲動至頁面上的 * Insights * 視窗，找出 * 設定的 NTP 伺服器太少 * ，然後選取 * Fix It * 。
+. 指定時間伺服器的 IP 位址，然後選取 * 儲存 * 。
+. 針對任何其他時間伺服器重複上一個步驟。
+
+
+--
+.洞見
+--
+在 ONTAP 9.11.1 或更新版本中，您也可以使用系統管理員中的 * Insights * 索引標籤來設定 NTP ：
+
+.步驟
+. 前往 System Manager UI 中的 * Insights * 標籤。
+. 向下捲動至 * 設定的 NTP 伺服器太少 * ，然後選取 * 修復 * 。
+. 指定時間伺服器的 IP 位址，然後選取 * 儲存 * 。
+. 針對任何其他時間伺服器重複上一個步驟。
+
+
+--
+====

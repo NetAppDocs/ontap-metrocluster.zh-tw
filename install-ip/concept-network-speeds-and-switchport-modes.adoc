@@ -15,7 +15,11 @@ summary: 如果您使用的是符合 MetroCluster 標準的交換器、您應該
 
 下表為 MetroCluster 相容的交換器提供平台專屬的網路速度和交換器連接埠模式。您應該根據表格設定交換器連接埠模式。
 
+[NOTE]
+====
+* 缺少值表示平台無法搭配MetroCluster相容的交換器使用。
+* AFF A30 ， AFF C30 ， AFF C60 和 FAS50 系統需要控制器卡中的 QSFP+ 介面卡，才能支援 25Gbps 的網路速度。
 
-NOTE: 缺少值表示平台無法搭配MetroCluster相容的交換器使用。
 
-image:../media/mcc-compliant-network-speed-9161.png["顯示了與 MetroCluster 相容交換器的平台特定網路速度和交換器連接埠模式。"]
+====
+image:../media/mccip-compliant-network-speed-switchport-mode-fas50.png["顯示了與 MetroCluster 相容交換器的平台特定網路速度和交換器連接埠模式。"]

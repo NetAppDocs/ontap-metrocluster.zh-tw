@@ -31,19 +31,48 @@ summary: 您必須根據現有MetroCluster 的不規則功能（NetApp）組態�
 
 
 ====
-.支援的 AFF 和 FAS 轉換組合
-下表顯示支援的平台組合。您可以從左欄中的平台轉換至右側欄中所列的平台、如彩色表格儲存格所示。
+
+
+=== 支援的 AFF 和 FAS 轉換組合
+
+下表顯示支援的平台組合。您可以從第一欄中的平台，轉換到列中所列支援的平台，如彩色表格儲存格所示。
 
 例如MetroCluster 、支援從由AFF8060控制器模組組成的FESFC組態、轉換為AFF 由FESA400控制器模組組成的IP組態。
 
-image::../media/mcc_transition_comb_9161-updated.png[顯示 IP 轉 FC 轉換支援的平台組合]
+表格分成兩個群組：
+
+* * 群組 1* 顯示轉換至 AFF A150 ， AFF A20 ，， AFF A220 ， FAS500f ， AFF C250 ， FAS8200 ， FAS50 ， AFF C400 C30 ， FAS2750 A30 ， AFF A250 ， AFF A300 ， AFF A400 ， FAS8300 ， AFF ， AFF A320 ， AFF 和 FAS8700 系統的組合。
+* * 群組 2* 顯示轉換至 C60 ， AFF A50 ， FAS70 ， FAS9000 ， AFF A700 ， FAS9500 ， AFF A900 ， AFF ， AFF A70 ， AFF C800 ， AFF ， AFF A800 C80 ， FAS90 ， AFF A90 和 AFF A1K 系統的組合。
+
+
+下列注意事項適用於這兩個群組：
 
 * 附註 1 ：此平台組合需要 ONTAP 9.11.1 或更新版本。
 * 附註 2 ： FC 節點上的本機叢集介面必須有 40GbE 介面。
 * 附註 3 ： FC 節點上的本機叢集介面必須有 100GbE 介面。
 
 
-.支援的 ASA 轉換平台組合
+[role="tabbed-block"]
+====
+.AFF 和 FAS 組合群組 1
+--
+檢閱， A20 ，， FAS8700 ， FAS500f ， FAS2750 ， AFF A250 ， AFF A220 ， FAS50 ， AFF C30 ， AFF A30 ， FAS8300 ， AFF C400 ， AFF C250 ， FAS8200 ， AFF A300 ， AFF A400 ， AFF ， AFF A320 和 AFF A150 系統的支援組合。
+
+image:../media/transition-combinations-group-1.png["顯示群組 1 平台支援的轉換"]
+
+--
+.AFF 和 FAS 組合群組 2
+--
+檢閱 C60 ， A50 ， FAS70 ， FAS9000 ，， FAS9500 ， AFF A900 ，， AFF A70 ， AFF ， AFF C800 ， AFF ， AFF A800 ， AFF A700 ， AFF C80 ， FAS90 ， AFF A90 和 AFF A1K 系統的支援組合。
+
+image:../media/transition-combinations-group-2.png["顯示群組 2 平台支援的轉換"]
+
+--
+====
+
+
+=== 支援的 ASA 轉換平台組合
+
 下表顯示 ASA 系統支援的平台組合。
 
 [cols="3*"]

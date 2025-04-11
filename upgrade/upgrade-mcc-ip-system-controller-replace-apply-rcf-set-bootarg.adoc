@@ -91,6 +91,7 @@ summary: 為新平台更新交換器 RCFs ，並在控制器模組上設定 Metr
 ** AFF A1K
 
  a| 
+** FAS50
 ** FAS70
 ** FAS90
 

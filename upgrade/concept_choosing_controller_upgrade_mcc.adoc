@@ -50,19 +50,46 @@ summary: 您使用的升級程序取決於平台模式。
 * MetroCluster 組態中的所有節點（新舊節點）都必須執行相同的 ONTAP 版本。請參閱link:https://hwu.netapp.com["Hardware Universe"^]以取得您的組合所支援的最低 ONTAP 版本。
 
 
-.支援的 AFF 和 FAS MetroCluster IP 控制器升級
-下表顯示在 MetroCluster IP 組態中手動升級 AFF 或 FAS 系統所支援的平台組合：
 
-image:../media/mccip_manual_controller_upgrade_comb.png["顯示支援的 AFF 和 FAS 平台，以使用切換和切換來手動升級控制器"]
 
-* 附註1：對於此升級、請使用此程序 link:task_upgrade_A700_to_A900_in_a_four_node_mcc_ip_us_switchover_and_switchback.html["使用交換器和切換功能（AFF 更新版本）、將控制器從功能性的A700/FAS9000升級AFF 至功能性的S還原A900/FAS9500 MetroCluster （以不整合的IP組態）ONTAP"]
+==== 支援的 AFF 和 FAS MetroCluster IP 控制器升級
+
+下表顯示在 MetroCluster IP 組態中手動升級 AFF 或 FAS 系統所支援的平台組合，分成兩個群組。
+
+* * 群組 1* 顯示升級至 AFF A150 ， AFF A20 ，， AFF A220 ， FAS500f ， AFF C250 ， FAS8200 ， FAS50 ， AFF C400 C30 ， FAS2750 A30 ， AFF A250 ， AFF A300 ， AFF A400 ， FAS8300 ， AFF ， AFF A320 ， AFF 和 FAS8700 系統的組合。
+* * 第 2 組 * 顯示升級至 C60 ， AFF A50 ， FAS70 ， FAS9000 ，， FAS9500 ， AFF A900 ， AFF ， AFF A70 ， AFF C800 ， AFF A800 ， AFF A700 ， AFF C80 ， FAS90 ， AFF A90 和 AFF A1K 系統的組合。
+
+
+下列注意事項適用於這兩個群組：
+
+* 附註 1 ：此升級請使用此程序link:task_upgrade_A700_to_A900_in_a_four_node_mcc_ip_us_switchover_and_switchback.html["使用交換器和切換功能（AFF 更新版本）、將控制器從功能性的A700/FAS9000升級AFF 至功能性的S還原A900/FAS9500 MetroCluster （以不整合的IP組態）ONTAP"]
 * 附註 2 ：執行 ONTAP 9.13.1 或更新版本的系統支援控制器升級。
 * 附註 3 ：目標平台必須等到控制器升級完成後、才能擁有內部磁碟機。您可以在升級後新增內部磁碟機。
 * 附註 4 ：需要更換控制器模組。
 * 附註 5 ：需要 IOM 模組將舊控制器轉換為外部 SAS 機櫃。如需支援的 IOM 模組，請參閱link:https://hwu.netapp.com/["Hardware Universe"^]。
 
 
-.支援的 ASA MetroCluster IP 控制器升級
+[role="tabbed-block"]
+====
+.AFF 和 FAS 組合群組 1
+--
+檢閱， A20 ，， FAS8700 ， FAS500f ， FAS2750 ， AFF A250 ， AFF A220 ， FAS50 ， AFF C30 ， AFF A30 ， FAS8300 ， AFF C400 ， AFF C250 ， FAS8200 ， AFF A300 ， AFF A400 ， AFF ， AFF A320 和 AFF A150 系統的支援組合。
+
+image:../media/manual-upgrade-combination-group-1.png["顯示群組 1 平台支援的升級組合"]
+
+--
+.AFF 和 FAS 組合群組 2
+--
+檢閱支援的組合，以升級至 AFF C60 ， AFF A50 ， FAS70 ， AFF C800 ， AFF A700 ， FAS9500 ， FAS9000 ， AFF ， AFF A70 ， AFF A900 ， AFF A800 C80 ， FAS90 ， AFF A90 和 AFF A1K 系統。
+
+image:../media/manual-upgrade-combination-group-2.png["顯示群組 2 平台支援的升級組合"]
+
+--
+====
+
+
+==== 支援的 ASA MetroCluster IP 控制器升級
+
 下表顯示在 MetroCluster IP 組態中手動升級 ASA 系統所支援的平台組合：
 
 image:../media/mcc-ip-upgrade-asa-comb-9161.png["顯示 ASA 支援的 MetroCluster IP 控制器升級平台組合"]
@@ -89,7 +116,10 @@ image:../media/mcc-ip-upgrade-asa-comb-9161.png["顯示 ASA 支援的 MetroClust
 * MetroCluster 組態中的所有節點（新舊節點）都必須執行相同的 ONTAP 版本。請參閱link:https://hwu.netapp.com["Hardware Universe"^]以取得您的組合所支援的最低 ONTAP 版本。
 
 
-.支援的 AFF 和 FAS MetroCluster FC 控制器升級
+
+
+==== 支援的 AFF 和 FAS MetroCluster FC 控制器升級
+
 下表顯示在 MetroCluster FC 組態中升級 AFF 或 FAS 系統所支援的平台組合：
 
 image::../media/metrocluster_fc_upgrade_table_aff_fas.png[MetroCluster 光纖通道升級表 AFF FAS]
@@ -111,7 +141,10 @@ image::../media/metrocluster_fc_upgrade_table_aff_fas.png[MetroCluster 光纖通
 * 附註 4 ：執行 ONTAP 9.13.1 或更新版本的系統支援控制器升級。
 
 
-.支援的 ASA MetroCluster FC 控制器升級
+
+
+==== 支援的 ASA MetroCluster FC 控制器升級
+
 下表顯示在 MetroCluster FC 組態中升級 ASA 系統所支援的平台組合：
 
 [cols="3*"]

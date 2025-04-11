@@ -72,7 +72,7 @@ System Manager會自動探索叢集中的其餘節點。
 按一下「*提交*」時、請等待叢集的建立與設定。然後進行驗證程序。
 
 .接下來呢？
-設定、初始化及設定兩個叢集之後、請執行 [ 設定 MetroCluster IP 對等項 ] 程序。
+設定，初始化及設定兩個叢集之後，請執行link:../install-ip/set-up-mcc-peering-system-manager.html["設定 MetroCluster IP 對等關係"]程序。
 
 
 

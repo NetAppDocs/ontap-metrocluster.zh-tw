@@ -78,9 +78,9 @@ entries:
   url: "/install-stretch/concept_considerations_when_removing_mcc_configurations.html"
 - title: 如何使用Active IQ Unified Manager 功能不全的系統ONTAP 管理程式來進一步設定及監控
   entries:
-  - title: 總覽
+  - title: 瞭解如何使用 Active IQ Unified Manager 和系統管理員進行進一步的組態和監控
     url: "/install-stretch/concept_using_the_oncommand_management_tools_for_further_configuration_and_monitoring.html"
-  - title: 使用NTP同步系統時間
+  - title: 使用 NTP 同步系統時間
     url: "/install-stretch/task_synchronize_the_system_time_us_ntp.html"
 - title: 在一個邊的組態中使用ONTAP 邊的考量MetroCluster
   url: "/install-stretch/concept_considerations_when_using_ontap_in_a_mcc_configuration.html"
