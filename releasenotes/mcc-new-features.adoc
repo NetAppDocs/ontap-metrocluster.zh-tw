@@ -11,7 +11,9 @@ summary:
 
 
 [role="lead"]
-瞭解 MetroCluster 的新功能。
+每個 ONTAP 9 資料管理軟體版本都提供全新且增強的功能、可改善 ONTAP MetroCluster 組態的功能、管理能力及效能。
+
+如需影響 ONTAP MetroCluster 組態的已知問題、限制和升級注意事項詳細資料、請參閱 https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508["發行說明ONTAP"^]。您必須使用 NetApp 帳戶登入、或建立帳戶才能存取版本資訊。
 
 [cols="20,65,15"]
 |===
@@ -24,6 +26,33 @@ summary:
 如果伺服器需要使用認證來下載韌體套件，您可以使用認證來更新 Fiberbridge 橋接器上的韌體。
 
 link:../maintain/task_update_firmware_on_a_fibrebridge_bridge_parent_topic.html["更新光纖橋接器上的韌體"]
+ a| 
+ONTAP 9.16.1.
+
+
+
+ a| 
+SVM 資料移動性支援，可移轉 MetroCluster 組態
+ a| 
+ONTAP 支援下列 MetroCluster SVM 移轉：
+
+* 在非 MetroCluster HA 配對和 MetroCluster IP 組態之間移轉 SVM
+* 在兩個 MetroCluster IP 組態之間移轉 SVM
+* 在 MetroCluster FC 組態和 MetroCluster IP 組態之間移轉 SVM
+
+
+link:https://docs.netapp.com/us-en/ontap/svm-migrate/index.html["SVM資料移動性"^]
+ a| 
+ONTAP 9.16.1.
+
+
+
+ a| 
+BGP 對等群組的 MD5 驗證支援
+ a| 
+ONTAP 支援 BGP 對等群組上的 MD5 驗證，以保護 BGP 工作階段。啟用 MD5 時， BGP 工作階段只能在獲授權的對等點之間建立和處理，以防止未獲授權的使用者可能中斷工作階段。
+
+link:https://docs.netapp.com/us-en/ontap/networking/configure_virtual_ip_@vip@_lifs.html["設定虛擬IP（VIP）LIF"^]
  a| 
 ONTAP 9.16.1.
 
@@ -55,6 +84,17 @@ ONTAP 9.15.1.1
 
 
  a| 
+MetroCluster IP 支援 NVMe
+ a| 
+四節點 MetroCluster IP 組態支援 NVMe / TCP 前端主機傳輸協定。
+
+link:https://docs.netapp.com/us-en/ontap/san-admin/san-config-mcc-concept.html["SAN組態MetroCluster"^]
+ a| 
+ONTAP 9.15.1.1
+
+
+
+ a| 
 AFF A900 系統上四節點 MetroCluster IP 組態的磁碟區限制增加
  a| 
 在四節點 MetroCluster IP 組態中、 AFF A900 系統的下列磁碟區限制已增加：
@@ -69,11 +109,33 @@ ONTAP 9.14.1.
 
 
  a| 
+S3 物件儲存支援鏡射和無鏡射的集合體
+ a| 
+您可以在 MetroCluster IP 和 FC 組態中的鏡射或無鏡射集合體中、在 SVM 上啟用 S3 物件儲存伺服器。
+
+https://docs.netapp.com/us-en/ontap/s3-config/ontap-version-support-s3-concept.html#s3-support-with-metrocluster["S3 支援 MetroCluster"^]
+ a| 
+ONTAP 9.14.1.
+
+
+
+ a| 
+支援在 MetroCluster 叢集中的鏡射和非鏡射集合體上佈建 S3 儲存區
+ a| 
+您可以在 MetroCluster 組態中的鏡射或無鏡射集合體上建立貯體。
+
+link:https://docs.netapp.com/us-en/ontap/s3-config/create-bucket-mcc-task.html#process-to-create-buckets["在 MetroCluster 組態中的鏡射或無鏡射集合體上建立 ONTAP S3 儲存區"^]
+ a| 
+ONTAP 9.14.1.
+
+
+
+ a| 
 使用 MetroCluster IP 和乙太網路附加儲存設備的共用交換器、從 MetroCluster FC 移轉至 MetroCluster IP
  a| 
 您可以使用共用儲存交換器、在不中斷營運的情況下、從 MetroCluster FC 移轉至 MetroCluster IP 組態。
 
-https://docs.netapp.com/us-en/ontap-metrocluster/transition/concept_nondisruptively_transitioning_from_a_four_node_mcc_fc_to_a_mcc_ip_configuration.html["不中斷地從MetroCluster 一個不中斷的支援FC移轉至MetroCluster 一個支援功能性的IP組態ONTAP （版本號：9.8及更新版本）"]
+https://docs.netapp.com/us-en/ontap-metrocluster/transition/concept_nondisruptively_transitioning_from_a_four_node_mcc_fc_to_a_mcc_ip_configuration.html["不中斷營運地從MetroCluster 一個不中斷的FC移轉至MetroCluster 一個支援功能的IP組態ONTAP （版本號：9.8及更新版本）"]
  a| 
 ONTAP 9.13.1.12.9.11.9.11.
 
@@ -84,7 +146,7 @@ ONTAP 9.13.1.12.9.11.9.11.
  a| 
 您可以不中斷地將工作負載和資料從現有的八節點 MetroCluster FC 組態移轉至新的 MetroCluster IP 組態。
 
-https://docs.netapp.com/us-en/ontap-metrocluster/transition/concept_nondisruptively_transitioning_from_a_four_node_mcc_fc_to_a_mcc_ip_configuration.html["不中斷地從 MetroCluster FC 移轉至 MetroCluster IP 組態"]
+https://docs.netapp.com/us-en/ontap-metrocluster/transition/concept_nondisruptively_transitioning_from_a_four_node_mcc_fc_to_a_mcc_ip_configuration.html["從 MetroCluster FC 無中斷地轉換至 MetroCluster IP 組態"]
  a| 
 ONTAP 9.13.1.12.9.11.9.11.
 
@@ -117,7 +179,7 @@ ONTAP 9.13.1.12.9.11.9.11.
  a| 
 您可以在八節點 MetroCluster IP 組態中升級控制器和儲存設備、方法是將組態擴充為暫時性的十二節點組態、然後移除舊的 DR 群組。
 
-https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/task_refresh_4n_mcc_ip.html["重新整理四節點MetroCluster 的靜態IP組態"]
+https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/task_refresh_4n_mcc_ip.html["重新整理四節點MetroCluster 的不全功能IP組態"]
  a| 
 ONTAP 9.13.1.12.9.11.9.11.
 
@@ -150,18 +212,51 @@ SVM 上的 S3 、位於 MetroCluster IP 組態中未鏡射的 Aggregate 上
  a| 
 您可以在 MetroCluster IP 組態中的未鏡射集合體上、在 SVM 上啟用 ONTAP Simple Storage Service （ S3 ）物件儲存伺服器。
 
-https://docs.netapp.com/us-en/ontap/s3-config/index.html#s3-configuration-with-system-manager-and-the-ontap-cli["S3組態搭配System Manager和ONTAP Stri CLI"]
+https://docs.netapp.com/us-en/ontap/s3-config/ontap-version-support-s3-concept.html#s3-support-with-metrocluster["S3 支援 MetroCluster"^]
  a| 
 ONTAP 9.12.1
 
 
 
  a| 
-從 MetroCluster FC 組態轉換至 AFF A250 或 FAS500f MetroCluster IP 組態
+MetroCluster IP 支援 NVMe
+ a| 
+四節點 MetroCluster IP 組態支援 NVMe / FC 傳輸協定。
+
+link:https://docs.netapp.com/us-en/ontap/san-admin/san-config-mcc-concept.html["SAN組態MetroCluster"^]
+ a| 
+ONTAP 9.12.1
+
+
+
+ a| 
+支援 MetroCluster IP 和 MetroCluster 網路附加組態中的前端主機傳輸協定
+ a| 
+支援前端主機傳輸協定（例如 NFS 和 iSCSI ）的 IPsec 可在 MetroCluster IP 和 MetroCluster 網路附加組態中使用。
+
+https://docs.netapp.com/us-en/ontap/networking/configure_ip_security_@ipsec@_over_wire_encryption.html["透過有線加密設定IP安全性（IPsec）"^]
+ a| 
+ONTAP 9.12.1
+
+
+
+ a| 
+從 MetroCluster FC 組態轉換為 AFF A250 或 FAS500f MetroCluster IP 組態
  a| 
 您可以從 MetroCluster FC 組態轉換為 AFF A250 或 FAS500f MetroCluster IP 組態。
 
 https://docs.netapp.com/us-en/ontap-metrocluster/transition/task_move_cluster_connections.html#which-connections-to-move["移動本機叢集連線"]
+ a| 
+零點9.11.1. ONTAP
+
+
+
+ a| 
+一致性群組
+ a| 
+MetroCluster 組態支援一致性群組。
+
+https://docs.netapp.com/us-en/ontap/consistency-groups/index.html#multi-admin-verification-support-for-consistency-groups["一致性群組的MetroCluster 不一致性"^]
  a| 
 零點9.11.1. ONTAP
 
@@ -190,111 +285,12 @@ https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/concept_consideratio
 
 
  a| 
-支援 8 節點叢集
+支援八節點 MetroCluster 組態
  a| 
-IP 和光纖附加組態支援永久性的 8 節點叢集。
+IP 和光纖附加 MetroCluster 組態支援永久性的八節點叢集。
 
-https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/task_install_and_cable_the_mcc_components.html["安裝和佈線 MetroCluster 元件"]
+https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/task_install_and_cable_the_mcc_components.html["安裝MetroCluster 和連接線的元件"]
  a| 
 部分9.9.1 ONTAP
-
-
-
- a| 
-簡化介面、可透過系統管理員管理 IP MetroCluster 作業
- a| 
-您可以使用系統管理員來管理 IP MetroCluster 作業、包括設定 IP MetroCluster 站台、配對站台及設定叢集。
-
-https://docs.netapp.com/us-en/ontap/concept_metrocluster_manage_nodes.html["管理 MetroCluster 站台"]
- a| 
-部分9.8 ONTAP
-
-
-
- a| 
-IP MetroCluster 可透過系統管理員切換和切換
- a| 
-您可以使用系統管理員來執行 IP MetroCluster 組態的所有規劃或非計畫性切換和切換程序步驟。
-
-https://docs.netapp.com/us-en/ontap/task_metrocluster_switchover_switchback.html["還原切換與切換MetroCluster"]
- a| 
-部分9.8 ONTAP
-
-
-
- a| 
-從MetroCluster 功能不完整的FC移轉至MetroCluster 功能不完整的IP組態
- a| 
-支援將工作負載和資料從現有的四節點 MetroCluster FC 組態移轉至新的 MetroCluster IP 組態。
-
-https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["升級、重新整理或擴充MetroCluster 此功能"]
-
-https://docs.netapp.com/us-en/ontap-metrocluster/transition/concept_choosing_your_transition_procedure_mcc_transition.html["從MetroCluster 靜態FC移轉至MetroCluster 靜態IP"]
- a| 
-部分9.8 ONTAP
-
-
-
- a| 
-全新升級與更新程序
- a| 
-支援四節點 MetroCluster FC 和 IP 組態的硬體升級或重新整理。
-
-https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/concept_choosing_an_upgrade_method_mcc.html["升級、重新整理或擴充MetroCluster 此功能"]
-
-https://docs.netapp.com/us-en/ontap-metrocluster/transition/concept_choosing_your_transition_procedure_mcc_transition.html["從MetroCluster 靜態FC移轉至MetroCluster 靜態IP"]
- a| 
-部分9.8 ONTAP
-
-
-
- a| 
-無鏡射的集合體
- a| 
-MetroCluster IP 組態支援無鏡射的集合體。
-
-https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/considerations_unmirrored_aggrs.html["無鏡射Aggregate的考量"]
- a| 
-部分9.8 ONTAP
-
-
-
- a| 
-符合 MetroCluster 標準的交換器
- a| 
-MetroCluster IP 組態可支援未經 NetApp 驗證的交換器、但前提是它們必須符合 NetApp 規格。
-
-https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/concept_considerations_mc_compliant_switches.html["使用MetroCluster相容交換器的考量事項"]
- a| 
-更新ONTAP
-
-
-
- a| 
-私有第 2 層網路共用
- a| 
-支援 Cisco 交換器的 MetroCluster IP 組態可以共用 ISL 的現有網路、而非使用專用 MetroCluster ISL 。早期ONTAP 版本需要專用ISL。
-
-MetroCluster IP 交換器專用於 MetroCluster 組態、無法共用。只有位於靜態IP交換器上的靜態ISL連接埠可以連接至共享交換器。MetroCluster MetroCluster
-
-[CAUTION]
-====
-如果使用共享網路、客戶必須負責滿足MetroCluster 共享網路中的需求。
-
-====
-https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/index.html["安裝與組態MetroCluster"]
- a| 
-ONTAP 9.6
-
-
-
- a| 
-還原切換與切換MetroCluster
- a| 
-您可以允許一個叢集站台接管另一個叢集站台的工作。此功能可讓您協助進行災難的維護或恢復。
-
-https://docs.netapp.com/us-en/ontap-metrocluster/manage/index.html["還原切換與切換MetroCluster"]
- a| 
-ONTAP 9.6
 
 |===

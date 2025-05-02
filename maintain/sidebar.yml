@@ -2,9 +2,11 @@
 section: maintain
 title: 維護MetroCluster 這些元件
 entries:
+- title: 瞭解 MetroCluster 維護
+  url: "/maintain/concept_where_to_find_procedures_for_mcc_maintenance_tasks.html"
 - title: 準備 MetroCluster 維護
   entries:
-  - title: 在執行維護工作之前、請先啟用主控台記錄
+  - title: 啟用主控台記錄
     url: "/maintain/enable-console-logging-before-maintenance.html"
   - title: 在ONTAP 執行維護工作之前、請先移除「協調器」或「斷路器監控」
     url: "/maintain/concept_remove_mediator_or_tiebreaker_when_performing_maintenance_tasks.html"
@@ -12,8 +14,6 @@ entries:
     url: "/maintain/reference_mcc_failure_scenarios.html"
   - title: 如何使用互通性對照表工具來尋找MetroCluster 各種資訊
     url: "/maintain/concept_using_the_interoperability_matrix_tool_to_find_mcc_information.html"
-  - title: 哪裡可以找MetroCluster 到執行維護工作的程序
-    url: "/maintain/concept_where_to_find_procedures_for_mcc_maintenance_tasks.html"
 - title: MetroCluster FC 組態的維護程序
   entries:
   - title: 修改交換器或 Atto 橋接 IP 位址以進行健全狀況監控

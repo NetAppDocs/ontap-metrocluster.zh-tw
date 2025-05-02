@@ -166,7 +166,7 @@ Nexus 9336C-FX2
 
 
  a| 
-在同一個 NVIDIA SN2100 交換器上設定多個 MC IP 組態
+同一台 NVIDIA SN2100 交換器上有多個 MetroCluster IP 組態
  a| 
 ONTAP 9.14.1.
 

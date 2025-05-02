@@ -4,22 +4,37 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, find, procedures, maintenance, tasks 
 summary: 執行MetroCluster 硬體維護工作時、請務必選擇正確的程序。 
 ---
-= 哪裡可以找MetroCluster 到執行維護工作的程序
+= 瞭解 MetroCluster 維護
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-執行MetroCluster 硬體維護工作時、請務必選擇正確的程序。
+瞭解如何為 MetroCluster 維護工作做好準備，並為您的組態選擇正確的維護程序。
 
-.不同類型 MetroCluster 組態的維護程序
+
+
+== 準備進行維護工作
+
+在執行任何維護程序之前，請先檢閱中的資訊link:enable-console-logging-before-maintenance.html["準備 MetroCluster 維護"]。
+
+
+NOTE: 在執行維護工作之前，您必須啟用主控台記錄，並移除 ONTAP Mediator 或 tiebreaker 監控。
+
+
+
+== 不同類型 MetroCluster 組態的維護程序
+
 * 如果您有 MetroCluster IP 組態、請參閱中的程序link:task-modify-ip-netmask-properties.html["MetroCluster IP 組態的維護程序"]。
 * 如果您有 MetroCluster FC 組態、請參閱中的程序link:task_modify_switch_or_bridge_ip_address_for_health_monitoring.html["MetroCluster FC 組態的維護程序"]。
 * 如果您在設定的特定章節中找不到程序，請參閱中的程序link:task_replace_a_shelf_nondisruptively_in_a_stretch_mcc_configuration.html["所有 MetroCluster 組態的維護程序"]。
 
 
-.所有其他維護程序
+
+
+== 所有其他維護程序
+
 下表提供與 MetroCluster 維護相關的程序連結、這些程序不在上述三節中列出：
 
 |===

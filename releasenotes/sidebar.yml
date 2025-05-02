@@ -2,8 +2,6 @@
 section: releasenotes
 title: MetroCluster 版本資訊
 entries:
-- title: MetroCluster 支援 ONTAP 功能的新功能
-  url: "/releasenotes/mcc-config-support-features.html"
 - title: MetroCluster 功能的新功能
   url: "/releasenotes/mcc-new-features.html"
 - title: MetroCluster IP 平台與交換器支援的新功能
