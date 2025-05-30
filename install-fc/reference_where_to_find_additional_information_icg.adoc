@@ -40,7 +40,7 @@ link:https://docs.netapp.com/us-en/ontap/index.html["供應說明文件ONTAP"^]
 
 | link:https://www.netapp.com/pdf.html?item=/media/13481-tr4689.pdf["《SIP解決方案架構與設計》、MetroCluster TR-4689"^]  a| 
 * 關於整套IP組態與操作的技術總覽MetroCluster 。
-* 最佳實務做法MetroCluster ：
+* MetroCluster IP 配置的最佳實務。
 
 
 

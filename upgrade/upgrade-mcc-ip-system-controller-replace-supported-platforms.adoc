@@ -54,14 +54,14 @@ summary: 在開始 MetroCluster IP 控制器升級之前，您需要確認您的
 --
 檢閱， A20 ，， FAS8700 ， FAS500f ， FAS2750 ， AFF A250 ， AFF A220 ， FAS50 ， AFF C30 ， AFF A30 ， FAS8300 ， AFF C400 ， AFF C250 ， FAS8200 ， AFF A300 ， AFF A400 ， AFF ， AFF A320 和 AFF A150 系統的支援組合。
 
-image:../media/assisted-group-1.png[""]
+image:../media/assisted-group-1.png["顯示 AFF 和 FAS 升級組合組 1"]
 
 --
 .AFF 和 FAS 組合群組 2
 --
 檢閱支援的組合，以升級至 AFF C60 ， AFF A50 ， FAS70 ， AFF C800 ， AFF A700 ， FAS9500 ， FAS9000 ， AFF ， AFF A70 ， AFF A900 ， AFF A800 C80 ， FAS90 ， AFF A90 和 AFF A1K 系統。
 
-image:../media/assisted-group-2.png[""]
+image:../media/assisted-group-2-updated.png["顯示 AFF 和 FAS 升級組合組 2"]
 
 --
 ====

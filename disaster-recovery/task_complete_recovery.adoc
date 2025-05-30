@@ -448,13 +448,13 @@ cluster_A::>
 
 
 
-== 重新設定ONTAP 「不完整的」服務（MetroCluster 不完整的IP組態）
+== 重新配置 ONTAP 調解器（MetroCluster IP 配置）
 
-如果您有MetroCluster 使用ONTAP 「BMC中介器」服務設定的「靜態IP」組態、則必須移除並重新設定與中介器的關聯。
+如果您具有使用 ONTAP 調解器配置的 MetroCluster IP 配置，則必須刪除並重新配置與 ONTAP 調解器的關聯。
 
 .開始之前
-* 您必須擁有IP位址、使用者名稱和密碼才能使用ONTAP 此功能、才能使用此功能。
-* 必須在Linux主機上設定及操作此功能。ONTAP
+* 您必須擁有 ONTAP Mediator 的 IP 位址、使用者名稱和密碼。
+* ONTAP Mediator 必須在 Linux 主機上設定並運作。
 
 
 .步驟
@@ -554,7 +554,7 @@ To check if the nodes are ready to do a switchover or switchback operation, run 
 
 
 
-. 如需MetroCluster 使用ONTAP 「支援者」服務的支援範圍、請確認「資訊員」服務已啟動且正常運作。
+. 對於使用 ONTAP 調解器的 MetroCluster IP 配置，請確認 ONTAP 調解器已啟動並正在運作。
 +
 .. 檢查系統是否能看到內核磁碟：
 +

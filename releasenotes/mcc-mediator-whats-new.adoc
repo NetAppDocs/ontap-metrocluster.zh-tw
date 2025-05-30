@@ -11,9 +11,9 @@ summary: 每個版本都提供 ONTAP Mediator 的新功能。  最新功能。
 
 
 [role="lead"]
-每個版本都提供 ONTAP Mediator 的新增強功能。  最新功能。
+每個版本都提供了 ONTAP Mediator 的新增強功能。最新功能。
 
-如需在 MetroCluster 組態中安裝或升級 ONTAP Mediator 的詳細資訊、您可以前往 link:https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/concept_mediator_requirements.html["準備安裝ONTAP 《不知道如何安裝》服務"^]。
+有關在 MetroCluster 配置中安裝或升級 ONTAP 調解器的詳細信息，您可以訪問link:https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/concept_mediator_requirements.html["準備安裝 ONTAP 調解器"^] 。
 
 [cols="75,25"]
 |===
@@ -27,14 +27,14 @@ summary: 每個版本都提供 ONTAP Mediator 的新功能。  最新功能。
 
 如果某個站台因環境關機而正常關機、則會觸發 MAUSO 。
 
-https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/concept-ontap-mediator-supports-automatic-unplanned-switchover.html["如何支援自動非計畫性切換ONTAP"]
+https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/concept-ontap-mediator-supports-automatic-unplanned-switchover.html["ONTAP 調解器如何支援自動排程外切換"]
  a| 
 ONTAP 9.13.1.12.9.11.9.11.
 
 
 
  a| 
-在 MetroCluster IP 組態中初始支援 ONTAP Mediator 服務
+MetroCluster IP 配置中對 ONTAP 調解器的初步支持
  a| 
 更新ONTAP
 

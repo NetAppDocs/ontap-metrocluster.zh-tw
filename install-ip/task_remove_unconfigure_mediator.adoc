@@ -1,23 +1,23 @@
 ---
 permalink: install-ip/task_remove_unconfigure_mediator.html 
 sidebar: sidebar 
-keywords: ontap, mediator, service, assist, remove, unconfigure, requirements, mediator requirements 
-summary: 您可以從ONTAP 無法使用的知識庫IP組態中移除此「資訊庫中介器」服務MetroCluster 。 
+keywords: ontap, mediator, assist, remove, unconfigure, requirements, mediator requirements 
+summary: 您可以從 MetroCluster IP 設定中移除 ONTAP 調解器。 
 ---
-= 從ONTAP 無法使用的IP組態中取消設定「無法使用的」MetroCluster 服務
+= 從 MetroCluster IP 設定中取消設定 ONTAP 調解器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-您可以從ONTAP 無法使用的IP組態中取消設定「無法使用的資訊」服務MetroCluster 。
+您可以從 MetroCluster IP 設定中取消設定 ONTAP 調解器。
 
 .開始之前
-您必須已在ONTAP 兩MetroCluster 個景點都能到達的網路位置上成功安裝及設定好《支援中心》。
+您必須已在兩個 MetroCluster 站點均可存取的網路位置上成功安裝和設定 ONTAP 調解器。
 
 .步驟
-. 使用下列命令取消設定ONTAP 「靜態資訊站服務：
+. 使用下列命令取消設定 ONTAP 調解器：
 +
 「取消組態設定中介程式」MetroCluster
 
@@ -26,7 +26,7 @@ summary: 您可以從ONTAP 無法使用的知識庫IP組態中移除此「資訊
 
 +
 
-NOTE: 如果 ONTAP Mediator 停機、則為 `metrocluster configuration-settings mediator remove` 命令仍會提示您輸入 ONTAP Mediator 管理使用者帳戶的使用者名稱和密碼、並從 MetroCluster 組態中移除 ONTAP Mediator 服務。
+NOTE: 如果 ONTAP 調解器發生故障，  `metrocluster configuration-settings mediator remove`指令仍會提示您輸入 ONTAP Mediator 管理員使用者帳號的使用者名稱和密碼，並從 MetroCluster 設定中刪除 ONTAP Mediator。
 
 +
 .. 使用下列命令檢查是否有任何磁碟毀損：
@@ -42,7 +42,7 @@ There are no entries matching your query.
 ....
 
 
-. 在ONTAP 兩個叢集上執行下列命令、確認已從MetroCluster 「支援資訊系統組態中移除「支援資訊系統服務：
+. 透過在兩個叢集上執行以下命令，確認 ONTAP 調解器已從 MetroCluster 配置中刪除：
 +
 .. `metrocluster configuration-settings mediator show`
 +

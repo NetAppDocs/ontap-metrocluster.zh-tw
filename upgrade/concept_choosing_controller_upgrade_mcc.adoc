@@ -82,7 +82,7 @@ image:../media/manual-upgrade-combination-group-1.png["顯示群組 1 平台支�
 --
 檢閱支援的組合，以升級至 AFF C60 ， AFF A50 ， FAS70 ， AFF C800 ， AFF A700 ， FAS9500 ， FAS9000 ， AFF ， AFF A70 ， AFF A900 ， AFF A800 C80 ， FAS90 ， AFF A90 和 AFF A1K 系統。
 
-image:../media/manual-upgrade-combination-group-2.png["顯示群組 2 平台支援的升級組合"]
+image:../media/manual-upgrade-combination-group-2-updated.png["顯示群組 2 平台支援的升級組合"]
 
 --
 ====

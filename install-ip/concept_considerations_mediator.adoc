@@ -19,7 +19,7 @@ summary: 各種MetroCluster 版本的不二組態在必要的元件上有主要�
 +
 在這些組態中、如果控制器故障但儲存設備（如果有橋接器）仍可運作、則會啟動AUSO。
 
-* * MetroCluster 使用ONTAP 「不完整」服務ONTAP 的「不完整IP組態」（僅限英文版）（僅限英文版）*
+* *使用 ONTAP Mediator 的 MetroCluster IP 配置（ONTAP 9.7 及更高版本）*
 +
 在這些組態中、MAUSO會在與AUSO相同的情況下啟動、如前所述、也會在完整站台故障（控制器、儲存設備和交換器）之後啟動。
 

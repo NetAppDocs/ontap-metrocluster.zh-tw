@@ -1,0 +1,24 @@
+---
+permalink: install-ip/configure-cshm-mccip.html 
+sidebar: sidebar 
+keywords: ip, switch, connection, configuring, configure, snmp, health, monitoring 
+summary: 您可以將 IP 交換器設定為使用 SNMPv3 進行健全狀況監控。 
+---
+= MetroCluster IP 設定中的交換器運作狀況監控概述
+:allow-uri-read: 
+
+
+[role="lead"]
+乙太網路交換器健全狀況監視器（ CSHM ）負責確保叢集與儲存網路交換器的作業健全狀況、並收集交換器記錄以供偵錯之用。
+
+
+
+== 在 MetroCluster IP 設定中設定 CSHM 的重要注意事項
+
+本節包含在 Cisco、Broadcom 和 NVIDIA SN2100 交換器上設定 SNMPv3 和日誌收集的通用步驟。您必須按照 MetroCluster IP 設定中支援的交換器韌體版本的步驟進行操作。請參閱link:https://hwu.netapp.com/["Hardware Universe"^]驗證支援的韌體版本。
+
+在 MetroCluster 設定中，僅在本機叢集交換器上設定運作狀況監控。
+
+對於使用 Broadcom 和 Cisco 交換器進行日誌收集，應在交換器上為每個啟用日誌收集的叢集建立一個新使用者。在 MetroCluster 配置中，這表示 MetroCluster 1、MetroCluster 2、MetroCluster 3 和 MetroCluster 4 都需要在交換器上設定單獨的使用者。這些交換器不支援同一位使用者的多個 SSH 金鑰。執行的任何其他記錄集合設定都會覆寫使用者先前存在的任何 SSH 金鑰。
+
+在配置 CSHM 之前，您應該停用未使用的 ISL 以避免任何不必要的 ISL 警報。

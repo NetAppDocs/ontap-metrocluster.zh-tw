@@ -225,7 +225,7 @@ mccint-fas9000-0304
 使用下列連結來安裝及設定斷路器或訊號器：
 
 * link:../tiebreaker/concept_overview_of_the_tiebreaker_software.html["安裝及設定MetroCluster ESITirepreaker軟體"]
-* link:../install-ip/concept_mediator_requirements.html["準備安裝ONTAP 《不知道如何安裝》服務"]
+* link:../install-ip/concept_mediator_requirements.html["準備安裝 ONTAP 調解器"]
 
 
 

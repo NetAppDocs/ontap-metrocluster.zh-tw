@@ -117,7 +117,7 @@ NOTE: 您應該依照下列順序更新交換器： switch_a_1 ， switch_B_1 �
 
 == 執行系統預先檢查
 
-在預先檢查開始之前、如果已安裝 ONTAP Mediator 、系統會自動偵測並移除它。若要確認移除、系統會提示您輸入使用者名稱和密碼。當您完成升級時，或者如果預先檢查失敗或您選擇不繼續升級，則必須手動進行link:../install-ip/task_configuring_the_ontap_mediator_service_from_a_metrocluster_ip_configuration.html["重新設定 ONTAP Mediator 服務"]。
+在預先檢查開始之前、如果已安裝 ONTAP Mediator 、系統會自動偵測並移除它。若要確認移除、系統會提示您輸入使用者名稱和密碼。當您完成升級時，或者如果預先檢查失敗或您選擇不繼續升級，則必須手動進行link:../install-ip/task_configuring_the_ontap_mediator_service_from_a_metrocluster_ip_configuration.html["重新配置 ONTAP 調解器"]。
 
 在升級期間的任何階段、您都可以從站台A執行「系統控制器置換show」或「系統控制器置換show-details」命令、以檢查狀態。如果命令傳回空白輸出、請等待幾分鐘、然後重新執行命令。
 

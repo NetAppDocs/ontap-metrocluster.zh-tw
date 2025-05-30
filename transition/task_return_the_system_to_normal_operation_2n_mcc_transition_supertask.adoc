@@ -68,7 +68,7 @@ license_key長度為28位數。
 link:../install-ip/concept_considerations_mediator.html["內化員的考量"]
 
 +
-link:../install-ip/concept_mediator_requirements.html["針對ONTAP 非計畫性自動切換設定「功能不全」服務"]
+link:../install-ip/concept_mediator_requirements.html["配置 ONTAP 調解器以實現計劃外自動切換"]
 
 +
 link:../tiebreaker/concept_overview_of_the_tiebreaker_software.html["Tiebreaker軟體安裝與組態"]

@@ -342,7 +342,7 @@ link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#adding-metro
  a| 
 中介者
  a| 
-link:https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/concept_mediator_requirements.html["從ONTAP 一套不實的IP組態設定「不實不作」MetroCluster 服務"] 在 MetroCluster IP 安裝與組態 _ 中。
+link:https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/concept_mediator_requirements.html["透過 MetroCluster IP 配置來設定 ONTAP 調解器"]在《MetroCluster IP 安裝與設定》中。
 
 
 

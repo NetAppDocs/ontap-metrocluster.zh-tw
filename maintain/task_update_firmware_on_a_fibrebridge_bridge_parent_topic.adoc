@@ -25,7 +25,7 @@ link:enable-console-logging-before-maintenance.html["啟用主控台記錄"] 在
 * 此功能組態必須正常運作。MetroCluster
 * 所有採用此功能的橋接器MetroCluster 都必須啟動並運作。
 * 所有儲存路徑都必須可用。
-* 您需要管理員密碼、才能存取 HTTP 、 FTP 、 SFTP 或 Trivial File Transfer Protocol （ TFTP ）伺服器。
+* 您需要管理員密碼以及對 HTTP、FTP 或簡單檔案傳輸協定 (TFTP) 伺服器的存取權限。
 * 您必須使用支援的韌體版本。
 +
 https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"^]

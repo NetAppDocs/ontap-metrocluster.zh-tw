@@ -2,24 +2,24 @@
 permalink: install-ip/task_configuring_the_ontap_mediator_service_from_a_metrocluster_ip_configuration.html 
 sidebar: sidebar 
 keywords: metrocluster, mediator, configure 
-summary: 必須在無法用於靜態IP組態的「節點」上設定「BMC調解器」服務。ONTAP ONTAP MetroCluster 
+summary: 必須在 ONTAP 節點上設定 ONTAP 調解器才能在 MetroCluster IP 設定中使用。 
 ---
-= 從ONTAP 一套不實的IP組態設定「不實不作」MetroCluster 服務
+= 透過 MetroCluster IP 配置來設定 ONTAP 調解器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-必須在無法用於靜態IP組態的「節點」上設定「BMC調解器」服務。ONTAP ONTAP MetroCluster
+必須在 ONTAP 節點上設定 ONTAP 調解器才能在 MetroCluster IP 設定中使用。
 
 .開始之前
-* 此功能必須已成功安裝在兩個景點都能到達的網路位置。ONTAP MetroCluster
+* ONTAP 調解器必須已成功安裝在兩個 MetroCluster 站點均可存取的網路位置上。
 +
-link:https://docs.netapp.com/us-en/ontap/mediator/index.html["安裝或升級ONTAP 《不知道如何使用》服務"^]
+link:https://docs.netapp.com/us-en/ontap/mediator/index.html["安裝或升級 ONTAP 調解器"^]
 
-* 您必須擁有執行ONTAP 《支援者》服務的主機IP位址。
-* 您必須擁有ONTAP 使用者名稱和密碼才能使用「畫面不景」服務。
+* 您必須擁有執行 ONTAP Mediator 的主機的 IP 位址。
+* 您必須擁有 ONTAP Mediator 的使用者名稱和密碼。
 * 所有的靜態IP組態節點MetroCluster 都必須在線上。
 
 
@@ -29,11 +29,11 @@ CAUTION: 從ONTAP 《S廳9.12.1（支援）：MetroCluster 在MetroCluster 一�
 .關於這項工作
 * 此工作預設會啟用自動非計畫性切換。
 * 此工作可在ONTAP 任何節點的整個介面上執行MetroCluster 、以進行整個過程。
-* 單一安裝ONTAP 的「不知道如何」服務、最多可設定五MetroCluster 個「不知道」IP組態。
+* ONTAP Mediator 的單一安裝最多可配置五個 MetroCluster IP 配置。
 
 
 .步驟
-. 將ONTAP 「這個不只是『我的『我的』服務加入ONTAP 到這個部門：
+. 將 ONTAP 調解器新增至 ONTAP：
 +
 「支援組態設定的中介者add -中介 者位址_ip-address-of中介者主機_」MetroCluster
 

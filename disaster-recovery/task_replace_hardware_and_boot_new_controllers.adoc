@@ -282,7 +282,7 @@ dr-group-id cluster    node      node-systemid dr-partner-systemid
 ----
 
 
-. 如需MetroCluster 使用ONTAP 「功能不完整」服務的靜態IP組態、請取得ONTAP 「功能不完整」服務的IP位址：
+. 對於使用 ONTAP 調解器的 MetroCluster IP 配置，取得 ONTAP 調解器的 IP 位址：
 +
 「儲存iSCSI啟動器show -Node *-label中介器」
 

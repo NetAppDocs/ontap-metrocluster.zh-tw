@@ -122,7 +122,17 @@ NOTE: 內建連接埠內建於控制器硬體（插槽 0 ），無法更換，�
 | 平台模式 | 必要的Gigabit乙太網路介面卡 | 介面卡所需的插槽 | 連接埠 
 
 
-| AFF A900 、 ASA A900 和 FAS9500 | X91146A | 插槽5、插槽7 | e5b、e7b 
+ a| 
+AFF A900 、 ASA A900 和 FAS9500
+ a| 
+X91146A
+ a| 
+插槽5、插槽7
+ a| 
+e5b、e7b
+
+*注意：*連接埠 e5a 和 e7a 僅可用於集群間 LIF。您不能將這些連接埠用於資料 LIF。
+
 
 
  a| 
@@ -284,7 +294,10 @@ link:concept_considerations_drive_assignment.html["瞭解 MetroCluster IP 組態
 
 在最低支援組態中、每個站台至少需要一個機櫃。
 
-支援RAID-DP和RAID4的支援。MetroCluster
+MetroCluster 配置支援 RAID-DP、RAID4 和 RAID-TEC。
+
+
+NOTE: 從 ONTAP 9.4 開始、 MetroCluster IP 組態支援使用自動磁碟指派和 ADP （進階磁碟分割）進行新安裝。如需詳細資訊、請參閱 link:../install-ip/concept_considerations_drive_assignment.html["自動驅動器分配和 ADP 系統的注意事項"] 。
 
 
 

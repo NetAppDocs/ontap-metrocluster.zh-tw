@@ -1,17 +1,17 @@
 ---
 permalink: install-ip/concept-ontap-mediator-supports-automatic-unplanned-switchover.html 
 sidebar: sidebar 
-keywords: ontap, mediator, service, assist, metrocluster, ip, configuration, perform, automatic, unplan, switchover, physical, repository, status, information, configuring, configure, install, configuring, configure, forced 
+keywords: ontap, mediator, assist, metrocluster, ip, configuration, perform, automatic, unplan, switchover, physical, repository, status, information, configuring, configure, install, configuring, configure, forced 
 summary:  
 ---
-= 如何支援自動非計畫性切換ONTAP
+= ONTAP 調解器如何支援自動排程外切換
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-ONTAP Mediator 提供信箱 LUN 來儲存 MetroCluster IP 節點的狀態資訊。這些LUN與ONTAP 運行於Linux主機上的《支援者》（不MetroCluster 含此功能）位於同一位置、而該主機與《支援者》（Sitites）實體區隔開。MetroCluster IP 節點可以使用信箱資訊來監控其災難恢復（ DR ）合作夥伴的狀態、並在發生災難時實作 Mediator 輔助的非計畫性轉換（ MAUSO ）。
+ONTAP 調解器提供郵箱 LUN 來儲存有關 MetroCluster IP 節點的狀態資訊。這些 LUN 與 ONTAP Mediator 位於同一位置，後者在與 MetroCluster 站點物理分離的 Linux 主機上運行。MetroCluster IP 節點可以使用信箱資訊來監控其災難恢復（ DR ）合作夥伴的狀態、並在發生災難時實作 Mediator 輔助的非計畫性轉換（ MAUSO ）。
 
 
 NOTE: 不支援MAUSO MetroCluster 的不支援不支援以支援不支援的功能。

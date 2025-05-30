@@ -64,21 +64,42 @@ e0b、e0d
 | 交換器模式 | 靜態IP節點模型MetroCluster | 交換器連接埠 | 連線至 
 
 
-.2+| Cisco 3132Q-V、3232C或9336C-FX2 .2+| 任何  a| 
-5.
+| Cisco 3132Q-V  a| 
+任何
+ a| 
+5 、 6
  a| 
 FC節點上的本機叢集介面
 
 
 
  a| 
-6.
+思科 3232C 或 9336C-FX2
+ a| 
+任何
+ a| 
+5、6 或 13、14
+
+*注意：*只有當您選擇兩種速度模式時才能使用交換器連接埠 13 和 14。
  a| 
 FC節點上的本機叢集介面
 
 
 
-.6+| Broadcom Bes - 53248  a| 
+ a| 
+思科 9336C-FX2 共享
+ a| 
+任何
+ a| 
+3、4 或 11、12
+
+*注意：*只有當您選擇兩種速度模式時才能使用交換器連接埠 11 和 12。
+ a| 
+FC節點上的本機叢集介面
+
+
+
+.3+| Broadcom Bes - 53248  a| 
 FAS500f/A250
  a| 
 1 - 6
@@ -100,6 +121,19 @@ FC節點上的本機叢集介面
 FAS8300/A400/FAS8700
  a| 
 1 - 6
+ a| 
+FC節點上的本機叢集介面
+
+
+
+ a| 
+NVIDIA SN2100
+ a| 
+任何
+ a| 
+5、6或11、12
+
+*注意：*只有當您選擇兩種速度模式時才能使用交換器連接埠 11 和 12。
  a| 
 FC節點上的本機叢集介面
 
@@ -271,20 +305,23 @@ link:../install-ip/concept_considerations_differences.html["安裝與組態Metro
 您應該使用MetroCluster 支援的最新韌體。
 
 +
-*** link:../install-ip/task_switch_config_broadcom.html["下載並安裝Broadcom交換器EFOS軟體"]
-*** link:../install-ip/task_switch_config_cisco.html["下載並安裝Cisco交換器NX-OS軟體"]
+*** link:../install-ip/task_switch_config_broadcom.html["下載並安裝 Broadcom 交換器 EFOS 軟體"]
+*** link:../install-ip/task_switch_config_cisco.html["下載並安裝 Cisco 交換器 NX-OS 軟體"]
+*** link:../install-ip/task_switch_config_nvidia.html#download-and-install-the-cumulus-software["下載並安裝 NVIDIA Cumulus 軟體"]
 
 
 .. 準備IP交換器以應用新的RCF檔案。
 +
-*** link:../install-ip/task_switch_config_broadcom.html["將Broadcom IP交換器重設為原廠預設值"] 。
-*** link:../install-ip/task_switch_config_cisco.html["將Cisco IP交換器重設為原廠預設值"]
+*** link:../install-ip/task_switch_config_broadcom.html["將Broadcom IP交換器重設為原廠預設值"]
+*** link:../install-ip/task_switch_config_cisco.html["將 Cisco IP 交換器重設為原廠預設值"]
+*** link:../install-ip/task_switch_config_nvidia.html#reset-the-nvidia-ip-sn2100-switch-to-factory-defaults["將NVIDIA IP SN2100交換器重設為原廠預設值"]
 
 
 .. 視交換器廠商而定、下載並安裝IP RCF檔案。
 +
-*** link:../install-ip/task_switch_config_broadcom.html["下載並安裝Broadcom IP RCF檔案"]
-*** link:../install-ip/task_switch_config_cisco.html["下載並安裝Cisco IP RCF檔案"]
+*** link:../install-ip/task_switch_config_broadcom.html["下載並安裝 Broadcom IP RCF 文件"]
+*** link:../install-ip/task_switch_config_cisco.html["下載並安裝 Cisco IP RCF 文件"]
+*** link:../install-ip/task_switch_config_nvidia.html#download-and-install-the-nvidia-rcf-files["下載並安裝NVIDIA RCF檔案"]
 
 
 

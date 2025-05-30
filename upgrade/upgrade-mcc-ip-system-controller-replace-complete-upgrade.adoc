@@ -59,7 +59,7 @@ summary: 驗證網路連線能力並還原任何監控組態，以完成自動�
 
 手動設定 ONTAP Mediator 、此程式會在您開始升級之前自動移除。
 
-. 請執行中的步驟 link:../install-ip/task_configuring_the_ontap_mediator_service_from_a_metrocluster_ip_configuration.html["從ONTAP 一套不實的IP組態設定「不實不作」MetroCluster 服務"]。
+. 使用中的步驟link:../install-ip/task_configuring_the_ontap_mediator_service_from_a_metrocluster_ip_configuration.html["透過 MetroCluster IP 配置來設定 ONTAP 調解器"]。
 
 
 
