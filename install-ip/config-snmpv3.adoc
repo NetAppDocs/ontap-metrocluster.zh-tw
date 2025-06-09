@@ -11,8 +11,7 @@ summary: 您可以將 IP 交換器設定為使用 SNMPv3 進行健全狀況監�
 [role="lead"]
 在 MetroCluster IP 組態中、您可以設定 SNMPv3 來監控 IP 交換器的健全狀況。
 
-.關於這項工作
-此任務顯示在交換器上設定 SNMPv3 的通用步驟。列出的某些交換器韌體版本可能不受 MetroCluster IP 配置支援。
+此程序顯示在交換器上設定 SNMPv3 的通用步驟。列出的某些交換器韌體版本可能不受 MetroCluster IP 配置支援。
 
 您必須按照 MetroCluster IP 設定中支援的交換器韌體版本的步驟進行操作。請參閱link:https://hwu.netapp.com["Hardware Universe"^]驗證支援的韌體版本。
 

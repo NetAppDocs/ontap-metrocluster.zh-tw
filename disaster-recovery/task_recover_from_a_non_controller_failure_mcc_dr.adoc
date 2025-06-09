@@ -186,11 +186,34 @@ mcc1A::> metrocluster operation show
 ====
 . 節點開機完成後、請確認根集合體已鏡射。
 +
-如果兩個plexes都存在、任何重新同步都會自動啟動。如果叢發生故障、請使用下列命令來重新建立鏡射、以銷毀它並重新建立鏡射關係：
+[role="tabbed-block"]
+====
+.如果叢發生故障：
+--
+.. 摧毀失敗的 plex：
++
+`storage aggregate plex delete -aggregate <aggregate_name> -plex <plex_name>`
 
+.. 透過重新建立鏡像來重新建立鏡像關係：
 +
 「torage Aggregate mirror -Aggregate <gregate名稱>」
 
+
+
+--
+.如果叢處於離線狀態：
+--
+在線叢：
+
+`storage aggregate plex online -aggregate <aggregate_name> -plex <plex_name>`
+
+--
+.如果兩個叢都存在：
+--
+重新同步會自動啟動。
+
+--
+====
 . 模擬切換回復作業：
 +
 .. 從任一正常節點的提示字元、變更為進階權限層級：

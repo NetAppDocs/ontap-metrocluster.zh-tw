@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: ip, switch, connection, configuring, configure, snmp, health, monitoring 
 summary: 您可以將 IP 交換器設定為使用 SNMPv3 進行健全狀況監控。 
 ---
-= MetroCluster IP 設定中的交換器運作狀況監控概述
+= 了解 MetroCluster IP 設定中的交換器運作狀況監控
 :allow-uri-read: 
 
 
