@@ -30,3 +30,66 @@ summary: 從 ONTAP 9.13.1 開始、您可以將工作負載和資料從現有的
 * 本程序說明轉換一個四節點 FC DR 群組所需的步驟。如果您有八節點組態（兩個 FC DR 群組）、則必須針對每個 FC DR 群組重複整個程序。
 * 您必須符合所有要求、並遵循程序中的所有步驟。
 
+
+.重要資訊
+在過渡、刷新和擴展過程中，您可能會為 MetroCluster 配置添加新的平台模型。在這些流程的任何階段，如果現有 MetroCluster 配置包含使用 *共用叢集/HA 連接埠* 的平台，則您必須將 ONTAP 版本升級至 ONTAP 9.15.1P11 或 ONTAP 9.16.1P4 或更高版本，才能將使用 *共用 MetroCluster/HA 連接埠* 的平台新增至設定中。
+
+在決定使用此流程之前，請仔細查看下表中的資訊。如果第一列列出了您現有的平台，而第二列列出了要新增至配置中的平台，則配置中的所有節點都必須執行 ONTAP 9.15.1P11 或 ONTAP 9.16.1P4 或更高版本才能支援此流程。
+
+
+CAUTION: 現有平台和要新增到配置中的平台必須都執行 ONTAP 9.15.1P11 或 ONTAP 9.16.1P4 或更高版本。
+
+[cols="20,20,20,20,20"]
+|===
+2+| 如果您現有的 MetroCluster 包含... 2+| 您要新增的平台是... | 然後... 
+
+
+ a| 
+使用*共享集群/HA 連接埠*的 AFF 系統：
+
+* AFF A20
+* AFF A30
+* AFF C30
+* AFF A50
+* AFF C60
+* AFF C80
+* AFF A70
+* AFF A90
+* AFF A1K
+
+ a| 
+使用*共享集群/HA 連接埠*的 FAS 系統：
+
+* FAS50
+* FAS70
+* FAS90
+
+ a| 
+使用*共用 MetroCluster/HA 連接埠*的 AFF 系統：
+
+* AFF A150 、 ASA A150
+* VA220 AFF
+* AFF C250 、 ASA C250
+* AFF A250 、 ASA A250
+* 部分A300 AFF
+* 解答320 AFF
+* AFF C400 、 ASA C400
+* AFF A400 、 ASA A400
+* 部分A700 AFF
+* AFF C800 、 ASA C800
+* AFF A800 、 ASA A800
+* AFF A900 、 ASA A900
+
+ a| 
+使用*共用 MetroCluster/HA 連接埠*的 FAS 系統：
+
+* FAS2750
+* FAS500f
+* FAS8200
+* FAS8300
+* FAS8700
+* FAS9000
+* FAS9500
+
+| 在將新平台新增至現有 MetroCluster 配置之前，請將現有配置和新配置中的所有節點升級至 ONTAP 9.15.1P11 或 ONTAP 9.16.1P4 或更高版本。 
+|===

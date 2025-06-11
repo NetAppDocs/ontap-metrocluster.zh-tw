@@ -17,11 +17,17 @@ summary: 您必須瞭解如何使用連接埠表格中的資訊來正確產生RC
 使用表格之前、請先檢閱下列考量事項：
 
 * 下表顯示站台A的連接埠使用量站台B使用相同的纜線
-* 交換器無法設定不同速度的連接埠（例如、混合使用100 Gbps連接埠和40 Gbps連接埠）。
-* 追蹤MetroCluster 不穩定的資料群組MetroCluster （例如、支援1、MetroCluster 2等）。如本組態程序稍後所述、使用RcfFileGenerator.工具時、您將需要此資訊。
+* 您無法為交換器設定不同速度的連接埠（例如，100 Gbps 連接埠和 40 Gbps 連接埠的混合）。
+* 追蹤MetroCluster 不穩定的資料群組MetroCluster （例如、支援1、MetroCluster 2等）。在使用 RcfFileGenerator 工具時您將需要此信息，如本配置過程後面所述。
 * 您應該以相同的方式連接所有節點。如果有不同的連接埠組合選項可供連接節點，則所有節點都應該使用相同的連接埠組合。例如， node1 上的 e1a 和 node2 上的 e1a 應該連接到一個交換器。同樣地，兩個節點的第二個連接埠也應該連接到第二個交換器。
 *  https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["RcfFileGeneratorfor MetroCluster EfIP"^]也提供每個交換器的每連接埠纜線總覽。使用此纜線總覽來驗證纜線。
 
+
+
+
+== 將兩MetroCluster 個交換器連接至交換器
+
+將多個 MetroCluster 設定佈線到交換器時，請根據對應的表格為每個 MetroCluster 佈線。例如，如果要將 FAS2750 和 AFF A700 佈線到同一台交換機，則應依照表 1 中的「MetroCluster 1」為 FAS2750 佈線，依照表 2 中的「MetroCluster 2」或「MetroCluster 3」為 AFF A700 佈線。您無法將 FAS2750 和 AFF A700 實體連接成「 MetroCluster 1 」。
 
 
 
@@ -30,7 +36,7 @@ summary: 您必須瞭解如何使用連接埠表格中的資訊來正確產生RC
 針對執行效能不全的9.8和更早版本的執行功能、為了轉換升級作業、某些程序需要在組態中新增第二個四節點DR群組、才能建立一個暫用的八節點組態。MetroCluster ONTAP  從 ONTAP 9.9.1 開始、支援永久性的八節點 MetroCluster 組態。
 
 .關於這項工作
-對於這類組態、您使用的方法與上述方法相同。除了第二MetroCluster 個問題、您還需要額外的四節點災難恢復群組。
+對於八節點配置，使用與上面描述的相同的方法。除了第二MetroCluster 個問題、您還需要額外的四節點災難恢復群組。
 
 例如、您的組態包括下列項目：
 

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: cabling, cable, component, link, site, management, network, networks, hardware, component, shared, switch, cluster, connection, management, data, configuring, configure 
 summary: 連接埠在MetroCluster 一個靜態IP組態中的使用取決於交換器機型和平台類型。 
 ---
-= Cisco 9336C-FX2 交換器的平台連接埠指派，連接 NS224 儲存設備
+= 連接 NS224 儲存的 36 連接埠 Cisco 9336C-FX2 交換器的平台連接埠分配
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -15,10 +15,20 @@ summary: 連接埠在MetroCluster 一個靜態IP組態中的使用取決於交�
 
 使用組態表之前，請先檢閱下列考量事項：
 
-* 連接 NS224 儲存設備的 Cisco 9336C-FX2 交換器纜線時，最多只能有兩個 MetroCluster 組態或 DR 群組，至少一個 MetroCluster 組態或 DR 群組必須支援交換器連接的 NS224 機櫃。不支援交換器附加 NS224 機櫃的平台、只能以第二個 MetroCluster 組態或第二個 DR 群組的形式連接。
+* 當至少一個 MetroCluster 配置或 DR 群組將 NS224 架連接到 MetroCluster 交換器時，本節中的表格適用於 36 連接埠 Cisco 9336C-FX2 交換器。
++
+如果您有 36 連接埠 Cisco 9336C-FX2 交換機，但未連接 NS224 存儲，請使用link:port_usage_3232c_9336c.html["Cisco 3232C 或 36 連接埠 Cisco 9336C-FX2 交換器的平台連接埠分配"] 。
+
++
+如果您有 12 埠 Cisco 9336C-FX2 交換機，請使用link:port-usage-9336c-fx-2-12-port.html["12 連接埠 Cisco 9336C-FX2 交換器的平台連接埠分配"] 。
+
 +
 
-CAUTION: 只有在至少有一個 MetroCluster 組態或 DR 群組將 NS224 機櫃連接至 MetroCluster 交換器時，才使用這些表格。如果您使用專用的儲存交換器來連接 NS224 機櫃，請根據中的表格來連接交換器link:port_usage_3232c_9336c.html["Cisco 3232C或Cisco 9336C-FX2交換器的平台連接埠指派"]。
+NOTE: 12 連接埠 Cisco 9336C-FX2 交換器不支援將 NS224 架連接到 MetroCluster 交換器。
+
+* 使用線纜連接 Cisco 9336C-FX2 交換器和 NS224 儲存時，最多只能有兩個 MetroCluster 設定或災難復原群組。至少一個 MetroCluster 設定或災難復原群組必須將 NS224 磁碟架連接到 MetroCluster 交換器。您只能將未連接交換器連接的 NS224 磁碟架的平台連接為第二個 MetroCluster 設定或第二個災難復原群組。
++
+如果您的第二個 MetroCluster 或 DR 群組未將 NS224 磁碟架連接到 MetroCluster 交換機，請依照<<tables_not_connecting_ns224,未連接交換器連接的 NS224 機架的控制器的佈線表>> 。
 
 * 只有在選擇第一個平台時、 RcfFileGenerator 才會顯示符合資格的平台。
 * 連接一個八節點或兩個四節點 MetroCluster 組態需要 ONTAP 9.14.1 或更新版本。
