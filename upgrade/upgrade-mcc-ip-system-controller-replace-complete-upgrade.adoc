@@ -49,7 +49,7 @@ summary: 驗證網路連線能力並還原任何監控組態，以完成自動�
 .步驟
 . 重複步驟以升級叢集 A 上的節點，從開始link:upgrade-mcc-ip-system-controller-replace-supported-platforms.html["準備升級"]。
 +
-執行工作時、所有叢集和節點的參考範例都會反轉。
+當您重複該過程時，所有對叢集和節點的範例引用都將被逆轉。
 
 
 

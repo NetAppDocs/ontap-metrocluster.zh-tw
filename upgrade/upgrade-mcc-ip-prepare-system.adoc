@@ -423,7 +423,10 @@ Boot_ONTAP功能表
 
 == 在現場升級之前、請先驗MetroCluster 證其健全狀況
 
-在執行升級之前、您必須先驗證MetroCluster 整個過程的健全狀況和連線能力。
+在執行升級之前，您需要驗證 MetroCluster 配置的運作狀況和連線性。
+
+
+CAUTION: 在升級第一個站點的控制器之後、升級第二個站點的控制器之前，請執行 `metrocluster check run`其次是 `metrocluster check show`回傳錯誤 `config-replication`字段。此錯誤表示每個網站的節點之間的 NVRAM 大小不匹配，並且當兩個網站上的平台型號不同時，這是預期行為。您可以忽略此錯誤，直到災難復原組中的所有節點的控制器升級完成。
 
 .步驟
 . 驗證MetroCluster 下列項目中的功能：ONTAP

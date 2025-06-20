@@ -119,9 +119,12 @@ NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在�
 
 
 
-=== 驗MetroCluster 證資訊功能組態的健全狀況
+=== 驗MetroCluster 證整個過程的效能狀況
 
-在執行升級之前、您必須先驗證MetroCluster 整個過程的健全狀況和連線能力。
+在執行升級之前，您需要驗證 MetroCluster 配置的運作狀況和連線性。
+
+
+CAUTION: 在升級第一個站點的控制器之後、升級第二個站點的控制器之前，請執行 `metrocluster check run`其次是 `metrocluster check show`回傳錯誤 `config-replication`字段。此錯誤表示每個網站的節點之間的 NVRAM 大小不匹配，並且當兩個網站上的平台型號不同時，這是預期行為。您可以忽略此錯誤，直到災難復原組中的所有節點的控制器升級完成。
 
 .步驟
 . 驗證MetroCluster 下列項目中的功能：ONTAP
@@ -207,7 +210,7 @@ https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp
 
 
 
-=== 將連接埠從舊節點對應至新節點
+=== 將舊節點的連接埠對應至新節點
 
 您必須規劃將舊節點實體連接埠上的LIF對應至新節點上的實體連接埠。
 
@@ -518,7 +521,7 @@ dr-group-id cluster    node      node-systemid dr-partner-systemid
 .步驟
 . 從MetroCluster Tiebreaker軟體移除現有的部分組態。
 +
-link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#removing-metrocluster-configurations["移除MetroCluster 部分組態"]
+link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#removing-metrocluster-configurations["移除MetroCluster 不完整的組態"]
 
 . 從MetroCluster 任何可啟動切換的第三方應用程式移除現有的功能。
 +
@@ -798,7 +801,7 @@ https://docs.netapp.com/platstor/index.jsp["ONTAP 硬體系統文件"^]
 
 
 
-=== 新控制器的Netbooting
+=== 以網路開機新的控制器
 
 安裝新節點之後、您需要netboot才能確保新節點執行的ONTAP 版本與原始節點相同。「netboot」一詞是指您從ONTAP 儲存在遠端伺服器上的不實映像進行開機。準備網路開機時、您必須將ONTAP 一份《支援》9開機映像複本放到系統可以存取的網路伺服器上。
 
@@ -1055,7 +1058,7 @@ MCC
 .關於這項工作
 此工作會在維護模式中執行。
 
-舊系統ID已在中識別 link:task_upgrade_controllers_in_a_four_node_fc_mcc_us_switchover_and_switchback_mcc_fc_4n_cu.html["在升級之前收集資訊"]。
+舊的系統 ID 在中識別 link:task_upgrade_controllers_in_a_four_node_fc_mcc_us_switchover_and_switchback_mcc_fc_4n_cu.html["在升級之前收集資訊"]。
 
 本程序中的範例使用具有下列系統ID的控制器：
 
@@ -1163,7 +1166,7 @@ aggr0_node_b_1-root    online      raid_dp, aggr    root, nosnap=on,
 
 
 
-=== 啟動新的控制器
+=== 開機新的控制器
 
 您必須從開機功能表重新啟動控制器、才能更新控制器Flash映像。如果已設定加密、則需要執行其他步驟。
 
@@ -1355,7 +1358,7 @@ Boot_ONTAP
 
 .. 視需要將任何連接埠新增至廣播網域。
 +
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-003BDFCD-58A3-46C9-BF0C-BA1D1D1475F9.html["從廣播網域新增或移除連接埠"]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-003BDFCD-58A3-46C9-BF0C-BA1D1D1475F9.html["新增或移除廣播網域中的連接埠"]
 
 .. 將用於託管叢集間生命體的實體連接埠新增至對應的Broadcast網域。
 .. 修改叢集間的LIF、將新的實體連接埠當作主連接埠使用。
@@ -1371,7 +1374,7 @@ link:../install-fc/concept_configure_the_mcc_software_in_ontap.html#peering-the-
 VLAN和介面群組成員資格可能與舊節點不同。
 
 +
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-8929FCE2-5888-4051-B8C0-E27CAF3F2A63.html["建立VLAN"^]
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-8929FCE2-5888-4051-B8C0-E27CAF3F2A63.html["建立 VLAN"^]
 
 +
 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EAB7-430A-A773-4E3420EE2AA1.html["結合實體連接埠以建立介面群組"^]
@@ -1407,7 +1410,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
 
 
 
-=== 正在驗證LIF組態
+=== 驗證LIF組態
 
 在切換回復之前、請先確認將l生命 存放在適當的節點/連接埠上。需要執行下列步驟
 
@@ -1452,7 +1455,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
 
 
 
-== 切換回復MetroCluster 到該組態
+== 切換回MetroCluster 還原組態
 
 設定好新的控制器之後、您可以切換回MetroCluster 該組態、使組態恢復正常運作。
 
@@ -1515,7 +1518,7 @@ Remote: cluster_A         Configuration state configured
 
 
 
-== 檢查MetroCluster 不全組態的健全狀況
+== 檢查MetroCluster 資訊系統的健全狀況
 
 升級控制器模組之後、您必須確認MetroCluster 該組態的健全狀況。
 
@@ -1557,14 +1560,14 @@ Failed to validate the node and cluster components before the switchover operati
 
 
 
-== 正在升級叢集_A上的節點
+== 升級叢集 A 上的節點
 
 您必須重複叢集A上的升級工作
 
 .步驟
-. 重複步驟以升級叢集A上的節點、從開始 link:task_upgrade_controllers_in_a_four_node_fc_mcc_us_switchover_and_switchback_mcc_fc_4n_cu.html["準備升級"]。
+. 重複步驟以升級叢集 A 上的節點，從開始link:task_upgrade_controllers_in_a_four_node_fc_mcc_us_switchover_and_switchback_mcc_fc_4n_cu.html["準備升級"]。
 +
-執行工作時、所有叢集和節點的參考範例都會反轉。例如、當範例是從叢集_A切換時、您將從叢集_B切換
+當您重複該過程時，所有對叢集和節點的範例引用都將被逆轉。例如、當範例是從叢集_A切換時、您將從叢集_B切換
 
 
 
@@ -1592,5 +1595,5 @@ Failed to validate the node and cluster components before the switchover operati
 
 如果MetroCluster 先前已將此組態設定為由斷路器軟體進行監控、您可以還原斷路器連線。
 
-. 請執行中的步驟 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.hw-metrocluster-tiebreaker/GUID-7259BCA4-104C-49C6-BAD0-1068CA2A3DA5.html["新增MetroCluster 功能"^] _ MetroCluster 此為_資料斷路器安裝與組態_。
+. 使用 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.hw-metrocluster-tiebreaker/GUID-7259BCA4-104C-49C6-BAD0-1068CA2A3DA5.html["新增MetroCluster 功能"^]在《MetroCluster Tiebreaker 安裝與設定》中。
 

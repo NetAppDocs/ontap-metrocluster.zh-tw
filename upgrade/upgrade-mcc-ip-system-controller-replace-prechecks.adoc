@@ -115,25 +115,37 @@ NOTE: 您應該依照下列順序更新交換器： switch_a_1 ， switch_B_1 �
 
 
 
-== 執行系統預先檢查
+== 開始控制器更換操作
 
-在預先檢查開始之前、如果已安裝 ONTAP Mediator 、系統會自動偵測並移除它。若要確認移除、系統會提示您輸入使用者名稱和密碼。當您完成升級時，或者如果預先檢查失敗或您選擇不繼續升級，則必須手動進行link:../install-ip/task_configuring_the_ontap_mediator_service_from_a_metrocluster_ip_configuration.html["重新配置 ONTAP 調解器"]。
+當您啟動自動控制器更換操作時，該操作會發出一系列預檢查，然後暫停，以便您可以手動收集與配置相關的資訊。
+
+.關於這項工作
+在 MetroCluster 檢查開始之前，如果已安裝 ONTAP 調解器，系統會自動偵測並移除它。若要確認移除、系統會提示您輸入使用者名稱和密碼。升級完成後，如果預檢失敗，或者您選擇不繼續升級，則必須手動link:../install-ip/task_configuring_the_ontap_mediator_service_from_a_metrocluster_ip_configuration.html["重新設定 ONTAP Mediator 服務"] 。
 
 在升級期間的任何階段、您都可以從站台A執行「系統控制器置換show」或「系統控制器置換show-details」命令、以檢查狀態。如果命令傳回空白輸出、請等待幾分鐘、然後重新執行命令。
 
 .步驟
-. 從站台A開始自動化控制器更換程序、以更換站台B的控制器：
+. 從站點 A 執行以下命令來更換站點 B 的控制器：
 +
 `system controller replace start -nso true`
 
 +
-自動化作業會執行預先檢查。如果找不到問題、作業會暫停、以便您手動收集組態相關資訊。
-
-+
 [NOTE]
 ====
-** 如果您未執行 `system controller replace start -nso true` 命令、控制器升級程序會選擇 NSO 型自動切換和切換、作為 MetroCluster IP 系統的預設程序。
-** 畫面會顯示目前的來源系統和所有相容的目標系統。如果您已將來源控制器更換為具有不同ONTAP 版本的控制器或不相容平台、則在新節點開機後、自動化作業會停止並報告錯誤。若要使叢集恢復正常狀態、您必須遵循手動還原程序。
+** 如果你不使用 `-nso true`命令中的參數，控制器升級過程選擇基於 NSO 的自動切換和切回作為 MetroCluster IP 系統上的預設程序。
+** 如果您在一個網站上重複此過程，並且已在另一個網站上更換控制器，則會因為兩個網站上的節點不符而出現錯誤。當兩個站點上的平台型號不同時，這是預期行為。
++
+如果僅返回不匹配錯誤，則可以使用 `-skip-metrocluster-check true`選項 `system controller replace start`指令跳過 MetroCluster 檢查。
+
+
+
+====
++
+自動化操作執行檢查。如果找不到問題、作業會暫停、以便您手動收集組態相關資訊。
+
++
+畫面會顯示目前的來源系統和所有相容的目標系統。如果您將來源控制器替換為具有不同 ONTAP 版本或不相容平台的控制器，則自動化操作將在新節點啟動後停止並報告錯誤。若要使叢集恢復正常狀態，請依照手動恢復流程操作。
+
 +
 「系統控制器更換start」命令可能會報告下列預先檢查錯誤：
 
@@ -148,9 +160,6 @@ Node-A-1    Failed         MetroCluster check failed. Reason : MCC check showed 
 +
 檢查此錯誤是否是因為您有未鏡射的Aggregate或是因為另一個Aggregate問題而發生。確認所有鏡射Aggregate均正常運作、且未降級或鏡射降級。如果此錯誤僅由未鏡射的Aggregate所造成、您可以在「系統控制器更換開始」命令上選取「skip -MetroCluster-check true」選項來覆寫此錯誤。如果可以存取遠端儲存設備、則無鏡射的集合體會在切換後上線。如果遠端儲存連結失敗、則未鏡射的集合體將無法上線。
 
-
-
-====
 . 在站台B登入、然後依照主控台訊息「系統控制器更換show」或「系統控制器更換show-details」命令中所列的命令、手動收集組態資訊。
 
 

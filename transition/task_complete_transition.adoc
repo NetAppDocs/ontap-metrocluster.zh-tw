@@ -15,7 +15,7 @@ summary: 若要準備轉換組態、您可以將新節點新增至現有MetroClu
 
 . 驗MetroCluster 證靜態IP組態。
 +
-您必須在每個叢集上執行此步驟。
+您必須在進階權限模式下在每個叢集上執行此步驟。
 
 +
 下列範例顯示叢集A的輸出
@@ -25,7 +25,7 @@ summary: 若要準備轉換組態、您可以將新節點新增至現有MetroClu
 cluster_A::> cluster show
 Node                 Health  Eligibility   Epsilon
 -------------------- ------- ------------  ------------
-node_A_1-IP          true    true          true
+node_A_1-IP          true    true          false
 node_A_2-IP          true    true          false
 2 entries were displayed.
 
@@ -39,7 +39,7 @@ cluster_A::>
 cluster_B::> cluster show
 Node                 Health  Eligibility   Epsilon
 -------------------- ------- ------------  ------------
-node_B_1-IP          true    true          true
+node_B_1-IP          true    true          false
 node_B_2-IP          true    true          false
 2 entries were displayed.
 
