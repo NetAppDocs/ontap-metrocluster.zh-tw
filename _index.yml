@@ -1,6 +1,8 @@
 ---
 indexpage:
   title: 資訊文件MetroCluster
+  summary: NetApp MetroCluster 組態結合了陣列型叢集與同步複寫功能、可提供持續可用度、並以每筆交易為基礎、立即複製所有關鍵任務資料。MetroCluster
+    組態可強化 NetApp 硬體和 ONTAP 儲存軟體的內建高可用度和不中斷營運、為整個儲存和主機環境提供額外的保護層。
   keywords: metrocluster configuration, array-based, clustering, synchronous, replication,
     duplicating, mission critical data
   lead: NetApp MetroCluster 組態結合了陣列型叢集與同步複寫功能、可提供持續可用度、並以每筆交易為基礎、立即複製所有關鍵任務資料。MetroCluster
