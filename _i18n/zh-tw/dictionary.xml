@@ -14968,4 +14968,17 @@
   <block id="b5fe45c4891c6d19896e92fee5883a19" category="inline-link-macro">重新設定 ONTAP Mediator 服務</block>
   <block id="6b28386c147e051088cbc4ae11351a61" category="paragraph">在 MetroCluster 檢查開始之前，如果已安裝 ONTAP 調解器，系統會自動偵測並移除它。若要確認移除、系統會提示您輸入使用者名稱和密碼。升級完成後，如果預檢失敗，或者您選擇不繼續升級，則必須手動<block ref="059689c27028be05419054623185eb12" category="inline-link-macro-rx"></block> 。</block>
   <block id="574eaa9b58d677670f6f75d0941c1eba" category="list-text">如果你不使用<block ref="880d39d0efc2f0e9e812ea98923bdc40" prefix=" " category="inline-code"></block>命令中的參數，控制器升級過程選擇基於 NSO 的自動切換和切回作為 MetroCluster IP 系統上的預設程序。</block>
+  <block id="5f3a8ed6ab42570e2ecf1de368b7fb67" category="section-title">將內部驅動器重新新增至新控制器</block>
+  <block id="8d74d011223286d94eeb5c2cd6f5aca6" category="paragraph">如果您從僅具有外部磁碟機的系統升級至具有外部和內部磁碟機（磁碟和控制器位於同一機殼中）的系統，則可以新增或重新安裝從新系統的內部插槽移除或取消安裝的磁碟。您可以在兩個站點的升級完成且叢集處於正常狀態後隨時執行此操作。</block>
+  <block id="3e1c2edf16d3ebc6798f998f7831b64a" category="paragraph">重新新增或重新安裝磁碟機後，即可根據需要在ONTAP中使用它們。</block>
+  <block id="152d3e708700e5f04217fb5ec21eef40" category="inline-link-macro">從新控制器的機殼中移除內部驅動器</block>
+  <block id="94b6239baa2d287492e2234607e3f0d2" category="admonition">此任務僅適用於某些升級組合。如需詳細資訊、請參閱 <block ref="d7ebc889755bb08522c78237ca1baea1" category="inline-link-macro-rx"></block> 。</block>
+  <block id="d04c5fe8fa2737289a0cd9c80df903cc" category="section-title">從新控制器的機殼中移除內部驅動器</block>
+  <block id="1858770cd91d0e781d2fb8e5c3cd995d" category="paragraph">當您從僅有外部驅動器的系統升級到具有外部和內部驅動器（同一機箱中的磁碟和控制器）的系統時，您需要從新系統中刪除或取消安裝所有內部驅動器，直到升級完成。</block>
+  <block id="048cbaf6dc95da7b31e2baebef6ece1c" category="admonition">此任務對於受影響系統上的控制器成功升級是必要的。</block>
+  <block id="88b9de8566d9fc2cb3b054519faf7c82" category="paragraph">若要確定您的升級組合是否受到影響，請參閱<block ref="7f476476a1138406f85628587399f7ad" category="inline-link-macro-rx"></block> 。如果您的升級組合標示*註 3*，則必須從新系統移除或移除內部磁碟機。</block>
+  <block id="d4e2f947c9145cb3a4f5c0ef7c4f2447" category="paragraph">完成此任務後，任何內部驅動器都不應可存取。您將在稍後的步驟中將這些磁碟機新增至新的控制器。</block>
+  <block id="b8aa75f85ab89774f69f787c3912bd4a" category="section-title">將內部驅動器重新新增至新控制器</block>
+  <block id="a5418696f5bd16fb72497595b65b899d" category="admonition">此任務僅適用於某些升級組合。如需詳細資訊、請參閱 <block ref="63ae90b2306cb4f5a770ba51c50d383a" category="inline-link-macro-rx"></block> 。</block>
+  <block id="f98f4af1e88acc06b614726a822ddb15" category="paragraph">若要確定您的升級組合是否受到影響，請參閱<block ref="dacebae6fb4b9a09422729435aff82d1" category="inline-link-macro-rx"></block> 。如果您的升級組合標示*註 2*，則必須從新系統移除或移除內部磁碟機。</block>
 </blocks>

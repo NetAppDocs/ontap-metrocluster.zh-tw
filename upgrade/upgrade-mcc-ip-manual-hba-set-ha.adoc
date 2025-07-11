@@ -162,5 +162,18 @@ NOTE: 必須在所有受影響的連接埠上設定此選項、才能成功升�
 . 收集環境變數：「prontenv」
 
 
+
+
+== 從新控制器的機殼中移除內部驅動器
+
+當您從僅有外部驅動器的系統升級到具有外部和內部驅動器（同一機箱中的磁碟和控制器）的系統時，您需要從新系統中刪除或取消安裝所有內部驅動器，直到升級完成。
+
+
+CAUTION: 此任務對於受影響系統上的控制器成功升級是必要的。
+
+若要確定您的升級組合是否受到影響，請參閱link:concept_choosing_controller_upgrade_mcc.html#all-other-supported-metrocluster-ip-controller-upgrades["支援的控制器升級"] 。如果您的升級組合標示*註 3*，則必須從新系統移除或移除內部磁碟機。
+
+完成此任務後，任何內部驅動器都不應可存取。您將在稍後的步驟中將這些磁碟機新增至新的控制器。
+
 .接下來呢？
 link:upgrade-mcc-ip-manual-apply-rcf-set-bootarg.html["更新交換器 RCFs 並設定 MetroCluster IP bootarg 值"]。
