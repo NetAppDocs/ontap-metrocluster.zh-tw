@@ -14,7 +14,6 @@ summary: 若要安裝以Fabric連接MetroCluster 的支援中心組態、您必�
 若要安裝以Fabric連接MetroCluster 的支援中心組態、您必須依照正確順序執行多項程序。
 
 * link:../install-fc/concept_considerations_differences.html["準備安裝並瞭解所有需求"]。
-* link:../install-fc/concept_choosing_the_correct_installation_procedure_for_your_configuration_mcc_install.html["選擇正確的安裝程序"]
 * link:../install-fc/task_configure_the_mcc_hardware_components_fabric.html["連接元件"]
 * link:../install-fc/concept_configure_the_mcc_software_in_ontap.html["設定軟體"]
 * link:../install-fc/task_test_the_mcc_configuration.html["測試組態"]

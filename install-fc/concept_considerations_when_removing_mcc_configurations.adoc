@@ -4,14 +4,16 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, remove, configuration, disk connectivity, interconnects, adjust 
 summary: 您可以從MetroCluster 「還原」組態中的所有節點或MetroCluster 災難恢復（DR）群組中的所有節點移除「還原」組態。 
 ---
-= 移除MetroCluster 不完整組態時的考量事項
+= 移除MetroCluster 不完整的組態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-您可以從MetroCluster 「還原」組態中的所有節點或MetroCluster 災難恢復（DR）群組中的所有節點移除「還原」組態。移除MetroCluster 完「支援」組態之後、所有磁碟連線和互連都應調整為支援狀態。如果您需要移除MetroCluster 該組態、請聯絡技術支援部門。
+如果您需要移除MetroCluster 該組態、請聯絡技術支援部門。
+
+聯絡NetApp技術支援並參考適合您配置的指南link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/How_to_remove_nodes_from_a_MetroCluster_configuration_-_Resolution_Guide["如何從MetroCluster 「解決方案指南」中移除節點。"^]
 
 
-IMPORTANT: 您無法反轉MetroCluster 無法組態的功能。此程序只能在技術支援的協助下完成。請聯絡NetApp技術支援部門、並參閱中的適當組態指南 link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/How_to_remove_nodes_from_a_MetroCluster_configuration_-_Resolution_Guide["如何從MetroCluster 「解決方案指南」中移除節點。"^]
+CAUTION: 您無法反轉MetroCluster 無法組態的功能。此程序只能在技術支援的協助下完成。移除MetroCluster 完「支援」組態之後、所有磁碟連線和互連都應調整為支援狀態。

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, configuration, ontap, node-level, configuration, node, site, relationship, configuring, configure, 
 summary: 您必須在MetroCluster 不完整的功能組態中設定每個節點ONTAP 、包括節點層級組態、以及將節點組態設定為兩個站台。您也必須在MetroCluster 這兩個站台之間實作「不二」關係。 
 ---
-= 在MetroCluster 不提供的情況下設定功能ONTAP
+= 在MetroCluster 不提供的情況下設定此功能ONTAP
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -16,3 +16,9 @@ summary: 您必須在MetroCluster 不完整的功能組態中設定每個節點O
 如果控制器模組在組態期間故障、請參閱 link:../disaster-recovery/concept_choosing_the_correct_recovery_procedure_parent_concept.html#controller-module-failure-scenarios-during-metrocluster-installation["安裝過程中的控制器模組故障情形MetroCluster"]。
 
 image::../media/workflow_mcc_ip_high_level_node_and_cluster_configuration_software.svg[工作流程MCC IP高層節點和叢集組態軟體]
+
+
+
+== 配置八節點MetroCluster IP 配置
+
+八節點MetroCluster 的不全功能組態包含兩個DR群組。若要設定第一個 DR 組，請完成本節中的任務。配置第一個 DR 群組後，您可以按照以下步驟link:../upgrade/task_expand_a_four_node_mcc_ip_configuration.html["將四節點MetroCluster IP 配置擴展為八節點配置"] 。

@@ -127,7 +127,7 @@ link:http://docs.netapp.com/platstor/index.jsp["ONTAP 硬體系統文件"^]
 . 驗證所有元件的纜線是否正確連接至您的組態。
 +
 ** link:../install-ip/using_rcf_generator.html["IP組態MetroCluster"]
-** link:../install-fc/task_fmc_mcc_transition_cable_the_new_mcc_controllers_to_the_exist_fc_fabrics.html["連接架構的組態MetroCluster"]
+** link:../install-fc/index.html["連接架構的組態MetroCluster"]
 
 
 

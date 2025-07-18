@@ -2,7 +2,7 @@
 permalink: install-fc/task_sw_config_verify_switchover.html 
 sidebar: sidebar 
 keywords: configure, configuring, metrocluster, software, ontap 
-summary: 您必須在MetroCluster 不完整的功能組態中設定每個節點ONTAP 、包括節點層級組態、以及將節點組態設定為兩個站台。您也必須在MetroCluster 這兩個站台之間實作「不二」關係。對於使用原生磁碟櫃的系統、其步驟與使用陣列LUN的系統略有不同。 
+summary: 您必須在MetroCluster 不完整的功能組態中設定每個節點ONTAP 、包括節點層級組態、以及將節點組態設定為兩個站台。您也必須在MetroCluster 這兩個站台之間實作「不二」關係。 
 ---
 = 在MetroCluster 不提供的情況下設定功能ONTAP
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: 您必須在MetroCluster 不完整的功能組態中設定每個節點O
 
 
 [role="lead"]
-您必須在MetroCluster 不完整的功能組態中設定每個節點ONTAP 、包括節點層級組態、以及將節點組態設定為兩個站台。您也必須在MetroCluster 這兩個站台之間實作「不二」關係。對於使用原生磁碟櫃的系統、其步驟與使用陣列LUN的系統略有不同。
+您必須在MetroCluster 不完整的功能組態中設定每個節點ONTAP 、包括節點層級組態、以及將節點組態設定為兩個站台。您也必須在MetroCluster 這兩個站台之間實作「不二」關係。
 
 image::../media/workflow_high_level_node_and_cluster_configuration_software.gif[工作流程高層節點和叢集組態軟體]
 
@@ -2602,9 +2602,9 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-vsmg/home.html["邏�
 您必須在DR群組中的每個節點上建立鏡射資料Aggregate。
 
 .開始之前
-* 您應該知道新的Aggregate將使用哪些磁碟機或陣列LUN。
+* 確認您知道新聚合將使用哪些磁碟機。
 * 如果您的系統中有多種磁碟機類型（異質儲存設備）、您應該瞭解如何確保選取正確的磁碟機類型。
-* 磁碟機和陣列LUN由特定節點擁有；當您建立Aggregate時、該Aggregate中的所有磁碟機都必須由同一個節點擁有、而該節點會成為該Aggregate的主節點。
+* 磁碟機由特定節點擁有；當您建立Aggregate時、該Aggregate中的所有磁碟機都必須由同一個節點擁有、此節點會成為該Aggregate的主節點。
 * Aggregate名稱應符合您在規劃MetroCluster 時所決定的名稱配置。請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"^]。
 
 
@@ -2622,7 +2622,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-vsmg/home.html["邏�
 
 +
 ** Aggregate的主節點（也就是在正常作業中擁有Aggregate的節點）
-** 要新增至集合體的特定磁碟機或陣列LUN清單
+** 要新增至集合體的特定磁碟機清單
 ** 要納入的磁碟機數量
 +
 
@@ -2633,7 +2633,7 @@ NOTE: 在可用磁碟機數量有限的最低支援組態中、您必須使用fo
 ** 要使用的磁碟機大小
 ** 使用的磁碟機速度
 ** 集合體上RAID群組的RAID類型
-** RAID群組中可包含的磁碟機或陣列LUN數目上限
+** RAID群組中可包含的磁碟機數目上限
 ** 是否允許使用不同RPM的磁碟機
 +
 有關這些選項的更多信息，請參見"shorage aggregate creation"手冊頁。
@@ -2664,7 +2664,7 @@ cluster_A::> storage aggregate create aggr1_node_A_1 -diskcount 10 -node node_A_
 您也可以針對MetroCluster 不需要由支援的組態所提供的備援鏡像的資料、建立無鏡射的資料集合體。
 
 .開始之前
-* 您應該知道新的Aggregate將使用哪些磁碟機或陣列LUN。
+* 確認您知道新聚合將使用哪些磁碟機。
 * 如果您的系統中有多種磁碟機類型（異質儲存設備）、您應該瞭解如何驗證選取的磁碟機類型是否正確。
 
 
@@ -2679,7 +2679,7 @@ IMPORTANT: 在SFC組態中MetroCluster 、只有在可存取Aggregate中的遠�
 NOTE: 無鏡射的Aggregate必須是擁有它們的節點的本機集合體。
 
 --
-* 磁碟機和陣列LUN由特定節點擁有；當您建立Aggregate時、該Aggregate中的所有磁碟機都必須由同一個節點擁有、而該節點會成為該Aggregate的主節點。
+* 磁碟機由特定節點擁有；當您建立Aggregate時、該Aggregate中的所有磁碟機都必須由同一個節點擁有、此節點會成為該Aggregate的主節點。
 * Aggregate名稱應符合您在規劃MetroCluster 時所決定的名稱配置。
 * _磁碟與Aggregate管理_包含更多有關鏡射Aggregate的資訊。
 
@@ -2701,14 +2701,14 @@ NOTE: 無鏡射的Aggregate必須是擁有它們的節點的本機集合體。
 
 +
 ** Aggregate的主節點（也就是在正常作業中擁有Aggregate的節點）
-** 要新增至集合體的特定磁碟機或陣列LUN清單
+** 要新增至集合體的特定磁碟機清單
 ** 要納入的磁碟機數量
 ** 用於Aggregate的Checksum樣式
 ** 要使用的磁碟機類型
 ** 要使用的磁碟機大小
 ** 使用的磁碟機速度
 ** 集合體上RAID群組的RAID類型
-** RAID群組中可包含的磁碟機或陣列LUN數目上限
+** RAID群組中可包含的磁碟機數目上限
 ** 有關這些選項的更多信息，請參見"shorage aggregate creation"手冊頁。
 +
 下列命令會建立10個磁碟的無鏡射Aggregate：

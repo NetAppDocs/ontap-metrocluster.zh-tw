@@ -4,14 +4,14 @@ sidebar: sidebar
 keywords: ip, switch, configuring 
 summary: 您必須設定IP交換器、才能提供後端MetroCluster 的不中斷IP連線功能。 
 ---
-= 設定交換器
+= 選擇正確的MetroCluster IP 交換器配置流程
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-您必須設定IP交換器、才能提供後端MetroCluster 的不中斷IP連線功能。
+您必須設定IP交換器、以提供後端MetroCluster 的F精選IP連線功能。您遵循的程序取決於您的交換器供應商。
 
 * link:../install-ip/task_switch_config_broadcom.html["設定Broadcom IP交換器"]
 * link:../install-ip/task_switch_config_cisco.html["設定Cisco IP交換器"]

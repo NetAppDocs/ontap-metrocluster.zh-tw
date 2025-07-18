@@ -2,7 +2,7 @@
 permalink: install-fc/task_configure_the_mcc_hardware_components_fabric.html 
 sidebar: sidebar 
 keywords: metrocluster, fabric, installation, cable, configuration 
-summary: 必須在兩個地理站台上實際安裝、連接及設定支援的元件。MetroCluster對於使用原生磁碟櫃的系統而言、步驟略有不同、而非使用陣列LUN的系統。 
+summary: 必須在兩個地理站台上實際安裝、連接及設定支援的元件。MetroCluster 
 ---
 = 佈線連接架構MetroCluster 的不整合式架構組態
 :allow-uri-read: 
@@ -11,6 +11,6 @@ summary: 必須在兩個地理站台上實際安裝、連接及設定支援的�
 
 
 [role="lead"]
-必須在兩個地理站台上實際安裝、連接及設定支援的元件。MetroCluster對於使用原生磁碟櫃的系統而言、步驟略有不同、而非使用陣列LUN的系統。
+必須在兩個地理站台上實際安裝、連接及設定支援的元件。MetroCluster
 
 image::../media/workflow_hardware_installation_and_configuration_4_node_or_2_node_fabric.gif[工作流程硬體安裝與組態4節點或2節點架構]

@@ -1,18 +1,8 @@
 ---
 permalink: install-fc/concept_considerations_7mt.html 
-sidebar: sidebar 
-keywords: preparing, prepare, metrocluster, mcc, installation, install, differences, configurations, between, considerations, all, san, array, asa, cluster, peering, prerequisites, dedicated, ports, sharing, data, ports, native, disk, shelves, array, luns, transitions, 7-mode, isls, tdm/wdm, fabric-attached, iod, ood, encryption, devices, unmirrored, aggregates, maintenance, requiring, power, shutdown, firewall, hardware, racking, cabling, setup, checklist, all san array, asa 
-summary: 當您準備MetroCluster 進行此版本的安裝時、您應該瞭解MetroCluster 到該系統的硬體架構和必要元件。 
+redirect: ontap-metrocluster/index.html 
 ---
-= 從7-Mode轉換ONTAP 至VMware時的考量
+= 
 :allow-uri-read: 
-:icons: font
-:imagesdir: ../media/
 
 
-[role="lead"]
-在使用轉換工具、將資料從7-Mode的更新組態移至VMware組態之前、您必須MetroCluster 先完整設定並操作全新的VMware組態。MetroCluster ONTAP如果7-Mode組態使用Brocade 6510交換器、則新組態可共用現有的架構、以降低硬體需求。
-
-如果您有Brocade 6510交換器、並計畫在7-Mode Fabric MetroCluster 中執行的VMware MetroCluster 和VMware ONTAP 之間共享交換器架構、您必須使用特定程序來設定MetroCluster 支援的元件。
-
-link:task_fmc_mcc_transition_configure_the_mcc_hardware_for_share_a_7_mode_brocade_6510_fc_fabric_dure_transition.html["設定MetroCluster 支援7-Mode Brocade 6510 FC架構的支援硬體、以便在轉換期間共用"]

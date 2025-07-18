@@ -64,17 +64,7 @@ entries:
   url: "/install-stretch/concept_considerations_for_using_virtual_ip_and_border_gateway_protocol_with_a_mcc_configuration.html"
 - title: 測試MetroCluster 該組態
   url: "/install-stretch/task_test_the_mcc_configuration.html"
-- title: 以擴充MetroCluster 的等位組態與陣列LUN進行連線
-  entries:
-  - title: 總覽
-    url: "/install-stretch/concept_stretch_mcc_configuration_with_array_luns.html"
-  - title: 以陣列LUN為MetroCluster 例的延伸功能性樣例
-    url: "/install-stretch/reference_example_of_a_stretch_mcc_configuration_with_array_luns.html"
-  - title: 雙節點Stretch MetroCluster 的實體組態範例、包括磁碟和陣列LUN
-    url: "/install-stretch/reference_examples_of_two_node_stretch_mcc_configurations_with_disks_and_array_luns.html"
-  - title: E系列儲存陣列的彈性MetroCluster 支援範例
-    url: "/install-stretch/reference_example_of_a_stretch_mcc_configuration_with_e_series_storage_arrays.html"
-- title: 移除MetroCluster 不完整組態時的考量事項
+- title: 移除MetroCluster 不完整的組態
   url: "/install-stretch/concept_considerations_when_removing_mcc_configurations.html"
 - title: 如何使用Active IQ Unified Manager 功能不全的系統ONTAP 管理程式來進一步設定及監控
   entries:

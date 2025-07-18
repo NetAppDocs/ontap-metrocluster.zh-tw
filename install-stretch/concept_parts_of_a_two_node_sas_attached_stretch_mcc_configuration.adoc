@@ -26,10 +26,6 @@ summary: 雙節點MetroCluster 的不含SAS的組態需要許多零件、包括�
 ** 銅線SAS纜線可用於較短的距離。
 ** 光纖SAS纜線可用於較遠的距離。
 +
-
-NOTE: 在使用E系列陣列LUN的系統中、儲存控制器可直接連接至E系列儲存陣列。對於其他陣列LUN、則需要透過FC交換器進行連線。
-
-+
 https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"]
 
 +

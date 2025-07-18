@@ -1,7 +1,7 @@
 ---
 permalink: install-ip/concept_considerations_mcip.html 
 sidebar: sidebar 
-keywords: differences, eight-node, four-node, fabric-attached, stretch, metrocluster ip, storage, bridges, fc-to-sas, atto, fibrebridge, SAS, local HA, auso, automatic unplanned switchover, array luns, mediator, tiebreaker 
+keywords: differences, eight-node, four-node, fabric-attached, stretch, metrocluster ip, storage, bridges, fc-to-sas, atto, fibrebridge, SAS, local HA, auso, automatic unplanned switchover, mediator, tiebreaker 
 summary: 您應該瞭解控制器如何存取遠端儲存設備、MetroCluster 以及如何使用此功能。 
 ---
 = 關於靜態IP組態的考量MetroCluster

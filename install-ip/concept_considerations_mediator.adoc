@@ -1,7 +1,7 @@
 ---
 permalink: install-ip/concept_considerations_mediator.html 
 sidebar: sidebar 
-keywords: differences, eight-node, four-node, fabric-attached, stretch, metrocluster ip, storage, bridges, fc-to-sas, atto, fibrebridge, SAS, local HA, auso, automatic unplanned switchover, array luns, mediator, tiebreaker 
+keywords: differences, eight-node, four-node, fabric-attached, stretch, metrocluster ip, storage, bridges, fc-to-sas, atto, fibrebridge, SAS, local HA, auso, automatic unplanned switchover, mediator, tiebreaker 
 summary: 各種MetroCluster 版本的不二組態在必要的元件上有主要差異。 
 ---
 = 不一樣的地方ONTAP MetroCluster

@@ -36,7 +36,7 @@ entries:
       url: "/install-ip/concept-network-speeds-and-switchport-modes.html"
     - title: 交換器連接埠組態範例
       url: "/install-ip/concept-configure-mcc-compliant-switches.html"
-  - title: 不鏡射的Aggregate、採用MetroCluster 一套不鏡射的IP組態
+  - title: 了解MetroCluster IP 配置中的非鏡像聚合
     url: "/install-ip/concept_considerations_unmirrored_aggrs.html"
   - title: 在景點使用防火牆MetroCluster
     url: "/install-ip/concept_considerations_firewalls.html"
@@ -70,6 +70,8 @@ entries:
     url: "/install-ip/task_cable_other_connections.html"
   - title: 設定MetroCluster 靜態IP交換器
     entries:
+    - title: 選擇正確的MetroCluster IP 交換器配置流程
+      url: "/install-ip/task_install_and_cable_the_mcc_components.html"
     - title: 設定Broadcom IP交換器
       url: "/install-ip/task_switch_config_broadcom.html"
     - title: 設定Cisco IP交換器
@@ -102,8 +104,6 @@ entries:
     entries:
     - title: 總覽
       url: "/install-ip/concept_configure_the_mcc_software_in_ontap.html"
-    - title: 如何設定八節點組態
-      url: "/install-ip/task_sw_config_8n.html"
     - title: 收集必要資訊
       url: "/install-ip/task_sw_config_gather_info.html"
     - title: 標準叢集MetroCluster 組態與不完整組態之間的相似性與差異
@@ -120,8 +120,6 @@ entries:
       url: "/install-ip/task_sw_config_configure_clusters.html"
     - title: 設定端點對端點加密
       url: "/install-ip/task-configure-end-to-end-encryption.html"
-    - title: 驗證切換、修復及切換
-      url: "/install-ip/task_sw_config_verify_switchover.html"
     - title: 設定MetroCluster 「斷器」或ONTAP 「資訊安全」軟體
       url: "/install-ip/task_sw_config_configure_mediator.html"
     - title: 保護組態備份檔案
@@ -150,7 +148,7 @@ entries:
     url: "/install-ip/task-sm-mediator.html"
 - title: 測試MetroCluster 此功能組態
   url: "/install-ip/task_test_the_mcc_configuration.html"
-- title: 移除MetroCluster 不完整組態時的考量事項
+- title: 移除MetroCluster 不完整的組態
   url: "/install-ip/concept_considerations_when_removing_mcc_configurations.html"
 - title: 在一個邊的組態中使用ONTAP 邊的考量MetroCluster
   url: "/install-ip/concept_considerations_when_using_ontap_in_a_mcc_configuration.html"

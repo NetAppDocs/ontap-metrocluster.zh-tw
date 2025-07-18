@@ -1,10 +1,10 @@
 ---
 permalink: install-ip/concept_considerations_unmirrored_aggrs.html 
 sidebar: sidebar 
-keywords: differences, eight-node, four-node, fabric-attached, stretch, metrocluster ip, storage, bridges, fc-to-sas, atto, fibrebridge, SAS, local HA, auso, automatic unplanned switchover, array luns, mediator, tiebreaker 
+keywords: differences, eight-node, four-node, fabric-attached, stretch, metrocluster ip, storage, bridges, fc-to-sas, atto, fibrebridge, SAS, local HA, auso, automatic unplanned switchover, mediator, tiebreaker 
 summary: 如果您的組態包含無鏡射的Aggregate、則必須注意切換作業後可能發生的存取問題。 
 ---
-= 使用無鏡射Aggregate
+= 了解MetroCluster IP 配置中的非鏡像聚合
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -15,34 +15,41 @@ summary: 如果您的組態包含無鏡射的Aggregate、則必須注意切換�
 
 
 
-== 無鏡射集合體和階層式命名空間的考量
+== 非鏡像聚合和分層命名空間
 
 如果您使用階層式命名空間、則應設定交會路徑、使該路徑中的所有磁碟區僅位於鏡射Aggregate上、或僅位於無鏡射Aggregate上。在交會路徑中設定混合使用無鏡射與鏡射的集合體、可能會導致在切換作業之後無法存取無鏡射的集合體。
 
 
 
-== 無鏡射集合體、CRS中繼資料磁碟區和資料SVM根磁碟區的考量
+== 非鏡像聚合和需要關閉電源的維護
 
-組態複寫服務（CRS）中繼資料磁碟區和資料SVM根磁碟區必須位於鏡射Aggregate上。您無法將這些磁碟區移至無鏡射的Aggregate。如果它們位於無鏡射的Aggregate上、則會對協調的切換和切換回復作業加以否決。如果發生這種情況、則使用支援功能檢查命令會發出警告。MetroCluster
+如果您執行協商切換以進行維護，而該維護需要關閉整個站點的電源，則應先手動將災難站點擁有的任何未鏡像的聚合脫機。
 
-
-
-== 無鏡射集合體和SVM的考量
-
-應該僅在鏡射Aggregate上或僅在無鏡射Aggregate上設定SVM。設定混合使用無鏡射與鏡射的集合體、可能導致切換作業超過120秒、如果無鏡射的集合體未上線、則會導致資料中斷。
+如果您未將災難網站所擁有的未鏡像聚合脫機，則正常執行的網站上的節點可能會因多磁碟崩潰而關閉。如果由於斷電或 ISL 遺失導致與災難站點上的儲存連接中斷，切換的未鏡像聚合脫機或遺失，則可能會發生這種情況。
 
 
 
-== 無鏡射集合體和SAN的考量
+== 未鏡像聚合、CRS 元資料磁碟區和資料 SVM 根卷
 
-在執行本版的版本之前、LUN不應位於無鏡射的Aggregate上。ONTAP在未鏡射的集合體上設定LUN、可能會導致切換作業超過120秒、並導致資料中斷。
-
-
-
-== 為無鏡射的集合體新增儲存磁碟櫃的考量
+組態複寫服務（CRS）中繼資料磁碟區和資料SVM根磁碟區必須位於鏡射Aggregate上。您無法將這些磁碟區移至無鏡射的Aggregate。如果它們位於非鏡像聚合上，則協商切換和切回操作將被否決，並且 `metrocluster check`命令返回警告。
 
 
-NOTE: 如果您要新增架構、以供MetroCluster 在整個過程中用於鏡射的Aggregate、您必須執行下列動作：
+
+== 未鏡像聚合和 SVM
+
+您應該僅在鏡像聚合或未鏡像聚合上配置 SVM。在未鏡像聚合和鏡像聚合上混合配置 SVM 可能會導致切換操作超過 120 秒。如果未鏡像聚合無法聯機，則可能會導致資料中斷。
+
+
+
+== 非鏡像聚合和 SAN
+
+在ONTAP 9.9.1 之前，LUN 不應位於未鏡像的聚合上。在未鏡射的集合體上設定LUN、可能會導致切換作業超過120秒、並導致資料中斷。
+
+
+
+== 為未鏡像的聚合添加儲存架
+
+如果您新增磁碟架並希望將其用於MetroCluster IP 配置中的未鏡像聚合，則必須執行下列操作：
 
 . 開始新增磁碟櫃的程序之前、請發出下列命令：
 +
