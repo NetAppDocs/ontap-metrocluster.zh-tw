@@ -1,0 +1,680 @@
+---
+permalink: install-fc/cisco-9132t-fc-port-config-controllers.html 
+sidebar: sidebar 
+keywords: ONTAP, FAS, FC, Cisco, metrocluster 
+summary: 了解將Cisco 9132T FC 交換器連接到控制器所需的連接埠分配。 
+---
+= MetroCluster FC 設定中控制器的Cisco 9132T 連接埠使用情況
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+了解將Cisco 9132T FC 交換器連接到控制器所需的連接埠分配。
+
+下表顯示使用 FiberBridge 7500N 或 7600N 的控制器組態，使用兩個 FC 連接埠（ FC1 和 FC2 ）。下表顯示兩個 DR 群組中四個和八個控制器模組的最大支援組態。
+
+
+NOTE: 對於八節點組態、您必須手動執行分區、因為未提供 RCFs 。
+
+
+
+== MetroCluster 1 或 DR 群組 1
+
+下表顯示了Cisco 9132T 交換器上MetroCluster 1 或 DR 組 1 支援的控制器配置。使用此配置表時，您應該注意以下事項：
+
+* AFF A900和FAS9500系統有八個 FC-VI 連接埠（FC-VI-1 和 FC-VI-2 分別為 a、b、c 和 d）。
+
+
+[cols="2a,2a,2a,2a,2a,2a,2a"]
+|===
+2+| *元件* | *連接埠* | *連接到 FC_switch...* | *9132T 1x LEM（四節點）* | *9132T 2x LEM（四節點）* | *9132T 2x LEM（八節點）* 
+
+
+ a| 
+控制器_x_1
+ a| 
+FC-VI連接埠A
+ a| 
+1.
+ a| 
+LEM1-1.
+ a| 
+LEM1-1.
+ a| 
+LEM1-1.
+
+
+
+ a| 
+FC-VI連接埠b
+ a| 
+2.
+ a| 
+LEM1-1.
+ a| 
+LEM1-1.
+ a| 
+LEM1-1.
+
+
+
+ a| 
+FC-VI連接埠c
+ a| 
+1.
+ a| 
+LEM1-2
+ a| 
+LEM1-2
+ a| 
+LEM1-2
+
+
+
+ a| 
+FC-VI連接埠d
+ a| 
+2.
+ a| 
+LEM1-2
+ a| 
+LEM1-2
+ a| 
+LEM1-2
+
+
+
+ a| 
+FC-VI-2連接埠A
+ a| 
+1.
+ a| 
+LEM1-3
+ a| 
+LEM1-3
+ a| 
+無
+
+
+
+ a| 
+FC-VI-2連接埠b
+ a| 
+2.
+ a| 
+LEM1-3
+ a| 
+LEM1-3
+ a| 
+無
+
+
+
+ a| 
+FC-VI-2連接埠c
+ a| 
+1.
+ a| 
+LEM1-4
+ a| 
+LEM1-4
+ a| 
+無
+
+
+
+ a| 
+FC-VI-2連接埠d
+ a| 
+2.
+ a| 
+LEM1-4
+ a| 
+LEM1-4
+ a| 
+無
+
+
+
+ a| 
+HBA連接埠A
+ a| 
+1.
+ a| 
+LEM1-5
+ a| 
+LEM1-5
+ a| 
+LEM1-3
+
+
+
+ a| 
+HBA連接埠b
+ a| 
+2.
+ a| 
+LEM1-5
+ a| 
+LEM1-5
+ a| 
+LEM1-3
+
+
+
+ a| 
+HBA連接埠c
+ a| 
+1.
+ a| 
+LEM1-6
+ a| 
+LEM1-6
+ a| 
+LEM1-4
+
+
+
+ a| 
+HBA連接埠d
+ a| 
+2.
+ a| 
+LEM1-6
+ a| 
+LEM1-6
+ a| 
+LEM1-4
+
+
+
+ a| 
+Controller（控制器）_x_2
+ a| 
+FC-VI連接埠A
+ a| 
+1.
+ a| 
+LEM1-7.
+ a| 
+LEM1-7.
+ a| 
+LEM1-5
+
+
+
+ a| 
+FC-VI連接埠b
+ a| 
+2.
+ a| 
+LEM1-7.
+ a| 
+LEM1-7.
+ a| 
+LEM1-5
+
+
+
+ a| 
+FC-VI連接埠c
+ a| 
+1.
+ a| 
+LEM1-8
+ a| 
+LEM1-8
+ a| 
+LEM1-6
+
+
+
+ a| 
+FC-VI連接埠d
+ a| 
+2.
+ a| 
+LEM1-8
+ a| 
+LEM1-8
+ a| 
+LEM1-6
+
+
+
+ a| 
+FC-VI-2連接埠A
+ a| 
+1.
+ a| 
+LEM1-9.
+ a| 
+LEM1-9.
+ a| 
+無
+
+
+
+ a| 
+FC-VI-2連接埠b
+ a| 
+2.
+ a| 
+LEM1-9.
+ a| 
+LEM1-9.
+ a| 
+無
+
+
+
+ a| 
+FC-VI-2連接埠c
+ a| 
+1.
+ a| 
+LEM1-10.
+ a| 
+LEM1-10.
+ a| 
+無
+
+
+
+ a| 
+FC-VI-2連接埠d
+ a| 
+2.
+ a| 
+LEM1-10.
+ a| 
+LEM1-10.
+ a| 
+無
+
+
+
+ a| 
+HBA連接埠A
+ a| 
+1.
+ a| 
+LEM1-11.
+ a| 
+LEM1-11.
+ a| 
+LEM1-7.
+
+
+
+ a| 
+HBA連接埠b
+ a| 
+2.
+ a| 
+LEM1-11.
+ a| 
+LEM1-11.
+ a| 
+LEM1-7.
+
+
+
+ a| 
+HBA連接埠c
+ a| 
+1.
+ a| 
+LEM1-12
+ a| 
+LEM1-12
+ a| 
+LEM1-8
+
+
+
+ a| 
+HBA連接埠d
+ a| 
+2.
+ a| 
+LEM1-12
+ a| 
+LEM1-12
+ a| 
+LEM1-8
+
+|===
+
+
+== MetroCluster 2 或 DR 群組 2
+
+下表顯示了Cisco 9132T 交換器上的MetroCluster 2 或 DR 組 2 支援的Cisco 9132T 控制器配置。使用此配置表時，應注意以下事項：
+
+* AFF A900和FAS9500系統有八個 FC-VI 連接埠（FC-VI-1 和 FC-VI-2 分別為 a、b、c 和 d）。
+* AFF A900和FAS9500系統的Cisco 9132T 交換器不支援MetroCluster 2 或 DR 組 2。
+* MetroCluster 2 或 DR 組 2 僅在八節點MetroCluster配置中支援
+
+
+[cols="2a,2a,2a,2a,2a,2a,2a"]
+|===
+2+| *元件* | *連接埠* | *連接到 FC_switch...* | *9132T 1x LEM（四節點）* | *9132T 2x LEM（四節點）* | *9132T 2x LEM（八節點）* 
+
+
+ a| 
+Controller（控制器）_x_3
+ a| 
+FC-VI連接埠A
+ a| 
+1.
+ a| 
+無
+ a| 
+無
+ a| 
+LEM2-1.
+
+
+
+ a| 
+FC-VI連接埠b
+ a| 
+2.
+ a| 
+無
+ a| 
+無
+ a| 
+LEM2-1.
+
+
+
+ a| 
+FC-VI連接埠c
+ a| 
+1.
+ a| 
+無
+ a| 
+無
+ a| 
+LEM2-2.
+
+
+
+ a| 
+FC-VI連接埠d
+ a| 
+2.
+ a| 
+無
+ a| 
+無
+ a| 
+LEM2-2.
+
+
+
+ a| 
+FC-VI-2連接埠A
+ a| 
+1.
+ a| 
+無
+ a| 
+無
+ a| 
+無
+
+
+
+ a| 
+FC-VI-2連接埠b
+ a| 
+2.
+ a| 
+無
+ a| 
+無
+ a| 
+無
+
+
+
+ a| 
+FC-VI-2連接埠c
+ a| 
+1.
+ a| 
+無
+ a| 
+無
+ a| 
+無
+
+
+
+ a| 
+FC-VI-2連接埠d
+ a| 
+2.
+ a| 
+無
+ a| 
+無
+ a| 
+無
+
+
+
+ a| 
+HBA連接埠A
+ a| 
+1.
+ a| 
+無
+ a| 
+無
+ a| 
+LEM2-3.
+
+
+
+ a| 
+HBA連接埠b
+ a| 
+2.
+ a| 
+無
+ a| 
+無
+ a| 
+LEM2-3.
+
+
+
+ a| 
+HBA連接埠c
+ a| 
+1.
+ a| 
+無
+ a| 
+無
+ a| 
+LEM2-4
+
+
+
+ a| 
+HBA連接埠d
+ a| 
+2.
+ a| 
+無
+ a| 
+無
+ a| 
+LEM2-4
+
+
+
+ a| 
+Controller（控制器）_x_4
+ a| 
+FC-VI-1連接埠A
+ a| 
+1.
+ a| 
+無
+ a| 
+無
+ a| 
+LEM2-5
+
+
+
+ a| 
+FC-VI-1連接埠b
+ a| 
+2.
+ a| 
+無
+ a| 
+無
+ a| 
+LEM2-5
+
+
+
+ a| 
+FC-VI-1連接埠c
+ a| 
+1.
+ a| 
+無
+ a| 
+無
+ a| 
+LEM2-6
+
+
+
+ a| 
+FC-VI-1連接埠d
+ a| 
+2.
+ a| 
+無
+ a| 
+無
+ a| 
+LEM2-6
+
+
+
+ a| 
+FC-VI-2連接埠A
+ a| 
+1.
+ a| 
+無
+ a| 
+無
+ a| 
+無
+
+
+
+ a| 
+FC-VI-2連接埠b
+ a| 
+2.
+ a| 
+無
+ a| 
+無
+ a| 
+無
+
+
+
+ a| 
+FC-VI-2連接埠c
+ a| 
+1.
+ a| 
+無
+ a| 
+無
+ a| 
+無
+
+
+
+ a| 
+FC-VI-2連接埠d
+ a| 
+2.
+ a| 
+無
+ a| 
+無
+ a| 
+無
+
+
+
+ a| 
+HBA連接埠A
+ a| 
+1.
+ a| 
+無
+ a| 
+無
+ a| 
+LEM2-7
+
+
+
+ a| 
+HBA連接埠b
+ a| 
+2.
+ a| 
+無
+ a| 
+無
+ a| 
+LEM2-7
+
+
+
+ a| 
+HBA連接埠c
+ a| 
+1.
+ a| 
+無
+ a| 
+無
+ a| 
+LEM2-8
+
+
+
+ a| 
+HBA連接埠d
+ a| 
+2.
+ a| 
+無
+ a| 
+無
+ a| 
+LEM2-8
+
+|===

@@ -1,0 +1,62 @@
+---
+permalink: install-fc/fc-switch-port-assignment-overview.html 
+sidebar: sidebar 
+keywords: ONTAP, FAS, FC, Brocade, ISL, Cisco, metrocluster, switch, cabling, port, assignment 
+summary: 您需要驗證在連接 FC 交換器時是否使用了指定的連接埠指派。 
+---
+= MetroCluster FC 交換器的連接埠分配
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您需要驗證在連接 FC 交換器時是否使用了指定的連接埠指派。
+
+您可以將未用於連接啟動器連接埠、FC-VI 連接埠或 ISL 的連接埠重新配置為儲存連接埠。但是，如果您使用的是受支援的 RCF，則必須相應地變更分割區。
+
+如果您使用受支援的 RCF，ISL 連接埠可能無法連接到所示的相同端口，並且可能需要手動重新設定。
+
+如果您使用ONTAP 9 的連接埠指派設定了交換機，則可以繼續使用舊分配。但是，運行ONTAP 9.1 或更高版本的新配置應使用此處顯示的連接埠分配。
+
+
+
+== 整體佈線準則
+
+使用佈線表格時、請注意下列準則：
+
+* Brocade和Cisco交換器使用不同的連接埠編號：
++
+** 在Brocade交換器上、第一個連接埠編號為0。
+** 在Cisco交換器上、第一個連接埠編號為1。
+
+
+* 交換器架構中的每個FC交換器的纜線配置相同。
+* 您可以訂購 AFF A300 和 FAS8200 儲存系統，並提供兩種 FC-VI 連線選項之一：
++
+** 以FC-VI模式設定的內建連接埠0e和0f。
+** 插槽1中FC-VI卡上的連接埠1A和1b。
+
+
+* 不需要使用四個FC-VI連接埠、就能獲得不必要的功能。AFF下表顯示FC交換器的佈線、每個控制器上有四個FC-VI連接埠、Cisco 9250i交換器除外。
++
+對於其他儲存系統、請使用表中所示的纜線、但不要使用FC-VI連接埠c和d的纜線
+
++
+您可以將這些連接埠保留空白。
+
+* FASA400和FAS8300儲存系統使用連接埠2a和2b進行FC-VI連線。AFF
+* 如果MetroCluster 您有兩個共享ISL的不完整組態、請使用與八節點MetroCluster 的不完整連接線相同的連接埠指派。
+* 所佈線的 ISL 數量可能會因網站要求而異。
+* 請參閱ISL考量事項一節。
++
+link:concept_considerations_isls_mcfc.html["ISL的考量"]
+
+
+
+
+
+== AFF A900和FAS9500佈線指南
+
+* FASA900或FAS9500儲存系統需要八個FC-VI連接埠。AFF如果您使用AFF 的是FASA900或FAS9500、則需要使用八個連接埠組態。如果組態包含其他儲存系統機型、請使用表格中所示的纜線、但不要使用不需要的FC-VI連接埠纜線。
+

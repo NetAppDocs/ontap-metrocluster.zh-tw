@@ -353,7 +353,7 @@ switch(config-if)# end
 
 請參閱下列各節、識別您組態的F-port（交換器對節點）：
 
-* link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）"]
+* link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["FC 交換器的連接埠分配"]
 
 
 此工作必須在MetroCluster 整個交換器上執行、且必須採用此功能。
@@ -1184,7 +1184,7 @@ FC_switch_B_1# copy running-config startup-config
 
 
 .相關資訊
-當您在使用ONTAP 更新版本的版本時、使用纜線連接FC交換器時、必須確認您使用的是指定的連接埠指派。請參閱 link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）"]
+在連接 FC 交換器時，需要驗證是否使用了指定的連接埠指派。請參閱link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["FC 交換器的連接埠分配"]
 
 
 

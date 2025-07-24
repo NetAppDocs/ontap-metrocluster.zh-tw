@@ -1,0 +1,162 @@
+---
+permalink: install-fc/brocade-fc-port-config-isls.html 
+sidebar: sidebar 
+keywords: ONTAP, FAS, FC, Brocade, metrocluster 
+summary: 下表顯示了Brocade交換器上的連接埠使用情況。 
+---
+= MetroCluster FC 設定中 ISL 的Brocade埠使用情況
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+了解將Brocade FC 交換器連接到 ISL 所需的連接埠分配。
+
+[NOTE]
+====
+* AFF A900和FAS9500系統支援八條 ISL。 BrocadeBrocade 、G620、G620-1、G630、G630-1、G720 和 G730 交換器支援八條 ISL
+* Brocade 6520 交換器支援八條 ISL，但不支援AFF A900和FAS9500系統。
+
+
+====
+[cols="2a,2a,2a,2a,2a,2a,2a"]
+|===
+| ISL 連接埠 | *6505、G610、G710 埠* | 6520端口 | *7810 埠* | 7840（10-Gbps）端口 | 7840（40 Gbps）端口 | *6510、G620、G620-1、G630、G630-1、G720、G730 連接埠* 
+
+
+ a| 
+ISL連接埠1
+ a| 
+20
+ a| 
+22
+ a| 
+ge2
+ a| 
+ge2
+ a| 
+ge0
+ a| 
+40
+
+
+
+ a| 
+ISL連接埠2
+ a| 
+21
+ a| 
+23
+ a| 
+ge3
+ a| 
+ge3
+ a| 
+ge1
+ a| 
+41.
+
+
+
+ a| 
+ISL連接埠3
+ a| 
+22
+ a| 
+46
+ a| 
+ge4
+ a| 
+ge10
+ a| 
+無
+ a| 
+42.
+
+
+
+ a| 
+ISL連接埠4.
+ a| 
+23
+ a| 
+47
+ a| 
+ge5
+ a| 
+ge11
+ a| 
+無
+ a| 
+43.
+
+
+
+ a| 
+ISL連接埠5.
+ a| 
+無
+ a| 
+70
+ a| 
+ge6
+ a| 
+無
+ a| 
+無
+ a| 
+44
+
+
+
+ a| 
+ISL連接埠6.
+ a| 
+無
+ a| 
+71.
+ a| 
+ge7
+ a| 
+無
+ a| 
+無
+ a| 
+45
+
+
+
+ a| 
+ISL連接埠7.
+ a| 
+無
+ a| 
+94
+ a| 
+無
+ a| 
+無
+ a| 
+無
+ a| 
+46
+
+
+
+ a| 
+ISL連接埠8.
+ a| 
+無
+ a| 
+95
+ a| 
+無
+ a| 
+無
+ a| 
+無
+ a| 
+47
+
+|===

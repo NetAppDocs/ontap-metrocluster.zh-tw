@@ -1,0 +1,276 @@
+---
+permalink: install-fc/cisco-9132t-fc-port-config-bridges.html 
+sidebar: sidebar 
+keywords: ONTAP, FAS, FC, Cisco, metrocluster 
+summary: 了解使用兩個 FC 連接埠將Cisco 9132T FC 交換器連接到 FC 到 SAS 橋接器所需的連接埠指派。 
+---
+= MetroCluster FC 設定中 FC 到 SAS 橋接器的Cisco 9132T 連接埠使用情況
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+了解使用兩個 FC 連接埠將Cisco 9132T FC 交換器連接到 FC 到 SAS 橋接器所需的連接埠指派。
+
+
+NOTE: 使用具有 1xLEM 模組的Cisco 9132T 交換器僅支援一 (1) 個橋接堆疊。
+
+
+
+== MetroCluster 1 或 DR 群組 1
+
+下表顯示了使用Cisco 9132T 交換器上的兩個 FC 連接埠（FC1 和 FC2）的 FibreBridge 7500N 或 7600N 橋接器在MetroCluster 1 或 DR 組 1 中支援的機架配置。使用此配置表時，您應該注意以下事項：
+
+* 在四節點設定中，您可以將額外的橋接器連接到具有 2xLEM 的Cisco 9132T 交換器上的連接埠 LEM2-1 至 LEM2-8。
+
+
+[cols="2a,2a,2a,2a,2a,2a,2a"]
+|===
+2+| *元件* | *連接埠* | *連接到 FC_switch...* | *9132T 1x LEM（四節點）* | *9132T 2x LEM（四節點）* | *9132T 2x LEM（八節點）* 
+
+
+ a| 
+堆疊1
+ a| 
+bride_x_1a.
+ a| 
+FC1
+ a| 
+1.
+ a| 
+LEM1-13
+ a| 
+LEM1-13
+ a| 
+LEM1-9.
+
+
+
+ a| 
+FC2
+ a| 
+2.
+ a| 
+LEM1-13
+ a| 
+LEM1-13
+ a| 
+LEM1-9.
+
+
+
+ a| 
+bride_x_1b.
+ a| 
+FC1
+ a| 
+1.
+ a| 
+LEM1-14
+ a| 
+LEM1-14
+ a| 
+LEM1-10.
+
+
+
+ a| 
+FC2
+ a| 
+2.
+ a| 
+LEM1-14
+ a| 
+LEM1-14
+ a| 
+LEM1-10.
+
+
+
+ a| 
+堆疊2.
+ a| 
+bride_x_2a
+ a| 
+FC1
+ a| 
+1.
+ a| 
+無
+ a| 
+LEM1-15
+ a| 
+LEM1-11.
+
+
+
+ a| 
+FC2
+ a| 
+2.
+ a| 
+無
+ a| 
+LEM1-15
+ a| 
+LEM1-11.
+
+
+
+ a| 
+bride_x_2b
+ a| 
+FC1
+ a| 
+1.
+ a| 
+無
+ a| 
+LEM1-16
+ a| 
+LEM1-12
+
+
+
+ a| 
+FC2
+ a| 
+2.
+ a| 
+無
+ a| 
+LEM1-16
+ a| 
+LEM1-12
+
+|===
+
+
+== MetroCluster 2 或 DR 群組 2
+
+下表顯示了使用Cisco 9132T 交換器上的兩個 FC 連接埠（FC1 和 FC2）的 FibreBridge 7500N 或 7600N 橋接器在MetroCluster 2 或 DR 組 2 中支援的機架配置。使用此配置表時，您應該注意以下事項：
+
+* 在八節點設定中，您可以將額外的橋接器連接到具有 2x LEM 的Cisco 9132T 交換器上的連接埠 LEM2-13 至 LEM2-16。
+
+
+[cols="2a,2a,2a,2a,2a,2a,2a"]
+|===
+2+| *元件* | *連接埠* | *連接到 FC_switch...* | *9132T 1x LEM（四節點）* | *9132T 2x LEM（四節點）* | *9132T 2x LEM（八節點）* 
+
+
+ a| 
+堆疊1
+ a| 
+bride_x_1a.
+ a| 
+FC1
+ a| 
+1.
+ a| 
+無
+ a| 
+無
+ a| 
+LEM1-9.
+
+
+
+ a| 
+FC2
+ a| 
+2.
+ a| 
+無
+ a| 
+無
+ a| 
+LEM1-9.
+
+
+
+ a| 
+bride_x_1b.
+ a| 
+FC1
+ a| 
+1.
+ a| 
+無
+ a| 
+無
+ a| 
+LEM1-10.
+
+
+
+ a| 
+FC2
+ a| 
+2.
+ a| 
+無
+ a| 
+無
+ a| 
+LEM1-10.
+
+
+
+ a| 
+堆疊2.
+ a| 
+bride_x_2a
+ a| 
+FC1
+ a| 
+1.
+ a| 
+無
+ a| 
+無
+ a| 
+LEM1-11.
+
+
+
+ a| 
+FC2
+ a| 
+2.
+ a| 
+無
+ a| 
+無
+ a| 
+LEM1-11.
+
+
+
+ a| 
+bride_x_2b
+ a| 
+FC1
+ a| 
+1.
+ a| 
+無
+ a| 
+無
+ a| 
+LEM1-12
+
+
+
+ a| 
+FC2
+ a| 
+2.
+ a| 
+無
+ a| 
+無
+ a| 
+LEM1-12
+
+|===

@@ -682,9 +682,9 @@ IMPORTANT: 在完成分區之前、請勿使用光纖橋接器7500N上的第二�
 
 
 .相關資訊
-當您在使用ONTAP 更新版本的版本時、使用纜線連接FC交換器時、必須確認您使用的是指定的連接埠指派。
+您需要驗證在連接 FC 交換器時是否使用了指定的連接埠指派。
 
-link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）"]
+link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["FC 交換器的連接埠分配"]
 
 
 

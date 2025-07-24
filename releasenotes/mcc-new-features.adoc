@@ -21,6 +21,51 @@ summary:
 
 
  a| 
+支援端點對端點加密的 MetroCluster IP
+ a| 
+以下系統支援端對端加密，以加密MetroCluster IP 配置中的站點之間的後端流量，例如 NVlog 和儲存複製資料。
+
+* AFF A800和AFF C800
+* AFF A20、 AFF A30、 AFF C30、 AFF A50、 AFF C60
+* AFF A70 、 AFF A90 、 AFF A1K 、 AFF C80
+* FAS50 、 FAS70 、 FAS90
+
+
+link:../maintain/task-configure-encryption.html["在 MetroCluster IP 組態中設定端點對端點加密"]
+ a| 
+ONTAP 9.17.1
+
+
+
+ a| 
+限制MetroCluster IP 配置的更改
+ a| 
+ONTAP 9.17.1 包含四節點MetroCluster IP 配置的以下限制更新：
+
+* AFF C800、 AFF A800、 AFF A900、 AFF A90和AFF A1K系統有以下更新的限制：
++
+** 每個節點的FlexVol volume限制：1250
+** SVM 限制：每個叢集 64 個 SVM
+** LIF 數量：每個集群 256 個 LIF
+
+
+* AFF A400、 AFF C400、 ASA A400、 ASA C400、 AFF C80、 AFF A70和AFF A50 系統有下列更新的限制：
++
+** 每個聚合體（單一或多個）的FlexVol volume限制：625
+** 每個節點的FlexVol volume限制：1250
+** 每個高可用性 (HA) 對的FlexVol volume限制：2500
+** 每個MetroCluster叢集的FlexVol volume限制：5000
+** SVM 限制：每個叢集 64 個 SVM
+** LIF 數量：每個集群 256 個 LIF
+
+
+
+ a| 
+ONTAP 9.17.1
+
+
+
+ a| 
 使用認證更新 Fiberbridge 韌體
  a| 
 如果伺服器需要使用認證來下載韌體套件，您可以使用認證來更新 Fiberbridge 橋接器上的韌體。
@@ -76,7 +121,7 @@ AFF A800 和 AFF C800 系統上四節點 MetroCluster IP 組態的磁碟區限�
 
 * 每個集合體的 FlexVol 磁碟區數量上限從 200 個增加到 625 個。
 * 每個節點的 FlexVol 磁碟區數量上限從 800 個增加至 1250 個。
-* 每個高可用度（ HA ）配對的 FlexVol 磁碟區數量上限從 1600 個增加至 2500 個。
+* 每個 HA 對的最大FlexVol卷數從 1600 個增加到 2500 個。
 
  a| 
 ONTAP 9.15.1.1
@@ -101,7 +146,7 @@ AFF A900 系統上四節點 MetroCluster IP 組態的磁碟區限制增加
 
 * 每個集合體的 FlexVol 磁碟區數量上限從 200 個增加到 625 個。
 * 每個節點的 FlexVol 磁碟區數量上限從 800 個增加至 1250 個。
-* 每個高可用度（ HA ）配對的 FlexVol 磁碟區數量上限從 1600 個增加至 2500 個。
+* 每個 HA 對的最大FlexVol卷數從 1600 個增加到 2500 個。
 
  a| 
 ONTAP 9.14.1.

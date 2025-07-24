@@ -19,7 +19,7 @@ summary: 您必須透過光纖交換器間連結（ISL\）連接每個站台的F
 .步驟
 . 使用對應於組態和交換器模型的表格中的纜線、將每個站台的FC交換器連接至所有ISL。
 +
-** link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）"]
+** link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["FC 交換器的連接埠分配"]
 
 
 

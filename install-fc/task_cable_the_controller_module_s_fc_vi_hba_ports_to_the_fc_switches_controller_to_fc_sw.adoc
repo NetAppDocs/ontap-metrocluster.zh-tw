@@ -16,9 +16,7 @@ FC-VI連接埠和HBA（主機匯流排介面卡）必須以纜線連接MetroClus
 .步驟
 . 使用您的組態和交換器機型表、連接FC-VI連接埠和HBA連接埠。
 +
-** link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）"]
-** link:concept_AFF_A900_port_assign_fc_switches_ontap_9_1.html["FC交換器的連接埠指派（使用AFF Arfe A900系統時）"]
-** link:concept_port_assignments_for_systems_using_two_initiator_ports.html["使用兩個啟動器連接埠的系統連接埠指派"]
+** link:fc-switch-port-assignment-overview.html["FC 交換器的連接埠分配"]
 
 
 

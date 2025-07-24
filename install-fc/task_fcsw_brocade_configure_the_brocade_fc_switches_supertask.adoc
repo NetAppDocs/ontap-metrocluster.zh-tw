@@ -66,7 +66,7 @@ Metro E表示乙太網路架構或訊號是透過Metro距離原生進行、或�
 
 
 
-== 檢閱Brocade授權要求
+== 審查Brocade許可證要求
 
 您需要針對MetroCluster 交換器的某些權限才能進行整個交換器的功能。您必須在所有四個交換器上安裝這些授權。
 
@@ -104,7 +104,7 @@ Metro E表示乙太網路架構或訊號是透過Metro距離原生進行、或�
 
 
 
-== 將Brocade FC交換器值設為原廠預設值
+== 將Brocade FC 交換器值設定為出廠預設值
 
 您必須將交換器設為原廠預設值、以確保組態成功。您也必須為每個交換器指派唯一的名稱。
 
@@ -325,7 +325,7 @@ FC_switch_B_1:admin> reboot
 
 
 
-== 設定基本交換器設定
+== 配置基本交換器設定
 
 您必須為Brocade交換器設定基本的全域設定、包括網域ID。
 
@@ -473,7 +473,7 @@ FC_switch_A_1:admin> iodshow
 NOTE: 在ONTAP 控制器模組上設定功能時、必須在MetroCluster 每個控制器模組上明確設定ood、以供採用此功能。
 
 +
-https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/concept_configure_the_mcc_software_in_ontap.html#configuring-in-order-delivery-or-out-of-order-delivery-of-frames-on-ontap-software["設定以順序交付或不按順序交付以ONTAP 利在各種軟體上交付框架"]
+https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/concept_configure_the_mcc_software_in_ontap.html#configuring-in-order-delivery-or-out-of-order-delivery-of-frames-on-ontap-software["在ONTAP軟體上配置訊框的依序傳送或無序傳送"]
 
 
 
@@ -660,7 +660,7 @@ FC_switch_B_1:admin> switchcfgpersistentenable
 
 
 
-== 在Brocade DCX 8510-8交換器上設定基本交換器設定
+== 在Brocade DCX 8510-8 交換器上設定基本交換器設置
 
 您必須為Brocade交換器設定基本的全域設定、包括網域ID。
 
@@ -760,7 +760,7 @@ link:concept_prepare_for_the_mcc_installation.html["使用Brocade DCX 8510-8交�
 
 
 
-== 使用FC連接埠在Brocade FC交換器上設定E連接埠
+== 使用 FC 連接埠在Brocade FC 交換器上設定 E 連接埠
 
 對於使用FC連接埠設定交換器間連結（ISL）的Brocade交換器、您必須在連接ISL的每個交換器架構上設定交換器連接埠。這些ISL連接埠也稱為E連接埠。
 
@@ -912,7 +912,7 @@ ISL連接埠4.
 
 
 
-.4+| Brocade G610  a| 
+.4+| BrocadeG610、G710  a| 
 ISL連接埠1
  a| 
 20
@@ -1259,7 +1259,7 @@ FC_switch_B_1:admin> trunkshow
 
 
 .相關資訊
-link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）"]
+link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["FC 交換器的連接埠分配"]
 
 
 
@@ -1419,7 +1419,7 @@ FC_switch_A_1:root> portshow fcipcircuit all
 
 
 
-== 在Brocade 7810和7840 FC交換器上設定40 Gbps VE-port
+== 在Brocade 7810 和 7840 FC 交換器上設定 40 Gbps VE 端口
 
 使用兩個40 GbE VE-port（使用FCIP）用於ISL時、您必須在每個連接埠上建立IP介面、並在每個通道中設定FCIP通道和電路。
 
@@ -1572,7 +1572,7 @@ FC_switch_A_1:root> portshow fcipcircuit all
 
 
 
-== 在Brocade交換器上設定非E連接埠
+== 配置Brocade交換器上的非 E 端口
 
 您必須在FC交換器上設定非E連接埠。在架構組態中MetroCluster 、這些連接埠可將交換器連接至HBA啟動器、FC-VI互連和FC對SAS橋接器。必須針對每個連接埠執行這些步驟。
 
@@ -1662,7 +1662,7 @@ Non-DFE                             ..  ..  ..  ..  ..  ..  ..  ..  ..
 
 
 
-== 在Brocade G620交換器的ISL連接埠上設定壓縮
+== 在Brocade G620 交換器上的 ISL 連接埠上設定壓縮
 
 如果您使用Brocade G620交換器並在ISL上啟用壓縮、則必須在交換器上的每個E連接埠上進行設定。
 
@@ -1724,13 +1724,13 @@ Port   Configured    Active   Configured   Active  Speed
 ----
 
 
-== 在Brocade FC交換器上設定分區
+== 在Brocade FC 交換器上設定分區
 
 您必須將交換器連接埠指派給不同的區域、以分隔控制器和儲存流量。
 
 
 
-=== FC-VI連接埠分區
+=== 對 FC-VI 連接埠進行分區
 
 對於整個過程中的每個DR群組MetroCluster 、您必須為FC-VI連線設定兩個區域、以允許控制器對控制器的流量。這些區域包含連接至控制器模組FC-VI連接埠的FC交換器連接埠。這些區域是服務品質（QoS）區域。
 
@@ -1948,7 +1948,7 @@ QOSH2_MC1_FA_2_FCVI（6520）
 |===
 
 
-=== 使用一個 FC 連接埠的 FiberBridge 7500N 或 7600N 橋接器分區
+=== 使用一個 FC 連接埠的區域 FibreBridge 7500N 或 7600N 橋
 
 如果您使用的是僅使用兩個 FC 連接埠之一的 FiberBridge 7500N 或 7600N 橋接器、則需要為橋接器連接埠建立儲存區域。在設定區域之前、您應該先瞭解區域和相關連接埠。
 
@@ -2027,7 +2027,7 @@ a或b
 * DRgroup 1：MC1_INIT_GRP_1_STIR_A_STK_GRP_1_TOP FC1：*
 
 |===
-| FC交換器 | 網站 | 交換器網域 | Brocade 6505、6510、6520、G620或G610交換器連接埠 | 連線至... 
+| FC交換器 | 網站 | 交換器網域 | Brocade 6505、6510、6520、G620、G610 或 G710 交換器端口 | 連線至... 
 
 
 | FC_SWIT_A_1 | 答 | 5. | 2. | Controller（控制器）a_1連接埠0A 
@@ -2067,7 +2067,7 @@ a或b
 * DRgroup 1：MC1_INIT_GRP_1_STIR_A_STK_GRP_1_BOT_FC1：*
 
 |===
-| FC交換器 | 網站 | 交換器網域 | Brocade 6505、6510、6520、G620或G610交換器連接埠 | 連線至... 
+| FC交換器 | 網站 | 交換器網域 | Brocade 6505、6510、6520、G620、G610 或 G710 交換器端口 | 連線至... 
 
 
 | FC_SWIT_A_1 | 答 | 6. | 2. | Controller（控制器）a_1連接埠0b 
@@ -2111,7 +2111,7 @@ a或b
 * DRgroup 1：MC1_INIT_GRP_1_STIR_A_STK_GRP_2_TOP FC1：*
 
 |===
-| FC交換器 | 網站 | 交換器網域 | Brocade 6505、6510、6520、G620或G610交換器連接埠 | 連線至... 
+| FC交換器 | 網站 | 交換器網域 | Brocade 6505、6510、6520、G620、G610 或 G710 交換器端口 | 連線至... 
 
 
 | FC_SWIT_A_1 | 答 | 5. | 2. | Controller（控制器）a_1連接埠0A 
@@ -2151,7 +2151,7 @@ a或b
 * DRgroup 1：MC1_INIT_GRP_1_STIR_A_STK_GRP_2_BOT_FC1：*
 
 |===
-| FC交換器 | 網站 | 交換器網域 | Brocade 6505、6510、6520、G620或G610交換器連接埠 | 連線至... 
+| FC交換器 | 網站 | 交換器網域 | Brocade 6505、6510、6520、G620、G610 或 G710 交換器端口 | 連線至... 
 
 
 | FC_SWIT_A_1 | 答 | 6. | 2. | Controller（控制器）a_1連接埠0b 
@@ -2195,7 +2195,7 @@ a或b
 * MC1_INIT_GRP_1_STIR_B_STK_GRP_1_TOP FC1：*
 
 |===
-| FC交換器 | 網站 | 交換器網域 | Brocade 6505、6510、6520、G620或G610交換器 | 連線至... 
+| FC交換器 | 網站 | 交換器網域 | Brocade 6505、6510、6520、G620、G610 或 G710 交換機 | 連線至... 
 
 
 | FC_SWIT_A_1 | 答 | 5. | 2. | Controller（控制器）a_1連接埠0A 
@@ -2235,7 +2235,7 @@ a或b
 * DRgroup 1：MC1_INIT_GRP_1_STIR_B_STK_GRP_1_BOT_FC1：*
 
 |===
-| FC交換器 | 網站 | 交換器網域 | Brocade 6505、6510、6520、G620或G610交換器 | 連線至... 
+| FC交換器 | 網站 | 交換器網域 | Brocade 6505、6510、6520、G620、G610 或 G710 交換機 | 連線至... 
 
 
 | FC_SWIT_A_1 | 答 | 6. | 2. | Controller（控制器）a_1連接埠0b 
@@ -2279,7 +2279,7 @@ a或b
 * DRgroup 1：MC1_INIT_GRP_1_STIR_B_STK_GRP_2_TOP FC1：*
 
 |===
-| FC交換器 | 網站 | 交換器網域 | Brocade 6505、6510、6520、G620或G610交換器連接埠 | 連線至... 
+| FC交換器 | 網站 | 交換器網域 | Brocade 6505、6510、6520、G620、G610 或 G710 交換器端口 | 連線至... 
 
 
 | FC_SWIT_A_1 | 答 | 5. | 2. | Controller（控制器）a_1連接埠0A 
@@ -2319,7 +2319,7 @@ a或b
 * DRgroup 1：MC1_INIT_GRP_1_STIR_B_STK_GRP_2_BOT_FC1：*
 
 |===
-| FC交換器 | 網站 | 交換器網域 | Brocade 6505、6510、6520、G620或G610交換器連接埠 | 連線至... 
+| FC交換器 | 網站 | 交換器網域 | Brocade 6505、6510、6520、G620、G610 或 G710 交換器端口 | 連線至... 
 
 
 | FC_SWIT_A_1 | 答 | 6. | 2. | Controller（控制器）a_1連接埠0b 
@@ -2391,7 +2391,7 @@ a或b
 |===
 
 
-=== 使用兩個FC連接埠的Fibre Bridge 7500N橋接器分區
+=== 使用兩個 FC 連接埠的區域 FibreBridge 7500N 橋
 
 如果您使用的是同時具有兩個FC連接埠的Fibre Bridge 7500N橋接器、則需要為橋接連接埠建立儲存區域。在設定區域之前、您應該先瞭解區域和相關連接埠。
 
@@ -2470,7 +2470,7 @@ a或b
 |===
 
 
-| FC交換器 | 網站 | 交換器網域 | 6505 / 6510 / G610/ G620連接埠 | 6520連接埠 | 連線至... 
+| FC交換器 | 網站 | 交換器網域 | 6505 / 6510 / G610 / G710 / G620 端口 | 6520連接埠 | 連線至... 
 
 
  a| 
@@ -2564,7 +2564,7 @@ MC1_INIT_GRP_1_STIRM_A_STK_GRP_1_TOP _FC1
 |===
 
 
-| FC交換器 | 網站 | 交換器網域 | 6505 / 6510 / G610連接埠 | 6520連接埠 | G620連接埠 | 連線至... 
+| FC交換器 | 網站 | 交換器網域 | 6505/6510/G610/G710端口 | 6520連接埠 | G620連接埠 | 連線至... 
 
 
  a| 
@@ -2668,7 +2668,7 @@ MC1_INIT_GRP_2_STIR_A_STK_GRP_1_BOT_FC1
 |===
 
 
-| FC交換器 | 網站 | 交換器網域 | 6505 / 6510 / G610 | 6520 | G620 | 連線至... 
+| FC交換器 | 網站 | 交換器網域 | 6505 / 6510 / G610 / G710 | 6520 | G620 | 連線至... 
 
 
  a| 
@@ -2772,7 +2772,7 @@ MC1_INIT_GRP_1_STIRM_A_STK_GRP_1_TOP _FC2
 |===
 
 
-| FC交換器 | 網站 | 交換器網域 | 6505 / 6510 / G610 | 6520 | G620 | 連線至... 
+| FC交換器 | 網站 | 交換器網域 | 6505 / 6510 / G610 / G710 | 6520 | G620 | 連線至... 
 
 
  a| 
@@ -2880,7 +2880,7 @@ MC1_INIT_GRP_2_STIR_A_STK_GRP_1_BOD_FC2
 |===
 
 
-| FC交換器 | 網站 | 交換器網域 | 6505 / 6510 / G610連接埠 | 6520連接埠 | G620連接埠 | 連線至... 
+| FC交換器 | 網站 | 交換器網域 | 6505/6510/G610/G710端口 | 6520連接埠 | G620連接埠 | 連線至... 
 
 
  a| 
@@ -2984,7 +2984,7 @@ MC1_INIT_GRP_1_STIRM_A_STK_GRP_2_TOP _FC1
 |===
 
 
-| FC交換器 | 網站 | 交換器網域 | 6505 / 6510 / G610連接埠 | 6520連接埠 | G620連接埠 | 連線至... 
+| FC交換器 | 網站 | 交換器網域 | 6505/6510/G610/G710端口 | 6520連接埠 | G620連接埠 | 連線至... 
 
 
  a| 
@@ -3084,7 +3084,7 @@ MC1_INIT_GRP_2_STIR_A_STK_GRP_2_BOT_FC1
 |===
 
 
-| FC交換器 | 網站 | 交換器網域 | 6505 / 6510 / G610連接埠 | 6520連接埠 | G620連接埠 | 連線至... 
+| FC交換器 | 網站 | 交換器網域 | 6505/6510/G610/G710端口 | 6520連接埠 | G620連接埠 | 連線至... 
 
 
  a| 
@@ -3188,7 +3188,7 @@ MC1_INIT_GRP_1_STIRM_A_STK_GRP_2_TOP _FC2
 |===
 
 
-| FC交換器 | 網站 | 交換器網域 | 6505 / 6510 / G610連接埠 | 6520連接埠 | G620連接埠 | 連線至... 
+| FC交換器 | 網站 | 交換器網域 | 6505/6510/G610/G710端口 | 6520連接埠 | G620連接埠 | 連線至... 
 
 
  a| 
@@ -3296,7 +3296,7 @@ MC1_INIT_GRP_2_STIR_A_STK_GRP_2_BOT_FC2
 |===
 
 
-| FC交換器 | 網站 | 交換器網域 | 6505 / 6510 / G610連接埠 | 6520連接埠 | G620連接埠 | 連線至... 
+| FC交換器 | 網站 | 交換器網域 | 6505/6510/G610/G710端口 | 6520連接埠 | G620連接埠 | 連線至... 
 
 
  a| 
@@ -3400,7 +3400,7 @@ MC1_INIT_GRP_1_STIR_B_STK_GRP_1_TOP _FC1
 |===
 
 
-| FC交換器 | 網站 | 交換器網域 | 6505 / 6510 / G610連接埠 | 6520連接埠 | G620連接埠 | 連線至... 
+| FC交換器 | 網站 | 交換器網域 | 6505/6510/G610/G710端口 | 6520連接埠 | G620連接埠 | 連線至... 
 
 
  a| 
@@ -3504,7 +3504,7 @@ MC1_INIT_GRP_2_STIR_B_STK_GRP_1_BOD_FC1
 |===
 
 
-| FC交換器 | 網站 | 交換器網域 | 6505 / 6510 / G610連接埠 | 6520連接埠 | G620連接埠 | 連線至... 
+| FC交換器 | 網站 | 交換器網域 | 6505/6510/G610/G710端口 | 6520連接埠 | G620連接埠 | 連線至... 
 
 
  a| 
@@ -3606,7 +3606,7 @@ MC1_INIT_GRP_1_STIR_B_STK_GRP_1_TOP _FC2
 |===
 
 
-| FC交換器 | 網站 | 交換器網域 | 6505 / 6510 / G610連接埠 | 6520連接埠 | G620連接埠 | 連線至... 
+| FC交換器 | 網站 | 交換器網域 | 6505/6510/G610/G710端口 | 6520連接埠 | G620連接埠 | 連線至... 
 
 
  a| 
@@ -3714,7 +3714,7 @@ MC1_INIT_GRP_2_STIR_B_STK_GRP_1_BOD_FC2
 |===
 
 
-| FC交換器 | 網站 | 交換器網域 | 6505 / 6510 / G610連接埠 | 6520連接埠 | G620連接埠 | 連線至... 
+| FC交換器 | 網站 | 交換器網域 | 6505/6510/G610/G710端口 | 6520連接埠 | G620連接埠 | 連線至... 
 
 
  a| 
@@ -3818,7 +3818,7 @@ MC1_INIT_GRP_1_STIR_B_STK_GRP_2_TOP _FC1
 |===
 
 
-| FC交換器 | 網站 | 交換器網域 | 6505 / 6510 / G610連接埠 | 6520連接埠 | G620連接埠 | 連線至... 
+| FC交換器 | 網站 | 交換器網域 | 6505/6510/G610/G710端口 | 6520連接埠 | G620連接埠 | 連線至... 
 
 
  a| 
@@ -3922,7 +3922,7 @@ MC1_INIT_GRP_2_STIR_B_STK_GRP_2_BOD_FC1
 |===
 
 
-| FC交換器 | 網站 | 交換器網域 | 6505 / 6510 / G610連接埠 | 6520連接埠 | G620連接埠 | 連線至... 
+| FC交換器 | 網站 | 交換器網域 | 6505/6510/G610/G710端口 | 6520連接埠 | G620連接埠 | 連線至... 
 
 
  a| 
@@ -4026,7 +4026,7 @@ MC1_INIT_GRP_1_STIR_B_STK_GRP_2_TOP _FC2
 |===
 
 
-| FC交換器 | 網站 | 交換器網域 | 6505 / 6510 / G610連接埠 | 6520連接埠 | G620連接埠 | 連線至... 
+| FC交換器 | 網站 | 交換器網域 | 6505/6510/G610/G710端口 | 6520連接埠 | G620連接埠 | 連線至... 
 
 
  a| 
@@ -4280,7 +4280,7 @@ MC1_INIT_GRP_2_STIR_B_STK_GRP_2_BOD_FC2
 |===
 
 
-=== 在Brocade FC交換器上設定分區
+=== 對Brocade FC 交換器進行分區
 
 您必須將交換器連接埠指派給不同的區域、以區隔控制器和儲存流量、並針對FC-VI連接埠和儲存連接埠的區域。
 
@@ -4399,7 +4399,7 @@ zone: MC1_INIT_GRP_1_SITE_A_STK_GRP_1_TOP_FC1
 
 
 
-== 在Brocade 6510或G620交換器上設定ISL加密
+== 在Brocade 6510 或 G620 交換器上設定 ISL 加密
 
 在Brocade 6510或G620交換器上、您可以選擇在ISL連線上使用Brocade加密功能。如果您想要使用加密功能、則必須在MetroCluster 每個交換器上執行額外的組態設定步驟（以供使用）。
 
@@ -4418,7 +4418,7 @@ NOTE: Brocade G620交換器上的ISL加密支援僅支援ONTAP 於支援版本9.
 
 
 
-=== 正在停用虛擬架構
+=== 禁用虛擬結構
 
 若要設定ISL加密、您必須停用MetroCluster 整個虛擬架構、使其位於整個4部交換器上、以利進行支援。
 

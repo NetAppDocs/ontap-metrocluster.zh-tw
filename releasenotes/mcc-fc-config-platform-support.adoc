@@ -56,6 +56,13 @@ FASA400和FAS8300 AFF
 
 
  a| 
+G710
+ a| 
+ONTAP 9.17.1
+
+
+
+ a| 
 G720
  a| 
 部分9.8 ONTAP

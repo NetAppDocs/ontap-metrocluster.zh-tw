@@ -11,17 +11,27 @@ summary:
 
 
 [role="lead"]
-從 ONTAP 9.15.1 開始、您可以設定端點對端點加密、以加密 MetroCluster IP 組態中站台之間的後端流量、例如 NVlog 和儲存複寫資料。
+從ONTAP 9.15.1 開始，您可以在支援的系統上設定端對端加密，以加密MetroCluster IP 設定中的網站之間的後端流量，例如 NVlog 和儲存複製資料。
 
 .關於這項工作
 * 您必須是叢集管理員才能執行此工作。
 * 在設定端點對端點加密之前、您必須先設定 link:https://docs.netapp.com/us-en/ontap/encryption-at-rest/configure-external-key-management-concept.html["設定外部金鑰管理"^]。
 * 檢閱在 MetroCluster IP 組態中設定端點對端點加密所需的支援系統和最低 ONTAP 版本：
 +
+[cols="2*"]
 |===
-
-
 | 最低 ONTAP 版本 | 支援的系統 
+
+
+ a| 
+ONTAP 9.17.1
+ a| 
+** AFF A800和AFF C800
+** AFF A20、 AFF A30、 AFF C30、 AFF A50、 AFF C60
+** AFF A70、 AFF A90、 AFF A1K、 AFF C80
+** FAS50 、 FAS70 、 FAS90
+
+
 
 
  a| 

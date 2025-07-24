@@ -48,22 +48,30 @@ entries:
       url: "/install-fc/task_cable_the_controller_module_s_fc_vi_hba_ports_to_the_fc_switches_controller_to_fc_sw.html"
     - title: 在MetroCluster 各個不景點之間連接ISL
       url: "/install-fc/task_cable_the_isl_between_the_mcc_sites_fabric_config.html"
-    - title: 使用兩個啟動器連接埠的系統連接埠指派
-      url: "/install-fc/concept_port_assignments_for_systems_using_two_initiator_ports.html"
-    - title: FC交換器的連接埠指派（使用ONTAP 版本不含更新版本）
-      url: "/install-fc/concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html"
-    - title: FC交換器的連接埠指派（使用AFF Arfe A900系統時）
+    - title: FC 交換器的連接埠分配
       entries:
-      - title: 使用AFF FASA900或FAS9500系統時、FC交換器的連接埠指派
-        url: "/install-fc/concept_AFF_A900_port_assign_fc_switches_ontap_9_1.html"
-      - title: 適用於執行版本更新版本的控制器的VA900 Brocade連接埠使用量AFF ONTAP
-        url: "/install-fc/concept_AFF_A900_brocade_port_config.html"
-      - title: 適用於執行版本更新版本的ISL的VA900 Brocade連接埠使用量AFF ONTAP
-        url: "/install-fc/concept_AFF_A900_brocade_port_ISLs.html"
-      - title: 執行不含更新版本的32個Cisco連接埠使用控制器AFF ONTAP
-        url: "/install-fc/concept_AFF_A900_cisco_port_config.html"
-      - title: 適用於執行版本更新版本的ISL的Cisco連接埠使用率AFF ONTAP
-        url: "/install-fc/concept_AFF_A900_cisco_ISLs.html"
+      - title: 了解如何使用 FC 交換器的連接埠分配表
+        url: "/install-fc/fc-switch-port-assignment-overview.html"
+      - title: 使用兩個啟動器連接埠的系統連接埠指派
+        url: "/install-fc/concept_port_assignments_for_systems_using_two_initiator_ports.html"
+      - title: 控制器的Brocade埠使用情況
+        url: "/install-fc/brocade-fc-port-config-controllers.html"
+      - title: FC-SAS 橋接器的Brocade埠使用情況
+        url: "/install-fc/brocade-fc-port-config-bridges.html"
+      - title: ISL 的Brocade埠使用情況
+        url: "/install-fc/brocade-fc-port-config-isls.html"
+      - title: 控制器的Cisco連接埠使用（不包括Cisco 9132T）
+        url: "/install-fc/cisco-fc-port-config-controllers.html"
+      - title: FC-SAS 橋接器的Cisco連接埠使用情況（不包括Cisco 9132T）
+        url: "/install-fc/cisco-fc-port-config-bridges.html"
+      - title: ISL 的Cisco連接埠使用情況（不包括Cisco 9132T）
+        url: "/install-fc/cisco-fc-port-config-isls.html"
+      - title: 控制器的Cisco 9132T 連接埠使用情況
+        url: "/install-fc/cisco-9132t-fc-port-config-controllers.html"
+      - title: FC-SAS 橋接器的Cisco 9132T 連接埠使用情況
+        url: "/install-fc/cisco-9132t-fc-port-config-bridges.html"
+      - title: Cisco 9132T ISL 連接埠使用情況
+        url: "/install-fc/cisco-9132t-fc-port-config-isls.html"
     - title: 使用八節點或四節點組態來連接叢集互連
       url: "/install-fc/task_cable_the_cluster_interconnect_in_four_node_configurations.html"
     - title: 連接叢集對等連線
