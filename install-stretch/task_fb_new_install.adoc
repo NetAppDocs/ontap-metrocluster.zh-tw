@@ -119,7 +119,7 @@ _Atto產品版本說明_提供最新的支援網頁瀏覽器清單。您可以�
 ====
 適用於您的模型橋接器的_Atto FibreBridge安裝與操作手冊_有更多管理介面的相關資訊。
 
-您可以使用Atto FIBrebridge Description（Atto FIBrebridge說明）頁面上提供的連結、存取Atto網站上的此內容和其他內容。
+您可以使用 ATTO FibreBridge 說明頁面上提供的連結存取此內容以及 ATTO 網站上的其他內容。
 
 ====
 

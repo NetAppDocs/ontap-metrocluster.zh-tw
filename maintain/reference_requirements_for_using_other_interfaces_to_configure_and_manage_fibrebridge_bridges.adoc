@@ -18,7 +18,7 @@ summary: 您可以使用序列連接埠、遠端登入和FTP的組合來管理FI
 
 NOTE: 適用於您的模型橋接器的_Atto FibreBridge安裝與操作手冊_有更多管理介面的相關資訊。
 
-您可以使用Atto FIBrebridge Description（Atto FIBrebridge說明）頁面上提供的連結、在Atto網站上存取本文件。
+您可以使用 ATTO FibreBridge 說明頁面上提供的連結在 ATTO 網站上存取此文件。
 
 
 

@@ -1790,7 +1790,6 @@
   <block id="df54e439b189f0a180ac382a0c0533c3" category="doc">使用其他介面來設定及管理光纖橋接器的需求</block>
   <block id="f9117ecda083d7dbba9bda8b853dfd61" category="paragraph">您可以使用序列連接埠或Telnet來設定橋接器和乙太網路管理1連接埠、以及管理橋接器。您可以使用FTP更新橋接器韌體。</block>
   <block id="31adc96d18cde8c45dc670356d68d2c2" category="admonition">適用於您的模型橋接器的_Atto FibreBridge安裝與操作手冊_有更多管理介面的相關資訊。</block>
-  <block id="10efc1f4cdd8df067f8c263803a86181" category="paragraph">您可以使用Atto FIBrebridge Description（Atto FIBrebridge說明）頁面上提供的連結、在Atto網站上存取本文件。</block>
   <block id="0626485f170944286cfbe3e303f2f1f5" category="section-title">序列連接埠</block>
   <block id="bac03fd8b856c63b4cd0a766637a03e3" category="paragraph">使用序列連接埠來設定及管理橋接器、以及設定乙太網路管理1連接埠時、系統必須符合下列需求：</block>
   <block id="3f75bca71e0ec800ca02ffb657b4c3ab" category="list-text">序列纜線（從橋接器序列連接埠連接至您用於設定之電腦上的序列（COM）連接埠）</block>
@@ -2973,7 +2972,6 @@
   <block id="030887e8b58ec755fe20ef7fbcdc9495" category="summary">當橋接器的電源供應器模組狀態變更時、您可以移除並安裝電源供應器模組。</block>
   <block id="0ea60b406b044af50baf856e62b54dea" category="paragraph">您可以透過橋接器上的LED來檢視電源供應器模組狀態的變更。您也可以透過ExpressNAV GUI和橋接CLI、透過序列連接埠或透過Telnet來檢視電源供應器模組的狀態。</block>
   <block id="f9a006e76305c853a36326e90e0bbbd8" category="list-text">此程序為nn（不中斷營運）、約需15分鐘完成。</block>
-  <block id="c172b09d1d6e3e38ddabe6e69de61d7e" category="paragraph">您可以使用Atto FIBrebridge Description（Atto FIBrebridge說明）頁面上提供的連結、存取Atto網站上的此內容和其他內容。</block>
   <block id="e0b252916154b49ca991301bb62d8e77" category="summary">您可能需要在MetroCluster 一個不知如何的IP交換器上升級RCF檔案。例如ONTAP 、進行升級時、或是交換器韌體升級時、都需要新的RCF檔案。</block>
   <block id="56ba5c8d245e7af9f26245ccc8eddba9" category="doc">升級MetroCluster 不只是在靜態IP交換器上的RCF檔案</block>
   <block id="cb1e716ab831d1ef2a5741deabd44bd7" category="cell">從這個交換器...</block>
@@ -12805,8 +12803,6 @@
   <block id="ef78f11e7aec890f1dc53f6a0176cdf4" category="inline-link-macro">設定虛擬IP（VIP）LIF</block>
   <block id="43d93948b7becfd15462e91085fd63cc" category="paragraph"><block ref="43d93948b7becfd15462e91085fd63cc" category="inline-link-macro-rx"></block></block>
   <block id="94ffd34b73e540c50265688d834cea45" category="paragraph">ONTAP 9 。 13.1 GA</block>
-  <block id="0cb8709673d91d9b41f7a2d9110be6db" category="paragraph">使用認證更新 Fiberbridge 韌體</block>
-  <block id="cca6b3113bea250bb0e5ecb42fcd1f6b" category="paragraph">如果伺服器需要使用認證來下載韌體套件，您可以使用認證來更新 Fiberbridge 橋接器上的韌體。</block>
   <block id="7f35c16e72037a8dea668c5bb0e6327d" category="paragraph"><block ref="7f35c16e72037a8dea668c5bb0e6327d" category="inline-link-macro-rx"></block></block>
   <block id="dd5e73f11c8453deab39cc51184b718c" category="admonition">建議在停用 IP 存取的情況下使用頻內管理，藉由限制與橋接器的實體連線來改善安全性。</block>
   <block id="794172cd90da1900d6103d0859717cae" category="section-title">FiberBridge 7600N 與 7500N 橋接器限制與附加規則</block>
@@ -13681,16 +13677,12 @@
   <block id="507731d894d9ee976f7066af87b9f8dd" category="list-text">* 群組 2* 顯示 C60 ， AFF A50 ， FAS70 ， FAS9000 ， AFF A700 ， AFF A70 ， AFF C800 ， AFF ， FAS9500 ， AFF A900 ， AFF ， AFF A800 C80 ， FAS90 ， AFF A90 和 AFF A1K 系統的組合。</block>
   <block id="631b6e3500618cca623678eeea878eff" category="list-text">附註 1 ：此組合需要 ONTAP 9.13.1 或更新版本。</block>
   <block id="abb7cc70e284f0ed722020e127761cca" category="paragraph">檢閱 AFF A150 ， A20 ，， AFF A220 ， FAS500f ，， FAS8200 ， FAS50 ， AFF C30 ， AFF C250 A30 ， AFF A250 ， AFF C400 ， FAS2750 ， FAS8300 ， AFF A300 ， AFF A400 ， AFF A320 ， AFF ， AFF 和 FAS8700 系統的系統更新組合。</block>
-  <block id="59ff548a332288bd57d4f0ca4aa314e6" category="paragraph"><block ref="59ff548a332288bd57d4f0ca4aa314e6" category="inline-image-macro-rx" type="image"></block></block>
   <block id="2c5d494e02cd7d07ceac57455beee52d" category="paragraph">檢閱 C60 ， A50 ， FAS70 ， FAS9000 ， AFF A700 ， AFF A90 ， AFF A900 ， AFF ， FAS9500 ， AFF A70 ， AFF C800 ， AFF ， AFF A800 C80 ， FAS90 ， AFF 和 AFF A1K 系統的系統更新組合。</block>
-  <block id="528441634286ef2ca2ed32e39f67505e" category="paragraph"><block ref="528441634286ef2ca2ed32e39f67505e" category="inline-image-macro-rx" type="image"></block></block>
   <block id="a1b5a467b5c765105dcad39cc0ff04c3" category="paragraph">下表顯示在 MetroCluster IP 組態中擴充 AFF 或 FAS 系統所支援的平台組合。表格分成兩個群組：</block>
   <block id="6252dce29b710e0cb61942b23fc053a5" category="list-text">附註 1 ：這些組合需要 ONTAP 9.9.1 或更新版本（或平台支援的最低 ONTAP 版本）。</block>
   <block id="2077cee62d2dc819ca10d6e3f6a4f59b" category="list-text">附註 2 ：這些組合需要 ONTAP 9.13.1 或更新版本（或平台支援的最低 ONTAP 版本）。</block>
   <block id="9bc3cb19080afd7c3475f6c80b5ee013" category="paragraph">檢閱 AFF A150 ， AFF A20 ，， AFF A220 ， FAS500f ，， FAS8200 ， FAS50 ， AFF C400 C30 ， AFF A30 ， AFF A250 ， AFF A300 ， AFF C250 ， FAS8300 ， AFF ， FAS2750 ， AFF A400 ， AFF A320 和 FAS8700 系統的擴充組合。</block>
-  <block id="503da6450f4dc7f5885bedbd17199939" category="paragraph"><block ref="503da6450f4dc7f5885bedbd17199939" category="inline-image-macro-rx" type="image"></block></block>
   <block id="99032e371bac241eac644b68481b2c7c" category="paragraph">檢閱 C60 ， AFF A50 ， FAS70 ，， AFF A700 ， FAS9500 ， FAS9000 ， AFF ， AFF A70 ， AFF A900 ， AFF C800 ， AFF ， AFF A800 C80 ， FAS90 ， AFF A90 和 AFF A1K 系統的擴充組合。</block>
-  <block id="0bd384b68663640af8e4d0e1b69579ff" category="paragraph"><block ref="0bd384b68663640af8e4d0e1b69579ff" category="inline-image-macro-rx" type="image"></block></block>
   <block id="5667d434150380e4826a9c5749e3611d" category="cell">所有其他支援的 AFF A70 ， AFF A90 ， AFF A1K ， FAS70 ， FAS90 ， AFF C80 ， AFF A50 ， AFF A20 ， AFF A30 ， AFF C30 ， AFF C60 或 FAS50 系統升級</block>
   <block id="1f33c4b21d6c848bec5712e27807c50a" category="paragraph">當您升級至 AFF A70 ， AFF A90 ， AFF A1K ， FAS70 ， FAS90 ， AFF C80 ， AFF A50 ， AFF A20 ， AFF A30 ， AFF C30 ， AFF C60 或 FAS50 系統時，這項工作僅 * 需要。</block>
   <block id="63856cfb46890240aad0d97a958b298b" category="paragraph">下表顯示使用「系統控制器置換」命令在 MetroCluster IP 組態中升級 AFF 或 FAS 系統所支援的平台組合，分成兩個群組。</block>
@@ -14348,7 +14340,6 @@
   <block id="ddb7605ec5049e970ab35c9ad2ff89fc" category="list-text">AFF A400、 AFF C400、 ASA A400、 ASA C400、 AFF C80、 AFF A70和AFF A50 系統有下列更新的限制：</block>
   <block id="c5053b59fbc1700ab606b123bbd97a75" category="list-text">每個聚合體（單一或多個）的FlexVol volume限制：625</block>
   <block id="fe57c6f7ead75bdf60c675612c2792a2" category="list-text">每個高可用性 (HA) 對的FlexVol volume限制：2500</block>
-  <block id="f7411497578d3c715ce980056c9a3dc5" category="list-text">每個MetroCluster叢集的FlexVol volume限制：5000</block>
   <block id="e012362a4f10b2d00ba77a0342c80c6d" category="list-text">每個 HA 對的最大FlexVol卷數從 1600 個增加到 2500 個。</block>
   <block id="6dea0f46f4307533bbff7dfe880a75ea" category="sidebar">了解如何使用 FC 交換器的連接埠分配表</block>
   <block id="ae6b17a796a400159e3071c16b88da41" category="sidebar">控制器的Brocade埠使用情況</block>
@@ -14360,4 +14351,14 @@
   <block id="3099965dec41589836e8937197d5c208" category="sidebar">控制器的Cisco 9132T 連接埠使用情況</block>
   <block id="25e9b3ef06577abf9b26600f0c390fc3" category="sidebar">FC-SAS 橋接器的Cisco 9132T 連接埠使用情況</block>
   <block id="b25c20328b0418f22f0fbc4d47e42988" category="sidebar">Cisco 9132T ISL 連接埠使用情況</block>
+  <block id="79af6547f35e1e15ddacae6867176717" category="paragraph">您可以使用 ATTO FibreBridge 說明頁面上提供的連結存取此內容以及 ATTO 網站上的其他內容。</block>
+  <block id="545e852011a81da0cd8b5b2d3cc504fd" category="paragraph">您可以使用 ATTO FibreBridge 說明頁面上提供的連結在 ATTO 網站上存取此文件。</block>
+  <block id="c95f44b3e8c72a1c6ef8a499c761690a" category="list-text">每個集群的FlexVol volume限制：5000</block>
+  <block id="45fc6e02d529201467decbef1f3eacab" category="paragraph">請參閱<block ref="9c839fcdfb8699a63c787254d7b1ae03" category="inline-link-macro-rx"></block>了解更多。</block>
+  <block id="567a833b899417b8be640e2472fc9c60" category="paragraph">使用憑證更新 FibreBridge 韌體</block>
+  <block id="5a870516b9d31d269ea6a8afce2ec1e6" category="paragraph">如果伺服器需要憑證來下載韌體包，您可以使用憑證來更新 FibreBridge 橋接器上的韌體。</block>
+  <block id="8474060528358956023cd7dd6e922365" category="paragraph"><block ref="8474060528358956023cd7dd6e922365" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b422edb1dc6d4a214adab9c76d2349ad" category="paragraph"><block ref="b422edb1dc6d4a214adab9c76d2349ad" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d75d3909245f6be3f0b1d65e8247b183" category="paragraph"><block ref="d75d3909245f6be3f0b1d65e8247b183" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="4c9562556794c6d64ce9c73693133ac9" category="paragraph"><block ref="4c9562556794c6d64ce9c73693133ac9" category="inline-image-macro-rx" type="image"></block></block>
 </blocks>

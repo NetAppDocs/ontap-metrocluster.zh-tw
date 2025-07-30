@@ -185,14 +185,14 @@ Dr_group_2-new
 --
 檢閱 AFF A150 ， AFF A20 ，， AFF A220 ， FAS500f ，， FAS8200 ， FAS50 ， AFF C400 C30 ， AFF A30 ， AFF A250 ， AFF A300 ， AFF C250 ， FAS8300 ， AFF ， FAS2750 ， AFF A400 ， AFF A320 和 FAS8700 系統的擴充組合。
 
-image:../media/expand-ip-group-1.png[""]
+image:../media/expand-ip-group-1-updated.png[""]
 
 --
 .AFF 和 FAS 組合群組 2
 --
 檢閱 C60 ， AFF A50 ， FAS70 ，， AFF A700 ， FAS9500 ， FAS9000 ， AFF ， AFF A70 ， AFF A900 ， AFF C800 ， AFF ， AFF A800 C80 ， FAS90 ， AFF A90 和 AFF A1K 系統的擴充組合。
 
-image:../media/expand-ip-group-2.png[""]
+image:../media/expand-ip-group-2-updated.png[""]
 
 --
 ====
