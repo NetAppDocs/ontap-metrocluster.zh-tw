@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: ontap, connectivity, virtual, ip, border, gateway, protocol, bgp, combination, vip, front-end, network, metrocluster, redundancy, disaster, recovery, solution, configuration 
 summary: 從支援使用支援第3層連線功能的《支援使用虛擬IP（VIP\）和邊界閘道傳輸協定》（BGP\）開始、ONTAP ONTAP結合VIP與BGP、可在前端網路中提供備援功能、搭配後端MetroCluster 的可靠性備援功能、提供第3層災難恢復解決方案。 
 ---
-= 使用虛擬IP和邊界閘道傳輸協定搭配MetroCluster 使用的考量事項
+= 了解如何將虛擬 IP 和邊界網關協定與MetroCluster IP 設定結合使用
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, configuration, gather information 
 summary: 開始組態程序之前、您必須先收集控制器模組所需的IP位址。 
 ---
-= 收集必要資訊
+= 收集MetroCluster IP 配置所需的信息
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

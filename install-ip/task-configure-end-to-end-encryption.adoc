@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, ip, encryption, end-to-end, backend, aff a400, fas8300, fas8700, encrypt, enable, disable 
 summary:  
 ---
-= 設定端點對端點加密
+= 在 MetroCluster IP 組態中設定端點對端點加密
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

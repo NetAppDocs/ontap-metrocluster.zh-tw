@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: system manager, mediator, metrocluster, mcc, 8-node, ip, configure, remove, mauso, mediator-assisted automatic switchover, switchover, switchback, health 
 summary: 使用系統管理器，您可以執行管理調解器的任務。 
 ---
-= 使用系統管理員管理 ONTAP 調解器
+= 在MetroCluster IP 設定中使用 System Manager 管理ONTAP調解器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

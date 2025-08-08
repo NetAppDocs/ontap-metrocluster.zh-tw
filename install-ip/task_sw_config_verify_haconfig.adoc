@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, ha-config, mccip, haconfig, verify, high-availability 
 summary: 在非原廠預先設定的靜態IP組態中MetroCluster 、您必須確認控制器和機箱元件的ha-config狀態已設定為mccp、以便正常開機。對於從原廠接收的系統、此值已預先設定、您不需要驗證。 
 ---
-= 驗證元件的ha-config狀態
+= 驗證MetroCluster IP 配置中的控制器和機箱組件的 HA 配置狀態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

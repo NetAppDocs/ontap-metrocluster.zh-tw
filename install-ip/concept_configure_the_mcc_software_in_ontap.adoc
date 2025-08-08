@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, configuration, ontap, node-level, configuration, node, site, relationship, configuring, configure, 
 summary: 您必須在MetroCluster 不完整的功能組態中設定每個節點ONTAP 、包括節點層級組態、以及將節點組態設定為兩個站台。您也必須在MetroCluster 這兩個站台之間實作「不二」關係。 
 ---
-= 在MetroCluster 不提供的情況下設定此功能ONTAP
+= 在MetroCluster IP 配置中設定ONTAP節點和集群
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

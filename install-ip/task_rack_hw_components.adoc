@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster ip, rack hardware, components, racking 
 summary: 如果您尚未收到已安裝在機櫃中的設備、則必須裝入元件機架。 
 ---
-= 安裝硬體元件
+= 機架MetroCluster IP 配置硬體組件
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -24,39 +24,7 @@ summary: 如果您尚未收到已安裝在機櫃中的設備、則必須裝入�
 . 請妥善接地。
 . 在機架或機櫃中安裝控制器模組。
 +
-https://library.netapp.com/ecm/ecm_download_file/ECMLP2842666["解答A220/FAS2700系統安裝與設定說明AFF"^]
-
-+
-https://library.netapp.com/ecm/ecm_download_file/ECMLP2870798["《系統安裝與設定說明》（英文）AFF"^]
-
-+
-https://library.netapp.com/ecm/ecm_download_file/ECMLP2469722["《系統安裝與設定說明》（英文）AFF"^]
-
-+
-https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-a320-install-setup/home.html["作業系統：安裝與設定AFF"^]
-
-+
-https://library.netapp.com/ecm/ecm_download_file/ECMLP2858854["《系統安裝與設定說明》（英文）AFF"^]
-
-+
-https://library.netapp.com/ecm/ecm_download_file/ECMLP2873445["《系統安裝與設定說明》（英文）AFF"^]
-
-+
-https://library.netapp.com/ecm/ecm_download_file/ECMLP2842668["《系統安裝與設定說明》（英文）AFF"^]
-
-+
-https://library.netapp.com/ecm/ecm_download_file/ECMLP2872833["FAS500f系統安裝與設定說明"^]
-
-+
-https://library.netapp.com/ecm/ecm_download_file/ECMLP2316769["FAS8200系統安裝與設定說明"^]
-
-+
-https://library.netapp.com/ecm/ecm_download_file/ECMLP2858856["FAS8300和FAS8700系統安裝與設定說明"^]
-
-+
-https://library.netapp.com/ecm/ecm_download_file/ECMLP2874463["FAS9000系統安裝與設定說明"^]
-
-
+按照適用於您的平台型號的“安裝和設定”說明中的步驟“安裝硬體”link:https://docs.netapp.com/us-en/ontap-systems/index.html["ONTAP硬體系統文檔"^] 。
 
 . 在機架或機櫃中安裝IP交換器。
 . 安裝磁碟櫃、開啟磁碟櫃電源、然後設定磁碟櫃ID。

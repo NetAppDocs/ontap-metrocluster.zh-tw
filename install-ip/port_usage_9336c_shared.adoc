@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: cabling, cable, component, link, site, management, network, networks, hardware, component, shared, switch, cluster, connection, management, data, configuring, configure 
 summary: 連接埠在MetroCluster 一個靜態IP組態中的使用取決於交換器機型和平台類型。 
 ---
-= 連接 NS224 儲存的 36 連接埠 Cisco 9336C-FX2 交換器的平台連接埠分配
+= 在MetroCluster IP 設定中連接 NS224 儲存的 36 連接埠Cisco 9336C-FX2 交換器的平台連接埠分配
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

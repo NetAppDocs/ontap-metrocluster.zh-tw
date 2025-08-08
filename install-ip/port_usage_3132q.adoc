@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: cabling, cable, component, sip, link, site, management, network, hardware, component, switch, cluster, connection, management, data, configuring, configure 
 summary: 連接埠在MetroCluster 一個靜態IP組態中的使用取決於交換器機型和平台類型。 
 ---
-= Cisco 3132Q-V交換器的平台連接埠指派
+= MetroCluster IP 設定中Cisco 3132Q-V 交換器的平台連接埠分配
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

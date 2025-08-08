@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, controller, assign drives, pool 0, disk assign 
 summary: 如果您沒有從原廠收到預先設定的系統、您可能必須手動指派Pool 0磁碟機。視平台機型和系統是否使用ADP而定、您必須針對MetroCluster 各個節點手動指派磁碟機至資源池0、以利執行各項功能。您使用的程序取決於ONTAP 您所使用的版本。 
 ---
-= 手動指派磁碟機至集區0
+= 在MetroCluster IP 配置中手動將磁碟機指派給池 0
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

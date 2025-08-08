@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster ip, metrocluster-compliant switches, metrocluster-compliant, requirements, compliant, limitations 
 summary: 從推出支援MetroCluster的交換器開始ONTAP 、MetroCluster 即可開始使用符合MetroCluster的IP組態。這些交換器未經NetApp驗證、但符合NetApp規格。本主題概述 MetroCluster 相容交換器的一般需求與限制。 
 ---
-= 使用 MetroCluster 相容交換器時的需求與限制
+= MetroCluster相容交換器的要求與限制
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

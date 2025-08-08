@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: isl, isls, layer 2, layer 3, shared switch 
 summary: 本節包含在所有 MetroCluster IP 組態和網路拓撲上傳輸 MetroCluster 流量的交換器間連結（ ISL ）需求。 
 ---
-= ISL的考量
+= MetroCluster IP 設定上的交換器間連結 (ISL) 需求
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

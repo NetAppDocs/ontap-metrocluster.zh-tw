@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, mediator, configure 
 summary: 必須在 ONTAP 節點上設定 ONTAP 調解器才能在 MetroCluster IP 設定中使用。 
 ---
-= 透過 MetroCluster IP 配置來設定 ONTAP 調解器
+= 為MetroCluster IP 配置設定ONTAP調解器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: ip, switch, connection, configuring, configure, broadcom, factory defaults 
 summary: 您必須設定Broadcom IP交換器作為叢集互連和後端MetroCluster 的靜態IP連線。 
 ---
-= 設定Broadcom IP交換器
+= 設定 Broadcom IP 交換器以實現叢集互連和後端MetroCluster IP 連接
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

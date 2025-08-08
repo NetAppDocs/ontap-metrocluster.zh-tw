@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, mediator, configure, connect 
 summary: 如果您想要將MetroCluster 各個節點連線至不同ONTAP 的「位向器」執行個體、則必須取消設定、然後在ONTAP 「位向器」軟體中重新設定「位向器」連線。 
 ---
-= 將MetroCluster 一個組態連線到另ONTAP 一個不相同的資訊調解器執行個體
+= 將MetroCluster IP 設定連接到不同的ONTAP調解器實例
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

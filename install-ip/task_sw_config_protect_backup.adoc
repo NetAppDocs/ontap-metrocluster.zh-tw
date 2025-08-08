@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: backup files, configuration backup 
 summary: 您可以指定遠端URL（HTTP或FTP）來上傳組態備份檔案、以及本機叢集中的預設位置、為叢集組態備份檔案提供額外的保護。 
 ---
-= 保護組態備份檔案
+= MetroCluster IP 設定中的備份叢集設定檔
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

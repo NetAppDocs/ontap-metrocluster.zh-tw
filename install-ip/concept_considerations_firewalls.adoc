@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: firewall, port usage, tcip, udp, cluster peering, intercluster lifs, hardware-assist 
 summary: 如果MetroCluster 您在站台使用防火牆、則必須確保存取特定必要的連接埠。 
 ---
-= 在景點使用防火牆MetroCluster
+= MetroCluster IP 配置的防火牆連接埠要求
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

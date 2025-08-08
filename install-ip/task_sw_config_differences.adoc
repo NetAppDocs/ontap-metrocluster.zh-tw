@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, configuration, ontap, node-level, configuration, node, site, relationship, configuring, configure, similarities, difference, 
 summary: 在一個E叢 集組態中、每個叢集的節點組態MetroCluster 與標準叢集中的節點組態類似。 
 ---
-= 標準叢集MetroCluster 組態與不完整組態之間的相似性與差異
+= 比較ONTAP標準叢集和MetroCluster配置
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

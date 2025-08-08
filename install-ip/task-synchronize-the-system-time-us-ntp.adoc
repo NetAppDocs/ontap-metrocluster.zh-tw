@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, synchronize, system, time, ntp 
 summary: 每個叢集都需要自己的網路時間傳輸協定（NTP）伺服器、才能在節點與其用戶端之間同步時間。 
 ---
-= 使用 NTP 同步系統時間
+= 在MetroCluster IP 設定中使用 NTP 同步系統時間
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

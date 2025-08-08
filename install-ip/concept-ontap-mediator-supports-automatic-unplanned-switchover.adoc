@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: ontap, mediator, assist, metrocluster, ip, configuration, perform, automatic, unplan, switchover, physical, repository, status, information, configuring, configure, install, configuring, configure, forced 
 summary:  
 ---
-= ONTAP 調解器如何支援自動排程外切換
+= ONTAP調解器如何支援MetroCluster IP 配置中的自動排程外切換
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster ip, ontap, mediator, tiebreaker 
 summary: 您可以下載並安裝在第三個站台MetroCluster 上、也可以下載或安裝《斷位器》軟體、或是從ONTAP 《讚賞9.7》開始、ONTAP 即「《不知道如何使用」。 
 ---
-= 設定MetroCluster 斷功能器或ONTAP 不含資料的資訊
+= 為MetroCluster IP 配置設定MetroCluster Tiebreaker 或ONTAP Mediator
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

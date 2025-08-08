@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, setup, metrocluster configuration-settings interface create, pool 0, drive assignment, peer, peering, intercluster lifs, dr group, metrocluster ip interfaces, mcc-ip, mcc-ip interfaces, vlan, pool 1, pool1, pool0 
 summary: 您必須對等處理叢集、鏡射根Aggregate、建立鏡射資料Aggregate、然後發出命令來實作MetroCluster 該等作業系統。 
 ---
-= 將叢集設定成MetroCluster 一個不只是一個的組態
+= 在MetroCluster IP 配置中配置ONTAP集群
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

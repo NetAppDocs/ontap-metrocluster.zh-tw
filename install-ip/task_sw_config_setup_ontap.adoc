@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, ontap, setup 
 summary: 每個節點開機後、系統會提示您執行基本節點和叢集組態。設定叢集後、您將返回ONTAP 到還原CLI以建立集合體並建立MetroCluster 該組態。 
 ---
-= 設定ONTAP 功能
+= 在MetroCluster IP 配置中設定ONTAP節點
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

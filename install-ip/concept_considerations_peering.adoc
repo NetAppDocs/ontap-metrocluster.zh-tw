@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: considertaions, cluster peering, shared peering ports, dedicated peering ports 
 summary: 每MetroCluster 個站台均設定為其合作夥伴站台的對等站台。 
 ---
-= 叢集對等
+= MetroCluster IP 配置中的叢集對等連線需求
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

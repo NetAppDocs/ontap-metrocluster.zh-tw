@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, ip, installation 
 summary: 若要安裝MetroCluster 您的靜態IP組態、您必須依照正確順序執行許多程序。 
 ---
-= 總覽
+= MetroCluster IP 安裝工作流程
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

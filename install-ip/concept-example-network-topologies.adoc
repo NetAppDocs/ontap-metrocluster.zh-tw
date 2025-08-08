@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster ip, metrocluster-compliant switches, metrocluster-compliant, requirements, compliant, configuration 
 summary: 從 ONTAP 9.6 開始、 MetroCluster IP 組態支援一些額外的網路組態。 
 ---
-= 例如：網路拓撲MetroCluster
+= MetroCluster IP 設定網路拓撲範例
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ permalink: install-ip/set-up-mcc-peering-system-manager.html
 keywords: metrocluster, peer, peering, pair, pairing, configuration, config, mcc, HA 
 summary: 從 ONTAP 9 開始、您可以使用系統管理員來管理 MetroCluster IP 站台作業。這包括設定兩個叢集和執行叢集對等關係。 
 ---
-= 設定 MetroCluster IP 對等關係
+= 使用ONTAP System Manager 設定MetroCluster IP 對等連接
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

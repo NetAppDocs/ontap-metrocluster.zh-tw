@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: isls, ip, layer 2, layer 3, shared switch 
 summary: 瞭解驗證 MetroCluster 組態和網路是否符合所有 ISL 要求所需的資訊。 
 ---
-= ISL 需求總覽
+= MetroCluster IP 設定的交換器間連結需求
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

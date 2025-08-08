@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, ip, configuration, operation, netapp, documentation, additional, information, miscellaneous, guide 
 summary: 您可以MetroCluster 從NetApp文件中深入瞭解有關靜態IP組態與操作的資訊。 
 ---
-= 何處可找到其他資訊
+= 在哪裡可以找到有關MetroCluster IP 的其他信息
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: differences, eight-node, four-node, fabric-attached, stretch, metrocluster ip, storage, bridges, fc-to-sas, atto, fibrebridge, SAS, local HA, auso, automatic unplanned switchover, mediator, tiebreaker, all san array, asa 
 summary: 各種MetroCluster 版本的不二組態在必要的元件上有主要差異。 
 ---
-= 各個不相同的地方ONTAP MetroCluster
+= ONTAP MetroCluster配置支援矩陣
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, ip, configuration, hardware, component, interconnect, part, key, element, disaster, recovery, dr, group, illustration, local, ha, pair, configuration, cluster, interconnect, network, peer 
 summary: 規劃MetroCluster 您的靜態IP組態時、您應該瞭解硬體元件及其互連方式。 
 ---
-= 部分的靜態IP組態MetroCluster
+= 了解MetroCluster IP 配置中的硬體組件互連
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

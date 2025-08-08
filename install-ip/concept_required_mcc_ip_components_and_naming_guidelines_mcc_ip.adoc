@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: plan, metrocluster, ip, configuration, planning, require, hardware, software, clarity, conventions, component, documentation, naming, name, requirement, support, redundancy, switch, ontap, cluster, controller, module, gigabit, ethernet, adapter, pool, drive, drive, location, consideration, partial, populate, shelves, shelf, aff, a800, internal, iom12, iom, module, stack, four-node, raid-dp, raid4, AFF A800 internal drives 
 summary: 規劃MetroCluster 您的靜態IP組態時、您必須瞭解所需及支援的軟硬體元件。為了方便且清楚、您也應該瞭解整個文件範例中元件的命名慣例。 
 ---
-= 必要MetroCluster 的知識、包括知識、知識、知識、知識、知識、知識
+= 所需的MetroCluster IP 配置組件和命名約定
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

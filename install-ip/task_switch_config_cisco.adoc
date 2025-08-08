@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: ip, switch, configuring, configure, factory defaults, cisco, MACsec encryption, 9336C, 9336, forward error correction, fec 
 summary: 您必須設定Cisco IP交換器作為叢集互連和後端MetroCluster 的靜態IP連線。 
 ---
-= 設定Cisco IP交換器
+= 設定Cisco IP 交換器以實現叢集互連和後端MetroCluster IP 連接
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

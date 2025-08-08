@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: ontap, metrocluster, configuration, aware, consideration, license, licensing, cluster, perform, volume, operation, nvfail, snapmirror, system, manager, flexcache, support, fabricpool, flexgroup, job, schedule, peer, ldap, client, replication, network, lif, creation, guideline, svm, disaster, recovery, output, storage, aggregate, plex, show, command, indeterminate, switchover, modify, flag, switchover 
 summary: 在進行不實的組態中使用ONTAP 時MetroCluster 、您應該注意授權、對等處理MetroCluster 不符合此功能的叢集、執行Volume作業、NVFIL作業及其他ONTAP 的不實作業等特定考量。 
 ---
-= 在一個邊的組態中使用ONTAP 邊的考量MetroCluster
+= 使用MetroCluster IP 配置的ONTAP操作的要求和注意事項
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

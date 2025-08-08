@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: cisco, MACsec encryption 
 summary: 您只能在站台之間執行的WAN ISL連接埠上設定Macsec加密。套用正確的RCF檔案之後、您必須設定Macsec。 
 ---
-= 在Cisco 9336C交換器上設定Macsec加密
+= 在MetroCluster IP 站點中的Cisco 9336C 交換器上設定 MACsec 加密
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

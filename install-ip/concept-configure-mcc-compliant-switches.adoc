@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster ip, metrocluster-compliant switches, metrocluster-compliant, requirements, compliant, configuration 
 summary: 瞭解各種交換器連接埠組態。 
 ---
-= 交換器連接埠組態範例
+= MetroCluster IP 交換器設定範例
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

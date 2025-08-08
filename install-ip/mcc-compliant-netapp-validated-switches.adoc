@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: isls, ip, layer 2, layer 3, shared switch 
 summary: 本節提供驗證 MetroCluster 組態和網路是否符合所有需求所需的資訊。 
 ---
-= NetApp 驗證且符合 MetroCluster 規範的交換器
+= MetroCluster IP 配置中經過NetApp驗證且符合MetroCluster標準的交換機
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

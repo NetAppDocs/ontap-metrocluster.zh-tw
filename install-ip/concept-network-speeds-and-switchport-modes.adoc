@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster ip, metrocluster-compliant switches, metrocluster-compliant, compliant, network speed, switch port mode 
 summary: 如果您使用的是符合 MetroCluster 標準的交換器、您應該瞭解平台特定的網路速度和交換器連接埠模式需求。 
 ---
-= 適用於MetroCluster相容交換器的平台專屬網路速度和交換器連接埠模式
+= 適用於MetroCluster相容交換器的ONTAP平台特定網路速度與交換器連接埠模式
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
