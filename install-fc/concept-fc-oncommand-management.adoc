@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fc, installation, active, iq, unified, manager, system, configuration 
 summary: 利用此功能、即可管理叢集的GUI管理及監控組態。Active IQ Unified Manager ONTAP 
 ---
-= 使用Active IQ Unified Manager和ONTAP System Manager 在MetroCluster IP 配置中進行進一步設定和監控
+= 使用 Active IQ Unified Manager and ONTAP System Manager 進行進一步的組態和監控
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
