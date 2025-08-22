@@ -112,27 +112,19 @@ FC_switch_A_1:admin> portcfgdefault <port number>
 +
 您必須為每個連接埠完成此步驟。
 
-. 驗證交換器是否使用動態隨需連接埠（Pod）方法。
+. 如果您使用的是早於 FOS 9.0 的版本，請驗證交換器是否使用動態按需連接埠 (POD) 方法。
 +
 
-NOTE: 若為8.0之前的Brocade Fabric OS版本、您將以admin身分執行下列命令、若為8.0或更新版本、則會以root身分執行這些命令。
+NOTE: 在 Fabric OS 9.0 及更新版本中、授權方法預設為動態。不支援靜態授權方法。
+
++
+若為8.0之前的Brocade Fabric OS版本、您將以admin身分執行下列命令、若為8.0或更新版本、則會以root身分執行這些命令。
 
 +
 .. 執行授權命令：
 +
-[role="tabbed-block"]
-====
-.適用於 Fabric OS 8.2.x 及更早版本
---
-執行命令 `licenseport --show`。
+`licenseport --show` 。
 
---
-.適用於 Fabric OS 9.0 及更新版本
---
-執行命令 `license --show -port`。
-
---
-====
 +
 [listing]
 ----
@@ -150,19 +142,8 @@ FC_switch_A_1:admin> rootaccess --set consoleonly
 ----
 .. 執行授權命令：
 +
-[role="tabbed-block"]
-====
-.適用於 Fabric OS 8.2.x 及更早版本
---
-執行命令 `licenseport --show`。
+`licenseport --show` 。
 
---
-.適用於 Fabric OS 9.0 及更新版本
---
-執行命令 `license --show -port`。
-
---
-====
 +
 [listing]
 ----
@@ -182,10 +163,6 @@ FC_switch_A_1:admin> licenseport --method dynamic
 The POD method has been changed to dynamic.
 Please reboot the switch now for this change to take effect
 ----
-+
-
-NOTE: 在 Fabric OS 9.0 及更新版本中、授權方法預設為動態。不支援靜態授權方法。
-
 
 
 . 重新啟動交換器：

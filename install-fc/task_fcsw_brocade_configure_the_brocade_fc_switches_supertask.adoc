@@ -479,23 +479,16 @@ https://docs.netapp.com/us-en/ontap-metrocluster/install-fc/concept_configure_th
 
 
 
-. 驗證交換器是否使用動態連接埠授權方法。
+. 如果您執行的是 FOS 9.0 之前的版本，請驗證交換器是否使用動態按需連接埠 (POD) 許可方法。
++
+
+NOTE: 在 Fabric OS 9.0 及更新版本中、授權方法預設為動態。不支援靜態授權方法。
+
 +
 .. 執行授權命令：
 +
-[role="tabbed-block"]
-====
-.適用於 Fabric OS 8.2.x 及更早版本
---
-執行命令 `licenseport --show`。
+`licenseport --show`
 
---
-.適用於 Fabric OS 9.0 及更新版本
---
-執行命令 `license --show -port`。
-
---
-====
 +
 [listing]
 ----
@@ -541,10 +534,6 @@ FC_switch_A_1:admin> licenseport --method dynamic
 The POD method has been changed to dynamic.
 Please reboot the switch now for this change to take effect
 ----
-+
-
-NOTE: 在 Fabric OS 9.0 及更新版本中、授權方法預設為動態。不支援靜態授權方法。
-
 
 
 . 啟用T11-FC-ZE-ZE-Server-mib的陷阱、以成功監控ONTAP 位於下列情況的交換器：

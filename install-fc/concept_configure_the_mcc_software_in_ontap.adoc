@@ -2982,21 +2982,17 @@ node_A_1 SVM 4 snmpv3user     snmp        usm                   10.10.10.13
 +
 [role="tabbed-block"]
 ====
-.Brocade 交換器
+.Brocade交換器（FOS 9.0 及更高版本）
+--
+`snmpconfig --add snmpv3 -index <index> -user <user_name> -groupname <rw/ro> -auth_proto <auth_protocol> -auth_passwd <auth_password> -priv_proto <priv_protocol> -priv_passwd <priv_password>`
+
+--
+.Brocade交換器（FOS 8.x 及更早版本）
 --
 「nmpconfig - set v3」
 
---
-.Cisco交換器
---
-`snmp-server user <user_name>  auth [md5/sha/sha-256] <auth_password> priv (aes-128) <priv_password>`
+此範例顯示如何設定唯讀使用者。如果需要，您可以調整 RW 使用者。如果需要 RO 存取權限，請在「使用者 (ro)：」後面指定「snmpv3user」。
 
---
-====
-+
-如果您需要存取 RO 、請在「 User （ ro ）：」之後指定「 snmpv3user 」。以下範例使用 Brocade 交換器：
-
-+
 [listing]
 ----
 Switch-A1:admin> snmpconfig --set snmpv3
@@ -3010,11 +3006,16 @@ User (ro): [snmpuser2] snmpv3user
 Auth Protocol [MD5(1)/SHA(2)/noAuth(3)]: (1..3) [2]
 Priv Protocol [DES(1)/noPriv(2)/AES128(3)/AES256(4)]): (2..2) [3]
 ----
-+
-範例顯示如何設定唯讀使用者。您可以視需要調整RW使用者。
+--
+.Cisco交換器
+--
+`snmp-server user <user_name>  auth [md5/sha/sha-256] <auth_password> priv (aes-128) <priv_password>`
 
+--
+====
 +
-您也應該為未使用的帳戶設定密碼、以確保密碼安全、並使用ONTAP 您的版本資訊系統所提供的最佳加密功能。
+
+NOTE: 您也應該為未使用的帳戶設定密碼、以確保密碼安全、並使用ONTAP 您的版本資訊系統所提供的最佳加密功能。
 
 . 視站台的需求、在其餘交換器使用者上設定加密和密碼。
 

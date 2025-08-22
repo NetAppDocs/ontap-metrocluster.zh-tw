@@ -5998,7 +5998,6 @@
   <block id="f66f2933c2717a1cacefad1ec4730aec" category="list-text">將所有連接埠的連接埠組態設為預設值：</block>
   <block id="d7a01c9755b9d94f47a5a7d930b0905d" category="paragraph">「portcfgDefault _port-number_」</block>
   <block id="4461eb2aa0e7be56b07bfd03b50adda3" category="paragraph">您必須為每個連接埠完成此步驟。</block>
-  <block id="1711fdcc6944bbeddd35a626101f4b4d" category="list-text">驗證交換器是否使用動態隨需連接埠（Pod）方法。</block>
   <block id="2f3d07c01cbdac4d395d3a14b661150c" category="admonition">若為8.0之前的Brocade Fabric OS版本、您將以admin身分執行下列命令、若為8.0或更新版本、則會以root身分執行這些命令。</block>
   <block id="64fa0d568b3592806aa948b76b25721e" category="list-text">執行授權命令：</block>
   <block id="d63c14f8f4da1b2f3355284117aa43d6" category="list-text">如果root使用者已被Brocade停用、請啟用root使用者。</block>
@@ -6080,7 +6079,6 @@
   <block id="9157f6f9ad659d140aac1994cee26e61" category="paragraph">《aptpolicy 3》</block>
   <block id="9c5e2ae210ac93c8c28206f6341c674f" category="list-text">驗證良好設定：</block>
   <block id="53989b83805e7661f392318f958a6584" category="admonition">在ONTAP 控制器模組上設定功能時、必須在MetroCluster 每個控制器模組上明確設定ood、以供採用此功能。</block>
-  <block id="8e6415ee4068075bb4d9b0908c9e0ba1" category="list-text">驗證交換器是否使用動態連接埠授權方法。</block>
   <block id="39c3f713772acf06f906fa354070ccae" category="admonition">Brocade FabricOS 8.0之前的版本會以admin和8.0之後版本的身分執行下列命令、並以root身分執行這些命令。</block>
   <block id="bb455cc655a37d9370a7b572be5c356a" category="list-text">啟用root使用者。</block>
   <block id="9982799dc107b44357ff54b7e3b835e7" category="paragraph">如果root使用者已被Brocade停用、請啟用root使用者、如下列範例所示：</block>
@@ -7769,7 +7767,6 @@
   <block id="177f79b7f42518cbd6ed3a48de1f222b" category="paragraph">如果FC交換器設定為IOD、ONTAP 則必須將該軟件設定為IOD。同樣地、如果FC交換器已設定為ood、ONTAP 則必須將其設定為ood。</block>
   <block id="0a9b432f5f5621ba3d2bafdaa8d5be41" category="paragraph">「MetroCluster 支援此功能的零件介面卡修改-node_node_name_-is：啟用此功能的true」</block>
   <block id="b88127542a36dbd88f1d9b0eb0e66dc0" category="paragraph">目前支援AES-128加密。ONTAP</block>
-  <block id="7c36b0e12ce814681762efb6b2ec6cc4" category="paragraph">範例顯示如何設定唯讀使用者。您可以視需要調整RW使用者。</block>
   <block id="046a4dbe28831449e896740fded1c064" category="paragraph">您也應該為未使用的帳戶設定密碼、以確保密碼安全、並使用ONTAP 您的版本資訊系統所提供的最佳加密功能。</block>
   <block id="1b58c8498876b494bed537a676c855cc" category="paragraph"><block ref="1b58c8498876b494bed537a676c855cc" category="inline-link-rx"></block></block>
   <block id="220a5f3f86ae97f0476676c92a412f16" category="paragraph">您應該在初始組態設定後、以及MetroCluster 變更任何的功能後進行檢查。您也應該在協商（計畫性）切換或切換作業之前進行檢查。</block>
@@ -10920,8 +10917,6 @@
   <block id="21a858f81918f7707fbcd7bef86f8797" category="paragraph">執行命令<block ref="c53664d593e772e240ea0e6fdcfc79e1" prefix=" " category="inline-code"></block>。</block>
   <block id="afff4aa2c1e899c46d499fb894d82ada" category="open-title">適用於 Fabric OS 9.0 及更新版本</block>
   <block id="39219ac241ea7f4ccb98564b8a02b92c" category="paragraph">執行命令<block ref="ee9cf2be6d80be01f66c5272dabe9164" prefix=" " category="inline-code"></block>。</block>
-  <block id="6662b782a3a75b8e31dda70ebe53c4f0" category="paragraph">執行命令<block ref="c3d759c84d82a17cd2fc31c0bbd2be02" prefix=" " category="inline-code"></block>。</block>
-  <block id="1fb30ffcb217df70eb8b61a9c76f518f" category="paragraph">執行命令<block ref="f7fd6058274b87da3f8cba419f53bb7e" prefix=" " category="inline-code"></block>。</block>
   <block id="3c8938b87b13dff113f84a2814ddff39" category="paragraph"><block ref="f7fd6058274b87da3f8cba419f53bb7e" prefix="" category="inline-code"></block></block>
   <block id="1ad5a70ead9bdd722df6000495e21c24" category="list-text">如果您執行的是 Fabric OS 8.2.x 及更早版本、則必須將授權方法變更為動態：</block>
   <block id="7fafa568d6f3c9a0ee98323f64b1c01c" category="admonition">在 Fabric OS 9.0 及更新版本中、授權方法預設為動態。不支援靜態授權方法。</block>
@@ -10950,7 +10945,6 @@
   <block id="7dd57dad7ab33a64ea80d69dc576695f" category="list-text">您的 MetroCluster IP 組態可能已直接連線至 NS224 機櫃或專用儲存交換器。</block>
   <block id="2d27e76da02804de2afe9d209e5cbb1c" category="admonition">建議您至少保留 20% 的可用空間以容納鏡射的集合體、以獲得最佳的儲存效能和可用度。雖然建議非鏡射的集合體為 10% 、但檔案系統可能會使用額外 10% 的空間來吸收遞增變更。由於 ONTAP 的寫入時複製 Snapshot 架構、遞增變更會增加鏡射集合體的空間使用率。不遵守這些最佳實務做法可能會對效能造成負面影響。</block>
   <block id="0e5e2d82a1039e41c19d2248f3b64787" category="admonition">您可以從MetroCluster 任一叢集設定靜態IP介面。</block>
-  <block id="6212a1ad66c5ad9d3c50380aa91aab6a" category="list-text">無硬體故障</block>
   <block id="2af958a8143c65676390b5e251abe90a" category="list-text">確認<block ref="a78608714add699f555f2a66df0ee249" prefix=" " category="inline-code"></block> 套件安裝在 Linux 主機上。如此可避免發生<block ref="b0c94f1494e22d963244e235719a2582" prefix=" " category="inline-code"></block> 使用重新掃描 Linux 主機以取得新對應的 LUN 時發生錯誤<block ref="685ca42026debec2f3691cc5faae67d5" prefix=" " category="inline-code"></block> 命令。</block>
   <block id="1f52bd2314f9805b0a0098b0f56a0dc4" category="paragraph">這可能需要重新啟動節點。</block>
   <block id="ab85fd4f549c390675df901a8ef3f78e" category="list-text">在 IP 節點上為所有 SAN SVM 建立 FC 生命 / 介面。或者、請確認新建立的 FC 生命期的 WWPN 已登入 FC SAN 交換器</block>
@@ -11956,10 +11950,8 @@
   <block id="bd7a871cd772a6f8f044f086ccc3ed68" category="list-text">如果您的系統支援端點對端點加密、您可以 <block ref="2fd1db8c2a0ebb290526de8f46b28acd" category="inline-link-macro-rx"></block> 在新的 DR 群組上。</block>
   <block id="0088c1e15cccccdb2e3dc23e762335e0" category="list-text">如果已啟用端點對端點加密、請依照的步驟執行 <block ref="8a6f29aee2b87dab72caa4c63be583f5" category="inline-link-macro-rx"></block>。</block>
   <block id="7b27e86dbf07563fca6c99e2fca83549" category="list-text">如果您在新增節點之前已停用端點對端點加密、則可依照中的步驟重新啟用 <block ref="2fd1db8c2a0ebb290526de8f46b28acd" category="inline-link-macro-rx"></block>。</block>
-  <block id="149bff96621a57d63b9a824d96957df7" category="open-title">Brocade 交換器</block>
   <block id="250f3098aa37d3a08b48b8157db8a62e" category="open-title">Cisco交換器</block>
   <block id="6204028fd0e3ba079ca2fce4bb224e24" category="paragraph"><block ref="010303eb2e404f6eb49cc314fc8aa294" prefix="" category="inline-code"></block></block>
-  <block id="a1032909a057927264a07294a53b91b5" category="paragraph">如果您需要存取 RO 、請在「 User （ ro ）：」之後指定「 snmpv3user 」。以下範例使用 Brocade 交換器：</block>
   <block id="ddaa39224424042ba35394afbe714a70" category="list-text">您必須是叢集管理員才能執行此工作。</block>
   <block id="ffe47e3eda7ee0a88fa1a1b82a09899e" category="inline-link-macro">設定外部金鑰管理</block>
   <block id="ca6ec36bc37ffec6b208710049cf5f93" category="list-text">在設定端點對端點加密之前、您必須先設定 <block ref="16044a12704308be53c493c61be8d30c" category="inline-link-macro-rx"></block>。</block>
@@ -14397,4 +14389,15 @@
   <block id="25849b8ea5119a6ccbe0ef06d8e35773" category="doc">測試MetroCluster IP 配置的ONTAP節點切換</block>
   <block id="7282d891d20cd1520e021b2ba6c78e20" category="list-text">支援靜態資料加密。<block ref="6774dcdb02085dead82047685ca775f1" category="inline-link-macro-rx"></block></block>
   <block id="f42ec02236cb8b0134435967892ad733" category="paragraph"><block ref="f42ec02236cb8b0134435967892ad733" category="inline-link-macro-rx"></block></block>
+  <block id="929f699475d2ee16cffb5df619460281" category="list-text">無硬體故障（例如電源故障）</block>
+  <block id="8e7bac68088266dc4f6ea54160a86aa8" category="open-title">Brocade交換器（FOS 9.0 及更高版本）</block>
+  <block id="bbf1d4b45eed310475529b62acce8abc" category="paragraph"><block ref="5c14098cbb5e352eab3dbedad51645c3" prefix="" category="inline-code"></block></block>
+  <block id="fb9a60f6eec8993cd6b4f12e486c000c" category="open-title">Brocade交換器（FOS 8.x 及更早版本）</block>
+  <block id="c713289c1b13431b23b477490f615275" category="paragraph">此範例顯示如何設定唯讀使用者。如果需要，您可以調整 RW 使用者。如果需要 RO 存取權限，請在「使用者 (ro)：」後面指定「snmpv3user」。</block>
+  <block id="da9939718fb44905950716c648f7501d" category="list-text">如果您執行的是 FOS 9.0 之前的版本，請驗證交換器是否使用動態按需連接埠 (POD) 許可方法。</block>
+  <block id="2fc05e860677e088c66d18d9fe3bb918" category="paragraph"><block ref="c3d759c84d82a17cd2fc31c0bbd2be02" prefix="" category="inline-code"></block></block>
+  <block id="56df97178d6ee4000ee0e436cc180453" category="list-text">如果您使用的是早於 FOS 9.0 的版本，請驗證交換器是否使用動態按需連接埠 (POD) 方法。</block>
+  <block id="6eb6a2663a1f73cd3119f3cb6f287206" category="paragraph"><block ref="c3d759c84d82a17cd2fc31c0bbd2be02" prefix="" category="inline-code"></block> 。</block>
+  <block id="5667ca92a697e03bc95d429bfe20fda5" category="inline-link">系統交換器乙太網路設定-健康-監控</block>
+  <block id="a7692359e6ab53408219d1f4fbab4614" category="paragraph">查看<block ref="e8f3e733a7456e37aaeb3c329fac3e94" category="inline-link-rx"></block>命令以了解更多詳細資訊。</block>
 </blocks>
