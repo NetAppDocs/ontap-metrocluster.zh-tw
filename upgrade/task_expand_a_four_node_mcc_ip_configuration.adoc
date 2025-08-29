@@ -1138,7 +1138,7 @@ aggr_data_a2
 +
 "進階權限"
 
-.. 重新整理任何節點上的 MetroCluster 組態：
+.. 刷新任何新新增的節點上的MetroCluster配置：
 +
 [cols="30,70"]
 |===
