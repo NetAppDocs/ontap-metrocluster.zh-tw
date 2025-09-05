@@ -54,7 +54,7 @@ CAUTION: 如果您要升級至列出的任何系統，則 * 必須 * 在執行�
 | 從 AFF A220 到 AFF A20 | `bootarg.siw.interop_enabled` 
 
 
-| 所有其他支援的 AFF A70 ， AFF A90 ， AFF A1K ， FAS70 ， FAS90 ， AFF C80 ， AFF A50 ， AFF A20 ， AFF A30 ， AFF C30 ， AFF C60 或 FAS50 系統升級 | `hw.cxgbe.toe_keepalive_disable` 
+| 所有其他支援升級到AFF A70、 AFF A90、 AFF A1K、FAS70、FAS90、 AFF C80、 AFF A50、 AFF A30、 AFF C30、 AFF C60 或 FAS50 系統 | `hw.cxgbe.toe_keepalive_disable` 
 |===
 
 

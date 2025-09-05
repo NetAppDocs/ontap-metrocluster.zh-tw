@@ -25,7 +25,6 @@ NOTE: 災難恢復（DR）群組中的所有磁碟都必須使用相同類型的
 +
 https://hwu.netapp.com["NetApp Hardware Universe"]
 
-* 同一個儲存堆疊不支援混合使用IOM12模組和IOM3模組。如果您的系統執行支援版本ONTAP 的、同一個儲存堆疊中也支援IOM12模組與IOM6模組的混合。
 
 
 [NOTE]

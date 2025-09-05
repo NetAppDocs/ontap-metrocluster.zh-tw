@@ -1,46 +1,8 @@
 ---
 permalink: install-stretch/task_cable_a_fibrebridge_7600n_or_7500n_bridge_fb_new_install_cable_7500_pangolin.html 
-sidebar: sidebar 
-keywords: metrocluster, stretch, installation, cable, fibrebridge, iom3, iom6, modules, shelves, bridge 
-summary: 設定橋接器之後、您可以開始佈線系統。FibreBridge 7600N或7500N橋接器使用Mini-SAS連接器、並支援使用IOM6或IOM3模組的機櫃。 
+redirect: ontap-metrocluster/index.html 
 ---
-= 使用IOM6或IOM3模組、將連接至磁碟櫃的FIBiBridge 7600N或7500N橋接器進行纜線連接
+= 
 :allow-uri-read: 
-:icons: font
-:imagesdir: ../media/
-
-
-[role="lead"]
-設定橋接器之後、您可以開始佈線系統。FibreBridge 7600N或7500N橋接器使用Mini-SAS連接器、並支援使用IOM6或IOM3模組的機櫃。
-
-iOM3模組不支援使用FIBLIBRIBridge 7600N橋接器。
-
-若為磁碟櫃、請插入SAS纜線連接器、拉片朝下（位於連接器底部）。
-
-.步驟
-. 菊環鏈連接每個堆疊中的磁碟櫃。
-+
-.. 對於第一堆磁碟櫃、將IOM纜線連接至第一個磁碟櫃的方形連接埠、連接至光纖橋接器A的SAS連接埠A
-.. 對於第一堆磁碟櫃、將最後一個磁碟櫃的IOM B圓形連接埠纜線連接至光纖橋接器B的SAS連接埠A
-+
-適用於您的機櫃模型的_安裝與服務指南_提供有關菊環鏈式機櫃的詳細資訊。
-
-+
-https://library.netapp.com/ecm/ecm_download_file/ECMP1119629["適用於DS4243、DS2246、DS4486和DS4246的SAS磁碟櫃安裝與服務指南"^]
-
-+
-下圖顯示一組連接至磁碟櫃堆疊的橋接器：
-
-+
-image::../media/mcc_cabling_bridge_and_sas_stack_with_7500n_and_single_stack.gif[MCC纜線橋接器和SAS堆疊、含7500n和單一堆疊]
-
-
-
-. 如需其他機櫃堆疊、請使用下一個可在光纖橋接器上使用的SAS連接埠、重複上述步驟。將連接埠B用於第二個堆疊、將連接埠C用於第三個堆疊、將連接埠D用於第四個堆疊。
-+
-下圖顯示四個連接至一對FibreBridge 7600N或7500N橋接器的堆疊。
-
-+
-image::../media/mcc_cabling_bridge_and_sas_stack_with_7500n_four_stacks.gif[MCC佈線橋接器和SAS堆疊、含7500n四個堆疊]
 
 

@@ -15,7 +15,6 @@ summary: 您可以使用SAS光纖纜線、將SAS磁碟櫃熱新增至直接附�
 
 * 此程序不中斷營運、約需兩小時完成。
 * 您需要管理員密碼、才能存取FTP或scp伺服器。
-* 如果您要將IOM12機櫃新增至IOM6機櫃堆疊、請參閱 link:https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-mix-hotadd/home.html["將IOM12磁碟櫃熱新增至IOM6磁碟櫃堆疊"]。
 
 
 此工作適用於MetroCluster 使用SAS纜線將儲存設備直接連接至儲存控制器的SFC組態。不適用於MetroCluster 使用FC對SAS橋接器或FC交換器架構的SFC組態。

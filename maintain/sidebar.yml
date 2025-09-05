@@ -76,8 +76,6 @@ entries:
         url: "/maintain/task_fb_hot_add_stack_of_shelves_and_bridges.html"
       - title: 熱新增SAS磁碟櫃至SAS磁碟櫃堆疊
         url: "/maintain/task_fb_hot_add_a_disk_shelf_install_7500n.html"
-      - title: 熱新增IOM12磁碟櫃至IOM6磁碟櫃堆疊、採用連接橋MetroCluster 接的功能
-        url: "/maintain/task_hot_add_an_iom12_disk_shelf_to_a_stack_of_iom6_disk_shelves.html"
   - title: 將儲存設備熱移除MetroCluster 至不受需求的FC組態
     url: "/maintain/task_hot_remove_storage_from_a_mcc_fc_configuration.html"
   - title: 在 MetroCluster FC 組態中、關閉單一站台的電源並開啟其電源

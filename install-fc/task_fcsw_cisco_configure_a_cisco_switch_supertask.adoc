@@ -2418,7 +2418,7 @@ exit
 .關於這項工作
 這些步驟必須在兩個FC交換器架構上執行。
 
-下列步驟使用分區一節中所述的分區功能、在四節點MetroCluster 的非功能區組態中、針對光纖橋接器7500N進行分區。請參閱 link:task_fcsw_cisco_configure_a_cisco_switch_supertask.html#configuring-fcip-ports-for-a-dual-isl-on-cisco-9250i-fc-switches["FC-VI連接埠分區"]。
+以下步驟使用四節點MetroCluster配置中的 FibreBridge 7500N 分區部分中所述的分區。
 
 .步驟
 . 清除現有的區域和區域集（如果存在）。
