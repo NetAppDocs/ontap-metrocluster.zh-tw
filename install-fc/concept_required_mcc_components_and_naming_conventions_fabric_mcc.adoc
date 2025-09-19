@@ -152,12 +152,6 @@ NOTE: 在執行ONTAP 支援升級版本的組態中、不支援使用FibreBridge
 
 
 
-== 在堆疊中混合IOM12和IOM 6模組
-
-您的ONTAP 版本必須支援機櫃混合。請參閱互通性對照表工具IMT （英文）、瞭解您的ONTAP 版本的支援機櫃混合。 https://imt.netapp.com/matrix/["IMT"^]
-
-
-
 == 橋接器命名慣例
 
 橋接器使用下列命名範例：

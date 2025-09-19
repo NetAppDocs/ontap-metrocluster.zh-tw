@@ -4,28 +4,17 @@ sidebar: sidebar
 keywords:  
 summary: 從ONTAP 功能完善的9.8開始、您可以從八節點MetroCluster 的功能完善的組態中移除DR群組、以建立四節點MetroCluster 的功能完善的組態。 
 ---
-= 移除災難恢復群組
+= 從MetroCluster配置中刪除 DR 群組
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-從ONTAP 功能完善的9.8開始、您可以從八節點MetroCluster 的功能完善的組態中移除DR群組、以建立四節點MetroCluster 的功能完善的組態。
+從ONTAP 9.8 開始，您可以從八節點MetroCluster配置中刪除災難復原 (DR) 群組，以建立四節點MetroCluster配置。
 
-此程序在ONTAP 支援更新版本的版本上提供支援。如需執行ONTAP 效能不均9.7或更低版本的系統、請參閱知識庫文章
 
-link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/How_to_remove_a_DR-Group_from_a_MetroCluster["如何從MetroCluster 功能不完善的組態中移除DR群組"]
-
-https://mysupport.netapp.com/site/global/dashboard["NetApp支援"]
-
-八節點組態包含八個節點、以兩個四節點DR群組形式組織。
-
-image::../media/mcc_dr_groups_8_node.gif[MCC DR群組8節點]
-
-移除DR群組後、組態中仍有四個節點。
-
-image::../media/mcc_dr_groups_4_node.gif[MCC DR群組4個節點]
+NOTE: 您可以在過渡和系統刷新工作流程期間使用這些步驟。
 
 
 
@@ -43,7 +32,18 @@ NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在�
 
 
 
-== 從每個叢集移除DR群組節點
+== 從每個叢集中刪除 DR 群組節點
+
+從ONTAP 9.8 開始支援此流程。對於運行ONTAP 9.7 或更早版本的系統，請參閱知識庫文章：link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/How_to_remove_a_DR-Group_from_a_MetroCluster["如何從MetroCluster 功能不完善的組態中移除DR群組"^] 。
+
+.關於這項工作
+八節點組態包含八個節點、以兩個四節點DR群組形式組織。
+
+image::../media/mcc_dr_groups_8_node.gif[MCC DR群組8節點]
+
+刪除 DR 群組時，配置中仍保留四個節點。
+
+image::../media/mcc_dr_groups_4_node.gif[MCC DR群組4個節點]
 
 .開始之前
 * 您必須在兩個叢集上執行此步驟。
@@ -51,13 +51,13 @@ NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在�
 
 
 .步驟
-. 如果您尚未移除DR群組、請做好準備。
+. 如果尚未刪除 DR 群組，請準備刪除該群組。
 +
 .. 將所有資料磁碟區移至另一個DR群組。
-.. 如果要移除的 DR 群組包含負載共用鏡射磁碟區、則無法移動它們。  在另一個 DR 群組中重新建立所有負載共用鏡射磁碟區、然後刪除要移除的 DR 群組中的負載共用鏡射磁碟區。
+.. 如果要移除的 DR 群組具有負載共享鏡像卷，則在另一個 DR 群組中重新建立所有負載共享鏡像卷，並將其從要移除的 DR 群組中刪除。
 .. 遵循、將所有 MDV_CRS 中繼資料磁碟區移至另一個 DR 群組 link:https://docs.netapp.com/us-en/ontap-metrocluster/upgrade/task_move_a_metadata_volume_in_mcc_configurations.html["在MetroCluster 不完整的組態中移動中繼資料磁碟區"] 程序。
 .. 刪除要移除之DR群組中可能存在的所有MDV_aud中繼資料磁碟區。
-.. 刪除DR群組中要移除的所有資料集合體、如下列範例所示：
+.. 刪除要移除的 DR 群組中的所有資料聚合：
 +
 [listing]
 ----
@@ -70,24 +70,29 @@ ClusterB::> aggr delete -aggregate aggregate_name
 
 NOTE: 不會刪除根Aggregate。
 
-.. 將資料生命量離線移動。
-`network interface modify -vserver _svm-name_ -lif _data-lif_ -status-admin down`
-.. 將所有資料LIF移轉到另一個DR群組的主節點。+「網路介面show -home-node_old_node_」
+.. 將用於 NFS 和 CIFS (SMB) 的所有 NAS 資料 LIF 遷移到另一個 DR 群組中的主節點。+ 
+`network interface show -home-node <old_node>`
 +
-`network interface modify -vserver _svm-name_ -lif _data-lif_ -home-node _new_node_ -home-port _port-id_`
+`network interface migrate -vserver <svm_name> -lif <data_lif> -destination-node <new_node> -destination-port <port>`
 
-.. 將資料生命量移回線上。
-`network interface modify -vserver _svm-name_ -lif _data-lif_ -status-admin up`
+.. 將資料 LIF 移至另一個 DR 群組中的新主節點。
+`network interface modify -vserver <svm-name> -lif <data-lif> -home-node <new_node> -home-port <port>`
 .. 將叢集管理LIF移轉至另一個DR群組中的主節點。
 +
 「網路介面show -role叢集管理」
 
 +
-`network interface modify -vserver _svm-name_ -lif _cluster_mgmt_ -home-node _new_node_ -home-port _port-id_`
+`network interface modify -vserver <svm-name> -lif <cluster_mgmt> -home-node <new_node> -home-port <port-id>`
 
 +
-節點管理和叢集間生命體不會移轉。
+[NOTE]
+====
+*** 節點管理和叢集間 LIF 不會遷移。根據需要在 DR 群組的節點上建立新的節點管理和叢集間 LIF。
+*** 您無法在節點之間遷移或移動用於區塊存取 (SAN) 的 FCP 介面。根據需要建立新的 FCP 介面。
+*** 需要先關閉 iSCSI SAN LIF，然後才能更新主節點和主連接埠。
 
+
+====
 .. 必要時、將epsilon傳輸至另一個DR群組中的節點。
 +
 [listing]
@@ -117,6 +122,9 @@ ClusterB::*> set admin
 下列範例顯示如何移除叢集A上的DR群組組態
 
 +
+.範例
+[%collapsible]
+====
 [listing]
 ----
 cluster_A::*>
@@ -150,19 +158,127 @@ Do you want to continue? {y|n}: y
 
 cluster_A::*>
 ----
+====
 
 
 . 在合作夥伴叢集上重複上述步驟。
-. 如果使用MetroCluster 的是靜態IP組態、請移除MetroCluster 舊DR群組節點上的「不牢固」連線。
+. 在舊 DR 群組的節點上停用儲存故障轉移：
 +
-這些命令可從任一叢集發出、並套用至橫跨兩個叢集的整個DR群組。
+`storage failover modify -node <node-name> -enable false`
+
+. 如果您處於MetroCluster IP 配置中，請執行下列步驟刪除根聚合的遠端叢並刪除舊 DR 群組節點上的磁碟所有權。
++
+需要對每個站點的 HA 對中的兩個節點執行這些步驟。
+
++
+.. 顯示要刪除的 DR 群組中節點上的根聚合的遠端叢：
++
+`storage aggregate plex show -aggregate <root_aggr_name> -pool 1`
+
+.. 刪除遠端 plex：
++
+`storage aggregate plex delete -aggregate <root_aggr_name> -plex <plex_from_previous_step>`
+
+.. 識別 DR 群組中節點擁有的遠端磁碟。
++
+您使用的命令取決於您使用的是分割區/共用磁碟還是整個磁碟：
+
++
+
+NOTE: 使用逗號分隔列表 `-owner <node_names>`欄位指定要刪除的 DR 群組中的節點名稱。
+
++
+[role="tabbed-block"]
+====
+.分割區/共享磁碟：
+--
+... 將權限層級設為進階：
++
+《進階設定》
+
+... 顯示遠端磁碟：
++
+`storage disk show -pool Pool1 -owner <node_names> -partition-ownership`
+
+
+
+--
+.整個磁碟：
+--
+... 將權限層級設為進階：
++
+《進階設定》
+
+... 顯示遠端磁碟：
++
+`storage disk show -pool Pool1 -owner <node_names>`
+
+
+
+--
+====
+.. 禁用磁碟自動分配：
++
+`disk option modify -node <node_names_in_the_DR_group_to_be_deleted>  -autoassign off`
+
+.. 刪除每個要刪除的 DR 群組節點上的 pool1 磁碟的所有權。在每個要刪除的節點上執行下列步驟。
++
+... 轉到 nodeshell：
++
+`run -node <node_name>`
+
+... 識別pool1磁碟：
++
+`aggr status -s`
+
++
+顯示所有備用磁碟，包括節點擁有的pool0和pool1備用磁碟。
+
+... 刪除每個 pool1 備用磁碟的磁碟所有權：
++
+`disk remove_ownership <disk_name>`
+
++
+對於分割磁碟，刪除分割區所有權，然後刪除容器磁碟所有權。
+
+
+
+
+
+. 如果您處於MetroCluster IP 設定中，請刪除舊 DR 群組節點上的MetroCluster連線。
++
+這些命令可以從任一集群發出，並適用於跨越兩個集群的整個 DR 組。
 
 +
 .. 中斷連線：
 +
-「組態設定連線中斷連接_dr-group id_」MetroCluster
+`metrocluster configuration-settings connection disconnect -dr-group-id <dr_group_id>`
 
++
+.範例
+[%collapsible]
+====
+[listing]
+----
+cluster_A::*> metrocluster configuration-settings connection disconnect -dr-group-id 1
+
+Warning: For the nodes in the DR group 1, this command will remove the existing connections that are used to mirror NV logs and access remote storage.
+Do you want to continue? {y|n}: y
+
+Warning: Before proceeding with disconnect, you must verify the following:
+      1. Unmirrored aggregates do not have disks in remote plexes.
+      2. Aggregates are not mirrored.
+      3. No disks are assigned in Pool1.
+      4. Storage failover is not enabled.
+      Follow the "MetroCluster Installation and Configuration guide" for detailed instructions to verify this.
+Do you want to continue? {y|n}: y
+----
+====
 .. 刪除MetroCluster 舊DR群組節點上的介面：
++
+
+NOTE: 必須在 DR 群組的每個節點上重複此步驟。
+
 +
 「刪除組態設定介面」MetroCluster
 
@@ -171,30 +287,30 @@ cluster_A::*>
 
 . 取消加入舊DR群組中的節點。
 +
-您必須在每個叢集上執行此步驟。
+在每個集群上執行此步驟。
 
 +
 .. 設定進階權限層級：
 +
 "進階權限"
 
-.. 停用儲存容錯移轉：
-+
-「torage容錯移轉修改-node-name_-enable假」
-
-.. 取消加入節點：+「cluster unjoin -node-name_」
+.. 退出節點：+
+`cluster unjoin -node <node-name>`
 +
 對舊DR群組中的其他本機節點重複此步驟。
 
-.. 設定管理員權限等級：+「Set -priv榮幸admin」
+.. 設定管理員權限等級：
++
+「et -priv. admin」
 
 
-. 在新的DR群組中重新啟用叢集HA：
+
+. 檢查新 DR 組中是否啟用了叢集 HA。如果需要，重新啟用叢集 HA：
 +
 "cluster ha modify -configured true"
 
 +
-您必須在每個叢集上執行此步驟。
+在每個集群上執行此步驟。
 
 . 停止、關機及移除舊的控制器模組和儲存櫃。
 
