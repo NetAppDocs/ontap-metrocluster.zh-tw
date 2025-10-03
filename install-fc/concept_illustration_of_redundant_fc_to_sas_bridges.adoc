@@ -13,7 +13,7 @@ summary: FC至SAS橋接器可在SAS附加磁碟與FC交換器架構之間提供�
 [role="lead"]
 FC至SAS橋接器可在SAS附加磁碟與FC交換器架構之間提供傳輸協定橋接。
 
-image::../media/mcc_hw_architecture_shelf_stacks.gif[MCC硬體架構機櫃堆疊]
+image::../media/mcc_hw_architecture_shelf_stacks.gif[FC-SAS 橋接器，其硬體架構顯示貨架堆疊]
 
 .相關資訊
 link:concept_illustration_of_the_local_ha_pairs_in_a_mcc_configuration.html["以架構組態顯示本機HA配對的圖例MetroCluster"]

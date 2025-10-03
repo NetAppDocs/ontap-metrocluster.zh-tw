@@ -15,7 +15,7 @@ summary: 在八節點或四節點MetroCluster 的「架構」組態中、每個�
 
 本機HA容錯移轉和還原作業是以非MetroCluster組態的相同方式、使用儲存容錯移轉命令來執行。
 
-image::../media/mcc_hw_architecture_local_ha.gif[MCC HW架構本機Ha]
+image::../media/mcc_hw_architecture_local_ha.gif[MetroCluster硬體架構本地 HA 對]
 
 .相關資訊
 link:concept_illustration_of_redundant_fc_to_sas_bridges.html["備援FC對SAS橋接器的圖例"]

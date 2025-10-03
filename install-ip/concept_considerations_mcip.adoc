@@ -29,7 +29,7 @@ summary: 您應該瞭解控制器如何存取遠端儲存設備、MetroCluster �
 
 在靜態IP組態中、HA配對和DR合作夥伴之間的儲存和非揮發性快取複寫作業是透過使用者介面的高速頻寬專用連結來執行。MetroCluster MetroClusteriSCSI連線用於儲存複寫。IP交換器也用於本機叢集內的所有叢集內流量。利用個別的IP子網路和VLAN、將資料流量與叢集內流量分開。MetroCluster此功能與叢集對等網路截然不同、MetroCluster
 
-image::../media/mcc_ip_ip_subnets.gif[MCC IP IP子網路]
+image::../media/mcc_ip_ip_subnets.gif[MetroCluster IP 子網路和 VLAN 分離]
 
 這個支援的IP組態需要在每個節點上保留兩個IP位址、以供後端的靜態IP架構使用。MetroCluster MetroCluster在MetroCluster 初始組態期間、保留的IP位址會指派給靜態IP邏輯介面（LIF）、並具有下列需求：
 

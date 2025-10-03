@@ -60,7 +60,7 @@ summary: 視您的需求而定、您可以使用共享的第 2 層或第 3 層�
 
 MetroCluster 後端交換器已連線至客戶網路。
 
-image::../media/MCC_layer2.png[MCC 第 2 層]
+image::../media/MCC_layer2.png[MetroCluster第 2 層網路配置]
 
 由客戶提供的中介交換器必須符合下列需求：
 
@@ -101,7 +101,7 @@ NOTE: 以上列出的系統可能使用 VLAN 100 及以下的 VLAN 進行設定�
 
 後端交換器可直接連線至路由IP網路、或直接連線至路由器（如下列簡化範例所示）、或透過其他介入式交換器連線。MetroCluster
 
-image::../media/mcc_layer3_backend.png[MCC layer3後端]
+image::../media/mcc_layer3_backend.png[MetroCluster第 3 層後端網路配置]
 
 如所述、將此環境設定為標準的靜態IP組態、並以纜線連接MetroCluster MetroCluster link:https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/concept_parts_of_an_ip_mcc_configuration_mcc_ip.html["設定MetroCluster 靜態硬體元件"]。執行安裝和佈線程序時、您必須執行第 3 層組態的特定步驟。以下內容適用於第 3 層組態：
 
@@ -138,11 +138,11 @@ image::../media/mcc_layer3_backend.png[MCC layer3後端]
 
 下圖概述使用 NetApp 驗證的 Cisco 交換器時所需的設定：
 
-image::../media/switch_traffic_with_cisco_switches.png[使用Cisco交換器交換流量]
+image::../media/switch_traffic_with_cisco_switches.png[使用NetApp驗證的Cisco交換器進行MetroCluster流量時所需的設定]
 
 下圖概述當外部交換器為 Broadcom IP 交換器時、共用網路所需的設定。
 
-image::../media/switch_traffic_with_broadcom_switches.png[透過Broadcom交換器交換流量]
+image::../media/switch_traffic_with_broadcom_switches.png[使用 Broadcom IP 交換器時共用網路所需的設置]
 
 在此範例中、我們會針對MetroCluster 某些流量建立下列原則和地圖：
 

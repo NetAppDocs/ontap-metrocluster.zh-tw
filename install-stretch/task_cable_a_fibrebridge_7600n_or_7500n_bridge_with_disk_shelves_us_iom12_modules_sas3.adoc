@@ -48,4 +48,4 @@ NOTE: 每個堆疊都可以使用不同的IOM機型、但堆疊內的所有磁�
 
 
 
-image::../media/mcc_cabling_bridge_and_sas3_stack_with_7500n_and_multiple_stacks.gif[MCC纜線橋接器和SAS3堆疊、內含7500n和多個堆疊]
+image::../media/mcc_cabling_bridge_and_sas3_stack_with_7500n_and_multiple_stacks.gif[具有多個 SAS3 堆疊的 FibreBridge 的MetroCluster佈線]

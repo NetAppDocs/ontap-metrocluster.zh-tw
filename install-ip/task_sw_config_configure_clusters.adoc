@@ -650,7 +650,7 @@ cluster01-02
 
 NOTE: 建立DR群組之後、就無法變更DR關係。
 
-image::../media/mcc_dr_groups_4_node.gif[MCC DR群組4個節點]
+image::../media/mcc_dr_groups_4_node.gif[四節點配置中的MetroCluster DR 群組]
 
 .步驟
 . 在每個節點上輸入下列命令、確認節點已準備好建立DR群組：

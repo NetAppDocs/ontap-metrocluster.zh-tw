@@ -15,7 +15,7 @@ summary: 從支援使用支援第3層連線功能的《支援使用虛擬IP（VI
 
 規劃第3層解決方案時、請檢閱下列準則和圖例。如需實作ONTAP 以利實現VIP和BGP的詳細資訊、請參閱 link:https://docs.netapp.com/us-en/ontap/networking/configure_virtual_ip_@vip@_lifs.html["設定虛擬IP LIF"^]。
 
-image::../media/vip_and_bgp_in_metrocluster_2.png[VIP與BGP的MetroCluster 功能2]
+image::../media/vip_and_bgp_in_metrocluster_2.png[MetroCluster中的虛擬 IP 和邊界網關協議]
 
 
 

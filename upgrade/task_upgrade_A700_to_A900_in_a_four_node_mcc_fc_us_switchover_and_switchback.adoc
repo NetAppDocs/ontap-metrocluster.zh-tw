@@ -493,7 +493,7 @@ link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#removing-met
 
 完成此工作之後、Site_A會處於作用中狀態、並為兩個站台提供資料。站台_B處於非作用中狀態、準備開始升級程序、如下圖所示。（此圖也適用於將FAS9000升級至FAS9500控制器。）
 
-image::../media/mcc_upgrade_cluster_a_in_switchover_A900.png[在switchover A900中、MCC升級叢集A]
+image::../media/mcc_upgrade_cluster_a_in_switchover_A900.png[Site_B 處於非活動狀態並準備升級]
 
 .步驟
 . 切換MetroCluster 到站台A的支援、以便站台B的節點升級：

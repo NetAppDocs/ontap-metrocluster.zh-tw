@@ -24,7 +24,7 @@ summary: 在組態中新增儲存設備時、您可以安裝Atto FibreBridge橋�
 
 此程序使用下列工作流程：
 
-image::../media/workflow_bridge_installation_and_configuration.gif[工作流程橋接器安裝與組態]
+image::../media/workflow_bridge_installation_and_configuration.gif[工作流程 FC 至 SAS 橋接器的安裝和配置]
 
 
 
@@ -524,7 +524,7 @@ NOTE: 每個堆疊都可以使用不同的IOM機型、但堆疊內的所有磁�
 
 下圖顯示連接至一對FibreBridge 7600N或7500N橋接器的磁碟櫃：
 
-image::../media/mcc_cabling_bridge_and_sas3_stack_with_7500n_and_multiple_stacks.gif[MCC纜線橋接器和SAS3堆疊、內含7500n和多個堆疊]
+image::../media/mcc_cabling_bridge_and_sas3_stack_with_7500n_and_multiple_stacks.gif[具有多個 SAS3 堆疊的 FibreBridge 的MetroCluster佈線]
 
 --
 

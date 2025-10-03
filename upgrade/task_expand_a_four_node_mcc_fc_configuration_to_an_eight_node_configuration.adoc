@@ -28,11 +28,11 @@ summary: 將四節點MetroCluster 的EzFC組態擴充至八節點MetroCluster �
 
 在執行此程序之前MetroCluster 、由四個節點組成的EFC組態、每個站台各有一個HA配對：
 
-image::../media/mcc_dr_groups_4_node.gif[MCC DR群組4個節點]
+image::../media/mcc_dr_groups_4_node.gif[擴充前具有四個節點的MetroCluster FC 配置]
 
 在本程序結束時MetroCluster 、每個站台的EFC組態由兩個HA配對組成：
 
-image::../media/mcc_dr_groups_8_node.gif[MCC DR群組8節點]
+image::../media/mcc_dr_groups_8_node.gif[擴展後具有八個節點的MetroCluster FC 配置]
 
 這兩個站台都必須平均擴充。不可以由數量不均的節點組成的不穩定FC組態。MetroCluster
 

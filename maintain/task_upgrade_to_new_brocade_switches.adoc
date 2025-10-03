@@ -31,7 +31,7 @@ https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"^]
 
 在本程序結束時、所有四個交換器都會升級為新的交換器。
 
-image::../media/brocade_upgr_to_g620_replacement_completed.gif[Brocade升級至g620更換完成]
+image::../media/brocade_upgr_to_g620_replacement_completed.gif[完成後Brocade升級至G620]
 
 .步驟
 . 停用第一個交換器架構：
@@ -44,14 +44,14 @@ h.*FC_switch_a_1:admin> switchCfgPersistentDisable*
 FC_switch_A_1:admin> switchCfgPersistentDisable
 ----
 +
-image::../media/brocade_upgr_to_g620_fab_1_down.gif[Brocade升級至g620 FAB 1關機]
+image::../media/brocade_upgr_to_g620_fab_1_down.gif[Brocade升級至 G620，Fabric 1 被取消]
 
 . 更換MetroCluster 同一個站台上的舊交換器。
 +
 .. 拔下並移除停用的交換器。
 .. 在機架中安裝新的交換器。
 +
-image::../media/brocade_upgr_to_g620_replaced_a_1.gif[Brocade升級至g620取代1]
+image::../media/brocade_upgr_to_g620_replaced_a_1.gif[Brocade升級至 G620 並更換 A1]
 
 .. 在兩台交換器上執行下列命令、以停用新的交換器：
 +
@@ -71,7 +71,7 @@ link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.htm
 已更換Fabric 1中的兩個交換器。
 
 +
-image::../media/brocade_upgr_to_g620_replaced_b_1.gif[Brocade升級至g620取代b 1]
+image::../media/brocade_upgr_to_g620_replaced_b_1.gif[Brocade升級至 G620 並更換 B1]
 
 
 
@@ -174,4 +174,4 @@ https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"]
 
 重複上述步驟之後、所有四個交換器都已升級、MetroCluster 而且此功能可正常運作。
 
-image::../media/brocade_upgr_to_g620_replacement_completed.gif[Brocade升級至g620更換完成]
+image::../media/brocade_upgr_to_g620_replacement_completed.gif[Brocade G620 交換器更換與升級完成後的MetroCluster工作流程]

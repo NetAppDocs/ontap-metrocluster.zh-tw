@@ -15,7 +15,7 @@ summary: 您必須在MetroCluster 不完整的功能組態中設定每個節點O
 
 如果控制器模組在組態期間故障、請參閱 link:../disaster-recovery/concept_choosing_the_correct_recovery_procedure_parent_concept.html#controller-module-failure-scenarios-during-metrocluster-installation["安裝過程中的控制器模組故障情形MetroCluster"]。
 
-image::../media/workflow_mcc_ip_high_level_node_and_cluster_configuration_software.svg[工作流程MCC IP高層節點和叢集組態軟體]
+image::../media/workflow_mcc_ip_high_level_node_and_cluster_configuration_software.svg[ONTAP中的工作流程MetroCluster IP 進階節點和叢集配置]
 
 
 

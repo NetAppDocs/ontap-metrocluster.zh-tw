@@ -39,11 +39,11 @@ NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在�
 .關於這項工作
 八節點組態包含八個節點、以兩個四節點DR群組形式組織。
 
-image::../media/mcc_dr_groups_8_node.gif[MCC DR群組8節點]
+image::../media/mcc_dr_groups_8_node.gif[兩個 DR 組中八個節點的MetroCluster配置]
 
 刪除 DR 群組時，配置中仍保留四個節點。
 
-image::../media/mcc_dr_groups_4_node.gif[MCC DR群組4個節點]
+image::../media/mcc_dr_groups_4_node.gif[DR 群組移除後具有四個節點的MetroCluster配置]
 
 .開始之前
 * 您必須在兩個叢集上執行此步驟。

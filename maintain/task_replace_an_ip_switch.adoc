@@ -28,7 +28,7 @@ link:enable-console-logging-before-maintenance.html["啟用主控台記錄"] 在
 如果您想要以相同類型的交換器來取代故障的交換器、則只能更換故障的交換器。如果您想要升級或降級交換器、必須調整位於同一個網路中的兩個交換器。當兩台交換器與交換器間連結（ ISL ）連線時、它們位於同一個網路中、而且不在同一個站台上。例如、網路 1 包括 IP 交換器 A_1 和 IP 交換器 B_1 、而網路 2 包括 IP 交換器 A_2 和 IP 交換器 B_2 、如下圖所示：
 
 +
-image::../media/mcc_ip_hardware_architecture_ip_interconnect.png[MCC IP硬體架構IP互連]
+image::../media/mcc_ip_hardware_architecture_ip_interconnect.png[MetroCluster IP 硬體架構展示了交換器間連結和交換器類型]
 
 +
 
@@ -64,7 +64,7 @@ NOTE: 如果您更換交換器或升級至不同的交換器、則可以安裝�
 * 藍色：新連線的連接埠。
 
 
-image:../media/mcc_port_usage_workflow.png[""]
+image:../media/mcc_port_usage_workflow.png["交換器更換期間MetroCluster IP 連接埠使用和佈線變更的工作流程"]
 
 .步驟
 . [[all_step1]] 檢查組態的健全狀況。

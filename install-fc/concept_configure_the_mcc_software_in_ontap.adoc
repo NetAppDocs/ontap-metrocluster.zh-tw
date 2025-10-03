@@ -13,7 +13,7 @@ summary: 您必須在MetroCluster 不完整的功能組態中設定每個節點O
 [role="lead"]
 您必須在MetroCluster 不完整的功能組態中設定每個節點ONTAP 、包括節點層級組態、以及將節點組態設定為兩個站台。您也必須在MetroCluster 這兩個站台之間實作「不二」關係。
 
-image::../media/workflow_high_level_node_and_cluster_configuration_software.gif[工作流程高層節點和叢集組態軟體]
+image::../media/workflow_high_level_node_and_cluster_configuration_software.gif[高階節點和叢集配置的工作流程]
 
 
 

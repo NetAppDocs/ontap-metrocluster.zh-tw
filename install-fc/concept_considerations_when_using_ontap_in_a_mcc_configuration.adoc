@@ -422,14 +422,14 @@ image:../media/svmdr_new_topology-2.png["SVM DR新拓撲"]
 下圖顯示SVM災難恢復行為處於穩定狀態：
 
 +
-image::../media/svm_dr_normal_behavior.gif[SVM DR正常行為]
+image::../media/svm_dr_normal_behavior.gif[穩定狀態運作期間的 SVM 災難復原]
 
 * 當sync-source sVM是SVM DR關係的來源時、來源SVM DR關係資訊會複寫到MetroCluster 該合作夥伴。
 +
 如此可讓SVM DR更新在切換後繼續、如下列映像所示：
 
 +
-image::../media/svm_dr_image_2.gif[SVM DR映像2.]
+image::../media/svm_dr_image_2.gif[切換後的 SVM 災難復原]
 
 * 在切換和切換程序期間、複寫到SVM DR目的地可能會失敗。
 +
@@ -447,7 +447,7 @@ image::../media/svm_dr_image_2.gif[SVM DR映像2.]
 
 在重新同步期間、來源SVM（叢集_A）會暫時做為目的地SVM、如下圖所示：
 
-image::../media/svm_dr_resynchronization.gif[SVM DR重新同步]
+image::../media/svm_dr_resynchronization.gif[SVM 災難復原重新同步]
 
 
 

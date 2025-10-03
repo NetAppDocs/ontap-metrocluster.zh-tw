@@ -115,7 +115,7 @@ slot 0: FC Host Adapter 0g (QLogic 8324 rev. 2, N-port, <UP>)**<=== Initiator po
 
 下圖顯示初始組態的範例、其中四個連接兩個SAS儲存堆疊的FIBEBridge 6500N橋接器：
 
-image::../media/consolidating_stacks_before.gif[以前整合堆疊]
+image::../media/consolidating_stacks_before.gif[在更換 FibreBridge 之前整合堆疊]
 
 .步驟
 . 依照下列準則、使用中的程序、將頂部的 FiberBridge 6500N 橋接器與 FiberBridge 7600N 或 7500N 橋接器熱交換 link:task_replace_a_sle_fc_to_sas_bridge.html#hot_swap_6500n["使用光纖橋接器7600N或7500N橋接器熱交換光纖橋接器6500N"]：
@@ -128,7 +128,7 @@ image::../media/consolidating_stacks_before.gif[以前整合堆疊]
 
 
 +
-image::../media/consolidating_stacks_1st_7500n_in_place.gif[在原地整合堆疊前7500n]
+image::../media/consolidating_stacks_1st_7500n_in_place.gif[使用第一台 FibreBridge 7500N 整合堆疊]
 
 . 確認連線至橋接連接的磁碟、並在組態中看到新的FibreBridge 7500N：
 +
@@ -188,7 +188,7 @@ slot 0: FC Host Adapter 0g (QLogic 8324 rev. 2, N-port, <UP>)**<=== Initiator po
 +
 這是與連接到FIBiBridge 6500N橋接器FC1連接埠相同的連線。
 
-** 此時請勿連接FibreBridge 7600N或7500N橋接器FC1連接埠。image:../media/consolidating_stacks_2nd_7500n_in_place.gif[""]
+** 此時請勿連接 FibreBridge 7600N 或 7500N 橋接器 FC1 連接埠。image:../media/consolidating_stacks_2nd_7500n_in_place.gif["使用第二台 FibreBridge 7500N 整合堆疊"]
 
 
 . 確認與橋接式連線磁碟的連線：
@@ -267,28 +267,28 @@ NOTE: 連接連接埠之前、請至少等待10秒鐘。SAS纜線連接器採用
 下列範例以藍色顯示纜線：
 
 +
-image::../media/consolidating_stacks_sas_top_before.gif[整合堆疊SAS前一名]
+image::../media/consolidating_stacks_sas_top_before.gif[在佈線到 FibreBridge 7500N 之前整合 SAS 堆疊]
 
 . 使用含迷你SAS接頭的纜線、將儲存櫃上的相同SAS連接埠連接至頂端的FibreBridge 7600N或7500N橋接器的SAS B連接埠。
 +
 下列範例以藍色顯示纜線：
 
 +
-image::../media/consolidating_stacks_sas_top_after.gif[整合堆疊之後、SAS排名第一]
+image::../media/consolidating_stacks_sas_top_after.gif[整合後的 SAS 頂部佈線]
 
 . 拔下連接底部FibreBridge 6500N橋接器SAS A連接埠至頂端SAS機櫃的纜線、請務必記下其所連接儲存櫃上的SAS連接埠。
 +
 此纜線以綠色顯示於下列範例中：
 
 +
-image::../media/consolidating_stacks_sas_bottom_before.gif[以前整合堆疊SAS的底層]
+image::../media/consolidating_stacks_sas_bottom_before.gif[整合到底層機架之前的綠色 SAS 佈線]
 
 . 使用含迷你SAS接頭的纜線、將儲存櫃上的相同SAS連接埠連接至底部的FibreBridge 7600N或7500N橋接器的SAS B連接埠。
 +
 此纜線以綠色顯示於下列範例中：
 
 +
-image::../media/consolidating_stacks_sas_bottom_after.gif[之後再整合堆疊SAS]
+image::../media/consolidating_stacks_sas_bottom_after.gif[整合後的 SAS 底部佈線]
 
 . 確認與橋接式連線磁碟的連線：
 +
@@ -351,7 +351,7 @@ slot 0: FC Host Adapter 0g (QLogic 8324 rev. 2, N-port, <UP>)**<=== Initiator po
 每個SAS堆疊都必須連接至頂端和底部橋接器上的相同SAS連接埠。例如、如果堆疊的頂端連線連接至頂端橋接SAS B連接埠、則底部連線必須連接至底部橋接器的SAS B連接埠。
 
 +
-image::../media/consolidation_sas_bottom_connection_4_stacks.gif[整合SAS底部連線4個堆疊]
+image::../media/consolidation_sas_bottom_connection_4_stacks.gif[四個堆疊的 SAS 底部佈線]
 
 
 
@@ -374,7 +374,7 @@ image::../media/consolidation_sas_bottom_connection_4_stacks.gif[整合SAS底部
 
 下圖顯示站台A上變更前的分區：
 
-image::../media/zoning_consolidation_site_a_before.gif[分區整合站台A之前]
+image::../media/zoning_consolidation_site_a_before.gif[FibreBridge 變更先前站點 A 的分區合併]
 
 .步驟
 . 從每個現有區域移除一半啟動器連接埠、並為Fibre Bridge 7500N FC2連接埠建立新的區域、藉此更新FC交換器的儲存區域。
@@ -479,7 +479,7 @@ STOR_A_1b-FC2
 |===
 下圖顯示整合後站台A的分區：
 
-image::../media/zoning_consolidation_site_a_after.gif[分區整合站台A之後]
+image::../media/zoning_consolidation_site_a_after.gif[FibreBridge 變更後站點 A 的分區合併]
 
 
 
@@ -519,11 +519,11 @@ image::../media/zoning_consolidation_site_a_after.gif[分區整合站台A之後]
 .步驟
 . 將頂端橋接器的FC2連接埠纜線連接至FC_switch_a_2上的正確連接埠。
 +
-image::../media/consolidating_stacks_sas_ports_recabled.gif[已重新整合堆疊SAS連接埠]
+image::../media/consolidating_stacks_sas_ports_recabled.gif[合併到 FC_switch_A_2 後的 FC2 連接埠佈線]
 
 . 將底部橋接器的FC1連接埠纜線連接至FC_switch_a_1上的正確連接埠。
 +
-image::../media/consolidating_stacks_final.gif[最後整合堆疊]
+image::../media/consolidating_stacks_final.gif[最終堆疊整合佈線]
 
 . 確認與橋接式連線磁碟的連線：
 +

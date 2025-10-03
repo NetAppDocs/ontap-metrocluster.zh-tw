@@ -17,7 +17,7 @@ summary: 如果您需要在 MetroCluster IP 組態中執行站台維護或重新
 
 下圖顯示MetroCluster 一個E面的 組態。叢集B已關閉以進行維護。
 
-image::power-on-off-data-center.gif[關閉資料中心電源]
+image::power-on-off-data-center.gif[關閉MetroCluster配置中的 Cluster_B 進行維護的工作流程]
 
 
 

@@ -37,6 +37,6 @@ link:task_perform_a_forced_switchover_after_a_disaster.html#performing-a-forced-
 
 此程序使用下列工作流程：
 
-image::../media/workflow_smoking_crater_recovery.png[抽吸口的工作流程恢復]
+image::../media/workflow_smoking_crater_recovery.png[多控制器故障復原的工作流程]
 
 當發生故障時、可在進行中階轉換的系統上執行恢復時、使用此程序。在這種情況下、您必須在準備切換時執行適當的步驟、如程序所述。

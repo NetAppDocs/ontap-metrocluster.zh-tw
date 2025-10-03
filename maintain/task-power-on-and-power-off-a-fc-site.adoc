@@ -17,7 +17,7 @@ summary: 您必須瞭解如何在 MetroCluster FC 組態中關閉單一站台並
 
 下圖顯示MetroCluster 一個E面的 組態。叢集B已關閉以進行維護。
 
-image::power-on-off-data-center.gif[關閉資料中心電源]
+image::power-on-off-data-center.gif[MetroCluster叢集因維護而關閉]
 
 
 

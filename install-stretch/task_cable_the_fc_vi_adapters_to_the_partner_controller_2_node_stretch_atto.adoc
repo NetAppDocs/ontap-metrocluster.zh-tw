@@ -16,7 +16,7 @@ summary: 每個控制器的FC-VI介面卡必須直接連接至其合作夥伴。
 .步驟
 . 連接FC-VI連接埠。
 +
-image::../media/mcc_cabling_fc_vi_controller_to_partner.gif[MCC將光纖通道VI控制器連接至合作夥伴]
+image::../media/mcc_cabling_fc_vi_controller_to_partner.gif[MetroCluster將 FC VI 控制器連接到合作夥伴]
 
 +
 上圖為所需纜線的典型表示方式。特定的FC-VI連接埠因控制器模組而異。

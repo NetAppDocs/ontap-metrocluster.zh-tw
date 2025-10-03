@@ -40,13 +40,13 @@ link:../install-stretch/concept_considerations_differences.html["延伸MetroClus
 * 此程序會造成中斷、大約需要四小時才能完成。
 * 在執行此程序之前MetroCluster 、由兩個單節點叢集組成的VMware FC組態包括：
 +
-image::../media/mcc_dr_groups_2_node.gif[MCC DR群組2節點]
+image::../media/mcc_dr_groups_2_node.gif[擴充前具有兩個節點的MetroCluster FC 配置]
 
 +
 完成此程序後MetroCluster 、由兩個HA配對組成的VMware FC組態、每個站台一個：
 
 +
-image::../media/mcc_dr_groups_4_node.gif[MCC DR群組4個節點]
+image::../media/mcc_dr_groups_4_node.gif[擴展後具有四個節點的MetroCluster FC 配置]
 
 * 這兩個站台都必須平均擴充。
 +
@@ -59,4 +59,4 @@ image::../media/mcc_dr_groups_4_node.gif[MCC DR群組4個節點]
 * 此程序使用下列工作流程：
 
 
-image::../media/workflow_mcc_2_to_4_node_expansion_high_level.gif[工作流程MCC 2至4節點的高層擴充]
+image::../media/workflow_mcc_2_to_4_node_expansion_high_level.gif[MetroCluster FC 2 節點到 4 節點擴充的工作流程]

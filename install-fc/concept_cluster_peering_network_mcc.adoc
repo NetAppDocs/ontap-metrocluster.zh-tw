@@ -15,7 +15,7 @@ summary: 透過客戶提供的叢集對等網路、將會對支援此組態的�
 
 叢集間的生命體必須設定MetroCluster 在每個節點上的Sfor the Sepering、而且叢集必須設定為對等。具有叢集間生命體的連接埠會連接至客戶提供的叢集對等網路。SVM組態的複寫是透過組態複寫服務透過此網路進行。
 
-image::../media/mcc_hw_architecture_cluster_peering.gif[MCC硬體架構叢集對等]
+image::../media/mcc_hw_architecture_cluster_peering.gif[顯示MetroCluster配置中的叢集對等網路的硬體架構]
 
 .相關資訊
 link:concept_illustration_of_the_local_ha_pairs_in_a_mcc_configuration.html["以架構組態顯示本機HA配對的圖例MetroCluster"]

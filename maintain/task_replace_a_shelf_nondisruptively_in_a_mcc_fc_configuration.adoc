@@ -64,7 +64,7 @@ Cluster_A_2::> storage aggregate show -aggr dataA_2_data
 下列範例顯示連接單一SAS堆疊的一對橋接器、其中包含目標機櫃：
 
 +
-image::../media/mcc_shelf_replacement_bridges_with_a_single_stack.gif[MCC機櫃更換橋接器、只需一個堆疊即可]
+image::../media/mcc_shelf_replacement_bridges_with_a_single_stack.gif[單層貨架更換橋]
 
 +
 每個交換器上的交換器連接埠8和9會將橋接器連接至網路。
@@ -106,7 +106,7 @@ FC_switch_A_2(config)# end
 下列範例顯示連接四個SAS堆疊的一對橋接器。SAS堆疊2包含目標機櫃：
 
 +
-image::../media/mcc_shelf_replacement_bridges_with_four_stacks.gif[含四個堆疊的MCC機櫃替換橋接器]
+image::../media/mcc_shelf_replacement_bridges_with_four_stacks.gif[帶有四個堆疊的貨架更換橋]
 
 +
 SAS連接埠B會將橋接器連接至目標機櫃。只要停用兩個磁碟櫃上的SAS連接埠B、其他SAS堆疊就能在更換程序期間繼續提供資料。

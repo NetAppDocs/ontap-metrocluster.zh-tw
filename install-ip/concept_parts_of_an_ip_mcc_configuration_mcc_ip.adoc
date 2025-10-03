@@ -41,7 +41,7 @@ summary: 規劃MetroCluster 您的靜態IP組態時、您應該瞭解硬體元�
 
 
 
-image::../media/mcc_ip_hardware_architecture_mcc_ip.gif[MCC IP硬體架構MCC IP]
+image::../media/mcc_ip_hardware_architecture_mcc_ip.gif[MetroCluster IP 硬體架構]
 
 
 
@@ -51,7 +51,7 @@ image::../media/mcc_ip_hardware_architecture_mcc_ip.gif[MCC IP硬體架構MCC IP
 
 下圖顯示了四節點MetroCluster 的節點的架構。
 
-image::../media/mcc_dr_groups_4_node.gif[MCC DR群組4個節點]
+image::../media/mcc_dr_groups_4_node.gif[四節點配置中的MetroCluster DR 群組]
 
 
 
@@ -61,7 +61,7 @@ image::../media/mcc_dr_groups_4_node.gif[MCC DR群組4個節點]
 
 本機HA容錯移轉和還原作業是以非MetroCluster組態的相同方式、使用儲存容錯移轉命令來執行。
 
-image::../media/mcc_ip_hardware_architecture_ha_pairs.gif[MCC IP硬體架構HA配對]
+image::../media/mcc_ip_hardware_architecture_ha_pairs.gif[MetroCluster IP 硬體架構 HA 對]
 
 .相關資訊
 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-concepts/home.html["概念ONTAP"]
@@ -72,7 +72,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-concepts/home.html["
 
 支援叢集的叢集通常包括叢集互連網路、用於叢集中節點之間的流量。ONTAP在靜態IP組態中、此網路也可用於在各個站台之間傳輸資料複寫流量。MetroCluster MetroCluster
 
-image::../media/mcc_ip_hardware_architecture_ip_interconnect.png[MCC IP硬體架構IP互連]
+image::../media/mcc_ip_hardware_architecture_ip_interconnect.png[MetroCluster IP 硬體架構 IP 互連]
 
 MetroCluster IP 組態中的每個節點都有專用介面、可用於連線至後端 IP 網路：
 
@@ -82,7 +82,7 @@ MetroCluster IP 組態中的每個節點都有專用介面、可用於連線至�
 
 下圖顯示這些介面。所示的連接埠使用量適用於AFF 不含功能的A700或FAS9000系統。
 
-image::../media/mcc_ip_lif_usage.gif[MCC IP LIF使用量]
+image::../media/mcc_ip_lif_usage.gif[MetroCluster IP LIF 使用情況]
 
 .相關資訊
 link:concept_considerations_mcip.html["關於靜態IP組態的考量MetroCluster"]
@@ -95,7 +95,7 @@ link:concept_considerations_mcip.html["關於靜態IP組態的考量MetroCluster
 
 叢集間的生命體必須設定MetroCluster 在每個節點上的Sfor the Sepering、而且叢集必須設定為對等。具有叢集間生命體的連接埠會連接至客戶提供的叢集對等網路。SVM組態的複寫是透過組態複寫服務透過此網路進行。
 
-image::../media/mcc_ip_hardware_architecture_cluster_peering_network.gif[MCC IP硬體架構叢集對等網路]
+image::../media/mcc_ip_hardware_architecture_cluster_peering_network.gif[MetroCluster IP 硬體架構叢集對等網路]
 
 .相關資訊
 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-clus-peer/home.html["叢集與SVM對等化快速組態"]

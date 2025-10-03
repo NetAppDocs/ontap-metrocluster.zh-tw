@@ -13,7 +13,7 @@ summary: 執行切換作業，將 MetroCluster 組態恢復為正常作業。站
 [role="lead"]
 執行切換作業，將 MetroCluster 組態恢復為正常作業。站台上的節點仍在等待升級。
 
-image::../media/mcc_upgrade_cluster_a_switchback.png[MCC升級叢集A切換回復]
+image::../media/mcc_upgrade_cluster_a_switchback.png[MetroCluster切換後，Site_A 等待升級]
 
 .步驟
 . 在se_B上輸入「MetroCluster flexnodeshow」命令、然後檢查輸出。

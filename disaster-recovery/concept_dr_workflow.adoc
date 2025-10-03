@@ -13,4 +13,4 @@ summary: 使用工作流程來執行災難恢復。
 [role="lead"]
 使用工作流程來執行災難恢復。
 
-image::../media/workflow_disaster_recovery.svg[工作流程災難恢復]
+image::../media/workflow_disaster_recovery.svg[災難恢復工作流程]

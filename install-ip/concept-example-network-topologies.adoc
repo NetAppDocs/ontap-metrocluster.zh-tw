@@ -24,7 +24,7 @@ NOTE: 如果您要與非 MetroCluster 流量共用 ISL 、則必須確認 MetroC
 
 在此拓撲中、有兩個不同的站台是透過直接連結連接。這些連結可以是 xWDM 和 TDM 裝置或交換器之間的連結。ISL 的容量並非專用於 MetroCluster 流量、而是與其他非 MetroCluster 流量共用。
 
-image::../media/mcc_ip_networking_with_shared_isls.gif[MCC IP網路與共享ISL]
+image::../media/mcc_ip_networking_with_shared_isls.gif[具有共享 ISL 的MetroCluster IP 網路範例]
 
 
 
@@ -33,7 +33,7 @@ image::../media/mcc_ip_networking_with_shared_isls.gif[MCC IP網路與共享ISL]
 在此拓撲中、 MetroCluster 站台並非直接連線、而是 MetroCluster 和主機流量透過網路傳輸。
 網路可由一系列的 xWDM 和 TDM 及交換器組成、但與直接 ISL 的共用組態不同、這些連結並不直接位於站台之間。視站台之間的基礎架構而定、可能會有任何網路組態組合。
 
-image::../media/mcc_ip_networking_with_intermediate_private_networks.gif[MCC IP網路與中繼私有網路]
+image::../media/mcc_ip_networking_with_intermediate_private_networks.gif[具有中間專用網路的MetroCluster IP 網路範例]
 
 
 
@@ -44,7 +44,7 @@ image::../media/mcc_ip_networking_with_intermediate_private_networks.gif[MCC IP�
 
 NOTE: 「 MetroCluster One 」或「 MetroCluster Two 」都可以是一個八節點 MetroCluster 組態或兩個四節點 MetroCluster 組態。
 
-image::../media/mcc_ip_two_mccs_sharing_the_same_shared_network_sx.gif[MCC IP兩個MCC共用相同的共用網路SX]
+image::../media/mcc_ip_two_mccs_sharing_the_same_shared_network_sx.gif[MetroCluster IP 佈線，兩個配置共享同一個中間網絡]
 
 
 
@@ -52,4 +52,4 @@ image::../media/mcc_ip_two_mccs_sharing_the_same_shared_network_sx.gif[MCC IP兩
 
 兩個獨立的 MetroCluster 組態共用相同的中繼交換器、其中一個 MetroCluster 是使用 NetApp 驗證的交換器在共用的第 2 層組態（ MetroCluster One ）中進行設定、另一個 MetroCluster 則是使用直接連線至中繼交換器（ MetroCluster 2 ）的 MetroCluster 相容交換器進行設定。
 
-image::../media/mcc_ip_unsupported_two_mccs_direct_to_shared_switches.png[MCC IP不受支援的兩個MCC直接連接至共享交換器]
+image::../media/mcc_ip_unsupported_two_mccs_direct_to_shared_switches.png[兩個 MetroCluster 直接透過電纜連接到共享交換器的不支援的設定範例]

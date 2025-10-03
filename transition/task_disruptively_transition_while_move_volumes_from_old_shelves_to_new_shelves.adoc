@@ -94,7 +94,7 @@ https://hwu.netapp.com["NetApp Hardware Universe"^]
 
 準備轉換時、請規劃各地點之間的差旅。請注意、當遠端節點機架安裝並連接纜線之後、您需要對節點進行序列終端機存取。在設定節點之前、「服務處理器」存取將無法使用。
 
-image::../media/workflow_2n_transition_moving_data_to_new_shelves.png[工作流程2n將資料移至新的磁碟櫃]
+image::../media/workflow_2n_transition_moving_data_to_new_shelves.png[過渡期間將資料移至新架子的工作流程]
 
 
 

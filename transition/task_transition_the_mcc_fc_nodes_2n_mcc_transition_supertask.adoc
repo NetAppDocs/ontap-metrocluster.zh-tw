@@ -351,4 +351,4 @@ cluster1::>
 
 此時MetroCluster 、已移除完不相連的不相連磁碟櫃、將其從所有控制器上拔下。
 
-image::../media/transition_2n_remove_fc_nodes.png[Transition 2n移除光纖通道節點]
+image::../media/transition_2n_remove_fc_nodes.png[在過渡期間刪除 FC 節點]

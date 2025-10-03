@@ -45,14 +45,14 @@ summary: 您所使用的更新程序取決於平台機型、升級範圍和Metro
 --
 檢閱 AFF A150 ， A20 ，， AFF A220 ， FAS500f ，， FAS8200 ， FAS50 ， AFF C30 ， AFF C250 A30 ， AFF A250 ， AFF C400 ， FAS2750 ， FAS8300 ， AFF A300 ， AFF A400 ， AFF A320 ， AFF ， AFF 和 FAS8700 系統的系統更新組合。
 
-image:../media/tech-refresh-ip-group-1-updated.png[""]
+image:../media/tech-refresh-ip-group-1-updated.png["AFF和FAS第 1 組平台的系統刷新組合"]
 
 --
 .AFF 和 FAS 組合群組 2
 --
 檢閱 C60 ， A50 ， FAS70 ， FAS9000 ， AFF A700 ， AFF A90 ， AFF A900 ， AFF ， FAS9500 ， AFF A70 ， AFF C800 ， AFF ， AFF A800 C80 ， FAS90 ， AFF 和 AFF A1K 系統的系統更新組合。
 
-image:../media/tech-refresh-ip-group-2-updated.png[""]
+image:../media/tech-refresh-ip-group-2-updated.png["AFF和FAS第 2 組平台的系統刷新組合"]
 
 --
 ====
@@ -81,7 +81,7 @@ image::../media/mcc-ip-techrefresh-asa-9161.png[MetroCluster IP ASA 技術更新
 
 下表顯示 MetroCluster FC 組態中用於重新整理 AFF 或 FAS 系統的支援平台組合：
 
-image::../media/metrocluster_fc_tech_refresh.png[NetApp技術更新MetroCluster]
+image::../media/metrocluster_fc_tech_refresh.png[MetroCluster FC 技術更新支援的平台組合]
 
 
 

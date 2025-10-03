@@ -34,7 +34,7 @@ FC對SAS橋接器可將SAS儲存堆疊連接至控制器上的FC啟動器連接�
 
 下圖顯示MetroCluster 了關於此功能的簡單介紹。對於某些連線、單一線路代表元件之間的多個備援連線。不會顯示資料與管理網路連線。
 
-image::../media/mcc_hardware_architecture_both_clusters_2_node_atto.gif[MCC硬體架構兩個叢集2節點Atto]
+image::../media/mcc_hardware_architecture_both_clusters_2_node_atto.gif[雙節點MetroCluster硬體架構，兩個叢集均配備 FC 至 SAS 橋接器]
 
 * 組態包含兩個單節點叢集。
 * 每個站台都有一或多個SAS儲存設備堆疊。

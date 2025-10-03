@@ -30,7 +30,7 @@ summary: 您必須在組態中新增四個新的控制器模組和任何其他�
 
 在下列範例中、每個站台會新增兩個額外的儲存磁碟櫃、以提供儲存設備來容納新的控制器模組。
 
-image::../media/transition_2n_4_new_ip_nodes_and_shelves.png[移轉2n 4個新的IP節點和磁碟櫃]
+image::../media/transition_2n_4_new_ip_nodes_and_shelves.png[為過渡佈線新的 IP 節點和機架]
 
 .步驟
 . 視需要規劃新控制器模組和儲存櫃的定位。
@@ -588,7 +588,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
 * 節點_B_2-IP
 
 
-image::../media/transition_2n_booting_a_2_and_b_2.png[Transition 2n開機a 2和b 2]
+image::../media/transition_2n_booting_a_2_and_b_2.png[在過渡期間啟動新的 IP 節點]
 
 .步驟
 . 使用開機選項「'9c'」開機新節點。
@@ -802,7 +802,8 @@ node_A_1-IP
              Data: interface_reachable
              ICMP: interface_reachable true       true            true
 node_A_2-IP
-           cluster_B                   node_B_1-IP
+
+image::../media/transition_2n_booting_a_2_and_b_2.png["Booting new IP nodes during transition"]
              Data: interface_reachable
              ICMP: interface_reachable true       true            true
                                        node_B_2-IP

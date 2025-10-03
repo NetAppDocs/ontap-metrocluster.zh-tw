@@ -15,7 +15,7 @@ summary: 從ONTAP 功能性的問題9.8開始、您可以將工作負載和資�
 
 下圖提供此轉換程序前後的組態簡化檢視。
 
-image::../media/transition_2n_begin_to_end.png[轉換階段2n開始結束]
+image::../media/transition_2n_begin_to_end.png[從雙節點 FC 配置過渡到四節點 IP 配置]
 
 * 執行ONTAP 支援此程序的系統支援使用支援的版本。
 * 此程序會造成中斷。

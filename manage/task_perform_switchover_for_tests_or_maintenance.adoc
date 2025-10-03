@@ -13,7 +13,7 @@ summary: 如果您要測試MetroCluster 此功能或執行規劃的維護、可�
 [role="lead"]
 如果您要測試MetroCluster 此功能或執行規劃的維護、可以執行協調式切換、讓一個叢集可以完全切換至合作夥伴叢集。然後您可以修復並切換回組態。
 
-image::../media/workflow_performing_nso_and_switchback.gif[執行NSO和切換的工作流程]
+image::../media/workflow_performing_nso_and_switchback.gif[執行協商切換和切換回的工作流程]
 
 
 NOTE: 從ONTAP 功能上說起、只要使用MetroCluster NetApp System Manager、就能在不中斷運作的情況下、在不中斷運作的情況ONTAP 下、對整個流程進行切換和切換。

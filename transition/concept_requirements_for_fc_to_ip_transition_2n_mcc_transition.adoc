@@ -83,7 +83,7 @@ https://hwu.netapp.com["NetApp Hardware Universe"^]
 這可能需要額外的儲存磁碟櫃、如下圖所示。
 
 +
-image::../media/transition_2n_4_new_ip_nodes_on_the_shelves.png[在機櫃上移轉2n 4個新的IP節點]
+image::../media/transition_2n_4_new_ip_nodes_on_the_shelves.png[在現有機架上使用四個新 IP 節點進行過渡]
 
 +
 第三和第四個控制器（node_a_2-IP和node_B_2-IP）各需要額外14到18個磁碟機：
@@ -112,7 +112,7 @@ https://hwu.netapp.com["NetApp Hardware Universe"^]
 
 準備轉換時、請規劃各地點之間的差旅。請注意、當遠端節點機架安裝並連接纜線之後、您需要對節點進行序列終端機存取。在設定節點之前、「服務處理器」存取將無法使用。
 
-image::../media/workflow_2n_transition_bsaic.png[工作流程2n轉換bsaic]
+image::../media/workflow_2n_transition_bsaic.png[雙節點過渡的工作流程]
 
 
 

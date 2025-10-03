@@ -567,7 +567,7 @@ link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#removing-met
 
 完成此工作之後、叢集_A會處於作用中狀態、並為兩個站台提供資料。叢集B處於非作用中狀態、準備開始升級程序、如下圖所示。
 
-image::../media/mcc_upgrade_cluster_a_in_switchover.png[MCC升級叢集A（在切換中）]
+image::../media/mcc_upgrade_cluster_a_in_switchover.png[MetroCluster切換後，Site_B 處於非活動狀態並準備升級]
 
 .步驟
 . 切換MetroCluster 到站台A的支援、以便站台B的節點升級：
@@ -1462,7 +1462,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
 .關於這項工作
 在本工作中、您將執行切換回復作業、將MetroCluster 該組態恢復正常運作。站台上的節點仍在等待升級。
 
-image::../media/mcc_upgrade_cluster_a_switchback.png[MCC升級叢集A切換回復]
+image::../media/mcc_upgrade_cluster_a_switchback.png[MetroCluster切換後，Site_A 等待升級]
 
 .步驟
 . 在se_B上輸入「MetroCluster flexnodeshow」命令、然後檢查輸出。

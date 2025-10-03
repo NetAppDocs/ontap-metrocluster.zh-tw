@@ -78,7 +78,7 @@ NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在�
 
 您可以使用工作流程圖來協助規劃升級工作。
 
-image::../media/workflow_ip_upgrade.png[工作流程IP升級]
+image::../media/workflow_ip_upgrade.png[MetroCluster IP 配置中升級控制器的工作流程]
 
 
 
@@ -438,7 +438,7 @@ link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#removing-met
 
 完成此工作之後、Site_A會處於作用中狀態、並為兩個站台提供資料。站台_B處於非作用中狀態、準備開始升級程序。
 
-image::../media/mcc_upgrade_cluster_a_in_switchover_A900.png[在switchover A900中、MCC升級叢集A]
+image::../media/mcc_upgrade_cluster_a_in_switchover_A900.png[MetroCluster切換後，Site_B 處於非活動狀態並準備升級]
 
 .步驟
 . 切換MetroCluster 到站台A的支援、以便站台B的節點升級：
@@ -493,7 +493,7 @@ image::../media/mcc_upgrade_cluster_a_in_switchover_A900.png[在switchover A900�
 +
 .. 將CAM把手上的橘色按鈕向下推、直到解鎖為止。
 +
-image::../media/drw_9500_remove_PCM.png[控制器模組]
+image::../media/drw_9500_remove_PCM.png[從機殼中移除控制器模組：解鎖並滑出]
 
 +
 |===
@@ -524,7 +524,7 @@ image::../media/drw_9500_remove_PCM.png[控制器模組]
 .. 向下轉動CAM栓鎖、直到其處於水平位置。此時、系統會從機箱中鬆脫、並移動數英吋。
 .. 拉動模組面兩側的拉片、將NVS從機箱中移除。
 +
-image::../media/drw_a900_move-remove_NVRAM_module.png[移除模組]
+image::../media/drw_a900_move-remove_NVRAM_module.png[從機殼移除NVRAM模組：解鎖並拉出標籤]
 
 +
 |===
@@ -559,7 +559,7 @@ image::../media/drw_a900_move-remove_NVRAM_module.png[移除模組]
 . 將NVS與插槽6中機箱開孔的邊緣對齊。
 . 將NVS輕推入插槽、直到帶有字母和編號的I/O CAM栓開始與I/O CAM栓接合為止、然後將I/O CAM栓完全推入、以將NVS鎖定到位。
 +
-image::../media/drw_a900_move-remove_NVRAM_module.png[移除模組]
+image::../media/drw_a900_move-remove_NVRAM_module.png[將NVRAM模組安裝到機殼中：對齊並鎖定到位]
 
 +
 |===
@@ -583,7 +583,7 @@ image::../media/drw_a900_move-remove_NVRAM_module.png[移除模組]
 . 將控制器模組穩固地推入機箱、直到它與中間板完全接入。控制器模組完全就位時、鎖定鎖定鎖定會上升。注意：為避免損壞連接器、請勿在將控制器模組滑入機箱時過度施力。
 . 將管理連接埠和主控台連接埠連接至控制器模組。
 +
-image::../media/drw_9500_remove_PCM.png[控制器模組]
+image::../media/drw_9500_remove_PCM.png[將控制器模組安裝到機殼中：對齊、安裝和連接電纜]
 
 +
 |===
@@ -1320,7 +1320,7 @@ https://docs.netapp.com/us-en/ontap/networking/combine_physical_ports_to_create_
 
 在此工作中、您將執行切換回復作業、MetroCluster 而此功能的還原組態將恢復正常運作。站台上的節點仍在等待升級。
 
-image::../media/mcc_upgrade_cluster_a_switchback_A900.png[MCC升級叢集A切換回復A900]
+image::../media/mcc_upgrade_cluster_a_switchback_A900.png[MetroCluster切換後，Site_A 等待升級]
 
 .步驟
 . 從MetroCluster ssite _B發出「flexnodeshow」命令、然後檢查輸出。

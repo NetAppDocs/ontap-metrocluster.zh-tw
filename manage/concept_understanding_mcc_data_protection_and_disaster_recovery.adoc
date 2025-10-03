@@ -33,7 +33,7 @@ summary: 瞭解MetroCluster NetApp如何保護資料、並提供透明的故障�
 
 下圖顯示MetroCluster 了一個不實的FC組態。除了MetroCluster 叢集交換器提供HA互連之外、HA功能在靜態IP組態中是相同的。
 
-image::../media/mcc_hw_architecture_local_ha.gif[MCC HW架構本機Ha]
+image::../media/mcc_hw_architecture_local_ha.gif[MetroCluster配置中的本地 HA]
 
 .相關資訊
 link:https://docs.netapp.com/us-en/ontap/high-availability/index.html["高可用度組態"^]
@@ -83,11 +83,11 @@ NOTE: 目的地SVM在MetroCluster 整個過程中、其名稱會自動加上「`
 
 
 
-image::../media/mcc_mirroring_of_svms.gif[MCC鏡射服務]
+image::../media/mcc_mirroring_of_svms.gif[SVM 的MetroCluster鏡像]
 
 如果發生切換、則存續叢集上的遠端叢集會上線、而次要SVM會開始提供資料。
 
-image::../media/mcc_svms_after_switchover.gif[MCC切換後的服務]
+image::../media/mcc_svms_after_switchover.gif[切換後的MetroCluster SVM]
 
 切換後的遠端彈性可用度取決於MetroCluster 哪種組態類型：
 
@@ -163,7 +163,7 @@ NOTE: 切換之後、如果未鏡射的Aggregate位於DR合作夥伴節點、而
 
 IMPORTANT: 如果使用混合式Aggregate、SyncMirror 由於固態磁碟（SSD）層已滿、因此在出現故障時、效能可能會降低。
 
-image::../media/mcc_mirroring_of_pools.gif[資源池的MCC鏡射]
+image::../media/mcc_mirroring_of_pools.gif[MetroCluster儲存池鏡像]
 
 
 
@@ -185,9 +185,9 @@ image::../media/mcc_mirroring_of_pools.gif[資源池的MCC鏡射]
 
 
  a| 
-image:../media/mcc_nvram_quartering.gif[""]
+image:../media/mcc_nvram_quartering.gif["MetroCluster配置中的非揮發性緩存四分之一"]
  a| 
-image:../media/mcc_nvram_split_in_non_mcc_ha_pair.gif[""]
+image:../media/mcc_nvram_split_in_non_mcc_ha_pair.gif["非MetroCluster HA 對中的非揮發性快取拆分"]
 
 |===
 非揮發性快取儲存下列內容：
@@ -212,7 +212,7 @@ DR輔助合作夥伴是本機節點DR合作夥伴的HA合作夥伴。如果有HA
 
 例如、節點的本機快取（node_a_1）會在MetroCluster 本機和遠端鏡射到各個景點。下圖顯示node_a_1的本機快取鏡射至HA合作夥伴（node_a_2）和DR合作夥伴（node_B_1）：
 
-image::../media/mcc_nvram_mirroring_example.gif[MCC NVRAM鏡射範例]
+image::../media/mcc_nvram_mirroring_example.gif[MetroCluster NVRAM鏡像範例]
 
 
 
@@ -222,7 +222,7 @@ image::../media/mcc_nvram_mirroring_example.gif[MCC NVRAM鏡射範例]
 
 例如、node_B_1失敗、由node_B_2接管。node_a_1的本機快取無法再鏡射至node_B_1。鏡射會切換至DR輔助合作夥伴node_B_2。
 
-image::../media/mcc_nvram_mirroring_example_dynamic_dr_aux.gif[MCC NVRAM鏡射範例動態DR輔助]
+image::../media/mcc_nvram_mirroring_example_dynamic_dr_aux.gif[具有 DR 輔助功能的MetroCluster NVRAM映像]
 
 
 
@@ -557,7 +557,7 @@ DR Home擁有者
 |===
 下圖和表格提供一個範例、說明節點A_1磁碟集區1中實體位於叢集B的磁碟擁有權如何變更
 
-image::../media/mcc_disk_ownership.gif[MCC磁碟擁有權]
+image::../media/mcc_disk_ownership.gif[MetroCluster磁碟所有權]
 
 |===
 
@@ -839,7 +839,7 @@ link:../manage/task_verifiy_that_your_system_is_ready_for_a_switchover.html["修
 
 在執行《示例》9.4及更早版本的靜態IP組態上、仍需要手動修復命令MetroCluster 。ONTAP
 
-image::../media/mcc_so_sb_with_autoheal.gif[MCC sso sb、含自動修復功能]
+image::../media/mcc_so_sb_with_autoheal.gif[MetroCluster切換並切換回自動修復]
 
 
 
@@ -865,7 +865,7 @@ image::../media/mcc_so_sb_with_autoheal.gif[MCC sso sb、含自動修復功能]
 
 
 
-image::../media/mcc_uso_with_autoheal.gif[含自動修復功能的MCC uso]
+image::../media/mcc_uso_with_autoheal.gif[MetroCluster具有自動修復功能的計劃外切換]
 
 
 

@@ -25,11 +25,11 @@ summary: 規劃MetroCluster 您的需求時、您應該瞭解硬體元件及其�
 
 下圖顯示八節點MetroCluster 的節點的結構描述：
 
-image::../media/mcc_dr_groups_8_node.gif[MCC DR群組8節點]
+image::../media/mcc_dr_groups_8_node.gif[MetroCluster DR 組 8 節點]
 
 下圖顯示了四節點MetroCluster 的節點的架構。
 
-image::../media/mcc_dr_groups_4_node.gif[MCC DR群組4個節點]
+image::../media/mcc_dr_groups_4_node.gif[MetroCluster DR 群組四個節點]
 
 
 
@@ -83,11 +83,11 @@ SVM組態會透過叢集對等網路複寫。
 
 下圖顯示四節點Fabric MetroCluster 的精簡組態檢視。對於某些連線、單一線路代表元件之間的多個備援連線。不會顯示資料與管理網路連線。
 
-image::../media/mcc_hardware_architecture_both_clusters.gif[MCC硬體架構兩個叢集]
+image::../media/mcc_hardware_architecture_both_clusters.gif[兩個叢集的四節點結構MetroCluster配置]
 
 下圖顯示單MetroCluster 一支援叢集中連線能力的更詳細檢視（兩個叢集的組態相同）：
 
-image::../media/mcc_hardware_architecture_cluster_a_with_7500n.gif[MCC硬體架構叢集A、含7500n]
+image::../media/mcc_hardware_architecture_cluster_a_with_7500n.gif[MetroCluster集群 A 與 FibreBridge 7500N 橋接器的連接]
 
 
 
@@ -95,7 +95,7 @@ image::../media/mcc_hardware_architecture_cluster_a_with_7500n.gif[MCC硬體架�
 
 下圖顯示雙節點Fabric MetroCluster 的組態簡化檢視。對於某些連線、單一線路代表元件之間的多個備援連線。不會顯示資料與管理網路連線。
 
-image::../media/mcc_hardware_architecture_both_clusters_2_node_fabric.gif[MCC硬體架構兩個叢集2節點架構]
+image::../media/mcc_hardware_architecture_both_clusters_2_node_fabric.gif[雙節點結構MetroCluster配置兩個集群]
 
 雙節點組態由兩個叢集組成、每個地理區分隔的站台各有一個叢集。叢集_A位於第一個MetroCluster 站台。叢集B位於第二MetroCluster 個站台。每個站台都有一個SAS儲存堆疊。支援其他儲存堆疊、但每個站台只會顯示一個。
 
@@ -104,7 +104,7 @@ NOTE: 在雙節點組態中、節點並未設定為HA配對。
 
 下圖顯示單MetroCluster 一支援叢集中連線能力的更詳細檢視（兩個叢集的組態相同）：
 
-image::../media/mcc_hardware_architecture_cluster_a_2_node_with_7500n.gif[MCC硬體架構叢集A 2節點、含7500n]
+image::../media/mcc_hardware_architecture_cluster_a_2_node_with_7500n.gif[雙節點MetroCluster叢集 A 與 FibreBridge 7500N 橋接器的連接]
 
 雙節點組態包括下列連線：
 

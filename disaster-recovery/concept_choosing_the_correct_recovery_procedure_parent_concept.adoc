@@ -132,7 +132,7 @@ link:task_recover_from_a_multi_controller_and_or_storage_failure.html["從多控
 此案例MetroCluster 也適用於四節點的不完整組態。
 
 +
-image::../media/mcc_dr_groups_8_node_with_a_single_controller_failure.gif[MCC DR會將8個節點組成群組、並出現單一控制器故障]
+image::../media/mcc_dr_groups_8_node_with_a_single_controller_failure.gif[具有單一控制器故障的八節點MetroCluster DR 群組]
 
 
 
@@ -146,7 +146,7 @@ link:task_recover_from_a_multi_controller_and_or_storage_failure.html["從多控
 
 此案例MetroCluster 也適用於四節點的不完整組態。
 
-image::../media/mcc_dr_groups_8_node_with_a_multi_controller_failure.gif[MCC DR會將8個節點分組、並出現多個控制器故障]
+image::../media/mcc_dr_groups_8_node_with_a_multi_controller_failure.gif[具有多個控制器故障的八節點MetroCluster DR 群組]
 
 
 
@@ -167,7 +167,7 @@ link:task_recover_from_a_multi_controller_and_or_storage_failure.html["從多控
 
 
 
-image::../media/mcc_dr_groups_8_node_with_two_single_controller_failures.gif[MCC DR會將8個節點群組、其中有兩個單一控制器故障]
+image::../media/mcc_dr_groups_8_node_with_two_single_controller_failures.gif[八節點MetroCluster DR 組，其中兩個單控制器發生故障]
 
 
 
@@ -181,7 +181,7 @@ link:task_recover_from_a_multi_controller_and_or_storage_failure.html["從多控
 
 https://docs.netapp.com/platstor/index.jsp["ONTAP 硬體系統文件"^]
 
-image::../media/mcc_dr_groups_8_node_with_a_3_controller_failure.gif[MCC DR會將8個節點分組、並出現3個控制器故障]
+image::../media/mcc_dr_groups_8_node_with_a_3_controller_failure.gif[八節點MetroCluster DR 組，其中三個控制器發生故障]
 
 
 
@@ -199,4 +199,4 @@ link:task_recover_from_a_multi_controller_and_or_storage_failure.html["從多控
 
 
 
-image::../media/mcc_dr_groups_2_node_with_a_single_controller_failure.gif[MCC DR會將2個節點與單一控制器故障進行分組]
+image::../media/mcc_dr_groups_2_node_with_a_single_controller_failure.gif[具有單一控制器故障的雙節點MetroCluster DR 群組]

@@ -93,7 +93,7 @@ https://hwu.netapp.com["NetApp Hardware Universe"]
 
 準備轉換時、請規劃各地點之間的差旅。請注意、當遠端節點機架安裝並連接纜線之後、您需要對節點進行序列終端機存取。在設定節點之前、「服務處理器」存取將無法使用。
 
-image::../media/workflow_2n_transition_old_shelves_not_supported.png[不支援工作流程2n移轉舊磁碟櫃]
+image::../media/workflow_2n_transition_old_shelves_not_supported.png[舊貨架不受支援時的過渡工作流程]
 
 
 
@@ -115,7 +115,7 @@ image::../media/workflow_2n_transition_old_shelves_not_supported.png[不支援�
 .關於這項工作
 下圖顯示MetroCluster 連接到該功能的新型磁碟櫃。
 
-image::../media/transition_2n_unsupported_old_new_shelves_to_old_controllers.png[將不受支援的舊新磁碟櫃移轉至舊控制器]
+image::../media/transition_2n_unsupported_old_new_shelves_to_old_controllers.png[過渡期間將新機架佈線到舊控制器]
 
 .步驟
 . 停用node_a_1-FC和node_a_2-FC上的磁碟自動指派：

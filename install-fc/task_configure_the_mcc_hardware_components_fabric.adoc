@@ -13,4 +13,4 @@ summary: 必須在兩個地理站台上實際安裝、連接及設定支援的�
 [role="lead"]
 必須在兩個地理站台上實際安裝、連接及設定支援的元件。MetroCluster
 
-image::../media/workflow_hardware_installation_and_configuration_4_node_or_2_node_fabric.gif[工作流程硬體安裝與組態4節點或2節點架構]
+image::../media/workflow_hardware_installation_and_configuration_4_node_or_2_node_fabric.gif[工作流程硬體安裝和配置四節點或雙節點結構]

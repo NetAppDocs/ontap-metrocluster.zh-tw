@@ -17,7 +17,7 @@ summary: 從支援VMware 9.5開始ONTAP 、ONTAP 支援使用虛擬IP（VIP）�
 
 http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-A8EF6D34-1717-4813-BBFA-AA33E104CF6F.html["*設定虛擬IP（VIP）lifs*"]
 
-image::../media/vip_and_bgp_in_metrocluster_2.png[VIP與BGP的MetroCluster 功能2]
+image::../media/vip_and_bgp_in_metrocluster_2.png[MetroCluster中的虛擬 IP 和邊界網關協議]
 
 *不受限制* ONTAP
 

@@ -18,7 +18,7 @@ summary: 控制器FC-VI介面卡必須直接連接至彼此。控制器SAS連接
 .步驟
 . 連接FC-VI連接埠。
 +
-image::../media/mcc_cabling_fc_vi_controller_to_partner.gif[MCC將光纖通道VI控制器連接至合作夥伴]
+image::../media/mcc_cabling_fc_vi_controller_to_partner.gif[MetroCluster將 FC VI 控制器連接到合作夥伴]
 
 +
 上圖為典型的代表性纜線連線。特定的FC-VI連接埠會因控制器模組而異。
@@ -39,6 +39,6 @@ image::../media/mcc_cabling_fc_vi_controller_to_partner.gif[MCC將光纖通道VI
 下圖顯示連線。視控制器模組上可用的SAS和FC-VI連接埠而定、您的連接埠使用量可能會有所不同。
 
 +
-image::../media/mcc_two_node_optical_sas_space_configuration.png[MCC雙節點光纖SAS空間組態]
+image::../media/mcc_two_node_optical_sas_space_configuration.png[雙節點光纖 SAS 配置]
 
 
