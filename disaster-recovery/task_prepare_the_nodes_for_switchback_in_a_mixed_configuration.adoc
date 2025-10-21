@@ -92,9 +92,9 @@ NOTE: 如果您未清除已用替換控制器的NVRAM內容、您可能會看到
 +
 《停止》
 
-.. 將節點開機至「維護：
+.. 將節點啟動到維護模式：
 +
-"mode:boot_ONTAP maint"
+Boot_ONTAP maint
 
 
 
@@ -148,7 +148,7 @@ Group Cluster Node               State          Mirroring Mode
 +
 [listing]
 ----
-node_A_1::*> halt -node _node-name_
+siteA::*> halt -node <node-name>
 ----
 . 檢查是否已設定下列bootargs：
 +

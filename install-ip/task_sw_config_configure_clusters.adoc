@@ -598,17 +598,27 @@ Clusters cluster02 and cluster01 are peered.
 ----
 cluster01::> cluster peer show -instance
 
-                               Peer Cluster Name: cluster02
-                   Remote Intercluster Addresses: 192.140.112.101, 192.140.112.102
-              Availability of the Remote Cluster: Available
-                             Remote Cluster Name: cluster2
-                             Active IP Addresses: 192.140.112.101, 192.140.112.102
-                           Cluster Serial Number: 1-80-123456
-                  Address Family of Relationship: ipv4
-            Authentication Status Administrative: no-authentication
-               Authentication Status Operational: absent
-                                Last Update Time: 02/05 21:05:41
-                    IPspace for the Relationship: Default
+                       Peer Cluster Name: cluster02
+                            Cluster UUID: b07036f2-7d1c-11f0-bedb-d039ea48b059
+           Remote Intercluster Addresses: 192.140.112.101, 192.140.112.102
+      Availability of the Remote Cluster: Available
+                     Remote Cluster Name: cluster02
+                     Active IP Addresses: 192.140.112.101, 192.140.112.102
+                   Cluster Serial Number: 1-80-123456
+                    Remote Cluster Nodes: cluster02-01, cluster02-02,
+                   Remote Cluster Health: true
+                 Unreachable Local Nodes: -
+             Operation Timeout (seconds): 60
+          Address Family of Relationship: ipv4
+    Authentication Status Administrative: use-authentication
+       Authentication Status Operational: ok
+                 Timeout for RPC Connect: 10
+                Timeout for Update Pings: 5
+                        Last Update Time: 10/9/2025 10:15:29
+            IPspace for the Relationship: Default
+Proposed Setting for Encryption of Inter-Cluster Communication: -
+Encryption Protocol For Inter-Cluster Communication: tls-psk
+  Algorithm By Which the PSK Was Derived: jpake
 ----
 . 檢查對等關係中節點的連線能力和狀態：
 +
@@ -2214,12 +2224,12 @@ controller_A_2        controller_A_2_aggr0
 18 entries were displayed.
 ----
 +
-以下範例顯示MetroCluster 效能良好的四節點MetroCluster 功能組態的畫面檢查叢集show命令輸出。這表示叢集已準備好在必要時執行協調式切換。
+以下範例顯示MetroCluster 「不知道叢集show」命令輸出、可確保四節點MetroCluster 的效能正常。這表示叢集已準備好在必要時執行協調式切換。
 
 +
 [listing]
 ----
-
+cluster_A::> metrocluster check cluster show
 
 Cluster               Check                           Result
 --------------------- ------------------------------- ---------

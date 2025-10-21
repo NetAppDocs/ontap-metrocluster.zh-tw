@@ -20,7 +20,7 @@ summary: 您可以測試失敗案例、以確認MetroCluster 正確操作的版�
 您可以測試議定（計畫性）切換作業、以確認不中斷的資料可用度。
 
 .關於這項工作
-此測試會將叢集切換至第二個資料中心、以驗證資料可用度不受影響（Microsoft伺服器訊息區（SMB）和Solaris Fibre Channel傳輸協定除外）。
+此測試驗證了將叢集切換到第二個資料中心後資料可用性不會受到影響（SMB 和光纖通道協定除外）。
 
 這項測試大約需要30分鐘。
 
@@ -100,8 +100,6 @@ Remote: cluster_B               not-reachable          -
 +
 [listing]
 ----
-cluster_A::>  metrocluster operation show
-
 cluster_A::> metrocluster operation show
   Operation: switchover
       State: successful
@@ -175,7 +173,7 @@ Group Cluster Node               State          Mirroring Mode
               node_A_1         configured     enabled   heal roots completed
       cluster_B
               node_B_2         unreachable    -         switched over
-42 entries were displayed.metrocluster operation show
+42 entries were displayed.
 ----
 +
 如果自動修復作業因故失敗、您必須MetroCluster 手動發出「還原」命令、如同ONTAP 在更新版更新版之前的ONTAP 版本中所做的一樣。您可以使用「MetroCluster 還原作業展示」和「MetroCluster 還原作業歷史記錄show -instance」命令來監控修復狀態、並判斷故障原因。

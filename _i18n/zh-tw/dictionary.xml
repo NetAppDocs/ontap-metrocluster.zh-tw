@@ -731,7 +731,6 @@
   <block id="fb8e693464cba72ddaee462f90becf33" category="paragraph">「不需要節點顯示」MetroCluster</block>
   <block id="ab3f375bc99623514d0ee5394dabbe3e" category="admonition">「示例檢查show」命令顯示最近執行的「示例檢查run」命令的結果。MetroCluster MetroCluster在MetroCluster 使用「MetroCluster show」命令之前、請務必先執行「支援檢查執行」命令、以便顯示最新的資訊。</block>
   <block id="4f231b4fb4fb8bbd617c648b5efd351f" category="paragraph">以下範例顯示MetroCluster 「用作『用作檢查集合式show’命令輸出、以確保四節點MetroCluster 的效能正常運作：</block>
-  <block id="2e012ade7bab556f0392337c78739376" category="paragraph">以下範例顯示MetroCluster 效能良好的四節點MetroCluster 功能組態的畫面檢查叢集show命令輸出。這表示叢集已準備好在必要時執行協調式切換。</block>
   <block id="4344cf9672839a368c8fd958fef1ec6a" category="inline-link">網路與LIF管理</block>
   <block id="ccc25c1a9a6f63d4acf6c9390b850b64" category="section-title">正在完成ONTAP 功能組態設定</block>
   <block id="938a9f49acfde2902a8737d1aadbf6a1" category="paragraph">設定、啟用及檢查MetroCluster 完整套組態後、您可以視ONTAP 需要新增額外的SVM、網路介面及其他功能、以繼續完成叢集組態。</block>
@@ -768,7 +767,6 @@
   <block id="feda56ed0396074f051138ea4466f982" category="doc">測試MetroCluster 此功能組態</block>
   <block id="397065d1ea76a7267c1165f18aff1479" category="section-title">正在驗證協調的切換</block>
   <block id="03daa0db748f01eb3873a439b3ee1ab5" category="paragraph">您可以測試議定（計畫性）切換作業、以確認不中斷的資料可用度。</block>
-  <block id="3b84985a3046a49bcea85f56e3a28bac" category="paragraph">此測試會將叢集切換至第二個資料中心、以驗證資料可用度不受影響（Microsoft伺服器訊息區（SMB）和Solaris Fibre Channel傳輸協定除外）。</block>
   <block id="224eed3317652f7fd4510c7cd1f9c926" category="paragraph">這項測試大約需要30分鐘。</block>
   <block id="962f0cdcd4aeaa5d7a845c907458b869" category="paragraph">此程序預期結果如下：</block>
   <block id="1faa3b4e66d97f34777f91b4ea9930d9" category="list-text">「不再需要切換」命令會顯示警告提示字元。MetroCluster</block>
@@ -4616,8 +4614,6 @@
   <block id="086931408c5e31d7ddeb337f5faf83eb" category="paragraph">「aggr mirror root-agg-name」</block>
   <block id="45793c6373c7317ce40fb3f662407b87" category="list-text">將未擁有的磁碟指派給本機節點上的Pool0</block>
   <block id="f433c39c3c339b913b2223e31d633f9d" category="list-text">返回維護模式。</block>
-  <block id="b89bea07847accf12561ace475459c4d" category="list-text">將節點開機至「維護：</block>
-  <block id="fd02d447099008ddc827133dc034246f" category="paragraph">"mode:boot_ONTAP maint"</block>
   <block id="3c5b2b94f65ffc6fc4f76f89cd80b62b" category="list-text">刪除信箱磁碟的內容：</block>
   <block id="7f7deb46e1585e846e2fd054b1b2af5a" category="paragraph">《破壞本地的信箱》</block>
   <block id="77036813f81882d81f97721da98db74b" category="list-text">停止節點：+「halt」</block>
@@ -11764,8 +11760,6 @@
   <block id="daf3fcb291d6eb9e42a7777197caa458" category="sidebar">將 MetroCluster FC 轉換為 MetroCluster IP</block>
   <block id="822970998ef8866cd59ed6ba8d63af83" category="sidebar">升級MetroCluster RCF檔案</block>
   <block id="b7c02f1bc7ffc889ddb9e99702663c56" category="sidebar">Atto橋接韌體</block>
-  <block id="ddac5beff5f77bf22595caa98bac08f9" category="sidebar">光纖橋接器7600N</block>
-  <block id="dcb741f9e6e5d6050aeb3d8fd347e9fd" category="sidebar">FiberBridge 7500N</block>
   <block id="dfcc398099d6a64026e51ab282e16253" category="sidebar">更多資源</block>
   <block id="fa0344a10c89a05b4e9232391d5feb01" category="sidebar">NetApp Config Advisor</block>
   <block id="3f2b90ec5a9b43745b9c8c9fedf48d8d" category="sidebar">NetApp支援知識庫</block>
@@ -13815,7 +13809,6 @@
   <block id="912e887f8c2036c3f03ac7df63957dfd" category="paragraph">9336C-FX2（36埠）</block>
   <block id="5f972a786e3a36fb039bc945267e120a" category="paragraph">3132Q-V</block>
   <block id="f403fff2bbc7f3e506dae47b9dff52fc" category="paragraph">3232C</block>
-  <block id="addb9e70976c2f94b8ccfc3736a31888" category="paragraph-title">重要資訊</block>
   <block id="38c9e66a6eb25313e0ea3390ba7ee1fc" category="cell">如果您現有的 MetroCluster 包含...</block>
   <block id="afe6ad7caef50aaad15afb83c6f40ca0" category="cell">您要新增的平台是...</block>
   <block id="12f30f47d5034530ccaa816ade9953fc" category="paragraph">使用*共享集群/HA 連接埠*的 AFF 系統：</block>
@@ -14423,4 +14416,11 @@
   <block id="55eb6bfcca1bd3820b0fdab3d788f833" category="image-alt">將NVRAM模組安裝到機殼中：對齊並鎖定到位</block>
   <block id="40a8cc8505d7467bde3321410a6e4017" category="image-alt">將控制器模組安裝到機殼中：對齊、安裝和連接電纜</block>
   <block id="ede06bff35d481aeb275fc59e8e85067" category="image-alt">MetroCluster切換後，Site_A 等待升級</block>
+  <block id="cee412eec19a9c7ecf8848f3e299f815" category="list-text">將節點啟動到維護模式：</block>
+  <block id="a9efd65de6ec4fcf881629fcb763598c" category="paragraph">此測試驗證了將叢集切換到第二個資料中心後資料可用性不會受到影響（SMB 和光纖通道協定除外）。</block>
+  <block id="85d885cec8ed47ee2262192224675e42" category="paragraph-title">如果您要新增較舊的平台模型，則需要注意以下重要訊息</block>
+  <block id="5176f2410e7713f8043052235a3684ca" category="inline-link-macro">設定所需的啟動參數</block>
+  <block id="101589f08b3d384effc16cfe928ff010" category="admonition">*每次升級控制器時，都必須按照說明執行此程序。 *當新平台發佈時，可能會有新的或修改後的步驟需要遵循。例如，當升級到ONTAP 9.15.1 或更高版本中引入的平台時，您必須 <block ref="c06c0a0b6c863a89cb5464010bbb6325" category="inline-link-macro-rx"></block> 並執行其他附加步驟以確保升級成功。</block>
+  <block id="362bfa10bf4c8597f25d4428db1f1ff6" category="admonition">*每次升級控制器時，都必須按照說明執行此程序。 *當新平台發佈時，可能會有新的或修改後的步驟需要遵循。例如，當升級到ONTAP 9.15.1 或更高版本中引入的平台時，您必須 <block ref="cecfc2493a1700137e5c8906925909ad" category="inline-link-macro-rx"></block> 並執行其他附加步驟以確保升級成功。</block>
+  <block id="8fe05c00237e990eab631a7b042cf93c" category="sidebar">ATTO FibreBridge 韌體下載</block>
 </blocks>
