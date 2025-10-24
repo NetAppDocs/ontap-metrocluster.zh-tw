@@ -11156,13 +11156,11 @@
   <block id="b6c12395a961cf95058c6e4d4412ac09" category="paragraph">下表為 MetroCluster 相容的交換器提供平台專屬的網路速度和交換器連接埠模式。您應該根據表格設定交換器連接埠模式。</block>
   <block id="8c425f952493015588fb91113b5b2dd8" category="summary">本節包含在所有 MetroCluster IP 組態和網路拓撲上傳輸 MetroCluster 流量的交換器間連結（ ISL ）需求。</block>
   <block id="422a6c8c8d23cb29ed822adac0da8cd9" category="paragraph">在所有 MetroCluster IP 組態和網路拓撲上傳輸 MetroCluster 流量的交換器間連結（ ISL ）具有特定需求。這些要求適用於所有承載 MetroCluster 流量的 ISL 、無論 ISL 是直接的還是在客戶交換器之間共用。</block>
-  <block id="78464639db6e6acf657d9d576a0f2888" category="section-title">一般 MetroCluster ISL 要求</block>
   <block id="a5c426f5b72cbfd96a6dec4a6e3046d2" category="paragraph">以下內容適用於所有 MetroCluster IP 組態上的 ISL ：</block>
   <block id="f2fe3be43c081827bf52c1013416d414" category="list-text">兩個 Fabric 都必須有相同數量的 ISL 。</block>
   <block id="baf55d93093b54950152b6be3f9bfec2" category="list-text">一個 Fabric 上的 ISL 必須都是相同的速度和長度。</block>
   <block id="4b00dc01ca120693f1539bf736f11069" category="list-text">兩種架構中的 ISL 必須相同的速度和長度。</block>
   <block id="ef6ab3e28db1093c7315b30edeb84730" category="list-text">Fabric 1 和 Fabric 2 之間的最大支援距離差異為 20 公里或 0.2 毫秒。</block>
-  <block id="ddf41f2636c98d00a2698837f55a3f74" category="list-text">ISL 速度必須至少為 10Gbps 。</block>
   <block id="cb806a9b25dfb1d4470413a3c2dd9944" category="list-text">每個架構必須至少有一個 10Gbps ISL 連接埠。</block>
   <block id="25b13aa97e6e9eb228478bfddbcc84e9" category="paragraph">以下內容適用於站台 _A 和站台 _B 的 MetroCluster IP 交換器之間的往返流量、 MetroCluster 組態處於穩定狀態作業：</block>
   <block id="ae36a5fd21eb894eb914590a632f59c9" category="list-text">隨著兩MetroCluster 個不景點之間的距離增加、延遲也會增加、通常介於每100公里（62英哩）往返延遲1毫秒的範圍內。延遲也取決於網路服務層級協議（ SLA ）、例如 ISL 連結的頻寬、封包丟棄率和網路上的抖動。低頻寬、高抖動和隨機封包掉落會導致交換器或控制器模組上的 TCP 引擎產生不同的恢復機制、以成功傳輸封包。這些恢復機制可提高整體延遲。如需有關組態的往返延遲和最大距離要求的詳細資訊、請參閱 <block ref="44be38b301d3bfae89cdec57afffd9be" category="inline-link-macro-rx"></block></block>
@@ -14423,4 +14421,8 @@
   <block id="101589f08b3d384effc16cfe928ff010" category="admonition">*每次升級控制器時，都必須按照說明執行此程序。 *當新平台發佈時，可能會有新的或修改後的步驟需要遵循。例如，當升級到ONTAP 9.15.1 或更高版本中引入的平台時，您必須 <block ref="c06c0a0b6c863a89cb5464010bbb6325" category="inline-link-macro-rx"></block> 並執行其他附加步驟以確保升級成功。</block>
   <block id="362bfa10bf4c8597f25d4428db1f1ff6" category="admonition">*每次升級控制器時，都必須按照說明執行此程序。 *當新平台發佈時，可能會有新的或修改後的步驟需要遵循。例如，當升級到ONTAP 9.15.1 或更高版本中引入的平台時，您必須 <block ref="cecfc2493a1700137e5c8906925909ad" category="inline-link-macro-rx"></block> 並執行其他附加步驟以確保升級成功。</block>
   <block id="8fe05c00237e990eab631a7b042cf93c" category="sidebar">ATTO FibreBridge 韌體下載</block>
+  <block id="4500ea599da00d6db7bf0ffa4e13554f" category="section-title">MetroCluster ISL 要求</block>
+  <block id="1e2cb5bcdb8947c91d9b70a1c5ee21c0" category="list-text">所需的最低 ISL 速度取決於平台型號：</block>
+  <block id="fe25d0e834bbf213fee0bc910f4a7054" category="list-text">在AFF A1K和AFF A90系統上，ISL 速度必須至少為 100Gbps。使用不同的 ISL 速度需要功能產品差異請求 (FPVR)。若要提交 FPVR，請聯絡您的銷售團隊。</block>
+  <block id="9260215cd28aa0daaf49857a4307ca43" category="list-text">在所有其他平台上，ISL 速度必須至少為 10Gbps。</block>
 </blocks>
