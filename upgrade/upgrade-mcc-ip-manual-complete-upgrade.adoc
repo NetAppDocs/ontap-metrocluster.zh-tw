@@ -95,7 +95,7 @@ NOTE: 此任務僅適用於某些升級組合。如需詳細資訊、請參閱 l
  a| 
 Tiebreaker
  a| 
-link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#adding-metrocluster-configurations["新增MetroCluster 功能"]。
+link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#add-metrocluster-configurations["新增MetroCluster 功能"]。
 
 
 

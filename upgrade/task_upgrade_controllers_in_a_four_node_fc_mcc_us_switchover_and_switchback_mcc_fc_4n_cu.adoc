@@ -521,7 +521,7 @@ dr-group-id cluster    node      node-systemid dr-partner-systemid
 .步驟
 . 從MetroCluster Tiebreaker軟體移除現有的部分組態。
 +
-link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#removing-metrocluster-configurations["移除MetroCluster 不完整的組態"]
+link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#remove-metrocluster-configurations["移除MetroCluster 不完整的組態"]
 
 . 從MetroCluster 任何可啟動切換的第三方應用程式移除現有的功能。
 +

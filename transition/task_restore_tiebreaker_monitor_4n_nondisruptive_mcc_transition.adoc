@@ -25,7 +25,7 @@ summary: 完成完整個流程的流程轉換之後、您可以使用斷路器�
  a| 
 Tiebreaker
  a| 
-link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#adding-metrocluster-configurations["新增MetroCluster 功能"]
+link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#add-metrocluster-configurations["新增MetroCluster 功能"]
 
 
 

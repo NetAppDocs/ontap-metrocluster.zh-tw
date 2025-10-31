@@ -59,7 +59,7 @@ link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#commands-for
  a| 
 Tiebreaker
  a| 
-link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#adding-metrocluster-configurations["新增MetroCluster 功能"] 在「_Estriebreaker MetroCluster 安裝與組態」一節中。
+link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#add-metrocluster-configurations["新增MetroCluster 功能"] 在_MetroCluster Tiebreaker 安裝和配置_部分。
 
 
 

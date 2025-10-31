@@ -741,7 +741,7 @@ https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp
 .步驟
 . 從MetroCluster Tiebreaker軟體移除現有的部分組態。
 +
-link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#removing-metrocluster-configurations["移除MetroCluster 部分組態"]
+link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#remove-metrocluster-configurations["移除MetroCluster 部分組態"]
 
 . 從MetroCluster 任何可啟動切換的第三方應用程式移除現有的功能。
 +

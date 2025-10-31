@@ -447,7 +447,7 @@ dr-group-id cluster    node           node-systemid ha-partner-systemid dr-partn
 .步驟
 . 從MetroCluster Tiebreaker軟體移除現有的部分組態。
 +
-link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#removing-metrocluster-configurations["移除MetroCluster 部分組態"]
+link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#remove-metrocluster-configurations["移除MetroCluster 部分組態"]
 
 . 從MetroCluster 任何可啟動切換的第三方應用程式移除現有的功能。
 +
@@ -1408,5 +1408,5 @@ Cluster_A:: node_A_1 (non-overridable veto): DR partner NVLog mirroring is not o
 
 如果MetroCluster 先前已將此組態設定為由斷路器軟體進行監控、您可以還原斷路器連線。
 
-. 請依照下列步驟操作： link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#adding-metrocluster-configurations["新增MetroCluster 功能"] 在「_Estriebreaker MetroCluster 安裝與組態」一節中。
+. 請依照以下步驟操作： link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#add-metrocluster-configurations["新增MetroCluster 功能"] 在_MetroCluster Tiebreaker 安裝和配置_部分。
 

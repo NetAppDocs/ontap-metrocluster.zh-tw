@@ -402,7 +402,7 @@ image::../media/mcc_dr_group_c5.png[最終的八節點MetroCluster配置]
  a| 
 Tiebreaker
  a| 
-link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#adding-metrocluster-configurations["新增MetroCluster 功能"] 在_ MetroCluster 資料斷路器安裝與組態_中。
+link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#add-metrocluster-configurations["新增MetroCluster 功能"] 在_MetroCluster決勝規則安裝和配置_中。
 
 
 
