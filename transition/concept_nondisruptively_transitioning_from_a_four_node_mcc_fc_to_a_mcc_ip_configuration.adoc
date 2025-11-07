@@ -15,9 +15,9 @@ summary: 從 ONTAP 9.13.1 開始、您可以將工作負載和資料從現有的
 
 從 ONTAP 9.13.1 開始、此程序在 MetroCluster 和磁碟機櫃連接至相同 IP 交換器（共享儲存交換器組態）的 MetroCluster IP 組態中受到支援。
 
-從 ONTAP 9.13.1 開始、您可以將工作負載和資料從現有的八節點 MetroCluster FC 組態、無中斷地移轉至新的 MetroCluster IP 組態。
+從ONTAP 9.13.1 開始，您可以將工作負載和資料從現有的八節點MetroCluster FC 設定無中斷地遷移到新的八節點MetroCluster IP 設定。您可以使用此程序轉換四節點 FC DR 群組，刪除空的 FC DR 群組，然後對第二個 FC DR 群組重複此程序。 
 
-從 ONTAP 9.8 開始、您可以將工作負載和資料從現有的四節點 MetroCluster FC 組態、無中斷地移轉至新的 MetroCluster IP 組態。
+從ONTAP 9.8 開始，您可以將工作負載和資料從現有的四節點MetroCluster FC 配置無中斷地遷移到新的四節點MetroCluster IP 配置。完成過渡後，如果需要，您可以擴展到八節點MetroCluster IP 配置。看link:../upgrade/task_expand_a_four_node_mcc_ip_configuration.html["展開 MetroCluster IP 組態"]。
 
 * 此程序不中斷營運。
 +
@@ -28,6 +28,10 @@ summary: 從 ONTAP 9.13.1 開始、您可以將工作負載和資料從現有的
 如果您有雙節點MetroCluster 的不含功能的FC組態、請參閱 link:concept_choosing_your_transition_procedure_mcc_transition.html["選擇您的轉換程序"]。
 
 * 本程序說明轉換一個四節點 FC DR 群組所需的步驟。如果您有八節點組態（兩個 FC DR 群組）、則必須針對每個 FC DR 群組重複整個程序。
++
+
+NOTE: 當您依照此流程新增或刪除 DR 群組時，必須先驗證 DR 群組的新增或刪除是否成功，然後再新增或刪除另一個 DR 群組。
+
 * 您必須符合所有要求、並遵循程序中的所有步驟。
 
 

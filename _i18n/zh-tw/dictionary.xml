@@ -3769,7 +3769,6 @@
   <block id="1a6ef31c02bc656e4fbac4327c5198d9" category="cell">不中斷營運或不中斷營運</block>
   <block id="5a2ebfb8baa378cfcfcba58bbb1380c2" category="cell">需求</block>
   <block id="b8910962b1d031cc1eb8e8ad588c4c48" category="paragraph">不中斷營運</block>
-  <block id="b1967383562a98a66ed0eff3ea640595" category="paragraph">新平台支援新的儲存櫃。</block>
   <block id="2380f44f4dcec1f84b76f71d467c0c65" category="inline-link-macro">不中斷地從MetroCluster 一個不中斷的支援FC移轉至MetroCluster 一個支援功能性的IP組態ONTAP （版本號：9.8及更新版本）</block>
   <block id="5c85f685c62c106f7c5565f5f9efa724" category="paragraph">兩個節點</block>
   <block id="fb36a3d5cdf2e3b5ecef9b3c9fbab504" category="paragraph">顛覆性</block>
@@ -10547,7 +10546,6 @@
   <block id="7bfd4ffe50f69a1805344bce9b252c81" category="section-title">轉換程序工作流程</block>
   <block id="feb6447b54e85b35757c82bf8e07abf7" category="summary">從 ONTAP 9.13.1 開始、您可以將工作負載和資料從現有的八節點 MetroCluster FC 組態、無中斷地移轉至新的 MetroCluster IP 組態。</block>
   <block id="3d24a5eddf097cddc7e369398b35f959" category="paragraph">您可以在不中斷營運的情況下、將工作負載和資料從現有的 MetroCluster FC 組態轉換為新的 MetroCluster IP 組態。</block>
-  <block id="31c4d6a80fe871ada10a219d5727c166" category="paragraph">從 ONTAP 9.8 開始、您可以將工作負載和資料從現有的四節點 MetroCluster FC 組態、無中斷地移轉至新的 MetroCluster IP 組態。</block>
   <block id="1bf2c57ed29fc24c2ccb26dcba0c45be" category="list-text">此程序僅適用於四節點和八節點 MetroCluster FC 組態。</block>
   <block id="99e6dcb4734e7eef8858b52e3c36d08c" category="list-text">本程序說明轉換一個四節點 FC DR 群組所需的步驟。如果您有八節點組態（兩個 FC DR 群組）、則必須針對每個 FC DR 群組重複整個程序。</block>
   <block id="7085ef0783c3069c714c62b941d51195" category="summary">您可以使用這項引導式自動化 MetroCluster 轉換作業、針對四節點 MetroCluster IP 組態執行不中斷運作的控制器升級。</block>
@@ -13635,7 +13633,6 @@
   <block id="74d14036e96594d67869316b84c6d566" category="paragraph">CSHM 下載套件已成功處理。</block>
   <block id="89c6b3e5f896b8d329ae4e4fe91cc812" category="paragraph">如果發生錯誤、請聯絡NetApp支援部門。</block>
   <block id="a6fd16052b19595c024aa4e5bcb0b366" category="list-text">[[step6]] 在完成下一個步驟之前、請等待最多兩倍的乙太網路交換器健全狀況監視器輪詢時間間隔（透過執行找到<block ref="c9e6cd6140c9d8677df821c7cce2aac1" prefix=" " category="inline-code"></block>）。</block>
-  <block id="c947c5faccdddd0a9a87be7895f50511" category="list-text">在 ONTAP 系統上執行命令<block ref="db3929a8e897b02a87f7f4bc42f38fc1" prefix=" " category="inline-code"></block> 、並確定探索到叢集交換器時、監控欄位設定為 * 真 * 、序號欄位未顯示 * 未知 * 。</block>
   <block id="d57382f230671f8cd52f47dc80838934" category="admonition">如果套用組態檔案後、您的機型仍顯示 * 其他 * 、請聯絡 NetApp 支援部門。</block>
   <block id="58a19c530e54f6364edd838f35b1830e" category="inline-link-macro">設定交換器健全狀況監控</block>
   <block id="d47e3b820b4e0ef60cfed3bd03049a46" category="paragraph"><block ref="402ba92b413c133107b7e0b0a0255bc4" category="inline-link-macro-rx"></block>。</block>
@@ -14434,4 +14431,17 @@
   <block id="50579aa28b2b0ac01c180e6e07119273" category="paragraph"><block ref="50579aa28b2b0ac01c180e6e07119273" category="inline-link-macro-rx"></block></block>
   <block id="9a1a464601bee502d12616aa9be06bb3" category="list-text"><block ref="d77847ddf2a5535e4974575f39191ae2" category="inline-link-macro-rx"></block> 來自決勝軟體。</block>
   <block id="ba13dd5c52c50f7bb5ef919e4d340c98" category="paragraph"><block ref="83029083d25b0153769c6039afb8beb5" category="inline-link-macro-rx"></block>。</block>
+  <block id="62633c6c7bc1e478b0c226fc706ce7d1" category="list-text">運行該命令<block ref="350d65f100fdbc8d411ce22a179f4b29" prefix=" " category="inline-code"></block>在ONTAP系統中，確保已發現叢集交換機，並且監控欄位設定為 *True*，序號欄位不顯示 *Unknown*。</block>
+  <block id="f53c5f8d2c3b0e3b1854e0c8f280aac0" category="list-text">重啟決勝程式軟體：</block>
+  <block id="3b879e464448b1abbc76cb49a3e48f67" category="paragraph"><block ref="5c46787eed9475e8e2a2351216605e90" prefix="" category="inline-code"></block></block>
+  <block id="f4c717f63bbf7bf7a91d2fde6f9051f1" category="paragraph">新平台上需要新的置物架。過渡完成後，舊的控制器、機架和磁碟將從叢集中移除。</block>
+  <block id="0c6fc3d80e5d75918b6f2d338a395bfe" category="paragraph">*注意：*此流程支援以下 FC 到 IP 的轉換：</block>
+  <block id="b9a67b79bf8805e04026764220f5644c" category="list-text">從四節點MetroCluster FC 配置到四節點MetroCluster IP 配置</block>
+  <block id="b5c21ffa00510d1334f85119eb48a645" category="list-text">從八節點MetroCluster FC 配置到八節點MetroCluster IP 配置</block>
+  <block id="7a2504e84fd0f2574207d002a4e82d9a" category="paragraph">從ONTAP 9.13.1 開始，您可以將工作負載和資料從現有的八節點MetroCluster FC 設定無中斷地遷移到新的八節點MetroCluster IP 設定。您可以使用此程序轉換四節點 FC DR 群組，刪除空的 FC DR 群組，然後對第二個 FC DR 群組重複此程序。 </block>
+  <block id="e59a63f4705f92f189efd0bae23c593c" category="paragraph">從ONTAP 9.8 開始，您可以將工作負載和資料從現有的四節點MetroCluster FC 配置無中斷地遷移到新的四節點MetroCluster IP 配置。完成過渡後，如果需要，您可以擴展到八節點MetroCluster IP 配置。看<block ref="3a5645d9f79878fa2875b4b5fe2e8c9e" category="inline-link-macro-rx"></block>。</block>
+  <block id="584e8e12c74fdc178c6cb5a7049fb874" category="admonition">當您依照此流程新增或刪除 DR 群組時，必須先驗證 DR 群組的新增或刪除是否成功，然後再新增或刪除另一個 DR 群組。</block>
+  <block id="d134f3e8bbc2dfac90ce02f2d628c649" category="list-text">如果您使用的是板載金鑰管理器，請在新增了新節點的叢集中執行下列步驟：</block>
+  <block id="87f7e23221d5cdfbe745a1b00fcf1068" category="list-text">同步金鑰管理器配置：</block>
+  <block id="65ce095af1b3ce283b41ed1ff6456ed9" category="list-text">出現提示時，請輸入機載金鑰管理員密碼。</block>
 </blocks>

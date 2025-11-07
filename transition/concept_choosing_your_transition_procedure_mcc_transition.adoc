@@ -113,9 +113,15 @@ image:../media/transition-combinations-group-2.png["顯示群組 2 平台支援�
  a| 
 不中斷營運
  a| 
-新平台支援新的儲存櫃。
+新平台上需要新的置物架。過渡完成後，舊的控制器、機架和磁碟將從叢集中移除。
  a| 
 link:concept_nondisruptively_transitioning_from_a_four_node_mcc_fc_to_a_mcc_ip_configuration.html["程序連結"]
+
+*注意：*此流程支援以下 FC 到 IP 的轉換：
+
+* 從四節點MetroCluster FC 配置到四節點MetroCluster IP 配置
+* 從八節點MetroCluster FC 配置到八節點MetroCluster IP 配置
+
 
 
 
