@@ -21,9 +21,9 @@ summary: 從 ONTAP 9.7 開始，ONTAP Mediator 可以透過提供實體上獨立
 +
 每個站台之間的連線ONTAP 能力必須是兩個獨立的故障領域。
 
-* ONTAP Mediator 最多可同時支援五個 MetroCluster 配置。
 * 支援自動非計畫性的切換ONTAP 功能、可在更新版本的更新版本中使用。
-* ONTAP Mediator 不支援 IPv6 。
+* 從ONTAP 9.18.1 和ONTAP Mediator 1.11 開始，單一ONTAP Mediator 實例可以同時管理多達 10 個MetroCluster配置。在早期版本中， ONTAP Mediator 可以同時支援最多五個MetroCluster配置。
+* 從ONTAP 9.18.1 開始，在MetroCluster IP 設定中， ONTAP Mediator 1.11 或更高版本支援 IPv6。
 
 
 
@@ -64,7 +64,6 @@ ONTAP 調解器和一個 DR 組之間的連結必須至少具有 20Mbps 的頻�
 您必須確保組態符合多項主機需求。
 
 * 必須在實體與兩個實體叢集分離的外部站台安裝此資訊卡。ONTAP ONTAP
-* 支援最多五種支援的不限位功能組態。ONTAP MetroCluster
 * 不需要超過主機作業系統的CPU和記憶體（RAM）最低需求。ONTAP
 * 除了主機作業系統的最低需求之外、還必須至少提供30GB的額外可用磁碟空間。
 +

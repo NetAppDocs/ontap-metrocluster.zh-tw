@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: drive auto-assignment, drive, adp, advanced disk partitioning, root disk, unmirrored root, data partition, root partition, shelf-by-shelf, AFF A320, AFF A220, AFF A250, C250, AFF A300, AFF A400, C400, AFF A700, AFF A800, FAS2750, FAS8200, FAS500f, FAS9000 
 summary: 從推出《支援使用ADP的更新系統》（進階磁碟分割）的《支援更新安裝的支援範例ONTAP 》（《支援使用MetroCluster ADP的更新AFF 系統》、《支援更新的安裝程序》、 
 ---
-= 自動驅動器分配和 ADP 系統的MetroCluster IP 注意事項
+= MetroCluster 的IP 需求，用於自動驅動分配和 ADP 系統
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -13,7 +13,7 @@ summary: 從推出《支援使用ADP的更新系統》（進階磁碟分割）�
 [role="lead"]
 從 ONTAP 9.4 開始、 MetroCluster IP 組態支援使用自動磁碟指派和 ADP （進階磁碟分割）進行新安裝。
 
-搭配 MetroCluster IP 組態使用 ADP 時、請注意下列考量事項：
+使用ADP進行MetroCluster IP設定時，應注意以下事項：
 
 * 在 AFF 和 ASA 系統上、 ONTAP 9.4 及更新版本必須搭配 MetroCluster IP 組態使用 ADP 。
 * MetroCluster IP 組態支援 ADPv2 。
@@ -238,9 +238,11 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁�
 
 NOTE: 在使用ADP的系統中、會使用分割區來建立集合體、將每個磁碟機分割至P1、P2和P3分割區。根Aggregate是使用P3分割區建立的。
 
-您必須符合MetroCluster 支援磁碟機數量上限和其他準則的要求。
+在使用表格前，請先閱讀以下要求：
 
-https://hwu.netapp.com["NetApp Hardware Universe"]
+* 您必須滿足MetroCluster對最大支援的磁碟機數量和其他準則的限制。請參閱 https://hwu.netapp.com["NetApp Hardware Universe"]。
+* 如果您要重複使用外部磁碟櫃，請在將其連接到控制器之前確認已移除外部磁碟機上的磁碟所有權。參考link:https://docs.netapp.com/us-en/ontap/disks-aggregates/remove-ownership-disk-task.html["從磁碟中移除ONTAP所有權"^]。
+
 
 
 
@@ -839,6 +841,60 @@ AFF C250 和 AFF A250 系統的磁碟指派準則和規則也適用於 FAS500f �
 支援的磁碟機下限（每個站台）
  a| 
 24個磁碟機
+ a| 
+磁碟機分為四個等群組。每個季度櫃都會自動指派給個別的資源池。
+ a| 
+不適用
+
+|===
+
+
+=== 在配備快閃記憶體快取的 FAS50 系統上進行磁碟分配
+
+從ONTAP 9.18.1 開始，FAS50 系統在MetroCluster IP 設定中支援 Flash Cache。
+
+[CAUTION]
+====
+* 內部機架上的快閃記憶體快取驅動器不能同時擁有資料聚合和根聚合。
+* 插槽 0 和 23 用於快閃記憶體快取驅動器。
+* 如果您要重複使用外部磁碟櫃，請在將其連接到控制器之前確認已移除外部磁碟機上的磁碟所有權。參考link:https://docs.netapp.com/us-en/ontap/disks-aggregates/remove-ownership-disk-task.html["從磁碟中移除ONTAP所有權"]。
+
+
+====
+|===
+
+
+| 準則 | 每個站台的磁碟機數量 | 磁碟機指派規則 | root分割區的ADP配置 
+
+
+.2+| 建議的最低磁碟機數（每個站台）  a| 
+48 個磁碟機（僅限外部磁碟機，無內部磁碟機）
+ a| 
+每個外部機櫃上的磁碟機分為兩個相同的群組（一半）。每個半磁碟櫃都會自動指派給個別的資源池。
+ a| 
+不適用
+
+
+
+ a| 
+36 個硬碟（12 個內部硬碟和 24 個外接硬碟－資料聚合位於外接硬碟架上，根聚合位於內部硬碟架上）
+ a| 
+內部驅動器分為四個相等的組（四分之一）。每個季度都會自動分配到一個單獨的資金池。外部機架上的驅動器分為四個相等的組（四分之一）。每個四分之一層貨架都會自動分配到一個單獨的貨架池。
+
+*筆記：*
+
+* 如果您同時使用內部和外部驅動器，則首先需要安裝ONTAP並僅使用內部磁碟機設定本機叢集。安裝或設定完成後，您需要手動連接外部層架。
+* 根聚合至少需要 12 個內部驅動器。您應該將根內部磁碟機安裝在插槽 1 中。例如，對於 12 個內部驅動器，請使用插槽 1-3、6-8、12-14 和 18-20。
+
+ a| 
+不適用
+
+
+
+ a| 
+支援的磁碟機下限（每個站台）
+ a| 
+24個外接硬碟
  a| 
 磁碟機分為四個等群組。每個季度櫃都會自動指派給個別的資源池。
  a| 

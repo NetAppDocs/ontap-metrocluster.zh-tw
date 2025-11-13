@@ -5,6 +5,7 @@ entries:
 - title: 總覽
   url: "/install-stretch/index.html"
 - title: 準備MetroCluster 進行安裝
+  pdf-filename: 準備進行MetroCluster擴充安裝
   entries:
   - title: 不一樣的地方ONTAP MetroCluster
     url: "/install-stretch/concept_considerations_differences.html"

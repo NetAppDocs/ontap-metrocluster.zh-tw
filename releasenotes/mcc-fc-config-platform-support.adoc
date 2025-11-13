@@ -10,6 +10,9 @@ summary:
 :imagesdir: ../media/
 
 
+[role="lead"]
+了解MetroCluster FC 平台和交換器支援方面的新特性。
+
 
 
 == 平台支援

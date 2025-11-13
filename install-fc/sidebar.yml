@@ -5,6 +5,7 @@ entries:
 - title: 總覽
   url: "/install-fc/index.html"
 - title: 準備MetroCluster 進行安裝
+  pdf-filename: 準備安裝MetroCluster FC
   entries:
   - title: 各個不相同的地方ONTAP MetroCluster
     url: "/install-fc/concept_considerations_differences.html"

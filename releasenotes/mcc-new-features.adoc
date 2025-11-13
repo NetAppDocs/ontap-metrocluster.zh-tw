@@ -21,6 +21,17 @@ summary:
 
 
  a| 
+MetroCluster IP 配置中 FAS50 系統的快閃記憶體快取支持
+ a| 
+在MetroCluster IP 配置中，FAS50 系統支援快閃記憶體快取。
+
+link:../install-ip/concept_considerations_drive_assignment.html#disk-assignment-on-fas50-systems-with-flash-cache["在配備快閃記憶體快取的 FAS50 系統上進行磁碟分配"]
+ a| 
+ONTAP 9.18.1
+
+
+
+ a| 
 支援端點對端點加密的 MetroCluster IP
  a| 
 以下系統支援端對端加密，以加密MetroCluster IP 配置中的站點之間的後端流量，例如 NVlog 和儲存複製資料。

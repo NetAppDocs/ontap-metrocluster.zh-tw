@@ -274,8 +274,6 @@ link:concept_considerations_drive_assignment.html["瞭解 MetroCluster IP 組態
 
 == 集區與磁碟機需求（支援的最低需求）
 
-建議使用八個SAS磁碟櫃（每個站台四個磁碟櫃）、以允許每個磁碟櫃的磁碟擁有權。
-
 四節點MetroCluster 的不靜態IP組態要求每個站台的最低組態設定：
 
 * 每個節點在站台上至少有一個本機集區和一個遠端集區。

@@ -4,22 +4,38 @@ sidebar: sidebar
 keywords: metrocluster, mediator, new, release, update, install, 
 summary: 每個版本都提供 ONTAP Mediator 的新功能。  最新功能。 
 ---
-= ONTAP Mediator 支援的新功能
+= ONTAP Mediator 對MetroCluster的支援有哪些新特性
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-每個版本都提供了 ONTAP Mediator 的新增強功能。最新功能。
+了解MetroCluster為ONTAP Mediator 支援帶來的新功能和增強功能。
 
-有關在 MetroCluster 配置中安裝或升級 ONTAP 調解器的詳細信息，您可以訪問link:https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/concept_mediator_requirements.html["準備安裝 ONTAP 調解器"^] 。
+有關ONTAP Mediator 每個版本的功能和增強特性的詳細信息，請參閱：link:https://docs.netapp.com/us-en/ontap/mediator/whats-new-concept.html["ONTAP Mediator 的新增功能"^] 。
 
-[cols="75,25"]
+[cols="4,2"]
 |===
+| ONTAP Mediator 功能 | 可用的開始 
 
 
-| ONTAP Mediator 功能 | 版本ONTAP 
+ a| 
+在MetroCluster IP 配置中， ONTAP Mediator 1.11 或更高版本支援 IPv6。
+
+link:../install-ip/task_configuring_the_ontap_mediator_service_from_a_metrocluster_ip_configuration.html["為MetroCluster IP 配置設定ONTAP調解器"]
+ a| 
+ONTAP 9.18.1
+
+
+
+ a| 
+ONTAP Mediator 1.11 增加了使用單一ONTAP Mediator 實例管理多達 10 個MetroCluster IP 配置的支援。
+
+link:../install-ip/concept_mediator_requirements.html["準備在MetroCluster IP 配置中安裝ONTAP Mediator"]
+ a| 
+ONTAP 9.18.1
+
 
 
  a| 

@@ -5,6 +5,7 @@ entries:
 - title: 總覽
   url: "/install-ip/index.html"
 - title: 準備MetroCluster 進行安裝
+  pdf-filename: 準備進行MetroCluster IP 安裝
   entries:
   - title: 各個不相同的地方ONTAP MetroCluster
     url: "/install-ip/concept_considerations_differences.html"
@@ -136,7 +137,7 @@ entries:
   entries:
   - title: 準備安裝 ONTAP 調解器
     url: "/install-ip/concept_mediator_requirements.html"
-  - title: 從 MetroCluster IP 設定設定 ONTAP 調解器
+  - title: 配置ONTAP Mediator 以進行MetroCluster IP 配置
     url: "/install-ip/task_configuring_the_ontap_mediator_service_from_a_metrocluster_ip_configuration.html"
   - title: 從 MetroCluster IP 設定中取消設定 ONTAP 調解器
     url: "/install-ip/task_remove_unconfigure_mediator.html"
