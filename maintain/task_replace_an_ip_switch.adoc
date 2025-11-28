@@ -240,6 +240,10 @@ NOTE: 如果您升級或降級網路、請針對第二個網路重複所有步�
 ----
 network interface modify -vserver <vserver_name> -lif <lif_name> -auto-revert true
 ----
+. 將所有目前不在原始連接埠上的叢集 LIF 恢復到其原始連接埠：
++
+`network interface revert -vserver * -lif *`
+
 . 或者、也可以移動 NS224 機櫃。
 +
 如果您要重新設定的 MetroCluster IP 組態無法將 NS224 機櫃連接至 MetroCluster IP 交換器、請使用適當的程序來新增或移動 NS224 機櫃：

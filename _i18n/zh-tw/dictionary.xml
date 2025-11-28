@@ -11693,7 +11693,6 @@
   <block id="0cf4c92a4ea3edbf66b4866978237ff3" category="doc">MetroCluster tiebreaker 支援的新功能</block>
   <block id="e90d1c6a70648051cbe5131fdb8a8227" category="paragraph">每個 ONTAP 9 資料管理軟體版本都提供全新且增強的功能、可改善 ONTAP MetroCluster 組態的功能、管理能力及效能。</block>
   <block id="3cc716dba68d44285ae03d4a0e650afb" category="sidebar">MetroCluster 功能的新功能</block>
-  <block id="986acab97d190ab2df45c246e97ca539" category="sidebar">ONTAP Mediator 支援的新功能</block>
   <block id="72b08fce3cdf931f9f180e97f8508090" category="sidebar">MetroCluster Tiebreaker 支援的新功能</block>
   <block id="9ae85011061f6a07b3199cc6631e205d" category="paragraph">請依照您的交換器廠商章節中的步驟進行：</block>
   <block id="5a3808eade7ae7dfc1128e76ac8a6b87" category="inline-link-macro">將Broadcom IP交換器重設為原廠預設值</block>
@@ -14464,8 +14463,6 @@
   <block id="a5ae27866152c64d13caa7491b407c4f" category="list-text">新增ONTAP中介器：</block>
   <block id="3bd8e4fdfb5d625cdaa4c9ff27e8ce16" category="paragraph"><block ref="26623cc20cef21441276d0bbf177cf0e" prefix="" category="inline-code"></block></block>
   <block id="6ed3fcc536a033a1e0dbf1249734de16" category="paragraph">了解MetroCluster FC 平台和交換器支援方面的新特性。</block>
-  <block id="29a236ce865da06e20bbbd8ea0ab52a7" category="doc">ONTAP Mediator 對MetroCluster的支援有哪些新特性</block>
-  <block id="5bf7798853f8a5c7ca4569ca703439aa" category="paragraph">了解MetroCluster為ONTAP Mediator 支援帶來的新功能和增強功能。</block>
   <block id="7f29812fdda9b63b5432343e48888f3e" category="inline-link-macro">ONTAP Mediator 的新增功能</block>
   <block id="ddb6a6aeab3697bf98a9f8ec6246d66d" category="paragraph">有關ONTAP Mediator 每個版本的功能和增強特性的詳細信息，請參閱：<block ref="e9f46c418b00d5917fe7eb2e94490962" category="inline-link-macro-rx"></block> 。</block>
   <block id="0812efe70fdb78c8000d6ba26954775e" category="paragraph">在MetroCluster IP 配置中， ONTAP Mediator 1.11 或更高版本支援 IPv6。</block>
@@ -14481,4 +14478,9 @@
   <block id="163074dbb0b4f8b495d1b19b615e87eb" category="sidebar">準備進行MetroCluster IP 安裝</block>
   <block id="42f362146dbe8748970967efe562f3c8" category="sidebar">配置ONTAP Mediator 以進行MetroCluster IP 配置</block>
   <block id="9ac9cffddfe08e79e2955f5af452fef4" category="sidebar">準備進行MetroCluster擴充安裝</block>
+  <block id="b023032dbbcf1a80203228bb95af2a1d" category="list-text">將所有目前不在原始連接埠上的叢集 LIF 恢復到其原始連接埠：</block>
+  <block id="b4ebcf376ab05c920671af65b7daaf8c" category="paragraph"><block ref="985591930e85610706940dd82967bd61" prefix="" category="inline-code"></block></block>
+  <block id="4154034eef64dfe94bce158c1c207659" category="doc">ONTAP Mediator 對MetroCluster IP 的支援有哪些新特性</block>
+  <block id="f0dceba3fe3c3556e6c20da7fc8c7520" category="paragraph">了解MetroCluster IP 的新功能和增強功能，以支援ONTAP Mediator。</block>
+  <block id="25deb3b52bcb888e53232afb4a495c12" category="sidebar">ONTAP Mediator 對MetroCluster IP 的支援有哪些新特性</block>
 </blocks>
