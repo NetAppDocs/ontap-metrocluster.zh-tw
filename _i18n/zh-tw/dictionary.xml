@@ -4862,7 +4862,6 @@
   <block id="58680ae2aa956ad9b6c8f5bd2e4a4191" category="paragraph">“netboot \http://web_server_ip/path_to_web-accessible_directory/ontap-version_image.tgz`</block>
   <block id="9a8c20fab9267090fe0211c579b8d259" category="list-text">從開機功能表中、選取選項*（7）Install new software first*（先安裝新軟體*）、將新的軟體映像下載並安裝至開機裝置。</block>
   <block id="94b4038bc962a8ff7acafad652850e68" category="list-text">如果系統提示您繼續此程序、請輸入「y」、並在系統提示您輸入套件時、輸入映像檔的URL：「http://web_server_ip/path_to_web-accessible_directory/ontap-version_image.tgz`」</block>
-  <block id="f59d590a38cf457fb44a857365a2aec4" category="list-text">當您看到類似下列的提示時、請務必輸入「n」以跳過備份恢復：</block>
   <block id="4c311f4de89068c42d4731e90025eefc" category="list-text">當您看到類似於以下內容的提示時、輸入「y」重新開機：</block>
   <block id="e86bd645f7af01b165bae9ca9d4f08bc" category="list-text">從「開機」功能表中、選取*選項5*以進入「維護」模式。</block>
   <block id="f0c3886113b07e21fe10f761766eb054" category="list-text">如果您有四節點MetroCluster 的內存不整組態、請在其他新的控制器模組上重複此程序。</block>
@@ -8879,8 +8878,6 @@
   <block id="188edb9f514b65304cf0a3564a7bc692" category="list-text">從開機功能表中、選取選項「（7）Install new software first（先安裝新軟體）」。此功能表選項會下載新ONTAP 的功能表映像、並將其安裝至開機裝置。</block>
   <block id="81ff6a54875aaf720a2c324484bc2178" category="admonition">請忽略下列訊息：「HA配對不支援不中斷升級此程序。 本附註適用於不中斷營運ONTAP 的更新版軟體、不適用於控制器升級。請務必使用netboot將新節點更新為所需映像。如果您使用其他方法在新控制器上安裝映像、可能會安裝錯誤的映像。此問題適用於ONTAP 所有的版本。</block>
   <block id="7b3f6c26774d36cd594edf297f0f8f57" category="list-text">完成下列子步驟以重新啟動控制器模組：</block>
-  <block id="61ee95ecb870c833ca0f73515cef5bce" category="list-text">當您看到以下提示時、請輸入「n」跳過備份恢復：「您現在要還原備份組態嗎？｛y | n｝</block>
-  <block id="e127fec27e4f62227f578ce3dd283c35" category="list-text">當您看到下列提示時、請輸入「y」重新開機：「必須重新開機節點、才能開始使用新安裝的軟體。是否要立即重新開機？｛y | n｝</block>
   <block id="504d065328326a8677a260e4447bea63" category="paragraph">控制器模組會重新開機、但會在開機功能表停止、因為開機裝置已重新格式化、而且需要還原組態資料。</block>
   <block id="963f89f538a2fcd5d086c865807c540a" category="list-text">出現提示時、請執行「wecponfig」命令、清除開機媒體上任何先前的組態：</block>
   <block id="f02a9a7436db38c9278de96d8940fedc" category="list-text">當您看到以下訊息時、請回答「yes」：「這將會刪除重要的系統組態、包括叢集成員資格。警告：請勿在已接管的HA節點上執行此選項。您確定要繼續嗎</block>
@@ -9422,7 +9419,6 @@
   <block id="f9917e026c23b682e18bcd6bc125c1b9" category="paragraph">「&lt;path_to_the_web-易於 存取的目錄&gt;」應該會引導您下載「&lt;ONTAP_VERSION &gt;\_image.tgz」 <block ref="28cd24b5ecf937229eb419cc55587b9d" category="inline-xref-macro-rx"></block>。</block>
   <block id="2653300b079109b65a613fd185414faa" category="list-text">從開機功能表中、選取選項「（7）Install new software first（先安裝新軟體）」 此功能表選項會下載新ONTAP 的功能表映像、並將其安裝至開機裝置。附註：請忽略下列訊息：「HA配對不支援此程序進行不中斷升級。 本附註適用於不中斷營運ONTAP 的更新版軟體、不適用於控制器升級。</block>
   <block id="f7462137da4e89b12e82937bb5da165f" category="paragraph">請務必使用netboot將新節點更新為所需映像。如果您使用其他方法在新控制器上安裝映像、可能會安裝不正確的映像。此問題適用於ONTAP 所有的版本。</block>
-  <block id="d7672ee0e4d46e194ae0b844a3cf32ad" category="list-text">當您看到以下提示時、請輸入「y」重新開機：「必須重新啟動節點、才能開始使用新安裝的軟體。是否要立即重新開機？｛y：n｝'控制器模組會重新開機、但會在開機功能表停止、因為開機裝置已重新格式化、而且需要還原組態資料。</block>
   <block id="c9c4b352c210e485b70af0c63a95e7fa" category="list-text">當您看到下列訊息時、請回答「yes」：「這將會刪除重要的系統組態、包括叢集成員資格。警告：請勿在已接管的HA節點上執行此選項。您確定要繼續嗎</block>
   <block id="dbfa5994b398cd0fb3a814715f0dc252" category="list-text">從開機功能表中選取「5」選項以進入維護模式。對提示回答「yes」、直到節點停止於維護模式和命令提示字元\*。</block>
   <block id="c97b27c69af0eb8712cf22da6b167f03" category="list-text">重複這些步驟以netboot node_B_2。</block>
@@ -14483,4 +14479,9 @@
   <block id="4154034eef64dfe94bce158c1c207659" category="doc">ONTAP Mediator 對MetroCluster IP 的支援有哪些新特性</block>
   <block id="f0dceba3fe3c3556e6c20da7fc8c7520" category="paragraph">了解MetroCluster IP 的新功能和增強功能，以支援ONTAP Mediator。</block>
   <block id="25deb3b52bcb888e53232afb4a495c12" category="sidebar">ONTAP Mediator 對MetroCluster IP 的支援有哪些新特性</block>
+  <block id="a01beec0f6ce0a2dd45c8f1d5aa3e76c" category="list-text">進入<block ref="7b8b965ad4bca0e41ab51de7b31363a1" prefix=" " category="inline-code"></block> 當您看到類似以下的提示時，請跳過備份還原：</block>
+  <block id="a3a51b9a15e7e6561d57fb2b986eca21" category="admonition">您必須重新啟動節點才能使用新安裝的軟體。</block>
+  <block id="7043cc5b7b924f62a8af6f3d2e706c77" category="list-text">進入<block ref="7b8b965ad4bca0e41ab51de7b31363a1" prefix=" " category="inline-code"></block> 當您看到以下提示時，請跳過備份還原：</block>
+  <block id="78531eca4abf30d4c07d610d913a17b4" category="list-text">進入<block ref="415290769594460e2e485922904f345d" prefix=" " category="inline-code"></block> 當看到以下提示時，請重新啟動：</block>
+  <block id="6b5a6f62b70ef753e19336e7f4298c82" category="paragraph"><block ref="dc1cb730bc2868b03f1ab6ee685b8beb" prefix="" category="inline-code"></block></block>
 </blocks>

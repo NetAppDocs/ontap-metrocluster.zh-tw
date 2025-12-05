@@ -782,10 +782,22 @@ NOTE: 請忽略下列訊息：「HA配對不支援不中斷升級此程序。 �
 
 . 完成下列子步驟以重新啟動控制器模組：
 +
-.. 當您看到以下提示時、請輸入「n」跳過備份恢復：「您現在要還原備份組態嗎？｛y | n｝
-.. 當您看到下列提示時、請輸入「y」重新開機：「必須重新開機節點、才能開始使用新安裝的軟體。是否要立即重新開機？｛y | n｝
+.. 進入 `n` 當您看到以下提示時，請跳過備份還原：
++
+[listing]
+----
+Do you want to restore the backup configuration now? {y|n} n
+----
+.. 進入 `y` 當看到以下提示時，請重新啟動：
++
+`The node must be rebooted to start using the newly installed software. Do you want to reboot now? {y|n} y`
+
 +
 控制器模組會重新開機、但會在開機功能表停止、因為開機裝置已重新格式化、而且需要還原組態資料。
+
++
+
+NOTE: 您必須重新啟動節點才能使用新安裝的軟體。
 
 
 

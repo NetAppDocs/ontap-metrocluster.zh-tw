@@ -50,14 +50,18 @@
 ....
 Enter username/password if applicable, or press Enter to continue.
 ....
-. 當您看到類似下列的提示時、請務必輸入「n」以跳過備份恢復：
+. 進入 `n` 當您看到類似以下的提示時，請跳過備份還原：
 +
 ....
-Do you want to restore the backup configuration now? {y|n}
+Do you want to restore the backup configuration now? {y|n} n
 ....
 . 當您看到類似於以下內容的提示時、輸入「y」重新開機：
 +
 ....
-The node must be rebooted to start using the newly installed software. Do you want to reboot now? {y|n}
+The node must be rebooted to start using the newly installed software. Do you want to reboot now? {y|n} y
 ....
++
+
+NOTE: 您必須重新啟動節點才能使用新安裝的軟體。
+
 
