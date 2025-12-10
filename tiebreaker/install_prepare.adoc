@@ -27,6 +27,17 @@ summary: 在安裝和設定斷路器軟體之前、您應該先確認系統符�
 
 
  a| 
+1.7
+ a| 
+更新版本ONTAP
+ a| 
+請參閱 link:whats_new.html#os-support-matrix["作業系統支援對照表"] 以取得詳細資料。
+ a| 
+無。相依性與安裝相關。
+
+
+
+ a| 
 1.6P1
  a| 
 更新版本ONTAP

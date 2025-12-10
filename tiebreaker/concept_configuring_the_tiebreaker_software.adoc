@@ -32,8 +32,16 @@ summary: 安裝了Tiebreaker軟體之後、您可以新增或修改MetroCluster 
 
 安裝完NetApp MetroCluster 斷點器軟體之後、您可以一MetroCluster 次新增更多的一套功能。
 
-您必須已在MetroCluster 一個不支援的環境中安裝了這個支援功能、ONTAP 並啟用軟體中的設定。
+.關於這項工作
+* 您必須已在MetroCluster 一個不支援的環境中安裝了這個支援功能、ONTAP 並啟用軟體中的設定。
+* 具體步驟和預期命令輸出取決於您執行的 Tiebreaker 版本。
 
+
+[role="tabbed-block"]
+====
+.決勝局 1.5 或更早
+--
+.步驟
 . 使用tiebreaker命令列介面（CLI）監控器add命令來新增MetroCluster 物件組態。
 +
 如果您使用的是主機名稱、則必須是完整網域名稱（FQDN）。
@@ -42,19 +50,23 @@ summary: 安裝了Tiebreaker軟體之後、您可以新增或修改MetroCluster 
 下列範例顯示叢集A的組態：
 
 +
+.範例
+[%collapsible]
+=====
 [listing]
 ----
 
 NetApp MetroCluster Tiebreaker :> monitor add wizard
-Enter monitor Name: cluster_A
-Enter Cluster IP Address: 10.222.196.130
+Enter monitor Name: <monitor_name>
+Enter Cluster IP Address: <cluster_ip_value>
 Enter Cluster Username: admin
 Enter Cluster Password:
-Enter Peer Cluster IP Address: 10.222.196.40
+Enter Cluster IP Address: <peer_cluster_ip_value>
 Enter Peer Cluster Username: admin
 Enter Peer Cluster Password:
 Successfully added monitor to NetApp MetroCluster Tiebreaker software.
 ----
+=====
 . 使用MetroCluster tiebreaker CLI "monitorer show -STATUS"命令、確認已正確新增此功能。
 +
 [listing]
@@ -64,7 +76,7 @@ NetApp MetroCluster Tiebreaker :> monitor show -status
 ----
 . 停用斷路器軟體的觀察模式、以便在偵測到站台故障後自動啟動切換：
 +
-「監控者修改-監 控名稱監控名稱-觀察者 模式錯」
+`monitor modify -monitor-name <monitor_name> -observer-mode false`
 
 +
 [listing]
@@ -76,6 +88,82 @@ Are you sure you want to enable automatic switchover capability for monitor "8pa
 ----
 
 
+--
+.Tiebreaker 1.6 或更新版本
+--
+.步驟
+. 使用tiebreaker命令列介面（CLI）監控器add命令來新增MetroCluster 物件組態。
++
+如果您使用的是主機名稱、則必須是完整網域名稱（FQDN）。
+
++
+下列範例顯示叢集A的組態：
+
++
+.範例
+[%collapsible]
+=====
+[listing]
+----
+NetApp MetroCluster Tiebreaker :> monitor add wizard
+Enter Monitor Name: cluster_A
+Enter Cluster IP Address: <cluster_ip_value>
+Enter Cluster Username: admin
+Enter Cluster Password:
+Enter Peer Cluster IP Address: <peer_cluster_ip_value>
+Enter Peer Cluster Username: admin
+Enter Peer Cluster Password:
+
+ NOTE: Before enabling automatic switchover capability, make sure to review the 'risks and limitations' as described in the MetroCluster Tiebreaker Installation and Configuration Guide.
+
+Do you want to enable automatic switchover capability for monitor(Y/N): y
+Successfully added monitor to NetApp MetroCluster Tiebreaker software.
+Verifying SSL certificate chain from cluster_A...
+
+===============================================
+Warning missing SSL certificates
+===============================================
+
+Cluster: cluster_A
+
+IP Address: <cluster_ip_value>
+
+Result:
+
+The MetroCluster Tiebreaker is unable to verify the SSL certificate chain.
+
+Recommended Actions:
+
+Run the following command to identify missing certificates:
+
+monitor switchover-simulate
+
+Import any missing certificates as indicated by the command output.
+
+For detailed instructions, please refer to the MetroCluster Tiebreaker documentation, or contact NetApp Support for assistance.
+
+Note:
+
+Missing certificates will prevent the MetroCluster Tiebreaker from issuing a switchover request in the event of a site failure.
+
+================================================================================================================================
+Verifying SSL certificate chain from cluster_B...
+
+SSL certificate chain is valid
+----
+=====
+. 使用MetroCluster tiebreaker CLI "monitorer show -STATUS"命令、確認已正確新增此功能。
++
+[listing]
+----
+
+NetApp MetroCluster Tiebreaker :> monitor show -status
+----
+. 請依照適用於您的 Tiebreaker 版本的步驟匯入缺少的憑證。<<import-certificates-tb17,進口證書>> 。
+
+
+--
+====
 .相關資訊
 link:concept_risks_and_limitation_of_using_mcc_tiebreaker_in_active_mode.html["在MetroCluster 作用中模式中使用ESITirepreaker的風險和限制"]
 
@@ -88,10 +176,151 @@ link:concept_risks_and_limitation_of_using_mcc_tiebreaker_in_active_mode.html["�
 .關於這項工作
 * 此任務在 Tiebreaker 1.6 或更高版本中是必需的。
 * 成功將MetroCluster配置新增至 Tiebreaker 後，或在憑證過期後，您需要執行此任務。
+* 在 Tiebreaker 1.7 或更高版本中，您可以執行切換模擬來檢查是否需要匯入憑證。如果切換模擬失敗，則需要將憑證從ONTAP匯入到 Java 虛擬機器 (JVM) 中的金鑰庫。
 
 
+[role="tabbed-block"]
+====
+.決勝規則 1.7 或更高版本
+--
 .步驟
+. 執行切換模擬以檢查是否需要導入憑證。
++
+.. 查看決勝局監控狀態：
+`monitor show -status`
++
+.範例
+[%collapsible]
+=====
+[listing]
+----
+NetApp MetroCluster Tiebreaker :> monitor show -status
+MetroCluster: A700
+    Disaster: false
+    Monitor State: Normal
+    Observer Mode: false
+    Silent Period: 5
+    Override Vetoes: false
+    Cluster: ClusterA_siteA(UUID:713e5ab2-b4e8-11f0-91aa-00a098ef36a2)
+        Reachable: true
+        Intersite Connectivity Available: true
+            Node: node_A1(UUID:9f6cecbf-b4e4-11f0-9d0f-00a098ef36a2)
+                Reachable: true
+                Intersite Connectivity Available: true
+                State: normal
+            Node: node_A2(UUID:2719bb56-b4e7-11f0-996c-00a09897caa3)
+                Reachable: true
+                Intersite Connectivity Available: true
+                State: normal
+    Cluster: ClusterB_siteB(UUID:72839591-b4e8-11f0-b688-00a09897cb73)
+        Reachable: true
+        Intersite Connectivity Available: true
+            Node: node_B1(UUID:abfeab89-b4e4-11f0-a077-00a09897cb73)
+                Reachable: true
+                Intersite Connectivity Available: true
+                State: normal
+            Node: node_B2(UUID:31e395bf-b4e7-11f0-bf99-00a09897cb2f)
+                Reachable: true
+                Intersite Connectivity Available: true
+                State: normal
+----
+=====
+.. 觸發切換模擬：
++
+`monitor switchover-simulate -monitor-name <monitor_name> -cluster <cluster_name>`
+
++
+如果需要將憑證匯入 JVM，則該命令將傳回下列輸出：
+
++
+[listing]
+----
+Failed to trigger Switchover Simulation. Please check Metrocluster Tiebreaker logs for further information or contact NetApp support.
+----
+
+
 . 對需要匯入的每個憑證（SSL 伺服器憑證、中間憑證或根憑證）執行以下命令。
++
+`/opt/netapp/java/bin/keytool -import -trustcacerts -file <certificate_file_name> -keystore "/opt/netapp/java/lib/security/cacerts" -alias <certificate>`
+
++
+** 這 `<certificate_file_name>` value 指定要匯入的憑證的檔案名稱。
+** 這 `-alias <certificate>` value 指定將憑證匯入 JVM 後要儲存的名稱。
++
+以下範例展示如何匯入檔案名為「root certificate」的根憑證。 `root.crt` 以及檔案名稱 `ssl_cert.crt`：
+
++
+[listing]
+----
+/opt/netapp/java/bin/keytool -import -trustcacerts -file root.crt -keystore "/opt/netapp/java/lib/security/cacerts" -alias root
+
+/opt/netapp/java/bin/keytool -import -trustcacerts -file ssl_cert.crt -keystore "/opt/netapp/java/lib/security/cacerts" -alias ssl_cert
+----
+
+
+. 重啟決勝程式軟體：
++
+`systemctl restart netapp-metrocluster-tiebreaker-software`
+
+. 再次執行切換模擬檢查：
++
+.. 查看決勝局監控狀態：
+`monitor show -status`
++
+.範例
+[%collapsible]
+=====
+[listing]
+----
+NetApp MetroCluster Tiebreaker :> monitor show -status
+MetroCluster: A700
+    Disaster: false
+    Monitor State: Normal
+    Observer Mode: false
+    Silent Period: 5
+    Override Vetoes: false
+    Cluster: ClusterA_siteA(UUID:713e5ab2-b4e8-11f0-91aa-00a098ef36a2)
+        Reachable: true
+        Intersite Connectivity Available: true
+            Node: node_A1(UUID:9f6cecbf-b4e4-11f0-9d0f-00a098ef36a2)
+                Reachable: true
+                Intersite Connectivity Available: true
+                State: normal
+            Node: node_A2(UUID:2719bb56-b4e7-11f0-996c-00a09897caa3)
+                Reachable: true
+                Intersite Connectivity Available: true
+                State: normal
+    Cluster: ClusterB_siteB(UUID:72839591-b4e8-11f0-b688-00a09897cb73)
+        Reachable: true
+        Intersite Connectivity Available: true
+            Node: node_B1(UUID:abfeab89-b4e4-11f0-a077-00a09897cb73)
+                Reachable: true
+                Intersite Connectivity Available: true
+                State: normal
+            Node: node_B2(UUID:31e395bf-b4e7-11f0-bf99-00a09897cb2f)
+                Reachable: true
+                Intersite Connectivity Available: true
+                State: normal
+----
+=====
+.. 觸發切換模擬：
++
+`monitor switchover-simulate -monitor-name <monitor_name> -cluster <cluster_name>`
+
++
+[listing]
+----
+Successfully triggered Switchover Simulation. Please check the status of the Switchover Simulation on the ONTAP cluster using command "metrocluster operation history show"
+----
+
+
+
+
+--
+.平手決勝 1.6 或 1.6P1
+--
+.步驟
+. 從ONTAP導入所有憑證。對需要匯入的每個憑證（SSL 伺服器憑證、中間憑證或根憑證）執行以下命令。
 +
 `/opt/netapp/java/bin/keytool -import -trustcacerts -file <certificate_file_name> -keystore "/opt/netapp/java/lib/security/cacerts" -alias <certificate>`
 
@@ -116,6 +345,8 @@ link:concept_risks_and_limitation_of_using_mcc_tiebreaker_in_active_mode.html["�
 
 
 
+--
+====
 
 
 == 修改MetroCluster 斷點器組態的命令

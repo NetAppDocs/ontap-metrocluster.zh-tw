@@ -11091,9 +11091,6 @@
   <block id="462b36259caf681453d6d7b142217c3d" category="paragraph"><block ref="419f67b8b89585d3be41af97b158dd9e" prefix="" category="inline-code"></block></block>
   <block id="6a62571ce4203a1671da10509f3013e0" category="cell">AFF A900 、 ASA A900 和 FAS9500</block>
   <block id="d7b1c9d4f2a52b2d3648ce28baa0dd5c" category="paragraph">AFF A800 、 AFF C800 、 ASA A800 和 ASA C800</block>
-  <block id="2bba389392c3b789eaa9d1c8c6fc87d2" category="paragraph">FAS8400 、 AFF A400 、 ASA A400 、 ASA C400 和 AFF C400</block>
-  <block id="2adc2b7878fdb2191078a23343a8729e" category="paragraph">FAS2750 、 AFF A150 、 ASA A150 和 AFF A220</block>
-  <block id="58783907a3fbb2ae3dd67c785764d060" category="paragraph">FAS500f 、 AFF A250 、 ASA A250 、 ASA C250 和 AFF C250</block>
   <block id="689365c2d6e4fb2ffa83031a799cb8a1" category="inline-link-macro">執行手動恢復</block>
   <block id="b6933415b566c13842c75e7153f5e0bd" category="paragraph">從ONTAP S廳9.7開始、您可以在ONTAP ESIIP組態中使用由資訊管理員輔助的自動非計畫性切換（MAUSO）MetroCluster 、也可以使用MetroCluster Setiebreaker軟體。不需要使用 MAUSO 或 Tiebreaker 軟體、但如果您選擇不使用其中任何一項服務、則必須使用 <block ref="ffc76c5e8798538fa424ea31c8f712bb" category="inline-link-macro-rx"></block> 發生災難時。</block>
   <block id="b65bf2d95ccaa5163ee3e519ccc4f46c" category="inline-link-macro">瞭解 ONTAP Mediator 如何支援自動非計畫性切換</block>
@@ -11770,7 +11767,6 @@
   <block id="f09a5dc7d9c973e1f6ab3e9ffa36921c" category="paragraph">四節點 MetroCluster IP 組態支援 NVMe / FC 傳輸協定。</block>
   <block id="581b029a5b5e612bbb2ff34e6b1ff9ad" category="paragraph"><block ref="581b029a5b5e612bbb2ff34e6b1ff9ad" category="inline-link-rx"></block></block>
   <block id="efd20e2b544e4614b2e657ac6783ec0a" category="paragraph">支援端點對端點加密的 MetroCluster IP</block>
-  <block id="4a4b85199291f3e23fc84fb47fb5ca30" category="paragraph">AFF A400 、 FAS8300 和 FAS8700 系統支援端點對端點加密、可在 MetroCluster IP 組態中的站台之間加密後端流量、例如 NVlog 和儲存複寫資料。</block>
   <block id="a9734ca6d9ffb317f9b6a802b2dbb3aa" category="inline-link-macro">在 MetroCluster IP 組態中設定端點對端點加密</block>
   <block id="aec0d8caac35e70ca6b42831fa957b4d" category="paragraph">AFF A800 和 AFF C800 系統上四節點 MetroCluster IP 組態的磁碟區限制增加</block>
   <block id="cbd27762af6b4c6335bac75a098542ce" category="paragraph">在四節點 MetroCluster IP 組態中、 AFF A800 和 AFF C800 系統的下列磁碟區限制已增加：</block>
@@ -12500,8 +12496,6 @@
   <block id="76cc37c77093b53852f92d0bedaab777" category="list-text">資料修復完成後、按一下 <block ref="2f6e127087f9ef4b927e204474c5d0b2" category="inline-image-macro-rx" type="image"></block>、然後選取 * 起始切換回復 * 。</block>
   <block id="99ce5ee29ba72294092dc372ec9cdde8" category="paragraph">當切換完成時、兩個叢集都會處於作用中狀態、並會處理資料要求。此外、叢集之間的資料正在進行鏡射與同步處理。</block>
   <block id="1634280924da564c571e77a82a5ca015" category="paragraph">Tiebreaker 1.6 或更新版本</block>
-  <block id="10090a98eb5a0c97ffdfee7c207fcda3" category="inline-link-macro">安裝 Tiebreaker 1.6 或更新版本</block>
-  <block id="01edf779844a94aabbe0472729e9db87" category="paragraph"><block ref="01edf779844a94aabbe0472729e9db87" category="inline-link-macro-rx"></block></block>
   <block id="96e17598e0060c107f4db8b804505693" category="inline-link-macro">Rocky Linux 產品文件</block>
   <block id="98f9ad5cd8db49b652b4f699146c5868" category="list-text"><block ref="98f9ad5cd8db49b652b4f699146c5868" category="inline-link-macro-rx"></block></block>
   <block id="95bf514988fe6b2ae6d2c4683d39fc01" category="paragraph">在主機 Linux 作業系統上執行新的安裝或升級至 tiebreaker 1.6 或 tiebreaker 1.6P1 、以監控 MetroCluster 組態。</block>
@@ -12719,8 +12713,6 @@
   <block id="d31a1f5cad351cb7b22068350f8211d3" category="section-title">AFF A70 ， AFF A90 和 AFF C80 系統上的 ADP 和磁碟指派</block>
   <block id="18d6e0751db8b96d97053bf7cd9ad014" category="paragraph">內部分割區分為四個相等的群組（季度）。每一季都會自動指派給個別的資源池。外部磁碟櫃上的磁碟機會依機櫃自動指派、每個磁碟櫃上的所有磁碟機都會指派MetroCluster 到位在「還原」組態中的四個節點之一。</block>
   <block id="18ee6168fcb42f4cbb19836787e6aa0c" category="section-title">FAS9000 ， FAS9500 ， FAS70 和 FAS90 系統上的磁碟指派</block>
-  <block id="2d1fe013e868579afa18af7cb56220c2" category="paragraph">AFF A70 、 FAS70</block>
-  <block id="03e4e34912e74f99bcc188842b2088d2" category="paragraph">AFF A90 ， AFF A1K ， FAS90 ， AFF C80</block>
   <block id="cc6089132b9a5e4af29a76834480cc1a" category="paragraph">AFF A50</block>
   <block id="b4f15258765c83a1223f6ad33f797dbd" category="paragraph">X60134A</block>
   <block id="9d9de1698f7e401c78687204de906ee5" category="paragraph">AFF A20</block>
@@ -14072,7 +14064,6 @@
   <block id="45fc6e02d529201467decbef1f3eacab" category="paragraph">請參閱<block ref="9c839fcdfb8699a63c787254d7b1ae03" category="inline-link-macro-rx"></block>了解更多。</block>
   <block id="567a833b899417b8be640e2472fc9c60" category="paragraph">使用憑證更新 FibreBridge 韌體</block>
   <block id="5a870516b9d31d269ea6a8afce2ec1e6" category="paragraph">如果伺服器需要憑證來下載韌體包，您可以使用憑證來更新 FibreBridge 橋接器上的韌體。</block>
-  <block id="798a9759457492658d53527d57355221" category="paragraph">紅帽企業 Linux（RHEL）9.5</block>
   <block id="b225d9c59432e8a8fb3706648e471b89" category="paragraph">RHEL 9.4</block>
   <block id="5a4423695d5636fb42d9142a09b58340" category="paragraph">RHEL 9.3</block>
   <block id="c87e38c84927fcd003b4fdc775e74821" category="paragraph">RHEL 9.2</block>
@@ -14391,7 +14382,6 @@
   <block id="1e2cb5bcdb8947c91d9b70a1c5ee21c0" category="list-text">所需的最低 ISL 速度取決於平台型號：</block>
   <block id="fe25d0e834bbf213fee0bc910f4a7054" category="list-text">在AFF A1K和AFF A90系統上，ISL 速度必須至少為 100Gbps。使用不同的 ISL 速度需要功能產品差異請求 (FPVR)。若要提交 FPVR，請聯絡您的銷售團隊。</block>
   <block id="9260215cd28aa0daaf49857a4307ca43" category="list-text">在所有其他平台上，ISL 速度必須至少為 10Gbps。</block>
-  <block id="d1de43c2b2a882d5549ca6caea0cd796" category="paragraph"><block ref="5659c81fbc5304275ab0c57df4fa5e4d" category="inline-link-macro-rx"></block> 在_MetroCluster Tiebreaker 安裝和配置_部分。</block>
   <block id="e91d78e049c73a532e8c4014365c7f0d" category="doc">配置MetroCluster決勝軟體</block>
   <block id="2369e844c90397a4181ffafd2f64be4a" category="section-title">啟動 Tiebreaker 軟體 CLI</block>
   <block id="157265493f45de2399bb80a595184137" category="section-title">進口證書</block>
@@ -14404,14 +14394,10 @@
   <block id="eb2fdb57a4efd845d6aeb1d9d0f9042f" category="list-text">這<block ref="1f4e0d0417f12bfdf15fa538de9f9f9a" prefix=" " category="inline-code"></block> value 指定將憑證匯入 JVM 後要儲存的名稱。</block>
   <block id="61946575308b3d651099211c764d921e" category="paragraph">以下範例展示如何匯入檔案名為「root certificate」的根憑證。<block ref="a62f7df2640c2a527e31c848f274ea05" prefix=" " category="inline-code"></block> 以及檔案名稱<block ref="ca11bb462642b431904085550b5375b6" prefix=" " category="inline-code"></block>：</block>
   <block id="7efb1ea0d372ab5c16aca840df49ca79" category="paragraph"><block ref="7efb1ea0d372ab5c16aca840df49ca79" category="inline-link-macro-rx"></block></block>
-  <block id="5659c81fbc5304275ab0c57df4fa5e4d" category="paragraph"><block ref="5659c81fbc5304275ab0c57df4fa5e4d" category="inline-link-macro-rx"></block></block>
-  <block id="a212e7395bb60258b12e96d4b25f0a25" category="paragraph"><block ref="5659c81fbc5304275ab0c57df4fa5e4d" category="inline-link-macro-rx"></block> 在_MetroCluster決勝規則安裝和配置_中。</block>
   <block id="67431d9e5972e3763ce39925ca6172fe" category="paragraph"><block ref="67431d9e5972e3763ce39925ca6172fe" category="inline-link-macro-rx"></block></block>
-  <block id="34e872e7651a932e20637ef1b9ef55f0" category="list-text">請依照以下步驟操作： <block ref="5659c81fbc5304275ab0c57df4fa5e4d" category="inline-link-macro-rx"></block> 在_MetroCluster Tiebreaker 安裝和配置_部分。</block>
   <block id="c8e5fb4095abed5cb973a724e5e4cca7" category="paragraph"><block ref="67431d9e5972e3763ce39925ca6172fe" category="inline-link-macro-rx"></block> 在_MetroCluster Tiebreaker 安裝與設定內容_</block>
   <block id="50579aa28b2b0ac01c180e6e07119273" category="paragraph"><block ref="50579aa28b2b0ac01c180e6e07119273" category="inline-link-macro-rx"></block></block>
   <block id="9a1a464601bee502d12616aa9be06bb3" category="list-text"><block ref="d77847ddf2a5535e4974575f39191ae2" category="inline-link-macro-rx"></block> 來自決勝軟體。</block>
-  <block id="ba13dd5c52c50f7bb5ef919e4d340c98" category="paragraph"><block ref="83029083d25b0153769c6039afb8beb5" category="inline-link-macro-rx"></block>。</block>
   <block id="62633c6c7bc1e478b0c226fc706ce7d1" category="list-text">運行該命令<block ref="350d65f100fdbc8d411ce22a179f4b29" prefix=" " category="inline-code"></block>在ONTAP系統中，確保已發現叢集交換機，並且監控欄位設定為 *True*，序號欄位不顯示 *Unknown*。</block>
   <block id="f53c5f8d2c3b0e3b1854e0c8f280aac0" category="list-text">重啟決勝程式軟體：</block>
   <block id="3b879e464448b1abbc76cb49a3e48f67" category="paragraph"><block ref="5c46787eed9475e8e2a2351216605e90" prefix="" category="inline-code"></block></block>
@@ -14484,4 +14470,61 @@
   <block id="7043cc5b7b924f62a8af6f3d2e706c77" category="list-text">進入<block ref="7b8b965ad4bca0e41ab51de7b31363a1" prefix=" " category="inline-code"></block> 當您看到以下提示時，請跳過備份還原：</block>
   <block id="78531eca4abf30d4c07d610d913a17b4" category="list-text">進入<block ref="415290769594460e2e485922904f345d" prefix=" " category="inline-code"></block> 當看到以下提示時，請重新啟動：</block>
   <block id="6b5a6f62b70ef753e19336e7f4298c82" category="paragraph"><block ref="dc1cb730bc2868b03f1ab6ee685b8beb" prefix="" category="inline-code"></block></block>
+  <block id="c9996a1b1fe92047dfbcfbef9989c233" category="list-text">AFF C400</block>
+  <block id="7fd3cdaaba74a0b0ef3d707a8545df7c" category="paragraph">1.7</block>
+  <block id="2a81eb3b4a7f22fb1fdb159561b71f3f" category="list-text">錯誤修復</block>
+  <block id="11574a03547d555cf191ab6e9136f88f" category="list-text">增加了對使用 CLI 進行切換模擬的支援。</block>
+  <block id="6fbe6a8c71d451ebdda6d9faf413cda1" category="paragraph">紅帽企業 Linux（RHEL）9.6</block>
+  <block id="92a9848c1fb5697892193dd4ff6e8f2d" category="paragraph">RHEL 9.5</block>
+  <block id="a1c30b24be11ecf2a6d8debac1870fde" category="paragraph">確定MetroCluster IP 配置所需的和支援的硬體和軟體組件。查看文件範例中組件的命名約定。</block>
+  <block id="bf76ee4501fdd9fae56487ad105f9cd0" category="paragraph">FAS8300、 AFF A400、 ASA A400、 ASA C400、 AFF C400</block>
+  <block id="00327edd9d8765d46ab56e3b0980903e" category="paragraph">FAS2750、 AFF A150、 ASA A150、 AFF A220</block>
+  <block id="f96110c8f7346ebfb781d05634cd4049" category="paragraph">FAS500f、 AFF A250、 ASA A250、 ASA C250、 AFF C250</block>
+  <block id="87c712f745ecf87eb856cfed663b2a15" category="paragraph">AFF A70、FAS70、 AFF C80</block>
+  <block id="d805011ad8efc8ec2fc078873f4643a6" category="paragraph">AFF A90、 AFF A1K、FAS90</block>
+  <block id="d67e92f6cf688c69bd6f477c433e7d63" category="paragraph"><block ref="c1e5bf8480750ae5cad48df028e9ef8f" category="inline-link-macro-rx"></block> 在_MetroCluster Tiebreaker 安裝和配置_部分。</block>
+  <block id="3a5736e3efeba2abba824451060f0e8c" category="paragraph">AFF A400、 AFF C400、 FAS8300和FAS8700系統支援端對端加密，用於加密MetroCluster IP 配置中站點之間的後端流量，例如 NVlog 和儲存複製資料。</block>
+  <block id="3b2e338cb9699827ddcf4059b9343104" category="list-text">具體步驟和預期命令輸出取決於您執行的 Tiebreaker 版本。</block>
+  <block id="845ecf6124e1ae7663abd58c5c290bf4" category="open-title">決勝局 1.5 或更早</block>
+  <block id="c235e2a63587607e546ce23e3aa3f429" category="paragraph"><block ref="340f3772c8514ee6adeb9334c1090b2b" prefix="" category="inline-code"></block></block>
+  <block id="7b1c9a2f5a83c33057ec6c4c00ca9f66" category="list-text">請依照適用於您的 Tiebreaker 版本的步驟匯入缺少的憑證。<block ref="92b9649dc166097f560c612aa552fd41" category="inline-xref-macro-rx"></block> 。</block>
+  <block id="b4409eb500913b49e5983d79343adf86" category="list-text">在 Tiebreaker 1.7 或更高版本中，您可以執行切換模擬來檢查是否需要匯入憑證。如果切換模擬失敗，則需要將憑證從ONTAP匯入到 Java 虛擬機器 (JVM) 中的金鑰庫。</block>
+  <block id="af6be912cb9928f2a8b149136fcb95cf" category="open-title">決勝規則 1.7 或更高版本</block>
+  <block id="eb49a1138d5a52d43b58b3e179697e3f" category="list-text">執行切換模擬以檢查是否需要導入憑證。</block>
+  <block id="42d13f8ba94aec1bc59d5a90679693bc" category="list-text">查看決勝局監控狀態：<block ref="7f09554f3b428339c3f534ff2c033739" prefix=" " category="inline-code"></block></block>
+  <block id="bb95eb1081a895c8cb78bdaee7da9ef6" category="list-text">觸發切換模擬：</block>
+  <block id="947062c10bc54a7d20d50f8bbaa0c13a" category="paragraph"><block ref="eca495e6e12f12898ee3f847cb6c0c9b" prefix="" category="inline-code"></block></block>
+  <block id="5bdaf09274dc521b698ce17fb52deaf8" category="paragraph">如果需要將憑證匯入 JVM，則該命令將傳回下列輸出：</block>
+  <block id="8fc6098280042a868aba93d428eae4b8" category="list-text">再次執行切換模擬檢查：</block>
+  <block id="78eca7e4ec98898015905b1e4548a383" category="open-title">平手決勝 1.6 或 1.6P1</block>
+  <block id="28aca2b572a275aebd465d2d2fd4cdef" category="list-text">從ONTAP導入所有憑證。對需要匯入的每個憑證（SSL 伺服器憑證、中間憑證或根憑證）執行以下命令。</block>
+  <block id="4588af49e6444b900fecf33e5b46364a" category="section-title">禁用決勝局觀察者模式</block>
+  <block id="0d93de7458c000c3fdfec7afd50e0442" category="paragraph">您可以停用 Tiebreaker 軟體的觀察者模式，使其在偵測到網站故障後自動啟動切換。</block>
+  <block id="a1f8c8c62c04c20068aa93f576fa9690" category="admonition">在 Tiebreaker 1.6 及更高版本中，您可以使用以下方式啟用新增顯示器時的自動切換：<block ref="cd3bf079d0da00fdccce85e2519add01" prefix=" " category="inline-code"></block>命令。參考<block ref="c18ee48110dfc5f3e03244ba138d0938" category="inline-link-macro-rx"></block>。</block>
+  <block id="c00e147177076015256c9df010c971c2" category="list-text">關閉觀察者模式：</block>
+  <block id="eedc07636a5991cd4eb9800d304a16ba" category="paragraph">決勝局 1.7</block>
+  <block id="071aedff010617c733bba1a48a1df49f" category="inline-link-macro">安裝 Tiebreaker 1.7</block>
+  <block id="8788535e7eb158e8970021610d3ed9da" category="paragraph"><block ref="8788535e7eb158e8970021610d3ed9da" category="inline-link-macro-rx"></block></block>
+  <block id="3d24188ac7751bfbb22d07dce3299f1e" category="inline-link-macro">安裝 Tiebreaker 1.6 或 1.6P1</block>
+  <block id="87ad7c1746b46707f06848b1618643ce" category="paragraph"><block ref="87ad7c1746b46707f06848b1618643ce" category="inline-link-macro-rx"></block></block>
+  <block id="800d94b1914e36803b31fcf9895abae5" category="summary">從 Tiebreaker 1.7 開始，您可以模擬切換來驗證 Tiebreaker 的運作情況。</block>
+  <block id="e4ed18ab6d3d5544045db1a3e751e965" category="doc">使用MetroCluster Tiebreaker 模擬切換</block>
+  <block id="7093ecc93a73f513ca55a9e8f3afdde6" category="paragraph">從 Tiebreaker 1.7 開始，您可以模擬切換來測試MetroCluster Tiebreaker 切換功能。</block>
+  <block id="79eb78d821b3ee6435ad7e4923386085" category="list-text">這<block ref="2182cff8b3f98462b1b1b9f67a9e98d6" prefix=" " category="inline-code"></block>該命令僅在 Tiebreaker 1.7 或更高版本中受支援。</block>
+  <block id="efd72f1f13c88a25047ed85c76b50038" category="list-text">執行切換模擬：</block>
+  <block id="028ce40e56d402dfb0df4f094a41fde6" category="paragraph">該命令成功執行後，將返回以下輸出：</block>
+  <block id="8e70b918f55470877368261e9be2a7c6" category="doc">安裝MetroCluster Tiebreaker 1.7</block>
+  <block id="f1d3e8cbaa3f907f1f1d9c23342040db" category="paragraph">在您的 Linux 主機上安裝或升級至 Tiebreaker 1.7 以監控MetroCluster配置。</block>
+  <block id="5a59d868721cb5e9a140856077e385d9" category="list-text">你只能從 Tiebreaker 1.6P1 升級到 Tiebreaker 1.7。參考<block ref="87ad7c1746b46707f06848b1618643ce" category="inline-link-macro-rx"></block>。</block>
+  <block id="d3304a80fc4dc1ea2d716877d36eadac" category="list-text">下載MetroCluster Tiebreaker 1.7 軟體。</block>
+  <block id="ad73fbe1d3c75ebdc29af85c6946f907" category="list-text">如果您正在升級，請檢查您正在運行的 Tiebreaker 版本：</block>
+  <block id="0684c921e825a58cdb4b10dbcfd5597b" category="paragraph">以下範例展示了決勝規則 1.6P1</block>
+  <block id="119069080fcdc97e5697bcdf7709ee2e" category="paragraph">以下步驟用於全新安裝 Tiebreaker 1.7。</block>
+  <block id="5f423725fb28e9d5d9b02b9c16b5a368" category="open-title">將 1.6P1 版本升級到 1.7 版本</block>
+  <block id="a7fd6df6d65c00fc1df7543b6a663ef0" category="paragraph">請依照以下步驟將 Tiebreaker 1.6P1 軟體版本升級至 Tiebreaker 1.7。</block>
+  <block id="f496457a4e5f70370a95812c3bd8a7a1" category="admonition">如果因缺少憑證而導致升級失敗並出現錯誤，請參閱以下內容：<block ref="683f110921efb534660320b85a54a9a9" category="inline-link-macro-rx"></block> 。證書匯入後，您可以再次嘗試升級。</block>
+  <block id="c1e5bf8480750ae5cad48df028e9ef8f" category="paragraph"><block ref="c1e5bf8480750ae5cad48df028e9ef8f" category="inline-link-macro-rx"></block></block>
+  <block id="cd12f62ca79514b05b68e5de4836ba52" category="paragraph"><block ref="c1e5bf8480750ae5cad48df028e9ef8f" category="inline-link-macro-rx"></block> 在_MetroCluster決勝規則安裝和配置_中。</block>
+  <block id="a72abbb5319ccc5e06e530d32ebda9a2" category="list-text">請依照以下步驟操作： <block ref="c1e5bf8480750ae5cad48df028e9ef8f" category="inline-link-macro-rx"></block> 在_MetroCluster Tiebreaker 安裝和配置_部分。</block>
+  <block id="cbefd3f7361c94b64426b0cea58a0328" category="paragraph"><block ref="fea9123e6c4e9558906e90d28dff7dce" category="inline-link-macro-rx"></block>。</block>
 </blocks>

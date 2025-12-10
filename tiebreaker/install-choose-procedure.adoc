@@ -21,9 +21,16 @@ summary: 您遵循的 tiebreaker 安裝程序取決於您要安裝的 tiebreaker
 
 
  a| 
-Tiebreaker 1.6 或更新版本
+決勝局 1.7
  a| 
-link:tb-16-install.html["安裝 Tiebreaker 1.6 或更新版本"]
+link:tb-17-install.html["安裝 Tiebreaker 1.7"]
+
+
+
+ a| 
+平手決勝 1.6 或 1.6P1
+ a| 
+link:tb-16-install.html["安裝 Tiebreaker 1.6 或 1.6P1"]
 
 
 

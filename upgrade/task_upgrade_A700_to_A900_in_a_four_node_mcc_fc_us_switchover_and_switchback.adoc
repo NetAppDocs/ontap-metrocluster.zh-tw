@@ -1420,5 +1420,5 @@ Cluster_A:: node_A_1 (non-overridable veto): DR partner NVLog mirroring is not o
 
 如果MetroCluster 先前已將此組態設定為由斷路器軟體進行監控、您可以還原斷路器連線。
 
-. 請依照以下步驟操作： link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#add-metrocluster-configurations["新增MetroCluster 功能"] 在_MetroCluster Tiebreaker 安裝和配置_部分。
+. 請依照以下步驟操作： link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#add-mcc-config-tb["新增MetroCluster 功能"] 在_MetroCluster Tiebreaker 安裝和配置_部分。
 

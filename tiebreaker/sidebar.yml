@@ -18,7 +18,9 @@ entries:
     entries:
     - title: 選擇您的安裝程序
       url: "/tiebreaker/install-choose-procedure.html"
-    - title: 安裝 Tiebreaker 1.6 或更新版本
+    - title: 安裝 Tiebreaker 1.7
+      url: "/tiebreaker/tb-17-install.html"
+    - title: 安裝 Tiebreaker 1.6 或 1.6P1
       url: "/tiebreaker/tb-16-install.html"
     - title: 安裝斷路器 1.5
       entries:
@@ -46,6 +48,8 @@ entries:
   url: "/tiebreaker/concept_risks_and_limitation_of_using_mcc_tiebreaker_in_active_mode.html"
 - title: 防火牆要求MetroCluster
   url: "/tiebreaker/reference_firewall_requirements_for_mcc_tiebreaker.html"
+- title: 使用MetroCluster Tiebreaker 模擬切換
+  url: "/tiebreaker/switchover-simulation.html"
 - title: 還原斷路器事件記錄檔MetroCluster
   url: "/tiebreaker/concept-mcc-tiebreaker-event-logs.html"
 - title: 何處可找到其他資訊

@@ -1469,7 +1469,7 @@ Remote: cluster_A         Configuration state configured
  a| 
 Tiebreaker
  a| 
-link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#add-metrocluster-configurations["新增MetroCluster 功能"] 在_MetroCluster Tiebreaker 安裝和配置_部分。
+link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#add-mcc-config-tb["新增MetroCluster 功能"] 在_MetroCluster Tiebreaker 安裝和配置_部分。
 
 
 

@@ -38,6 +38,7 @@ ONTAP 9.17.1
 ONTAP 9.15.1.1
  a| 
 ** 解答400 AFF
+** AFF C400
 ** FAS8300
 ** FAS8700
 
