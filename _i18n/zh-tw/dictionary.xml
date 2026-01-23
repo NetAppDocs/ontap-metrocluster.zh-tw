@@ -13702,7 +13702,6 @@
   <block id="ba17277e87e849f2a38d0126b17905d8" category="list-text">驗證儲存在維護模式下是否可見。</block>
   <block id="ef1806576a0dffd58481510c7525ed90" category="list-text">啟動進入維護模式：</block>
   <block id="41af2ca5f1002ab08c75f010d70581a4" category="list-text">確認儲存設備可從存續的站台看到。</block>
-  <block id="b496741d8a784412385f91b26ad4e4f1" category="list-text">驗證本機儲存在維護模式下是否對節點可見：</block>
   <block id="93ba613931cbee0caca0df20b5380feb" category="doc">12 連接埠 Cisco 9336C-FX2 交換器的平台連接埠分配</block>
   <block id="a696f18cbd32872428df323dcf124b0f" category="list-text">本節的表格適用於 12 埠 Cisco 9336C-FX2 交換器。</block>
   <block id="9e1541acccf8eedc84b54f8f9ba9022a" category="inline-link-macro">Cisco 3232C 或 36 連接埠 Cisco 9336C-FX2 交換器的平台連接埠分配</block>
@@ -14526,4 +14525,6 @@
   <block id="7c6d58b5ff7d328112a439ee0ef9df40" category="paragraph">從MetroCluster Tiebreaker 1.7 開始，您可以模擬切換來測試 Tiebreaker 切換功能。</block>
   <block id="e4e3590eb665c0a0f5d5b3467636e5a7" category="list-text">從ONTAP 9.18.1 開始， MetroCluster IP 後端連接埠速度為 100G 的平台需要最低 100Gbps 的 ISL 連結速度。使用不同的 ISL 速度需要功能變更請求 (FPVR)。若要提交 FPVR，請聯絡您的NetApp銷售團隊。</block>
   <block id="deaa86cf36be952b15db4ccf35d9a39d" category="list-text">在其他所有平台上，最低支援的 ISL 連結速度為 10Gbps。</block>
+  <block id="e8c32d7ccca6662808649d7c3e536c38" category="list-text">確認在維護模式下的節點上可以存取本機儲存和遠端儲存：</block>
+  <block id="613654d6d797f748d730bca666bd5f45" category="list-text">請確認您的新韌體版本與您的解決方案相容。更多資訊請參閱 <block ref="cbfe825e8e02458e2eef3cd048612d7d" category="inline-link-macro-rx"></block>。</block>
 </blocks>
