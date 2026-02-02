@@ -21,6 +21,28 @@ summary:
 
 
  a| 
+SnapMirror 雲端支援 MetroCluster FlexGroup Volume
+ a| 
+SnapMirror cloud 支援在 MetroCluster 組態中的 FlexGroup volume 進行備份與還原作業。
+
+link:https://docs.netapp.com/us-en/ontap/data-protection/cloud-backup-with-snapmirror-task.html#delete-a-snapmirror-cloud-relationship["使用 ONTAP SnapMirror 將資料備份到雲端"^]
+ a| 
+ONTAP 9.18.1GA
+
+
+
+ a| 
+使用 `system controller replace`命令進行 MetroCluster IP 控制器升級的新支援升級組合
+ a| 
+增加了在 MetroCluster IP 配置中使用 `system controller replace`命令將 AFF A70 升級到 AFF A90 系統或將 FAS70 升級到 FAS90 系統的支援。
+
+link:../upgrade/upgrade-mcc-ip-system-controller-replace.html["在四節點 MetroCluster IP 中使用切換功能升級控制器、並使用「系統控制器更換」命令（ ONTAP 9.13.1 及更新版本）切換回控制器"]
+ a| 
+ONTAP 9.18.1GA
+
+
+
+ a| 
 MetroCluster IP 配置中 FAS50 系統的快閃記憶體快取支持
  a| 
 在MetroCluster IP 配置中，FAS50 系統支援快閃記憶體快取。

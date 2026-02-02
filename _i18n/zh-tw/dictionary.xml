@@ -11899,7 +11899,6 @@
   <block id="00422b8712ec5454364e6489bb81ba29" category="list-text">當您執行控制器升級時、舊的和新的平台類型 * 必須 * 相符：</block>
   <block id="5505f24f1b03305d31aacdd035c7f251" category="paragraph-title">支援的 AFF 和 FAS MetroCluster IP 控制器升級</block>
   <block id="ae189029f72cc261fbad1afff41d9552" category="list-text">附註 3 ：目標平台必須等到控制器升級完成後、才能擁有內部磁碟機。您可以在升級後新增內部磁碟機。</block>
-  <block id="39eb8422a5f49fae94f0335febb78701" category="list-text">附註 4 ：需要更換控制器模組。</block>
   <block id="2d5d2a9ece12ce430adc9f20c9e9464d" category="paragraph-title">支援的 ASA MetroCluster IP 控制器升級</block>
   <block id="9311605dda14c8d475dd817b196dbe33" category="list-text">附註 1 ：執行 ONTAP 9.13.1 或更新版本的系統支援控制器升級。</block>
   <block id="e201b3063a835c6ab815286f4d0dc126" category="paragraph-title">支援的 AFF 和 FAS MetroCluster FC 控制器升級</block>
@@ -12019,7 +12018,6 @@
   <block id="641cba091515001a3bb48d030bddd608" category="section-title">升級叢集 A 上的節點</block>
   <block id="2ce39beb4bd7e0662d271e0be20e56c4" category="paragraph">開始升級之前、請先檢閱下列考量事項、確認您的組態是否受到支援。</block>
   <block id="a63b5e3f602b86fc07da490951d07b9f" category="list-text">附註 2 ：目標平台必須等到控制器升級完成後、才能擁有內部磁碟機。您可以在升級後新增內部磁碟機。</block>
-  <block id="3b2d91208084a85415d107e904b61128" category="list-text">附註 3 ：需要更換控制器模組。</block>
   <block id="15301c23263e749022234eacd3de3300" category="paragraph">不支援在 ASA 系統上使用命令來升級控制器<block ref="616743bfa4fd61d558c556fe614cb2e9" prefix=" " category="inline-code"></block> 。</block>
   <block id="8f93576e78d28328ad0cf696ed0604e4" category="list-text">您的升級組態中的現有和新控制器必須支援 MetroCluster IP 交換器（交換器類型、廠商和機型）和韌體版本。</block>
   <block id="1df73bda435b5d96d663aead5cdd3220" category="list-text"><block ref="d6f593c128c20b2b477999ba1d624969" prefix="" category="inline-code"></block></block>
@@ -12826,13 +12824,10 @@
   <block id="3d8c3985ef8f7b9c50308a5dfab923c4" category="paragraph"><block ref="f85c62a3a981a8b83a61b1dc7959165b" category="inline-link-macro-rx"></block>。</block>
   <block id="ed1dd620ec6ed4baac7e1208e4a9d25d" category="summary">升級至 ONTAP 9.15.1 或更新版本所推出的系統時，您必須先設定引導程序，才能繼續進行控制器升級。</block>
   <block id="496db1855de52190cc06d85f972a650b" category="doc">設定所需的 bootarg （用於將 MetroCluster IP 升級至 ONTAP 9.15.1 或更新版本所推出的系統）</block>
-  <block id="59b020257dd689cba5d5780a512943fd" category="section-title">步驟 1 ：確定需要在舊控制器上設置的引導程序</block>
-  <block id="6e9eadf85899a23a56a99cb9a6df7652" category="paragraph">在執行控制器升級之前，所有支援的下列系統升級都需要在舊控制器上設定開機檔：</block>
   <block id="724bf3ae18d86521a5b9d77a13fcfddb" category="list-text">AFF C80</block>
   <block id="bf35733b2711515e1aa7614ca7dd1ef0" category="list-text">AFF A50 、 AFF A20 、 AFF A30</block>
   <block id="b1a7d02f89c62c97fedf60bb09caa4bc" category="list-text">AFF C30 、 AFF C60</block>
   <block id="55aa8632230fb0a23186560320c2411c" category="inline-link-macro">準備系統以進行升級</block>
-  <block id="05c6aa6eca73dc8505cf4bcf7e51677a" category="paragraph">大多數對 ONTAP 9.15.1 或更新版本所推出的系統進行升級，都需要在舊版控制器上設定<block ref="ee06f9ce95f0e4407845e7566ca3219e" prefix=" " category="inline-code"></block>開機。不過，某些升級路徑會要求您改為設定<block ref="547c6b727c1ad89e0e0a9fab4efaf59d" prefix=" " category="inline-code"></block> bootarg 。</block>
   <block id="ffe782ee595f504f732429ce74813c9c" category="paragraph">請使用下表來判斷您需要為特定升級組合設定哪些 bootarg 。</block>
   <block id="9a5481a4499f03b428516e1e655b2247" category="cell">針對此升級 ...</block>
   <block id="2960c7c521e801666250bc33502b1481" category="cell">設定 bootarg...</block>
@@ -12842,7 +12837,6 @@
   <block id="1587ade3a80eae494164e86cb2dd5734" category="cell">從 AFF A150 到 AFF A20</block>
   <block id="66d5b6c0a5d29009937264288b2bed0e" category="cell">從 AFF A220 到 AFF A20</block>
   <block id="3ea751f5e7ad018c7a1c4ebe22608ee6" category="cell"><block ref="ee06f9ce95f0e4407845e7566ca3219e" prefix="" category="inline-code"></block></block>
-  <block id="4e154455580c2924ab538f717efce366" category="section-title">步驟 2 ：在舊控制器上設定所需的開機檔</block>
   <block id="31bb07ea477e7a663bf099ca3ed9b374" category="inline-xref">判斷您需要設定的 bootarg</block>
   <block id="b0eddbd28deec4566b9a1e2f57d34c8f" category="list-text">為您的升級組合設定所需的 bootarg 。您已經確定了需要使用中的表設置的 bootarg <block ref="092a73eeb155f2a0de79637a5ae185e0" category="inline-xref-macro-rx"></block>。</block>
   <block id="ee06f9ce95f0e4407845e7566ca3219e" category="open-title">HW.cxgbe 。 Toe_keepalive_disable</block>
@@ -13002,7 +12996,6 @@
   <block id="95a0dc0cefe38a8a65f4b4857599a767" category="paragraph"><block ref="7540bef2d37c83ab15db307604964774" category="inline-link-macro-rx"></block>。</block>
   <block id="471b1d5bf7b9020a821b9612fad3ac61" category="summary">升級至 ONTAP 9.15.1 或更新版本所推出的系統時，您必須先設定引導程序，才能繼續升級。</block>
   <block id="867034ce824c06d2ae20a2782eada4c4" category="list-text">AFF A70 、 AFF A90 、 AFF A1K</block>
-  <block id="e13c96308702af19fbafc3aa4886ae41" category="admonition">如果您要升級至列出的任何系統，則 * 必須 * 在執行升級之前，在現有系統上設定必要的開機檔。對於所有其他升級，您可以跳過此任務並直接轉至 <block ref="7316c75eb3c5ee7c2327a2b6a0fcc53b" category="inline-link-macro-rx"></block>。</block>
   <block id="f05c544454e5ae504161071bcf104914" category="list-text">為您的升級組合設定所需的 bootarg 。您已經確定了需要使用中的表設置的 bootarg <block ref="4e6a8a5f8b225717259653d744f685bb" category="inline-xref-macro-rx"></block>。</block>
   <block id="01e12de62fa77fda2815719aed8ff892" category="paragraph-title">下一步</block>
   <block id="9a24b7f06d5ef108e1e9e3a9b9635840" category="paragraph"><block ref="7316c75eb3c5ee7c2327a2b6a0fcc53b" category="inline-link-macro-rx"></block>。</block>
@@ -13014,7 +13007,6 @@
   <block id="15d63e3040229aa69f2bacf54450c8aa" category="paragraph">您不需要解壓縮<block ref="24f58b52875ae0cf9e2f71f5f4715aba" prefix=" " category="inline-code"></block>檔案。</block>
   <block id="553c80eee3874db37c74026e9cd54f1c" category="paragraph"><block ref="669980a1306854f119900d6a8876f53d" category="inline-link-macro-rx"></block>。</block>
   <block id="1134c88b3e27b3208779089225a7548e" category="summary">在開始 MetroCluster IP 控制器升級之前，您需要確認您的升級組合是否受到支援。</block>
-  <block id="3bd44928438eecd88373e90938479338" category="list-text">附註 4 ：需要 IOM 模組，才能將舊控制器轉換為外部 SAS 機櫃。如需支援的 IOM 模組，請參閱<block ref="cbfe825e8e02458e2eef3cd048612d7d" category="inline-link-macro-rx"></block>。</block>
   <block id="fd82efb2b9fc7033a2ee19efb493d464" category="inline-link-macro">選擇升級或重新整理方法</block>
   <block id="cbbc95c0b1d7c5d8feea0d31eafa9a28" category="paragraph">如需其他程序，請參閱<block ref="1547bd533de8078ec6c6f72dc3468122" category="inline-link-macro-rx"></block>。</block>
   <block id="a397b8fc1d64d0e666558911201a9d53" category="inline-link-macro">使用此升級程序的需求</block>
@@ -13413,13 +13405,10 @@
   <block id="2077cee62d2dc819ca10d6e3f6a4f59b" category="list-text">附註 2 ：這些組合需要 ONTAP 9.13.1 或更新版本（或平台支援的最低 ONTAP 版本）。</block>
   <block id="9bc3cb19080afd7c3475f6c80b5ee013" category="paragraph">檢閱 AFF A150 ， AFF A20 ，， AFF A220 ， FAS500f ，， FAS8200 ， FAS50 ， AFF C400 C30 ， AFF A30 ， AFF A250 ， AFF A300 ， AFF C250 ， FAS8300 ， AFF ， FAS2750 ， AFF A400 ， AFF A320 和 FAS8700 系統的擴充組合。</block>
   <block id="99032e371bac241eac644b68481b2c7c" category="paragraph">檢閱 C60 ， AFF A50 ， FAS70 ，， AFF A700 ， FAS9500 ， FAS9000 ， AFF ， AFF A70 ， AFF A900 ， AFF C800 ， AFF ， AFF A800 C80 ， FAS90 ， AFF A90 和 AFF A1K 系統的擴充組合。</block>
-  <block id="1f33c4b21d6c848bec5712e27807c50a" category="paragraph">當您升級至 AFF A70 ， AFF A90 ， AFF A1K ， FAS70 ， FAS90 ， AFF C80 ， AFF A50 ， AFF A20 ， AFF A30 ， AFF C30 ， AFF C60 或 FAS50 系統時，這項工作僅 * 需要。</block>
   <block id="63856cfb46890240aad0d97a958b298b" category="paragraph">下表顯示使用「系統控制器置換」命令在 MetroCluster IP 組態中升級 AFF 或 FAS 系統所支援的平台組合，分成兩個群組。</block>
   <block id="e94f3a81af196da788fa0f158f9d57fc" category="sidebar">瞭解如何使用 Active IQ Unified Manager 和系統管理員進行進一步的組態和監控</block>
-  <block id="d7aa339b18c7637dfafa2ace54386b6c" category="admonition">在開始升級之前，您必須在兩個站台的所有舊節點上設定所需的開機。</block>
   <block id="ac37738788377720cfa00ec2fd76c841" category="list-text">在兩個站台停止一個節點，並允許其 HA 合作夥伴對節點執行儲存接管：</block>
   <block id="0fd6026f96835994e1e5d178235825d6" category="list-text">在要升級的 DR 群組或 DR 群組中的所有節點上重複這些步驟。</block>
-  <block id="29a7afcbdc44731ef5db6482e263bc76" category="paragraph">升級至 ONTAP 9.15.1 或更新版本所推出的系統時，您必須先在舊控制器上設定開機，才能開始升級。</block>
   <block id="ffb8d6643ebe516c638a6ca5b500299d" category="list-text">在要升級的 DR 群組中的所有四個節點上重複這些步驟。</block>
   <block id="d91bce8efd531c677e67c52eb81908cc" category="doc">瞭解 MetroCluster 維護</block>
   <block id="8f618269f9967b96ce33544121035a9a" category="paragraph">瞭解如何為 MetroCluster 維護工作做好準備，並為您的組態選擇正確的維護程序。</block>
@@ -13680,7 +13669,6 @@
   <block id="90700c1e50cb21bc8204f5e8e63ff08f" category="inline-image-macro">顯示 AFF 和 FAS 升級組合組 1</block>
   <block id="2b3092608ec3c36288b967b8d2e51cd0" category="paragraph"><block ref="2b3092608ec3c36288b967b8d2e51cd0" category="inline-image-macro-rx" type="image"></block></block>
   <block id="c86a11671a0682bdfafd478847f74282" category="inline-image-macro">顯示 AFF 和 FAS 升級組合組 2</block>
-  <block id="51cfa502e93acea429147cf299cd152c" category="paragraph"><block ref="51cfa502e93acea429147cf299cd152c" category="inline-image-macro-rx" type="image"></block></block>
   <block id="7ffbff14d15222d12cd1d90edd7e729d" category="sidebar">設定NVIDIA SN2100交換器</block>
   <block id="96a5ba855b4ee3dba60ecf722a706b29" category="sidebar">安裝 CSHM 檔案</block>
   <block id="eb4b6887e705dad904287c0e3641b25e" category="sidebar">監控 MetroCluster IP 交換器的運作狀況</block>
@@ -14149,11 +14137,9 @@
   <block id="ba5335bcde9d44f534e3d1f52ca0bc09" category="paragraph">以下步驟使用四節點MetroCluster配置中的 FibreBridge 7500N 分區部分中所述的分區。</block>
   <block id="ebcbebb3418f0f51f4443340ff325a84" category="list-text">佈線時，將基於 IOM12 模組的堆疊連接到同一個橋接器，只要它們連接到單獨的 SAS 連接埠即可。</block>
   <block id="11824150050e29484950961f3f0906e9" category="paragraph"><block ref="fb3f1acbe91ec35c5f5605a9b6d4efef" category="inline-xref-macro-rx"></block></block>
-  <block id="317e4f171d10313b7d9f57b9ee71c757" category="paragraph"><block ref="317e4f171d10313b7d9f57b9ee71c757" category="inline-image-macro-rx" type="image"></block></block>
   <block id="eaf2dec7a97ec668369075c4f3865b63" category="paragraph">如果要升級到ONTAP 9.15.1 或更高版本中引入的系統，通常需要在舊控制器上設定啟動參數，然後才能開始升級。</block>
   <block id="c845c22e49c5544061c5d10f7d34b798" category="admonition">如果您的升級組合受到影響，則需要在所有舊控制器上設定啟動參數才能成功升級。仔細閱讀本節中的信息，檢查您的升級組合是否要求您設定啟動參數，以及如何為您的組合設定正確的啟動參數。</block>
   <block id="97009239e0cfec412eecee57adec7fbb" category="section-title">步驟 1：確定是否需要在舊控制器上設定 bootarg</block>
-  <block id="4562de78a80791e72df05ddefb3bd680" category="paragraph">使用以下資訊檢查在開始升級之前是否需要設定所需的 bootarg：</block>
   <block id="61cf51d7e6639bbabc9b0e1161cf9d1a" category="list-text">除非另有說明，否則您*必須*在舊控制器上設定啟動參數才能支援以下系統的升級：</block>
   <block id="8279d52ff386b78e641d51f228ca0759" category="list-text">如果您的升級是以下組合之一，則您不需要在舊控制器上設定任何啟動參數：</block>
   <block id="a208bde2bbdb812d3731f4621c803c41" category="list-text">從AFF A70系統到AFF A90系統</block>
@@ -14164,9 +14150,7 @@
   <block id="50bb0724e98833a5ad53f4aca5baebaf" category="paragraph">對AFF A70、 AFF A90、 AFF A1K、FAS70、FAS90、 AFF C80、 AFF A50、 AFF A30、 AFF C30、 AFF C60 或 FAS50 系統的所有其他升級</block>
   <block id="9cd6725fb8f6020f90629ee4847213aa" category="paragraph">*注意：*如果從AFF A70升級到AFF A90系統或從 FAS70 升級到 FAS90 系統，則無需設定任何引導參數。</block>
   <block id="7a8f8d0a76afd2956fbc911927b76065" category="section-title">步驟 3：在舊控制器上設定所需的啟動參數</block>
-  <block id="ada21e32b58b8c3670abec0c9bd43b39" category="paragraph">確定升級組合所需的 bootarg 後，請依照步驟在舊控制器上設定 bootarg。此任務*僅*適用於受影響的升級。</block>
   <block id="5c60cc2ba2a9eb0236f0d3ba52d42179" category="admonition">在開始升級之前，必須在兩個網站的所有舊節點上設定 bootarg。</block>
-  <block id="51e9ae39fa32c368d27f8e565c6a0512" category="cell">所有其他支援升級到AFF A70、 AFF A90、 AFF A1K、FAS70、FAS90、 AFF C80、 AFF A50、 AFF A30、 AFF C30、 AFF C60 或 FAS50 系統</block>
   <block id="9f0a4554064856ae78dbf1c08bc876ce" category="doc">從MetroCluster配置中刪除 DR 群組</block>
   <block id="2f5075fd2401e26a07990d72f3087874" category="paragraph">從ONTAP 9.8 開始，您可以從八節點MetroCluster配置中刪除災難復原 (DR) 群組，以建立四節點MetroCluster配置。</block>
   <block id="73ac4183b96cb40ebb14a9dc72a13298" category="admonition">您可以在過渡和系統刷新工作流程期間使用這些步驟。</block>
@@ -14527,4 +14511,24 @@
   <block id="deaa86cf36be952b15db4ccf35d9a39d" category="list-text">在其他所有平台上，最低支援的 ISL 連結速度為 10Gbps。</block>
   <block id="e8c32d7ccca6662808649d7c3e536c38" category="list-text">確認在維護模式下的節點上可以存取本機儲存和遠端儲存：</block>
   <block id="613654d6d797f748d730bca666bd5f45" category="list-text">請確認您的新韌體版本與您的解決方案相容。更多資訊請參閱 <block ref="cbfe825e8e02458e2eef3cd048612d7d" category="inline-link-macro-rx"></block>。</block>
+  <block id="6d590dae977ef221f9c84c254e46f83f" category="paragraph">SnapMirror 雲端支援 MetroCluster FlexGroup Volume</block>
+  <block id="241800f8494edf500ad950d6dc737a4f" category="paragraph">SnapMirror cloud 支援在 MetroCluster 組態中的 FlexGroup volume 進行備份與還原作業。</block>
+  <block id="9fba9b738ffb50e00e660628b4e18f5a" category="inline-link-macro">使用 ONTAP SnapMirror 將資料備份到雲端</block>
+  <block id="18b24a167aecf15b34fd1d9c3134070d" category="paragraph"><block ref="18b24a167aecf15b34fd1d9c3134070d" category="inline-link-macro-rx"></block></block>
+  <block id="d1deb46a10dc3123edfe76c7a47cbee1" category="paragraph">ONTAP 9.18.1GA</block>
+  <block id="38fc12d8890f30afa1b180ca8bd43d52" category="paragraph">使用<block ref="616743bfa4fd61d558c556fe614cb2e9" prefix=" " category="inline-code"></block>命令進行 MetroCluster IP 控制器升級的新支援升級組合</block>
+  <block id="04b6e0caeafa8afd1fddb03f2837eb91" category="paragraph">增加了在 MetroCluster IP 配置中使用<block ref="616743bfa4fd61d558c556fe614cb2e9" prefix=" " category="inline-code"></block>命令將 AFF A70 升級到 AFF A90 系統或將 FAS70 升級到 FAS90 系統的支援。</block>
+  <block id="7c876b2b1c29ab7cbf4dd35f76fe9601" category="paragraph"><block ref="7c876b2b1c29ab7cbf4dd35f76fe9601" category="inline-link-macro-rx"></block></block>
+  <block id="b4043feb827ed258b03c0dc9d5c7e979" category="list-text">註 4：整合系統（磁碟和控制器在同一機箱內）的升級需要更換控制器模組，同時保留現有的機箱和磁碟。</block>
+  <block id="4232872ec24791a771e26762eb9729a1" category="paragraph"><block ref="4232872ec24791a771e26762eb9729a1" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="20d22f3415d5c154c703babbfee40553" category="paragraph">在開始升級之前，請使用以下資訊確定是否需要在舊控制器上設定 bootarg：</block>
+  <block id="f7dad78d22aba2309c18549bb2e1990e" category="paragraph">確定升級組合所需的 bootarg 後，請依照步驟在舊控制器上設定 bootarg。</block>
+  <block id="15a3efc45ba755dedf588ac88bf541a6" category="list-text">從 AFF A250 到 AFF A30 系統</block>
+  <block id="13fa7ab37c8f78945a0ca14da0aa4198" category="list-text">從 AFF C250 到 AFF C30 系統</block>
+  <block id="61ec242ab28e21649a7ba4c3bc6010f3" category="list-text">從 AFF A70 到 AFF A90 系統</block>
+  <block id="5b0b4899478dc191f6732af89e9c726a" category="admonition">如果您的升級不需要您設定任何 bootarg，您可以跳過此任務並直接進行 <block ref="7316c75eb3c5ee7c2327a2b6a0fcc53b" category="inline-link-macro-rx"></block>。</block>
+  <block id="f8823620823bdbe70425ce033ac49ff9" category="list-text">註 3：整合系統（磁碟和控制器在同一機箱內）的升級需要更換控制器模組，同時保留現有的機箱和磁碟。</block>
+  <block id="3e72f6e14914c8788932c9e928d6b32b" category="list-text">註 4：需要 IOM 模組才能將舊控制器轉換為外部 SAS 機架。請參閱 <block ref="cbfe825e8e02458e2eef3cd048612d7d" category="inline-link-macro-rx"></block> 以了解支援的 IOM 模組。</block>
+  <block id="ba0ea850ad143cf2644fe04fa6c67417" category="list-text">註 5：需要 ONTAP 9.18.1GA 或更高版本。</block>
+  <block id="c57a703687b0f21729f368950b7a5618" category="paragraph"><block ref="c57a703687b0f21729f368950b7a5618" category="inline-image-macro-rx" type="image"></block></block>
 </blocks>

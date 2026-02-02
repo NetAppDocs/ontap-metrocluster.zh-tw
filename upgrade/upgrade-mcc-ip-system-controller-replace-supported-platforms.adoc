@@ -44,8 +44,9 @@ summary: 在開始 MetroCluster IP 控制器升級之前，您需要確認您的
 
 * 附註 1 ：執行 ONTAP 9.13.1 或更新版本的系統支援控制器升級。
 * 附註 2 ：目標平台必須等到控制器升級完成後、才能擁有內部磁碟機。您可以在升級後新增內部磁碟機。
-* 附註 3 ：需要更換控制器模組。
-* 附註 4 ：需要 IOM 模組，才能將舊控制器轉換為外部 SAS 機櫃。如需支援的 IOM 模組，請參閱link:https://hwu.netapp.com/["Hardware Universe"^]。
+* 註 3：整合系統（磁碟和控制器在同一機箱內）的升級需要更換控制器模組，同時保留現有的機箱和磁碟。
+* 註 4：需要 IOM 模組才能將舊控制器轉換為外部 SAS 機架。請參閱 link:https://hwu.netapp.com/["Hardware Universe"^] 以了解支援的 IOM 模組。
+* 註 5：需要 ONTAP 9.18.1GA 或更高版本。
 
 
 [role="tabbed-block"]
@@ -61,7 +62,7 @@ image:../media/assisted-group-1.png["顯示 AFF 和 FAS 升級組合組 1"]
 --
 檢閱支援的組合，以升級至 AFF C60 ， AFF A50 ， FAS70 ， AFF C800 ， AFF A700 ， FAS9500 ， FAS9000 ， AFF ， AFF A70 ， AFF A900 ， AFF A800 C80 ， FAS90 ， AFF A90 和 AFF A1K 系統。
 
-image:../media/assisted-group-2-updated.png["顯示 AFF 和 FAS 升級組合組 2"]
+image:../media/assisted-group-2-a70-a90-updated.png["顯示 AFF 和 FAS 升級組合組 2"]
 
 --
 ====
