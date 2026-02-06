@@ -201,7 +201,7 @@ entries:
       - title: 實作MetroCluster 這個組態
         url: "/upgrade/task_implement_the_mcc_configuration_mcc_refresh_mcc_expansion.html"
       - title: 在每個節點上建立鏡射資料Aggregate
-        url: "/upgrade/task_create_a_mirrored_data_aggregate_on_each_node_mcc.html"
+        url: "/upgrade/task-expand-four-to-eight-mcc-fc.html"
       - title: 設定FC至SAS橋接器以進行健全狀況監控
         url: "/upgrade/task_configure_the_fc_to_sas_bridges_for_health_monitor.html"
       - title: 在MetroCluster 不完整的組態中移動中繼資料磁碟區

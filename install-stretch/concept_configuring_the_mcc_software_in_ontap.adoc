@@ -1734,6 +1734,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-concepts/home.html["
 +
 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與Aggregate管理"^]
 
+* Aggregate 名稱在所有 MetroCluster 站台上必須是唯一的。這意味著站台 A 和站台 B 上不能有兩個名稱相同的 Aggregate 。
 
 
 .步驟

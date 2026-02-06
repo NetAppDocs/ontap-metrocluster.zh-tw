@@ -1,16 +1,7 @@
----
-permalink: upgrade/task_create_a_mirrored_data_aggregate_on_each_node_mcc.html 
-sidebar: sidebar 
-keywords: metrocluster, upgrade, create, mirrored, data, aggregate, node 
-summary: 您必須在DR群組中的每個節點上建立鏡射資料Aggregate。 
----
-= 在每個 MetroCluster FC 節點上建立鏡像資料 Aggregate
+= 
 :allow-uri-read: 
-:icons: font
-:imagesdir: ../media/
 
 
-[role="lead"]
 您必須在DR群組中的每個節點上建立鏡射資料Aggregate。
 
 .關於這項工作

@@ -281,6 +281,10 @@ link:concept_considerations_drive_assignment.html["瞭解 MetroCluster IP 組態
 +
 在每MetroCluster 個節點具有單一鏡射資料集合體的四節點版的不間斷組態中、最低組態需要站台24個磁碟。
 
++
+
+NOTE: Aggregate 名稱在所有 MetroCluster 站台上必須是唯一的。這意味著站台 A 和站台 B 上不能有兩個名稱相同的 Aggregate 。
+
 
 
 在支援的最低組態中、每個集區都有下列磁碟機配置：
