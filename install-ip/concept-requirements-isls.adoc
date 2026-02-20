@@ -26,11 +26,15 @@ summary: 本節包含在所有 MetroCluster IP 組態和網路拓撲上傳輸 Me
 * ISL 必須具有相同的拓撲。例如、它們都應該是直接連結、或者如果組態使用的是 WDM 、則它們都必須使用 WDM 。
 * 所需的最低 ISL 速度取決於平台型號：
 +
-** 從ONTAP 9.18.1 開始， MetroCluster IP 後端連接埠速度為 100G 的平台需要最低 100Gbps 的 ISL 連結速度。使用不同的 ISL 速度需要功能變更請求 (FPVR)。若要提交 FPVR，請聯絡您的NetApp銷售團隊。
+** 從 ONTAP 9.18.1 版本開始，MetroCluster IP 後端連接埠速度為 100Gbps 的平台需要最低 100Gbps 的 ISL 連結速度。使用不同的 ISL 速度需要提交功能性產品變更申請（FPVR）。如需提交 FPVR，請聯絡您的 NetApp 銷售團隊。
++
+
+CAUTION: 在目前不符合 100Gbps ISL 要求的平台上升級至 ONTAP 9.18.1 及更新版本不會受到封鎖，可以繼續進行。但是，NetApp 強烈建議客戶轉換至 100Gbps ISL 連線，以維持預期的效能和可用性層級。
+
 ** 在其他所有平台上，最低支援的 ISL 連結速度為 10Gbps。
 
 
-* 每個架構必須至少有一個 10Gbps ISL 連接埠。
+* 每個交換矩陣必須至少有一個 10 Gbps ISL 連接埠。
 
 
 

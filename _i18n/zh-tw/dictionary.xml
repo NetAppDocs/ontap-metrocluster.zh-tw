@@ -11069,7 +11069,6 @@
   <block id="baf55d93093b54950152b6be3f9bfec2" category="list-text">一個 Fabric 上的 ISL 必須都是相同的速度和長度。</block>
   <block id="4b00dc01ca120693f1539bf736f11069" category="list-text">兩種架構中的 ISL 必須相同的速度和長度。</block>
   <block id="ef6ab3e28db1093c7315b30edeb84730" category="list-text">Fabric 1 和 Fabric 2 之間的最大支援距離差異為 20 公里或 0.2 毫秒。</block>
-  <block id="cb806a9b25dfb1d4470413a3c2dd9944" category="list-text">每個架構必須至少有一個 10Gbps ISL 連接埠。</block>
   <block id="25b13aa97e6e9eb228478bfddbcc84e9" category="paragraph">以下內容適用於站台 _A 和站台 _B 的 MetroCluster IP 交換器之間的往返流量、 MetroCluster 組態處於穩定狀態作業：</block>
   <block id="ae36a5fd21eb894eb914590a632f59c9" category="list-text">隨著兩MetroCluster 個不景點之間的距離增加、延遲也會增加、通常介於每100公里（62英哩）往返延遲1毫秒的範圍內。延遲也取決於網路服務層級協議（ SLA ）、例如 ISL 連結的頻寬、封包丟棄率和網路上的抖動。低頻寬、高抖動和隨機封包掉落會導致交換器或控制器模組上的 TCP 引擎產生不同的恢復機制、以成功傳輸封包。這些恢復機制可提高整體延遲。如需有關組態的往返延遲和最大距離要求的詳細資訊、請參閱 <block ref="44be38b301d3bfae89cdec57afffd9be" category="inline-link-macro-rx"></block></block>
   <block id="827d473df1489ff96dfc62d8af802566" category="list-text">。 <block ref="44be38b301d3bfae89cdec57afffd9be" category="inline-link-macro-rx"></block> 提供以公里為間隔的距離您必須每 100 公里分配 1 毫秒。最大距離是根據先達到的距離、以毫秒為單位的最大往返時間（ RTT ）、或以公里為單位的距離來定義例如：如果 _ The Hardware Universe _ 列出 300 公里的距離、轉譯為 3 毫秒、則您的 ISL 不得超過 300 公里、最大 RTT 不得超過 3 毫秒、以先達到者為準。</block>
@@ -14431,7 +14430,6 @@
   <block id="a72abbb5319ccc5e06e530d32ebda9a2" category="list-text">請依照以下步驟操作： <block ref="c1e5bf8480750ae5cad48df028e9ef8f" category="inline-link-macro-rx"></block> 在_MetroCluster Tiebreaker 安裝和配置_部分。</block>
   <block id="cbefd3f7361c94b64426b0cea58a0328" category="paragraph"><block ref="fea9123e6c4e9558906e90d28dff7dce" category="inline-link-macro-rx"></block>。</block>
   <block id="7c6d58b5ff7d328112a439ee0ef9df40" category="paragraph">從MetroCluster Tiebreaker 1.7 開始，您可以模擬切換來測試 Tiebreaker 切換功能。</block>
-  <block id="e4e3590eb665c0a0f5d5b3467636e5a7" category="list-text">從ONTAP 9.18.1 開始， MetroCluster IP 後端連接埠速度為 100G 的平台需要最低 100Gbps 的 ISL 連結速度。使用不同的 ISL 速度需要功能變更請求 (FPVR)。若要提交 FPVR，請聯絡您的NetApp銷售團隊。</block>
   <block id="deaa86cf36be952b15db4ccf35d9a39d" category="list-text">在其他所有平台上，最低支援的 ISL 連結速度為 10Gbps。</block>
   <block id="e8c32d7ccca6662808649d7c3e536c38" category="list-text">確認在維護模式下的節點上可以存取本機儲存和遠端儲存：</block>
   <block id="613654d6d797f748d730bca666bd5f45" category="list-text">請確認您的新韌體版本與您的解決方案相容。更多資訊請參閱 <block ref="cbfe825e8e02458e2eef3cd048612d7d" category="inline-link-macro-rx"></block>。</block>
@@ -14468,4 +14466,7 @@
   <block id="e5287e41bb7b528f560b85847eb683be" category="paragraph">如果您有一台 36 連接埠 Cisco 9336C-FX2 交換器、且不打算將 NS224 儲存設備連接至交換器、請使用 <block ref="5e1610ecd3627713f0895c655a667651" category="inline-link-macro-rx"></block> 中的表格。</block>
   <block id="096faa4efe64cfbabf158d3e14db33d7" category="list-text">使用 Cisco 9336C-FX2 交換器連接 NS224 儲存設備時，最多只能設定兩個 MetroCluster 組態或 DR 群組。至少一個 MetroCluster 組態或 DR 群組需要將 NS224 機架連接到 MetroCluster 交換器。如果其中一個 MetroCluster 組態或 DR 群組連接的系統不支援 NS224 機架，則只能將其作為第二個 MetroCluster 組態或 DR 群組連接。</block>
   <block id="b68398936049bd282794c33831e2aea9" category="paragraph">支援在 MetroCluster IP 組態中使用<block ref="616743bfa4fd61d558c556fe614cb2e9" prefix=" " category="inline-code"></block>命令進行 AFF A70 到 AFF A90 和 FAS70 到 FAS90 的系統升級。</block>
+  <block id="2cc15add30dea4377769b3b77d052707" category="list-text">從 ONTAP 9.18.1 版本開始，MetroCluster IP 後端連接埠速度為 100Gbps 的平台需要最低 100Gbps 的 ISL 連結速度。使用不同的 ISL 速度需要提交功能性產品變更申請（FPVR）。如需提交 FPVR，請聯絡您的 NetApp 銷售團隊。</block>
+  <block id="2691309e1710cb6a0083f4722ac33e8d" category="admonition">在目前不符合 100Gbps ISL 要求的平台上升級至 ONTAP 9.18.1 及更新版本不會受到封鎖，可以繼續進行。但是，NetApp 強烈建議客戶轉換至 100Gbps ISL 連線，以維持預期的效能和可用性層級。</block>
+  <block id="2424b4c07e55bece1d1a95007a6782a8" category="list-text">每個交換矩陣必須至少有一個 10 Gbps ISL 連接埠。</block>
 </blocks>
