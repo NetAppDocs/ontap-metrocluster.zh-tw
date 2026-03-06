@@ -11149,7 +11149,6 @@
   <block id="f530740ac9e609fc21d073ac7a1005eb" category="list-text">設定 COS 5.</block>
   <block id="905698c568b08ffae010badfede2c3d9" category="list-text">選用：速率調整至 20Gbps</block>
   <block id="6f9086eed365c3a2db1521fa98bb7fad" category="list-text">iSCSI 流量分類：</block>
-  <block id="bfee253ff06448698780744ab1762cba" category="list-text">匹配： TCP 端口 62500 、源端口、目標端口或兩者</block>
   <block id="b6b4cd52ee0814cd111c7646f3ec71cf" category="list-text">選擇性配對： cos 4</block>
   <block id="bc0161255c709f2bfdb09ade9fbc1364" category="list-text">選用配對： DSCP 32</block>
   <block id="18b58e1c9302e2acb18218c02c62dab7" category="list-text">設定 DSCP 32</block>
@@ -14475,7 +14474,6 @@
   <block id="6671def4e7da861590fb38e5fc66314e" category="list-text">從*第一個下拉欄位*中選取不支援交換器連接 NS224 儲存設備的平台。</block>
   <block id="ddbce4d78273fadb6714307de4be2067" category="doc">在 MetroCluster IP 組態中增加預設 ONTAP Mediator 信箱逾時</block>
   <block id="2782611b81a323af0ab55dcdc0bed9b0" category="paragraph">MetroCluster IP 節點可以使用 iSCSI 工作階段存取 ONTAP Mediator 信箱磁碟，預設連線逾時時間為 10 秒，包括 5 秒後的一次重試。根據您的 ONTAP 版本和環境，您可以將信箱逾時時間增加到最多 60 秒，以避免中斷 Mediator 輔助的非計劃性切換（MAUSO）。</block>
-  <block id="dc2661dcef8886857b7dbbc6bea4baa5" category="paragraph">NetApp 建議您增加預設信箱連線逾時時間，如果您使用網路冗餘協定（例如 HSRP 或 VRRP）、環路避免協定（例如 STP），或者您的環境中的網路延遲超過預設的 10 秒逾時時間。</block>
   <block id="5989de7ef1290d3b1851ce9197407a9a" category="paragraph">您應該評估中斷窗口，即 MetroCluster IP 節點重新連接到 ONTAP Mediator 所需的時間。如果超過 10 秒，則應將逾時值設定為比 MetroCluster IP 節點重新連線所需時間長幾秒鐘。</block>
   <block id="96da1e735aedafb1dcf6dc852a630b69" category="paragraph">如果每個站台都能獨立維持連線，且一個站台的中斷不會影響倖存站台與 ONTAP Mediator 的連線，則 10 秒的預設值就足夠了，您不應該變更信箱逾時。</block>
   <block id="d7960d10ef798af16bf54c0dcc02e80b" category="list-text">以下 ONTAP 版本支援增加 ONTAP Mediator 信箱逾時：</block>
@@ -14496,4 +14494,8 @@
   <block id="33e1bc7f8120f8d7e792eda1953f5c0d" category="list-text">確認 partner-sysid 是否正確：</block>
   <block id="d9e511ce59427a6a6f5e2d82b3caa85c" category="list-text">叢集間 LIF 啟動後、請檢查叢集對等狀態、並視需要重新建立叢集對等關係。</block>
   <block id="9aadb95a414b8c0423f92f9ec9df69d8" category="sidebar">增加預設 ONTAP Mediator 信箱逾時時間</block>
+  <block id="27a4277d57a9c4676312c7a5013a9b75" category="list-text">匹配：TCP 連接埠 65200，來源、目的地或兩者</block>
+  <block id="e2bba64dd4e20eb5cd27b969fbf8dbce" category="paragraph">如果您的環境符合以下任何條件，NetApp 建議您增加預設信箱連線逾時時間：</block>
+  <block id="d57bb94baa67d066f16fc9fc5b6def7e" category="list-text">您正在使用網路備援通訊協定（例如 HSRP 或 VRRP）或迴圈避免通訊協定（例如 STP）。</block>
+  <block id="29c1e5df7e26dbc34a0230732d8e3a0c" category="list-text">網路重新收斂時間（例如，路由協定穩定或 HSRP/VRRP 在重新選舉後啟動）可能會超過預設的 10 秒逾時時間。</block>
 </blocks>
