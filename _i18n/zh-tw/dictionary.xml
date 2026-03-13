@@ -1906,7 +1906,6 @@
   <block id="39b8d1f1fde39b620b3646f81db31ad4" category="paragraph">《不互連鏡像秀》MetroCluster</block>
   <block id="5c399963772634ba1fc18f52ce25b7d5" category="list-text">持續啟用交換器：</block>
   <block id="f323ad60392fa7c75997f3419493d6c3" category="summary">您必須先關閉MetroCluster 整個VMware IP組態和所有設備的電源、才能開始進行維護或重新配置。</block>
-  <block id="5c79413a4833df0080080fe8fe2e7c15" category="doc">關閉MetroCluster 整個支援IP組態的電源</block>
   <block id="330b7770e81504eae12777c67ca4c41a" category="admonition">從ONTAP Sflex9.8開始、「*儲存交換器*」命令將取代為「*系統交換器*」。下列步驟顯示「*儲存交換器*」命令、但ONTAP 如果您執行的是更新版本的資訊、則最好使用「*系統交換器*」命令。</block>
   <block id="5a862a97aa2605f3cbb2987eba34c9a9" category="list-text">確認MetroCluster 此功能為正常的現象。+"* MetroCluster 《*》節目*</block>
   <block id="33e5d783a7a408bca6f492d5b41c67ce" category="list-text">執行下列命令：+「* MetroCluster 不全互連show *」</block>
@@ -1921,11 +1920,9 @@
   <block id="32f7947faaa0b39c98413d31ab51eae6" category="list-text">執行下列命令：+`* MetroCluster 《*組態設定介面show *》</block>
   <block id="37458c869049da196f1df7bf07fb1855" category="list-text">如有必要、請將AUSO故障網域修改為、以停用AUSO</block>
   <block id="41b2f3ef63acb5f586f26ec3300768fe" category="paragraph">「* auso-disabled*」</block>
-  <block id="b31a46a4ba6004f2ed3fd6632565a448" category="admonition">在靜態IP組態中、除非組態設定為使用「不使用」、否則AUSO故障網域已設定為「auso-disabled」MetroCluster ONTAP 。</block>
   <block id="2021d03f97e8529efb1b76bbd7c4a674" category="list-text">使用命令驗證變更</block>
   <block id="183cbc2c0b8779013e355a482aba5c4d" category="paragraph">《* MetroCluster 》*《*作業系統展示*》</block>
   <block id="baf620aab7b9758c307a3f0ac247ab7f" category="list-text">停止節點：</block>
-  <block id="f30bf82bc8eafa66c54fa40dcf42ea44" category="paragraph">停機*</block>
   <block id="a58d52a12cc22d2e3c3b60974ce27273" category="list-text">在現場關閉下列設備：</block>
   <block id="c74361f8919e393c4955920ffabda5b7" category="list-text">IP交換器MetroCluster</block>
   <block id="2817c308965584631c0d98d1640317ca" category="list-text">儲存櫃</block>
@@ -11063,7 +11060,6 @@
   <block id="b6c12395a961cf95058c6e4d4412ac09" category="paragraph">下表為 MetroCluster 相容的交換器提供平台專屬的網路速度和交換器連接埠模式。您應該根據表格設定交換器連接埠模式。</block>
   <block id="8c425f952493015588fb91113b5b2dd8" category="summary">本節包含在所有 MetroCluster IP 組態和網路拓撲上傳輸 MetroCluster 流量的交換器間連結（ ISL ）需求。</block>
   <block id="422a6c8c8d23cb29ed822adac0da8cd9" category="paragraph">在所有 MetroCluster IP 組態和網路拓撲上傳輸 MetroCluster 流量的交換器間連結（ ISL ）具有特定需求。這些要求適用於所有承載 MetroCluster 流量的 ISL 、無論 ISL 是直接的還是在客戶交換器之間共用。</block>
-  <block id="a5c426f5b72cbfd96a6dec4a6e3046d2" category="paragraph">以下內容適用於所有 MetroCluster IP 組態上的 ISL ：</block>
   <block id="f2fe3be43c081827bf52c1013416d414" category="list-text">兩個 Fabric 都必須有相同數量的 ISL 。</block>
   <block id="baf55d93093b54950152b6be3f9bfec2" category="list-text">一個 Fabric 上的 ISL 必須都是相同的速度和長度。</block>
   <block id="4b00dc01ca120693f1539bf736f11069" category="list-text">兩種架構中的 ISL 必須相同的速度和長度。</block>
@@ -11074,7 +11070,6 @@
   <block id="22380478e64b8062eb70d91ccdd67ce7" category="list-text">封包遺失必須小於或等於 0.01% 。最大封包遺失量是 MetroCluster 節點之間路徑上所有連結的全部遺失和本機 MetroCluster IP 介面上的遺失總和。</block>
   <block id="0b2575167b6e71da84f0682066aa5c0d" category="list-text">支援的往返抖動值為 3ms （對於單向而言為 1.5ms ）。</block>
   <block id="b1bbb8c0e7431a301e05959762cb6be0" category="list-text">網路應配置及維護 MetroCluster 流量所需的 SLA 頻寬量、無論流量有多少微脈衝和尖峰流量。</block>
-  <block id="db5dfb006abd3b92e48ae138fe185ffb" category="list-text">如果您使用的是 ONTAP 9.7 或更新版本、則兩個站台之間的中間網路必須提供最低 4.5Gbps 的頻寬、才能進行 MetroCluster IP 組態。</block>
   <block id="8feeeb8c24b7a524af9a025841262932" category="section-title">收發器和纜線考量事項</block>
   <block id="667735c31f9e3d4e69adccaa68e87206" category="paragraph">任何由設備廠商支援的SFP或QSFP、都可支援MetroCluster 支援支援功能。交換器與交換器韌體必須支援 NetApp 或設備廠商所提供的 SFP 和 QSFP 。</block>
   <block id="887966b0ad45d1598b4a9517835a9477" category="paragraph">將控制器連接至交換器和本機叢集 ISL 時、您必須使用 NetApp 隨 MetroCluster 提供的收發器和纜線。</block>
@@ -14462,7 +14457,6 @@
   <block id="b5fd13a9bac03ffc7e9ccde70adc8242" category="doc">MetroCluster IP 組態的 ONTAP Mediator 安裝需求</block>
   <block id="e5287e41bb7b528f560b85847eb683be" category="paragraph">如果您有一台 36 連接埠 Cisco 9336C-FX2 交換器、且不打算將 NS224 儲存設備連接至交換器、請使用 <block ref="5e1610ecd3627713f0895c655a667651" category="inline-link-macro-rx"></block> 中的表格。</block>
   <block id="b68398936049bd282794c33831e2aea9" category="paragraph">支援在 MetroCluster IP 組態中使用<block ref="616743bfa4fd61d558c556fe614cb2e9" prefix=" " category="inline-code"></block>命令進行 AFF A70 到 AFF A90 和 FAS70 到 FAS90 的系統升級。</block>
-  <block id="2cc15add30dea4377769b3b77d052707" category="list-text">從 ONTAP 9.18.1 版本開始，MetroCluster IP 後端連接埠速度為 100Gbps 的平台需要最低 100Gbps 的 ISL 連結速度。使用不同的 ISL 速度需要提交功能性產品變更申請（FPVR）。如需提交 FPVR，請聯絡您的 NetApp 銷售團隊。</block>
   <block id="2691309e1710cb6a0083f4722ac33e8d" category="admonition">在目前不符合 100Gbps ISL 要求的平台上升級至 ONTAP 9.18.1 及更新版本不會受到封鎖，可以繼續進行。但是，NetApp 強烈建議客戶轉換至 100Gbps ISL 連線，以維持預期的效能和可用性層級。</block>
   <block id="2424b4c07e55bece1d1a95007a6782a8" category="list-text">每個交換矩陣必須至少有一個 10 Gbps ISL 連接埠。</block>
   <block id="925adb23a78386992d24bff6e6e1b4e2" category="list-text">使用 Cisco 9336C-FX2 交換器連接 NS224 儲存設備時，最多只能設定兩個 MetroCluster 組態或 DR 群組。至少一個 MetroCluster 組態或 DR 群組需要將 NS224 機架連接到 MetroCluster 交換器。</block>
@@ -14498,4 +14492,10 @@
   <block id="e2bba64dd4e20eb5cd27b969fbf8dbce" category="paragraph">如果您的環境符合以下任何條件，NetApp 建議您增加預設信箱連線逾時時間：</block>
   <block id="d57bb94baa67d066f16fc9fc5b6def7e" category="list-text">您正在使用網路備援通訊協定（例如 HSRP 或 VRRP）或迴圈避免通訊協定（例如 STP）。</block>
   <block id="29c1e5df7e26dbc34a0230732d8e3a0c" category="list-text">網路重新收斂時間（例如，路由協定穩定或 HSRP/VRRP 在重新選舉後啟動）可能會超過預設的 10 秒逾時時間。</block>
+  <block id="fdee122f655bcc29473b91ef1ae580b7" category="paragraph">這些要求適用於所有 MetroCluster IP 配置上的 ISL：</block>
+  <block id="c3dce11df95ca3b74ddf51996b7b87e2" category="list-text">從 ONTAP 9.18.1 版本開始，MetroCluster IP 後端連接埠速度為 100Gbps 的平台需要最低 100Gbps 的 ISL 連結速度。使用不同的 ISL 速度需要提交功能性原則變更請求（FPVR）。如需提交 FPVR，請聯絡您的 NetApp 銷售團隊。</block>
+  <block id="3f6fd3cf871a70252cd684eb0d12b602" category="paragraph">在開始維護或搬遷之前，請關閉整個 MetroCluster IP 配置和所有裝置的電源。</block>
+  <block id="a79e1c21f0beaf2ed51b7aec418f4f70" category="list-text">從兩個站台驗證 MetroCluster 組態。</block>
+  <block id="108a4ad72df5c318a77dad90928d8770" category="admonition">在 MetroCluster IP 配置中，除非配置使用 ONTAP Mediator，否則 AUSO 故障域已設定為「auso-disabled」。</block>
+  <block id="6ba9661e38afca32fe30fec08ca5c4ab" category="list-text">停止兩個站台的節點：</block>
 </blocks>

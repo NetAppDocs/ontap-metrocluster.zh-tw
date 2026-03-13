@@ -17,7 +17,7 @@ summary: 本節包含在所有 MetroCluster IP 組態和網路拓撲上傳輸 Me
 
 == MetroCluster ISL 要求
 
-以下內容適用於所有 MetroCluster IP 組態上的 ISL ：
+這些要求適用於所有 MetroCluster IP 配置上的 ISL：
 
 * 兩個 Fabric 都必須有相同數量的 ISL 。
 * 一個 Fabric 上的 ISL 必須都是相同的速度和長度。
@@ -26,7 +26,7 @@ summary: 本節包含在所有 MetroCluster IP 組態和網路拓撲上傳輸 Me
 * ISL 必須具有相同的拓撲。例如、它們都應該是直接連結、或者如果組態使用的是 WDM 、則它們都必須使用 WDM 。
 * 所需的最低 ISL 速度取決於平台型號：
 +
-** 從 ONTAP 9.18.1 版本開始，MetroCluster IP 後端連接埠速度為 100Gbps 的平台需要最低 100Gbps 的 ISL 連結速度。使用不同的 ISL 速度需要提交功能性產品變更申請（FPVR）。如需提交 FPVR，請聯絡您的 NetApp 銷售團隊。
+** 從 ONTAP 9.18.1 版本開始，MetroCluster IP 後端連接埠速度為 100Gbps 的平台需要最低 100Gbps 的 ISL 連結速度。使用不同的 ISL 速度需要提交功能性原則變更請求（FPVR）。如需提交 FPVR，請聯絡您的 NetApp 銷售團隊。
 +
 
 CAUTION: 在目前不符合 100Gbps ISL 要求的平台上升級至 ONTAP 9.18.1 及更新版本不會受到封鎖，可以繼續進行。但是，NetApp 強烈建議客戶轉換至 100Gbps ISL 連線，以維持預期的效能和可用性層級。
@@ -49,7 +49,6 @@ CAUTION: 在目前不符合 100Gbps ISL 要求的平台上升級至 ONTAP 9.18.1
 * 封包遺失必須小於或等於 0.01% 。最大封包遺失量是 MetroCluster 節點之間路徑上所有連結的全部遺失和本機 MetroCluster IP 介面上的遺失總和。
 * 支援的往返抖動值為 3ms （對於單向而言為 1.5ms ）。
 * 網路應配置及維護 MetroCluster 流量所需的 SLA 頻寬量、無論流量有多少微脈衝和尖峰流量。
-* 如果您使用的是 ONTAP 9.7 或更新版本、則兩個站台之間的中間網路必須提供最低 4.5Gbps 的頻寬、才能進行 MetroCluster IP 組態。
 
 
 
