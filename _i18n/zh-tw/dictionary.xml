@@ -14498,4 +14498,5 @@
   <block id="a79e1c21f0beaf2ed51b7aec418f4f70" category="list-text">從兩個站台驗證 MetroCluster 組態。</block>
   <block id="108a4ad72df5c318a77dad90928d8770" category="admonition">在 MetroCluster IP 配置中，除非配置使用 ONTAP Mediator，否則 AUSO 故障域已設定為「auso-disabled」。</block>
   <block id="6ba9661e38afca32fe30fec08ca5c4ab" category="list-text">停止兩個站台的節點：</block>
+  <block id="f759ce596ef74c921d7bddaf277a11c8" category="paragraph">*注意：* 25 GbE 速度需要 MAM1Q00A-QSA28 收發器轉接器。</block>
 </blocks>
