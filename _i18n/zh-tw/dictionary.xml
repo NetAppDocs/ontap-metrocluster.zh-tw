@@ -9523,7 +9523,6 @@
   <block id="0e686abbd3bcb91ae9940167b2105563" category="list-text">node_a_4-new</block>
   <block id="0fce4e3e5f75e84bfe53404400231b3f" category="list-text">node_B_3-new</block>
   <block id="6a20549ca29f831ca0d4f2e90f2f535b" category="list-text">node_B_4-new</block>
-  <block id="0bc247e1fb33acc5636986c990aa1e9a" category="section-title">從監控應用程式移除組態</block>
   <block id="ae81bff40f90f640ae14eb37aaf345ea" category="paragraph">如果現有的組態是使用MetroCluster 可ONTAP 啟動切換的ESITIOR軟體、或者其他協力廠商應用程式（例如ClusterLion）來監控、則MetroCluster 在升級之前、您必須先從監控軟體中移除該組態。</block>
   <block id="a4aa69385ab0a1b92a7a5635cdb2f2b2" category="paragraph"><block ref="903819e2154a41f8227f7c0192db71f6" category="inline-link-macro-rx"></block>。</block>
   <block id="20a404f6395aff4a82f8b5763259c362" category="paragraph">您必須準備好四MetroCluster 個新的資訊節點、並安裝正確ONTAP 的版本資訊。</block>
@@ -9543,7 +9542,6 @@
   <block id="5dc920411c59b1b9f32058239fb24330" category="list-text">驗證連接是否正確建立：MetroCluster 「不實組態設定連線顯示」</block>
   <block id="2dccf53d6ed326f889d8e764529b9794" category="list-text">驗證磁碟自動指派與分割：</block>
   <block id="3f95b2ea711d433e26a8b5eb63bbd17a" category="paragraph">「torage Aggregate mirror -Aggregate aggr0_node_a_1-new'」</block>
-  <block id="6c46e592d5f16891d3a16e5f364e031b" category="section-title">完成新節點的新增作業</block>
   <block id="7d7a3fc828a61ba2a0ef14619b7c2ccb" category="list-text">確認節點已新增至其DR群組。</block>
   <block id="b0d21d87e852192022d32882c31d8709" category="paragraph">以下範例顯示「Volume show」輸出中的MDV磁碟區：</block>
   <block id="aacab676cefc900d32e2155650f1b66e" category="paragraph">下列範例顯示將「MDV_CRS_d6b0b313ff5611e9837100a098544e51_A」移至「node_a_3」上的Aggregate「data_A3」的命令和輸出。</block>
@@ -12544,10 +12542,6 @@
   <block id="be4fd0012ddc006ea303591c9df6f76d" category="paragraph"><block ref="39b06b9a26b49c3db6d9409a6abaa9d8" prefix="" category="inline-code"></block></block>
   <block id="9e1d9b9e8b88355df08194559af6865a" category="summary">在切入期間，不應執行某些作業。</block>
   <block id="fa33dcb38c0cd6e15dd757f1ef3072ee" category="doc">MetroCluster 組態在進行之間的限制</block>
-  <block id="5722cde27dfa05f795a5466b6d0859c9" category="paragraph">當系統切入時，不應執行某些作業。瞭解系統在進行作業系統的關係時，受到限制的作業。</block>
-  <block id="b72a4837907e7fef0771c42da901c811" category="section-title">受限的作業正在進行</block>
-  <block id="1b5f91752d52b3bac4319cf07ea0efb8" category="paragraph">系統切入時不支援下列作業：</block>
-  <block id="272c8dfc8e0821088d85ed5d0fe037a8" category="list-text">建立或刪除集合體和磁碟區</block>
   <block id="d825dd35fde2fe33a56ef95c52f545a0" category="list-text">建立或刪除 SVM</block>
   <block id="8c120d60e412429a6f43b748c02dc233" category="list-text">建立或刪除生命</block>
   <block id="9cc6607cba1650bc799439425f9b085e" category="list-text">新增或移除磁碟（僅當您將磁碟更換為還原程序的一部分時）</block>
@@ -13435,7 +13429,6 @@
   <block id="4e4facc560c88d40d47ce2b1369d5552" category="doc">在 MetroCluster IP 交換器上設定日誌收集</block>
   <block id="d5a5c9619599da12d87af6daeab1ece6" category="paragraph">在 MetroCluster IP 設定中，您可以設定日誌收集以收集交換器日誌以用於偵錯目的。</block>
   <block id="7c51c84110459cf460a444094be133c4" category="admonition">在 Broadcom 和 Cisco 交換器上，每個具有日誌收集功能的叢集都需要一個新使用者。例如，MetroCluster 1、MetroCluster 2、MetroCluster 3 和 MetroCluster 4 都需要在交換器上設定單獨的使用者。不支援同一用戶使用多個 SSH 金鑰。</block>
-  <block id="8ac20e3719b6b58e94e5a4385e87b52e" category="paragraph">乙太網路交換器健全狀況監視器（ CSHM ）負責確保叢集與儲存網路交換器的作業健全狀況、並收集交換器記錄以供偵錯之用。本程序將引導您完成設定收集、要求詳細的 * 支援 * 記錄、以及啟用 AutoSupport 所收集 * 定期 * 資料的每小時收集。</block>
   <block id="2ded3ff3862adfc6f54d2a2f3ebf1147" category="paragraph">* 注意： * 如果您啟用 FIPS 模式、則必須完成下列步驟：</block>
   <block id="81f0d5b127adfd87f50ce10bc85e1e65" category="list-text">使用廠商指示在交換器上重新產生 SSH 金鑰。</block>
   <block id="a60a00967db7342947b326a8f7618f52" category="list-text">使用在 ONTAP 中重新產生 SSH 金鑰<block ref="c079360670e0f4f9441a54ac1d262788" prefix=" " category="inline-code"></block></block>
@@ -14499,4 +14492,15 @@
   <block id="108a4ad72df5c318a77dad90928d8770" category="admonition">在 MetroCluster IP 配置中，除非配置使用 ONTAP Mediator，否則 AUSO 故障域已設定為「auso-disabled」。</block>
   <block id="6ba9661e38afca32fe30fec08ca5c4ab" category="list-text">停止兩個站台的節點：</block>
   <block id="f759ce596ef74c921d7bddaf277a11c8" category="paragraph">*注意：* 25 GbE 速度需要 MAM1Q00A-QSA28 收發器轉接器。</block>
+  <block id="316fa55db721e45107647fc0de79704f" category="paragraph">乙太網路交換器健全狀況監視器（CSHM）負責確保網路交換器的運作健全狀況，並收集交換器記錄以進行除錯。本程序將引導您完成設定收集、請求詳細的 *Support* 日誌，以及啟用每小時收集 AutoSupport 所收集之 *Periodic* 資料的程序。</block>
+  <block id="4526d2820ba573572df0eafdc557014c" category="paragraph">系統切換期間，NetApp 建議您避免執行某些操作。</block>
+  <block id="6efa43350457e5d9dbe5d6c555eb32f9" category="paragraph">系統切換期間不建議執行以下操作，您只能在 NetApp 技術支援人員的指導下執行這些操作：</block>
+  <block id="9ea78d85c08becd89d5d23daef8687fa" category="list-text">建立或刪除 Aggregate</block>
+  <block id="56f10876ae2bed5f3da63c125772429f" category="list-text">建立或刪除磁碟區 （包括加密磁碟區）</block>
+  <block id="6e05136dba32fad75bd64f601602c77e" category="section-title">從監控應用程式中移除組態</block>
+  <block id="a8b426026583d79d39676c969bdc3456" category="section-title">準備新的控制器模組</block>
+  <block id="af8fde2f19f4ba506d9bb950533f5776" category="list-text">在維護模式下，發出 halt 命令退出維護模式：</block>
+  <block id="b8bbebbdaa85ea395d4339565372cafe" category="list-text">啟動系統並進入叢集設定：</block>
+  <block id="e219586e70791b35867f7d4dc343163f" category="section-title">配置叢集間 LIF、建立 MetroCluster 介面並鏡射根 Aggregate</block>
+  <block id="8780af330d271744603135da4ae91fd9" category="section-title">完成新節點的新增</block>
 </blocks>

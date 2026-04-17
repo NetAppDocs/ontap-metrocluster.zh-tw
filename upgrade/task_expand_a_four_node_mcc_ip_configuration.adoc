@@ -305,7 +305,7 @@ image::../media/8node_comb_ip_asa.png[8 個節點組態的平台組合]
 
 
 
-== 驗MetroCluster 證資訊功能組態的健全狀況
+== 驗MetroCluster 證整個過程的效能狀況
 
 在執行擴充之前、您必須先確認 MetroCluster 組態的健全狀況和連線能力。
 
@@ -442,7 +442,7 @@ cluster_A::>
 
 
 
-== 從監控應用程式移除組態
+== 從監控應用程式中移除組態
 
 如果現有的組態是使用MetroCluster 可ONTAP 啟動切換的ESITIOR軟體、或者其他協力廠商應用程式（例如ClusterLion）來監控、則MetroCluster 在升級之前、您必須先從監控軟體中移除該組態。
 
@@ -512,7 +512,22 @@ link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#commands-for
 .. link:../install-ip/task_sw_config_assign_pool0.html#manually-assigning-drives-for-pool-0-ontap-9-4-and-later["手動指派集區 0 的磁碟機（ ONTAP 9.4 及更新版本）"]
 
 
-. 在維護模式下、發出halt命令以結束維護模式、然後發出boot_ONTAP命令以啟動系統並進入叢集設定。
+. 在維護模式下，發出 halt 命令退出維護模式：
++
+《停止》
+
+. 檢查 partner-sysid 是否正確：
++
+《prontenv合作夥伴sysid》
+
+. 如果合作夥伴sysid不正確、請設定：
++
+`setenv partner-sysid <partner-sysID>`
+
+. 啟動系統並進入叢集設定：
++
+Boot_ONTAP
+
 +
 此時請勿完成叢集精靈或節點精靈。
 
@@ -689,7 +704,7 @@ Do you want to use this configuration? {yes, no} [yes]: yes
 
 
 
-== 設定叢集間的生命體、建立MetroCluster 支援資訊介面、以及鏡射根集合體
+== 配置叢集間 LIF、建立 MetroCluster 介面並鏡射根 Aggregate
 
 您必須建立叢集對等的生命、在MetroCluster 新MetroCluster 的物件節點上建立一個物件介面。
 
@@ -1131,7 +1146,7 @@ aggr_data_a2
 
 
 
-== 完成新節點的新增作業
+== 完成新節點的新增
 
 您必須將新的DR群組整合到MetroCluster 「更新」組態中、並在新節點上建立鏡射的資料集合體。
 
