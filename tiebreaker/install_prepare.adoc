@@ -119,3 +119,8 @@ ONTAP 9.1 至 ONTAP 9.9.1
 
 
 
+
+.接下來呢？
+* 如果您正在安裝或升級至 Tiebreaker 1.5 或更高版本，link:install_security.html["保護 tiebreaker 主機和資料庫的安裝安全"]。
+* 如果您正在安裝或升級到 Tiebreaker 1.4，link:install-dependencies-14.html["安裝 MetroCluster Tiebreaker 1.4 相依性"]。
+

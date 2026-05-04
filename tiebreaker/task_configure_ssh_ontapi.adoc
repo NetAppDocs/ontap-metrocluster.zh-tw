@@ -23,3 +23,6 @@ summary: 您可以設定管理員存取ONTAP 功能以存取SURE API和SSH。
 NOTE: link:https://docs.netapp.com/us-en/ontap/concepts/administrator-authentication-rbac-concept.html["系統管理員驗證與RBAC"^] 已實作。
 
 
+
+.接下來呢？
+link:install_dependencies.html["安裝相依性"]。

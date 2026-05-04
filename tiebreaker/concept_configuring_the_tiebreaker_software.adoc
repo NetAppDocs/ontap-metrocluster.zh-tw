@@ -472,3 +472,6 @@ software.
 NetApp MetroCluster Tiebreaker :> monitor show -status
 ----
 
+
+.接下來呢？
+link:task_configure_snmp_setts_for_tiebreaker_software.html["設定 MetroCluster Tiebreaker 軟體的 SNMP 設定"]

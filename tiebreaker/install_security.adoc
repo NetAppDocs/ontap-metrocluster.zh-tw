@@ -124,7 +124,7 @@ NOTE: 您在Tiebreaker安裝期間指定的使用者帳戶必須擁有所有這�
 
 * 使用資料庫加密
 +
-** 支援靜態資料加密。link:https://mariadb.com/docs/server/security/securing-mariadb/securing-mariadb-encryption/encryption-data-at-rest-encryption/data-at-rest-encryption-overview["深入瞭解閒置資料加密"^]
+** 支援靜態資料加密。link:https://mariadb.com/docs/server/security/encryption/data-at-rest-encryption/data-at-rest-encryption-tde-fundamentals["深入瞭解閒置資料加密"^]
 ** 傳輸中的資料未加密。飛行中的資料使用本機的「SOCKS」檔案連線。
 ** FIPS符合MariaDB規範：您不需要在資料庫上啟用FIPS相容性。以FIPS相容模式安裝主機已足夠。
 +
@@ -155,3 +155,6 @@ link:https://mariadb.com/docs/server/security/securing-mariadb["保護MariaDB安
 link:https://developer.hashicorp.com/vault/tutorials/operations/production-hardening/["正式作業強化"^]
 
 
+
+.接下來呢？
+link:install-choose-procedure.html["選擇您的安裝程序"] 以安裝或升級 Tiebreaker。

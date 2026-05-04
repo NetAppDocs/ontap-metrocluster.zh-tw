@@ -1,0 +1,29 @@
+---
+sidebar: sidebar 
+permalink: tiebreaker/configure-tb-workflow.html 
+keywords: configure, tiebreaker, workflow, software, metrocluster, snmp, monitor, configuration 
+summary: 安裝 Tiebreaker 軟體後，您可以新增 MetroCluster 設定、設定 SNMP 設定並開始監控您的 MetroCluster 環境。 
+---
+= MetroCluster Tiebreaker 組態工作流程
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+安裝 Tiebreaker 軟體後，您可以新增 MetroCluster 設定、設定 SNMP 設定並開始監控您的 MetroCluster 環境。
+
+.關於此工作流程
+您可以在安裝後使用此工作流程來設定 Tiebreaker 軟體。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一"]link:concept_configuring_the_tiebreaker_software.html["設定Tiebreaker軟體"]
+[role="quick-margin-para"]
+在 Tiebreaker 軟體中新增 MetroCluster 組態、匯入憑證並設定監控設定。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["二"]link:task_configure_snmp_setts_for_tiebreaker_software.html["設定 MetroCluster Tiebreaker 軟體的 SNMP 設定"]
+[role="quick-margin-para"]
+配置 SNMP 設置，以便 Tiebreaker 軟體可以發送 MetroCluster 事件的 SNMP 通知。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"]link:concept_monitoring_the_mcc_configuration.html["監控MetroCluster 此功能的組態"]
+[role="quick-margin-para"]
+使用 Tiebreaker 軟體監控 MetroCluster 設定狀態、檢視 SNMP 事件和管理 AutoSupport 設定。

@@ -19,6 +19,9 @@ summary: 在主機 Linux 作業系統上執行新的安裝或升級至 tiebreake
 * 您可以將 MetroCluster tiebreaker 安裝為非 root 使用者、並擁有足夠的管理權限來執行 tiebreaker 安裝、建立表格和使用者、以及設定使用者密碼。
 
 
+
+NOTE: 安裝 Tiebreaker 1.7 後，您需要 link:concept_configuring_the_tiebreaker_software.html#import-certificates-tb17["匯入憑證"] 啟用無縫監控。
+
 .步驟
 . 下載MetroCluster Tiebreaker 1.7 軟體。
 +
@@ -353,3 +356,6 @@ NOTE: 如果因缺少憑證而導致升級失敗並出現錯誤，請參閱以�
 --
 ====
 
+
+.接下來呢？
+成功安裝或升級 Tiebreaker 後，link:configure-tb-workflow.html["設定 MetroCluster Tiebreaker 軟體"] 以新增 MetroCluster 組態並匯入所需的憑證。

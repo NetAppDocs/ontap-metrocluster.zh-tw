@@ -19,6 +19,9 @@ summary: 在主機 Linux 作業系統上執行新的安裝或升級至 tiebreake
 
 
 
+NOTE: 安裝 Tiebreaker 1.6 或更高版本後，您需要 link:concept_configuring_the_tiebreaker_software.html#import-certificates-tb17["匯入憑證"] 啟用無縫監控。
+
+
 
 == 安裝或升級至 tiebreaker 1.6P1
 
@@ -1393,3 +1396,6 @@ Cleaning up / removing...
 --
 ====
 
+
+.接下來呢？
+成功安裝或升級 Tiebreaker 後，link:configure-tb-workflow.html["設定 MetroCluster Tiebreaker 軟體"] 以新增 MetroCluster 組態並匯入所需的憑證。

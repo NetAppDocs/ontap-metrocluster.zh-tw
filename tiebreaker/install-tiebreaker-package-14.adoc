@@ -111,3 +111,6 @@ NOTE: 如果您輸入錯誤的MySQL根密碼、則Tiebreaker軟體會指出已�
 
 .相關資訊
 https://mysupport.netapp.com/site/["NetApp支援"^]
+
+.接下來呢？
+link:configure-tb-workflow.html["配置MetroCluster決勝軟體"]

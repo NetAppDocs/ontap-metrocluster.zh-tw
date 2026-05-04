@@ -882,3 +882,6 @@ UNIT FILE          State
 mariadb.service    enabled
 ----
 
+
+.接下來呢？
+link:install_tiebreaker_package.html["安裝軟體套件"]

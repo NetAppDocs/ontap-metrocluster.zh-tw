@@ -14,7 +14,7 @@ summary: 從ONTAP 功能完善的9.8開始、您可以從八節點MetroCluster �
 從ONTAP 9.8 開始，您可以從八節點MetroCluster配置中刪除災難復原 (DR) 群組，以建立四節點MetroCluster配置。
 
 
-NOTE: 您可以在過渡和系統刷新工作流程期間使用這些步驟。
+NOTE: 您在過渡和系統重新整理工作流程中會用到這些步驟。您可能已經在這些工作流程中完成了此程序中的某些步驟。
 
 
 
@@ -37,17 +37,17 @@ NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在�
 從ONTAP 9.8 開始支援此流程。對於運行ONTAP 9.7 或更早版本的系統，請參閱知識庫文章：link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/MetroCluster/How_to_remove_a_DR-Group_from_a_MetroCluster["如何從MetroCluster 功能不完善的組態中移除DR群組"^] 。
 
 .關於這項工作
-八節點組態包含八個節點、以兩個四節點DR群組形式組織。
-
+* 您必須在兩個叢集上執行此工作。
+* 八節點組態包含八個節點、以兩個四節點DR群組形式組織。
++
 image::../media/mcc_dr_groups_8_node.gif[兩個 DR 組中八個節點的MetroCluster配置]
 
++
 刪除 DR 群組時，配置中仍保留四個節點。
 
++
 image::../media/mcc_dr_groups_4_node.gif[DR 群組移除後具有四個節點的MetroCluster配置]
 
-.開始之前
-* 您必須在兩個叢集上執行此步驟。
-* 僅支援在支援的版本僅在支援的版本僅有支援使用「MetroCluster 支援」ONTAP 功能的指令。
 
 
 .步驟
@@ -97,13 +97,13 @@ NOTE: 不會刪除根Aggregate。
 +
 [listing]
 ----
-ClusterA::> set advanced
+ClusterA::> set advanced -prompt-timestamp above
 ClusterA::*> cluster show
 Move epsilon if needed
 ClusterA::*> cluster modify -node nodename -epsilon false
 ClusterA::*> cluster modify -node nodename -epsilon true
 
-ClusterB::> set advanced
+ClusterB::> set advanced -prompt-timestamp above
 ClusterB::*> cluster show
 ClusterB::*> cluster modify -node nodename -epsilon false
 ClusterB::*> cluster modify -node nodename -epsilon true
@@ -118,6 +118,10 @@ ClusterB::*> set admin
 「不一樣的秀」MetroCluster
 
 .. 移除DR群組節點：+「MetroCluster 支援移除- DR-group -DR-group ID 1」
++
+
+NOTE: 僅支援在支援的版本僅在支援的版本僅有支援使用「MetroCluster 支援」ONTAP 功能的指令。
+
 +
 下列範例顯示如何移除叢集A上的DR群組組態
 
@@ -168,6 +172,9 @@ cluster_A::*>
 
 . 如果您處於MetroCluster IP 配置中，請執行下列步驟刪除根聚合的遠端叢並刪除舊 DR 群組節點上的磁碟所有權。
 +
+在 MetroCluster FC 配置中，請轉到 <<fc_step_7_remove_nodes,移除舊的 DR 群組節點>> 的步驟。
+
++
 需要對每個站點的 HA 對中的兩個節點執行這些步驟。
 
 +
@@ -194,7 +201,7 @@ NOTE: 使用逗號分隔列表 `-owner <node_names>`欄位指定要刪除的 DR 
 --
 ... 將權限層級設為進階：
 +
-《進階設定》
+`set advanced -prompt-timestamp above`
 
 ... 顯示遠端磁碟：
 +
@@ -207,7 +214,7 @@ NOTE: 使用逗號分隔列表 `-owner <node_names>`欄位指定要刪除的 DR 
 --
 ... 將權限層級設為進階：
 +
-《進階設定》
+`set advanced -prompt-timestamp above`
 
 ... 顯示遠端磁碟：
 +
@@ -221,7 +228,7 @@ NOTE: 使用逗號分隔列表 `-owner <node_names>`欄位指定要刪除的 DR 
 +
 `disk option modify -node <node_names_in_the_DR_group_to_be_deleted>  -autoassign off`
 
-.. 刪除每個要刪除的 DR 群組節點上的 pool1 磁碟的所有權。在每個要刪除的節點上執行下列步驟。
+.. 移除每個待刪除的 DR 群組節點上 pool1 磁碟的所有權。對每個待刪除的節點執行這些步驟。在本步驟的範例中，待刪除的是 node_A_1。
 +
 ... 轉到 nodeshell：
 +
@@ -229,23 +236,62 @@ NOTE: 使用逗號分隔列表 `-owner <node_names>`欄位指定要刪除的 DR 
 
 ... 識別pool1磁碟：
 +
-`aggr status -s`
+「尖碑秀」
 
 +
-顯示所有備用磁碟，包括節點擁有的pool0和pool1備用磁碟。
+所有磁碟均會顯示，包括節點擁有的 Pool1 磁碟。以下範例顯示了部分輸出，其中磁碟 0n.4 及其分割區已指派給 Pool1。輸出結果會因您的配置而異。
 
-... 刪除每個 pool1 備用磁碟的磁碟所有權：
++
+[listing]
+----
+  DISK       OWNER                 POOL   SERIAL NUMBER         HOME                    DR HOME
+------------ -------------         -----  -------------         -------------           -------------
+0n.4         node_A1(537102267)    Pool1  S3N9NX0J500267        node_A1(537102267)
+0n.4P1       node_A1(537102267)    Pool1  S3N9NX0J500267NP001   node_A1(537102267)
+0n.4P2       node_A1(537102267)    Pool1  S3N9NX0J500267NP002   node_A1(537102267)
+0n.4P3       node_A1(537102267)    Pool1  S3N9NX0J500267NP003   node_A1(537102267)
+----
+... 將權限層級設為進階：
++
+`set -privilege advanced -prompt-timestamp above`
+
+... 移除 pool1 中每個磁碟的所有權：
++
+如果您的組態包含分割磁碟，您必須先移除每個分割磁碟的所有權，然後再移除容器磁碟所有權：
+
 +
 `disk remove_ownership <disk_name>`
 
 +
-對於分割磁碟，刪除分割區所有權，然後刪除容器磁碟所有權。
+在下列範例中，分割磁碟的所有權會在容器磁碟 `0n.4`的所有權被移除之前移除：
 
++
+[listing]
+----
+*> disk remove_ownership 0n.4P1
+Volumes must be taken offline. Are all impacted volumes offline(y/n)?? y
+Removing the ownership of aggregate disks may lead to partition of aggregates between high-availability pair.
+Do you want to continue(y/n)? y
+*> disk remove_ownership 0n.4P2
+Volumes must be taken offline. Are all impacted volumes offline(y/n)?? y
+Removing the ownership of aggregate disks may lead to partition of aggregates between high-availability pair.
+Do you want to continue(y/n)? y
+*> disk remove_ownership 0n.4P3
+Volumes must be taken offline. Are all impacted volumes offline(y/n)?? y
+Removing the ownership of aggregate disks may lead to partition of aggregates between high-availability pair.
+Do you want to continue(y/n)? y
+*> disk remove_ownership 0n.4
+Volumes must be taken offline. Are all impacted volumes offline(y/n)?? y
+*>
+----
 
 
 
 
 . 如果您處於MetroCluster IP 設定中，請刪除舊 DR 群組節點上的MetroCluster連線。
++
+在 MetroCluster FC 配置中，請轉到 <<fc_step_7_remove_nodes,移除舊的 DR 群組節點>> 的步驟。
+
 +
 這些命令可以從任一集群發出，並適用於跨越兩個集群的整個 DR 組。
 
@@ -285,17 +331,17 @@ NOTE: 必須在 DR 群組的每個節點上重複此步驟。
 .. 刪除舊DR群組的組態。+ MetroCluster 「不包含組態設定的DR-group刪除」
 
 
-. 取消加入舊DR群組中的節點。
+. [[fc_step_7_remove_nodes]] 刪除舊 DR 群組中的節點。
 +
 在每個集群上執行此步驟。
 
 +
 .. 設定進階權限層級：
 +
-"進階權限"
+`set -privilege advanced -prompt-timestamp above`
 
-.. 退出節點：+
-`cluster unjoin -node <node-name>`
+.. 移除節點：+
+`cluster remove-node -node <node-name>`
 +
 對舊DR群組中的其他本機節點重複此步驟。
 
@@ -314,3 +360,6 @@ NOTE: 必須在 DR 群組的每個節點上重複此步驟。
 
 . 停止、關機及移除舊的控制器模組和儲存櫃。
 
+
+.相關資訊
+深入瞭解此程序中使用的命令，請參閱 link:https://docs.netapp.com/us-en/ontap-cli/["ONTAP 指令參考"^]。

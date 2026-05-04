@@ -5479,7 +5479,6 @@
   <block id="535a1b9f22b2c711bbc48344a4608a4b" category="paragraph">執行命令後、請等待開機功能表顯示。</block>
   <block id="924380a68efbb68301d2373e39ae8ac9" category="list-text">請在開機功能表提示字元中輸入「wecpionfig」、然後按Enter鍵、以清除節點組態。</block>
   <block id="9fb038c9fc985f95a364fbc284e66009" category="summary">若要將SNMP與Tiebreaker軟體搭配使用、您必須設定SNMP設定。</block>
-  <block id="42c78bfa01522453fc42980157ef4a55" category="doc">設定斷路器軟體的SNMP設定</block>
   <block id="8891488ccf0af3b6c4a946824e6f0cdc" category="admonition">目前僅支援一個SNMP設陷主機。</block>
   <block id="69b040d4f8adaa4c34e437207036c73c" category="list-text">確認已設定SNMP設定：</block>
   <block id="da82ec774885b0fd4ea7e17756ffc01b" category="paragraph">"NMP組態測試"</block>
@@ -8570,7 +8569,6 @@
   <block id="e18600ad5da962c033022e8657b0fab3" category="list-text">刪除MetroCluster 舊DR群組節點上的介面：</block>
   <block id="eb5c2cb295b7a9fd5ee2ed559f176f9e" category="paragraph">「刪除組態設定介面」MetroCluster</block>
   <block id="deba5df0dea3cbba9463f219100e5ba4" category="list-text">刪除舊DR群組的組態。+ MetroCluster 「不包含組態設定的DR-group刪除」</block>
-  <block id="8d3c998ce16ecd4cdc06e3ddd8c757e6" category="list-text">取消加入舊DR群組中的節點。</block>
   <block id="ff6434ad658fa9ed7826817a3f9f0dff" category="paragraph">對舊DR群組中的其他本機節點重複此步驟。</block>
   <block id="c1f192f6d626bc5f27fc74b0848a1250" category="paragraph">"cluster ha modify -configured true"</block>
   <block id="8917e80351843363583600f118c2fa84" category="list-text">停止、關機及移除舊的控制器模組和儲存櫃。</block>
@@ -9531,9 +9529,6 @@
   <block id="ad395886a6aa891d0b7c1af76d396eb7" category="list-text">將第一個全新MetroCluster 的「支援IP」節點（node_a_1-new）加入現有MetroCluster 的「支援IP」組態。</block>
   <block id="f15e18829a1c8188ec0f5618f44c5c18" category="list-text">將第二MetroCluster 個全新的靜態IP節點（node_a_2-new）加入現有MetroCluster 的靜態IP組態。</block>
   <block id="d4d9b588eea04166e68f8f0449b9a7e0" category="list-text">重複這些步驟、將node_B_1-new和node_B_2-new加入叢集B</block>
-  <block id="1cab2231671234cf1e23b1ca0a52ef3e" category="list-text">在新MetroCluster 的SURE IP節點上、使用下列程序來設定叢集間LIF：</block>
-  <block id="44b54e3f59f7ff51b8cfe9cee771a6cb" category="paragraph"><block ref="44b54e3f59f7ff51b8cfe9cee771a6cb" category="inline-link-macro-rx"></block></block>
-  <block id="1df5a38c69ea48ecae85e79f89802ccf" category="paragraph"><block ref="1df5a38c69ea48ecae85e79f89802ccf" category="inline-link-macro-rx"></block></block>
   <block id="5a50268a88f8781b5c76e9800fc246d8" category="list-text">建立MetroCluster 適用於整個知識產權節點的DR群組：</block>
   <block id="bc13f269b8fcdbac7ef84f083e616363" category="paragraph">如需MetroCluster 有關「還原組態」設定和連線的詳細資訊、請參閱下列內容：</block>
   <block id="01fd5a7c3bb1009fa8251ff0e9f26de3" category="paragraph"><block ref="01fd5a7c3bb1009fa8251ff0e9f26de3" category="inline-link-macro-rx"></block></block>
@@ -10816,7 +10811,6 @@
   <block id="c833c589f902c8c0ddc3bdb645a85fe9" category="list-text">在新節點上、驗證登入和與主機的連線：</block>
   <block id="8eea62084ca7e541d918e823422bd82e" category="paragraph-title">結果</block>
   <block id="4e7233ab8e56169d5783c1e27cf80e62" category="paragraph">在本工作結束時、主機可以看到所有 iSCSI 介面（在舊節點和新節點上）、並登入所有這些介面。</block>
-  <block id="1ea11cf2a7632efb274bdc8804c13cc8" category="paragraph">LUN 和磁碟區仍以實體方式託管在舊節點上。由於 LUN 只會在舊節點介面上報告、因此主機只會在舊節點上顯示路徑。若要查看、請執行<block ref="41dc2c94e82e1c56ba876085acf5a974" prefix=" " category="inline-code"></block> 和<block ref="2fbf63deae0938cf669e6ca451f1eb2c" prefix=" " category="inline-code"></block> 在主機上執行命令、並檢查命令輸出。</block>
   <block id="85ef9de042295f197ffebdafe8989eba" category="section-title">步驟 2 ：將新節點新增為報告節點</block>
   <block id="63caeb58f676a0ef9b76df2d7cb19636" category="paragraph">設定與新節點的連線之後、您可以將新節點新增為報告節點。</block>
   <block id="491bf790c89cc65e6e44bc71af9a4016" category="list-text">在新節點上、列出 SVM 上 LUN 的報告節點：</block>
@@ -14029,7 +14023,6 @@
   <block id="9edb945b46e8338b6c604c62787c3031" category="doc">在MetroCluster IP 站點中的Cisco 9336C 交換器上設定 MACsec 加密</block>
   <block id="e0e912999bb427a16c869c97ad908030" category="doc">設定NVIDIA IP SN2100 交換器以實現叢集互連和後端MetroCluster IP 連接</block>
   <block id="25849b8ea5119a6ccbe0ef06d8e35773" category="doc">測試MetroCluster IP 配置的ONTAP節點切換</block>
-  <block id="7282d891d20cd1520e021b2ba6c78e20" category="list-text">支援靜態資料加密。<block ref="6774dcdb02085dead82047685ca775f1" category="inline-link-macro-rx"></block></block>
   <block id="f42ec02236cb8b0134435967892ad733" category="paragraph"><block ref="f42ec02236cb8b0134435967892ad733" category="inline-link-macro-rx"></block></block>
   <block id="929f699475d2ee16cffb5df619460281" category="list-text">無硬體故障（例如電源故障）</block>
   <block id="8e7bac68088266dc4f6ea54160a86aa8" category="open-title">Brocade交換器（FOS 9.0 及更高版本）</block>
@@ -14062,7 +14055,6 @@
   <block id="5c60cc2ba2a9eb0236f0d3ba52d42179" category="admonition">在開始升級之前，必須在兩個網站的所有舊節點上設定 bootarg。</block>
   <block id="9f0a4554064856ae78dbf1c08bc876ce" category="doc">從MetroCluster配置中刪除 DR 群組</block>
   <block id="2f5075fd2401e26a07990d72f3087874" category="paragraph">從ONTAP 9.8 開始，您可以從八節點MetroCluster配置中刪除災難復原 (DR) 群組，以建立四節點MetroCluster配置。</block>
-  <block id="73ac4183b96cb40ebb14a9dc72a13298" category="admonition">您可以在過渡和系統刷新工作流程期間使用這些步驟。</block>
   <block id="a17f6afa75b317e25d154b29624badd3" category="section-title">從每個叢集中刪除 DR 群組節點</block>
   <block id="b928a73ca232c9fc08d935ad673557de" category="paragraph">從ONTAP 9.8 開始支援此流程。對於運行ONTAP 9.7 或更早版本的系統，請參閱知識庫文章：<block ref="806d9b447def65eba3e3e2e790c033b4" category="inline-link-macro-rx"></block> 。</block>
   <block id="622b8cea53ef096337834121912a63f3" category="paragraph">刪除 DR 群組時，配置中仍保留四個節點。</block>
@@ -14094,21 +14086,15 @@
   <block id="0d1726dab779821975a9ad578a9f0677" category="paragraph"><block ref="6e0d34e5eb1c8ece221755c754743354" prefix="" category="inline-code"></block></block>
   <block id="3e9c37ca50692bcf4d950da60ba31dd1" category="list-text">禁用磁碟自動分配：</block>
   <block id="b2bd91ffa581589b010f7b0cee5b040a" category="paragraph"><block ref="c24efecdd42a886db73de2bcc158cbdc" prefix="" category="inline-code"></block></block>
-  <block id="b06a58f7c6886b9c75c2b66e25e3b03c" category="list-text">刪除每個要刪除的 DR 群組節點上的 pool1 磁碟的所有權。在每個要刪除的節點上執行下列步驟。</block>
   <block id="e352d5e820576fb81acd295d2fa6b382" category="list-text">轉到 nodeshell：</block>
   <block id="48b6c5e6c91f5afdf4db95fdce26e45f" category="paragraph"><block ref="1bdb752f72609d817a6beb669061c8b6" prefix="" category="inline-code"></block></block>
   <block id="0d5dee87e76c9a9f9127dd55f7b1e2eb" category="list-text">識別pool1磁碟：</block>
-  <block id="7cb1b8282d7b16c1d998b3403dc7a91f" category="paragraph"><block ref="978a127cc866f54e1830776b846eb9b8" prefix="" category="inline-code"></block></block>
-  <block id="c0b861216beaceb3d375fd9c6df6e6c3" category="paragraph">顯示所有備用磁碟，包括節點擁有的pool0和pool1備用磁碟。</block>
-  <block id="6e07f225393b79b609cb8fc3d86279bf" category="list-text">刪除每個 pool1 備用磁碟的磁碟所有權：</block>
   <block id="8d0b8b84becd485c7891597b01240458" category="paragraph"><block ref="a2548e43cec4e94df11e259aa9a83a68" prefix="" category="inline-code"></block></block>
-  <block id="c218a756cd011fd52e8951a24e6900e7" category="paragraph">對於分割磁碟，刪除分割區所有權，然後刪除容器磁碟所有權。</block>
   <block id="096ee0b68ed0c4989612306aa1e3fbb5" category="list-text">如果您處於MetroCluster IP 設定中，請刪除舊 DR 群組節點上的MetroCluster連線。</block>
   <block id="bac7003f0be2f7c1ffe91ec5e8146e9e" category="paragraph">這些命令可以從任一集群發出，並適用於跨越兩個集群的整個 DR 組。</block>
   <block id="d30c3b2671a8fe1038b0b3608133c703" category="paragraph"><block ref="6864950bb23886bbe435bbce576bc0d6" prefix="" category="inline-code"></block></block>
   <block id="b1bd9ffb7ba04ba41a6ed8fd479dceb1" category="admonition">必須在 DR 群組的每個節點上重複此步驟。</block>
   <block id="d321eb0a25003ddc996afe17a7149d6f" category="paragraph">在每個集群上執行此步驟。</block>
-  <block id="5dd0fc60033d456ae0a90e5edc267878" category="list-text">退出節點：+<block ref="1f9e5247574dddf29bedc560cf209d11" prefix=" " category="inline-code"></block></block>
   <block id="e1bde148bbf0582fd279d9a3c915b31a" category="list-text">設定管理員權限等級：</block>
   <block id="5465fc7f055cf03040fda6f777f9a2da" category="list-text">檢查新 DR 組中是否啟用了叢集 HA。如果需要，重新啟用叢集 HA：</block>
   <block id="4e7f0491b8337902ce9619e04977796b" category="sidebar">連接 NS224 儲存的 36 連接埠Cisco 9336C-FX2 交換器的平台連接埠分配</block>
@@ -14501,6 +14487,59 @@
   <block id="a8b426026583d79d39676c969bdc3456" category="section-title">準備新的控制器模組</block>
   <block id="af8fde2f19f4ba506d9bb950533f5776" category="list-text">在維護模式下，發出 halt 命令退出維護模式：</block>
   <block id="b8bbebbdaa85ea395d4339565372cafe" category="list-text">啟動系統並進入叢集設定：</block>
-  <block id="e219586e70791b35867f7d4dc343163f" category="section-title">配置叢集間 LIF、建立 MetroCluster 介面並鏡射根 Aggregate</block>
   <block id="8780af330d271744603135da4ae91fd9" category="section-title">完成新節點的新增</block>
+  <block id="6b8f0c36cfacfde9cb8a41e51e4c81aa" category="inline-link-macro">設定 MetroCluster Tiebreaker 軟體的 SNMP 設定</block>
+  <block id="7bf55c5fb72bee187d6fbd1aa1b52790" category="paragraph"><block ref="7bf55c5fb72bee187d6fbd1aa1b52790" category="inline-link-macro-rx"></block></block>
+  <block id="071e512a3f8baeb67c6344599c7eb921" category="summary">安裝 Tiebreaker 軟體後，您可以新增 MetroCluster 設定、設定 SNMP 設定並開始監控您的 MetroCluster 環境。</block>
+  <block id="ccb1f1ef7412b7b92081ada14f0f9db5" category="doc">MetroCluster Tiebreaker 組態工作流程</block>
+  <block id="7d0a98150fc3a74e40b6948115b0cb2f" category="paragraph">您可以在安裝後使用此工作流程來設定 Tiebreaker 軟體。</block>
+  <block id="e36aed9ded69ff87b19d6bb819cce039" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block><block ref="eb6675758f8fdd2ff1cefe24d56fcfaa" category="inline-link-macro-rx"></block></block>
+  <block id="356be90438cd5eb2724b8988a8659fc1" category="paragraph">在 Tiebreaker 軟體中新增 MetroCluster 組態、匯入憑證並設定監控設定。</block>
+  <block id="3180fdb1327897c4b572cfd63ad3287f" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block><block ref="7bf55c5fb72bee187d6fbd1aa1b52790" category="inline-link-macro-rx"></block></block>
+  <block id="d71cf09eabd542ab0900df15ddfed77d" category="paragraph">配置 SNMP 設置，以便 Tiebreaker 軟體可以發送 MetroCluster 事件的 SNMP 通知。</block>
+  <block id="5ec21259b0f96f7761ff6f6c6a0f3a21" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block><block ref="8a1df91cee28227d892ff9dbf426d562" category="inline-link-macro-rx"></block></block>
+  <block id="e0b80638817e39eec16542c32d7be7f3" category="paragraph">使用 Tiebreaker 軟體監控 MetroCluster 設定狀態、檢視 SNMP 事件和管理 AutoSupport 設定。</block>
+  <block id="d148f1ad635aa8bba1d560a19f39e9c0" category="paragraph"><block ref="d148f1ad635aa8bba1d560a19f39e9c0" category="inline-link-macro-rx"></block></block>
+  <block id="6d304da29d5362806ed14a9478ee710f" category="doc">MetroCluster Tiebreaker 安裝工作流程</block>
+  <block id="cc5fe7dfbf76f9b49127063316fe1a3e" category="paragraph"><block ref="cc5fe7dfbf76f9b49127063316fe1a3e" category="inline-link-macro-rx"></block></block>
+  <block id="cc996a6e668ea1b5bbb2717ede5321fa" category="paragraph"><block ref="cc996a6e668ea1b5bbb2717ede5321fa" category="inline-link-macro-rx"></block></block>
+  <block id="3ffaf6ce899559f482f4bb420ea443ef" category="list-text">如果您正在安裝或升級至 Tiebreaker 1.5 或更高版本，<block ref="01db536e3338a6daa44368053b8b78a4" category="inline-link-macro-rx"></block>。</block>
+  <block id="31b54abaff4839e37a34d702915846b9" category="list-text">如果您正在安裝或升級到 Tiebreaker 1.4，<block ref="9dcf67482ee019fdc9b8d7c3a46fafac" category="inline-link-macro-rx"></block>。</block>
+  <block id="49a7406e081bdf74959aab879c657d6c" category="list-text">支援靜態資料加密。<block ref="a6804cfe939b096e631ab157a40f3379" category="inline-link-macro-rx"></block></block>
+  <block id="68bdfb46514e0728dbff34acccbb2662" category="paragraph"><block ref="f36d28ac2ac51e4db0586db797c4bd01" category="inline-link-macro-rx"></block> 以安裝或升級 Tiebreaker。</block>
+  <block id="8a1df91cee28227d892ff9dbf426d562" category="paragraph"><block ref="8a1df91cee28227d892ff9dbf426d562" category="inline-link-macro-rx"></block></block>
+  <block id="35860767e06b0ad32b8ba4267eeaf1b9" category="paragraph"><block ref="cb84c2ef67b9bc01f68cbcfb918d693b" category="inline-link-macro-rx"></block>。</block>
+  <block id="aebaf14d8b9d9e9427ab47eeb2e1e295" category="inline-link-macro">匯入憑證</block>
+  <block id="d126dbe84a959f82881ba6731ce2bec3" category="admonition">安裝 Tiebreaker 1.6 或更高版本後，您需要 <block ref="02577fcac3f49d205cfa1eec1ab9843c" category="inline-link-macro-rx"></block> 啟用無縫監控。</block>
+  <block id="392c82005848837c4cc355e9f1b13bfb" category="inline-link-macro">設定 MetroCluster Tiebreaker 軟體</block>
+  <block id="97bb590be95e1f1db541f920acbb994a" category="paragraph">成功安裝或升級 Tiebreaker 後，<block ref="658332fcfd4694e5d76e386a8de8de38" category="inline-link-macro-rx"></block> 以新增 MetroCluster 組態並匯入所需的憑證。</block>
+  <block id="edd800061dc2e789e3e179a21cbcf379" category="admonition">安裝 Tiebreaker 1.7 後，您需要 <block ref="02577fcac3f49d205cfa1eec1ab9843c" category="inline-link-macro-rx"></block> 啟用無縫監控。</block>
+  <block id="411dfa6bc53c22308a41a3f1849b5c3a" category="paragraph">LUN 和磁碟區仍然實體託管在舊節點上。由於 LUN 僅在舊節點介面上報告，因此主機僅顯示經過舊節點的路徑。若要查看此資訊，請在主機上執行<block ref="41dc2c94e82e1c56ba876085acf5a974" prefix=" " category="inline-code"></block>和<block ref="2fbf63deae0938cf669e6ca451f1eb2c" prefix=" " category="inline-code"></block>命令並檢查命令輸出。</block>
+  <block id="4c6905218c60e9aba240b57185a6f46b" category="admonition">您在過渡和系統重新整理工作流程中會用到這些步驟。您可能已經在這些工作流程中完成了此程序中的某些步驟。</block>
+  <block id="492957bdbf0cd7894f5858e41044c478" category="inline-xref">移除舊的 DR 群組節點</block>
+  <block id="b7af971647e68ad51fd5a20bad1e6458" category="paragraph">在 MetroCluster FC 配置中，請轉到 <block ref="b02d7688693fa9d994c3ae281001ab71" category="inline-xref-macro-rx"></block> 的步驟。</block>
+  <block id="0bad080da4800b87d224c4b5e3f84547" category="paragraph"><block ref="50467096167ff97fd9486951e1e9979c" prefix="" category="inline-code"></block></block>
+  <block id="c1a4fc9238eb637c34dca8db88b9fe37" category="list-text">移除每個待刪除的 DR 群組節點上 pool1 磁碟的所有權。對每個待刪除的節點執行這些步驟。在本步驟的範例中，待刪除的是 node_A_1。</block>
+  <block id="05537b68d0389b1f6ccc2e32a5418922" category="paragraph">所有磁碟均會顯示，包括節點擁有的 Pool1 磁碟。以下範例顯示了部分輸出，其中磁碟 0n.4 及其分割區已指派給 Pool1。輸出結果會因您的配置而異。</block>
+  <block id="2a2a9b43676bdea631d12ed38f7e6c6e" category="paragraph"><block ref="42b1180257ad3e7be7a63d69d6b6d877" prefix="" category="inline-code"></block></block>
+  <block id="91db9162e74bb79491dc2e196929e7dd" category="list-text">移除 pool1 中每個磁碟的所有權：</block>
+  <block id="1475defb8bf95f4738845a11de25c3bb" category="paragraph">如果您的組態包含分割磁碟，您必須先移除每個分割磁碟的所有權，然後再移除容器磁碟所有權：</block>
+  <block id="02009efab927bd190d6bd3722cfa6a91" category="paragraph">在下列範例中，分割磁碟的所有權會在容器磁碟<block ref="1ae065558b31a1b0b795087dc4d41043" prefix=" " category="inline-code"></block>的所有權被移除之前移除：</block>
+  <block id="abe9c75c8aa9d46e2336de54158fd10c" category="list-text">[[fc_step_7_remove_nodes]] 刪除舊 DR 群組中的節點。</block>
+  <block id="70f599b650c36e21a80cab61cd9ecf45" category="list-text">移除節點：+<block ref="21f6d71d6277ab0be8efedef46f43c07" prefix=" " category="inline-code"></block></block>
+  <block id="f3497351aae46692e603fedb2f2cd146" category="inline-link-macro">ONTAP 指令參考</block>
+  <block id="9491dc48713e5872479d1b7bf34a84fa" category="paragraph">深入瞭解此程序中使用的命令，請參閱 <block ref="bc2602c5a66493ba7d85e8bd5d0e7f9b" category="inline-link-macro-rx"></block>。</block>
+  <block id="14b060b1c467e443d4c5b658b3150160" category="section-title">設定叢集間 LIF 以進行叢集對等關係</block>
+  <block id="2242b077fb2b5a060d17c9679aaef769" category="paragraph">有關完整的命令語法，請參閱 <block ref="8495ebe9433e51f4aaa13c1ac17aa802" category="inline-link-macro-rx"></block>。</block>
+  <block id="85b4f850daa6b7fa27cc663d6eecac9e" category="paragraph">以下範例將連接埠 "e0e" 和 "e0f" 指派給 SVM "cluster01" 上的容錯移轉群組 "intercluster01"：</block>
+  <block id="a2579751113db8b9e2ce7d7b2bd214ef" category="paragraph">以下範例顯示連接埠 "e0e" 上的叢集間 LIF "cluster01_icl01" 和 "cluster01_icl02" 將容錯移轉至連接埠 "e0f"。</block>
+  <block id="a4780c06a89c299119583f29f32ac093" category="paragraph">您應該會看到類似以下範例的輸出：</block>
+  <block id="f7427954f1195031f90353c13d3b432b" category="section-title">建立 MetroCluster 介面並鏡像根聚合</block>
+  <block id="0055afe3ada5efef7c05be5feef45afb" category="paragraph">您必須在新 MetroCluster IP 節點上建立 MetroCluster 介面並鏡像根 Aggregate。</block>
+  <block id="10425d754fad724e278bdbf3629399eb" category="list-text">在每個站台上，將新的叢集間 LIF 新增至對等關係。</block>
+  <block id="46702793a1903475dfe4870360e4c44e" category="paragraph">從 cluster_A 執行以下命令：</block>
+  <block id="197b76ace6dacb5968f922ce0200427b" category="paragraph"><block ref="d129eb59b8b7f8a39ae3ed6833c64f51" prefix="" category="inline-code"></block></block>
+  <block id="c42f4f6a3afab85eadf7182136f86159" category="paragraph">從 cluster_B 執行以下命令：</block>
+  <block id="29bf21eb413a03bb7bc5f794a7cf8c1a" category="paragraph"><block ref="cffe1374633319381a16ddd247851dc5" prefix="" category="inline-code"></block></block>
+  <block id="aa9e0907bac12bc372803051430c32c6" category="sidebar">Tiebreaker 組態工作流程</block>
 </blocks>
