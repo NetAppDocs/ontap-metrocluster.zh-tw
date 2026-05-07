@@ -28,219 +28,62 @@ CAUTION: 從ONTAP 《S廳9.12.1（支援）：MetroCluster 在MetroCluster 一�
 
 .關於這項工作
 * 此工作預設會啟用自動非計畫性切換。
-* 您可以在 MetroCluster IP 組態中任何節點的 ONTAP 介面上執行此工作。
-* 從 ONTAP 9.18.1 和 ONTAP Mediator 1.11 開始，單一配置了 iSCSI 的 ONTAP Mediator 實例最多可以同時管理十個 MetroCluster 組態。在 ONTAP 9.17.1 和 ONTAP Mediator 1.10 及更早版本中，配置了 iSCSI 的 ONTAP Mediator 最多可以同時支援五個 MetroCluster 組態。
-* 從 ONTAP 9.19.1 和 ONTAP Mediator 1.12 開始，您可以安裝支援 iSCSI 和 HTTPS 的 ONTAP Mediator，或僅安裝支援 HTTPS 的 ONTAP Mediator。如果您安裝的 ONTAP Mediator 僅支援 HTTPS，則無法設定支援 iSCSI 的 Mediator。
-* 如果您未在 `-type` 參數於 `metrocluster configuration-settings mediator add` 指令中指定，則會使用預設的 iSCSI 通訊協定。
-* 如果將 ONTAP Mediator 設定為使用 HTTPS，則單一 ONTAP Mediator 執行個體只能監控一個 MetroCluster IP 組態。當 ONTAP Mediator 設定為使用 HTTPS 時，不支援同時監控多個 MetroCluster IP 組態。
-* 如果您需要設定 ONTAP Mediator 並啟用 HTTPS 來監控多個 MetroCluster IP 配置，則必須為每個 MetroCluster IP 配置單獨配置 ONTAP Mediator 實例。在選擇為 MetroCluster IP 設定 ONTAP Mediator 並啟用 HTTPS 之前，您必須仔細評估 MetroCluster IP 環境的需求。
-* 如果要使用單一 ONTAP Mediator 實例來監控多個 MetroCluster IP 配置，則應使用 iSCSI 而非 HTTPS 設定 ONTAP Mediator。
+* 此任務可在 MetroCluster IP 配置中任何節點的 ONTAP 介面上執行。
+* 從 ONTAP 9.18.1 和 ONTAP Mediator 1.11 開始，單一 ONTAP Mediator 執行個體最多可以同時管理十個 MetroCluster 組態。在早期版本中，ONTAP Mediator 最多可以同時支援五個 MetroCluster 組態。
 
 
+.步驟
+. 將ONTAP Mediator 新增至ONTAP。具體步驟取決於您要使用 IPv4 位址還是 IPv6 位址。
++
+[NOTE]
+====
+** 若要使用 IPv6，您必須執行ONTAP 9.18.1 或更高版本以及ONTAP Mediator 1.11 或更高版本。
+** 如果在叢集上啟用 IPv6，則以後無法停用。
+
+
+====
++
 [role="tabbed-block"]
 ====
-.使用 HTTPS 設定 ONTAP Mediator
+.使用 IPv4
 --
-從 ONTAP 9.19.1 和 ONTAP Mediator 1.12 開始，您可以在 MetroCluster IP 組態中設定使用 HTTPS 進行通訊的 ONTAP Mediator。
-
-.步驟
-. 從 ONTAP Mediator Linux 虛擬機器/主機軟體安裝位置找到 ONTAP Mediator CA 憑證：
+.. 執行以下命令以新增 ONTAP Mediator：
 +
-`[root@ontap-mediator ~] cd /opt/netapp/lib/ontap_mediator/ontap_mediator/server_config`
+`metrocluster configuration-settings mediator add -mediator-address <mediator_host_ip_address>`
 
 +
-您應該會看到類似以下範例的輸出：
 
-+
-[listing]
-----
-1-ontap-mediator.rules  intermediate.crt   make_self_signed_certs.sh      ontap_mediator_server_chain.crt  ontap_mediator.user_config.yaml  root_ca.crt
-config_migration        intermediate.key   netapp_sudoers                 ontap_mediator_server.crt        openssl_ca.cnf                   root_ca.key
-config.pyc              intermediate.srl   ontap_mediator.config.yaml     ontap_mediator_server.csr        openssl_intermediate.cnf
-__init__.pyc            logging.conf.yaml  ontap_mediator.constants.yaml  ontap_mediator_server.key        openssl_server.cnf
-----
-. 顯示根 CA 憑證的內容：
-+
-`[root@ontap-mediator ~] cat root_ca.crt`
-
-+
-[listing]
-----
------BEGIN CERTIFICATE-----
-<certificate_value>
------END CERTIFICATE-----
-----
-. 顯示中繼 CA 憑證的內容：
-+
-`[root@ontap-mediator ~] cat intermediate.crt`
-
-+
-[listing]
-----
------BEGIN CERTIFICATE-----
-<certificate_value>
------END CERTIFICATE-----
-----
-. 在站台 A 安裝根 CA 憑證和中繼 CA 憑證：
-+
-.. 安裝根 CA 憑證：
-+
-`security certificate install -type server-ca -vserver <vserver_name>`
-
-+
-根據提示輸入  `root_ca.crt`，如下例所示：
-
-+
-[listing]
-----
-cluster_A::*> security certificate install -type server-ca -vserver cluster_A
-
-Enter certificate: Press <Enter> when done
-
------BEGIN CERTIFICATE-----
-<certificate_value>
------END CERTIFICATE-----
-
-You should keep a copy of the CA-signed digital certificate for future
-reference.
-
-The installed certificate's CA and serial number for reference:
-CA: ONTAP Mediator CA
-serial: <serial_value>
-
-The certificate's generated name for reference: ONTAPMediatorCA
-
-cluster_A::*>
-
-----
+NOTE: 系統會提示您輸入 Mediator 管理員使用者帳戶的使用者名稱和密碼。
 
 
-. 安裝中繼 CA 憑證：
-+
-`security certificate install -type server-ca -vserver <vserver_name>`
 
-+
-根據提示輸入  `intermediate.crt`，如下例所示：
-
-+
-[listing]
-----
-cluster_A::*> security certificate install -type server-ca -vserver cluster_A
-
-Enter certificate: Press <Enter> when done
-
------BEGIN CERTIFICATE-----
-<certificate_value>
------END CERTIFICATE-----
-
-You should keep a copy of the CA-signed digital certificate for future
-reference.
-
-The installed certificate's CA and serial number for reference:
-CA: ONTAP Mediator CA
-serial: <serial_value>
-
-The certificate's generated name for reference: ONTAPMediatorCA
-
-cluster_A::*>
-
-----
-. 重複上一步，在站台 B 上安裝根 CA 憑證和中繼 CA 憑證。
-. 使用產生的憑證名稱檢視已安裝的自簽名 CA 憑證：
-+
-`security certificate show -common-name <common_name>`
-
-+
-您應該會看到類似以下範例的輸出：
-
-+
-[listing]
-----
-security certificate show -common-name ONTAPMediatorCA
-Vserver    Serial Number      Certificate Name                     Type
----------- ---------------    ------------------------------------ ------------
-cluster_A  <serial_value>     ONTAPMediatorCA                      server-ca
-    Certificate Authority: ONTAP Mediator CA
-          Expiration Date: Thu Nov 28 05:26:07 2030
-
-cluster_A  <serial_value>    ONTAPMediatorCA                       server-ca
-    Certificate Authority: ONTAP Mediator CA
-          Expiration Date: Thu Nov 28 05:26:07 2030
-
-2 entries were displayed.
-----
-. 將ONTAP Mediator 新增至ONTAP。具體步驟取決於您要使用 IPv4 位址還是 IPv6 位址。
-+
-[NOTE]
-====
-** 若要使用 IPv6，您必須執行ONTAP 9.18.1 或更高版本以及ONTAP Mediator 1.11 或更高版本。
-** 如果在叢集上啟用 IPv6，則以後無法停用。
-
-
-====
-+
-.. 如果您想使用 IPv6，請完成下列步驟：
-+
-若要使用 IPv4，請跳至 <<https_ipv4_step8b,IPv4 步驟>>。
-
-+
-... 在兩個叢集上執行以下命令：
+--
+.使用 IPv6
+--
+.. 在兩個叢集上執行以下命令：
 +
 `network options ipv6 modify -enabled true`
 
-... 在所有四個節點上設定節點管理 IP 位址，使用 IPv6 位址。
-... 新增ONTAP中介器：
+.. 在所有四個節點上設定節點管理 IP 位址，使用 IPv6 位址。
+.. 新增ONTAP中介器：
 +
-`metrocluster configuration-settings mediator add -mediator-address <mediator_host_ipv6_ip_address> -type https-mediator`
-
-+
-
-NOTE: 出現提示時、請輸入 Mediator 管理員使用者名稱和密碼。
-
-
-
-.. [[https_ipv4_step8b]]如果您想使用 IPv4，請完成以下步驟：
-+
-... 新增ONTAP中介器：
-+
-`metrocluster configuration-settings mediator add -mediator-address <mediator_host_ip_address> -type https-mediator`
+`metrocluster configuration-settings mediator add -mediator-address <mediator_host_ipv6_ip_address>`
 
 +
 
-NOTE: 出現提示時、請輸入 Mediator 管理員使用者名稱和密碼。
+NOTE: 系統會提示您輸入 Mediator 管理員使用者帳戶的使用者名稱和密碼。
 
 
 
-
-
-. 驗證連線狀態和 ONTAP Mediator 類型：
-+
-`metrocluster configuration-settings mediator show`
-
-+
-您應該會看到類似以下範例的輸出：
-
-+
-[listing]
-----
-cluster_A::*> metrocluster configuration-settings mediator show
-        Mediator IP     Port    Type              Node                    Configuration Connection
-                                                  Status                  Status
-        --------------- ------- ----------------- ----------------------- ------------- -----------
-        10.101.101.101
-                        31784   https-mediator    cluster1_node_01        true          true
-                                                  cluster1_node_02        true          true
-                                                  cluster2_node_01        true          true
-                                                  cluster2_node_02        true          true
-----
-+
-.. 確認已啟用自動切換功能：
+--
+====
+. 確認已啟用自動切換功能：
 +
 《不看》MetroCluster
 
-.. 確認「資訊管理器」正在執行中。
+. 確認「資訊管理器」正在執行中。
 +
-... 顯示資訊管理器虛擬磁碟：
+.. 顯示資訊管理器虛擬磁碟：
 +
 「torage disk show -container型中介器」
 
@@ -255,101 +98,7 @@ cluster_A::*> metrocluster configuration-settings mediator show
  NET-1.7                   -     -   - VMDISK  mediator    -         node_B_2
  NET-1.8                   -     -   - VMDISK  mediator    -         node_A_1
 ....
-... 驗證自動非計畫性切換（ AUSO ）故障網域的狀態：
-+
-《不看》MetroCluster
-
-+
-
-NOTE: 以下範例輸出適用於 ONTAP 9.13.1 及更新版本。對於 ONTAP 9.12.1 及更早版本、 AUSO 故障網域狀態應為 `auso-on-cluster-disaster`。
-
-+
-[listing]
-----
-cluster_A::> metrocluster show
-Cluster                   Entry Name          State
-------------------------- ------------------- -----------
-Local: cluster_A         Configuration state configured
-                          Mode                normal
-                          AUSO Failure Domain auso-on-dr-group-disaster
-Remote: cluster_B         Configuration state configured
-                          Mode                normal
-                          AUSO Failure Domain auso-on-dr-group-disaster
-----
-
-
-
-
-
-
---
-.使用 iSCSI 配置 ONTAP Mediator
---
-.步驟
-. 將ONTAP Mediator 新增至ONTAP。具體步驟取決於您要使用 IPv4 位址還是 IPv6 位址。
-+
-[NOTE]
-====
-** 若要使用 IPv6，您必須執行ONTAP 9.18.1 或更高版本以及ONTAP Mediator 1.11 或更高版本。
-** 如果在叢集上啟用 IPv6，則以後無法停用。
-
-
-====
-+
-.. 如果您想使用 IPv6，請完成下列步驟：
-+
-若要使用 IPv4，請跳至 <<iscsi_ipv4_step8b,IPv4 步驟>>。
-
-+
-... 在兩個叢集上執行以下命令：
-+
-`network options ipv6 modify -enabled true`
-
-... 在所有四個節點上設定節點管理 IP 位址，使用 IPv6 位址。
-... 新增ONTAP中介器：
-+
-`metrocluster configuration-settings mediator add -mediator-address <mediator_host_ipv6_ip_address> -type iscsi-mediator`
-
-+
-
-NOTE: 出現提示時、請輸入 Mediator 管理員使用者名稱和密碼。
-
-
-
-.. [[iscsi_ipv4_step8b]]如果您想使用 IPv4，請完成以下步驟：
-+
-... 新增ONTAP中介器：
-+
-`metrocluster configuration-settings mediator add -mediator-address <mediator_host_ip_address> -type iscsi-mediator`
-
-+
-
-NOTE: 出現提示時、請輸入 Mediator 管理員使用者名稱和密碼。
-
-
-
-.. 確認已啟用自動切換功能：
-+
-《不看》MetroCluster
-
-.. 確認「資訊管理器」正在執行中。
-+
-... 顯示資訊管理器虛擬磁碟：
-+
-「torage disk show -container型中介器」
-
-+
-....
- cluster_A::> storage disk show -container-type mediator
-                        Usable           Disk    Container   Container
- Disk                   Size Shelf Bay Type    Type        Name      Owner
- ---------------- ---------- ----- --- ------- ----------- --------- --------
- NET-1.5                   -     -   - VMDISK  mediator    -         node_A_2
- NET-1.6                   -     -   - VMDISK  mediator    -         node_B_1
- NET-1.7                   -     -   - VMDISK  mediator    -         node_B_2
- NET-1.8                   -     -   - VMDISK  mediator    -         node_A_1
-....
-... 將權限模式設為進階：
+.. 將權限模式設為進階：
 +
 《進階設定》
 
@@ -357,7 +106,7 @@ NOTE: 出現提示時、請輸入 Mediator 管理員使用者名稱和密碼。
 ....
  cluster_A::> set advanced
 ....
-... 顯示標示為「中介者」的啟動器：
+.. 顯示標示為「中介者」的啟動器：
 +
 「儲存iSCSI啟動器顯示-標籤中介器」
 
@@ -375,7 +124,7 @@ NOTE: 出現提示時、請輸入 Mediator 管理員使用者名稱和密碼。
       mailbox
            mediator 1.1.1.1       iqn.2012-05.local:mailbox.target.6616cd3f-9ef1-11e9-aada-00a098ccf5d8:a05e1ffb-9ef1-11e9-8f68-00a098cbca9e:1 up/up
 ....
-... 驗證自動非計畫性切換（ AUSO ）故障網域的狀態：
+.. 驗證自動非計畫性切換（ AUSO ）故障網域的狀態：
 +
 《不看》MetroCluster
 
@@ -398,9 +147,19 @@ Remote: cluster_B         Configuration state configured
 ----
 
 
+. （選用）設定 MetroCluster 自動強制切換。
++
+您只能在進階權限層級使用下列命令。
 
++
 
+IMPORTANT: 使用此指令前，請先檢閱 link:concept-ontap-mediator-supports-automatic-unplanned-switchover.html#mauso-9-12-1["使用MetroCluster 不全自動強制切換的風險與限制"]。
 
++
+`metrocluster modify -allow-auto-forced-switchover true`
 
---
-====
++
+....
+cluster_A::*> metrocluster modify -allow-auto-forced-switchover true
+....
+

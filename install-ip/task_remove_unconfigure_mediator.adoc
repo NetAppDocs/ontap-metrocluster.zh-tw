@@ -42,22 +42,7 @@ There are no entries matching your query.
 ....
 
 
-. 如果您使用的 ONTAP Mediator 採用 HTTPS 進行通訊，請在移除 ONTAP Mediator 後刪除 CA 憑證：
-+
-.. 顯示已安裝的 CA 憑證：
-+
-`security certificate show -common-name ONTAPMediatorCA`
-
-.. 移除已安裝的根憑證和中繼憑證：
-+
-`security certificate delete -vserver cluster-A -common-name ONTAPMediatorCA -cert-name <root_certificate_name> -type server-ca -ca "ONTAP Mediator CA"`
-
-+
-`security certificate delete -vserver cluster-A -common-name ONTAPMediatorCA -cert-name <intermediate_certificate_name> -type server-ca -ca "ONTAP Mediator CA"`
-
-
-
-. 在兩個叢集上執行以下命令，確認已從 MetroCluster 組態中移除 ONTAP Mediator：
+. 透過在兩個叢集上執行以下命令，確認已從 MetroCluster 組態中移除 ONTAP Mediator：
 +
 .. `metrocluster configuration-settings mediator show`
 +
@@ -67,6 +52,15 @@ There are no entries matching your query.
 [listing]
 ----
 This table is currently empty.
+----
+.. 「儲存iSCSI啟動器顯示-標籤中介器」
++
+* 範例 *
+
++
+[listing]
+----
+There are no entries matching your query.
 ----
 
 

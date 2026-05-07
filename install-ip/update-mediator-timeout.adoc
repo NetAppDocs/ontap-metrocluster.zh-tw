@@ -13,9 +13,6 @@ summary:
 [role="lead"]
 MetroCluster IP 節點可以使用 iSCSI 工作階段存取 ONTAP Mediator 信箱磁碟，預設連線逾時時間為 10 秒，包括 5 秒後的一次重試。根據您的 ONTAP 版本和環境，您可以將信箱逾時時間增加到最多 60 秒，以避免中斷 Mediator 輔助的非計劃性切換（MAUSO）。
 
-
-NOTE: 此任務僅適用於使用 iSCSI 設定的 ONTAP Mediator。此任務不適用於使用 HTTPS 的 ONTAP Mediator。
-
 如果您的環境符合以下任何條件，NetApp 建議您增加預設信箱連線逾時時間：
 
 * 您正在使用網路備援通訊協定（例如 HSRP 或 VRRP）或迴圈避免通訊協定（例如 STP）。
