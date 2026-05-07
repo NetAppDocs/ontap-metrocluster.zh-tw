@@ -1568,23 +1568,11 @@
   <block id="6b55a3ff2ffe6275beb9e73d58d08007" category="paragraph">MTU大小必須至少為1400。</block>
   <block id="64ddceb2cbf941d1fc93373ce9219a1f" category="list-text">封包遺失</block>
   <block id="7d724e4bd163fe8323200b15500517f9" category="list-text">頻寬</block>
-  <block id="652f10975e44b79de998287113035fac" category="section-title">防火牆需求ONTAP</block>
-  <block id="671e00f956495c99ae5aae5896e8542a" category="paragraph">利用多個連接埠與特定服務進行通訊。ONTAP</block>
-  <block id="861ef6676813cbc81369ee701ae73269" category="paragraph">如果您使用的是協力廠商防火牆：</block>
-  <block id="041f3a27fe8b40cc213210949eb4f036" category="list-text">必須啟用HTTPS存取。</block>
-  <block id="8b8101ed71d5bd32d2f9d4de05e470c1" category="list-text">必須將其設定為允許存取連接埠31784和3260。</block>
-  <block id="cc1e6f116b4b45ffde821f0aef59e030" category="paragraph">使用預設的Red Hat或CentOS防火牆時、防火牆會在安裝中保期間自動設定。</block>
   <block id="fc4f6ae944c5fa7cfc47e0574373e3e8" category="paragraph">下表列出防火牆中必須允許的連接埠：</block>
   <block id="0656a530ae7a166be8f852431b35de15" category="cell">連接埠/服務</block>
   <block id="f31bbdd1b3e85bccd652680e16935819" category="cell">來源</block>
   <block id="12007e1d59f4d09c87dbe2c438256244" category="cell">目的地</block>
   <block id="261addf78c7b2c961032b3dd08ba0b1f" category="cell">目的</block>
-  <block id="5946d090ccc9cc4eb9c55cf3e9e8d35a" category="paragraph">31784/TCP</block>
-  <block id="47c5e6a166f9432ff96681fa2a62c791" category="paragraph">資訊媒體伺服器ONTAP</block>
-  <block id="8cf15eeaee2b3382338ecab30027c48b" category="paragraph">REST API（HTTPS）</block>
-  <block id="5395ab3ceab5345ee4a1117e436bec89" category="paragraph">3260/TCP</block>
-  <block id="1c44912242a1c1688be9805f25a62dbd" category="paragraph">支援iSCSI目標ONTAP</block>
-  <block id="a3993ea912c0ecd6926aed69b72fd59a" category="paragraph">適用於信箱的iSCSI資料連線</block>
   <block id="80f0fa63ac735fb302ee06c9c1c515ae" category="list-text">所有的媒體版本都支援MetroCluster 執行ONTAP 支援支援的各種知識、例如執行支援的知識產權配置、例如更新版本的支援。</block>
   <block id="fe8f2bed933b5baccdaadbe566f09126" category="section-title">升級之後</block>
   <block id="ed92588fcdb50fce92fb0e01fb8449b0" category="paragraph">完成調控器和作業系統升級之後、您應該使用「shorage iscsi啟動器show」命令來確認調控器連線正常。</block>
@@ -1620,7 +1608,6 @@
   <block id="760481252d481e55778f320967eca451" category="paragraph"><block ref="760481252d481e55778f320967eca451" category="inline-link-rx"></block></block>
   <block id="a21b356af516769ddf9586489a22e6f8" category="list-text">所有的靜態IP組態節點MetroCluster 都必須在線上。</block>
   <block id="5213788f29292b96ef1a650e5fce6938" category="list-text">此工作預設會啟用自動非計畫性切換。</block>
-  <block id="ada003c5d7b06ea1b392045334928823" category="list-text">此工作可在ONTAP 任何節點的整個介面上執行MetroCluster 、以進行整個過程。</block>
   <block id="5c0eb063c7de9ced4fcf06367dc8cf49" category="list-text">確認「資訊管理器」正在執行中。</block>
   <block id="241c04bf46a427ee9559a37db9cfc64c" category="list-text">顯示資訊管理器虛擬磁碟：</block>
   <block id="549e9ae28a978e7598586f13c962b013" category="paragraph">「torage disk show -container型中介器」</block>
@@ -8792,7 +8779,6 @@
   <block id="9cb93e3e52c9acd5dbc54779bde1d1f9" category="list-text">儲存預設環境變數設定：「aveenv」</block>
   <block id="88ddfc7e314aeb15a213f2a59a493e9f" category="section-title">在站台B上為節點開機</block>
   <block id="bf49a2af93184828c602f30985ab7b3e" category="list-title">開始之前</block>
-  <block id="1d32dacc20fe1feb077659fd0bebdc03" category="list-text">確認您可以使用系統存取HTTP伺服器。</block>
   <block id="c8ccdf38ac9270bf4afbb1e3492b8838" category="list-text">您需要從下載系統所需的系統檔案、以及ONTAP 正確版本的《》 <block ref="3bd7a72b5bb22d07b50aba30cd6fdbe6" category="inline-link-macro-rx"></block> 網站。關於這項工作、如果ONTAP 安裝的版本與原始控制器上安裝的版本不同、您必須「netboot」新的控制器。安裝每個新的控制器之後、您可以從ONTAP 儲存在Web伺服器上的Image9映像來啟動系統。然後、您可以將正確的檔案下載到開機媒體裝置、以供後續系統開機。</block>
   <block id="38b125b63e361f104f9462c713554e23" category="list-text">存取 <block ref="3bd7a72b5bb22d07b50aba30cd6fdbe6" category="inline-link-macro-rx"></block> 下載執行系統netboot所需的檔案、以執行系統的netboot。</block>
   <block id="563aa54c6a7f25b423465d6da71ac244" category="list-text">[step2-download-software]請ONTAP 從NetApp支援網站的軟體下載區段下載適當的支援軟體、並將「&lt;ONTAP_VERSION &gt;_image.tgz」檔案儲存在可從網路存取的目錄中。</block>
@@ -10296,7 +10282,6 @@
   <block id="efddb3b6772ab4f446bebb2bda2d2155" category="paragraph">時間戳記嚴重性/記錄層級執行緒ID模組</block>
   <block id="690f8ff3b8b65da4f1bc779fb507da9d" category="sidebar">還原斷路器事件記錄檔MetroCluster</block>
   <block id="fd8a65566a0bac859d93882f20cc0c7d" category="paragraph"><block ref="fd8a65566a0bac859d93882f20cc0c7d" category="inline-link-macro-rx"></block></block>
-  <block id="43119522ff803c1f1fa88bdbaffe20b7" category="admonition">iSCSI連接埠僅MetroCluster 在支援靜態IP組態時才需要。</block>
   <block id="64cdec386f8cc50c2a2ec9316633b629" category="paragraph">在您執行之前<block ref="3b3242ced99842a6c2c16f489b78e773" prefix=" " category="inline-code"></block>、HA模式和DR鏡像未啟用、您可能會看到與此預期行為相關的錯誤訊息。您稍後執行命令時、會啟用HA模式和DR鏡像<block ref="3b3242ced99842a6c2c16f489b78e773" prefix=" " category="inline-code"></block> 以實作組態。</block>
   <block id="5ffd33f8dea25274cffabd9b7ab1c36e" category="paragraph">您必須回應<block ref="415290769594460e2e485922904f345d" prefix=" " category="inline-code"></block> 當系統提示您繼續進入進階模式時、您會看到進階模式提示（*）。</block>
   <block id="1fd3081a4bf2b2b1ccafeb89c824a5d2" category="admonition">最佳實務做法是擁有多個鏡射資料集合體。當只有一個鏡射Aggregate時、保護就會減少、因為中繼資料磁碟區位於相同的Aggregate上、而非位於個別的Aggregate上。</block>
@@ -10743,9 +10728,6 @@
   <block id="2ff01ce7887ede183a0dcb4bf579a040" category="cell">CentOS 7-7.9</block>
   <block id="99d7ea00899cf98fde6ae4bd7a763fe6" category="list-text">驗證自動非計畫性切換（ AUSO ）故障網域的狀態：</block>
   <block id="914c0f805af7b6a979c9b14a8fca637d" category="admonition">以下範例輸出適用於 ONTAP 9.13.1 及更新版本。對於 ONTAP 9.12.1 及更早版本、 AUSO 故障網域狀態應為<block ref="8371e13c4fc64771e634f39be50ec198" prefix=" " category="inline-code"></block>。</block>
-  <block id="1d2738c61f2ddb3b312cabca3378259b" category="list-text">您也可以選擇設定 MetroCluster 自動強制切換。</block>
-  <block id="09bb2a0904755eb985fc0c00a8eaeb29" category="paragraph">您只能在進階權限層級中使用下列命令。</block>
-  <block id="626946adf45b7bb7ff18b4ffcb520404" category="paragraph"><block ref="c3c9b152afaa4bfa0aa390b3e2063a6d" prefix="" category="inline-code"></block></block>
   <block id="33871b6190a8d5adbe8b15282054766c" category="sidebar">新增功能</block>
   <block id="bbce41d7b43eef36d5db9bed94db0495" category="sidebar">安裝相依性</block>
   <block id="9adb8eb34f7ed5a25405fe6af3b01c0a" category="sidebar">確保安裝安全</block>
@@ -11014,7 +10996,6 @@
   <block id="b65bf2d95ccaa5163ee3e519ccc4f46c" category="inline-link-macro">瞭解 ONTAP Mediator 如何支援自動非計畫性切換</block>
   <block id="79fa79dc9ecfb5181a7024131b90413f" category="paragraph"><block ref="66850f0d314a9b674fb83121fdb5639b" category="inline-link-macro-rx"></block>。</block>
   <block id="88ddeb4aaff386fa8928e9ed590bcdd6" category="admonition">從ONTAP 《S廳9.12.1（支援）：MetroCluster 在MetroCluster 一套支援靜態IP的組態中、您可以啟用「自動切換」功能。此功能是由中保輔助的非計畫性切換的延伸功能。啟用此功能之前、請先檢閱 <block ref="b36331871b99d608d499593ef0805d3b" category="inline-link-macro-rx"></block>。</block>
-  <block id="6627a26235928f19183374e55b041466" category="admonition">使用此命令之前、請檢閱 <block ref="b36331871b99d608d499593ef0805d3b" category="inline-link-macro-rx"></block>。</block>
   <block id="62dab2247ca5697a261fd865abf3712d" category="paragraph">第 4 季： Bay 36-47</block>
   <block id="c81d9f1aaf4df29053805f321b5b089d" category="section-title">AFF A150 、 ASA A150 和 AFF A220 系統上的 ADP 和磁碟指派</block>
   <block id="6a0fb9ba6a0c02751fb5fc909455894f" category="section-title">AFF C400 、 AFF A400 、 ASA C400 和 ASA A400 系統上的 ADP 和磁碟指派</block>
@@ -13086,12 +13067,6 @@
   <block id="d98545518df18c073a4a75d72759ddfe" category="list-text">當來源或目的地是 MetroCluster 叢集時， FabricPool 不支援 SVM 移轉。</block>
   <block id="de60962ea114e8e20b41343aa7431cbf" category="inline-link-macro">深入瞭解 SVM 資料移動性</block>
   <block id="cb692d9778a8fa1464d6b442ab90722f" category="paragraph"><block ref="53c488ccbc80272b509e45a126fd033b" category="inline-link-macro-rx"></block>。</block>
-  <block id="d247a27201590148c4ea6bf493729fd1" category="list-text">正常作業不需要使用 22/TCP 連接埠，但您可以暫時啟用該連接埠進行維護，並在維護工作階段結束時停用。</block>
-  <block id="02674a4ef33e11c879283629996c8ff8" category="cell">方向</block>
-  <block id="c5df47f9068f6d11f238ec77908abf18" category="paragraph">22/TCP</block>
-  <block id="6c7e3200049198face0d2648e9d1a27d" category="paragraph">傳入</block>
-  <block id="58dc7db50a2e11a9de9e6cc092c59d4d" category="paragraph">資訊媒體ONTAP</block>
-  <block id="348d25e332990b97eda5823a9561cd76" category="paragraph">SSH/ ONTAP Mediator 管理</block>
   <block id="7df18ff4393ac59f9af7b68478828591" category="inline-link-macro">Brocade Fabric OS 軟體升級指南， 9.2.x</block>
   <block id="81095da37e6499e1af51ce2d0316b8c1" category="paragraph">如果您要升級至 Fabric OS v 9.2.x 或更新版本，則必須安裝 Brocade TruFOS 憑證，如需詳細資訊，請參閱<block ref="0c25af31b20d46ca79e55fb8f6beb4c9" category="inline-link-macro-rx"></block>。</block>
   <block id="b2fe7ec3c609e490e177268be9c6a2c7" category="open-title">移除 FC 至 SAS 橋接器</block>
@@ -13530,7 +13505,6 @@
   <block id="b1819878894f9631db397400afc8a1f3" category="paragraph">您必須已在兩個 MetroCluster 站點均可存取的網路位置上成功安裝和設定 ONTAP 調解器。</block>
   <block id="856c17a21ae1d7e96d1d4e67f8404cd2" category="list-text">使用下列命令取消設定 ONTAP 調解器：</block>
   <block id="a568c1157fa9b77a182f5a050b86df43" category="admonition">如果 ONTAP 調解器發生故障， <block ref="1eafb93bfc40f298e60cf17e8a8c598c" prefix=" " category="inline-code"></block>指令仍會提示您輸入 ONTAP Mediator 管理員使用者帳號的使用者名稱和密碼，並從 MetroCluster 設定中刪除 ONTAP Mediator。</block>
-  <block id="66e992bd34634b96ff376561bcfc2e28" category="list-text">透過在兩個叢集上執行以下命令，確認 ONTAP 調解器已從 MetroCluster 配置中刪除：</block>
   <block id="d7815b39229175e9cef8440d269e9083" category="paragraph">如果您要連線到現有的 Tiebreaker 或 ONTAP Mediator 實例，則需要 Tiebreaker 或 Mediator 的使用者名稱、密碼和 IP 位址。</block>
   <block id="cb9e9645bca58c43f581c94e79f865c6" category="inline-link-macro">配置 ONTAP 調解器以實現計劃外自動切換</block>
   <block id="ef4d5dbb54aab5ddc81d5a09c43fd638" category="paragraph"><block ref="ef4d5dbb54aab5ddc81d5a09c43fd638" category="inline-link-macro-rx"></block></block>
@@ -13981,8 +13955,6 @@
   <block id="75ab17da123365d00f2ec499305169d8" category="doc">了解遠端儲存和MetroCluster IP 配置</block>
   <block id="1d4d3b05fa1ffe4d168028cb764f168a" category="doc">MetroCluster IP 配置中的叢集對等連線需求</block>
   <block id="a6fa9144699b7827d36eaf11a183930c" category="doc">使用MetroCluster IP 配置的ONTAP操作的要求和注意事項</block>
-  <block id="5f41d8cf5282355fa3aefb7176c3f60e" category="paragraph">叢集管理和節點管理 LIF</block>
-  <block id="adcf0c2ac79e72965c57c716ea214337" category="paragraph">節點管理 LIF</block>
   <block id="5450af98b7b980559b29b88b2f4d9081" category="doc">了解MetroCluster IP 配置中的硬體組件互連</block>
   <block id="e35a81d68844a7f93fe7fbde3c4d71b9" category="doc">所需的MetroCluster IP 配置組件和命名約定</block>
   <block id="028572c8152de9abdd6ce9b7fec1fec7" category="doc">設定 SNMPv3 來監控MetroCluster IP 交換器的運作狀況</block>
@@ -14302,22 +14274,15 @@
   <block id="db7a2b68018b688d638484b17a61fde8" category="list-text">如果您同時使用內部和外部驅動器，則首先需要安裝ONTAP並僅使用內部磁碟機設定本機叢集。安裝或設定完成後，您需要手動連接外部層架。</block>
   <block id="f1839293460380c463f11487c07a0a03" category="list-text">根聚合至少需要 12 個內部驅動器。您應該將根內部磁碟機安裝在插槽 1 中。例如，對於 12 個內部驅動器，請使用插槽 1-3、6-8、12-14 和 18-20。</block>
   <block id="ebe553e3b0c5ac8c6b06cd6914cd1875" category="paragraph">24個外接硬碟</block>
-  <block id="8fe5d17841821de914d5209eef34ab37" category="list-text">從ONTAP 9.18.1 和ONTAP Mediator 1.11 開始，單一ONTAP Mediator 實例可以同時管理多達 10 個MetroCluster配置。在早期版本中， ONTAP Mediator 可以同時支援最多五個MetroCluster配置。</block>
   <block id="ed0eda41e396ef5ea6f36bac23db4825" category="list-text">從ONTAP 9.18.1 開始，在MetroCluster IP 設定中， ONTAP Mediator 1.11 或更高版本支援 IPv6。</block>
   <block id="760ee33a4b5ef0f8b6e53de05243e44d" category="paragraph">若要在MetroCluster IP 設定中使用ONTAP Mediator，必須在ONTAP節點上設定 ONTAP Mediator。</block>
   <block id="f0fe71516e304fd8465b87447ccb2410" category="list-text">將ONTAP Mediator 新增至ONTAP。具體步驟取決於您要使用 IPv4 位址還是 IPv6 位址。</block>
   <block id="2123705c6998ca910a5e950a54dcbe12" category="list-text">若要使用 IPv6，您必須執行ONTAP 9.18.1 或更高版本以及ONTAP Mediator 1.11 或更高版本。</block>
   <block id="fa66e734e4c55bd261d853e5039fbe1f" category="list-text">如果在叢集上啟用 IPv6，則以後無法停用。</block>
-  <block id="3b84df93f9af27f6e1ffc9a619bab72d" category="open-title">使用 IPv4</block>
-  <block id="a1c25aeecadb66052deb23e0403a5921" category="list-text">執行以下命令新增ONTAP中介器：</block>
-  <block id="43af59b9fd4e41413d9a6f0348be897c" category="paragraph"><block ref="d795c90e620cf7aa453d5e920147531a" prefix="" category="inline-code"></block></block>
-  <block id="6abf1e89985863ce5f318d51791232d7" category="admonition">系統會提示您輸入 Mediator 管理員使用者帳號的使用者名稱和密碼。</block>
-  <block id="5be30efa94af9b795d71ee2d7b145d2b" category="open-title">使用 IPv6</block>
   <block id="612061c2bc2a413707af3751bd332876" category="list-text">在兩個叢集上執行以下命令：</block>
   <block id="d957a10f1dd8c769f317478657c276ae" category="paragraph"><block ref="a9f92466cd774c45f91bfd0c0a18c08e" prefix="" category="inline-code"></block></block>
   <block id="36aef5098db9d54c0f3f8908f76cf3f9" category="list-text">在所有四個節點上設定節點管理 IP 位址，使用 IPv6 位址。</block>
   <block id="a5ae27866152c64d13caa7491b407c4f" category="list-text">新增ONTAP中介器：</block>
-  <block id="3bd8e4fdfb5d625cdaa4c9ff27e8ce16" category="paragraph"><block ref="26623cc20cef21441276d0bbf177cf0e" prefix="" category="inline-code"></block></block>
   <block id="6ed3fcc536a033a1e0dbf1249734de16" category="paragraph">了解MetroCluster FC 平台和交換器支援方面的新特性。</block>
   <block id="7f29812fdda9b63b5432343e48888f3e" category="inline-link-macro">ONTAP Mediator 的新增功能</block>
   <block id="ddb6a6aeab3697bf98a9f8ec6246d66d" category="paragraph">有關ONTAP Mediator 每個版本的功能和增強特性的詳細信息，請參閱：<block ref="e9f46c418b00d5917fe7eb2e94490962" category="inline-link-macro-rx"></block> 。</block>
@@ -14542,4 +14507,64 @@
   <block id="c42f4f6a3afab85eadf7182136f86159" category="paragraph">從 cluster_B 執行以下命令：</block>
   <block id="29bf21eb413a03bb7bc5f794a7cf8c1a" category="paragraph"><block ref="cffe1374633319381a16ddd247851dc5" prefix="" category="inline-code"></block></block>
   <block id="aa9e0907bac12bc372803051430c32c6" category="sidebar">Tiebreaker 組態工作流程</block>
+  <block id="a5d67e5f005807bbd4e62ed129a259ce" category="list-text">從 ONTAP 9.19.1 和 ONTAP Mediator 1.12 開始，您可以設定 ONTAP Mediator 使用 HTTPS 而非 iSCSI 進行通訊。當 ONTAP Mediator 配置為使用 HTTPS 時，每個 ONTAP Mediator 執行個體只能監控一個 MetroCluster IP 組態。如需詳細資訊，請參閱<block ref="fb70fb2de5d85ae7e6c4e86202287fd7" category="inline-xref-macro-rx"></block>。</block>
+  <block id="f7709b306d9f954e054f6c2c41684b09" category="list-text">從 ONTAP 9.18.1 和 ONTAP Mediator 1.11 開始，單一配置了 iSCSI 的 ONTAP Mediator 實例最多可以同時管理十個 MetroCluster 組態。在 ONTAP 9.17.1 和 ONTAP Mediator 1.10 及更早版本中，配置了 iSCSI 的 ONTAP Mediator 最多可以同時支援五個 MetroCluster 組態。</block>
+  <block id="ff2e8285b2705731a1dbc046ff579939" category="section-title">選擇 ONTAP Mediator 的通訊協定</block>
+  <block id="2988e38df3c50f205b083a96b48e66b2" category="paragraph">預設情況下，MetroCluster IP 節點使用 iSCSI 工作階段存取 ONTAP Mediator 信箱 LUN。ONTAP Mediator 依賴 SCST 套件提供 iSCSI。iSCSI 工作階段使用挑戰交握驗證通訊協定（CHAP）進行驗證，該通訊協定使用模糊化、機器產生的預先共用金鑰，但並非完全加密。</block>
+  <block id="a04438ec01124e8d15738c27a00348bf" category="paragraph">從 ONTAP 9.19.1 和 ONTAP Mediator 1.12 開始，您可以設定 ONTAP Mediator 執行個體，使其使用 HTTPS 而非 iSCSI 進行通訊。HTTPS 是一種安全的通訊協定，它使用 SSL/TLS 對整個工作階段進行加密，與 iSCSI 相比，安全性更高。</block>
+  <block id="b42fb506e0a277ccd2615b75bb8a3a5c" category="paragraph">您只能透過 CLI 設定使用 HTTPS 的 ONTAP Mediator。不支援 System Manager。</block>
+  <block id="2044beabf4d1eb2b2680bc62daa3aab5" category="list-text">如果將 ONTAP Mediator 設定為使用 HTTPS，則單一 ONTAP Mediator 執行個體只能監控一個 MetroCluster IP 組態。不支援同時監控多個 MetroCluster IP 組態。</block>
+  <block id="32b706cbb06a2ceca20fffcd66e9ae41" category="list-text">如果您需要設定 ONTAP Mediator 並啟用 HTTPS 來監控多個 MetroCluster IP 配置，則必須為每個 MetroCluster IP 配置單獨配置 ONTAP Mediator 實例。在選擇為 MetroCluster IP 設定 ONTAP Mediator 並啟用 HTTPS 之前，您必須仔細評估 MetroCluster IP 環境的需求。</block>
+  <block id="71888cafc5f37e89171c789646f08323" category="list-text">如果要使用單一 ONTAP Mediator 實例來監控多個 MetroCluster IP 配置，則應使用 iSCSI 而非 HTTPS 設定 ONTAP Mediator。</block>
+  <block id="aee8b11880bbfda9a19f6b5c0201bb10" category="inline-link-macro">ONTAP Mediator 的 HTTPS 和 iSCSI 安裝選項</block>
+  <block id="d587f9cd6611c03a53aad3b1f8481b7e" category="paragraph">如需詳細資訊、請參閱<block ref="a82349e7909b6ff560747d8c59eb3903" category="inline-link-macro-rx"></block>。</block>
+  <block id="510858af4fd5ff2fdd1d6ee4023ce87b" category="admonition">您只能透過 CLI 設定使用 HTTPS 的 ONTAP Mediator。不支援 System Manager。如需詳細資訊，請參閱<block ref="3f8b2848d40ea77bb348f699b2b131f7" category="inline-link-macro-rx"></block>。</block>
+  <block id="51b6fc28895a5ae5d8e89c18d1098c46" category="list-text">您可以在 MetroCluster IP 組態中任何節點的 ONTAP 介面上執行此工作。</block>
+  <block id="91544ad1eb81a9d4f37c7f015a80a6e3" category="list-text">從 ONTAP 9.19.1 和 ONTAP Mediator 1.12 開始，您可以安裝支援 iSCSI 和 HTTPS 的 ONTAP Mediator，或僅安裝支援 HTTPS 的 ONTAP Mediator。如果您安裝的 ONTAP Mediator 僅支援 HTTPS，則無法設定支援 iSCSI 的 Mediator。</block>
+  <block id="ea27c86a804da95f3ba467f50f563b54" category="list-text">如果您未在<block ref="e863b9251fab0007712da0204a3a3b3a" prefix=" " category="inline-code"></block> 參數於<block ref="a5c98f88638af0e80910bbd237827b45" prefix=" " category="inline-code"></block> 指令中指定，則會使用預設的 iSCSI 通訊協定。</block>
+  <block id="ca23eb5b9e4d3b2edb3057850d7f6dc6" category="list-text">如果將 ONTAP Mediator 設定為使用 HTTPS，則單一 ONTAP Mediator 執行個體只能監控一個 MetroCluster IP 組態。當 ONTAP Mediator 設定為使用 HTTPS 時，不支援同時監控多個 MetroCluster IP 組態。</block>
+  <block id="aaf4e1ef74980c88980c89174b2471f8" category="open-title">使用 HTTPS 設定 ONTAP Mediator</block>
+  <block id="b82b51c4febccc1c60b46f5674c43ea7" category="paragraph">從 ONTAP 9.19.1 和 ONTAP Mediator 1.12 開始，您可以在 MetroCluster IP 組態中設定使用 HTTPS 進行通訊的 ONTAP Mediator。</block>
+  <block id="55c1e4c6be6d4ebab5e4e6cf15e4fd9b" category="list-text">從 ONTAP Mediator Linux 虛擬機器/主機軟體安裝位置找到 ONTAP Mediator CA 憑證：</block>
+  <block id="7a5a944de040740f750467ebc0f17a8a" category="paragraph"><block ref="d677bbb71b1fdb151c8d70e933aba3a1" prefix="" category="inline-code"></block></block>
+  <block id="3a3389ef589dfce02feb77c9c8bf0726" category="paragraph">您應該會看到類似以下範例的輸出：</block>
+  <block id="b97911ef5fcd41efb817213468703205" category="list-text">顯示根 CA 憑證的內容：</block>
+  <block id="fd97d31e28b5c5367e3f353d2e9ea565" category="paragraph"><block ref="a09412b56a28268b0ec453dc5cfeb352" prefix="" category="inline-code"></block></block>
+  <block id="55121e1eb4c09466d87157094bd2545d" category="list-text">顯示中繼 CA 憑證的內容：</block>
+  <block id="1fd4db587a439bc32f919dd2e9c61b39" category="paragraph"><block ref="f32289f9e31af7d30a94e854507ada72" prefix="" category="inline-code"></block></block>
+  <block id="530aa1bd46514fb04ada0265db839e83" category="list-text">在站台 A 安裝根 CA 憑證和中繼 CA 憑證：</block>
+  <block id="554a9540893fc63789c68ebf1376b9e8" category="list-text">安裝根 CA 憑證：</block>
+  <block id="c1903f34c2c9e715057cf73b16f2e75f" category="paragraph"><block ref="67104263ef1e355feed51336b7e5fdbd" prefix="" category="inline-code"></block></block>
+  <block id="16c4c36006af8cd099a6bfb1364de1fd" category="paragraph">根據提示輸入 <block ref="f93035d1d7d45fa37bc8cf1cd447ea1b" prefix=" " category="inline-code"></block>，如下例所示：</block>
+  <block id="ae6454463418e5e356512dcfb467c962" category="list-text">安裝中繼 CA 憑證：</block>
+  <block id="087ec917b89867d5105348f5c16a23f1" category="paragraph">根據提示輸入 <block ref="9e1f34d274d54e077ab71c2c0fe0badd" prefix=" " category="inline-code"></block>，如下例所示：</block>
+  <block id="ffa74f1a81a9b3e69ef03ab618ebcea8" category="list-text">重複上一步，在站台 B 上安裝根 CA 憑證和中繼 CA 憑證。</block>
+  <block id="0fb599846ed1523eef46b3dca1b1a069" category="list-text">使用產生的憑證名稱檢視已安裝的自簽名 CA 憑證：</block>
+  <block id="3447d3eba94102c9e3aff0563fb31448" category="paragraph"><block ref="fa5262302153776ec7a187b845e22f58" prefix="" category="inline-code"></block></block>
+  <block id="ec4614458785fa38f909658cc6bb1da4" category="list-text">如果您想使用 IPv6，請完成下列步驟：</block>
+  <block id="20d48e16073fce67ac693bdef043a953" category="inline-xref">IPv4 步驟</block>
+  <block id="319b2d72dd62ee426ca38380174d3445" category="paragraph">若要使用 IPv4，請跳至 <block ref="90d24dd0999de952f6f5ad89fb16dd01" category="inline-xref-macro-rx"></block>。</block>
+  <block id="e6daf910689628f9c2693a0ec6f2ce5c" category="paragraph"><block ref="5bfcd02fed1431defc4c246dfc69087b" prefix="" category="inline-code"></block></block>
+  <block id="d76f2d31f0e43e6f004eebd192e24ad2" category="admonition">出現提示時、請輸入 Mediator 管理員使用者名稱和密碼。</block>
+  <block id="a6c9953a2aa30a595220f741a3cbd326" category="list-text">[[https_ipv4_step8b]]如果您想使用 IPv4，請完成以下步驟：</block>
+  <block id="d45a5e5d92195c97828ff13b2cf4de2b" category="paragraph"><block ref="a6cbe544e4367143c9a74f2aafc579a9" prefix="" category="inline-code"></block></block>
+  <block id="edc8830ccfb6f842867fffc6b91e1b52" category="list-text">驗證連線狀態和 ONTAP Mediator 類型：</block>
+  <block id="6565d638aa54fb406c4917545a3ea516" category="open-title">使用 iSCSI 配置 ONTAP Mediator</block>
+  <block id="a9e4aaa97adb9a8c72bbad764334de92" category="paragraph">若要使用 IPv4，請跳至 <block ref="26f38bdd786a061dee1469f5a1a13b84" category="inline-xref-macro-rx"></block>。</block>
+  <block id="3f993cc8b18e021088dfb9ef18d11fe0" category="paragraph"><block ref="4b4e102481046af10cb9c4c3be5ee5ee" prefix="" category="inline-code"></block></block>
+  <block id="25d4ec4186f9c80f499c4da9f1c8da4b" category="list-text">[[iscsi_ipv4_step8b]]如果您想使用 IPv4，請完成以下步驟：</block>
+  <block id="d91f2fc690450eda1fcbe852bb0ffd1c" category="paragraph"><block ref="4282169a696138b577af8bb34ac8a986" prefix="" category="inline-code"></block></block>
+  <block id="7f738965d65030be10f534fdca685038" category="list-text">如果您使用的 ONTAP Mediator 採用 HTTPS 進行通訊，請在移除 ONTAP Mediator 後刪除 CA 憑證：</block>
+  <block id="da1d29c5911e7e0ca5ce39a226730b6f" category="list-text">顯示已安裝的 CA 憑證：</block>
+  <block id="4b43cf1241752b974db3638bbfbd49bd" category="paragraph"><block ref="43dd1597b4ffa22df49c597e3cd4a1a0" prefix="" category="inline-code"></block></block>
+  <block id="ac72ad192350c8692ad11a2681eef942" category="list-text">移除已安裝的根憑證和中繼憑證：</block>
+  <block id="7d6607e9c937dd738b2bffb79ba0c9d2" category="paragraph"><block ref="1c863783d5099971ebc3db3d3ad995a7" prefix="" category="inline-code"></block></block>
+  <block id="41dde0734ba4df0eb1bc2446fcd0f56c" category="paragraph"><block ref="2e0cdb2639c7a3d958f9576ceaa2b3a1" prefix="" category="inline-code"></block></block>
+  <block id="ffda33d0c6be847a8128046010ba3a6f" category="list-text">在兩個叢集上執行以下命令，確認已從 MetroCluster 組態中移除 ONTAP Mediator：</block>
+  <block id="df021024c5380d4c45805acb611a88ce" category="admonition">此任務僅適用於使用 iSCSI 設定的 ONTAP Mediator。此任務不適用於使用 HTTPS 的 ONTAP Mediator。</block>
+  <block id="e93b921aee6849e1c62a6629697d16e7" category="paragraph">ONTAP Mediator 1.12 支援配置使用 HTTPS 進行 MetroCluster IP 通訊的 ONTAP Mediator。HTTPS 透過使用 SSL/TLS 加密整個工作階段來提高安全性。您可以選擇安裝僅使用 HTTPS 傳輸協定的 ONTAP Mediator。如果使用此安裝方法，則不會安裝 SCST 套件。有關安裝僅使用 HTTPS 傳輸協定的 ONTAP Mediator 的更多資訊，請參閱 <block ref="a82349e7909b6ff560747d8c59eb3903" category="inline-link-macro-rx"></block>。</block>
+  <block id="835c8a143366575f451949402f3b6bae" category="inline-link-macro">深入瞭解 ONTAP Mediator 中的 iSCSI 和 HTTPS 傳輸協定</block>
+  <block id="ab84d029506bbf94968a8439506e5c7f" category="paragraph"><block ref="386c9422b8a78bb2663b14ec5cff7d1e" category="inline-link-macro-rx"></block>。</block>
+  <block id="ea7f38fbe84ac28be0f7c90cca730a69" category="paragraph">ONTAP 9.19.1</block>
+  <block id="65e78b09746a9ca4025a1c248d42a1bb" category="list-text">請確認您可以使用該系統存取 HTTP 伺服器。</block>
 </blocks>
