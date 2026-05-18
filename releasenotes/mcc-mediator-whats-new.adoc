@@ -21,6 +21,15 @@ summary: 每個版本都提供 ONTAP Mediator 的新功能。  最新功能。
 
 
  a| 
+ONTAP Mediator 1.12 支援配置使用 HTTPS 進行 MetroCluster IP 通訊的 ONTAP Mediator。HTTPS 透過使用 SSL/TLS 加密整個工作階段來提高安全性。您可以選擇安裝僅使用 HTTPS 傳輸協定的 ONTAP Mediator。如果使用此安裝方法，則不會安裝 SCST 套件。有關安裝僅使用 HTTPS 傳輸協定的 ONTAP Mediator 的更多資訊，請參閱 link:https://docs.netapp.com/us-en/ontap/mediator/index.html#https-iscsi-installation["ONTAP Mediator 的 HTTPS 和 iSCSI 安裝選項"^]。
+
+link:../install-ip/concept_mediator_requirements.html#select-a-communication-protocol-for-ontap-mediator["深入瞭解 ONTAP Mediator 中的 iSCSI 和 HTTPS 傳輸協定"]。
+ a| 
+ONTAP 9.19.1
+
+
+
+ a| 
 在MetroCluster IP 配置中， ONTAP Mediator 1.11 或更高版本支援 IPv6。
 
 link:../install-ip/task_configuring_the_ontap_mediator_service_from_a_metrocluster_ip_configuration.html["為MetroCluster IP 配置設定ONTAP調解器"]
