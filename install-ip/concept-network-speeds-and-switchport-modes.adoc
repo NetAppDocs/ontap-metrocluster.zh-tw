@@ -18,8 +18,236 @@ summary: 如果您使用的是符合 MetroCluster 標準的交換器、您應該
 [NOTE]
 ====
 * 缺少值表示平台無法搭配MetroCluster相容的交換器使用。
-* AFF A30 ， AFF C30 ， AFF C60 和 FAS50 系統需要控制器卡中的 QSFP+ 介面卡，才能支援 25Gbps 的網路速度。
+* AFF A30、AFF C30、AFF C60 和 FAS50 系統需要在控制器上的卡片中安裝 QSFP 轉 SFP 轉接器，以支援 25Gbps 的網路速度。
 
 
 ====
-image:../media/mccip-compliant-network-speed-switchport-mode-fas50.png["顯示了與 MetroCluster 相容交換器的平台特定網路速度和交換器連接埠模式。"]
+[cols="1,2,2"]
+|===
+| 平台 | 網路速度 (Gbps) | 交換器連接埠模式 
+
+
+ a| 
+FAS9500
+
+解答900 AFF
+
+ASA A900
+ a| 
+100Gbps
+
+從 FAS9000 或 AFF A700 升級 PCM 時為 40Gbps
+ a| 
+Trunk 模式
+
+
+
+ a| 
+AFF C800
+
+ASA C800
+
+解答800 AFF
+
+ASA A800
+ a| 
+40Gbps 或 100Gbps
+ a| 
+存取模式
+
+
+
+ a| 
+FAS9000
+
+部分A700 AFF
+ a| 
+40Gbps
+ a| 
+存取模式
+
+
+
+ a| 
+FAS8300
+
+AFF C400
+
+ASA C400
+
+解答400 AFF
+
+解答400 ASA
+ a| 
+40Gbps 或 100Gbps
+ a| 
+Trunk 模式
+
+
+
+ a| 
+解答320 AFF
+ a| 
+40Gbps 或 100Gbps
+ a| 
+存取模式
+
+
+
+ a| 
+FAS8200
+
+部分A300 AFF
+ a| 
+25Gbps
+ a| 
+存取模式
+
+
+
+ a| 
+FAS500f
+
+AFF C250
+
+ASA C250
+
+VA250 AFF
+
+ASA A250
+ a| 
+-
+ a| 
+-
+
+
+
+ a| 
+FAS2750
+
+VA220 AFF
+ a| 
+-
+ a| 
+-
+
+
+
+ a| 
+解答150 AFF
+
+ASA A150
+ a| 
+-
+ a| 
+-
+
+
+
+ a| 
+AFF A20
+ a| 
+25Gbps
+ a| 
+Trunk 模式
+
+
+
+ a| 
+AFF A30
+ a| 
+25Gbps 或 100Gbps
+ a| 
+Trunk 模式
+
+
+
+ a| 
+AFF C30
+ a| 
+25Gbps 或 100Gbps
+ a| 
+Trunk 模式
+
+
+
+ a| 
+AFF C60
+ a| 
+25Gbps 或 100Gbps
+ a| 
+Trunk 模式
+
+
+
+ a| 
+FAS50
+ a| 
+25Gbps 或 100Gbps
+ a| 
+Trunk 模式
+
+
+
+ a| 
+AFF A50
+ a| 
+100Gbps
+ a| 
+Trunk 模式
+
+
+
+ a| 
+AFF A70
+ a| 
+100Gbps
+ a| 
+Trunk 模式
+
+
+
+ a| 
+AFF A90
+ a| 
+100Gbps
+ a| 
+Trunk 模式
+
+
+
+ a| 
+AFF A1K
+ a| 
+100Gbps
+ a| 
+Trunk 模式
+
+
+
+ a| 
+AFF C80
+ a| 
+100Gbps
+ a| 
+Trunk 模式
+
+
+
+ a| 
+FAS70
+ a| 
+100Gbps
+ a| 
+Trunk 模式
+
+
+
+ a| 
+FAS90
+ a| 
+100Gbps
+ a| 
+Trunk 模式
+
+|===

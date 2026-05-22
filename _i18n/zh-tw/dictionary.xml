@@ -1289,7 +1289,6 @@
   <block id="1d46b4d726541133306aadb791fbac06" category="paragraph">「copy running-config startup-config」</block>
   <block id="d0848afd8553c34945705222a97a4553" category="paragraph">您應該會看到類似下列的輸出：</block>
   <block id="1f80196ab142297bfad1ce7658281aa4" category="section-title">在Cisco 9336C交換器上設定Macsec加密</block>
-  <block id="c2cd808fc4b0d9e71ea89cc518cef164" category="paragraph">您只能在站台之間執行的WAN ISL連接埠上設定Macsec加密。套用正確的RCF檔案之後、您必須設定Macsec。</block>
   <block id="2450cd43f02dcf045350e5a9b43f76b1" category="section-title">MAC的授權要求</block>
   <block id="0418d9f007ef5e24de29d631a49631c2" category="inline-link">Cisco NX-OS授權指南</block>
   <block id="4fc9e5c26af40c28636daa3983c7f130" category="paragraph">Macsec需要安全授權。如需Cisco NX-OS授權方案的完整說明、以及如何取得及申請授權、請參閱<block ref="d01700f99ea627187c1abef586c83faa" category="inline-link-rx"></block></block>
@@ -9591,7 +9590,6 @@
   <block id="3700479db1ca373108cb6b0236f8ca95" category="sidebar">設定Broadcom IP交換器</block>
   <block id="bc2027184e27075969cdcd60662c6642" category="sidebar">設定Cisco IP交換器</block>
   <block id="84a335bc70808c0497de1c62a99aaf43" category="sidebar">設定基本設定</block>
-  <block id="175313fe612a432e5a51082817a697f1" category="sidebar">在Cisco 9336C交換器上設定Macsec加密</block>
   <block id="41aa5998b40e00d8eb4f7bb40bb2bc22" category="sidebar">收集必要資訊</block>
   <block id="4497ab40f5579cccfc00e6aed35cdae9" category="sidebar">驗證元件的ha-config狀態</block>
   <block id="aa9c71b40476a8ccda9213b9a9416d55" category="sidebar">將叢集設定為MetroCluster 一個靜態組態</block>
@@ -11959,7 +11957,6 @@
   <block id="601779c42f052b558b7ac9443d399420" category="list-text">如果平台機型支援 VLAN ID （請參閱）、且您未使用預設的 VLAN ID 、則需要判斷 VLAN <block ref="05a2d2a273433dceaaaa95abd8b74c34" category="inline-xref-macro-rx"></block>ID 。</block>
   <block id="99d8e07cf22b54bf1c4fe9ecde3bd413" category="list-text">如果介面使用的是預設 VLAN 、或平台機型不使用 VLAN ID （請參閱）、則無需使用 <block ref="05a2d2a273433dceaaaa95abd8b74c34" category="inline-xref-macro-rx"></block>_vlan-id_ 。</block>
   <block id="26c0375297253dbcc942fe30cefa7b4b" category="paragraph">您只能在建立介面時指定 VLAN 。您可以設定預設的 VLAN 10 和 20 、或介於 101 到 4096 之間的 VLAN （或交換器廠商支援的號碼、取較低的數字）。建立 MetroCluster 介面之後、您就無法變更 VLAN ID 。</block>
-  <block id="3faee78823aa7a1dc8ffca46972f6fb2" category="image-alt">顯示了與 MetroCluster 相容交換器的平台特定網路速度和交換器連接埠模式。</block>
   <block id="c189be7568f7fe77db4a889353024935" category="admonition">RCF 檔案版本與用於產生檔案的 RCFfilegenerator 工具版本不同。例如、您可以使用 RCFfilegenerator v1.6c 產生 RCF 檔案版本 2.00 。</block>
   <block id="a796207f93572cbc190249400ba34b9b" category="paragraph"><block ref="08689ca588d2fd5d0e0a12366a8cd0a6" prefix="" category="inline-code"></block></block>
   <block id="fc902c4c5eb117926b80fc3a1066d5f9" category="paragraph"><block ref="31e96f11307c41bb11d8a37f3c919979" prefix="" category="inline-code"></block></block>
@@ -13112,8 +13109,6 @@
   <block id="84b4abdd3b2327d529014e09c966c735" category="doc">使用 Active IQ Unified Manager and ONTAP System Manager 進行進一步的組態和監控</block>
   <block id="8f331b9c0fe948d4d36e636ae3c61443" category="summary">每個叢集都需要自己的網路時間傳輸協定（NTP）伺服器、才能在節點與其用戶端之間同步時間。</block>
   <block id="3053e08077bad755ce68edce5863f6eb" category="paragraph">每個叢集都需要自己的網路時間傳輸協定（NTP）伺服器、才能在節點與其用戶端之間同步時間。</block>
-  <block id="eff6a3df3a68a6652b79b0a81ba75dda" category="list-text">AFF A30 ， AFF C30 ， AFF C60 和 FAS50 系統需要控制器卡中的 QSFP+ 介面卡，才能支援 25Gbps 的網路速度。</block>
-  <block id="8f8d75e3465f8e6ca35857c6cf19f63e" category="paragraph"><block ref="8f8d75e3465f8e6ca35857c6cf19f63e" category="inline-image-macro-rx" type="image"></block></block>
   <block id="f7bbc76208ab5ade611be3b207fc4964" category="paragraph">內部分割區分為四個相等的群組（季度）。每一季都會自動指派給個別的資源池。外部磁碟櫃上的磁碟機分為四個等群組（四個）。每個季度櫃都會自動指派給個別的資源池。</block>
   <block id="951ecdd1fc2eee9520c3a6959e6b80fd" category="section-title">FAS50系統上的磁碟指派</block>
   <block id="eac1566268bcf590649d38dfbbc071d8" category="paragraph">AFF A30 ， AFF C30 ， AFF C60 ， FAS50</block>
@@ -13992,7 +13987,6 @@
   <block id="ab58575dfc3a4cf3868291f7e29fd682" category="doc">驗證MetroCluster IP 配置中的控制器和機箱組件的 HA 配置狀態</block>
   <block id="0dd4375e97dbbfc0461527e6636a4e50" category="doc">設定 Broadcom IP 交換器以實現叢集互連和後端MetroCluster IP 連接</block>
   <block id="2305966fe63ba176ab9feddd6e84701f" category="doc">設定Cisco IP 交換器以實現叢集互連和後端MetroCluster IP 連接</block>
-  <block id="9edb945b46e8338b6c604c62787c3031" category="doc">在MetroCluster IP 站點中的Cisco 9336C 交換器上設定 MACsec 加密</block>
   <block id="e0e912999bb427a16c869c97ad908030" category="doc">設定NVIDIA IP SN2100 交換器以實現叢集互連和後端MetroCluster IP 連接</block>
   <block id="25849b8ea5119a6ccbe0ef06d8e35773" category="doc">測試MetroCluster IP 配置的ONTAP節點切換</block>
   <block id="f42ec02236cb8b0134435967892ad733" category="paragraph"><block ref="f42ec02236cb8b0134435967892ad733" category="inline-link-macro-rx"></block></block>
@@ -14567,4 +14561,29 @@
   <block id="ab84d029506bbf94968a8439506e5c7f" category="paragraph"><block ref="386c9422b8a78bb2663b14ec5cff7d1e" category="inline-link-macro-rx"></block>。</block>
   <block id="ea7f38fbe84ac28be0f7c90cca730a69" category="paragraph">ONTAP 9.19.1</block>
   <block id="65e78b09746a9ca4025a1c248d42a1bb" category="list-text">請確認您可以使用該系統存取 HTTP 伺服器。</block>
+  <block id="b91a26ac8a9beeea2dbb082ebcc79563" category="list-text">AFF A30、AFF C30、AFF C60 和 FAS50 系統需要在控制器上的卡片中安裝 QSFP 轉 SFP 轉接器，以支援 25Gbps 的網路速度。</block>
+  <block id="68ce146fd9ae3ad96c5895b1c1869059" category="cell">網路速度 (Gbps)</block>
+  <block id="0ec1914fce58a6a4d1748f3ace018fa1" category="cell">交換器連接埠模式</block>
+  <block id="9903737bdb8c33503d4677b804a93bb3" category="paragraph">100Gbps</block>
+  <block id="95059acbec372eb955f1645409c0b72a" category="paragraph">從 FAS9000 或 AFF A700 升級 PCM 時為 40Gbps</block>
+  <block id="4c75fbf9fcb941c4555168045960e7ff" category="paragraph">Trunk 模式</block>
+  <block id="e0d8a184e851ebead0da8ef2d160d077" category="paragraph">AFF C800</block>
+  <block id="fd395a2e4925de0736e72f97908d353b" category="paragraph">ASA C800</block>
+  <block id="dffbd09beb5f8e9746ed2e56e4ff77c5" category="paragraph">ASA A800</block>
+  <block id="538b0a5f377e4a7e386a3066041545ed" category="paragraph">40Gbps 或 100Gbps</block>
+  <block id="5ab83f35784f154d55ea7ab58c8e503b" category="paragraph">存取模式</block>
+  <block id="3dd0fd41a169501d96e8394596995cea" category="paragraph">40Gbps</block>
+  <block id="8be061f2ffd8e5438d395c1e9844b4ff" category="paragraph">ASA C400</block>
+  <block id="1ceb5497eb752c50389a2c579cff9567" category="paragraph">25Gbps</block>
+  <block id="5c4d47ba596f06f53b9aa793345127dd" category="paragraph">AFF C250</block>
+  <block id="efb7d807a9229170619783564ab9a186" category="paragraph">ASA C250</block>
+  <block id="58bdeb56c4a59fe27bedb60d1f1b8b90" category="paragraph">ASA A250</block>
+  <block id="0814a528a6e09bdfa454da4598d03b6a" category="paragraph">ASA A150</block>
+  <block id="2731fea24095aa687c94c583e42e365a" category="paragraph">25Gbps 或 100Gbps</block>
+  <block id="d9bafc03fd0d1ef7bcb8fe6362c07354" category="summary">如有需要，僅在站點間執行的 WAN ISL 連接埠上配置 MACsec 加密。如果選擇使用 MACsec 加密，請在套用正確的 RCF 檔案後進行設定。</block>
+  <block id="0876f65fb1fd364053810f3b546f4ae5" category="doc">在 MetroCluster IP 站點中設定 Cisco 9336C 交換器的 MACsec 加密（選用）</block>
+  <block id="800b8e21fdc6520b5affd604f6034398" category="paragraph">如有需要，您可以在站點間執行的 WAN ISL 連接埠上設定 MACsec 加密。如果您選擇使用 MACsec 加密，則必須在套用正確的 RCF 檔案後進行設定。</block>
+  <block id="3b1fc3e7f78026e75788d28bc49ca81d" category="list-text">MACsec 加密只能套用於站台之間執行的 WAN ISL 連接埠。</block>
+  <block id="68bddd16e24ef3e862d1cb8ff822ad2a" category="list-text">設定 Cisco 9336C 交換器時，設定 MACsec 加密為選用項目。</block>
+  <block id="95c3b415a470d1839fa2fedd54783abb" category="sidebar">在 Cisco 9336C 交換器上設定 MACsec 加密（選用）</block>
 </blocks>
