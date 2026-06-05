@@ -485,31 +485,99 @@ dr-group-id cluster    node      node-systemid dr-partner-systemid
 ** 「ucadmin show」
 
 
-. 如果根磁碟區已加密、請收集並儲存用於金鑰管理程式的通關密碼：
+. 如果 MetroCluster 節點配置了用於管理 SVM（叢集）的外部金鑰管理器，請將金鑰伺服器資訊複製到安全位置。如果配置了 Onboard Key Manager，請將備份資訊和密碼短語複製到安全位置。
 +
-「安全金鑰管理程式備份展示」
-
-. 如果MetroCluster 這個節點正在使用磁碟區或集合體的加密功能、請複製金鑰和複製密碼的相關資訊。
-+
-如需其他資訊、請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-1677AE0A-FEF7-45FA-8616-885AA3283BCF.html["手動備份內建金鑰管理資訊"]。
-
-+
-.. 如果已設定Onboard Key Manager：
+[role="tabbed-block"]
+====
+.內建金鑰管理程式
+--
+.. 執行以下命令以顯示 Onboard Key Manager 備份：
 +
 「安全金鑰管理程式內建show Backup」
 
 +
-稍後在升級程序中、您將需要密碼。
-
-.. 如果已設定企業金鑰管理（KMIP）、請發出下列命令：
-+
-「安全金鑰管理程式外部show -instance」
+在升級程序的後續步驟中，您還需要最新的 Onboard Key Manager 密碼。
 
 +
-「安全金鑰管理程式金鑰查詢」
+如需更多資訊、請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-1677AE0A-FEF7-45FA-8616-885AA3283BCF.html["手動備份內建金鑰管理資訊"]。
 
 
 
+--
+.外部金鑰管理程式
+--
+收集外部金鑰管理資訊，以便稍後在程序中還原金鑰管理程式組態。
+
+.. 顯示管理 SVM（叢集）的名稱。
++
+`vserver show -type admin`
+
++
+在此範例中，管理 SVM 名稱為 cluster_B：
+
++
+[listing]
+----
+cluster_B::*> vserver show -type admin
+                               Admin      Operational Root
+Vserver     Type    Subtype    State      State       Volume     Aggregate
+----------- ------- ---------- ---------- ----------- ---------- ----------
+cluster_B
+            admin   -          -          -           -          -
+----
+.. 取得與管理 SVM （叢集）上設定的外部金鑰管理程式相關聯的主要金鑰伺服器位址和連接埠號碼：
++
+[NOTE]
+====
+*** 管理 SVM 最多可以有四個主要金鑰伺服器，但您只需要其中一個主要金鑰伺服器的連接埠號碼和位址，即可在稍後的程序中還原金鑰管理組態。
+*** 如果您選擇的主要金鑰伺服器有相關聯的使用者名稱和密碼，則在還原過程中也需要這些資訊。
+
+
+====
++
+`security key-manager external show -instance -vserver <admin_svm_name>`
+
++
+[listing]
+----
+cluster_B::> security key-manager external show -instance -vserver cluster_B
+
+                  Vserver: cluster_B
+       Client Certificate: NTAPKM_C
+   Server CA Certificates: NTAPKM_I, NTAPKM_R
+       Primary Key Server: 172.18.27.34:12014
+                  Timeout: 25
+                 Username:
+              Policy name: -
+    Secondary Key Servers: -
+    Create/Remove Timeout: 10
+
+----
+.. 如果您執行的是 ONTAP 9.16.1 或更高版本，請取得管理 SVM 的金鑰庫 UUID。
++
+`security key-manager show-key-store -vserver <admin_svm_name> -fields uuid`
+
++
+[listing]
+----
+cluster_B::*>  security key-manager show-key-store -vserver cluster_B -fields uuid
+vserver         uuid
+--------------- ------------------------------------
+cluster_B        f281aa55-d635-11f0-93bc-005056bb68f2
+
+cluster_B::*
+----
+.. 請將收集到的資訊保存在安全的地方，以便在後續操作中使用。您現在應該已經收集到以下資訊：
++
+*** 管理 SVM 的其中一個主要金鑰伺服器的連接埠號碼和位址
+*** 如果選定的主要金鑰伺服器關聯了使用者名稱和密碼，則需要提供這兩項資訊。
+*** 管理員 SVM 的金鑰庫 UUID（ONTAP 9.16.1 或更新版本中需要）
+
+
+
+
+--
+====
 
 
 
@@ -1199,7 +1267,7 @@ aggr0_node_b_1-root    online      raid_dp, aggr    root, nosnap=on,
 +
 Boot_ONTAP功能表
 
-. 如果使用root加密、視ONTAP 使用的是哪個版本的資訊而定、請選取開機功能表選項、或是針對金鑰管理組態發出開機功能表命令。
+. 如果 MetroCluster 系統的管理 SVM 配置了金鑰管理器，請為您的金鑰管理配置選擇正確的啟動選單選項。
 +
 [role="tabbed-block"]
 ====
@@ -1216,18 +1284,28 @@ Boot_ONTAP功能表
  a| 
 內建金鑰管理
  a| 
-選項「'10'」
+選項"10"
 
-依照提示提供必要的輸入、以恢復及還原金鑰管理程式組態。
+依照提示提供下列輸入以恢復和還原金鑰管理程式組態：
+
+** Onboard Key Manager 備份和複雜密碼
+
 
 
 
  a| 
 外部金鑰管理
  a| 
-選項「'11'」
+選項"11"
 
-依照提示提供必要的輸入、以恢復及還原金鑰管理程式組態。
+依照提示提供下列輸入以恢復和還原金鑰管理程式組態：
+
+** 管理 SVM 的其中一個主要金鑰伺服器的連接埠號碼和位址
+** 如果使用者名稱和密碼與所選主要金鑰伺服器相關聯
+** 管理員 SVM 的金鑰庫 UUID（ONTAP 9.16.1 或更新版本中需要）
+
+
+*注意：* 雖然管理 SVM 最多可以有四個主要金鑰伺服器，但在還原過程中只能指定一個主要金鑰伺服器的資訊。
 
 |===
 --
@@ -1282,7 +1360,7 @@ Rebooting to load the restored env file...
 +
 「etenv合作夥伴sysid _Partner sysid_」
 
-. 如果使用root加密、視ONTAP 使用的是哪個版本的資訊而定、請選取開機功能表選項、或再次發出開機功能表命令、以進行金鑰管理組態。
+. 如果使用根磁碟區加密，根據您使用的 ONTAP 版本，選擇開機功能表選項或再次發出開機功能表命令以進行金鑰管理組態。
 +
 [role="tabbed-block"]
 ====
@@ -1299,22 +1377,30 @@ Rebooting to load the restored env file...
  a| 
 內建金鑰管理
  a| 
-選項「'10'」
+選項"10"
 
-依照提示提供必要的輸入、以恢復及還原金鑰管理程式組態。
+依照提示提供下列輸入以恢復和還原金鑰管理程式組態：
+
+** Onboard Key Manager 備份和複雜密碼
+
 
 
 
  a| 
 外部金鑰管理
  a| 
-選項「'11'」
+選項"11"
 
-依照提示提供必要的輸入、以恢復及還原金鑰管理程式組態。
+依照提示提供下列輸入以恢復和還原金鑰管理程式組態：
+
+** 管理 SVM 的其中一個主要金鑰伺服器的連接埠號碼和位址
+** 如果使用者名稱和密碼與所選主要金鑰伺服器相關聯
+** 管理員 SVM 的金鑰庫 UUID（ONTAP 9.16.1 或更新版本中需要）
+
+
+*注意：* 雖然管理 SVM 最多可以有四個主要金鑰伺服器，但在還原過程中只能指定一個主要金鑰伺服器的資訊。
 
 |===
-視金鑰管理程式設定而定、請在第一個開機功能表提示字元中選取選項「10」或選項「11」、然後選取選項「6」、以執行還原程序。若要完全開機節點、您可能需要重複選項「1」（正常開機）的恢復程序。
-
 --
 .更新版本ONTAP
 --
@@ -1405,7 +1491,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
  a| 
 外部金鑰管理
  a| 
-「安全金鑰管理程式外部還原-vserver _svm_-node_node_-key-server _host_name | ip_address: port_-key-id key_id -key-tag key_tag _node-name_」
+`security key-manager external restore -vserver <admin-svm> -key-server <host_name|IP_address:port>`
 
 如需詳細資訊、請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-32DA96C3-9B04-4401-92B8-EAF323C3C863.html["還原外部金鑰管理加密金鑰"^]。
 

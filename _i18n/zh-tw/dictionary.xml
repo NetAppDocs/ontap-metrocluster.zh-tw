@@ -8708,17 +8708,7 @@
   <block id="6af582a39d4733435647dad509101747" category="list-text">「FCP介面卡顯示-instance」</block>
   <block id="5d71f5f1513a5a67bb10323070ec1983" category="list-text">「FCP介面show -instance」</block>
   <block id="2fdab4f50b91e9173d8fd09c9243b0c3" category="list-text">「iSCSI介面展示」</block>
-  <block id="8b1a6434b118fdab6cffd5eef984796d" category="list-text">如果根磁碟區已加密、請收集並儲存用於金鑰管理程式的通關密碼：</block>
-  <block id="934c2fba3eda4a063dd4bc3693527e81" category="paragraph">「安全金鑰管理程式備份展示」</block>
-  <block id="0c41288b073bc8667b15931457adf7c0" category="list-text">如果MetroCluster 這個節點正在使用磁碟區或集合體的加密功能、請複製金鑰和複製密碼的相關資訊。</block>
-  <block id="db8057baa0e3040863709dc299c0a2b6" category="inline-link">手動備份內建金鑰管理資訊</block>
-  <block id="50d704bfae735cf9f8824da705413abc" category="paragraph">如需其他資訊、請參閱<block ref="0abbdd13a8c045ec09bd7c54eb2d0bef" category="inline-link-rx"></block>。</block>
-  <block id="696b64bc323bdd13e4a324fd384d294c" category="list-text">如果已設定Onboard Key Manager：</block>
   <block id="c497a6b930105164567b744840c21e94" category="paragraph">「安全金鑰管理程式內建show Backup」</block>
-  <block id="b9284138ad08224a8431291e2a54805d" category="paragraph">稍後在升級程序中、您將需要密碼。</block>
-  <block id="6127871d3f874c72ca0ba6835dd78bce" category="list-text">如果已設定企業金鑰管理（KMIP）、請發出下列命令：</block>
-  <block id="1b8b021695a2698fadae5c009b0b6295" category="paragraph">「安全金鑰管理程式外部show -instance」</block>
-  <block id="2a4a9d693caa859153f77cf2204d30cc" category="paragraph">「安全金鑰管理程式金鑰查詢」</block>
   <block id="c455927c47d829e25595da49b62049ba" category="section-title">從斷路器或其他監控軟體移除現有組態</block>
   <block id="2c8c38da3af9290bc8367a776b867b51" category="section-title">在維護前傳送自訂AutoSupport 的支援訊息</block>
   <block id="22a619e2119eac132eeee61c7997aae7" category="paragraph">「維護時段」指定維護時段的長度、最長72小時。如果維護作業在時間結束之前完成、您可以叫用AutoSupport 指示維護期間結束的資訊消息：</block>
@@ -8855,12 +8845,9 @@
   <block id="a0ce225decd1d6b56d1365eafe5e3405" category="paragraph">「bootarg.kmip.init.netmask網路遮罩_」</block>
   <block id="6f91ede377088bfc770bbb6d429ef783" category="paragraph">「bootarg.kmip.init.gateway gateway-address_」</block>
   <block id="2a41f20b518b74ceb3498e8c0dd4643e" category="paragraph">"etenv bootarg.kmip.init.interface _interface-id_"</block>
-  <block id="a0a7d863d75d1083974d54de25a20b2b" category="list-text">如果使用root加密、請針對金鑰管理組態發出開機功能表命令。</block>
   <block id="15f46bcb6931f7562d903b4ad6dd6724" category="cell">選取此開機功能表選項...</block>
   <block id="8511ad7edbea5a7c2d6e9c359b2a1fcb" category="paragraph">內建金鑰管理</block>
-  <block id="77eb63f0ebfdd7e3f0339c99d94d75d8" category="paragraph">選項10並依照提示提供必要的輸入、以恢復或還原金鑰管理程式組態</block>
   <block id="370c6dde461cc5827c330619a80ca24b" category="paragraph">外部金鑰管理</block>
-  <block id="efe5387363cb0a162d3144e7be598e40" category="paragraph">選項11並依照提示提供必要的輸入、以恢復或還原金鑰管理程式組態</block>
   <block id="05dabbb60a366bf9343eccdf7f33e3d8" category="list-text">如果已啟用自動開機、請按下control-c中斷自動開機</block>
   <block id="9caedf166198ce0f30b4afaef9a9b698" category="list-text">從開機功能表中、執行選項（6）。</block>
   <block id="54e8ddb7f828b5837090d07ce05e08c3" category="admonition">選項6會在完成之前重新啟動節點兩次。</block>
@@ -8868,7 +8855,6 @@
   <block id="f4874a68e6d7f49851ee24731ec354c8" category="list-text">再次檢查合作夥伴sysid是否正確：「prontenv合作夥伴sysid」</block>
   <block id="a011695a667d4d881a8eb17cebc6796a" category="paragraph">如果合作夥伴sysid不正確、請設定：「etenv合作夥伴sysid _Partner sysid_」</block>
   <block id="ecb784a0d718480cf2373a1c93d92d6b" category="list-text">如果使用root加密、請針對金鑰管理組態再次發出開機功能表命令。</block>
-  <block id="2a6e010933dcb7b2124653ec9e7aa06f" category="paragraph">選項11並依照提示提供必要的輸入、以恢復或還原金鑰管理程式組態</block>
   <block id="e6e35a3f4ac372a4d2b484e43408358d" category="paragraph">您可能需要在開機功能表提示字元中多次發出「主機蓋_xxxxxxxxxxxx_keymanager」命令、直到節點完全開機為止。</block>
   <block id="4dbc5bd19b9fd833f99647d4bbc60473" category="list-text">開機節點：「boot_ONTAP」</block>
   <block id="0076499bf0665482ee0c069821eab630" category="list-text">等待替換的節點開機。</block>
@@ -8885,7 +8871,6 @@
   <block id="8fb90751b9a48ba5073931ac3bac5410" category="paragraph"><block ref="8fb90751b9a48ba5073931ac3bac5410" category="inline-link-macro-rx"></block></block>
   <block id="ea64d30bf3d60844483af51e734bc28e" category="paragraph"><block ref="ea64d30bf3d60844483af51e734bc28e" category="inline-link-macro-rx"></block></block>
   <block id="a14a5326761ef5ebc9bc3bd554af43ff" category="paragraph">如需詳細資訊、請參閱 <block ref="996e91201fdbed2f3fcc47314993c82a" category="inline-link-macro-rx"></block>。</block>
-  <block id="d477a37d10aff8dfb1c93b1fa5e33de8" category="paragraph">「安全金鑰管理程式外部還原-vserver _svm_-node_node_-key-server _host_name | ip_address: port_-key-id key_id -key-tag key_tag _node-name_」</block>
   <block id="8d920002e556bf4a836edf5fed4a24a4" category="paragraph">如需詳細資訊、請參閱 <block ref="5524ccce14094b08a96767751c72e575" category="inline-link-macro-rx"></block>。</block>
   <block id="7b3f395dfaa27c58576d75c624d2acd9" category="section-title">驗證LIF組態</block>
   <block id="34e041fe9ecda3607a3bb424cba8d99b" category="paragraph">在切換回復之前、請先確認將l生命 存放在適當的節點/連接埠上。需要執行下列步驟</block>
@@ -8958,7 +8943,6 @@
   <block id="5239ea0712b70f8449264a817c925b60" category="paragraph">在此範例中、若為雙節點MetroCluster 的SFC組態、則會擷取下列舊系統ID：</block>
   <block id="0c5898a1da561b8bab86de214fb4bdc3" category="list-text">節點_a_1：40687441258</block>
   <block id="a935a365a62e9c51ec22e6740bc18910" category="list-text">節點_B_1：40687441254</block>
-  <block id="f6ab51154cdfc097564bafa164ac20be" category="paragraph">如需其他資訊、請參閱<block ref="9c5418b86e38fd117e0f48c25b2c7372" category="inline-link-rx"></block>。</block>
   <block id="e62705f78105356bbf7fa312e78e684a" category="list-text">完成組態資訊的收集之後、請繼續作業：</block>
   <block id="d6fd449bc639f92f27b747fd5b40361d" category="paragraph">「系統控制器更換恢復」</block>
   <block id="7080e7642990f343422154f3680f5f54" category="paragraph">如果現有的組態是以MetroCluster 可啟動切換的ESITTiebreaker組態或其他協力廠商應用程式（例如ClusterLion）來監控、您必須先從MetroCluster 斷路器或其他軟體移除此類組態、才能更換舊的控制器。</block>
@@ -9005,10 +8989,6 @@
   <block id="591e50b47782b75bd730ace525401a46" category="list-text">檢查是否已按照預期重新指派所有磁碟：</block>
   <block id="a45adb2cc03a7b6b2f8aad0f0a988893" category="list-text">在合作夥伴節點（node_B_2-new）上重複上述步驟。</block>
   <block id="bfb74093c695212150621f6bdf9a4d2e" category="paragraph">您可以重新設定VLAN和介面群組。如有必要、請先手動修改叢集lifs的連接埠和廣播網域詳細資料、再使用「系統控制器置換resume」命令繼續作業。</block>
-  <block id="045153dd32979a83552dc18f97eb10d7" category="list-text">如果使用root加密、請選取金鑰管理組態的開機功能表選項。</block>
-  <block id="cc5eb1ddd782b52c5fabe965793bc6f4" category="paragraph">選項「'10'」</block>
-  <block id="1ba2ae150e1cee5c2dbe25aa1a0e18b0" category="paragraph">依照提示提供必要的輸入、以恢復及還原金鑰管理程式組態。</block>
-  <block id="f1318dc614d34488bcb6f8bef3e32bff" category="paragraph">選項「'11'」</block>
   <block id="ebfd098b07a4e0eedf482c0b87be6e89" category="list-text">如果啟用自動開機、請按Ctrl-C中斷自動開機</block>
   <block id="e230d4e771549b231a7eda2894a670a5" category="list-text">從開機功能表中、執行選項「'6'」。</block>
   <block id="4c3c853efc0864d6f85e88e17a282dba" category="admonition">選項「'6'」會在完成之前重新啟動節點兩次。</block>
@@ -9017,7 +8997,6 @@
   <block id="b7b77c4a8d173f38e98b19b6fa156359" category="paragraph">《prontenv合作夥伴sysid》</block>
   <block id="9d4b30ae7318acd33ae33208c5ab8460" category="paragraph">如果合作夥伴sysid不正確、請設定：</block>
   <block id="b53f9d89fc5d7fb55fb66f404350a657" category="paragraph">「etenv合作夥伴sysid _Partner sysid_」</block>
-  <block id="628ec0782add3a1eca1d1b88c88303f8" category="list-text">如果使用root加密、請針對金鑰管理組態再次選取開機功能表選項。</block>
   <block id="2a4c3faed5b4f37080aceb516872d752" category="paragraph">視金鑰管理程式設定而定、請在第一個開機功能表提示字元中選取選項「10」或選項「11」、然後選取選項「6」、以執行還原程序。若要完全開機節點、您可能需要重複選項「1」（正常開機）的恢復程序。</block>
   <block id="ff5d57d1c306e7fe421eefff36f821cd" category="list-text">開機節點：</block>
   <block id="f15497fde7585731affbb2484431a8a8" category="list-text">在您恢復作業之前、請確認MetroCluster 已正確設定好功能。檢查節點狀態：</block>
@@ -9186,9 +9165,6 @@
   <block id="9bc90fe013f61635e9dbb97bc6c05864" category="paragraph">下列範例顯示含有UUID的命令輸出：</block>
   <block id="30a9da9e23c7723d344ea077332337a0" category="paragraph">建議您將UUID記錄到如下表格中。</block>
   <block id="dd16201801d5e3f7069602a499327a3b" category="cell">叢集或節點</block>
-  <block id="353024e475a7604e40871e8aa07253b1" category="paragraph">如需其他資訊、請參閱<block ref="17c328b6561af0ba38f0debcfa14ec48" category="inline-link-rx"></block>。</block>
-  <block id="5dd8e2bcd1fdeaf6207d2362484a454c" category="list-text">如果已設定Onboard Key Manager：+「安全金鑰管理程式內建show-Backup」</block>
-  <block id="009130140f2855cf19e7630eb5284573" category="paragraph">「安全金鑰管理程式外部show -instance」「安全金鑰管理程式金鑰查詢」</block>
   <block id="fb46345d4cd3f7e829969de1d6aa05e7" category="list-text">收集現有節點的系統ID：</block>
   <block id="6f439aaac5a6f2528f54f717e0c55a39" category="paragraph">下列輸出顯示重新指派的磁碟機。</block>
   <block id="8721fdb505c6c36bb5be2e19130e698c" category="paragraph">在升級平台之前、如果MetroCluster 使用斷路器或調解器公用程式監控了該組態、您必須先移除監控。</block>
@@ -9260,7 +9236,6 @@
   <block id="6f5ca753326737c7593f401e5c5d7859" category="paragraph">選項"11"</block>
   <block id="814a61c853e0924925006646c354415b" category="list-text">從開機功能表中、選取「（6）Update flash from Backup config（從備份組態更新Flash）」。</block>
   <block id="1971b81ef4689f1794a2e3edb64225db" category="list-text">再次檢查合作夥伴sysid是否正確：</block>
-  <block id="37ef00a03e6b4bacbc26b2ee369f838f" category="paragraph">視金鑰管理程式設定而定、請選取選項「10」或選項「11」、然後在第一個開機功能表提示字元中選取選項「6」、以執行恢復程序。若要完全開機節點、您可能需要重複選項「1」（正常開機）的恢復程序。</block>
   <block id="43ff4ab1c4898911d769055ba707316a" category="paragraph">驗證在升級程序開始時所對應的適當節點和連接埠上、是否裝載了生命點。</block>
   <block id="6c8ff53e27cab2a88cabead47af570d0" category="list-text">此工作是在ssite B上執行</block>
   <block id="fd6749a20a942d2125b164a12dde1996" category="paragraph">"vserver config override -command "network interface modify -vserver _vserver_name_-home-port _active_port_after升級_-lif_lif_name_-home-node_new_norme_name_"</block>
@@ -9298,9 +9273,6 @@
   <block id="9c1a38eb049be04bc1fa9147e20650b3" category="list-text">收集每個節點的下列命令輸出：</block>
   <block id="7a712cf65b51315015ead79fa1c04bb4" category="list-text">收集站台B（目前正在升級其平台的站台）的UUID：「MetroCluster 節點show -Fields node-cluster -uuid、node-uuid」</block>
   <block id="fd86e8b040cc38b3481aa4ca1a66fdc3" category="paragraph">這些值必須在新的站台控制器模組上正確設定、以確保成功升級。將值複製到檔案、以便稍後在升級程序中複製到適當的命令。+下列範例顯示含有UID的命令輸出：</block>
-  <block id="17d958aeb34005de78d5f16c3fb8d4d0" category="list-text">如果根磁碟區已加密、請收集並儲存用於金鑰管理程式的密碼：「安全金鑰管理程式備份顯示」</block>
-  <block id="4e6bb29fad09442b6758473a381112e2" category="list-text">如果MetroCluster 這個節點正在使用磁碟區或集合體的加密功能、請複製金鑰和複製密碼的相關資訊。如需其他資訊、請參閱<block ref="0abbdd13a8c045ec09bd7c54eb2d0bef" category="inline-link-rx"></block>。</block>
-  <block id="bebcf28331e2ef1173754b217ce3b9d4" category="list-text">如果設定「Onboard Key Manager（機載金鑰管理程式）」、請在稍後的升級程序中輸入「ecurity key-manager Onboard show-Backup（機載顯示備份）」+。</block>
   <block id="10a7f52b07c24ded6796ce7b186bcafe" category="list-text">收集現有節點的系統ID：「MetroCluster Sic節點show -Fields node-SystemID、ha-合作 夥伴SystemID、DR-Partner SystemID、DR-auxiliary SystemID」</block>
   <block id="1cefe6fb0bd3a21a29c31cc3652723ce" category="section-title">移除內管或斷路器監控</block>
   <block id="9db835e4c4f6ecab5779d22af305de38" category="paragraph">在執行維護之前、您應發出AutoSupport 一份不知所知的訊息、通知技術支援人員正在進行維護。告知技術支援部門正在進行維護、可防止他們假設發生中斷、而開啟案例。</block>
@@ -9360,7 +9332,6 @@
   <block id="d830dd6565f0a2ad6ce9025a9481421c" category="paragraph">下列範例顯示在node_B_2-A900上設定值的命令：</block>
   <block id="02e8a6935997050f797cf96450dbce29" category="list-text">在「維護模式」提示字元中、顯示node_B_1-A900上的磁碟：</block>
   <block id="5199ebe33b0d6ce55d2b8445fe9d6980" category="list-text">確認根Aggregate的磁碟已正確重新指派舊移除：</block>
-  <block id="f1c846bcc7483d91b8753952833cfe0b" category="paragraph">選項11並依照提示提供必要的輸入、以恢復或還原金鑰管理程式組態</block>
   <block id="4164f680d252cb689f614cf976bcc203" category="list-text">從開機功能表中、選取「（6）Update flash from Backup config（從備份組態更新Flash）」。</block>
   <block id="a90679f6ecce7659e21997990155707f" category="list-text">中斷自動開機、以在載入器停止控制器。</block>
   <block id="91eea79b3297ad2732fd614ffc48335c" category="admonition">在每個節點上、檢查中設定的bootargs <block ref="c3652d8371e8759d3786637bc5f1c8bc" category="inline-link-macro-rx"></block> 並修正任何不正確的值。只有在檢查bootarg值之後、才會移至下一步。</block>
@@ -9425,13 +9396,11 @@
   <block id="64a2c948ff5f5a4a19945315df55d3f1" category="list-text">您將使用中收集的資訊 <block ref="1ed1cd4ef8bd2fcdaf4ac61e442842fa" category="inline-link-macro-rx"></block>。</block>
   <block id="5db2619ab3a7ccb178b98644ee1d4e05" category="list-text">修改廣播網域以移除需要刪除的VLAN和實體連接埠：</block>
   <block id="fb7af1863497df9dda3e65ea0159d317" category="paragraph">必須從組態中移除舊的控制器。</block>
-  <block id="9cf18883abd310f0e24341194095b229" category="list-text">如果使用root加密、視ONTAP 使用的是哪個版本的資訊而定、請選取開機功能表選項、或是針對金鑰管理組態發出開機功能表命令。</block>
   <block id="716a92112769d0f62895dc8c3a9fe47f" category="list-text">從ONTAP 功能表9.8開始、選取開機功能表選項。</block>
   <block id="8cb7388f916ea57692be4e2442a4bb6e" category="cell">在開機功能表提示字元中輸入此命令...</block>
   <block id="945a7facca1121e7c5b6eed95ea1b03a" category="paragraph">「主機蓋內建金鑰管理程式」</block>
   <block id="e606299b52f4f296d9e1024342b77a75" category="paragraph">「主機蓋外部索引管理程式」</block>
   <block id="f9f099865bb9d36821db181257896abb" category="list-text">如果啟用自動開機、請按下CTRL - C來中斷自動開機</block>
-  <block id="2d9e786c47fe4bbb5d2cec20e0f373eb" category="list-text">如果使用root加密、視ONTAP 使用的是哪個版本的資訊而定、請選取開機功能表選項、或再次發出開機功能表命令、以進行金鑰管理組態。</block>
   <block id="806422c50772a82e317db68491ffe3e4" category="paragraph">如果任一節點處於接管模式、請執行恢復：</block>
   <block id="411fd118744e7bc163c41845c9fedb88" category="paragraph">"容錯移轉還原"</block>
   <block id="c9616da62905adb15396b653b4d8475b" category="paragraph">您可能需要重新設定叢集對等關係。</block>
@@ -11903,7 +11872,6 @@
   <block id="32c64742b195a65781738c8b44e4a352" category="paragraph"><block ref="6292300caa922eb09cdd1732fcc043df" prefix="" category="inline-code"></block></block>
   <block id="00c407fe45f64374369a1722aa8f9a72" category="paragraph"><block ref="1c8d45cfa7c093e5e83aa2b0c6f041ba" prefix="" category="inline-code"></block></block>
   <block id="81c0cfa4d81a326f65d742ed4d1ee46b" category="paragraph"><block ref="ab36db401b8d98490b7c51ef5a618243" prefix="" category="inline-code"></block></block>
-  <block id="fdf8e4fe9b3e05181cd8befb0c17897f" category="paragraph"><block ref="a8dfa60f338d6757ce57f0b05c861249" prefix="" category="inline-code"></block></block>
   <block id="fb0d5feb3def76f90b6408f32f99f4b7" category="list-text">如果為新升級的控制器上的資料連接埠建立新的廣播網域、請刪除廣播網域：</block>
   <block id="8cb8d05546274856c8c2cb56b7cd62ac" category="paragraph"><block ref="7bbb7f17a19e67be5ebaaa8410749ad2" prefix="" category="inline-code"></block></block>
   <block id="a51de836d51a26774e16aa7066519185" category="paragraph"><block ref="6a6db1083e2f8c53b07cc196dec3cafb" prefix="" category="inline-code"></block></block>
@@ -11931,7 +11899,6 @@
   <block id="b18f9742d77912f838f8a0bc859bbf11" category="list-text">在<block ref="82b8350d28f0a14e36de1958b3be9205" prefix=" " category="inline-code"></block> 提示字元下、設定管理 LIF 的 netboot 連線：</block>
   <block id="7c9dbc13c4af0588948dc0974ad07931" category="paragraph">執行命令後、請等待節點在提示字元下停止<block ref="82b8350d28f0a14e36de1958b3be9205" prefix=" " category="inline-code"></block> 。</block>
   <block id="c200b51f243e6499b1e4aff027683496" category="paragraph"><block ref="4ce4e1d2d83eceacd4a0a0cf1bad8e14" prefix="" category="inline-code"></block></block>
-  <block id="c848af1101f629db69baafb2b08b9915" category="paragraph"><block ref="ce889b95687da5aee0c3d9ec48e819b4" prefix="" category="inline-code"></block></block>
   <block id="2d425665af37b9989f89179649650990" category="section-title">完成升級</block>
   <block id="7bf9d1ef7aeb37de6171f77014cb7475" category="paragraph">某些平台會使用VLAN作為MetroCluster 支援靜態IP介面。根據預設、這兩個連接埠各自使用不同的VLAN：10和20。</block>
   <block id="b676a1207e184308799f51c46b2c49b4" category="paragraph">+ 如果支援、您也可以使用命令中的參數、指定大於 100 （介於 101 和 4095 之間）的不同（非預設） VLAN<block ref="6790c40b1680557da1f80536ae186301" prefix=" " category="inline-code"></block><block ref="f2986433c79fe84ff207e72d4ed9fd6f" prefix=" " category="inline-code"></block> 。</block>
@@ -12829,10 +12796,8 @@
   <block id="2bd6f53f70717822994364eab0bf6cbb" category="paragraph">這些值必須在新的站台控制器模組上正確設定、以確保成功升級。將這些值複製到檔案中，以便稍後在升級程序中複製到命令中。</block>
   <block id="ed2b77aa370645814dafbf5dd8aef15f" category="paragraph">NetApp 建議您將 UUID 記錄在類似下列的表格中：</block>
   <block id="6bfdd861df764d52de7823dd5958fab3" category="paragraph">收集下列命令的輸出：</block>
-  <block id="f3f4fd8fb847fe1a5ad11aacd71b5fad" category="list-text">如果根磁碟區已加密，請收集並儲存金鑰管理員使用的密碼：</block>
   <block id="3c3a3838848890665c5d4969e896b405" category="inline-link">手動備份內建金鑰管理資訊</block>
   <block id="a99b2b056456bd0991317c897eb6b8b6" category="paragraph">如需更多資訊、請參閱<block ref="3c8480dc65ec7d91021d4d612b6bf420" category="inline-link-rx"></block>。</block>
-  <block id="a1f17dd5bd9c97697b58a9f90f8bfe7d" category="paragraph">您需要在升級程序稍後的複雜密碼。</block>
   <block id="e6790e163decf815ae94c9137d60eb13" category="paragraph"><block ref="766cba2090a16f1ed1bcf4bf4dada91b" category="inline-link-macro-rx"></block>。</block>
   <block id="b52a41eb513dc979f4cf2a4a13686ecd" category="summary">為新平台更新交換器 RCFs ，並在控制器模組上設定 MetroCluster IP bootarg 值。</block>
   <block id="bad868fbc306571d732100a7612b6381" category="list-text">您需要在中的升級程序稍早識別的 UUID 和系統 ID <block ref="aacd1fc1f619acd6603cbd45ee223ad9" category="inline-link-macro-rx"></block>。</block>
@@ -12858,7 +12823,6 @@
   <block id="cb990f25bc5eb8215bf8eb74c16807f3" category="summary">為了準備控制器升級，您必須執行系統預先檢查並收集組態資訊。</block>
   <block id="c458b5225672f84c61d5b9931863ae60" category="paragraph">為了準備控制器升級，您可能需要根據新舊平台機型，升級交換器參考組態檔案（ RCFs ）。接著您會執行系統預先檢查，收集組態資訊，並移除現有的監控軟體。</block>
   <block id="0c21b75966b293902f32e19c44cfee40" category="list-text">交換器 RCF 組態並非最低版本。</block>
-  <block id="2592dc8685229c73a77e91741c837a63" category="paragraph">如需更多資訊、請參閱<block ref="8d2708bcc3f1eaf7281ec3a4227ab734" category="inline-link-rx"></block>。</block>
   <block id="0db7751284ee845ba2b1c67a8d8704db" category="section-title">從斷路器或其他監控軟體中移除現有組態</block>
   <block id="0cd4dc9ba4eb47708afdb2049d98c13a" category="paragraph">開始升級之前，請先從斷路器或其他監控軟體中移除現有的組態。</block>
   <block id="63176d27bda1b994565a28492ed02e97" category="paragraph"><block ref="209008f8360496ff2e8d9d6e8b8625cb" category="inline-link-macro-rx"></block>。</block>
@@ -14561,7 +14525,6 @@
   <block id="ab84d029506bbf94968a8439506e5c7f" category="paragraph"><block ref="386c9422b8a78bb2663b14ec5cff7d1e" category="inline-link-macro-rx"></block>。</block>
   <block id="ea7f38fbe84ac28be0f7c90cca730a69" category="paragraph">ONTAP 9.19.1</block>
   <block id="65e78b09746a9ca4025a1c248d42a1bb" category="list-text">請確認您可以使用該系統存取 HTTP 伺服器。</block>
-  <block id="b91a26ac8a9beeea2dbb082ebcc79563" category="list-text">AFF A30、AFF C30、AFF C60 和 FAS50 系統需要在控制器上的卡片中安裝 QSFP 轉 SFP 轉接器，以支援 25Gbps 的網路速度。</block>
   <block id="68ce146fd9ae3ad96c5895b1c1869059" category="cell">網路速度 (Gbps)</block>
   <block id="0ec1914fce58a6a4d1748f3ace018fa1" category="cell">交換器連接埠模式</block>
   <block id="9903737bdb8c33503d4677b804a93bb3" category="paragraph">100Gbps</block>
@@ -14586,4 +14549,34 @@
   <block id="3b1fc3e7f78026e75788d28bc49ca81d" category="list-text">MACsec 加密只能套用於站台之間執行的 WAN ISL 連接埠。</block>
   <block id="68bddd16e24ef3e862d1cb8ff822ad2a" category="list-text">設定 Cisco 9336C 交換器時，設定 MACsec 加密為選用項目。</block>
   <block id="95c3b415a470d1839fa2fedd54783abb" category="sidebar">在 Cisco 9336C 交換器上設定 MACsec 加密（選用）</block>
+  <block id="4b0a97a6b0bdcb156b3f67e9848a9112" category="list-text">AFF A30、AFF C30、AFF C60 和 FAS50 系統需要在控制器上的卡片中安裝 QSFP 轉 SFP+ 轉接器，以支援 25Gbps 的網路速度。</block>
+  <block id="c6281cb9e12957678935280493ecbf9b" category="list-text">如果 MetroCluster 節點配置了用於管理 SVM（叢集）的外部金鑰管理器，請將金鑰伺服器資訊複製到安全位置。如果配置了 Onboard Key Manager，請將備份資訊和密碼短語複製到安全位置。</block>
+  <block id="a32dd2ca79d8d8a0056821cb37fed7f4" category="open-title">內建金鑰管理程式</block>
+  <block id="02d53c29cf140abcd193b9c1723fdf54" category="list-text">執行以下命令以顯示 Onboard Key Manager 備份：</block>
+  <block id="f230e34fbade37cb7e2748f14b011a55" category="paragraph">在升級程序的後續步驟中，您還需要最新的 Onboard Key Manager 密碼。</block>
+  <block id="e147253c0010bdd5968cb9b4b9ddf7dc" category="open-title">外部金鑰管理程式</block>
+  <block id="27c1c525fcac8be97773845c4153016f" category="paragraph">收集外部金鑰管理資訊，以便稍後在程序中還原金鑰管理程式組態。</block>
+  <block id="27fd7163d866930d288c0f5e2344ad6f" category="list-text">顯示管理 SVM（叢集）的名稱。</block>
+  <block id="04e9e74e2055e2de638ade039733bad9" category="paragraph"><block ref="2f710df81fb8b58c1792ebb010c82902" prefix="" category="inline-code"></block></block>
+  <block id="c8bc490435fa03382fb48cab3f4fb2ef" category="paragraph">在此範例中，管理 SVM 名稱為 cluster_B：</block>
+  <block id="5a9ce7a88c085f9363a2b74570d95da4" category="list-text">取得與管理 SVM （叢集）上設定的外部金鑰管理程式相關聯的主要金鑰伺服器位址和連接埠號碼：</block>
+  <block id="fc545d3a1dcf807591f5390fe6c19c38" category="list-text">管理 SVM 最多可以有四個主要金鑰伺服器，但您只需要其中一個主要金鑰伺服器的連接埠號碼和位址，即可在稍後的程序中還原金鑰管理組態。</block>
+  <block id="99a70d62e06533053186703c4fa1612a" category="list-text">如果您選擇的主要金鑰伺服器有相關聯的使用者名稱和密碼，則在還原過程中也需要這些資訊。</block>
+  <block id="710b0b4bdec68210bf595836065945d1" category="paragraph"><block ref="e25e9ed12a510a32b3dd7ba5e30c99bd" prefix="" category="inline-code"></block></block>
+  <block id="950c88730c61d3aaba629ef95167a4d0" category="list-text">如果您執行的是 ONTAP 9.16.1 或更高版本，請取得管理 SVM 的金鑰庫 UUID。</block>
+  <block id="8fa8e4c1d8f1eddf4b3ed33d3f762581" category="paragraph"><block ref="aca7cb102916cf251ebebf80d39fb590" prefix="" category="inline-code"></block></block>
+  <block id="fbb82e5f47d565d7d6f73034eaf2db90" category="list-text">請將收集到的資訊保存在安全的地方，以便在後續操作中使用。您現在應該已經收集到以下資訊：</block>
+  <block id="84613aa0a239d9f90644829a81e8a1c1" category="list-text">管理 SVM 的其中一個主要金鑰伺服器的連接埠號碼和位址</block>
+  <block id="75d00576e854524567e7012ae7dba6d1" category="list-text">如果選定的主要金鑰伺服器關聯了使用者名稱和密碼，則需要提供這兩項資訊。</block>
+  <block id="53fc62bfc038a4e8f537285cac249b99" category="list-text">管理員 SVM 的金鑰庫 UUID（ONTAP 9.16.1 或更新版本中需要）</block>
+  <block id="fc96c3a221edb7e2daa363e45683eee9" category="list-text">如果 MetroCluster 系統的管理 SVM 配置了金鑰管理器，請為您的金鑰管理配置選擇正確的啟動選單選項。</block>
+  <block id="8cfe2cd4decf0bb731981d68dc28786e" category="paragraph">依照提示提供下列輸入以恢復和還原金鑰管理程式組態：</block>
+  <block id="1037f0f4833f6675008fa17acab37754" category="list-text">Onboard Key Manager 備份和複雜密碼</block>
+  <block id="a1689d086474886da6e670c56be9b271" category="list-text">如果使用者名稱和密碼與所選主要金鑰伺服器相關聯</block>
+  <block id="e50b141f57c3a9e77277ff3473436277" category="paragraph">*注意：* 雖然管理 SVM 最多可以有四個主要金鑰伺服器，但在還原過程中只能指定一個主要金鑰伺服器的資訊。</block>
+  <block id="13c770359b6f10114b42ba39fdc8a43a" category="paragraph"><block ref="9a1bb06317d9933868db18de7bf4db37" prefix="" category="inline-code"></block></block>
+  <block id="b46ce2316c689c599dffa14540ae053b" category="list-text">如果使用根磁碟區加密，請再次選取開機功能表選項以進行金鑰管理組態設定。</block>
+  <block id="caf6332dea07cf4b950c8d71d7e45e42" category="list-text">如果使用根磁碟區加密，根據您使用的 ONTAP 版本，選擇開機功能表選項或再次發出開機功能表命令以進行金鑰管理組態。</block>
+  <block id="b0fbf352a8f099c3b53b0641730683b8" category="paragraph">根據金鑰管理員類型，選擇選項 "`10`" 或選項 "`11`"，然後在第一個開機功能表提示字元處選擇選項<block ref="1679091c5a880faf6fb5e6087eb1b2dc" prefix=" " category="inline-code"></block>，以執行還原程序。若要完全開機節點，您可能需要重複還原程序，然後選擇選項 "`1`"（正常開機）。</block>
+  <block id="ded8f2620d58acfd69775bc49e48b168" category="list-text">如果管理 SVM 上啟用了加密，請使用適用於您金鑰管理組態的正確命令還原金鑰。</block>
 </blocks>

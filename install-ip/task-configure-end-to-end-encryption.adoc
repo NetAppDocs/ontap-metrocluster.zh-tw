@@ -112,7 +112,7 @@ system health alert show
 +
 [source, cli]
 ----
-security key-manager external show-status
+security key-manager external show
 ----
 . 為每個 DR 群組啟用端點對端點加密：
 +
@@ -226,7 +226,7 @@ system health alert show
 +
 [source, cli]
 ----
-security key-manager external show-status
+security key-manager external show
 ----
 . 在每個 DR 群組上停用端點對端點加密：
 +

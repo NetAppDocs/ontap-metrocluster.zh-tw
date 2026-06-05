@@ -18,7 +18,7 @@ summary: 如果您使用的是符合 MetroCluster 標準的交換器、您應該
 [NOTE]
 ====
 * 缺少值表示平台無法搭配MetroCluster相容的交換器使用。
-* AFF A30、AFF C30、AFF C60 和 FAS50 系統需要在控制器上的卡片中安裝 QSFP 轉 SFP 轉接器，以支援 25Gbps 的網路速度。
+* AFF A30、AFF C30、AFF C60 和 FAS50 系統需要在控制器上的卡片中安裝 QSFP 轉 SFP+ 轉接器，以支援 25Gbps 的網路速度。
 
 
 ====

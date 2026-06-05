@@ -54,7 +54,7 @@ summary: 從開機功能表重新啟動控制器，以更新控制器 Flash 映�
 +
 Boot_ONTAP功能表
 
-. 如果使用root加密、請選取金鑰管理組態的開機功能表選項。
+. 如果 MetroCluster 系統的管理 SVM 配置了金鑰管理器，請為您的金鑰管理配置選擇正確的啟動選單選項。
 +
 |===
 
@@ -65,18 +65,28 @@ Boot_ONTAP功能表
  a| 
 內建金鑰管理
  a| 
-選項「'10'」
+選項"10"
 
-依照提示提供必要的輸入、以恢復及還原金鑰管理程式組態。
+依照提示提供下列輸入以恢復和還原金鑰管理程式組態：
+
+** Onboard Key Manager 備份和複雜密碼
+
 
 
 
  a| 
 外部金鑰管理
  a| 
-選項「'11'」
+選項"11"
 
-依照提示提供必要的輸入、以恢復及還原金鑰管理程式組態。
+依照提示提供下列輸入以恢復和還原金鑰管理程式組態：
+
+** 管理 SVM 的其中一個主要金鑰伺服器的連接埠號碼和位址
+** 如果使用者名稱和密碼與所選主要金鑰伺服器相關聯
+** 管理員 SVM 的金鑰庫 UUID（ONTAP 9.16.1 或更新版本中需要）
+
+
+*注意：* 雖然管理 SVM 最多可以有四個主要金鑰伺服器，但在還原過程中只能指定一個主要金鑰伺服器的資訊。
 
 |===
 . 從開機功能表中、執行選項「'6'」。
@@ -111,7 +121,7 @@ Rebooting to load the restored env file...
 +
 `setenv partner-sysid <partner-sysID>`
 
-. 如果使用root加密、請針對金鑰管理組態再次選取開機功能表選項。
+. 如果使用根磁碟區加密，請再次選取開機功能表選項以進行金鑰管理組態設定。
 +
 |===
 
@@ -122,18 +132,28 @@ Rebooting to load the restored env file...
  a| 
 內建金鑰管理
  a| 
-選項「'10'」
+選項"10"
 
-依照提示提供必要的輸入、以恢復及還原金鑰管理程式組態。
+依照提示提供下列輸入以恢復和還原金鑰管理程式組態：
+
+** Onboard Key Manager 備份和複雜密碼
+
 
 
 
  a| 
 外部金鑰管理
  a| 
-選項「'11'」
+選項"11"
 
-依照提示提供必要的輸入、以恢復及還原金鑰管理程式組態。
+依照提示提供下列輸入以恢復和還原金鑰管理程式組態：
+
+** 管理 SVM 的其中一個主要金鑰伺服器的連接埠號碼和位址
+** 如果使用者名稱和密碼與所選主要金鑰伺服器相關聯
+** 管理員 SVM 的金鑰庫 UUID（ONTAP 9.16.1 或更新版本中需要）
+
+
+*注意：* 雖然管理 SVM 最多可以有四個主要金鑰伺服器，但在還原過程中只能指定一個主要金鑰伺服器的資訊。
 
 |===
 +
@@ -210,7 +230,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
  a| 
 外部金鑰管理
  a| 
-`security key-manager external restore -vserver <svm-name> -node <node-name> -key-server <host_name|IP_address:port> -key-id <key_id> -key-tag key_tag <node-name>`
+`security key-manager external restore -vserver <admin-svm> -key-server <host_name|IP_address:port>`
 
 如需更多資訊、請參閱 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-nve/GUID-32DA96C3-9B04-4401-92B8-EAF323C3C863.html["還原外部金鑰管理加密金鑰"^]。
 
