@@ -14579,4 +14579,5 @@
   <block id="caf6332dea07cf4b950c8d71d7e45e42" category="list-text">如果使用根磁碟區加密，根據您使用的 ONTAP 版本，選擇開機功能表選項或再次發出開機功能表命令以進行金鑰管理組態。</block>
   <block id="b0fbf352a8f099c3b53b0641730683b8" category="paragraph">根據金鑰管理員類型，選擇選項 "`10`" 或選項 "`11`"，然後在第一個開機功能表提示字元處選擇選項<block ref="1679091c5a880faf6fb5e6087eb1b2dc" prefix=" " category="inline-code"></block>，以執行還原程序。若要完全開機節點，您可能需要重複還原程序，然後選擇選項 "`1`"（正常開機）。</block>
   <block id="ded8f2620d58acfd69775bc49e48b168" category="list-text">如果管理 SVM 上啟用了加密，請使用適用於您金鑰管理組態的正確命令還原金鑰。</block>
+  <block id="594c07221c5565837dffd5ce4580e7bb" category="admonition">此<block ref="e7acb1ae14be0e5233d619851263fdae" prefix=" " category="inline-code"></block>命令的輸出結果可能因平台型號而異。例如，在某些平台上，HA Partner 的相關行不會顯示在輸出結果中。</block>
 </blocks>

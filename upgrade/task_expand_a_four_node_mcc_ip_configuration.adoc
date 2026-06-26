@@ -1197,6 +1197,10 @@ cluster_A::>
 ----
 . 驗證連接是否正確建立：MetroCluster 「不實組態設定連線顯示」
 +
+
+NOTE: 此 `metrocluster configuration-settings connection show`命令的輸出結果可能因平台型號而異。例如，在某些平台上，HA Partner 的相關行不會顯示在輸出結果中。
+
++
 [listing]
 ----
 cluster_A::> metrocluster configuration-settings connection show
