@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, upgrade, downgrade, firmware, brocade, fc, switch 
 summary: 若要升級或降級Brocade FC交換器上的韌體、您必須使用Brocade專屬命令來停用交換器、執行並驗證韌體變更、以及重新開機並重新啟用交換器。 
 ---
-= 升級或降級Brocade FC交換器上的韌體
+= 升級或降級 Brocade MetroCluster FC 交換器的韌體
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -12,6 +12,24 @@ summary: 若要升級或降級Brocade FC交換器上的韌體、您必須使用B
 
 [role="lead"]
 若要升級或降級Brocade FC交換器上的韌體、您必須使用Brocade專屬命令來停用交換器、執行並驗證韌體變更、以及重新開機並重新啟用交換器。
+
+.開始之前
+在使用此方法之前，請仔細閱讀以下資訊：
+
+* 從 Fabric OS 10.x 版本開始，Brocade 僅支援 SHA-512 進行 SNMP 驗證。ONTAP 目前不支援 SHA-512，僅支援 SHA-256。
++
+如果將 MetroCluster FC 交換器韌體升級到 Fabric OS 10.x，將無法透過 ONTAP 進行 SNMP 監控。這會導致故障排除風險增加，並失去主動警示功能。
+
++
+如果您升級至 Fabric OS 10.x 或從 Fabric OS 10.x 降級，則必須執行 link:https://techdocs.broadcom.com/us/en/fibre-channel-networking/fabric-os/fabric-os-software-upgrade/10-0-x/Upgrading-and-Downgrading-Firmware/v24512876.html["Brocade Fabric OS 軟體升級指南，10.0.x - 升級或降級前提條件"^] 中概述的強制性工作。
+
++
+
+CAUTION: 在升級至 Fabric OS 10.x 或更新版本，或從 Fabric OS 10.x 或更新版本降級之前，您必須仔細考量這些限制。
+
+* 從 Fabric OS 9.0.1 開始，Brocade 交換器不再支援 SNMPv2。如果您升級至 Fabric OS 9.0.1 或更新版本，則必須使用 SNMPv3 進行健全狀況監控。如需詳細資訊，請參閱 link:../install-fc/concept_configure_the_mcc_software_in_ontap.html#snmpv3-mcc-fc["在MetroCluster 不顯示的組態中設定v3"]。
+* 如果您要升級至 Fabric OS 9.2.x 或更高版本，則必須安裝 Brocade TruFOS 憑證。如需詳細資訊，請參閱 link:https://techdocs.broadcom.com/us/en/fibre-channel-networking/fabric-os/fabric-os-software-upgrade/9-2-x/Obtaining-Firmware/download-prerequisites-new/brocade-trufos-certificates.html["Brocade Fabric OS 軟體升級指南， 9.2.x"^]。
+
 
 .關於這項工作
 確認您已檢查並執行下列組態工作：
@@ -32,10 +50,6 @@ link:enable-console-logging-before-maintenance.html["啟用主控台記錄"]
 
 
 交換器架構在韌體升級或降級期間會停用、MetroCluster 而此功能需仰賴第二個架構才能繼續運作。
-
-從 Fabric OS 9.0.1 開始、 Brocade 交換器不支援 SNMPv2 。如果您升級至 Fabric OS 9.0.1 或更新版本、則必須使用 SNMPv3 來監控健全狀況。如需詳細資訊、請參閱 link:../install-fc/concept_configure_the_mcc_software_in_ontap.html#configuring-snmpv3-in-a-metrocluster-configuration["在MetroCluster 不顯示的組態中設定v3"]。
-
-如果您要升級至 Fabric OS v 9.2.x 或更新版本，則必須安裝 Brocade TruFOS 憑證，如需詳細資訊，請參閱link:https://techdocs.broadcom.com/us/en/fibre-channel-networking/fabric-os/fabric-os-software-upgrade/9-2-x/Obtaining-Firmware/download-prerequisites-new/brocade-trufos-certificates.html["Brocade Fabric OS 軟體升級指南， 9.2.x"^]。
 
 此工作必須連續在每個交換器架構上執行、以便所有交換器都執行相同的韌體版本。
 

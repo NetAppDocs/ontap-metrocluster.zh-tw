@@ -7566,7 +7566,6 @@
   <block id="1ab9e9aadaaef04dc9de70053de7c057" category="paragraph">您必須根據光纖通道（FC）交換器組態、設定依序傳送（IOD）或依序傳送（OE）的框架。</block>
   <block id="177f79b7f42518cbd6ed3a48de1f222b" category="paragraph">如果FC交換器設定為IOD、ONTAP 則必須將該軟件設定為IOD。同樣地、如果FC交換器已設定為ood、ONTAP 則必須將其設定為ood。</block>
   <block id="0a9b432f5f5621ba3d2bafdaa8d5be41" category="paragraph">「MetroCluster 支援此功能的零件介面卡修改-node_node_name_-is：啟用此功能的true」</block>
-  <block id="b88127542a36dbd88f1d9b0eb0e66dc0" category="paragraph">目前支援AES-128加密。ONTAP</block>
   <block id="046a4dbe28831449e896740fded1c064" category="paragraph">您也應該為未使用的帳戶設定密碼、以確保密碼安全、並使用ONTAP 您的版本資訊系統所提供的最佳加密功能。</block>
   <block id="1b58c8498876b494bed537a676c855cc" category="paragraph"><block ref="1b58c8498876b494bed537a676c855cc" category="inline-link-rx"></block></block>
   <block id="220a5f3f86ae97f0476676c92a412f16" category="paragraph">您應該在初始組態設定後、以及MetroCluster 變更任何的功能後進行檢查。您也應該在協商（計畫性）切換或切換作業之前進行檢查。</block>
@@ -10784,8 +10783,6 @@
   <block id="b40a504ccb3da532382333f0ef630e2d" category="list-text">在 iSCSI 主機上、重新掃描 SCSI 匯流排：</block>
   <block id="3ab536112aae2adb0154a97a03a97995" category="paragraph">移除的路徑是舊節點的路徑。</block>
   <block id="5eb2f5a07f8114a82bfca62a5f95b81d" category="list-text">在 iSCSI 主機上、確認只能看到來自新節點的路徑：</block>
-  <block id="207e61ae33ef5e6ef918554d51d81114" category="paragraph">從 Fabric OS 9.0.1 開始、 Brocade 交換器不支援 SNMPv2 。如果您升級至 Fabric OS 9.0.1 或更新版本、則必須使用 SNMPv3 來監控健全狀況。如需詳細資訊、請參閱 <block ref="f40dae5fcb87cbbfe058698fbd8d3759" category="inline-link-macro-rx"></block>。</block>
-  <block id="acb3a81879787c0ac3484855a93f5ff6" category="paragraph">從 Fabric OS 9.0.1 開始、不支援使用 SNMPv2 來監控 Brocade 交換器的健全狀況、您必須改用 SNMPv3 。如果您使用的是 SNMPv3 、則必須先在 ONTAP 中設定 SNMPv3 、然後再繼續執行下一節。如需詳細資料、請參閱 <block ref="84b6bc8814c8fff8860aaf6e2164af86" category="inline-xref-macro-rx"></block>。</block>
   <block id="a4bed89e9f2e162a1bad93f81efe2681" category="paragraph">您執行的命令取決於您使用的是 SNMPv2 或 SNMPv3 。</block>
   <block id="bd041cb07dda4e5f8fbcf9fc40cd8e53" category="open-title">使用 SNMPv3 新增交換器：</block>
   <block id="1ec64a333712792d694f6485f208d7bf" category="paragraph"><block ref="6483c1c2c512d0e62f46ddc53b9d4638" prefix="" category="inline-code"></block></block>
@@ -13029,7 +13026,6 @@
   <block id="de60962ea114e8e20b41343aa7431cbf" category="inline-link-macro">深入瞭解 SVM 資料移動性</block>
   <block id="cb692d9778a8fa1464d6b442ab90722f" category="paragraph"><block ref="53c488ccbc80272b509e45a126fd033b" category="inline-link-macro-rx"></block>。</block>
   <block id="7df18ff4393ac59f9af7b68478828591" category="inline-link-macro">Brocade Fabric OS 軟體升級指南， 9.2.x</block>
-  <block id="81095da37e6499e1af51ce2d0316b8c1" category="paragraph">如果您要升級至 Fabric OS v 9.2.x 或更新版本，則必須安裝 Brocade TruFOS 憑證，如需詳細資訊，請參閱<block ref="0c25af31b20d46ca79e55fb8f6beb4c9" category="inline-link-macro-rx"></block>。</block>
   <block id="b2fe7ec3c609e490e177268be9c6a2c7" category="open-title">移除 FC 至 SAS 橋接器</block>
   <block id="1c5eaf0274c09872a2287c430ed75a60" category="list-text">識別橋接器：</block>
   <block id="4d100b8e119ce2e8a98e720e612260d2" category="paragraph"><block ref="5c2aa4362fb9d40ad679411e69f26e74" prefix="" category="inline-code"></block></block>
@@ -13955,7 +13951,6 @@
   <block id="25849b8ea5119a6ccbe0ef06d8e35773" category="doc">測試MetroCluster IP 配置的ONTAP節點切換</block>
   <block id="f42ec02236cb8b0134435967892ad733" category="paragraph"><block ref="f42ec02236cb8b0134435967892ad733" category="inline-link-macro-rx"></block></block>
   <block id="929f699475d2ee16cffb5df619460281" category="list-text">無硬體故障（例如電源故障）</block>
-  <block id="8e7bac68088266dc4f6ea54160a86aa8" category="open-title">Brocade交換器（FOS 9.0 及更高版本）</block>
   <block id="bbf1d4b45eed310475529b62acce8abc" category="paragraph"><block ref="5c14098cbb5e352eab3dbedad51645c3" prefix="" category="inline-code"></block></block>
   <block id="fb9a60f6eec8993cd6b4f12e486c000c" category="open-title">Brocade交換器（FOS 8.x 及更早版本）</block>
   <block id="c713289c1b13431b23b477490f615275" category="paragraph">此範例顯示如何設定唯讀使用者。如果需要，您可以調整 RW 使用者。如果需要 RO 存取權限，請在「使用者 (ro)：」後面指定「snmpv3user」。</block>
@@ -14580,4 +14575,38 @@
   <block id="b0fbf352a8f099c3b53b0641730683b8" category="paragraph">根據金鑰管理員類型，選擇選項 "`10`" 或選項 "`11`"，然後在第一個開機功能表提示字元處選擇選項<block ref="1679091c5a880faf6fb5e6087eb1b2dc" prefix=" " category="inline-code"></block>，以執行還原程序。若要完全開機節點，您可能需要重複還原程序，然後選擇選項 "`1`"（正常開機）。</block>
   <block id="ded8f2620d58acfd69775bc49e48b168" category="list-text">如果管理 SVM 上啟用了加密，請使用適用於您金鑰管理組態的正確命令還原金鑰。</block>
   <block id="594c07221c5565837dffd5ce4580e7bb" category="admonition">此<block ref="e7acb1ae14be0e5233d619851263fdae" prefix=" " category="inline-code"></block>命令的輸出結果可能因平台型號而異。例如，在某些平台上，HA Partner 的相關行不會顯示在輸出結果中。</block>
+  <block id="2348f32e5e421ab4ef22af7e7810041e" category="section-title">在 MetroCluster FC 設定中設定 SNMPv3</block>
+  <block id="f72f4581559ba331ae5b793ab29d815a" category="paragraph">ONTAP 目前支援 AES-128 進行隱私保護（加密），支援 SHA-256 進行驗證。</block>
+  <block id="44a800928beee85aed0fba3a92f2408a" category="list-text">在 Fabric OS 10.x 及更高版本中，Brocade 僅支援 SHA-512 進行 SNMP 驗證。ONTAP 目前不支援 SHA-512，僅支援 SHA‑256。</block>
+  <block id="f02ccf6c395105226a61800f93771185" category="list-text">如果您的 MetroCluster FC 交換器執行的是 Fabric OS 10.x 或更新版本，則無法設定 SNMP，也無法將這些交換器新增至 ONTAP 健康監控中。如果您想降級交換器韌體，可以依照 <block ref="ceeb82cfdbafdefa3498267033925b4d" category="inline-link-macro-rx"></block> 中的步驟進行。</block>
+  <block id="0555d71723e207adf1d26aacd23fca99" category="open-title">Brocade 交換器（FOS 9.x）</block>
+  <block id="52f25e0e1d7123b8e60a485a2591101f" category="paragraph">從 Fabric OS 9.0.1 開始，Brocade 交換器的健康監控不再支援 SNMPv2，您必須改用 SNMPv3。如果您使用 SNMPv3，則必須先在 ONTAP 中設定 SNMPv3，然後再繼續執行下列部分。如需更多詳細資訊，請參閱 <block ref="bccdc4729d6354379109b6753bfdc947" category="inline-xref-macro-rx"></block>。</block>
+  <block id="6a9b31d52b85b35e7f1cd8ec96cb6989" category="doc">升級或降級 Brocade MetroCluster FC 交換器的韌體</block>
+  <block id="eede7d7d2eb026eb4a46711feb940141" category="paragraph">在使用此方法之前，請仔細閱讀以下資訊：</block>
+  <block id="8e0da5650cc19161382006e7a36b91eb" category="list-text">從 Fabric OS 10.x 版本開始，Brocade 僅支援 SHA-512 進行 SNMP 驗證。ONTAP 目前不支援 SHA-512，僅支援 SHA-256。</block>
+  <block id="f56c2e751b109490bad7e0eaedf3c300" category="paragraph">如果將 MetroCluster FC 交換器韌體升級到 Fabric OS 10.x，將無法透過 ONTAP 進行 SNMP 監控。這會導致故障排除風險增加，並失去主動警示功能。</block>
+  <block id="fded9116e1c7860c9efc9c570fc2b5fb" category="inline-link-macro">Brocade Fabric OS 軟體升級指南，10.0.x - 升級或降級前提條件</block>
+  <block id="e28259c7fcba5a4f4ea8558015e892ff" category="paragraph">如果您升級至 Fabric OS 10.x 或從 Fabric OS 10.x 降級，則必須執行 <block ref="4c794930872c13dd5a27bee89c2df646" category="inline-link-macro-rx"></block> 中概述的強制性工作。</block>
+  <block id="51730b95b3cfe613db659073f7d3e446" category="admonition">在升級至 Fabric OS 10.x 或更新版本，或從 Fabric OS 10.x 或更新版本降級之前，您必須仔細考量這些限制。</block>
+  <block id="cdc0848d59d5387fcb1237af02c4c5a1" category="list-text">從 Fabric OS 9.0.1 開始，Brocade 交換器不再支援 SNMPv2。如果您升級至 Fabric OS 9.0.1 或更新版本，則必須使用 SNMPv3 進行健全狀況監控。如需詳細資訊，請參閱 <block ref="a870a36121ea1bde9d4fd0d18636602e" category="inline-link-macro-rx"></block>。</block>
+  <block id="00a29c96b5b875e4a7129fdceae0b685" category="list-text">如果您要升級至 Fabric OS 9.2.x 或更高版本，則必須安裝 Brocade TruFOS 憑證。如需詳細資訊，請參閱 <block ref="0c25af31b20d46ca79e55fb8f6beb4c9" category="inline-link-macro-rx"></block>。</block>
+  <block id="ac6b73edb23230b28c5dabf7e6520c9f" category="section-title">本程序支援的轉換情境</block>
+  <block id="02394dbd3e3e6fe87c261ba2d07828bf" category="paragraph">請查看下表，以了解此程序支援的過渡方案。</block>
+  <block id="585267d8d640f8c9c7ee4bc4ffe689a8" category="admonition">在所有過渡場景中，每次只能新增或移除一個災難復原群組。災難復原群組新增或移除成功後，需要驗證 MetroCluster 運作狀況良好且正常，然後再繼續下一步。</block>
+  <block id="67413720ded39820d540bc2f547137f9" category="cell">針對這種過渡方案……</block>
+  <block id="592a3b45c9297fe905b909e9ac714fad" category="cell">執行以下操作……</block>
+  <block id="9b0a7751ce574a877af7e43b11daa34f" category="paragraph">四節點 FC 至四節點 IP 組態</block>
+  <block id="a5a86b6a15ae4a243d39727ec40d97f9" category="paragraph">請依照以下步驟操作。</block>
+  <block id="548b095c08a8422afef5c9775659d3bc" category="paragraph">四節點 FC 到八節點 IP 配置</block>
+  <block id="06640d5e2b927539ce008e93a978317b" category="paragraph">需要新增一個 MetroCluster IP DR 組。新增第一個 MetroCluster IP DR 組後，檢查叢集的整體運作狀況，然後對第二個 MetroCluster IP DR 組重複上述步驟。</block>
+  <block id="fb4130f6b62db04e22f6d7cf8ac5a4a9" category="paragraph">八節點 FC 到四節點 IP 配置</block>
+  <block id="ad401f4570525afcee075cf6d99e3147" category="paragraph">請依照以下步驟操作。過渡期間，MetroCluster 配置將從八個節點擴展到十二個節點。過渡完成後，所有 MetroCluster FC 節點都將取消加入，最終配置將是四節點 MetroCluster IP 配置。</block>
+  <block id="43036e302b39d08afb26efba664df1f8" category="paragraph">八節點 FC 至八節點 IP 組態</block>
+  <block id="4fc6cf17ea8cb889a57fc97a5135f6c4" category="paragraph">此過渡需要在叢集中新增一個 MetroCluster IP DR 群組。</block>
+  <block id="3dd2824a380698bf490fa1df074afc63" category="paragraph">確認十二節點配置運作狀況正常後，將資料和 LIF（如有需要）從其中一個 MetroCluster FC DR 群組遷移到 MetroCluster IP DR 群組。當某個 MetroCluster FC DR 群組為空時，移除該 DR 群組並取消其節點加入叢集。最終配置為一個由一個 MetroCluster FC DR 群組和一個 MetroCluster IP DR 群組組成的八節點叢集。</block>
+  <block id="4ef99421ecdca25d01fb93e6cb108c8f" category="paragraph">然後，將第二個 MetroCluster IP DR 群組新增至叢集，並視需要轉換資料和 LIF。當最後一個 MetroCluster FC DR 群組為空時，將其移除並取消相關節點的加入。</block>
+  <block id="75337e999bb0e04a56d425725d943a86" category="paragraph">在過渡期間的任何時刻，MetroCluster 配置中的節點數都不會超過十二個節點。</block>
+  <block id="8d540b15dac9bee2f802b66dc16a6a0b" category="paragraph">如需更多資訊、請參閱 <block ref="36bbe754bd1c078bf3bb1818fc549f54" category="inline-link-macro-rx"></block> 。</block>
+  <block id="f5092147d9fdb4405ffa0ded1187160b" category="section-title">添加舊平台模型時的重要訊息</block>
+  <block id="de340c0f1f6d36d5e5b0117bb6d6e359" category="admonition">如果您要執行從四節點 FC 到八節點 IP 的轉換，可以在新增第二個 DR 群組之前套用四節點 FC 到八節點 IP 的 RCF。您無需先套用四節點 FC 到四節點 IP 的 RCF。</block>
 </blocks>

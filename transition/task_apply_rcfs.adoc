@@ -15,6 +15,9 @@ summary: 如果您使用新的IP交換器進行MetroCluster Refing IP組態、�
 
 如果您使用新的交換器、則必須執行此工作。
 
+
+NOTE: 如果您要執行從四節點 FC 到八節點 IP 的轉換，可以在新增第二個 DR 群組之前套用四節點 FC 到八節點 IP 的 RCF。您無需先套用四節點 FC 到四節點 IP 的 RCF。
+
 如果您使用現有的交換器、請繼續執行 link:task_move_cluster_connections.html["移動本機叢集連線"]。
 
 . 安裝並安裝新的IP交換器。
