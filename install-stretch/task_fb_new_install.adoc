@@ -28,6 +28,7 @@ image::../media/workflow_bridge_installation_and_configuration.gif[FC 至 SAS �
 
 
 
+[[in-band-management-of-the-fc-to-sas-bridges]]
 == FC至SAS橋接器的頻內管理
 
 從採用FIBEBridge 7500N或7600N橋接器ONTAP 的SUR9.5開始、橋接器的頻內管理（_in-band management）可作為橋接器IP管理的替代方案。從功能不完善的9.8開始ONTAP 、頻外管理已不再適用。
@@ -51,6 +52,7 @@ NOTE: 建議在停用IP存取的情況下使用頻內管理、藉由限制橋接
 
 
 
+[[fibrebridge-7600n-and-7500n-bridge-limits-and-attachment-rules]]
 == FiberBridge 7600N 與 7500N 橋接器限制與附加規則
 
 在連接 FiberBridge 7600N 和 7500N 橋接器時，請檢閱限制和考量事項。
@@ -89,6 +91,7 @@ NOTE: 建議在停用IP存取的情況下使用頻內管理、藉由限制橋接
 |===
 
 
+[[prepare-for-the-installation]]
 == 準備安裝
 
 當您準備將橋接器安裝為新 MetroCluster 系統的一部分時，您必須確認系統符合特定需求，包括橋接器的設定和組態需求。其他需求包括下載必要文件、Atto QuickNAV公用程式和橋接韌體。
@@ -142,6 +145,7 @@ _Atto產品版本說明_提供最新的支援網頁瀏覽器清單。您可以�
 
 
 
+[[install-the-fc-to-sas-bridge-and-sas-shelves]]
 == 安裝 FC 至 SAS 橋接器和 SAS 機櫃
 
 在確保系統符合「準備安裝」中的所有要求之後、您就可以安裝新系統。
@@ -175,6 +179,7 @@ NOTE: 不支援ACP纜線的SAS架構MetroCluster 。
 
 
 
+[[enable-ip-port-access-on-the-fibrebridge-7600n-bridge-if-necessary]]
 === 如有必要、請在光纖橋接器7600N上啟用IP連接埠存取
 
 如果您使用ONTAP 9.5版之前的版本、或是打算使用遠端登入或其他IP連接埠傳輸協定和服務（FTP、ExpressNAV、ICMP或QuickNAV）、以頻外存取的方式存取到FibreBridge 7600N橋接器、您可以透過主控台連接埠來啟用存取服務。
@@ -235,6 +240,7 @@ SNMP是唯一需要個別啟用命令的傳輸協定。
 
 
 
+[[configure-the-fc-to-sas-bridges]]
 === 設定 FC 對 SAS 橋接器
 
 在連接FC至SAS橋接器的模型纜線之前、您必須先在Fibre Bridge軟體中設定設定。
@@ -488,6 +494,7 @@ link:../maintain/index.html["維護MetroCluster 元件"]
 
 
 
+[[cable-a-fibrebridge-7600n-or-7500n-bridge-with-disk-shelves-using-iom12-modules]]
 === 使用 IOM12 模組將 FiberBridge 7600N 或 7500N 橋接器與磁碟櫃連接起來
 
 設定橋接器之後、您可以開始為新系統佈線。
@@ -533,6 +540,7 @@ image::../media/mcc_cabling_bridge_and_sas3_stack_with_7500n_and_multiple_stacks
 
 
 
+[[verify-bridge-connectivity-and-cable-the-fc-to-sas-bridges-to-the-controller-fc-ports]]
 === 驗證橋接器連線能力，並將 FC 對 SAS 橋接器連接至控制器 FC 連接埠
 
 您必須在雙節點橋接附加 MetroCluster 組態中，將橋接器連接至控制器 FC 連接埠。
@@ -620,6 +628,7 @@ image:../media/cluster_peering_network.png["叢集對等網路的圖例"]
 
 
 
+[[secure-or-unsecure-the-fibrebridge-bridge]]
 == 保護或取消保護光纖橋接器
 
 若要在橋接器上輕鬆停用可能不安全的乙太網路傳輸協定、請先從ONTAP 版本資訊9.5開始、確保橋接器安全無虞。這會停用橋接器的乙太網路連接埠。您也可以重新啟用乙太網路存取。

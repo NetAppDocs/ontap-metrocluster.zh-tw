@@ -26,6 +26,7 @@ summary: 從功能性的問題9.8開始ONTAP 、您可以中斷營運、將雙�
 
 
 
+[[enable-console-logging]]
 == 啟用主控台記錄
 
 NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在執行此程序時採取下列動作：
@@ -40,6 +41,7 @@ NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在�
 
 
 
+[[requirements-for-transition-when-retiring-old-shelves]]
 == 淘汰舊機櫃時的轉換需求
 
 在開始轉換程序之前、您必須確保現有MetroCluster 的SFC組態符合要求。
@@ -88,6 +90,7 @@ https://hwu.netapp.com["NetApp Hardware Universe"^]
 
 
 
+[[workflow-for-disruptive-transition-when-moving-data-and-retiring-old-storage-shelves]]
 == 在移動資料及汰換舊儲存櫃時、可中斷營運的工作流程
 
 您必須遵循特定的工作流程、才能確保順利轉換。
@@ -98,6 +101,7 @@ image::../media/workflow_2n_transition_moving_data_to_new_shelves.png[過渡期�
 
 
 
+[[transitioning-the-configuration]]
 == 轉換組態
 
 您必須遵循詳細的轉換程序。
@@ -136,6 +140,7 @@ image::../media/workflow_2n_transition_moving_data_to_new_shelves.png[過渡期�
 
 
 
+[[migrating-the-root-aggregates]]
 == 移轉根Aggregate
 
 轉換完成後、將現有的根集合體從MetroCluster 整個過程中移轉到MetroCluster 以整個過程為基礎的架構上、並將剩餘的物件從整個過程中移轉到更新的架構中。
@@ -183,6 +188,7 @@ system node migrate-root -node node_A_1-IP -disklist 3.11.0,3.11.1,3.11.2 -raid-
 
 
 
+[[migrating-the-data-aggregates]]
 == 移轉資料Aggregate
 
 在新的磁碟櫃上建立資料集合體、並使用Volume Move將資料磁碟區從舊磁碟櫃傳輸到新磁碟櫃上的集合體。
@@ -195,6 +201,7 @@ http://docs.netapp.com/platstor/topic/com.netapp.doc.hw-upgrade-controller/GUID-
 
 
 
+[[retiring-shelves-moved-from-nodea1-fc-and-nodea2-fc]]
 == 淘汰從node_a_1-FC和node_a_2-FC移出的磁碟櫃
 
 您將舊的儲存櫃從原始MetroCluster 的不還原FC組態中淘汰。這些磁碟櫃原本由node_a_1-FC和node_a_2-FC擁有。
@@ -274,6 +281,7 @@ cluster_B::>
 
 
 
+[[completing-transition]]
 == 完成轉換
 
 移除舊的控制器模組之後、您就可以完成轉換程序。

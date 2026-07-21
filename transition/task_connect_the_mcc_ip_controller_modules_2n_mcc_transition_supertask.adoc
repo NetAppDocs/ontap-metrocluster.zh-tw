@@ -15,6 +15,7 @@ summary: 您必須在組態中新增四個新的控制器模組和任何其他�
 
 
 
+[[setting-up-the-new-controllers]]
 == 設定新的控制器
 
 您必須將新MetroCluster 的靜態IP控制器機架和纜線連接至先前連接MetroCluster 至該功能的儲存櫃。
@@ -126,12 +127,14 @@ Boot_ONTAP_maint
 
 
 
+[[connecting-and-booting-up-nodea1-ip-and-nodeb1-ip]]
 == 連接並啟動node_a_1-IP和node_B_1-IP
 
 連接MetroCluster 完靜態IP控制器和IP交換器之後、您可以轉換並啟動node_a_1-IP和node_B_1-IP。
 
 
 
+[[bringing-up-nodea1-ip]]
 === 啟動node_a_1-IP
 
 您必須使用正確的轉換選項來開機節點。
@@ -218,6 +221,7 @@ MetroCluster Transition: Please confirm if this is the correct value [yes|no]:? 
 
 
 
+[[recovering-key-management-if-the-root-volume-is-encrypted]]
 === 如果根磁碟區已加密、則會恢復金鑰管理
 
 如果根磁碟區已加密、您必須使用特殊的開機命令來還原金鑰管理。
@@ -373,6 +377,7 @@ Boot_ONTAP功能表
 
 
 
+[[creating-the-network-configuration]]
 === 建立網路組態
 
 您必須建立符合FC節點上組態的網路組態。這是因為MetroCluster 當執行此動作時、Sfetsip節點會重新執行相同的組態、也就是說、當節點_a_1-IP和node_B_1-IP開機時ONTAP 、Sf2會嘗試在節點_a_1-FC和node_B_1-FC上分別使用的相同連接埠上裝載LIF。
@@ -428,6 +433,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
 
 
 
+[[setting-up-cluster-ports-and-cluster-lifs]]
 === 設定叢集連接埠和叢集生命區
 
 您必須設定叢集連接埠和LIF。需要在使用根集合體開機的站台A節點上執行下列步驟。
@@ -497,6 +503,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
 
 
 
+[[verifying-lif-configuration]]
 === 正在驗證LIF組態
 
 從舊控制器移出儲存設備之後、節點管理LIF、叢集管理LIF和叢集間LIF仍會存在。如有必要、您必須將LIF移至適當的連接埠。
@@ -569,12 +576,14 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
 
 
 
+[[bringing-up-nodea2-ip-and-nodeb2-ip]]
 == 啟動node_a_2-IP和node_B_2-IP
 
 您必須在MetroCluster 每個站台上啟動並設定新的靜態IP節點、在每個站台建立HA配對。
 
 
 
+[[bringing-up-nodea2-ip-and-nodeb2-ip]]
 === 啟動node_a_2-IP和node_B_2-IP
 
 您必須使用開機功能表中的正確選項、一次開機一個新的控制器模組。
@@ -749,6 +758,7 @@ join
 
 
 
+[[verifying-mtu-settings]]
 === 驗證MTU設定
 
 確認已針對連接埠和廣播網域正確設定MTU設定、並進行變更。
@@ -766,6 +776,7 @@ join
 
 
 
+[[configuring-intercluster-lifs]]
 === 正在設定叢集間LIF
 
 設定叢集對等所需的叢集間生命體。
@@ -778,6 +789,7 @@ join
 
 
 
+[[verifying-cluster-peering]]
 === 驗證叢集對等
 
 確認叢集A和叢集B已連接、且每個叢集上的節點可以彼此通訊。

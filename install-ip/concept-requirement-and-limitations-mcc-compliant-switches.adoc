@@ -15,6 +15,7 @@ summary: 從推出支援MetroCluster的交換器開始ONTAP 、MetroCluster 即�
 
 
 
+[[metrocluster-compliant-versus-netapp-validated-switches]]
 == MetroCluster 相容於 NetApp 驗證的交換器
 
 如果交換器符合下列需求、則該交換器已通過 NetApp 驗證：
@@ -34,6 +35,7 @@ NOTE: NetApp 不為任何未通過驗證的 MetroCluster 相容交換器提供�
 
 
 
+[[general-requirements-for-metrocluster-compliant-switches]]
 == MetroCluster相容交換器的一般需求
 
 連接 MetroCluster IP 介面的交換器必須符合下列一般需求：
@@ -64,6 +66,7 @@ NOTE: NetApp 不為任何未通過驗證的 MetroCluster 相容交換器提供�
 
 
 
+[[limitations-when-using-metrocluster-compliant-switches]]
 == 使用 MetroCluster 相容交換器時的限制
 
 您無法使用任何需要將本機叢集連線連接至交換器的組態或功能。例如、您無法在 MetroCluster 相容的交換器上使用下列組態和程序：

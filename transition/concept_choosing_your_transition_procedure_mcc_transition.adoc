@@ -17,6 +17,7 @@ summary: 您必須根據現有MetroCluster 的不規則功能（NetApp）組態�
 
 
 
+[[supported-platform-combinations]]
 == 支援的平台組合
 
 * 除非ONTAP 附註中另有說明或個別平台要求、否則所有轉換程序都需要使用更新版本的資訊。
@@ -33,6 +34,7 @@ summary: 您必須根據現有MetroCluster 的不規則功能（NetApp）組態�
 ====
 
 
+[[supported-aff-and-fas-transition-combinations]]
 === 支援的 AFF 和 FAS 轉換組合
 
 下表顯示支援的平台組合。您可以從第一欄中的平台，轉換到列中所列支援的平台，如彩色表格儲存格所示。
@@ -71,6 +73,7 @@ image:../media/transition-combinations-group-2.png["顯示群組 2 平台支援�
 ====
 
 
+[[supported-asa-transition-platform-combinations]]
 === 支援的 ASA 轉換平台組合
 
 下表顯示 ASA 系統支援的平台組合。
@@ -93,6 +96,7 @@ image:../media/transition-combinations-group-2.png["顯示群組 2 平台支援�
 |===
 
 
+[[choose-your-transition-procedure]]
 == 請選擇您的轉換程序
 
 您必須根據現有MetroCluster 的不規則功能（NetApp）組態、選擇轉換程序。

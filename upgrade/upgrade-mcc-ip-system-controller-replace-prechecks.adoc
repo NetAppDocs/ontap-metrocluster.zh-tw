@@ -15,6 +15,7 @@ summary: 為了準備控制器升級，您必須執行系統預先檢查並收�
 
 
 
+[[update-the-metrocluster-switch-rcfs-before-upgrading-controllers]]
 == 在升級控制器之前，請先更新 MetroCluster 交換器 RCFs
 
 視舊版與新版平台機型而定，您可能需要在升級控制器之前更新 MetroCluster 交換器參考組態檔（ RCFs ）。
@@ -115,6 +116,7 @@ NOTE: 您應該依照下列順序更新交換器： switch_a_1 ， switch_B_1 �
 
 
 
+[[start-the-controller-replacement-operation]]
 == 開始控制器更換操作
 
 當您啟動自動控制器更換操作時，該操作會發出一系列預檢查，然後暫停，以便您可以手動收集與配置相關的資訊。
@@ -165,6 +167,7 @@ Node-A-1    Failed         MetroCluster check failed. Reason : MCC check showed 
 
 
 
+[[gather-information-before-the-upgrade]]
 == 在升級之前收集資訊
 
 在升級之前、如果根磁碟區已加密、您必須先收集備份金鑰和其他資訊、才能以舊的加密根磁碟區來啟動新的控制器。
@@ -364,6 +367,7 @@ cluster_B::*
 
 
 
+[[remove-the-existing-configuration-from-tiebreaker-or-other-monitoring-software]]
 == 從斷路器或其他監控軟體中移除現有組態
 
 開始升級之前，請先從斷路器或其他監控軟體中移除現有的組態。

@@ -15,6 +15,7 @@ summary:
 
 
 
+[[platform-support]]
 == 平台支援
 
 [cols="2*"]
@@ -51,6 +52,7 @@ FASA400和FAS8300 AFF
 |===
 
 
+[[switch-support]]
 == 交換器支援
 
 [cols="2*"]

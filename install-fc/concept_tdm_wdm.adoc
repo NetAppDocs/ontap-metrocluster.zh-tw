@@ -60,6 +60,7 @@ FCVI指定VSAN的原則：
 |===
 
 
+[[when-to-use-iod]]
 == 何時使用IOD
 
 如果連結支援IOD、則最好使用IOD。下列組態支援IOD：
@@ -71,6 +72,7 @@ FCVI指定VSAN的原則：
 
 
 
+[[when-to-use-ood]]
 == 何時使用ood
 
 * 您可以針對不支援IOD的所有組態使用「ood」。
@@ -79,6 +81,7 @@ FCVI指定VSAN的原則：
 
 
 
+[[using-encryption-devices]]
 == 使用加密裝置
 
 在ISL上使用專屬加密裝置或MetroCluster 在支援功能組態的WDM裝置上加密時、您必須符合下列要求：

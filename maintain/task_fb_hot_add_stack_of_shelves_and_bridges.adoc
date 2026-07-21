@@ -25,6 +25,7 @@ summary:
 
 
 
+[[preparing-to-hot-add-a-stack-of-sas-disk-shelves-and-bridges]]
 == 準備熱新增一堆SAS磁碟櫃和橋接器
 
 準備熱新增一堆SAS磁碟櫃和一對橋接器、包括下載文件、磁碟機和磁碟櫃韌體。
@@ -124,6 +125,7 @@ https://mysupport.netapp.com/site/downloads/firmware/disk-shelf-firmware["NetApp
 
 
 
+[[hot-adding-a-stack-of-sas-disk-shelves-and-bridges]]
 == 熱新增一堆SAS磁碟櫃和橋接器
 
 您可以熱新增一堆SAS磁碟櫃和橋接器、以增加橋接器的容量。

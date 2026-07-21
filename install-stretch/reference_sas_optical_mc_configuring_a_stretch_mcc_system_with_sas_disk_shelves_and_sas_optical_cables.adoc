@@ -15,6 +15,7 @@ summary: 儲存控制器必須以纜線連接至儲存媒體和彼此。儲存�
 
 
 
+[[before-you-begin-any-procedure-in-this-document]]
 == 在您開始執行本文件中的任何程序之前
 
 完成此工作之前、必須滿足下列整體需求：
@@ -31,6 +32,7 @@ https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"]
 
 
 
+[[about-this-task]]
 == 關於這項工作
 
 * 術語節點和控制器可互換使用。

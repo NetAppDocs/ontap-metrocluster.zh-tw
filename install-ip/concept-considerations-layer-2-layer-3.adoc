@@ -25,6 +25,7 @@ summary: 視您的需求而定、您可以使用共享的第 2 層或第 3 層�
 ====
 
 
+[[isl-requirements-for-layer-2-and-layer-3-networks]]
 == ISL 對第 2 層和第 3 層網路的需求
 
 以下內容適用於第 2 層和第 3 層網路：
@@ -56,6 +57,7 @@ summary: 視您的需求而定、您可以使用共享的第 2 層或第 3 層�
 
 
 
+[[considerations-for-layer-2-networks]]
 == 第 2 層網路的考量
 
 MetroCluster 後端交換器已連線至客戶網路。
@@ -97,6 +99,7 @@ NOTE: 以上列出的系統可能使用 VLAN 100 及以下的 VLAN 進行設定�
 
 
 
+[[considerations-for-layer-3-networks]]
 == 第 3 層網路的考量
 
 後端交換器可直接連線至路由IP網路、或直接連線至路由器（如下列簡化範例所示）、或透過其他介入式交換器連線。MetroCluster
@@ -132,6 +135,7 @@ image::../media/mcc_layer3_backend.png[MetroCluster第 3 層後端網路配置]
 
 
 
+[[required-settings-for-intermediate-switches]]
 == 中間交換器的必要設定
 
 當 MetroCluster 流量通過中繼網路中的 ISL 時、您應該確認中繼交換器的組態是否能確保 MetroCluster 流量（ RDMA 和儲存設備）符合 MetroCluster 站台之間整個路徑中所需的服務層級。

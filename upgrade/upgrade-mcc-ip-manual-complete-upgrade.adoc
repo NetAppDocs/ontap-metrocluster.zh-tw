@@ -15,6 +15,7 @@ summary: 升級控制器模組之後，請執行必要的工作以完成控制�
 
 
 
+[[check-the-health-of-the-metrocluster-configuration]]
 == 檢查MetroCluster 資訊系統的健全狀況
 
 升級控制器模組之後、您必須確認MetroCluster 該組態的健全狀況。
@@ -57,6 +58,7 @@ summary: 升級控制器模組之後，請執行必要的工作以完成控制�
 
 
 
+[[upgrade-the-nodes-on-clustera]]
 == 升級叢集 A 上的節點
 
 您必須重複升級工作，才能在站台 A 的叢集 A 上升級節點
@@ -70,6 +72,7 @@ summary: 升級控制器模組之後，請執行必要的工作以完成控制�
 
 
 
+[[re-add-the-internal-drives-to-the-new-controller]]
 == 將內部驅動器重新新增至新控制器
 
 如果您從僅具有外部磁碟機的系統升級至具有外部和內部磁碟機（磁碟和控制器位於同一機殼中）的系統，則可以新增或重新安裝從新系統的內部插槽移除或取消安裝的磁碟。您可以在兩個站點的升級完成且叢集處於正常狀態後隨時執行此操作。
@@ -81,6 +84,7 @@ NOTE: 此任務僅適用於某些升級組合。如需詳細資訊、請參閱 l
 
 
 
+[[restore-tiebreaker-or-mediator-monitoring]]
 == 還原斷路器或中保監控
 
 完成MetroCluster 升級版的ESIE組態之後、您可以使用斷路器或調解器公用程式繼續監控。
@@ -116,6 +120,7 @@ link:../install-ip/concept_mediator_requirements.html["透過 MetroCluster IP �
 
 
 
+[[send-a-custom-autosupport-message-after-maintenance]]
 == 維護後傳送自訂AutoSupport 的資訊
 
 完成升級之後、您應該傳送AutoSupport 一個不完整的訊息、指出維護已結束、以便繼續自動建立個案。
@@ -131,6 +136,7 @@ link:../install-ip/concept_mediator_requirements.html["透過 MetroCluster IP �
 
 
 
+[[configure-end-to-end-encryption]]
 == 設定端點對端點加密
 
 如果您的系統支援此功能、您可以在 MetroCluster IP 站台之間加密後端流量、例如 NVlog 和儲存複寫資料。請參閱 link:../maintain/task-configure-encryption.html["設定端點對端點加密"] 以取得更多資訊。

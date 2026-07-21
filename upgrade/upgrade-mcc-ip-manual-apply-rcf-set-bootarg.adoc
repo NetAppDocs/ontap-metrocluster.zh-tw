@@ -15,6 +15,7 @@ summary: 更新新平台的交換器 RCF 檔案，並在控制器模組上設定
 
 
 
+[[update-the-switch-rcfs-to-accommodate-the-new-platforms]]
 == 更新交換器 RCFs 以容納新平台
 
 您必須將交換器更新為支援新平台機型的組態。
@@ -49,6 +50,7 @@ summary: 更新新平台的交換器 RCF 檔案，並在控制器模組上設定
 
 
 
+[[set-the-metrocluster-ip-bootarg-variables]]
 == 設定MetroCluster 靜態IP bootarg變數
 
 您必須在新的控制器模組上設定某些 MetroCluster IP 開機參數值。bootarg 值必須與舊控制器模組上設定的值相符。

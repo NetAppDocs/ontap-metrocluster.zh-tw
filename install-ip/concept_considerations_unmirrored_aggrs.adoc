@@ -15,12 +15,14 @@ summary: 如果您的組態包含無鏡射的Aggregate、則必須注意切換�
 
 
 
+[[unmirrored-aggregates-and-hierarchical-namespaces]]
 == 非鏡像聚合和分層命名空間
 
 如果您使用階層式命名空間、則應設定交會路徑、使該路徑中的所有磁碟區僅位於鏡射Aggregate上、或僅位於無鏡射Aggregate上。在交會路徑中設定混合使用無鏡射與鏡射的集合體、可能會導致在切換作業之後無法存取無鏡射的集合體。
 
 
 
+[[unmirrored-aggregates-and-maintenance-that-requires-power-shutdown]]
 == 非鏡像聚合和需要關閉電源的維護
 
 如果您執行協商切換以進行維護，而該維護需要關閉整個站點的電源，則應先手動將災難站點擁有的任何未鏡像的聚合脫機。
@@ -29,24 +31,28 @@ summary: 如果您的組態包含無鏡射的Aggregate、則必須注意切換�
 
 
 
+[[unmirrored-aggregates-crs-metadata-volumes-and-data-svm-root-volumes]]
 == 未鏡像聚合、CRS 元資料磁碟區和資料 SVM 根卷
 
 組態複寫服務（CRS）中繼資料磁碟區和資料SVM根磁碟區必須位於鏡射Aggregate上。您無法將這些磁碟區移至無鏡射的Aggregate。如果它們位於非鏡像聚合上，則協商切換和切回操作將被否決，並且 `metrocluster check`命令返回警告。
 
 
 
+[[unmirrored-aggregates-and-svms]]
 == 未鏡像聚合和 SVM
 
 您應該僅在鏡像聚合或未鏡像聚合上配置 SVM。在未鏡像聚合和鏡像聚合上混合配置 SVM 可能會導致切換操作超過 120 秒。如果未鏡像聚合無法聯機，則可能會導致資料中斷。
 
 
 
+[[unmirrored-aggregates-and-san]]
 == 非鏡像聚合和 SAN
 
 在ONTAP 9.9.1 之前，LUN 不應位於未鏡像的聚合上。在未鏡射的集合體上設定LUN、可能會導致切換作業超過120秒、並導致資料中斷。
 
 
 
+[[add-storage-shelves-for-unmirrored-aggregates]]
 == 為未鏡像的聚合添加儲存架
 
 如果您新增磁碟架並希望將其用於MetroCluster IP 配置中的未鏡像聚合，則必須執行下列操作：

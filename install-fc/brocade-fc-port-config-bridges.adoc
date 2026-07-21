@@ -18,10 +18,12 @@ NOTE: Brocade 7810 交換器僅支援一個 DR 組。
 
 
 
+[[shelf-configurations-using-fibrebridge-7500n-or-7600n-bridges-using-both-fc-ports-fc1-and-fc2]]
 == 使用 FibreBridge 7500N 或 7600N 橋接器的機架配置，同時使用兩個 FC 連接埠（FC1 和 FC2）
 
 
 
+[[metrocluster-1-or-dr-group-1]]
 === MetroCluster 1 或 DR 群組 1
 
 下表顯示了使用Brocade交換器上的兩個 FC 連接埠（FC1 和 FC2）的 FibreBridge 7500N 或 7600N 橋接器在MetroCluster 1 或 DR 組 1 中支援的磁碟架配置。使用此配置表時，您應該注意以下事項：
@@ -219,6 +221,7 @@ FC2
 |===
 
 
+[[metrocluster-2-or-dr-group-2]]
 === MetroCluster 2 或 DR 群組 2
 
 下表顯示了使用Brocade交換器上的兩個 FC 連接埠（FC1 和 FC2）的 FibreBridge 7500N 或 7600N 橋接器在MetroCluster 2 或 DR 組 2 中支援的磁碟架配置。使用此配置表時，您應該注意以下事項：
@@ -416,6 +419,7 @@ FC2
 |===
 
 
+[[metrocluster-3-or-dr-group-3]]
 === MetroCluster 3 或 DR 組 3
 
 下表顯示了使用Brocade交換器上的兩個 FC 連接埠（FC1 和 FC2）的 FibreBridge 7500N 或 7600N 橋接器在MetroCluster 3 或 DR 組 3 中支援的磁碟架配置。使用此配置表時，您應該注意以下事項：
@@ -530,6 +534,7 @@ FC2
 |===
 
 
+[[metrocluster-4-or-dr-group-4]]
 === MetroCluster 4 或 DR 組 4
 
 下表顯示了使用Brocade交換器上的兩個 FC 連接埠（FC1 和 FC2）的 FibreBridge 7500N 或 7600N 橋接器在MetroCluster 4 或 DR 組 4 中支援的磁碟架配置。使用此配置表時，您應該注意以下事項：
@@ -644,10 +649,12 @@ FC2
 |===
 
 
+[[shelf-configurations-using-fibrebridge-7500n-or-7600n-using-one-fc-port-fc1-or-fc2-only]]
 == 使用 FiberBridge 7500N 或 7600N 的機櫃組態，僅限使用一個 FC 連接埠（ FC1 或 FC2 ）
 
 
 
+[[metrocluster-1-or-dr-group-1]]
 === MetroCluster 1 或 DR 群組 1
 
 下表顯示了使用 FibreBridge 7500N 或 7600N 以及Brocade交換器上僅一個 FC 連接埠（FC1 或 FC2）的MetroCluster 1 或 DR 組 1 中支援的磁碟架配置。使用此配置表時，您應該注意以下事項：
@@ -840,6 +847,7 @@ bride_x_4b.
 |===
 
 
+[[metrocluster-2-or-dr-group-2]]
 === MetroCluster 2 或 DR 群組 2
 
 下表顯示了使用Brocade交換器上的一個 FC 連接埠（FC1 或 FC2）的 FibreBridge 7500N 或 7600N 橋接器在MetroCluster 2 或 DR 組 2 中支援的磁碟架配置。使用此配置表時，您應該注意以下事項：
@@ -1032,6 +1040,7 @@ bride_x_4b.
 |===
 
 
+[[metrocluster-3-or-dr-group-3]]
 === MetroCluster 3 或 DR 組 3
 
 下表顯示了使用Brocade交換器上的一個 FC 連接埠（FC1 或 FC2）的 FibreBridge 7500N 或 7600N 橋接器在MetroCluster 3 或 DR 組 3 中支援的磁碟架配置。使用此配置表時，您應該注意以下事項：
@@ -1142,6 +1151,7 @@ bride_x_4b.
 |===
 
 
+[[metrocluster-4-or-dr-group-4]]
 === MetroCluster 4 或 DR 組 4
 
 下表顯示了使用Brocade交換器上的一個 FC 連接埠（FC1 或 FC2）的 FibreBridge 7500N 或 7600N 橋接器在MetroCluster 4 或 DR 組 4 中支援的磁碟架配置。使用此配置表時，您應該注意以下事項：

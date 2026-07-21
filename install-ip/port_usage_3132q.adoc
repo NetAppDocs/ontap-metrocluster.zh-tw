@@ -20,6 +20,7 @@ summary: 連接埠在MetroCluster 一個靜態IP組態中的使用取決於交�
 
 
 
+[[choose-the-correct-cabling-table-for-your-configuration]]
 == 請為您的組態選擇正確的纜線配置表
 
 請使用下表來判斷您應遵循的纜線表。
@@ -39,16 +40,19 @@ FAS2750 、 AFF A220
 
 | AFF A800 、 ASA A800 | <<table_3_cisco_3132q,Cisco 3132Q-V 平台連接埠指派（群組 3 ）>> 
 |===
+[[table_1_cisco_3132q]]
 .Cisco 3132Q-V 平台連接埠指派（群組 1 ）
 檢閱平台連接埠指派、將 FAS2750 或 AFF A220 系統連接至 Cisco 3132Q-V 交換器：
 
 image::../media/mcc-ip-cabling-a-fas2750-or-a220-to-a-cisco-3132q-v-switch.png[顯示 Cisco 3132Q-V 平台連接埠指派]
 
+[[table_2_cisco_3132q]]
 .Cisco 3132Q-V 平台連接埠指派（群組 2 ）
 檢閱平台連接埠指派、將 FAS9000 或 AFF A700 系統連接至 Cisco 3132Q-V 交換器：
 
 image::../media/mcc-ip-cabling-a-fas9000-or-aff-a700-to-a-cisco-3132q-v-switch.png[顯示 Cisco 3132Q-V 平台連接埠指派]
 
+[[table_3_cisco_3132q]]
 .Cisco 3132Q-V 平台連接埠指派（群組 3 ）
 檢閱平台連接埠指派、將 AFF A800 或 ASA A800 系統連接至 Cisco 3132Q-V 交換器：
 

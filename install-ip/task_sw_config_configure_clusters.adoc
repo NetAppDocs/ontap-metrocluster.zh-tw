@@ -18,6 +18,7 @@ summary: 您必須對等處理叢集、鏡射根Aggregate、建立鏡射資料Ag
 
 
 
+[[disabling-automatic-drive-assignment-if-doing-manual-assignment-in-ontap-9-4]]
 == 停用自動磁碟機指派（如果在ONTAP 功能更新9.4中進行手動指派）
 
 在支援率9.4的情況ONTAP 下、如果MetroCluster 您的支援率IP組態每個站台的外部儲存磁碟櫃少於四個、您就必須停用所有節點上的自動磁碟指派功能、並手動指派磁碟機。
@@ -39,6 +40,7 @@ link:concept_considerations_drive_assignment.html["自動指派磁碟機和ONTAP
 
 
 
+[[verifying-drive-assignment-of-pool-0-drives]]
 == 驗證集區0磁碟機的磁碟機指派
 
 您必須確認遠端磁碟機對節點可見且已正確指派。
@@ -153,6 +155,7 @@ cluster_B::>
 
 
 
+[[peering-the-clusters]]
 == 對等連接叢集
 
 在不支援的組態中、叢集MetroCluster 必須處於對等關係中、以便彼此通訊、並執行MetroCluster 對恢復災難至關重要的資料鏡射。
@@ -166,12 +169,14 @@ link:concept_considerations_peering.html#considerations-when-sharing-data-ports[
 
 
 
+[[configuring-intercluster-lifs-for-cluster-peering]]
 == 設定叢集間生命體以進行叢集對等
 
 您必須在MetroCluster 連接埠上建立叢集間的LIF、以便在各個連接埠之間進行通訊。您可以使用也有資料流量的專用連接埠或連接埠。
 
 
 
+[[configuring-intercluster-lifs-on-dedicated-ports]]
 === 在專用連接埠上設定叢集間LIF
 
 您可以在專用連接埠上設定叢集間的LIF。這樣做通常會增加複寫流量的可用頻寬。
@@ -386,6 +391,7 @@ link:concept_considerations_peering.html#considerations-when-using-dedicated-por
 
 
 
+[[configuring-intercluster-lifs-on-shared-data-ports]]
 === 在共享的資料連接埠上設定叢集間LIF
 
 您可以在與資料網路共用的連接埠上設定叢集間的LIF。如此可減少叢集間網路所需的連接埠數量。
@@ -527,6 +533,7 @@ link:concept_considerations_peering.html#considerations-when-sharing-data-ports[
 
 
 
+[[creating-a-cluster-peer-relationship]]
 == 建立叢集對等關係
 
 您可以使用叢集對等項create命令、在本機與遠端叢集之間建立對等關係。建立對等關係之後、您可以在遠端叢集上執行叢集對等建立、將其驗證至本機叢集。
@@ -650,6 +657,7 @@ cluster01-02
 
 
 
+[[creating-the-dr-group]]
 == 建立DR群組
 
 您必須在叢集之間建立災難恢復（DR）群組關係。
@@ -718,6 +726,7 @@ Cluster_A::> metrocluster configuration-settings dr-group create -partner-cluste
 
 
 
+[[configuring-and-connecting-the-metrocluster-ip-interfaces]]
 == 設定及連線MetroCluster 功能
 
 您必須設定MetroCluster 用於複寫每個節點儲存和非揮發性快取的Eshow IP介面。然後、您就可以使用MetroCluster 靜態IP介面建立連線。這會建立用於儲存複寫的iSCSI連線。
@@ -1282,6 +1291,7 @@ cluster_B::>
 
 
 
+[[verifying-or-manually-performing-pool-1-drives-assignment]]
 == 驗證或手動執行Pool 1磁碟機指派
 
 視儲存組態而定、您必須驗證資源池1磁碟機指派、或針對MetroCluster 各個節點手動指派磁碟機至資源池1、以利進行支援。您使用的程序取決於ONTAP 您所使用的版本。
@@ -1321,6 +1331,7 @@ cluster_B::>
 |===
 
 
+[[verifying-disk-assignment-for-pool-1-disks]]
 === 驗證集區1磁碟的磁碟指派
 
 您必須確認遠端磁碟對節點可見且已正確指派。
@@ -1523,6 +1534,7 @@ cluster_A::>
 
 
 
+[[manually-assigning-drives-for-pool-1-ontap-9-4-or-later]]
 === 手動指派集區1的磁碟機（ONTAP 發揮作用9.4或更新版本）
 
 如果系統未在原廠預先設定、且不符合自動磁碟指派的要求、您必須手動指派遠端集區1磁碟機。
@@ -1611,6 +1623,7 @@ cluster_A::>
 
 
 
+[[manually-assigning-disks-for-pool-1-ontap-9-3]]
 === 手動指派集區1的磁碟（ONTAP 發揮作用）（發揮作用9.3）
 
 如果每個節點至少有兩個磁碟櫃、您可以使用ONTAP的自動指派功能來自動指派遠端（Pool1）磁碟。
@@ -1729,6 +1742,7 @@ cluster_A::>
 
 
 
+[[enabling-automatic-drive-assignment-in-ontap-9-4]]
 == 啟用ONTAP 在支援功能方面的自動指派磁碟機9.4
 
 .關於這項工作
@@ -1748,6 +1762,7 @@ link:concept_considerations_drive_assignment.html["自動指派磁碟機和ONTAP
 
 
 
+[[mirroring-the-root-aggregates]]
 == 鏡射根Aggregate
 
 您必須鏡射根Aggregate以提供資料保護。
@@ -1784,6 +1799,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-vsmg/home.html["邏�
 
 
 
+[[creating-a-mirrored-data-aggregate-on-each-node]]
 == 在每個節點上建立鏡射資料Aggregate
 
 您必須在DR群組中的每個節點上建立鏡射資料Aggregate。
@@ -1853,6 +1869,7 @@ cluster_A::> storage aggregate create aggr1_node_A_1 -diskcount 10 -node node_A_
 
 
 
+[[implementing-the-metrocluster-configuration]]
 == 實作MetroCluster 此功能組態
 
 您必須執行「MetroCluster flexfconfigure」命令、才能以MetroCluster 一套功能完善的功能來啟動資料保護功能。
@@ -2012,12 +2029,14 @@ Remote: cluster_A         Configuration state configured
 
 
 
+[[configuring-the-second-dr-group-in-an-eight-node-configuration]]
 == 在八節點組態中設定第二個DR群組
 
 重複先前的工作、以設定第二個DR群組中的節點。
 
 
 
+[[creating-unmirrored-data-aggregates]]
 == 建立無鏡射的資料集合體
 
 您也可以針對MetroCluster 不需要由支援的組態所提供的備援鏡像的資料、建立無鏡射的資料集合體。
@@ -2117,6 +2136,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁�
 
 
 
+[[checking-the-metrocluster-configuration]]
 == 正在檢查MetroCluster 功能組態
 
 您可以檢查MetroCluster 功能組態中的元件和關係是否正常運作。
@@ -2257,6 +2277,7 @@ link:https://docs.netapp.com/us-en/ontap/network-management/index.html["網路�
 
 
 
+[[completing-ontap-configuration]]
 == 正在完成ONTAP 功能組態設定
 
 設定、啟用及檢查MetroCluster 完整套組態後、您可以視ONTAP 需要新增額外的SVM、網路介面及其他功能、以繼續完成叢集組態。

@@ -15,6 +15,7 @@ summary: 您可以測試失敗案例、以確認MetroCluster 正確操作的版�
 
 
 
+[[verifying-negotiated-switchover]]
 == 正在驗證協調的切換
 
 您可以測試議定（計畫性）切換作業、以確認不中斷的資料可用度。
@@ -112,6 +113,7 @@ cluster_A::> metrocluster operation show
 
 
 
+[[verifying-healing-and-manual-switchback]]
 == 驗證修復和手動切換
 
 您可以測試修復和手動切換作業、以確認資料可用度不會受到影響（SMB和Solaris FC組態除外）、方法是在協商切換後、將叢集切換回原始資料中心。
@@ -276,6 +278,7 @@ cluster_A::> metrocluster operation show
 
 
 
+[[verifying-operation-after-power-line-disruption]]
 == 驗證電源線中斷後的作業
 
 您可以測試MetroCluster 此解決方案對PDU故障的回應。
@@ -337,6 +340,7 @@ Power               Critical condition is detected in storage shelf power supply
 
 
 
+[[verifying-operation-after-loss-of-a-single-storage-shelf]]
 == 在遺失單一儲存櫃之後驗證作業
 
 您可以測試單一儲存櫃的故障、以確認沒有單點故障。

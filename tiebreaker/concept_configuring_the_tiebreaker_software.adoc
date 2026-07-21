@@ -15,6 +15,7 @@ summary: 安裝了Tiebreaker軟體之後、您可以新增或修改MetroCluster 
 
 
 
+[[launch-the-tiebreaker-software-cli]]
 == 啟動 Tiebreaker 軟體 CLI
 
 安裝Tiebreaker軟體之後、您必須啟動其CLI來設定軟體。
@@ -28,6 +29,7 @@ summary: 安裝了Tiebreaker軟體之後、您可以新增或修改MetroCluster 
 
 
 
+[[add-metrocluster-configurations]]
 == 新增MetroCluster 功能
 
 安裝完NetApp MetroCluster 斷點器軟體之後、您可以一MetroCluster 次新增更多的一套功能。
@@ -169,6 +171,8 @@ link:concept_risks_and_limitation_of_using_mcc_tiebreaker_in_active_mode.html["�
 
 
 
+[[import-certificates]]
+[[import-certificates-tb17]]
 == 進口證書
 
 若要在 Tiebreaker 1.6 或更高版本中啟用無縫監控，您需要將伺服器安全通訊端層 (SSL) 憑證、中間憑證（如果存在）和根憑證從ONTAP匯入到 Java 虛擬機器 (JVM) 中的金鑰庫。
@@ -349,6 +353,7 @@ Successfully triggered Switchover Simulation. Please check the status of the Swi
 ====
 
 
+[[commands-for-modifying-metrocluster-tiebreaker-configurations]]
 == 修改MetroCluster 斷點器組態的命令
 
 您可以在MetroCluster 需要變更設定時修改此功能的組態。
@@ -448,6 +453,7 @@ update-mcctb-password
 |===
 
 
+[[remove-metrocluster-configurations]]
 == 移除MetroCluster 不完整的組態
 
 當MetroCluster 您不想再監控MetroCluster 某個非重複組態時、可以移除正在由斷路器軟體監控的非重複組態。

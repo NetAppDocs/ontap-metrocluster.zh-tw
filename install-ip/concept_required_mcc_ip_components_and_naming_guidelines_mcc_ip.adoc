@@ -15,6 +15,7 @@ summary: 規劃MetroCluster 您的靜態IP組態時、您必須瞭解所需及�
 
 
 
+[[supported-software-and-hardware]]
 == 支援的軟體與硬體
 
 硬體與軟體必須支援MetroCluster 才能進行支援。
@@ -25,12 +26,14 @@ https://hwu.netapp.com["NetApp Hardware Universe"]
 
 
 
+[[hardware-redundancy-requirements-in-a-metrocluster-ip-configuration]]
 == 硬體備援需求MetroCluster
 
 由於採用了EIP組態的硬體備援、MetroCluster 因此每個站台都有兩個元件。站台會任意指派字母A和B、而個別元件則會任意指派數字1和2。
 
 
 
+[[ontap-cluster-requirements-in-a-metrocluster-ip-configuration]]
 == 以整合到一個靜態IP組態中的叢集需求ONTAP MetroCluster
 
 不需要使用任何一個站台的兩組等位叢集、就能完成各種不同的知識。MetroCluster ONTAP MetroCluster
@@ -45,6 +48,7 @@ https://hwu.netapp.com["NetApp Hardware Universe"]
 
 
 
+[[ip-switch-requirements-in-a-metrocluster-ip-configuration]]
 == IP交換器需求MetroCluster
 
 不需使用四台IP交換器、即可完成IP組態設定。MetroCluster這四個交換器組成兩個交換器儲存架構、可在MetroCluster 整個叢集之間提供ISL、以利實現支援。
@@ -71,6 +75,7 @@ IP交換器也能在每個叢集中的控制器模組之間提供叢集內通訊
 
 
 
+[[controller-module-requirements-in-a-metrocluster-ip-configuration]]
 == 控制器模組需求、以MetroCluster 透過一套靜態IP組態
 
 不需使用四或八個控制器模組、即可完成IP組態。MetroCluster
@@ -89,6 +94,7 @@ IP交換器也能在每個叢集中的控制器模組之間提供叢集內通訊
 
 
 
+[[example-names]]
 === 範例名稱
 
 文件中使用下列範例名稱：
@@ -109,6 +115,7 @@ IP交換器也能在每個叢集中的控制器模組之間提供叢集內通訊
 
 
 
+[[gigabit-ethernet-adapter-requirements-in-a-metrocluster-ip-configuration]]
 == Gigabit乙太網路介面卡需求、以MetroCluster 實現一套靜態IP組態
 
 透過40/100 Gbps或10/25 Gbps的乙太網路介面卡、即可將IP介面連接至用於此功能的IP交換器。MetroCluster MetroCluster
@@ -274,6 +281,7 @@ link:concept_considerations_drive_assignment.html["瞭解 MetroCluster IP 組態
 
 
 
+[[pool-and-drive-requirements-minimum-supported]]
 == 集區與磁碟機需求（支援的最低需求）
 
 四節點MetroCluster 的不靜態IP組態要求每個站台的最低組態設定：
@@ -305,6 +313,7 @@ NOTE: 從 ONTAP 9.4 開始、 MetroCluster IP 組態支援使用自動磁碟指�
 
 
 
+[[drive-location-considerations-for-partially-populated-shelves]]
 == 磁碟機位置考量部分佔用的磁碟櫃
 
 若要在使用半滿的磁碟櫃時正確自動指派磁碟機（24個磁碟機櫃中有12個磁碟機）、磁碟機應位於插槽0-5和18-23中。
@@ -313,6 +322,7 @@ NOTE: 從 ONTAP 9.4 開始、 MetroCluster IP 組態支援使用自動磁碟指�
 
 
 
+[[drive-location-considerations-for-aff-a800-internal-drives]]
 == 磁碟機位置考量AFF 因素、適用於內部磁碟機
 
 為了正確實作ADP功能、AFF 必須將系統磁碟插槽分成四個區、而且磁碟必須對稱地放置在四區。

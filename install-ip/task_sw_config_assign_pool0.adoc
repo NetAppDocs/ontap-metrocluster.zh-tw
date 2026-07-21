@@ -15,6 +15,7 @@ summary: 如果您沒有從原廠收到預先設定的系統、您可能必須�
 
 
 
+[[manually-assigning-drives-for-pool-0-ontap-9-4-and-later]]
 == 手動指派集區0的磁碟機（ONTAP 適用於更新版本的更新版本）
 
 如果系統尚未在原廠預先設定、且不符合自動磁碟指派的要求、您必須手動指派Pool 0磁碟機。
@@ -118,6 +119,7 @@ Boot_ONTAP功能表
 
 
 
+[[manually-assigning-drives-for-pool-0-ontap-9-3]]
 == 手動指派集區0的磁碟機（ONTAP 發揮作用9.3）
 
 如果每個節點至少有兩個磁碟櫃、您可以使用ONTAP的自動指派功能來自動指派本機（Pool 0）磁碟。

@@ -19,6 +19,7 @@ summary: 修改 MetroCluster FC 後端交換器或 Atto 橋接器的 IP 位址�
 
 
 
+[[modify-a-switch-ip-address]]
 == 修改交換器 IP 位址
 
 更換 MetroCluster FC 後端交換器的舊健全狀況監控 IP 位址。
@@ -54,6 +55,7 @@ summary: 修改 MetroCluster FC 後端交換器或 Atto 橋接器的 IP 位址�
 
 
 
+[[modify-an-atto-bridge-ip-address]]
 == 修改 Atto 橋接 IP 位址
 
 更換 Atto 橋接器的舊健全狀況監控 IP 位址。

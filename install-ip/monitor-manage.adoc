@@ -13,6 +13,7 @@ summary: 在大多數情況下， ONTAP 會自動探索乙太網路交換器，�
 
 
 
+[[create-a-switch-entry-so-that-ontap-can-monitor-it]]
 == 建立交換器項目，讓 ONTAP 能夠監控
 
 .關於這項工作
@@ -26,6 +27,7 @@ system switch ethernet create -device DeviceName -address 1.2.3.4 -snmp-version 
 
 
 
+[[disable-monitoring-without-deleting-the-switch]]
 == 停用監控，但不刪除交換器
 
 如果您想要暫停或停止監控某個交換器，但仍保留它以供未來監控，請修改其 `is-monitoring-enabled-admim`參數而非刪除它。
@@ -40,6 +42,7 @@ system switch ethernet modify -device DeviceName -is-monitoring-enabled-admin fa
 
 
 
+[[remove-a-switch-you-no-longer-need]]
 == 移除不再需要的交換器
 
 用於 `system switch ethernet delete`刪除已中斷連線或不再需要的交換器：

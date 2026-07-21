@@ -15,6 +15,7 @@ summary: 如果您需要更換磁碟機或機櫃模組、首先需要識別位�
 
 
 
+[[identification-of-local-and-remote-shelves]]
 == 識別本機和遠端機櫃
 
 當您從MetroCluster 一個資訊站點檢視機櫃資訊時、所有的遠端磁碟機都在0公尺（虛擬iSCSI主機介面卡）上。這表示磁碟機可透過MetroCluster 「知識區」IP介面存取。所有其他磁碟機均為本機磁碟機。
@@ -32,6 +33,7 @@ https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-ds-sas3-service/home.ht
 
 
 
+[[example-of-sysconfig-a-output]]
 == sysconfig -A輸出的範例
 
 下列範例使用「show -a」命令、顯示MetroCluster 節點上的裝置、以供採用該IP組態。此節點已連接下列磁碟櫃和裝置：

@@ -15,6 +15,7 @@ summary: Tiebreaker軟體提供叢集式儲存環境的監控功能。當節點�
 
 
 
+[[enhancements]]
 == 增強功能
 
 [cols="25,75"]
@@ -70,6 +71,7 @@ summary: Tiebreaker軟體提供叢集式儲存環境的監控功能。當節點�
 |===
 
 
+[[os-support-matrix]]
 == 作業系統支援對照表
 
 下表指出每個版本的 Tiebreaker 所支援的作業系統。

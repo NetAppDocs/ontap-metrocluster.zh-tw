@@ -41,6 +41,8 @@ Red Hat Enterprise Linux 8
 
 
 
+[[install-jdk]]
+[[install-java-1-8]]
 == 安裝 JDK
 
 在安裝或升級 tiebreaker 軟體之前、您必須在主機系統上安裝 JDK 。Tiebreaker 1.4 及更早版本支援 JDK 1.8.0 。（JRE 8）。
@@ -90,6 +92,8 @@ Complete!
 
 
 
+[[install-mysql-server-5-5-30-or-later-and-5-6-x-versions-on-red-hat-enterprise-linux-7-or-centos-7]]
+[[install-mysql-redhat]]
 == 在 Red Hat Enterprise Linux 7 或 CentOS 7 上安裝 MySQL Server 5.5.30 或更新版本和 5.6.x 版本
 
 安裝或升級Tiebreaker軟體之前、您必須先在主機系統上安裝MySQL Server 5.5.30或更新版本及5.6.x版本。  對於 Red Hat Enterprise Linux 8 、 <<install-mariadb,安裝 MariaDB 伺服器>>。
@@ -389,6 +393,7 @@ mysql>
 
 
 
+[[enable-the-mysql-autostart-setting]]
 === 啟用 MySQL 自動啟動設定
 
 您應該確認MySQL精靈的自動啟動功能已開啟。開啟MySQL精靈會在MetroCluster 系統重新開機時、自動重新啟動MySQL。如果MySQL精靈未執行、則tiebreaker軟體會繼續執行、但無法重新啟動、也無法進行組態變更。
@@ -413,6 +418,8 @@ mysqld.service     enabled
 
 
 
+[[install-mariadb-server-on-red-hat-enterprise-linux-8]]
+[[install-mariadb]]
 == 在 Red Hat Enterprise Linux 8 上安裝 MariaDB 伺服器
 
 您必須先在主機系統上安裝MariaDB伺服器、才能安裝或升級tiebreaker軟體。  對於 Red Hat Enterprise Linux 7 或 CentOS 7 、 <<install-mysql-redhat,安裝 MySQL Server>>。
@@ -583,6 +590,7 @@ Thanks for using MariaDB!
 
 
 
+[[enable-the-autostart-setting-for-the-mariadb-server]]
 === 啟用 MariaDB 伺服器的自動啟動設定
 
 您應該確認 MariaDB 伺服器的自動啟動功能已開啟。如果您未啟用自動啟動功能、MetroCluster 且駐留的系統必須重新開機、則tiebreaker軟體會繼續執行、但無法重新啟動MariaDB服務、也無法進行組態變更。

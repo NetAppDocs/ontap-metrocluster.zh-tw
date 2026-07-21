@@ -15,6 +15,7 @@ summary: 本節包含在所有 MetroCluster IP 組態和網路拓撲上傳輸 Me
 
 
 
+[[metrocluster-isl-requirements]]
 == MetroCluster ISL 要求
 
 這些要求適用於所有 MetroCluster IP 配置上的 ISL：
@@ -39,6 +40,7 @@ CAUTION: 在目前不符合 100Gbps ISL 要求的平台上升級至 ONTAP 9.18.1
 
 
 
+[[latency-and-packet-loss-limits-in-the-isls]]
 === ISL的延遲和封包遺失限制
 
 以下內容適用於站台 _A 和站台 _B 的 MetroCluster IP 交換器之間的往返流量、 MetroCluster 組態處於穩定狀態作業：
@@ -53,6 +55,7 @@ CAUTION: 在目前不符合 100Gbps ISL 要求的平台上升級至 ONTAP 9.18.1
 
 
 
+[[transceiver-and-cable-considerations]]
 == 收發器和纜線考量事項
 
 任何由設備廠商支援的SFP或QSFP、都可支援MetroCluster 支援支援功能。交換器與交換器韌體必須支援 NetApp 或設備廠商所提供的 SFP 和 QSFP 。
@@ -66,6 +69,7 @@ NOTE: 如果您設定 RCF 、請確認您選擇了正確的速度模式、或使
 
 
 
+[[using-xwdm-tdm-and-external-encryption-devices]]
 == 使用 xWDM 、 TDM 和外部加密裝置
 
 當您在 MetroCluster IP 組態中使用 xWDM/TDM 裝置或提供加密的裝置時、您的環境必須符合下列需求：
@@ -76,6 +80,7 @@ NOTE: 如果您設定 RCF 、請確認您選擇了正確的速度模式、或使
 
 
 
+[[supported-number-of-isls-and-breakout-cables]]
 == 支援的 ISL 和中斷連接線數量
 
 下表顯示可在 MetroCluster IP 交換器上使用參考組態檔案（ RCF ）組態設定的支援最大 ISL 數。

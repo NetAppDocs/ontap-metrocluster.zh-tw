@@ -15,6 +15,7 @@ summary: 您必須確保IP交換器受到支援。如果現有的交換器模式
 
 
 
+[[supported-switches]]
 == 支援的交換器
 
 您必須使用NetApp提供的交換器。

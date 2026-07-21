@@ -15,6 +15,7 @@ summary: 您必須設定NVIDIA IP交換器作為叢集互連和後端MetroCluste
 
 
 
+[[reset-the-switch-reset-the-nvidia-ip-sn2100-switch-to-factory-defaults]]
 == [Reset-the switch]將NVIDIA IP SN2100交換器重設為原廠預設值
 
 您可以選擇下列方法、將交換器重設為原廠預設值。
@@ -25,6 +26,7 @@ summary: 您必須設定NVIDIA IP交換器作為叢集互連和後端MetroCluste
 
 
 
+[[rcf-file-optionreset-the-switch-using-the-rcf-file-option]]
 === [[RCF-file-option]]使用RCF檔案選項重設交換器
 
 在安裝新的RCF組態之前、您必須還原NVIDIA交換器設定。
@@ -112,6 +114,7 @@ Enter yes or no: yes
 
 
 
+[[cumulus-install-option-download-and-install-the-cumulus-software]]
 === [[Cumuler-install-option]] 下載並安裝 Cumulus 軟體
 
 .關於這項工作
@@ -297,6 +300,7 @@ cumulus@cumulus:~$ sudo reboot
 
 
 
+[[download-and-installdownload-and-install-the-nvidia-rcf-files]]
 == [[Download-and -install]]下載並安裝NVIDIA RCF檔案
 
 您必須在 MetroCluster IP 組態中產生交換器 RCF 檔案、並將其安裝至每台交換器。
@@ -406,6 +410,7 @@ NOTE: 當您為多個交換器連接埠設定 DAC 選項時、只需要重新啟
 
 
 
+[[set-forward-error-correction-for-systems-using-25-gbps-connectivity]]
 == 為使用 25-Gbps 連線的系統設定轉送錯誤修正
 
 如果您的系統是使用 25-Gbps 的連線設定，請在套用 RCF 之後，手動將轉送錯誤修正（ FEC ）參數設定為關閉。RCF 不套用此設定。
@@ -426,6 +431,7 @@ NOTE: 當您為多個交換器連接埠設定 DAC 選項時、只需要重新啟
 
 
 
+[[set-the-switch-port-speed-for-the-metrocluster-ip-interfaces]]
 == 設定 MetroCluster IP 介面的交換器連接埠速度
 
 .關於這項工作
@@ -475,6 +481,7 @@ cumulus@Switch-A-1:mgmt:~$
 
 
 
+[[disable-unused-isl-ports-and-port-channels]]
 == 停用未使用的 ISL 連接埠和連接埠通道
 
 NetApp 建議停用未使用的 ISL 連接埠和連接埠通道、以避免不必要的健全狀況警示。您必須個別停用每個連接埠或連接埠通道，您無法在命令中指定多個連接埠或連接埠範圍。

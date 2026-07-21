@@ -15,6 +15,7 @@ summary: 您可以深入瞭MetroCluster 解有關功能的組態設定與操作�
 
 
 
+[[metrocluster-and-miscellaneous-information]]
 == 包含各種資訊MetroCluster
 
 |===
@@ -32,7 +33,7 @@ link:../index.html["資訊文件MetroCluster"]
 
 
  a| 
-https://www.netapp.com/pdf.html?item=/media/13482-tr4375pdf.pdf["NetApp技術報告4375：NetApp MetroCluster 的《ONTAP 關於NetApp的資訊》9.3"^]
+https://www.netapp.com/pdf.html?item=/media/13482-tr4375.pdf["NetApp技術報告4375：NetApp MetroCluster 的《ONTAP 關於NetApp的資訊》9.3"^]
  a| 
 * 關於整套組態和操作的技術總覽MetroCluster 。
 * 最佳實務做法MetroCluster ：

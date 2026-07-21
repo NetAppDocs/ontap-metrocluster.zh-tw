@@ -15,6 +15,7 @@ summary: 您可以在MetroCluster 升級合作夥伴叢集上的控制器模組�
 
 
 
+[[supported-platform-combinations]]
 == 支援的平台組合
 
 您可以使用MetroCluster 切換和切換功能、以支援功能支援的功能來升級特定平台。
@@ -25,6 +26,7 @@ summary: 您可以在MetroCluster 升級合作夥伴叢集上的控制器模組�
 
 
 
+[[about-this-task]]
 == 關於這項工作
 
 * 您只能將此程序用於控制器升級。
@@ -99,6 +101,7 @@ NOTE: 如果原始或新平台是使用連接埠1c和1d的FAS8020或AFF8020系�
 
 
 
+[[enable-console-logging]]
 == 啟用主控台記錄
 
 NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在執行此程序時採取下列動作：
@@ -113,12 +116,14 @@ NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在�
 
 
 
+[[prepare-for-the-upgrade]]
 == 準備升級
 
 在對現有MetroCluster 的版本進行任何變更之前、您必須檢查組態的健全狀況、準備新平台、以及執行其他雜項工作。
 
 
 
+[[verify-the-health-of-the-metrocluster-configuration]]
 === 驗MetroCluster 證整個過程的效能狀況
 
 在執行升級之前，您需要驗證 MetroCluster 配置的運作狀況和連線性。
@@ -210,6 +215,7 @@ https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp
 
 
 
+[[map-ports-from-the-old-nodes-to-the-new-nodes]]
 === 將舊節點的連接埠對應至新節點
 
 您必須規劃將舊節點實體連接埠上的LIF對應至新節點上的實體連接埠。
@@ -403,6 +409,7 @@ SAN
 
 
 
+[[gather-information-before-the-upgrade]]
 === 在升級之前收集資訊
 
 在升級之前、您必須收集每個舊節點的資訊、並在必要時調整網路廣播網域、移除任何 VLAN 和介面群組、以及收集加密資訊。
@@ -582,6 +589,7 @@ cluster_B::*
 
 
 
+[[remove-the-existing-configuration-from-the-tiebreaker-or-other-monitoring-software]]
 === 從斷路器或其他監控軟體移除現有組態
 
 如果現有的組態是以MetroCluster 可啟動切換的ESITTiebreaker組態或其他協力廠商應用程式（例如ClusterLion）來監控、則MetroCluster 在轉換之前、您必須先從斷路器或其他軟體移除該組態。
@@ -599,6 +607,7 @@ link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#remove-metro
 
 
 
+[[send-a-custom-autosupport-message-prior-to-maintenance]]
 === 在維護前傳送自訂AutoSupport 的支援訊息
 
 在執行維護之前、您應發出AutoSupport 一份不知所知的訊息、通知NetApp技術支援部門正在進行維護。告知技術支援部門正在進行維護、可防止他們假設發生中斷、而開啟案例。
@@ -626,6 +635,7 @@ link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#remove-metro
 
 
 
+[[switch-over-the-metrocluster-configuration]]
 == 切換MetroCluster 整個過程
 
 您必須將組態切換為站台A、才能升級站台B上的平台。
@@ -716,6 +726,7 @@ cluster_A::> metrocluster operation show
 
 
 
+[[prepare-the-network-configuration-of-the-old-controllers]]
 == 準備舊控制器的網路組態
 
 為了確保新控制器上的網路能正常恢復、您必須將LIF移至通用連接埠、然後移除舊控制器的網路組態。
@@ -817,6 +828,7 @@ network port ifgrp remove-port -node node1 -ifgrp a1a -port e0d
 
 
 
+[[remove-the-old-platforms]]
 == 移除舊平台
 
 必須從組態中移除舊的控制器。
@@ -833,12 +845,14 @@ network port ifgrp remove-port -node node1 -ifgrp a1a -port e0d
 
 
 
+[[configure-the-new-controllers]]
 == 設定新的控制器
 
 您必須在維護模式下機架安裝控制器、執行必要的設定、然後啟動控制器、並驗證控制器上的LIF組態。
 
 
 
+[[set-up-the-new-controllers]]
 === 設定新的控制器
 
 您必須將新的控制器裝入機架並連接纜線。
@@ -869,6 +883,7 @@ https://docs.netapp.com/platstor/index.jsp["ONTAP 硬體系統文件"^]
 
 
 
+[[netboot-the-new-controllers]]
 === 以網路開機新的控制器
 
 安裝新節點之後、您需要netboot才能確保新節點執行的ONTAP 版本與原始節點相同。「netboot」一詞是指您從ONTAP 儲存在遠端伺服器上的不實映像進行開機。準備網路開機時、您必須將ONTAP 一份《支援》9開機映像複本放到系統可以存取的網路伺服器上。
@@ -941,6 +956,7 @@ NOTE: 您必須重新啟動節點才能使用新安裝的軟體。
 
 
 
+[[clear-the-configuration-on-a-controller-module]]
 === 清除控制器模組上的組態
 
 在使用全新的控制器模組MetroCluster 進行整個過程之前、您必須先清除現有的組態。
@@ -980,6 +996,7 @@ Boot_ONTAP功能表
 
 
 
+[[restore-the-hba-configuration]]
 === 還原HBA組態
 
 視控制器模組中是否有HBA卡及其組態而定、您必須針對站台的使用狀況正確設定這些卡。
@@ -1062,6 +1079,7 @@ FC
 
 
 
+[[set-the-ha-state-on-the-new-controllers-and-chassis]]
 === 在新的控制器和機箱上設定HA狀態
 
 您必須驗證控制器和機箱的HA狀態、並視需要更新狀態以符合您的系統組態。
@@ -1123,6 +1141,7 @@ MCC
 
 
 
+[[reassign-root-aggregate-disks]]
 === 重新指派根Aggregate磁碟
 
 使用先前收集的系統、將根Aggregate磁碟重新指派給新的控制器模組
@@ -1238,6 +1257,7 @@ aggr0_node_b_1-root    online      raid_dp, aggr    root, nosnap=on,
 
 
 
+[[boot-up-the-new-controllers]]
 === 開機新的控制器
 
 您必須從開機功能表重新啟動控制器、才能更新控制器Flash映像。如果已設定加密、則需要執行其他步驟。
@@ -1500,6 +1520,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
 
 
 
+[[verify-lif-configuration]]
 === 驗證LIF組態
 
 在切換回復之前、請先確認將l生命 存放在適當的節點/連接埠上。需要執行下列步驟
@@ -1535,6 +1556,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
 
 
 
+[[install-the-new-licenses]]
 === 安裝新授權
 
 在切換回復作業之前、您必須先安裝新控制器的授權。
@@ -1545,6 +1567,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
 
 
 
+[[switch-back-the-metrocluster-configuration]]
 == 切換回MetroCluster 還原組態
 
 設定好新的控制器之後、您可以切換回MetroCluster 該組態、使組態恢復正常運作。
@@ -1608,6 +1631,7 @@ Remote: cluster_A         Configuration state configured
 
 
 
+[[check-the-health-of-the-metrocluster-configuration]]
 == 檢查MetroCluster 資訊系統的健全狀況
 
 升級控制器模組之後、您必須確認MetroCluster 該組態的健全狀況。
@@ -1650,6 +1674,7 @@ Failed to validate the node and cluster components before the switchover operati
 
 
 
+[[upgrade-the-nodes-on-clustera]]
 == 升級叢集 A 上的節點
 
 您必須重複叢集A上的升級工作
@@ -1663,6 +1688,7 @@ Failed to validate the node and cluster components before the switchover operati
 
 
 
+[[send-a-custom-autosupport-message-after-maintenance]]
 == 維護後傳送自訂AutoSupport 的資訊
 
 完成升級之後、您應該傳送AutoSupport 一個不完整的訊息、指出維護已結束、以便繼續自動建立個案。
@@ -1681,6 +1707,7 @@ Failed to validate the node and cluster components before the switchover operati
 
 
 
+[[restore-tiebreaker-monitoring]]
 == 還原斷路器監控
 
 如果MetroCluster 先前已將此組態設定為由斷路器軟體進行監控、您可以還原斷路器連線。

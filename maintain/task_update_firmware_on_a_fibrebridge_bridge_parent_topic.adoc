@@ -18,6 +18,7 @@ link:enable-console-logging-before-maintenance.html["啟用主控台記錄"] 在
 
 
 
+[[updating-firmware-on-fibrebridge-7600n-or-7500n-bridges-on-configurations-running-ontap-9-4-and-later]]
 == 在執行ONTAP 版本號為9.4或更新版本的組態上、更新FIBreBridge 7600N或7500N上的韌體
 
 您可能需要更新您的FibreBridge橋接器上的韌體、以確保您擁有最新的功能或解決可能的問題。此程序應用於執行ONTAP 版本為9.4及更新版本之組態上的FIBreBridge 7600N或7500N橋接器。

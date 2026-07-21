@@ -23,6 +23,7 @@ NOTE: 安裝 Tiebreaker 1.6 或更高版本後，您需要 link:concept_configur
 
 
 
+[[install-or-upgrade-to-tiebreaker-1-6p1]]
 == 安裝或升級至 tiebreaker 1.6P1
 
 您可以安裝斷路器 1.6P1 、或從斷路器 1.6 、 1.5 或 1.4 升級至斷路器 1.6P1 。
@@ -771,6 +772,7 @@ Cleaning up / removing...
 
 
 
+[[install-or-upgrade-to-tiebreaker-1-6]]
 == 安裝或升級至 tiebreaker 1.6
 
 您可以安裝斷路器 1.6 或從 tiebreaker 1.5 或 1.4 升級至 tiebreaker 1.6 。

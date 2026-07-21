@@ -15,6 +15,7 @@ summary: 升級MetroCluster 靜態IP交換器上的韌體。
 
 
 
+[[verify-that-the-rcf-is-supported]]
 == 驗證 RCF 是否受支援
 
 當您變更 ONTAP 版本或交換器韌體版本時，應確認您擁有支援該版本的參考組態檔案（ RCF ）。如果您使用此link:https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["RcfFileGenerator"^]工具，則會針對您的組態產生正確的 RCF 。
@@ -67,6 +68,7 @@ Filename : NX3232_v1.80_Switch-A2.txt
 
 
 
+[[upgrade-the-switch-firmware]]
 == 升級交換器韌體
 
 .關於這項工作

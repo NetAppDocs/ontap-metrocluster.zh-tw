@@ -38,6 +38,7 @@ image::../media/mcc_dr_groups_8_node.gif[擴展後具有八個節點的MetroClus
 
 
 
+[[supported-platform-combinations-when-adding-a-second-dr-group]]
 == 新增第二個 DR 群組時支援的平台組合
 
 下表顯示八節點 MetroCluster FC 組態支援的平台組合。

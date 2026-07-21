@@ -60,6 +60,7 @@ summary: 您可以在MetroCluster 升級合作夥伴叢集上的控制器模組�
 
 
 
+[[enable-console-logging]]
 == 啟用主控台記錄
 
 NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在執行此程序時採取下列動作：
@@ -74,6 +75,7 @@ NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在�
 
 
 
+[[workflow-for-upgrading-controllers-in-a-metrocluster-ip-configuration]]
 == 升級MetroCluster 以供升級的控制器之用的流程、採用一套不需更新的IP組態
 
 您可以使用工作流程圖來協助規劃升級工作。
@@ -82,18 +84,22 @@ image::../media/workflow_ip_upgrade.png[MetroCluster IP 配置中升級控制器
 
 
 
+[[prepare-for-the-upgrade]]
+[[upgrade_a700_a900_ip_prepare]]
 == 準備升級
 
 在對現有MetroCluster 的版本進行任何變更之前、您必須檢查組態的健全狀況、準備新平台、以及執行其他雜項工作。
 
 
 
+[[clear-slot-7-on-the-aff-a700-or-fas9000-controller]]
 === 清除AFF VMware的插槽7或FAS9000控制器
 
 在一個不含任何功能的基礎架構上、使用位於插槽5和7的DR卡上的每個連接埠之一。MetroCluster AFF在開始升級之前、如果AFF 在插槽7中的插槽7或FAS9000中有插卡、您必須將其移至叢集所有節點的其他插槽。
 
 
 
+[[update-the-metrocluster-switch-rcf-files-before-upgrading-controllers]]
 === 在升級控制器之前、請先更新MetroCluster RCF交換器檔案
 
 執行此升級時、您必須更新MetroCluster 位於BIOS交換器上的RCF檔案。下表提供AFF 支援的VLAN範圍、以利執行不支援的FASA900/FAS9500/IP MetroCluster 組態。
@@ -142,12 +148,15 @@ image::../media/workflow_ip_upgrade.png[MetroCluster IP 配置中升級控制器
 
 
 
+[[map-ports-from-the-old-nodes-to-the-new-nodes]]
+[[upgrade_a700_a900_ip_map]]
 === 將舊節點的連接埠對應至新節點
 
 當從AFF EWSAE700升級至AFF EWSAF900或FAS9000至FAS9500時、您不會變更資料網路連接埠、FCP SAN介面卡連接埠、以及SAS和NVMe儲存連接埠。資料生命期會在升級期間和升級後持續運作。因此、您不需要將舊節點的網路連接埠對應至新節點。
 
 
 
+[[verify-metrocluster-health-before-site-upgrade]]
 === 在現場升級之前、請先驗MetroCluster 證其健全狀況
 
 在執行升級之前，您需要驗證 MetroCluster 配置的運作狀況和連線性。
@@ -223,6 +232,7 @@ https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp
 
 
 
+[[gather-information-before-the-upgrade]]
 === 在升級之前收集資訊
 
 在升級之前、您必須先收集每個節點的資訊、並視需要調整網路廣播網域、移除任何VLAN和介面群組、以及收集加密資訊。
@@ -443,6 +453,7 @@ dr-group-id cluster     node     node-systemid ha-partner-systemid dr-partner-sy
 
 
 
+[[remove-mediator-or-tiebreaker-monitoring]]
 === 移除內管或斷路器監控
 
 在升級平台之前、如果MetroCluster 使用斷路器或調解器公用程式監控了該組態、您必須先移除監控。
@@ -486,6 +497,7 @@ link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#remove-metro
 
 
 
+[[send-a-custom-autosupport-message-prior-to-maintenance]]
 === 在維護前傳送自訂AutoSupport 的支援訊息
 
 在執行維護之前、您應發出AutoSupport 一份不知所知的訊息、通知技術支援人員正在進行維護。告知技術支援部門正在進行維護、可防止他們假設發生中斷、而開啟案例。
@@ -510,6 +522,7 @@ link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#remove-metro
 
 
 
+[[switch-over-the-metrocluster-configuration]]
 == 切換MetroCluster 整個過程
 
 您必須將組態切換為站台A、才能升級站台B上的平台。
@@ -552,6 +565,7 @@ image::../media/mcc_upgrade_cluster_a_in_switchover_A900.png[MetroCluster切換�
 
 
 
+[[remove-aff-a700-or-fas9000-platform-controller-module-and-nvs]]
 == 移除AFF 不完整的平台控制器模組和NVS
 
 .關於這項工作
@@ -564,6 +578,7 @@ image::../media/mcc_upgrade_cluster_a_in_switchover_A900.png[MetroCluster切換�
 
 
 
+[[remove-the-aff-a700-or-fas9000-controller-module]]
 === 移除AFF 「功能不整」或「FAS9000」控制器模組
 
 請使用下列程序移除AFF 不適用的A700或FAS9000控制器模組
@@ -592,6 +607,7 @@ image::../media/drw_9500_remove_PCM.png[從機殼中移除控制器模組：解�
 
 
 
+[[remove-the-aff-a700-or-fas9000-nvs-module]]
 === 移除AFF 「FASA700」或「FAS9000 NVS」模組
 
 請使用下列程序移除AFF 「不適用的」A700或FAS9000 NVS模組。
@@ -623,6 +639,7 @@ image::../media/drw_a900_move-remove_NVRAM_module.png[從機殼移除NVRAM模組
 
 
 
+[[install-the-aff-a900-or-fas9500-nvs-and-controller-modules]]
 == 安裝AFF 「FASA900」或「FAS9500」的NVS和控制器模組
 
 您必須在AFF 站台B的兩個節點上、安裝升級套件中所附的支援功能不支援的FASA900或FAS9500軟體與控制器模組請勿將coredump裝置從AFF 無法識別的A700或FAS9000 NVS模組移至AFF 無法識別的A900或FAS9500 NVS模組。
@@ -632,6 +649,7 @@ image::../media/drw_a900_move-remove_NVRAM_module.png[從機殼移除NVRAM模組
 
 
 
+[[install-the-aff-a900-or-fas9500-nvs]]
 === 安裝AFF 《不再需要的產品」
 
 請使用下列程序、在AFF 站台B的兩個節點插槽6中安裝支援的ArfeA900或FAS9500
@@ -655,6 +673,7 @@ image::../media/drw_a900_move-remove_NVRAM_module.png[將NVRAM模組安裝到機
 
 
 
+[[install-the-aff-a900-or-fas9500-controller-module]]
 === 安裝AFF 「FASA900」或「FAS9500」控制器模組。
 
 請使用下列程序來安裝AFF 《非洲的不規則及不規則」（FAS900）或「FAS9500」（FAS9500）控制器模組。
@@ -694,6 +713,7 @@ NOTE: 叢集所有節點上的插槽 7 應為空的、如一節所述 <<upgrade_
 
 
 
+[[netboot-nodes-at-siteb]]
 === netboot節點位於se_B
 
 在交換AFF 完FASA900或FAS9500控制器模組和NVS之後、您需要將AFF 該節點的叢集開機至NETBOOT或FAS9500節點、並安裝叢ONTAP 集上執行的相同的版本更新和修補程式層級。「netboot」一詞是指您從ONTAP 儲存在遠端伺服器上的不實映像進行開機。準備網路開機時、您必須在ONTAP 系統可以存取的網路伺服器上新增一份《支援》9開機映像。除非安裝在機箱中並已開啟電源、否則無法檢查ONTAP 安裝在AFF 架構套件上的支援媒體版本、例如：在執行於正在升級的S景 點A700或FAS9000系統上的支援功能、必須與執行此功能的支援功能相同、而且主要和備份開機映像都必須相符。ONTAP AFF ONTAP AFF您可以在開機功能表中執行netboot、然後執行wappeconfig命令來設定映像。如果控制器模組先前曾在另一個叢集中使用、則「wifeconfig」命令會清除開機媒體上的任何剩餘組態。
@@ -805,6 +825,7 @@ NOTE: 您必須重新啟動節點才能使用新安裝的軟體。
 
 
 
+[[restore-the-hba-configuration]]
 === 還原HBA組態
 
 視控制器模組中是否有HBA卡及其組態而定、您必須針對站台的使用狀況正確設定這些卡。
@@ -889,6 +910,7 @@ FC
 
 
 
+[[set-the-ha-state-on-the-new-controllers-and-chassis]]
 === 在新的控制器和機箱上設定HA狀態
 
 您必須驗證控制器和機箱的HA狀態、並視需要更新狀態以符合您的系統組態。
@@ -922,6 +944,7 @@ FC
 
 
 
+[[update-the-switch-rcf-files-to-accommodate-the-new-platforms]]
 == 更新交換器RCF檔案以容納新平台
 
 您必須將交換器更新為支援新平台機型的組態。
@@ -956,12 +979,14 @@ FC
 
 
 
+[[configure-the-new-controllers]]
 == 設定新的控制器
 
 此時應準備好新的控制器、並連接好纜線。
 
 
 
+[[set-the-metrocluster-ip-bootarg-variables]]
 === 設定MetroCluster 靜態IP bootarg變數
 
 必須MetroCluster 在新的控制器模組上設定特定的靜態IP bootarg值。這些值必須與舊控制器模組上設定的值相符。
@@ -1095,6 +1120,7 @@ bootarg.kmip.kmip.init.interface`
 
 
 
+[[reassign-root-aggregate-disks]]
 === 重新指派根Aggregate磁碟
 
 使用先前收集的系統、將根Aggregate磁碟重新指派給新的控制器模組。
@@ -1206,6 +1232,7 @@ aggr0_node_B_1           online          raid_dp, aggr         root, nosnap=on,
 
 
 
+[[boot-up-the-new-controllers]]
 === 開機新的控制器
 
 您必須啟動新的控制器、並注意確保bootarg變數正確無誤、並視需要執行加密還原步驟。
@@ -1400,6 +1427,7 @@ https://docs.netapp.com/us-en/ontap/networking/combine_physical_ports_to_create_
 
 
 
+[[verify-and-restore-lif-configuration]]
 === 驗證並還原LIF組態
 
 驗證在升級程序開始時所對應的適當節點和連接埠上、是否裝載了生命點。
@@ -1440,6 +1468,7 @@ https://docs.netapp.com/us-en/ontap/networking/combine_physical_ports_to_create_
 
 
 
+[[switch-back-the-metrocluster-configuration]]
 == 切換回MetroCluster 還原組態
 
 在此工作中、您將執行切換回復作業、MetroCluster 而此功能的還原組態將恢復正常運作。站台上的節點仍在等待升級。
@@ -1509,6 +1538,7 @@ Remote: cluster_A         Configuration state configured
 
 
 
+[[check-the-health-of-the-metrocluster-configuration]]
 == 檢查MetroCluster 資訊系統的健全狀況
 
 升級控制器模組之後、您必須確認MetroCluster 該組態的健全狀況。
@@ -1551,6 +1581,7 @@ Remote: cluster_A         Configuration state configured
 
 
 
+[[upgrade-the-nodes-on-sitea]]
 == 升級s加_a上的節點
 
 您必須在se_A上重複執行升級工作
@@ -1564,6 +1595,7 @@ Remote: cluster_A         Configuration state configured
 
 
 
+[[restore-tiebreaker-or-mediator-monitoring]]
 == 還原斷路器或中保監控
 
 完成MetroCluster 升級版的ESIE組態之後、您可以使用斷路器或調解器公用程式繼續監控。
@@ -1599,6 +1631,7 @@ link:../install-ip/concept_mediator_requirements.html["透過 MetroCluster IP �
 
 
 
+[[send-a-custom-autosupport-message-after-maintenance]]
 == 維護後傳送自訂AutoSupport 的資訊
 
 完成升級之後、您應該傳送AutoSupport 一個不完整的訊息、指出維護已結束、以便繼續自動建立個案。

@@ -15,6 +15,7 @@ summary: 如果從MetroCluster 支援不中斷營運的功能、從支援功能�
 
 
 
+[[move-an-fc-san-workload-from-metrocluster-fc-to-metrocluster-ip-nodes]]
 == 將FC SAN工作負載從MetroCluster 支援功能的FC移至MetroCluster 支援功能的IP節點
 
 .步驟

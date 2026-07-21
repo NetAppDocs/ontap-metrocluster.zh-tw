@@ -15,6 +15,7 @@ summary: 您所使用的更新程序取決於平台機型、升級範圍和Metro
 
 
 
+[[supported-metrocluster-ip-tech-refresh-combinations]]
 == 支援MetroCluster 的支援功能：IP技術更新組合
 
 * 新增負載之前、您必須先完成技術更新程序。
@@ -26,6 +27,7 @@ summary: 您所使用的更新程序取決於平台機型、升級範圍和Metro
 
 
 
+[[supported-aff-and-fas-metrocluster-ip-tech-refresh-combinations]]
 === 支援的 AFF 和 FAS MetroCluster IP 技術更新組合
 
 下表顯示 MetroCluster IP 組態中用於重新整理 AFF 或 FAS 系統的支援平台組合。表格分成兩個群組：
@@ -58,6 +60,7 @@ image:../media/tech-refresh-ip-group-2-updated.png["AFF和FAS第 2 組平台的�
 ====
 
 
+[[supported-asa-metrocluster-ip-tech-refresh-combinations]]
 === 支援的 ASA MetroCluster IP 技術更新組合
 
 下表顯示在 MetroCluster IP 組態中重新整理 ASA 系統所支援的平台組合：
@@ -66,6 +69,7 @@ image::../media/mcc-ip-techrefresh-asa-9161.png[MetroCluster IP ASA 技術更新
 
 
 
+[[supported-metrocluster-fc-tech-refresh-combinations]]
 == 支援MetroCluster 的功能更新功能組合
 
 * 新增負載之前、您必須先完成技術更新程序。
@@ -77,6 +81,7 @@ image::../media/mcc-ip-techrefresh-asa-9161.png[MetroCluster IP ASA 技術更新
 
 
 
+[[supported-aff-and-fas-metrocluster-fc-tech-refresh-combinations]]
 === 支援的 AFF 和 FAS MetroCluster FC 技術更新組合
 
 下表顯示 MetroCluster FC 組態中用於重新整理 AFF 或 FAS 系統的支援平台組合：
@@ -85,6 +90,7 @@ image::../media/metrocluster_fc_tech_refresh.png[MetroCluster FC 技術更新支
 
 
 
+[[supported-asa-metrocluster-fc-tech-refresh-combinations]]
 === 支援的 ASA MetroCluster FC 技術更新組合
 
 下表顯示在 MetroCluster FC 組態中重新整理 ASA 系統所支援的平台組合：
@@ -107,6 +113,7 @@ image::../media/metrocluster_fc_tech_refresh.png[MetroCluster FC 技術更新支
 |===
 
 
+[[choose-a-refresh-procedure]]
 == 選擇重新整理程序
 
 從下表中選擇組態的重新整理程序：

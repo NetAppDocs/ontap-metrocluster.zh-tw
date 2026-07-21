@@ -15,9 +15,22 @@ summary: 每個版本都提供 ONTAP Mediator 的新功能。  最新功能。
 
 有關ONTAP Mediator 每個版本的功能和增強特性的詳細信息，請參閱：link:https://docs.netapp.com/us-en/ontap/mediator/whats-new-concept.html["ONTAP Mediator 的新增功能"^] 。
 
-[cols="4,2"]
+[cols="4,1"]
 |===
 | ONTAP Mediator 功能 | 可用的開始 
+
+
+ a| 
+從 ONTAP Mediator 1.12.1 開始，設定了 HTTPS 的單一 ONTAP Mediator 執行個體可以同時監控以下組態：
+
+* 如果安裝在至少有 8 個 CPU 核心和至少 16GB RAM 的主機上，最多可以有 10 個四節點或 5 個八節點的 MetroCluster IP 組態。
+* 如果安裝在具有 2 核心 CPU 的主機作業系統上，則需要一個四節點 MetroCluster IP 組態和一個 SnapMirror 活動同步對等關係。
+
+
+link:../install-ip/concept_mediator_requirements.html#mediator-multiple-mccip["深入了解 ONTAP Mediator 對多個 MetroCluster IP 組態的支援"]。
+ a| 
+ONTAP 9.19.1
+
 
 
  a| 

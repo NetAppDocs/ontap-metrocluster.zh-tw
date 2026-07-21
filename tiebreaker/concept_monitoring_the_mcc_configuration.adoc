@@ -15,6 +15,7 @@ summary: 藉由讓您監控功能、評估傳送給NetApp客戶支援的SNMP事�
 
 
 
+[[configuring-autosupport]]
 == 設定AutoSupport 功能
 
 根據預設、AutoSupport 在安裝Tiebreaker軟體一週後、會將這些資訊傳送給NetApp。觸發AutoSupport 故障通知的事件包括斷路器軟體故障、MetroCluster 偵測到有關故障狀況的資訊、或是未知MetroCluster 的故障設定狀態。
@@ -130,6 +131,7 @@ Autosupport configuration deleted successfully.
 
 
 
+[[snmp-events-and-traps]]
 === SNMP事件與設陷
 
 NetApp MetroCluster 的NetApp產品區斷路器軟體使用SNMP設陷來通知您重大事件。這些陷阱是NetApp mib檔案的一部分。每個陷阱都包含下列資訊：陷阱名稱、嚴重性、影響層級、時間戳記和訊息。
@@ -187,6 +189,7 @@ SNMP測試設陷
 |===
 
 
+[[displaying-the-status-of-monitoring-operations]]
 == 顯示監控作業的狀態
 
 您可以顯示監控作業MetroCluster 的整體狀態、以利執行一套功能。
@@ -286,6 +289,7 @@ MetroCluster: cluster_B
 
 
 
+[[displaying-metrocluster-configuration-information]]
 == 顯示MetroCluster 部分組態資訊
 
 您可以在MetroCluster Tiebreaker軟體中顯示所有執行個體的顯示器名稱和IP位址。
@@ -309,6 +313,7 @@ MetroCluster: North America
 
 
 
+[[creating-dump-files]]
 == 正在建立傾印檔案
 
 您可以將tiebreaker軟體的整體狀態儲存至傾印檔案、以供偵錯之用。
@@ -329,6 +334,7 @@ MetroCluster Tiebreaker status successfully dumped in file /var/log/netapp/mcctb
 
 
 
+[[disable-tiebreaker-observer-mode]]
 == 禁用決勝局觀察者模式
 
 您可以停用 Tiebreaker 軟體的觀察者模式，使其在偵測到網站故障後自動啟動切換。

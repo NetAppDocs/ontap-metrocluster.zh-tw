@@ -15,6 +15,7 @@ summary: 在以網路開機之前，請先設定新的控制器，以確認新�
 
 
 
+[[set-up-the-new-controllers]]
 == 設定新的控制器
 
 您必須將新的控制器裝入機架並連接纜線。
@@ -114,6 +115,7 @@ https://docs.netapp.com/us-en/ontap-systems/index.html["ONTAP 硬體系統文件
 
 
 
+[[netboot-the-new-controllers]]
 == 以網路開機新的控制器
 
 安裝新節點之後、您需要netboot才能確保新節點執行的ONTAP 版本與原始節點相同。「netboot」一詞是指您從ONTAP 儲存在遠端伺服器上的不實映像進行開機。準備網路開機時、您必須將ONTAP 一份《支援》9開機映像複本放到系統可以存取的網路伺服器上。
@@ -172,6 +174,7 @@ NOTE: 您必須重新啟動節點才能使用新安裝的軟體。
 
 
 
+[[clear-the-configuration-on-a-controller-module]]
 == 清除控制器模組上的組態
 
 在使用全新的控制器模組MetroCluster 進行整個過程之前、您必須先清除現有的組態。

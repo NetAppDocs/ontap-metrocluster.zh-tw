@@ -15,6 +15,7 @@ summary: 規劃MetroCluster 您的不完整組態時、您必須瞭解所需及�
 
 
 
+[[supported-software-and-hardware]]
 == 支援的軟體與硬體
 
 硬體與軟體必須支援MetroCluster 以利支援不支援使用。
@@ -25,12 +26,14 @@ https://hwu.netapp.com["NetApp Hardware Universe"]
 
 
 
+[[hardware-redundancy-in-the-metrocluster-configuration]]
 == 硬體備援功能MetroCluster
 
 由於在整個過程中使用了硬體備援、MetroCluster 因此每個站台都有兩個元件。站台會任意指派字母A和B、而個別元件則會任意指派數字1和2。
 
 
 
+[[requirement-for-two-single-node-ontap-clusters]]
 == 需要兩ONTAP 個單節點的叢集
 
 連接橋接的Stretch MetroCluster 等位配置需要兩ONTAP 個單節點的叢集。
@@ -45,6 +48,7 @@ https://hwu.netapp.com["NetApp Hardware Universe"]
 
 
 
+[[requirement-for-two-storage-controller-modules]]
 == 需要兩個儲存控制器模組
 
 連接橋接的Stretch MetroCluster 位向組態需要兩個儲存控制器模組。
@@ -76,6 +80,7 @@ https://hwu.netapp.com["NetApp Hardware Universe"]
 
 
 
+[[requirement-for-fc-to-sas-bridges]]
 == FC至SAS橋接器的需求
 
 連接橋接的Stretch MetroCluster Setch組態需要在每個站台上使用兩個以上的FC對SAS橋接器。
@@ -113,6 +118,7 @@ NOTE: 在執行ONTAP 支援升級版本的組態中、不支援使用FibreBridge
 
 
 
+[[requirement-for-at-least-four-sas-shelves-recommended]]
 == 至少需要四個SAS磁碟櫃（建議）
 
 橋接式延伸MetroCluster 支援組態至少需要兩個SAS磁碟櫃。不過、每個站台建議使用兩個磁碟櫃、以每個磁碟櫃為單位、總共四個SAS磁碟櫃。

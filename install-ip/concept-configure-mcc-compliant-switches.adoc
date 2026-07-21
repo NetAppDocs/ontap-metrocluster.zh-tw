@@ -130,6 +130,7 @@ NOTE: 如果您使用速率限制、則流量應為 * 形狀 * 、而不會造�
 
 
 
+[[examples-for-configuring-switch-ports-connecting-the-metrocluster-controller]]
 == 設定連接 MetroCluster 控制器的交換器連接埠的範例
 
 所提供的命令範例適用於 Cisco NX3232 或 Cisco NX9336 交換器。命令會因交換器類型而異。
@@ -157,6 +158,7 @@ The load balancing policy should be set so that order is preserved.
 ----
 
 
+[[examples-for-configuring-classification]]
 == 設定分類的範例
 
 您必須設定存取和類別對應、才能將 RDMA 和 iSCSI 流量對應至適當的類別。
@@ -223,6 +225,7 @@ class type queuing c-out-8q-q-default
 ----
 
 
+[[examples-for-configuring-the-node-ports]]
 == 設定節點連接埠的範例
 
 您可能需要在中斷連線模式中設定節點連接埠。在下列範例中、連接埠 25 和 26 設定為 4 x 25Gbps 中斷模式。
@@ -272,6 +275,7 @@ fec off
 ----
 
 
+[[examples-of-configuration-of-isl-ports-throughout-the-network]]
 == 整個網路中 ISL 連接埠的組態範例
 
 MetroCluster 相容的交換器被視為中間交換器、即使直接連接 MetroCluster 介面也一樣。在 MetroCluster 相容交換器上傳輸 MetroCluster 流量的 ISL 連接埠必須與中繼交換器上的 ISL 連接埠相同設定。請參閱 link:concept-considerations-layer-2-layer-3.html#required-settings-for-intermediate-switches["中繼交換器上的必要設定"] 以取得指引和範例。

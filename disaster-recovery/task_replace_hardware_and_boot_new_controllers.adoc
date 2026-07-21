@@ -15,6 +15,7 @@ summary: 如果硬體元件必須更換、您必須使用各自的硬體更換�
 
 
 
+[[replace-hardware-at-the-disaster-site]]
 == 更換災難現場的硬體
 
 .開始之前
@@ -134,6 +135,7 @@ link:http://docs.netapp.com/platstor/index.jsp["ONTAP 硬體系統文件"^]
 
 
 
+[[determine-the-system-ids-and-vlan-ids-of-the-old-controller-modules]]
 == 確定舊控制器模組的系統 ID 和 VLAN ID
 
 在您更換災難站台的所有硬體之後、您必須判斷更換的控制器模組的系統ID。將磁碟重新指派給新的控制器模組時、您需要舊的系統ID。如果系統AFF 是不只是功能性的A220、AFF 不只是功能性的A250、AFF 還包括功能AFF 性的 FAS500f、FAS8300或FAS8700機型、您也必須判斷MetroCluster 出由Sing IP介面所使用的VLAN ID。
@@ -328,6 +330,7 @@ Node_A_2 Node_A_1 HA      enabled  online
 
 
 
+[[isolate-replacement-drives-from-the-surviving-site-metrocluster-ip-configurations]]
 == 將替換磁碟機與仍在運作的站台隔離（ MetroCluster IP 組態）
 
 您必須從MetroCluster 正常運作的節點中斷連接到任何更換磁碟機、以隔離這些磁碟機。
@@ -367,6 +370,7 @@ site_B::*> storage iscsi-initiator disconnect -node node_B_2 -label *
 
 
 
+[[clear-the-configuration-on-a-controller-module]]
 == 清除控制器模組上的組態
 
 在使用全新的控制器模組MetroCluster 進行整個過程之前、您必須先清除現有的組態。
@@ -406,6 +410,7 @@ Boot_ONTAP功能表
 
 
 
+[[netboot-the-new-controller-modules]]
 == 以網路開機新的控制器模組
 
 如果新的控制器模組的ONTAP 版本不同於正常運作的控制器模組版本、則必須以netboot新的控制器模組。
@@ -486,6 +491,7 @@ NOTE: 您必須重新啟動節點才能使用新安裝的軟體。
 
 
 
+[[determine-the-system-ids-of-the-replacement-controller-modules]]
 == 確定更換控制器模組的系統 ID
 
 在您更換災難站台上的所有硬體之後、必須判斷新安裝的儲存控制器模組或模組的系統ID。
@@ -626,6 +632,7 @@ NOTE: 在雙節點MetroCluster 的不二節點的不二組態中、不需要執�
 
 
 
+[[verify-the-ha-config-state-of-components]]
 == 驗證元件的ha-config狀態
 
 在不支援的組態中MetroCluster 、控制器模組和機箱元件的ha-config狀態必須設定為「MCC」或「mc-2n」、才能正常開機。
@@ -732,6 +739,7 @@ IP組態MetroCluster
 
 
 
+[[determine-if-end-to-end-encryption-was-enabled-on-the-original-systems]]
 == 判斷原始系統上是否已啟用端點對端點加密
 
 您應該確認原始系統是否已設定為端點對端點加密。

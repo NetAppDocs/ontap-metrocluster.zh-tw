@@ -15,6 +15,7 @@ summary: 您可以在 Cisco FC 交換器上新增交換器間連結（ ISL ）�
 
 
 
+[[add-isls-to-a-cisco-fc-switch]]
 == 將 ISL 新增至 Cisco FC 交換器
 
 如果您要新增或升級硬體，例如新增或升級至更快的控制器或更快的交換器，則可能需要將 ISL 新增至交換器。
@@ -79,6 +80,7 @@ summary: 您可以在 Cisco FC 交換器上新增交換器間連結（ ISL ）�
 
 
 
+[[change-isl-port-speeds-on-a-cisco-fc-switch]]
 == 變更 Cisco FC 交換器上的 ISL 連接埠速度
 
 您可以變更交換器上 ISL 連接埠的速度，以改善 ISL 的品質，例如降低 ISL 在更遠距離上的傳輸速度。
@@ -159,12 +161,14 @@ NOTE: 連接埠的速度為 16 = 16 ， 000 Gbps ， 8 = 8 ， 000 Gbps ， 4 = 
 
 
 
+[[reconfigure-the-vsan-to-guarantee-iod-or-ood-of-frames]]
 == 重新設定 VSAN 以保證 IOD 或正常的框架
 
 建議使用標準IOD設定。您只能在必要時重新設定 Good 。
 
 
 
+[[reconfigure-iod]]
 === 重新設定 IOD
 
 執行下列步驟以重新設定框架的 IOD 。
@@ -227,6 +231,7 @@ FC_switch_B_1# copy running-config startup-config
 
 
 
+[[reconfigure-ood]]
 === 重新設定
 
 執行下列步驟以重新設定良好的框架。

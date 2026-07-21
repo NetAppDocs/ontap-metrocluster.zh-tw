@@ -15,6 +15,7 @@ summary: 在進行不實的組態中使用ONTAP 時MetroCluster 、您應該注�
 
 
 
+[[licensing-considerations]]
 == 授權考量
 
 * 這兩個站台都應獲得相同站台授權功能的授權。
@@ -23,6 +24,7 @@ summary: 在進行不實的組態中使用ONTAP 時MetroCluster 、您應該注�
 
 
 
+[[snapmirror-consideration]]
 == SnapMirror考量
 
 * SnapMirror SVM災難恢復僅支援MetroCluster 執行ONTAP 版本為S9.5或更新版本的各種支援。
@@ -30,12 +32,14 @@ summary: 在進行不實的組態中使用ONTAP 時MetroCluster 、您應該注�
 
 
 
+[[flexcache-support-in-a-metrocluster-configuration]]
 == 支援的支援功能FlexCache MetroCluster
 
 從ONTAP 使用支援支援支援的功能為從支援的功能為支援的功能為支援的FlexCache 功能為支援的MetroCluster 功能。您應該瞭解切換或切換作業後、手動還原的需求。
 
 
 
+[[svm-repeering-after-switchover-when-flexcache-origin-and-cache-are-within-the-same-metrocluster-site]]
 === 當不一致的來源和快取位於相同的站台時、SVM會在切換後重新執行FlexCache MetroCluster
 
 經過協商或非計畫性的切換之後、FlexCache 叢集內的任何SVM恢復關係都必須手動設定。
@@ -46,6 +50,7 @@ summary: 在進行不實的組態中使用ONTAP 時MetroCluster 、您應該注�
 
 
 
+[[svm-repeering-after-switchover-or-switchback-when-a-flexcache-destination-is-on-a-third-cluster-and-in-disconnected-mode]]
 === 當某個目的地位於第三個叢集且處於中斷連線模式時、SVM會在切換或切換後還原FlexCache
 
 為了FlexCache 與MetroCluster 非流通組態的叢集建立關聯、當相關叢集在切換期間處於中斷連線模式時、必須在切換後手動重新設定對等關係。
@@ -62,6 +67,7 @@ summary: 在進行不實的組態中使用ONTAP 時MetroCluster 、您應該注�
 
 
 
+[[fabricpool-support-in-metrocluster-configurations]]
 == 支援各種支援的支援FabricPool MetroCluster
 
 從NetApp 9.7開始ONTAP 、MetroCluster 支援FabricPool 各種不含資料的儲存層組態。
@@ -70,6 +76,7 @@ summary: 在進行不實的組態中使用ONTAP 時MetroCluster 、您應該注�
 
 
 
+[[considerations-when-using-fabricpools]]
 === 使用FabricPools時的考量
 
 * 叢集必須具有FabricPool 容量限制相符的不完整版授權。
@@ -82,6 +89,7 @@ summary: 在進行不實的組態中使用ONTAP 時MetroCluster 、您應該注�
 
 
 
+[[configuring-an-aggregate-for-use-in-a-mirrored-fabricpool]]
 === 設定用於鏡射FabricPool 的Aggregate
 
 
@@ -107,12 +115,14 @@ NOTE: 在設定Aggregate之前、您必須依照FabricPool 中的「設定物件
 
 
 
+[[flexgroup-support-in-metrocluster-configurations]]
 == 支援各種支援的支援FlexGroup MetroCluster
 
 從功能支援支援不完整的支援功能的支援範本的支援範本ONTAP 。MetroCluster FlexGroup
 
 
 
+[[job-schedules-in-a-metrocluster-configuration]]
 == 以功能不一的組態排程工作MetroCluster
 
 在使用者建立的作業排程中、使用者建立的工作排程會自動複寫到以功能性為設計目標的叢集之間。ONTAP MetroCluster如果您在叢集上建立、修改或刪除工作排程、則會使用組態複寫服務（CRS）、在合作夥伴叢集上自動建立相同的排程。
@@ -122,6 +132,7 @@ NOTE: 系統建立的排程不會複寫、您必須在合作夥伴叢集上手�
 
 
 
+[[cluster-peering-from-the-metrocluster-site-to-a-third-cluster]]
 == 叢集從MetroCluster 整個站台對等移轉到第三個叢集
 
 由於對等組態並未複寫、因此如果您將MetroCluster 某個執行於該組態的叢集對等到該組態以外的第三個叢集、您也必須在合作夥伴MetroCluster 的叢集上設定對等。這是為了在發生切換時維持對等關係。
@@ -130,12 +141,14 @@ NOTE: 系統建立的排程不會複寫、您必須在合作夥伴叢集上手�
 
 
 
+[[ldap-client-configuration-replication-in-a-metrocluster-configuration]]
 == LDAP用戶端組態複寫（MetroCluster 以不中斷組態）
 
 在本機叢集的儲存虛擬機器（SVM）上建立的LDAP用戶端組態、會複寫到遠端叢集上的合作夥伴資料SVM。例如、如果LDAP用戶端組態是在本機叢集的管理SVM上建立、則會複寫到遠端叢集上的所有管理資料SVM。此功能是刻意設計的、因此LDAP用戶端組態會在遠端叢集上的所有合作夥伴SVM上啟用。MetroCluster
 
 
 
+[[networking-and-lif-creation-guidelines-for-metrocluster-configurations]]
 == 適用於MetroCluster 各種組態的網路與LIF建立準則
 
 您應該瞭MetroCluster 解如何在一套功能性的組態中建立及複寫生命。您也必須瞭解一致性需求、以便在設定網路時做出適當的決策。
@@ -145,6 +158,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-concepts/home.html["
 
 
 
+[[ipspace-object-replication-and-subnet-configuration-requirements]]
 === IPSpace物件複寫和子網路組態需求
 
 您應該瞭解將IPspace物件複寫到合作夥伴叢集、以及在MetroCluster 整個過程中設定子網路和IPv6的需求。
@@ -201,6 +215,7 @@ subnet1   192.168.2.0/24   Default   192.168.2.1       10/10    192.168.2.21-192
 
 
 
+[[requirements-for-lif-creation-in-a-metrocluster-configuration]]
 === 以架構組態建立LIF的需求MetroCluster
 
 在MetroCluster 設定以功能性為基礎的網路組態時、您應該瞭解建立生命的需求。
@@ -223,6 +238,7 @@ subnet1   192.168.2.0/24   Default   192.168.2.1       10/10    192.168.2.21-192
 
 
 
+[[lif-replication-and-placement-requirements-and-issues]]
 === LIF複寫及放置需求與問題
 
 您應該瞭解MetroCluster 到整個流程組態中的LIF複寫需求。您也應該知道複寫的LIF如何放置在合作夥伴叢集上、而且您應該瞭解LIF複寫或LIF放置失敗時所發生的問題。
@@ -334,6 +350,7 @@ NOTE: 即使來源SVM停機、如果目的地SVM中的IP空間和網路相同、
 
 
 
+[[volume-creation-on-a-root-aggregate]]
 === 在根Aggregate上建立Volume
 
 系統不允許在MetroCluster 實體組態中節點的根Aggregate（具有CFO HA原則的Aggregate）上建立新磁碟區。
@@ -342,6 +359,7 @@ NOTE: 即使來源SVM停機、如果目的地SVM中的IP空間和網路相同、
 
 
 
+[[svm-disaster-recovery-in-a-metrocluster-configuration]]
 == SVM災難恢復功能MetroCluster 、以一套功能不全的組態進行
 
 從ONTAP 功能介紹的起、MetroCluster 使用支援VMware®的動態儲存虛擬機器（SVM）就能透過SnapMirror SVM災難恢復功能、作為來源。目的地SVM必須位於MetroCluster 不屬於該組態的第三個叢集上。
@@ -376,6 +394,7 @@ image::../media/svm_dr_image_2.gif[切換後 SVM 更新]
 
 
 
+[[svm-resynchronization-at-a-disaster-recovery-site]]
 === 在災難恢復站台上進行SVM重新同步
 
 在重新同步期間、MetroCluster 將從非MetroCluster站台上的目的地SVM還原位於該組態上的儲存虛擬機器（SVM）災難恢復（DR）來源。
@@ -403,18 +422,21 @@ image::../media/svm_dr_resynchronization.gif[SVM 災難復原重新同步]
 
 
 
+[[output-of-the-storage-disk-show-and-storage-shelf-show-commands-in-a-two-node-stretch-metrocluster-configuration]]
 == 儲存磁碟show和儲存櫃的輸出以雙節點Stretch MetroCluster 的組態顯示命令
 
 在雙節點的Stretch MetroCluster 餐廳組態中、「儲存磁碟展示」和「儲存櫃展示」命令的「is -local-attach」欄位會顯示所有磁碟和儲存櫃為本機、無論其連接的節點為何。
 
 
 
+[[output-for-the-storage-aggregate-plex-show-command-is-indeterminate-after-a-metrocluster-switchover]]
 == 儲存Aggregate plex show命令的輸出在MetroCluster 執行完功能介紹後仍不確定
 
 當您在MetroCluster 執行完還原切換後執行「叢集Aggregate show」命令時、切換根Aggregate的plex0狀態將會不確定、並顯示為「故障」。在此期間、切換根目錄不會更新。此叢的實際狀態只能在MetroCluster 還原階段之後決定。
 
 
 
+[[modifying-volumes-to-set-the-nvfail-flag-in-case-of-switchover]]
 == 在切換時修改Volume以設定NVFIL旗標
 
 您可以修改磁碟區、以便在MetroCluster 發生故障切換時、在磁碟區上設定NVFIL旗標。NVFIL旗標會將磁碟區隔離、使其不受任何修改。這是需要處理的磁碟區、如同切換後已將寫入作業提交至磁碟區的內容遺失一樣。

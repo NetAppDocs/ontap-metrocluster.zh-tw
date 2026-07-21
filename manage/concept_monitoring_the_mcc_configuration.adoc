@@ -15,6 +15,7 @@ summary: 您可以使用ONTAP MetroCluster 功能齊全的功能表來Active IQ 
 
 
 
+[[checking-the-metrocluster-configuration]]
 == 正在檢查MetroCluster 功能組態
 
 您可以檢查MetroCluster 功能組態中的元件和關係是否正常運作。您應該在初始組態設定後、以及MetroCluster 變更任何的功能後進行檢查。您也應該在協商（計畫性）切換或切換作業之前進行檢查。
@@ -127,12 +128,14 @@ mccint-fas9000-0304
 
 
 
+[[commands-for-checking-and-monitoring-the-metrocluster-configuration]]
 == 用於檢查MetroCluster 及監控資訊功能組態的命令
 
 有特定ONTAP 的功能可用來監控MetroCluster 整個過程的不確定組態和檢查MetroCluster 功能。
 
 
 
+[[commands-for-checking-metrocluster-operations]]
 === 檢查MetroCluster 功能的命令
 
 |===
@@ -186,6 +189,7 @@ mccint-fas9000-0304
 |===
 
 
+[[commands-for-monitoring-the-metrocluster-interconnect]]
 === 監控MetroCluster 互連的命令
 
 |===
@@ -202,6 +206,7 @@ mccint-fas9000-0304
 |===
 
 
+[[commands-for-monitoring-metrocluster-svms]]
 === 監控MetroCluster SVM的命令
 
 |===
@@ -218,6 +223,7 @@ mccint-fas9000-0304
 |===
 
 
+[[using-the-metrocluster-tiebreaker-or-ontap-mediator-to-monitor-the-configuration]]
 == 使用MetroCluster 斷電器或ONTAP 不含資料的調解器來監控組態
 
 請參閱 link:../install-ip/concept_considerations_mediator.html["不一樣的地方ONTAP MetroCluster"] 瞭解這兩種監控MetroCluster 您的需求組態和啟動自動切換的方法之間的差異。
@@ -230,6 +236,7 @@ mccint-fas9000-0304
 
 
 
+[[how-the-netapp-metrocluster-tiebreaker-software-detects-failures]]
 == NetApp MetroCluster 斷點器軟體如何偵測故障
 
 Tiebreaker軟體位於Linux主機上。只有當您想要監控兩個叢集、以及它們之間從第三個站台的連線狀態時、才需要Tiebreaker軟體。如此一來、叢集中的每個合作夥伴就能在站台間連結中斷時、與站台故障區隔ISL故障。
@@ -238,6 +245,7 @@ Tiebreaker軟體位於Linux主機上。只有當您想要監控兩個叢集、�
 
 
 
+[[how-the-tiebreaker-software-detects-intersite-connectivity-failures]]
 === Tiebreaker軟體如何偵測站台間連線故障
 
 當站台之間的所有連線中斷時、系統會發出關於這個問題的警示。MetroCluster
@@ -270,6 +278,7 @@ Tiebreaker軟體會定期從節點擷取站台間連線的狀態。如果內華�
 
 
 
+[[how-the-tiebreaker-software-detects-site-failures]]
 === Tiebreaker軟體如何偵測站台故障
 
 NetApp MetroCluster 斷續器軟體可檢查MetroCluster ESIE組態中節點的可到達性和叢集、以判斷是否發生站台故障。在某些情況下、斷路器軟體也會觸發警示。
@@ -310,6 +319,7 @@ NOTE: 如果存續的叢集無法再透過FC（內華達互連和儲存設備）
 
 
 
+[[how-the-ontap-mediator-supports-automatic-unplanned-switchover]]
 === 如何支援自動非計畫性切換ONTAP
 
 link:../install-ip/concept-ontap-mediator-supports-automatic-unplanned-switchover.html["瞭解 ONTAP Mediator 如何支援 MetroCluster IP 組態中的自動非計畫性切換"]。

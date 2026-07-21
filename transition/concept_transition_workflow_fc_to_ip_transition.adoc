@@ -19,6 +19,7 @@ summary: 您必須遵循特定的工作流程、以確保順利進行不中斷�
 
 
 
+[[four-node-fc-configuration-transition-workflow]]
 == 四節點 FC 組態轉換工作流程
 
 轉換程序從健全的四節點MetroCluster 不含問題的FC組態開始。
@@ -35,6 +36,7 @@ image::../media/transition_dr_group_2_ip.png[過渡 DR 組 2 IP 節點]
 
 
 
+[[eight-node-fc-configuration-transition-workflow]]
 == 八節點 FC 組態轉換工作流程
 
 轉換程序從健全的八節點 MetroCluster FC 組態開始。
@@ -62,6 +64,7 @@ image::../media/mcc_dr_group_c6.png[過渡後的八節點MetroCluster IP 配置]
 
 
 
+[[transition-process-workflow]]
 == 轉換程序工作流程
 
 您將使用下列工作流程來轉換MetroCluster 此功能。

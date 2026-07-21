@@ -52,6 +52,7 @@ NOTE: 從ONTAP S得9.4升級至9.5時、系統會辨識現有的磁碟指派。
 
 
 
+[[automatic-partitioning]]
 == 自動分割
 
 ADP 會在系統初始組態期間自動執行。
@@ -74,6 +75,7 @@ NOTE: 從 ONTAP 9.5 開始、必須使用啟用磁碟的自動指派功能 `stor
 ====
 
 
+[[how-shelf-by-shelf-automatic-assignment-works]]
 == 機櫃自動指派的運作方式
 
 如果每個站台有四個外部磁碟櫃、則每個磁碟櫃都會指派給不同的節點和不同的資源池、如下列範例所示：
@@ -90,6 +92,8 @@ NOTE: 從 ONTAP 9.5 開始、必須使用啟用磁碟的自動指派功能 `stor
 
 
 
+[[how-to-populate-partially-full-shelves]]
+[[populate-partially-full-shelves]]
 == 如何填入部分已滿的磁碟櫃
 
 如果您的組態使用的磁碟櫃未完全填滿（有空的磁碟機支架）、則必須根據磁碟指派原則、將磁碟平均分配到整個磁碟櫃。磁碟指派原則取決於每MetroCluster 個站台有多少磁碟櫃。
@@ -172,6 +176,7 @@ NOTE: 從 ONTAP 9.5 開始、必須使用啟用磁碟的自動指派功能 `stor
 
 
 
+[[manual-drive-assignment-ontap-9-5]]
 == 手動指派磁碟機（ONTAP S9.5）
 
 在支援S9.5的系統中ONTAP 、需要在具有下列機櫃組態的系統上手動指派磁碟機：
@@ -190,6 +195,7 @@ NOTE: 從 ONTAP 9.5 開始、必須使用啟用磁碟的自動指派功能 `stor
 
 
 
+[[manual-drive-assignment-ontap-9-4]]
 == 手動指派磁碟機（ONTAP 例如、9.4）
 
 在NetApp 9.4中ONTAP 、下列機櫃組態的系統需要手動指派磁碟機：
@@ -218,6 +224,7 @@ NOTE: 從 ONTAP 9.5 開始、必須使用啟用磁碟的自動指派功能 `stor
 
 
 
+[[adding-shelves-to-an-existing-configuration]]
 == 新增磁碟櫃至現有組態
 
 自動磁碟機指派可在現有組態中對稱地新增磁碟櫃。
@@ -231,6 +238,8 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁�
 
 
 
+[[adp-and-disk-assignment-differences-by-system-in-metrocluster-ip-configurations]]
+[[adp-disk-assign]]
 == ADP和磁碟指派差異、依系統MetroCluster 而異、以供搭配使用
 
 進階磁碟分割（ADP MetroCluster ）的操作以及在各種不同的系統模式下自動指派磁碟。
@@ -246,6 +255,7 @@ NOTE: 在使用ADP的系統中、會使用分割區來建立集合體、將每�
 
 
 
+[[adp-and-disk-assignment-on-aff-a320-systems]]
 === ADP和磁碟指派、位於AFF 不受保護的A320系統上
 
 |===
@@ -289,6 +299,7 @@ NOTE: 在使用ADP的系統中、會使用分割區來建立集合體、將每�
 |===
 
 
+[[adp-and-disk-assignment-on-aff-a150-asa-a150-and-aff-a220-systems]]
 === AFF A150 、 ASA A150 和 AFF A220 系統上的 ADP 和磁碟指派
 
 |===
@@ -350,6 +361,7 @@ NOTE: 在使用ADP的系統中、會使用分割區來建立集合體、將每�
 |===
 
 
+[[adp-and-disk-assignment-on-aff-a250-aff-c250-asa-a250-asa-c250-fas500f-aff-a20-aff-a30-and-aff-c30-systems]]
 === AFF A250 ， AFF C250 ， AFF ， AFF ， FAS500f ， ASA A250 A20 ， ASA C250 A30 和 AFF C30 系統上的 ADP 和磁碟指派
 
 |===
@@ -405,6 +417,7 @@ NOTE: 在使用ADP的系統中、會使用分割區來建立集合體、將每�
 |===
 
 
+[[adp-and-disk-assignment-on-aff-a50-and-aff-c60-systems]]
 === AFF A50 和 AFF C60 系統上的 ADP 和磁碟指派
 
 |===
@@ -460,6 +473,7 @@ NOTE: 在使用ADP的系統中、會使用分割區來建立集合體、將每�
 |===
 
 
+[[adp-and-disk-assignment-on-aff-a300-systems]]
 === ADP和磁碟指派、位於AFF Solida300系統上
 
 |===
@@ -503,6 +517,7 @@ NOTE: 在使用ADP的系統中、會使用分割區來建立集合體、將每�
 |===
 
 
+[[adp-and-disk-assignment-on-aff-c400-aff-a400-asa-c400-and-asa-a400-systems]]
 === AFF C400 、 AFF A400 、 ASA C400 和 ASA A400 系統上的 ADP 和磁碟指派
 
 |===
@@ -544,6 +559,7 @@ NOTE: 在使用ADP的系統中、會使用分割區來建立集合體、將每�
 |===
 
 
+[[adp-and-disk-assignment-on-aff-a700-systems]]
 === ADP和磁碟指派、位於AFF Solida700系統上
 
 |===
@@ -585,6 +601,7 @@ NOTE: 在使用ADP的系統中、會使用分割區來建立集合體、將每�
 |===
 
 
+[[adp-and-disk-assignment-on-aff-c800-asa-c800-asa-a800-and-aff-a800-systems]]
 === AFF C800 、 ASA C800 、 ASA A800 和 AFF A800 系統上的 ADP 和磁碟指派
 
 |===
@@ -630,6 +647,7 @@ NOTE: 在使用ADP的系統中、會使用分割區來建立集合體、將每�
 |===
 
 
+[[adp-and-disk-assignment-on-aff-a70-aff-a90-and-aff-c80-systems]]
 === AFF A70 ， AFF A90 和 AFF C80 系統上的 ADP 和磁碟指派
 
 |===
@@ -671,6 +689,7 @@ NOTE: 在使用ADP的系統中、會使用分割區來建立集合體、將每�
 |===
 
 
+[[adp-and-disk-assignment-on-aff-a900-asa-a900-and-aff-a1k-systems]]
 === AFF A900 、 ASA A900 和 AFF A1K 系統上的 ADP 和磁碟指派
 
 |===
@@ -712,6 +731,7 @@ NOTE: 在使用ADP的系統中、會使用分割區來建立集合體、將每�
 |===
 
 
+[[disk-assignment-on-fas2750-systems]]
 === FAS2750系統上的磁碟指派
 
 |===
@@ -743,6 +763,7 @@ NOTE: 在使用ADP的系統中、會使用分割區來建立集合體、將每�
 |===
 
 
+[[disk-assignment-on-fas8200-systems]]
 === FAS8200系統上的磁碟指派
 
 |===
@@ -774,12 +795,14 @@ NOTE: 在使用ADP的系統中、會使用分割區來建立集合體、將每�
 |===
 
 
+[[disk-assignment-on-fas500f-systems]]
 === FAS500f系統上的磁碟指派
 
 AFF C250 和 AFF A250 系統的磁碟指派準則和規則也適用於 FAS500f 系統。如需 FAS500f 系統上的磁碟指派、請參閱 <<ADP_FAS500f>> 表。
 
 
 
+[[disk-assignment-on-fas9000-fas9500-fas70-and-fas90-systems]]
 === FAS9000 ， FAS9500 ， FAS70 和 FAS90 系統上的磁碟指派
 
 |===
@@ -811,6 +834,7 @@ AFF C250 和 AFF A250 系統的磁碟指派準則和規則也適用於 FAS500f �
 |===
 
 
+[[disk-assignment-on-fas50-systems]]
 === FAS50系統上的磁碟指派
 
 |===
@@ -849,6 +873,7 @@ AFF C250 和 AFF A250 系統的磁碟指派準則和規則也適用於 FAS500f �
 |===
 
 
+[[disk-assignment-on-fas50-systems-with-flash-cache]]
 === 在配備快閃記憶體快取的 FAS50 系統上進行磁碟分配
 
 從ONTAP 9.18.1 開始，FAS50 系統在MetroCluster IP 設定中支援 Flash Cache。

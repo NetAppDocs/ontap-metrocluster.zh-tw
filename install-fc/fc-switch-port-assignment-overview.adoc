@@ -21,6 +21,7 @@ summary: 您需要驗證在連接 FC 交換器時是否使用了指定的連接�
 
 
 
+[[overall-cabling-guidelines]]
 == 整體佈線準則
 
 使用佈線表格時、請注意下列準則：
@@ -56,6 +57,7 @@ link:concept_considerations_isls_mcfc.html["ISL的考量"]
 
 
 
+[[aff-a900-and-fas9500-cabling-guidelines]]
 == AFF A900和FAS9500佈線指南
 
 * FASA900或FAS9500儲存系統需要八個FC-VI連接埠。AFF如果您使用AFF 的是FASA900或FAS9500、則需要使用八個連接埠組態。如果組態包含其他儲存系統機型、請使用表格中所示的纜線、但不要使用不需要的FC-VI連接埠纜線。

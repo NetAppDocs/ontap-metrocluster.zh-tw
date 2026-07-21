@@ -15,6 +15,7 @@ summary: 您可以MetroCluster 從NetApp文件中深入瞭解有關靜態IP組�
 
 
 
+[[metrocluster-and-miscellaneous-information]]
 == 包含各種資訊MetroCluster
 
 |===

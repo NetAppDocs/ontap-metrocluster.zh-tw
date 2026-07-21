@@ -15,6 +15,7 @@ summary: 在控制器模組中設定 HBA 卡，並驗證及設定控制器和機
 
 
 
+[[restore-the-hba-configuration]]
 == 還原HBA組態
 
 視控制器模組中是否存在 HBA 卡及其組態而定，您需要為站台正確設定這些卡。
@@ -96,6 +97,7 @@ FC
 
 
 
+[[set-the-ha-state-on-the-new-controllers-and-chassis]]
 == 在新的控制器和機箱上設定HA狀態
 
 您必須驗證控制器和機箱的HA狀態、並視需要更新狀態以符合您的系統組態。
@@ -164,6 +166,7 @@ NOTE: 必須在所有受影響的連接埠上設定此選項、才能成功升�
 
 
 
+[[remove-internal-drives-from-the-chassis-on-the-new-controller]]
 == 從新控制器的機殼中移除內部驅動器
 
 當您從僅有外部驅動器的系統升級到具有外部和內部驅動器（同一機箱中的磁碟和控制器）的系統時，您需要從新系統中刪除或取消安裝所有內部驅動器，直到升級完成。

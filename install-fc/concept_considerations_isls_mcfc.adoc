@@ -15,6 +15,7 @@ summary: 您必須決定MetroCluster 在支援的基礎架構中、每個FC交�
 
 
 
+[[isl-sharing-considerations-ontap-9-2]]
 == ISL共享考量（ONTAP 功能9.2）
 
 從功能支援9.2開始ONTAP 、您可以在下列情況下使用ISL共享：
@@ -47,6 +48,7 @@ https://hwu.netapp.com["NetApp Hardware Universe"]
 
 
 
+[[platform-specific-isl-considerations]]
 == 平台專屬ISL考量
 
 建議的ISL數量是特定平台機型。下表依平台模式顯示每個網路的ISL需求。假設每個ISL都有16-Gbps的容量。

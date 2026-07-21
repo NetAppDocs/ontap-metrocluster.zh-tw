@@ -15,6 +15,7 @@ summary: 規劃MetroCluster 您的不支援功能的FC組態時、您必須瞭�
 
 
 
+[[supported-software-and-hardware]]
 == 支援的軟體與硬體
 
 硬體與軟體必須支援MetroCluster 以利支援不支援使用。
@@ -28,12 +29,14 @@ NOTE: 不支援MetroCluster 在不支援的情況下使用長距離SFP。如需�
 
 
 
+[[hardware-redundancy-in-the-metrocluster-fc-configuration]]
 == 硬體備援功能MetroCluster
 
 由於採用的是硬體備援MetroCluster 功能、所以每個站台都有兩個元件。站台會任意指派字母A和B、而個別元件則會任意指派數字1和2。
 
 
 
+[[requirement-for-two-ontap-clusters]]
 == 兩ONTAP 個叢集的需求
 
 Fabric附加MetroCluster 的不支援功能不只需要兩ONTAP 個支援功能的叢集、每MetroCluster 個站台都需要一個。
@@ -48,6 +51,7 @@ Fabric附加MetroCluster 的不支援功能不只需要兩ONTAP 個支援功能�
 
 
 
+[[requirement-for-four-fc-switches]]
 == 需要四個FC交換器
 
 Fabric附加MetroCluster 的不支援功能不支援使用4個FC交換器（支援的Brocade或Cisco機型）。
@@ -58,6 +62,7 @@ Fabric附加MetroCluster 的不支援功能不支援使用4個FC交換器（支�
 
 
 
+[[requirement-for-two-four-or-eight-controller-modules]]
 == 需要兩個、四個或八個控制器模組
 
 Fabric附加MetroCluster 的不支援功能、需要兩個、四個或八個控制器模組。
@@ -91,6 +96,7 @@ Fabric附加MetroCluster 的不支援功能、需要兩個、四個或八個控�
 
 
 
+[[requirement-for-four-cluster-interconnect-switches]]
 == 需要四個叢集互連交換器
 
 Fabric附加MetroCluster 的SFC組態需要四個叢集互連交換器（如果您不使用雙節點無交換器叢集）
@@ -99,6 +105,7 @@ Fabric附加MetroCluster 的SFC組態需要四個叢集互連交換器（如果�
 
 
 
+[[requirement-for-fc-to-sas-bridges]]
 == FC至SAS橋接器的需求
 
 Fabric附加MetroCluster 的SFC組態需要一對FC對SAS磁碟櫃堆疊群組的FC橋接器。
@@ -115,6 +122,7 @@ NOTE: 在執行ONTAP 支援升級版本的組態中、不支援使用FibreBridge
 
 
 
+[[pool-and-drive-requirements-minimum-supported]]
 == 集區與磁碟機需求（支援的最低需求）
 
 建議使用八個SAS磁碟櫃（每個站台四個磁碟櫃）、以允許每個磁碟櫃的磁碟擁有權。
@@ -144,6 +152,7 @@ NOTE: 在執行ONTAP 支援升級版本的組態中、不支援使用FibreBridge
 
 
 
+[[drive-location-considerations-for-partially-populated-shelves]]
 == 磁碟機位置考量部分佔用的磁碟櫃
 
 若要在使用半滿的磁碟櫃時正確自動指派磁碟機（24個磁碟機櫃中有12個磁碟機）、磁碟機應位於插槽0-5和18-23中。
@@ -152,6 +161,7 @@ NOTE: 在執行ONTAP 支援升級版本的組態中、不支援使用FibreBridge
 
 
 
+[[bridge-naming-conventions]]
 == 橋接器命名慣例
 
 橋接器使用下列命名範例：

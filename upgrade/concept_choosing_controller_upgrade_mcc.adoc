@@ -21,18 +21,21 @@ summary: 您使用的升級程序取決於平台模式。
 
 
 
+[[supported-controller-upgrades]]
 == 支援的控制器升級
 
 瞭解支援的 MetroCluster IP 和 FC 控制器升級組合。
 
 
 
+[[supported-metrocluster-ip-controller-upgrades-using-system-controller-replace-commands]]
 === 使用「系統控制器置換」命令支援的 MetroCluster IP 控制器升級
 
 如需支援的平台、請參閱中的表格 link:task_upgrade_controllers_system_control_commands_in_a_four_node_mcc_ip.html["在四節點 MetroCluster IP 組態中升級控制器、使用切換功能、並使用「系統控制器更換」命令（ ONTAP 9.13.1 及更新版本）切換回控制器"] 。
 
 
 
+[[all-other-supported-metrocluster-ip-controller-upgrades]]
 === 所有其他支援的 MetroCluster IP 控制器升級
 
 從本節的 MetroCluster 控制器升級表中找到您的 * 來源 * 平台。如果 *Source* 平台列與 *Target* 平台欄的交會為空白、則不支援升級。
@@ -99,6 +102,7 @@ image:../media/mcc-ip-upgrade-asa-comb-9161.png["顯示 ASA 支援的 MetroClust
 
 
 
+[[supported-metrocluster-fc-controller-upgrades]]
 === 支援MetroCluster 的支援功能。FC控制器升級
 
 從本節的 MetroCluster 控制器升級表中找到您的 * 來源 * 平台。如果 *Source* 平台列與 *Target* 平台欄的交會為空白、則不支援升級。
@@ -168,6 +172,7 @@ image::../media/metrocluster_fc_upgrade_table_aff_fas.png[MetroCluster FC 控制
 
 
 
+[[choose-a-procedure-that-uses-the-switchover-and-switchback-process]]
 == 選擇使用切換和切換程序的程序
 
 檢閱支援的升級組合之後、請針對您的組態選擇正確的控制器升級程序。
@@ -246,6 +251,7 @@ link:task_upgrade_controllers_in_a_four_node_ip_mcc_us_switchover_and_switchback
 |===
 
 
+[[choosing-a-procedure-using-aggregate-relocation]]
 == 使用Aggregate重新配置來選擇程序
 
 在ARL型控制器升級程序中、集合體重新配置作業可用於不中斷營運地將資料從舊組態移至新的升級組態。

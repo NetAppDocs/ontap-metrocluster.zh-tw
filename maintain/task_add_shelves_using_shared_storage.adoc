@@ -24,6 +24,7 @@ summary: 您可能需要使用MetroCluster 共享儲存MetroCluster 功能交換
 
 
 
+[[sending-a-custom-autosupport-message-prior-to-maintenance]]
 == 在維護前傳送自訂AutoSupport 的支援訊息
 
 在執行維護之前、您應發出AutoSupport 一份不知所知的訊息、通知NetApp技術支援部門正在進行維護。告知技術支援部門正在進行維護、可防止他們假設發生中斷、而開啟案例。
@@ -54,6 +55,7 @@ summary: 您可能需要使用MetroCluster 共享儲存MetroCluster 功能交換
 
 
 
+[[verifying-the-health-of-the-metrocluster-configuration]]
 == 驗MetroCluster 證資訊功能組態的健全狀況
 
 在執行轉換之前、您必須先驗證MetroCluster 整個流程的健全狀況和連線能力。
@@ -191,6 +193,7 @@ cluster_A::>
 
 
 
+[[applying-the-new-rcf-file-to-the-switches]]
 == 將新的RCF檔案套用至交換器
 
 
@@ -203,6 +206,7 @@ NOTE: 如果您的交換器已正確設定、您可以跳過以下部分、直�
 
 
 
+[[upgrading-rcf-files-on-metrocluster-ip-switches]]
 === 升級MetroCluster 以使用不需更新的IP交換器上的RCF檔案
 
 如果您要安裝新的交換器韌體、則必須先安裝交換器韌體、才能升級RCF檔案。
@@ -258,6 +262,7 @@ volumes             ok
 
 
 
+[[resetting-the-cisco-ip-switch-to-factory-defaults]]
 === 將Cisco IP交換器重設為原廠預設值
 
 在安裝新的軟體版本和RCFs之前、您必須先清除Cisco交換器組態並執行基本組態。
@@ -384,6 +389,7 @@ IP_switch-A-1# reload
 
 
 
+[[downloading-and-installing-the-cisco-switch-nx-os-software]]
 === 下載並安裝Cisco交換器NX-OS軟體
 
 您必須將交換器作業系統檔案和RCF檔案下載到MetroCluster 各個交換器、使其採用EWIP組態。
@@ -579,6 +585,7 @@ IP_switch_A_1#
 
 
 
+[[configuring-macsec-encryption-on-cisco-9336c-switches]]
 == 在Cisco 9336C交換器上設定Macsec加密
 
 如果需要、您可以在站台之間執行的WAN ISL連接埠上設定Macsec加密。套用正確的RCF檔案之後、您必須設定Macsec。
@@ -588,12 +595,14 @@ NOTE: MAC秒加密只能套用至WAN ISL連接埠。
 
 
 
+[[licensing-requirements-for-macsec]]
 === MAC的授權要求
 
 Macsec需要安全授權。如需Cisco NX-OS授權方案的完整說明、以及如何取得及申請授權、請參閱 https://www.cisco.com/c/en/us/td/docs/switches/datacenter/sw/nx-os/licensing/guide/b_Cisco_NX-OS_Licensing_Guide/b_Cisco_NX-OS_Licensing_Guide_chapter_01.html["Cisco NX-OS授權指南"]
 
 
 
+[[enabling-cisco-macsec-encryption-wan-isls-in-metrocluster-ip-configurations]]
 === 啟用MetroCluster Cisco Macsec Encryption WAN ISL以利支援各種IP組態
 
 您可以在MetroCluster WAN ISL上的Cisco 9336C交換器上啟用MAC加密功能、以利執行支援。
@@ -621,6 +630,7 @@ IP_switch_A_1(config)# copy running-config startup-config
 
 
 
+[[disabling-cisco-macsec-encryption]]
 === 停用Cisco Macsec Encryption
 
 您可能需要在MetroCluster WAN ISL上針對Cisco 9336C交換器停用MAC加密、以利進行IP組態設定。
@@ -672,12 +682,14 @@ IP_switch_A_1(config)# copy running-config startup-config
 
 
 
+[[configuring-a-macsec-key-chain-and-keys]]
 === 設定Macsec金鑰鏈和金鑰
 
 如需設定Macsec金鑰鏈的詳細資訊、請參閱交換器的Cisco文件。
 
 
 
+[[connecting-the-new-ns224-shelf]]
 == 連接新的NS224機櫃
 
 .步驟

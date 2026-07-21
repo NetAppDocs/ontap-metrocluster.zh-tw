@@ -15,6 +15,7 @@ summary: 這個組態需要多種硬體元件。MetroCluster為了方便且清�
 
 
 
+[[supported-software-and-hardware]]
 == 支援的軟體與硬體
 
 硬體與軟體必須支援MetroCluster 以利支援不支援使用。
@@ -25,12 +26,14 @@ https://hwu.netapp.com["NetApp Hardware Universe"]
 
 
 
+[[hardware-redundancy-in-the-metrocluster-configuration]]
 == 硬體備援功能MetroCluster
 
 由於在整個過程中使用硬體備援MetroCluster 、因此每個站台都有兩個元件。站台會任意指派字母A和B、而個別元件則會任意指派數字1和2。
 
 
 
+[[two-single-node-ontap-clusters]]
 == 兩ONTAP 個單節點的叢集
 
 SAS附加的Stretch MetroCluster Setch組態需要兩ONTAP 個單節點的S叢 集。
@@ -45,6 +48,7 @@ SAS附加的Stretch MetroCluster Setch組態需要兩ONTAP 個單節點的S叢 �
 
 
 
+[[two-storage-controller-modules]]
 == 兩個儲存控制器模組
 
 SAS附加的Stretch MetroCluster Setch組態需要兩個儲存控制器模組。
@@ -74,6 +78,7 @@ SAS附加的Stretch MetroCluster Setch組態需要兩個儲存控制器模組。
 
 
 
+[[at-least-four-sas-disk-shelves-recommended]]
 == 至少四個SAS磁碟櫃（建議）
 
 SAS附加的Stretch MetroCluster Setch組態至少需要兩個SAS磁碟櫃。建議使用四個SAS磁碟櫃。

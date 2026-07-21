@@ -15,6 +15,7 @@ summary: 在開始轉換程序之前、您必須確定組態符合要求。
 
 
 
+[[enable-console-logging]]
 == 啟用主控台記錄
 
 NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在執行此程序時採取下列動作：
@@ -29,6 +30,7 @@ NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在�
 
 
 
+[[general-requirements-for-disruptive-fc-to-ip-transition]]
 == 中斷FC對IP轉換的一般需求
 
 現有MetroCluster 的無法使用的功能組態必須符合下列要求：
@@ -52,12 +54,14 @@ link:../install-stretch/concept_considerations_differences.html["延伸MetroClus
 
 
 
+[[drive-shelf-reuse-and-drive-requirements-for-disruptive-fc-to-ip-transition]]
 == 磁碟機櫃的重複使用和磁碟機需求、可中斷FC對IP的轉換
 
 您必須確保儲存櫃上有足夠的備用磁碟機和根Aggregate空間可用。
 
 
 
+[[reusing-the-existing-storage-shelves]]
 === 重複使用現有的儲存櫃
 
 使用此程序時、現有的儲存櫃會保留供新組態使用。移除node_a_1-FC和node_B_1-FC時、現有磁碟機櫃會連接至叢集A上的node_a_1-IP和node_a_2-IP、以及叢集B上的node_B_1-IP和node_B_2-IP
@@ -74,6 +78,7 @@ https://hwu.netapp.com["NetApp Hardware Universe"^]
 
 
 
+[[storage-requirements-for-the-additional-controllers]]
 === 額外控制器的儲存需求
 
 如有必要、必須新增額外的儲存設備以容納兩個額外的控制器（node_a_2-IP和node_B_2-IP）、因為組態會從雙節點變更為四節點配置。
@@ -106,6 +111,7 @@ https://hwu.netapp.com["NetApp Hardware Universe"^]
 
 
 
+[[workflow-for-disruptive-transition]]
 == 顛覆性移轉的工作流程
 
 您必須遵循特定的工作流程、才能確保順利轉換。
@@ -116,6 +122,7 @@ image::../media/workflow_2n_transition_bsaic.png[雙節點過渡的工作流程]
 
 
 
+[[mapping-ports-from-the-metrocluster-fc-nodes-to-the-metrocluster-ip-nodes]]
 == 將連接埠從MetroCluster 靜態FC節點對應至MetroCluster 靜態IP節點
 
 您必須調整MetroCluster 連接埠和LIF組態以使其與MetroCluster 將取代之的靜態IP節點相容。
@@ -566,6 +573,7 @@ SAN
 
 
 
+[[preparing-the-metrocluster-ip-controllers]]
 == 準備MetroCluster 好執行功能
 
 您必須準備四MetroCluster 個全新的靜態IP節點、並安裝正確ONTAP 的版本。
@@ -687,6 +695,7 @@ Boot_ONTAP功能表
 
 
 
+[[verifying-the-health-of-the-metrocluster-fc-configuration]]
 == 驗MetroCluster 證不完整的驗證功能
 
 在執行轉換之前、您必須先驗證MetroCluster 不中斷的功能和連線能力
@@ -734,6 +743,7 @@ https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp
 
 
 
+[[removing-the-existing-configuration-from-the-tiebreaker-or-other-monitoring-software]]
 == 從斷路器或其他監控軟體移除現有組態
 
 如果現有的組態是以MetroCluster 可啟動切換的ESITTiebreaker組態或其他協力廠商應用程式（例如ClusterLion）來監控、則MetroCluster 在轉換之前、您必須先從斷路器或其他軟體移除該組態。

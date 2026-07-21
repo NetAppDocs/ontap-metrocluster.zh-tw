@@ -18,6 +18,7 @@ NOTE: 如果您的升級組合受到影響，則需要在所有舊控制器上�
 
 
 
+[[step-1-determine-whether-you-need-to-set-a-bootarg-on-the-old-controllers]]
 == 步驟 1：確定是否需要在舊控制器上設定 bootarg
 
 在開始升級之前，請使用以下資訊確定是否需要在舊控制器上設定 bootarg：
@@ -45,12 +46,14 @@ CAUTION: 如果您的升級不需要您設定任何 bootarg，您可以跳過此
 
 
 
+[[step-2-determine-the-bootarg-you-need-to-set-on-the-old-controllers]]
 == 步驟 2：確定需要在舊控制器上設定的啟動參數
 
 大多數受影響的升級需要您設置 `hw.cxgbe.toe_keepalive_disable`舊控制器上的 bootarg。但是，某些升級路徑要求您設定 `bootarg.siw.interop_enabled`而是使用 bootarg。
 
 請使用下表來判斷您需要為特定升級組合設定哪些 bootarg 。
 
+[[upgrade_paths_bootarg_assisted]]
 [cols="2*"]
 |===
 | 針對此升級 ... | 設定 bootarg... 
@@ -76,6 +79,7 @@ CAUTION: 如果您的升級不需要您設定任何 bootarg，您可以跳過此
 |===
 
 
+[[step-3-set-the-required-bootarg-on-the-old-controllers]]
 == 步驟 3：在舊控制器上設定所需的啟動參數
 
 確定升級組合所需的 bootarg 後，請依照步驟在舊控制器上設定 bootarg。

@@ -29,6 +29,7 @@ CAUTION: 在 Broadcom 和 Cisco 交換器上，每個具有日誌收集功能的
 ====
 
 
+[[before-you-begin]]
 == 開始之前
 
 * 使用者必須能夠存取交換器 `show` 命令。如果這些權限不可用、請建立新使用者、並將必要的權限授予使用者。
@@ -47,6 +48,7 @@ CAUTION: 在 Broadcom 和 Cisco 交換器上，每個具有日誌收集功能的
 
 
 
+[[steps]]
 == 步驟
 
 [role="tabbed-block"]

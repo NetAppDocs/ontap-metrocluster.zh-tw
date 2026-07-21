@@ -15,6 +15,7 @@ summary: 在開始設定MetroCluster 「不必要站台」之前、您應該先�
 
 
 
+[[site-a-fc-to-sas-bridge-1-fcbridgea1a]]
 == 站台A、FC對SAS橋接器1（FC_bridge _a_1a）
 
 每個SAS堆疊至少需要兩個FC對SAS橋接器。
@@ -46,6 +47,7 @@ bride_a_1a密碼
 |===
 
 
+[[site-a-fc-to-sas-bridge-2-fcbridgea1b]]
 == 站台A、FC對SAS橋接器2（FC_bridge _a_1b）
 
 每個SAS堆疊至少需要兩個FC對SAS橋接器。
@@ -77,6 +79,7 @@ bride_a_1b密碼
 |===
 
 
+[[site-b-fc-to-sas-bridge-1-fcbridgeb1a]]
 == 站台B、FC對SAS橋接器1（FC_bridge _B_1a）
 
 每個SAS堆疊至少需要兩個FC對SAS橋接器。
@@ -108,6 +111,7 @@ bride_B_1a密碼
 |===
 
 
+[[site-b-fc-to-sas-bridge-2-fcbridgeb1b]]
 == 站台B、FC對SAS橋接器2（FC_bridge _B_1b）
 
 每個SAS堆疊至少需要兩個FC對SAS橋接器。

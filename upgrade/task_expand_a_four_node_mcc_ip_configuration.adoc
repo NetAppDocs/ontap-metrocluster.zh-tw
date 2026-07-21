@@ -103,6 +103,7 @@ https://hwu.netapp.com["NetApp Hardware Universe"^]
 
 
 
+[[enable-console-logging]]
 == 啟用主控台記錄
 
 NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在執行此程序時採取下列動作：
@@ -117,6 +118,7 @@ NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在�
 
 
 
+[[example-naming-in-this-procedure]]
 == 此程序中的命名範例
 
 此程序使用範例名稱來識別整個過程中涉及的DR群組、節點和交換器。
@@ -154,6 +156,7 @@ Dr_group_2-new
 |===
 
 
+[[supported-platform-combinations-when-adding-a-second-dr-group]]
 == 新增第二個 DR 群組時支援的平台組合
 
 下表顯示八節點 MetroCluster IP 組態支援的平台組合。
@@ -169,6 +172,7 @@ Dr_group_2-new
 ====
 
 
+[[supported-aff-and-fas-metrocluster-ip-expansion-combinations]]
 === 支援的 AFF 和 FAS MetroCluster IP 擴充組合
 
 下表顯示在 MetroCluster IP 組態中擴充 AFF 或 FAS 系統所支援的平台組合。表格分成兩個群組：
@@ -202,6 +206,7 @@ image:../media/expand-ip-group-2-updated.png["MetroCluster IP 中AFF和FAS組 2 
 ====
 
 
+[[supported-asa-metrocluster-ip-expansion-combinations]]
 === 支援的 ASA MetroCluster IP 擴充組合
 
 下表顯示 MetroCluster IP 組態中擴充 ASA 系統所支援的平台組合：
@@ -210,6 +215,7 @@ image::../media/8node_comb_ip_asa.png[8 個節點組態的平台組合]
 
 
 
+[[send-a-custom-autosupport-message-prior-to-maintenance]]
 == 在維護前傳送自訂AutoSupport 的支援訊息
 
 在執行維護之前、您應發出AutoSupport 一份不知所知的訊息、通知NetApp技術支援部門正在進行維護。告知技術支援部門正在進行維護、可防止他們假設發生中斷、而開啟案例。
@@ -240,6 +246,7 @@ image::../media/8node_comb_ip_asa.png[8 個節點組態的平台組合]
 
 
 
+[[considerations-for-vlans-when-adding-a-new-dr-group]]
 == 新增 DR 群組時 VLAN 的考量事項
 
 * 擴充 MetroCluster IP 組態時、適用下列 VLAN 考量：
@@ -305,6 +312,7 @@ image::../media/8node_comb_ip_asa.png[8 個節點組態的平台組合]
 
 
 
+[[verify-the-health-of-the-metrocluster-configuration]]
 == 驗MetroCluster 證整個過程的效能狀況
 
 在執行擴充之前、您必須先確認 MetroCluster 組態的健全狀況和連線能力。
@@ -442,6 +450,7 @@ cluster_A::>
 
 
 
+[[remove-the-configuration-from-monitoring-applications]]
 == 從監控應用程式中移除組態
 
 如果現有的組態是使用MetroCluster 可ONTAP 啟動切換的ESITIOR軟體、或者其他協力廠商應用程式（例如ClusterLion）來監控、則MetroCluster 在升級之前、您必須先從監控軟體中移除該組態。
@@ -486,6 +495,7 @@ link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#commands-for
 
 
 
+[[prepare-the-new-controller-modules]]
 == 準備新的控制器模組
 
 您必須準備好四MetroCluster 個新的資訊節點、並安裝正確ONTAP 的版本資訊。
@@ -535,6 +545,7 @@ Boot_ONTAP
 
 
 
+[[upgrade-rcf-files]]
 == 升級RCF檔案
 
 如果您要安裝新的交換器韌體、則必須先安裝交換器韌體、才能升級RCF檔案。
@@ -621,6 +632,7 @@ NOTE: 如果您有L2共用或L3網路組態、可能需要調整中繼/客戶交
 
 
 
+[[join-the-new-nodes-to-the-clusters]]
 == 將新節點加入叢集
 
 您必須將四MetroCluster 個全新的靜態IP節點新增至現有MetroCluster 的靜態組態。
@@ -704,6 +716,7 @@ Do you want to use this configuration? {yes, no} [yes]: yes
 
 
 
+[[configure-intercluster-lifs-for-cluster-peering]]
 == 設定叢集間 LIF 以進行叢集對等關係
 
 您必須在MetroCluster 連接埠上建立叢集間的LIF、以便在各個連接埠之間進行通訊。您可以使用也有資料流量的專用連接埠或連接埠。
@@ -979,6 +992,7 @@ cluster01
 ====
 
 
+[[create-the-metrocluster-interfaces-and-mirror-root-aggregates]]
 == 建立 MetroCluster 介面並鏡像根聚合
 
 您必須在新 MetroCluster IP 節點上建立 MetroCluster 介面並鏡像根 Aggregate。
@@ -1432,6 +1446,7 @@ aggr_data_a2
 
 
 
+[[finalize-the-addition-of-the-new-nodes]]
 == 完成新節點的新增
 
 您必須將新的DR群組整合到MetroCluster 「更新」組態中、並在新節點上建立鏡射的資料集合體。

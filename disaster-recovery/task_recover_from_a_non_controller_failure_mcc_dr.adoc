@@ -21,6 +21,7 @@ summary: 在災難現場的設備完成任何必要的維護或更換、但未�
 
 
 
+[[enable-console-logging]]
 == 啟用主控台記錄
 
 NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在執行此程序時採取下列動作：
@@ -35,6 +36,7 @@ NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在�
 
 
 
+[[healing-the-configuration-in-a-metrocluster-configuration]]
 == 在 MetroCluster 組態中修復組態
 
 在 MetroCluster FC 組態中、您可以依照特定順序執行修復作業、以便在進行轉換後還原 MetroCluster 功能。
@@ -57,6 +59,7 @@ NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在�
 
 
 
+[[healing-the-data-aggregates]]
 === 修復資料集合體
 
 修復及更換災難站台上的任何硬體之後、您必須修復資料集合體。此程序可重新同步資料集合體、並準備（現已修復）災難站台以進行正常作業。在修復根集合體之前、您必須先修復資料集合體。
@@ -124,6 +127,7 @@ aggr_b2   227.1GB  227.1GB   0%    online  0      mcc1-a2      raid_dp, mirrored
 
 
 
+[[healing-the-root-aggregates-after-a-disaster]]
 === 災難後修復根集合體
 
 在資料集合體修復之後、您必須修復根集合體、以準備進行切換作業。
@@ -164,6 +168,7 @@ mcc1A::> metrocluster operation show
 
 
 
+[[verifying-that-your-system-is-ready-for-a-switchback]]
 == 驗證系統是否已準備好進行切換
 
 如果您的系統已經處於切換狀態、您可以使用「-Simulate」選項來預覽切換操作的結果。
@@ -241,6 +246,7 @@ mcc1A::> metrocluster operation show
 
 
 
+[[example-of-verification-results]]
 === 驗證結果範例
 
 下列範例顯示成功驗證切換回復作業：
@@ -272,6 +278,7 @@ Job ID Name                 Vserver    Node           State
 ----
 
 
+[[performing-a-switchback]]
 == 執行切換
 
 修復MetroCluster 完這個功能後、您就可以執行MetroCluster 還原操作。此還原操作會將組態恢復至正常作業狀態、使災難站台上的同步來源儲存虛擬機器（SVM）處於作用中狀態、並從本機磁碟集區提供資料。MetroCluster
@@ -372,6 +379,7 @@ Remote: cluster_A         Configuration state configured
 
 
 
+[[verifying-a-successful-switchback]]
 == 驗證成功的切換
 
 執行切換後、您想確認所有的集合體和儲存虛擬機器（SVM）都已切換回線上狀態。
@@ -469,6 +477,7 @@ vs1a           data    sync-source
 
 
 
+[[deleting-stale-aggregate-listings-after-switchback]]
 == 切換後刪除過時的Aggregate清單
 
 在切換後的某些情況下、您可能會注意到_stalon__集合體存在。過時的Aggregate是指已從ONTAP 無法使用的集合體、但其資訊仍會記錄在磁碟上。過時的Aggregate會以「nodesgrogr」狀態命令顯示、但不會以「sorage aggregate show」命令顯示。您可以刪除這些記錄、使其不再出現。

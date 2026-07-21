@@ -18,6 +18,7 @@ NOTE: 切換和切換程序僅支援 MetroCluster IP 組態。
 
 
 
+[[overview-of-switchover-and-switchback]]
 == 切換與切換概述
 
 切換可在兩個執行個體中執行：
@@ -45,6 +46,8 @@ NOTE: 切換和切換程序僅支援 MetroCluster IP 組態。
 
 
 
+[[use-system-manager-in-ontap-9-6-or-9-7-for-switchover-and-switchback]]
+[[sm97-sosb]]
 == 在 ONTAP 9.6 或 9.7 中使用系統管理程式進行切換和切換
 
 .步驟
@@ -71,10 +74,13 @@ System Manager會驗證是否有可能進行協調式切換。
 
 
 
+[[use-system-manager-in-ontap-9-8-or-later-for-switchover-and-switchback]]
+[[sm98-sosb]]
 == 使用 ONTAP 9.8 或更新版本中的系統管理員進行切換和切換
 
 
 
+[[perform-a-planned-switchover-ontap-9-8-or-later]]
 === 執行計畫性的重新操作（ ONTAP 9.8 或更新版本）
 
 .步驟
@@ -94,6 +100,7 @@ NOTE: 在您執行切換回復之前、不應使用遠端叢集進行資料服�
 
 
 
+[[perform-an-unplanned-switchover-ontap-9-8-or-later]]
 === 執行非計畫性的重新操作（ ONTAP 9.8 或更新版本）
 
 非計畫性的切換功能可能會由ONTAP 功能更新自動啟動。如果ONTAP 無法判斷是否需要切換、MetroCluster 則仍在執行的該站台的系統管理員會以下列步驟啟動切換：
@@ -121,6 +128,7 @@ NOTE: 遠端叢集上線後、在您執行切換之前、不應將它用於資�
 
 
 
+[[perform-a-switchback-ontap-9-8-or-later]]
 === 執行切換（ ONTAP 9.8 或更新版本）
 
 .開始之前

@@ -15,6 +15,7 @@ summary: 您可以深入瞭MetroCluster 解有關功能的組態設定與操作�
 
 
 
+[[metrocluster-and-miscellaneous-information]]
 == 包含各種資訊MetroCluster
 
 |===

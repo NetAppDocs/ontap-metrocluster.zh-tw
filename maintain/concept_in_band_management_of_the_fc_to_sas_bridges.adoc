@@ -42,6 +42,7 @@ link:task_fb_hot_add_stack_of_shelves_and_bridges.html#hot-adding-a-stack-of-sas
 
 
 
+[[managing-a-fibrebridge-bridge-from-ontap]]
 == 從ONTAP 功能區管理光纖橋接器
 
 從ONTAP 功能介紹9.5開始、您可以使用ONTAP SectorCLI將FibreBridge命令傳遞至橋接器、並顯示這些命令的結果。

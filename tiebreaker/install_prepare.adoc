@@ -15,6 +15,7 @@ summary: 在安裝和設定斷路器軟體之前、您應該先確認系統符�
 
 
 
+[[software-requirements]]
 == 軟體需求
 
 您必須符合下列軟體需求、視所安裝的斷路器版本而定。
@@ -101,6 +102,7 @@ ONTAP 9.1 至 ONTAP 9.9.1
 |===
 
 
+[[additional-requirements]]
 == 其他需求
 
 您必須瞭解下列額外需求：

@@ -22,12 +22,14 @@ image::../media/workflow_high_level_node_and_cluster_configuration_software.gif[
 
 
 
+[[ip-network-information-worksheet-for-site-a]]
 == 站台A的IP網路資訊工作表
 
 在設定系統之前、您必須MetroCluster 先向網路管理員取得第一個站台（站台A）的IP位址和其他網路資訊。
 
 
 
+[[site-a-cluster-creation-information]]
 === 站台叢集建立資訊
 
 第一次建立叢集時、您需要下列資訊：
@@ -69,6 +71,7 @@ DNS名稱伺服器
 |===
 
 
+[[site-a-node-information]]
 === 站台A節點資訊
 
 對於叢集中的每個節點、您都需要管理IP位址、網路遮罩和預設閘道。
@@ -100,6 +103,7 @@ DNS名稱伺服器
 |===
 
 
+[[site-a-lifs-and-ports-for-cluster-peering]]
 === 網站A lifs和連接埠、以供叢集對等處理
 
 對於叢集中的每個節點、您需要兩個叢集間生命體的IP位址、包括網路遮罩和預設閘道。叢集間生命體用於對等叢集。
@@ -129,6 +133,7 @@ DNS名稱伺服器
 |===
 
 
+[[site-a-time-server-information]]
 === 站台A時間伺服器資訊
 
 您必須同步時間、這需要一或多個NTP時間伺服器。
@@ -158,6 +163,7 @@ NTP伺服器2.
 |===
 
 
+[[site-a-nbsp-autosupport-information]]
 === 網站A nbsp；AutoSupport 資訊
 
 您必須在AutoSupport 每個節點上設定、這需要下列資訊：
@@ -217,6 +223,7 @@ Proxy伺服器
 |===
 
 
+[[site-a-sp-information]]
 === 站台A SP資訊
 
 您必須啟用每個節點的服務處理器（SP）、才能進行疑難排解和維護。這需要每個節點的下列網路資訊：
@@ -236,12 +243,14 @@ Proxy伺服器
 |===
 
 
+[[ip-network-information-worksheet-for-site-b]]
 == 站台B的IP網路資訊工作表
 
 在設定系統之前、您必須MetroCluster 先向網路管理員取得第二個站台（站台B）的IP位址和其他網路資訊。
 
 
 
+[[site-b-cluster-creation-information]]
 === 站台B叢集建立資訊
 
 第一次建立叢集時、您需要下列資訊：
@@ -283,6 +292,7 @@ DNS名稱伺服器
 |===
 
 
+[[site-b-node-information]]
 === 站台B節點資訊
 
 對於叢集中的每個節點、您都需要管理IP位址、網路遮罩和預設閘道。
@@ -314,6 +324,7 @@ DNS名稱伺服器
 |===
 
 
+[[site-b-lifs-and-ports-for-cluster-peering]]
 === 用於叢集對等的站台B生命與連接埠
 
 對於叢集中的每個節點、您需要兩個叢集間生命體的IP位址、包括網路遮罩和預設閘道。叢集間生命體用於對等叢集。
@@ -343,6 +354,7 @@ DNS名稱伺服器
 |===
 
 
+[[site-b-time-server-information]]
 === 站台B時間伺服器資訊
 
 您必須同步時間、這需要一或多個NTP時間伺服器。
@@ -372,6 +384,7 @@ NTP伺服器2.
 |===
 
 
+[[site-b-nbsp-autosupport-information]]
 === 站台B nbsp；AutoSupport 資訊
 
 您必須在AutoSupport 每個節點上設定、這需要下列資訊：
@@ -431,6 +444,7 @@ Proxy伺服器
 |===
 
 
+[[site-b-nbsp-sp-information]]
 === 站台B nbsp；SP資訊
 
 您必須啟用每個節點的服務處理器（SP）、才能進行疑難排解和維護、這需要每個節點的下列網路資訊：
@@ -450,6 +464,7 @@ Proxy伺服器
 |===
 
 
+[[similarities-and-differences-between-standard-cluster-and-metrocluster-configurations]]
 == 標準叢集MetroCluster 組態與不完整組態之間的相似性與差異
 
 在一個E叢 集組態中、每個叢集的節點組態MetroCluster 與標準叢集中的節點組態類似。
@@ -518,6 +533,7 @@ Proxy伺服器
 |===
 
 
+[[restoring-system-defaults-and-configuring-the-hba-type-on-a-controller-module]]
 == 還原系統預設值、並在控制器模組上設定HBA類型
 
 為了確保MetroCluster 成功安裝、請重設並還原控制器模組的預設值。
@@ -652,6 +668,7 @@ Please choose one of the following:
 
 
 
+[[configuring-fc-vi-ports-on-a-x1132a-r6-quad-port-card-on-fas8020-systems]]
 == 在FAS8020系統上的X1132A-R6四埠卡上設定FC-VI連接埠
 
 如果您在FAS8020系統上使用X1132A-R6四埠卡、您可以進入維護模式、設定用於FC-VI和啟動器的1a和1b連接埠。從原廠收到的不需要此功能MetroCluster 、因為系統會根據您的組態設定適當的連接埠。
@@ -758,6 +775,7 @@ controller_B_1
 
 
 
+[[verifying-disk-assignment-in-maintenance-mode-in-a-two-node-configuration]]
 == 在兩節點組態的維護模式中驗證磁碟指派
 
 在將系統完全開機至ONTAP 顯示器之前、您可以選擇性地將系統開機至維護模式、並驗證節點上的磁碟指派。應指派磁碟來建立完全對稱的組態、讓兩個站台擁有自己的磁碟櫃並提供資料、其中每個節點和每個集區都有相同數量的鏡射磁碟指派給它們。
@@ -909,6 +927,7 @@ DR合作夥伴的資源池1
 
 
 
+[[verifying-the-ha-state-of-components]]
 == 驗證元件的HA狀態
 
 在MetroCluster 原廠未預先設定的延伸支援組態中、您必須確認控制器和機箱元件的HA狀態已設定為「mcc-2n」、以便正常開機。對於從原廠接收的系統、此值已預先設定、您不需要驗證。
@@ -943,6 +962,7 @@ DR合作夥伴的資源池1
 
 
 
+[[setting-up-ontap-in-a-two-node-metrocluster-configuration]]
 == 在ONTAP 雙節點MetroCluster 的不全功能組態中設定功能
 
 在雙節點MetroCluster 的靜態組態中、您必須在每個叢集上開機節點、結束叢集設定精靈、然後使用「叢集設定」命令、將節點設定為單節點叢集。
@@ -1039,12 +1059,14 @@ cluster1-01           true    true
 
 
 
+[[configuring-the-clusters-into-a-metrocluster-configuration]]
 == 將叢集設定成MetroCluster 一個不只是一個的組態
 
 您必須對等處理叢集、鏡射根Aggregate、建立鏡射資料Aggregate、然後發出命令來實作MetroCluster 該等作業系統。
 
 
 
+[[peering-the-clusters]]
 === 對等連接叢集
 
 在不支援的組態中、叢集MetroCluster 必須處於對等關係中、以便彼此通訊、並執行MetroCluster 對恢復災難至關重要的資料鏡射。
@@ -1681,6 +1703,7 @@ cluster01-02
 
 
 
+[[mirroring-the-root-aggregates]]
 === 鏡射根Aggregate
 
 您必須鏡射根Aggregate以提供資料保護。
@@ -1719,6 +1742,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-concepts/home.html["
 
 
 
+[[creating-a-mirrored-data-aggregate-on-each-node]]
 === 在每個節點上建立鏡射資料Aggregate
 
 您必須在DR群組中的每個節點上建立鏡射資料Aggregate。
@@ -1788,6 +1812,7 @@ cluster_A::> storage aggregate create aggr1_node_A_1 -diskcount 10 -node node_A_
 
 
 
+[[creating-unmirrored-data-aggregates]]
 === 建立無鏡射的資料集合體
 
 您也可以針對MetroCluster 不需要由支援的組態所提供的備援鏡像的資料、建立無鏡射的資料集合體。
@@ -1858,6 +1883,7 @@ controller_A_1::> storage aggregate create aggr1_controller_A_1 -diskcount 10 -n
 
 
 
+[[implementing-the-metrocluster-configuration]]
 === 實作MetroCluster 此功能組態
 
 您必須執行「MetroCluster flexfconfigure」命令、才能以MetroCluster 一套功能完善的功能來啟動資料保護功能。
@@ -1996,6 +2022,7 @@ Remote: cluster_A         Configuration state configured
 
 
 
+[[configuring-fc-to-sas-bridges-for-health-monitoring]]
 === 設定FC對SAS橋接器以進行健全狀況監控
 
 在執行ONTAP 9.8版之前版本的系統中、如果您的組態包含FC到SAS橋接器、則必須執行一些特殊的組態步驟、以監控MetroCluster 以供使用者使用的SFC到SAS橋接器。
@@ -2064,6 +2091,7 @@ ATTO_10.10.20.13  atto04        true          ok              Atto   FibreBridge
 
 
 
+[[checking-the-metrocluster-configuration]]
 === 正在檢查MetroCluster 功能組態
 
 您可以檢查MetroCluster 功能組態中的元件和關係是否正常運作。您應該在初始組態設定後、以及MetroCluster 變更任何的功能後進行檢查。您也應該在協商（計畫性）切換或切換作業之前進行檢查。
@@ -2198,6 +2226,7 @@ link:https://docs.netapp.com/us-en/ontap/network-management/index.html["網路�
 
 
 
+[[checking-for-metrocluster-configuration-errors-with-config-advisor]]
 == 使用MetroCluster 資訊功能檢查是否有不正確的組態錯誤Config Advisor
 
 您可以前往NetApp支援網站下載Config Advisor 此功能、以檢查常見的組態錯誤。
@@ -2216,6 +2245,7 @@ https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp
 
 
 
+[[verifying-switchover-healing-and-switchback]]
 == 驗證切換、修復及切換
 
 您應該驗證MetroCluster 該組態的切換、修復及切換作業。
@@ -2225,6 +2255,7 @@ https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp
 
 
 
+[[protecting-configuration-backup-files]]
 == 保護組態備份檔案
 
 您可以指定遠端URL（HTTP或FTP）來上傳組態備份檔案、以及本機叢集中的預設位置、為叢集組態備份檔案提供額外的保護。

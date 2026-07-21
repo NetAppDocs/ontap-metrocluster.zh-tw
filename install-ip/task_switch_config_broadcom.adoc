@@ -22,6 +22,7 @@ NOTE: 您的組態在下列情況下需要額外授權（6個100-GB連接埠授�
 
 
 
+[[resetting-the-broadcom-ip-switch-to-factory-defaults]]
 == 將Broadcom IP交換器重設為原廠預設值
 
 在安裝新的交換器軟體版本和RCFs之前、您必須清除Broadcom交換器設定並執行基本組態。
@@ -294,6 +295,7 @@ Configuration Saved!
 
 
 
+[[downloading-and-installing-the-broadcom-switch-efos-software]]
 == 下載並安裝Broadcom交換器EFOS軟體
 
 您必須將交換器作業系統檔案和RCF檔案下載到MetroCluster 各個交換器、使其採用EWIP組態。
@@ -415,6 +417,7 @@ IP_switch_A_2 #
 
 
 
+[[steps-to-upgrade-efos-with-downloading-the-software-image-to-the-backup-boot-partition]]
 === 將軟體映像下載到備份開機分割區、以升級EFOS的步驟
 
 只有在兩個EFOS版本皆不相容於FIPS或兩個EFOS版本皆符合FIPS標準時、您才能執行下列步驟。
@@ -534,6 +537,7 @@ NOTE: 在極少數情況下、交換器可能無法開機。請依照 <<使用ON
 
 
 
+[[steps-to-upgrade-efos-using-the-onie-os-installation]]
 === 使用ONIE OS安裝來升級EFOS的步驟
 
 如果其中一個EFOS版本符合FIPS標準、而另一個EFOS版本不符合FIPS標準、您可以執行下列步驟。這些步驟可用於在交換器無法開機時、從ONIE安裝非FIPS或FIPS相容的EFOS 3.7.x.x映像。
@@ -682,6 +686,7 @@ unit 	active 	   backup   current-active  next-active
 
 
 
+[[downloading-and-installing-the-broadcom-rcf-files]]
 == 下載並安裝Broadcom RCF檔案
 
 您必須在 MetroCluster IP 組態中產生交換器 RCF 檔案、並將其安裝至每台交換器。
@@ -896,6 +901,7 @@ IP_switch_A_1# reload
 
 
 
+[[disable-unused-isl-ports-and-port-channels]]
 == 停用未使用的 ISL 連接埠和連接埠通道
 
 NetApp 建議停用未使用的 ISL 連接埠和連接埠通道、以避免不必要的健全狀況警示。

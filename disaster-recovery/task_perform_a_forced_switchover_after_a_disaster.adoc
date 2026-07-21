@@ -22,6 +22,7 @@ summary: 如果發生災難、您必須在切換後在災難叢集和存續的�
 
 
 
+[[fencing-off-the-disaster-site]]
 == 隔離災難站台
 
 災難發生後、如果必須更換災難站台節點、您必須停止節點、以免站台恢復服務。否則、如果用戶端在更換程序完成之前開始存取節點、您就有可能發生資料毀損的風險。
@@ -38,6 +39,7 @@ summary: 如果發生災難、您必須在切換後在災難叢集和存續的�
 
 
 
+[[performing-a-forced-switchover]]
 == 執行強制切換
 
 切換程序除了在測試與維護期間提供不中斷營運、還能讓您使用單一命令從站台故障中恢復。
@@ -93,12 +95,14 @@ SnapMirror關係必須在切換後重新建立。
 
 
 
+[[output-for-the-storage-aggregate-plex-show-command-is-indeterminate-after-a-metrocluster-switchover]]
 == 儲存Aggregate plex show命令的輸出在MetroCluster 執行完功能介紹後仍不確定
 
 當您在MetroCluster 執行完還原切換後執行「儲存Aggregate plex show」命令時、交換式根Aggregate的plex0狀態將會不確定、並顯示為故障。在此期間、切換根目錄不會更新。此叢的實際狀態只能在MetroCluster 還原階段之後決定。
 
 
 
+[[accessing-volumes-in-nvfail-state-after-a-switchover]]
 == 切換後存取NVFIL狀態的磁碟區
 
 切換後、您必須重設「volume modify」命令的「-in nvf失敗 狀態」參數、以清除NVFAIL狀態、以移除用戶端存取資料的限制。

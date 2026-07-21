@@ -16,6 +16,7 @@ ONTAP 調解器提供郵箱 LUN 來儲存有關 MetroCluster IP 節點的狀態�
 
 NOTE: 不支援MAUSO MetroCluster 的不支援不支援以支援不支援的功能。
 
+[[default_scenarios]]
 當節點偵測到需要切換的站台故障時、會採取步驟確認切換是否適當、如果是、則會執行切換。根據預設、會針對下列情況啟動 MAUSO ：
 
 * 每個節點的非揮發性快取都在運作中、而且快取和鏡像會在故障時同步。SyncMirror

@@ -19,6 +19,7 @@ summary: Volume modify命令的-nvfail參數可讓ONTAP 人在系統開機或進
 
 
 
+[[how-nvfail-impacts-access-to-nfs-volumes-or-luns]]
 == NVFIL 如何影響 NFS 磁碟區或 LUN 的存取
 
 當ONTAP 下列情況時、NVFIL狀態會設定為：當開機時、MetroCluster 發生畫面切換作業時、或是在HA接管作業期間（如果已在Volume上設定NVFIL選項）偵測到NVRAM錯誤。如果在啟動時未偵測到錯誤、則檔案服務會正常啟動。不過、如果偵測到NVRAM錯誤、或是在災難切換上強制執行NVFIL處理、ONTAP 則無法回應資料庫執行個體。
@@ -75,6 +76,7 @@ NOTE: 使用「force-nv容 錯移轉」選項、可在災難切換期間處理�
 |===
 
 
+[[commands-for-monitoring-data-loss-events]]
 == 用於監控資料遺失事件的命令
 
 如果您啟用NVFIL選項、當系統因NVRAM不一致或MetroCluster 發生故障切換而當機時、您會收到通知。
@@ -117,6 +119,7 @@ NOTE: 使用「force-nv容 錯移轉」選項、可在災難切換期間處理�
 
 
 
+[[accessing-volumes-in-nvfail-state-after-a-switchover]]
 == 切換後存取NVFIL狀態的磁碟區
 
 切換後、您必須重設「volume modify」命令的「-in nvf失敗 狀態」參數、以清除NVFAIL狀態、以移除用戶端存取資料的限制。
@@ -141,6 +144,7 @@ link:../manage/concept_monitoring_and_protecting_database_validity_by_using_nvfa
 
 
 
+[[recovering-luns-in-nvfail-states-after-switchover]]
 == 在切換後恢復NVFAIL狀態中的LUN
 
 切換後、主機將無法再存取NVFIL狀態之LUN上的資料。您必須執行許多動作、資料庫才能存取LUN。

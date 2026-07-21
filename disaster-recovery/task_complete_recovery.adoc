@@ -15,6 +15,7 @@ summary: 如果FabricPool 一個物件儲存在一個鏡射中、與MetroCluster
 
 
 
+[[reestablishing-object-stores-for-fabricpool-configurations]]
 == 重新建立物件存放區以供FabricPool 進行物件組態
 
 如果FabricPool 一個物件儲存在一個鏡射中、與MetroCluster 該處的不景點共存、並被摧毀、您必須重新建立物件存放區和FabricPool 該鏡射。
@@ -30,6 +31,7 @@ summary: 如果FabricPool 一個物件儲存在一個鏡射中、與MetroCluster
 
 
 
+[[verifying-licenses-on-the-replaced-nodes]]
 == 驗證替換節點上的授權
 
 如果受損節點使用ONTAP 需要標準（節點鎖定）授權的功能、則必須為替換節點安裝新授權。對於具有標準授權的功能、叢集中的每個節點都應該擁有自己的功能金鑰。
@@ -116,6 +118,7 @@ NOTE: 系統會自動產生您所需的新授權金鑰、並將其傳送至檔�
 
 
 
+[[restoring-key-management]]
 == 還原金鑰管理
 
 如果資料磁碟區已加密、則必須還原金鑰管理。如果根磁碟區已加密、則必須恢復金鑰管理。
@@ -152,6 +155,7 @@ NOTE: 系統會自動產生您所需的新授權金鑰、並將其傳送至檔�
 
 
 
+[[performing-a-switchback]]
 == 執行切換
 
 修復MetroCluster 完這個功能後、您就可以執行MetroCluster 還原操作。此還原操作會將組態恢復至正常作業狀態、使災難站台上的同步來源儲存虛擬機器（SVM）處於作用中狀態、並從本機磁碟集區提供資料。MetroCluster
@@ -249,6 +253,7 @@ Remote: cluster_A         Configuration state configured
 
 
 
+[[verifying-a-successful-switchback]]
 == 驗證成功的切換
 
 執行切換後、您想確認所有的集合體和儲存虛擬機器（SVM）都已切換回線上狀態。
@@ -344,6 +349,7 @@ vs1a           data    sync-source
 
 
 
+[[mirroring-the-root-aggregates-of-the-replacement-nodes]]
 == 鏡射替換節點的根集合體
 
 如果更換磁碟、您必須鏡射災難站台上新節點的根集合體。
@@ -448,6 +454,7 @@ cluster_A::>
 
 
 
+[[reconfiguring-ontap-mediator-metrocluster-ip-configurations]]
 == 重新配置 ONTAP 調解器（MetroCluster IP 配置）
 
 如果您具有使用 ONTAP 調解器配置的 MetroCluster IP 配置，則必須刪除並重新配置與 ONTAP 調解器的關聯。
@@ -470,6 +477,7 @@ cluster_A::>
 
 
 
+[[verifying-the-health-of-the-metrocluster-configuration]]
 == 驗MetroCluster 證資訊功能組態的健全狀況
 
 您應該檢查MetroCluster 整個過程的健全狀況、以驗證運作是否正常。

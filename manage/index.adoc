@@ -10,6 +10,7 @@ summary: 您可以在MetroCluster 計畫性維護作業或發生災難時、執�
 
 
 
+[[perform-switchover-healing-and-switchback]]
 == 執行切換、修復及切換
 
 [role="lead"]

@@ -19,6 +19,7 @@ image::../media/vip_and_bgp_in_metrocluster_2.png[MetroCluster中的虛擬 IP �
 
 
 
+[[ontap-limitations]]
 == 部分限制ONTAP
 
 不自動驗證兩個站台上的所有節點是否都設定了BGP對等。ONTAP MetroCluster
@@ -29,6 +30,7 @@ image::../media/vip_and_bgp_in_metrocluster_2.png[MetroCluster中的虛擬 IP �
 
 
 
+[[guidelines-for-using-this-layer-3-solution-with-a-metrocluster-configuration]]
 == 使用MetroCluster 此第3層解決方案搭配使用的指南（以供參考）
 
 您必須正確設定BGP和VIP、才能提供所需的備援功能。

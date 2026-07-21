@@ -15,6 +15,7 @@ summary: 啟動新的控制器，並驗證是否將生命託管在適當的節�
 
 
 
+[[boot-the-new-controllers]]
 == 啟動新控制器
 
 您必須啟動新的控制器、並注意確保bootarg變數正確無誤、並視需要執行加密還原步驟。
@@ -216,6 +217,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
 
 
 
+[[verify-and-restore-lif-configuration]]
 == 驗證並還原LIF組態
 
 驗證在升級程序開始時所對應的適當節點和連接埠上、是否裝載了生命點。

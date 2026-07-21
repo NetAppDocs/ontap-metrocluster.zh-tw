@@ -20,6 +20,7 @@ NOTE: 如果您要與非 MetroCluster 流量共用 ISL 、則必須確認 MetroC
 
 
 
+[[shared-network-configuration-with-direct-links]]
 == 具有直接連結的共用網路組態
 
 在此拓撲中、有兩個不同的站台是透過直接連結連接。這些連結可以是 xWDM 和 TDM 裝置或交換器之間的連結。ISL 的容量並非專用於 MetroCluster 流量、而是與其他非 MetroCluster 流量共用。
@@ -28,6 +29,7 @@ image::../media/mcc_ip_networking_with_shared_isls.gif[具有共享 ISL 的Metro
 
 
 
+[[shared-infrastructure-with-intermediate-networks]]
 == 共享基礎架構與中繼網路
 
 在此拓撲中、 MetroCluster 站台並非直接連線、而是 MetroCluster 和主機流量透過網路傳輸。
@@ -37,6 +39,7 @@ image::../media/mcc_ip_networking_with_intermediate_private_networks.gif[具有�
 
 
 
+[[multiple-metrocluster-configurations-sharing-an-intermediate-network]]
 == 共享中間網路的多個 MetroCluster 組態
 
 在此拓撲中、有兩MetroCluster 個獨立的Sing組態共享相同的中繼網路。在範例中、 MetroCluster One switch_a_1 和 MetroCluster Two switch_a_1 都會連線到相同的中繼交換器。
@@ -48,6 +51,7 @@ image::../media/mcc_ip_two_mccs_sharing_the_same_shared_network_sx.gif[MetroClus
 
 
 
+[[combination-of-a-metrocluster-configuration-using-netapp-validated-switches-and-a-configuration-using-metrocluster-compliant-switches]]
 == 結合使用 NetApp 驗證交換器的 MetroCluster 組態、以及使用 MetroCluster 相容交換器的組態
 
 兩個獨立的 MetroCluster 組態共用相同的中繼交換器、其中一個 MetroCluster 是使用 NetApp 驗證的交換器在共用的第 2 層組態（ MetroCluster One ）中進行設定、另一個 MetroCluster 則是使用直接連線至中繼交換器（ MetroCluster 2 ）的 MetroCluster 相容交換器進行設定。

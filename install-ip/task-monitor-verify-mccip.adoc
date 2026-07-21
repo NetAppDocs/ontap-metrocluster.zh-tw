@@ -13,6 +13,7 @@ summary: 您可以將 IP 交換器設定為使用 SNMPv3 進行健全狀況監�
 
 
 
+[[confirm-monitoring-of-the-connected-ethernet-switches]]
 == 確認監控連接的乙太網路交換器
 
 .關於這項工作
@@ -33,6 +34,7 @@ system switch ethernet show
 ====
 
 
+[[confirm-firmware-and-rcf-versions-are-up-to-date]]
 == 確認韌體和 RCF 版本為最新版本
 
 請確定交換器執行的是最新支援的韌體，而且已套用相容的參考組態檔案（ RCF ）。如需詳細資訊https://mysupport.netapp.com/site/downloads["NetApp支援下載頁面"^]、請參閱。
@@ -50,6 +52,7 @@ NOTE: 如需設定要使用的 SNMPv3 的詳細資訊，請參閱link:config-snm
 
 
 
+[[confirm-management-network-connection]]
 == 確認管理網路連線
 
 確認交換器的管理連接埠已連線至管理網路。

@@ -28,6 +28,7 @@ link:task_fb_consolidate_replace_a_pair_of_fibrebridge_6500n_bridges_with_7500n_
 
 
 
+[[verifying-storage-connectivity]]
 == 驗證儲存設備連線能力
 
 在更換橋接器之前、您應該先確認橋接器和儲存設備的連線能力。熟悉命令輸出之後、即可在進行組態變更後、確認連線能力。
@@ -95,6 +96,7 @@ slot 0: FC Host Adapter 0g (QLogic 8324 rev. 2, N-port, <UP>)**<=== Initiator po
 
 
 
+[[hot-swapping-a-bridge-with-a-replacement-bridge-of-the-same-model]]
 == 以相同機型的替換橋接器熱交換橋接器
 
 您可以將故障的橋接器熱抽換為同一機型的另一橋接器。
@@ -622,6 +624,7 @@ link:concept_in_band_management_of_the_fc_to_sas_bridges.html["FC至SAS橋接器
 
 
 
+[[hot-swapping-a-fibrebridge-7500n-with-a-7600n-bridge]]
 == 以7600N橋接器熱交換使用FibreBridge 7500N
 
 您可以使用7600N橋接器熱抽換到光纖橋接器7500N。
@@ -1006,6 +1009,8 @@ link:concept_in_band_management_of_the_fc_to_sas_bridges.html["FC至SAS橋接器
 
 
 
+[[hot-swapping-a-fibrebridge-6500n-bridge-with-a-fibrebridge-7600n-or-7500n-bridge]]
+[[hot_swap_6500n]]
 == 使用光纖橋接器7600N或7500N橋接器熱交換光纖橋接器6500N
 
 您可以使用光纖橋接器7600N或7500N橋接器熱抽換至光纖橋接器6500N橋接器、以取代故障橋接器、或是在光纖連接或橋接式MetroCluster 連接的不支援配置中升級橋接器。

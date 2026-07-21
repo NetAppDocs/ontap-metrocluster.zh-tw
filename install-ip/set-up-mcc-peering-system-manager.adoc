@@ -25,6 +25,7 @@ summary: 從 ONTAP 9 開始、您可以使用系統管理員來管理 MetroClust
 
 
 
+[[perform-the-peering-process-from-site-a]]
 == 從站台 A 執行對等程序
 
 此程序由站台A的系統管理員執行
@@ -45,6 +46,7 @@ summary: 從 ONTAP 9 開始、您可以使用系統管理員來管理 MetroClust
 
 
 
+[[perform-the-peering-process-from-site-b]]
 == 從站台 B 執行對等程序
 
 此程序由站台B的系統管理員執行

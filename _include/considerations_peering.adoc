@@ -9,12 +9,14 @@ http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-clus-peer/home.html["叢
 
 
 
+[[prerequisites-for-cluster-peering]]
 == 叢集對等關係的先決條件
 
 在設定叢集對等之前、您應該確認連接埠、IP位址、子網路、防火牆和叢集命名需求之間是否符合連線要求。
 
 
 
+[[connectivity-requirements]]
 === 連線需求
 
 本機叢集上的每個叢集間LIF都必須能夠與遠端叢集上的每個叢集間LIF通訊。
@@ -36,6 +38,7 @@ NOTE: 藉由支援兩種傳輸協定同時出現在叢集間的LIF上、藉由�
 
 
 
+[[port-requirements]]
 === 連接埠需求
 
 您可以使用專用連接埠進行叢集間通訊、或共用資料網路所使用的連接埠。連接埠必須符合下列需求：
@@ -55,6 +58,7 @@ NOTE: 藉由支援兩種傳輸協定同時出現在叢集間的LIF上、藉由�
 
 
 
+[[firewall-requirements]]
 === 防火牆需求
 
 防火牆和叢集間防火牆原則必須允許下列傳輸協定：
@@ -68,6 +72,7 @@ NOTE: 藉由支援兩種傳輸協定同時出現在叢集間的LIF上、藉由�
 
 
 
+[[considerations-when-using-dedicated-ports]]
 == 使用專用連接埠時的考量事項
 
 在判斷叢集間複寫是否使用專用連接埠是正確的叢集間網路解決方案時、您應該考量LAN類型、可用WAN頻寬、複寫時間間隔、變更率及連接埠數量等組態與需求。
@@ -85,6 +90,7 @@ NOTE: 藉由支援兩種傳輸協定同時出現在叢集間的LIF上、藉由�
 
 
 
+[[considerations-when-sharing-data-ports]]
 == 共享資料連接埠時的考量
 
 當判斷叢集間複寫的資料連接埠共用是否為正確的叢集間網路解決方案時、您應該考量LAN類型、可用的WAN頻寬、複寫時間間隔、變更率及連接埠數量等組態與需求。

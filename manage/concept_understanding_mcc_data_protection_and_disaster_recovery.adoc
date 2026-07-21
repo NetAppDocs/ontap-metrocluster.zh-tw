@@ -17,6 +17,7 @@ summary: 瞭解MetroCluster NetApp如何保護資料、並提供透明的故障�
 
 
 
+[[how-eight-and-four-node-metrocluster-configurations-provide-local-failover-and-switchover]]
 == 八節點和四節點MetroCluster 的不完整組態如何提供本機容錯移轉和切換功能
 
 八節點和四節點MetroCluster 的支援能力可同時保護本機層級和叢集層級的資料。如果您要設定MetroCluster 一個不完整的組態、您必須知道MetroCluster 哪些是使用各種組態來保護資料。
@@ -25,6 +26,7 @@ summary: 瞭解MetroCluster NetApp如何保護資料、並提供透明的故障�
 
 
 
+[[how-local-ha-data-protection-works-in-a-metrocluster-configuration]]
 === 本機HA資料保護如何在MetroCluster 一個不一樣的組態中運作
 
 您需要瞭解HA配對如何在MetroCluster 功能不清的組態中運作。
@@ -40,12 +42,14 @@ link:https://docs.netapp.com/us-en/ontap/high-availability/index.html["高可用
 
 
 
+[[how-metrocluster-configurations-provide-data-and-configuration-replication]]
 == 如何利用此功能進行資料與組態複寫MetroCluster
 
 透過各種功能、可在兩個景點之間同步複寫資料和組態。MetroCluster ONTAP MetroCluster
 
 
 
+[[configuration-protection-with-the-configuration-replication-service]]
 === 組態複寫服務的組態保護
 
 透過自動將資訊複寫到DR合作夥伴、此功能可保護不經更新的功能。ONTAP MetroCluster
@@ -56,6 +60,7 @@ CRS會將本機節點組態同步複寫至合作夥伴叢集的DR合作夥伴。
 
 
 
+[[replication-of-svms-during-metrocluster-operations]]
 === 在執行SVM MetroCluster 的過程中複寫SVM
 
 支援SVM的支援區塊組態複寫服務（CRS）可提供備援資料伺服器組態、以及資料磁碟區鏡射功能。ONTAP如果發生切換、來源SVM會關閉、而位於存續叢集上的目的地SVM會變成作用中。
@@ -111,6 +116,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sag/home.html["系�
 
 
 
+[[how-metrocluster-configurations-use-syncmirror-to-provide-data-redundancy]]
 === 如何使用NetApp功能來提供資料備援MetroCluster SyncMirror
 
 鏡射集合體使用SyncMirror 功能提供資料備援、並包含來源與目的地儲存虛擬機器（SVM）擁有的磁碟區。資料會複寫到合作夥伴叢集上的磁碟集區。也支援無鏡射的Aggregate。
@@ -167,6 +173,7 @@ image::../media/mcc_mirroring_of_pools.gif[MetroCluster儲存池鏡像]
 
 
 
+[[how-nvram-or-nvmem-cache-mirroring-and-dynamic-mirroring-work-in-metrocluster-configurations]]
 === NVRAM或NVMEM快取鏡射與動態鏡射如何在MetroCluster 各種組態中運作
 
 儲存控制器中的非揮發性記憶體（NVRAM或NVMEM、視平台機型而定）會在本機鏡射至本機HA合作夥伴、並從遠端鏡射至合作夥伴站台上的遠端災難恢復（DR）合作夥伴。如果發生本機容錯移轉或切換、此組態可讓非揮發性快取中的資料得以保留。
@@ -226,6 +233,7 @@ image::../media/mcc_nvram_mirroring_example_dynamic_dr_aux.gif[具有 DR 輔助�
 
 
 
+[[types-of-disasters-and-recovery-methods]]
 == 災難類型和恢復方法
 
 您必須熟悉不同類型的故障和災難、才能使用MetroCluster 此功能進行適當的回應。
@@ -287,6 +295,7 @@ NOTE: AUSO（自動非計畫性切換）不支援MetroCluster 使用於各種IP�
 |===
 
 
+[[how-an-eight-node-or-four-node-metrocluster-configuration-provides-nondisruptive-operations]]
 == 八節點或四節點MetroCluster 的不中斷作業組態如何提供不中斷營運的功能
 
 如果問題僅限於單一節點、則本機HA配對內的容錯移轉與還原功能可持續不中斷營運。在這種情況下MetroCluster 、不需要切換至遠端站台即可完成此功能。
@@ -301,6 +310,7 @@ link:https://docs.netapp.com/us-en/ontap/high-availability/index.html["高可用
 
 
 
+[[switchover-and-switchback-during-metrocluster-transition]]
 === 在進行還原轉換時切換和切換MetroCluster
 
 從FC到IP的轉換過程包括將靜態IP節點和IP交換器新增至現有的靜態FC組態、然後淘汰該功能的各個節點。MetroCluster MetroCluster MetroCluster MetroCluster根據轉換程序的階段、MetroCluster 還原、修復及切換作業會使用不同的工作流程。
@@ -309,6 +319,7 @@ link:https://docs.netapp.com/us-en/ontap/high-availability/index.html["高可用
 
 
 
+[[consequences-of-local-failover-after-switchover]]
 === 切換後本機容錯移轉的後果
 
 如果發生無法切換的情況、而在存續的站台發生問題、本機容錯移轉可提供持續且不中斷營運的作業。MetroCluster但是、系統因為不再處於備援組態、所以面臨風險。
@@ -317,6 +328,7 @@ link:https://docs.netapp.com/us-en/ontap/high-availability/index.html["高可用
 
 
 
+[[how-a-two-node-metrocluster-configuration-provides-nondisruptive-operations]]
 == 雙節點MetroCluster 的不中斷作業組態如何提供不中斷營運的功能
 
 如果兩個站台中有一個因為恐慌而發生問題、MetroCluster 則可透過此功能進行不中斷營運。如果電力中斷同時影響節點和儲存設備、則切換作業不會自動進行、而且會中斷、直到MetroCluster 發出「停止切換」命令為止。
@@ -330,6 +342,7 @@ link:concept_understanding_mcc_data_protection_and_disaster_recovery.html["在�
 
 
 
+[[overview-of-the-switchover-process]]
 == 切換程序總覽
 
 透過將儲存設備和用戶端存取從來源叢集移至遠端站台、透過此功能可在發生災難後立即恢復服務。MetroCluster您必須瞭解預期會發生哪些變更、以及在發生切換時需要執行哪些動作。
@@ -360,6 +373,7 @@ NOTE: 此程序僅適用於其他站台穩定且不打算離線的情況。
 
 
 
+[[availability-of-commands-during-switchover]]
 === 切換期間的命令可用度
 
 下表顯示切換期間命令的可用度：
@@ -480,6 +494,7 @@ NOTE: 此程序僅適用於其他站台穩定且不打算離線的情況。
 |===
 
 
+[[differences-in-switchover-between-metrocluster-fc-and-ip-configurations]]
 === 切換MetroCluster 功能與不相同的功能
 
 在支援靜態IP的組態中、由於遠端磁碟是透過遠端DR合作夥伴節點存取、因此當遠端節點在切換作業中關閉時、遠端磁碟就無法存取。MetroCluster這會導致MetroCluster 使用不相同的現象：
@@ -493,6 +508,7 @@ NOTE: 當不鏡射的Aggregate支援MetroCluster 於某個不鏡射IP組態時�
 
 
 
+[[disk-ownership-changes-during-ha-takeover-and-metrocluster-switchover-in-a-four-node-metrocluster-configuration]]
 === 在HA接管期間、磁碟擁有權會有所變更、MetroCluster 而在四節點MetroCluster 的功能組態中、也會進行不全的功能切換
 
 在高可用度和MetroCluster 可靠性作業期間、磁碟的擁有權會暫時自動變更。瞭解系統如何追蹤哪個節點擁有哪些磁碟、是很有幫助的。
@@ -628,6 +644,7 @@ node_a_1
 |===
 
 
+[[considerations-when-using-unmirrored-aggregates]]
 === 使用無鏡射Aggregate時的考量
 
 如果您的組態包含無鏡射的Aggregate、則必須注意切換作業後可能發生的存取問題。
@@ -666,6 +683,7 @@ LUN不應位於無鏡射的Aggregate上。在未鏡射的集合體上設定LUN�
 
 
 
+[[automatic-unplanned-switchover-in-metrocluster-fc-configurations]]
 === 在不完整的FC組態中自動進行非計畫性切換MetroCluster
 
 在SFC組態中MetroCluster 、某些情況可能會在整個站台的控制器無法提供不中斷營運的情況下觸發自動非計畫性切換（AUSO）。如果需要、可以停用AUSO。
@@ -734,18 +752,21 @@ link:task_perform_switchover_for_tests_or_maintenance.html["執行測試或維�
 
 
 
+[[mediator-assisted-automatic-unplanned-switchover-in-metrocluster-ip-configurations]]
 === 透過協調器輔助的自動非計畫性切換MetroCluster 功能、以支援各種不完整的IP組態
 
 link:../install-ip/concept-ontap-mediator-supports-automatic-unplanned-switchover.html["瞭解 ONTAP Mediator 如何支援 MetroCluster IP 組態中的自動非計畫性切換"]。
 
 
 
+[[what-happens-during-healing-metrocluster-fc-configurations]]
 == 修復過程中發生的情況MetroCluster （不含FC組態）
 
 在MetroCluster 還原為SFC組態期間、鏡射Aggregate的重新同步會分階段進行、以便在修復的災難站台上準備節點以進行切換。這是一項計畫性事件、因此您可以完全掌控每個步驟、將停機時間降至最低。修復是在儲存設備和控制器元件上執行的兩步驟程序。
 
 
 
+[[data-aggregate-healing]]
 === 資料Aggregate修復
 
 在災難站台的問題解決之後、您將開始儲存設備修復階段：
@@ -764,6 +785,7 @@ link:../manage/task_verifiy_that_your_system_is_ready_for_a_switchover.html["修
 
 
 
+[[root-aggregate-healing]]
 === 根Aggregate修復
 
 在集合體同步之後、您可以將CFO集合體和根集合體回饋給各自的DR合作夥伴、藉此開始控制器修復階段。
@@ -772,12 +794,14 @@ link:../manage/task_verifiy_that_your_system_is_ready_for_a_switchover.html["修
 
 
 
+[[what-happens-during-healing-metrocluster-ip-configurations]]
 == 修復過程中發生的情況MetroCluster （不完整的IP組態）
 
 在MetroCluster 還原靜態IP組態期間、鏡射Aggregate的重新同步會分階段進行、以便在修復的災難站台上準備節點以進行切換。這是一項計畫性事件、因此您可以完全掌控每個步驟、將停機時間降至最低。修復是在儲存設備和控制器元件上執行的兩步驟程序。
 
 
 
+[[differences-with-metrocluster-fc-configurations]]
 === 不一樣的功能與不相同的功能MetroCluster
 
 在靜態IP組態中、您必須在執行修復作業之前、先啟動災難站台叢集中的節點。MetroCluster
@@ -788,6 +812,7 @@ link:../manage/task_verifiy_that_your_system_is_ready_for_a_switchover.html["修
 
 
 
+[[data-aggregate-healing]]
 === 資料Aggregate修復
 
 在災難站台的問題解決之後、您將開始儲存設備修復階段：
@@ -806,6 +831,7 @@ link:../manage/task_verifiy_that_your_system_is_ready_for_a_switchover.html["修
 
 
 
+[[root-aggregate-healing]]
 === 根Aggregate修復
 
 在集合體同步之後、您就會執行根集合體修復階段。在靜態IP組態中、此階段確認集合體已修復。MetroCluster
@@ -814,12 +840,14 @@ link:../manage/task_verifiy_that_your_system_is_ready_for_a_switchover.html["修
 
 
 
+[[automatic-healing-of-aggregates-on-metrocluster-ip-configurations-after-switchover]]
 == 切換後自動修復MetroCluster 靜態IP組態上的集合體
 
 從推出時起、就能在協調切換時、自動修復以執行各項功能。ONTAP MetroCluster從ONTAP 支援非計畫性切換後的自動修復功能、從功能支援的SJS9.6開始。這就不再需要發佈「MetroCluster 恢復」命令。
 
 
 
+[[automatic-healing-after-negotiated-switchover-beginning-with-ontap-9-5]]
 === 協商切換後的自動修復（從ONTAP 版本號為S9.5開始）
 
 執行協調式切換（在沒有強制災難恢復true選項的情況下發出切換命令）之後、自動修復功能可簡化系統恢復正常運作所需的步驟。在具有自動修復功能的系統上、切換後會發生下列情況：
@@ -843,6 +871,7 @@ image::../media/mcc_so_sb_with_autoheal.gif[MetroCluster切換並切換回自動
 
 
 
+[[automatic-healing-after-unscheduled-switchover-beginning-with-ontap-9-6]]
 === 非排程切換後自動修復（從ONTAP S還原9.6開始）
 
 從支援從S69.6開始的不排程切換MetroCluster 後、可在不經排程的情況下進行自動修復ONTAP 。非排程的切換是指您使用「強制災難時」選項來發出「切換」命令。
@@ -869,12 +898,14 @@ image::../media/mcc_uso_with_autoheal.gif[MetroCluster具有自動修復功能�
 
 
 
+[[if-automatic-healing-fails]]
 === 如果自動修復失敗
 
 如果自動修復作業因故失敗、您必須MetroCluster 手動發出「還原」命令、如同ONTAP 執行於更新版本的版本ONTAP （不包括更新版本9.6）。您可以使用「MetroCluster 還原作業展示」和「MetroCluster 還原作業歷史記錄show -instance」命令來監控修復狀態、並判斷故障原因。
 
 
 
+[[creating-svms-for-a-metrocluster-configuration]]
 == 建立SVM以MetroCluster 進行不一樣的組態
 
 您可以建立SVM以利MetroCluster 執行支援的組態、以便在叢集上提供同步災難恢復和高可用度的資料、這些叢集是針對MetroCluster 支援支援的組態所設定。
@@ -959,6 +990,7 @@ SVM for MetroCluster the Sfor the Sfor the Sfor the Sfor the Sfor the Sfor the c
 
 
 
+[[what-happens-during-a-switchback]]
 == 切換期間會發生什麼事
 
 災難站台恢復並修復集合體之後、MetroCluster 此還原程序會將儲存設備和用戶端存取從災難恢復站台恢復到主叢集。

@@ -15,6 +15,7 @@ summary: 若要準備轉換組態、您可以將新節點新增至現有MetroClu
 
 
 
+[[sending-a-custom-autosupport-message-prior-to-maintenance]]
 == 在維護前傳送自訂AutoSupport 的支援訊息
 
 在執行維護之前、您應發出AutoSupport 一份不知所知的訊息、通知NetApp技術支援部門正在進行維護。告知技術支援部門正在進行維護、可防止他們假設發生中斷、而開啟案例。
@@ -38,6 +39,7 @@ summary: 若要準備轉換組態、您可以將新節點新增至現有MetroClu
 
 
 
+[[enabling-transition-mode-and-disabling-cluster-ha]]
 == 啟用轉換模式並停用叢集HA
 
 您必須啟用MetroCluster 「不支援功能」轉換模式、才能讓新舊節點在MetroCluster 支援的情況下一起運作、並停用叢集HA。
@@ -157,6 +159,7 @@ cluster_B::>
 
 
 
+[[joining-the-metrocluster-ip-nodes-to-the-clusters]]
 == 將MetroCluster 靜態IP節點加入叢集
 
 您必須將四MetroCluster 個全新的靜態IP節點新增至現有MetroCluster 的靜態組態。
@@ -236,6 +239,7 @@ Do you want to use this configuration? {yes, no} [yes]: yes
 
 
 
+[[configuring-intercluster-lifs-creating-the-metrocluster-interfaces-and-mirroring-root-aggregates]]
 == 設定叢集間的生命體、建立MetroCluster 支援資訊介面、以及鏡射根集合體
 
 您必須建立叢集對等的生命、在MetroCluster 新MetroCluster 的物件節點上建立一個物件介面。
@@ -608,6 +612,7 @@ aggr_data_a2
 
 
 
+[[finalizing-the-addition-of-the-metrocluster-ip-nodes]]
 == 完成MetroCluster 加入的不確定性IP節點
 
 您必須將新的DR群組整合到MetroCluster 「更新」組態中、並在新節點上建立鏡射的資料集合體。

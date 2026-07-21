@@ -12,6 +12,7 @@ summary: 如果MetroCluster 您在站台使用防火牆、則必須確保存取�
 
 
 
+[[considerations-for-firewall-usage-at-metrocluster-sites]]
 == 使用防火牆的考MetroCluster 量因素
 
 如果MetroCluster 您在站台使用防火牆、則必須確保存取所需的連接埠。

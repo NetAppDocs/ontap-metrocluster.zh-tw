@@ -15,6 +15,7 @@ summary: 本節提供驗證 MetroCluster 組態和網路是否符合所有需求
 
 
 
+[[netapp-validated-switches]]
 == NetApp驗證的交換器
 
 如果交換器符合下列需求、則該交換器已通過 NetApp 驗證：
@@ -29,6 +30,7 @@ summary: 本節提供驗證 MetroCluster 組態和網路是否符合所有需求
 
 
 
+[[metrocluster-compliant-switches]]
 == 符合MetroCluster的交換器
 
 MetroCluster 相容的交換器並未通過 NetApp 驗證、但如果符合特定需求和組態準則、則可用於 MetroCluster IP 組態。

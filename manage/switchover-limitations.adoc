@@ -27,6 +27,7 @@ summary: 在切入期間，不應執行某些作業。
 
 
 
+[[hardware-replacement-in-switchover]]
 == 硬體更換在交換中
 
 當系統處於轉換狀態時，請使用下列程序來更換控制器硬體：

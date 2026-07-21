@@ -15,6 +15,7 @@ summary: 您可以使用此引導式自動化MetroCluster 的動作來執行不�
 
 
 
+[[supported-platform-combinations]]
 == 支援的平台組合
 
 * 如需支援哪些平台升級組合的相關資訊、請參閱MetroCluster 中的《支援哪些平台升級》表  link:concept_choosing_controller_upgrade_mcc.html#supported-metrocluster-fc-controller-upgrades["選擇控制器升級程序"]。
@@ -24,6 +25,7 @@ summary: 您可以使用此引導式自動化MetroCluster 的動作來執行不�
 
 
 
+[[about-this-task]]
 == 關於這項工作
 
 * 您只能將此程序用於控制器升級。
@@ -79,6 +81,7 @@ https://hwu.netapp.com["NetApp Hardware Universe"^]
 
 
 
+[[enable-console-logging]]
 == 啟用主控台記錄
 
 NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在執行此程序時採取下列動作：
@@ -93,6 +96,8 @@ NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在�
 
 
 
+[[prepare-for-the-upgrade]]
+[[fc_controller_replace_prepare]]
 == 準備升級
 
 若要準備控制器升級、您必須執行系統預先檢查並收集組態資訊。
@@ -139,6 +144,7 @@ Node-A-1    Failed         MetroCluster check failed. Reason : MCC check showed 
 
 
 
+[[gather-information-before-the-upgrade]]
 === 在升級之前收集資訊
 
 在升級之前、如果根磁碟區已加密、您必須先收集備份金鑰和其他資訊、才能以舊的加密根磁碟區來啟動新的控制器。
@@ -327,6 +333,7 @@ cluster_B::*
 
 
 
+[[remove-the-existing-configuration-from-the-tiebreaker-or-other-monitoring-software]]
 === 從斷路器或其他監控軟體移除現有組態
 
 如果現有的組態是以MetroCluster 可啟動切換的ESITTiebreaker組態或其他協力廠商應用程式（例如ClusterLion）來監控、您必須先從MetroCluster 斷路器或其他軟體移除此類組態、才能更換舊的控制器。
@@ -341,6 +348,7 @@ cluster_B::*
 
 
 
+[[replace-the-old-controllers-and-boot-up-the-new-controllers]]
 == 更換舊的控制器、並啟動新的控制器
 
 收集資訊並恢復作業之後、自動化會繼續進行切換作業。
@@ -353,6 +361,7 @@ cluster_B::*
 
 
 
+[[prepare-the-network-configuration-of-the-old-controllers]]
 === 準備舊控制器的網路組態
 
 為了確保新控制器上的網路能正常恢復、您必須將LIF移至通用連接埠、然後移除舊控制器的網路組態。
@@ -454,6 +463,7 @@ network port ifgrp remove-port -node node1 -ifgrp a1a -port e0d
 
 
 
+[[set-up-the-new-controllers]]
 === 設定新的控制器
 
 您必須將新的控制器裝入機架並連接纜線。
@@ -484,6 +494,7 @@ https://docs.netapp.com/platstor/index.jsp["ONTAP 硬體系統文件"^]
 
 
 
+[[netboot-the-new-controllers]]
 === 以網路開機新的控制器
 
 安裝新節點之後、您需要netboot才能確保新節點執行的ONTAP 版本與原始節點相同。「netboot」一詞是指您從ONTAP 儲存在遠端伺服器上的不實映像進行開機。準備網路開機時、您必須將ONTAP 一份《支援》9開機映像複本放到系統可以存取的網路伺服器上。
@@ -556,6 +567,7 @@ NOTE: 您必須重新啟動節點才能使用新安裝的軟體。
 
 
 
+[[clear-the-configuration-on-a-controller-module]]
 === 清除控制器模組上的組態
 
 在使用全新的控制器模組MetroCluster 進行整個過程之前、您必須先清除現有的組態。
@@ -595,6 +607,7 @@ Boot_ONTAP功能表
 
 
 
+[[restore-the-hba-configuration]]
 === 還原HBA組態
 
 視控制器模組中是否有HBA卡及其組態而定、您必須針對站台的使用狀況正確設定這些卡。
@@ -676,6 +689,7 @@ FC
 
 
 
+[[reassign-root-aggregate-disks]]
 === 重新指派根Aggregate磁碟
 
 使用先前收集的「sids」、將根Aggregate磁碟重新指派給新的控制器模組
@@ -791,6 +805,7 @@ aggr0_node_b_1-root        online      raid_dp, aggr    root, nosnap=on,
 
 
 
+[[boot-up-the-new-controllers]]
 === 開機新的控制器
 
 您必須從開機功能表重新啟動控制器、才能更新控制器Flash映像。如果已設定加密、則需要執行其他步驟。
@@ -1004,6 +1019,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
 
 
 
+[[complete-the-upgrade]]
 == 完成升級
 
 自動化作業會執行驗證系統檢查、然後暫停、以便您驗證網路連線能力。驗證之後、資源重新取得階段便會啟動、自動化作業會在站台A切換回、並在升級後檢查時暫停。在您恢復自動化作業之後、它會執行升級後檢查、如果未偵測到錯誤、則會將升級標示為完成。
@@ -1031,6 +1047,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
 
 
 
+[[upgrade-the-nodes-on-clustera]]
 == 升級叢集 A 上的節點
 
 您必須重複升級工作，才能在站台 A 的叢集 A 上升級節點
@@ -1044,6 +1061,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
 
 
 
+[[restoring-tiebreaker-monitoring]]
 === 還原斷路器監控
 
 如果MetroCluster 先前已將此組態設定為由斷路器軟體進行監控、您可以還原斷路器連線。

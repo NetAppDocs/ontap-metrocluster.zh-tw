@@ -18,6 +18,7 @@ NOTE: 此程序僅適用於以網路連接MetroCluster 的功能為基礎的功�
 
 
 
+[[disabling-access-to-the-shelf]]
 == 停用對機櫃的存取
 
 在更換機櫃模組之前、您必須先停用機櫃存取。
@@ -160,6 +161,7 @@ FC_switch_A_2# show interface fc1/6
 
 
 
+[[replacing-the-shelf]]
 == 更換機櫃
 
 在插入新的機櫃和機櫃模組並進行纜線連接之前、您必須實際移除所有纜線和機櫃。
@@ -176,6 +178,7 @@ FC_switch_A_2# show interface fc1/6
 
 
 
+[[reenabling-access-and-verifying-the-operation]]
 == 重新啟用存取並驗證作業
 
 更換機櫃之後、您需要重新啟用存取功能、並確認新機櫃是否正常運作。

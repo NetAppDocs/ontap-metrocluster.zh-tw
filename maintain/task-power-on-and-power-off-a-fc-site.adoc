@@ -21,6 +21,7 @@ image::power-on-off-data-center.gif[MetroCluster叢集因維護而關閉]
 
 
 
+[[power-off-a-metrocluster-site]]
 == 關閉 MetroCluster 站台
 
 您必須先關閉站台和所有設備的電源、才能開始進行現場維護或重新配置。
@@ -341,6 +342,7 @@ NOTE: 對具有遠端磁碟至 Cluster_A 的所有叢集執行此步驟
 
 
 
+[[relocating-the-powered-off-site-of-the-metrocluster]]
 == 重新定位MetroCluster 已關閉電源的景點
 
 站台關機之後、您就可以開始進行維護工作。無論是將元件重新放置在同一個資料中心內、或是重新放置到不同的資料中心、程序都是一樣MetroCluster 的。
@@ -548,6 +550,7 @@ switch_A_1# copy running-config startup-config
 
 
 
+[[powering-on-the-metrocluster-configuration-and-returning-to-normal-operation]]
 == 開啟MetroCluster 支援功能、恢復正常運作
 
 維護完成或站台搬移之後、您必須開啟站台電源、重新建立MetroCluster 該組態。

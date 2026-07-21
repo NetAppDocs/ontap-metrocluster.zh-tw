@@ -22,12 +22,14 @@ summary: 如有需要，僅在站點間執行的 WAN ISL 連接埠上配置 MACs
 ====
 
 
+[[licensing-requirements-for-macsec]]
 == MAC的授權要求
 
 Macsec需要安全授權。如需Cisco NX-OS授權方案的完整說明、以及如何取得及申請授權、請參閱 https://www.cisco.com/c/en/us/td/docs/switches/datacenter/sw/nx-os/licensing/guide/b_Cisco_NX-OS_Licensing_Guide/b_Cisco_NX-OS_Licensing_Guide_chapter_01.html["Cisco NX-OS授權指南"^]
 
 
 
+[[enable-cisco-macsec-encryption-wan-isls-in-metrocluster-ip-configurations]]
 == 在MetroCluster 不支援的IP組態中啟用Cisco Macsec Encryption WAN ISL
 
 您可以在MetroCluster WAN ISL上的Cisco 9336C交換器上啟用MAC加密功能、以利執行支援。
@@ -65,6 +67,7 @@ IP_switch_A_1(config)# copy running-config startup-config
 
 
 
+[[configure-a-macsec-key-chain-and-keys]]
 == 設定Macsec金鑰鏈和金鑰
 
 您可以在組態上建立Macsec金鑰鏈或金鑰。
@@ -168,6 +171,7 @@ IP_switch_A_1(config-macseckeychain-macseckey)# show key chain 1
 
 
 
+[[configure-a-macsec-policy]]
 == 設定Macsec原則
 
 .步驟
@@ -292,6 +296,7 @@ IP_switch_A_1(config-macsec-policy)# show macsec policy
 
 
 
+[[enable-cisco-macsec-encryption-on-the-interfaces]]
 == 在介面上啟用Cisco Macsec加密
 
 . 進入全域組態模式：
@@ -337,6 +342,7 @@ IP_switch_A_1(config)# copy running-config startup-config
 
 
 
+[[disable-cisco-macsec-encryption-wan-isls-in-metrocluster-ip-configurations]]
 == 在MetroCluster 不穩定的IP組態中停用Cisco Macsec Encryption WAN ISL
 
 您可能需要在MetroCluster WAN ISL上針對Cisco 9336C交換器停用MAC加密、以利進行IP組態設定。
@@ -398,6 +404,7 @@ IP_switch_A_1(config)# copy running-config startup-config
 
 
 
+[[verifying-the-macsec-configuration]]
 == 驗證Macsec組態
 
 .步驟

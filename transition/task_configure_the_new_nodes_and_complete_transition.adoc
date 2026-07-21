@@ -15,6 +15,7 @@ summary: 新增節點之後、您必須完成轉換步驟、並設定MetroCluste
 
 
 
+[[configuring-the-metrocluster-ip-nodes-and-disabling-transition]]
 == 設定MetroCluster 靜態IP節點並停用轉換
 
 您必須實作MetroCluster 靜態IP連線、重新整理MetroCluster 靜態組態、以及停用轉換模式。
@@ -208,6 +209,7 @@ CAUTION: 建立 MetroCluster IP 介面時，請勿使用 169.254.17.x 或 169.25
 
 
 
+[[setting-up-data-lifs-on-the-new-nodes]]
 == 在新節點上設定資料LIF
 
 您必須在新節點node_a_2-IP和node_B_2-IP上設定資料LIF。
@@ -271,6 +273,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
 
 
 
+[[bringing-up-the-svms]]
 == 啟動SVM
 
 由於LIF組態變更、您必須在新節點上重新啟動SVM。
@@ -297,6 +300,7 @@ https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-DBC9DEE2-EA
 
 
 
+[[moving-a-system-volume-to-the-new-nodes]]
 == 將系統磁碟區移至新節點
 
 為了改善恢復能力、系統磁碟區應從控制器節點_a_1-IP移至控制器節點_a_2-IP、也應從節點_B_1-IP移至節點_B_2-IP。您必須在系統磁碟區的目的地節點上建立鏡射Aggregate。

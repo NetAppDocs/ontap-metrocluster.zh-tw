@@ -25,6 +25,7 @@ summary: 您可以將MetroCluster 組態擴充為八節點組態、然後移除�
 
 
 
+[[enable-console-logging]]
 == 啟用主控台記錄
 
 NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在執行此程序時採取下列動作：
@@ -39,6 +40,7 @@ NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在�
 
 
 
+[[perform-the-refresh-procedure]]
 == 執行重新整理程序
 
 請使用下列步驟重新整理 MetroCluster FC 組態。

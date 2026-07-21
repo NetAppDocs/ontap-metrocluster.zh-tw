@@ -18,6 +18,7 @@ summary: 您必須設定Cisco IP交換器作為叢集互連和後端MetroCluster
 
 
 
+[[resetting-the-cisco-ip-switch-to-factory-defaults]]
 == 將Cisco IP交換器重設為原廠預設值
 
 在安裝任何RCF檔案之前、您必須先清除Cisco交換器組態並執行基本組態。如果您想在先前的安裝失敗之後重新安裝相同的RCF檔案、或是想要安裝新版RCF檔案、則需要執行此程序。
@@ -168,6 +169,7 @@ IP_switch_A_1#
 
 
 
+[[downloading-and-installing-the-cisco-switch-nx-os-software]]
 == 下載並安裝Cisco交換器NX-OS軟體
 
 您必須將交換器作業系統檔案和RCF檔案下載到MetroCluster 各個交換器、使其採用EWIP組態。
@@ -427,6 +429,7 @@ Module 1 EPLD upgrade is successful.
 
 
 
+[[downloading-and-installing-the-cisco-ip-rcf-files]]
 == 下載並安裝Cisco IP RCF檔案
 
 您必須在 MetroCluster IP 組態中產生 RCF 檔案並將其安裝至每台交換器。
@@ -606,6 +609,7 @@ IP_switch_A_1# reload
 
 
 
+[[setting-forward-error-correction-for-systems-using-25-gbps-connectivity]]
 == 針對使用25-Gbps連線的系統設定轉送錯誤修正
 
 如果您的系統設定為使用25-Gbps連線、則在套用RCF檔案之後、您需要手動將轉送錯誤修正（FEC）參數設定為關閉。RCF檔案不套用此設定。
@@ -653,6 +657,7 @@ IP_switch_A_1# copy running-config startup-config
 
 
 
+[[disable-unused-isl-ports-and-port-channels]]
 == 停用未使用的 ISL 連接埠和連接埠通道
 
 NetApp 建議停用未使用的 ISL 連接埠和連接埠通道、以避免不必要的健全狀況警示。

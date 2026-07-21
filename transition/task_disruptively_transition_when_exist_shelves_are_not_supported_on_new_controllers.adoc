@@ -25,6 +25,7 @@ summary: 從功能不完整的問題9.8開始ONTAP 、您可以中斷轉換雙�
 
 
 
+[[enable-console-logging]]
 == 啟用主控台記錄
 
 NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在執行此程序時採取下列動作：
@@ -39,6 +40,7 @@ NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在�
 
 
 
+[[requirements-for-transition-when-shelves-are-not-supported-on-the-new-nodes]]
 == 新節點不支援磁碟櫃時的轉換需求
 
 在開始轉換程序之前、您必須確定組態符合要求。
@@ -87,6 +89,7 @@ https://hwu.netapp.com["NetApp Hardware Universe"]
 
 
 
+[[workflow-for-disruptive-transition-when-shelves-are-not-supported-by-new-controllers]]
 == 新控制器不支援磁碟櫃時、可中斷營運的移轉工作流程
 
 如果新平台機型不支援現有的機櫃模型、您必須將新機櫃附加至舊組態、將資料移至新機櫃、然後轉換至新組態。
@@ -97,6 +100,7 @@ image::../media/workflow_2n_transition_old_shelves_not_supported.png[舊貨架�
 
 
 
+[[preparing-the-new-controller-modules]]
 == 準備新的控制器模組
 
 您必須清除新控制器模組和新儲存櫃上的組態和磁碟擁有權。
@@ -108,6 +112,7 @@ image::../media/workflow_2n_transition_old_shelves_not_supported.png[舊貨架�
 
 
 
+[[attaching-the-new-disk-shelves-to-the-existing-metrocluster-fc-controllers]]
 == 將新的磁碟櫃連接到現有MetroCluster 的不可靠FC控制器
 
 您必須先將新的磁碟機櫃連接至現有的控制器模組、然後再轉換MetroCluster 至靜態IP組態。
@@ -136,6 +141,7 @@ image::../media/transition_2n_unsupported_old_new_shelves_to_old_controllers.png
 
 
 
+[[migrate-root-aggregates-and-move-data-to-the-new-disk-shelves]]
 == 移轉根集合體、並將資料移至新的磁碟櫃
 
 您必須將根集合體從舊磁碟機櫃移至MetroCluster 新的磁碟機櫃、以便供各個知識產權節點使用。
@@ -490,6 +496,7 @@ recreated and NGS engaged for recovery assistance.
 
 
 
+[[transitioning-the-configuration]]
 == 轉換組態
 
 您必須遵循詳細的轉換程序。

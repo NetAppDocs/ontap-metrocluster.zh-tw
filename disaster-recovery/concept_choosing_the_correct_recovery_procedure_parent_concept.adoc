@@ -81,6 +81,7 @@ link:task_recover_from_a_multi_controller_and_or_storage_failure.html["從多控
 |===
 
 
+[[controller-module-failure-scenarios-during-metrocluster-installation]]
 == 安裝過程中的控制器模組故障情形MetroCluster
 
 回應控制器模組在MetroCluster 執行支援功能組態程序期間的故障、取決於是否需要 `metrocluster configure` 命令已成功完成。
@@ -95,6 +96,7 @@ NOTE: 您必須執行中的步驟 link:https://docs.netapp.com/us-en/ontap-metro
 
 
 
+[[controller-module-failure-scenarios-during-metrocluster-fc-to-ip-transition]]
 == 在從FC到IP的轉換過程中、控制器模組發生故障MetroCluster
 
 如果在轉換期間發生站台故障、則可使用恢復程序。不過、只有在設定為穩定的混合式組態、同時完全設定FC DR群組和IP DR群組時、才能使用此功能。輸出的「MetroCluster flex節點show」命令應顯示兩個DR群組、所有八個節點。
@@ -104,6 +106,7 @@ IMPORTANT: 如果在轉換期間發生故障、而節點正在新增或移除、
 
 
 
+[[controller-module-failure-scenarios-in-eight-node-metrocluster-configurations]]
 == 控制器模組故障案例、採用八節點MetroCluster 的不全功能組態
 
 故障案例：
@@ -116,6 +119,7 @@ IMPORTANT: 如果在轉換期間發生故障、而節點正在新增或移除、
 
 
 
+[[single-controller-module-failures-in-a-single-dr-group]]
 === 單一DR群組中的單一控制器模組故障
 
 在此情況下、故障僅限於HA配對。
@@ -138,6 +142,7 @@ image::../media/mcc_dr_groups_8_node_with_a_single_controller_failure.gif[具有
 
 
 
+[[two-controller-module-failures-in-a-single-dr-group]]
 === 單一DR群組中有兩個控制器模組故障
 
 在此情況下、故障需要切換。您可以使用多控制器模組故障恢復程序。
@@ -150,6 +155,7 @@ image::../media/mcc_dr_groups_8_node_with_a_multi_controller_failure.gif[具有�
 
 
 
+[[single-controller-module-failures-in-separate-dr-groups]]
 === 單一控制器模組故障、位於不同的DR群組中
 
 在這種情況下、故障僅限於個別的HA配對。
@@ -171,6 +177,7 @@ image::../media/mcc_dr_groups_8_node_with_two_single_controller_failures.gif[八
 
 
 
+[[three-controller-module-failures-spread-across-the-dr-groups]]
 === 三個控制器模組故障分散在整個DR群組中
 
 在此情況下、故障需要切換。您可以使用DR Group One的多控制器模組故障恢復程序。
@@ -185,6 +192,7 @@ image::../media/mcc_dr_groups_8_node_with_a_3_controller_failure.gif[八節點Me
 
 
 
+[[controller-module-failure-scenarios-in-two-node-metrocluster-configurations]]
 == 控制器模組故障案例、採用雙節點MetroCluster 的不全功能組態
 
 您使用的程序取決於故障程度。

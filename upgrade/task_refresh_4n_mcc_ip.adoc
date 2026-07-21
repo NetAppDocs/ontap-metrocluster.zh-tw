@@ -109,6 +109,7 @@ NOTE: 如果您同時重新整理兩個 DR 群組、則在重新整理第一個 
 
 
 
+[[enable-console-logging]]
 == 啟用主控台記錄
 
 NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在執行此程序時採取下列動作：
@@ -123,6 +124,7 @@ NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在�
 
 
 
+[[perform-the-refresh-procedure]]
 == 執行重新整理程序
 
 請使用下列步驟重新整理 MetroCluster IP 組態。

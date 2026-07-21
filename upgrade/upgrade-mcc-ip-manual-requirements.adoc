@@ -18,6 +18,7 @@ CAUTION: *每次升級控制器時，都必須按照說明執行此程序。 *�
 
 
 
+[[platforms-supported-by-this-procedure]]
 == 此程序支援的平台
 
 * 平台必須執行ONTAP 的是更新版本的支援。
@@ -34,6 +35,7 @@ CAUTION: *每次升級控制器時，都必須按照說明執行此程序。 *�
 
 
 
+[[requirements]]
 == 需求
 
 * 此程序適用於MetroCluster 以靜態IP組態設定的控制器模組。

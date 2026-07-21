@@ -59,6 +59,7 @@ https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"]
 
 
 
+[[cisco-switch-license-requirements]]
 == Cisco交換器授權需求
 
 Cisco交換器在Fabric附加MetroCluster 的支援功能組態中、可能需要特定的功能型授權。這些授權可讓您在交換器上使用QoS或長距離模式信用點數等功能。您必須在MetroCluster 所有四個採用的交換器上安裝所需的功能型授權、以供選擇。
@@ -89,6 +90,7 @@ NOTE: Cisco MDS 9250i交換器有兩個固定的1/10 GbE IP儲存服務連接埠
 
 
 
+[[setting-the-cisco-fc-switch-to-factory-defaults]]
 == 將Cisco FC交換器設為原廠預設值
 
 若要確保組態成功、您必須將交換器設定為其原廠預設值。如此可確保交換器從乾淨的組態啟動。
@@ -137,6 +139,7 @@ FC_Switch_B_1# write erase
 ----
 
 
+[[configure-the-cisco-fc-switch-basic-settings-and-community-string]]
 == 設定Cisco FC交換器的基本設定和社群字串
 
 您必須使用「Setup」命令或發出「REload」命令後、指定基本設定。
@@ -185,6 +188,7 @@ FC_switch_B_1# setup
 
 
 
+[[acquiring-licenses-for-ports]]
 == 取得連接埠授權
 
 您不需要在持續範圍的連接埠上使用Cisco交換器授權、而是可以取得所使用之特定連接埠的授權、並從未使用的連接埠移除授權。
@@ -249,6 +253,7 @@ FC_switch_B_1# setup
 
 
 
+[[removing-and-acquiring-a-license-on-a-port]]
 === 移除及取得連接埠上的授權
 
 此範例顯示正在從連接埠FC1/2移除授權、連接埠FC1/1符合取得授權的資格、以及正在連接埠FC1/1上取得的授權：
@@ -288,6 +293,7 @@ Switch_A_1# show port-resources module 1
 ----
 
 
+[[enabling-ports-in-a-cisco-mds-9148-or-9148s-switch]]
 == 在Cisco MDS 9148或9148S交換器中啟用連接埠
 
 在Cisco MDS 9148或9148S交換器中、您必須手動啟用MetroCluster 以供選擇的連接埠。
@@ -342,6 +348,7 @@ switch(config-if)# end
 
 
 
+[[configuring-the-f-ports-on-a-cisco-fc-switch]]
 == 在Cisco FC交換器上設定F-port
 
 您必須在FC交換器上設定F-port。
@@ -422,6 +429,7 @@ FC_switch_B_1# copy running-config startup-config
 ----
 
 
+[[assigning-buffer-to-buffer-credits-to-f-ports-in-the-same-port-group-as-the-isl]]
 == 將緩衝區對緩衝區的信用額度指派給ISL所在同一個連接埠群組中的F-Port
 
 如果F連接埠與ISL位於同一個連接埠群組、則必須將緩衝區對緩衝區的信用額度指派給F連接埠。如果連接埠沒有所需的緩衝區對緩衝資源、則ISL可能無法運作。
@@ -540,6 +548,7 @@ fc1/39                                      1        8.0 dedicated
 ----
 
 
+[[creating-and-configuring-vsans-on-cisco-fc-switches]]
 == 在Cisco FC交換器上建立及設定VSAN
 
 您必須為FC-VI連接埠建立VSAN、MetroCluster 並為每個FC交換器上的儲存連接埠建立VSAN（以供支援）（以供支援）。
@@ -935,6 +944,7 @@ FC_switch_B_1# copy running-config startup-config
 
 
 
+[[configuring-e-ports]]
 == 設定E連接埠
 
 您必須設定連接ISL的交換器連接埠（這些是E連接埠）。
@@ -949,6 +959,8 @@ FC_switch_B_1# copy running-config startup-config
 
 
 
+[[configuring-the-e-ports-on-the-cisco-fc-switch]]
+[[config-e-ports-cisco-fc]]
 === 在Cisco FC交換器上設定E連接埠
 
 您必須設定連接交換器間連結（ISL）的FC交換器連接埠。
@@ -1188,6 +1200,8 @@ FC_switch_B_1# copy running-config startup-config
 
 
 
+[[configuring-fcip-ports-for-a-single-isl-on-cisco-9250i-fc-switches]]
+[[config-fcip-ports-single-isl-cisco-9250i]]
 === 在Cisco 9250i FC交換器上設定單一ISL的FCIP連接埠
 
 您必須建立FCIP設定檔和介面來設定連接ISL（E連接埠）的FCIP交換器連接埠、然後將它們指派給IPStorage1/1 GbE介面。
@@ -1597,6 +1611,8 @@ FC_switch_B_1# copy running-config startup-config
 
 
 
+[[configuring-fcip-ports-for-a-dual-isl-on-cisco-9250i-fc-switches]]
+[[config-fcip-ports-dual-isl-cisco-9250i]]
 === 在Cisco 9250i FC交換器上設定雙ISL的FCIP連接埠
 
 您必須建立FCIP設定檔和介面來設定連接ISL（E連接埠）的FCIP交換器連接埠、然後將它們指派給IPStorage1/1和IPStorage1/2 GbE介面。
@@ -1614,6 +1630,7 @@ image::../media/fcip_ports_dual_isl.gif[圖表顯示了每台交換器上具有�
 * <<fabric2_table>>
 
 
+[[fabric1_table]]
 * Fabric 1設定檔組態表*
 
 |===
@@ -1761,6 +1778,7 @@ b. bbbbb/3223
 20
 
 |===
+[[fabric2_table]]
 * Fabric 2設定檔組態表*
 
 |===
@@ -2411,6 +2429,7 @@ exit
 ----
 
 
+[[configuring-zoning-on-a-cisco-fc-switch]]
 == 在Cisco FC交換器上設定分區
 
 您必須將交換器連接埠指派給不同的區域、以隔離儲存設備（HBA）和控制器（FC-VI）流量。
@@ -2689,6 +2708,7 @@ FC_switch_A_1# copy running-config startup-config
 
 
 
+[[ensuring-the-fc-switch-configuration-is-saved]]
 == 確保FC交換器組態已儲存
 
 您必須確定FC交換器組態已儲存至所有交換器的啟動組態。

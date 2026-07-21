@@ -12067,7 +12067,6 @@
   <block id="8e30d2803b603d7bc1c9f3584b57c881" category="section-title">所有其他支援的 MetroCluster IP 控制器升級</block>
   <block id="17c7cb78cf2f2286d3034a3959bc800e" category="paragraph">從本節的 MetroCluster 控制器升級表中找到您的 * 來源 * 平台。如果 *Source* 平台列與 *Target* 平台欄的交會為空白、則不支援升級。</block>
   <block id="8430e377fbc83f194587bd875ac99b4b" category="paragraph">下表顯示在 MetroCluster IP 組態中手動升級 ASA 系統所支援的平台組合：</block>
-  <block id="0ef5c60e365bf027441cd538ad7f03c9" category="paragraph"><block ref="0ef5c60e365bf027441cd538ad7f03c9" category="inline-link-rx"></block></block>
   <block id="218202ab36e31b93dc4b302be0cb5ac3" category="paragraph">NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在執行此程序時採取下列動作：</block>
   <block id="7a15fb36e18a42514f358533c9af4dae" category="list-text">在維護期間保持啟用 AutoSupport 。</block>
   <block id="a6c9ebf435ce24dbca32935db32b4e35" category="list-text">在維護之前和之後觸發維護 AutoSupport 訊息、以在維護活動期間停用案例建立。</block>
@@ -14460,22 +14459,15 @@
   <block id="c42f4f6a3afab85eadf7182136f86159" category="paragraph">從 cluster_B 執行以下命令：</block>
   <block id="29bf21eb413a03bb7bc5f794a7cf8c1a" category="paragraph"><block ref="cffe1374633319381a16ddd247851dc5" prefix="" category="inline-code"></block></block>
   <block id="aa9e0907bac12bc372803051430c32c6" category="sidebar">Tiebreaker 組態工作流程</block>
-  <block id="a5d67e5f005807bbd4e62ed129a259ce" category="list-text">從 ONTAP 9.19.1 和 ONTAP Mediator 1.12 開始，您可以設定 ONTAP Mediator 使用 HTTPS 而非 iSCSI 進行通訊。當 ONTAP Mediator 配置為使用 HTTPS 時，每個 ONTAP Mediator 執行個體只能監控一個 MetroCluster IP 組態。如需詳細資訊，請參閱 <block ref="fb70fb2de5d85ae7e6c4e86202287fd7" category="inline-xref-macro-rx"></block>。</block>
-  <block id="f7709b306d9f954e054f6c2c41684b09" category="list-text">從 ONTAP 9.18.1 和 ONTAP Mediator 1.11 開始，單一配置了 iSCSI 的 ONTAP Mediator 實例最多可以同時管理十個 MetroCluster 組態。在 ONTAP 9.17.1 和 ONTAP Mediator 1.10 及更早版本中，配置了 iSCSI 的 ONTAP Mediator 最多可以同時支援五個 MetroCluster 組態。</block>
   <block id="ff2e8285b2705731a1dbc046ff579939" category="section-title">選擇 ONTAP Mediator 的通訊協定</block>
   <block id="2988e38df3c50f205b083a96b48e66b2" category="paragraph">預設情況下，MetroCluster IP 節點使用 iSCSI 工作階段存取 ONTAP Mediator 信箱 LUN。ONTAP Mediator 依賴 SCST 套件提供 iSCSI。iSCSI 工作階段使用挑戰交握驗證通訊協定（CHAP）進行驗證，該通訊協定使用模糊化、機器產生的預先共用金鑰，但並非完全加密。</block>
   <block id="a04438ec01124e8d15738c27a00348bf" category="paragraph">從 ONTAP 9.19.1 和 ONTAP Mediator 1.12 開始，您可以設定 ONTAP Mediator 執行個體，使其使用 HTTPS 而非 iSCSI 進行通訊。HTTPS 是一種安全的通訊協定，它使用 SSL/TLS 對整個工作階段進行加密，與 iSCSI 相比，安全性更高。</block>
   <block id="b42fb506e0a277ccd2615b75bb8a3a5c" category="paragraph">您只能透過 CLI 設定使用 HTTPS 的 ONTAP Mediator。不支援 System Manager。</block>
-  <block id="2044beabf4d1eb2b2680bc62daa3aab5" category="list-text">如果將 ONTAP Mediator 設定為使用 HTTPS，則單一 ONTAP Mediator 執行個體只能監控一個 MetroCluster IP 組態。不支援同時監控多個 MetroCluster IP 組態。</block>
-  <block id="32b706cbb06a2ceca20fffcd66e9ae41" category="list-text">如果您需要設定 ONTAP Mediator 並啟用 HTTPS 來監控多個 MetroCluster IP 配置，則必須為每個 MetroCluster IP 配置單獨配置 ONTAP Mediator 實例。在選擇為 MetroCluster IP 設定 ONTAP Mediator 並啟用 HTTPS 之前，您必須仔細評估 MetroCluster IP 環境的需求。</block>
-  <block id="71888cafc5f37e89171c789646f08323" category="list-text">如果要使用單一 ONTAP Mediator 實例來監控多個 MetroCluster IP 配置，則應使用 iSCSI 而非 HTTPS 設定 ONTAP Mediator。</block>
   <block id="aee8b11880bbfda9a19f6b5c0201bb10" category="inline-link-macro">ONTAP Mediator 的 HTTPS 和 iSCSI 安裝選項</block>
-  <block id="d587f9cd6611c03a53aad3b1f8481b7e" category="paragraph">如需詳細資訊，請參閱 <block ref="a82349e7909b6ff560747d8c59eb3903" category="inline-link-macro-rx"></block>。</block>
   <block id="510858af4fd5ff2fdd1d6ee4023ce87b" category="admonition">您只能透過 CLI 設定使用 HTTPS 的 ONTAP Mediator。不支援 System Manager。如需更多資訊，請參閱<block ref="3f8b2848d40ea77bb348f699b2b131f7" category="inline-link-macro-rx"></block>。</block>
   <block id="51b6fc28895a5ae5d8e89c18d1098c46" category="list-text">您可以在 MetroCluster IP 組態中任何節點的 ONTAP 介面上執行此工作。</block>
   <block id="91544ad1eb81a9d4f37c7f015a80a6e3" category="list-text">從 ONTAP 9.19.1 和 ONTAP Mediator 1.12 開始，您可以安裝支援 iSCSI 和 HTTPS 的 ONTAP Mediator，或僅安裝支援 HTTPS 的 ONTAP Mediator。如果您安裝的 ONTAP Mediator 僅支援 HTTPS，則無法設定支援 iSCSI 的 Mediator。</block>
   <block id="ea27c86a804da95f3ba467f50f563b54" category="list-text">如果您未在<block ref="e863b9251fab0007712da0204a3a3b3a" prefix=" " category="inline-code"></block> 參數於<block ref="a5c98f88638af0e80910bbd237827b45" prefix=" " category="inline-code"></block> 指令中指定，則會使用預設的 iSCSI 通訊協定。</block>
-  <block id="ca23eb5b9e4d3b2edb3057850d7f6dc6" category="list-text">如果將 ONTAP Mediator 設定為使用 HTTPS，則單一 ONTAP Mediator 執行個體只能監控一個 MetroCluster IP 組態。當 ONTAP Mediator 設定為使用 HTTPS 時，不支援同時監控多個 MetroCluster IP 組態。</block>
   <block id="aaf4e1ef74980c88980c89174b2471f8" category="open-title">使用 HTTPS 設定 ONTAP Mediator</block>
   <block id="b82b51c4febccc1c60b46f5674c43ea7" category="paragraph">從 ONTAP 9.19.1 和 ONTAP Mediator 1.12 開始，您可以在 MetroCluster IP 組態中設定使用 HTTPS 進行通訊的 ONTAP Mediator。</block>
   <block id="55c1e4c6be6d4ebab5e4e6cf15e4fd9b" category="list-text">從 ONTAP Mediator Linux 虛擬機器/主機軟體安裝位置找到 ONTAP Mediator CA 憑證：</block>
@@ -14609,4 +14601,41 @@
   <block id="8d540b15dac9bee2f802b66dc16a6a0b" category="paragraph">如需更多資訊、請參閱 <block ref="36bbe754bd1c078bf3bb1818fc549f54" category="inline-link-macro-rx"></block> 。</block>
   <block id="f5092147d9fdb4405ffa0ded1187160b" category="section-title">添加舊平台模型時的重要訊息</block>
   <block id="de340c0f1f6d36d5e5b0117bb6d6e359" category="admonition">如果您要執行從四節點 FC 到八節點 IP 的轉換，可以在新增第二個 DR 群組之前套用四節點 FC 到八節點 IP 的 RCF。您無需先套用四節點 FC 到四節點 IP 的 RCF。</block>
+  <block id="e446b7aa15d19fb426155674878c63fb" category="list-text">從 ONTAP 9.19.1 和 ONTAP Mediator 1.12 開始，您可以設定 ONTAP Mediator 使用 HTTPS 而非 iSCSI 進行通訊。如需詳細資訊，請參閱 <block ref="fb70fb2de5d85ae7e6c4e86202287fd7" category="inline-xref-macro-rx"></block>。</block>
+  <block id="9f26b34d7871bca369159b44ab27880d" category="paragraph">您可以安裝同時支援 iSCSI 和 HTTPS 的 ONTAP Mediator，或僅支援 HTTPS 的 ONTAP Mediator。如需詳細資訊，請參閱 <block ref="a82349e7909b6ff560747d8c59eb3903" category="inline-link-macro-rx"></block>。</block>
+  <block id="2730c7709b8ac3af8d089b14ec12b8b3" category="paragraph">您可以使用 iSCSI 或 HTTPS 設定 ONTAP Mediator，但不能同時使用兩者。部署中混合使用多種協定不受支援。</block>
+  <block id="fe22847581eb5d6a05ddb7f8a50a61f5" category="paragraph">監控多個 MetroCluster IP 組態的支援取決於您是為 iSCSI 還是 HTTPS 設定 ONTAP Mediator。如需詳細資訊，請參閱 <block ref="946d16160b4c150a172b373dca588f20" category="inline-xref-macro-rx"></block>。</block>
+  <block id="c2cbdc82e4189820757400b0b29fe4e3" category="section-title">使用 ONTAP Mediator 監控多個 MetroCluster IP 組態</block>
+  <block id="e8284dca37d44983bb657d721bd91191" category="paragraph">ONTAP Mediator 可用於同時監控多個 MetroCluster IP 組態。支援取決於您將 ONTAP Mediator 設定為使用 iSCSI 還是 HTTPS。</block>
+  <block id="3db1373250546e0e6c50a7f44b42c314" category="section-title">ONTAP Mediator 已設定 HTTPS</block>
+  <block id="90d6ab53063cebbd88b7ed1e0ab122ba" category="paragraph">從 ONTAP 9.19.1 和 ONTAP Mediator 1.12 開始，您可以設定一個使用 HTTPS 而非 iSCSI 進行通訊的 ONTAP Mediator 執行個體。本節概述使用單一 HTTPS ONTAP Mediator 執行個體監控多個組態的支援。</block>
+  <block id="b83a2bb33fe76cd61071d411833a0ba3" category="admonition">嘗試新增超出本節所述限制的多個 HTTPS ONTAP Mediator 執行個體不受支援。</block>
+  <block id="4515cc5d413a867b1672b5f59f97a672" category="paragraph-title">監控多個 MetroCluster IP 組態</block>
+  <block id="aa5f8705e757646b73450042203bacca" category="paragraph">以 HTTPS 設定的 ONTAP Mediator 支援監控多個 MetroCluster IP 組態。支援情況取決於 ONTAP Mediator 版本、主機作業系統規格，以及 MetroCluster IP 組態是四節點還是八節點。</block>
+  <block id="c5c31e0edabd430de173af2cac963c86" category="cell">ONTAP Mediator 版本</block>
+  <block id="f7b3d755e62a464bc12708244776f2e9" category="cell">主機作業系統需求</block>
+  <block id="577cc0467087c489fee42539bacf45a2" category="cell">四節點 MetroCluster IP 組態</block>
+  <block id="e7eb66881eadc8e95972705861c7eeb7" category="cell">八節點 MetroCluster IP 組態</block>
+  <block id="b12cb2f95b2516af000240d2ebc65c26" category="cell">1.12</block>
+  <block id="382b0f5185773fa0f67a8ed8056c7759" category="cell">N/A</block>
+  <block id="49573f0607b120e551193b0b57aa2da2" category="cell">1.12.1 及更高版本</block>
+  <block id="041501b796740edeb754bd8dc37104be" category="cell">CPU 核心數少於 8 個且記憶體至少為 8GB 的主機</block>
+  <block id="97504429d428f1e2ce3f8c53683d267c" category="cell">主機至少需要 8 個 CPU 核心和至少 16GB 的 RAM</block>
+  <block id="61071a15a124f334297605cfb6bc24f5" category="paragraph-title">監控 MetroCluster IP 和 SnapMirror 主動同步組態</block>
+  <block id="af53f36b47fffc1a50967c39534911fd" category="paragraph">從 ONTAP 9.19.1 和 ONTAP Mediator 1.12 開始，您可以使用同一個 ONTAP Mediator 執行個體同時監控四節點 MetroCluster IP 組態和 SnapMirror 主動同步叢集對等關係。您的組態必須符合以下要求：</block>
+  <block id="3c648448bc26feaa6fe698ce93250b22" category="list-text">ONTAP Mediator 1.12.1 或更新版本安裝在具有雙核心 CPU 的主機作業系統上</block>
+  <block id="fe190c90799e5b4b20ff7e381b268855" category="list-text">ONTAP Mediator 執行個體已設定為使用 HTTPS 協定</block>
+  <block id="1ee5b212a9f13259be28ddfee09570a4" category="admonition">使用同一個 ONTAP Mediator 執行個體，您只能監控一個四節點 MetroCluster IP 組態和一個 SnapMirror 主動同步對等關係。</block>
+  <block id="eb9f146fc1b0b4bc5e3804fa7d20b1a5" category="inline-link-macro">了解 ONTAP SnapMirror 主動同步</block>
+  <block id="254ca2419a10bd0b92c643c14ffde0ac" category="paragraph"><block ref="a4306837dc17e0b89acee99e58330137" category="inline-link-macro-rx"></block>。</block>
+  <block id="0c57822a455dab09c1eb511497a36845" category="section-title">ONTAP Mediator 設定了 iSCSI</block>
+  <block id="ae12a2067fba1c1b4e50593b69f419ab" category="list-text">從 ONTAP 9.18.1 和 ONTAP Mediator 1.11 開始，單一配置了 iSCSI 的 ONTAP Mediator 實例最多可以同時管理十個 MetroCluster 組態。</block>
+  <block id="dfef9e39dc544e0585c324307903abf8" category="list-text">在 ONTAP 9.17.1 和 ONTAP Mediator 1.10 及更早版本中，配置了 iSCSI 的 ONTAP Mediator 最多可以同時支援五個 MetroCluster 組態。</block>
+  <block id="18e51e03dcd599f0c2447939e41a4d77" category="list-text">使用單一 ONTAP Mediator 執行個體監控多個 MetroCluster IP 組態的支援取決於您設定 ONTAP Mediator 時使用的是 HTTPS 還是 iSCSI。如需詳細資訊、請參閱 <block ref="a33d207d610307ee71f91f9d61e36ba7" category="inline-link-macro-rx"></block>。</block>
+  <block id="14efa24c1616ebd9f707ef3a4db33c39" category="paragraph"><block ref="14efa24c1616ebd9f707ef3a4db33c39" category="inline-link-rx"></block></block>
+  <block id="2c2377c673f182b04f910cbffb651ccb" category="paragraph">從 ONTAP Mediator 1.12.1 開始，設定了 HTTPS 的單一 ONTAP Mediator 執行個體可以同時監控以下組態：</block>
+  <block id="aaa726d9cedf6c639641890ef798fe00" category="list-text">如果安裝在至少有 8 個 CPU 核心和至少 16GB RAM 的主機上，最多可以有 10 個四節點或 5 個八節點的 MetroCluster IP 組態。</block>
+  <block id="fec849fc6a76787dab045fcdba41b004" category="list-text">如果安裝在具有 2 核心 CPU 的主機作業系統上，則需要一個四節點 MetroCluster IP 組態和一個 SnapMirror 活動同步對等關係。</block>
+  <block id="1241530f686624169cbc6250a94efe3b" category="inline-link-macro">深入了解 ONTAP Mediator 對多個 MetroCluster IP 組態的支援</block>
+  <block id="93b7a44949c3dc9c153b4a0b58a89938" category="paragraph"><block ref="ec2190c64ae13bbd66508ccf14a8aee4" category="inline-link-macro-rx"></block>。</block>
 </blocks>

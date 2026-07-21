@@ -15,6 +15,7 @@ summary: 規劃MetroCluster 您的需求時、您應該瞭解硬體元件及其�
 
 
 
+[[disaster-recovery-dr-groups]]
 == 災難恢復（DR）群組
 
 根據MetroCluster VMware組態中的節點數量MetroCluster 、Fabric的不二組態由一或兩個DR群組組成。每個DR群組包含四個節點。
@@ -33,6 +34,7 @@ image::../media/mcc_dr_groups_4_node.gif[MetroCluster DR 群組四個節點]
 
 
 
+[[key-hardware-elements]]
 == 關鍵硬體元素
 
 這個組態包括下列主要硬體元素：MetroCluster
@@ -57,6 +59,7 @@ FC交換器可在兩個站台之間提供遠距主幹ISL。FC交換器提供兩�
 
 
 
+[[eight-node-fabric-metrocluster-configuration]]
 == 八節點架構MetroCluster 的結構不全組態
 
 八節點組態由兩個叢集組成、每個地理區分隔的站台各有一個叢集。叢集_A位於第一個MetroCluster 站台。叢集B位於第二MetroCluster 個站台。每個站台都有一個SAS儲存堆疊。支援其他儲存堆疊、但每個站台只會顯示一個。HA配對可設定為無交換器叢集、不需使用叢集互連交換器。支援交換式組態、但不會顯示。
@@ -79,6 +82,7 @@ SVM組態會透過叢集對等網路複寫。
 
 
 
+[[four-node-fabric-metrocluster-configuration]]
 == 四節點架構MetroCluster 的結構不全組態
 
 下圖顯示四節點Fabric MetroCluster 的精簡組態檢視。對於某些連線、單一線路代表元件之間的多個備援連線。不會顯示資料與管理網路連線。
@@ -91,6 +95,7 @@ image::../media/mcc_hardware_architecture_cluster_a_with_7500n.gif[MetroCluster�
 
 
 
+[[two-node-fabric-metrocluster-configuration]]
 == 雙節點架構MetroCluster 的架構不全組態
 
 下圖顯示雙節點Fabric MetroCluster 的組態簡化檢視。對於某些連線、單一線路代表元件之間的多個備援連線。不會顯示資料與管理網路連線。

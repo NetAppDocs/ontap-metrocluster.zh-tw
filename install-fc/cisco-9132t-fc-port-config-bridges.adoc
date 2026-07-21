@@ -18,6 +18,7 @@ NOTE: 使用具有 1xLEM 模組的Cisco 9132T 交換器僅支援一 (1) 個橋�
 
 
 
+[[metrocluster-1-or-dr-group-1]]
 == MetroCluster 1 或 DR 群組 1
 
 下表顯示了使用Cisco 9132T 交換器上的兩個 FC 連接埠（FC1 和 FC2）的 FibreBridge 7500N 或 7600N 橋接器在MetroCluster 1 或 DR 組 1 中支援的機架配置。使用此配置表時，您應該注意以下事項：
@@ -147,6 +148,7 @@ LEM1-12
 |===
 
 
+[[metrocluster-2-or-dr-group-2]]
 == MetroCluster 2 或 DR 群組 2
 
 下表顯示了使用Cisco 9132T 交換器上的兩個 FC 連接埠（FC1 和 FC2）的 FibreBridge 7500N 或 7600N 橋接器在MetroCluster 2 或 DR 組 2 中支援的機架配置。使用此配置表時，您應該注意以下事項：

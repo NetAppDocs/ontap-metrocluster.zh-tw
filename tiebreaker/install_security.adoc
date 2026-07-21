@@ -15,12 +15,14 @@ summary: Tiebreaker軟體提供叢集式儲存環境的監控功能。當節點�
 
 
 
+[[secure-the-host]]
 == 保護主機安全
 
 下列準則說明如何保護安裝了Tiebreaker軟體的主機。
 
 
 
+[[user-management-recommendations]]
 === 使用者管理建議
 
 * 限制「root」使用者的存取權。
@@ -52,6 +54,7 @@ NOTE: 非此群組成員的使用者無法存取Tiebreaker軟體或CLI。您可�
 
 
 
+[[baseline-host-security-recommendations]]
 === 基礎主機安全建議
 
 * 使用磁碟加密
@@ -101,6 +104,7 @@ NOTE: OpenJDK 19會在開機時檢查主機是否以FIPS模式安裝。不需要
 
 
 
+[[secure-the-database-installation]]
 == 保護資料庫安裝
 
 下列準則說明如何保護及強化MariaDB 10.x資料庫安裝。
