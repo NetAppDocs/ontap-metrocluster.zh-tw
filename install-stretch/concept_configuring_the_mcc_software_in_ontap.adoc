@@ -975,7 +975,7 @@ DR合作夥伴的資源池1
 
 這項工作必須在MetroCluster 整個叢集上執行、且必須採用支援功能的組態。
 
-如需設定ONTAP 方面的一般資訊、請參閱 link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-ssg/home.html["設定ONTAP"]
+有關設定 ONTAP 的更多一般資訊，請參閱link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-ssg/home.html["設定ONTAP"^]
 
 .步驟
 . 開啟第一個節點的電源。
@@ -1833,7 +1833,7 @@ NOTE: 無鏡射的Aggregate必須是擁有它們的節點的本機集合體。
 
 * 磁碟機由特定節點擁有；當您建立Aggregate時、該Aggregate中的所有磁碟機都必須由同一個節點擁有、此節點會成為該Aggregate的主節點。
 * Aggregate名稱應符合您在規劃MetroCluster 時所決定的名稱配置。
-* 。 link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與集合體管理"] 包含鏡射Aggregate的詳細資訊。
+* 其中link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/home.html["磁碟與集合體管理"^]包含有關鏡射彙總的更多資訊。
 
 
 .步驟
@@ -2265,6 +2265,6 @@ https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp
 「系統組態備份設定會修改url-of目的地」
 
 +
-。 link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sag/home.html["使用CLI進行叢集管理"] 在「管理組態備份」一節中包含其他資訊。
+link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sag/home.html["使用CLI進行叢集管理"^]在「管理組態備份」部分下包含更多資訊。
 
 

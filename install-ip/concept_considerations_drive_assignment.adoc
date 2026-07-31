@@ -882,7 +882,7 @@ AFF C250 和 AFF A250 系統的磁碟指派準則和規則也適用於 FAS500f �
 ====
 * 內部機架上的快閃記憶體快取驅動器不能同時擁有資料聚合和根聚合。
 * 插槽 0 和 23 用於快閃記憶體快取驅動器。
-* 如果您要重複使用外部磁碟櫃，請在將其連接到控制器之前確認已移除外部磁碟機上的磁碟所有權。參考link:https://docs.netapp.com/us-en/ontap/disks-aggregates/remove-ownership-disk-task.html["從磁碟中移除ONTAP所有權"]。
+* 如果您要重複使用外部磁碟櫃，請在將其連接到控制器之前確認已移除外部磁碟機上的磁碟所有權。參考link:https://docs.netapp.com/us-en/ontap/disks-aggregates/remove-ownership-disk-task.html["從磁碟中移除ONTAP所有權"^]。
 
 
 ====

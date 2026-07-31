@@ -175,7 +175,7 @@ IP_switch_A_1#
 您必須將交換器作業系統檔案和RCF檔案下載到MetroCluster 各個交換器、使其採用EWIP組態。
 
 .關於這項工作
-此工作需要檔案傳輸軟體、例如FTP、TFTP、SFTP或scp。 將檔案複製到交換器。
+此工作需要使用檔案傳輸軟體（例如 FTP、TFTP、SFTP、HTTP 或 SCP）將檔案複製到交換器。
 
 這些步驟必須重複執行MetroCluster 於各個採用EIP組態的IP交換器上。
 
@@ -435,7 +435,7 @@ Module 1 EPLD upgrade is successful.
 您必須在 MetroCluster IP 組態中產生 RCF 檔案並將其安裝至每台交換器。
 
 .關於這項工作
-此工作需要檔案傳輸軟體、例如FTP、TFTP、SFTP或scp。 將檔案複製到交換器。
+此工作需要使用檔案傳輸軟體（例如 FTP、TFTP、SFTP、HTTP 或 SCP）將檔案複製到交換器。
 
 這些步驟必須重複執行MetroCluster 於各個採用EIP組態的IP交換器上。
 

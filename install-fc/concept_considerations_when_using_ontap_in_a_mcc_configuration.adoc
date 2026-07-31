@@ -457,7 +457,7 @@ image::../media/svm_dr_image_2.gif[切換後的 SVM 災難復原]
 
 
 
-請參閱中的「複寫SVM組態」一節 link:http://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-dap/home.html["使用CLI保護資料"] 如需設定SVM DR關係的詳細資訊、
+如需設定 SVM DR 關係的詳細資訊，請參閱 link:http://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-dap/home.html["使用CLI保護資料"^] 中的「`Replicating the SVM configuration`」一節。
 
 
 

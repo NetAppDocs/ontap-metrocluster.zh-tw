@@ -37,7 +37,7 @@ summary: 您可以使用此引導式自動化MetroCluster 的動作來執行不�
 +
 https://hwu.netapp.com["NetApp Hardware Universe"^]
 
-* 您可以使用此程序、使用MetroCluster NSO型的自動切換和切換功能、在四節點的SFC組態中升級控制器。如果您要使用Aggregate重新定位（ARL）執行控制器升級、請參閱 link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-app/["使用「系統控制器更換」命令來升級執行ONTAP 效能不正常的控制器硬體"]。建議使用NSO型自動化程序。
+* 您可以使用此流程在四節點 MetroCluster FC 組態中使用基於 NSO 的自動切換和切換功能來升級控制器。如果您想使用彙總重定位 (ARL) 執行控制器升級，請參閱link:https://docs.netapp.com/us-en/ontap-systems-upgrade/upgrade-arl-auto-app/["使用「系統控制器更換」命令來升級執行ONTAP 效能不正常的控制器硬體"^]。建議使用基於 NSO 的自動化流程。
 * 如果MetroCluster 您的站台實體位於兩個不同位置、您應該使用自動NSO控制器升級程序、依序升級兩個站台的控制器。
 * 這項自動化的NSO型控制器升級程序可讓您將控制器更換至MetroCluster 還原災難恢復（DR）站台。您一次只能在一個站台啟動控制器更換。
 * 若要在站台A開始更換控制器、您需要從站台B執行控制器更換啟動命令此作業只會引導您更換站台A上兩個節點的控制器。若要更換站台B的控制器、您必須從站台A執行控制器更換啟動命令此時會顯示一則訊息、指出要更換控制器的站台。

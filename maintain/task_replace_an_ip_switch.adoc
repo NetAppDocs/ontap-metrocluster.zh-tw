@@ -218,7 +218,7 @@ NOTE: 除了管理介面（如果使用）之外、請勿 * 不 * 連接新的�
 
 .. 如果本機叢集介面 * 未 * 連線至交換器：
 +
-... 使用 link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-bes-53248/migrate-to-2n-switched.html["移轉至交換式NetApp叢集環境"] 將無交換器叢集轉換為交換式叢集的程序。請使用中所示的連接埠 link:https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/using_rcf_generator.html["安裝與組態MetroCluster"] 或 RCF 纜線檔案、以連接本機叢集介面。
+... 請依照 link:https://docs.netapp.com/us-en/ontap-systems-switches/switch-bes-53248/migrate-to-2n-switched.html["移轉至交換式NetApp叢集環境"^] 程序將無交換器式叢集轉換為有交換器叢集。使用 link:https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/using_rcf_generator.html["安裝與組態MetroCluster"] 或 RCF 佈線檔案中指示的連接埠連接本機叢集介面。
 
 
 

@@ -749,6 +749,10 @@ dr-group-id cluster     node     node-systemid ha-partner-systemid dr-partner-sy
 在升級平台之前、如果MetroCluster 使用斷路器或調解器公用程式監控了該組態、您必須先移除監控。
 
 .步驟
+. 變更為進階權限層級：
++
+"進階權限"
+
 . 收集下列命令的輸出：
 +
 「iSCSI啟動器展示」

@@ -2128,7 +2128,6 @@
   <block id="26b4da5ef440db55c9d7fb90222428b3" category="paragraph">如果命令輸出指出組態是混合路徑或單路徑HA、您必須修正SAS和FC纜線、因為並非所有的磁碟機都能透過新的橋接器存取。</block>
   <block id="d7b12022bf276b2113771c05b8e93cd3" category="list-text">確認橋接器已新增且設定正確：+「橋接器展示」</block>
   <block id="6bec966647e1b9c8a03ddd277c8fe864" category="inline-link-macro">產品退貨安培；更換</block>
-  <block id="844f223d5d27d9ea92473e2d258ee969" category="list-text">更換零件後、請將故障零件歸還給NetApp、如套件隨附的RMA指示所述。請參閱 <block ref="af64d870205b209887217377e716cd40" category="inline-link-macro-rx"></block> 頁面以取得更多資訊。</block>
   <block id="5713f2c18fca6cff15f3222aca93a2a6" category="summary">使用斷路器或協調器監控軟體的組態必須在維護前先取消軟體的組態設定</block>
   <block id="6feea37f7c9ba85a19752c43872c3438" category="doc">在ONTAP 執行維護工作之前、請先移除「協調器」或「斷路器監控」</block>
   <block id="4a397091a3693a57176ee396010387ca" category="paragraph">在執行維護工作之前、如果MetroCluster 使用斷路器或協調器公用程式來監控不正確的組態、您必須先移除監控。</block>
@@ -7467,7 +7466,6 @@
   <block id="db43757844d85d41cafc08a227fd080a" category="paragraph">如果對來源和DR節點的FC目標連接埠所連接的FC交換器架構進行任何變更、則在切換作業之後、位於DR合作夥伴的FC LIF可能無法存取主機。</block>
   <block id="9f8ef3593c4eb0694f41b278eb124810" category="paragraph">在FC交換器架構中進行變更之後、您應該在MetroCluster 來源和DR節點上執行「不中斷檢查LIF修復放置」命令、以驗證LIF的主機連線能力。交換器架構的變更可能會導致LIF放置在DR合作夥伴節點的不同目標FC連接埠中。</block>
   <block id="a722c96220981ad0bb2bcff8ce41fc72" category="inline-link-macro">使用CLI保護資料</block>
-  <block id="9f1e892e838f85f0b4330fcfad0f245a" category="paragraph">請參閱中的「複寫SVM組態」一節 <block ref="eedeed859392052ace3070cab5bd7d76" category="inline-link-macro-rx"></block> 如需設定SVM DR關係的詳細資訊、</block>
   <block id="5249dbc8eb004a9fbac1419d22d7bcd0" category="section-title">「storage Aggregate plex show」命令的輸出在MetroCluster 執行完畫面切換後仍不確定</block>
   <block id="b3597a38069ce88bd5e71904ddba930d" category="paragraph">當您在MetroCluster 執行完還原切換後執行「儲存Aggregate plex show」命令時、切換根Aggregate的plex0狀態將會不確定、並顯示為「故障」。在此期間、切換根目錄不會更新。此叢的實際狀態只能在MetroCluster 還原階段之後決定。</block>
   <block id="15036251faefea85ea9b6ffa4f283c29" category="list-text">將MetroCluster 「vol-dr-force-nv故障」參數設定為「開啟」、啟用此組態以在切換時觸發NVFIL：</block>
@@ -8402,7 +8400,6 @@
   <block id="2b93070a46a84c0954f4fe7f1e6920d9" category="paragraph">停止節點。</block>
   <block id="56d9ec4c28d3901ce1d9efd0668aff81" category="paragraph">等待節點回到載入程式提示字元。</block>
   <block id="4c286a4533c555f62039858a256b6e7f" category="paragraph">在雙節點MetroCluster 的靜態組態中、您必須在每個叢集上開機節點、結束叢集設定精靈、然後使用「叢集設定」命令、將節點設定為單節點叢集。</block>
-  <block id="81d86459e5a3e2353ad75db0c4cc1230" category="paragraph">如需設定ONTAP 方面的一般資訊、請參閱 <block ref="b344da29565aaa689911ef5c966296ae" category="inline-link-macro-rx"></block></block>
   <block id="a86def5a14c2c7501e8a41235fe02fce" category="paragraph">節點會開機、然後從主控台啟動叢集設定精靈、通知AutoSupport 您將自動啟用功能。</block>
   <block id="3812f4161cb57e4e096ace5a3a653d71" category="list-text">按Enter鍵接受系統預設的「yes」、或輸入「no」、然後按Enter鍵、輸入您自己的值。</block>
   <block id="0bc961270d144e17c4780186952eec64" category="list-text">完成*叢集設定*精靈並結束之後、請確認叢集處於作用中狀態、且第一個節點正常運作：</block>
@@ -8418,7 +8415,6 @@
   <block id="81b519213a1c29ab56f141daa51cd1d4" category="paragraph">「叢集對等端點建立-產生密碼-優惠到期日_mm/DD/YYYY hh：mm:ss_|1...7天|1...168hours-peer-addrs _Peer_Lif_ips_-IPspace _IPspace_」</block>
   <block id="50e8b995f52ef7e4f888757f3fb60dd0" category="paragraph">下列命令會鏡射「'controller _a_1'」的根Aggregate：</block>
   <block id="ec6bc1ed17c7180a0e6765b2317d7458" category="paragraph">*注意*：MetroCluster 在不鏡射FC組態中、只有在可存取Aggregate中的遠端磁碟時、才能在切換後上線無鏡射集合體。如果ISL失敗、本機節點可能無法存取無鏡射遠端磁碟中的資料。Aggregate故障可能導致本機節點重新開機。</block>
-  <block id="10b3d9338ce3b44f2aaa4dffc12e92d4" category="list-text">。 <block ref="eb0cf332a63028d1b0cd8a746301e53a" category="inline-link-macro-rx"></block> 包含鏡射Aggregate的詳細資訊。</block>
   <block id="948c6064329c7f835d6e6f774987479b" category="paragraph">驗證Aggregate類型：</block>
   <block id="0204308ea13f5505c1b50d4ca42dded5" category="inline-link-macro">在ONTAP 功能不均的情況下設定MCC軟體</block>
   <block id="2d554c12e052290900520914bb157f5f" category="admonition">如果您要使用單一鏡射資料Aggregate、請參閱 <block ref="61475032151a57b9e407e91cb3340263" category="inline-link-macro-rx"></block> 以取得相關指示。</block>
@@ -8434,7 +8430,6 @@
   <block id="4ae8d24c72dd765a4920ac53c2dafe90" category="paragraph">更新版本ONTAP</block>
   <block id="361772e9851772534036695f2c569190" category="paragraph">由於輪詢時間間隔、可能需要15分鐘才能反映所有資料。如果「狀態」欄中的值為「ok」、則可聯絡及監控此橋接器、並顯示全球名稱（WWN）等其他資訊。ONTAP</block>
   <block id="c0aba19592ccfed38799730fe622ca35" category="list-text">顯示更詳細的結果：</block>
-  <block id="5af69ae57a9a4e104da0dc7bf9b476fe" category="paragraph">。 <block ref="717caad659837ead96fd39bedd8a12bf" category="inline-link-macro-rx"></block> 在「管理組態備份」一節中包含其他資訊。</block>
   <block id="5ad0b7be4f57f2d2a08be2ee7c0a41dc" category="summary">控制器FC-VI介面卡必須直接連接至彼此。控制器SAS連接埠必須連接至遠端和本機儲存堆疊。</block>
   <block id="96ab74ba60182f720e30abead20bbb03" category="doc">將控制器彼此連接、並連接至儲存櫃</block>
   <block id="a2b91b36fe2f171ecdfe2293a4dedbcb" category="paragraph">上圖為典型的代表性纜線連線。特定的FC-VI連接埠會因控制器模組而異。</block>
@@ -10514,7 +10509,6 @@
   <block id="4ceec7a3943b4f4acd458ca89a818798" category="list-text">連接本機叢集 ISL 。</block>
   <block id="10fb2fd01be021da5cbd6629a96e24a6" category="list-text">如果本機叢集介面 * 未 * 連線至交換器：</block>
   <block id="446e9d64184ff722494a9a706bbd9d06" category="inline-link-macro">移轉至交換式NetApp叢集環境</block>
-  <block id="76424713bb30c73c77e02fc03d7bfa54" category="list-text">使用 <block ref="54de1f7ba3b725e8a672244eb3963d64" category="inline-link-macro-rx"></block> 將無交換器叢集轉換為交換式叢集的程序。請使用中所示的連接埠 <block ref="69c250b2ff0cdf92dd9f1322bce627cf" category="inline-link-macro-rx"></block> 或 RCF 纜線檔案、以連接本機叢集介面。</block>
   <block id="ef28ede8698d6b9355079c76d077c08d" category="list-text">重複、確認 MetroCluster 組態正常 <block ref="78909af09fbcfe8c1bea7d5cc8b7674c" category="inline-xref-macro-rx"></block>。</block>
   <block id="15bac38a5276c64284cc172e6de7c1f3" category="list-text">或者、也可以移動 NS224 機櫃。</block>
   <block id="13c9917203c8c2e988a75ac2cf246dcd" category="paragraph">如果您要重新設定的 MetroCluster IP 組態無法將 NS224 機櫃連接至 MetroCluster IP 交換器、請使用適當的程序來新增或移動 NS224 機櫃：</block>
@@ -11351,7 +11345,6 @@
   <block id="453251ed281496384c5feb5900cc31ba" category="paragraph">如需支援哪些平台升級組合的相關資訊、請參閱MetroCluster 中的《The不支援升級》表  <block ref="9595cfad5a4deb04d4a443245fae3f76" category="inline-link-macro-rx"></block>。</block>
   <block id="3929d13da5d4b97eff76f8a6ec8c5501" category="list-text">存取 <block ref="a42716fdd3c80ae75cadfb8024b65de0" category="inline-link-macro-rx"></block> 可下載用於執行系統netboot的文件。</block>
   <block id="94416aa661a92cc8d67b1bd6459ef472" category="list-text">如需支援哪些平台升級組合的相關資訊、請參閱MetroCluster 中的《支援哪些平台升級》表  <block ref="9595cfad5a4deb04d4a443245fae3f76" category="inline-link-macro-rx"></block>。</block>
-  <block id="332fe4e638c485c04f214b0a13747f6d" category="list-text">您可以使用此程序、使用MetroCluster NSO型的自動切換和切換功能、在四節點的SFC組態中升級控制器。如果您要使用Aggregate重新定位（ARL）執行控制器升級、請參閱 <block ref="0fe967effd4f0eaf84576f897dbfd368" category="inline-link-macro-rx"></block>。建議使用NSO型自動化程序。</block>
   <block id="0b22fb8d0feec85055f45c8c4a298766" category="list-text">如果系統提示您繼續此程序、請輸入<block ref="415290769594460e2e485922904f345d" prefix=" " category="inline-code"></block>，當系統提示您輸入套件時，請輸入 URL ：</block>
   <block id="84ea00dba7c6a1cf0426e58385307e4f" category="paragraph"><block ref="5b9047ebb0d87499d679fd69fbda42cf" prefix="" category="inline-code"></block></block>
   <block id="b57c06e6dad65cb8a7fb01050706349f" category="paragraph">您可以使用 ONTAP 系統管理員、將網頁瀏覽器指向叢集管理 IP 位址（ \https://172.17.12.153). ）</block>
@@ -11790,7 +11783,6 @@
   <block id="83b4bda1bf654ac13c4188c2487240ab" category="paragraph">下表顯示 MetroCluster FC 組態中擴充 ASA 系統所支援的平台組合：</block>
   <block id="afe02acc345f4f57d38f2922dbfb2be3" category="cell">八節點 DR 群組 1</block>
   <block id="561e0dbd4b4b1343ca844c5058cb54e9" category="cell">八節點 DR 群組 2</block>
-  <block id="2653fa879e50e7b880dab8fa2e3967ae" category="paragraph">下表顯示八節點 MetroCluster IP 組態支援的平台組合。</block>
   <block id="573cf4c0aff376944ba2b059e8c7e9c2" category="paragraph-title">支援的 AFF 和 FAS MetroCluster IP 擴充組合</block>
   <block id="b1705b27cbcba17a6877fcb4c39148d9" category="paragraph-title">支援的 ASA MetroCluster IP 擴充組合</block>
   <block id="466ce3655b07eea61b5dbce58f9e9824" category="paragraph">下表顯示 MetroCluster IP 組態中擴充 ASA 系統所支援的平台組合：</block>
@@ -12833,7 +12825,6 @@
   <block id="badf169d1e3a98e87ec699a27e36973e" category="inline-link-macro">設定並以網路開機新的控制器</block>
   <block id="ef981c1c63c22e1055257ab17c228d0d" category="paragraph"><block ref="31bf2e2f0c56e7a2af110bee4998f2d7" category="inline-link-macro-rx"></block>。</block>
   <block id="2d6c2faa1510a1abbf511186d036a809" category="paragraph">舊的系統 ID 在中識別 <block ref="aacd1fc1f619acd6603cbd45ee223ad9" category="inline-link-macro-rx"></block>。</block>
-  <block id="b81de37a349498d964469c412909f544" category="list-text">將所有其他連線連接至新的控制器模組（ FC-VI ，儲存設備，叢集互連等）。</block>
   <block id="c030f6772f3af36940b46d4c256dc6c7" category="paragraph">命令輸出顯示新控制器模組的系統ID（1574774970）。不過，根 Aggregate 磁碟仍歸舊系統 ID （ 4068741254 ）所有。此範例不會顯示 MetroCluster 組態中其他節點擁有的磁碟機。</block>
   <block id="cd3645f6babaf4e4c1171003b3d056f5" category="admonition">如果您的 MetroCluster IP 系統已設定進階磁碟分割，則必須執行命令來包含 DR 合作夥伴系統 ID<block ref="1d9572d24113365244a97e4cb81d5a77" prefix=" " category="inline-code"></block> 。</block>
   <block id="ef5358bea095b88966697d1cef9aca78" category="paragraph"><block ref="92e7e14dad7d6c754e49f694366186c6" category="inline-link-macro-rx"></block>。</block>
@@ -13272,7 +13263,6 @@
   <block id="47c5dc57c727f22af1ac884b3169ca06" category="paragraph">支援八節點 MetroCluster 組態</block>
   <block id="61c5b898fb73fa93fc5e839741da576e" category="paragraph">IP 和光纖附加 MetroCluster 組態支援永久性的八節點叢集。</block>
   <block id="0f58a32a1bffeb9bb247bbf5ce1a2f3f" category="paragraph"><block ref="0f58a32a1bffeb9bb247bbf5ce1a2f3f" category="inline-link-rx"></block></block>
-  <block id="62e327d2b6ddff400e7d504d270e8f37" category="paragraph"><block ref="62e327d2b6ddff400e7d504d270e8f37" category="inline-link-macro-rx"></block></block>
   <block id="97c5969afb75d5f5fcf94bd41d9aa879" category="list-text">MetroCluster IP 配置的最佳實務。</block>
   <block id="f14613b83e9dfb7ecf4d15a3e8d4ce71" category="section-title">重新配置 ONTAP 調解器（MetroCluster IP 配置）</block>
   <block id="16b859a14f691774ca3d8870b4291e5a" category="paragraph">如果您具有使用 ONTAP 調解器配置的 MetroCluster IP 配置，則必須刪除並重新配置與 ONTAP 調解器的關聯。</block>
@@ -13352,15 +13342,8 @@
   <block id="4e4facc560c88d40d47ce2b1369d5552" category="doc">在 MetroCluster IP 交換器上設定日誌收集</block>
   <block id="d5a5c9619599da12d87af6daeab1ece6" category="paragraph">在 MetroCluster IP 設定中，您可以設定日誌收集以收集交換器日誌以用於偵錯目的。</block>
   <block id="7c51c84110459cf460a444094be133c4" category="admonition">在 Broadcom 和 Cisco 交換器上，每個具有日誌收集功能的叢集都需要一個新使用者。例如，MetroCluster 1、MetroCluster 2、MetroCluster 3 和 MetroCluster 4 都需要在交換器上設定單獨的使用者。不支援同一用戶使用多個 SSH 金鑰。</block>
-  <block id="2ded3ff3862adfc6f54d2a2f3ebf1147" category="paragraph">* 注意： * 如果您啟用 FIPS 模式、則必須完成下列步驟：</block>
   <block id="81f0d5b127adfd87f50ce10bc85e1e65" category="list-text">使用廠商指示在交換器上重新產生 SSH 金鑰。</block>
-  <block id="a60a00967db7342947b326a8f7618f52" category="list-text">使用在 ONTAP 中重新產生 SSH 金鑰<block ref="c079360670e0f4f9441a54ac1d262788" prefix=" " category="inline-code"></block></block>
-  <block id="fe85427bc017f31f0f2b913e65e8d888" category="list-text">使用<block ref="36ac3c1f3bae8142b5d110fb906ba03e" prefix=" " category="inline-code"></block>命令重新執行記錄收集設定例行程序</block>
-  <block id="ca243f374acfb56a77236e0d30935f7f" category="list-text">使用者必須能夠存取交換器<block ref="a7dd12b1dab17d25467b0b0a4c8d4a92" prefix=" " category="inline-code"></block> 命令。如果這些權限不可用、請建立新使用者、並將必要的權限授予使用者。</block>
-  <block id="8d36506446d5ad8477c75d9150e6528f" category="list-text">必須為交換器啟用交換器健全狀況監控。透過確保<block ref="83bb5774e6e4dc96959b12bfa4334f18" prefix=" " category="inline-code"></block>字段在輸出中設定為 *true* <block ref="db3929a8e897b02a87f7f4bc42f38fc1" prefix=" " category="inline-code"></block>命令。</block>
   <block id="40b03f9635c63b20aade0ff8145eafb8" category="list-text">對於 Broadcom 和 Cisco 交換器的記錄收集：</block>
-  <block id="60f743043272b873831b17c5e7290445" category="list-text">應在交換器上為啟用記錄收集的每個叢集設定建立新使用者。這些交換器不支援同一位使用者的多個 SSH 金鑰。執行的任何其他記錄集合設定都會覆寫使用者先前存在的任何 SSH 金鑰。</block>
-  <block id="c1433b541d8d99faed86a93460cb0bad" category="list-text">若要使用 NVIDIA 交換器來支援記錄收集、必須允許記錄收集的 _user_ 執行<block ref="c85737d6a0d20328583b59ea7320a5ef" prefix=" " category="inline-code"></block>命令、而無需提供密碼。若要允許這種使用方式、請執行命令：</block>
   <block id="a0379ee208b1ca86b0ce11e60c0e73eb" category="paragraph"><block ref="83e3f80a08612b0113ac48e3b9a3432e" prefix="" category="inline-code"></block></block>
   <block id="4b96de8aec25594d2021f91d86aa38cb" category="open-title">ONTAP 9.15.1 及更新版本</block>
   <block id="09a5c8e72e479c23dfcdb0045312203a" category="list-text">若要設定記錄收集、請針對每個交換器執行下列命令。系統會提示您輸入用於記錄收集的交換器名稱、使用者名稱和密碼。</block>
@@ -14115,8 +14098,6 @@
   <block id="7d75b765033881d6427904f346b2af70" category="image-alt">執行協商切換和切換回的工作流程</block>
   <block id="a9df5c35dc8d16b1357b057f348b9b78" category="paragraph">以下指導針對一種不常見的情況，即您需要將較舊的平台模型（ ONTAP 9.15.1 之前發布的平台）添加到包含較新平台模型（ ONTAP 9.15.1 或更高版本中發布的平台）的現有MetroCluster配置中。對於八節點 FC 到 IP 的過渡，如果您已將第一個 FC DR 組過渡到ONTAP 9.15.1 或更高版本中引入的平台模型，併計劃將第二個 DR 組過渡到ONTAP 9.15.1 之前引入的平台，則本指南適用。</block>
   <block id="c8efd71f5dfcaa3170cfb9e870570d0c" category="paragraph">如果您現有的MetroCluster配置包含使用 *共用叢集/HA 連接埠* 的平台（ ONTAP 9.15.1 或更高版本中發布的平台） ，則如果未將配置中的所有節點升級至ONTAP 9.15.1P11 或ONTAP 9.16.1P4 或更高版本，則無法新增使用 195.16.1P4ONTAP之前發布的平台）。</block>
-  <block id="bbd4f8afd941a4f9092590e529ea65aa" category="paragraph">將使用 *共用/ MetroCluster HA 連接埠* 的舊平台模型新增至包含使用 *共用叢集/HA 連接埠* 的新平台模型的MetroCluster是一種不常見的情況，大多數組合不會受到影響。</block>
-  <block id="08d2b7abcd5b6aa419d380eb2e816dae" category="paragraph">使用下表來驗證您的組合是否受到影響。如果第一列列出了您現有的平台，而第二列列出了要新增至配置中的平台，則配置中的所有節點都必須執行ONTAP 9.15.1P11 或ONTAP 9.16.1P4 或更高版本才能新增新的 DR 群組。</block>
   <block id="21c46632ec731f4be55ce4557663e507" category="image-alt">在現有機架上使用四個新 IP 節點進行過渡</block>
   <block id="1e0490b479cfe90476d9225ca238cf02" category="image-alt">雙節點過渡的工作流程</block>
   <block id="305b5ad24ea95dd1803f299dea23021d" category="image-alt">DR 組 1 中的過渡 FC 節點</block>
@@ -14219,7 +14200,6 @@
   <block id="10d1ab0c8cf052d4ea0d37de04e41090" category="paragraph">從ONTAP 9.18.1 開始，FAS50 系統在MetroCluster IP 設定中支援 Flash Cache。</block>
   <block id="6b3168d94d2d3e334f52748aea390dba" category="list-text">內部機架上的快閃記憶體快取驅動器不能同時擁有資料聚合和根聚合。</block>
   <block id="653607d5d7d3af18614ca6042833ed8a" category="list-text">插槽 0 和 23 用於快閃記憶體快取驅動器。</block>
-  <block id="8e61d02677cd63addf1b7c325e4f7ac0" category="list-text">如果您要重複使用外部磁碟櫃，請在將其連接到控制器之前確認已移除外部磁碟機上的磁碟所有權。參考<block ref="a28575c3c82c68e34920359e77fd18f4" category="inline-link-macro-rx"></block>。</block>
   <block id="da0670d9828b0c4a39fd70e8176cd286" category="paragraph">36 個硬碟（12 個內部硬碟和 24 個外接硬碟－資料聚合位於外接硬碟架上，根聚合位於內部硬碟架上）</block>
   <block id="13825b1621d2d8ab9420fd458a556917" category="paragraph">內部驅動器分為四個相等的組（四分之一）。每個季度都會自動分配到一個單獨的資金池。外部機架上的驅動器分為四個相等的組（四分之一）。每個四分之一層貨架都會自動分配到一個單獨的貨架池。</block>
   <block id="fcbd19b726fdd6160dfe2ab43f285a55" category="paragraph">*筆記：*</block>
@@ -14395,7 +14375,6 @@
   <block id="108a4ad72df5c318a77dad90928d8770" category="admonition">在 MetroCluster IP 配置中，除非配置使用 ONTAP Mediator，否則 AUSO 故障域已設定為「auso-disabled」。</block>
   <block id="6ba9661e38afca32fe30fec08ca5c4ab" category="list-text">停止兩個站台的節點：</block>
   <block id="f759ce596ef74c921d7bddaf277a11c8" category="paragraph">*注意：* 25 GbE 速度需要 MAM1Q00A-QSA28 收發器轉接器。</block>
-  <block id="316fa55db721e45107647fc0de79704f" category="paragraph">乙太網路交換器健全狀況監視器（CSHM）負責確保網路交換器的運作健全狀況，並收集交換器記錄以進行除錯。本程序將引導您完成設定收集、請求詳細的 *Support* 日誌，以及啟用每小時收集 AutoSupport 所收集之 *Periodic* 資料的程序。</block>
   <block id="4526d2820ba573572df0eafdc557014c" category="paragraph">系統切換期間，NetApp 建議您避免執行某些操作。</block>
   <block id="6efa43350457e5d9dbe5d6c555eb32f9" category="paragraph">系統切換期間不建議執行以下操作，您只能在 NetApp 技術支援人員的指導下執行這些操作：</block>
   <block id="9ea78d85c08becd89d5d23daef8687fa" category="list-text">建立或刪除 Aggregate</block>
@@ -14638,4 +14617,28 @@
   <block id="fec849fc6a76787dab045fcdba41b004" category="list-text">如果安裝在具有 2 核心 CPU 的主機作業系統上，則需要一個四節點 MetroCluster IP 組態和一個 SnapMirror 活動同步對等關係。</block>
   <block id="1241530f686624169cbc6250a94efe3b" category="inline-link-macro">深入了解 ONTAP Mediator 對多個 MetroCluster IP 組態的支援</block>
   <block id="93b7a44949c3dc9c153b4a0b58a89938" category="paragraph"><block ref="ec2190c64ae13bbd66508ccf14a8aee4" category="inline-link-macro-rx"></block>。</block>
+  <block id="92f612fac880d74199e14effbb3e97a8" category="paragraph">如需設定 SVM DR 關係的詳細資訊，請參閱 <block ref="14176889f381a7d61946d7924735d77a" category="inline-link-macro-rx"></block> 中的「`Replicating the SVM configuration`」一節。</block>
+  <block id="c3a86c1ff4ba299946058dc2a774ad3c" category="list-text">如果使用 FIPS 模式，請在設定日誌收集之前完成以下步驟：</block>
+  <block id="4484a5c96839b02a9c71b4af57881dc1" category="list-text">使用 <block ref="c079360670e0f4f9441a54ac1d262788" prefix=" " category="inline-code"></block> 在 ONTAP 中重新產生 SSH 金鑰。</block>
+  <block id="51857e580cc9df32af288c0f2ec0c2d8" category="list-text">使用<block ref="36ac3c1f3bae8142b5d110fb906ba03e" prefix=" " category="inline-code"></block>命令重新執行日誌收集設定。</block>
+  <block id="bffa1a3361b2e88e5c9862c25f21dfae" category="list-text">您必須擁有交換器<block ref="a7dd12b1dab17d25467b0b0a4c8d4a92" prefix=" " category="inline-code"></block>命令的存取權限。如果沒有，請建立新的交換器使用者並授予其必要的權限。</block>
+  <block id="36a0cebcb564d852dfd0f969cfd4b30f" category="list-text">必須為交換器啟用交換器健全狀況監控。透過檢查<block ref="83bb5774e6e4dc96959b12bfa4334f18" prefix=" " category="inline-code"></block>欄位在<block ref="db3929a8e897b02a87f7f4bc42f38fc1" prefix=" " category="inline-code"></block>輸出中是否設為 *true* 來驗證。</block>
+  <block id="faa5843ec4ddc65bc98113178a2bc37e" category="list-text">為每個啟用日誌收集的叢集建立一個新的交換器使用者。這些交換器不支援相同使用者使用多個 SSH 金鑰，再次執行設定會覆寫現有的 SSH 金鑰。</block>
+  <block id="67d16ab92d6c3dc53d71cf57bd013db0" category="list-text">為了支援使用 NVIDIA 交換器進行日誌收集，日誌收集使用者必須能夠在不需要密碼的情況下執行<block ref="c85737d6a0d20328583b59ea7320a5ef" prefix=" " category="inline-code"></block>命令。若要允許此操作，請執行：</block>
+  <block id="b0cab81835967ac01314d22080d536c0" category="paragraph">依照適用於您的 ONTAP 版本的步驟設定日誌收集、啟用定期資料收集，並可選擇性地要求隨需支援日誌。</block>
+  <block id="2e14aa157ad73372d9cc2f65b91796cd" category="paragraph">此工作需要使用檔案傳輸軟體（例如 FTP、TFTP、SFTP、HTTP 或 SCP）將檔案複製到交換器。</block>
+  <block id="424f0fb38562d43c2b61beeaa601e9a0" category="paragraph">有關設定 ONTAP 的更多一般資訊，請參閱<block ref="95a2ad6fc516d3f7074e7d260643f587" category="inline-link-macro-rx"></block></block>
+  <block id="1232a165e8a7370740154d534f06f767" category="list-text">其中<block ref="a65430c79af53447a6078bbb1ffdf593" category="inline-link-macro-rx"></block>包含有關鏡射彙總的更多資訊。</block>
+  <block id="915a6a364deb20dbae913ca1a6a54884" category="paragraph"><block ref="3318585afd9a80331d69c814ca32c976" category="inline-link-macro-rx"></block>在「管理組態備份」部分下包含更多資訊。</block>
+  <block id="ebb6d8f55979a61b08c5f6bec68dc9e9" category="list-text">更換零件後，請依照套件隨附的 RMA 說明將故障零件退回至 NetApp。如需更多資訊，請參閱 <block ref="fce425f03b6e5bb936dcc3474dfd00b8" category="inline-link-macro-rx"></block> 頁面。</block>
+  <block id="1133e231fd95d23cf0b090a2ae023a0a" category="list-text">請依照 <block ref="2a7c1099f37ae8bcd871fa3a433d3da5" category="inline-link-macro-rx"></block> 程序將無交換器式叢集轉換為有交換器叢集。使用 <block ref="69c250b2ff0cdf92dd9f1322bce627cf" category="inline-link-macro-rx"></block> 或 RCF 佈線檔案中指示的連接埠連接本機叢集介面。</block>
+  <block id="020765b53f5b5a9bae58be6efb0832b7" category="paragraph">請使用下表驗證您的組合是否受到影響。如果您的現有平台列於第一列，而您要新增至組態的平台列於第二列，則組態中的所有節點都必須執行 ONTAP 9.15.1P11 或 ONTAP 9.16.1P4 或更高版本（取決於平台支援的 ONTAP 版本），才能新增新的 DR 群組。</block>
+  <block id="2da16daf711c30ffdccfb00d9124ff3e" category="list-text">將使用 *共享的 MetroCluster/HA 連接埠* 的舊平台模型新增至包含使用 *共享的叢集/HA 連接埠* 的新平台模型的 MetroCluster 中是一種不常見的情況，大多數組合都不會受到影響。</block>
+  <block id="9036e4a551e4d8f9c140b331b643bda7" category="inline-link-macro">支援的平台組合</block>
+  <block id="5fef73d29b96ab699c1eb38940de2810" category="list-text">表格列出了所有使用共享的 MetroCluster/HA 連接埠和共享的叢集/HA 連接埠的平台型號。並非所有組合都受此程序支援。請參閱 <block ref="8d843f5fbaa6ab545e8dd5557634fad6" category="inline-link-macro-rx"></block> 以確認您的過渡組合是否受支援。</block>
+  <block id="6f77dec9774bb68016b5a89bc584139f" category="list-text">下表列出了所有使用共享的 MetroCluster/HA 連接埠和共享的叢集/HA 連接埠的平台型號。並非所有組合都受此程序支援。請參閱 <block ref="9823e60a325d02fc2db15489ab93bf24" category="inline-xref-macro-rx"></block> 以確認您的擴充組合是否受支援。</block>
+  <block id="94fd46a40c73a3bf69fc419517ec0c3c" category="paragraph">下表顯示八節點 MetroCluster IP 組態支援的平台組合。</block>
+  <block id="2a24c722355bf7db1679e018b746b7b0" category="list-text">下表列出了所有使用共享的 MetroCluster/HA 連接埠和共享的叢集/HA 連接埠的平台型號。並非所有組合都受此程序支援。請參閱 <block ref="69c5d8418076cf16192dc8b27a9666cd" category="inline-link-macro-rx"></block> 以確認您的重新整理組合是否受支援。</block>
+  <block id="04fa61126d631fa1cb66d18aff511858" category="list-text">您可以使用此流程在四節點 MetroCluster FC 組態中使用基於 NSO 的自動切換和切換功能來升級控制器。如果您想使用彙總重定位 (ARL) 執行控制器升級，請參閱<block ref="2dcc0fc2978fe358e486022a4ab03dca" category="inline-link-macro-rx"></block>。建議使用基於 NSO 的自動化流程。</block>
+  <block id="f7f3cd01961c53f33c89b788147d8de3" category="list-text">將所有其他從舊控制器斷開的連接線連接到新控制器模組。</block>
 </blocks>

@@ -25,7 +25,7 @@ summary: 您可以MetroCluster 從NetApp文件中深入瞭解有關靜態IP組�
 
 
  a| 
-link:https://www.netapp.com/pdf.html?item=/media/13481-tr4689.pdf["《SIP解決方案架構與設計》、MetroCluster TR-4689"]
+link:https://www.netapp.com/pdf.html?item=/media/13481-tr4689.pdf["《SIP解決方案架構與設計》、MetroCluster TR-4689"^]
  a| 
 * 關於整套IP組態與操作的技術總覽MetroCluster 。
 * MetroCluster IP 配置的最佳實務。
