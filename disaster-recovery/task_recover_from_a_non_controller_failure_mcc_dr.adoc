@@ -168,6 +168,59 @@ mcc1A::> metrocluster operation show
 
 
 
+[[verify-and-restore-lif-configuration]]
+== 驗證並還原LIF組態
+
+在執行切換之前，請確認 LIF 託管在適當的節點和連接埠上。
+
+.步驟
+. 在執行切換之前，請確認 LIF 已託管在適當的節點和連接埠上。
++
+.. 變更為進階權限層級：
++
+"進階權限"
+
+.. 顯示生命，並確認每個資料 LIF 使用正確的主連接埠：
++
+「網路介面展示」
+
+.. 修改任何未使用正確主連接埠的生命：
++
+`network interface modify -vserver <svm-name> -lif <data-lif> -home-port <port-id>`
+
++
+如果命令傳回錯誤，您可以覆寫連接埠組態：
+
++
+`vserver config override -command "network interface modify -vserver <svm-name> -home-port <active_port_after_upgrade> -lif <lif_name> -home-node <new_node_name>"`
+
++
+在「vserver config override」命令中輸入network interface modify命令時、您無法使用分頁自動完成功能。您可以使用autosplete建立網路「介面修改」、然後將其括在「vserver config override」命令中。
+
+.. 確認所有資料生命現在都位於正確的主連接埠：
++
+「網路介面展示」
+
+.. 返回管理權限層級：
++
+「et -priv. admin」
+
+
+
+. 將介面還原至其主節點：
++
+`network interface revert * -vserver <svm-name>`
+
++
+視需要在所有SVM上執行此步驟。
+
+
+
+
+CAUTION: 在執行回切操作之前，您必須確認新節點上資料 LIF 的位置是否正確。回切組態時，ONTAP 會嘗試恢復 LIF 使用的主連接埠上的流量。如果主連接埠與交換器連接埠和 VLAN 的連線不正確，則可能發生 I/O 故障。如果您在將 LIF 放置在正確的節點或連接埠上時遇到任何問題，請不要繼續執行回切操作，並聯絡 NetApp 技術支援。
+
+
+
 [[verifying-that-your-system-is-ready-for-a-switchback]]
 == 驗證系統是否已準備好進行切換
 
@@ -451,8 +504,7 @@ vs1a           data    sync-source
 +
 《不穩定營運展》MetroCluster
 
-
-
++
 |===
 
 
@@ -472,8 +524,58 @@ vs1a           data    sync-source
 請執行「MetroCluster 畫面操作show」命令輸出中提供的建議修正程式。
 
 |===
-.完成後
-您必須重複上述各節、以相反方向執行切換。如果站台_A切換到站台_B、請讓站台_B切換站台_A
+. 執行以下檢查以確認兩個叢集之間的切換正常運作：
++
+.. 從災難復原叢集中，檢查是否可以從倖存叢集切換到災難復原叢集：
++
+《不一樣的切換-模擬》MetroCluster
+
+.. 從倖存叢集中，檢查是否可以從 DR 叢集切換到倖存叢集：
++
+《不一樣的切換-模擬》MetroCluster
+
+.. 驗證MetroCluster 這些元件是否正常運作：
++
+《不一樣的跑程》MetroCluster
+
++
+[listing]
+----
+cluster_A::*> metrocluster check run
+----
++
+此作業會在背景執行。
+
+.. 之後 `metrocluster check run` 作業完成、執行：
++
+《不一樣的表演》MetroCluster
+
++
+大約五分鐘後、會顯示下列結果：
+
++
+[listing]
+----
+cluster_A:::*> metrocluster check show
+
+Component           Result
+------------------- ---------
+nodes               ok
+lifs                ok
+config-replication  ok
+aggregates          ok
+clusters            ok
+connections         ok
+volumes             ok
+7 entries were displayed.
+----
++
+
+NOTE: 在 MetroCluster FC 環境中，「connections」在命令輸出中應顯示為「not-applicable」。
+
+
+
+
 
 
 

@@ -87,6 +87,55 @@ vs1a           data    sync-source
 請執行「MetroCluster 畫面操作show」命令輸出中提供的建議修正程式。
 
 |===
+. 執行以下檢查以確認兩個叢集之間的切換正常運作：
++
+.. 從災難復原叢集中，檢查是否可以從倖存叢集切換到災難復原叢集：
++
+《不一樣的切換-模擬》MetroCluster
+
+.. 從倖存叢集中，檢查是否可以從 DR 叢集切換到倖存叢集：
++
+《不一樣的切換-模擬》MetroCluster
+
+.. 驗證MetroCluster 這些元件是否正常運作：
++
+《不一樣的跑程》MetroCluster
+
++
+[listing]
+----
+cluster_A::*> metrocluster check run
+----
++
+此作業會在背景執行。
+
+.. 之後 `metrocluster check run` 作業完成、執行：
++
+《不一樣的表演》MetroCluster
+
++
+大約五分鐘後、會顯示下列結果：
+
++
+[listing]
+----
+cluster_A:::*> metrocluster check show
+
+Component           Result
+------------------- ---------
+nodes               ok
+lifs                ok
+config-replication  ok
+aggregates          ok
+clusters            ok
+connections         ok
+volumes             ok
+7 entries were displayed.
+----
++
+
+NOTE: 在 MetroCluster FC 環境中，「connections」在命令輸出中應顯示為「not-applicable」。
 
 
-您必須重複上述各節、以相反方向執行切換。如果站台_A切換到站台_B、請讓站台_B切換站台_A
+
+

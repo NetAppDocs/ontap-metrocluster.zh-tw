@@ -13312,12 +13312,8 @@
   <block id="8379e83fc1ad68bfb1ad877f1b7fda6b" category="list-text">設定位在邊上的v3使用者ONTAP ：</block>
   <block id="6b9f542dd155c40aa5e4484b5ff61711" category="list-text">設定 CSHM 以監控新的 SNMPv3 使用者：</block>
   <block id="f1d85c8d2abe8fba947527035ed0f381" category="list-text">等待 CSHM 輪詢期後，驗證乙太網路交換器的序號是否已填入。</block>
-  <block id="0fdfed50bdfb7a964741d7f6016dd332" category="paragraph">在 Cisco 9336C-FX2 交換器上設定 SNMPv3 使用者名稱 SNMPv3 使用者：</block>
   <block id="d4d693d9dd779d0daf149c2e448b60b2" category="list-text">驗證要與新建立的 SNMPv3 使用者查詢的序號、是否與 CSHM 輪詢期間結束後上一步所述相同。</block>
   <block id="05918726f836c344025fecbcf0275f1b" category="open-title">NVIDIA-CL 5.4.0</block>
-  <block id="c19095c0c8945d1d4e4e73ec7a11354c" category="paragraph">在執行 CLI 5.4.0 的 NVIDIA SN2100 交換器上設定 SNMPv3 使用者名稱 SNMPv3_USER：</block>
-  <block id="cd12738ab621b27db86ca1b02e9d118c" category="open-title">NVIDIA-CL 5.11.0</block>
-  <block id="1d478fc1ce1613a790d5d77707c188f6" category="paragraph">在執行 CLI 5.11.0 的 NVIDIA SN2100 交換器上設定 SNMPv3 使用者名稱 SNMPv3_USER：</block>
   <block id="8ae4eeaa7baed19106cc30ea02483c5e" category="paragraph">乙太網路交換器健全狀況監視器（ CSHM ）負責確保叢集與儲存網路交換器的作業健全狀況、並收集交換器記錄以供偵錯之用。</block>
   <block id="4ae61f4d1ec2f0efafd8ee4274e49ccf" category="section-title">在 MetroCluster IP 設定中設定 CSHM 的重要注意事項</block>
   <block id="b38569be2d36a20e8902840c1ea976fe" category="paragraph">本節包含在 Cisco、Broadcom 和 NVIDIA SN2100 交換器上設定 SNMPv3 和日誌收集的通用步驟。您必須按照 MetroCluster IP 設定中支援的交換器韌體版本的步驟進行操作。請參閱<block ref="cbfe825e8e02458e2eef3cd048612d7d" category="inline-link-macro-rx"></block>驗證支援的韌體版本。</block>
@@ -14641,4 +14637,15 @@
   <block id="2a24c722355bf7db1679e018b746b7b0" category="list-text">下表列出了所有使用共享的 MetroCluster/HA 連接埠和共享的叢集/HA 連接埠的平台型號。並非所有組合都受此程序支援。請參閱 <block ref="69c5d8418076cf16192dc8b27a9666cd" category="inline-link-macro-rx"></block> 以確認您的重新整理組合是否受支援。</block>
   <block id="04fa61126d631fa1cb66d18aff511858" category="list-text">您可以使用此流程在四節點 MetroCluster FC 組態中使用基於 NSO 的自動切換和切換功能來升級控制器。如果您想使用彙總重定位 (ARL) 執行控制器升級，請參閱<block ref="2dcc0fc2978fe358e486022a4ab03dca" category="inline-link-macro-rx"></block>。建議使用基於 NSO 的自動化流程。</block>
   <block id="f7f3cd01961c53f33c89b788147d8de3" category="list-text">將所有其他從舊控制器斷開的連接線連接到新控制器模組。</block>
+  <block id="2fb65189695e9496f507ebb44d5b6cb6" category="paragraph">在執行切換之前，請確認 LIF 託管在適當的節點和連接埠上。</block>
+  <block id="542e234aa223d3b0ecca11dacf8e46ed" category="list-text">在執行切換之前，請確認 LIF 已託管在適當的節點和連接埠上。</block>
+  <block id="3dcbbe108abc6bdf7036466d9fe35058" category="admonition">在執行回切操作之前，您必須確認新節點上資料 LIF 的位置是否正確。回切組態時，ONTAP 會嘗試恢復 LIF 使用的主連接埠上的流量。如果主連接埠與交換器連接埠和 VLAN 的連線不正確，則可能發生 I/O 故障。如果您在將 LIF 放置在正確的節點或連接埠上時遇到任何問題，請不要繼續執行回切操作，並聯絡 NetApp 技術支援。</block>
+  <block id="108f2a315310ceff812cf39f143ca95b" category="list-text">執行以下檢查以確認兩個叢集之間的切換正常運作：</block>
+  <block id="59a93fe50b25a85e88bed38108e0196c" category="list-text">從災難復原叢集中，檢查是否可以從倖存叢集切換到災難復原叢集：</block>
+  <block id="59ded25db2e6cefacbcb41c378e0b709" category="list-text">從倖存叢集中，檢查是否可以從 DR 叢集切換到倖存叢集：</block>
+  <block id="2c7ea164e9295a29d20e890710cfcc1d" category="admonition">在 MetroCluster FC 環境中，「connections」在命令輸出中應顯示為「not-applicable」。</block>
+  <block id="706bc34d657098e3dcd81db43d280c53" category="paragraph">在 Cisco Nexus 交換器上設定 SNMPv3 使用者名稱 SNMPv3_USER：</block>
+  <block id="5a523817621c85574dfcbf0b11c07075" category="paragraph">在執行 CL 5.4.0 的 NVIDIA Cumulus 交換器上設定 SNMPv3 使用者名稱 SNMPv3_USER：</block>
+  <block id="4451c276144ff12f4a59bad51c0a1181" category="open-title">NVIDIA - CL 5.11.0+</block>
+  <block id="d1f08b7bd68bdc79984e047bc1939c5d" category="paragraph">在執行 CLI 5.11.0 及更高版本的 NVIDIA Cumulus 交換器上設定 SNMPv3 使用者名稱 SNMPv3_USER：</block>
 </blocks>
