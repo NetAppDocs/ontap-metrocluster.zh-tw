@@ -71,8 +71,10 @@ entries:
     url: "/install-ip/task_cable_other_connections.html"
   - title: 設定MetroCluster 靜態IP交換器
     entries:
-    - title: 選擇正確的MetroCluster IP 交換器配置流程
+    - title: 了解如何設定 MetroCluster IP 交換器
       url: "/install-ip/task_install_and_cable_the_mcc_components.html"
+    - title: 移動叢集 LIF
+      url: "/install-ip/switch-move-cluster-lifs.html"
     - title: 設定Broadcom IP交換器
       url: "/install-ip/task_switch_config_broadcom.html"
     - title: 設定Cisco IP交換器

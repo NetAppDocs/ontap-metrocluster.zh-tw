@@ -11,19 +11,19 @@ summary: 您必須將參考組態（RCF）檔案下載到MetroCluster 位在整�
 
 
 [role="lead"]
-您必須將參考組態（RCF）檔案下載到MetroCluster 位在整個過程中的每個交換器。
+您必須將參考組態檔案 (RCF) 下載到 MetroCluster 架構組態中的每個交換器。
 
 .關於這項工作
-若要使用這些RCF檔案、系統必須執行ONTAP 的是更新版本的版本、而且您必須使用連接埠配置ONTAP 來執行版本的更新版本。
+若要使用這些 RCF，系統必須執行 ONTAP 9.1 或更新版本，且必須使用 ONTAP 9.1 或更新版本的連接埠配置。
 
 如果您打算僅使用 FibreBridge 橋上的一個 FC 端口，請按照本節中的說明手動配置後端光纖通道交換機， link:concept_port_assignments_for_fc_switches_when_using_ontap_9_1_and_later.html["FC 交換器的連接埠分配"] 。
 
 .步驟
-. 請參閱Brocade RCF下載頁面上的RCF檔案表、找出組態中每個交換器的正確RCF檔案。
+. 請參考 Brocade RCF 下載頁面上的 RCF 表，並確定組態中每個交換器的正確 RCF。
 +
-RCF檔案必須套用至正確的交換器。
+RCF 必須應用於正確的交換器。
 
-. 從下載交換器的RCF檔案 https://mysupport.netapp.com/site/products/all/details/metrocluster-rcf/downloads-tab["下載RCF MetroCluster"] 頁面。
+. 從 https://mysupport.netapp.com/site/products/all/details/metrocluster-rcf/downloads-tab["下載RCF MetroCluster"]頁面下載交換器的 RCF 檔案。
 +
 檔案必須放置在可傳輸至交換器的位置。組成雙交換器架構的四個交換器各有一個獨立的檔案。
 

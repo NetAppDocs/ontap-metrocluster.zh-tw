@@ -21,7 +21,7 @@ summary: 您可能需要新增、移除或變更ISL連接埠。您可以將專�
 下列程序假設您要以兩個連接至交換器連接埠17和18的100-GB ISL取代連接至交換器連接埠eth1/24/1的10-GB ISL。
 
 
-NOTE: 如果您在連接 NS224 機櫃的共享組態中使用 Cisco 9336C-FX2 交換器、變更 ISL 可能需要新的 RCF 檔案。如果您目前和新的 ISL 速度為 40Gbps 和 100Gbps 、則不需要新的 RCF 檔案。所有其他 ISL 速度變更都需要新的 RCF 檔案。例如、將 ISL 速度從 40Gbps 變更為 100Gbps 並不需要新的 RCF 檔案、但將 ISL 速度從 10Gbps 變更為 40Gbps 則需要新的 RCF 檔案。
+NOTE: 如果您在共享的組態中使用 Cisco 9336C-FX2 交換器連接 NS224 機架，變更 ISL 可能需要新的參考組態檔案 （RCF）。如果目前和新的 ISL 速度分別為 40 Gbps 和 100 Gbps，則無需新的 RCF。所有其他 ISL 速度變更都需要新的 RCF。例如，將 ISL 速度從 40 Gbps 變更為 100 Gbps 不需要新的 RCF，但將 ISL 速度從 10 Gbps 變更為 40 Gbps 則需要新的 RCF。
 
 .開始之前
 請參閱的 * 切換開關 * 一節 link:https://hwu.netapp.com/["NetApp Hardware Universe"^] 驗證支援的收發器。
@@ -59,7 +59,7 @@ switch_B_1#
 . 視需要變更ISL連接埠。
 +
 
-NOTE: 如果您在連接 NS224 機櫃的共享組態中使用 Cisco 9336C-FX2 交換器、而您需要升級 RCF 檔案、並將新組態套用至新的 ISL 連接埠、請遵循的步驟 link:task_upgrade_rcf_files_on_mcc_ip_switches.html["升級 MetroCluster IP 交換器上的 RCF 檔案。"]
+NOTE: 如果您在共享的組態中使用 Cisco 9336C-FX2 交換器連接 NS224 機架，並且需要升級 RCF 並為新的 ISL 連接埠套用新組態，請依照下列步驟操作：link:task_upgrade_rcf_files_on_mcc_ip_switches.html["升級 MetroCluster IP 交換器上的 RCF。"]
 
 +
 [cols="30,70"]

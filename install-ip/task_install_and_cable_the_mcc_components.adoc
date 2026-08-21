@@ -4,16 +4,44 @@ sidebar: sidebar
 keywords: ip, switch, configuring 
 summary: 您必須設定IP交換器、才能提供後端MetroCluster 的不中斷IP連線功能。 
 ---
-= 選擇正確的MetroCluster IP 交換器配置流程
+= 了解如何設定 MetroCluster IP 交換器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-您必須設定IP交換器、以提供後端MetroCluster 的F精選IP連線功能。您遵循的程序取決於您的交換器供應商。
+您必須設定 IP 交換器以提供後端 MetroCluster IP 連線。具體步驟取決於您的交換器廠商，以及您是在全新安裝 MetroCluster IP 時設定交換器，還是在其他程序中設定交換器。
+
+
+
+[[fresh-metrocluster-ip-installation]]
+== 全新 MetroCluster IP 安裝
+
+如果您要進行全新的 MetroCluster IP 安裝，請依照您的交換器廠商選擇交換器組態步驟：
 
 * link:../install-ip/task_switch_config_broadcom.html["設定Broadcom IP交換器"]
 * link:../install-ip/task_switch_config_cisco.html["設定Cisco IP交換器"]
 * link:../install-ip/task_switch_config_nvidia.html["設定NVIDIA IP交換器"]
+
+
+
+
+[[switch-replacement-and-rcf-or-firmware-updates]]
+== 交換器更換和 RCF 或韌體更新
+
+作為其他 MetroCluster IP 操作流程（例如交換器更換或升級）的一部分，您可能需要更新交換器韌體、參考組態檔案 （RCF） 或兩者都需要更新。在這些情況下，您必須在設定 IP 交換器之前移轉叢集 LIF。這些情況的高階步驟如下：
+
+
+NOTE: 您必須依照下列順序更新交換器：Switch_A_1、Switch_B_1、Switch_A_2、Switch_B_2。
+
+. link:../install-ip/switch-move-cluster-lifs.html["移動叢集 LIF"]
+. 將叢集 LIF 移轉到合作夥伴交換器後，您可以依照交換器廠商提供的標準組態步驟進行操作：
++
+** link:../install-ip/task_switch_config_broadcom.html["設定Broadcom IP交換器"]
+** link:../install-ip/task_switch_config_cisco.html["設定Cisco IP交換器"]
+** link:../install-ip/task_switch_config_nvidia.html["設定NVIDIA IP交換器"]
+
+
+. 在設定完第一個架構（Switch_A_1、Switch_B_1）的交換器後，必須從 link:../install-ip/switch-move-cluster-lifs.html["移動叢集 LIF"] 開始，在第二個架構（Switch_A_2、Switch_B_2）重複上述步驟。
 

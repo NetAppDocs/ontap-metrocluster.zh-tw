@@ -11,16 +11,16 @@ summary: 您可能需要在MetroCluster 一個不知如何的IP交換器上升�
 
 
 [role="lead"]
-您可能需要升級 MetroCluster IP 交換器上的參考組態檔案（ RCF ）。例如，如果您在交換器上執行的 RCF 版本不受 ONTAP 版本，交換器韌體版本或兩者的支援。
+您可能需要升級 MetroCluster IP 交換器上的參考組態檔案（RCF）。例如，如果交換器上執行的 RCF 版本與 ONTAP 版本、交換器韌體版本或兩者都不相容。
 
 .開始之前
-* 如果您要安裝新的交換器韌體、則必須先安裝交換器韌體、才能升級RCF檔案。
+* 如果您要安裝新的交換器韌體，則必須先安裝交換器韌體，然後再升級 RCF。
 * 升級 RCF 之前，link:task_upgrade_firmware_on_mcc_ip_switches.html["驗證 RCF 是否受支援"]。
 * link:enable-console-logging-before-maintenance.html["啟用主控台記錄"] 在執行此工作之前。
 
 
 .關於這項工作
-* 此程序會中斷升級RCF檔案的交換器流量。套用新的 RCF 檔案時，流量會恢復。
+* 此程序會中斷正在升級 RCF 的交換器上的流量。套用新的 RCF 後，流量將恢復。
 * 一次在一個交換器上執行下列步驟： switch_a_1 、 Switch_B_1 、 Switch_a_2 、 Switch_B_2 。
 
 
@@ -74,7 +74,8 @@ volumes             ok
 
 
 
-. 準備IP交換器以應用新的RCF檔案。
+. link:../install-ip/switch-move-cluster-lifs.html["移動叢集 LIF"]在開始升級之前。
+. 準備 IP 交換器以應用新的 RCFs 。
 +
 請依照交換器廠商的步驟進行：
 
@@ -84,15 +85,20 @@ volumes             ok
 ** link:../install-ip/task_switch_config_nvidia.html#reset-the-nvidia-ip-sn2100-switch-to-factory-defaults["將NVIDIA IP SN2100交換器重設為原廠預設值"]
 
 
-. 視交換器廠商而定、下載並安裝IP RCF檔案。
+. 根據您的交換器廠商，下載並安裝 IP RCF。
 +
-** link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-broadcom-rcf-files["下載並安裝 Broadcom IP RCF 檔案"]
-** link:../install-ip/task_switch_config_cisco.html#downloading-and-installing-the-cisco-ip-rcf-files["下載並安裝 Cisco IP RCF 檔案"]
-** link:../install-ip/task_switch_config_nvidia.html#download-and-install-the-nvidia-rcf-files["下載並安裝 NVIDIA IP RCF 檔案"]
+** link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-broadcom-rcf-files["下載並安裝 Broadcom IP RCF"]
+** link:../install-ip/task_switch_config_cisco.html#downloading-and-installing-the-cisco-ip-rcf-files["下載並安裝 Cisco IP RCFs"]
+** link:../install-ip/task_switch_config_nvidia.html#download-and-install-the-nvidia-rcf-files["下載並安裝 NVIDIA IP RCFs"]
 +
 
 NOTE: 如果您有L2共用或L3網路組態、可能需要調整中繼/客戶交換器上的ISL連接埠。switchport模式可能會從「存取」模式變更為「主幹」模式。只有在交換器A_1和B_1之間的網路連線完全正常且網路正常時、才繼續升級第二個交換器配對（A_2、B_2）。
 
 
+
+. 對每個交換器重複上述步驟。
++
+
+NOTE: 在第一個架構（Switch_A_1、Switch_B_1）中設定交換器後，必須重複上述步驟，將叢集 LIF 移轉到第二個架構（Switch_A_2、Switch_B_2）。請參閱 link:../install-ip/task_install_and_cable_the_mcc_components.html["了解如何設定 MetroCluster IP 交換器"]。
 
 

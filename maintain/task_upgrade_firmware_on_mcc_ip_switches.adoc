@@ -155,6 +155,7 @@ volumes             ok
 
 
 
+. link:../install-ip/switch-move-cluster-lifs.html["移動叢集 LIF"]在開始升級之前。
 . 在第一台交換器上安裝軟體。
 +
 
@@ -169,6 +170,10 @@ NOTE: 您必須依照下列順序在交換器上安裝交換器軟體：switch_a
 ** link:../install-ip/task_switch_config_nvidia.html#download-and-install-the-cumulus-software["下載並安裝 NVIDIA SN2100 交換器 Cumulus 軟體"]
 
 
-. 針對每個交換器重複上述步驟。
+. 對每個交換器重複上述步驟。
++
+
+NOTE: 在第一個架構（Switch_A_1、Switch_B_1）中設定交換器後，必須重複上述步驟，將叢集 LIF 移轉到第二個架構（Switch_A_2、Switch_B_2）。請參閱 link:../install-ip/task_install_and_cable_the_mcc_components.html["了解如何設定 MetroCluster IP 交換器"]。
+
 . 重複 <<step_1_fw_upgrade,步驟1.>> 檢查組態的健全狀況。
 

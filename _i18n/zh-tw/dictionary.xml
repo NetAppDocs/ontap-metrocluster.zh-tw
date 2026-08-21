@@ -1268,7 +1268,6 @@
   <block id="680fc2c81adfa0ed5cfbb0e1908da709" category="paragraph">交換器重新開機後、會顯示登入提示：</block>
   <block id="ac3aa4d9a92093f6bd699c4806c9e9ae" category="list-text">驗證是否已安裝交換器軟體：+「show version」（顯示版本）</block>
   <block id="1aa8373a0298a0a1429ac4238b72a2d0" category="paragraph">下列範例顯示輸出：</block>
-  <block id="11a5f8de5dc8fd3561b2b849e4277433" category="section-title">下載並安裝Cisco IP RCF檔案</block>
   <block id="334910bbc7198eea40a5718a09788dc1" category="paragraph">NX3232_v1.80_Switch-A1.txt</block>
   <block id="cb3d6379fb8b4d854ee394dcdd9c224e" category="paragraph">NX3232_v1.80_Switch-A2.txt</block>
   <block id="c2a6f21d9468636e0845f2fa91c6865a" category="paragraph">NX3232_v1.80_Switch-B1.txt</block>
@@ -1366,7 +1365,6 @@
   <block id="f6d141f9c0ebe12ce79c36ba0585ecf8" category="paragraph">Macsec MKA組態</block>
   <block id="b6b47858b43ec1819137a7dbb17a0e1c" category="paragraph">「How Macsec policy police-name」（如何設定MAC原則名稱）</block>
   <block id="b73bb1a80bfcd166befb33ddc1a9fe9d" category="paragraph">特定Macsec原則或所有Macsec原則的組態</block>
-  <block id="ffe1f559bee6f65df8232945e7f1517d" category="section-title">針對使用25-Gbps連線的系統設定轉送錯誤修正</block>
   <block id="85b091192b5f7d8d84eccf6181fd6ae8" category="paragraph">如果您的系統設定為使用25-Gbps連線、則在套用RCF檔案之後、您需要手動將轉送錯誤修正（FEC）參數設定為關閉。RCF檔案不套用此設定。</block>
   <block id="21b34813f1e8c3819fcd4c2d1a97dc87" category="paragraph">在執行此程序之前、必須先連接25 Gbps連接埠的纜線。</block>
   <block id="0ef715bbddac71aad2d1af3b2ccf8056" category="paragraph"><block ref="0ef715bbddac71aad2d1af3b2ccf8056" category="inline-link-macro-rx"></block></block>
@@ -1760,7 +1758,6 @@
   <block id="838f9a3aa0c54c620c1dab5cccc98ca5" category="paragraph">「系統健全狀況警示顯示」</block>
   <block id="a755a72f514254c41e2fe4747c117fd7" category="list-text">在第一台交換器上安裝軟體。</block>
   <block id="8385ca59dee772c25d8029fd40151e4e" category="admonition">您必須依照下列順序在交換器上安裝交換器軟體：switch_a_1、switch_b_1、switch_a_2、switch_b_2。</block>
-  <block id="220d6c1bfe741784a72c631856e0b298" category="list-text">針對每個交換器重複上述步驟。</block>
   <block id="6397abfc307e631ca1c862e2d899a88a" category="summary">您可能需要新增、移除或變更ISL連接埠。您可以將專用ISL連接埠轉換成共享ISL連接埠、或變更交換器上ISL連接埠的速度。長距離行駛的ISL可能需要較低的速度來改善品質。如果您要新增或升級硬體、可能還需要提高ISL連接埠的速度、才能充分利用系統升級的優勢、並將ISL新增至Cisco IP交換器。</block>
   <block id="d799c86ecf33c88c19b257919f3e1a0e" category="inline-link-macro">共享ISL連接埠的需求</block>
   <block id="20892c0f4a9566a296500f9e5a037ac2" category="paragraph">如果您要將專用ISL連接埠轉換成共享ISL連接埠、請確定新的連接埠符合 <block ref="85684a9c447191d458d402cc3d7d0980" category="inline-link-macro-rx"></block>。</block>
@@ -1886,7 +1883,6 @@
   <block id="fd1f71815b5abfc5d58a282353d2ba84" category="section-title">確定新的佈線配置</block>
   <block id="0d687993b6b67e20ff0472f32d9693b0" category="paragraph">您必須確定新控制器模組和新磁碟櫃與現有FC交換器之間的纜線。</block>
   <block id="6485f9afbf9c5f34e988054e67e3b142" category="paragraph">此工作必須在每MetroCluster 個站台執行。</block>
-  <block id="6a82c384f85f037d7996beaa2d1d7d15" category="list-text">找出您組態的RCF檔案。</block>
   <block id="ca6b3b9d3521dc913cc6a3273b729760" category="list-text">從現有節點、確認FC-VI連接埠已上線：</block>
   <block id="823eab722f92d2115c2effb645f5bc93" category="paragraph">「顯示此介面卡的資訊」MetroCluster</block>
   <block id="39b8d1f1fde39b620b3646f81db31ad4" category="paragraph">《不互連鏡像秀》MetroCluster</block>
@@ -2246,16 +2242,11 @@
   <block id="710901068f4fe1b91098c01cad492485" category="list-text">檢查是否沒有健全狀況警示：「*系統健全狀況警示顯示*」</block>
   <block id="180431da60034ff0cf49d352448c4cbe" category="list-text">安裝前請先設定新交換器。</block>
   <block id="3d498d8c3038973579898c766829437a" category="admonition">如果要升級或降級交換器、您必須設定網路中的所有交換器。</block>
-  <block id="0c0a905fe7b3d34fc7c66142e87fa36d" category="inline-link-macro">安裝與組態。MetroCluster</block>
-  <block id="bd411d4fdabe28e7276d566979ec2b21" category="paragraph">請依照中「設定IP交換器」一節的步驟進行 <block ref="6ca94d3c62e2aa037b337bfb7e2a3c37" category="inline-link-macro-rx"></block></block>
   <block id="e569faada464fba9f3dbbdbda211c148" category="paragraph">請確定您已為交換器_a_1、_a_2、_B_1或_B_2套用正確的RCF檔案。如果新交換器與舊交換器相同、您需要套用相同的RCF檔案。</block>
   <block id="21d70434879bc17385bedbe3b2231480" category="paragraph">如果您升級或降級交換器、請為新交換器套用最新支援的RCF檔案。</block>
   <block id="140f85d0d849f4cdeb15f3576a478d27" category="list-text">執行連接埠show命令以檢視網路連接埠的相關資訊：</block>
   <block id="664180a50093532dd9d44b1e80f40b72" category="paragraph">「*網路連接埠show *」</block>
   <block id="39ef49ece238860759e8870c2160120a" category="list-text">開啟交換器或交換器的電源。</block>
-  <block id="a2ff4a69c8e810edbb5274ee75363ce0" category="paragraph">如果新交換器相同、請開啟新交換器的電源。如果您要升級或降級交換器、請開啟兩個交換器的電源。組態可在每個站台使用兩個不同的交換器運作、直到第二個網路更新為止。</block>
-  <block id="4d7ea7c5860513bb0b675638d55fcd77" category="paragraph">如果您要升級或降級第一個網路中的交換器、可能會看到一些與本機叢集相關的警示。</block>
-  <block id="c997b3e19c99644bd488baf3bfa8890d" category="admonition">如果您升級或降級網路、請針對第二個網路重複所有步驟。</block>
   <block id="60a96c46e8c38210abbc8134a719b190" category="summary">更新橋接韌體的程序取決於您的橋接器機型和ONTAP 版本。</block>
   <block id="92c9b1e320396fda0348ea4c09e0fcbd" category="doc">正在更新光纖橋接器上的韌體</block>
   <block id="1872e8f6e7146cc2fa73e8f420031b11" category="paragraph">您可能需要更新您的FibreBridge橋接器上的韌體、以確保您擁有最新的功能或解決可能的問題。此程序應用於執行ONTAP 版本為9.4及更新版本之組態上的FIBreBridge 7600N或7500N橋接器。</block>
@@ -4723,12 +4714,10 @@
   <block id="8d05d7bd3136c1c3d27ce612d1642b55" category="paragraph">切換程序除了在測試與維護期間提供不中斷營運、還能讓您使用單一命令從站台故障中恢復。</block>
   <block id="46244e26ed027de3f7dac5055551ea67" category="list-text">執行切換作業之前、必須先完成所有先前的組態變更。</block>
   <block id="2af1ec41c7e7b07f4cdb56cb47d4ebe4" category="paragraph">這是為了避免與議定的切換或切換作業競爭。</block>
-  <block id="ca776b7a0f214042bab6636ff7235436" category="admonition">SnapMirror和SnapVault SnapMirror組態會自動刪除。</block>
   <block id="7adfea65bac9026340a67e4c4fbc6cf1" category="paragraph">「不完整切換」命令會在整個DR群組的節點上切換、以利執行整個過程。MetroCluster MetroCluster例如、在八節點MetroCluster 的「列舉」組態中、它會在兩個DR群組中的節點之間切換。</block>
   <block id="03d462e9dc47820c368c2d67f464784a" category="paragraph">《支援災難時強制切換的真實》MetroCluster</block>
   <block id="7e2e7baa90ed02c71ec0c1aff8c2f52f" category="list-text">當系統提示您繼續切換時、請回答「y」。</block>
   <block id="37a919d754d5135e54d0f9a3243827d8" category="paragraph">如果切換被否決、您可以選擇使用MetroCluster 「-overre-etoes」選項來重新發出「Ride switchover for-forced-on－ferride true」命令。如果您使用此選用參數、系統會覆寫任何軟質的審查、以防止切換。</block>
-  <block id="8e2df6a076ab8c2df47dff186e779dab" category="paragraph">SnapMirror關係必須在切換後重新建立。</block>
   <block id="3f98066376e4f19519c40bfdf06de035" category="paragraph">當您在MetroCluster 執行完還原切換後執行「儲存Aggregate plex show」命令時、交換式根Aggregate的plex0狀態將會不確定、並顯示為故障。在此期間、切換根目錄不會更新。此叢的實際狀態只能在MetroCluster 還原階段之後決定。</block>
   <block id="d6a9edee99b1378b66a7ba99d5c24c06" category="section-title">切換後存取NVFIL狀態的磁碟區</block>
   <block id="bee520709a401df5d0c77fa01981bb69" category="paragraph">切換後、您必須重設「volume modify」命令的「-in nvf失敗 狀態」參數、以清除NVFAIL狀態、以移除用戶端存取資料的限制。</block>
@@ -4978,7 +4967,6 @@
   <block id="838e866ece9701e5a58755a132b144d0" category="paragraph">如果切換需要很長時間才能完成、您可以在進階權限層級使用下列命令來檢查進行中基準的狀態。</block>
   <block id="eca7334e4ced3e1626aa264456a4abf0" category="paragraph">「重新同步狀態顯示」MetroCluster</block>
   <block id="bebab338ce208a8365444e4ebe4efe11" category="list-text">重新建立任何SnapMirror或SnapVault 不完整的組態。</block>
-  <block id="6414d473dfb2c6598f8118312a0cc177" category="paragraph">在S還原8.3中ONTAP 、MetroCluster 您需要在執行還原操作之後、手動重新建立遺失的SnapMirror組態。在更新版本的版本中、關係會自動重新建立。ONTAP</block>
   <block id="a9ca4c629c1e46669a8bc18624424d68" category="section-title">驗證成功的切換</block>
   <block id="6a4974bedd0009da69e6a878e12b82bd" category="paragraph">執行切換後、您想確認所有的集合體和儲存虛擬機器（SVM）都已切換回線上狀態。</block>
   <block id="3579c4d393b95e31540a220033fd8ed1" category="list-text">確認切換式資料集合體已切換回：</block>
@@ -5763,12 +5751,7 @@
   <block id="29ad4be139be5b3e7f2133bef476991d" category="list-text"><block ref="29ad4be139be5b3e7f2133bef476991d" category="inline-link-macro-rx"></block></block>
   <block id="26c467a24332bb8d92780a3eb059ce38" category="summary">您必須將參考組態（RCF）檔案下載到MetroCluster 位在整個交換器組態中的每個交換器。</block>
   <block id="4fbbc0ce852ccef3a7adceb0f9bc2c27" category="doc">下載Brocade FC交換器RCF檔案</block>
-  <block id="b5909b79c9831ace5a37a88ecc8d8221" category="paragraph">您必須將參考組態（RCF）檔案下載到MetroCluster 位在整個過程中的每個交換器。</block>
-  <block id="d2bd72e53c2a5d47d1f0bb05a3b47e86" category="paragraph">若要使用這些RCF檔案、系統必須執行ONTAP 的是更新版本的版本、而且您必須使用連接埠配置ONTAP 來執行版本的更新版本。</block>
-  <block id="842acf8263038e7278a435d288defafa" category="list-text">請參閱Brocade RCF下載頁面上的RCF檔案表、找出組態中每個交換器的正確RCF檔案。</block>
-  <block id="d7a31e24d4a31d091e030bcf962857a2" category="paragraph">RCF檔案必須套用至正確的交換器。</block>
   <block id="28a95a083b2cfe8b9ffb5bddf7064e7b" category="inline-link">下載RCF MetroCluster</block>
-  <block id="827782113c613dee6a1aabc786e39335" category="list-text">從下載交換器的RCF檔案<block ref="7a2a5b3ce34e84b17e1e6ffcc479aaa8" category="inline-link-rx"></block> 頁面。</block>
   <block id="af833d07deb3fe26ff9462cdf18f37ab" category="paragraph">檔案必須放置在可傳輸至交換器的位置。組成雙交換器架構的四個交換器各有一個獨立的檔案。</block>
   <block id="6141173db52bd750748a18081d69700e" category="list-text">在組態中的每個交換器上重複這些步驟。</block>
   <block id="347d1a24edd39c6b694a17cc073652b1" category="summary">FC-VI連接埠和HBA（主機匯流排介面卡）必須以纜線連接MetroCluster 至位在該組態中每個控制器模組上的站台FC交換器。</block>
@@ -7625,17 +7608,12 @@
   <block id="3943df800bc20bb77a1a12e989c29d6f" category="doc">下載並安裝Cisco FC RCF檔案</block>
   <block id="96d44db22d3fd08538feb9a1879238ff" category="paragraph">這項工作需要檔案傳輸軟體（例如FTP、Trivial File Transfer Protocol（TFTP）、SFTP或Secure Copy Protocol（SCP））、才能將檔案複製到交換器。</block>
   <block id="8aeaab0b1ea6e8bd8d15f02b7e031b5f" category="paragraph">這些步驟必須重複執行MetroCluster 到位在整個過程中的每個Cisco FC交換器上。</block>
-  <block id="d217c29c9e353e853ad6e00612eccbf6" category="paragraph">共有四個RCF檔案、MetroCluster 其中四個交換器的RCF設定各一個。您必須針對所使用的交換器機型使用正確的RCF檔案。</block>
   <block id="1aece110a2933cbd949f7e3f9cd6c03f" category="paragraph">「NX323232_v1.80交換器-a1.txt」</block>
   <block id="90e3ca5d8b64f15baa9e79512cf13de1" category="paragraph">「NX323232_v1.1_Switch-a2.txt'</block>
   <block id="dabbb3fad8d41a755e33589866bda630" category="paragraph">「NX323232_v1.80交換器-B1.txt」</block>
   <block id="a323e2cf1a28908546cf8fa814adbd2a" category="paragraph">「NX323232_v1.1_Switch-b2.txt'</block>
   <block id="12e8011a69d75e50d0c2e6c31c958c7d" category="inline-link">RCF下載頁面MetroCluster</block>
-  <block id="6c3c4e2f6a6fa289f415cc08715f355e" category="list-text">從下載Cisco FC RCF檔案<block ref="47f7dd3b2352c1e61640eee11f081c5a" category="inline-link-rx"></block>。</block>
-  <block id="19a6d9ed6294004d8d6991040db238ff" category="list-text">將RCF檔案複製到交換器。</block>
   <block id="e9d934746596f9e64a832bbfa5698daa" category="paragraph">「copy sftp：//_root@ft-server_ip-address/tftpboot/switch-specif_bootflash：VRF管理」</block>
-  <block id="4d5890e7ea6dcdaf056d3131f9a1f60f" category="paragraph">在此範例中、「NX323232_v1.m_Switch-a1.txt' RCF檔案會從位於「10.10.99.99」的SFTP伺服器複製到本機bootflash。您必須使用TFTP/SFTP伺服器的IP位址、以及需要安裝的RCF檔案名稱。</block>
-  <block id="f86146750d5caee0dd0ee6f541390137" category="list-text">在每個交換器上、確認每個交換器的「bootflash」目錄中都有RCF檔案：</block>
   <block id="e98444d7d3279149fb170762eaa09685" category="paragraph">「copy bootflash：__switch-specific-RCF__.txt執行組態」</block>
   <block id="38b4de1c2368cfc9d297e81801968302" category="cell">控制器_x_5</block>
   <block id="ea5d2f1c4608232e07d3aa3d998e5135" category="cell">64</block>
@@ -9080,12 +9058,9 @@
   <block id="570e0e3e350318c0e6af015d23a5b749" category="paragraph">使用手動ARL命令</block>
   <block id="4b8a576fb64d5b6a41905d5d9b5d1568" category="paragraph">9.7及更早版本</block>
   <block id="f13350a82ffb5e406781c64809e8f8a8" category="summary">您必須套用RCF檔案、才能重新設定分區以容納新節點。</block>
-  <block id="c0b2ef0c7e8bedc314010fcbe929e544" category="paragraph">您必須將RCF檔案用於八節點組態、而且必須符合交換器模式。</block>
-  <block id="93db71f559f17fb1c146361893f3ff36" category="list-text">依照下載頁面上的指示套用RCF檔案、視需要調整ISL設定。</block>
   <block id="b862528f72ea6d2ddcdf03d59e55fa27" category="list-text">確定交換器組態已儲存。</block>
   <block id="9566c6febae9d51d50e73e64dbd10cfe" category="list-text">重新啟動FC交換器。</block>
   <block id="cc421f36cbb2a622eb7463c75215237e" category="list-text">使用您先前建立的佈線配置、將既有的FC橋接器和新的FC對SAS橋接器連接至FC交換器。</block>
-  <block id="61eb859904ba2d6f08ea80ad772e9aba" category="paragraph">FC交換器連接埠的使用必須符合MetroCluster 中所述的8節點使用情形 <block ref="a9f150ef34b7953b6119f5ac779097fe" category="inline-link-macro-rx"></block> 以便使用參考組態檔（RCT）。</block>
   <block id="6bea4e12f9fc7219e8f9f668a51bbd7e" category="list-text">使用正確的命令來驗證連接埠是否在線上。</block>
   <block id="9735c41c5a405cd610d4fad10780f0e8" category="paragraph">切換顯示</block>
   <block id="9bacb249b0368cefba275373cd07ba98" category="paragraph">顯示介面簡介</block>
@@ -9759,7 +9734,6 @@
   <block id="2e5c6d46dc39a1cc71a6f41b56106221" category="list-text">SSH服務（遠端支援代理程式）。</block>
   <block id="4c20f2b5dfebba1daad521c7b3ab4c3b" category="paragraph">完成組態精靈之後、交換器會重新開機。</block>
   <block id="5582507cb9f874f57ac6bf62db65d371" category="doc">重新設定交換器</block>
-  <block id="6647147ed73881ba6516c57ac1b5fe4a" category="paragraph">如果您無法使用RCF檔案來設定交換器、則必須手動設定交換器。請參閱：</block>
   <block id="71620bedc8491865816460c55b3cde98" category="list-text"><block ref="71620bedc8491865816460c55b3cde98" category="inline-link-macro-rx"></block></block>
   <block id="3a8190b24d904ae352e54f8a0a3df0bb" category="list-text"><block ref="3a8190b24d904ae352e54f8a0a3df0bb" category="inline-link-macro-rx"></block></block>
   <block id="bee24b783e44923012afab506584e701" category="list-text">SSH服務（RSA）</block>
@@ -9905,13 +9879,7 @@
   <block id="44d9da525f678322921a73864bd0b924" category="paragraph">從RcfFileGenerator1.4a版開始、Cisco IP交換器上有一個新選項可以變更（升級、降級或更換）交換器組態、而不需要執行「寫入清除」。</block>
   <block id="0d98f6fd87f88cd68844ee1450081b43" category="paragraph">如果您的組態符合下列需求、可以使用此方法：</block>
   <block id="cf5d82da1dbb504eeff51105d1c22631" category="list-text">套用標準RCF組態。</block>
-  <block id="6b20882c651017ff72189d2d3ffa3c80" category="list-text">。<block ref="c52b4d12f68853a25c52576697c6b2b5" category="inline-link-rx"></block> 必須能夠建立套用的相同RCF檔案、以及相同的版本和組態（平台、VLAN）。</block>
-  <block id="c37890f623a8fcecb93e9309d3462a5a" category="list-text">NetApp並未針對特殊組態提供所套用的RCF檔案。</block>
-  <block id="3ff3eb13919d98b8bc5b485dcf074e8a" category="list-text">RCF檔案在套用之前並未變更。</block>
-  <block id="22bfd0bc1ef7b5ec6b0c3d09a25173dd" category="list-text">在套用目前的RCF檔案之前、已遵循將交換器重設為原廠預設值的步驟。</block>
   <block id="bdda45d6734a620758197fdb8292141f" category="list-text">套用RCF之後、不會變更交換器（連接埠）組態。</block>
-  <block id="7db0739314c77bc294505bdbb23e67b7" category="paragraph">如果您不符合這些需求、則無法使用在產生RCF檔案時所建立的高效能檔案。不過、您可以利用此功能來建立一般的高效能檔案、因為使用此方法的清除是從「show running-config」的輸出衍生而來、而且是最佳實務做法。</block>
-  <block id="0e0fe23e527e37b417182290ff6ed374" category="list-text">確定目前的RCF檔案版本、以及使用的連接埠和VLAN：「ip_switch_a_1# show banner motd」</block>
   <block id="e020d7382ce2a21b56ea6460a45b49c2" category="admonition">您需要從所有四個交換器取得此資訊、並填寫下列資訊表。</block>
   <block id="2b6ad2a040294d5c6d9cd85338614383" category="paragraph">您必須從此輸出中收集下表所示的資訊。</block>
   <block id="f144e7b7cc102698f980f9982e2a5e1d" category="cell">一般資訊</block>
@@ -9942,15 +9910,8 @@
   <block id="140f6969d5213fd0ece03148e62e461e" category="cell">159.</block>
   <block id="c0e190d8267e36708f955d7ab048990d" category="cell">219</block>
   <block id="cfa0860e83a4c3a763a7e62d825349f7" category="cell">259</block>
-  <block id="92b3853ab8f28c919e230db814cc7d3c" category="list-text">[Cree-RCF-file-and－CleanUpFiles-or－cree-generic-CleanUpFiles]]建立RCF檔案和CleanUpFiles、或為目前組態建立一般的高效能檔案。</block>
   <block id="8f1cf5ff45cd4e25f9add94959779152" category="paragraph">如果您的組態符合先決條件中所述的需求、請選取*選項1*。如果您的組態*不符合先決條件中所列的需求、請選取*選項2*。</block>
-  <block id="08593dc75ce732119b98a7568c2bf0f8" category="open-title">選項1：建立RCF檔案和清除更新檔案</block>
   <block id="257583b315f4448eaa8b40d0996d314d" category="paragraph">如果組態符合要求、請使用此程序。</block>
-  <block id="5c4f1865e4bc1d73184e237f9959c388" category="list-text">使用RcfFileGenerator1.4a（或更新版本）、以您在步驟1中擷取的資訊建立RCF檔案。新版的RcfFileGenerator-會建立一組額外的高效能檔案、您可以使用這些檔案來還原部分組態、並準備交換器套用新的RCF組態。</block>
-  <block id="65f306707f97b0e6528c632443da6ffa" category="list-text">比較橫幅motd與目前套用的RCF檔案。平台類型、交換器類型、連接埠和VLAN使用量必須相同。</block>
-  <block id="eeca5f39015a896c3fd153b273497470" category="admonition">您必須使用與RCF檔案相同版本的高效能檔案、以及完全相同的組態。使用任何高效能檔案都無法運作、可能需要完全重設交換器。</block>
-  <block id="f7f6e369dd85b855e692642fc45404d1" category="admonition">RCF檔案所建立的版本與此無關。ONTAP只有RCF檔案版本很重要。</block>
-  <block id="5ac0010e09da0a19568a51f509b47c9e" category="admonition">RCF檔案（即使是相同版本）可能會列出較少或更多平台。請確定您的平台已列出。</block>
   <block id="b801f2818024b60718ab5b68f7b2eb23" category="open-title">選項2：建立一般的高效能檔案</block>
   <block id="4863f68e17407624559d4ea8f5de6e15" category="paragraph">如果組態*不符合所有需求、請使用此程序。</block>
   <block id="fb1067b2548231b6038213796f92b520" category="list-text">從每個交換器擷取「show running-config」的輸出。</block>
@@ -9960,17 +9921,8 @@
   <block id="3dcf0272d83a4c69033ee60eb75d9580" category="list-text">將輸出內容從下方視窗複製到文字檔（此檔案為CleanUpFile）。</block>
   <block id="03486ffd0acf93e60ea6875d70823cbf" category="list-text">對組態中的所有交換器重複步驟c、d和e。</block>
   <block id="250543158aeade1deea5f13bbe9c80b5" category="paragraph">在此程序結束時、您應該有四個文字檔、每個交換器一個。您可以使用與使用選項1建立的高效能檔案相同的方式來使用這些檔案。</block>
-  <block id="222b8c1d4cb1f6af18d4f87ae8a60226" category="list-text">[[Cree-be-on-ree-rCF-files-for the -new組態]]建立新組態的「新」RCF檔案。建立這些檔案的方式與您在上一個步驟中建立檔案的方式相同、只是選擇個別ONTAP 的版本即可。</block>
-  <block id="a7d33b18445fe3decdb0f90d8636fbc1" category="paragraph">完成此步驟之後、您應該擁有兩組RCF檔案、每組檔案包含12個檔案。</block>
   <block id="6999307e181dd9c4d01a65b848b47fd3" category="list-text">將檔案下載至bootflash。</block>
-  <block id="6b3a86257ee5d114600528fa7f5c7bf4" category="inline-xref">建立RCF檔案和CleanUpFiles、或為目前組態建立一般的CleanUpFiles</block>
-  <block id="0f23428de5fb7b85f84bc0371d73292e" category="list-text">下載您在中建立的高效能檔案 <block ref="c8340163884f51bb133b6171f43e6a09" category="inline-xref-macro-rx"></block></block>
-  <block id="72f2778a0cd9028b2b314aa743b0dedb" category="admonition">此高效能檔案適用於目前套用的RCF檔案、*不適用於您要升級至的新RCF。</block>
   <block id="1c4d6db343dcde2655f5a2b6fb6a4fc1" category="paragraph">例如：Switch-A1的高效能檔案：「Cleanup_NX9336_v1.81_Switch-a1.txt'</block>
-  <block id="63a80dfd5cc3c6944330a9e459d8284b" category="inline-xref">建立新組態的「新」RCF檔案。</block>
-  <block id="c3f65a7773b44ccd20e3e511f5993d75" category="list-text">下載您在中建立的「新」RCF檔案 <block ref="59c54752a2fb487390ef8f9f21a2c752" category="inline-xref-macro-rx"></block></block>
-  <block id="17e0fefcaf2813560ada5ff7d65a8d95" category="paragraph">Switch-A1的RCF檔案範例：「NX9336_v1.90_Switch-a1.txt'</block>
-  <block id="9bfdc1d8656a6a994323ae166f7f7201" category="list-text">下載您在中建立的高效能檔案 <block ref="59c54752a2fb487390ef8f9f21a2c752" category="inline-xref-macro-rx"></block> 此步驟為選用步驟、您日後可以使用此檔案來更新交換器組態。它符合目前套用的組態。</block>
   <block id="4dfd3caa3db27470042b1db1ab3290bd" category="paragraph">例如：Switch-A1的高效能檔案：「Cleanup_NX9336_v1.90_Switch-a1.txt'</block>
   <block id="e22c8d95bd31d52b85280c2595f839cf" category="admonition">您必須使用高效能檔案取得正確（相符）的RCF版本。如果您針對不同的RCF版本或不同的組態使用高效能檔案、則可能無法正確清除組態。</block>
   <block id="432b7619f02e011863c5b9e1c9903161" category="paragraph">以下範例將三個檔案複製到bootflash：</block>
@@ -9988,9 +9940,6 @@
   <block id="319961110e1d1f6c900b9f842e20c81a" category="list-text">未設定任何服務原則</block>
   <block id="00f4ac9296724f6455056845c09f6cea" category="list-text">未設定連接埠設定檔</block>
   <block id="459722fc0d9b873b0459e6cc0213fe45" category="list-text">所有乙太網路介面（mgmt0除外、它不應顯示任何組態、而且只應設定VLAN 1）。</block>
-  <block id="a7c1dc82620aa47d13a5325a92e48b8b" category="paragraph">如果您發現已設定上述任何項目、則可能無法套用新的RCF檔案組態。不過、您可以重新載入交換器*而不將執行中的組態儲存至啟動組態、以回復到先前的組態。交換器會顯示先前的組態。</block>
-  <block id="b96e894aca032efb6ce18c3fee836f2e" category="list-text">套用RCF檔案並確認連接埠已上線。</block>
-  <block id="57eec47f7c1d3f7c578a164a838dcb88" category="list-text">套用RCF檔案。</block>
   <block id="94f2f59cf614fa38bf778db2f227f97f" category="list-text">套用組態之後、請使用MetroCluster 下列命令之一「show interface brief」、「show cup neighbor」或「show LLDP鄰近設備」來確認叢集和列舉的各個連接埠是否已上線</block>
   <block id="36654f0d51aef3cf2ff1ad8320086412" category="admonition">如果您變更本機叢集的VLAN、並在站台升級第一台交換器、則叢集健全狀況監控可能不會將狀態報告為「健全」、因為舊組態和新組態的VLAN不相符。更新第二個交換器之後、狀態應恢復正常。</block>
   <block id="d83d3a40a56d46ffaf1367b944bbd493" category="paragraph">如果組態未正確套用、或您不想保留組態、您可以重新載入交換器*而不將執行中的組態儲存為啟動組態、以回復到先前的組態。交換器會顯示先前的組態。</block>
@@ -10498,7 +10447,6 @@
   <block id="9c77ce4749e7ce4cb8afcbc4ebd4e32e" category="list-text"><block ref="9c77ce4749e7ce4cb8afcbc4ebd4e32e" category="inline-link-macro-rx"></block></block>
   <block id="45cb34f2cec27064a29ed6e3a54a294f" category="list-text"><block ref="45cb34f2cec27064a29ed6e3a54a294f" category="inline-link-macro-rx"></block></block>
   <block id="3a14a65fbfc927e7fc3c51dcb8d932f8" category="list-text">連接交換器纜線。</block>
-  <block id="e864e1a0a83c248ec6705eecbb75a2e4" category="paragraph">您可以依照中的 &lt; IP 交換器的佈線 &gt; 一節中的步驟進行 <block ref="69c250b2ff0cdf92dd9f1322bce627cf" category="inline-link-macro-rx"></block>。</block>
   <block id="abba6801f76a30e62f42a339319d8046" category="paragraph">依下列順序連接交換器纜線（如有需要）：</block>
   <block id="eed332b6efe7c74f805fd4d57a6089fa" category="list-text">將 ISL 連接到遠端站台。</block>
   <block id="c78a73a52795719f0a6c0e4e534be9ef" category="list-text">連接 MetroCluster IP 介面纜線。</block>
@@ -10922,9 +10870,6 @@
   <block id="7c05cd1434f77b09211b33f0e3df8f7e" category="list-text">執行中的所有步驟<block ref="6f9da97248de99650a607f2ab8f8c4c5" category="inline-link-rx"></block>。</block>
   <block id="175bbe9b6bd074e923b41baad3944299" category="paragraph"><block ref="175bbe9b6bd074e923b41baad3944299" category="inline-link-macro-rx"></block></block>
   <block id="1af1c128bcb15febcfeae67428ab0606" category="paragraph">您可能需要在 Cisco IP 交換器上新增、移除或變更 ISL 連接埠。您可以將專用 ISL 連接埠轉換為共享 ISL 連接埠、或變更 Cisco IP 交換器上 ISL 連接埠的速度。</block>
-  <block id="9ef8b8de2a46a8cdf8b96e3433081f97" category="admonition">如果您在連接 NS224 機櫃的共享組態中使用 Cisco 9336C-FX2 交換器、變更 ISL 可能需要新的 RCF 檔案。如果您目前和新的 ISL 速度為 40Gbps 和 100Gbps 、則不需要新的 RCF 檔案。所有其他 ISL 速度變更都需要新的 RCF 檔案。例如、將 ISL 速度從 40Gbps 變更為 100Gbps 並不需要新的 RCF 檔案、但將 ISL 速度從 10Gbps 變更為 40Gbps 則需要新的 RCF 檔案。</block>
-  <block id="e5a44346ea08417f9c1bb13c971ef4b4" category="inline-link-macro">升級 MetroCluster IP 交換器上的 RCF 檔案。</block>
-  <block id="6780acd09b7544d9829b3c8c782e7228" category="admonition">如果您在連接 NS224 機櫃的共享組態中使用 Cisco 9336C-FX2 交換器、而您需要升級 RCF 檔案、並將新組態套用至新的 ISL 連接埠、請遵循的步驟 <block ref="06d2583ef923bd1ae27cd7aa8a48f582" category="inline-link-macro-rx"></block></block>
   <block id="4f8a3836e9b2b61340340f61f8a1d944" category="list-text">確認 ISL 的 ISL 和連接埠通道是在兩台交換器之間建立的：</block>
   <block id="f1ba48098d6a9078f5a1ba8e0141de5b" category="paragraph"><block ref="d975a431de1e74582bd6e6f677a19ad0" prefix="" category="inline-code"></block></block>
   <block id="61f7733093f25bb223a42607ca2406c1" category="list-text">您可以使用能夠提升為root存取權限的使用者來安裝及管理tiebreaker軟體。</block>
@@ -10937,7 +10882,6 @@
   <block id="37c5a21bd601c49050ac3301b684599c" category="list-text">Cisco 9336C-FX2 交換器有兩種不同的交換器儲存類型、在 RCF 中命名不同。請使用下表判斷您的組態適用的正確 Cisco 9336C-FX2 儲存類型：</block>
   <block id="df31753dd5a463d7868062b7d85b4e56" category="cell">如果您要連線下列儲存設備 ...</block>
   <block id="d78b539282fbd3ab71c056420e27d11d" category="cell">選擇 Cisco 9336C-FX2 儲存類型 ...</block>
-  <block id="b2e9c77dc19c02cc79d1cec1f3ee2fc0" category="cell">RCF 檔案橫幅 /MOTD 範例</block>
   <block id="4123b977475c9c4828f585782db5cb61" category="list-text">直接連接的 SAS 機櫃</block>
   <block id="e8ea5873a1121ec729327255bcb20d9a" category="list-text">直接連接的 NVMe 磁碟櫃</block>
   <block id="415f7c0e4d1c31bd8bc9a1c226589d04" category="list-text">連接至專用儲存交換器的 NVMe 磁碟櫃</block>
@@ -12045,7 +11989,6 @@
   <block id="f411a218519aacec5088cc5a3d23eb64" category="paragraph">舊的和新的系統 ID 在中進行了識別 <block ref="372daca62ea6308294fd70c00fcc8af2" category="inline-link-macro-rx"></block>。</block>
   <block id="04e334293a29a0fcdf98b56004e27edc" category="section-title">MetroCluster 相容於 NetApp 驗證的交換器</block>
   <block id="5c5c34d5e7843e9424f3ca2380ae18ea" category="list-text"><block ref="5c5c34d5e7843e9424f3ca2380ae18ea" category="inline-link-macro-rx"></block></block>
-  <block id="910d0f6661c3968f4e7402c808d31b3f" category="list-text"><block ref="910d0f6661c3968f4e7402c808d31b3f" category="inline-link-macro-rx"></block></block>
   <block id="740c0d0f6d37afa212fad2bd272a4212" category="list-text">Tiebreaker 1.6 僅支援 SNMPv3 。</block>
   <block id="a98720fe58fe46f2a22c59d172b69fbf" category="list-text">雖然 tiebreaker 1.5 和 1.4 支援 SNMPv1 和 SNMPv3 、但 NetApp 強烈建議您設定 SNMPv3 以獲得最佳安全性。</block>
   <block id="c93871f59c253b2d1ca21a1ce2a00ff8" category="paragraph"><block ref="5ef546c28db0706808d8d451d5a71029" prefix=" " category="inline-code"></block>命令回應取決於您所執行的 tiebreaker 版本。</block>
@@ -13003,10 +12946,8 @@
   <block id="6402d49dd52ac4a97e3a5b5df13a2b01" category="paragraph">在命令輸出中找到指示 RCF 版本的行。例如， Cisco 交換器的下列輸出顯示 RCF 版本為「 'v1.80 」。</block>
   <block id="372302cd9a52d50f8bbec355aa5caad3" category="list-text">若要檢查特定 ONTAP 版本，交換器和平台支援哪些檔案，請使用<block ref="3d323bfcd2e7c90d6e420b3bfd1a01ed" category="inline-link-macro-rx"></block>。如果您可以為您擁有或想要升級的組態產生 RCF ，則會支援此功能。</block>
   <block id="5892dc73aeb0908038bb8e9380fb53c4" category="section-title">升級交換器韌體</block>
-  <block id="28abab10271202d2140cfed5d173dff5" category="paragraph">您可能需要升級 MetroCluster IP 交換器上的參考組態檔案（ RCF ）。例如，如果您在交換器上執行的 RCF 版本不受 ONTAP 版本，交換器韌體版本或兩者的支援。</block>
   <block id="463c4e9c177d926f8a70723419e27185" category="inline-link-macro">驗證 RCF 是否受支援</block>
   <block id="31e4a45ff8bf040780bcaeea92eaf273" category="list-text">升級 RCF 之前，<block ref="0cb16fc2594f35c2b9b081a93af72ead" category="inline-link-macro-rx"></block>。</block>
-  <block id="72d26e3e5a2756a67ae4a487db269cd2" category="list-text">此程序會中斷升級RCF檔案的交換器流量。套用新的 RCF 檔案時，流量會恢復。</block>
   <block id="085e87b6ec813d01dd3f597186e26f1e" category="list-text">如果您要升級的系統使用 * 共享叢集 / HA 連接埠 * ，請確認 MetroCluster IP 介面使用支援的 IP 位址。</block>
   <block id="11f90eb1d0dccabe5ea84d5795fc2ef7" category="paragraph">請使用下列資訊來判斷新系統是否使用共用叢集 / HA 連接埠：</block>
   <block id="fb1ce5d087cc4c4bd39c43bc3af7058b" category="admonition">如果 MetroCluster 介面設定為 169.254.17.x 或 169.254.18.x IP 位址，則不支援升級至任何使用 * 共用叢集 / HA 連接埠 * 的系統。</block>
@@ -13655,8 +13596,6 @@
   <block id="2fc694052b4d0c9fddb171c279d9ff41" category="section-title">為未鏡像的聚合添加儲存架</block>
   <block id="340ee9c6b389308075f20882f44ee863" category="paragraph">如果您新增磁碟架並希望將其用於MetroCluster IP 配置中的未鏡像聚合，則必須執行下列操作：</block>
   <block id="fb945b959f6754639fad6c6e9e9469b9" category="list-text">本機使用者必須具有網路管理員權限。</block>
-  <block id="5ea27988b4071e332e850721389e951a" category="doc">選擇正確的MetroCluster IP 交換器配置流程</block>
-  <block id="b9b3d7865c01f9cccab728c6d2bb7296" category="paragraph">您必須設定IP交換器、以提供後端MetroCluster 的F精選IP連線功能。您遵循的程序取決於您的交換器供應商。</block>
   <block id="528aafe8fc362d0088ddcc230e89b62a" category="doc">如何將連接埠表與多個MetroCluster IP 配置一起使用</block>
   <block id="760419501f92fb637e39b91dbfd2ea18" category="summary">您必須根據儲存控制器與儲存架的連接方式選擇正確的安裝程式。</block>
   <block id="ef78e28e8b4e7855b7b5095e4cbd705a" category="paragraph">從ONTAP 9.15.1 開始，您可以在支援的系統上設定端對端加密，以加密MetroCluster IP 設定中的網站之間的後端流量，例如 NVlog 和儲存複製資料。</block>
@@ -14648,4 +14587,131 @@
   <block id="5a523817621c85574dfcbf0b11c07075" category="paragraph">在執行 CL 5.4.0 的 NVIDIA Cumulus 交換器上設定 SNMPv3 使用者名稱 SNMPv3_USER：</block>
   <block id="4451c276144ff12f4a59bad51c0a1181" category="open-title">NVIDIA - CL 5.11.0+</block>
   <block id="d1f08b7bd68bdc79984e047bc1939c5d" category="paragraph">在執行 CLI 5.11.0 及更高版本的 NVIDIA Cumulus 交換器上設定 SNMPv3 使用者名稱 SNMPv3_USER：</block>
+  <block id="5c70de9aa6fac7d71c4ddfb2d31ae25a" category="list-text">為套用新的參考組態檔（RCF）做好 IP 交換器的準備。</block>
+  <block id="cf638fa08203ce9c082e7eecde22e20f" category="paragraph">您必須將參考組態檔案 (RCF) 下載到 MetroCluster 架構組態中的每個交換器。</block>
+  <block id="91cd9003fc7afacd92d0952d1578d48b" category="paragraph">共有四個 RCF，分別對應 MetroCluster 架構組態中的四個交換器。您必須使用與所用交換器型號相符的正確 RCF。</block>
+  <block id="6dcb15f9fb489afb93f692b6b7755f84" category="cell">RCF</block>
+  <block id="2132fe352bf4bb487eaf6927cffd6982" category="list-text">從<block ref="47f7dd3b2352c1e61640eee11f081c5a" category="inline-link-rx"></block>下載 Cisco FC RCF。</block>
+  <block id="39313cc2f6093990d3dca3755297c44e" category="list-text">將 RCF 複製到交換器。</block>
+  <block id="8ca2fa0cdf859df18fecce8122036812" category="list-text">將 RCF 複製到第一個交換器：</block>
+  <block id="99eaec47ed0f56f87ba6c6f107b1d555" category="paragraph">在本例中，<block ref="334910bbc7198eea40a5718a09788dc1" prefix=" " category="inline-code"></block> RCF 從 SFTP 伺服器<block ref="f8a554bd262c1f2aca6545aab6fbbd47" prefix=" " category="inline-code"></block>複製到本機啟動快閃記憶體。您必須使用 TFTP/SFTP 伺服器的 IP 位址以及需要安裝的 RCF 檔案名稱。</block>
+  <block id="2130b5577be1c5b0ecb66a86e0e62b98" category="list-text">對其他三個交換器重複上一個子步驟，確保將相符的 RCF 複本複製到對應的交換器。</block>
+  <block id="9c2d39ef52a63a0bca259adc5598a991" category="list-text">在每台交換器上驗證 RCF 是否存在於每台交換器的<block ref="67b5ed08894c07eba0af4a7a7247711e" prefix=" " category="inline-code"></block>目錄中：</block>
+  <block id="31809c76013c1e869215736e65c76cff" category="list-text">將本機啟動快閃記憶體中相符的 RCF 複製到每台交換器的執行中組態：</block>
+  <block id="9eca16f5df5b1dbd9bc66d21738825d6" category="list-text">將每台交換器的運作組態中的 RCF 檔案複製到啟動組態中：</block>
+  <block id="29ecb75ab42ddd669cd0f6e92a58cc6b" category="paragraph">若要使用這些 RCF，系統必須執行 ONTAP 9.1 或更新版本，且必須使用 ONTAP 9.1 或更新版本的連接埠配置。</block>
+  <block id="3503c9d859a9eb3fcbd234a3d5c9a363" category="list-text">請參考 Brocade RCF 下載頁面上的 RCF 表，並確定組態中每個交換器的正確 RCF。</block>
+  <block id="4171a03473af7f6456c08cdeebe281de" category="paragraph">RCF 必須應用於正確的交換器。</block>
+  <block id="02d4864774f054081d5b074fdab94cda" category="list-text">從<block ref="7a2a5b3ce34e84b17e1e6ffcc479aaa8" category="inline-link-rx"></block>頁面下載交換器的 RCF 檔案。</block>
+  <block id="5bed49e108466e37517b3a12ea075d7a" category="summary">更新交換器韌體或參考組態檔案 （RCF） 時，需要將叢集 LIF 移至合作夥伴交換器，以便在升級期間實現叢集的無中斷運作。</block>
+  <block id="9b2826e036ff82834f75a0e7a44282ed" category="doc">在更換 MetroCluster IP 交換器、變更 RCF 或更新韌體之前，請先移動叢集 LIF</block>
+  <block id="ba817507ff742e4351352b3d698de081" category="paragraph">當您更換 MetroCluster IP 交換器或變更交換器韌體或參考組態檔案 （RCF） 時，需要將叢集 LIF 移至合作夥伴交換器，以實現不間斷的叢集作業。</block>
+  <block id="b418b4fad97ed4823768d59cc9628c62" category="list-text">在升級或降級交換器韌體、更換交換器 RCF 或更換 IP 交換器之前，必須執行此工作。</block>
+  <block id="f6ab7b470572966bac3482a56c334dfc" category="admonition">如果是第一次設定交換器，則可以跳過此工作，除非您要更換交換器。</block>
+  <block id="a95f710d416a28711f7057a66ef327d5" category="list-text">此工作需要您同時使用 ONTAP 命令和交換器命令；除非另有說明，否則皆使用 ONTAP 命令。</block>
+  <block id="652d64acba0f102d37b42ef27f23f740" category="list-text">在本程序的範例中，您正在升級 IP_switch_A_1，因此您需要將叢集 LIF 移轉至 IP_switch_A_2。</block>
+  <block id="83b73f0ed3a170e10c1e7afb1f2de22f" category="list-text">本程序中的命令輸出範例顯示 Cisco 交換器的詳細資訊。輸出結果可能因交換器型號和廠商而異。</block>
+  <block id="c06b2e93c970fd796fa3b646ea0c91e7" category="list-text">顯示連接到每個節點上叢集交換器的叢集連接埠：</block>
+  <block id="6015ee0c3c4dbc37f534783a65239e72" category="example-title">顯示範例</block>
+  <block id="1b75649d1b9ec0a73e309fd9b384b32a" category="list-text">檢查每個叢集連接埠的管理和運作狀態。</block>
+  <block id="a8a837b1d24982d8fd8c7b71b0da1a7a" category="list-text">確認叢集所有連接埠均已啟動且狀態正常：</block>
+  <block id="1998c6d3154f5a2c373da0aeca0fd3ff" category="paragraph"><block ref="856f897c52a15ad9c779d1f7b82c2593" prefix="" category="inline-code"></block></block>
+  <block id="d9fb568577d38aa5ca1f9412c1a4e107" category="list-text">確認所有叢集介面（LIF）都位於主連接埠上：</block>
+  <block id="a2d27af8ce0592e36b8a208c0cb93d3e" category="paragraph"><block ref="fb5130635551fff679ab6d902eaff8d9" prefix="" category="inline-code"></block></block>
+  <block id="98f234e93ec030ce67a050ab46bd6ee6" category="list-text">確認叢集顯示兩個叢集交換器的資訊：</block>
+  <block id="798dfbe36e04e65261e623680213b38d" category="paragraph"><block ref="c57378c3b3bb81c6b42a2b31a30ddda7" prefix="" category="inline-code"></block></block>
+  <block id="aa831e5ed3cf3569aacf417dc10d9847" category="list-text">停用叢集 LIF 的自動還原功能。叢集 LIF 容錯移轉到合作夥伴叢集交換器，並在您對目標交換器執行升級程序時保持在該交換器上：</block>
+  <block id="684818f9d30d8e8936a73d9c92c51cfe" category="admonition">如果您要升級第二個架構，則可以跳過此步驟並轉到<block ref="327988adbe3e93c3ffe0ff2abeb91411" category="inline-xref-macro-rx"></block>。</block>
+  <block id="b1046cdb57cd97fe9c20f711ba08bed8" category="paragraph"><block ref="76be4589a0f314371f336c42f473092c" prefix="" category="inline-code"></block></block>
+  <block id="6f80841cf0831aea5bbcbeaff818df5a" category="list-text">[[shut-down-ports]]在叢集交換器 IP_switch_A1 上，關閉連接到節點叢集連接埠的連接埠。</block>
+  <block id="a2fe9051fe051f819bd739ef3e340377" category="open-title">NVIDIA</block>
+  <block id="3dc2e7033e76926da5578cb873563ec1" category="list-text">顯示叢集介面：</block>
+  <block id="640aabb1d4c1c1f949a0a35374202d42" category="list-text">關閉叢集介面連接埠：</block>
+  <block id="506cbd48c08948901f7b3d2fcf241e24" category="list-text">[[verify_cluster_lif_migration]] 驗證叢集 LIF 是否已移轉到叢集交換器 IP_switch_A2 上託管的連接埠。這可能需要幾秒鐘。</block>
+  <block id="af4fb0eecc11b6a91b245e052b6c0a20" category="paragraph">叢集 LIF 移轉到合作夥伴交換器後，您可以依照交換器廠商的標準組態程序完成升級至目標韌體或 RCF 版本：</block>
+  <block id="86e838bf9c0847e26da95e5f1fb7811d" category="admonition">在第一個架構中設定交換器後，必須重複上述步驟，將叢集 LIF 移轉至第二個架構。</block>
+  <block id="ea73d8af7135d7d225784b371375310f" category="doc">了解如何設定 MetroCluster IP 交換器</block>
+  <block id="b398c546b361af58bcc92050d70db2b4" category="paragraph">您必須設定 IP 交換器以提供後端 MetroCluster IP 連線。具體步驟取決於您的交換器廠商，以及您是在全新安裝 MetroCluster IP 時設定交換器，還是在其他程序中設定交換器。</block>
+  <block id="92e541a9c70ad67c77b89e2d969764ce" category="section-title">全新 MetroCluster IP 安裝</block>
+  <block id="66ae00fed61743cbd269595ede42450e" category="paragraph">如果您要進行全新的 MetroCluster IP 安裝，請依照您的交換器廠商選擇交換器組態步驟：</block>
+  <block id="7a6a9c61a00d805db560ab9153141683" category="section-title">交換器更換和 RCF 或韌體更新</block>
+  <block id="3a5ca636d042ba14163790e15fb14b39" category="paragraph">作為其他 MetroCluster IP 操作流程（例如交換器更換或升級）的一部分，您可能需要更新交換器韌體、參考組態檔案 （RCF） 或兩者都需要更新。在這些情況下，您必須在設定 IP 交換器之前移轉叢集 LIF。這些情況的高階步驟如下：</block>
+  <block id="c45b5cac6c505399616694a0b7c6c04d" category="admonition">您必須依照下列順序更新交換器：Switch_A_1、Switch_B_1、Switch_A_2、Switch_B_2。</block>
+  <block id="032e6e8ef98f5ba6f14159f917ab3e15" category="inline-link-macro">移動叢集 LIF</block>
+  <block id="b0e11f8bc3115af6f46ef95760b7108a" category="list-text"><block ref="b0e11f8bc3115af6f46ef95760b7108a" category="inline-link-macro-rx"></block></block>
+  <block id="c7d46afd534f9d0360e5628b1907f177" category="list-text">將叢集 LIF 移轉到合作夥伴交換器後，您可以依照交換器廠商提供的標準組態步驟進行操作：</block>
+  <block id="3702fa9bc5c3f18bbbeed6b44a352090" category="list-text">在設定完第一個架構（Switch_A_1、Switch_B_1）的交換器後，必須從 <block ref="b0e11f8bc3115af6f46ef95760b7108a" category="inline-link-macro-rx"></block> 開始，在第二個架構（Switch_A_2、Switch_B_2）重複上述步驟。</block>
+  <block id="0d748d04c15c51dc82adaafb202380f8" category="list-text">如果您將這些步驟作為其他流程（例如交換器更換或升級）的一部分，請檢查是否需要將叢集 LIF 移至合作夥伴交換器，以實現無中斷叢集操作。<block ref="9ce2e245234110ff72cc16bc02886cc0" category="inline-link-macro-rx"></block>.</block>
+  <block id="852176ba820381370f520dbeca56dbfa" category="admonition">您必須依照下列順序更新交換器：Switch_A_1、Switch_B_1、Switch_A_2、Switch_B_2。如果您的流程需要移動叢集 LIF，則在設定完第一個架構（Switch_A_1、Switch_B_1）中的交換器後，必須重複上述步驟，將叢集 LIF 移至第二個架構（Switch_A_2、Switch_B_2）。請參閱 <block ref="9ce2e245234110ff72cc16bc02886cc0" category="inline-link-macro-rx"></block>。</block>
+  <block id="cec0c4ac2074d499d97d20ee0fde64ef" category="list-text">確認叢集 LIF 已啟用自動還原功能：</block>
+  <block id="a28cce9c0e3ab8ac431128996388bcfd" category="admonition">必須確保叢集 LIF 已啟用自動還原功能。</block>
+  <block id="7a7d7054decebaeb3dba2307d6555fb9" category="list-text">如果未啟用自動回復功能，請修改所有叢集 LIF 以啟用自動回復功能：</block>
+  <block id="861865437c84fdf002bbc9c73fb2554f" category="admonition">如果您正在執行這些步驟作為其他程序（例如交換器更換或升級）的一部分，則您可能已在這些步驟中停用了自動恢復功能，以完成 <block ref="ff2aaf62543af58cd0f5c49e7e04cef2" category="inline-link-macro-rx"></block>。</block>
+  <block id="90563211213c93906ee730f25ee9143e" category="list-text">重新啟用自動還原：</block>
+  <block id="2c70d9b6ebd85a5ee2fff0f363a115ac" category="paragraph"><block ref="bf3c84eda3ab699c2564d177a409447a" prefix="" category="inline-code"></block></block>
+  <block id="268d66b259b50e25cbef3d39885d450f" category="paragraph"><block ref="d4a4086e7952a80201c11ae52219be46" prefix="" category="inline-code"></block></block>
+  <block id="8ed8ddf647d2420b5b9cfef94d1e66ca" category="paragraph">請稍等幾分鐘，讓 LIF 回復其主連接埠：</block>
+  <block id="9c01e65c2e65b640d8118fe54781309e" category="list-text">確認所有 LIF 都位於其主連接埠：</block>
+  <block id="052bf57f898d3892d0551c66dc793e8b" category="list-text">驗證 MetroCluster 節點狀態：</block>
+  <block id="53c1dca890ccf51d340a7239987710a8" category="list-text">您必須使用受支援的交換器軟體版本。請參閱<block ref="ed4326c3351d8ac0e334b8b4d9b37c82" category="inline-link-rx"></block>。</block>
+  <block id="fdb08440fb03aec95dda7df506525f73" category="list-text">在 MetroCluster IP 組態中，對剩餘的三個 IP 交換器重複上述步驟。</block>
+  <block id="0a87ee4fa6163be20e6bf1d980e5a277" category="paragraph">您必須了解如何使用連接埠表中的資訊來正確產生參考組態檔（RCF）。</block>
+  <block id="350ebdbb66bf03c8efc403678120e39d" category="admonition">如果您在共享的組態中使用 Cisco 9336C-FX2 交換器連接 NS224 機架，變更 ISL 可能需要新的參考組態檔案 （RCF）。如果目前和新的 ISL 速度分別為 40 Gbps 和 100 Gbps，則無需新的 RCF。所有其他 ISL 速度變更都需要新的 RCF。例如，將 ISL 速度從 40 Gbps 變更為 100 Gbps 不需要新的 RCF，但將 ISL 速度從 10 Gbps 變更為 40 Gbps 則需要新的 RCF。</block>
+  <block id="6c5a911225660b72c17cb2db5923a54a" category="inline-link-macro">升級 MetroCluster IP 交換器上的 RCF。</block>
+  <block id="69cb6427980eccf80b5d0c17f1aab875" category="admonition">如果您在共享的組態中使用 Cisco 9336C-FX2 交換器連接 NS224 機架，並且需要升級 RCF 並為新的 ISL 連接埠套用新組態，請依照下列步驟操作：<block ref="c3ee1b38b8c2251d663b314073e9cd8a" category="inline-link-macro-rx"></block></block>
+  <block id="8707fdff465b4f0541eaf591583954a7" category="list-text"><block ref="b0e11f8bc3115af6f46ef95760b7108a" category="inline-link-macro-rx"></block>。</block>
+  <block id="856a04ccf59d2820da6a47984fbd3ea0" category="admonition">您必須依照下列順序更新交換器：Switch_A_1、Switch_B_1、Switch_A_2、Switch_B_2。在第一個架構（Switch_A_1、Switch_B_1）中設定交換器後，您必須重複上述步驟，將叢集 LIF 移轉到第二個架構（Switch_A_2、Switch_B_2）。請參閱 <block ref="5f804b3f3e9acee141e0ae306b7a6f59" category="inline-link-macro-rx"></block>。</block>
+  <block id="8dc1f99634c85a613352ad949b508cf1" category="paragraph">您可以按照以下步驟操作<block ref="7176836221733e9bf6fcbaccc1aa9ffd" category="inline-link-macro-rx"></block>。</block>
+  <block id="0d35a64434c5cb583e6703803b6a3251" category="paragraph">如果新交換器與舊交換器相同，則啟動新交換器。如果要升級或降級交換器，則啟動兩台交換器。在第二個架構更新之前，每個站台可以使用兩台不同的交換器進行組態。</block>
+  <block id="acc1856da35d6d8c04024997f2eb6084" category="paragraph">如果您正在升級或降級第一個架構中的交換器，您可能會看到一些與本機叢集相關的警示。</block>
+  <block id="73d919208b85f9e19c80b7413d6e453e" category="admonition">如果升級或降級架構，則對第二個架構重複所有步驟。</block>
+  <block id="73117420b1d3da1446aeff431e81d9c6" category="list-text"><block ref="b0e11f8bc3115af6f46ef95760b7108a" category="inline-link-macro-rx"></block>在開始升級之前。</block>
+  <block id="19bc1d3a8e5db6fb9ca5ed1d6e53ad7f" category="list-text">對每個交換器重複上述步驟。</block>
+  <block id="31bbe12313f1a40b18eaa501279a0be3" category="admonition">在第一個架構（Switch_A_1、Switch_B_1）中設定交換器後，必須重複上述步驟，將叢集 LIF 移轉到第二個架構（Switch_A_2、Switch_B_2）。請參閱 <block ref="5f804b3f3e9acee141e0ae306b7a6f59" category="inline-link-macro-rx"></block>。</block>
+  <block id="b0eaff36df906302d61d2a732f0bd280" category="paragraph">您可能需要升級 Cisco IP 交換器上的參考組態檔案 （RCF）。例如，ONTAP 升級或交換器韌體升級都需要新的 RCF。</block>
+  <block id="9a6efb0d6ef62b264d464f9318c33ea5" category="cell">RCF 橫幅/MOTD 範例</block>
+  <block id="270442fca75eb1d9b0a0f7fbda94ec91" category="list-text">The<block ref="c52b4d12f68853a25c52576697c6b2b5" category="inline-link-rx"></block>必須能夠建立與所應用的相同的 RCF，具有相同的版本和組態（平台、VLAN）。</block>
+  <block id="9841cae1f3cd8f3083a447c8f51118b2" category="list-text">所應用的 RCF 不是由 NetApp 為特殊組態所提供的。</block>
+  <block id="9ec3c03b2e25d0fd885e119b26a47209" category="list-text">RCF 在套用之前未經任何變更。</block>
+  <block id="7d4a576e62d8fa25121aba113311ce11" category="list-text">在套用目前 RCF 之前，已依照步驟將交換器重設為出廠預設值。</block>
+  <block id="4f9ef492ce457924cabecc16236a4c41" category="paragraph">如果您不符合這些要求，則無法使用產生 RCF 時建立的 CleanUpFiles。但是，您可以運用函數建立通用 CleanUpFiles——使用此方法進行的清理工作源自<block ref="d064a73c32d00bf384204782a696a298" prefix=" " category="inline-code"></block>的輸出，並且是最佳實務做法。</block>
+  <block id="385e6272a2260d5d2074d187f64c13d0" category="list-text">確定目前 RCF 版本，以及正在使用的連接埠和 VLAN：<block ref="9b0b071cbeedb9bb40e134702701197f" prefix=" " category="inline-code"></block></block>
+  <block id="31a1a5eb41a54f193dee4fcd85f62f3c" category="cell">RCF 版本</block>
+  <block id="d2c73fd480128bba9ad18b2cc35e088a" category="list-text">[[Create-RCF-files-and-CleanUpFiles-or-create-generic-CleanUpFiles]] 建立 RCF 檔案和 CleanUpFiles，或為目前組態建立通用 CleanUpFiles。</block>
+  <block id="2d3daa23f8c1124a7f51b396b2c83599" category="open-title">方案一：建立 RCF 和 CleanUpFiles</block>
+  <block id="09a9232d68d132ce906d6729982e29da" category="list-text">使用 RcfFileGenerator 1.4a （或更高版本）建立 RCF，其中包含您在步驟 1 中擷取的資訊。新版本的 RcfFileGenerator 會建立一組額外的 CleanUpFiles，您可以使用這些檔案來回復某些組態，並準備交換器以套用新的 RCF 組態。</block>
+  <block id="e978980bdc9465fa0544fbecc209d5f7" category="list-text">比較橫幅 motd 與目前套用的 RCF。平台類型、交換器類型、連接埠和 VLAN 使用情況必須一致。</block>
+  <block id="cbf0859eba1f468560501286f96bce70" category="admonition">您必須使用與 RCF 版本相同且組態完全相同的 CleanUpFiles。使用任何其他 CleanUpFile 都無法正常運作，且可能需要完全重設交換器。</block>
+  <block id="bf8da3127630e1672d896214577b32f3" category="admonition">RCF 所針對的 ONTAP 版本無關緊要。只有 RCF 版本才重要。</block>
+  <block id="b542d9b58edaa8b0bd2dd3ae2b80c0a7" category="admonition">即使是同一版本的 RCF，列出的平台數量也可能有所不同。請確保您的平台已列入其中。</block>
+  <block id="b79f0a153ad93b9722d2cdc284bd859f" category="list-text">[[Create-the-new-RCF-files-for-the-new-configuration]] 為新組態建立「新的」RCF 檔案。建立這些檔案的方式與上一個步驟建立檔案的方式相同，只是需要選擇對應的 ONTAP 和 RCF 版本。</block>
+  <block id="0b172d151494b14e7fdff735f6e210c6" category="paragraph">完成此步驟後，您應該會得到兩組 RCF 檔案，每組包含十二個檔案。</block>
+  <block id="39da313cd3d2efd5a85461c6b18b0e9a" category="inline-xref">建立 RCF 和 CleanUpFiles，或為目前組態建立通用 CleanUpFiles</block>
+  <block id="b34bc751b388df2a26c3d747fe1f39cf" category="list-text">下載您在 <block ref="bce5d5db6b460239ddd9d2efeebaa897" category="inline-xref-macro-rx"></block> 中建立的 CleanUpFiles</block>
+  <block id="e57c406545eb94b55e46fd490e3dcc6f" category="admonition">此 CleanUpFile 適用於目前套用的 RCF，而*非*您要升級至的新 RCF。</block>
+  <block id="a1fa8ef8fe9fe6945d9a481c566faf1a" category="inline-xref">為新組態建立「新的」RCF。</block>
+  <block id="0e19bf9641c612dddacde2528d12e17c" category="list-text">下載您在 <block ref="97f3ac22394457ab69892174bef80b4e" category="inline-xref-macro-rx"></block> 中建立的「新」RCF</block>
+  <block id="19e2eaf9177ade8d5a63d99d3fa7e5e4" category="paragraph">交換器 A1 的範例 RCF：<block ref="fcb7173e7a2e786c277b7ad6470af002" prefix=" " category="inline-code"></block></block>
+  <block id="d72478cb233a7ba8b75d8a2c92a6a6c1" category="list-text">下載您在 <block ref="97f3ac22394457ab69892174bef80b4e" category="inline-xref-macro-rx"></block> 中建立的 CleanUpFiles。此步驟為選用步驟——您日後可使用該檔案來更新交換器組態。它與目前套用的組態相符。</block>
+  <block id="b4fb6ce79e810065e4af4b50b355268c" category="paragraph">如果發現上述任何一項已設定，則可能無法套用新的 RCF 組態。但是，您可以透過重新載入交換器（ *但不*將執行中的組態儲存到啟動組態）來回復至先前的組態。交換器將以先前的組態啟動。</block>
+  <block id="39a59a7f698d76b6c515d442d496fc20" category="list-text">套用 RCF 並驗證連接埠是否線上。</block>
+  <block id="b4ff3823ad51690657517a6cc43f5bbc" category="list-text">套用 RCF。</block>
+  <block id="92dce1ba931a31f563746a7fc012ede0" category="list-text">修改所有叢集 LIF 以啟用自動還原：</block>
+  <block id="7506fa2af11ba55ddb93c46406818219" category="paragraph">您可能需要升級 MetroCluster IP 交換器上的參考組態檔案（RCF）。例如，如果交換器上執行的 RCF 版本與 ONTAP 版本、交換器韌體版本或兩者都不相容。</block>
+  <block id="0fd7975d8fcd31db8559ed95a3a7ca29" category="list-text">如果您要安裝新的交換器韌體，則必須先安裝交換器韌體，然後再升級 RCF。</block>
+  <block id="5b6e304706a21e319010fab102707c79" category="list-text">此程序會中斷正在升級 RCF 的交換器上的流量。套用新的 RCF 後，流量將恢復。</block>
+  <block id="ef79769a9b12c47ca8e0242e864b2c02" category="list-text">根據您的交換器廠商，下載並安裝 IP RCF。</block>
+  <block id="0a7486debceb3d7717c123eee7f53e26" category="inline-link-macro">下載並安裝 Broadcom IP RCF</block>
+  <block id="91d44de3771ac094a8fc8ef949f447f1" category="list-text"><block ref="91d44de3771ac094a8fc8ef949f447f1" category="inline-link-macro-rx"></block></block>
+  <block id="e78e0be76deac39685c069c02b9c59b8" category="paragraph">您必須套用參考組態檔 (RCF) 來重新設定分區，以容納新節點。</block>
+  <block id="b60b2b518843eb58af59ce647217c844" category="paragraph">如果無法使用 RCF 設定交換器，則必須手動設定交換器。請參閱：</block>
+  <block id="880c5e16abd9dabbb6ec7c79be346e14" category="list-text">找到您組態的 RCF。</block>
+  <block id="f78893de7c74e6fe864a719bc7efc19e" category="paragraph">您必須使用與您的交換器型號相符的八節點組態的 RCF。</block>
+  <block id="59f3d762e99b09ec1becaca961e395a1" category="list-text">請按照下載頁面上的說明套用 RCF，並根據需要調整 ISL 設定。</block>
+  <block id="0cd61c4c88f15a8971607489f9b6d653" category="paragraph">FC 交換器連接埠的使用方式必須符合 <block ref="a9f150ef34b7953b6119f5ac779097fe" category="inline-link-macro-rx"></block> 中所述的 MetroCluster 八節點使用方式，才能使用 RCF。</block>
+  <block id="eabc5692452c984a6976e8e815a16418" category="admonition">執行開機功能表選項時<block ref="1679091c5a880faf6fb5e6087eb1b2dc" prefix=" " category="inline-code"></block>，MetroCluster bootarg 值可能需要重設。請參閱<block ref="34d15be42555000516d0cc6b7f35d1c4" category="inline-link-macro-rx"></block>。</block>
+  <block id="74babbf42b11f149a7a363757d584c3b" category="admonition">執行開機功能表選項<block ref="1679091c5a880faf6fb5e6087eb1b2dc" prefix=" " category="inline-code"></block>時，MetroCluster bootarg 值可能需要重設。請參閱 <block ref="06c3fdcb6cd8d64a7d2e8bffb99c9b80" category="inline-link-macro-rx"></block>。</block>
+  <block id="b8c3014a64ccb52cfe10dc2bcccd245f" category="admonition">執行開機功能表選項時<block ref="1679091c5a880faf6fb5e6087eb1b2dc" prefix=" " category="inline-code"></block>，MetroCluster bootarg 值可能需要重設。請參閱<block ref="c2cec781ec7263394dd955380787b572" category="inline-link-macro-rx"></block>。</block>
+  <block id="9a3f31a7018cf62078b2f2f088863f9b" category="sidebar">了解如何設定 MetroCluster IP 交換器</block>
+  <block id="96e6a3f92b027e80b14698a7b22b316f" category="sidebar">移動叢集 LIF</block>
 </blocks>

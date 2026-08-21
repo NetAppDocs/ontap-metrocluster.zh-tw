@@ -113,10 +113,6 @@ Remote: cluster_A         Configuration state configured
 +
 如果切換需要很長時間才能完成、您可以使用「MetroCluster 更新組態複寫重新同步狀態show」命令來檢查進行中基準的狀態。此命令處於進階權限層級。
 
-.. 重新建立任何SnapMirror或SnapVault 不完整的組態。
-+
-在S還原8.3中ONTAP 、MetroCluster 您需要在執行還原操作之後、手動重新建立遺失的SnapMirror組態。在更新版本的版本中、關係會自動重新建立。ONTAP
-
 
 
 

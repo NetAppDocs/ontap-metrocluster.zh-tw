@@ -160,6 +160,10 @@ Rebooting to load the restored env file...
 +
 視金鑰管理程式設定而定、請在第一個開機功能表提示字元中選取選項「10」或選項「11」、然後選取選項「6」、以執行還原程序。若要完全開機節點、您可能需要重複選項「1」（正常開機）的恢復程序。
 
++
+
+NOTE: 執行開機功能表選項時 `6`，MetroCluster bootarg 值可能需要重設。請參閱link:upgrade-mcc-ip-system-controller-replace-apply-rcf-set-bootarg.html#set-the-metrocluster-ip-bootarg-variables["設定MetroCluster 靜態IP bootarg變數"]。
+
 . 開機節點：
 +
 Boot_ONTAP

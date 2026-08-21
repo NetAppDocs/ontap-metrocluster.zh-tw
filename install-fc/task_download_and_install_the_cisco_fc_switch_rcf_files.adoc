@@ -11,7 +11,7 @@ summary: 您必須將RCF檔案下載到MetroCluster 以「支援」為基礎的�
 
 
 [role="lead"]
-您必須將RCF檔案下載到MetroCluster 以「支援」為基礎的各個交換器組態中。
+您必須將參考組態檔案 (RCF) 下載到 MetroCluster 架構組態中的每個交換器。
 
 .開始之前
 這項工作需要檔案傳輸軟體（例如FTP、Trivial File Transfer Protocol（TFTP）、SFTP或Secure Copy Protocol（SCP））、才能將檔案複製到交換器。
@@ -23,12 +23,12 @@ summary: 您必須將RCF檔案下載到MetroCluster 以「支援」為基礎的�
 
 https://hwu.netapp.com["NetApp Hardware Universe"]
 
-共有四個RCF檔案、MetroCluster 其中四個交換器的RCF設定各一個。您必須針對所使用的交換器機型使用正確的RCF檔案。
+共有四個 RCF，分別對應 MetroCluster 架構組態中的四個交換器。您必須使用與所用交換器型號相符的正確 RCF。
 
 |===
 
 
-| 交換器 | RCF檔案 
+| 交換器 | RCF 
 
 
  a| 
@@ -62,15 +62,15 @@ FC_SWIT_B_2
 NOTE: 顯示的輸出適用於Cisco IP交換器、但這些步驟也適用於Cisco FC交換器。
 
 .步驟
-. 從下載Cisco FC RCF檔案 https://mysupport.netapp.com/site/products/all/details/metrocluster-rcf/downloads-tab["RCF下載頁面MetroCluster"]。
-. 將RCF檔案複製到交換器。
+. 從 https://mysupport.netapp.com/site/products/all/details/metrocluster-rcf/downloads-tab["RCF下載頁面MetroCluster"]下載 Cisco FC RCF。
+. 將 RCF 複製到交換器。
 +
-.. 將RCF檔案複製到第一個交換器：
+.. 將 RCF 複製到第一個交換器：
 +
 「copy sftp：//_root@ft-server_ip-address/tftpboot/switch-specif_bootflash：VRF管理」
 
 +
-在此範例中、「NX323232_v1.m_Switch-a1.txt' RCF檔案會從位於「10.10.99.99」的SFTP伺服器複製到本機bootflash。您必須使用TFTP/SFTP伺服器的IP位址、以及需要安裝的RCF檔案名稱。
+在本例中， `NX3232_v1.80_Switch-A1.txt` RCF 從 SFTP 伺服器 `10.10.99.99`複製到本機啟動快閃記憶體。您必須使用 TFTP/SFTP 伺服器的 IP 位址以及需要安裝的 RCF 檔案名稱。
 
 +
 [listing]
@@ -86,10 +86,10 @@ sftp> exit
 Copy complete, now saving to disk (please wait)...
 IP_switch_A_1#
 ----
-.. 對其他三個交換器重複上一個子步驟、請務必將相符的RCF檔案複製到對應的交換器。
+.. 對其他三個交換器重複上一個子步驟，確保將相符的 RCF 複本複製到對應的交換器。
 
 
-. 在每個交換器上、確認每個交換器的「bootflash」目錄中都有RCF檔案：
+. 在每台交換器上驗證 RCF 是否存在於每台交換器的 `bootflash`目錄中：
 +
 《Dir bootflash:》
 
@@ -114,11 +114,11 @@ Usage for bootflash://sup-local
 15018205184 bytes total
 IP_switch_A_1#
 ----
-. 將相符的RCF檔案從本機bootFlash複製到每個交換器上的執行組態：
+. 將本機啟動快閃記憶體中相符的 RCF 複製到每台交換器的執行中組態：
 +
 「copy bootflash：__switch-specific-RCF__.txt執行組態」
 
-. 將RCF檔案從執行中的組態複製到每個交換器的啟動組態：
+. 將每台交換器的運作組態中的 RCF 檔案複製到啟動組態中：
 +
 「copy running-config startup-config」
 

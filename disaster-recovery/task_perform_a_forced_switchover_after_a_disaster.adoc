@@ -52,9 +52,6 @@ summary: 如果發生災難、您必須在切換後在災難叢集和存續的�
 
 
 
-
-NOTE: SnapMirror和SnapVault SnapMirror組態會自動刪除。
-
 .關於這項工作
 「不完整切換」命令會在整個DR群組的節點上切換、以利執行整個過程。MetroCluster MetroCluster例如、在八節點MetroCluster 的「列舉」組態中、它會在兩個DR群組中的節點之間切換。
 
@@ -89,9 +86,6 @@ mcc1A::> metrocluster operation show
 如果切換被否決、您可以選擇使用MetroCluster 「-overre-etoes」選項來重新發出「Ride switchover for-forced-on－ferride true」命令。如果您使用此選用參數、系統會覆寫任何軟質的審查、以防止切換。
 
 
-
-.完成後
-SnapMirror關係必須在切換後重新建立。
 
 
 

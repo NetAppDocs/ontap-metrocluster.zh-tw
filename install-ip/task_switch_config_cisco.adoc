@@ -18,8 +18,8 @@ summary: 您必須設定Cisco IP交換器作為叢集互連和後端MetroCluster
 
 
 
-[[resetting-the-cisco-ip-switch-to-factory-defaults]]
-== 將Cisco IP交換器重設為原廠預設值
+[[reset-the-cisco-ip-switch-to-factory-defaults]]
+== 將 Cisco IP 交換器重設為原廠預設值
 
 在安裝任何RCF檔案之前、您必須先清除Cisco交換器組態並執行基本組態。如果您想在先前的安裝失敗之後重新安裝相同的RCF檔案、或是想要安裝新版RCF檔案、則需要執行此程序。
 
@@ -27,6 +27,7 @@ summary: 您必須設定Cisco IP交換器作為叢集互連和後端MetroCluster
 * 您必須在MetroCluster 各個採用EIP組態的IP交換器上重複這些步驟。
 * 您必須使用序列主控台連線至交換器。
 * 此工作會重設管理網路的組態。
+* 如果您將這些步驟作為其他流程（例如交換器更換或升級）的一部分，請檢查是否需要將叢集 LIF 移至合作夥伴交換器，以實現無中斷叢集操作。link:task_install_and_cable_the_mcc_components.html["了解如何設定 MetroCluster IP 交換器"].
 
 
 .步驟
@@ -169,19 +170,17 @@ IP_switch_A_1#
 
 
 
-[[downloading-and-installing-the-cisco-switch-nx-os-software]]
-== 下載並安裝Cisco交換器NX-OS軟體
+[[download-and-install-the-cisco-switch-nx-os-software]]
+== 下載並安裝 Cisco 交換器 NX-OS 軟體
 
 您必須將交換器作業系統檔案和RCF檔案下載到MetroCluster 各個交換器、使其採用EWIP組態。
 
 .關於這項工作
 此工作需要使用檔案傳輸軟體（例如 FTP、TFTP、SFTP、HTTP 或 SCP）將檔案複製到交換器。
 
-這些步驟必須重複執行MetroCluster 於各個採用EIP組態的IP交換器上。
+* 如果您將這些步驟作為其他流程（例如交換器更換或升級）的一部分，請檢查是否需要將叢集 LIF 移至合作夥伴交換器，以實現無中斷叢集操作。link:task_install_and_cable_the_mcc_components.html["了解如何設定 MetroCluster IP 交換器"].
+* 您必須使用受支援的交換器軟體版本。請參閱 https://hwu.netapp.com["NetApp Hardware Universe"]。
 
-您必須使用支援的交換器軟體版本。
-
-https://hwu.netapp.com["NetApp Hardware Universe"]
 
 .步驟
 . 下載支援的NX-OS軟體檔案。
@@ -424,29 +423,106 @@ Module 1 EPLD upgrade is successful.
 +
 `show version module 1 epld`
 
-. 在靜態IP組態的其餘三個IP交換器上重複上述步驟MetroCluster 。
+. 在 MetroCluster IP 組態中，對剩餘的三個 IP 交換器重複上述步驟。
++
+
+NOTE: 您必須依照下列順序更新交換器：Switch_A_1、Switch_B_1、Switch_A_2、Switch_B_2。如果您的流程需要移動叢集 LIF，則在設定完第一個架構（Switch_A_1、Switch_B_1）中的交換器後，必須重複上述步驟，將叢集 LIF 移至第二個架構（Switch_A_2、Switch_B_2）。請參閱 link:task_install_and_cable_the_mcc_components.html["了解如何設定 MetroCluster IP 交換器"]。
+
+. 確認叢集 LIF 已啟用自動還原功能：
++
+「網路介面show -vserver叢集-功能 變數自動回復」
+
++
+
+CAUTION: 必須確保叢集 LIF 已啟用自動還原功能。
+
+. 如果未啟用自動回復功能，請修改所有叢集 LIF 以啟用自動回復功能：
++
+
+NOTE: 如果您正在執行這些步驟作為其他程序（例如交換器更換或升級）的一部分，則您可能已在這些步驟中停用了自動恢復功能，以完成 link:switch-move-cluster-lifs.html["移動叢集 LIF"]。
+
++
+.. 重新啟用自動還原：
++
+`network interface modify -vserver Cluster -lif * -auto-revert true`
+
++
+[listing]
+----
+cluster_A::*> network interface modify -vserver Cluster -lif * -auto-revert true
+
+Warning: Changes to a cluster LIF can affect the health of the Cluster. Are you
+         sure you want to continue? {y|n}: y
+4 entries were modified.
+
+cluster_A::*>
+----
+.. 將所有目前不在原始連接埠上的叢集 LIF 恢復到其原始連接埠：
++
+`network interface revert -vserver Cluster -lif *`
+
++
+請稍等幾分鐘，讓 LIF 回復其主連接埠：
+
+.. 確認所有 LIF 都位於其主連接埠：
++
+[listing]
+----
+cluster_A::*> network interface show -role cluster
+            Logical        Status     Network            Current       Current Is
+Vserver     Interface      Admin/Oper Address/Mask       Node          Port    Home
+----------- -------------- ---------- ------------------ ------------- ------- ----
+Cluster
+            node_A_1_clus1 up/up      192.168.204.88/18  node_A_1      e4a     true
+            node_A_1_clus2 up/up      192.168.204.93/18  node_A_1      e4b     true
+            node_A_2_clus1 up/up      192.168.204.96/18  node_A_2      e4a     true
+            node_A_2_clus2 up/up      192.168.204.97/18  node_A_2      e4b     true
+4 entries were displayed.
+----
+.. 驗證 MetroCluster 節點狀態：
++
+「不一樣的秀」MetroCluster
+
++
+[listing]
+----
+cluster_A::*> metrocluster node show
+
+DR                               Configuration  DR
+Group Cluster Node               State          Mirroring Mode
+----- ------- ------------------ -------------- --------- --------------------
+1     cluster_A
+              node_A_1           configured     enabled   normal
+              node_A_2           configured     enabled   normal
+      cluster_B
+              node_B_1           configured     enabled   normal
+              node_B_2           configured     enabled   normal
+4 entries were displayed.
+
+cluster_A::*>
+----
 
 
 
 
-[[downloading-and-installing-the-cisco-ip-rcf-files]]
-== 下載並安裝Cisco IP RCF檔案
+
+
+[[download-and-install-the-cisco-ip-rcf-files]]
+== 下載並安裝 Cisco IP RCF 檔案
 
 您必須在 MetroCluster IP 組態中產生 RCF 檔案並將其安裝至每台交換器。
 
 .關於這項工作
 此工作需要使用檔案傳輸軟體（例如 FTP、TFTP、SFTP、HTTP 或 SCP）將檔案複製到交換器。
 
-這些步驟必須重複執行MetroCluster 於各個採用EIP組態的IP交換器上。
+* 這些步驟必須重複執行MetroCluster 於各個採用EIP組態的IP交換器上。
+* 如果您將這些步驟作為其他流程（例如交換器更換或升級）的一部分，請檢查是否需要將叢集 LIF 移至合作夥伴交換器，以實現無中斷叢集操作。link:task_install_and_cable_the_mcc_components.html["了解如何設定 MetroCluster IP 交換器"].
+* 您必須使用受支援的交換器軟體版本。請參閱 https://hwu.netapp.com["NetApp Hardware Universe"]。
+* 如果您使用的是 QSFP 至 SFP+ 介面卡，則可能需要將 ISL 連接埠設定為原生速度模式，而非中斷速度模式。請參閱交換器廠商文件，以判斷 ISL 連接埠速度模式。
 
-您必須使用支援的交換器軟體版本。
 
-https://hwu.netapp.com["NetApp Hardware Universe"]
-
-如果您使用的是 QSFP 至 SFP+ 介面卡，則可能需要將 ISL 連接埠設定為原生速度模式，而非中斷速度模式。請參閱交換器廠商文件，以判斷 ISL 連接埠速度模式。
-
-共有四個RCF檔案、MetroCluster 每個檔案分別對應於整個EIP組態中的四個交換器。您必須針對所使用的交換器機型使用正確的RCF檔案。
-
+* 共有四個RCF檔案、MetroCluster 每個檔案分別對應於整個EIP組態中的四個交換器。您必須針對所使用的交換器機型使用正確的RCF檔案。
++
 |===
 
 
@@ -480,6 +556,8 @@ IP交換器_B_2
 NX3232_v1.80_Switch-B2.txt
 
 |===
+
+
 .步驟
 . 為 MetroCluster IP 產生 Cisco RCF 檔案。
 +
@@ -605,12 +683,91 @@ IP_switch-A-1# copy running-config startup-config
 IP_switch_A_1# reload
 ----
 . 在其他三個MetroCluster 交換器上重複上述步驟、以進行REIP組態設定。
++
+
+NOTE: 您必須依照下列順序更新交換器：Switch_A_1、Switch_B_1、Switch_A_2、Switch_B_2。如果您的流程需要移動叢集 LIF，則在設定完第一個架構（Switch_A_1、Switch_B_1）中的交換器後，必須重複上述步驟，將叢集 LIF 移至第二個架構（Switch_A_2、Switch_B_2）。請參閱 link:task_install_and_cable_the_mcc_components.html["了解如何設定 MetroCluster IP 交換器"]。
+
+. 確認叢集 LIF 已啟用自動還原功能：
++
+「網路介面show -vserver叢集-功能 變數自動回復」
+
++
+
+CAUTION: 必須確保叢集 LIF 已啟用自動還原功能。
+
+. 如果未啟用自動回復功能，請修改所有叢集 LIF 以啟用自動回復功能：
++
+
+NOTE: 如果您正在執行這些步驟作為其他程序（例如交換器更換或升級）的一部分，則您可能已在這些步驟中停用了自動恢復功能，以完成 link:switch-move-cluster-lifs.html["移動叢集 LIF"]。
+
++
+.. 重新啟用自動還原：
++
+`network interface modify -vserver Cluster -lif * -auto-revert true`
+
++
+[listing]
+----
+cluster_A::*> network interface modify -vserver Cluster -lif * -auto-revert true
+
+Warning: Changes to a cluster LIF can affect the health of the Cluster. Are you
+         sure you want to continue? {y|n}: y
+4 entries were modified.
+
+cluster_A::*>
+----
+.. 將所有目前不在原始連接埠上的叢集 LIF 恢復到其原始連接埠：
++
+`network interface revert -vserver Cluster -lif *`
+
++
+請稍等幾分鐘，讓 LIF 回復其主連接埠：
+
+.. 確認所有 LIF 都位於其主連接埠：
++
+[listing]
+----
+cluster_A::*> network interface show -role cluster
+            Logical        Status     Network            Current       Current Is
+Vserver     Interface      Admin/Oper Address/Mask       Node          Port    Home
+----------- -------------- ---------- ------------------ ------------- ------- ----
+Cluster
+            node_A_1_clus1 up/up      192.168.204.88/18  node_A_1      e4a     true
+            node_A_1_clus2 up/up      192.168.204.93/18  node_A_1      e4b     true
+            node_A_2_clus1 up/up      192.168.204.96/18  node_A_2      e4a     true
+            node_A_2_clus2 up/up      192.168.204.97/18  node_A_2      e4b     true
+4 entries were displayed.
+----
+.. 驗證 MetroCluster 節點狀態：
++
+「不一樣的秀」MetroCluster
+
++
+[listing]
+----
+cluster_A::*> metrocluster node show
+
+DR                               Configuration  DR
+Group Cluster Node               State          Mirroring Mode
+----- ------- ------------------ -------------- --------- --------------------
+1     cluster_A
+              node_A_1           configured     enabled   normal
+              node_A_2           configured     enabled   normal
+      cluster_B
+              node_B_1           configured     enabled   normal
+              node_B_2           configured     enabled   normal
+4 entries were displayed.
+
+cluster_A::*>
+----
 
 
 
 
-[[setting-forward-error-correction-for-systems-using-25-gbps-connectivity]]
-== 針對使用25-Gbps連線的系統設定轉送錯誤修正
+
+
+[[set-forward-error-correction-for-systems-using-25-gbps-connectivity]]
+== 為使用 25-Gbps 連線的系統設定轉送錯誤修正
 
 如果您的系統設定為使用25-Gbps連線、則在套用RCF檔案之後、您需要手動將轉送錯誤修正（FEC）參數設定為關閉。RCF檔案不套用此設定。
 

@@ -955,7 +955,7 @@ FC
 站台A的交換器將在站台A上的控制器升級時升級。
 
 .步驟
-. 準備 IP 交換器以應用新的 RCFs 。
+. 為套用新的參考組態檔（RCF）做好 IP 交換器的準備。
 +
 請依照您的交換器廠商章節中的步驟進行：
 
@@ -1371,6 +1371,10 @@ NOTE: 在每個節點上、檢查中設定的bootargs link:task_upgrade_controll
 |===
 +
 您需要根據金鑰管理程式設定和開機功能表提示中的選項6、選取選項10或選項11來執行恢復程序。若要完全開機節點、您可能需要執行選項1（正常開機）繼續執行恢復程序。
+
++
+
+NOTE: 執行開機功能表選項時 `6`，MetroCluster bootarg 值可能需要重設。請參閱link:task_upgrade_A700_to_A900_in_a_four_node_mcc_ip_us_switchover_and_switchback.html#set-the-metrocluster-ip-bootarg-variables["設定MetroCluster 靜態IP bootarg變數"]。
 
 . 等待新節點node_B_1-A900和node_B_2-A900開機。
 +

@@ -11,7 +11,7 @@ summary: 您可能需要升級Cisco IP交換器上的RCF檔案。例如ONTAP 、
 
 
 [role="lead"]
-您可能需要升級Cisco IP交換器上的RCF檔案。例如ONTAP 、進行升級時、或是交換器韌體升級時、都需要新的RCF檔案。
+您可能需要升級 Cisco IP 交換器上的參考組態檔案 （RCF）。例如，ONTAP 升級或交換器韌體升級都需要新的 RCF。
 
 .關於這項工作
 * 從RcfFileGenerator1.4a版開始、Cisco IP交換器上有一個新選項可以變更（升級、降級或更換）交換器組態、而不需要執行「寫入清除」。
@@ -22,7 +22,7 @@ summary: 您可能需要升級Cisco IP交換器上的RCF檔案。例如ONTAP 、
 +
 [cols="3*"]
 |===
-| 如果您要連線下列儲存設備 ... | 選擇 Cisco 9336C-FX2 儲存類型 ... | RCF 檔案橫幅 /MOTD 範例 
+| 如果您要連線下列儲存設備 ... | 選擇 Cisco 9336C-FX2 儲存類型 ... | RCF 橫幅/MOTD 範例 
 
 
  a| 
@@ -56,13 +56,13 @@ NOTE: 至少需要一個連接乙太網路的 NVMe 機櫃
 如果您的組態符合下列需求、可以使用此方法：
 
 * 套用標準RCF組態。
-* 。 https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["RcfFileGenerator"] 必須能夠建立套用的相同RCF檔案、以及相同的版本和組態（平台、VLAN）。
-* NetApp並未針對特殊組態提供所套用的RCF檔案。
-* RCF檔案在套用之前並未變更。
-* 在套用目前的RCF檔案之前、已遵循將交換器重設為原廠預設值的步驟。
+* The https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["RcfFileGenerator"]必須能夠建立與所應用的相同的 RCF，具有相同的版本和組態（平台、VLAN）。
+* 所應用的 RCF 不是由 NetApp 為特殊組態所提供的。
+* RCF 在套用之前未經任何變更。
+* 在套用目前 RCF 之前，已依照步驟將交換器重設為出廠預設值。
 * 套用RCF之後、不會變更交換器（連接埠）組態。
 +
-如果您不符合這些需求、則無法使用在產生RCF檔案時所建立的高效能檔案。不過、您可以利用此功能來建立一般的高效能檔案、因為使用此方法的清除是從「show running-config」的輸出衍生而來、而且是最佳實務做法。
+如果您不符合這些要求，則無法使用產生 RCF 時建立的 CleanUpFiles。但是，您可以運用函數建立通用 CleanUpFiles——使用此方法進行的清理工作源自 `show running-config`的輸出，並且是最佳實務做法。
 
 +
 
@@ -71,7 +71,8 @@ NOTE: 您必須依照下列順序更新交換器：switch_a_1、Switch_B_1、Swi
 
 
 .步驟
-. 確定目前的RCF檔案版本、以及使用的連接埠和VLAN：「ip_switch_a_1# show banner motd」
+. link:../install-ip/switch-move-cluster-lifs.html["移動叢集 LIF"]在開始升級之前。
+. 確定目前 RCF 版本，以及正在使用的連接埠和 VLAN： `IP_switch_A_1# show banner motd`
 +
 
 NOTE: 您需要從所有四個交換器取得此資訊、並填寫下列資訊表。
@@ -114,7 +115,7 @@ IP_switch_A_1#
 | 一般資訊 | MetroCluster | 資料 
 
 
-| RCF檔案版本 |  | 1.81 
+| RCF 版本 |  | 1.81 
 
 
 | 交換器類型 |  | NX9336 
@@ -159,31 +160,31 @@ IP_switch_A_1#
 
 | 2. | 11、12 | 259 | 259 
 |===
-. [Cree-RCF-file-and－CleanUpFiles-or－cree-generic-CleanUpFiles]]建立RCF檔案和CleanUpFiles、或為目前組態建立一般的高效能檔案。
+. [[Create-RCF-files-and-CleanUpFiles-or-create-generic-CleanUpFiles]] 建立 RCF 檔案和 CleanUpFiles，或為目前組態建立通用 CleanUpFiles。
 +
 如果您的組態符合先決條件中所述的需求、請選取*選項1*。如果您的組態*不符合先決條件中所列的需求、請選取*選項2*。
 
 +
 [role="tabbed-block"]
 ====
-.選項1：建立RCF檔案和清除更新檔案
+.方案一：建立 RCF 和 CleanUpFiles
 --
 如果組態符合要求、請使用此程序。
 
 .步驟
-.. 使用RcfFileGenerator1.4a（或更新版本）、以您在步驟1中擷取的資訊建立RCF檔案。新版的RcfFileGenerator-會建立一組額外的高效能檔案、您可以使用這些檔案來還原部分組態、並準備交換器套用新的RCF組態。
-.. 比較橫幅motd與目前套用的RCF檔案。平台類型、交換器類型、連接埠和VLAN使用量必須相同。
+.. 使用 RcfFileGenerator 1.4a （或更高版本）建立 RCF，其中包含您在步驟 1 中擷取的資訊。新版本的 RcfFileGenerator 會建立一組額外的 CleanUpFiles，您可以使用這些檔案來回復某些組態，並準備交換器以套用新的 RCF 組態。
+.. 比較橫幅 motd 與目前套用的 RCF。平台類型、交換器類型、連接埠和 VLAN 使用情況必須一致。
 +
 
-NOTE: 您必須使用與RCF檔案相同版本的高效能檔案、以及完全相同的組態。使用任何高效能檔案都無法運作、可能需要完全重設交換器。
-
-+
-
-NOTE: RCF檔案所建立的版本與此無關。ONTAP只有RCF檔案版本很重要。
+NOTE: 您必須使用與 RCF 版本相同且組態完全相同的 CleanUpFiles。使用任何其他 CleanUpFile 都無法正常運作，且可能需要完全重設交換器。
 
 +
 
-NOTE: RCF檔案（即使是相同版本）可能會列出較少或更多平台。請確定您的平台已列出。
+NOTE: RCF 所針對的 ONTAP 版本無關緊要。只有 RCF 版本才重要。
+
++
+
+NOTE: 即使是同一版本的 RCF，列出的平台數量也可能有所不同。請確保您的平台已列入其中。
 
 
 
@@ -206,25 +207,25 @@ NOTE: RCF檔案（即使是相同版本）可能會列出較少或更多平台�
 
 --
 ====
-. [[Cree-be-on-ree-rCF-files-for the -new組態]]建立新組態的「新」RCF檔案。建立這些檔案的方式與您在上一個步驟中建立檔案的方式相同、只是選擇個別ONTAP 的版本即可。
+. [[Create-the-new-RCF-files-for-the-new-configuration]] 為新組態建立「新的」RCF 檔案。建立這些檔案的方式與上一個步驟建立檔案的方式相同，只是需要選擇對應的 ONTAP 和 RCF 版本。
 +
-完成此步驟之後、您應該擁有兩組RCF檔案、每組檔案包含12個檔案。
+完成此步驟後，您應該會得到兩組 RCF 檔案，每組包含十二個檔案。
 
 . 將檔案下載至bootflash。
 +
-.. 下載您在中建立的高效能檔案 <<Create-RCF-files-and-CleanUpFiles-or-create-generic-CleanUpFiles,建立RCF檔案和CleanUpFiles、或為目前組態建立一般的CleanUpFiles>>
+.. 下載您在 <<Create-RCF-files-and-CleanUpFiles-or-create-generic-CleanUpFiles,建立 RCF 和 CleanUpFiles，或為目前組態建立通用 CleanUpFiles>> 中建立的 CleanUpFiles
 +
 
-NOTE: 此高效能檔案適用於目前套用的RCF檔案、*不適用於您要升級至的新RCF。
+NOTE: 此 CleanUpFile 適用於目前套用的 RCF，而*非*您要升級至的新 RCF。
 
 +
 例如：Switch-A1的高效能檔案：「Cleanup_NX9336_v1.81_Switch-a1.txt'
 
-.. 下載您在中建立的「新」RCF檔案 <<Create-the-new-RCF-files-for-the-new-configuration,建立新組態的「新」RCF檔案。>>
+.. 下載您在 <<Create-the-new-RCF-files-for-the-new-configuration,為新組態建立「新的」RCF。>> 中建立的「新」RCF
 +
-Switch-A1的RCF檔案範例：「NX9336_v1.90_Switch-a1.txt'
+交換器 A1 的範例 RCF： `NX9336_v1.90_Switch-A1.txt`
 
-.. 下載您在中建立的高效能檔案 <<Create-the-new-RCF-files-for-the-new-configuration,建立新組態的「新」RCF檔案。>> 此步驟為選用步驟、您日後可以使用此檔案來更新交換器組態。它符合目前套用的組態。
+.. 下載您在 <<Create-the-new-RCF-files-for-the-new-configuration,為新組態建立「新的」RCF。>> 中建立的 CleanUpFiles。此步驟為選用步驟——您日後可使用該檔案來更新交換器組態。它與目前套用的組態相符。
 +
 例如：Switch-A1的高效能檔案：「Cleanup_NX9336_v1.90_Switch-a1.txt'
 
@@ -294,13 +295,13 @@ NOTE: 指令碼可能需要一段時間才能返回交換器提示。不需要�
 ** 未設定連接埠設定檔
 ** 所有乙太網路介面（mgmt0除外、它不應顯示任何組態、而且只應設定VLAN 1）。
 +
-如果您發現已設定上述任何項目、則可能無法套用新的RCF檔案組態。不過、您可以重新載入交換器*而不將執行中的組態儲存至啟動組態、以回復到先前的組態。交換器會顯示先前的組態。
+如果發現上述任何一項已設定，則可能無法套用新的 RCF 組態。但是，您可以透過重新載入交換器（ *但不*將執行中的組態儲存到啟動組態）來回復至先前的組態。交換器將以先前的組態啟動。
 
 
 
-. 套用RCF檔案並確認連接埠已上線。
+. 套用 RCF 並驗證連接埠是否線上。
 +
-.. 套用RCF檔案。
+.. 套用 RCF。
 +
 [listing]
 ----
@@ -328,4 +329,67 @@ IP_switch_A_1# copy running-config startup-config
 
 IP_switch_A_1# reload
 ----
+. 修改所有叢集 LIF 以啟用自動還原：
++
+.. 重新啟用自動還原：
++
+`network interface modify -vserver Cluster -lif * -auto-revert true`
+
++
+[listing]
+----
+cluster_A::*> network interface modify -vserver Cluster -lif * -auto-revert true
+
+Warning: Changes to a cluster LIF can affect the health of the Cluster. Are you
+         sure you want to continue? {y|n}: y
+4 entries were modified.
+
+cluster_A::*>
+----
+.. 將所有目前不在原始連接埠上的叢集 LIF 恢復到其原始連接埠：
++
+`network interface revert -vserver Cluster -lif *`
+
++
+請稍等幾分鐘，讓 LIF 回復其主連接埠：
+
+.. 確認所有 LIF 都位於其主連接埠：
++
+[listing]
+----
+cluster_A::*> network interface show -role cluster
+            Logical        Status     Network            Current       Current Is
+Vserver     Interface      Admin/Oper Address/Mask       Node          Port    Home
+----------- -------------- ---------- ------------------ ------------- ------- ----
+Cluster
+            node_A_1_clus1 up/up      192.168.204.88/18  node_A_1      e4a     true
+            node_A_1_clus2 up/up      192.168.204.93/18  node_A_1      e4b     true
+            node_A_2_clus1 up/up      192.168.204.96/18  node_A_2      e4a     true
+            node_A_2_clus2 up/up      192.168.204.97/18  node_A_2      e4b     true
+4 entries were displayed.
+----
+.. 驗證 MetroCluster 節點狀態：
++
+「不一樣的秀」MetroCluster
+
++
+[listing]
+----
+cluster_A::*> metrocluster node show
+
+DR                               Configuration  DR
+Group Cluster Node               State          Mirroring Mode
+----- ------- ------------------ -------------- --------- --------------------
+1     cluster_A
+              node_A_1           configured     enabled   normal
+              node_A_2           configured     enabled   normal
+      cluster_B
+              node_B_1           configured     enabled   normal
+              node_B_2           configured     enabled   normal
+4 entries were displayed.
+
+cluster_A::*>
+----
+
+
 

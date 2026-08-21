@@ -154,6 +154,10 @@ Rebooting to load the restored env file...
 +
 根據金鑰管理員類型，選擇選項 "`10`" 或選項 "`11`"，然後在第一個開機功能表提示字元處選擇選項 `6`，以執行還原程序。若要完全開機節點，您可能需要重複還原程序，然後選擇選項 "`1`"（正常開機）。
 
++
+
+NOTE: 執行開機功能表選項 `6`時，MetroCluster bootarg 值可能需要重設。請參閱 link:upgrade-mcc-ip-manual-apply-rcf-set-bootarg.html#set-the-metrocluster-ip-bootarg-variables["設定MetroCluster 靜態IP bootarg變數"]。
+
 . 等待更換的節點開機。
 +
 如果任一節點處於接管模式、請使用「儲存容錯移轉恢復」命令執行恢復。
