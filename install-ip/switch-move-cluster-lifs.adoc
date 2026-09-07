@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: ip, switch, configuring, configure, factory defaults, cisco, MACsec encryption, 9336C, 9336, forward error correction, fec 
 summary: 更新交換器韌體或參考組態檔案 （RCF） 時，需要將叢集 LIF 移至合作夥伴交換器，以便在升級期間實現叢集的無中斷運作。 
 ---
-= 在更換 MetroCluster IP 交換器、變更 RCF 或更新韌體之前，請先移動叢集 LIF
+= 在 MetroCluster IP 組態中進行交換器、RCF 或韌體變更之前，移動叢集 LIF
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

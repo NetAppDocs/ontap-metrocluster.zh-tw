@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, configuration, worksheets, fc, switches, sas, bridges 
 summary: 在開始設定MetroCluster 「不必要站台」之前、您應該先收集必要的組態資訊。 
 ---
-= FC交換器和FC對SAS橋接器的組態工作表
+= MetroCluster FC 交換器和 FC 轉 SAS 橋接器的組態工作表
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

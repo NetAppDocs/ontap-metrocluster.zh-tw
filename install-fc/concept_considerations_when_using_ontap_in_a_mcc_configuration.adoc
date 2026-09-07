@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, ontap, configuration 
 summary: 在進行不實的組態中使用ONTAP 時MetroCluster 、您應該注意授權、對等處理MetroCluster 不符合此功能的叢集、執行Volume作業、NVFIL作業及其他ONTAP 的不實作業等特定考量。 
 ---
-= 在一個邊的組態中使用ONTAP 邊的考量MetroCluster
+= 適用於 MetroCluster 組態的 ONTAP 考量事項
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

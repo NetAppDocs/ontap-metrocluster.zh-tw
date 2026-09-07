@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, reset, cisco, fc, switch, factory, defaults 
 summary: 在安裝新的軟體版本和RCFs之前、您必須先清除Cisco交換器組態並執行基本組態。 
 ---
-= 將Cisco FC交換器重設為原廠預設值
+= 在 MetroCluster FC 組態中，將 Cisco FC 交換器重設為出廠預設值
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

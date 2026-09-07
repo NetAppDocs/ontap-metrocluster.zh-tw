@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, download, install, cisco, fc, rcf, files 
 summary: 您必須將RCF檔案下載到MetroCluster 以「支援」為基礎的各個交換器組態中。 
 ---
-= 下載並安裝Cisco FC RCF檔案
+= 在 MetroCluster FC 組態中下載並安裝 Cisco FC 交換器 RCF 檔案
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

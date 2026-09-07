@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords:  
 summary:  
 ---
-= 測試MetroCluster 此功能組態
+= 測試MetroCluster 該組態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: ip, switch, configuring 
 summary: 您必須設定IP交換器、才能提供後端MetroCluster 的不中斷IP連線功能。 
 ---
-= 了解如何設定 MetroCluster IP 交換器
+= MetroCluster IP 交換器組態工作流程
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

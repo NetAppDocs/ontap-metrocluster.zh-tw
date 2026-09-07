@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, illustration, cluster, peering, network 
 summary: 透過客戶提供的叢集對等網路、將會對支援此組態的兩個叢集MetroCluster 進行對等連接。叢集對等功能可在站台之間同步鏡射儲存虛擬機器（SVM、先前稱為Vserver\）。 
 ---
-= 叢集對等網路的圖例
+= MetroCluster FC 組態中的叢集對等關係網路圖解
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

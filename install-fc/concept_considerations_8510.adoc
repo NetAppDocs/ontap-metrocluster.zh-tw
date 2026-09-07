@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: preparing, prepare, metrocluster, mcc, installation, install, differences, configurations, between, considerations, all, san, array, asa, cluster, peering, prerequisites, dedicated, ports, sharing, data, ports, native, disk, shelves, array, luns, transitions, 7-mode, isls, tdm/wdm, fabric-attached, iod, ood, encryption, devices, unmirrored, aggregates, maintenance, requiring, power, shutdown, firewall, hardware, racking, cabling, setup, checklist, all san array, asa 
 summary: 當您準備MetroCluster 進行此版本的安裝時、您應該瞭解MetroCluster 到該系統的硬體架構和必要元件。 
 ---
-= 使用Brocade DCX 8510-8交換器的需求
+= 在 MetroCluster FC 組態中使用 Brocade DCX 8510-8 交換器的要求
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

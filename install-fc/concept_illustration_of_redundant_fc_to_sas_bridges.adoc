@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, illustration, redundant, fc, sas, bridges 
 summary: FC至SAS橋接器可在SAS附加磁碟與FC交換器架構之間提供傳輸協定橋接。 
 ---
-= 備援FC對SAS橋接器的圖例
+= MetroCluster FC 組態中備援 FC-to-SAS 橋接器的插圖
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

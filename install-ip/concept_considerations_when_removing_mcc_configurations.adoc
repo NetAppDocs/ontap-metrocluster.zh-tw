@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: remove, removing, metrocluster, configuration, disk, connectivity, interconnect, adjust, support, state, remove, technical, support, consideration, contact 
 summary: 移除MetroCluster 完「支援」組態之後、所有磁碟連線和互連都應調整為支援狀態。如果您需要移除MetroCluster 該組態、請聯絡技術支援部門。 
 ---
-= 移除MetroCluster 不完整的組態
+= 刪除 MetroCluster IP 組態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

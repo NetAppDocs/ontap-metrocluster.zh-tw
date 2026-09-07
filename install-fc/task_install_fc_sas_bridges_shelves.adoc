@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: install, installing, fc-to-sas, fc, sas, bridges, disk, shelves, atto, fibrebridge 
 summary: 在組態中新增儲存設備時、您可以安裝Atto FibreBridge橋接器和SAS磁碟櫃、並進行纜線連接。 
 ---
-= 安裝FC至SAS橋接器和SAS磁碟櫃
+= 在 MetroCluster FC 組態中安裝 FC 對 SAS 橋接器和 SAS 磁碟櫃
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: install, applicable, configuration, file, nvidia, cluster, switch, health, monitor, ontap 
 summary: 您可以使用此程序來安裝適用的組態檔、以監控 NVIDIA SN2100 叢集交換器的叢集交換器健全狀況。 
 ---
-= 為NVIDIA SN2100 MetroCluster IP 交換器安裝乙太網路交換器健康監視器設定檔
+= 安裝適用於 NVIDIA SN2100 MetroCluster IP 交換器的 CSHM 檔案
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

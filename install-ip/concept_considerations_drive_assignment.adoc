@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: drive auto-assignment, drive, adp, advanced disk partitioning, root disk, unmirrored root, data partition, root partition, shelf-by-shelf, AFF A320, AFF A220, AFF A250, C250, AFF A300, AFF A400, C400, AFF A700, AFF A800, FAS2750, FAS8200, FAS500f, FAS9000 
 summary: 從推出《支援使用ADP的更新系統》（進階磁碟分割）的《支援更新安裝的支援範例ONTAP 》（《支援使用MetroCluster ADP的更新AFF 系統》、《支援更新的安裝程序》、 
 ---
-= MetroCluster 的IP 需求，用於自動驅動分配和 ADP 系統
+= MetroCluster IP 磁碟機指派和 ADP 需求
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

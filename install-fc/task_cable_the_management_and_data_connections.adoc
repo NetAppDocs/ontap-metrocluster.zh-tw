@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, cable, management, data, connections 
 summary: 您必須將每個儲存控制器上的管理和資料連接埠纜線連接至站台網路。 
 ---
-= 管理與資料連線的佈線
+= 以 MetroCluster FC 組態連接管理和資料連線
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

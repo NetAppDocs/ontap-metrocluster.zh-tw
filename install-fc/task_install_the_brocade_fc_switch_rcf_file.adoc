@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, brocade, fc, switch, rcf, file 
 summary: 當您設定Brocade FC交換器時、可以安裝交換器組態檔、為特定組態提供完整的交換器設定。 
 ---
-= 安裝Brocade FC交換器RCF檔案
+= 在 MetroCluster FC 組態中安裝 Brocade FC 交換器 RCF 檔案
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

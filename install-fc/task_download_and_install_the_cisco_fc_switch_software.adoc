@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, download, cisco, fc, switch, nx, software 
 summary: 您必須將交換器作業系統檔案和RCF檔案下載到MetroCluster 位在整個過程中的每個交換器。 
 ---
-= 下載並安裝Cisco FC交換器NX-OS軟體
+= 在 MetroCluster FC 組態中下載並安裝 Cisco FC 交換器 NX-OS 軟體
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

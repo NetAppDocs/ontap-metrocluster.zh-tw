@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: MetroCluster configurations 
 summary: 您必須在MetroCluster Ef2組態中設定每個Brocade交換器架構。 
 ---
-= 手動設定Brocade FC交換器
+= 在 MetroCluster FC 組態中手動設定 Brocade FC 交換器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: ontap, metrocluster, mediator, timeout, settings, change, update, default, value 
 summary:  
 ---
-= 在 MetroCluster IP 組態中增加預設 ONTAP Mediator 信箱逾時
+= 在 MetroCluster IP 組態中增加 ONTAP Mediator 信箱逾時時間
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

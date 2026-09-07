@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, port, assignments, systems, two, initiator, ports 
 summary: 您可以使用AFF 單一啟動器連接埠來設定FAS8020、AFF8020、FAS8200和E4A300系統、並為每個光纖配置兩個啟動器連接埠。 
 ---
-= 使用兩個啟動器連接埠的系統連接埠指派
+= 使用兩個啟動器連接埠的 MetroCluster FC 系統的連接埠指派
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

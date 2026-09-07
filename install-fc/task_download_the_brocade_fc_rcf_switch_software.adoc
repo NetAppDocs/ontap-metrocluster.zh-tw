@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, download, brocade, fc, switch, rcf, file 
 summary: 您必須將參考組態（RCF）檔案下載到MetroCluster 位在整個交換器組態中的每個交換器。 
 ---
-= 下載Brocade FC交換器RCF檔案
+= 下載 Brocade FC 交換器的 RCF 檔案（ MetroCluster FC 組態）
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, reenable, switch, fabric, verify, operation 
 summary: 您必須啟用FC交換器架構、並確保交換器和裝置正常運作。 
 ---
-= 重新啟用交換器架構並驗證作業
+= 重新啟用 MetroCluster FC 交換器架構並驗證其運作情況
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

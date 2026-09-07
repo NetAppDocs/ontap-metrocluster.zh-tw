@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, fc, switches, run, configuration, file 
 summary: 如果您想要簡化交換器的設定程序、可以下載並套用參考組態檔案、為特定組態提供完整的交換器設定。 
 ---
-= 執行組態檔來設定FC交換器
+= 使用 RCF 設定 MetroCluster FC 交換器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

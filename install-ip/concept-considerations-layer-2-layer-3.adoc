@@ -4,8 +4,10 @@ sidebar: sidebar
 keywords: differences, eight-node, four-node, fabric-attached, stretch, metrocluster ip, storage, bridges, fc-to-sas, atto, fibrebridge, SAS, local HA, auso, automatic unplanned switchover, mediator, tiebreaker 
 summary: 視您的需求而定、您可以使用共享的第 2 層或第 3 層網路來部署 MetroCluster 。 
 ---
-= 在共用第 2 層或第 3 層網路中部署MetroCluster IP 配置的要求
+= MetroCluster 共享的第 2 階層和第 3 階層網路的 IP 要求
 :allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
 
 
 [role="lead"]

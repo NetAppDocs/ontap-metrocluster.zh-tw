@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, rack, hardware, components 
 summary: 如果您尚未收到已安裝在機櫃中的設備、則必須裝入元件機架。 
 ---
-= 安裝硬體元件
+= 將硬體組件以 MetroCluster FC 組態安裝在機架上
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

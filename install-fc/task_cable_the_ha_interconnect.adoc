@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, cable, ha, interconnect, cabling 
 summary: 如果您有八節點或四節點MetroCluster 的不一致組態、而且HA配對內的儲存控制器位於不同的機箱中、則必須將HA互連纜線連接至控制器之間。 
 ---
-= HA互連纜線
+= 以 MetroCluster FC 組態連接 HA 互連纜線
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

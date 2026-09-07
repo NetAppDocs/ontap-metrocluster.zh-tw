@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: cisco, MACsec encryption 
 summary: 如有需要，僅在站點間執行的 WAN ISL 連接埠上配置 MACsec 加密。如果選擇使用 MACsec 加密，請在套用正確的 RCF 檔案後進行設定。 
 ---
-= 在 MetroCluster IP 站點中設定 Cisco 9336C 交換器的 MACsec 加密（選用）
+= 在 Cisco 9336C 交換器上設定 MetroCluster IP 中的 MACsec 加密
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

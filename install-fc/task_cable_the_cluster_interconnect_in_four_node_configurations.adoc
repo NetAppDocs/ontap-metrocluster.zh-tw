@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, cable, cluster, interconnect, four, node 
 summary: 在八節點或四節點MetroCluster 的「樣」組態中、您必須在每個站台的本機控制器模組之間連接叢集互連。 
 ---
-= 使用八節點或四節點組態來連接叢集互連
+= 在八節點或四節點 MetroCluster FC 組態中為叢集互連佈線
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

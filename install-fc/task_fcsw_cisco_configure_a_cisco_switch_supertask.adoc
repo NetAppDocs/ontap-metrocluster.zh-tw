@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords:  
 summary: 必須針對ISL和儲存連線、適當設定每台MetroCluster 採用此功能的Cisco交換器。 
 ---
-= 手動設定Cisco FC交換器
+= 在 MetroCluster FC 組態中手動設定 Cisco 交換器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

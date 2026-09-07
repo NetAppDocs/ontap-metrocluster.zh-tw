@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: cabling, cable, component, sip, isl, link, site, management, network, hardware, component, switch, cluster, connection, management, data, configuring, configure 
 summary: 連接埠在MetroCluster 一個靜態IP組態中的使用取決於交換器機型和平台類型。 
 ---
-= MetroCluster IP 設定中NVIDIA支援的 SN2100 IP 交換器的平台連接埠分配
+= MetroCluster IP 組態中 NVIDIA SN2100 交換器的平台連接埠分配
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

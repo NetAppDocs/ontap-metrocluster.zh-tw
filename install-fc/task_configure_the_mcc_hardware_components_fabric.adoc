@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, cable, configuration 
 summary: 必須在兩個地理站台上實際安裝、連接及設定支援的元件。MetroCluster 
 ---
-= 佈線連接架構MetroCluster 的不整合式架構組態
+= 纜線A連接架構MetroCluster 的不全配置
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

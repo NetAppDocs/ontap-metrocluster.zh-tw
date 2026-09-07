@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, fc, vi, ports, quad, port, card 
 summary: 如果您在FAS8020系統上使用X1132A-R6四埠卡、您可以進入維護模式、設定用於FC-VI和啟動器的1a和1b連接埠。從原廠收到的不需要此功能MetroCluster 、因為系統會根據您的組態設定適當的連接埠。 
 ---
-= 在FAS8020系統上的X1132A-R6四埠卡上設定FC-VI連接埠
+= 在 MetroCluster FC 組態中，為 FAS8020 系統上的 X1132A-R6 四埠卡設定 FC-VI 連接埠
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

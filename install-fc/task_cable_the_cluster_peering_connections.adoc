@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, fabric, installation, cable, cluster, peering, connections 
 summary: 您必須連接用於叢集對等的控制器模組連接埠、以便它們與合作夥伴站台上的叢集建立連線。 
 ---
-= 叢集對等連線纜線
+= 在 MetroCluster FC 組態中連接叢集對等關係連線
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
