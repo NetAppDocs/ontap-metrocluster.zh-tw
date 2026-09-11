@@ -13,11 +13,21 @@ summary: 您可能需要更換故障的交換器、或是升級或降級交換�
 [role="lead"]
 您可能需要更換故障的交換器、升級或降級交換器、或變更現有 MetroCluster IP 交換器的使用。
 
+
+CAUTION: 如果您需要在 AFF A220、AFF A250 或 FAS2750 平台上執行交換器更換，請參閱link:https://kb.netapp.com/on-prem/ontap/mc/MC-KBs/Cluster_and_HA_communication_issues_during_back-end_switch_replacement["知識庫文章 "後端交換器更換期間的叢集和 HA 通訊問題""^]。
+
 .關於這項工作
 此程序適用於使用NetApp驗證的交換器。如果您使用的是符合MetroCluster規範的交換器、請洽詢交換器廠商。
 
 link:enable-console-logging-before-maintenance.html["啟用主控台記錄"] 在執行此工作之前。
 
+[NOTE]
+====
+使用 X60134A 網路介面卡的平台不支援混合連結速度。若要檢查您的平台是否受到影響，請參閱 https://hwu.netapp.com/["Hardware Universe"^]。
+
+如果您在受影響的平台上以使用 100G 連接埠的新交換器取代使用 25G 連接埠的交換器（例如，在 AFF A50 平台上以 Cisco 9336C 交換器取代 BES-53248 交換器），請參閱 link:https://kb.netapp.com/on-prem/ontap/mc/MC-KBs/100G_link_not_coming_online_during_MetroCluster_back-end_switch_replacement?caseId=2010523490["知識庫文章 "100G 連結在 MetroCluster 後端交換器更換期間無法線上""^]。
+
+====
 此程序支援下列轉換：
 
 * 變更交換器廠商、類型或兩者。當交換器故障時、新交換器可以與舊交換器相同、或者您可以變更交換器類型（升級或降級交換器）。

@@ -8759,19 +8759,13 @@
   <block id="63db75147bb8e9b621622657ecea58d6" category="section-title">在新的控制器和機箱上設定HA狀態</block>
   <block id="68f4cfb521940b7d319f1fa0c86e6659" category="paragraph">您必須驗證控制器和機箱的HA狀態、並視需要更新狀態以符合您的系統組態。</block>
   <block id="9c1c5be053b28ba5edd13b92cac80497" category="paragraph">所有元件的HA狀態應為MCC。</block>
-  <block id="9c70e72e74a5beec346c7fba9e09ac77" category="list-text">停止節點：「halt（停止）」節點應在「loader&gt;」提示字元停止。</block>
-  <block id="a9c684b6388493b28c8bae9224fcb530" category="list-text">在每個節點上、檢查系統日期、時間和時區：「顯示日期」</block>
-  <block id="19940e0e663b8b77ef5ae9bed0adc639" category="list-text">如有必要、請以UTC或格林尼治標準時間（GMT）設定日期：「et date &lt;mm/dd/ym&gt;」（設定日期：月/日/西元年）</block>
   <block id="1710c242f70e7457f5ce5cf6df49673b" category="list-text">請在開機環境提示字元中使用下列命令檢查時間：「How Time」（顯示時間）</block>
   <block id="1fcd714d4fea05c767643d4983aa8065" category="list-text">如有必要、請以UTC或格林尼治標準時間設定時間：「設定時間&lt;hh：mm：ss&gt;」</block>
   <block id="29258939e19faf1f3be001f515073564" category="list-text">儲存設定：「aveenv」</block>
   <block id="86c3751b98ae9444b01e92915c46d8a1" category="list-text">收集環境變數：「prontenv」</block>
-  <block id="17cd34e04880fa15bf7da7bdee12d187" category="list-text">將節點重新開機回「維護」模式、使組態變更生效：「boot_ONTAP maint」</block>
   <block id="92864f4a1e3e8b31f329dde898c399e7" category="list-text">確認您所做的變更有效、而且ucadmin顯示FC啟動器連接埠為線上狀態。</block>
   <block id="9be73b3dd95d39ff15e33b30275709d3" category="cell">如果您有此類HBA…</block>
   <block id="8ad2992d6c032a4514706c63ee5d4d1b" category="cell">使用此命令…</block>
-  <block id="6f991264f748ca5e72084279b6293fcc" category="list-text">驗證ha-config模式：「ha-config show」</block>
-  <block id="351a906b91969bd3f60ac4f7ef2b51fe" category="list-text">請確認您有下列輸出：</block>
   <block id="fe8b2cbe27aeee8cf3fd12fd4f19075c" category="cell">如果MetroCluster 該組態有...</block>
   <block id="7a0cb0e9d6bfae35a7d862f122269833" category="cell">HA狀態應該是...</block>
   <block id="2f49b4fc6ba0e45f4fa1687271900aa7" category="paragraph">兩個節點</block>
@@ -10810,7 +10804,6 @@
   <block id="16d9a40603d44eea561b00730eec3d91" category="paragraph">更新版本ONTAP</block>
   <block id="4951fe611f97b799b2abaf7474848aa1" category="inline-link-macro">作業系統支援對照表</block>
   <block id="30177b72c8d5a1bab13142ff42dfc513" category="paragraph">請參閱 <block ref="9f4435e7cf286b329f02bc934ba0dd4b" category="inline-link-macro-rx"></block> 以取得詳細資料。</block>
-  <block id="e27eee16ff4c1ce2072fea31052ce7d5" category="paragraph">無。相依性與安裝相關。</block>
   <block id="4a558332080902b1daf6c9eb900f075a" category="summary">您遵循的 tiebreaker 安裝程序取決於您要安裝的 tiebreaker 版本。</block>
   <block id="686cbe9ae98dac9e3c34fe747bedda27" category="doc">選擇您的安裝程序</block>
   <block id="de537937e28d6ff9bfed73c24f238620" category="paragraph">斷路器 1.6.</block>
@@ -14743,4 +14736,23 @@
   <block id="edb9b445f13c3e9e05b61cc6e0b3efdc" category="doc">設定 NVIDIA IP SN2100 交換器以進行 MetroCluster IP 組態</block>
   <block id="20e757ff864b6acd14ec41e7165a63f9" category="doc">在 MetroCluster IP 組態中增加 ONTAP Mediator 信箱逾時時間</block>
   <block id="f081a35160d006cd5323e0740d06220e" category="doc">MetroCluster IP 組態的連接埠表</block>
+  <block id="e0ff38f1490ce2495524f7429045ad81" category="inline-link-macro">知識庫文章 "後端交換器更換期間的叢集和 HA 通訊問題"</block>
+  <block id="93c539486532bcd2c15f294efff69106" category="admonition">如果您需要在 AFF A220、AFF A250 或 FAS2750 平台上執行交換器更換，請參閱<block ref="3468e696d0ad9ec4d429e1b845c952a7" category="inline-link-macro-rx"></block>。</block>
+  <block id="fe4617c4a015a1feba78882255c11625" category="paragraph">使用 X60134A 網路介面卡的平台不支援混合連結速度。若要檢查您的平台是否受到影響，請參閱<block ref="a9613e1dbacf145285c45df4264fe797" category="inline-link-rx"></block>。</block>
+  <block id="5f0a2538bca6fe75656437edc2b047c7" category="inline-link-macro">知識庫文章 "100G 連結在 MetroCluster 後端交換器更換期間無法線上"</block>
+  <block id="657f971f966b2ce2da53f2f9bf9abb4b" category="paragraph">如果您在受影響的平台上以使用 100G 連接埠的新交換器取代使用 25G 連接埠的交換器（例如，在 AFF A50 平台上以 Cisco 9336C 交換器取代 BES-53248 交換器），請參閱 <block ref="6b31e2facf5f0ecbaec230ff30732341" category="inline-link-macro-rx"></block>。</block>
+  <block id="2c949cfd6a2e8390ab22577d8fcb8862" category="paragraph">無。OpenJDK 19.0.2 隨附於安裝中。</block>
+  <block id="cbf667b7a6abb8a525741cdc92045f34" category="paragraph">所有組件的 HA 狀態應為<block ref="f46f944e351f8b92e40c3308318738a3" prefix=" " category="inline-code"></block>。</block>
+  <block id="de63ff438cd7316a835d354fccfe0c46" category="list-text">在每個節點上，檢查系統日期、時間和時區：</block>
+  <block id="3e72511c09e554faf49052f79d627689" category="paragraph"><block ref="7e17e2b336dbdd66c2f45405573b53de" prefix="" category="inline-code"></block></block>
+  <block id="1bf5eb31de796d79cb8b6dfd332d4bb6" category="list-text">如有必要，請將日期設定為 UTC 或格林威治標準時間（GMT）：</block>
+  <block id="833ce90830a0406f310191c0da1f76da" category="paragraph"><block ref="ce2b665b5815a9c7e13cdb6fc96a5a98" prefix="" category="inline-code"></block></block>
+  <block id="b6d433a7d610fd177455bd83030adfbf" category="list-text">在開機環境提示字元下，使用下列命令檢查時間：</block>
+  <block id="667f3a6a11750e110d0c1442d2aa20e7" category="paragraph"><block ref="33f065aac47385ce7b7c4bc5d49f430b" prefix="" category="inline-code"></block></block>
+  <block id="3cc2598fed5ed84edf9cf18c5a8293c6" category="list-text">如有必要，請將時間設定為 UTC 或 GMT：</block>
+  <block id="25a249a3cdba620e6eba67639be13589" category="paragraph"><block ref="aa979bf34f52b205295408bd829f28b6" prefix="" category="inline-code"></block></block>
+  <block id="e02ed2f754f906507b04045b6d64c6a8" category="list-text">儲存設定：</block>
+  <block id="be169689a01b80888d8e5aa7db10c6e9" category="list-text">收集環境變數：</block>
+  <block id="c464415fe9040cd42442afd5413727d2" category="list-text">驗證 ha-config 模式：</block>
+  <block id="bb903f8039d8d74f0348f46c24a33392" category="paragraph">輸出結果應與以下範例類似：</block>
 </blocks>
