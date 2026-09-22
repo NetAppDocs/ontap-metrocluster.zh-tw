@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation, cable, two, nose, bridge, attached, stretch, configuration 
 summary: 必須在兩個地理站台上實際安裝、連接及設定支援的元件。MetroCluster 
 ---
-= 連接雙節點橋接式Stretch MetroCluster 功能的纜線配置
+= 連接連接雙節點橋接器的Stretch MetroCluster 功能區組態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

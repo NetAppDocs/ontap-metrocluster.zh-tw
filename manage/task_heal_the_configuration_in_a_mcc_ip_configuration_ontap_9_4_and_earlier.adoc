@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: heal, aggregate, preparation, switchback, operation, configuration, metrocluster, ip, ontap 
 summary: 您必須修復集合體、才能準備進行切換作業。 
 ---
-= 修復MetroCluster 以靜態IP組態設定的組態（ONTAP 例如、還原9.4及更早版本）
+= 修復舊版 ONTAP 的 MetroCluster IP 組態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

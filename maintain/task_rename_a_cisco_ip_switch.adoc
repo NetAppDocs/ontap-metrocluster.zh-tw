@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, rename, cisco, ip, switch 
 summary: 您可能需要重新命名Cisco IP交換器、以便在整個組態中提供一致的命名。 
 ---
-= 重新命名Cisco IP交換器
+= 在 MetroCluster IP 組態中重新命名 Cisco IP 交換器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

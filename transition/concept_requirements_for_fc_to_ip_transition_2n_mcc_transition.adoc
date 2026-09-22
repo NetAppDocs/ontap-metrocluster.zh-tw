@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: start, transition, process, configuration, requirement, meet, preparing, prepare, disruptive, fc-to-ip, transition, general, workflow, disruptive, map, port, fc, node, ip 
 summary: 在開始轉換程序之前、您必須確定組態符合要求。 
 ---
-= 準備顛覆性的FC對IP轉換
+= 準備進行中斷營運的 MetroCluster FC 到 IP 轉換
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

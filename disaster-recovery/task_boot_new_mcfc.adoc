@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: boot, controller, modules, fc 
 summary: 完成資料與根集合體的Aggregate修復之後、您必須在災難站台上開機節點。 
 ---
-= 開機新的控制器模組（MetroCluster 不含FFC組態）
+= 在 MetroCluster FC 組態中將新的控制器模組開機
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

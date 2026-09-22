@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: replace, metrocluster, maintain, service, pair, fibrebridge, bridges 
 summary: 若要善用光纖橋接器7600N或7500N橋接器上的額外FC2連接埠、並降低機架使用率、您可以不中斷地更換6500N橋接器、並在單一一連接埠的一對光纖橋接器7600N或7500N橋接器之後、合併最多四個儲存堆疊。 
 ---
-= 以7600N或7500N橋接器取代一對FibreBridge 6500N橋接器
+= 在 MetroCluster FC 組態中將 FibreBridge 6500N 橋接器更換為 7600N 或 7500N 橋接器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

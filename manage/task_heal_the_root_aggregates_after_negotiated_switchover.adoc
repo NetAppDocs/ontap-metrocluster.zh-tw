@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: data, aggregate, heal, root, preparation, switchback, operation, negotiate, switchover 
 summary: 在資料集合體修復之後、您必須修復根集合體、以準備進行切換作業。 
 ---
-= 協調切換後修復根集合體
+= 切換後修復 MetroCluster 根目錄集合體
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

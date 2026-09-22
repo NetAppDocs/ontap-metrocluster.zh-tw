@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation, in, band, management, fc, sas, bridges 
 summary: 從採用FibreBridge 7500N或7600N橋接器的支援版本起、即可支援橋接器的頻內管理、作為橋接器的IP管理替代方案。ONTAP從功能不完善的9.8開始ONTAP 、頻外管理已不再適用。 
 ---
-= FC至SAS橋接器的頻內管理
+= 延伸式 MetroCluster 組態中 FC-to-SAS 橋接器的頻內管理
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

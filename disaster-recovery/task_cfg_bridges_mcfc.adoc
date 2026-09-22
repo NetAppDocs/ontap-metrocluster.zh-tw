@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: fc, sas, bridge, configure, metrocluster, configuration 
 summary: 如果您更換了FC到SAS橋接器、則必須在還原MetroCluster 此功能時進行設定。 
 ---
-= 設定FC對SAS橋接器（MetroCluster 僅限不含FSFC組態）
+= 在 MetroCluster FC 組態中設定 FC-to-SAS 橋接器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

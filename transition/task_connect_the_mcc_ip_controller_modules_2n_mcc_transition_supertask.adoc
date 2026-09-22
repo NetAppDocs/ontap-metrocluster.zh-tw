@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: add, four, controller, module, additional, storage, shelves, shelf, configuration, two-at-a-time, connect, metrocluster, ip, boot, bring, up 
 summary: 您必須在組態中新增四個新的控制器模組和任何其他儲存磁碟櫃。新的控制器模組會一次新增兩個。 
 ---
-= 連接MetroCluster 靜態IP控制器模組
+= 連接MetroCluster 不需記憶的IP控制器模組
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -91,7 +91,7 @@ https://docs.netapp.com/platstor/index.jsp["ONTAP 硬體系統文件"^]
 
 +
 ** link:../install-ip/task_switch_config_broadcom.html#resetting-the-broadcom-ip-switch-to-factory-defaults["將Broadcom IP交換器重設為原廠預設值"]
-** link:../install-ip/task_switch_config_cisco.html#resetting-the-cisco-ip-switch-to-factory-defaults["將 Cisco IP 交換器重設為原廠預設值"]
+** link:../install-ip/task_switch_config_cisco.html#reset-the-cisco-ip-switch-to-factory-defaults["將 Cisco IP 交換器重設為原廠預設值"]
 ** link:../install-ip/task_switch_config_nvidia.html#reset-the-nvidia-ip-sn2100-switch-to-factory-defaults["將NVIDIA IP SN2100交換器重設為原廠預設值"]
 
 

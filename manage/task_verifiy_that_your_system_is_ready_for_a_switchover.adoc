@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: simulate, option, preview, result, switchover, operation, verification, check, precondition, succesful, verify, ready, example 
 summary: 您可以使用-Simulate選項預覽切換作業的結果。驗證檢查可讓您在開始作業之前、驗證是否符合成功執行的大部分先決條件。 
 ---
-= 驗證系統是否已準備好進行切換
+= 確認 MetroCluster 系統已準備好進行切換
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

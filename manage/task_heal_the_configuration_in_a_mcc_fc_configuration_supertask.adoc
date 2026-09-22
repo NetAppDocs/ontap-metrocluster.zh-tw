@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: switchover, perform, heal, operation, restore, metrocluster, functionality, fc, configuration 
 summary: 切換後、您必須執行特定的修復作業、才能還原MetroCluster 還原功能。 
 ---
-= 修復MetroCluster 以不還原FC組態設定的組態
+= MetroCluster FC 組態的組態修復工作流程
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

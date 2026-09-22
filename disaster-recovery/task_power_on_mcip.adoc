@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: power, ip, disaster, site, configuration 
 summary: 您必須開啟MetroCluster 災難現場的磁碟櫃和可靠的IP交換器元件。 
 ---
-= 在災難現場開啟設備電源（MetroCluster 不支援IP組態）
+= 在 MetroCluster IP 組態中啟動災難站台的設備
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

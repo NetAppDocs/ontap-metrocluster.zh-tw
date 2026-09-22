@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, upgrade, rcf, files, ip, switches, cleanupfiles, cisco 
 summary: 您可能需要升級Cisco IP交換器上的RCF檔案。例如ONTAP 、進行升級時、或是交換器韌體升級時、都需要新的RCF檔案。 
 ---
-= 使用高效能檔案升級Cisco IP交換器上的RCF檔案
+= 在 MetroCluster IP 組態中，使用 CleanUpFiles 升級 Cisco 交換器上的 RCF 檔案
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

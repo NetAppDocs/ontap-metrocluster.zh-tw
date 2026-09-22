@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: nondisruptive, transition, fc, ip 
 summary: 從 ONTAP 9.13.1 開始、您可以將工作負載和資料從現有的八節點 MetroCluster FC 組態、無中斷地移轉至新的 MetroCluster IP 組態。 
 ---
-= 不中斷地從MetroCluster 一個不中斷的支援FC移轉至MetroCluster 一個支援功能性的IP組態ONTAP （版本號：9.8及更新版本）
+= 從 MetroCluster FC 到 MetroCluster IP 的不中斷營運的轉換
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

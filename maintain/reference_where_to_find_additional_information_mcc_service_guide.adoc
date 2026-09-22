@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, additional, information 
 summary: 您可以在MetroCluster NetApp豐富的文件中深入瞭解如何設定、操作及監控功能。 
 ---
-= 何處可找到其他資訊
+= 了解更多關於維護 MetroCluster 組態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

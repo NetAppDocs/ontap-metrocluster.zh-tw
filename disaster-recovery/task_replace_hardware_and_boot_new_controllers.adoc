@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: hardware, component, replace, individual, replacement, installation, guide, replacing, controller, booting, new 
 summary: 如果硬體元件必須更換、您必須使用各自的硬體更換與安裝指南來更換。 
 ---
-= 更換硬體並啟動新的控制器
+= 在 MetroCluster 組態中更換硬體並將新控制器開機
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

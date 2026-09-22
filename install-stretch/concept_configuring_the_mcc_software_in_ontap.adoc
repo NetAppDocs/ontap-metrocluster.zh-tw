@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation, configure, software 
 summary: 您必須在MetroCluster 不景點組態中設定每個節點ONTAP 。這包括節點層級的組態、以及將節點組態設定為兩個站台。您也必須在MetroCluster 這兩個站台之間實作「不二」關係。 
 ---
-= 在MetroCluster 不提供的情況下設定功能ONTAP
+= 在 ONTAP 中設定延伸 MetroCluster 軟體
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

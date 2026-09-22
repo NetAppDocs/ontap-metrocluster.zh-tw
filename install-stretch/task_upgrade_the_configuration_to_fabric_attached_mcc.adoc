@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation, transition, stretch, fabric, attacjed, configuration 
 summary: 在架構附加MetroCluster 的支援功能中、節點位於不同的位置。這種地理差異會增加災難保護。若要從延伸MetroCluster 配置轉換為光纖附加的功能、您必須在組態中新增FC交換器、並視需要新增FC至SAS橋接器。 
 ---
-= 從彈性轉換成以網路為基礎MetroCluster 的功能性的不全配置
+= 將延伸式 MetroCluster 組態升級為架構附加
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

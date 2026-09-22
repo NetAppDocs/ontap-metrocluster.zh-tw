@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: notice, alert, message, transition, alert, safe, ignore, tool, transition 
 summary: 您可能會在轉換期間注意到警示訊息。這些警示可以安全地忽略。此外、有些工具在轉換期間無法使用。 
 ---
-= 轉換期間的警示訊息和工具支援
+= 在 MetroCluster 轉換期間的警示訊息與工具支援
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

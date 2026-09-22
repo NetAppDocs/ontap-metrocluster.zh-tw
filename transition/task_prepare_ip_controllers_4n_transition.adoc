@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: Transitioning from MetroCluster FC to MetroCluster IP configurations, review, requirement, preparing, prepare, transition, perform, procedure, order, completing, complete, step, task, moving, move, controller, storage, shelves, shelf, exist, configuration, direct, metrocluster, fc, ip, verify, health, removing, remove, tiebreaker, monitor, software, generating, generate, apply, rcf, switch, controller, configure, prepare, preparing 
 summary: 您必須準備四MetroCluster 個全新的靜態IP節點、並安裝正確ONTAP 的版本。 
 ---
-= 準備MetroCluster 好執行功能
+= 準備MetroCluster 好用作不需要的IP控制器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

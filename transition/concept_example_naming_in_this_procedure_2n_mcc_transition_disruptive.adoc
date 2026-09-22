@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: procedure, example, name, identify, dr, group, node, switch, involve, naming 
 summary: 此程序使用範例名稱來識別整個過程中涉及的DR群組、節點和交換器。 
 ---
-= 此程序中的命名範例
+= 雙節點 MetroCluster FC 到 IP 轉換的命名範例
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

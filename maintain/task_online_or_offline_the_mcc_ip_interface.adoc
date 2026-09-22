@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, online, offline, ip, interface port 
 summary: 執行維護時、您可能需要關閉 MetroCluster IP 介面連接埠。 
 ---
-= 線上或離線 MetroCluster IP 介面連接埠
+= 在 MetroCluster IP 組態中使介面埠線上或離線
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

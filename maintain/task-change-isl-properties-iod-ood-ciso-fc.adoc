@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, change, isl, properties, isl, ports, iod, ood,configuration, cisco, switch 
 summary: 您可以在 Cisco FC 交換器上新增交換器間連結（ ISL ），變更 ISL 速度，以及重新設定訂單內送（ IOD ）或訂單外送（ OD ）設定。 
 ---
-= 變更 Cisco FC 交換器上的 ISL 內容和 IOD/ood 組態
+= 在 MetroCluster FC 組態中更改 Cisco FC 交換器上的 ISL 屬性和 IOD/OOD 組態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

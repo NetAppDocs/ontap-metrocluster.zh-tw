@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, ip, configuration, replacement, controller, module, disaster, site, boot 
 summary: 您必須將災難現場的替換節點開機至ONTAP 該作業系統。 
 ---
-= 以ONTAP 靜態IP組態開機至更換的控制器模組MetroCluster
+= 在 MetroCluster IP 組態中將替換節點開機至 ONTAP
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

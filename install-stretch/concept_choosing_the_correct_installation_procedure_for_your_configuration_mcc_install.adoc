@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation, correct, procedure, configuration 
 summary: 您必須根據儲存控制器與儲存架的連接方式選擇正確的安裝程式。 
 ---
-= 針對您的組態選擇正確的安裝程序
+= 延伸式 MetroCluster 組態的安裝程序
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

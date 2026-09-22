@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: switchover, perform, switchback, system, manager, operation, restore, metrocluster, functionality, ip, configuration 
 summary: 切換後、您必須執行特定的修復作業、才能還原MetroCluster 還原功能。 
 ---
-= 使用系統管理員執行切換和切換（僅限 MetroCluster IP 組態）
+= 在 MetroCluster IP 組態中使用 System Manager 進行切換與切回
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

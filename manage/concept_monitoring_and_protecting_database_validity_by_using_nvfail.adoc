@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: monitor, protect, file, system, consistency, nvfail, parameter, volume, modify, enable, detect, nonvolatile, nvram, switchover, recover, impact, access, nfs, volume, lun, command, monitor, data, loss, event, access 
 summary: Volume modify命令的-nvfail參數可讓ONTAP 人在系統開機或進行切換作業後、偵測非揮發性RAM（NVRAM）的不一致性。它也會警告您、保護系統不受資料存取和修改、直到手動恢復磁碟區為止。 
 ---
-= 使用NVFIL監控及保護檔案系統一致性
+= 使用 NVFAIL 監控與保護 MetroCluster 中的檔案系統一致性
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

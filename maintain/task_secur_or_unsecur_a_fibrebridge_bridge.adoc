@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, secure, unsecure, fibrebridge, bridge 
 summary: 若要在橋接器上輕鬆停用可能不安全的乙太網路傳輸協定、請先從ONTAP 版本資訊9.5開始、確保橋接器安全無虞。這會停用橋接器的乙太網路連接埠。您也可以重新啟用乙太網路存取。 
 ---
-= 保護或取消保護光纖橋接器
+= 在 MetroCluster FC 組態中保護或取消保護 FibreBridge 橋接器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

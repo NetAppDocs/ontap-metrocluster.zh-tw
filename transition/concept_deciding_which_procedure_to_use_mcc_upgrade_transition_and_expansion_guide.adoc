@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: difference, metrocluster, upgrade, expansion, transition, procedure, match, goal, deciding, decide 
 summary: 您必須瞭解MetroCluster 升級、擴充或轉換之間的差異、並選擇符合您目標的程序。 
 ---
-= 決定要使用的程序
+= 決定採用哪一種 MetroCluster 程序
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

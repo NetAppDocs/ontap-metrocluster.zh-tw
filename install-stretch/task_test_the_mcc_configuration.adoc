@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation, test, configuration, verify, switchover, power, line, storage, shelf 
 summary: 您可以測試失敗案例、以確認MetroCluster 正確操作的版本。 
 ---
-= 測試MetroCluster 此功能組態
+= 測試延伸式 MetroCluster 組態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

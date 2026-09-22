@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: Verifying the health of the MetroCluster configuration, review, requirement, preparing, prepare, transition, perform, procedure, order, completing, complete, step, task, moving, move, controller, storage, shelves, shelf, exist, configuration, direct, metrocluster, fc, ip, verify, health, removing, remove, tiebreaker, monitor, software, generating, generate, apply, rcf, switch, controller, configure, prepare, preparing 
 summary: 在執行轉換之前、您必須先驗證MetroCluster 整個流程的健全狀況和連線能力。 
 ---
-= 驗MetroCluster 證資訊功能組態的健全狀況
+= 驗MetroCluster 證整個過程的效能狀況
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

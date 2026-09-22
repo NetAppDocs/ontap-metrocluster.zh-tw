@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: adp, system, assign, surviving, site 
 summary: 在存續站台、您需要手動將位於災難站台的遠端磁碟機指派給存續節點的集區1。 
 ---
-= 在存續站台上指派集區1磁碟機（MetroCluster 不支援的IP組態）
+= 在 MetroCluster IP 組態中，將資源池 1 磁碟指派給存活站台
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

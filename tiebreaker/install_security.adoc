@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: install, tiebreaker, software, monitor, capabilities, capability, cluster, storage, environment, snmp, notification, event, node, connectivity, issue, site, disaster, system, install, upgrade, upgrading, software, dependencies, dependency, package, ntp, requirements, requirements for tiebreaker, tiebreaker requirements, mysql, mariadb, autostart, database 
 summary: Tiebreaker軟體提供叢集式儲存環境的監控功能。當節點連線問題和站台災難發生時、也會傳送SNMP通知。 
 ---
-= 保護 tiebreaker 主機和資料庫的安裝安全
+= 確保 MetroCluster Tiebreaker 主機和資料庫安裝安全
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -161,4 +161,4 @@ link:https://developer.hashicorp.com/vault/tutorials/operations/production-harde
 
 
 .接下來呢？
-link:install-choose-procedure.html["選擇您的安裝程序"] 以安裝或升級 Tiebreaker。
+link:install-choose-procedure.html["選擇您的 MetroCluster Tiebreaker 安裝程序"] 以安裝或升級 Tiebreaker。

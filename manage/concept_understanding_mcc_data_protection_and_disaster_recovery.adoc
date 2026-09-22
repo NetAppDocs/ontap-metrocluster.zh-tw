@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: helpful, metrocluster, protect, data, transparent, recovery, failure, manage, switchover, switchback, understand, disaster, eight-node, four-node, local, failover, configuration, configuration, disaster, recovery, method, nondisruptive, operation, two-node, node, configuration, overview, fc, ip, automatic, heal, aggregate, svm 
 summary: 瞭解MetroCluster NetApp如何保護資料、並提供透明的故障恢復功能、讓您輕鬆且有效率地管理切換和切換活動、這點很有幫助。 
 ---
-= 瞭MetroCluster 解資料保護與災難恢復
+= 了解 MetroCluster 資料保護和災難恢復
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

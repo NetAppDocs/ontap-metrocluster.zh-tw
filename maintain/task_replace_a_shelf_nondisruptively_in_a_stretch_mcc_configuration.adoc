@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, replace, shelf, nondisruptively, stretch, configuration 
 summary: 您可以在不中斷擴充MetroCluster 功能的情況下更換磁碟櫃、使用裝滿磁碟櫃或磁碟櫃機箱、並從您要移除的磁碟櫃傳輸元件。 
 ---
-= 在延伸MetroCluster 的架構中、以不中斷營運的方式更換機櫃
+= 以延伸MetroCluster 的功能型態、在不中斷營運的情況下更換機櫃
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

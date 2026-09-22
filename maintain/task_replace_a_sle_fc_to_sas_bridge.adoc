@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, replace, single, fc, sas, bridge 
 summary: 您可以不中斷地以相同的橋接器或新的模型橋接器取代橋接器。 
 ---
-= 更換單一FC對SAS橋接器
+= 在 MetroCluster FC 組態中替換單一 FC-to-SAS 橋接器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: negotiate, switchover, clean, shut, down, partner, site, operation, metrocluster, perform 
 summary: 透過協調式切換功能、可完全關閉合作夥伴站台上的程序、然後從合作夥伴站台切換作業。您可以使用議定的切換功能、在MetroCluster 某個站台上執行維護作業、或測試切換功能。 
 ---
-= 執行協商切換
+= 執行協商 MetroCluster 切換
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: disaster, occur, perform, surviving, cluster, survive, switchover, ensure, safe, data, service, force, fence, fencing, off, site, access, volume, nvfail, state, output, storage, aggregate, plex, show, command, indeterminate, metroxluster 
 summary: 如果發生災難、您必須在切換後在災難叢集和存續的叢集上執行一些步驟、以確保安全且持續的資料服務。 
 ---
-= 在發生災難後執行強制切換
+= 災難發生後執行強制 MetroCluster 切換
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

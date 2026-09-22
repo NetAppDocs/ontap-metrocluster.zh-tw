@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: start, ontap, disruptive, transition, two-node, metrocluster, fc, configuration, four-node, two-node, retire, storage, shelves, shelf, procedure, exist, drive, requirement, retiring, workflow, moving, data, move, retiring, retire, migrate, migrating, root, aggregate, 
 summary: 從功能性的問題9.8開始ONTAP 、您可以中斷營運、將雙節點MetroCluster 的靜態FC組態轉換成四節點MetroCluster 的靜態IP組態、並淘汰現有的儲存櫃。此程序包括將資料從現有磁碟機櫃移至新組態、然後淘汰舊磁碟櫃的步驟。 
 ---
-= 淘汰儲存櫃時、會中斷從MetroCluster 靜態FC移轉MetroCluster 至靜態IP ONTAP （適用於更新版本的版本號）
+= 在淘汰儲存設備機櫃的同時中斷營運地轉換 MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

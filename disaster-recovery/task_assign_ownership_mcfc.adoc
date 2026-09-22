@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: assign, ownership, drives, replaced 
 summary: 如果您在災難站台還原硬體時更換磁碟機、則必須將擁有權指派給受影響的磁碟機。 
 ---
-= 指派更換磁碟機的擁有權
+= 在 MetroCluster FC 組態中為已更換的磁碟機指派所有權
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: start, ontap, transition, workload, data, exist, two-node, metrocluster, fc, configuration, four-node, ip, disk, shelves, shelf, disruptive, fc 
 summary: 從ONTAP 功能性的問題9.8開始、您可以將工作負載和資料從現有的雙節點MetroCluster 版的靜態FC組態、移轉到全新的四節點MetroCluster 版的靜態IP組態。從靜態FC節點移至MetroCluster IP節點的磁碟櫃。 
 ---
-= 顛覆性地從雙節點MetroCluster 的不間斷地轉換為四節點MetroCluster 的不間斷地執行的不間斷運作的不間斷運作的不間斷運作的不間斷運作（ONTAP 更新版本的版本）
+= 以中斷營運的方式將雙節點 MetroCluster FC 組態轉換為四節點 MetroCluster IP 組態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

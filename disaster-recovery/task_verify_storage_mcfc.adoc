@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: verify, storage, configuration 
 summary: 您必須確認所有儲存設備均可從正常運作的節點中看到。 
 ---
-= 驗證儲存組態
+= 驗證 MetroCluster FC 組態中的儲存組態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

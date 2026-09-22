@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation, cable, controllers 
 summary: 每個控制器的FC-VI介面卡必須直接連接至其合作夥伴。 
 ---
-= 將控制器彼此連接
+= 在延伸式 MetroCluster 組態中將控制器彼此用纜線連接
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

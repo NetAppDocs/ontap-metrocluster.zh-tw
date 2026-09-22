@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation, fc, sas, bridge, disk, shelf 
 summary: 在組態中新增儲存設備時、您可以安裝Atto FibreBridge橋接器和SAS磁碟櫃、並進行纜線連接。 
 ---
-= 安裝FC至SAS橋接器和SAS磁碟櫃
+= 為延伸式 MetroCluster 組態安裝 FC 轉 SAS 橋接器與 SAS 磁碟櫃
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

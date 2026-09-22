@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: reassign, ownership, nvram, system, id, replaced 
 summary: 如果災難站台更換了一或兩個控制器模組或NVRAM卡、您必須將屬於根集合體的磁碟重新指派給更換的控制器模組。 
 ---
-= 將根Aggregate的磁碟擁有權重新分配給更換的控制器模組（MetroCluster 不含FC組態）
+= 在 MetroCluster FC 組態中重新分配根目錄彙總的磁碟所有權
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

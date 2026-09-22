@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, disaster, site, replacement, controller, module, reassign, ownership 
 summary: 如果在災難站台更換了控制器模組或NVRAM卡、您必須將屬於根集合體的磁碟重新指派給更換的控制器模組。 
 ---
-= 重新指派災難站台上集區1磁碟的磁碟擁有權（MetroCluster 知識IP組態）
+= 在 MetroCluster IP 組態中重新指派災難站台上的資源池 1 磁碟所有權
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

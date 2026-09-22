@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: ontap, command, perform, metrocluster, disaster, recovery, process, switchover, heal, switchback 
 summary: 執行功能不全的災難恢復程序時、會ONTAP 有特定的支援功能。MetroCluster 
 ---
-= 切換、修復及切換的命令
+= MetroCluster 切換、修復與切回的命令
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

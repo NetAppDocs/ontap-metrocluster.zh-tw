@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation, cable, controllers, storage, shelves 
 summary: 控制器FC-VI介面卡必須直接連接至彼此。控制器SAS連接埠必須連接至遠端和本機儲存堆疊。 
 ---
-= 將控制器彼此連接、並連接至儲存櫃
+= 為延伸式 MetroCluster 控制器和儲存機櫃佈線
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

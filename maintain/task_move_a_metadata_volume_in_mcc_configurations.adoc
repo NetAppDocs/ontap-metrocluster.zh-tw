@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, move, metadata, volume, configuration 
 summary: 您可以在MetroCluster 一個組態中、將中繼資料磁碟區從一個Aggregate移至另一個Aggregate。當來源Aggregate已停用或未鏡射、或是由於其他原因導致Aggregate不符合資格時、您可能會想要移動中繼資料Volume。 
 ---
-= 在MetroCluster 不完整的組態中移動中繼資料磁碟區
+= 在 MetroCluster FC 組態中移動中繼資料 Volume
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

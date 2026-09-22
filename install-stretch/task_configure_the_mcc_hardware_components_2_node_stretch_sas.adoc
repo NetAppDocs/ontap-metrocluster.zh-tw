@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation, cable, two, node, sas, attached, configuration 
 summary: 必須在兩個地理站台上實際安裝、連接及設定支援的元件。MetroCluster 
 ---
-= 連接雙節點SAS附加的Stretch MetroCluster Sing組態
+= 連接雙節點SAS附加的Stretch MetroCluster Setch組態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, identifying, storage, ip, configuration 
 summary: 如果您需要更換磁碟機或機櫃模組、首先需要識別位置。 
 ---
-= 識別MetroCluster 出採用靜態IP組態的儲存設備
+= 識別 MetroCluster IP 組態中的儲存設備位置
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

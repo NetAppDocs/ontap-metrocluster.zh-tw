@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: test, metrocluster, functionality, plan, maintenance, negotiate, switchover, cluster, partner, configuration, perform 
 summary: 如果您要測試MetroCluster 此功能或執行規劃的維護、可以執行協調式切換、讓一個叢集可以完全切換至合作夥伴叢集。然後您可以修復並切換回組態。 
 ---
-= 執行測試或維護的切換
+= 執行 MetroCluster 切換以進行測試或維護
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

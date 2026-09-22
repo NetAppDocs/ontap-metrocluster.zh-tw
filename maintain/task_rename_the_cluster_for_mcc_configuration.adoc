@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, rename, cluster, configuration 
 summary: 重新命名MetroCluster 以支援功能組態的叢集時、需要進行變更、然後在本機和遠端叢集上驗證變更是否正確生效。 
 ---
-= 在MetroCluster 不完整的組態中重新命名叢集
+= 在 MetroCluster 組態中重新命名叢集
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

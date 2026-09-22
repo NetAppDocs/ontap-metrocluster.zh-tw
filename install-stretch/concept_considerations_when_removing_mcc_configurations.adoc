@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation, considerations, remove, configurations 
 summary: 您可以從MetroCluster 災難恢復（DR）群組中的所有節點移除此支援組態。移除MetroCluster 完「支援」組態之後、所有磁碟連線和互連都應調整為支援狀態。如果您需要移除MetroCluster 該組態、請聯絡技術支援部門。 
 ---
-= 移除MetroCluster 不完整的組態
+= 移除延伸式 MetroCluster 組態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

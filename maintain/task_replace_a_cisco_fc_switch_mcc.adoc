@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, replace, cisco, fc, switch 
 summary: 您必須使用Cisco專屬的步驟來更換故障的Cisco FC交換器。 
 ---
-= 更換Cisco FC交換器
+= 在 MetroCluster FC 組態中更換 Cisco FC 交換器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

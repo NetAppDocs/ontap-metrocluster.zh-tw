@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, maintenance, service, tiebreaker, mediator, ontap mediator 
 summary: 使用斷路器或協調器監控軟體的組態必須在維護前先取消軟體的組態設定 
 ---
-= 在ONTAP 執行維護工作之前、請先移除「協調器」或「斷路器監控」
+= 在 MetroCluster 維護前移除 ONTAP Mediator 或 Tiebreaker
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

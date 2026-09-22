@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: information, exist, metrocluster, fc, node, autosupport, message, announcing, announce, maintenance, transition, node, gather, controller, module, send, custom, message, prior, shut, down, removing, remove 
 summary: 您必須從現有MetroCluster 的支援中心節點收集資訊、傳送AutoSupport 資訊以宣佈開始維護、以及轉換節點。 
 ---
-= 轉換MetroCluster 功能不只是功能不一的FC節點
+= 移轉MetroCluster 功能不只是功能不一的FC節點
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -37,7 +37,7 @@ summary: 您必須從現有MetroCluster 的支援中心節點收集資訊、傳�
 | 授權 | 系統授權展示 |  
 
 
-| 每個磁碟櫃的磁碟櫃數、快閃儲存設備詳細資料、記憶體、NVRAM和網路卡 | 系統節點執行節點node_name sysconfig |  
+| 機櫃與每個機櫃的磁碟數量、Flash 儲存設備詳細資料、記憶體容量、NVRAM 與網路卡 | 系統節點執行節點node_name sysconfig |  
 
 
 | 叢集網路和節點管理生命里 | 系統節點執行節點node_name sysconfig網路介面顯示-role "cluster、node-mgmt、data" |  

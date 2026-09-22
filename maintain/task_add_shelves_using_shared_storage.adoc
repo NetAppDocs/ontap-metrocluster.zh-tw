@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, shelf, shelves, add, ns224, 
 summary: 您可能需要使用MetroCluster 共享儲存MetroCluster 功能交換器、將NS224磁碟櫃新增至功能區。 
 ---
-= 使用共享儲存區功能交換器將磁碟櫃新增至MetroCluster 靜態IP MetroCluster
+= 使用共享的交換器將 NS224 機櫃新增至 MetroCluster IP 組態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

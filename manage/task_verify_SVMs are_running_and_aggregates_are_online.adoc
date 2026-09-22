@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: switchover, dr, partner, ownership, disk, svm, online, confirm 
 summary: 切換完成後、您應確認DR合作夥伴已取得磁碟的所有權、而合作夥伴SVM已上線。 
 ---
-= 確認SVM正在執行、而且Aggregate處於線上狀態
+= 確認 MetroCluster 組態中的 SVM 正在運作且集合體處於線上狀態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

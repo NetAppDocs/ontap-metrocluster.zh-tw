@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation, required, hardware, components, naming, guidelines, two, node, sas, configuration 
 summary: 這個組態需要多種硬體元件。MetroCluster為了方便且清楚起見、MetroCluster 整個篇篇版的產品文件中都會使用元件的標準名稱。一個站台稱為站台A、另一個站台稱為站台B 
 ---
-= 雙MetroCluster 節點SAS附加延伸組態所需的零件和命名準則
+= SAS 連接的延伸 MetroCluster 組態的硬體元件和命名
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

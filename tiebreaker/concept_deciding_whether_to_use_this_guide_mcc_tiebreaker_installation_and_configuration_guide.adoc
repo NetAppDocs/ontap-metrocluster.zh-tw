@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: install, configure, metrocluster, tiebreaker, software, deciding, decide, configuration 
 summary: 本資訊說明如何安裝及設定MetroCluster ESITiebreaker軟體。 
 ---
-= 物件斷路器軟體安裝與組態MetroCluster
+= 了解 MetroCluster Tiebreaker 的安裝與組態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

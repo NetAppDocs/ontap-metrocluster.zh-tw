@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, hot, remove, storage, fc, configuration 
 summary: 您可以將磁碟機櫃熱移除（從磁碟機上移除集合體的實體移除磁碟櫃）、從MetroCluster 運作中的不支援資料的功能區組態中移除磁碟機櫃。您可以將一個或多個磁碟櫃從磁碟櫃堆疊內的任何位置熱移除、或是移除磁碟櫃堆疊。 
 ---
-= 將儲存設備熱移除MetroCluster 至不需使用的FC組態
+= 將儲存設備熱移除MetroCluster 至不受需求的FC組態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

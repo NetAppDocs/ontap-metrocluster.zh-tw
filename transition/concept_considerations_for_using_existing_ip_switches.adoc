@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: ensure, ip, switch, support, exist, model, metrocluster, fc, configuration, ip, consideration, support 
 summary: 您必須確保IP交換器受到支援。如果現有的交換器模式同時支援原始MetroCluster 的ORFFC組態和全新MetroCluster 的REIP組態、您就可以重複使用現有的交換器。 
 ---
-= IP交換器的考量
+= MetroCluster 轉換中的 IP 交換器需求
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

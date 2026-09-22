@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: helpful, understand, netapp, metrocluster, tiebreaker, software, distinguish, failure, monitor, configuration, cli, setting, operation, overview, software, detect, site, intersite, connectivity, disaster, type, detection, time, man, page 
 summary: 瞭解NetApp MetroCluster ESIT斷路 器軟體是什麼、以及它如何區分故障類型、MetroCluster 以便您有效監控您的故障組態、是很有幫助的。您可以使用tiebreaker CLI來管理設定、並監控MetroCluster 各種ESITE組態的狀態和運作。 
 ---
-= Tiebreaker軟體總覽
+= 了解 MetroCluster Tiebreaker
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation, rack, hardware, components 
 summary: 如果您尚未收到已安裝在機櫃中的設備、則必須裝入元件機架。 
 ---
-= 安裝硬體元件
+= 將硬體組件安裝到機架上，以進行延伸式 MetroCluster SAS 組態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

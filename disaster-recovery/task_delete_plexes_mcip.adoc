@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: deleting, delete, fail, plex, own 
 summary: 您必須開啟MetroCluster 災難現場的磁碟櫃和可靠的IP交換器元件。 
 ---
-= 刪除存續站台擁有的失敗叢集（MetroCluster 不適用的IP組態）
+= 刪除 MetroCluster IP 組態中倖存站台擁有的故障 plex
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

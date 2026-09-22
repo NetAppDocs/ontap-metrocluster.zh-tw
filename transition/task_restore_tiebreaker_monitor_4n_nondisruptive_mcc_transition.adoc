@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: completing, complete, transition, metrocluster, configuration, resume, monitor, tiebreaker, mediator, utility, restoring, restore 
 summary: 完成完整個流程的流程轉換之後、您可以使用斷路器或調控器公用程式繼續監控。MetroCluster 
 ---
-= 還原斷路器或中保監控
+= 恢復 Tiebreaker 或 Mediator 監控 MetroCluster
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

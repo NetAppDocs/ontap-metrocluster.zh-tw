@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation, cable, fibrebridge, bridge, disk, shelves, iom12, modules 
 summary: 設定橋接器之後、您可以開始佈線系統。 
 ---
-= 使用IOM12模組、將連接至磁碟櫃的FIBLBridge 7600N或7500N橋接器進行纜線連接
+= 在延伸 MetroCluster 組態中，使用 IOM12 模組連接 FibreBridge 7600N 或 7500N 橋接器與磁碟櫃的纜線
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

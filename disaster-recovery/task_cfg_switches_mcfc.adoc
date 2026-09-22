@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: configure, fc, switches, metrocluster, configuration 
 summary: 如果您已更換災難站台中的FC交換器、則必須使用廠商專屬的程序來設定。 
 ---
-= 設定FC交換器（MetroCluster 僅限不含FFC組態）
+= 設定 MetroCluster FC 組態中的 FC 交換器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: ontap, metrocluster, command, active, iq, unified, manager, oncommand, unified, monitor, health, software, state, component, operation, check, configuration, configuration, detect, failure, netapp, tiebreaker, software 
 summary: 您可以使用ONTAP MetroCluster 功能齊全的功能表來Active IQ Unified Manager 監控各種軟體元件的健全狀況及運作狀態、例如使用功能表指令和功能表（先前稱為OnCommand 「功能表統一化管理程式」）MetroCluster 。 
 ---
-= 監控MetroCluster 功能組態
+= 監控 MetroCluster 組態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

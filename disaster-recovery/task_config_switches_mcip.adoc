@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, ip, configuration, switchback, operation 
 summary: 您必須設定任何已更換的IP交換器。 
 ---
-= 設定IP交換器（MetroCluster 不含IP組態）
+= 在 MetroCluster IP 組態中設定 IP 交換器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

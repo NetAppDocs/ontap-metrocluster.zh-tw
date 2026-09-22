@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: enable, console, logging, devices, maintenance, autosupport, cli, 
 summary: 在您的裝置上啟用主控台記錄。 
 ---
-= 啟用主控台記錄
+= 在 MetroCluster 轉換前啟用主控台記錄
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

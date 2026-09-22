@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: follow, workflow, ensure, successful, nondisruptive, transition, metrocluster 
 summary: 您必須遵循特定的工作流程、以確保順利進行不中斷營運的移轉作業。 
 ---
-= 不中斷MetroCluster 營運的流程無法進行不中斷的移轉
+= 不中斷營運的 MetroCluster 轉換工作流程
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

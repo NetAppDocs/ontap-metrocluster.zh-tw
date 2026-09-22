@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, tiebreaker, software, automate, recovery, process, enabling, enable, monitor, configuration, status, evaluate, snmp, event, trap, netapp, customer, support, operation, configuring, configure, autosupport, display, status, monitor, operation, information, creating, create, dump, file 
 summary: 藉由讓您監控功能、評估傳送給NetApp客戶支援的SNMP事件和陷阱、以及檢視監控作業的狀態、還原軟體可將恢復程序自動化。MetroCluster MetroCluster 
 ---
-= 監控MetroCluster 功能組態
+= 使用 MetroCluster Tiebreaker 監控 MetroCluster 組態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

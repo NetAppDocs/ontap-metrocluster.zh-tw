@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: perform, switchback, aggregate, storage, virtual, machine, svm, switch, back, online, verify, successful 
 summary: 執行切換後、您要確認所有的集合體和儲存虛擬機器（SVMs）都已切換回線上。 
 ---
-= 驗證成功的切換
+= 驗證 MetroCluster 切換回復是否成功
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

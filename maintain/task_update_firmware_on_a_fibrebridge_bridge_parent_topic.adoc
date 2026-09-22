@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, update, firmware, fibrebridge, bridge, update, configuration 
 summary: 更新橋接韌體的程序取決於您的橋接器機型和ONTAP 版本。 
 ---
-= 正在更新光纖橋接器上的韌體
+= 更新 MetroCluster FC 組態中 FibreBridge 橋接器的韌體
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

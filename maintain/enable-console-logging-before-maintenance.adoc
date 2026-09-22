@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, enable, autosupport, logging, maintenance, service,ip, switch, replacement, rename 
 summary: 在執行維護工作之前、請先在您的裝置上啟用主控台記錄。 
 ---
-= 在執行維護工作之前、請先啟用主控台記錄
+= 在 MetroCluster 維護前啟用控制台記錄
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, hot, add, disk, shelf 
 summary: 您可以在不降低效能的情況下、隨時熱新增磁碟櫃來增加儲存容量。 
 ---
-= 熱新增SAS磁碟櫃至SAS磁碟櫃堆疊
+= 在 MetroCluster FC 組態中，將 SAS 磁碟櫃熱加入磁碟櫃堆疊
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

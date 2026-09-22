@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation, configuration, fc, sas, bridges 
 summary: 在連接FC至SAS橋接器的模型纜線之前、您必須先在Fibre Bridge軟體中設定設定。 
 ---
-= 設定FC對SAS橋接器
+= 設定 FC-to-SAS 橋接器以用於延伸式 MetroCluster 組態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

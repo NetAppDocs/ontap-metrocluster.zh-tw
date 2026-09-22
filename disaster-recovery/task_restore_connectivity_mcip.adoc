@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, iscsi, connections, disaster, site, surviving, connectivity, restore 
 summary: 您必須從MetroCluster 正常運作的節點還原無法運作的iSCSI啟動器連線。 
 ---
-= 將連線從正常運作的節點還原至災難站台（MetroCluster 不支援的IP組態）
+= 在 MetroCluster IP 組態中還原與災難站台的連線
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

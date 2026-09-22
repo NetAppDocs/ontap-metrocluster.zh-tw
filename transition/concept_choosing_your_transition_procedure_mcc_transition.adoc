@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: select, transition, procedure, depend, exist, metrocluster, fc, configuration, choosing, choose 
 summary: 您必須根據現有MetroCluster 的不規則功能（NetApp）組態、選擇轉換程序。 
 ---
-= 請選擇您的轉換程序
+= MetroCluster FC 到 IP 過渡程序選項
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

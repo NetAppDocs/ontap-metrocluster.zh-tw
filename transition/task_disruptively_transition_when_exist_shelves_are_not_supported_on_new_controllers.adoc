@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: start, ontap, disruptive, transition, two-node, metrocluster, fc, configuration, data, exist, drive, shelves, shelf, ip, node, requirement, support, workflow, preparing, prepare, controller, module, controller, migrate 
 summary: 從功能不完整的問題9.8開始ONTAP 、您可以中斷轉換雙節點MetroCluster 的支援功能、從現有磁碟機櫃搬移資料、即使新MetroCluster 的支援不支援現有的儲存櫃也沒問題。 
 ---
-= 當新控制器不支援現有磁碟櫃時、會中斷轉換作業（ONTAP 版本號：NetApp 9.8及更新版本）
+= 當新控制器不支援 MetroCluster 機櫃時，中斷營運地轉移
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

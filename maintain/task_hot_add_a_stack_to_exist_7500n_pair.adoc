@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, hot, add, stack, sas, disk, shelves, existing, pair, fibrebridge, bridge 
 summary: 您可以將 SAS 磁碟櫃堆疊熱新增至現有的一對具有可用連接埠的 FiberBridge 7600N 或 7500N 橋接器。 
 ---
-= 將一堆 SAS 磁碟櫃熱新增至現有的一對 FiberBridge 7600N 或 7500N 橋接器
+= 在 MetroCluster FC 組態中，將 SAS 磁碟櫃堆疊熱新增至現有的 FibreBridge 7500N 或 7600N 對
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

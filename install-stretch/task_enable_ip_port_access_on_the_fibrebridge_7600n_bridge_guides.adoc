@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation, enable, ip, port, access, bridge, fibrebridge 
 summary: 如果您使用ONTAP 9.5版之前的版本、或是打算使用遠端登入或其他IP連接埠傳輸協定和服務（FTP、ExpressNAV、ICMP或QuickNAV）、使用頻外存取到FibreBridge 7600N橋接器、則可透過主控台連接埠啟用存取服務。 
 ---
-= 如有必要、可在光纖橋接器7600N上啟用IP連接埠存取
+= 在延伸 MetroCluster 組態中的 FibreBridge 7600N 橋接器上啟用 IP 埠存取
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

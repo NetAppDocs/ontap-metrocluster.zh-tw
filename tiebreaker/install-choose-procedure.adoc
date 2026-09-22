@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: install, tiebreaker, software, monitor, capabilities, capability, cluster, storage, environment, snmp, notification, event, node, connectivity, issue, site, disaster, system, install, upgrade, upgrading, software, dependencies, dependency, package, ntp, requirements, requirements for tiebreaker, tiebreaker requirements, mysql, mariadb, autostart, database 
 summary: 您遵循的 tiebreaker 安裝程序取決於您要安裝的 tiebreaker 版本。 
 ---
-= 選擇您的安裝程序
+= 選擇您的 MetroCluster Tiebreaker 安裝程序
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -30,7 +30,7 @@ link:tb-17-install.html["安裝 Tiebreaker 1.7"]
  a| 
 平手決勝 1.6 或 1.6P1
  a| 
-link:tb-16-install.html["安裝 Tiebreaker 1.6 或 1.6P1"]
+link:tb-16-install.html["安裝 MetroCluster Tiebreaker 1.6 或 1.6P1"]
 
 
 

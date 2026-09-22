@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: stage, transition, process, metrocluster, switchover, heal, switchback, operation, fc, ip, workflow 
 summary: 根據轉換程序的階段、MetroCluster 還原切換、修復及切換作業會使用MetroCluster SFC或MetroCluster SIP工作流程。 
 ---
-= 在不中斷營運的轉換期間進行切換、修復及切換作業
+= MetroCluster 轉換期間的切換、修復與切回
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

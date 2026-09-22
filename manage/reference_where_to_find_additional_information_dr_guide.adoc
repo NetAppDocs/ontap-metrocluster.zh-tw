@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: learn, metrocluster, configuration, operation, netapp, extensive, documentation, additional, information, miscellaneous, guide 
 summary: 您可以MetroCluster 在NetApp豐富的文件中深入瞭解有關功能的組態設定與操作。 
 ---
-= 何處可找到其他資訊
+= 了解更多關於 MetroCluster 組態與操作的資訊
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation 
 summary: 若要安裝Stretch MetroCluster 的組態、您必須依照正確順序執行多項程序。 
 ---
-= 總覽
+= 延伸式 MetroCluster 安裝工作流程
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: Generating and applying RCFs to the new IP switches, review, requirement, preparing, prepare, transition, perform, procedure, order, completing, complete, step, task, moving, move, controller, storage, shelves, shelf, exist, configuration, direct, metrocluster, fc, ip, verify, health, removing, remove, tiebreaker, monitor, software, generating, generate, apply, rcf, switch, controller, configure, prepare, preparing 
 summary: 如果您使用新的IP交換器進行MetroCluster Refing IP組態、則必須使用自訂的RCF檔案來設定交換器。 
 ---
-= 產生RCFs並將其套用至新的IP交換器
+= 產生 RCF 並將其套用至新的 MetroCluster IP 交換器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
@@ -27,7 +27,7 @@ NOTE: 如果您要執行從四節點 FC 到八節點 IP 的轉換，可以在新
 
 +
 ** link:../install-ip/task_switch_config_broadcom.html#resetting-the-broadcom-ip-switch-to-factory-defaults["將Broadcom IP交換器重設為原廠預設值"]
-** link:../install-ip/task_switch_config_cisco.html#resetting-the-cisco-ip-switch-to-factory-defaults["將 Cisco IP 交換器重設為原廠預設值"]
+** link:../install-ip/task_switch_config_cisco.html#reset-the-cisco-ip-switch-to-factory-defaults["將 Cisco IP 交換器重設為原廠預設值"]
 ** link:../install-ip/task_switch_config_nvidia.html#reset-the-nvidia-ip-sn2100-switch-to-factory-defaults["將NVIDIA IP SN2100交換器重設為原廠預設值"]
 
 

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: power, sas, storage, direct, attached, configuration, fabric 
 summary: 當您準備好進行切換時、必須在MetroCluster 災難現場啟動支援功能。 
 ---
-= 開啟災難現場的設備電源
+= 在 MetroCluster 組態中啟動災難站台的設備電源
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

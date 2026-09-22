@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation, install, cable, components, two, node, sas, stretch, attached, configuration 
 summary: 儲存控制器必須以纜線連接至儲存媒體和彼此。儲存控制器也必須以纜線連接至資料與管理網路。 
 ---
-= 安裝MetroCluster 和佈線等元件、以進行雙節點SAS附加延伸組態
+= 為雙節點 SAS 連接的延伸組態連接 MetroCluster 元件的纜線
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

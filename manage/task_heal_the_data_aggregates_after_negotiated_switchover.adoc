@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: heal, data, aggregate, completing, complete, maintenance, test, process, resynchronize, prepare, disaster, operation, root, negotiate, switchover 
 summary: 您必須在完成任何維護或測試之後修復資料集合體。此程序可重新同步資料集合體、並準備災難站台以進行正常作業。在修復根集合體之前、您必須先修復資料集合體。 
 ---
-= 在協商切換後修復資料集合體
+= 切換後修復 MetroCluster 資料集合體
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

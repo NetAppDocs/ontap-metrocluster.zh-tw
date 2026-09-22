@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, hot, add, stack, sas, disk, shelves, bridges, system 
 summary:  
 ---
-= 熱新增一堆SAS磁碟櫃、並將橋接器連接MetroCluster 至一套系統
+= 在 MetroCluster FC 組態中熱新增 SAS 磁碟櫃與橋接器堆疊
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

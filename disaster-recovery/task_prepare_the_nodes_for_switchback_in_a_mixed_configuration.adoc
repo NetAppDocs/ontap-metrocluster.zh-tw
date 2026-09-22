@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: perform, certain, task, prepare, metrocluster, ip, fc, configuration, switchback, recovery, during, transition, mix 
 summary: 您必須執行某些工作、才能準備混合MetroCluster 式的靜態IP和FC組態、以利切換作業。此程序僅適用於MetroCluster 在從FFC移轉至IP期間發生故障的組態。 
 ---
-= 準備在混合組態中進行切換（轉換期間進行還原）
+= 在過渡期間準備混合 MetroCluster 組態的切換回復
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

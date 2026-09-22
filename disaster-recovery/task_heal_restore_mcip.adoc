@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: aggregate, heal, mirror, restore 
 summary: 更換硬體並指派磁碟之後、您可以執行MetroCluster 還原作業。 
 ---
-= 執行Aggregate修復及還原鏡像（MetroCluster 知識IP組態）
+= 在 MetroCluster IP 組態中執行彙總修復和還原鏡像
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

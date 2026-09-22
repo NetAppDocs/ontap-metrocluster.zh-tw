@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, migrate, root, volumes, new, destination 
 summary: 您可能需要將根磁碟區移至雙節點或四節點MetroCluster 之間的另一個根Aggregate。 
 ---
-= 何時將根磁碟區移轉至新目的地
+= 在 MetroCluster 組態中遷移根 Volume
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: node, complete, transition, configure, metrocluster, ip, node, configuring, disabling, disable, data, set, up, lif, bring, svm, moving, move, system, volume 
 summary: 新增節點之後、您必須完成轉換步驟、並設定MetroCluster 好各個節點。 
 ---
-= 設定新節點並完成轉換
+= 設定新的 MetroCluster IP 節點並完成轉換
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

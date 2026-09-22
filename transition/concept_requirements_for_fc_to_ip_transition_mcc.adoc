@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: start, transition, process, configuration, requirement, nondisruptive, fc-to-ip 
 summary: 在開始轉換程序之前、您必須確定組態符合要求。 
 ---
-= 不中斷營運的FC對IP轉換需求
+= 不中斷營運的 MetroCluster FC-to-IP 轉換要求
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

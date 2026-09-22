@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: failure, metrocluster, configuration, correct, recovery, procedure, choosing, choose, controller, module, scenarios, two-node 
 summary: 在無法進行MetroCluster 還原組態之後、您必須根據故障程度、選擇正確的恢復程序。 
 ---
-= 選擇正確的恢復程序
+= 選擇正確的 MetroCluster 恢復程序
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

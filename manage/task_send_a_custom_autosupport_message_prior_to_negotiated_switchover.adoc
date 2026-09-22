@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: perform, negotiate, switchover, autosupport, message, netapp, technical, support, maintenance, underway, failure, trigger, support, prevent, disruption, custom, prior 
 summary: 在進行協商切換之前、您應該發出AutoSupport 一份「不知」訊息、通知NetApp技術支援人員正在進行維護。協商切換可能會導致引發MetroCluster 故障訊息的叢或不穩定作業故障AutoSupport 。告知技術支援部門正在進行維護、可防止他們假設發生中斷、而開啟案例。 
 ---
-= 在協商切換之前傳送自訂AutoSupport 的消息
+= 傳送自訂的 AutoSupport 訊息於 MetroCluster 切換之前
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

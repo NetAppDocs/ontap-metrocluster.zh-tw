@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service 
 summary: 您可以在MetroCluster 您的系統配置中維護MetroCluster專屬的硬體元件。 
 ---
-= 維護MetroCluster 這些元件
+= 了解如何維護 MetroCluster 硬體組件
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

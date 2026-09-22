@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, configuration, unmirrored, aggregates, crs, svm, san 
 summary: 如果您的組態包含無鏡射的Aggregate、則必須注意切換作業後可能發生的存取問題。 
 ---
-= 使用無鏡射Aggregate時的考量
+= 延伸式 MetroCluster 組態中的未鏡像彙總
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

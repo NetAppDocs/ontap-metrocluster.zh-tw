@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: equipment, disaster, site, undergone, require, maintenance, replacement, controller, replace, process, metrocluster, configuration, data, aggregate, switchback, operation, recover, non-controller, failure, heal, configuration, metrocluster, fc, data, aggregate, root, disaster, verify, system, switchback, verification, result, perform, successful, delete, deleting, stale, listing 
 summary: 在災難現場的設備完成任何必要的維護或更換、但未更換控制器之後、您可以開始將MetroCluster 此功能組態恢復至完全備援狀態的程序。這包括修復組態（首先是資料集合體、然後是根集合體）、以及執行切換作業。 
 ---
-= 從非控制器故障中恢復
+= 從 MetroCluster 組態中的非控制器故障中恢復
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

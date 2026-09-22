@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: verify, adp, verify, drives, pool, automatically, assign 
 summary: 在設定為ADP的系統上、您必須確認已自動指派集區0磁碟機。 
 ---
-= 正在驗證自動指派或手動指派集區0磁碟機
+= 在 MetroCluster IP 組態中驗證或手動指派資源池 0 磁碟機
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

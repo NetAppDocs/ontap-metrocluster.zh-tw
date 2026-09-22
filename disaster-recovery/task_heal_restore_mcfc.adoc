@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: configure, fc, switches, metrocluster, configuration 
 summary: 更換硬體並指派磁碟之後、您可以執行MetroCluster 還原作業。 
 ---
-= 執行Aggregate修復及還原鏡像（MetroCluster 不含FC組態）
+= 在 MetroCluster FC 組態中執行彙總修復並還原鏡像
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, atto, fc, switches, bridges, modify, IP, address 
 summary: 修改 MetroCluster FC 後端交換器或 Atto 橋接器的 IP 位址之後、請更換舊的健全狀況監控 IP 位址。 
 ---
-= 修改交換器或 Atto 橋接 IP 位址以進行健全狀況監控
+= 在 MetroCluster FC 組態中修改交換器或 ATTO 橋接器的 IP 位址以進行健全狀況監控
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

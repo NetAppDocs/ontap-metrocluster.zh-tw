@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, peer, peering, ports, cluster, connectivity 
 summary: 您應該熟悉設定MetroCluster 「對等關係」的先決條件和準則。 
 ---
-= 叢集對等
+= 延伸式 MetroCluster 組態中的叢集對等關係
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: verify, port, environmental, metrocluster, configuration 
 summary: 您必須在節點上設定環境變數、然後將其關機、以準備MetroCluster 好進行支援的組態設定。 
 ---
-= 驗證連接埠組態（MetroCluster 僅限F精選FC組態）
+= 驗證 MetroCluster FC 組態中的連接埠組態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

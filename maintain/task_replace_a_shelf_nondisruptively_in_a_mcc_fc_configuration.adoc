@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, replace, shelf, nondisruptively, fabric, attached, configuration 
 summary: 您可能需要知道如何在不中斷營運的情況下、以架構附加MetroCluster 的功能進行汰換。 
 ---
-= 在以架構附加MetroCluster 的功能性的架構中、以不中斷營運的方式更換機櫃
+= 在 Fabric 附加的 MetroCluster FC 組態中不中斷營運地更換機櫃
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

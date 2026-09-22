@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: admin, access, ontapi, ssh, configure 
 summary: 您可以設定管理員存取ONTAP 功能以存取SURE API和SSH。 
 ---
-= 設定管理員對ONTAP SURE API和SSH的存取權限
+= 設定 MetroCluster Tiebreaker 的 ONTAP API 與 SSH 存取
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

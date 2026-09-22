@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, stretch, installation, worksheet, fc, sas, bridges, information 
 summary: 在開始設定MetroCluster 「不必要站台」之前、您應該先收集必要的組態資訊。 
 ---
-= FC至SAS橋接器的資訊收集工作表
+= 延伸型 MetroCluster FC-to-SAS 橋接器資訊收集工作表
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

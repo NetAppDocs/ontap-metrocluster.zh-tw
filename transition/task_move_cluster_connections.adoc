@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: transition, cluster connections 
 summary: 在檢閱所有要求並準備進行轉換之後、您將執行轉換程序。您必須依序執行每項工作、完成每項工作中的所有步驟、然後再移至下一項工作。除非有指示、否則請勿將新的控制器或儲存櫃連接至現有組態。 
 ---
-= 移動本機叢集連線
+= 在 MetroCluster FC 到 IP 轉換中移動本機叢集連線
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, ip, configuration, verify, storage, connectivity, remote 
 summary: 您必須確認已更換的節點已連線至正常運作站台的磁碟櫃。 
 ---
-= 驗證遠端站台的儲存設備連線能力（MetroCluster 知識產權組態）
+= 驗證 MetroCluster IP 組態中至遠端站台的儲存設備連接性
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

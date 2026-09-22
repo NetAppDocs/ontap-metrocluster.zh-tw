@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, upgrade, downgrade, firmware, brocade, fc, switch 
 summary: 若要升級或降級Brocade FC交換器上的韌體、您必須使用Brocade專屬命令來停用交換器、執行並驗證韌體變更、以及重新開機並重新啟用交換器。 
 ---
-= 升級或降級 Brocade MetroCluster FC 交換器的韌體
+= 在 MetroCluster FC 組態中升級或降級 Brocade FC 交換器的韌體
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

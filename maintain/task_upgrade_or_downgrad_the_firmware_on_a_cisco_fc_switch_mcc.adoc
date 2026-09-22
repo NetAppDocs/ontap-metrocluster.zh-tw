@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, upgrade, downgrade, firmware, cisco, fc, switch 
 summary: 若要升級或降級Cisco FC交換器上的韌體、您必須使用Cisco專屬的命令來停用交換器、執行並驗證升級、以及重新開機並重新啟用交換器。 
 ---
-= 升級或降級Cisco FC交換器上的韌體
+= 在 MetroCluster FC 組態中升級或降級 Cisco FC 交換器的韌體
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

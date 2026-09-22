@@ -166,7 +166,7 @@ NOTE: 您必須依照下列順序在交換器上安裝交換器軟體：switch_a
 
 +
 ** link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-broadcom-switch-efos-software["下載並安裝 Broadcom 交換器 EFOS 軟體"]
-** link:../install-ip/task_switch_config_cisco.html#downloading-and-installing-the-cisco-switch-nx-os-software["下載並安裝 Cisco 交換器 NX-OS 軟體"]
+** link:../install-ip/task_switch_config_cisco.html#download-and-install-the-cisco-switch-nx-os-software["下載並安裝 Cisco 交換器 NX-OS 軟體"]
 ** link:../install-ip/task_switch_config_nvidia.html#download-and-install-the-cumulus-software["下載並安裝 NVIDIA SN2100 交換器 Cumulus 軟體"]
 
 

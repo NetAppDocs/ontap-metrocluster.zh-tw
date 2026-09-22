@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, maintain, service, hot, add, sas, disk, shelf, direct, attached, fc, configuration, optical, cables 
 summary: 您可以使用SAS光纖纜線、將SAS磁碟櫃熱新增至直接附加MetroCluster 的SFC組態中現有的SAS磁碟櫃堆疊、或是SAS HBA或控制器上內建SAS連接埠的新堆疊。 
 ---
-= 使用MetroCluster SAS光纖纜線、在直接附加的SFC組態中熱新增SAS磁碟櫃
+= 使用 SAS 光纖纜線在直連式 MetroCluster FC 組態中熱新增 SAS 磁碟櫃
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
