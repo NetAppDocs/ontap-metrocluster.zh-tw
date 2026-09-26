@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, install, license, new, controller, module 
 summary: 您必須針對ONTAP 需要標準\（節點鎖定\）授權的任何支援服務、新增控制器模組的授權。對於具有標準授權的功能、叢集中的每個節點都必須擁有其專屬的功能金鑰。 
 ---
-= 安裝新控制器模組的授權
+= 在 MetroCluster FC 組態中為新的控制器模組安裝授權
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

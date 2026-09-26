@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, change, ha, config, sett, existing, new, controller, modules 
 summary: 當您擴充MetroCluster 一個內存擴充組態時、必須更新現有控制器模組和新控制器模組的ha-config設定。您也必須判斷新控制器模組的系統ID。 
 ---
-= 變更現有和新控制器模組的ha-config設定
+= 更改現有和新的 MetroCluster FC 控制器上的 ha-config 設定
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

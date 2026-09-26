@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, boot, existing, controller, module 
 summary: 您必須將現有的控制器模組開機ONTAP 至 
 ---
-= 開機現有的控制器模組
+= 啟動現有的 MetroCluster FC 控制器模組
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

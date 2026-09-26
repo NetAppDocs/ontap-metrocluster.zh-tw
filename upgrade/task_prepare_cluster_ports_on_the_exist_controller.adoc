@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, prepare, cluster, ports, existing, controller, module 
 summary: 在安裝新的控制器模組之前、您必須在現有的控制器模組上設定叢集連接埠、以便叢集連接埠能夠與新的控制器模組進行叢集通訊。 
 ---
-= 準備現有控制器模組上的叢集連接埠
+= 在現有的 MetroCluster FC 控制器模組上準備叢集連接埠
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, expansion, method 
 summary: 您所使用的擴充程序取決於MetroCluster 支援的功能類型和ONTAP 版本。 
 ---
-= 選擇擴充程序
+= 選擇 MetroCluster 擴充程序
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, determine, new, cabling, layout 
 summary: 您必須確定新控制器模組和新磁碟櫃與現有FC交換器之間的纜線。 
 ---
-= 確定新的佈線配置
+= 決定 MetroCluster FC 擴充的新佈線佈局
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

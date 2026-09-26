@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, controllers, switchover, switchback, ip, configuration, net, boot, root, aggregate, system, commands, mcc 
 summary: 在控制器模組中設定 HBA 卡，並驗證及設定控制器和機箱的 HA 狀態。 
 ---
-= 還原 HBA 組態，並設定 MetroCluster IP 控制器和機箱的 HA 狀態
+= 恢復 HBA 組態並為 MetroCluster IP 控制器設定 HA 狀態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

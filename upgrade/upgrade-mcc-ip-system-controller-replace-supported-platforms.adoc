@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, controllers, switchover, switchback, ip, configuration, net, boot, root, aggregate, system, commands, mcc 
 summary: 在開始 MetroCluster IP 控制器升級之前，您需要確認您的升級組合是否受到支援。 
 ---
-= 使用「系統控制器置換」命令支援的 MetroCluster IP 控制器升級
+= 使用系統控制器替換支援的 MetroCluster IP 控制器升級
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

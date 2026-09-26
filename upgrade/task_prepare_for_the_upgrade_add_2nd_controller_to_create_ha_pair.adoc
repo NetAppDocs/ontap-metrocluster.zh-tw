@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, prepare, upgrade 
 summary: 在升級至HA配對之前、您必須確認系統符合所有需求、而且您擁有所有必要資訊。 
 ---
-= 準備升級
+= 準備將新的控制器模組新增至 MetroCluster FC 叢集
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

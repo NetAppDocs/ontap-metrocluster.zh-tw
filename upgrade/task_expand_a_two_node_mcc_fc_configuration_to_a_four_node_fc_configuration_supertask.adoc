@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, expand, two, node, fc, configuration, four 
 summary: 將雙節點MetroCluster 的EFC組態擴充為四節點MetroCluster 的EFC組態、包括在每個叢集新增控制器、在每MetroCluster 個站台形成HA配對、然後重新整理MetroCluster EzFC組態。 
 ---
-= 將雙節點MetroCluster 的不含資料的FC組態擴充至四節點組態
+= 將雙節點MetroCluster 的不含功能的FC組態擴充為四節點組態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

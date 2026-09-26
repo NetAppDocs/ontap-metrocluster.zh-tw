@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, refresh, configuration, new, controller 
 summary: 將此功能從雙節點組態擴充至四節點組態時、您必須重新整理MetroCluster 此功能。 
 ---
-= 使用MetroCluster 新的控制器重新整理功能
+= 使用新控制器重新整理 MetroCluster FC 組態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

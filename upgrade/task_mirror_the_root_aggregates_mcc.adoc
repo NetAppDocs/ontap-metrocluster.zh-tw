@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, mirror, root, aggregate 
 summary: 您必須鏡射根Aggregate以提供資料保護。 
 ---
-= 鏡射根Aggregate
+= 在 MetroCluster FC 組態中鏡射根 Aggregate
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

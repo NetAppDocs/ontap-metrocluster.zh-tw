@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, controllers, switchover, switchback, ip, configuration, net, boot, root, aggregate, system, commands, mcc 
 summary: 使用您先前收集的系統 ID ，將根 Aggregate 磁碟重新指派給新的控制器模組。 
 ---
-= 將根 Aggregate 磁碟重新指派給新的 MetroCluster IP 控制器模組
+= 將根 Aggregate 磁碟重新指派給新的 MetroCluster IP 控制器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, send, custom, autosupport, message, add, nodes, configuration 
 summary: 您應該發出AutoSupport 一份消息、通知NetApp技術支援部門正在進行維護。告知技術支援部門正在進行維護、可防止他們假設發生中斷、而開啟案例。 
 ---
-= 在AutoSupport 將節點新增MetroCluster 至「不確定」組態之前、先傳送自訂的「不確定」訊息
+= 傳送自訂的 AutoSupport 訊息，在兩節點至四節點 MetroCluster FC 擴充之前
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,14 +4,14 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, controllers, switchover, switchback, ip, configuration, net, boot, root, aggregate, system, commands, mcc 
 summary: 您可以使用這項引導式自動化 MetroCluster 轉換作業、針對四節點 MetroCluster IP 組態執行不中斷運作的控制器升級。 
 ---
-= 使用「系統控制器置換」命令（ ONTAP 9.13.1 或更新版本）升級 MetroCluster IP 控制器的工作流程
+= 使用系統控制器替換的 MetroCluster IP 控制器升級工作流程
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-您可以使用此引導式自動化 MetroCluster 轉換作業，在執行 ONTAP 9.13.1 更新版本的四節點 MetroCluster IP 組態上執行不中斷的控制器升級。其他元件（例如儲存櫃或交換器）無法在此程序中進行升級。
+從 ONTAP 9.13.1 開始，您可以使用此引導式自動 MetroCluster 切換程序，使用 `system controller replace` 命令在四節點 MetroCluster IP 組態上執行不中斷營運的控制器升級。其他元件（例如儲存設備機櫃或交換器）無法作為此程序的一部分進行升級。
 
 .關於此工作流程
 您可以使用此工作流程來升級執行 ONTAP 9.13.1 或更新版本的 MetroCluster IP 控制器，並使用切換和切換命令來進行升級 `system controller replace`。

@@ -171,7 +171,7 @@ entries:
   - title: 驗MetroCluster 證整個過程的效能狀況
     url: "/upgrade/task_verify_the_health_of_the_mcc_configuration.html"
   - title: 使用MetroCluster 資訊功能檢查是否有任何不實的組態錯誤Config Advisor
-    url: "/upgrade/task_check_for_mcc_configuration_errors_with_config_advisor.html"
+    url: "/upgrade/task_check_for_mcc_configuration_errors_with_config_advisor_before.html"
   - title: 在AutoSupport 將節點新增MetroCluster 至「版本資訊」組態之前、請先傳送自訂的版本資訊
     url: "/upgrade/task_send_a_custom_autosupport_message_before_add_nodes_to_the_mcc_configuration.html"
   - title: 可重新分區新節點的交換器架構
@@ -183,7 +183,7 @@ entries:
   - title: 在ONTAP 新的控制器上設定
     entries:
     - title: 清除控制器模組上的組態
-      url: "/upgrade/task_clear_the_configuration_on_a_controller_module_mcc.html"
+      url: "/upgrade/task-clear-configuration-controller-four-node.html"
     - title: 在AFF 不可靠的系統中指派磁碟擁有權
       url: "/upgrade/task_assign_disk_ownership_in_aff_systems_mcc.html"
     - title: 在非AFF系統中指派磁碟擁有權

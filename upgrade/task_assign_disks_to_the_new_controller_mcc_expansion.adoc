@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, assign, disks, new, controller, module 
 summary: 在透過netboot完成新控制器模組的組態之前、您必須先為其指派磁碟。 
 ---
-= 將磁碟指派給新的控制器模組
+= 將磁碟指派給新的 MetroCluster FC 控制器模組
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

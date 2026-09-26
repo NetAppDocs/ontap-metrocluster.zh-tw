@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, boot, new, controller, join, cluster 
 summary: 若要將新的控制器加入叢集、您必須開機每個新的控制器模組、然後使用ONTAP 「叢集設定精靈」來識別叢集將會加入。 
 ---
-= 開機並將新的控制器加入叢集
+= 啟動新控制器並將其參加 MetroCluster FC 叢集
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, create, unmirrored, data, aggregates 
 summary: 您也可以針對MetroCluster 不需要由支援的組態所提供的備援鏡像的資料、建立無鏡射的資料集合體。 
 ---
-= 建立無鏡射的資料集合體
+= 在 MetroCluster FC 組態中建立非鏡像資料 Aggregate
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

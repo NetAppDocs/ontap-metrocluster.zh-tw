@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, additional, information 
 summary: 您可以深入瞭MetroCluster 解有關功能的組態設定與操作。 
 ---
-= 何處可找到其他資訊
+= 其他 MetroCluster 文件資源
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

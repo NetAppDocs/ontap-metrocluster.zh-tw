@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, configure, fc, sas, bridges, health, monitoring 
 summary: 不支援第三方SNMP監控工具用於連接光纖橋接器。從ONTAP 功能組態9.8開始、FC對SAS橋接器依預設會透過頻內連線進行監控、不需要額外的組態設定。 
 ---
-= 設定FC對SAS橋接器以進行健全狀況監控
+= 設定 MetroCluster FC-to-SAS 橋接器以進行健全狀況監控
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

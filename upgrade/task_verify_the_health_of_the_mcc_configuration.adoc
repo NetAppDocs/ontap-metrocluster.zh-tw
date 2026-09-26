@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, health, verify, conofiguration 
 summary: 您應該檢查MetroCluster 整個過程的健全狀況、以驗證運作是否正常。 
 ---
-= 驗MetroCluster 證資訊功能組態的健全狀況
+= 驗證 MetroCluster FC 組態的健全狀況
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

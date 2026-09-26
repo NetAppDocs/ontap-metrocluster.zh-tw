@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, verify, switchover, healing, switchback 
 summary: 您應該驗證MetroCluster 該組態的切換、修復及切換作業。 
 ---
-= 驗證切換、修復及切換
+= 驗證 MetroCluster FC 組態中的切換、修復和切換回
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

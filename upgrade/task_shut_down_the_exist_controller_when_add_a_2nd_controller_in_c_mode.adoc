@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, shut, down, existing, controller, module 
 summary: 您必須對現有的控制器模組執行乾淨關機、以確認所有資料都已寫入磁碟。您也必須拔下電源供應器。 
 ---
-= 關閉現有的控制器模組
+= 在 MetroCluster FC 擴充期間關閉現有控制器模組
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, controllers, switchover, switchback, ip, configuration, net, boot, root, aggregate, system, commands, mcc, requirements 
 summary: 在執行控制器升級之前，請先確認您的系統符合所有需求。 
 ---
-= 使用此 MetroCluster IP 升級程序的需求
+= MetroCluster IP 控制器升級的要求
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

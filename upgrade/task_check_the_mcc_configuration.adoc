@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, check, configuration 
 summary: 您可以檢查MetroCluster 功能組態中的元件和關係是否正常運作。您應該在初始組態設定後、以及MetroCluster 變更任何的功能後進行檢查。您也應該在議定（已規劃）切換或切換作業之前進行檢查。 
 ---
-= 正在檢查MetroCluster 功能組態
+= 檢查 MetroCluster FC 組態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

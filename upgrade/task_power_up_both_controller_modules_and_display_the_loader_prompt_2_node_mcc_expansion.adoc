@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, power, up, controller. modules, display, loader, prompt 
 summary: 開啟現有的控制器模組和新的控制器模組、以顯示載入器提示。 
 ---
-= 開啟兩個控制器模組的電源、並顯示載入器提示
+= 在 MetroCluster FC 組態中啟動控制器模組電源
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

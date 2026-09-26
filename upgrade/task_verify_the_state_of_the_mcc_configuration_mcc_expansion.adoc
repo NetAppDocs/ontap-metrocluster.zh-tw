@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, verify, state, configuration 
 summary: 您應該識別現有的控制器、並確認它們之間的災難恢復（DR）關係、控制器處於正常模式、以及集合體已鏡射。 
 ---
-= 驗MetroCluster 證資訊不完整組態的狀態
+= 驗證雙節點 MetroCluster FC 組態的狀態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

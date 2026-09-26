@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, restart, svm 
 summary: 擴充MetroCluster 完SVM組態之後、您必須重新啟動SVM。 
 ---
-= 重新啟動SVM
+= MetroCluster FC 擴充後重新啟動 SVM
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

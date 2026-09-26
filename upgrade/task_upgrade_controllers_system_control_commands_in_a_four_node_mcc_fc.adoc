@@ -4,14 +4,14 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, controllers, switchover, switchback, fc, configuration, net, boot, root, aggregate, system, commands, mcc 
 summary: 您可以使用此引導式自動化MetroCluster 的動作來執行不中斷營運的控制器升級、以進行四節點MetroCluster 的SFC組態。 
 ---
-= 在四節點 MetroCluster FC 組態中升級控制器、使用切換功能、並使用「系統控制器更換」命令（ ONTAP 9.10.1 及更新版本）切換回控制器
+= 在四節點 MetroCluster FC 組態中，使用系統控制器替換來升級控制器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-您可以使用此引導式自動MetroCluster 資料交換作業、在四節點MetroCluster 的SFC組態上執行不中斷營運的控制器升級。其他元件（例如儲存櫃或交換器）無法在此程序中進行升級。
+從 ONTAP 9.10.1 開始，您可以使用此引導式自動 MetroCluster 切換程序，使用 `system controller replace` 命令對四節點 MetroCluster FC 組態執行不中斷營運的控制器升級。其他元件（例如儲存設備磁碟櫃或交換器）無法作為此程序的一部分進行升級。
 
 
 

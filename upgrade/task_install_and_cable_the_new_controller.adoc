@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, install, cable, new, controller, module 
 summary: 您必須在機箱中實際安裝新的控制器模組、然後將其纜線。 
 ---
-= 安裝新的控制器模組並進行纜線連接
+= 在 MetroCluster FC 組態中安裝並連接新的控制器模組
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

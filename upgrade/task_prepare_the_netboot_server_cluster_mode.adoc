@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, prepare, netboot, server, download, image 
 summary: 當您準備好準備netboot伺服器時、必須從ONTAP NetApp支援網站下載正確的版本資訊更新映像到netboot伺服器、並記下IP位址。 
 ---
-= 準備netboot伺服器以下載映像
+= 在 MetroCluster FC 組態中準備網路啟動伺服器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

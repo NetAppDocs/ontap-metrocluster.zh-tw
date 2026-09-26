@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, netboot, set, up, ontap, new, controller, module 
 summary: 將控制器模組新增至現有的更新組態時、您必須執行一系列特定步驟來執行netboot、並在ONTAP 新的控制器模組上安裝作業系統。MetroCluster 
 ---
-= 在ONTAP 新的控制器模組上執行Netbooting和設定
+= 在 MetroCluster FC 組態中的新控制器模組上進行網路啟動並設定 ONTAP
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

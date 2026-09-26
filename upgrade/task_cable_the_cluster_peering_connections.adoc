@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, cable, new, controller, modules, cluster, peering, connections 
 summary: 您必須將新的控制器模組纜線連接至叢集對等網路、以便與合作夥伴站台上的叢集建立連線。 
 ---
-= 新控制器模組的叢集對等連線纜線
+= 為 MetroCluster FC 叢集對等關係連接新的控制器模組
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

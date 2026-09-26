@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, refresh, four, node, ip, configuration, add, autosupport 
 summary: 從功能支援的9.8開始ONTAP 、您可以將MetroCluster 組態擴充為暫時的八節點組態、然後移除舊的災難恢復（DR）群組、以四節點的靜態IP組態升級控制器和儲存設備。 
 ---
-= 重新整理四節點或八節點 MetroCluster IP 組態（ ONTAP 9.8 及更新版本）
+= 重新整理四節點或八節點 MetroCluster IP 組態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

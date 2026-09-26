@@ -4,14 +4,14 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, configure, intercluster, lif, dedicated, ports, shared 
 summary: 您可以在專用或共享連接埠上設定叢集間的生命體。 
 ---
-= 設定叢集間LIF
+= 在從四節點到八節點的 MetroCluster FC 擴充期間設定叢集間 LIF
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-瞭解如何在專用和共享連接埠上設定叢集間的生命體。
+了解如何在四節點至八節點的 MetroCluster FC 擴充期間，於專用和共享的連接埠上設定叢集間 LIF。
 
 [role="tabbed-block"]
 ====

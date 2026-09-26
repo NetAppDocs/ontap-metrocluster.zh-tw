@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, implement, configuration 
 summary: 您必須執行MetroCluster flexconfigure -refreshtrue命令、在已新增MetroCluster 至該組態的節點上啟動資料保護。 
 ---
-= 實作MetroCluster 此功能組態
+= 實作 MetroCluster FC 組態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

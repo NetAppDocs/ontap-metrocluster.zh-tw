@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, apply, rcf, files, recable, switches 
 summary: 您必須套用RCF檔案、才能重新設定分區以容納新節點。 
 ---
-= 重新設定交換器
+= 重新佈線並重新設定 MetroCluster FC 交換器
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, assign, disk, ownership, aff, systems 
 summary: 如果MetroCluster 無法正確指派磁碟、或是您在組態中使用DS460C磁碟櫃、則必須將磁碟指派給MetroCluster 每個以磁碟櫃為基礎的「以Shel-by Shelves組態」中的節點。您將建立一個組態、讓每個節點在其本機和遠端磁碟集區中擁有相同數量的磁碟。 
 ---
-= 在非AFF系統中指派磁碟擁有權
+= 在 MetroCluster FC 組態中為非 AFF 系統指派磁碟所有權
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

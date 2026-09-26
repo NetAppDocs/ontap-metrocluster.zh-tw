@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, verify, ha, config, component, state 
 summary: 在不支援的組態中MetroCluster 、控制器模組和機箱元件的ha-config狀態必須設定為MCC、才能正常開機。 
 ---
-= 驗證元件的ha-config狀態
+= 驗證 MetroCluster FC 組態中元件的 ha-config 狀態
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

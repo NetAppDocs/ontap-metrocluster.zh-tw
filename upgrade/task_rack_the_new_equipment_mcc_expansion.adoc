@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, rack, new, equipment 
 summary: 您必須為新節點安裝設備。 
 ---
-= 運用新設備
+= 將新設備上架以進行 MetroCluster FC 擴充
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

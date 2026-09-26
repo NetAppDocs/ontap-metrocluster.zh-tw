@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, controllers, switchover, switchback, ip, configuration, net, boot, root, aggregate, system, commands, mcc 
 summary: 升級至 ONTAP 9.15.1 或更新版本所推出的系統時，您必須先設定引導程序，才能繼續升級。 
 ---
-= 設定所需的 bootarg （用於將 MetroCluster IP 升級至 ONTAP 9.15.1 或更新版本所推出的系統）
+= 設定 MetroCluster IP 控制器升級所需的啟動參數
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

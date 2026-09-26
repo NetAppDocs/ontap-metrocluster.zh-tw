@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, set, up, ha, mode, existing, controller, module 
 summary: 您必須使用儲存容錯移轉修改命令、在現有的控制器模組上設定模式。重新啟動控制器模組之後、模式值會在稍後啟用。 
 ---
-= 在現有控制器模組上設定HA模式
+= 在 MetroCluster FC 組態中，為現有控制器模組設定 HA 模式
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

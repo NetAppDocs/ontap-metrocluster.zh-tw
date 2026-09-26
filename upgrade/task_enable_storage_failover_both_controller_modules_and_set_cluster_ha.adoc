@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, enable, storage, failover, both, controller, module, cluster, ha 
 summary: 在MetroCluster 將新的控制器模組新增至支援功能組態之後、您必須在兩個控制器模組上啟用儲存容錯移轉、並分別啟用叢集HA。 
 ---
-= 在兩個控制器模組上啟用儲存容錯移轉、並啟用叢集HA
+= 在 MetroCluster FC 控制器模組上啟用儲存設備故障轉移和叢集 HA
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, choose, upgrade, refresh, method 
 summary: 您所使用的更新程序取決於平台機型、升級範圍和MetroCluster 類型的支援。 
 ---
-= 選擇系統重新整理方法
+= 選擇 MetroCluster 系統重新整理程序
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

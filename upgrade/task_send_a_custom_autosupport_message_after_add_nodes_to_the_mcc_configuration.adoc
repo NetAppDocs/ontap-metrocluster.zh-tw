@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, send, custom, autosupport, message, add, nodes, configuration 
 summary: 您應該發出AutoSupport 一份消息、通知NetApp技術支援人員維護已完成。 
 ---
-= 在將節點新增至「功能集」組態之後、傳送自訂AutoSupport 的功能集訊息MetroCluster
+= 在四節點至八節點 MetroCluster FC 擴充之後傳送自訂 AutoSupport 訊息
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, choose, upgrade, refresh, method 
 summary: 您使用的升級程序取決於平台模式。 
 ---
-= 選擇控制器升級程序
+= 選擇 MetroCluster 控制器升級程序
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

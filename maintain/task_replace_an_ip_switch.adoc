@@ -256,15 +256,23 @@ NOTE: 除了管理介面（如果使用）之外、請勿 * 不 * 連接新的�
 
 NOTE: 如果升級或降級架構，則對第二個架構重複所有步驟。
 
-. 修改所有叢集生命體以重新啟用自動還原：
+. 將所有叢集 LIF 回復到其主連接埠。
++
+
+CAUTION: 在完成所有需要更新的交換器的先前步驟之前，請勿將叢集 LIF 回復至其主連接埠。
+
++
+.. 修改所有叢集生命體以重新啟用自動還原：
 +
 [source, cli]
 ----
 network interface modify -vserver <vserver_name> -lif <lif_name> -auto-revert true
 ----
-. 將所有目前不在原始連接埠上的叢集 LIF 恢復到其原始連接埠：
+.. 手動將所有目前不在主連接埠上的叢集 LIF 回復到主連接埠：
 +
-`network interface revert -vserver * -lif *`
+`network interface revert -vserver Cluster -lif *`
+
+
 
 . 或者、也可以移動 NS224 機櫃。
 +

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: metrocluster, upgrade, disconnect, existing, dr, group, fabric 
 summary: 您必須從光纖網路中的FC交換器中斷開現有的控制器模組。 
 ---
-= 從網路中斷現有DR群組的連線
+= 將現有的 MetroCluster FC DR 群組從架構中斷開連線
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
