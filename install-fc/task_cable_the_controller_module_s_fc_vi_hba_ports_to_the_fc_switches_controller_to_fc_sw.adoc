@@ -2,7 +2,7 @@
 permalink: install-fc/task_cable_the_controller_module_s_fc_vi_hba_ports_to_the_fc_switches_controller_to_fc_sw.html 
 sidebar: sidebar 
 keywords: metrocluster, fabric, installation, cable, new, controller, module, fc, vi, hba, ports, fc, switches, mcc 
-summary: FC-VI連接埠和HBA（主機匯流排介面卡）必須以纜線連接MetroCluster 至位在該組態中每個控制器模組上的站台FC交換器。 
+summary: FC-VI連接埠和HBA（主機匯流排介面卡）必須以纜線連接MetroCluster 至位在整個過程中、每個控制器模組上的站台FC交換器。 
 ---
 = 纜線控制器模組 FC-VI 和 HBA 連接埠至 MetroCluster FC 交換器
 :allow-uri-read: 

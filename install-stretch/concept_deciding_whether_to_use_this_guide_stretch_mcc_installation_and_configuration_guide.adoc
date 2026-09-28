@@ -2,7 +2,7 @@
 permalink: install-stretch/concept_deciding_whether_to_use_this_guide_stretch_mcc_installation_and_configuration_guide.html 
 sidebar: sidebar 
 keywords: metrocluster, stretch, installation, stretch, configuration, decide 
-summary: 本資訊說明如何在MetroCluster 延伸組態（有時稱為SAS光纖MetroCluster 整合組態）中安裝及設定不穩定的硬體和軟體元件。 
+summary: 本資訊說明如何在拉伸式（或 SAS 光纖）組態中安裝與設定 MetroCluster 硬體與軟體元件。 
 ---
 = 延伸MetroCluster 安裝與組態
 :allow-uri-read: 

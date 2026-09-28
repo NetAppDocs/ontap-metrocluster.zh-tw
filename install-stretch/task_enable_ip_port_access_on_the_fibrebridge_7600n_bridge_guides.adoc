@@ -2,7 +2,7 @@
 permalink: install-stretch/task_enable_ip_port_access_on_the_fibrebridge_7600n_bridge_guides.html 
 sidebar: sidebar 
 keywords: metrocluster, stretch, installation, enable, ip, port, access, bridge, fibrebridge 
-summary: 如果您使用ONTAP 9.5版之前的版本、或是打算使用遠端登入或其他IP連接埠傳輸協定和服務（FTP、ExpressNAV、ICMP或QuickNAV）、使用頻外存取到FibreBridge 7600N橋接器、則可透過主控台連接埠啟用存取服務。 
+summary: 如果您使用的是 9.5 之前的 ONTAP 版本，或者需要使用 telnet 或其他 IP 連接埠協定對 FibreBridge 7600N 橋接器進行帶外存取，請透過控制台連接埠啟用存取服務。 
 ---
 = 在延伸 MetroCluster 組態中的 FibreBridge 7600N 橋接器上啟用 IP 埠存取
 :allow-uri-read: 

@@ -2,7 +2,7 @@
 permalink: upgrade/task_assign_disk_ownership_in_aff_systems_mcc.html 
 sidebar: sidebar 
 keywords: metrocluster, upgrade, assign, disk, ownership, aff, systems 
-summary: 如果AFF 您在組態中使用鏡射Aggregate、但節點未正確指派磁碟（SSD）、則應將每個機櫃上的一半磁碟指派給一個本機節點、另一半磁碟指派給HA合作夥伴節點。您應該建立一個組態、讓每個節點在其本機和遠端磁碟集區中擁有相同數量的磁碟。 
+summary: 如果您使用具有鏡射 Aggregate 的 AFF 系統，且磁碟未正確指派，請將每個機櫃上的一半磁碟指派給本機節點，另一半指派給其 HA 合作夥伴節點。 
 ---
 = 在 MetroCluster FC 組態中為 AFF 系統指派磁碟所有權
 :allow-uri-read: 

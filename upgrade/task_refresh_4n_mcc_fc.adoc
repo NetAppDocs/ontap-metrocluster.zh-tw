@@ -2,7 +2,7 @@
 permalink: upgrade/task_refresh_4n_mcc_fc.html 
 sidebar: sidebar 
 keywords: metrocluster, upgrade, refresh, four, node, fc, configuration 
-summary: 您可以將MetroCluster 組態擴充為八節點組態、然後移除舊的災難恢復（DR）群組、以四節點的形式升級控制器和儲存設備。 
+summary: 您可以藉由將四節點 MetroCluster 組態擴充至八個節點，然後移除舊的災難恢復（DR）群組，來升級控制器與儲存設備。 
 ---
 = 重新整理四節點MetroCluster 的不全功能FC組態
 :allow-uri-read: 

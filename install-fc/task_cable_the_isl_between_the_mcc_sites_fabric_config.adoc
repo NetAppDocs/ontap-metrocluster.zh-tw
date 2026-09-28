@@ -2,7 +2,7 @@
 permalink: install-fc/task_cable_the_isl_between_the_mcc_sites_fabric_config.html 
 sidebar: sidebar 
 keywords: metrocluster, fabric, installation, cable, isl, sites 
-summary: 您必須透過光纖交換器間連結（ISL\）連接每個站台的FC交換器、以形成連接MetroCluster 到各個元件的交換器架構。 
+summary: 您必須透過光纖交換器間連結（ISL）連接每個站台的FC交換器、以形成連接MetroCluster 到該元件的交換器架構。 
 ---
 = 在 MetroCluster FC 站台之間連接 ISL 纜線
 :allow-uri-read: 

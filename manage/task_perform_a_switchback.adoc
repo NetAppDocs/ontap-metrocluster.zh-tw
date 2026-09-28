@@ -2,7 +2,7 @@
 permalink: manage/task_perform_a_switchback.html 
 sidebar: sidebar 
 keywords: metrocluster, configuration, switchback, operation, return, operating, operate, state, sync-source, storage, virtual, machine, svm, disaster, site, active, serving, local, disk, pool, perform 
-summary: 修復MetroCluster 完這個功能後、您就可以執行MetroCluster 還原操作。此還原操作會將組態恢復至正常作業狀態、使災難站台上的同步來源儲存虛擬機器（SVMs）處於作用中狀態、並從本機磁碟集區提供資料。MetroCluster 
+summary: 修復 MetroCluster 組態後，執行切換回復作業以使其恢復正常運作，災難站台上的同步來源 SVM 作用中並提供資料。 
 ---
 = 執行 MetroCluster 切回
 :allow-uri-read: 

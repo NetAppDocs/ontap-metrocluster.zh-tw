@@ -2,7 +2,7 @@
 permalink: install-fc/generaltask_fcsw_cisco_configure_the_cisco_fc_switches_with_rcf_files.html 
 sidebar: sidebar 
 keywords: metrocluster, fabric, installation, configuring, cisco, fc, switched, rcf, files 
-summary: 若要設定Cisco FC交換器、您必須將交換器設定重設為原廠預設值、安裝交換器軟體、以及下載並套用參考組態（RCF）檔案、以針對特定組態提供完整的交換器設定。 
+summary: 若要設定 Cisco FC 交換器，請將交換器設定重設為出廠預設值，安裝交換器軟體，並套用參考組態（RCF）檔案。 
 ---
 = 使用 RCF 檔案設定 Cisco MetroCluster FC 交換器
 :allow-uri-read: 

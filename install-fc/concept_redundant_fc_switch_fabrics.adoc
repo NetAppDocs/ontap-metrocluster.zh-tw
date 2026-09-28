@@ -2,7 +2,7 @@
 permalink: install-fc/concept_redundant_fc_switch_fabrics.html 
 sidebar: sidebar 
 keywords: metrocluster, fabric, installation, redundant, fc, switch, fabrics 
-summary: 每個交換器架構都包含連接站台的交換器間連結（ISL）。資料會透過ISL從站台複寫到站台。每個交換器架構必須位於不同的實體路徑上、才能提供備援功能。 
+summary: 每個交換器架構都包含連接各個站台並在站台間複寫資料的交換器間連結（ISL）。每個交換器架構必須使用不同的實體路徑以提供備援。 
 ---
 = MetroCluster FC 組態中的備援交換器架構
 :allow-uri-read: 
