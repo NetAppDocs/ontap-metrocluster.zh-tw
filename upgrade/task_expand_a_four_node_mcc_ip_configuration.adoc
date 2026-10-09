@@ -1583,10 +1583,10 @@ cluster_A::*>
 +
 .. 顯示用於識別MDV磁碟區的磁碟區：
 +
-如果每個站台有單一鏡射資料Aggregate、請將兩個MDV磁碟區移到此單一Aggregate。如果您有兩個以上的鏡射資料集合體、請將每個MDV磁碟區移至不同的集合體。
+如果每個站台有單一鏡射資料彙總，則將兩個 MDV Volume 都移至此單一彙總。如果有兩個或多個鏡射資料彙總，則將每個 MDV Volume 移至不同的彙總。成功擴充（至四節點或八節點組態）後，每個 MetroCluster IP 站台包含兩個 MDV Volume。
 
 +
-如果您要將四節點 MetroCluster 組態擴充為永久性的八節點組態、則應將其中一個 MDV 磁碟區移至新的 DR 群組。
+如果您要將四節點 MetroCluster 組態擴充為永久的八節點組態，則必須將其中一個 MDV Volume 移至新 DR 群組中的任何鏡射 Aggregate。無論您移動的 MDV Volume 字尾是 `_A`還是 `_B`，都沒有差異。
 
 +
 以下範例顯示「Volume show」輸出中的MDV磁碟區：
@@ -1642,11 +1642,11 @@ Warning: You are about to modify the system volume
 +
 [listing]
 ----
-cluster_A::*> vol show MDV_CRS_d6b0b313ff5611e9837100a098544e51_B
+cluster_A::*> vol show MDV_CRS_d6b0b313ff5611e9837100a098544e51_A
 Vserver     Volume       Aggregate    State      Type       Size  Available Used%
 ---------   ------------ ------------ ---------- ---- ---------- ---------- -----
-cluster_A   MDV_CRS_d6b0b313ff5611e9837100a098544e51_B
-                       aggr_a2      online     RW         10GB     9.50GB    0%
+cluster_A   MDV_CRS_d6b0b313ff5611e9837100a098544e51_A
+                         data_a3      online      RW        10GB     9.50GB    0%
 ----
 
 

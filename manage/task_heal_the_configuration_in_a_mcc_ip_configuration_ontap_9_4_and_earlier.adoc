@@ -33,17 +33,10 @@ NOTE: 在執行S還原9.5的SIP系統上、系統會自動執行修復、您可�
 +
 如果系統顯示載入器提示、請執行「boot_ontap」命令。
 
-. 執行根Aggregate修復階段：MetroCluster 「還原根集合體」
+. 修復資料集合體：
 +
-[listing]
-----
-cluster_A::> metrocluster heal root-aggregates
-[Job 137] Job succeeded: Heal Root-Aggregates is successful
-----
-+
-如果修復被否決、您可以選擇使用MetroCluster --overrover-etoes參數來重新發出還原根集合體命令。如果您使用此選用參數、系統將會置換任何軟質否決、以防止修復作業。
+《可修復集合體》MetroCluster
 
-. 重新同步集合體：MetroCluster 「無法修復集合體」
 +
 [listing]
 ----
@@ -51,9 +44,22 @@ cluster_A::> metrocluster heal aggregates
 [Job 137] Job succeeded: Heal Aggregates is successful
 ----
 +
-如果修復被否決、您可以選擇MetroCluster 使用--overrover-etoes參數重新發出還原指令。如果您使用此選用參數、系統將會置換任何軟質否決、以防止修復作業。
+如果治療被否決、您可以選擇MetroCluster 使用「-overrover-etoes」參數重新發出「還原」命令。如果您使用此選用參數、系統將會置換任何軟質否決、以防止修復作業。
 
-. 在MetroCluster 健全的叢集上執行flexoperationshow命令、確認修復作業已完成：
+. 修復根Aggregate：
++
+「修復根集合體」MetroCluster
+
++
+[listing]
+----
+cluster_A::> metrocluster heal root-aggregates
+[Job 137] Job succeeded: Heal Root-Aggregates is successful
+----
++
+如果修復被否決，您可以選擇重新發出 `metrocluster heal root-aggregates` 命令，並加上 `--override-vetoes` 參數。如果您使用此選用參數，系統會覆寫任何阻止修復作業的軟否決。
+
+. 在MetroCluster 健全的叢集上執行「flexoperationshow」命令、確認修復作業已完成：
 +
 [listing]
 ----

@@ -249,7 +249,16 @@ NOTE: 對具有遠端磁碟至 Cluster_A 的所有叢集執行此步驟
 
 
 
-. 根據交換器類型持續離線 ISL 交換器連接埠。
+. 將 ISL 交換器埠離線。為您的交換器類型選擇正確的程序。
++
+以下程序說明如何停用未使用的 ISL 連接埠，您可以使用相同的命令來停用所有作用中的 ISL 連接埠，做為此程序的一部分。
+
++
+** link:../install-ip/task_switch_config_cisco.html#disable-unused-isl-ports-and-port-channels["停用 Cisco IP 交換器上的 ISL 連接埠"]
+** link:../install-ip/task_switch_config_broadcom.html#disable-unused-isl-ports-and-port-channels["停用 Broadcom IP 交換器上的 ISL 連接埠"]
+** link:../install-ip/task_switch_config_nvidia.html#disable-unused-isl-ports-and-port-channels["停用 NVIDIA IP 交換器上的 ISL 連接埠"]
+
+
 . 在每個節點上執行下列命令來停止節點：
 +
 `node halt -inhibit-takeover true -skip-lif-migration true -node <node-name>`
