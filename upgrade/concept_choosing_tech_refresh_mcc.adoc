@@ -22,7 +22,15 @@ summary: 您所使用的更新程序取決於平台機型、升級範圍和Metro
 * MetroCluster 組態中的所有節點都必須執行相同的 ONTAP 版本。例如、如果您有八個節點組態、則所有八個節點都必須執行相同的 ONTAP 版本。請參閱link:https://hwu.netapp.com["Hardware Universe"^]以取得您的組合所支援的最低 ONTAP 版本。
 * 請勿超過平台「下限」的任何物件限制。套用兩個平台的較低物件限制。
 * 如果目標平台限制低於 MetroCluster 限制、您必須將 MetroCluster 重新設定為目標平台限制、然後再新增節點。
-* 請參閱 link:https://hwu.netapp.com["Hardware Universe"^] 適用於平台限制。
++
+請參閱 link:https://hwu.netapp.com["Hardware Universe"^] 適用於平台限制。
+
+* 執行系統重新整理時，舊平台類型和新平台類型*必須*相符：
++
+** 您可以將 FAS 系統新增至 FAS 系統，或將 AFF A 系列新增至 AFF A 系列。
+** 您無法將 FAS 系統新增至 AFF A 系列，也無法將 AFF A 系列新增至 AFF C 系列。
+
+
 
 
 
@@ -77,6 +85,12 @@ image::../media/mcc-ip-techrefresh-asa-9161.png[MetroCluster IP ASA 技術更新
 * 請勿超過平台「下限」的任何物件限制。套用兩個平台的較低物件限制。
 * 如果目標平台限制低於 MetroCluster 限制、您必須重新設定 MetroCluster 、使其達到或低於目標平台限制、才能新增節點。
 * 請參閱 link:https://hwu.netapp.com["Hardware Universe"^] 適用於平台限制。
+* 執行系統重新整理時，舊平台類型和新平台類型*必須*相符：
++
+** 您可以將 FAS 系統新增至 FAS 系統，或將 AFF A 系列新增至 AFF A 系列。
+** 您無法將 FAS 系統新增至 AFF A 系列，也無法將 AFF A 系列新增至 AFF C 系列。
+
+
 
 
 

@@ -18,7 +18,7 @@ summary: 您可能需要變更 FC 交換器的廠商（ Cisco 改為 Brocade 、
 
 
 .步驟
-. [[Step_1 、 Step 1]] 檢查組態的健全狀況。
+. [[step_1]]檢查組態的健全狀況。
 +
 .. 檢查MetroCluster 每個叢集上的「* MetroCluster 」「*」「*」「顯示*」是否已設定成正常模式
 +
@@ -91,6 +91,6 @@ To check if the nodes are ready to do a switchover or switchback operation, run 
 
 
 . 開啟交換器電源。
-. 重複、確認 MetroCluster 組態正常 <<步驟1.>>。
+. 藉由重複 <<step_1,步驟1.>> 來驗證 MetroCluster 組態是否正常。
 . 針對組態中的第二個 Fabric 重複步驟 1 至步驟 7 。
 

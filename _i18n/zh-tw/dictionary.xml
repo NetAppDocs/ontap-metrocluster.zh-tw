@@ -10506,10 +10506,8 @@
   <block id="dc97a56f45d09eb47627be2f51eaacac" category="doc">變更 FC 交換器的廠商或型號</block>
   <block id="34b3750efa9ad33069e758e1d20702b2" category="list-text">此程序適用於使用 NetApp 驗證交換器的情況。</block>
   <block id="038dcdf6b816f0dea514171c0fbec340" category="list-text">對於組態中的兩個 Fabric 、您必須一次在一個 Fabric 上執行本程序中的步驟。</block>
-  <block id="12e792350f2f2a26f26efec238939f8c" category="list-text">[[Step_1 、 Step 1]] 檢查組態的健全狀況。</block>
   <block id="66700e9b823419320bcf568412b3c8f5" category="list-text">中斷 MetroCluster ISL 的連線。</block>
   <block id="39c4de53c442cd522fc67edfc4cc59c8" category="list-text">依下列順序連接交換器：</block>
-  <block id="4c49ac5fd96c13efa7ddbce7575dd9e4" category="list-text">重複、確認 MetroCluster 組態正常 <block ref="70a312d559ac5bac88a63c5c7c2e52d3" category="inline-xref-macro-rx"></block>。</block>
   <block id="b81576b1956a4793e86cfb62d8774b3f" category="list-text">針對組態中的第二個 Fabric 重複步驟 1 至步驟 7 。</block>
   <block id="c1f9897c71a9ecfa3b9c9f7cf2180518" category="paragraph">本文件中使用的建議名稱範例可識別橋接器所連接的控制器模組和堆疊、如下所示。</block>
   <block id="498655ab09377cb9366dc958acdc9ea7" category="section-title">停用未使用的 ISL 連接埠和連接埠通道</block>
@@ -14606,7 +14604,6 @@
   <block id="c464415fe9040cd42442afd5413727d2" category="list-text">驗證 ha-config 模式：</block>
   <block id="bb903f8039d8d74f0348f46c24a33392" category="paragraph">輸出結果應與以下範例類似：</block>
   <block id="82aa61ae9e51df62f98090f4f904d7c6" category="list-text"><block ref="82aa61ae9e51df62f98090f4f904d7c6" category="inline-link-macro-rx"></block></block>
-  <block id="cdb2cb2d1f6128576533f653419f09c5" category="list-text"><block ref="cdb2cb2d1f6128576533f653419f09c5" category="inline-link-macro-rx"></block></block>
   <block id="91584e9f93d8a244006822e2c2f5345a" category="doc">選擇正確的 MetroCluster 恢復程序</block>
   <block id="f24397da4f9715a9f11e47c9635eea3a" category="doc">MetroCluster 災難恢復工作流程</block>
   <block id="1a346af97abe0920fa20de0c7db4a224" category="doc">在 MetroCluster 硬體更換前啟用控制台記錄</block>
@@ -14873,4 +14870,10 @@
   <block id="dbf8c386b8c209a8a104209f4811beb1" category="paragraph">如果修復被否決，您可以選擇重新發出<block ref="4fc02dad333b99cda95cb4d63f746057" prefix=" " category="inline-code"></block> 命令，並加上<block ref="5b8353fafaa1c451a58b0b87dede3fc0" prefix=" " category="inline-code"></block> 參數。如果您使用此選用參數，系統會覆寫任何阻止修復作業的軟否決。</block>
   <block id="2501b01a945a3eabd573e54654793648" category="paragraph">如果每個站台有單一鏡射資料彙總，則將兩個 MDV Volume 都移至此單一彙總。如果有兩個或多個鏡射資料彙總，則將每個 MDV Volume 移至不同的彙總。成功擴充（至四節點或八節點組態）後，每個 MetroCluster IP 站台包含兩個 MDV Volume。</block>
   <block id="6bd55190cc0a65555cf13d5cf60edc77" category="paragraph">如果您要將四節點 MetroCluster 組態擴充為永久的八節點組態，則必須將其中一個 MDV Volume 移至新 DR 群組中的任何鏡射 Aggregate。無論您移動的 MDV Volume 字尾是<block ref="3254fb5b504a92168380bac219fc29ca" prefix=" " category="inline-code"></block>還是<block ref="b0ba49340c52b617d8bb5e0f66b8e6dc" prefix=" " category="inline-code"></block>，都沒有差異。</block>
+  <block id="512c3bde31153c80a98e9b5ec347b11a" category="list-text">[[step_1]]檢查組態的健全狀況。</block>
+  <block id="2ff6716e43264896ea2ac1acc2b979d2" category="list-text">藉由重複 <block ref="601df3435e384193565099a414178c21" category="inline-xref-macro-rx"></block> 來驗證 MetroCluster 組態是否正常。</block>
+  <block id="5f444797ead217a29f43800dfabacfbf" category="list-text">執行系統重新整理時，舊平台類型和新平台類型*必須*相符：</block>
+  <block id="ede59518e087cd94a05f8667d5654efc" category="list-text">您可以將 FAS 系統新增至 FAS 系統，或將 AFF A 系列新增至 AFF A 系列。</block>
+  <block id="91b0e1726a138b2c425045cdba0bdc83" category="list-text">您無法將 FAS 系統新增至 AFF A 系列，也無法將 AFF A 系列新增至 AFF C 系列。</block>
+  <block id="274e643167d886697821940a9eae3ef3" category="list-text">進行系統擴充時，舊平台類型和新平台類型*必須*相符：</block>
 </blocks>

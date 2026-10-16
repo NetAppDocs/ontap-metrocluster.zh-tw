@@ -42,7 +42,7 @@ summary: 更新新平台的交換器 RCF 檔案，並在控制器模組上設定
 
 +
 ** link:../install-ip/task_switch_config_broadcom.html#downloading-and-installing-the-broadcom-rcf-files["下載並安裝 Broadcom RCFs"]
-** link:../install-ip/task_switch_config_cisco.html#download-and-installing-the-cisco-ip-rcf-files["下載並安裝 Cisco IP RCFs"]
+** link:../install-ip/task_switch_config_cisco.html#download-and-install-the-cisco-ip-rcf-files["下載並安裝 Cisco IP RCFs"]
 ** link:../install-ip/task_switch_config_nvidia.html#download-and-install-the-nvidia-rcf-files["下載並安裝 NVIDIA IP RCFs"]
 
 
