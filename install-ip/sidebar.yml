@@ -2,7 +2,7 @@
 section: install-ip
 title: 安裝MetroCluster 一套靜態IP組態
 entries:
-- title: 總覽
+- title: 安裝工作流程
   url: "/install-ip/index.html"
 - title: 準備MetroCluster 進行安裝
   pdf-filename: 準備進行MetroCluster IP 安裝
@@ -105,7 +105,7 @@ entries:
   entries:
   - title: 使用 CLI 設定 MetroCluster 軟體
     entries:
-    - title: 總覽
+    - title: 了解如何在 ONTAP 中設定 MetroCluster 軟體
       url: "/install-ip/concept_configure_the_mcc_software_in_ontap.html"
     - title: 收集必要資訊
       url: "/install-ip/task_sw_config_gather_info.html"
@@ -137,7 +137,7 @@ entries:
       url: "/install-ip/configure-mcc-site-system-manager.html"
 - title: 配置 ONTAP 調解器以實現計劃外自動切換
   entries:
-  - title: 準備安裝 ONTAP 調解器
+  - title: 準備設定 ONTAP 中介器
     url: "/install-ip/concept_mediator_requirements.html"
   - title: 配置ONTAP Mediator 以進行MetroCluster IP 配置
     url: "/install-ip/task_configuring_the_ontap_mediator_service_from_a_metrocluster_ip_configuration.html"

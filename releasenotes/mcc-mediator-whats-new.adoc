@@ -13,7 +13,7 @@ summary: 每個版本都提供 ONTAP Mediator 的新功能。  最新功能。
 [role="lead"]
 了解MetroCluster IP 的新功能和增強功能，以支援ONTAP Mediator。
 
-有關ONTAP Mediator 每個版本的功能和增強特性的詳細信息，請參閱：link:https://docs.netapp.com/us-en/ontap/mediator/whats-new-concept.html["ONTAP Mediator 的新增功能"^] 。
+如需 ONTAP Mediator 每個版本的功能與增強功能的詳細資訊，請參閱 link:https://docs.netapp.com/us-en/ontap-mediator/release-notes/whats-new-in-ontap-mediator.html["ONTAP Mediator 的新增功能"^]。
 
 [cols="4,1"]
 |===
@@ -34,7 +34,7 @@ ONTAP 9.19.1
 
 
  a| 
-ONTAP Mediator 1.12 支援配置使用 HTTPS 進行 MetroCluster IP 通訊的 ONTAP Mediator。HTTPS 透過使用 SSL/TLS 加密整個工作階段來提高安全性。您可以選擇安裝僅使用 HTTPS 傳輸協定的 ONTAP Mediator。如果使用此安裝方法，則不會安裝 SCST 套件。有關安裝僅使用 HTTPS 傳輸協定的 ONTAP Mediator 的更多資訊，請參閱 link:https://docs.netapp.com/us-en/ontap/mediator/index.html#https-iscsi-installation["ONTAP Mediator 的 HTTPS 和 iSCSI 安裝選項"^]。
+ONTAP Mediator 1.12 支援配置使用 HTTPS 進行 MetroCluster IP 通訊的 ONTAP Mediator。HTTPS 透過使用 SSL/TLS 加密整個工作階段來提高安全性。您可以選擇安裝僅使用 HTTPS 傳輸協定的 ONTAP Mediator。如果使用此安裝方法，則不會安裝 SCST 套件。有關安裝僅使用 HTTPS 傳輸協定的 ONTAP Mediator 的更多資訊，請參閱 link:https://docs.netapp.com/us-en/ontap-mediator/install/prepare-install.html#https-iscsi-installation["ONTAP Mediator 的 HTTPS 和 iSCSI 安裝選項"^]。
 
 link:../install-ip/concept_mediator_requirements.html#select-a-communication-protocol-for-ontap-mediator["深入瞭解 ONTAP Mediator 中的 iSCSI 和 HTTPS 傳輸協定"]。
  a| 

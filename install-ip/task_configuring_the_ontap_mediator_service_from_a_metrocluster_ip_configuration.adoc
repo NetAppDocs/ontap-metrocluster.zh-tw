@@ -16,7 +16,7 @@ summary: 必須在 ONTAP 節點上設定 ONTAP 調解器才能在 MetroCluster I
 .開始之前
 * ONTAP 調解器必須已成功安裝在兩個 MetroCluster 站點均可存取的網路位置上。
 +
-link:https://docs.netapp.com/us-en/ontap/mediator/index.html["安裝或升級 ONTAP 調解器"^]
+link:https://docs.netapp.com/us-en/ontap-mediator/index.html["安裝或升級 ONTAP 調解器"^]
 
 * 您必須擁有執行 ONTAP Mediator 的主機的 IP 位址。
 * 您必須擁有 ONTAP Mediator 的使用者名稱和密碼。
