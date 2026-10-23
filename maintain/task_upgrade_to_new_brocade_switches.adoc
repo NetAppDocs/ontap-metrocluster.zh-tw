@@ -76,6 +76,10 @@ image::../media/brocade_upgr_to_g620_replaced_b_1.gif[Brocade升級至 G620 並�
 
 
 . 開啟新交換器的電源、讓它們開機。
+. 返回交換器提示、確認交換器韌體版本：
++
+《Firmwarreshow》
+
 . 使用下列其中一個程序來設定 Brocade FC 交換器：
 +
 link:../install-fc/task_reset_the_brocade_fc_switch_to_factory_defaults.html["使用RCF檔案設定Brocade FC交換器"]
@@ -143,16 +147,6 @@ slot 0: FC Host Adapter 0g (QLogic 8324 rev. 2, N-port, <UP>)**<=== Initiator po
 		.
 		.
 ----
-. 返回交換器提示、確認交換器韌體版本：
-+
-《Firmwarreshow》
-
-+
-交換器必須執行最新支援的韌體。
-
-+
-https://mysupport.netapp.com/matrix["NetApp 互通性對照表工具"]
-
 . 模擬切換作業：
 +
 .. 在任何節點的提示下、變更為進階權限等級：+「權限進階」

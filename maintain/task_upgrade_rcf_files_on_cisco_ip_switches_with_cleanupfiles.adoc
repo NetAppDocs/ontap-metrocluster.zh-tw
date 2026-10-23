@@ -261,14 +261,11 @@ NOTE: 系統會提示您指定虛擬路由和轉送（VRF）。
 IP_switch_A_1# show running-config diff
 IP_switch_A_1#
 ----
-
-
-. 如果看到系統輸出、請將執行組態儲存至啟動組態：「copy running-config startup-config」
+.. 如果看到系統輸出、請將執行組態儲存至啟動組態：「copy running-config startup-config」
 +
 
 NOTE: 系統輸出指出啟動組態和執行中組態不同、且處於擱置狀態。如果您未儲存擱置中的變更、則無法使用交換器的重新載入來回復。
 
-+
 .. 套用高效能檔案：
 +
 [listing]
@@ -329,6 +326,11 @@ IP_switch_A_1# copy running-config startup-config
 
 IP_switch_A_1# reload
 ----
+. 對每個交換器重複上述步驟。
++
+
+NOTE: 在第一個架構（Switch_A_1、Switch_B_1）中設定交換器後，必須重複上述步驟，將叢集 LIF 移轉到第二個架構（Switch_A_2、Switch_B_2）。請參閱 link:../install-ip/task_install_and_cable_the_mcc_components.html["了解如何設定 MetroCluster IP 交換器"]。
+
 . 修改所有叢集 LIF 以啟用自動還原：
 +
 .. 重新啟用自動還原：

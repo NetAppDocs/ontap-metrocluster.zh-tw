@@ -4882,7 +4882,6 @@
   <block id="40559a80c4883cc1d1e0a5d13f64e904" category="paragraph">修復作業必須先在資料集合體上執行、然後再在根集合體上執行。</block>
   <block id="5f9bbce01bd9d804a2f72650092a1d3b" category="section-title">修復資料集合體</block>
   <block id="e941c3bfcac66cf5cb47b9d65004602f" category="paragraph">修復及更換災難站台上的任何硬體之後、您必須修復資料集合體。此程序可重新同步資料集合體、並準備（現已修復）災難站台以進行正常作業。在修復根集合體之前、您必須先修復資料集合體。</block>
-  <block id="0605e801ab1d6a8b30acc6dda60b61a8" category="paragraph">以下範例顯示強制切換、您可在其中將切換式Aggregate上線。遠端叢集中的所有組態更新都會成功複寫到本機叢集。您可以在災難站台上開啟儲存設備的電源、但您並不需要、也不可以開啟災難站台上的控制器模組。</block>
   <block id="b2a58abb9aa1ce46e4162ec28d9e8484" category="list-text">確認已完成切換：</block>
   <block id="7db001ac93912b8966d9e8ddec02a225" category="list-text">從存續的叢集執行下列命令、以重新同步資料集合體：</block>
   <block id="b9d3fabfc03b80ebe4821d8d711c4a5b" category="paragraph">如果治療被否決、您可以選擇MetroCluster 使用「-overrover-etoes」參數重新發出「還原」命令。如果您使用此選用參數、系統將會置換任何軟質否決、以防止修復作業。</block>
@@ -14373,7 +14372,6 @@
   <block id="f7f3cd01961c53f33c89b788147d8de3" category="list-text">將所有其他從舊控制器斷開的連接線連接到新控制器模組。</block>
   <block id="2fb65189695e9496f507ebb44d5b6cb6" category="paragraph">在執行切換之前，請確認 LIF 託管在適當的節點和連接埠上。</block>
   <block id="542e234aa223d3b0ecca11dacf8e46ed" category="list-text">在執行切換之前，請確認 LIF 已託管在適當的節點和連接埠上。</block>
-  <block id="3dcbbe108abc6bdf7036466d9fe35058" category="admonition">在執行回切操作之前，您必須確認新節點上資料 LIF 的位置是否正確。回切組態時，ONTAP 會嘗試恢復 LIF 使用的主連接埠上的流量。如果主連接埠與交換器連接埠和 VLAN 的連線不正確，則可能發生 I/O 故障。如果您在將 LIF 放置在正確的節點或連接埠上時遇到任何問題，請不要繼續執行回切操作，並聯絡 NetApp 技術支援。</block>
   <block id="108f2a315310ceff812cf39f143ca95b" category="list-text">執行以下檢查以確認兩個叢集之間的切換正常運作：</block>
   <block id="59a93fe50b25a85e88bed38108e0196c" category="list-text">從災難復原叢集中，檢查是否可以從倖存叢集切換到災難復原叢集：</block>
   <block id="59ded25db2e6cefacbcb41c378e0b709" category="list-text">從倖存叢集中，檢查是否可以從 DR 叢集切換到倖存叢集：</block>
@@ -14879,4 +14877,10 @@
   <block id="706c1d4933d296d42d61b064f4e637ae" category="sidebar">安裝工作流程</block>
   <block id="8f817e2a0df7ced319cdc0dd9031e535" category="sidebar">了解如何在 ONTAP 中設定 MetroCluster 軟體</block>
   <block id="b60d2ca38a2a217c2f194613ae620303" category="sidebar">準備設定 ONTAP 中介器</block>
+  <block id="48787bff378672c516633e53e78867b8" category="summary">在非控制器故障後修復 MetroCluster 組態，並執行切回作業以恢復正常、完全備援的運作。</block>
+  <block id="3e2ce732c0b76ab6255c0b49aa925eab" category="list-text">在架構附加與延伸式 MetroCluster 組態中，災難站台上的節點必須停止運作或保持斷電狀態。在修復過程中，它們不得完全開機。</block>
+  <block id="376deeb1de4a09a5382d17ea2768b1e9" category="paragraph">以下範例顯示強制切換，其中您將切換後的彙總設為線上。遠端叢集中的所有組態更新都會成功複寫到本機叢集。在此程序中，您會啟動災難站台上的儲存設備，但您不應且絕不能在光纖連接或延伸式 MetroCluster 組態中啟動災難站台上的控制器模組。</block>
+  <block id="756bb9840619872518b56de349470f31" category="paragraph">如果修復被否決，您可以重新發出 <block ref="c85b4996143a93edc62c1214c1b80d15" prefix=" " category="inline-code"></block> 命令並搭配 <block ref="5b8353fafaa1c451a58b0b87dede3fc0" prefix=" " category="inline-code"></block> 參數，以置換任何阻止修復作業的軟否決。</block>
+  <block id="4510065cdf938bdc660bae11b415e4ca" category="admonition">在執行切回之前，您必須確認新節點上的資料 LIF 位置正確。當您切回組態時， ONTAP 會嘗試恢復 LIF 所使用之主連接埠上的流量。如果主連接埠與交換器連接埠和 VLAN 的連線不正確，可能會發生 I/O 故障。如果您在將 LIF 放置於正確的節點或連接埠時遇到任何問題，請勿繼續執行切回，並聯絡 NetApp 技術支援。</block>
+  <block id="ded79adea8538afbad271b9f9dc6c6e2" category="admonition">在 MetroCluster FC 環境中，「連線」在命令輸出中應顯示為「不適用」。</block>
 </blocks>

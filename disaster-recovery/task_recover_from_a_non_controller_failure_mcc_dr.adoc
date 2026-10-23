@@ -2,7 +2,7 @@
 permalink: disaster-recovery/task_recover_from_a_non_controller_failure_mcc_dr.html 
 sidebar: sidebar 
 keywords: equipment, disaster, site, undergone, require, maintenance, replacement, controller, replace, process, metrocluster, configuration, data, aggregate, switchback, operation, recover, non-controller, failure, heal, configuration, metrocluster, fc, data, aggregate, root, disaster, verify, system, switchback, verification, result, perform, successful, delete, deleting, stale, listing 
-summary: 在災難現場的設備完成任何必要的維護或更換、但未更換控制器之後、您可以開始將MetroCluster 此功能組態恢復至完全備援狀態的程序。這包括修復組態（首先是資料集合體、然後是根集合體）、以及執行切換作業。 
+summary: 在非控制器故障後修復 MetroCluster 組態，並執行切回作業以恢復正常、完全備援的運作。 
 ---
 = 從 MetroCluster 組態中的非控制器故障中恢復
 :allow-uri-read: 
@@ -45,10 +45,7 @@ NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在�
 
 .開始之前
 * 必須執行切換、且存續站台必須提供資料。
-* 災難站台上的節點必須暫停或保持關機狀態。
-+
-在修復過程中、不得完全開機。
-
+* 在架構附加與延伸式 MetroCluster 組態中，災難站台上的節點必須停止運作或保持斷電狀態。在修復過程中，它們不得完全開機。
 * 災難站台的儲存設備必須可供存取（磁碟櫃已開機、功能正常且可存取）。
 * 在網路附加MetroCluster 的不支援功能組態中、交換器間連結（ISL）必須啟動並運作。
 * 在四節點MetroCluster 的不完整組態中、正常運作站台中的節點不得處於HA容錯移轉狀態（每個HA配對的所有節點都必須啟動並執行）。
@@ -65,7 +62,7 @@ NetApp 強烈建議您在使用的裝置上啟用主控台記錄功能、並在�
 修復及更換災難站台上的任何硬體之後、您必須修復資料集合體。此程序可重新同步資料集合體、並準備（現已修復）災難站台以進行正常作業。在修復根集合體之前、您必須先修復資料集合體。
 
 .關於這項工作
-以下範例顯示強制切換、您可在其中將切換式Aggregate上線。遠端叢集中的所有組態更新都會成功複寫到本機叢集。您可以在災難站台上開啟儲存設備的電源、但您並不需要、也不可以開啟災難站台上的控制器模組。
+以下範例顯示強制切換，其中您將切換後的彙總設為線上。遠端叢集中的所有組態更新都會成功複寫到本機叢集。在此程序中，您會啟動災難站台上的儲存設備，但您不應且絕不能在光纖連接或延伸式 MetroCluster 組態中啟動災難站台上的控制器模組。
 
 .步驟
 . 確認已完成切換：
@@ -93,7 +90,7 @@ controller_A_1::> metrocluster heal -phase aggregates
 [Job 130] Job succeeded: Heal Aggregates is successful.
 ----
 +
-如果治療被否決、您可以選擇MetroCluster 使用「-overrover-etoes」參數重新發出「還原」命令。如果您使用此選用參數、系統將會置換任何軟質否決、以防止修復作業。
+如果修復被否決，您可以重新發出  `metrocluster heal` 命令並搭配  `--override-vetoes` 參數，以置換任何阻止修復作業的軟否決。
 
 . 確認作業已完成：
 +
@@ -147,7 +144,7 @@ mcc1A::> metrocluster heal -phase root-aggregates
 [Job 137] Job succeeded: Heal Root Aggregates is successful
 ----
 +
-如果治療被否決、您可以選擇MetroCluster 使用「-overrover-etoes」參數重新發出「還原」命令。如果您使用此選用參數、系統將會置換任何軟質否決、以防止修復作業。
+如果修復被否決，您可以重新發出  `metrocluster heal` 命令並搭配  `--override-vetoes` 參數，以置換任何阻止修復作業的軟否決。
 
 . 在目的地叢集上執行下列命令、確保修復作業已完成：
 +
@@ -217,7 +214,7 @@ mcc1A::> metrocluster operation show
 
 
 
-CAUTION: 在執行回切操作之前，您必須確認新節點上資料 LIF 的位置是否正確。回切組態時，ONTAP 會嘗試恢復 LIF 使用的主連接埠上的流量。如果主連接埠與交換器連接埠和 VLAN 的連線不正確，則可能發生 I/O 故障。如果您在將 LIF 放置在正確的節點或連接埠上時遇到任何問題，請不要繼續執行回切操作，並聯絡 NetApp 技術支援。
+CAUTION: 在執行切回之前，您必須確認新節點上的資料 LIF 位置正確。當您切回組態時， ONTAP 會嘗試恢復 LIF 所使用之主連接埠上的流量。如果主連接埠與交換器連接埠和 VLAN 的連線不正確，可能會發生 I/O 故障。如果您在將 LIF 放置於正確的節點或連接埠時遇到任何問題，請勿繼續執行切回，並聯絡 NetApp 技術支援。
 
 
 
@@ -567,7 +564,7 @@ volumes             ok
 ----
 +
 
-NOTE: 在 MetroCluster FC 環境中，「connections」在命令輸出中應顯示為「not-applicable」。
+NOTE: 在 MetroCluster FC 環境中，「連線」在命令輸出中應顯示為「不適用」。
 
 
 
