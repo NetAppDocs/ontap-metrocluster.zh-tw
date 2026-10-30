@@ -57,7 +57,7 @@ link:../install-stretch/concept_considerations_differences.html["延伸MetroClus
 
 
  a| 
-link:../manage/index.html["系統管理MetroCluster"]
+link:../manage/task_perform_switchover_for_tests_or_maintenance.html["執行切換以進行測試或維護"]
  a| 
 * 瞭MetroCluster 解此功能的組態
 * 切換、修復及切換
@@ -76,7 +76,7 @@ link:../disaster-recovery/concept_dr_workflow.html["災難恢復"]
 
 
  a| 
-link:../maintain/index.html["系統維護MetroCluster"]
+link:../maintain/concept_where_to_find_procedures_for_mcc_maintenance_tasks.html["系統維護MetroCluster"]
  a| 
 * 關於在支援不支援支援服務的環境中進行維護的準則MetroCluster
 * FC至SAS橋接器和FC交換器的硬體更換或升級與韌體升級程序

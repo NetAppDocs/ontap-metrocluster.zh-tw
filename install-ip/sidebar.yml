@@ -53,20 +53,10 @@ entries:
     url: "/install-ip/task_rack_hw_components.html"
   - title: 連接MetroCluster 至靜態IP交換器
     entries:
-    - title: 如何將連接埠表格與RcfFileGeneratorR工具或多MetroCluster 個支援功能組態搭配使用
+    - title: 了解 MetroCluster IP 交換器的佈線方式
       url: "/install-ip/using_rcf_generator.html"
-    - title: Cisco 3132Q-V交換器的平台連接埠指派
-      url: "/install-ip/port_usage_3132q.html"
-    - title: Cisco 3232C 或 36 連接埠 Cisco 9336C-FX2 交換器的平台連接埠分配
-      url: "/install-ip/port_usage_3232c_9336c.html"
-    - title: 12 連接埠 Cisco 9336C-FX2 交換器的平台連接埠分配
-      url: "/install-ip/port-usage-9336c-fx-2-12-port.html"
-    - title: 連接 NS224 儲存的 36 連接埠Cisco 9336C-FX2 交換器的平台連接埠分配
-      url: "/install-ip/port_usage_9336c_shared.html"
-    - title: 適用於Broadcom支援的BG-53248 IP交換器的平台連接埠指派
-      url: "/install-ip/port_usage_bes53248.html"
-    - title: 適用於NVIDIA支援SN2100 IP交換器的平台連接埠指派
-      url: "/install-ip/port_usage_sn2100.html"
+    - title: 連接 MetoCluster IP 交換器的纜線
+      url: "/install-ip/cable-mcc-ip-switches.html"
   - title: 連接控制器資料和管理連接埠
     url: "/install-ip/task_cable_other_connections.html"
   - title: 設定MetroCluster 靜態IP交換器

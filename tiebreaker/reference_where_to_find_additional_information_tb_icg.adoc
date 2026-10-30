@@ -75,7 +75,7 @@ https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/concept_consideratio
 
 
  a| 
-https://docs.netapp.com/us-en/ontap-metrocluster/maintain/index.html["維護MetroCluster 這些元件"]
+https://docs.netapp.com/us-en/ontap-metrocluster/maintain/concept_where_to_find_procedures_for_mcc_maintenance_tasks.html["系統維護MetroCluster"]
  a| 
 * 關於進行支援的準則MetroCluster
 * FC至SAS橋接器和FC交換器的硬體更換或升級與韌體升級程序

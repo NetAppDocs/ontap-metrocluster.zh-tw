@@ -22,14 +22,14 @@ indexpage:
       url: "/install-ip/concept_mediator_requirements.html"
   - title: 維護
     links:
-    - title: FC交換器
-      url: "/maintain/task_upgrade_or_downgrad_the_firmware_on_a_brocade_fc_switch_mcc.html"
-    - title: IP 交換器
-      url: "/maintain/task_replace_an_ip_switch.html"
-    - title: Atto橋接器
+    - title: 瞭解 MetroCluster 維護
+      url: "/maintain/concept_where_to_find_procedures_for_mcc_maintenance_tasks.html"
+    - title: FC至SAS橋接器維護
       url: "/maintain/concept_using_fibrebridge_7600n_bridges_in_mcc_configurations.html"
-    - title: 磁碟機櫃
-      url: "/maintain/index.html"
+    - title: FC交換器維護與更換
+      url: "/maintain/task_upgrade_or_downgrad_the_firmware_on_a_brocade_fc_switch_mcc.html"
+    - title: IP交換器維護與更換
+      url: "/maintain/task_replace_an_ip_switch.html"
   - title: RCF檔案
     links:
     - title: RCF檔案MetroCluster

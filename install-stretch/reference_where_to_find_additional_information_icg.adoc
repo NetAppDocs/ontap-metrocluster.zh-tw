@@ -63,17 +63,24 @@ https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/concept_consideratio
 
 
  a| 
-https://docs.netapp.com/us-en/ontap-metrocluster/manage/index.html["支援管理與災難恢復MetroCluster"]
+link:../manage/task_perform_switchover_for_tests_or_maintenance.html["執行切換以進行測試或維護"]
+ a| 
+* 切換、修復及切換
+
+
+
+
+ a| 
+link:../manage/concept_understanding_mcc_data_protection_and_disaster_recovery.html["瞭MetroCluster 解資料保護與災難恢復"]
  a| 
 * 瞭MetroCluster 解此功能的組態
-* 切換、修復及切換
-* 災難恢復（DR）
+* 災難恢復
 
 
 
 
  a| 
-link:../maintain/index.html["維護MetroCluster 元件"]
+link:../maintain/concept_where_to_find_procedures_for_mcc_maintenance_tasks.html["系統維護MetroCluster"]
  a| 
 * 關於在支援不支援支援服務的環境中進行維護的準則MetroCluster
 * 硬體更換或升級。FC至SAS橋接器和FC交換器的韌體升級程序

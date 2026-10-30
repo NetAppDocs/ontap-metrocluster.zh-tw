@@ -40,7 +40,7 @@ FC交換器、MetroCluster 採用F精選FC組態
 .. 安裝新交換器。
 .. 連接ISL連結。此時請勿開啟FC交換器的電源。
 
-| link:../maintain/index.html["維護MetroCluster 元件"] 
+| link:../maintain/concept_where_to_find_procedures_for_mcc_maintenance_tasks.html["維護MetroCluster 元件"] 
 
 
  a| 

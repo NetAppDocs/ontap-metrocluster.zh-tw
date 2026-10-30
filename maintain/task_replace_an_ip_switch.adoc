@@ -130,9 +130,108 @@ To check if the nodes are ready to do a switchover or switchback operation, run 
 .. 檢查是否沒有健全狀況警示：「*系統健全狀況警示顯示*」
 
 
+. 如果您的 MetroCluster IP 組態有連接到 MetroCluster IP 交換器的 NVMe 機櫃，請執行下列命令來驗證機櫃狀態。
++
+.. 顯示機櫃狀態：
++
+`storage shelf show`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+cluster_A::> storage shelf show
+                                                        Module  Operational
+       Shelf Name Shelf ID Serial Number   Model        Type    Status
+----------------- -------- --------------- ------------ ------- -----------
+              1.0        0 952123456789    NS224NSM100  NSM100  Normal
+              1.2        0 952987654321    NS224NSM100  NSM100  Normal
+cluster_A::>
+----
+====
+.. 顯示連接交換器之 NVMe 機櫃的機櫃連線：
++
+`storage shelf show -shelf <shelf_name> -connectivity`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+cluster_A::> storage shelf show -shelf 1.0 -connectivity
+            Shelf Name: 1.0
+             Stack ID: 1
+             Shelf ID: 0
+            Shelf UID: 00:00:00:00:00:00:00:00
+        Serial Number: 952123456789
+          Module Type: NSM100
+                Model: NS224NSM100
+         Shelf Vendor: NETAPP
+           Disk Count: 24
+      Connection Type: NVMe
+          Shelf State: Online
+               Status: Normal
+Paths:
+
+Controller         Initiator Initiator Side Switch Port Target Side Switch Port    Target Port        TPGN
+------------------ --------- -------------------------- -------------------------- ------------------ ------
+cluster_A-01       0x        -                          0x                         05000005abff0000   67
+cluster_A-02       0x        -                          0x                         030f0005abff0000   44
+
+cluster_A::>
+----
+====
+.. 如有需要，請收集遠端設備（MetroCluster 交換器）名稱：
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+cluster_A::> storage shelf port show -fields remote-device
+
+shelf id remote-device
+----- -- -------------
+1.0   0  IP_switch_A_1
+1.0   1  IP_switch_B_1
+1.0   2  IP_switch_A_2
+1.0   3  IP_switch_B_2
+4 entries were displayed
+----
+====
+.. 顯示連接到交換器的 NVMe 機櫃的機櫃連接埠連線：
++
+`storage shelf port show -remote-device <switch name>`
+
++
+.顯示範例
+[%collapsible]
+====
+[listing]
+----
+cluster_A::> storage shelf port show -remote-device IP_switch_A_1
+
+Shelf ID Module State        Internal?
+----- -- ------ ------------ ---------
+1.0
+       1 A      connected    false
+       3 B      connected    false
+1.2
+       1 A      connected    false
+       3 B      connected    false
+4 entries were displayed.
+
+cluster_A::>
+----
+====
+
+
 . 安裝前請先設定新交換器。
 +
-如果您要重複使用現有的交換器、請前往 <<existing_step4,步驟4.>>。
+如果您要重複使用現有交換器，請前往 <<existing_disconnect,斷開舊交換器連線的步驟>>。
 
 +
 
@@ -142,36 +241,23 @@ NOTE: 如果要升級或降級交換器、您必須設定網路中的所有交�
 請依照交換器廠商的步驟進行：
 
 +
-** link:../install-ip/task_switch_config_broadcom.html["設定Broadcom IP交換器"]
-** link:../install-ip/task_switch_config_cisco.html["設定Cisco IP交換器"]
-** link:../install-ip/task_switch_config_nvidia.html["設定NVIDIA IP交換器"]
-+
 請確定您已為交換器_a_1、_a_2、_B_1或_B_2套用正確的RCF檔案。如果新交換器與舊交換器相同、您需要套用相同的RCF檔案。
 
 +
 如果您升級或降級交換器、請為新交換器套用最新支援的RCF檔案。
 
++
+** link:../install-ip/task_switch_config_broadcom.html["設定Broadcom IP交換器"]
+** link:../install-ip/task_switch_config_cisco.html["設定Cisco IP交換器"]
+** link:../install-ip/task_switch_config_nvidia.html["設定NVIDIA IP交換器"]
 
 
-. 執行連接埠show命令以檢視網路連接埠的相關資訊：
-+
-「*網路連接埠show *」
-
-+
-.. 修改所有叢集生命來停用自動還原：
-+
-[source, cli]
-----
-network interface modify -vserver <vserver_name> -lif <lif_name> -auto-revert false
-----
-.. link:../install-ip/switch-move-cluster-lifs.html["移動叢集 LIF"]。
+. link:../install-ip/switch-move-cluster-lifs.html["移動叢集 LIF"]。
 +
 
 NOTE: 您必須依照下列順序更新交換器：Switch_A_1、Switch_B_1、Switch_A_2、Switch_B_2。在第一個架構（Switch_A_1、Switch_B_1）中設定交換器後，您必須重複上述步驟，將叢集 LIF 移轉到第二個架構（Switch_A_2、Switch_B_2）。請參閱 link:../install-ip/task_install_and_cable_the_mcc_components.html["了解如何設定 MetroCluster IP 交換器"]。
 
-
-
-. [[Existing _step4]] 中斷舊交換器的連線。
+. [[existing_disconnect]]中斷與舊交換器的連線。
 +
 
 NOTE: 您只能中斷舊組態和新組態中使用不同連接埠的連線。如果您使用的是新交換器、則必須中斷所有連線。
@@ -191,13 +277,13 @@ NOTE: 您只能中斷舊組態和新組態中使用不同連接埠的連線。�
 
 . 如果您使用的是新的交換器、請關閉舊的交換器、拔下纜線、然後實際移除舊的交換器。
 +
-如果您要重複使用現有的交換器、請前往 <<existing_step6,步驟6.>>。
+如果您要重複使用現有的交換器，請繼續前往 <<existing_configure,設定現有交換器的步驟>>。
 
 +
 
 NOTE: 除了管理介面（如果使用）之外、請勿 * 不 * 連接新的交換器。
 
-. [[Existing _step6]] 設定現有的交換器。
+. [[existing_configure]]設定現有交換器。
 +
 如果您已預先設定交換器、您可以跳過此步驟。
 
@@ -224,11 +310,19 @@ NOTE: 除了管理介面（如果使用）之外、請勿 * 不 * 連接新的�
 [NOTE]
 ====
 *** 如果交換器類型不同、使用的連接埠可能會與舊交換器上的連接埠不同。如果要升級或降級交換器、請*不要*連接本機ISL。只有當您要升級或降級第二個網路中的交換器、且某個站台的兩個交換器類型和纜線相同時、才需要連接本機 ISL 。
-*** 如果您要升級 Switch-A1 和 Switch-B1 、則必須針對交換器 Switch-A2 和 Switch-B2 執行步驟 1 至 6 。
 
 
 ====
 
+
+. 開啟交換器或交換器的電源。
++
+如果新交換器與舊交換器相同，則啟動新交換器。如果要升級或降級交換器，則啟動兩台交換器。
+
+. 在更新第一個架構（Switch_A_1 和 Switch_B_1）之後，對第二個架構（Switch_A_2 和 Switch_B_2）重複上述步驟。
++
+
+NOTE: 如果您要用相同類型的交換器取代故障交換器，只需更新故障交換器，無需對第二個架構重複上述步驟。
 
 . 完成本機叢集佈線。
 +
@@ -244,18 +338,7 @@ NOTE: 除了管理介面（如果使用）之外、請勿 * 不 * 連接新的�
 
 
 
-. 開啟交換器或交換器的電源。
-+
-如果新交換器與舊交換器相同，則啟動新交換器。如果要升級或降級交換器，則啟動兩台交換器。在第二個架構更新之前，每個站台可以使用兩台不同的交換器進行組態。
-
 . 重複、確認 MetroCluster 組態正常 <<all_step1,步驟1.>>。
-+
-如果您正在升級或降級第一個架構中的交換器，您可能會看到一些與本機叢集相關的警示。
-
-+
-
-NOTE: 如果升級或降級架構，則對第二個架構重複所有步驟。
-
 . 將所有叢集 LIF 回復到其主連接埠。
 +
 
@@ -285,3 +368,6 @@ network interface modify -vserver <vserver_name> -lif <lif_name> -auto-revert tr
 
 
 
+
+.完成後
+link:../install-ip/task-configure-log-collection-mccip.html["在 MetroCluster IP 交換器上設定日誌收集"]

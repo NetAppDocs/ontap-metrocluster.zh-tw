@@ -774,7 +774,7 @@ cluster_A::*>
 .關於這項工作
 在執行此程序之前、必須先連接25 Gbps連接埠的纜線。
 
-link:port_usage_3232c_9336c.html["Cisco 3232C或Cisco 9336C交換器的平台連接埠指派"]
+link:using_rcf_generator.html["了解 MetroCluster IP 交換器的佈線方式"]
 
 此工作僅適用於使用25-Gbps連線的平台：
 

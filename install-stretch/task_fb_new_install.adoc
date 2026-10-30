@@ -488,7 +488,7 @@ SAS Port B has been disabled.
 |===
 . 完成MetroCluster 支援的功能組態後、請使用「flashimaged」命令檢查您的版本的網路橋接器韌體、如果橋接器未使用支援的最新版本、請更新組態中所有橋接器上的韌體。
 +
-link:../maintain/index.html["維護MetroCluster 元件"]
+link:../maintain/concept_where_to_find_procedures_for_mcc_maintenance_tasks.html["系統維護MetroCluster"]
 
 
 

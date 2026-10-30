@@ -2,52 +2,115 @@
 permalink: install-ip/using_rcf_generator.html 
 sidebar: sidebar 
 keywords: cabling, cable, component, link, site, management, network, hardware, component, switch, cluster, connection, management, data, configuring, configure, rcf, file, generator, RcfFileGenerator 
-summary: 您必須瞭解如何使用連接埠表格中的資訊來正確產生RCF檔案。 
+summary: 您必須了解如何使用連接埠表中的資訊來正確產生 RCF。 
 ---
-= MetroCluster IP 組態的連接埠表
+= 了解 MetroCluster IP 交換器的佈線方式
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-您必須了解如何使用連接埠表中的資訊來正確產生參考組態檔（RCF）。
+在開始連接 MetroCluster IP 交換器之前，請審查相關要求。
 
 .開始之前
-使用表格之前、請先檢閱下列考量事項：
+在為交換器佈線之前，請審查這些考量事項：
 
-* 下表顯示站台A的連接埠使用量站台B使用相同的纜線
+* 站台 A 和站台 B 使用相同的佈線。
 * 您無法為交換器設定不同速度的連接埠（例如，100 Gbps 連接埠和 40 Gbps 連接埠的混合）。
 * 追蹤MetroCluster 不穩定的資料群組MetroCluster （例如、支援1、MetroCluster 2等）。在使用 RcfFileGenerator 工具時您將需要此信息，如本配置過程後面所述。
 * 您應該以相同的方式連接所有節點。如果有不同的連接埠組合選項可供連接節點，則所有節點都應該使用相同的連接埠組合。例如， node1 上的 e1a 和 node2 上的 e1a 應該連接到一個交換器。同樣地，兩個節點的第二個連接埠也應該連接到第二個交換器。
-*  https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["RcfFileGeneratorfor MetroCluster EfIP"^]也提供每個交換器的每連接埠纜線總覽。使用此纜線總覽來驗證纜線。
+
+
+
+NOTE: 參考組態檔案（RCF）的版本與用於產生該檔案的 RCFfilegenerator 工具的版本不同。例如，您可以使用 RCFfilegenerator v1.6c 產生 RCF 版本 2.00。
+
+
+
+[[cabling-requirements-based-on-the-switch-type]]
+== 根據交換器類型而定的佈線要求
+
+以下列出根據特定交換器類型的佈線要求。
+
+
+
+[[cisco-3132q-v]]
+=== Cisco 3132Q-V
+
+如果您將交換器設定為 MetroCluster FC 到 IP 轉換，則可以使用連接埠 5 或連接埠 6 連接 MetroCluster FC 節點的本機叢集介面。有關此組態的佈線詳細資訊，請參閱 link:https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["RcfFileGeneratorfor MetroCluster EfIP"^] 及產生的佈線檔案。
+
+
+
+[[cisco-3232c-or-36-port-cisco-9336c]]
+=== Cisco 3232C 或 36 連接埠 Cisco 9336C
+
+* 如果您將交換器設定為 MetroCluster FC 到 IP 轉換，則可以使用連接埠 5、連接埠 6、連接埠 13 或連接埠 14 來連接 MetroCluster FC 節點的本機叢集介面。如需有關此組態佈線的詳細資訊，請參閱 link:https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["RcfFileGeneratorfor MetroCluster EfIP"^] 及產生的佈線檔案。
+* 在支援的平台上，MetroCluster ISL 的 25G 分支模式需要 RCF 版本 v2.10 或更新版本。
+* 若要在「MetroCluster 4」群組中使用 FAS8200 或 AFF A300 以外的平台，需要 ONTAP 9.13.1 或更新版本以及 RCF 版本 2.00。
 
 
 
 
-[[cabling-two-metrocluster-configurations-to-the-switches]]
-== 將兩MetroCluster 個交換器連接至交換器
+[[12-port-cisco-9336c-fx2]]
+=== 12 埠 Cisco 9336C-FX2
 
-將多個 MetroCluster 設定佈線到交換器時，請根據對應的表格為每個 MetroCluster 佈線。例如，如果要將 FAS2750 和 AFF A700 佈線到同一台交換機，則應依照表 1 中的「MetroCluster 1」為 FAS2750 佈線，依照表 2 中的「MetroCluster 2」或「MetroCluster 3」為 AFF A700 佈線。您無法將 FAS2750 和 AFF A700 實體連接成「 MetroCluster 1 」。
-
-
-
-[[cabling-eight-node-metrocluster-configurations]]
-== 佈線八節點MetroCluster 的架構
-
-針對執行效能不全的9.8和更早版本的執行功能、為了轉換升級作業、某些程序需要在組態中新增第二個四節點DR群組、才能建立一個暫用的八節點組態。MetroCluster ONTAP  從 ONTAP 9.9.1 開始、支援永久性的八節點 MetroCluster 組態。
-
-.關於這項工作
-對於八節點配置，使用與上面描述的相同的方法。除了第二MetroCluster 個問題、您還需要額外的四節點災難恢復群組。
-
-例如、您的組態包括下列項目：
-
-* Cisco 3132Q-V交換器
-* 產品特色1：FAS2750平台MetroCluster
-* 支援2：功能完善的支援平台（這些平台將新增為第二個四節點DR群組）MetroCluster AFF
+12 連接埠 Cisco 9336C-FX2 交換器不支援將 NS224 架連接到 MetroCluster 交換器。
 
 
-.步驟
-. 對於僅有的部分、請使用FAS2750平台的表格、以及用作支援1介面的資料列、來連接Cisco 3132Q-V交換器。MetroCluster MetroCluster
-. 對於2（第二個DR群組）、請使用表格連接Cisco 3132Q-V交換器、以利執行該平台、並將資料列連接至2個介面。MetroCluster AFF MetroCluster
 
+[[36-port-cisco-9336c-fx2-switch-connecting-ns224-storage]]
+=== 連接 NS224 儲存設備的 36 連接埠 Cisco 9336C-FX2 交換器
+
+* 連接一個八節點或兩個四節點 MetroCluster 組態需要 ONTAP 9.14.1 或更新版本。
+* 使用 Cisco 9336C-FX2 交換器連接 NS224 儲存設備時，最多只能設定兩個 MetroCluster 組態或 DR 群組。至少一個 MetroCluster 組態或 DR 群組需要將 NS224 機架連接到 MetroCluster 交換器。
+* 只有在選擇第一個平台時、 RcfFileGenerator 才會顯示符合資格的平台。
+* 如果您要擴充不支援交換器連接 NS224 儲存設備的一般 MetroCluster 組態，並且想要新增具有交換器連接 NS224 儲存設備的 MetroCluster 組態，請檢閱下列資訊：
++
+在 RcfFileGenerator 工具中，您必須先選擇支援交換器連接 NS224 儲存設備的平台，然後再選擇不支援交換器連接 NS224 儲存設備的平台。
+
++
+這意味著，在為新配置產生 RCF 時，您可能需要按以下順序在 RcfFileGenerator 工具中選擇平台：
+
++
+.. 從第二個下拉欄位中選擇支援交換器連接 NS224 儲存設備的平台。
+.. 從第一個下拉欄位中選擇不支援交換器連接的 NS224 儲存設備的平台。
+
+
+
+
+
+
+[[broadcom-bes-53248]]
+=== Broadcom Bes - 53248
+
+* 您無法將交換器與速度不同的遠端 ISL 連接埠搭配使用（例如，連接至 10 Gbps ISL 連接埠的 25 Gbps 連接埠）。
+* 如果您設定交換器進行 MetroCluster FC 到 IP 的轉換、則會根據您選擇的目標平台使用下列連接埠：
++
+[cols="75,25"]
+|===
+| 目標平台 | 連接埠 
+
+
+| FAS500f 、 AFF C250 、 ASA C250 、 AFF A250 、 ASA A250 、 FAS8400 、 AFF C400 、 ASA C400 、 AFF A400 、 ASA A400 、 或 FAS8700 平台 | 連接埠 1 - 6 、 10Gbps 
+
+
+| FAS8200 或 AFF A300 平台 | 連接埠 3 - 4 和 9 - 12 、 10Gbps 
+|===
+* 配置Broadcom B3B-53248交換器的部分A320系統可能不支援所有功能。AFF
++
+不支援任何需要將本機叢集連線連線至交換器的組態或功能。例如、下列組態和程序不受支援：
+
++
+** 八節點MetroCluster 的不完整組態
+** 從MetroCluster 靜態FC移轉至MetroCluster 靜態IP組態
+** 重新整理四節點MetroCluster 的靜態IP組態（ONTAP 不含更新版本的更新版本）
+
+
+
+
+
+
+[[nvidia-sn2100]]
+=== NVIDIA SN2100
+
+連接一個八節點或兩個四節點的 MetroCluster 組態需要 ONTAP 9.14.1 或更新版本，以及 RCF 2.00 版或更新版本。

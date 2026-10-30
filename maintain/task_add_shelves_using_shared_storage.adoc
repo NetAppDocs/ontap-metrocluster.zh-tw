@@ -200,7 +200,7 @@ cluster_A::>
 NOTE: 如果您的交換器已正確設定、您可以跳過以下部分、直接前往 <<在Cisco 9336C交換器上設定Macsec加密>>（如果適用）或至 <<連接新的NS224機櫃>>。
 
 * 您必須變更交換器組態才能新增磁碟櫃。
-* 您應該在檢閱纜線詳細資料 link:https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/port_usage_3232c_9336c.html#cabling-a-aff-a800-to-a-cisco-3232c-or-cisco-9336c-switch["平台連接埠指派"^]。
+* 您應該在 link:https://docs.netapp.com/us-en/ontap-metrocluster/install-ip/using_rcf_generator.html["了解 MetroCluster IP 交換器的佈線方式"^] 審查佈線詳細資料。
 * 您必須使用「**RcfFileGenerator**」工具來建立組態的RCF檔案。。 link:https://mysupport.netapp.com/site/tools/tool-eula/rcffilegenerator["RcfFileGenerator"^] 此外、也提供每個交換器的每埠纜線配置總覽。確定您選擇正確數量的磁碟櫃。此外還會建立其他檔案、以及RCF檔案、提供符合您特定選項的詳細佈線配置。使用此纜線總覽來驗證新機櫃的纜線佈線。
 
 
