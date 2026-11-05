@@ -360,6 +360,9 @@ cluster_B::*
 在啟動切換之前、自動化作業會暫停、以便您手動確認站台B的所有生命都是「up」如有必要、請將任何「'down」的lifs移至「up」、然後使用「system controller replace resume」命令恢復自動化作業。
 
 
+NOTE: 在執行切換之前，請審查link:../manage/switchover-limitations.html["MetroCluster 組態在進行之間的限制"]。
+
+
 
 [[prepare-the-network-configuration-of-the-old-controllers]]
 === 準備舊控制器的網路組態

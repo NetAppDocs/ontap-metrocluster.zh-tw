@@ -16,6 +16,9 @@ summary: 收集資訊並恢復作業後，自動化作業會繼續進行。
 .開始之前
 在啟動切換之前、自動化作業會暫停、以便您手動確認站台B的所有生命都是「up」如有必要、請將任何「'down」的lifs移至「up」、然後使用「system controller replace resume」命令恢復自動化作業。
 
+
+NOTE: 在執行切換之前，請審查link:../manage/switchover-limitations.html["MetroCluster 組態在進行之間的限制"]。
+
 自動化作業會啟動「跨操作」。這些作業完成後，操作會暫停於 * 暫停以供使用者介入 * ，以便您可以使用先前收集的快閃備份，從快閃備份將控制器機架安裝，開機合作夥伴控制器，並將根 Aggregate 磁碟重新指派給新的控制器模組 `sysids`。
 
 .關於這項工作

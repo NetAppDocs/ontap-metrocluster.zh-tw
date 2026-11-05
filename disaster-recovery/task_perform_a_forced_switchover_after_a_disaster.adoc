@@ -55,6 +55,9 @@ summary: 如果發生災難、您必須在切換後在災難叢集和存續的�
 .關於這項工作
 「不完整切換」命令會在整個DR群組的節點上切換、以利執行整個過程。MetroCluster MetroCluster例如、在八節點MetroCluster 的「列舉」組態中、它會在兩個DR群組中的節點之間切換。
 
+
+NOTE: 在執行切換之前，請審查link:../manage/switchover-limitations.html["MetroCluster 組態在進行之間的限制"]。
+
 .步驟
 . 在存續站台執行下列命令、以執行切換：
 +

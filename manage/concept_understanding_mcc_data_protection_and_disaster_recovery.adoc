@@ -491,6 +491,22 @@ NOTE: 此程序僅適用於其他站台穩定且不打算離線的情況。
  a| 
 您可以中斷資料保護鏡像來源端點與目的地端點之間的SnapMirror關係。
 
+
+
+ a| 
+`vserver modify -storage-limit`
+ a| 
+從 ONTAP 9.20.1 開始，可以為屬於 MetroCluster IP 組態一部分的 SVM 設定儲存設備限制。
+
+在 MetroCluster 切換期間啟用或停用儲存設備限制時，適用下列限制：
+
+* 在同步目標 SVM 上，您無法使用  `vserver modify -storage-limit` 命令啟用或停用儲存設備限制。這表示您無法將該值從 0 變更為非零值，也無法將非零值變更為 0。命令會失敗並顯示下列錯誤：
++
+`This operation is not permitted on a Vserver that is configured as the destination of a MetroCluster Vserver relationship`
+
+* 您仍然可以將儲存設備限制從一個非零值變更為另一個非零值（例如，從 100TB 變更為 200TB）。切換回復後，此新值將會保留。
+
+
 |===
 
 

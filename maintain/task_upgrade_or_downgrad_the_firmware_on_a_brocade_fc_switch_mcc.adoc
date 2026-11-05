@@ -16,9 +16,9 @@ summary: 若要升級或降級Brocade FC交換器上的韌體、您必須使用B
 .開始之前
 在使用此方法之前，請仔細閱讀以下資訊：
 
-* 從 Fabric OS 10.x 版本開始，Brocade 僅支援 SHA-512 進行 SNMP 驗證。ONTAP 目前不支援 SHA-512，僅支援 SHA-256。
+* 從 ONTAP 9.20.1 開始，ONTAP 支援使用 SHA-512 進行 SNMP 驗證。在 Fabric OS 10.x 及更新版本中，Brocade 僅支援使用 SHA-512 進行 SNMP 驗證。
 +
-如果將 MetroCluster FC 交換器韌體升級到 Fabric OS 10.x，將無法透過 ONTAP 進行 SNMP 監控。這會導致故障排除風險增加，並失去主動警示功能。
+如果您執行的是早於 9.20.1 的 ONTAP 版本，並將 MetroCluster FC 交換器韌體升級至 Fabric OS 10.x，則會遺失來自 ONTAP 的 SNMP 監控可見度。這會導致疑難排解時的風險增加，並遺失主動式警示。
 
 +
 如果您升級至 Fabric OS 10.x 或從 Fabric OS 10.x 降級，則必須執行 link:https://techdocs.broadcom.com/us/en/fibre-channel-networking/fabric-os/fabric-os-software-upgrade/10-0-x/Upgrading-and-Downgrading-Firmware/v24512876.html["Brocade Fabric OS 軟體升級指南，10.0.x - 升級或降級前提條件"^] 中概述的強制性工作。

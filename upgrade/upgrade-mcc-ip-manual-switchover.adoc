@@ -24,6 +24,9 @@ summary: 您可以將組態切換至站台 A ，以便站台 B 上的平台可�
 
 image::../media/mcc_upgrade_cluster_a_in_switchover.png[顯示叢集 _A 已準備好進行升級，且叢集 _B 正在進行待處理]
 
+
+NOTE: 在執行切換之前，請審查link:../manage/switchover-limitations.html["MetroCluster 組態在進行之間的限制"]。
+
 .步驟
 . 切換MetroCluster 到站台A的支援、以便站台B的節點升級：
 +

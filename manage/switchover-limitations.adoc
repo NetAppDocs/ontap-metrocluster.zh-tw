@@ -48,3 +48,28 @@ summary: 在切入期間，不應執行某些作業。
 
 
 
+
+
+
+[[changing-svm-storage-limits-in-switchover]]
+== 切換中變更 SVM 儲存設備限制
+
+從 ONTAP 9.20.1 開始，可以為屬於 MetroCluster IP 組態一部分的 SVM 設定儲存設備限制。
+
+
+CAUTION: 您必須確保您的 MetroCluster 組態不超過 https://hwu.netapp.com/["Hardware Universe"^]中所列的平台限制。
+
+* 在正常運作期間（非切換），您只能在 *同步來源 SVM* 上變更儲存設備限制組態。您無法在 *同步目標 SVM* 上啟用、停用或修改儲存設備限制。
+* 在切換期間，下列限制適用於 *同步目標 SVM*：
++
+** 您無法使用  `vserver modify -storage-limit` 命令啟用或停用同步目的地 SVM 的儲存設備限制。也就是說，您無法將該值從 0 變更為非零值，也無法將非零值變更為 0。該命令會失敗並顯示下列錯誤：
++
+`This operation is not permitted on a Vserver that is configured as the destination of a MetroCluster Vserver relationship`
+
+** 您仍然可以將儲存設備限制從一個非零值變更為另一個非零值（例如，從 100TB 變更為 200TB）。切換回復後，此新值將會保留。
+** 若要啟用或停用儲存設備限制，請等待切換回復完成，然後在 *sync-source SVM* 上進行變更。該值隨後會複寫到 sync-destination SVM。
+
+
+
+
+如需詳細資訊，請參閱link:https://docs.netapp.com/us-en/ontap/volumes/manage-svm-capacity.html["管理 ONTAP SVM 容量"^]

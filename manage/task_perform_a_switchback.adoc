@@ -13,6 +13,9 @@ summary: 修復 MetroCluster 組態後，執行切換回復作業以使其恢復
 [role="lead"]
 修復MetroCluster 完這個功能後、您就可以執行MetroCluster 還原操作。此還原操作會將組態恢復至正常作業狀態、使災難站台上的同步來源儲存虛擬機器（SVM）處於作用中狀態、並從本機磁碟集區提供資料。MetroCluster
 
+.關於這項工作
+執行切回前，請先審查下列要求：
+
 * 災難叢集必須已成功切換至正常運作的叢集。
 * 必須在資料和根集合體上執行修復。
 * 正常運作的叢集節點不得處於HA容錯移轉狀態（每個HA配對的所有節點都必須已啟動並執行）。
@@ -20,8 +23,10 @@ summary: 修復 MetroCluster 組態後，執行切換回復作業以使其恢復
 * 根Aggregate必須鏡射。
 * 交換器間連結（ISL）必須在線上。
 * 任何必要的授權都必須安裝在系統上。
-+
-.. 確認所有節點都處於啟用狀態：MetroCluster 「不支援節點顯示」
+
+
+.步驟
+. 確認所有節點都處於啟用狀態：MetroCluster 「不支援節點顯示」
 +
 下列範例顯示處於啟用狀態的節點：
 
@@ -41,10 +46,10 @@ Group Cluster Node        State          Mirroring Mode
               node_B_2    configured     enabled   waiting for switchback recovery
 4 entries were displayed.
 ----
-.. 確認所有SVM上的重新同步已完成：MetroCluster 「Svserver show」
-.. 驗證修復作業所執行的任何自動LIF移轉是否已成功完成：「MetroCluster 還原檢查LIF show」
-.. 執行模擬切換以驗證系統是否就緒：MetroCluster 「還原模擬」
-.. 檢查組態：
+. 確認所有SVM上的重新同步已完成：MetroCluster 「Svserver show」
+. 驗證修復作業所執行的任何自動LIF移轉是否已成功完成：「MetroCluster 還原檢查LIF show」
+. 執行模擬切換以驗證系統是否就緒：MetroCluster 「還原模擬」
+. 檢查組態：
 +
 《不一樣的跑程》MetroCluster
 
@@ -76,8 +81,8 @@ clusters            ok
 connections         ok
 6 entries were displayed.
 ----
-.. 從MetroCluster 存續叢集中的任何節點執行「還原」命令來執行還原功能：MetroCluster 「還原還原還原」
-.. 查看切換作業的進度：MetroCluster 「還原」
+. 從MetroCluster 存續叢集中的任何節點執行「還原」命令來執行還原功能：MetroCluster 「還原還原還原」
+. 查看切換作業的進度：MetroCluster 「還原」
 +
 當輸出顯示「等待切換」時、切換回復作業仍在進行中：
 
@@ -112,7 +117,5 @@ Remote: cluster_A         Configuration state configured
 ----
 +
 如果切換需要很長時間才能完成、您可以使用「MetroCluster 更新組態複寫重新同步狀態show」命令來檢查進行中基準的狀態。此命令處於進階權限層級。
-
-
 
 

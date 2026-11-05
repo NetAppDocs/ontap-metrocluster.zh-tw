@@ -11,7 +11,7 @@ summary: 在執行轉換之前、您必須先驗證MetroCluster 整個流程的�
 
 
 [role="lead"]
-在執行轉換之前、您必須先驗證MetroCluster 整個流程的健全狀況和連線能力
+在執行轉換之前、您必須先驗證MetroCluster 整個流程的健全狀況和連線能力。
 
 . 驗證MetroCluster 下列項目中的功能：ONTAP
 +

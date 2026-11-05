@@ -1,0 +1,171 @@
+= 啟用擁塞控制
+:allow-uri-read: 
+
+
+從 ONTAP 9.20.1 開始，您可以在 MetroCluster IP 組態中啟用 WAN 交換器間連結（ISL）擁塞控制，以便以較低或混合頻寬（例如 10Gbps、25Gbps 或 40Gbps）執行的 ISL，可與具有 100Gbps MetroCluster IP 後端連接埠速度的平台搭配使用。
+
+100Gbps 介面卡產生的複寫流量可能會超出較低連結速度的 ISL，導致交換器緩衝區壓力、PAUSE 反壓、封包遺失，以及潛力的複寫不穩定。WAN ISL 擁塞控制透過使用 ISL 頻寬和節點數量計算傳出處理量的上限來解決此問題。此上限作為傳出處理量臨界值，用於控制互連傳輸流量。如果測得的傳出處理量高於計算出的上限，則會拒絕傳輸，從而在互連網路上強制執行傳出處理量臨界值。
+
+
+CAUTION: 設定 WAN ISL 擁塞控制並 *不* 保證在使用較低頻寬 ISL 時可能出現的效能問題不會發生。NetApp 強烈建議您轉換至 100Gbps ISL 連線以獲得最佳效能。
+
+.關於這項工作
+* MetroCluster IP 組態必須執行 ONTAP 9.20.1 或更新版本。
+* WAN ISL 擁塞控制預設為停用狀態，您必須明確啟用它。
+* 在以下情況下，您需要聯絡 NetApp 支援來設定此功能：
++
+** 如果您在嘗試啟用或重新整理該功能時無法自動取得 ISL 資訊
+** 如果您有兩個連接到相同交換器的四節點 MetroCluster IP 組態
+** 如果您需要在啟用功能後修改計算出的上限
+
+
+* 如果在啟用擁塞控制後拓撲發生變更，您必須重新整理擁塞控制組態以計算新的上限。例如，如果 ISL 的數量或速度發生變更，或者如果您在 MetroCluster IP 組態中新增節點。
+* 每個站台獨立計算其上限。當您在本地站台上執行  `metrocluster interconnect congestion-control enable` 命令時，會觸發下列動作：
++
+** 本地站台準備並計算其上限。
+** 合作夥伴站台也會獨立於執行命令的本地站台，準備並計算上限值。雖然技術上不太可能，但本地站台和合作夥伴站台計算出的上限值可能會不同。這是預期行為，並不表示故障或組態錯誤。
+** 每個站台將其計算出的值寫入為期望狀態，然後核心會套用該狀態。
+
+
+* WAN ISL 壅塞控制功能啟用後會自動運作。
+
+
+
+
+[[enable-congestion-control]]
+== 啟用擁塞控制
+
+若要啟用 WAN ISL 擁塞控制，請在本機叢集上完成下列步驟。
+
+
+CAUTION: 如果您有兩個連接到相同交換器的四節點 MetroCluster IP 組態，請聯絡 NetApp 支援部門以啟用此功能。
+
+.步驟
+. 在 cluster_A 上啟用 WAN ISL 擁塞控制：
++
+[source, cli]
+----
+metrocluster interconnect congestion-control enable
+----
++
+如果命令執行失敗並出現  `MCC_CC_ISL_INFO_UNAVAILABLE` 錯誤，則無法自動取得 ISL 資訊，您必須聯絡 NetApp 支援部門以啟用此功能。
+
+. 確認 WAN ISL 擁塞控制已啟用：
++
+[source, cli]
+----
+metrocluster interconnect congestion-control show
+----
++
+[listing]
+----
+cluster_A::> metrocluster interconnect congestion-control show
+
+Node            Enabled Ceiling (MiB/s)
+--------------- ------- ---------------
+cluster_A-01    true    1250
+cluster_A-02    true    1250
+2 entries were displayed.
+----
+
+
+
+NOTE: 啟用此功能後，如果需要修改計算的上限值，請聯絡 NetApp 支援。
+
+
+
+[[refresh-congestion-control]]
+== 重新整理壅塞控制
+
+若要重新整理 WAN ISL 擁塞控制組態，請在本機叢集上完成下列步驟。每當拓撲發生變更時，例如 ISL 的數量或速度發生變更，或將新節點新增至 MetroCluster IP 組態時，您都必須重新整理擁塞控制組態。
+
+.步驟
+. 重新整理 cluster_A 上的 WAN ISL 擁塞控制組態：
++
+[source, cli]
+----
+metrocluster interconnect congestion-control refresh
+----
++
+ONTAP 會根據目前網路狀況計算出新的上限，並自動套用該上限。
+
++
+如果命令失敗並出現  `MCC_CC_ISL_INFO_UNAVAILABLE` 錯誤，則無法自動取得 ISL 資訊，您必須聯絡 NetApp 支援以重新整理您的組態。
+
+
+
+
+
+[[monitor-wan-isl-congestion-control-activity]]
+== 監控 WAN ISL 擁塞控制活動
+
+您可以使用以下命令來驗證擁塞控制是否如預期運作：
+
+[source, cli]
+----
+metrocluster interconnect congestion-control show
+----
+啟用後，輸出應類似以下範例：
+
+[listing]
+----
+cluster_A::> metrocluster interconnect congestion-control show
+
+Node            Enabled Ceiling (MiB/s)
+--------------- ------- ---------------
+cluster_A-01    true    1250
+cluster_A-02    true    1250
+2 entries were displayed.
+----
+您也可以使用  `-instance` 參數來檢視每個節點的更詳細資訊：
+
+[source, cli]
+----
+metrocluster interconnect congestion-control show -instance
+----
+[listing]
+----
+cluster_A::> metrocluster interconnect congestion-control show -instance
+
+                        Node Name: cluster_A-01
+       Congestion Control Enabled: true
+       Throughput Ceiling (MiB/s): 1250
+
+                        Node Name: cluster_A-02
+       Congestion Control Enabled: true
+       Throughput Ceiling (MiB/s): 1250
+2 entries were displayed.
+----
+
+
+[[disable-congestion-control]]
+== 停用壅塞控制
+
+.步驟
+. 停用 cluster_A 上的 WAN ISL 壅塞控制：
++
+[source, cli]
+----
+metrocluster interconnect congestion-control disable
+----
+. 確認該功能已停用：
++
+[source, cli]
+----
+metrocluster interconnect congestion-control show
+----
++
+輸出結果應與以下範例類似：
+
++
+[listing]
+----
+cluster_A::> metrocluster interconnect congestion-control show
+
+Node            Enabled Ceiling (MiB/s)
+--------------- ------- ---------------
+cluster_A-01    false   -
+cluster_A-02    false   -
+2 entries were displayed.
+----
+

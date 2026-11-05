@@ -136,4 +136,5 @@ Po10         1       eth  trunk  up      none                                a-1
 Po11         1       eth  trunk  up      none                                a-100G(D)  lacp
 ----
 . 重複執行Fabric 2的程序。
+. 如果您的 MetroCluster IP 組態啟用了 WAN ISL 擁塞控制，您必須 link:mcc-congestion-control.html#refresh-congestion-control["重新整理 WAN ISL 擁塞控制組態"]。
 

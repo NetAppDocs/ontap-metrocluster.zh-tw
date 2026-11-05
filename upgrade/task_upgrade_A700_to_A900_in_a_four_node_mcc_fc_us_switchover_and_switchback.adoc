@@ -574,6 +574,9 @@ link:../tiebreaker/concept_configuring_the_tiebreaker_software.html#remove-metro
 
 image::../media/mcc_upgrade_cluster_a_in_switchover_A900.png[Site_B 處於非活動狀態並準備升級]
 
+
+NOTE: 在執行切換之前，請審查link:../manage/switchover-limitations.html["MetroCluster 組態在進行之間的限制"]。
+
 .步驟
 . 切換MetroCluster 到站台A的支援、以便站台B的節點升級：
 +

@@ -149,6 +149,9 @@ image::../media/transition_2n_unsupported_old_new_shelves_to_old_controllers.png
 .關於這項工作
 此工作是在現有節點（node_a_1-FC和node_B_1-FC）上進行轉換之前執行。
 
+
+NOTE: 在執行切換之前，請審查link:../manage/switchover-limitations.html["MetroCluster 組態在進行之間的限制"]。
+
 .步驟
 . 從控制器節點_B_1-FC執行協調切換：
 +
